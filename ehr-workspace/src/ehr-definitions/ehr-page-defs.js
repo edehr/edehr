@@ -805,6 +805,13 @@ const DEFS = {
         'fqn': 'surgical.physician'
       },
       {
+        'elementKey': 'pastSurgery_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'procedure',
         'formIndex': '1',
         'inputType': 'text',
@@ -831,6 +838,13 @@ const DEFS = {
         'tableColumn': '1',
         'fqn': 'surgical.previousAdmissionsDate',
         'helperHtml': '<p>Describe when this happened prior to current visit. E.g. 1 month ago</p>'
+      },
+      {
+        'elementKey': 'previous_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
       },
       {
         'elementKey': 'with',
@@ -876,6 +890,14 @@ const DEFS = {
         'addButtonText': 'Add a previous surgery',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'pastSurgery_id'
+            ]
+          },
+          {
             'ehr_list_index': '1',
             'items': [
               'physician'
@@ -917,6 +939,7 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'pastSurgery_id',
           'physician',
           'procedure',
           'timeSince'
@@ -931,6 +954,14 @@ const DEFS = {
         'label': 'Previous appointments',
         'addButtonText': 'Add a previous appointment',
         'ehr_list': [
+          {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'previous_id'
+            ]
+          },
           {
             'ehr_list_index': '1',
             'items': [
@@ -996,6 +1027,7 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'previous_id',
           'previousAdmissionsDate',
           'with',
           'details',
@@ -1352,6 +1384,13 @@ const DEFS = {
         'fqn': 'careTeam.name'
       },
       {
+        'elementKey': 'teams_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'text',
@@ -1370,6 +1409,14 @@ const DEFS = {
         'label': 'Care team',
         'addButtonText': 'Add a care team member',
         'ehr_list': [
+          {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'teams_id'
+            ]
+          },
           {
             'ehr_list_index': '1',
             'items': [
@@ -1404,6 +1451,7 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'teams_id',
           'name',
           'profession'
         ]
@@ -1423,6 +1471,13 @@ const DEFS = {
         'label': 'Date',
         'tableColumn': '1',
         'fqn': 'pastAppointments.encounterDate'
+      },
+      {
+        'elementKey': 'encounters_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
       },
       {
         'elementKey': 'site',
@@ -1455,6 +1510,13 @@ const DEFS = {
         'label': 'Appointment Day',
         'tableColumn': '1',
         'fqn': 'pastAppointments.appointmentDate'
+      },
+      {
+        'elementKey': 'outpatientAppointments_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
       },
       {
         'elementKey': 'site',
@@ -1491,6 +1553,14 @@ const DEFS = {
         'label': 'Past encounters',
         'addButtonText': 'Add a past appointment',
         'ehr_list': [
+          {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'encounters_id'
+            ]
+          },
           {
             'ehr_list_index': '1',
             'items': [
@@ -1541,6 +1611,7 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'encounters_id',
           'encounterDate',
           'site',
           'diagnosis',
@@ -1556,6 +1627,14 @@ const DEFS = {
         'label': 'Past outpatient appointments',
         'addButtonText': 'Add an outpatient appointment',
         'ehr_list': [
+          {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'outpatientAppointments_id'
+            ]
+          },
           {
             'ehr_list_index': '1',
             'items': [
@@ -1606,6 +1685,7 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'outpatientAppointments_id',
           'appointmentDate',
           'site',
           'reasonForVisit',
@@ -1732,6 +1812,13 @@ const DEFS = {
         'helperHtml': '<p>hospital, ward #, room #, home, out patient clinic</p>'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'transferInDay',
         'formIndex': '3',
         'inputType': 'visitDay',
@@ -1774,18 +1861,23 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'visit.name'
       },
       {
+        'elementKey': 'diagnosisTable_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '2',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'visit.profession'
@@ -1795,7 +1887,6 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -1806,21 +1897,10 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'visit.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '2',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'visit._id'
       },
       {
         'elementKey': 'diagnosisRecord',
@@ -1884,14 +1964,21 @@ const DEFS = {
         'addButtonText': 'Add a diagnosis record',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'diagnosisTable_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -1923,8 +2010,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -1941,17 +2027,16 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'diagnosisRecord': '',
             'diagnosisDetails': ''
           }
         },
         'tableChildren': [
+          'diagnosisTable_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'diagnosisRecord',
           'diagnosisDetails'
         ],
@@ -1966,6 +2051,14 @@ const DEFS = {
         'label': 'Patient Location',
         'addButtonText': 'Add a patient location',
         'ehr_list': [
+          {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
           {
             'ehr_list_index': '1',
             'items': [
@@ -2032,6 +2125,7 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'location',
           'transferInDay',
           'transferInTime',
@@ -2052,18 +2146,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'vitals.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'vitals.profession'
@@ -2073,7 +2172,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -2084,21 +2182,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'vitals.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'vitals._id'
       },
       {
         'elementKey': 'systolic',
@@ -2355,14 +2442,21 @@ const DEFS = {
         'addButtonText': 'Add vital signs',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -2482,8 +2576,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -2515,7 +2608,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'systolic': '',
             'diastolic': '',
             'patientPosition': '',
@@ -2533,11 +2625,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'systolic',
           'diastolic',
           'patientPosition',
@@ -2568,18 +2660,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'fluidBalance.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'fluidBalance.profession'
@@ -2589,7 +2686,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -2600,21 +2696,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'fluidBalance.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'fluidBalance._id'
       },
       {
         'elementKey': 'fluidIn',
@@ -2646,14 +2731,21 @@ const DEFS = {
         'addButtonText': 'Add a fluid in/out record',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -2685,8 +2777,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -2703,17 +2794,16 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'fluidIn': '',
             'fluidOut': ''
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'fluidIn',
           'fluidOut'
         ],
@@ -2732,18 +2822,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'neurological.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'neurological.profession'
@@ -2753,7 +2848,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -2764,21 +2858,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'neurological.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'neurological._id'
       },
       {
         'elementKey': 'alert',
@@ -3595,14 +3678,21 @@ const DEFS = {
         'addButtonText': 'Add a neurological assessment',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -3831,8 +3921,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -3923,7 +4012,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'alert': '',
             'eyeOpening': '',
             'verbalResponse': '',
@@ -3956,11 +4044,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'alert',
           'eyeOpening',
           'verbalResponse',
@@ -4006,18 +4094,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'respiratory.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'respiratory.profession'
@@ -4027,7 +4120,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -4038,21 +4130,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'respiratory.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'respiratory._id'
       },
       {
         'elementKey': 'airway',
@@ -4432,14 +4513,21 @@ const DEFS = {
         'addButtonText': 'Add a respiratory assessment',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -4559,8 +4647,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -4615,7 +4702,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'airway': '',
             'oxygenTherapy': '',
             'flowRate': '',
@@ -4633,11 +4719,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'airway',
           'oxygenTherapy',
           'flowRate',
@@ -4668,18 +4754,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'cardiovascular.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'cardiovascular.profession'
@@ -4689,7 +4780,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -4700,21 +4790,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'cardiovascular.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'cardiovascular._id'
       },
       {
         'elementKey': 'pulse',
@@ -5252,14 +5331,21 @@ const DEFS = {
         'addButtonText': 'Add a cardiovascular assessment',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -5428,8 +5514,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -5486,7 +5571,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'pulse': '',
             'skinAppearance': '',
             'capRefillLeftHand': '',
@@ -5509,11 +5593,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'pulse',
           'skinAppearance',
           'capRefillLeftHand',
@@ -5549,18 +5633,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'gastrointestinal.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'gastrointestinal.profession'
@@ -5570,7 +5659,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -5581,21 +5669,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'gastrointestinal.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'gastrointestinal._id'
       },
       {
         'elementKey': 'bowel',
@@ -6022,14 +6099,21 @@ const DEFS = {
         'addButtonText': 'Add a gastrointestinal assessment',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -6184,8 +6268,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -6257,7 +6340,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'bowel': '',
             'bSounds': '',
             'condition': '',
@@ -6280,11 +6362,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'bowel',
           'bSounds',
           'condition',
@@ -6320,18 +6402,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'genitourinary.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'genitourinary.profession'
@@ -6341,7 +6428,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -6352,21 +6438,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'genitourinary.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'genitourinary._id'
       },
       {
         'elementKey': 'urinaryGroup1',
@@ -6595,7 +6670,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Last catheter change (day)',
-        'tableColumn': '11',
+        'tableColumn': '12',
         'tableCss': 'hr-table',
         'tableLabel': 'Last catheter change (day)',
         'fqn': 'genitourinary.lastChange'
@@ -6605,7 +6680,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Last catheter change (time)',
-        'tableColumn': '12',
+        'tableColumn': '13',
         'tableCss': 'hr-table',
         'tableLabel': 'Last catheter change (time)',
         'fqn': 'genitourinary.lastChangeTime'
@@ -6625,7 +6700,7 @@ const DEFS = {
             'text': 'No'
           }
         ],
-        'tableColumn': '13',
+        'tableColumn': '14',
         'tableLabel': 'Pelvic pain',
         'fqn': 'genitourinary.pelvicPain'
       },
@@ -6634,7 +6709,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Location',
-        'tableColumn': '14',
+        'tableColumn': '15',
         'tableLabel': 'Location',
         'fqn': 'genitourinary.location'
       },
@@ -6657,7 +6732,7 @@ const DEFS = {
             'text': 'Not observed'
           }
         ],
-        'tableColumn': '15',
+        'tableColumn': '16',
         'tableCss': 'hr-table',
         'tableLabel': 'Pelvic pain source',
         'fqn': 'genitourinary.pelvicPainSource'
@@ -6684,7 +6759,7 @@ const DEFS = {
             'text': 'Bleeding'
           }
         ],
-        'tableColumn': '16',
+        'tableColumn': '17',
         'tableLabel': 'Discharge',
         'fqn': 'genitourinary.discharge'
       },
@@ -6693,7 +6768,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Description',
-        'tableColumn': '17',
+        'tableColumn': '18',
         'tableLabel': 'Description',
         'fqn': 'genitourinary.description'
       },
@@ -6702,7 +6777,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'date',
         'label': 'Last menstrual period date',
-        'tableColumn': '18',
+        'tableColumn': '19',
         'tableCss': 'hr-table',
         'tableLabel': 'Last menstrual period date',
         'fqn': 'genitourinary.lastMenstrualPeriodDate'
@@ -6726,7 +6801,7 @@ const DEFS = {
             'text': 'Unknown'
           }
         ],
-        'tableColumn': '19',
+        'tableColumn': '20',
         'tableLabel': 'Pregnant',
         'fqn': 'genitourinary.pregnant'
       },
@@ -6735,7 +6810,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Gravida (number of pregnancies)',
-        'tableColumn': '20',
+        'tableColumn': '21',
         'tableLabel': 'Gravida (number of pregnancies)',
         'fqn': 'genitourinary.gravida'
       },
@@ -6744,7 +6819,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Para (number of children)',
-        'tableColumn': '21',
+        'tableColumn': '22',
         'tableLabel': 'Para (number of children)',
         'fqn': 'genitourinary.para'
       },
@@ -6753,7 +6828,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Living children',
-        'tableColumn': '22',
+        'tableColumn': '23',
         'tableCss': 'hr-table',
         'tableLabel': 'Living children',
         'fqn': 'genitourinary.livingChildren'
@@ -6763,7 +6838,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'textarea',
         'label': 'Comments',
-        'tableColumn': '23',
+        'tableColumn': '24',
         'tableLabel': 'Comments',
         'fqn': 'genitourinary.comments'
       }
@@ -6779,14 +6854,21 @@ const DEFS = {
         'addButtonText': 'Add a genitourinary assessment',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -6856,28 +6938,35 @@ const DEFS = {
             'label': 'Size',
             'ehr_list_index': '11',
             'items': [
-              'foleySize',
+              'foleySize'
+            ]
+          },
+          {
+            'label': 'Last catheter change (day)',
+            'tableCss': 'hr-table',
+            'ehr_list_index': '12',
+            'items': [
               'lastChange'
             ]
           },
           {
             'label': 'Last catheter change (time)',
             'tableCss': 'hr-table',
-            'ehr_list_index': '12',
+            'ehr_list_index': '13',
             'items': [
               'lastChangeTime'
             ]
           },
           {
             'label': 'Pelvic pain',
-            'ehr_list_index': '13',
+            'ehr_list_index': '14',
             'items': [
               'pelvicPain'
             ]
           },
           {
             'label': 'Location',
-            'ehr_list_index': '14',
+            'ehr_list_index': '15',
             'items': [
               'location'
             ]
@@ -6885,21 +6974,21 @@ const DEFS = {
           {
             'label': 'Pelvic pain source',
             'tableCss': 'hr-table',
-            'ehr_list_index': '15',
+            'ehr_list_index': '16',
             'items': [
               'pelvicPainSource'
             ]
           },
           {
             'label': 'Discharge',
-            'ehr_list_index': '16',
+            'ehr_list_index': '17',
             'items': [
               'discharge'
             ]
           },
           {
             'label': 'Description',
-            'ehr_list_index': '17',
+            'ehr_list_index': '18',
             'items': [
               'description'
             ]
@@ -6907,28 +6996,28 @@ const DEFS = {
           {
             'label': 'Last menstrual period date',
             'tableCss': 'hr-table',
-            'ehr_list_index': '18',
+            'ehr_list_index': '19',
             'items': [
               'lastMenstrualPeriodDate'
             ]
           },
           {
             'label': 'Pregnant',
-            'ehr_list_index': '19',
+            'ehr_list_index': '20',
             'items': [
               'pregnant'
             ]
           },
           {
             'label': 'Gravida (number of pregnancies)',
-            'ehr_list_index': '20',
+            'ehr_list_index': '21',
             'items': [
               'gravida'
             ]
           },
           {
             'label': 'Para (number of children)',
-            'ehr_list_index': '21',
+            'ehr_list_index': '22',
             'items': [
               'para'
             ]
@@ -6936,14 +7025,14 @@ const DEFS = {
           {
             'label': 'Living children',
             'tableCss': 'hr-table',
-            'ehr_list_index': '22',
+            'ehr_list_index': '23',
             'items': [
               'livingChildren'
             ]
           },
           {
             'label': 'Comments',
-            'ehr_list_index': '23',
+            'ehr_list_index': '24',
             'items': [
               'comments'
             ]
@@ -6964,8 +7053,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -7045,7 +7133,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'urinaryGroup1': '',
             'lastVoidedDay': '',
             'lastVoidedTime': '',
@@ -7072,11 +7159,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'urinaryGroup1',
           'lastVoidedDay',
           'lastVoidedTime',
@@ -7116,18 +7203,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'musculoskeletal.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'musculoskeletal.profession'
@@ -7137,7 +7229,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -7148,21 +7239,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'musculoskeletal.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'musculoskeletal._id'
       },
       {
         'elementKey': 'swelling',
@@ -7430,14 +7510,21 @@ const DEFS = {
         'addButtonText': 'Add a musculoskeletal assessment',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -7534,8 +7621,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -7569,7 +7655,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'swelling': '',
             'pain': '',
             'deformity': '',
@@ -7584,11 +7669,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'swelling',
           'pain',
           'deformity',
@@ -7616,18 +7701,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'pain.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'pain.profession'
@@ -7637,7 +7727,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -7648,21 +7737,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'pain.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'pain._id'
       },
       {
         'elementKey': 'location',
@@ -7853,14 +7931,21 @@ const DEFS = {
         'addButtonText': 'Add a pain assessment',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -8008,8 +8093,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -8064,7 +8148,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'location': '',
             'painScale': '',
             'respiratoryRate': '',
@@ -8086,11 +8169,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'location',
           'painScale',
           'respiratoryRate',
@@ -8125,18 +8208,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'biopsychosocial.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'biopsychosocial.profession'
@@ -8146,7 +8234,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -8157,21 +8244,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'biopsychosocial.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'biopsychosocial._id'
       },
       {
         'elementKey': 'domesticViolence',
@@ -8487,14 +8563,21 @@ const DEFS = {
         'addButtonText': 'Add a biopsychosocial assessment',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -8643,8 +8726,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -8727,7 +8809,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'domesticViolence': '',
             'requestContact': '',
             'hygieneGrooming': '',
@@ -8749,11 +8830,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'domesticViolence',
           'requestContact',
           'hygieneGrooming',
@@ -8788,18 +8869,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'nonmedOrders.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'nonmedOrders.profession'
@@ -8809,7 +8895,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -8820,21 +8905,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'nonmedOrders.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'nonmedOrders._id'
       },
       {
         'elementKey': 'order',
@@ -8912,18 +8986,23 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'nonmedOrders.name'
       },
       {
+        'elementKey': 'dietOrders_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '2',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'nonmedOrders.profession'
@@ -8933,7 +9012,6 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -8944,21 +9022,10 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'nonmedOrders.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '2',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'nonmedOrders._id'
       },
       {
         'elementKey': 'diet_regular',
@@ -9056,14 +9123,21 @@ const DEFS = {
         'addButtonText': 'Add an order',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -9116,8 +9190,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -9144,7 +9217,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'order': '',
             'orderedBy': '',
             'reason': '',
@@ -9153,11 +9225,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'order',
           'orderedBy',
           'reason',
@@ -9176,14 +9248,21 @@ const DEFS = {
         'addButtonText': 'Add a diet order',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'dietOrders_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -9264,8 +9343,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -9308,7 +9386,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'diet_regular': '',
             'diet_npo': '',
             'diet_heart': '',
@@ -9321,11 +9398,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'dietOrders_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'diet_regular',
           'diet_npo',
           'diet_heart',
@@ -9351,18 +9428,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'referrals.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'referrals.profession'
@@ -9372,7 +9454,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -9383,21 +9464,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'referrals.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'referrals._id'
       },
       {
         'elementKey': 'referralName',
@@ -9472,14 +9542,21 @@ const DEFS = {
         'addButtonText': 'Add a referral',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -9532,8 +9609,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -9554,7 +9630,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'referralName': '',
             'referralProfession': '',
             'appointmentDate': '',
@@ -9563,11 +9638,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'referralName',
           'referralProfession',
           'appointmentDate',
@@ -9589,18 +9664,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'labRequisitions.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'labRequisitions.profession'
@@ -9610,7 +9690,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -9621,21 +9700,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'labRequisitions.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'labRequisitions._id'
       },
       {
         'elementKey': 'patientName',
@@ -9916,18 +9984,23 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'labRequisitions.name'
       },
       {
+        'elementKey': 'requisitions_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '2',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'labRequisitions.profession'
@@ -9937,7 +10010,6 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -9948,21 +10020,10 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'labRequisitions.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '2',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'labRequisitions._id'
       },
       {
         'elementKey': 'req_noticeLabel',
@@ -10232,18 +10293,23 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'labRequisitions.name'
       },
       {
+        'elementKey': 'histologyRequisitions_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '3',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'labRequisitions.profession'
@@ -10253,7 +10319,6 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -10264,21 +10329,10 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'labRequisitions.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '3',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'labRequisitions._id'
       },
       {
         'elementKey': 'histology_noticeLabel',
@@ -10349,18 +10403,23 @@ const DEFS = {
         'formIndex': '4',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'labRequisitions.name'
       },
       {
+        'elementKey': 'med_image_req_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '4',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'labRequisitions.profession'
@@ -10370,7 +10429,6 @@ const DEFS = {
         'formIndex': '4',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -10381,21 +10439,10 @@ const DEFS = {
         'formIndex': '4',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'labRequisitions.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '4',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'labRequisitions._id'
       },
       {
         'elementKey': 'mi_noticeLabel',
@@ -10528,18 +10575,23 @@ const DEFS = {
         'formIndex': '5',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'labRequisitions.name'
       },
       {
+        'elementKey': 'microRequisitions_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '5',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'labRequisitions.profession'
@@ -10549,7 +10601,6 @@ const DEFS = {
         'formIndex': '5',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -10560,21 +10611,10 @@ const DEFS = {
         'formIndex': '5',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'labRequisitions.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '5',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'labRequisitions._id'
       },
       {
         'elementKey': 'micro_noticeLabel',
@@ -10667,14 +10707,21 @@ const DEFS = {
         'addButtonText': 'Add a lab requisition assessment',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -10788,8 +10835,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -10838,7 +10884,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'patientName': '',
             'patientHealthNumber': '',
             'dateOfBirth': '',
@@ -10858,11 +10903,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'patientName',
           'patientHealthNumber',
           'dateOfBirth',
@@ -10892,14 +10937,21 @@ const DEFS = {
         'addButtonText': 'Add a lab requisition',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'requisitions_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -10985,8 +11037,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -11028,7 +11079,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'req_dateRequired': '',
             'req_reason': '',
             'req_hematology': '',
@@ -11043,11 +11093,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'requisitions_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'req_dateRequired',
           'req_reason',
           'req_hematology',
@@ -11072,14 +11122,21 @@ const DEFS = {
         'addButtonText': 'Add a histology requisition',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'histologyRequisitions_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -11128,8 +11185,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -11165,7 +11221,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'histology_dateRequired': '',
             'histology_reason': '',
             'histology_type': '',
@@ -11174,11 +11229,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'histologyRequisitions_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'histology_dateRequired',
           'histology_reason',
           'histology_type',
@@ -11197,14 +11252,21 @@ const DEFS = {
         'addButtonText': 'Add a medical imaging requisition',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'med_image_req_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -11259,8 +11321,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -11297,7 +11358,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'mi_type': '',
             'mi_dateRequired': '',
             'mi_reason': '',
@@ -11307,11 +11367,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'med_image_req_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'mi_type',
           'mi_dateRequired',
           'mi_reason',
@@ -11331,14 +11391,21 @@ const DEFS = {
         'addButtonText': 'Add a microbiology requisition',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'microRequisitions_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -11388,8 +11455,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -11425,7 +11491,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'micro_dateRequired': '',
             'micro_reason': '',
             'micro_culture': '',
@@ -11434,11 +11499,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'microRequisitions_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'micro_dateRequired',
           'micro_reason',
           'micro_culture',
@@ -11460,18 +11525,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'medicationOrders.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'medicationOrders.profession'
@@ -11481,7 +11551,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -11492,21 +11561,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'medicationOrders.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'medicationOrders._id'
       },
       {
         'elementKey': 'medication',
@@ -11774,18 +11832,23 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'medicationOrders.name'
       },
       {
+        'elementKey': 'medicationOrdersTable_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '2',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'medicationOrders.profession'
@@ -11795,7 +11858,6 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -11806,21 +11868,10 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'medicationOrders.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '2',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'medicationOrders._id'
       },
       {
         'elementKey': 'med_noticeLabel',
@@ -12366,14 +12417,21 @@ const DEFS = {
         'addButtonText': 'Add a v1 medication order',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -12500,8 +12558,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -12574,7 +12631,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'medication': '',
             'dose': '',
             'route': '',
@@ -12596,11 +12652,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'medication',
           'dose',
           'route',
@@ -12634,14 +12690,21 @@ const DEFS = {
         'tableActionLabel': 'MAR',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'medicationOrdersTable_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -12847,8 +12910,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -12951,7 +13013,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'med_timing': '',
             'med_route': '',
             'med_reason': '',
@@ -12988,11 +13049,11 @@ const DEFS = {
         'taSourcePageKey': 'medicationOrders',
         'taSourceTableKey': 'medicationOrdersTable',
         'tableChildren': [
+          'medicationOrdersTable_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'med_timing',
           'med_route',
           'med_reason',
@@ -13061,6 +13122,13 @@ const DEFS = {
         'tableColumn': '1',
         'tableLabel': 'Medication status',
         'fqn': 'medAdminRec.medStatus'
+      },
+      {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
       },
       {
         'elementKey': 'adminStatus',
@@ -13171,18 +13239,23 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'medAdminRec.name'
       },
       {
+        'elementKey': 'marTable_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '2',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'medAdminRec.profession'
@@ -13192,7 +13265,6 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -13203,21 +13275,10 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'medAdminRec.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '2',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'medAdminRec._id'
       },
       {
         'elementKey': 'med_order_embedded',
@@ -13452,6 +13513,14 @@ const DEFS = {
         'addButtonText': 'Administered',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Medication status',
             'ehr_list_index': '1',
             'items': [
@@ -13551,6 +13620,7 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'medStatus',
           'adminStatus',
           'medication',
@@ -13572,14 +13642,21 @@ const DEFS = {
         'addButtonText': 'Administered',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'marTable_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -13706,8 +13783,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -13752,7 +13828,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'med_order_embedded': '',
             'mo_id': '',
             'mo_medication': '',
@@ -13774,11 +13849,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'marTable_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'med_order_embedded',
           'mo_id',
           'mo_medication',
@@ -14055,18 +14130,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'progressNotes.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'progressNotes.profession'
@@ -14076,7 +14156,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -14087,21 +14166,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'progressNotes.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'progressNotes._id'
       },
       {
         'elementKey': 'note',
@@ -14124,14 +14192,21 @@ const DEFS = {
         'addButtonText': 'Add an encounter note',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -14156,8 +14231,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -14174,16 +14248,15 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'note': ''
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'note'
         ],
         'hasRecHeader': true
@@ -14201,18 +14274,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'carePlan.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'carePlan.profession'
@@ -14222,7 +14300,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -14233,21 +14310,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'carePlan.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'carePlan._id'
       },
       {
         'elementKey': 'clinical',
@@ -14316,14 +14382,21 @@ const DEFS = {
         'addButtonText': 'Add a care plan',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -14376,8 +14449,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -14397,7 +14469,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'clinical': '',
             'goal': '',
             'interventions': '',
@@ -14406,11 +14477,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'clinical',
           'goal',
           'interventions',
@@ -14432,18 +14503,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'consults.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'consults.profession'
@@ -14453,7 +14529,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -14464,21 +14539,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'consults.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'consults._id'
       },
       {
         'elementKey': 'consultReport',
@@ -14510,14 +14574,21 @@ const DEFS = {
         'addButtonText': 'Add a consulttion report',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -14549,8 +14620,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -14567,17 +14637,16 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'consultReport': '',
             'comments': ''
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'consultReport',
           'comments'
         ],
@@ -14596,18 +14665,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'labResults.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'labResults.profession'
@@ -14617,7 +14691,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -14628,21 +14701,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'labResults.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'labResults._id'
       },
       {
         'elementKey': 'laboratoryReport',
@@ -14667,18 +14729,23 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'labResults.name'
       },
       {
+        'elementKey': 'labResultHematology_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '2',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'labResults.profession'
@@ -14688,7 +14755,6 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -14699,21 +14765,10 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'labResults.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '2',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'labResults._id'
       },
       {
         'elementKey': 'lrh_HbA1C',
@@ -14843,18 +14898,23 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'labResults.name'
       },
       {
+        'elementKey': 'labResultGeneral_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '3',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'labResults.profession'
@@ -14864,7 +14924,6 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -14875,21 +14934,10 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'labResults.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '3',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'labResults._id'
       },
       {
         'elementKey': 'lrh_HCO3',
@@ -15204,18 +15252,23 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'labResults.name'
       },
       {
+        'elementKey': 'labResultUrine_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '3',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'labResults.profession'
@@ -15225,7 +15278,6 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -15236,21 +15288,10 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'labResults.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '3',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'labResults._id'
       },
       {
         'elementKey': 'lru_calrity',
@@ -15489,14 +15530,21 @@ const DEFS = {
         'addButtonText': 'Add a laboratory report',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -15528,8 +15576,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -15546,17 +15593,16 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'laboratoryReport': '',
             'comments': ''
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'laboratoryReport',
           'comments'
         ],
@@ -15572,14 +15618,21 @@ const DEFS = {
         'addButtonText': 'Create a hematology laboratory report',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'labResultHematology_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -15767,8 +15820,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -15869,7 +15921,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'lrh_HbA1C': '',
             'lrh_Hgb': '',
             'lrh_hct': '',
@@ -15910,11 +15961,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'labResultHematology_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'lrh_HbA1C',
           'lrh_Hgb',
           'lrh_hct',
@@ -15965,14 +16016,21 @@ const DEFS = {
         'addButtonText': 'Create a urinary laboratory report',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'labResultUrine_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -16117,8 +16175,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -16164,7 +16221,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'lru_calrity': '',
             'lru_colour': '',
             'lru_ordour': '',
@@ -16189,11 +16245,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'labResultUrine_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'lru_calrity',
           'lru_colour',
           'lru_ordour',
@@ -16231,18 +16287,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'medicalImaging.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'medicalImaging.profession'
@@ -16252,7 +16313,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -16263,21 +16323,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'medicalImaging.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'medicalImaging._id'
       },
       {
         'elementKey': 'laboratoryReport',
@@ -16309,14 +16358,21 @@ const DEFS = {
         'addButtonText': 'Add a report or image',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -16348,8 +16404,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -16366,17 +16421,16 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'laboratoryReport': '',
             'comments': ''
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'laboratoryReport',
           'comments'
         ],
@@ -16395,18 +16449,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'operationReports.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'operationReports.profession'
@@ -16416,7 +16475,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -16427,21 +16485,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'operationReports.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'operationReports._id'
       },
       {
         'elementKey': 'laboratoryReport',
@@ -16473,14 +16520,21 @@ const DEFS = {
         'addButtonText': 'Add a report',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -16512,8 +16566,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -16530,17 +16583,16 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'laboratoryReport': '',
             'comments': ''
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'laboratoryReport',
           'comments'
         ],
@@ -16821,18 +16873,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'diagnosticCodes.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'diagnosticCodes.profession'
@@ -16842,7 +16899,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -16853,21 +16909,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'diagnosticCodes.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'diagnosticCodes._id'
       },
       {
         'elementKey': 'icd10',
@@ -16960,14 +17005,21 @@ const DEFS = {
         'addButtonText': 'Add a diagnostic code',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -17027,8 +17079,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -17049,7 +17100,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'icd10': '',
             'condition': '',
             'code': '',
@@ -17059,11 +17109,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'icd10',
           'condition',
           'code',
@@ -17086,18 +17136,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'interventionCodes.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'interventionCodes.profession'
@@ -17107,7 +17162,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -17118,21 +17172,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'interventionCodes.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'interventionCodes._id'
       },
       {
         'elementKey': 'intervention',
@@ -17182,14 +17225,21 @@ const DEFS = {
         'addButtonText': 'Add an intervention code',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -17235,8 +17285,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -17262,7 +17311,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'intervention': '',
             'status': '',
             'laterally': '',
@@ -17270,11 +17318,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'intervention',
           'status',
           'laterally',
@@ -17295,18 +17343,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'caseMixGroup.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'caseMixGroup.profession'
@@ -17316,7 +17369,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -17327,21 +17379,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'caseMixGroup.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'caseMixGroup._id'
       },
       {
         'elementKey': 'clinicalCategory',
@@ -17400,14 +17441,21 @@ const DEFS = {
         'addButtonText': 'Add a case mix group',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -17460,8 +17508,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -17481,7 +17528,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'clinicalCategory': '',
             'caseMixNumber': '',
             'resourceIntensity': '',
@@ -17490,11 +17536,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'clinicalCategory',
           'caseMixNumber',
           'resourceIntensity',
@@ -17760,6 +17806,13 @@ const DEFS = {
         'fqn': 'testPage.name'
       },
       {
+        'elementKey': 'table1_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 't2',
         'formIndex': '2',
         'helperText': 'a text input',
@@ -17775,7 +17828,6 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'testPage.name'
@@ -17785,7 +17837,6 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'recHeader': true,
         'fqn': 'testPage.profession'
       },
@@ -17794,7 +17845,6 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'testPage.day'
@@ -17804,19 +17854,9 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'testPage.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '3',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'recHeader': true,
-        'fqn': 'testPage._id'
       },
       {
         'elementKey': 'textDate',
@@ -17929,6 +17969,14 @@ const DEFS = {
         'addButtonText': 'Add a row to the test table',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table1_id'
+            ]
+          },
+          {
             'label': 'Text 1',
             'ehr_list_index': '1',
             'items': [
@@ -17965,6 +18013,7 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table1_id',
           'name',
           't2'
         ],
@@ -17986,7 +18035,6 @@ const DEFS = {
               'profession',
               'day',
               'time',
-              '_id',
               'textDate',
               'textDateDate',
               'spacer215',
@@ -18032,6 +18080,13 @@ const DEFS = {
         'fqn': 'testTable.weight',
         'suffixText': '<p>lb</p>',
         'suffixHtml': 'lb'
+      },
+      {
+        'elementKey': 'table1_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
       },
       {
         'elementKey': 'pcheckbox',
@@ -18272,18 +18327,23 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'testTable.name'
       },
       {
+        'elementKey': 'stacked_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '2',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'testTable.profession'
@@ -18293,7 +18353,6 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -18304,21 +18363,10 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'testTable.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '2',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'testTable._id'
       },
       {
         'elementKey': 'cd1',
@@ -18607,6 +18655,14 @@ const DEFS = {
         'addButtonText': 'Add a row to the test table',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table1_id'
+            ]
+          },
+          {
             'label': 'A bool',
             'ehr_list_index': '1',
             'items': [
@@ -18795,6 +18851,7 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table1_id',
           'weight',
           'pcheckbox',
           'defaultText',
@@ -18823,14 +18880,21 @@ const DEFS = {
         'addButtonText': 'Add a stacked row',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'stacked_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -18898,8 +18962,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -18935,7 +18998,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'cd1': '',
             'cd1Date': '',
             'cd2': '',
@@ -18950,11 +19012,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'stacked_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'cd1',
           'cd1Date',
           'spacer221',
@@ -19038,18 +19100,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.name'
       },
       {
+        'elementKey': 'tableIncision_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.profession'
@@ -19059,7 +19126,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -19070,21 +19136,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'integumentaryAssessment._id'
       },
       {
         'elementKey': 'incisionLabel',
@@ -19263,18 +19318,23 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.name'
       },
       {
+        'elementKey': 'tableIncisionAssessment_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '2',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.profession'
@@ -19284,7 +19344,6 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -19295,21 +19354,10 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '2',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'integumentaryAssessment._id'
       },
       {
         'elementKey': 'incisionLabel',
@@ -19497,18 +19545,23 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.name'
       },
       {
+        'elementKey': 'tableWound_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '3',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.profession'
@@ -19518,7 +19571,6 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -19529,21 +19581,10 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '3',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'integumentaryAssessment._id'
       },
       {
         'elementKey': 'woundLocation',
@@ -19789,18 +19830,23 @@ const DEFS = {
         'formIndex': '4',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.name'
       },
       {
+        'elementKey': 'tableWoundAssessment_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '4',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.profession'
@@ -19810,7 +19856,6 @@ const DEFS = {
         'formIndex': '4',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -19821,21 +19866,10 @@ const DEFS = {
         'formIndex': '4',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '4',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'integumentaryAssessment._id'
       },
       {
         'elementKey': 'woundLabel',
@@ -21092,7 +21126,7 @@ const DEFS = {
         'formIndex': '4',
         'inputType': 'textarea',
         'label': 'Comments',
-        'tableColumn': '1',
+        'tableColumn': '37',
         'tableLabel': 'Comments',
         'fqn': 'integumentaryAssessment.woundAssessmentComments'
       }
@@ -21108,14 +21142,21 @@ const DEFS = {
         'addButtonText': 'Add an incision profile',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'tableIncision_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -21175,8 +21216,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -21200,7 +21240,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'incisionLabel': '',
             'incisionLocation': '',
             'postOpDay': '',
@@ -21211,11 +21250,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'tableIncision_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'incisionLabel',
           'incisionLocation',
           'postOpDay',
@@ -21236,14 +21275,21 @@ const DEFS = {
         'addButtonText': 'Add an incision assessment',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'tableIncisionAssessment_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -21317,8 +21363,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -21360,7 +21405,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'incisionLabel': '',
             'incisionStatus': '',
             'incisionStatusImage': '',
@@ -21373,11 +21417,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'tableIncisionAssessment_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'incisionLabel',
           'incisionStatus',
           'incisionStatusImage',
@@ -21400,14 +21444,21 @@ const DEFS = {
         'addButtonText': 'Add a wound profile',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'tableWound_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -21481,8 +21532,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -21513,7 +21563,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'woundLocation': '',
             'woundLabel': '',
             'woundDayOnset': '',
@@ -21525,11 +21574,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'tableWound_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'woundLocation',
           'woundLabel',
           'woundDayOnset',
@@ -21551,15 +21600,21 @@ const DEFS = {
         'addButtonText': 'Add a wound assessment',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'tableWoundAssessment_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id',
-              'woundAssessmentComments'
+              'time'
             ]
           },
           {
@@ -21808,6 +21863,13 @@ const DEFS = {
             'items': [
               'treatmentComplete'
             ]
+          },
+          {
+            'label': 'Comments',
+            'ehr_list_index': '37',
+            'items': [
+              'woundAssessmentComments'
+            ]
           }
         ],
         'form': {
@@ -21825,8 +21887,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -21933,7 +21994,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'woundLabel': '',
             'woundAssessmentImage': '',
             'length': '',
@@ -21973,11 +22033,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'tableWoundAssessment_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'woundLabel',
           'woundAssessmentImage',
           'length',
@@ -22030,18 +22090,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'hematology.name'
       },
       {
+        'elementKey': 'tableCbcAnalysis_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'hematology.profession'
@@ -22051,7 +22116,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -22062,21 +22126,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'hematology.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'hematology._id'
       },
       {
         'elementKey': 'wbc',
@@ -22514,18 +22567,23 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'hematology.name'
       },
       {
+        'elementKey': 'tablePbfReview_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '2',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'hematology.profession'
@@ -22535,7 +22593,6 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -22546,21 +22603,10 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'hematology.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '2',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'hematology._id'
       },
       {
         'elementKey': 'bloodAnalysis',
@@ -23980,14 +24026,21 @@ const DEFS = {
         'tableActionLabel': 'PBF Review',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'tableCbcAnalysis_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -24131,8 +24184,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -24185,7 +24237,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'wbc': '',
             'wbc-interp': '',
             'rbc': '',
@@ -24214,11 +24265,11 @@ const DEFS = {
         'taSourcePageKey': 'hematology',
         'taSourceTableKey': 'tableCbcAnalysis',
         'tableChildren': [
+          'tableCbcAnalysis_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'wbc',
           'wbc-interp',
           'rbc',
@@ -24253,14 +24304,21 @@ const DEFS = {
         'addButtonText': 'NONE',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'tablePbfReview_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -24932,8 +24990,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -25143,7 +25200,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'bloodAnalysis': '',
             'actionsRequired': '',
             'actionsTaken': '',
@@ -25256,11 +25312,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'tablePbfReview_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'bloodAnalysis',
           'actionsRequired',
           'actionsTaken',
@@ -25386,18 +25442,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'dishargeplan.name'
       },
       {
+        'elementKey': 'table_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'dishargeplan.profession'
@@ -25407,7 +25468,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -25418,21 +25478,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'dishargeplan.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'dishargeplan._id'
       },
       {
         'elementKey': 'goal',
@@ -25494,14 +25543,21 @@ const DEFS = {
         'addButtonText': 'Add a discharge planning note',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'table_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           },
           {
@@ -25547,8 +25603,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             },
             {
@@ -25567,7 +25622,6 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
-            '_id': '',
             'goal': '',
             'interventions': '',
             'evaluation': '',
@@ -25575,11 +25629,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
+          'table_id',
           'name',
           'profession',
           'day',
           'time',
-          '_id',
           'goal',
           'interventions',
           'evaluation',
@@ -25600,18 +25654,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'medLabChemistry.name'
       },
       {
+        'elementKey': 'tableChem_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'medLabChemistry.profession'
@@ -25621,7 +25680,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -25632,21 +25690,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'medLabChemistry.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'medLabChemistry._id'
       }
     ],
     'pageElements': {
@@ -25660,14 +25707,21 @@ const DEFS = {
         'addButtonText': 'Create a chemistry lab report',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'tableChem_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           }
         ],
@@ -25685,8 +25739,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             }
           ],
@@ -25694,16 +25747,15 @@ const DEFS = {
             'name': '',
             'profession': '',
             'day': '',
-            'time': '',
-            '_id': ''
+            'time': ''
           }
         },
         'tableChildren': [
+          'tableChem_id',
           'name',
           'profession',
           'day',
-          'time',
-          '_id'
+          'time'
         ],
         'hasRecHeader': true
       }
@@ -25720,18 +25772,23 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
-        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'medLabImaging.name'
       },
       {
+        'elementKey': 'tableImages_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
         'elementKey': 'profession',
         'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
-        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'medLabImaging.profession'
@@ -25741,7 +25798,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'visitDay',
         'recHeader': true,
@@ -25752,21 +25808,10 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
-        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'medLabImaging.time'
-      },
-      {
-        'elementKey': '_id',
-        'formIndex': '1',
-        'formOption': 'hideElement',
-        'inputType': 'generatedId',
-        'label': 'Id',
-        'tableColumn': '1',
-        'recHeader': true,
-        'fqn': 'medLabImaging._id'
       }
     ],
     'pageElements': {
@@ -25780,14 +25825,21 @@ const DEFS = {
         'addButtonText': 'Create a medical imaging report',
         'ehr_list': [
           {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'tableImages_id'
+            ]
+          },
+          {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
               'name',
               'profession',
               'day',
-              'time',
-              '_id'
+              'time'
             ]
           }
         ],
@@ -25805,8 +25857,7 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time',
-                '_id'
+                'time'
               ]
             }
           ],
@@ -25814,16 +25865,15 @@ const DEFS = {
             'name': '',
             'profession': '',
             'day': '',
-            'time': '',
-            '_id': ''
+            'time': ''
           }
         },
         'tableChildren': [
+          'tableImages_id',
           'name',
           'profession',
           'day',
-          'time',
-          '_id'
+          'time'
         ],
         'hasRecHeader': true
       }
