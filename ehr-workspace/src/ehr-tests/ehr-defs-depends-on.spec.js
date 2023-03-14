@@ -31,7 +31,7 @@ describe ('testing dependsOn', () =>{
     done()
   })
 
-  it('medications orders page has valid echo defs', done => {
+  it.skip('medications orders page has valid echo defs', done => {
     const pageDataKey = 'medicationOrders'
     const filterValue = 'med_c2_medication'
     const filterKey = 'elementKey'
