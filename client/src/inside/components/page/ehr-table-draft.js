@@ -18,7 +18,7 @@ export default class EhrTableDraft {
   static findRowIndexByIdInTable (draftRowId, tableData) {
     const { tableKey } = EhrDataModel.IdToParts(draftRowId)
     const rowElementKey = tableKey + '_id'
-    return tableData.find(row => 0 === draftRowId.localeCompare(row[rowElementKey]))
+    return tableData.findIndex(row => 0 === draftRowId.localeCompare(row[rowElementKey]))
   }
 
   static findDraftRowDataById (draftRowId) {
