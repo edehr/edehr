@@ -2,7 +2,6 @@
 import { Text } from './text'
 import moment from 'moment'
 import { logError} from '../helpers/log-error'
-import pkg from '../../../package.json'
 const debug = require('debug')('server')
 
 const DEFAULT_COOKIE_SECRET = 'this is the secret for the session cookie'
@@ -94,8 +93,7 @@ function testConfig (cfg) {
 
 ///////////////// DEVELOPMENT
 function developConfig (cfg) {
-  const pkg = require('../../../package.json')
-  cfg.appTitle = cfg.appTitle + ' ' + pkg.version + ' ' + moment().format('DD hh:mm')
+  cfg.appTitle = cfg.appTitle + ' ' + moment().format('DD hh:mm')
   return cfg
 }
 
