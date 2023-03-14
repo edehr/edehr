@@ -1,6 +1,5 @@
 <template lang='pug'>
   div(class="form-element", :class='{invalidElement : !validData, hiddenElement: hideElement}')
-    div IS THIS AN EMBEDDED {{isEmbedded}}
     div(v-if="isType('form_label')")
       div(v-html="label", class='form_label_wrapper')
       ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")

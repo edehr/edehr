@@ -168,9 +168,8 @@ export default {
     },
     handleDialogEvent (options) {
       const open = options.open
-      const { key, tableAction, sendersTableDef, sourceRowId, tableActionDraftRowIndex, draftRowData, draftRowId } = options
-      console.log('EEC dialog event.', key, tableAction, sourceRowId, tableActionDraftRowIndex, draftRowId)
-      // console.log('EEC dialog event. eKey:', this.elementKey,', options:', JSON.stringify(options))
+      // const { key, tableAction, sendersTableDef, sourceRowId, tableActionDraftRowIndex, draftRowData, draftRowId } = options
+      // console.log('EEC dialog event.', key, tableAction, sourceRowId, tableActionDraftRowIndex, draftRowId)
       /*
       this.dialogIsOpen = open
       TODO Change this.dialogIsOpen from a local value per element to an accessor on the single source of truth.
@@ -181,14 +180,14 @@ export default {
         console.log('EEC If closing (not open) then just return')
         return
       }
-      console.log('isEmbedded is provided by the parent', this.isEmbedded)
       if (this.isEmbedded) {
+        // console.log('isEmbedded is provided by the parent', this.isEmbedded)
         /*
           let inputs = options.inputs ? options.inputs : options.data
           Change this. Data should not come from two different object types without a strong and clear need
            */
         let inputs = options.inputs ? options.inputs : options.data
-        console.log('EEC handleDialogEvent. is embedded', inputs)
+        // console.log('EEC handleDialogEvent. is embedded', inputs)
         if (inputs) {
           /*
             If this is an embedded item then it is read only and only reflects values ... so why the following two steps?
