@@ -2,7 +2,7 @@ import EhrTypes from '@/ehr-definitions/ehr-types'
 import StoreHelper from '@/helpers/store-helper'
 import { ehrText } from '@/appText'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
-import * as assert from 'assert'
+// import * as assert from 'assert'
 
 const ehrPages = new EhrPages()
 
@@ -38,7 +38,7 @@ export default class EhrTableActions {
     const { taTargetPageKey, taTargetTableKey, taSourcePageKey, taSourceTableKey} = tableDef
     const desiredPropertyValue = taSourcePageKey + '.' + taSourceTableKey // e.g. 'hematology.tableCbcAnalysis'
     // get list of elements, from the target table def, that have the desired input type
-    assert.ok(taTargetPageKey, `getTableActionTargetElementKey has target page key ${taTargetPageKey}`)
+    // assert.ok(taTargetPageKey, `getTableActionTargetElementKey has target page key ${taTargetPageKey}`)
     const embList = ehrPages.findTableElementsByInputType(taTargetPageKey, taTargetTableKey, desiredInputType)
     // get element from list that has the desired property
     const tElem = embList.find(elem => elem.getProperty(desiredProperty) === desiredPropertyValue)

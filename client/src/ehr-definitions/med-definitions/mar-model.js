@@ -1,7 +1,7 @@
 import { MAR_PAGE_KEY, MAR_V2_TABLE_KEY, MED_ORDERS_PAGE_KEY, MED_ORDERS_TABLE_KEY } from '../ehr-defs-grid'
 import ehrValidations from '../ehr-validations'
-import * as assert from 'assert'
-import EhrDataModel from '../EhrDataModel'
+// import * as assert from 'assert'
+// import EhrDataModel from '../EhrDataModel'
 
 function timeString (num) {
   return (num < 10 ? '0' : '') + num + '00'
@@ -9,7 +9,7 @@ function timeString (num) {
 
 export class MarTimelineModel {
   constructor (ehrDataModel) {
-    assert.ok(ehrDataModel instanceof EhrDataModel)
+    // assert.ok(ehrDataModel instanceof EhrDataModel)
     this._timeline = {}
     this._medOrders = new MedOrders(ehrDataModel)
     this._marRecords = new MarRecords(ehrDataModel, this._medOrders)
