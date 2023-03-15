@@ -88,6 +88,7 @@ export class MarDayBlock {
         max: mo.maxDose,
         mid: mo.id,
         timeElements: this.dayTimeLine.map(ts => {
+          // this is a complicated way to write a function that returns an object
           return (new TimeElement(this.dayNum, ts, mo)).struct
         })
       }
@@ -160,9 +161,6 @@ export class MedOrder {
       name,profession, med_reason, med_route, time, med_timing,
       med_time1, med_time2, med_time3, med_time4, med_time5, med_time6
     } = eData
-    // indics are 1-based
-    // these indices can be replaced, someday, by the new id but any replacement will
-    // need to be extremely careful during the updates of existing records.
     this.day = day; this.time = time
     this.name = name;  this.profession = profession
     this.id = medicationOrdersTable_id
@@ -181,7 +179,9 @@ export class MedOrder {
   get sTime () { return this.day + '-' + this.time }
   isScheduled (dayNum, ts) {
     let ok
-    ok = dayNum === this.day ? ts >= this.time : dayNum > this.day
+    const d = Number(this.day)
+    const t = Number(this.time)
+    ok = dayNum === d ? ts >= t : dayNum > d
     ok = ok && this.tsList().includes(ts)
     return ok
   }
@@ -251,10 +251,6 @@ med_c2_timeUnits
 med_group_notes
 med_instructions
    */
-  inDbFormat () {
-    return Object.assign( {}, this._ehrData)
-  }
-  toString () { return this.inDbFormat()}
 }// end class MedOrder
 
 export class MarRecords {

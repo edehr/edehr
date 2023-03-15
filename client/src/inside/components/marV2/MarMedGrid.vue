@@ -116,10 +116,9 @@ export default {
       this.$emit('selectedDayChange', Number.parseInt(n.target.value))
     },
     showMarDialog ( timeElement) {
-      console.log('Open mar for timeElement', timeElement)
+      // console.log('Open mar for timeElement', timeElement)
       const medOrder = timeElement.medOrder
       const sourceRowId = medOrder.id
-      console.log('Open mar for sourceRowIndex', sourceRowIndex)
       const sourcePageKey = 'medicationOrders'
       const sourceTableKey = 'medicationOrdersTable'
       const sendersTableDef = EhrDefs.getPageTable(sourcePageKey, sourceTableKey)
