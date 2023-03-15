@@ -14,7 +14,7 @@ export class MarTimelineModel {
     this._medOrders = new MedOrders(ehrDataModel)
     this._marRecords = new MarRecords(ehrDataModel, this._medOrders)
     const simTime = ehrDataModel.simTime
-    this._numberOfDays = simTime.visitDay + 1
+    this._numberOfDays = simTime.visitDay === 0 ? 2 : simTime.visitDay + 1
     const dayNumbersArray = [...Array(this._numberOfDays).keys()]
     const HOURS = 24
     const dayTimeLine = [...Array(HOURS).keys()].map( t => timeString(t))
@@ -86,7 +86,7 @@ export class MarDayBlock {
       return {
         medName: mo.med_medication,
         max: mo.maxDose,
-        mid: mo._id,
+        mid: mo.id,
         timeElements: this.dayTimeLine.map(ts => {
           return (new TimeElement(this.dayNum, ts, mo)).struct
         })
@@ -115,7 +115,7 @@ export class MedOrders {
   constructor (ehrDataModel) {
     const medPage = ehrDataModel.getPageData(MED_ORDERS_PAGE_KEY) || {}
     const tableEhrData = medPage[MED_ORDERS_TABLE_KEY] || []
-    this._medList = tableEhrData.map( (eData, index) => new MedOrder(eData, index))
+    this._medList = tableEhrData.map( (eData) => new MedOrder(eData))
     this._medList.sort( (a,b) => a.sTime.localeCompare(b.sTime))
   }
 
@@ -153,9 +153,9 @@ export class MedOrders {
 }
 
 export class MedOrder {
-  constructor (eData, rowIndex) {
+  constructor (eData) {
     this._ehrData = {}
-    const {day, med_dose, _id, med_instructions, med_injectionLocation,
+    const {day, med_dose, medicationOrdersTable_id, med_instructions, med_injectionLocation,
       med_prnMaxDosage, med_medication,
       name,profession, med_reason, med_route, time, med_timing,
       med_time1, med_time2, med_time3, med_time4, med_time5, med_time6
@@ -163,10 +163,9 @@ export class MedOrder {
     // indics are 1-based
     // these indices can be replaced, someday, by the new id but any replacement will
     // need to be extremely careful during the updates of existing records.
-    this.rowIndex = rowIndex
     this.day = day; this.time = time
     this.name = name;  this.profession = profession
-    this.id = _id
+    this.id = medicationOrdersTable_id
     this.dose = med_dose
     this.instructions = med_instructions
     this.location = med_injectionLocation

@@ -107,7 +107,7 @@ export default {
       }
     },
     receiveShowHideEvent (eData) {
-      console.log('receiveShowHideEvent (eData)', eData)
+      // console.log('receiveShowHideEvent (eData)', eData)
       // this event doesn't happen on embedded forms so the following does nothing
       if (eData.isEmbedded) {
         console.log('When a portion of the dialog form is used as an embedded form fragment we must not open the dialog associated that fragment.', this.tableKey)
@@ -135,10 +135,6 @@ export default {
       }
       if (tableKey !== this.tableKey) {
         if (showMsgs) console.log('skip receiveInputChangeEvent on elements from different table:', this.tableKey, tableKey, elementKey, formIndex, value)
-        return
-      }
-      if (formIndex == 1) {
-        if (showMsgs) console.log('skip because its on form 1. EXPERIMENTAL.',tableKey, elementKey, formIndex, value)
         return
       }
       // some pages have more than one table, each with a dialog. Only respond to events for the right table

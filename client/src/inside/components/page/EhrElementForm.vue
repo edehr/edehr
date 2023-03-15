@@ -11,7 +11,7 @@
         span {{assetName()}}
 
     div(v-else-if="isType('calculatedValue')", class="computed_wrapper")
-      ehr-element-calculated(:element="element", :ehrHelp="ehrHelp" )
+      ehr-element-calculated(:element="element", :ehrHelp="ehrHelp", :elementKey="elementKey" )
 
     div(v-else-if="isType('checkset')", class="checkset_wrapper")
       ehr-element-checkset(:elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')

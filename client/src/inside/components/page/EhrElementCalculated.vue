@@ -1,21 +1,23 @@
 <template lang="pug">
-  div(class="form-element")
-    label(class="calculated_value")
-      span(v-html="element.label")
-      span : &nbsp; {{value}}
+  div(class="text_input_wrapper")
+    ehr-page-form-label(:element="element", css="text_label")
+    input(class="input text-input", disabled, :name="elementKey", v-model="value")
 </template>
 
 <script>
 import EventBus from '../../../helpers/event-bus'
 import { FORM_INPUT_EVENT } from '../../../helpers/event-bus'
 import { ehrCalculateProperty } from './ehr-calcs'
+import EhrPageFormLabel from '@/inside/components/page/EhrPageFormLabel.vue'
 
 let db = false
 
 export default {
+  components: { EhrPageFormLabel },
   inject: [ 'pageDataKey' ],
   props: {
     ehrHelp: { type: Object },
+    elementKey: { type: String },
     element: {type: Object} // cell definition
   },
   data () {

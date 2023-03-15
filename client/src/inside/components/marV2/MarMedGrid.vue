@@ -118,14 +118,14 @@ export default {
     showMarDialog ( timeElement) {
       console.log('Open mar for timeElement', timeElement)
       const medOrder = timeElement.medOrder
-      const sourceRowIndex = medOrder.rowIndex
+      const sourceRowId = medOrder.id
       console.log('Open mar for sourceRowIndex', sourceRowIndex)
       const sourcePageKey = 'medicationOrders'
       const sourceTableKey = 'medicationOrdersTable'
       const sendersTableDef = EhrDefs.getPageTable(sourcePageKey, sourceTableKey)
       assert.ok(sendersTableDef, `Did not find table def for ${sourcePageKey} ${sourceTableKey}` )
       assert.ok(sendersTableDef.tableAction, `Table definition does not have expected table action property ${sourcePageKey} ${sourceTableKey}` )
-      const options = EhrTableActions.getTableActionRequestOptions(sendersTableDef, sourceRowIndex)
+      const options = EhrTableActions.getTableActionRequestOptions(sendersTableDef, sourceRowId)
       const { taTargetPageKey, taTargetTableKey} = sendersTableDef
       this.ehrHelp.showDialogForTable(taTargetPageKey, taTargetTableKey, options)
     }
