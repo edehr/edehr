@@ -12932,13 +12932,14 @@ const DEFS = {
         'embedRef': 'medicationOrders.medicationOrdersTable',
         'inputType': 'ehr_embedded',
         'passToFunction': '[mo_id mo_medication mo_timing mo_route mo_reason mo_dose mo_scheduled mo_prnMaxDosage]',
-        'tableColumn': '19',
+        'tableColumn': '20',
         'fqn': 'medAdminRec.med_order_embedded'
       },
       {
         'elementKey': 'mo_id',
         'calculationType': 'embedValue(medicationOrders,medicationOrdersTable, _id)',
         'formIndex': '2',
+        'formOption': 'hideElement',
         'inputType': 'calculatedValue',
         'label': 'Med order id',
         'tableColumn': '2',
@@ -13008,20 +13009,47 @@ const DEFS = {
         'fqn': 'medAdminRec.mo_prnMaxDosage'
       },
       {
-        'elementKey': 'dose',
+        'elementKey': 'mar_status',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Administration status',
+        'options': [
+          {
+            'key': 'Administered',
+            'text': 'Administered'
+          },
+          {
+            'key': 'Refused',
+            'text': 'Refused'
+          },
+          {
+            'key': 'Missed',
+            'text': 'Missed'
+          },
+          {
+            'key': 'Skipped',
+            'text': 'Skipped'
+          }
+        ],
+        'tableColumn': '10',
+        'tableLabel': 'Administration status',
+        'fqn': 'medAdminRec.mar_status'
+      },
+      {
+        'elementKey': 'mar_dose',
         'formIndex': '2',
         'inputType': 'text',
         'label': 'Dose administered',
-        'tableColumn': '10',
-        'fqn': 'medAdminRec.dose'
+        'tableColumn': '11',
+        'fqn': 'medAdminRec.mar_dose'
       },
       {
-        'elementKey': 'comments',
+        'elementKey': 'mar_comments',
         'formIndex': '2',
         'inputType': 'textarea',
         'label': 'Comments',
-        'tableColumn': '11',
-        'fqn': 'medAdminRec.comments'
+        'tableColumn': '12',
+        'fqn': 'medAdminRec.mar_comments'
       },
       {
         'elementKey': 'mar_bag_action',
@@ -13050,7 +13078,7 @@ const DEFS = {
             'text': 'Stop'
           }
         ],
-        'tableColumn': '12',
+        'tableColumn': '13',
         'fqn': 'medAdminRec.mar_bag_action'
       },
       {
@@ -13060,7 +13088,7 @@ const DEFS = {
         'label': 'Bag number',
         'passToFunction': 'med_c2_concentration',
         'suffix': 'mL',
-        'tableColumn': '13',
+        'tableColumn': '14',
         'fqn': 'medAdminRec.mar_bag_number',
         'suffixText': '<p>mL</p>',
         'suffixHtml': 'mL'
@@ -13072,7 +13100,7 @@ const DEFS = {
         'label': 'Volume',
         'passToFunction': 'med_c2_concentration',
         'suffix': 'mL',
-        'tableColumn': '14',
+        'tableColumn': '15',
         'fqn': 'medAdminRec.mar_volume',
         'suffixText': '<p>mL</p>',
         'suffixHtml': 'mL'
@@ -13104,16 +13132,16 @@ const DEFS = {
             'text': 'Sterile water'
           }
         ],
-        'tableColumn': '15',
+        'tableColumn': '16',
         'fqn': 'medAdminRec.mar_solution'
       },
       {
         'elementKey': 'mar_time',
         'formIndex': '2',
         'inputType': 'text',
-        'label': 'Time',
+        'label': 'Duration',
         'passToFunction': 'med_c2_concentration',
-        'tableColumn': '16',
+        'tableColumn': '17',
         'fqn': 'medAdminRec.mar_time'
       },
       {
@@ -13132,7 +13160,7 @@ const DEFS = {
           }
         ],
         'passToFunction': 'med_c2_concentration',
-        'tableColumn': '17',
+        'tableColumn': '18',
         'fqn': 'medAdminRec.mar_timeUnits'
       },
       {
@@ -13142,7 +13170,7 @@ const DEFS = {
         'inputType': 'calculatedValue',
         'label': 'Concentration',
         'suffix': 'mL/min',
-        'tableColumn': '18',
+        'tableColumn': '19',
         'fqn': 'medAdminRec.mar_concentration',
         'suffixText': '<p>mL/min</p>',
         'suffixHtml': 'mL/min'
@@ -13354,61 +13382,68 @@ const DEFS = {
             ]
           },
           {
+            'label': 'Administration status',
             'ehr_list_index': '10',
             'items': [
-              'dose'
+              'mar_status'
             ]
           },
           {
             'ehr_list_index': '11',
             'items': [
-              'comments'
+              'mar_dose'
             ]
           },
           {
             'ehr_list_index': '12',
             'items': [
-              'mar_bag_action'
+              'mar_comments'
             ]
           },
           {
             'ehr_list_index': '13',
             'items': [
-              'mar_bag_number'
+              'mar_bag_action'
             ]
           },
           {
             'ehr_list_index': '14',
             'items': [
-              'mar_volume'
+              'mar_bag_number'
             ]
           },
           {
             'ehr_list_index': '15',
             'items': [
-              'mar_solution'
+              'mar_volume'
             ]
           },
           {
             'ehr_list_index': '16',
             'items': [
-              'mar_time'
+              'mar_solution'
             ]
           },
           {
             'ehr_list_index': '17',
             'items': [
-              'mar_timeUnits'
+              'mar_time'
             ]
           },
           {
             'ehr_list_index': '18',
             'items': [
-              'mar_concentration'
+              'mar_timeUnits'
             ]
           },
           {
             'ehr_list_index': '19',
+            'items': [
+              'mar_concentration'
+            ]
+          },
+          {
+            'ehr_list_index': '20',
             'items': [
               'med_order_embedded'
             ]
@@ -13451,9 +13486,23 @@ const DEFS = {
                 'mo_reason',
                 'mo_dose',
                 'mo_scheduled',
-                'mo_prnMaxDosage',
-                'dose',
-                'comments',
+                'mo_prnMaxDosage'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group139',
+              'gIndex': '4',
+              'gChildren': [
+                'mar_status',
+                'mar_dose',
+                'mar_comments'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group140',
+              'dependentOn': 'visble:mo_timing=cont',
+              'gIndex': '5',
+              'gChildren': [
                 'mar_bag_action',
                 'mar_bag_number',
                 'mar_volume',
@@ -13462,11 +13511,6 @@ const DEFS = {
                 'mar_timeUnits',
                 'mar_concentration'
               ]
-            },
-            {
-              'elementKey': 'ehr_group139',
-              'gIndex': '4',
-              'gChildren': []
             }
           ],
           'ehr_data': {
@@ -13483,8 +13527,9 @@ const DEFS = {
             'mo_dose': '',
             'mo_scheduled': '',
             'mo_prnMaxDosage': '',
-            'dose': '',
-            'comments': '',
+            'mar_status': '',
+            'mar_dose': '',
+            'mar_comments': '',
             'mar_bag_action': '',
             'mar_bag_number': '',
             'mar_volume': '',
@@ -13509,8 +13554,9 @@ const DEFS = {
           'mo_dose',
           'mo_scheduled',
           'mo_prnMaxDosage',
-          'dose',
-          'comments',
+          'mar_status',
+          'mar_dose',
+          'mar_comments',
           'mar_bag_action',
           'mar_bag_number',
           'mar_volume',
@@ -13870,7 +13916,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group174',
+              'elementKey': 'ehr_group175',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -13881,7 +13927,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group175',
+              'elementKey': 'ehr_group176',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
               'gChildren': [
@@ -14088,7 +14134,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group176',
+              'elementKey': 'ehr_group177',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -14099,7 +14145,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group177',
+              'elementKey': 'ehr_group178',
               'gIndex': '2',
               'gChildren': [
                 'clinical',
@@ -14259,7 +14305,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group180',
+              'elementKey': 'ehr_group181',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -14270,7 +14316,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group181',
+              'elementKey': 'ehr_group182',
               'gIndex': '2',
               'gChildren': [
                 'consultReport',
@@ -15215,7 +15261,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group186',
+              'elementKey': 'ehr_group187',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -15226,7 +15272,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group187',
+              'elementKey': 'ehr_group188',
               'gIndex': '2',
               'gChildren': [
                 'laboratoryReport',
@@ -15459,7 +15505,7 @@ const DEFS = {
           'formKey': 'labResultHematology',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group188',
+              'elementKey': 'ehr_group189',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -15470,7 +15516,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group189',
+              'elementKey': 'ehr_group190',
               'label': 'Hematology',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
@@ -15484,7 +15530,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group190',
+              'elementKey': 'ehr_group191',
               'label': 'WBC Types',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '3',
@@ -15497,7 +15543,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group192',
+              'elementKey': 'ehr_group193',
               'label': 'Chemistry',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '4',
@@ -15514,7 +15560,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group193',
+              'elementKey': 'ehr_group194',
               'label': 'Renal Profile',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '5',
@@ -15524,7 +15570,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group194',
+              'elementKey': 'ehr_group195',
               'label': 'Liver function',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '6',
@@ -15540,7 +15586,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group195',
+              'elementKey': 'ehr_group196',
               'label': 'Blood gast tests',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '7',
@@ -15553,7 +15599,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group196',
+              'elementKey': 'ehr_group197',
               'label': 'Group and screen',
               'gIndex': '8',
               'gChildren': [
@@ -15814,7 +15860,7 @@ const DEFS = {
           'formKey': 'labResultUrine',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group197',
+              'elementKey': 'ehr_group198',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -15825,7 +15871,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group198',
+              'elementKey': 'ehr_group199',
               'label': 'General',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
@@ -15836,7 +15882,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group199',
+              'elementKey': 'ehr_group200',
               'label': 'Chemistry',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '3',
@@ -16043,7 +16089,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group182',
+              'elementKey': 'ehr_group183',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -16054,7 +16100,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group183',
+              'elementKey': 'ehr_group184',
               'gIndex': '2',
               'gChildren': [
                 'laboratoryReport',
@@ -16205,7 +16251,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group184',
+              'elementKey': 'ehr_group185',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -16216,7 +16262,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group185',
+              'elementKey': 'ehr_group186',
               'gIndex': '2',
               'gChildren': [
                 'laboratoryReport',
@@ -16396,7 +16442,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group200',
+            'elementKey': 'ehr_group201',
             'gIndex': '1',
             'gChildren': [
               {
@@ -16497,7 +16543,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group201',
+            'elementKey': 'ehr_group202',
             'gIndex': '1',
             'gChildren': [
               'snomed',
@@ -16718,7 +16764,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group202',
+              'elementKey': 'ehr_group203',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -16729,7 +16775,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group203',
+              'elementKey': 'ehr_group204',
               'gIndex': '2',
               'gChildren': [
                 'icd10',
@@ -16924,7 +16970,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group204',
+              'elementKey': 'ehr_group205',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -16935,7 +16981,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group205',
+              'elementKey': 'ehr_group206',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
               'gChildren': [
@@ -17147,7 +17193,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group206',
+              'elementKey': 'ehr_group207',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -17158,7 +17204,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group207',
+              'elementKey': 'ehr_group208',
               'gIndex': '2',
               'gChildren': [
                 'clinicalCategory',
@@ -17519,11 +17565,11 @@ const DEFS = {
         'fqn': 'testPage.textDateDate'
       },
       {
-        'elementKey': 'spacer212',
+        'elementKey': 'spacer213',
         'formIndex': '3',
         'inputType': 'spacer',
         'label': 'TextDate',
-        'fqn': 'testPage.spacer212'
+        'fqn': 'testPage.spacer213'
       },
       {
         'elementKey': 'name',
@@ -17549,7 +17595,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group208',
+            'elementKey': 'ehr_group209',
             'formOption': '3',
             'label': 'A group label',
             'gIndex': '1',
@@ -17567,7 +17613,7 @@ const DEFS = {
             ]
           },
           {
-            'elementKey': 'ehr_group209',
+            'elementKey': 'ehr_group210',
             'label': 'Second group',
             'gIndex': '2',
             'gChildren': [
@@ -17644,7 +17690,7 @@ const DEFS = {
           'formKey': 'table1',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group210',
+              'elementKey': 'ehr_group211',
               'label': 'Group 1',
               'gIndex': '1',
               'gChildren': [
@@ -17673,7 +17719,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group211',
+            'elementKey': 'ehr_group212',
             'label': 'A group label',
             'gIndex': '1',
             'gChildren': [
@@ -17683,7 +17729,7 @@ const DEFS = {
               'time',
               'textDate',
               'textDateDate',
-              'spacer212',
+              'spacer213',
               'name',
               'place'
             ]
@@ -18034,13 +18080,13 @@ const DEFS = {
         'fqn': 'testTable.cd1Date'
       },
       {
-        'elementKey': 'spacer218',
+        'elementKey': 'spacer219',
         'formIndex': '2',
         'inputType': 'spacer',
         'label': 'C D 1',
         'tableColumn': '2',
         'tableLabel': 'Chk 1',
-        'fqn': 'testTable.spacer218'
+        'fqn': 'testTable.spacer219'
       },
       {
         'elementKey': 'cd2',
@@ -18062,13 +18108,13 @@ const DEFS = {
         'fqn': 'testTable.cd2Date'
       },
       {
-        'elementKey': 'spacer219',
+        'elementKey': 'spacer220',
         'formIndex': '2',
         'inputType': 'spacer',
         'label': 'C D 2',
         'tableColumn': '3',
         'tableLabel': 'Chk 2',
-        'fqn': 'testTable.spacer219'
+        'fqn': 'testTable.spacer220'
       },
       {
         'elementKey': 'td1',
@@ -18089,13 +18135,13 @@ const DEFS = {
         'fqn': 'testTable.td1Date'
       },
       {
-        'elementKey': 'spacer220',
+        'elementKey': 'spacer221',
         'formIndex': '2',
         'inputType': 'spacer',
         'label': 'TextDate',
         'tableColumn': '4',
         'tableLabel': 'Txt 1',
-        'fqn': 'testTable.spacer220'
+        'fqn': 'testTable.spacer221'
       },
       {
         'elementKey': 'referralName',
@@ -18418,7 +18464,7 @@ const DEFS = {
           'formKey': 'table1',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group213',
+              'elementKey': 'ehr_group214',
               'label': 'Group 1',
               'gIndex': '1',
               'gChildren': [
@@ -18434,7 +18480,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group214',
+              'elementKey': 'ehr_group215',
               'gIndex': '2',
               'gChildren': [
                 {
@@ -18469,7 +18515,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group215',
+              'elementKey': 'ehr_group216',
               'formOption': '1',
               'formCss': 'full-width',
               'gIndex': '3',
@@ -18549,7 +18595,7 @@ const DEFS = {
             'items': [
               'cd1',
               'cd1Date',
-              'spacer218'
+              'spacer219'
             ]
           },
           {
@@ -18558,7 +18604,7 @@ const DEFS = {
             'items': [
               'cd2',
               'cd2Date',
-              'spacer219'
+              'spacer220'
             ]
           },
           {
@@ -18567,7 +18613,7 @@ const DEFS = {
             'items': [
               'td1',
               'td1Date',
-              'spacer220'
+              'spacer221'
             ]
           },
           {
@@ -18601,7 +18647,7 @@ const DEFS = {
           'formKey': 'stacked',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group216',
+              'elementKey': 'ehr_group217',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -18612,22 +18658,22 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group217',
+              'elementKey': 'ehr_group218',
               'gIndex': '2',
               'gChildren': [
                 'cd1',
                 'cd1Date',
-                'spacer218',
+                'spacer219',
                 'cd2',
                 'cd2Date',
-                'spacer219',
+                'spacer220',
                 'td1',
                 'td1Date',
-                'spacer220'
+                'spacer221'
               ]
             },
             {
-              'elementKey': 'ehr_group221',
+              'elementKey': 'ehr_group222',
               'gIndex': '3',
               'gChildren': [
                 'referralName',
@@ -18665,13 +18711,13 @@ const DEFS = {
           'time',
           'cd1',
           'cd1Date',
-          'spacer218',
+          'spacer219',
           'cd2',
           'cd2Date',
-          'spacer219',
+          'spacer220',
           'td1',
           'td1Date',
-          'spacer220',
+          'spacer221',
           'referralName',
           'referralProfession',
           'appointmentDate',
@@ -21776,10 +21822,10 @@ const DEFS = {
         'fqn': 'hematology.wbc-interp'
       },
       {
-        'elementKey': 'spacer141',
+        'elementKey': 'spacer142',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer141'
+        'fqn': 'hematology.spacer142'
       },
       {
         'elementKey': 'rbc',
@@ -21818,10 +21864,10 @@ const DEFS = {
         'fqn': 'hematology.rbc-interp'
       },
       {
-        'elementKey': 'spacer142',
+        'elementKey': 'spacer143',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer142'
+        'fqn': 'hematology.spacer143'
       },
       {
         'elementKey': 'hgb',
@@ -21860,10 +21906,10 @@ const DEFS = {
         'fqn': 'hematology.hgb-interp'
       },
       {
-        'elementKey': 'spacer143',
+        'elementKey': 'spacer144',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer143'
+        'fqn': 'hematology.spacer144'
       },
       {
         'elementKey': 'HCT',
@@ -21902,10 +21948,10 @@ const DEFS = {
         'fqn': 'hematology.HCT-interp'
       },
       {
-        'elementKey': 'spacer144',
+        'elementKey': 'spacer145',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer144'
+        'fqn': 'hematology.spacer145'
       },
       {
         'elementKey': 'MCV',
@@ -21944,10 +21990,10 @@ const DEFS = {
         'fqn': 'hematology.MCV-interp'
       },
       {
-        'elementKey': 'spacer145',
+        'elementKey': 'spacer146',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer145'
+        'fqn': 'hematology.spacer146'
       },
       {
         'elementKey': 'MCH',
@@ -21986,10 +22032,10 @@ const DEFS = {
         'fqn': 'hematology.MCH-interp'
       },
       {
-        'elementKey': 'spacer146',
+        'elementKey': 'spacer147',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer146'
+        'fqn': 'hematology.spacer147'
       },
       {
         'elementKey': 'MCHC',
@@ -22028,10 +22074,10 @@ const DEFS = {
         'fqn': 'hematology.MCHC-interp'
       },
       {
-        'elementKey': 'spacer147',
+        'elementKey': 'spacer148',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer147'
+        'fqn': 'hematology.spacer148'
       },
       {
         'elementKey': 'RDW',
@@ -22070,10 +22116,10 @@ const DEFS = {
         'fqn': 'hematology.RDW-interp'
       },
       {
-        'elementKey': 'spacer148',
+        'elementKey': 'spacer149',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer148'
+        'fqn': 'hematology.spacer149'
       },
       {
         'elementKey': 'PLT',
@@ -22113,10 +22159,10 @@ const DEFS = {
         'fqn': 'hematology.PLT-interp'
       },
       {
-        'elementKey': 'spacer149',
+        'elementKey': 'spacer150',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer149'
+        'fqn': 'hematology.spacer150'
       },
       {
         'elementKey': 'MPV',
@@ -22155,10 +22201,10 @@ const DEFS = {
         'fqn': 'hematology.MPV-interp'
       },
       {
-        'elementKey': 'spacer150',
+        'elementKey': 'spacer151',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer150'
+        'fqn': 'hematology.spacer151'
       },
       {
         'elementKey': 'comments',
@@ -22897,10 +22943,10 @@ const DEFS = {
         'fqn': 'hematology.cellCntOtherAbs'
       },
       {
-        'elementKey': 'spacer159',
+        'elementKey': 'spacer160',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer159'
+        'fqn': 'hematology.spacer160'
       },
       {
         'elementKey': 'cellCntOtherSpecify',
@@ -22938,16 +22984,16 @@ const DEFS = {
         'fqn': 'hematology.wbcmNormalMorphology'
       },
       {
-        'elementKey': 'spacer161',
-        'formIndex': '2',
-        'inputType': 'spacer',
-        'fqn': 'hematology.spacer161'
-      },
-      {
         'elementKey': 'spacer162',
         'formIndex': '2',
         'inputType': 'spacer',
         'fqn': 'hematology.spacer162'
+      },
+      {
+        'elementKey': 'spacer163',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer163'
       },
       {
         'elementKey': 'wbcmAbnormalMorphology',
@@ -23009,10 +23055,10 @@ const DEFS = {
         'fqn': 'hematology.wbcmAbnormalTypeMorphology'
       },
       {
-        'elementKey': 'spacer163',
+        'elementKey': 'spacer164',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer163'
+        'fqn': 'hematology.spacer164'
       },
       {
         'elementKey': 'wbcmToxicMorphology',
@@ -23054,10 +23100,10 @@ const DEFS = {
         'fqn': 'hematology.rcmNormal'
       },
       {
-        'elementKey': 'spacer165',
+        'elementKey': 'spacer166',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer165'
+        'fqn': 'hematology.spacer166'
       },
       {
         'elementKey': 'rcmConsistent',
@@ -23068,10 +23114,10 @@ const DEFS = {
         'fqn': 'hematology.rcmConsistent'
       },
       {
-        'elementKey': 'spacer166',
+        'elementKey': 'spacer167',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer166'
+        'fqn': 'hematology.spacer167'
       },
       {
         'elementKey': 'rcmAcanthocytes',
@@ -23592,16 +23638,16 @@ const DEFS = {
         'fqn': 'hematology.rbcComments'
       },
       {
-        'elementKey': 'spacer169',
-        'formIndex': '2',
-        'inputType': 'spacer',
-        'fqn': 'hematology.spacer169'
-      },
-      {
         'elementKey': 'spacer170',
         'formIndex': '2',
         'inputType': 'spacer',
         'fqn': 'hematology.spacer170'
+      },
+      {
+        'elementKey': 'spacer171',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer171'
       },
       {
         'elementKey': 'referralToHema',
@@ -23774,44 +23820,44 @@ const DEFS = {
           'formKey': 'tableCbcAnalysis',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group140',
+              'elementKey': 'ehr_group141',
               'label': 'Automated analyzer',
               'gIndex': '1',
               'gChildren': [
                 'wbc',
                 'wbc-interp',
-                'spacer141',
+                'spacer142',
                 'rbc',
                 'rbc-interp',
-                'spacer142',
+                'spacer143',
                 'hgb',
                 'hgb-interp',
-                'spacer143',
+                'spacer144',
                 'HCT',
                 'HCT-interp',
-                'spacer144',
+                'spacer145',
                 'MCV',
                 'MCV-interp',
-                'spacer145',
+                'spacer146',
                 'MCH',
                 'MCH-interp',
-                'spacer146',
+                'spacer147',
                 'MCHC',
                 'MCHC-interp',
-                'spacer147',
+                'spacer148',
                 'RDW',
                 'RDW-interp',
-                'spacer148',
+                'spacer149',
                 'PLT',
                 'PLT-interp',
-                'spacer149',
+                'spacer150',
                 'MPV',
                 'MPV-interp',
-                'spacer150'
+                'spacer151'
               ]
             },
             {
-              'elementKey': 'ehr_group151',
+              'elementKey': 'ehr_group152',
               'gIndex': '2',
               'gChildren': [
                 'comments'
@@ -24560,7 +24606,7 @@ const DEFS = {
           'formKey': 'tablePbfReview',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group152',
+              'elementKey': 'ehr_group153',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -24571,7 +24617,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group153',
+              'elementKey': 'ehr_group154',
               'label': 'CBC Analysis',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
@@ -24580,7 +24626,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group154',
+              'elementKey': 'ehr_group155',
               'label': 'Actions',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '3',
@@ -24591,7 +24637,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group155',
+              'elementKey': 'ehr_group156',
               'label': 'WBC Estimate',
               'formCss': 'grid-left-to-right-4',
               'gIndex': '4',
@@ -24616,7 +24662,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group156',
+              'elementKey': 'ehr_group157',
               'label': 'PLT Estimate',
               'formCss': 'grid-left-to-right-4',
               'gIndex': '5',
@@ -24641,7 +24687,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group157',
+              'elementKey': 'ehr_group158',
               'label': 'PLT morphology',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '6',
@@ -24652,7 +24698,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group158',
+              'elementKey': 'ehr_group159',
               'label': 'WBC Differential',
               'formCss': 'grid-left-to-right-2',
               'gIndex': '7',
@@ -24681,37 +24727,37 @@ const DEFS = {
                 'cellCntReactiveLymphsAbs',
                 'cellCntOther',
                 'cellCntOtherAbs',
-                'spacer159',
+                'spacer160',
                 'cellCntOtherSpecify',
                 'cellCntTotal',
                 'cellCntNRBCs'
               ]
             },
             {
-              'elementKey': 'ehr_group160',
+              'elementKey': 'ehr_group161',
               'label': 'White Cell Morphology',
               'gIndex': '8',
               'gChildren': [
                 'wbcmNormalMorphology',
-                'spacer161',
                 'spacer162',
+                'spacer163',
                 'wbcmAbnormalMorphology',
                 'wbcmAbnormalTypeMorphology',
-                'spacer163',
+                'spacer164',
                 'wbcmToxicMorphology',
                 'wbcmToxicTypeMorphology'
               ]
             },
             {
-              'elementKey': 'ehr_group164',
+              'elementKey': 'ehr_group165',
               'label': 'Red Cell Morphology',
               'formCss': 'grid-left-to-right-2',
               'gIndex': '9',
               'gChildren': [
                 'rcmNormal',
-                'spacer165',
-                'rcmConsistent',
                 'spacer166',
+                'rcmConsistent',
+                'spacer167',
                 'rcmAcanthocytes',
                 'rcmAcanthocytesGrading',
                 'rcmCodocytes',
@@ -24741,7 +24787,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group167',
+              'elementKey': 'ehr_group168',
               'label': 'RBC Inclusions',
               'gIndex': '10',
               'gChildren': [
@@ -24753,17 +24799,17 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group168',
+              'elementKey': 'ehr_group169',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '11',
               'gChildren': [
                 'rbcComments',
-                'spacer169',
-                'spacer170'
+                'spacer170',
+                'spacer171'
               ]
             },
             {
-              'elementKey': 'ehr_group171',
+              'elementKey': 'ehr_group172',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '12',
               'gChildren': [
@@ -25173,7 +25219,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group178',
+              'elementKey': 'ehr_group179',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -25184,7 +25230,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group179',
+              'elementKey': 'ehr_group180',
               'gIndex': '2',
               'gChildren': [
                 'goal',
@@ -25309,7 +25355,7 @@ const DEFS = {
           'formKey': 'tableChem',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group172',
+              'elementKey': 'ehr_group173',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -25427,7 +25473,7 @@ const DEFS = {
           'formKey': 'tableImages',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group173',
+              'elementKey': 'ehr_group174',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
