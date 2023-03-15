@@ -136,7 +136,7 @@ export default {
 <style lang="scss" scoped>
 @import '../../../scss/definitions';
 $element-padding: 5px;
-$day-width: 30rem;
+$day-width: 50rem;
 $time-element-height: 4rem;
 $time-element-width: 4rem;
 $medication-element-width: 10rem;
@@ -160,6 +160,7 @@ $space-between-day-blocks: 5px;
 .day-content .day-visible {
   width: $day-width;
   overflow: auto;
+  border: 1px solid $selected-label-colour;
 }
 
 /*  This expands the day content  */
