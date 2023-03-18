@@ -19,6 +19,7 @@ import EhrData from '@/inside/components/page/ehr-data'
 import EhrTableDraft from '@/inside/components/page/ehr-table-draft'
 import EhrTableActions from '@/inside/components/page/ehr-table-actions'
 import EhrDataModel from '@/ehr-definitions/EhrDataModel'
+import { validDayStr, validTimeStr } from '@/ehr-definitions/common-utils'
 
 export const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
@@ -584,17 +585,6 @@ export default class EhrPageHelper {
      */
     dialog.errorList = []
     this._clearDialogInputs(dialog)
-    if(hasRecHeader) {
-      // TODO remove this attempt to set simTime. It does always work because of the loading below.
-      //  A quick fix has been implemented in EhrCommonElement. But perhaps the better fix is to use the
-      //  code from EhrCommonElement but after loading any data in the options, and only if the simTime
-      //  is empty
-      //
-      const mData = StoreHelper.getMergedData()
-      const { visitDay, visitTime } = mData.meta.simTime
-      dialog.inputs['day'] = ''+ visitDay
-      dialog.inputs['time'] = ''+ visitTime
-    }
     if (options.draftRowId) {
       dialog.draftRowId = options.draftRowId
     }
@@ -617,6 +607,32 @@ export default class EhrPageHelper {
       // console.log('options.embedRefValue', options.embedRefValue)
       dialog.inputs[srcElemKey] = options.embedRefValue
     }
+    if(hasRecHeader) {
+      const inputs = dialog.inputs
+      const mData = StoreHelper.getMergedData()
+      const { visitDay, visitTime } = mData.meta.simTime
+      let key
+      key = tableKey + '_day'
+      if (!validDayStr(inputs[key])) {
+        const previous = inputs[key]
+        inputs[key] = parseInt(visitDay)
+        console.log('dialog opening set sim day', key, previous, inputs[key])
+      }
+      key = tableKey + '_time'
+      if (!validTimeStr(inputs[key])) {
+        const previous = inputs[key]
+        inputs[key] = visitTime
+        console.log('dialog opening set sim time', key, previous, inputs[key])
+      }
+      key = tableKey + '_name'
+      function _nonEmptyString (text) { return text && text.trim().length > 0 }
+      if (!_nonEmptyString(inputs[key])) {
+        const previous = inputs[key]
+        inputs[key] = StoreHelper.givenName()
+        console.log('dialog opening set name', key, previous, inputs[key])
+      }
+    }
+
     // NOW set the open state flag which enables the FORM_INPUT_EVENT event to fire when a dialog input is changed.
     dialog.active = true
     // End by sending out the "I'm opened event"
