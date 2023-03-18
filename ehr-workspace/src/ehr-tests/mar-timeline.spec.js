@@ -1,9 +1,10 @@
 import { MarTimelineModel, MedOrders } from '../ehr-definitions/med-definitions/mar-model'
 import EhrDataModel from '../ehr-definitions/EhrDataModel'
-import ehrData from '../resources/sampleMedsForTimeline.json'
 import should from 'should'
 
-const ehrModel = new EhrDataModel(ehrData)
+const initialData = require('../resources/sampleMedsForTimeline.json')
+const ehrModel = new EhrDataModel(initialData)
+const ehrData = ehrModel.ehrData
 
 describe('Mar Time Line', () => {
 
@@ -73,8 +74,7 @@ describe('medOrders', () => {
     metformin.should.have.property('time1')
     metformin.should.have.property('time6')
     // metformin.should.have.property('inDbFormat')
-
-    metformin.id.should.equal('met_id')
+    metformin.id.should.equal('medicationOrders.medicationOrdersTable.0')
     metformin.day.should.equal(1)
     metformin.dose.should.equal('500mg')
     metformin.time1.should.equal('0800')
@@ -90,12 +90,16 @@ describe('medOrders', () => {
   })
 
   it('acetaminophen', () => {
+    const {simTime} = ehrData.meta
+    simTime.visitDay.should.equal(3, 'expect the test data to have sim day = 3')
+    simTime.visitTime.should.equal('0300', 'expect the test data to have sim time = 0300')
+
     const acetaminophen = medOrders.findByMedication('acetaminophen')
-    acetaminophen.id.should.equal('acte_id')
+    acetaminophen.id.should.equal('medicationOrders.medicationOrdersTable.11')
     acetaminophen.isScheduled(2,'0000').should.equal(false, '2 0000')
     acetaminophen.isScheduled(3,'0000').should.equal(false, '3 0000')
     acetaminophen.isScheduled(3,'0300').should.equal(false, '3 0300')
-    acetaminophen.isScheduled(3,'0600').should.equal(false, '3 0600 is past day time and is first matching schedule')
+    acetaminophen.isScheduled(3,'0600').should.equal(true, '3 0600 is past day time and is first matching schedule')
 
   })
   it('medOrders', () => {
@@ -136,7 +140,7 @@ describe('medOrders', () => {
 describe('timeline get lists', () => {
   const timelineModel = new MarTimelineModel(ehrModel)
 
-  it('numberOfDays', () => {
+  it('time line properties', () => {
     timelineModel.should.have.property('contOrders')
     timelineModel.should.have.property('onceADayOrders')
     timelineModel.should.have.property('onceOrders')

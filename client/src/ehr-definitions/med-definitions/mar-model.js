@@ -156,13 +156,15 @@ export class MedOrders {
 export class MedOrder {
   constructor (eData) {
     this._ehrData = {}
-    const {day, med_dose, medicationOrdersTable_id, med_instructions, med_injectionLocation,
+    const {med_dose, medicationOrdersTable_id, med_instructions, med_injectionLocation,
       med_prnMaxDosage, med_medication,
-      name,profession, med_reason, med_route, time, med_timing,
+      med_reason, med_route, med_timing,
       med_time1, med_time2, med_time3, med_time4, med_time5, med_time6
     } = eData
-    this.day = day; this.time = time
-    this.name = name;  this.profession = profession
+    this.day = eData['medicationOrdersTable_day']
+    this.time = eData['medicationOrdersTable_time']
+    this.name = eData['medicationOrdersTable_name']
+    this.profession = eData['medicationOrdersTable_profession']
     this.id = medicationOrdersTable_id
     this.dose = med_dose
     this.instructions = med_instructions

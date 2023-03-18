@@ -3,7 +3,6 @@
     "lastUpdate": "2023-02-21T05:19:03-08:00",
     "medicationOrdersTable": [
       {
-        "_id": "met_id",
         "day": 1,
         "time": "0000",
         "med_timing": "sched",
@@ -22,7 +21,6 @@
         "med_prnMaxDosage": "1000 mg"
       },
       {
-        "_id": "no34",
         "day": 0,
         "time": "0000",
         "med_timing": "once",
@@ -33,7 +31,6 @@
         "med_medication": "somethingOnce1"
       },
       {
-        "_id": "no35",
         "day": 0,
         "time": "0000",
         "med_timing": "once",
@@ -44,7 +41,6 @@
         "med_medication": "somethingOnce2"
       },
       {
-        "_id": "necbcn8",
         "day": 0,
         "time": "0000",
         "med_timing": "od",
@@ -62,7 +58,6 @@
         "med_prnMaxDosage": "80mg"
       },
       {
-        "_id": "4ha6tdg",
         "day": "0",
         "time": "0600",
         "name": "Dr Gabriel",
@@ -73,7 +68,6 @@
         "med_medication": "somethingStat1"
       },
       {
-        "_id": "qweqwe",
         "day": "0",
         "time": "0600",
         "name": "Dr Gabriel",
@@ -84,7 +78,6 @@
         "med_medication": "somethingStat2"
       },
       {
-        "_id": "1bapkqu",
         "day": "0",
         "time": "0000",
         "name": "Dr Gabriel",
@@ -104,7 +97,6 @@
         "med_prnMaxDosage": "5 mg"
       },
       {
-        "_id": "547hmrr",
         "day": "0",
         "time": "0000",
         "name": "Dr Gabriel",
@@ -123,7 +115,6 @@
         "med_prnMaxDosage": 0
       },
       {
-        "_id": "gb2balo",
         "day": 0,
         "time": "0000",
         "med_timing": "sched",
@@ -140,7 +131,6 @@
         "med_prnMaxDosage": "300 mg"
       },
       {
-        "_id": "7g7a7io",
         "day": "0",
         "time": "0600",
         "name": "Dr Gabriel",
@@ -161,7 +151,6 @@
         "med_prnMaxDosage": "0 mg"
       },
       {
-        "_id": "1qhocko",
         "day": "1",
         "time": "0000",
         "name": "Dr Gabriel",
@@ -182,7 +171,6 @@
         "med_prnMaxDosage": "30 mg"
       },
       {
-        "_id": "acte_id",
         "day": "3",
         "time": "0300",
         "name": "Dr Gabriel",
@@ -203,7 +191,6 @@
         "med_prnMaxDosage": "1950 mg"
       },
       {
-        "_id": "e8djd",
         "day": "3",
         "time": "0300",
         "name": "Dr Gabriel",
@@ -214,7 +201,6 @@
         "med_medication": "somethingIv"
       },
       {
-        "_id": "ed8djd",
         "day": "3",
         "time": "0300",
         "name": "Dr Gabriel",
@@ -515,7 +501,6 @@
     "simTime": {
       "visitDay": 1,
       "visitTime": "0600"
-    },
-    "ehrVersion": "ev2.1.2"
+    }
   }
 }
