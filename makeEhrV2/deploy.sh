@@ -79,7 +79,7 @@ then
   echo Linting client files, including newly generated files.
   cd ../client &&  npm run lint
   cd ../server &&  npm run lint
-#  cd ../ehr-workspace && npm run test
+  cd ../ehr-workspace && npm run test
 fi
 
 

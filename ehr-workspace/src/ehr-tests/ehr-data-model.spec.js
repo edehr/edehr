@@ -56,7 +56,7 @@ const ehrData = {
 }
 
 describe( 'ehr-def-utils work', () => {
-  it('visitTimeInEhrData', () => {
+  it('EhrDataModel to get sim time', () => {
     const model = new EhrDataModel(ehrData)
     should.exist(model)
     const data = model.ehrData

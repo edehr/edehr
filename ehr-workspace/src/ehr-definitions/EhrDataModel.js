@@ -3,7 +3,7 @@ import {
   updateAllRowIds,
   updateAllVisitTime,
   updateRecHeaderElementKeys,
-  visitTimeInEhrData, visitTimeInEhrDataV2
+  visitTimeInEhrDataV2
 } from './ehr-data-model-utils'
 import { decoupleObject } from './common-utils'
 import {
@@ -70,7 +70,7 @@ export default class EhrDataModel {
     this._ehrData = updateAllRowIds(this._ehrData)
     this._ehrData.meta.simTime = visitTimeInEhrDataV2(this._ehrData)
     this._ehrData.meta.ehrVersion = 'ev2.2.0'
-    console.log('Loaded EhrDataModel', this._ehrData.meta)
+    // console.log('Loaded EhrDataModel', this._ehrData.meta)
   }
 
   get ehrData () {
