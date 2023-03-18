@@ -127,7 +127,10 @@ export function isObject ( possibleObj ) {
 }
 
 export function isString (possibleStr) {
-  return Object.prototype.toString.call(possibleStr) === '[object String]'
+  return typeof possibleStr === 'string'
+}
+export function isEmptyString (str) {
+  return (!str || isString(str) && str.trim().length === 0 )
 }
 
 export function formatDateStr (dateStrFromDb) {

@@ -7,7 +7,7 @@ import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_REFRESH_EVENT } from '@/helpers/e
 import {
   decoupleObject,
   ehrRemoveMarkedSeed,
-  formatTimeStr,
+  formatTimeStr, isEmptyString,
   isString,
   removeEmptyProperties
 } from '@/helpers/ehr-utils'
@@ -705,7 +705,6 @@ export default class EhrPageHelper {
     return result
   }
   _validateInputs (dialog) {
-    function notEmptyString (text) { return text && text.trim().length > 0 }
     const pageKey = this.pageKey
     const tableDef = dialog.tableDef
     const inputs = dialog.inputs
@@ -719,7 +718,7 @@ export default class EhrPageHelper {
       let value = inputs[eKey]
       let valid = true
       value = isString(value) ? value.trim() : value
-      if (mandatory && !notEmptyString(value)) {
+      if (mandatory && isEmptyString(value)) {
         const msg = label + ' is required'
         dialog.errorList.push(msg)
         valid = false
