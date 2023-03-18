@@ -21,6 +21,7 @@ const Defs = {
       inputType: 'visitDay',
       label: 'Day',
       validation: 'visitDay',
+      mandatory: true,
       recHeader: true
     },
     {
@@ -28,6 +29,7 @@ const Defs = {
       inputType: 'visitTime',
       label: 'Time',
       validation: 'time24',
+      mandatory: true,
       recHeader: true
     }
   ],
