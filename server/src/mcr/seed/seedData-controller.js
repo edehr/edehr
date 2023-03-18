@@ -64,6 +64,7 @@ export default class SeedDataController extends BaseController {
       ehrData[propertyName] = value
       const doc = await this._saveSeedEhrData(model, ehrData)
       EHR_EVENT_BUS.emit(EHR_SEED_EVENT, visitId, userId, action, previous, doc.ehrData)
+      return doc
     }
   }
 
