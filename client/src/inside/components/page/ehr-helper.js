@@ -233,12 +233,28 @@ export default class EhrPageHelper {
     const dialog = this._getActiveTableDialog()
     return dialog && dialog.tableDef.hasRecHeader
   }
-  activeTableDialogRecordHeader () {
+  prepareAndGetActiveDialogRecordHeader () {
     const results = {}
     const dialog = this._getActiveTableDialog()
     if (dialog.tableDef.hasRecHeader) {
       const tableKey = dialog.tableDef.tableKey
       const inputs = dialog.inputs
+      const mData = StoreHelper.getMergedData()
+      const { visitDay, visitTime } = mData.meta.simTime
+      let key
+      key = tableKey + '_day'
+      if (!validDayStr(inputs[key])) {
+        const previous = inputs[key]
+        inputs[key] = parseInt(visitDay)
+        console.log('dialog saving set sim day', key, previous, inputs[key])
+      }
+      key = tableKey + '_time'
+      if (!validTimeStr(inputs[key])) {
+        const previous = inputs[key]
+        inputs[key] = visitTime
+        console.log('dialog saving set sim time', key, previous, inputs[key])
+      }
+
       const KEYS = ['name', 'profession', 'day', 'time']
       KEYS.forEach(key => {
         let newKey = tableKey + '_' + key
@@ -463,8 +479,6 @@ export default class EhrPageHelper {
       if (draftRowData) {
         // table has a draft row so this action is now an edit row action
         draftRowId = draftRowData[rowElementKey]
-        // TODO remove once question is answered
-        console.error('DOES this work now? draftRowId = draftRowData[rowElementKey]', draftRowId)
       }
       // else proceed and create a new row
     }

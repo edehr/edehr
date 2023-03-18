@@ -168,7 +168,7 @@ export default {
     },
     saveDialog: function () {
       if (this.hasRecHeader) {
-        const { name, profession, day, time } = this.ehrHelp.activeTableDialogRecordHeader()
+        const { name, profession, day, time } = this.ehrHelp.prepareAndGetActiveDialogRecordHeader()
         const msg = ehrText.saveDialogVerifyMessage(name, profession, day, time)
         this.$refs.confirmSaveDialog.showDialog(ehrText.saveDialogVerifyTitle, msg)
       } else {
