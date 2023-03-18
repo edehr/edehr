@@ -33,6 +33,7 @@ export default class EhrTableActions {
   }
 
   static getTableActionTargetElementKey (tableDef) {
+    // this is complicated but it is cool.
     const desiredInputType = EhrTypes.inputTypes.ehr_embedded
     const desiredProperty = EhrTypes.elementProperties.embedRef
     const { taTargetPageKey, taTargetTableKey, taSourcePageKey, taSourceTableKey} = tableDef

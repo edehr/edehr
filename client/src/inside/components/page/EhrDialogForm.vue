@@ -97,6 +97,7 @@ export default {
       }
     },
     cancelConfirmed: async function () {
+      // TODO fix this future defect. Remove the row the dialog was opened on and not just the first draft row.
       await this.ehrHelp.removeDraftRow()
       this.closeDialog()
       this.errorList = []
