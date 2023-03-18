@@ -7,13 +7,20 @@ import { decoupleObject } from './common-utils'
 
 export function updateRecHeaderElementKeys (givenEhrData) {
   const ehrData = decoupleObject(givenEhrData)
-  return visitAllTables(ehrData, (pageKey, tableKey, tableData) => {
+  return visitAllTables(ehrData, (page, tableKey, tableData) => {
     tableData.forEach(row => {
       ['name', 'profession', 'day', 'time'].forEach(key => {
         if (row[key]) {
           let newKey = tableKey + '_' + key
-          row[newKey] = row[key]
-          delete row[key]
+          if (page.pageChildren.find( pe => pe.def.elementKey === newKey)) {
+            row[newKey] = row[key]
+            delete row[key]
+          } else {
+            if(page.pageKey !== 'careTeam' && page.pageKey !== 'medAdminRec') {
+              console.log('Skip update non record header field.', page.pageKey, key)
+              // console.log(JSON.stringify(page.pageChildren, null, 2))
+            }
+          }
         }
       })
     })
@@ -22,7 +29,8 @@ export function updateRecHeaderElementKeys (givenEhrData) {
 }
 export function updateAllRowIds (givenEhrData) {
   const ehrData = decoupleObject(givenEhrData)
-  return visitAllTables(ehrData, (pageKey, tableKey, tableData) => {
+  return visitAllTables(ehrData, (page, tableKey, tableData) => {
+    const pageKey = page.pageKey
     const idKey = tableKey + '_id'
     tableData.forEach(row => {
       if (!row[idKey]) {
@@ -43,7 +51,7 @@ function visitAllTables (ehrData, theTableUpdater) {
         const tableKey = table.elementKey
         const tableData = pageData[tableKey]
         if (!!tableData) {
-          pageData[tableKey] = theTableUpdater(pageKey, tableKey, tableData)
+          pageData[tableKey] = theTableUpdater(page, tableKey, tableData)
         }
       })
     }
