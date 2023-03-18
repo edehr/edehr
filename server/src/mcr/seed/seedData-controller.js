@@ -40,16 +40,18 @@ export default class SeedDataController extends BaseController {
   /**
    * Update a property inside the EHR seed data.  Invoked when client saves data while user is editing a seed.
    * Also see saveSeedEhrData
+   * @param visitId
+   * @param userId
    * @param id of the seed db doc
    * @param payload containing propertyName and the new element of ehrData in the value field
    * @param action - optional -- used for tracing changes to seed data. See traceApi
    * @return {*} updated doc
    * @see updateAssignmentData in activity-data-controller
    */
-  async updateSeedEhrProperty (vistId, id, payload, action) {
+  async updateSeedEhrProperty (visitId, userId, id, payload, action) {
     let propertyName = payload.propertyName
     let value = payload.value
-    const model = this.baseFindOneQuery(id)
+    const model = await this.baseFindOneQuery(id)
     // debug('upsehrprop search ' + model ? 'ok' : 'fail')
     if (model) {
       if (model.isDefault) {
@@ -60,10 +62,8 @@ export default class SeedDataController extends BaseController {
       value.lastUpdate = moment().format()
       // place date into the ehr data's page element
       ehrData[propertyName] = value
-      // debug(`SeedData upsehrprop action: ${action} id: ${id} ehrData[${propertyName}]:`, JSON.stringify(value))
-      // debug('upsehrprop ' + JSON.stringify(value))
       const doc = await this._saveSeedEhrData(model, ehrData)
-      EHR_EVENT_BUS.emit(EHR_SEED_EVENT, 'system', action, previous, doc.ehrData)
+      EHR_EVENT_BUS.emit(EHR_SEED_EVENT, visitId, userId, action, previous, doc.ehrData)
     }
   }
 
@@ -78,7 +78,7 @@ export default class SeedDataController extends BaseController {
     const model = await this.baseFindOneQuery(id)
     const previous = decoupleObject(model.seedData)
     const doc = this._saveSeedEhrData(model, ehrData)
-    EHR_EVENT_BUS.emit(EHR_SEED_EVENT, 'system', 'update', previous, doc.ehrData)
+    EHR_EVENT_BUS.emit(EHR_SEED_EVENT, 'system', 'system', 'update', previous, doc.ehrData)
   }
 
   deleteSeed (id) {
@@ -105,30 +105,82 @@ export default class SeedDataController extends BaseController {
 
   route () {
     const router = super.route()
+    router.post('/createSeed', (req, res) => {
+      const authPayload = req.authPayload
+      const { visitId, userId } = authPayload
+      const previous = undefined
+      this
+        .create(req.body)
+        .then(res => {
+          const newData = res.ehrData
+          EHR_EVENT_BUS.emit(EHR_SEED_EVENT, visitId, userId, 'create', previous, newData)
+          return res
+        })
+        .then(ok(res))
+        .then(null, fail(res))
+    })
+    router.put('/updateSeed/:key', (req, res) => {
+      const id = req.params.key
+      const authPayload = req.authPayload
+      const { visitId, userId } = authPayload
+      let previous
+      this
+        .baseFindOneQuery(id)
+        .then(model => {
+          // get previous ehrData for event below
+          previous = model.ehrData
+          return this.update(id, req.body)
+        })
+        .then(res => {
+          // note all lowercase seeddata
+          const newData = res && res.seeddata ? res.seeddata.ehrData : undefined
+          // with action 'properties' the event handler will only process change if the prev != new
+          EHR_EVENT_BUS.emit(EHR_SEED_EVENT, visitId, userId, 'properties', previous, newData)
+          return res
+        })
+        .then(ok(res))
+        .then(null, fail(res))
+    })
     router.put('/updateSeedEhrProperty/:key/:action', (req, res) => {
       debug('SeedController API updateSeedEhrProperty')
       let id = req.params.key
       let action = req.params.action
       let data = req.body
       const authPayload = req.authPayload
-      const visitId = authPayload.visitId
-      this.updateSeedEhrProperty(visitId, id, data, action)
-        .then(ok(res))
-        .catch(fail(res))
-    })
-    router.put('/importSeedEhrData/:key/', (req, res) => {
-      let id = req.params.key
-      let data = req.body
-      this.updateAndSaveSeedEhrData(id, data)
+      const { visitId, userId } = authPayload
+      this.updateSeedEhrProperty(visitId, userId, id, data, action)
         .then(ok(res))
         .catch(fail(res))
     })
 
+    // TODO remove when sure this is not used
+    // router.put('/importSeedEhrData/:key/', (req, res) => {
+    //   let id = req.params.key
+    //   let data = req.body
+    //   this.updateAndSaveSeedEhrData(id, data)
+    //     .then(ok(res))
+    //     .catch(fail(res))
+    // })
+
     router.delete('/:key', (req, res) => {
+      const authPayload = req.authPayload
+      const { visitId, userId } = authPayload
       const seedId = req.params.key
+      let previous
       debug('Delete seed api endpoint with id: ', seedId)
       this
-        .deleteSeed(seedId)
+        .baseFindOneQuery(id)
+        .then(model => {
+          // get previous ehrData for event below
+          previous = model.ehrData
+          // then do the action of deletion
+          return this.deleteSeed(seedId)
+        })
+        .then(res => {
+          debug('delete seed ', seedId)
+          EHR_EVENT_BUS.emit(EHR_SEED_EVENT, visitId, userId, 'delete', previous, undefined)
+          return res
+        })
         .then(ok(res))
         .then(null, fail(res))
     })

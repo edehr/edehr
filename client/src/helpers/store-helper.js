@@ -313,13 +313,13 @@ class StoreHelperWorker {
     return this._dispatchSeedListProperty('updateSeedItem', dataIdPlusPayload)
   }
 
-  importSeedEhrData (seedId, ehrData) {
-    let payload = {
-      id: seedId,
-      ehrData: ehrData
-    }
-    return this._dispatchSeedListProperty('importSeedEhrData', payload)
-  }
+  // importSeedEhrData (seedId, ehrData) {
+  //   let payload = {
+  //     id: seedId,
+  //     ehrData: ehrData
+  //   }
+  //   return this._dispatchSeedListProperty('importSeedEhrData', payload)
+  // }
 
   sendSeedEhrDataDraft (payload ) {
     return this._dispatchSeedListProperty('sendSeedEhrDataDraft', payload)

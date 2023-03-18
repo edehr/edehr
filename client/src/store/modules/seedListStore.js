@@ -96,7 +96,7 @@ const actions = {
    * @return {*}
    */
   createSeedItem (context, payload) {
-    let url = undefined
+    let url = '/createSeed/'
     if(debugSL) console.log('SeedList send seed data ', url, payload)
     return InstoreHelper.postRequest(context, API, url, payload).then(results => {
       if(debugSL) console.log('SeedList after create seed:', results.data )
@@ -125,7 +125,7 @@ const actions = {
   updateSeedItem (context, dataIdPlusPayload) {
     let id = dataIdPlusPayload.id
     let payload = dataIdPlusPayload.payload
-    let url = id
+    let url = '/updateSeed/' + id
     if(debugSL) console.log('SeedList update seed', url, payload)
     return InstoreHelper.putRequest(context, API, url, payload)
       .then( () => {
@@ -184,21 +184,21 @@ const actions = {
    * @param payload { ehrData, id }
    * @return {*}
    */
-  importSeedEhrData (context, payload) {
-    let url = 'importSeedEhrData/' + payload.id
-    if(debugSL) console.log('SeedList importSeedEhrData', url, payload.ehrData)
-    return InstoreHelper.putRequest(context, API, url, payload.ehrData)
-      .then( () => {
-        if(debugSL) console.log('SeedList after seed replace ehr data reload seed list')
-        return context.dispatch('loadSeeds')
-      })
-      .then(() => {
-        if (context.state.sSeedId) {
-          if(debugSL) console.log('SeedList after seed replace ehr data reload current seed item')
-          return context.dispatch('loadSeedContent', context.state.sSeedId)
-        }
-      })
-  }
+  // importSeedEhrData (context, payload) {
+  //   let url = 'importSeedEhrData/' + payload.id
+  //   if(debugSL) console.log('SeedList importSeedEhrData', url, payload.ehrData)
+  //   return InstoreHelper.putRequest(context, API, url, payload.ehrData)
+  //     .then( () => {
+  //       if(debugSL) console.log('SeedList after seed replace ehr data reload seed list')
+  //       return context.dispatch('loadSeeds')
+  //     })
+  //     .then(() => {
+  //       if (context.state.sSeedId) {
+  //         if(debugSL) console.log('SeedList after seed replace ehr data reload current seed item')
+  //         return context.dispatch('loadSeedContent', context.state.sSeedId)
+  //       }
+  //     })
+  // }
 
 }
 

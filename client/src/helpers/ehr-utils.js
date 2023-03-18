@@ -297,17 +297,17 @@ export function validateSeedFileContents (dataAsString) {
  * @param contents from reading a seed data file
  * @return {Promise<any>}
  */
-export function importSeedData (component, seedId, contents) {
-  return new Promise((resolve, reject) => {
-    let { seedObj, invalidMsg } = validateSeedFileContents(contents)
-    if (invalidMsg) {
-      console.log('EhrUtil importSeedData invalidMsg', invalidMsg)
-      return reject(invalidMsg)
-    }
-    if (debug) console.log('EhrUtil importSeedData seedObj', seedObj)
-    resolve(StoreHelper.importSeedEhrData(seedId, seedObj.ehrData))
-  })
-}
+// export function importSeedData (component, seedId, contents) {
+//   return new Promise((resolve, reject) => {
+//     let { seedObj, invalidMsg } = validateSeedFileContents(contents)
+//     if (invalidMsg) {
+//       console.log('EhrUtil importSeedData invalidMsg', invalidMsg)
+//       return reject(invalidMsg)
+//     }
+//     if (debug) console.log('EhrUtil importSeedData seedObj', seedObj)
+//     resolve(StoreHelper.importSeedEhrData(seedId, seedObj.ehrData))
+//   })
+// }
 
 export function downloadSeedToFile (seedId, sSeedContent, ehrData) {
   let lastUpdate = formatDateStr(sSeedContent.lastUpdateDate)
