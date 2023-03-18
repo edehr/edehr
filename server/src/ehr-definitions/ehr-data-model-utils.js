@@ -5,29 +5,52 @@ import EhrTypes from '../ehr-definitions/ehr-types'
 import { convertTimeStr, convertTimeStrToMilTime } from './ehr-def-utils'
 import { EhrPages } from './ehr-models'
 import EhrDataModel from './EhrDataModel'
+import { decoupleObject } from './common-utils'
 
-export function updateAllRecHeaderIds (ehrDataModel) {
+export function updateRecHeaderElementKeys (givenEhrData) {
+  const ehrData = decoupleObject(givenEhrData)
+  return updateAllRows(ehrData, (pageKey, tableKey, tableData) => {
+    tableData.forEach(row => {
+      ['name', 'profession', 'day', 'time'].forEach(key => {
+        if (row[key]) {
+          let newKey = tableKey + '_' + key
+          row[newKey] = row[key]
+          delete row[key]
+        }
+      })
+    })
+    return tableData
+  })
+}
+export function updateAllRecHeaderIds (givenEhrData) {
+  const ehrData = decoupleObject(givenEhrData)
+  return updateAllRows(ehrData, (pageKey, tableKey, tableData) => {
+    const idKey = tableKey + '_id'
+    tableData.forEach(row => {
+      if (!row[idKey]) {
+        row[idKey] = EhrDataModel.GenerateRowId(pageKey, tableKey, tableData)
+      }
+    })
+    return tableData
+  })
+}
+
+function updateAllRows (ehrData, theTableUpdater) {
   const pages = new EhrPages()
-  const pageList = pages.pageList
-  pageList.forEach(page => {
+  pages.pageList.forEach(page => {
     const pageKey = page.pageKey
-    if (ehrDataModel.hasData(pageKey)) {
-      // pageTables is a  [ PageTable ]
+    const pageData = ehrData[pageKey]
+    if (!!pageData) {
       page.pageTables.forEach(table => {
         const tableKey = table.elementKey
-        const idKey = tableKey + '_id'
-        const tableData = ehrDataModel.getPageTableData(pageKey, tableKey)
-        if (tableData) {
-          tableData.forEach((row, rowIndex) => {
-            if (!row[idKey]) {
-              row[idKey] = EhrDataModel.GenerateRowId(pageKey, tableKey, tableData)
-            }
-          })
+        const tableData = pageData[tableKey]
+        if (!!tableData) {
+          pageData[tableKey] = theTableUpdater(pageKey, tableKey, tableData)
         }
       })
     }
   })
-  return ehrDataModel.ehrData
+  return ehrData
 }
 
 export function updateAllVisitTime (ehrDataModel) {
@@ -104,6 +127,7 @@ export function visitTimeInEhrData (ehrData) {
       // find first
       const vTimeDef = pgDef.pageChildren.find(pg => pg.inputType === EhrTypes.inputTypes.visitTime)
       const vDayDef = pgDef.pageChildren.find(pg => pg.inputType === EhrTypes.inputTypes.visitDay)
+      console.log('pgDef.pageChildren', pageKey, pgDef.pageChildren)
       // console.log('DATA', pageKey, ehrPageData, vTimeDef, vDayDef)
       // Only tables store simulation time; as of now. In the future may put visit time into forms.
       if (pgDef.hasGridTable && vTimeDef && vDayDef) {
@@ -122,11 +146,11 @@ export function visitTimeInEhrData (ehrData) {
                 if (!isNaN(day) && day > vDay) {
                   vDay = day
                   vTime = time ? time : vTime
-                  // console.log('up the day ', vDay, vTime, pageKey, pgElemKey)
+                  console.log('up the day ', vDay, vTime, pageKey, pgElemKey)
                 } else {
                   if (time && time > vTime) {
                     vTime = time > vTime ? time : vTime
-                    // console.log('up the time ', vDay, vTime, pageKey, pgElemKey)
+                    console.log('up the time ', vDay, vTime, pageKey, pgElemKey)
                   }
                 }
               }
@@ -142,4 +166,44 @@ export function visitTimeInEhrData (ehrData) {
   return { visitDay: vDay, visitTime: mTime }
 }
 
-
+export function visitTimeInEhrDataV2 (ehrData) {
+  let vDay = 0
+  let vTime = 0
+  const rowWork = (pageKey, tableKey, row) => {
+    const tKey = tableKey +'_time'
+    const dKey = tableKey + '_day'
+    if(!row.isDraft) {
+      const day = Number.parseInt(row[dKey])
+      const time = convertTimeStr(row[tKey])
+      if (!isNaN(day) && day > vDay) {
+        vDay = day
+        vTime = time ? time : vTime
+        // console.log('up the day ', vDay, vTime, pageKey, row)
+      } else {
+        if (time && time > vTime) {
+          vTime = time > vTime ? time : vTime
+          // console.log('up the time ', vDay, vTime, pageKey, row)
+        }
+      }
+    }
+  }
+  const pages = new EhrPages()
+  pages.pageList.forEach(page => {
+    const pageKey = page.pageKey
+    const pageData = ehrData[pageKey]
+    if (!!pageData) {
+      page.pageTables.forEach(table => {
+        const tableKey = table.elementKey
+        const tableData = pageData[tableKey]
+        if (!!tableData) {
+          tableData.forEach(row => {
+            rowWork(pageKey, tableKey, row)
+          })
+        }
+      })
+    }
+  })
+  let mTime = ''+vTime
+  mTime = mTime.padStart(4,'0')
+  return { visitDay: vDay, visitTime: mTime }
+}

@@ -2,6 +2,8 @@ import EhrDataModel from '../ehr-definitions/EhrDataModel'
 // eslint-disable-next-line no-unused-vars
 import * as fs from 'fs'
 import expectedEhr from '../resources/old-visit-times-expected.json'
+import { updateRecHeaderElementKeys } from '../ehr-definitions/ehr-data-model-utils'
+import eData from '../resources/allRecHdrTables.json'
 const should = require('should')
 
 // use to create expected output during development
@@ -10,7 +12,8 @@ describe( 'Updates with EhrDataModel', () => {
 
   it('update pre-update data', () => {
     const ehrWithOldTimeVals = require('../resources/old-visit-times-input.json')
-    const expectedEhr = require('../resources/old-visit-times-expected.json')
+    let expectedEhr = require('../resources/old-visit-times-expected.json')
+    // expectedEhr = updateRecHeaderElementKeys(expectedEhr)
     const updatedData = EhrDataModel.PrepareForDb(ehrWithOldTimeVals)
     should.exists(updatedData)
     updatedData.should.have.property('meta')

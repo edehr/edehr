@@ -1,5 +1,10 @@
 // noinspection DuplicatedCode
-import { updateAllRecHeaderIds, updateAllVisitTime, visitTimeInEhrData } from './ehr-data-model-utils'
+import {
+  updateAllRecHeaderIds,
+  updateAllVisitTime,
+  updateRecHeaderElementKeys,
+  visitTimeInEhrData, visitTimeInEhrDataV2
+} from './ehr-data-model-utils'
 import { decoupleObject } from './common-utils'
 import {
   updateMedicationRoute
@@ -9,15 +14,6 @@ import {
  * WARNING Do not edit this code unless you are working in the ehr-workspace common
  * source directory.  Use the makeEhrV2 deploy.sh script to deploy common code
  */
-
-export const MAJOR = 2
-export const MINOR = 2 // bump to 2 because introduce _id to rec headers
-export const PATCH = 1
-export const CurrentEhrDataVerString = function () {
-  return 'ev' + MAJOR +
-    '.' + MINOR +
-    '.' + PATCH
-}
 
 export default class EhrDataModel {
 
@@ -34,22 +30,18 @@ export default class EhrDataModel {
       patch: Number.parseInt(v[3])
     }
   }
+  static CurrentEhrDataVerString () {
+    const theData = (new EhrDataModel({})).ehrData
+    return theData.meta.ehrVersion
+  }
 
   static CheckVer (ehrData, maj, min, pat) {
     const version = EhrDataModel.MetaEhrVersion(ehrData)
     return version && version.major >= maj && version.minor >= min && version.patch >= pat
   }
 
-  static IsUpToDate (ehrData) {
-    return EhrDataModel.CheckVer(ehrData, MAJOR, MINOR, PATCH)
-  }
-
   static PrepareForDb (ehrData) {
-    return EhrDataModel.UpdateIdsInModel(ehrData)
-  }
-
-  static UpdateIdsInModel (ehrData) {
-    return updateAllRecHeaderIds(new EhrDataModel(ehrData))
+    return (new EhrDataModel(ehrData)).ehrData
   }
 
   constructor (ehrData) {
@@ -59,15 +51,10 @@ export default class EhrDataModel {
   loadEhrData (ehrData) {
     // decouple so this constructor can be used inside a Vuex store (can't modify any of its data)
     this._ehrData = decoupleObject(ehrData)
-    // update meta including simTime
-    this._updateEhrDataMeta()
+    this._ehrData.meta = this._ehrData.meta || {}
     this.updateEhrDataToLatestFormat()
-  }
-
-  _updateEhrDataMeta () {
-    const meta = this._ehrData.meta || {}
-    meta.simTime = visitTimeInEhrData(this._ehrData)
-    this._ehrData.meta = meta
+    this._ehrData = updateAllRecHeaderIds(this._ehrData)
+    this._ehrData.meta.simTime = visitTimeInEhrDataV2(this._ehrData)
   }
 
   get ehrData () {
@@ -121,7 +108,10 @@ export default class EhrDataModel {
   }
 
   getPageTableData (pageKey, tableKey) {
-    return this.getPageData(pageKey)[tableKey]
+    return this._ehrData[pageKey][tableKey]
+  }
+  _updatePageTableData (pageKey, tableKey, tableData) {
+    this._ehrData[pageKey][tableKey] = tableData
   }
 
   getRowData (pageKey, tableKey, rowKey) {
@@ -154,35 +144,24 @@ export default class EhrDataModel {
     this._ehrData[pageKey][tableKey] = targetData
   }
 
-  updateDataTo2_1_0 () {
-    const ehrData = updateAllVisitTime(this)
-    ehrData.meta = this._ehrData.meta || {}
-    ehrData.meta.ehrVersion = 'ev2.1.0'
-    this._ehrData = ehrData
-  }
-
-  updateDataTo2_1_1 () {
-    const ehrData = updateMedicationRoute(this)
-    ehrData.meta.ehrVersion = 'ev2.1.1'
-    this._ehrData = ehrData
-  }
-
-  updateDataTo2_2_0 () {
-    const ehrData = updateAllRecHeaderIds(this)
-    ehrData.meta.ehrVersion = 'ev2.2.0'
-    this._ehrData = ehrData
-  }
-
   updateEhrDataToLatestFormat () {
+    if (!EhrDataModel.CheckVer(this._ehrData, 2, 2, 0)) {
+      // must update the record heard key names before updating visit times
+      this._ehrData = updateRecHeaderElementKeys(this._ehrData)
+      // DO NOT UPDATE VERSION YET... update version below
+    }
     if (!EhrDataModel.CheckVer(this._ehrData, 2, 1, 0)) {
-      this.updateDataTo2_1_0()
+      this._ehrData = updateAllVisitTime(this)
+      this._ehrData.meta.ehrVersion = 'ev2.1.0'
     }
     if (!EhrDataModel.CheckVer(this._ehrData, 2, 1, 1)) {
-      this.updateDataTo2_1_1()
+      this._ehrData = updateMedicationRoute(this)
+      this._ehrData.meta.ehrVersion = 'ev2.1.1'
     }
-    if (!EhrDataModel.CheckVer(this._ehrData, 2, 2, 0)) {
-      this.updateDataTo2_2_0()
-    }
+    this._ehrData.meta.ehrVersion = 'ev2.2.0'
+  }
+  static IsUpToDate (ehrData) {
+    return EhrDataModel.CheckVer(ehrData, 2, 2, 0)
   }
 
   static GenerateRowId (pageKey, tableKey, asLoadedTableData) {

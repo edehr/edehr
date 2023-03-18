@@ -46,7 +46,7 @@ export default {
     hideElement () { return (this.element.formOption === 'hideElement' && this.hideIfId)},
     hideIfId () { return this.elementIsId ? !this.devEnv : true },
 
-    _id () { return this.tableKey + '.' + this.element.fqn},
+    _id () { return this.element.fqn}, // element fqn are pageKey.tableKey.childKey
     inputId () {
       return this.elementKey + this.element.inputType
     },

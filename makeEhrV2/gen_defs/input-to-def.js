@@ -250,12 +250,15 @@ class RawInputToDef {
     // *********** page child element
     let pageChild = rawHelper._transferProperties(entry, pageChildElementProperties)
     pageChild.fqn = this._makeFQN(page, entry)
+    if(pageChild.recHeader) {
+      pageChild.elementKey = pElement.elementKey + '_' + pageChild.elementKey
+      entry.elementKey = pageChild.elementKey
+    }
     rawHelper._prepareDropDownOptions(entry, pageChild)
     rawHelper._prepareHelperText(entry, pageChild)
     rawHelper._prepareSuffixText(entry, pageChild)
     // *********** place page child in page
     page.pageChildren.push(pageChild)
-
     // *********** form element
     if (entry.sgN) {
       // *********** place form element in subgroup

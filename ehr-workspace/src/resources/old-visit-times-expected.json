@@ -2,25 +2,25 @@
   "vitals": {
     "table": [
       {
-        "name": "Jason",
-        "profession": "RN",
         "entryDay": "1",
         "entryTime": "18:00",
-        "day": "1",
-        "time": "1800",
         "temperature": "36.5",
         "createdDate": "2019-05-30T10:18:43-07:00",
+        "table_name": "Jason",
+        "table_profession": "RN",
+        "table_day": "1",
+        "table_time": "1800",
         "table_id": "vitals.table.0"
       },
       {
-        "name": "Jason",
-        "profession": "RN",
         "entryDay": "1",
         "entryTime": "07:00",
-        "day": "1",
-        "time": "0700",
         "temperature": "36.5",
         "createdDate": "2019-05-30T10:04:20-07:00",
+        "table_name": "Jason",
+        "table_profession": "RN",
+        "table_day": "1",
+        "table_time": "0700",
         "table_id": "vitals.table.1"
       }
     ]
@@ -49,13 +49,13 @@
   "diagnosticCodes": {
     "table": [
       {
-        "name": "Pat",
-        "day": "1",
-        "time": "1015",
         "condition": "COPD",
         "code": "J44.9",
         "type": "M",
         "createdDate": "2019-05-30T23:11:12-07:00",
+        "table_name": "Pat",
+        "table_day": "1",
+        "table_time": "1015",
         "table_id": "diagnosticCodes.table.0"
       }
     ]

@@ -7,11 +7,9 @@ const PAGE_TABLE_KEY = 'biopsychosocial'
 
 // See https://github.com/edehr/edehr/issues/1063
 const REC_HEADER_KEYS = ['name', 'profession', 'day', 'time']
-REC_HEADER_KEYS.push('_id')
 const KNOWN_DUPS_INTEGUMENTARY = ['exudateAmount', 'exudateType', 'incisionLabel', 'woundLabel']
 const KNOW_DUPS_PAST_APPT = ['diagnosis', 'site']
 const EXCLUDE_KEYS = [
-  ... REC_HEADER_KEYS,
   ... KNOWN_DUPS_INTEGUMENTARY,
   ... KNOW_DUPS_PAST_APPT
 ]
@@ -106,7 +104,7 @@ describe('testing ehr-defs-grid', () => {
     should.exist(result)
     done()
   })
-  
+
   it('getPageElements', done => {
     const elem = EhrDefs.getPageElements(DEFAULT_KEY)
     should.exists(elem)
@@ -148,6 +146,10 @@ describe('testing ehr-defs-grid', () => {
   it('check page children are unique', () => {
     const pageKeys = EhrDefs.getAllPageKeys()
     pageKeys.forEach(pKey => {
+      if ('testPage' === pKey) {
+        console.log('SKIP unique check on testPage')
+        return
+      }
       const children = EhrDefs.getPageChildren(pKey)
       const cNames = children.map(e => e.elementKey)
       const filtered = cNames.filter( cn => !EXCLUDE_KEYS.includes(cn))
@@ -201,14 +203,19 @@ describe ( 'Check table rec headers', () => {
       const pageTables = EhrDefs.getPageTables(pKey)
       pageTables.forEach( tbl => {
         if (tbl.hasRecHeader) {
-          const hasName = tbl.tableChildren.includes('name')
-          hasName.should.equal(true, `${pKey}.${tbl.elementKey} has rec hdr flag without name child`)
+          REC_HEADER_KEYS.forEach(key => {
+            const nKey = tbl.elementKey + '_' + key
+            const has = tbl.tableChildren.includes(nKey)
+            has.should.equal(true, `${pKey}.${tbl.elementKey} has rec hdr flag without ${key} child`)
+
+          })
         }
       })
     })
   })
 
-  it('check tables without rec hdr flag', () => {
+  // no longer need to worry about tables with the old record header keys because we now update the database and definitions to ensure that all record headers have unique record header element keys
+  it.skip('check tables without rec hdr flag', () => {
     const pageKeys = EhrDefs.getAllPageKeys()
     pageKeys.forEach(pKey => {
       if ('careTeam' === pKey) {

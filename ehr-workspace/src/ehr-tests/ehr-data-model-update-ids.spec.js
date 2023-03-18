@@ -4,6 +4,7 @@ import { EhrPages } from '../ehr-definitions/ehr-models'
 const should = require('should')
 import * as fs from 'fs'
 import eData from '../resources/allRecHdrTables.json'
+import { updateAllRecHeaderIds } from '../ehr-definitions/ehr-data-model-utils'
 
 function generateErDataWithIds () {
   const eData = {}
@@ -34,12 +35,12 @@ describe ('Ehr data model update all rows of tables with rec header to insert id
     generateErDataWithIds()
   })
 
-  it ('Update ehr data with ids. Using EhrDataModel.UpdateIdsInModel ', () => {
+  it ('Update ehr data ids using updateAllRecHeaderIds() ', () => {
     const eData = require('../resources/allRecHdrTables.json')
     eData.visit.diagnosisTable[0].should.have.property('diagnosisTable_id')
     eData.visit.diagnosisTable[1].should.not.have.property('diagnosisTable_id')
     eData.visit.diagnosisTable[0].diagnosisTable_id.should.equal('pre existing id')
-    const updatedData = EhrDataModel.UpdateIdsInModel(eData)
+    const updatedData = updateAllRecHeaderIds(eData)
     // console.log('--------------------', JSON.stringify(updatedData, null,1))
     updatedData.visit.diagnosisTable[0].diagnosisTable_id.should.equal('pre existing id')
     // note that the first row has a nonstandard id (intentional test) so it does not
@@ -64,11 +65,18 @@ describe ('Ehr data model update all rows of tables with rec header to insert id
 
   it ('After using PrepareForDb add more data rows and prepare again', () => {
     const eData = require('../resources/allRecHdrTables.json')
+    // console.log('before prep eData',eData.hematology)
     const updatedData = EhrDataModel.PrepareForDb(eData)
     updatedData.hematology.tableCbcAnalysis.push({name:'fff'})
+    // console.log('after prep and insrt updatedData',updatedData.hematology)
     const d2 = EhrDataModel.PrepareForDb(updatedData)
     let inx = d2.hematology.tableCbcAnalysis.length -1 // index to last element of table
     let newId = 'hematology.tableCbcAnalysis.' + inx
+    should.exist(d2)
+    // console.log('after 2nd prep d2',d2.hematology, inx)
+    should.exist(d2.hematology.tableCbcAnalysis)
+    should.exist(d2.hematology.tableCbcAnalysis[inx])
+    should.exist(d2.hematology.tableCbcAnalysis[inx].tableCbcAnalysis_id)
     d2.hematology.tableCbcAnalysis[inx].tableCbcAnalysis_id.should.equal(newId)
   })
 

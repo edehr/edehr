@@ -1,5 +1,6 @@
 import EhrDataModel from '../ehr-definitions/EhrDataModel'
 import { updateAllVisitTime } from '../ehr-definitions/ehr-data-model-utils'
+import initialData from '../resources/sampleMedsForTimeline.json'
 
 const should = require('should')
 const ehrData = {
@@ -33,6 +34,16 @@ const ehrData = {
       {
         name: 'Jason',
         profession: 'RN',
+        day: '1',
+        time: '21:30',
+        alert: true,
+        extinctionAndInattention: '0 = No abnormality',
+        strokeAssessmentCalculation: 0,
+        createdDate: '2019-05-30T21:50:42-07:00'
+      },
+      {
+        name: 'Jason',
+        profession: 'RN',
         day: '0',
         time: '19:30',
         alert: true,
@@ -50,24 +61,44 @@ describe( 'ehr-def-utils work', () => {
     should.exist(model)
     const data = model.ehrData
     should.exist(data)
+    // console.log('what', JSON.stringify(data, null, 2))
     // this tests visitTimeInEhrData indirectly
     data.should.have.property('meta')
     data.meta.should.have.property('simTime')
     data.meta.simTime.should.have.property('visitTime')
-    data.meta.simTime.visitTime.should.equal('1930')
+    data.meta.simTime.visitTime.should.equal('2130')
     data.meta.simTime.should.have.property('visitDay')
-    data.meta.simTime.visitDay.should.equal(0)
+    data.meta.simTime.visitDay.should.equal(1)
   })
 
-  it ('updateAllVisitTime', () => {
+  it('updateAllVisitTime', () => {
     let eData = ehrData
     const model = new EhrDataModel(eData)
     eData = updateAllVisitTime(model)
     let tData = model.getPageTableData('visit', 'table')
     tData[0].transferInTime.should.equal('0030')
     tData = model.getPageTableData('neurological', 'table')
-    tData[0].time.should.equal('1930')
+    // NOTE how the record header time key now contains the tableKey ...
+    // console.log('tData',tData)
+    tData[1]['table_time'].should.equal('1930')
     let fData = model.getPageFormData('visit', 'admissionTime')
     fData.should.equal('0600')
+  })
+})
+describe( 'visit time on bigger set', () => {
+
+  it('bigger data set', () => {
+    const initialData = require('../resources/sampleMedsForTimeline.json')
+    const ehrModel = new EhrDataModel(initialData)
+    const data = ehrModel.ehrData
+    // console.log('data', JSON.stringify(data, null, 2))
+    data.should.have.property('meta')
+    data.meta.should.have.property('simTime')
+    data.meta.simTime.should.have.property('visitDay')
+    data.meta.simTime.visitDay.should.equal(3)
+    data.meta.simTime.should.have.property('visitTime')
+    data.meta.simTime.visitTime.should.equal('0300')
+
+
   })
 })

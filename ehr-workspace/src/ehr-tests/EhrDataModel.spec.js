@@ -1,7 +1,7 @@
 /**
  * WARNING Do not edit this code unless you are working in the makeEhr common_src directory.  Use the copy script to deployr to both server and client
  */
-import EhrDataModel, { CurrentEhrDataVerString } from '../ehr-definitions/EhrDataModel'
+import EhrDataModel from '../ehr-definitions/EhrDataModel'
 const should = require('should')
 
 const ehrData = {
@@ -195,8 +195,11 @@ describe ('EhrDataModel class methods', () => {
   })
 
   it ('IsUpToDate', () => {
+    // NOTE MUST MANUALLY UPDATE THIS TEST WHENEVER VERSON CHANGES
     let e = { meta: {} }
-    e.meta.ehrVersion = CurrentEhrDataVerString()
+    e.meta.ehrVersion = 'ev2.1.1'
+    EhrDataModel.IsUpToDate(e).should.equal(false)
+    e.meta.ehrVersion = 'ev2.2.0'
     EhrDataModel.IsUpToDate(e).should.equal(true)
   })
 
