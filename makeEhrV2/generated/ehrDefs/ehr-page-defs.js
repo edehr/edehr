@@ -13916,7 +13916,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group175',
+              'elementKey': 'ehr_group176',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -13927,7 +13927,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group176',
+              'elementKey': 'ehr_group177',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
               'gChildren': [
@@ -14134,7 +14134,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group177',
+              'elementKey': 'ehr_group178',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -14145,7 +14145,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group178',
+              'elementKey': 'ehr_group179',
               'gIndex': '2',
               'gChildren': [
                 'clinical',
@@ -14305,7 +14305,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group181',
+              'elementKey': 'ehr_group182',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -14316,7 +14316,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group182',
+              'elementKey': 'ehr_group183',
               'gIndex': '2',
               'gChildren': [
                 'consultReport',
@@ -14633,7 +14633,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_HCO3',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Bicarbonate',
         'suffix': '21–32 mmol/L',
@@ -14644,7 +14644,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_Ca',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Calcium',
         'suffix': '2.12–2.52 mmol/L',
@@ -14655,7 +14655,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_Ca_Ion',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Calcium Ionized',
         'suffix': '1.14–1.28 mmol/L',
@@ -14666,7 +14666,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_chloride',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Chloride',
         'tableColumn': '5',
@@ -14674,7 +14674,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_ck',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Creatinine Kinase',
         'tableColumn': '6',
@@ -14682,7 +14682,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_Mg',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Magnesium',
         'suffix': '0.74–1.03 mmol/L',
@@ -14693,7 +14693,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_PO4',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Phosphate',
         'suffix': '0.81–1.58 mmol/L',
@@ -14704,7 +14704,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_K',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Potassium',
         'suffix': '3.5–5.1 mmol/L',
@@ -14715,7 +14715,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_Na',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Sodium',
         'suffix': '136–146 mmol/L',
@@ -14726,7 +14726,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_bun',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Blood Urea Nitrogen',
         'suffix': 'F: 22–75 µmol/L-NL-M: 49–93 µmol/L',
@@ -14737,7 +14737,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_cr',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Creatinine',
         'suffix': 'F: 22–75 µmol/L-NL-M: 49–93 µmol/L',
@@ -14748,7 +14748,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_alt',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Alanine transaminase (ALT)',
         'suffix': '17–63 IU/L',
@@ -14759,7 +14759,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_ast',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Aspartate transferase (AST)',
         'suffix': '15–37 IU/L',
@@ -14770,7 +14770,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_alp',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Alkaline phosphatase (ALP)',
         'suffix': '50–136 IU/L',
@@ -14781,7 +14781,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_bilirubinD',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Bilirubin direct',
         'suffix': '2–9 µmol/L',
@@ -14792,7 +14792,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_bilirubinT',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Bilirubin total',
         'suffix': '3–17 µmol/L',
@@ -14803,7 +14803,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_ggt',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Gamma glutamyl transferase (GGT)',
         'suffix': 'F: 5.0–55.0 IU/L-NL-M: 15.0–85.0 IU/L',
@@ -14814,7 +14814,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_ldh',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Lactate dehydrogenase (LDH)',
         'suffix': '100–205 IU/L',
@@ -14825,7 +14825,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_lipase',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Lipase',
         'suffix': '73–393 IU/L',
@@ -14836,7 +14836,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_abg_hco3',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Bicarbonate HCO3',
         'suffix': '22–27 mmol/L',
@@ -14847,7 +14847,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_abg_o2sat',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Oxygen saturation (O2Sat)',
         'suffix': '96-100%',
@@ -14858,7 +14858,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_abg_pco2',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Partial pressure of carbon dioxide (PcO2)',
         'suffix': '32–45 mm Hg',
@@ -14869,7 +14869,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_po2',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'Partial pressure of oxygen (PO2)',
         'suffix': '83–116 mm Hg',
@@ -14880,7 +14880,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_abg_ph',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'lab_result',
         'label': 'ph',
         'suffix': '7.38–7.46',
@@ -14891,7 +14891,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_bloodGroup',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'select',
         'label': 'Blood group',
         'options': [
@@ -14933,7 +14933,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lrh_antibody',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'checkbox',
         'label': 'Antibody positive',
         'tableColumn': '27',
@@ -14941,7 +14941,7 @@ const DEFS = {
       },
       {
         'elementKey': 'labResultUrine_name',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'practitionerName',
         'label': 'Name',
         'tableColumn': '1',
@@ -14958,7 +14958,7 @@ const DEFS = {
       },
       {
         'elementKey': 'labResultUrine_profession',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
         'tableColumn': '1',
@@ -14967,7 +14967,7 @@ const DEFS = {
       },
       {
         'elementKey': 'labResultUrine_day',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'visitDay',
         'label': 'Day',
         'tableColumn': '1',
@@ -14977,7 +14977,7 @@ const DEFS = {
       },
       {
         'elementKey': 'labResultUrine_time',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'visitTime',
         'label': 'Time',
         'tableColumn': '1',
@@ -14987,7 +14987,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_calrity',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Calrity',
         'suffix': 'Normal: Clear',
@@ -14998,7 +14998,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_colour',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Colour',
         'suffix': 'Normal: Pale to dark yellow',
@@ -15009,7 +15009,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_ordour',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Ordour',
         'suffix': 'Slightly \'nutty\' odour',
@@ -15020,7 +15020,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_albumin',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Albumin',
         'suffix': '< 30mg',
@@ -15031,7 +15031,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_acr',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Albumin to creatinine ratio',
         'suffix': '≤ 2.0 g/mol Cr',
@@ -15042,7 +15042,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_aldosterone',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Aldosterone',
         'suffix': '13.9–52.6 nmol/24 hour',
@@ -15053,7 +15053,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_calcium',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Calcium',
         'suffix': '< 6.2 mmol/d',
@@ -15064,7 +15064,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_catecholamines',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Catecholamines',
         'suffix': '< 591 nmol/m2/24 hours',
@@ -15075,7 +15075,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_cortisol',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Cortisol',
         'suffix': '< 248 nmol/24 hours',
@@ -15086,7 +15086,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_glucose',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Glucose',
         'suffix': '60–830 mcmol/L',
@@ -15097,7 +15097,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_ketones',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Ketones',
         'suffix': 'none',
@@ -15108,7 +15108,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_leukocyte',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Leukocyte esterase (WBC esterase)',
         'tableColumn': '13',
@@ -15116,7 +15116,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_nitrates',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Nitrates',
         'tableColumn': '14',
@@ -15124,7 +15124,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_osmolality',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Osmolality',
         'suffix': '38–1400 mOsm/kg H2O',
@@ -15135,7 +15135,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_ph',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'pH',
         'suffix': '5.0–8.5',
@@ -15146,7 +15146,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_phosphate',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Phosphate',
         'suffix': 'Adult: 1.0-1.5 mmol/L-NL-Child: 1.3-2.3 mmol/L',
@@ -15157,7 +15157,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_protein',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Protein',
         'suffix': 'None',
@@ -15168,7 +15168,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_sodium',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Sodium',
         'suffix': '40-220 mmol/d',
@@ -15179,7 +15179,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_speccificGravity',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Speccific gravity',
         'suffix': '1.005–1.030',
@@ -15190,7 +15190,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_uricAcid',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Uric acid',
         'suffix': '1.48–4.43 mmol/24 hours',
@@ -15201,7 +15201,7 @@ const DEFS = {
       },
       {
         'elementKey': 'lru_urobilinogen',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Urobilinogen',
         'suffix': '≤ 16.0 µmol/L',
@@ -15261,7 +15261,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group187',
+              'elementKey': 'ehr_group188',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -15272,7 +15272,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group188',
+              'elementKey': 'ehr_group189',
               'gIndex': '2',
               'gChildren': [
                 'laboratoryReport',
@@ -15331,78 +15331,245 @@ const DEFS = {
             'label': 'Hemoglobin A1-C',
             'ehr_list_index': '2',
             'items': [
-              'lrh_HbA1C',
-              'lrh_HCO3'
+              'lrh_HbA1C'
             ]
           },
           {
             'label': 'Hemoglobin',
             'ehr_list_index': '3',
             'items': [
-              'lrh_Hgb',
+              'lrh_Hgb'
+            ]
+          },
+          {
+            'ehr_list_index': '4',
+            'items': [
+              'lrh_hct'
+            ]
+          },
+          {
+            'ehr_list_index': '5',
+            'items': [
+              'lrh_platelets'
+            ]
+          },
+          {
+            'ehr_list_index': '6',
+            'items': [
+              'lrh_rbc'
+            ]
+          },
+          {
+            'ehr_list_index': '7',
+            'items': [
+              'lrh_wbc'
+            ]
+          },
+          {
+            'ehr_list_index': '8',
+            'items': [
+              'lrh_basophils'
+            ]
+          },
+          {
+            'ehr_list_index': '9',
+            'items': [
+              'lrh_eosinophils'
+            ]
+          },
+          {
+            'ehr_list_index': '10',
+            'items': [
+              'lrh_lymphocytes'
+            ]
+          },
+          {
+            'ehr_list_index': '11',
+            'items': [
+              'lrh_monocytes'
+            ]
+          },
+          {
+            'ehr_list_index': '12',
+            'items': [
+              'lrh_neutrophils'
+            ]
+          }
+        ],
+        'form': {
+          'elementKey': 'labResultHematology',
+          'label': 'Hematology',
+          'addButtonText': 'Create a hematology laboratory report',
+          'formOption': 'transpose',
+          'formKey': 'labResultHematology',
+          'ehr_groups': [
+            {
+              'elementKey': 'ehr_group190',
+              'formCss': 'record-header',
+              'gIndex': '1',
+              'gChildren': [
+                'labResultHematology_name',
+                'labResultHematology_profession',
+                'labResultHematology_day',
+                'labResultHematology_time'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group191',
+              'label': 'Hematology',
+              'formCss': 'grid-left-to-right-1',
+              'gIndex': '2',
+              'gChildren': [
+                'lrh_HbA1C',
+                'lrh_Hgb',
+                'lrh_hct',
+                'lrh_platelets',
+                'lrh_rbc',
+                'lrh_wbc'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group192',
+              'label': 'WBC Types',
+              'formCss': 'grid-left-to-right-1',
+              'gIndex': '3',
+              'gChildren': [
+                'lrh_basophils',
+                'lrh_eosinophils',
+                'lrh_lymphocytes',
+                'lrh_monocytes',
+                'lrh_neutrophils'
+              ]
+            }
+          ],
+          'ehr_data': {
+            'labResultHematology_name': '',
+            'labResultHematology_profession': '',
+            'labResultHematology_day': '',
+            'labResultHematology_time': '',
+            'lrh_HbA1C': '',
+            'lrh_Hgb': '',
+            'lrh_hct': '',
+            'lrh_platelets': '',
+            'lrh_rbc': '',
+            'lrh_wbc': '',
+            'lrh_basophils': '',
+            'lrh_eosinophils': '',
+            'lrh_lymphocytes': '',
+            'lrh_monocytes': '',
+            'lrh_neutrophils': ''
+          }
+        },
+        'tableChildren': [
+          'labResultHematology_id',
+          'labResultHematology_name',
+          'labResultHematology_profession',
+          'labResultHematology_day',
+          'labResultHematology_time',
+          'lrh_HbA1C',
+          'lrh_Hgb',
+          'lrh_hct',
+          'lrh_platelets',
+          'lrh_rbc',
+          'lrh_wbc',
+          'lrh_basophils',
+          'lrh_eosinophils',
+          'lrh_lymphocytes',
+          'lrh_monocytes',
+          'lrh_neutrophils'
+        ],
+        'hasRecHeader': true
+      },
+      'labResultGeneral': {
+        'elementKey': 'labResultGeneral',
+        'pageElementIndex': '3',
+        'pageKey': 'labResults',
+        'tableKey': 'labResultGeneral',
+        'isTable': true,
+        'label': 'General',
+        'addButtonText': 'Create a hematology laboratory report',
+        'ehr_list': [
+          {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'labResultGeneral_id'
+            ]
+          },
+          {
+            'label': 'Identification',
+            'ehr_list_index': '1',
+            'items': [
+              'labResultGeneral_name',
+              'labResultGeneral_profession',
+              'labResultGeneral_day',
+              'labResultGeneral_time'
+            ]
+          },
+          {
+            'ehr_list_index': '2',
+            'items': [
+              'lrh_HCO3'
+            ]
+          },
+          {
+            'ehr_list_index': '3',
+            'items': [
               'lrh_Ca'
             ]
           },
           {
             'ehr_list_index': '4',
             'items': [
-              'lrh_hct',
               'lrh_Ca_Ion'
             ]
           },
           {
             'ehr_list_index': '5',
             'items': [
-              'lrh_platelets',
               'lrh_chloride'
             ]
           },
           {
             'ehr_list_index': '6',
             'items': [
-              'lrh_rbc',
               'lrh_ck'
             ]
           },
           {
             'ehr_list_index': '7',
             'items': [
-              'lrh_wbc',
               'lrh_Mg'
             ]
           },
           {
             'ehr_list_index': '8',
             'items': [
-              'lrh_basophils',
               'lrh_PO4'
             ]
           },
           {
             'ehr_list_index': '9',
             'items': [
-              'lrh_eosinophils',
               'lrh_K'
             ]
           },
           {
             'ehr_list_index': '10',
             'items': [
-              'lrh_lymphocytes',
               'lrh_Na'
             ]
           },
           {
             'ehr_list_index': '11',
             'items': [
-              'lrh_monocytes',
               'lrh_bun'
             ]
           },
           {
             'ehr_list_index': '12',
             'items': [
-              'lrh_neutrophils',
               'lrh_cr'
             ]
           },
@@ -15498,55 +15665,28 @@ const DEFS = {
           }
         ],
         'form': {
-          'elementKey': 'labResultHematology',
-          'label': 'Hematology',
+          'elementKey': 'labResultGeneral',
+          'label': 'General',
           'addButtonText': 'Create a hematology laboratory report',
           'formOption': 'transpose',
-          'formKey': 'labResultHematology',
+          'formKey': 'labResultGeneral',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group189',
+              'elementKey': 'ehr_group193',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
-                'labResultHematology_name',
-                'labResultHematology_profession',
-                'labResultHematology_day',
-                'labResultHematology_time'
+                'labResultGeneral_name',
+                'labResultGeneral_profession',
+                'labResultGeneral_day',
+                'labResultGeneral_time'
               ]
             },
             {
-              'elementKey': 'ehr_group190',
-              'label': 'Hematology',
-              'formCss': 'grid-left-to-right-1',
-              'gIndex': '2',
-              'gChildren': [
-                'lrh_HbA1C',
-                'lrh_Hgb',
-                'lrh_hct',
-                'lrh_platelets',
-                'lrh_rbc',
-                'lrh_wbc'
-              ]
-            },
-            {
-              'elementKey': 'ehr_group191',
-              'label': 'WBC Types',
-              'formCss': 'grid-left-to-right-1',
-              'gIndex': '3',
-              'gChildren': [
-                'lrh_basophils',
-                'lrh_eosinophils',
-                'lrh_lymphocytes',
-                'lrh_monocytes',
-                'lrh_neutrophils'
-              ]
-            },
-            {
-              'elementKey': 'ehr_group193',
+              'elementKey': 'ehr_group194',
               'label': 'Chemistry',
               'formCss': 'grid-left-to-right-1',
-              'gIndex': '4',
+              'gIndex': '2',
               'gChildren': [
                 'lrh_HCO3',
                 'lrh_Ca',
@@ -15560,20 +15700,20 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group194',
+              'elementKey': 'ehr_group195',
               'label': 'Renal Profile',
               'formCss': 'grid-left-to-right-1',
-              'gIndex': '5',
+              'gIndex': '3',
               'gChildren': [
                 'lrh_bun',
                 'lrh_cr'
               ]
             },
             {
-              'elementKey': 'ehr_group195',
+              'elementKey': 'ehr_group196',
               'label': 'Liver function',
               'formCss': 'grid-left-to-right-1',
-              'gIndex': '6',
+              'gIndex': '4',
               'gChildren': [
                 'lrh_alt',
                 'lrh_ast',
@@ -15586,10 +15726,10 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group196',
+              'elementKey': 'ehr_group197',
               'label': 'Blood gast tests',
               'formCss': 'grid-left-to-right-1',
-              'gIndex': '7',
+              'gIndex': '5',
               'gChildren': [
                 'lrh_abg_hco3',
                 'lrh_abg_o2sat',
@@ -15599,9 +15739,9 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group197',
+              'elementKey': 'ehr_group198',
               'label': 'Group and screen',
-              'gIndex': '8',
+              'gIndex': '6',
               'gChildren': [
                 'lrh_bloodGroup',
                 'lrh_antibody'
@@ -15609,21 +15749,10 @@ const DEFS = {
             }
           ],
           'ehr_data': {
-            'labResultHematology_name': '',
-            'labResultHematology_profession': '',
-            'labResultHematology_day': '',
-            'labResultHematology_time': '',
-            'lrh_HbA1C': '',
-            'lrh_Hgb': '',
-            'lrh_hct': '',
-            'lrh_platelets': '',
-            'lrh_rbc': '',
-            'lrh_wbc': '',
-            'lrh_basophils': '',
-            'lrh_eosinophils': '',
-            'lrh_lymphocytes': '',
-            'lrh_monocytes': '',
-            'lrh_neutrophils': '',
+            'labResultGeneral_name': '',
+            'labResultGeneral_profession': '',
+            'labResultGeneral_day': '',
+            'labResultGeneral_time': '',
             'lrh_HCO3': '',
             'lrh_Ca': '',
             'lrh_Ca_Ion': '',
@@ -15653,22 +15782,11 @@ const DEFS = {
           }
         },
         'tableChildren': [
-          'labResultHematology_id',
-          'labResultHematology_name',
-          'labResultHematology_profession',
-          'labResultHematology_day',
-          'labResultHematology_time',
-          'lrh_HbA1C',
-          'lrh_Hgb',
-          'lrh_hct',
-          'lrh_platelets',
-          'lrh_rbc',
-          'lrh_wbc',
-          'lrh_basophils',
-          'lrh_eosinophils',
-          'lrh_lymphocytes',
-          'lrh_monocytes',
-          'lrh_neutrophils',
+          'labResultGeneral_id',
+          'labResultGeneral_name',
+          'labResultGeneral_profession',
+          'labResultGeneral_day',
+          'labResultGeneral_time',
           'lrh_HCO3',
           'lrh_Ca',
           'lrh_Ca_Ion',
@@ -15700,7 +15818,7 @@ const DEFS = {
       },
       'labResultUrine': {
         'elementKey': 'labResultUrine',
-        'pageElementIndex': '3',
+        'pageElementIndex': '4',
         'pageKey': 'labResults',
         'tableKey': 'labResultUrine',
         'isTable': true,
@@ -15860,7 +15978,7 @@ const DEFS = {
           'formKey': 'labResultUrine',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group198',
+              'elementKey': 'ehr_group199',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -15871,7 +15989,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group199',
+              'elementKey': 'ehr_group200',
               'label': 'General',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
@@ -15882,7 +16000,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group200',
+              'elementKey': 'ehr_group201',
               'label': 'Chemistry',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '3',
@@ -16089,7 +16207,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group183',
+              'elementKey': 'ehr_group184',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -16100,7 +16218,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group184',
+              'elementKey': 'ehr_group185',
               'gIndex': '2',
               'gChildren': [
                 'laboratoryReport',
@@ -16251,7 +16369,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group185',
+              'elementKey': 'ehr_group186',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -16262,7 +16380,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group186',
+              'elementKey': 'ehr_group187',
               'gIndex': '2',
               'gChildren': [
                 'laboratoryReport',
@@ -16442,7 +16560,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group201',
+            'elementKey': 'ehr_group202',
             'gIndex': '1',
             'gChildren': [
               {
@@ -16543,7 +16661,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group202',
+            'elementKey': 'ehr_group203',
             'gIndex': '1',
             'gChildren': [
               'snomed',
@@ -16764,7 +16882,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group203',
+              'elementKey': 'ehr_group204',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -16775,7 +16893,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group204',
+              'elementKey': 'ehr_group205',
               'gIndex': '2',
               'gChildren': [
                 'icd10',
@@ -16970,7 +17088,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group205',
+              'elementKey': 'ehr_group206',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -16981,7 +17099,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group206',
+              'elementKey': 'ehr_group207',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
               'gChildren': [
@@ -17193,7 +17311,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group207',
+              'elementKey': 'ehr_group208',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -17204,7 +17322,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group208',
+              'elementKey': 'ehr_group209',
               'gIndex': '2',
               'gChildren': [
                 'clinicalCategory',
@@ -17565,11 +17683,11 @@ const DEFS = {
         'fqn': 'testPage.textDateDate'
       },
       {
-        'elementKey': 'spacer213',
+        'elementKey': 'spacer214',
         'formIndex': '3',
         'inputType': 'spacer',
         'label': 'TextDate',
-        'fqn': 'testPage.spacer213'
+        'fqn': 'testPage.spacer214'
       },
       {
         'elementKey': 'name',
@@ -17595,7 +17713,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group209',
+            'elementKey': 'ehr_group210',
             'formOption': '3',
             'label': 'A group label',
             'gIndex': '1',
@@ -17613,7 +17731,7 @@ const DEFS = {
             ]
           },
           {
-            'elementKey': 'ehr_group210',
+            'elementKey': 'ehr_group211',
             'label': 'Second group',
             'gIndex': '2',
             'gChildren': [
@@ -17690,7 +17808,7 @@ const DEFS = {
           'formKey': 'table1',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group211',
+              'elementKey': 'ehr_group212',
               'label': 'Group 1',
               'gIndex': '1',
               'gChildren': [
@@ -17718,7 +17836,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group212',
+            'elementKey': 'ehr_group213',
             'label': 'A group label',
             'gIndex': '1',
             'gChildren': [
@@ -17728,7 +17846,7 @@ const DEFS = {
               'form2_time',
               'textDate',
               'textDateDate',
-              'spacer213',
+              'spacer214',
               'name',
               'place'
             ]
@@ -18079,13 +18197,13 @@ const DEFS = {
         'fqn': 'testTable.cd1Date'
       },
       {
-        'elementKey': 'spacer219',
+        'elementKey': 'spacer220',
         'formIndex': '2',
         'inputType': 'spacer',
         'label': 'C D 1',
         'tableColumn': '2',
         'tableLabel': 'Chk 1',
-        'fqn': 'testTable.spacer219'
+        'fqn': 'testTable.spacer220'
       },
       {
         'elementKey': 'cd2',
@@ -18107,13 +18225,13 @@ const DEFS = {
         'fqn': 'testTable.cd2Date'
       },
       {
-        'elementKey': 'spacer220',
+        'elementKey': 'spacer221',
         'formIndex': '2',
         'inputType': 'spacer',
         'label': 'C D 2',
         'tableColumn': '3',
         'tableLabel': 'Chk 2',
-        'fqn': 'testTable.spacer220'
+        'fqn': 'testTable.spacer221'
       },
       {
         'elementKey': 'td1',
@@ -18134,13 +18252,13 @@ const DEFS = {
         'fqn': 'testTable.td1Date'
       },
       {
-        'elementKey': 'spacer221',
+        'elementKey': 'spacer222',
         'formIndex': '2',
         'inputType': 'spacer',
         'label': 'TextDate',
         'tableColumn': '4',
         'tableLabel': 'Txt 1',
-        'fqn': 'testTable.spacer221'
+        'fqn': 'testTable.spacer222'
       },
       {
         'elementKey': 'referralName',
@@ -18463,7 +18581,7 @@ const DEFS = {
           'formKey': 'table1',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group214',
+              'elementKey': 'ehr_group215',
               'label': 'Group 1',
               'gIndex': '1',
               'gChildren': [
@@ -18479,7 +18597,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group215',
+              'elementKey': 'ehr_group216',
               'gIndex': '2',
               'gChildren': [
                 {
@@ -18514,7 +18632,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group216',
+              'elementKey': 'ehr_group217',
               'formOption': '1',
               'formCss': 'full-width',
               'gIndex': '3',
@@ -18594,7 +18712,7 @@ const DEFS = {
             'items': [
               'cd1',
               'cd1Date',
-              'spacer219'
+              'spacer220'
             ]
           },
           {
@@ -18603,7 +18721,7 @@ const DEFS = {
             'items': [
               'cd2',
               'cd2Date',
-              'spacer220'
+              'spacer221'
             ]
           },
           {
@@ -18612,7 +18730,7 @@ const DEFS = {
             'items': [
               'td1',
               'td1Date',
-              'spacer221'
+              'spacer222'
             ]
           },
           {
@@ -18646,7 +18764,7 @@ const DEFS = {
           'formKey': 'stacked',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group217',
+              'elementKey': 'ehr_group218',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -18657,22 +18775,22 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group218',
+              'elementKey': 'ehr_group219',
               'gIndex': '2',
               'gChildren': [
                 'cd1',
                 'cd1Date',
-                'spacer219',
+                'spacer220',
                 'cd2',
                 'cd2Date',
-                'spacer220',
+                'spacer221',
                 'td1',
                 'td1Date',
-                'spacer221'
+                'spacer222'
               ]
             },
             {
-              'elementKey': 'ehr_group222',
+              'elementKey': 'ehr_group223',
               'gIndex': '3',
               'gChildren': [
                 'referralName',
@@ -18710,13 +18828,13 @@ const DEFS = {
           'stacked_time',
           'cd1',
           'cd1Date',
-          'spacer219',
+          'spacer220',
           'cd2',
           'cd2Date',
-          'spacer220',
+          'spacer221',
           'td1',
           'td1Date',
-          'spacer221',
+          'spacer222',
           'referralName',
           'referralProfession',
           'appointmentDate',
@@ -21777,19 +21895,14 @@ const DEFS = {
     'hasGridTable': true,
     'pageChildren': [
       {
-        'elementKey': 'wbc',
+        'elementKey': 'tableCbcAnalysis_name',
         'formIndex': '1',
-        'helperText': 'White blood cell count',
-        'inputType': 'number',
-        'label': 'WBC',
-        'mandatory': true,
-        'suffix': '10^9/L',
+        'inputType': 'practitionerName',
+        'label': 'Name',
         'tableColumn': '1',
-        'validation': 'numeric',
-        'fqn': 'hematology.wbc',
-        'helperHtml': '<p>White blood cell count</p>',
-        'suffixText': '<p>10^9/L</p>',
-        'suffixHtml': '10^9/L'
+        'tableLabel': 'Identification',
+        'recHeader': true,
+        'fqn': 'hematology.name'
       },
       {
         'elementKey': 'tableCbcAnalysis_id',
@@ -21797,6 +21910,50 @@ const DEFS = {
         'tableColumn': 0,
         'label': 'Row id',
         'tableCss': 'row-id'
+      },
+      {
+        'elementKey': 'tableCbcAnalysis_profession',
+        'formIndex': '1',
+        'inputType': 'practitionerProfession',
+        'label': 'Profession',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'hematology.profession'
+      },
+      {
+        'elementKey': 'tableCbcAnalysis_day',
+        'formIndex': '1',
+        'inputType': 'visitDay',
+        'label': 'Day',
+        'tableColumn': '1',
+        'validation': 'visitDay',
+        'recHeader': true,
+        'fqn': 'hematology.day'
+      },
+      {
+        'elementKey': 'tableCbcAnalysis_time',
+        'formIndex': '1',
+        'inputType': 'visitTime',
+        'label': 'Time',
+        'tableColumn': '1',
+        'validation': 'time24',
+        'recHeader': true,
+        'fqn': 'hematology.time'
+      },
+      {
+        'elementKey': 'wbc',
+        'formIndex': '1',
+        'helperText': 'White blood cell count',
+        'inputType': 'number',
+        'label': 'WBC',
+        'mandatory': true,
+        'suffix': '10^9/L',
+        'tableColumn': '2',
+        'validation': 'numeric',
+        'fqn': 'hematology.wbc',
+        'helperHtml': '<p>White blood cell count</p>',
+        'suffixText': '<p>10^9/L</p>',
+        'suffixHtml': '10^9/L'
       },
       {
         'elementKey': 'wbc-interp',
@@ -21817,14 +21974,14 @@ const DEFS = {
             'text': 'high'
           }
         ],
-        'tableColumn': '2',
+        'tableColumn': '3',
         'fqn': 'hematology.wbc-interp'
       },
       {
-        'elementKey': 'spacer142',
+        'elementKey': 'spacer143',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer142'
+        'fqn': 'hematology.spacer143'
       },
       {
         'elementKey': 'rbc',
@@ -21833,7 +21990,7 @@ const DEFS = {
         'inputType': 'number',
         'label': 'RBC',
         'suffix': '10^12/L',
-        'tableColumn': '3',
+        'tableColumn': '4',
         'validation': 'numeric',
         'fqn': 'hematology.rbc',
         'helperHtml': '<p>Red blood cell count</p>',
@@ -21859,14 +22016,14 @@ const DEFS = {
             'text': 'high'
           }
         ],
-        'tableColumn': '4',
+        'tableColumn': '5',
         'fqn': 'hematology.rbc-interp'
       },
       {
-        'elementKey': 'spacer143',
+        'elementKey': 'spacer144',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer143'
+        'fqn': 'hematology.spacer144'
       },
       {
         'elementKey': 'hgb',
@@ -21875,7 +22032,7 @@ const DEFS = {
         'inputType': 'number',
         'label': 'HGB',
         'suffix': 'g/L',
-        'tableColumn': '5',
+        'tableColumn': '6',
         'validation': 'numeric',
         'fqn': 'hematology.hgb',
         'helperHtml': '<p>Hemoglobin</p>',
@@ -21901,14 +22058,14 @@ const DEFS = {
             'text': 'high'
           }
         ],
-        'tableColumn': '6',
+        'tableColumn': '7',
         'fqn': 'hematology.hgb-interp'
       },
       {
-        'elementKey': 'spacer144',
+        'elementKey': 'spacer145',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer144'
+        'fqn': 'hematology.spacer145'
       },
       {
         'elementKey': 'HCT',
@@ -21917,7 +22074,7 @@ const DEFS = {
         'inputType': 'number',
         'label': 'HCT',
         'suffix': 'L/L',
-        'tableColumn': '7',
+        'tableColumn': '8',
         'validation': 'numeric',
         'fqn': 'hematology.HCT',
         'helperHtml': '<p>Hematocrit</p>',
@@ -21943,14 +22100,14 @@ const DEFS = {
             'text': 'high'
           }
         ],
-        'tableColumn': '8',
+        'tableColumn': '9',
         'fqn': 'hematology.HCT-interp'
       },
       {
-        'elementKey': 'spacer145',
+        'elementKey': 'spacer146',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer145'
+        'fqn': 'hematology.spacer146'
       },
       {
         'elementKey': 'MCV',
@@ -21959,7 +22116,7 @@ const DEFS = {
         'inputType': 'number',
         'label': 'MCV',
         'suffix': 'fL',
-        'tableColumn': '9',
+        'tableColumn': '10',
         'validation': 'numeric',
         'fqn': 'hematology.MCV',
         'helperHtml': '<p>Mean Cell Volume</p>',
@@ -21985,14 +22142,14 @@ const DEFS = {
             'text': 'high'
           }
         ],
-        'tableColumn': '10',
+        'tableColumn': '11',
         'fqn': 'hematology.MCV-interp'
       },
       {
-        'elementKey': 'spacer146',
+        'elementKey': 'spacer147',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer146'
+        'fqn': 'hematology.spacer147'
       },
       {
         'elementKey': 'MCH',
@@ -22001,7 +22158,7 @@ const DEFS = {
         'inputType': 'number',
         'label': 'MCH',
         'suffix': 'pg',
-        'tableColumn': '11',
+        'tableColumn': '12',
         'validation': 'numeric',
         'fqn': 'hematology.MCH',
         'helperHtml': '<p>Mean Cell Hemoglobin</p>',
@@ -22027,14 +22184,14 @@ const DEFS = {
             'text': 'high'
           }
         ],
-        'tableColumn': '12',
+        'tableColumn': '13',
         'fqn': 'hematology.MCH-interp'
       },
       {
-        'elementKey': 'spacer147',
+        'elementKey': 'spacer148',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer147'
+        'fqn': 'hematology.spacer148'
       },
       {
         'elementKey': 'MCHC',
@@ -22043,7 +22200,7 @@ const DEFS = {
         'inputType': 'number',
         'label': 'MCHC',
         'suffix': 'g/L',
-        'tableColumn': '13',
+        'tableColumn': '14',
         'validation': 'numeric',
         'fqn': 'hematology.MCHC',
         'helperHtml': '<p>Mean Cell Hemoglobin Concentration</p>',
@@ -22069,14 +22226,14 @@ const DEFS = {
             'text': 'high'
           }
         ],
-        'tableColumn': '14',
+        'tableColumn': '15',
         'fqn': 'hematology.MCHC-interp'
       },
       {
-        'elementKey': 'spacer148',
+        'elementKey': 'spacer149',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer148'
+        'fqn': 'hematology.spacer149'
       },
       {
         'elementKey': 'RDW',
@@ -22085,7 +22242,7 @@ const DEFS = {
         'inputType': 'number',
         'label': 'RDW',
         'suffix': '%',
-        'tableColumn': '15',
+        'tableColumn': '16',
         'validation': 'numeric',
         'fqn': 'hematology.RDW',
         'helperHtml': '<p>Red Cell Distribution Width CV</p>',
@@ -22111,14 +22268,14 @@ const DEFS = {
             'text': 'high'
           }
         ],
-        'tableColumn': '16',
+        'tableColumn': '17',
         'fqn': 'hematology.RDW-interp'
       },
       {
-        'elementKey': 'spacer149',
+        'elementKey': 'spacer150',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer149'
+        'fqn': 'hematology.spacer150'
       },
       {
         'elementKey': 'PLT',
@@ -22128,7 +22285,7 @@ const DEFS = {
         'label': 'PLT',
         'mandatory': true,
         'suffix': '10^9/L',
-        'tableColumn': '17',
+        'tableColumn': '18',
         'validation': 'numeric',
         'fqn': 'hematology.PLT',
         'helperHtml': '<p>Platelet Count</p>',
@@ -22154,14 +22311,14 @@ const DEFS = {
             'text': 'high'
           }
         ],
-        'tableColumn': '18',
+        'tableColumn': '19',
         'fqn': 'hematology.PLT-interp'
       },
       {
-        'elementKey': 'spacer150',
+        'elementKey': 'spacer151',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer150'
+        'fqn': 'hematology.spacer151'
       },
       {
         'elementKey': 'MPV',
@@ -22170,7 +22327,7 @@ const DEFS = {
         'inputType': 'number',
         'label': 'MPV',
         'suffix': 'fL',
-        'tableColumn': '19',
+        'tableColumn': '20',
         'validation': 'numeric',
         'fqn': 'hematology.MPV',
         'helperHtml': '<p>Mean Platelet Volume</p>',
@@ -22196,14 +22353,14 @@ const DEFS = {
             'text': 'high'
           }
         ],
-        'tableColumn': '20',
+        'tableColumn': '21',
         'fqn': 'hematology.MPV-interp'
       },
       {
-        'elementKey': 'spacer151',
+        'elementKey': 'spacer152',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer151'
+        'fqn': 'hematology.spacer152'
       },
       {
         'elementKey': 'comments',
@@ -22211,7 +22368,7 @@ const DEFS = {
         'formCss': 'grid-span-2-columns',
         'inputType': 'textarea',
         'label': 'CBC Comments',
-        'tableColumn': '21',
+        'tableColumn': '22',
         'fqn': 'hematology.comments'
       },
       {
@@ -22942,10 +23099,10 @@ const DEFS = {
         'fqn': 'hematology.cellCntOtherAbs'
       },
       {
-        'elementKey': 'spacer160',
+        'elementKey': 'spacer161',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer160'
+        'fqn': 'hematology.spacer161'
       },
       {
         'elementKey': 'cellCntOtherSpecify',
@@ -22983,16 +23140,16 @@ const DEFS = {
         'fqn': 'hematology.wbcmNormalMorphology'
       },
       {
-        'elementKey': 'spacer162',
-        'formIndex': '2',
-        'inputType': 'spacer',
-        'fqn': 'hematology.spacer162'
-      },
-      {
         'elementKey': 'spacer163',
         'formIndex': '2',
         'inputType': 'spacer',
         'fqn': 'hematology.spacer163'
+      },
+      {
+        'elementKey': 'spacer164',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer164'
       },
       {
         'elementKey': 'wbcmAbnormalMorphology',
@@ -23054,10 +23211,10 @@ const DEFS = {
         'fqn': 'hematology.wbcmAbnormalTypeMorphology'
       },
       {
-        'elementKey': 'spacer164',
+        'elementKey': 'spacer165',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer164'
+        'fqn': 'hematology.spacer165'
       },
       {
         'elementKey': 'wbcmToxicMorphology',
@@ -23099,10 +23256,10 @@ const DEFS = {
         'fqn': 'hematology.rcmNormal'
       },
       {
-        'elementKey': 'spacer166',
+        'elementKey': 'spacer167',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer166'
+        'fqn': 'hematology.spacer167'
       },
       {
         'elementKey': 'rcmConsistent',
@@ -23113,10 +23270,10 @@ const DEFS = {
         'fqn': 'hematology.rcmConsistent'
       },
       {
-        'elementKey': 'spacer167',
+        'elementKey': 'spacer168',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer167'
+        'fqn': 'hematology.spacer168'
       },
       {
         'elementKey': 'rcmAcanthocytes',
@@ -23637,16 +23794,16 @@ const DEFS = {
         'fqn': 'hematology.rbcComments'
       },
       {
-        'elementKey': 'spacer170',
-        'formIndex': '2',
-        'inputType': 'spacer',
-        'fqn': 'hematology.spacer170'
-      },
-      {
         'elementKey': 'spacer171',
         'formIndex': '2',
         'inputType': 'spacer',
         'fqn': 'hematology.spacer171'
+      },
+      {
+        'elementKey': 'spacer172',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer172'
       },
       {
         'elementKey': 'referralToHema',
@@ -23686,127 +23843,137 @@ const DEFS = {
             ]
           },
           {
+            'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
-              'wbc'
+              'tableCbcAnalysis_name',
+              'tableCbcAnalysis_profession',
+              'tableCbcAnalysis_day',
+              'tableCbcAnalysis_time'
             ]
           },
           {
             'ehr_list_index': '2',
             'items': [
-              'wbc-interp'
+              'wbc'
             ]
           },
           {
             'ehr_list_index': '3',
             'items': [
-              'rbc'
+              'wbc-interp'
             ]
           },
           {
             'ehr_list_index': '4',
             'items': [
-              'rbc-interp'
+              'rbc'
             ]
           },
           {
             'ehr_list_index': '5',
             'items': [
-              'hgb'
+              'rbc-interp'
             ]
           },
           {
             'ehr_list_index': '6',
             'items': [
-              'hgb-interp'
+              'hgb'
             ]
           },
           {
             'ehr_list_index': '7',
             'items': [
-              'HCT'
+              'hgb-interp'
             ]
           },
           {
             'ehr_list_index': '8',
             'items': [
-              'HCT-interp'
+              'HCT'
             ]
           },
           {
             'ehr_list_index': '9',
             'items': [
-              'MCV'
+              'HCT-interp'
             ]
           },
           {
             'ehr_list_index': '10',
             'items': [
-              'MCV-interp'
+              'MCV'
             ]
           },
           {
             'ehr_list_index': '11',
             'items': [
-              'MCH'
+              'MCV-interp'
             ]
           },
           {
             'ehr_list_index': '12',
             'items': [
-              'MCH-interp'
+              'MCH'
             ]
           },
           {
             'ehr_list_index': '13',
             'items': [
-              'MCHC'
+              'MCH-interp'
             ]
           },
           {
             'ehr_list_index': '14',
             'items': [
-              'MCHC-interp'
+              'MCHC'
             ]
           },
           {
             'ehr_list_index': '15',
             'items': [
-              'RDW'
+              'MCHC-interp'
             ]
           },
           {
             'ehr_list_index': '16',
             'items': [
-              'RDW-interp'
+              'RDW'
             ]
           },
           {
             'ehr_list_index': '17',
             'items': [
-              'PLT'
+              'RDW-interp'
             ]
           },
           {
             'ehr_list_index': '18',
             'items': [
-              'PLT-interp'
+              'PLT'
             ]
           },
           {
             'ehr_list_index': '19',
             'items': [
-              'MPV'
+              'PLT-interp'
             ]
           },
           {
             'ehr_list_index': '20',
             'items': [
-              'MPV-interp'
+              'MPV'
             ]
           },
           {
             'ehr_list_index': '21',
+            'items': [
+              'MPV-interp'
+            ]
+          },
+          {
+            'ehr_list_index': '22',
             'items': [
               'comments'
             ]
@@ -23820,50 +23987,65 @@ const DEFS = {
           'ehr_groups': [
             {
               'elementKey': 'ehr_group141',
-              'label': 'Automated analyzer',
+              'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
-                'wbc',
-                'wbc-interp',
-                'spacer142',
-                'rbc',
-                'rbc-interp',
-                'spacer143',
-                'hgb',
-                'hgb-interp',
-                'spacer144',
-                'HCT',
-                'HCT-interp',
-                'spacer145',
-                'MCV',
-                'MCV-interp',
-                'spacer146',
-                'MCH',
-                'MCH-interp',
-                'spacer147',
-                'MCHC',
-                'MCHC-interp',
-                'spacer148',
-                'RDW',
-                'RDW-interp',
-                'spacer149',
-                'PLT',
-                'PLT-interp',
-                'spacer150',
-                'MPV',
-                'MPV-interp',
-                'spacer151'
+                'tableCbcAnalysis_name',
+                'tableCbcAnalysis_profession',
+                'tableCbcAnalysis_day',
+                'tableCbcAnalysis_time'
               ]
             },
             {
-              'elementKey': 'ehr_group152',
+              'elementKey': 'ehr_group142',
+              'label': 'Automated analyzer',
               'gIndex': '2',
+              'gChildren': [
+                'wbc',
+                'wbc-interp',
+                'spacer143',
+                'rbc',
+                'rbc-interp',
+                'spacer144',
+                'hgb',
+                'hgb-interp',
+                'spacer145',
+                'HCT',
+                'HCT-interp',
+                'spacer146',
+                'MCV',
+                'MCV-interp',
+                'spacer147',
+                'MCH',
+                'MCH-interp',
+                'spacer148',
+                'MCHC',
+                'MCHC-interp',
+                'spacer149',
+                'RDW',
+                'RDW-interp',
+                'spacer150',
+                'PLT',
+                'PLT-interp',
+                'spacer151',
+                'MPV',
+                'MPV-interp',
+                'spacer152'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group153',
+              'gIndex': '3',
               'gChildren': [
                 'comments'
               ]
             }
           ],
           'ehr_data': {
+            'tableCbcAnalysis_name': '',
+            'tableCbcAnalysis_profession': '',
+            'tableCbcAnalysis_day': '',
+            'tableCbcAnalysis_time': '',
             'wbc': '',
             'wbc-interp': '',
             'rbc': '',
@@ -23893,6 +24075,10 @@ const DEFS = {
         'taSourceTableKey': 'tableCbcAnalysis',
         'tableChildren': [
           'tableCbcAnalysis_id',
+          'tableCbcAnalysis_name',
+          'tableCbcAnalysis_profession',
+          'tableCbcAnalysis_day',
+          'tableCbcAnalysis_time',
           'wbc',
           'wbc-interp',
           'rbc',
@@ -23914,7 +24100,8 @@ const DEFS = {
           'MPV',
           'MPV-interp',
           'comments'
-        ]
+        ],
+        'hasRecHeader': true
       },
       'tablePbfReview': {
         'elementKey': 'tablePbfReview',
@@ -24605,7 +24792,7 @@ const DEFS = {
           'formKey': 'tablePbfReview',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group153',
+              'elementKey': 'ehr_group154',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -24616,7 +24803,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group154',
+              'elementKey': 'ehr_group155',
               'label': 'CBC Analysis',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
@@ -24625,7 +24812,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group155',
+              'elementKey': 'ehr_group156',
               'label': 'Actions',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '3',
@@ -24636,7 +24823,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group156',
+              'elementKey': 'ehr_group157',
               'label': 'WBC Estimate',
               'formCss': 'grid-left-to-right-4',
               'gIndex': '4',
@@ -24661,7 +24848,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group157',
+              'elementKey': 'ehr_group158',
               'label': 'PLT Estimate',
               'formCss': 'grid-left-to-right-4',
               'gIndex': '5',
@@ -24686,7 +24873,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group158',
+              'elementKey': 'ehr_group159',
               'label': 'PLT morphology',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '6',
@@ -24697,7 +24884,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group159',
+              'elementKey': 'ehr_group160',
               'label': 'WBC Differential',
               'formCss': 'grid-left-to-right-2',
               'gIndex': '7',
@@ -24726,37 +24913,37 @@ const DEFS = {
                 'cellCntReactiveLymphsAbs',
                 'cellCntOther',
                 'cellCntOtherAbs',
-                'spacer160',
+                'spacer161',
                 'cellCntOtherSpecify',
                 'cellCntTotal',
                 'cellCntNRBCs'
               ]
             },
             {
-              'elementKey': 'ehr_group161',
+              'elementKey': 'ehr_group162',
               'label': 'White Cell Morphology',
               'gIndex': '8',
               'gChildren': [
                 'wbcmNormalMorphology',
-                'spacer162',
                 'spacer163',
+                'spacer164',
                 'wbcmAbnormalMorphology',
                 'wbcmAbnormalTypeMorphology',
-                'spacer164',
+                'spacer165',
                 'wbcmToxicMorphology',
                 'wbcmToxicTypeMorphology'
               ]
             },
             {
-              'elementKey': 'ehr_group165',
+              'elementKey': 'ehr_group166',
               'label': 'Red Cell Morphology',
               'formCss': 'grid-left-to-right-2',
               'gIndex': '9',
               'gChildren': [
                 'rcmNormal',
-                'spacer166',
-                'rcmConsistent',
                 'spacer167',
+                'rcmConsistent',
+                'spacer168',
                 'rcmAcanthocytes',
                 'rcmAcanthocytesGrading',
                 'rcmCodocytes',
@@ -24786,7 +24973,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group168',
+              'elementKey': 'ehr_group169',
               'label': 'RBC Inclusions',
               'gIndex': '10',
               'gChildren': [
@@ -24798,17 +24985,17 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group169',
+              'elementKey': 'ehr_group170',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '11',
               'gChildren': [
                 'rbcComments',
-                'spacer170',
-                'spacer171'
+                'spacer171',
+                'spacer172'
               ]
             },
             {
-              'elementKey': 'ehr_group172',
+              'elementKey': 'ehr_group173',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '12',
               'gChildren': [
@@ -25218,7 +25405,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group179',
+              'elementKey': 'ehr_group180',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -25229,7 +25416,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group180',
+              'elementKey': 'ehr_group181',
               'gIndex': '2',
               'gChildren': [
                 'goal',
@@ -25354,7 +25541,7 @@ const DEFS = {
           'formKey': 'tableChem',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group173',
+              'elementKey': 'ehr_group174',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -25472,7 +25659,7 @@ const DEFS = {
           'formKey': 'tableImages',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group174',
+              'elementKey': 'ehr_group175',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
