@@ -198,9 +198,13 @@ describe ('EhrDataModel class methods', () => {
     // NOTE MUST MANUALLY UPDATE THIS TEST WHENEVER VERSON CHANGES
     let e = { meta: {} }
     e.meta.ehrVersion = 'ev2.1.1'
-    EhrDataModel.IsUpToDate(e).should.equal(false)
+    EhrDataModel.IsUpToDate(e).should.equal(false, e.meta.ehrVersion)
     e.meta.ehrVersion = 'ev2.2.0'
-    EhrDataModel.IsUpToDate(e).should.equal(true)
+    EhrDataModel.IsUpToDate(e).should.equal(true, e.meta.ehrVersion)
+    e.meta.ehrVersion = 'ev2.2.1'
+    EhrDataModel.IsUpToDate(e).should.equal(true, e.meta.ehrVersion)
+    e.meta.ehrVersion = 'ev2.2.11'
+    EhrDataModel.IsUpToDate(e).should.equal(true, e.meta.ehrVersion)
   })
 
 })

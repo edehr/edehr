@@ -22,7 +22,7 @@ export function updateRecHeaderElementKeys (givenEhrData) {
     return tableData
   })
 }
-export function updateAllRecHeaderIds (givenEhrData) {
+export function updateAllRowIds (givenEhrData) {
   const ehrData = decoupleObject(givenEhrData)
   return updateAllRows(ehrData, (pageKey, tableKey, tableData) => {
     const idKey = tableKey + '_id'

@@ -68,42 +68,14 @@ const getters = {
 
     // console.log('baseLevelData', baseLevelData)
     if (secondLevelData) {
-      mData = decoupleObject(ehrMergeEhrData(baseLevelData, secondLevelData))
-      mData.meta = {}
-      const start = {visitDay: 0, visitTime: '0000'}
-      let baseMeta = baseLevelData.meta || {}
-      let secondMeta = secondLevelData.meta || {}
-      let baseMetaSimTime = baseMeta.simTime ||  start
-      let secondMetaSimTime = secondMeta.simTime || start
-      let baseTime = parseInt(baseMetaSimTime.visitTime)
-      let secondTime = parseInt(secondMetaSimTime.visitTime)
-      let baseDay = baseMetaSimTime.visitDay
-      let secondDay = secondMetaSimTime.visitDay
-      if (secondDay === 0 && secondTime === 0) {
-        // secondLevelData.meta.simTime  may have zero values if the ehr data is empty or has no time stamped records
-        mData.meta.simTime = baseMetaSimTime
-      } else if (baseDay > secondDay || ( baseDay === secondDay && baseTime > secondTime ) ) {
-        console.log('Weird data. Case study simTime is after student\'s simTime. Case study time:',
-          baseLevelData.meta.simTime, 'student simTime:', secondMetaSimTime)
-        // use the later time ...
-        mData.meta.simTime = baseMetaSimTime
-      } else {
-        let vDay = baseDay
-        let mTime = baseTime
-        if (baseDay === secondDay) {
-          mTime = secondTime
-        } else {
-          vDay = secondDay
-          mTime = secondTime
-        }
-        let vTime = '' + mTime // convert to string
-        mData.meta = { simTime: { visitDay: vDay, visitTime: vTime.padStart(4,'0')}}
-      }
-      if (debug) {
-        console.log('EhrData base  ', baseLevelData)
-        console.log('EhrData second  ', secondLevelData)
-        console.log('EhrData merged', mData)
-      }
+      //EhrDataModel both updates the data as needed it also computes the sim time
+      mData = EhrDataModel.PrepareForDb(ehrMergeEhrData(baseLevelData, secondLevelData))
+    }
+    if (debug) {
+      console.log('EhrData base  ', baseLevelData)
+      console.log('EhrData second  ', secondLevelData)
+      console.log('EhrData merged', mData)
+      console.log('merged data has this meta', mData.meta)
     }
     return mData || {meta:{}}
   },

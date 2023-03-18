@@ -1,6 +1,6 @@
 // noinspection DuplicatedCode
 import {
-  updateAllRecHeaderIds,
+  updateAllRowIds,
   updateAllVisitTime,
   updateRecHeaderElementKeys,
   visitTimeInEhrData, visitTimeInEhrDataV2
@@ -34,6 +34,10 @@ export default class EhrDataModel {
     const theData = (new EhrDataModel({})).ehrData
     return theData.meta.ehrVersion
   }
+  static IsUpToDate (ehrData) {
+    let cVer = this.MetaEhrVersion({meta: { ehrVersion: this.CurrentEhrDataVerString() }})
+    return cVer !== null && EhrDataModel.CheckVer(ehrData, cVer.major, cVer.minor, cVer.patch)
+  }
 
   static CheckVer (ehrData, maj, min, pat) {
     const version = EhrDataModel.MetaEhrVersion(ehrData)
@@ -52,9 +56,21 @@ export default class EhrDataModel {
     // decouple so this constructor can be used inside a Vuex store (can't modify any of its data)
     this._ehrData = decoupleObject(ehrData)
     this._ehrData.meta = this._ehrData.meta || {}
-    this.updateEhrDataToLatestFormat()
-    this._ehrData = updateAllRecHeaderIds(this._ehrData)
+    // update recorder headers changes element keys from name, profession, day, time to tableKey_name, etc
+    // must update the record heard key names before updating visit times
+    this._ehrData = updateRecHeaderElementKeys(this._ehrData)
+    // update visit time convert 00:00 to 0000
+    this._ehrData = updateAllVisitTime(this)
+    // med route just updates inhaler to inhalation in med orders
+    this._ehrData = updateMedicationRoute(this)
+    // updateAllRowIds inserts a row id into any row that doesn't yet have one.
+    // This is the prefered way to generate row ids. Insert new row and reload the whole ehr object into this model.
+    // It's fast enough for the size of data sets we see.
+    // Think, max 40ish pages, average 1.5 tables/pg, average 1.5 rows/table ... 90 rows to look at
+    this._ehrData = updateAllRowIds(this._ehrData)
     this._ehrData.meta.simTime = visitTimeInEhrDataV2(this._ehrData)
+    this._ehrData.meta.ehrVersion = 'ev2.2.0'
+    console.log('Loaded EhrDataModel', this._ehrData.meta)
   }
 
   get ehrData () {
@@ -142,26 +158,6 @@ export default class EhrDataModel {
     const targetData = this._ehrData[pageKey][tableKey]
     targetData[rowIndex][elementKey] = value
     this._ehrData[pageKey][tableKey] = targetData
-  }
-
-  updateEhrDataToLatestFormat () {
-    if (!EhrDataModel.CheckVer(this._ehrData, 2, 2, 0)) {
-      // must update the record heard key names before updating visit times
-      this._ehrData = updateRecHeaderElementKeys(this._ehrData)
-      // DO NOT UPDATE VERSION YET... update version below
-    }
-    if (!EhrDataModel.CheckVer(this._ehrData, 2, 1, 0)) {
-      this._ehrData = updateAllVisitTime(this)
-      this._ehrData.meta.ehrVersion = 'ev2.1.0'
-    }
-    if (!EhrDataModel.CheckVer(this._ehrData, 2, 1, 1)) {
-      this._ehrData = updateMedicationRoute(this)
-      this._ehrData.meta.ehrVersion = 'ev2.1.1'
-    }
-    this._ehrData.meta.ehrVersion = 'ev2.2.0'
-  }
-  static IsUpToDate (ehrData) {
-    return EhrDataModel.CheckVer(ehrData, 2, 2, 0)
   }
 
   static GenerateRowId (pageKey, tableKey, asLoadedTableData) {

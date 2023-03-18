@@ -6,7 +6,7 @@
         th(v-for="rowIndex in tableRowCount", :class='{draft:rowIsDraft(rowIndex)}').
           {{ timestamp(rowIndex) }}
       tr(v-for="(fieldDef, colIndex) in tableFields")
-        td(v-text-to-html='fieldDef.label')
+        td(v-text-to-html='label(fieldDef)')
         td(v-for="rowIndex in tableRowCount", :class='{draft:rowIsDraft(rowIndex)}').
           {{ fieldData(fieldDef, rowIndex) }}
     div(v-show='!hasData') No data in this table.
@@ -48,6 +48,7 @@ export default {
     },
   },
   methods: {
+    label ( fieldDef ) { return fieldDef.label || fieldDef.tableLabel },
     timestamp (index) {
       const row = this.tableData[index-1]
       const parts = []
