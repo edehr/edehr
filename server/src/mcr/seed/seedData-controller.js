@@ -7,6 +7,8 @@ import { NotAllowedError } from '../common/errors'
 import {ok, fail} from '../common/utils'
 import { logError} from '../../helpers/log-error'
 import EhrDataModel from '../../ehr-definitions/EhrDataModel'
+import { EHR_EVENT_BUS, EHR_SEED_EVENT } from '../../server/trace-ehr'
+import { decoupleObject } from '../../ehr-definitions/common-utils'
 const debug = require('debug')('server')
 
 export default class SeedDataController extends BaseController {
@@ -44,24 +46,25 @@ export default class SeedDataController extends BaseController {
    * @return {*} updated doc
    * @see updateAssignmentData in activity-data-controller
    */
-  updateSeedEhrProperty (id, payload, action) {
+  async updateSeedEhrProperty (vistId, id, payload, action) {
     let propertyName = payload.propertyName
     let value = payload.value
-    return this.baseFindOneQuery(id).then(model => {
-      debug('upsehrprop search ' + model ? 'ok' : 'fail')
-      if (model) {
-        if (model.isDefault) {
-          throw new NotAllowedError(Text.SEED_NOT_ALLOWED_TO_EDIT_DEFAULT)
-        }
-        let ehrData = model.ehrData || {}
-        value.lastUpdate = moment().format()
-        // place date into the ehr data's page element
-        ehrData[propertyName] = value
-        debug(`SeedData upsehrprop action: ${action} id: ${id} ehrData[${propertyName}]:`, JSON.stringify(value))
-        // debug('upsehrprop ' + JSON.stringify(value))
-        return this._saveSeedEhrData(model, ehrData)
+    const model = this.baseFindOneQuery(id)
+    // debug('upsehrprop search ' + model ? 'ok' : 'fail')
+    if (model) {
+      if (model.isDefault) {
+        throw new NotAllowedError(Text.SEED_NOT_ALLOWED_TO_EDIT_DEFAULT)
       }
-    })
+      let ehrData = model.ehrData || {}
+      const previous = decoupleObject(ehrData)
+      value.lastUpdate = moment().format()
+      // place date into the ehr data's page element
+      ehrData[propertyName] = value
+      // debug(`SeedData upsehrprop action: ${action} id: ${id} ehrData[${propertyName}]:`, JSON.stringify(value))
+      // debug('upsehrprop ' + JSON.stringify(value))
+      const doc = await this._saveSeedEhrData(model, ehrData)
+      EHR_EVENT_BUS.emit(EHR_SEED_EVENT, 'system', action, previous, doc.ehrData)
+    }
   }
 
   _saveSeedEhrData (model, ehrData) {
@@ -71,10 +74,11 @@ export default class SeedDataController extends BaseController {
     model.markModified('ehrData')
     return model.save()
   }
-  updateAndSaveSeedEhrData (id, ehrData) {
-    return this.baseFindOneQuery(id).then(model => {
-      return this._saveSeedEhrData(model, ehrData)
-    })
+  async updateAndSaveSeedEhrData (id, ehrData) {
+    const model = await this.baseFindOneQuery(id)
+    const previous = decoupleObject(model.seedData)
+    const doc = this._saveSeedEhrData(model, ehrData)
+    EHR_EVENT_BUS.emit(EHR_SEED_EVENT, 'system', 'update', previous, doc.ehrData)
   }
 
   deleteSeed (id) {
@@ -106,7 +110,9 @@ export default class SeedDataController extends BaseController {
       let id = req.params.key
       let action = req.params.action
       let data = req.body
-      this.updateSeedEhrProperty(id, data, action)
+      const authPayload = req.authPayload
+      const visitId = authPayload.visitId
+      this.updateSeedEhrProperty(visitId, id, data, action)
         .then(ok(res))
         .catch(fail(res))
     })

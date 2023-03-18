@@ -34,6 +34,7 @@ services:
       - APP_TITLE
       - APP_VERSION
       - API_LOG_FILES_DIRECTORY
+      - EHR_LOG_FILES_DIRECTORY
       - AUTH_TOKEN_SECRET
       - CLIENT_PORT
       - COOKIE_SECRET

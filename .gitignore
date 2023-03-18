@@ -40,5 +40,6 @@ temp/**
 server/lib/**
 **/build/**
 server/api-logs/**
+server/ehr-logs/**
 server/logs-analytics/**
 server/logs-api/**
