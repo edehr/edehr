@@ -7,6 +7,8 @@ import UiInfo from '@/app/ui/UiInfo'
 import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import EhrData from '@/inside/components/page/ehr-data'
 import { validateAgeValue } from '@/ehr-definitions/ehr-def-utils'
+import { validDayStr, validTimeStr } from '@/ehr-definitions/common-utils'
+import StoreHelper from '@/helpers/store-helper'
 
 const DEPENDENT_PROPS = EhrTypes.dependentOn
 
@@ -107,6 +109,30 @@ export default {
     },
     setInitialValue (value) {
       if (dbInputs) console.log('EhrCommon set initial value ', value, this.elementKey)
+
+      // TODO Revisit how the record header is populated.
+      //  Note the code attempting to set these values in ehrHelper._dialogOpenEvent does not work.
+      //  It is unfortunate to put field specific code inside this common code.
+      const { visitDay, visitTime } = StoreHelper.getSimTime()
+      const nameKey = this.tableKey + '_name'
+      const dayKey = this.tableKey + '_day'
+      const timeKey = this.tableKey + '_time'
+      if (timeKey === this.elementKey) {
+        if (!validTimeStr(value)) {
+          value = visitTime
+        }
+      }
+      if (dayKey === this.elementKey) {
+        if (!validDayStr(value)) {
+          value = visitDay
+        }
+      }
+      if (nameKey === this.elementKey) {
+        function _nonEmptyString (text) { return text && text.trim().length > 0 }
+        if (!_nonEmptyString(value)) {
+          value = StoreHelper.givenName()
+        }
+      }
       this.initialVal = value
       this.inputVal = value
       // invoke setInitialDependentValue after inputVal is set

@@ -23,6 +23,16 @@ class StoreHelperWorker {
 
   getMergedData () { return store.getters['ehrDataStore/mergedData']  }
 
+  /**
+   *
+   * @returns {visitDay:num|visitTime:milTime|(function(): *)|*}
+   */
+  getSimTime () {
+    const mData = StoreHelper.getMergedData()
+    // { visitDay, visitTime }
+    return mData.meta.simTime
+  }
+
   getHasDataForPagesList () { return store.getters['ehrDataStore/hasDataForPagesList'] }
   hasDataOnPage (pageKey) {
     const pageList = this.getHasDataForPagesList()
@@ -61,6 +71,7 @@ class StoreHelperWorker {
   isStudent () { return store.getters['authStore/isStudent'] }
 
   userId () { return this._getUserProperty('userId') }
+  givenName () { return this._getUserProperty('givenName') }
   fullName () { return this._getUserProperty('fullName') }
   lmsUrl () { return this._getVisitProperty('returnUrl') }
   isDeveloper () { return this._getVisitProperty('isDeveloper') }

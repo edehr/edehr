@@ -17,6 +17,11 @@ const getters = {
     let name = info ? info.fullName : ''
     return name
   },
+  givenName: state => {
+    let info = state.dataStore
+    let name = info ? info.givenName : ''
+    return name
+  },
   userId: state => {
     return state.dataStore._id
   },
