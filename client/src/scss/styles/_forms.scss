@@ -48,6 +48,9 @@ textarea {
     width: 20rem;
   }
 }
+.form_label_mandatory {
+  color: $brand-highlight-red;
+}
 .checkbox_label,
 .radio_label {
   display: inline;

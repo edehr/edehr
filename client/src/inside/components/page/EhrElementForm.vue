@@ -21,10 +21,10 @@
 
     div(v-else-if="isType('checkbox')", class="checkbox_wrapper")
       input(:id="inputId", class="checkbox", type="checkbox", :disabled="disabled || viewOnly ", :name="elementKey", v-model="inputVal", v-on:change="dependentUIEvent()")
-      ehr-page-form-label(:element="element", css="checkbox_label, check-label", :forElement="inputId")
+      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="checkbox_label, check-label", :forElement="inputId")
 
     div(v-else-if="isType('date')", class="text_wrapper")
-      ehr-page-form-label(:element="element", css="text_label")
+      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
       div(class="columns")
         input(v-if="!viewOnly", class="column is-10 input text-input", :disabled="disabled", :name="elementKey", v-model="inputVal")
         div(v-if="viewOnly") {{ inputVal }}
@@ -40,13 +40,13 @@
       ehr-element-embedded(:elementKey="elementKey", :ehrHelp="ehrHelp", :inputVal="inputVal")
 
     div(v-else-if="isType('generatedId')", class="text_input_wrapper")
-      ehr-page-form-label(:element="element", css="text_label")
+      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
       div -- {{ inputVal }} --
 
     hr(v-else-if="isType('horizontal')")
     // type lookahead should have been named 'medication'
     div(v-else-if="isType('lookahead')", class="text_input_wrapper")
-      ehr-page-form-label(:element="element", css="text_input_wrapper")
+      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_input_wrapper")
       div(v-if="viewOnly") {{ inputVal }}
       div(v-if="!viewOnly")
         ehr-element-medication(
@@ -58,7 +58,7 @@
 
     div(v-else-if="isType('lab_result')", class="lab_result_wrapper")
       div(class="lab_result_element")
-        ehr-page-form-label(:element="element", css="lab_result_label")
+        ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="lab_result_label")
         input(v-if="!viewOnly", class="input text-input", :disabled="disabled", :name="elementKey", v-model="inputVal")
         div(v-if="viewOnly") {{ inputVal }}
         div(class="lab_result_suffix", v-text-to-html="element.suffixHtml")
@@ -73,14 +73,14 @@
         )
 
     div(v-else-if="isType('number') || isType('personAge')", class="text_input_wrapper")
-      ehr-page-form-label(:element="element", css="text_label")
+      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
       input(v-if="!viewOnly", class="input numb-input", type="text", :disabled="disabled", :name="elementKey", v-model="inputVal")
       div(v-if="viewOnly") {{ inputVal }}
       span(class="suffix") {{suffix }}
 
     // new to version v2.1 is practitionerName and practitionerProfession for record headers
     div(v-else-if="isType('practitionerName')", class="text_input_wrapper")
-      ehr-page-form-label(:element="element", css="text_input_wrapper")
+      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_input_wrapper")
       div(v-if="viewOnly") {{ inputVal }}
       div(v-if="!viewOnly")
         input(v-if="!viewOnly", class="input text-input", :disabled="disabled", :name="elementKey",v-model="inputVal")
@@ -92,7 +92,7 @@
         //)
 
     div(v-else-if="isType('practitionerProfession')", class="text_input_wrapper")
-      ehr-page-form-label(:element="element", css="text_input_wrapper")
+      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_input_wrapper")
       div(v-if="viewOnly") {{ inputVal }}
       div(v-if="!viewOnly")
         input(v-if="!viewOnly", class="input text-input", :disabled="disabled", :name="elementKey",v-model="inputVal")
@@ -104,7 +104,7 @@
         //)
 
     div(v-else-if="isType('select')", class="select_wrapper")
-      ehr-page-form-label(:element="element", css="select_label")
+      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="select_label")
       div(v-if="!viewOnly", class="select", :title='inputVal')
         select(:name="elementKey", :disabled="disabled", v-model="inputVal", v-on:change="dependentUIEvent()")
           option(value="")
@@ -115,23 +115,23 @@
       div &nbsp;
 
     div(v-else-if="isType('text')", class="text_input_wrapper")
-      ehr-page-form-label(:element="element", css="text_label")
+      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
       input(v-if="!viewOnly", class="input text-input", :disabled="disabled", :name="elementKey", v-model="inputVal")
       div(v-if="viewOnly") {{ inputVal }}
       span(class="suffix") {{suffix }}
 
     div(v-else-if="isType('textarea')", class="textarea_wrapper")
-      ehr-page-form-label(:element="element", css="textarea_label")
+      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="textarea_label")
       textarea(class="ehr-page-form-textarea", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
 
     //div(v-else-if="isType('number') || isType('personAge')", class="text_input_wrapper")
     div(v-else-if="isType(dataTypes.visitDay) || isType(dataTypes.visitTime)", class="text_input_wrapper")
-      ehr-page-form-label(:element="element", css="text_label")
+      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
       input(v-if="!viewOnly", class="input numb-input", type="text", :disabled="disabled", :name="elementKey", v-model="inputVal")
       div(v-if="viewOnly") {{ inputVal }}
 
     //div(v-else-if="isType(dataTypes.visitDay) || isType(dataTypes.visitTime)", class="select_wrapper")
-    //  ehr-page-form-label(:element="element", css="select_label")
+    //  ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="select_label")
     //  div(v-if="viewOnly") {{ inputVal }}
     //  div(v-if="!viewOnly")
     //    ehr-element-sim-time(

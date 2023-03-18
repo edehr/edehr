@@ -1,6 +1,6 @@
 <template lang="pug">
   div(:class="css", v-if="showLabel")
-    label(v-html="label", :for="forElement", class="form_label")
+    label(v-html="label", :for="forElement", class="form_label", :class='{form_label_mandatory: isEditing && mandatory}')
     ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
     span(v-if="helperText") &nbsp; &nbsp;
 </template>
@@ -20,9 +20,18 @@ export default {
     }
   },
   props: {
-    element: { type: Object },
+    element: { type: Object, require: true },
+    ehrHelp: { type: Object, require: true },
     css: { type: String },
     forElement: { type: String }
+  },
+  computed: {
+    isEditing () {
+      const formEditing = this.ehrHelp.isEditing()
+      const dialog = this.ehrHelp._getActiveTableDialog()
+      return formEditing || !!dialog
+    },
+    mandatory () { return !!this.element.mandatory}
   },
   methods: {
     setupCommon () {

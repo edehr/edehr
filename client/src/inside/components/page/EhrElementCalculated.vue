@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="text_input_wrapper")
-    ehr-page-form-label(:element="element", css="text_label")
+    ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
     input(class="input text-input", disabled, :name="elementKey", v-model="value")
 </template>
 

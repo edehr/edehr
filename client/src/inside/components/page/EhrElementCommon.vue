@@ -7,8 +7,6 @@ import UiInfo from '@/app/ui/UiInfo'
 import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import EhrData from '@/inside/components/page/ehr-data'
 import { validateAgeValue } from '@/ehr-definitions/ehr-def-utils'
-import { validDayStr, validTimeStr } from '@/ehr-definitions/common-utils'
-import StoreHelper from '@/helpers/store-helper'
 
 const DEPENDENT_PROPS = EhrTypes.dependentOn
 

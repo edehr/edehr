@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="text_input_wrapper")
-    ehr-page-form-label(:element="element", css="text_label")
+    ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
     div(v-if="viewOnly") {{ containerInputValue }}
     div(v-else)
       div(v-if="disabled")
