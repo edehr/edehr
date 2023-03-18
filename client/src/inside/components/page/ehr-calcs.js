@@ -112,11 +112,18 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
     }
   })
   let result = 0
+
+  function mapToNums (values) {
+    return values.map(v => parseInt(v))
+  }
+
   if (calculationType.includes('multiplyBy')) {
     let factor = extractMultiplyByFactor(calculationType)
     // console.log('multiplyBy', factor, values)
     if (factor) {
+      values = mapToNums(values)
       result = values.reduce((a,b) => a + b * factor, 0)
+      isNumberResult = true
       // console.log('multiplyBy', result)
     }
   } else if (calculationType.includes('embedValue')) {
@@ -134,30 +141,38 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
   } else {
     switch (calculationType) {
     case 'sum':
+      values = mapToNums(values)
       result = values.reduce((a, b) => a + b, 0)
       // console.log('calculationType sum',targetKey, result, values)
+      isNumberResult = true
       break
     case 'average':
+      values = mapToNums(values)
       result = values.length > 0 ? (values.reduce((a, b) => a + b, 0) / values.length) : 0
       // console.log('calculationType average',targetKey, result, values)
+      isNumberResult = true
       break
     case 'product':
       // product value is 0 until there are at least two values
+      values = mapToNums(values)
       result = values.length >= 2 ? values.reduce((a, b) => a * b, 1) : 0
+      isNumberResult = true
       break
     case 'wbcAbs':
-      // console.log('process wbcAbs values', values)
       if ( values.length === 2) {
         let wbc, factor
         if ( isObject(values[0])) {
+          // console.log('process wbcAbs object', values[0]['wbc'], values[1])
           wbc = values[0]['wbc']
           factor = values[1] /100
         } else {
+          // console.log('process wbcAbs else', values[0], values[1])
           factor = values[0] /100
           wbc = values[1]['wbc']
         }
-        // console.log('wbc factor', wbc, factor, values)
+        isNumberResult = true
         result = wbc * factor
+        // console.log('wbc factor', wbc, factor, result)
       }
       break
     default:
