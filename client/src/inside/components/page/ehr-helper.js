@@ -115,8 +115,14 @@ export default class EhrPageHelper {
    * @private
    */
   _getActiveTableDialog () {
-    // TODO verify that embedded dialogs are not returned here. The explain in a comment.
+    // the embedded dialog, if present, is not marked active.
     return Object.values(this.tableFormMap).find( (tbl) => { return tbl.active })
+  }
+  isAnythingHappening () {
+    const formEditing = this.isEditing()
+    const dialog = this._getActiveTableDialog()
+    return formEditing || dialog && dialog.active && !dialog.viewOnly
+
   }
   _isDevelopingContent () {
     return StoreHelper.isDevelopingContent()

@@ -27,9 +27,7 @@ export default {
   },
   computed: {
     isEditing () {
-      const formEditing = this.ehrHelp.isEditing()
-      const dialog = this.ehrHelp._getActiveTableDialog()
-      return formEditing || !!dialog
+      return this.ehrHelp.isAnythingHappening()
     },
     mandatory () { return !!this.element.mandatory}
   },
