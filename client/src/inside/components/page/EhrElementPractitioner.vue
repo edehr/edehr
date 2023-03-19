@@ -58,7 +58,7 @@ export default {
       EventBus.$emit(PRACTITIONER, eData)
     },
     updateValue: function (value) {
-      console.log('eepract updateValue', value)
+      // console.log('eepract updateValue', value)
       this.$emit('selected', value)
       this.emitUpdatePractitioner(value)
     },

@@ -26,9 +26,11 @@ function defaultConfig (env) {
     apiPort: process.env.API_PORT || 27000,
     apiUrl: '',
     apiLogFile: process.env.API_LOG_FILES_DIRECTORY || 'api-logs',
+    ehrLogFile: process.env.EHR_LOG_FILES_DIRECTORY || 'ehr-logs',
     clientPort: process.env.CLIENT_PORT || 28000,
     clientHost: process.env.DOMAIN || 'localhost',
     clientUrl: '',
+    dbUpdateOnStart: process.env.DB_UPDATE_ON_START !== 'true', // defaults to true
     domain: process.env.DOMAIN || 'localhost',
     serverPort: process.env.SERVER_PORT || 27000,
     authTokenSecret: process.env.AUTH_TOKEN_SECRET || 'defaultTokenSecretForJWT',

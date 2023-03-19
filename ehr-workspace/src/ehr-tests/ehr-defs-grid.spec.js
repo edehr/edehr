@@ -5,10 +5,14 @@ const should = require('should')
 const DEFAULT_KEY = 'allergies'
 const PAGE_TABLE_KEY = 'biopsychosocial'
 
-// console.log('pageKeys >> ', pageKeys)
-// console.log('pageKeys >> ', pageKeys.map(k => EhrDefs.getPageDefinition(k) ))
-const elemKey = 'text'
-
+// See https://github.com/edehr/edehr/issues/1063
+const REC_HEADER_KEYS = ['name', 'profession', 'day', 'time']
+const KNOWN_DUPS_INTEGUMENTARY = ['exudateAmount', 'exudateType', 'incisionLabel', 'woundLabel']
+const KNOW_DUPS_PAST_APPT = ['diagnosis', 'site']
+const EXCLUDE_KEYS = [
+  ... KNOWN_DUPS_INTEGUMENTARY,
+  ... KNOW_DUPS_PAST_APPT
+]
 describe ('testing calculation supports', () =>{
 
   it('wbcEstimate has product calculationType', done => {
@@ -101,12 +105,6 @@ describe('testing ehr-defs-grid', () => {
     done()
   })
 
-  it('getAllPageKeys', done => {
-    const result = EhrDefs.getAllPageKeys()
-    result.length.should.be.greaterThan(0)
-    done()
-  })
-
   it('getPageElements', done => {
     const elem = EhrDefs.getPageElements(DEFAULT_KEY)
     should.exists(elem)
@@ -145,6 +143,27 @@ describe('testing ehr-defs-grid', () => {
     done()
   })
 
+  it('check page children are unique', () => {
+    const pageKeys = EhrDefs.getAllPageKeys()
+    pageKeys.forEach(pKey => {
+      if ('testPage' === pKey) {
+        console.log('SKIP unique check on testPage')
+        return
+      }
+      const children = EhrDefs.getPageChildren(pKey)
+      const cNames = children.map(e => e.elementKey)
+      const filtered = cNames.filter( cn => !EXCLUDE_KEYS.includes(cn))
+      const uniqKeys = [... (new Set(filtered))]
+      const setLen = uniqKeys.length
+      if (filtered.length !== setLen) {
+        filtered.sort()
+        console.log('Duplicate keys found in page', pKey, filtered)
+      }
+      filtered.length.should.equal(setLen, `${pKey} has duplicates in children`)
+      // }
+    })
+  })
+
   it('getPageChildProperty', done => {
     const prop = 'elementKey'
     const key = 'checkbox'
@@ -172,6 +191,47 @@ describe('testing ehr-defs-grid', () => {
     types.should.have.property('stat')
     types.should.have.property('od')
     types.should.have.property('set')
+  })
+
+})
+
+describe ( 'Check table rec headers', () => {
+
+  it('check tables with rec header', () => {
+    const pageKeys = EhrDefs.getAllPageKeys()
+    pageKeys.forEach(pKey => {
+      const pageTables = EhrDefs.getPageTables(pKey)
+      pageTables.forEach( tbl => {
+        if (tbl.hasRecHeader) {
+          REC_HEADER_KEYS.forEach(key => {
+            const nKey = tbl.elementKey + '_' + key
+            const has = tbl.tableChildren.includes(nKey)
+            has.should.equal(true, `${pKey}.${tbl.elementKey} has rec hdr flag without ${key} child`)
+
+          })
+        }
+      })
+    })
+  })
+
+  // no longer need to worry about tables with the old record header keys because we now update the database and definitions to ensure that all record headers have unique record header element keys
+  it.skip('check tables without rec hdr flag', () => {
+    const pageKeys = EhrDefs.getAllPageKeys()
+    pageKeys.forEach(pKey => {
+      if ('careTeam' === pKey) {
+        console.log('SKIP table check on careTeam because it has name and profession elements without a rec header')
+        return
+      }
+      const pageTables = EhrDefs.getPageTables(pKey)
+      pageTables.forEach( tbl => {
+        if (!tbl.hasRecHeader) {
+          REC_HEADER_KEYS.forEach(key => {
+            const hasName = tbl.tableChildren.includes(key)
+            hasName.should.equal(false, `${pKey}.${tbl.elementKey} has ${key} but not rec hdr`)
+          })
+        }
+      })
+    })
   })
 
 })

@@ -12,7 +12,7 @@ class EhrPatientC {
     result.careTeam = this._careTeam(data)
     result.codeStatus = visitDetails.codeStatus
     result.dateOfBirth = dateStr
-    result.diagnosis = visitDetails.diagnosis
+    result.diagnosis = this._diagnosis(visitDetails)
     result.gender = demographics.gender
     result.mrn = demographics.mrn
     result.mrp = demographics.decisionMakerName? (demographics.decisionMakerName + ' (' + demographics.decisionMakerRelationship + ')') : ''
@@ -47,6 +47,15 @@ class EhrPatientC {
       place = latest.location
     }
     return place
+  }
+  _diagnosis (visitDetails) {
+    let diagnosis = visitDetails.diagnosis
+    let tableData = visitDetails.diagnosisTable || []
+    if (tableData.length > 0) {
+      let latest = tableData[tableData.length - 1]
+      diagnosis = latest.diagnosisRecord
+    }
+    return diagnosis
   }
   _lastFirstMiddle (d) {
     const fn = d.familyName ? d.familyName.toUpperCase() : ''

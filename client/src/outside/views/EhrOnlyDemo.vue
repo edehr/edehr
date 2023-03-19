@@ -1,11 +1,11 @@
 <template lang="pug">
-  div(class="columns is-centered")
+  div(class="is-centered")
     section(v-if="canAccessDemo", class="content")
       h2(class="has-text-centered") {{ ehrOnlyDemoText.title }}
       div
         div(v-text-to-html="ehrOnlyDemoText.intro")
       div(class="list-card list-element")
-        p Try a scenario about a fictitious patient, Erin Johns, during day 2 of their hospital stay. It is based on Case Study #2 in <a href="https://pressbooks.bccampus.ca/healthcasestudies">https://pressbooks.bccampus.ca/healthcasestudies</a>
+        p Try a scenario about a fictitious patient, Erin Johns, during day 2 of their hospital stay. It is based on Case Study #2 in "Health Case Studies" (see reference below).
         p.
           The patient in case 2 has a complicated health history and is experiencing COPD exacerbation due to community acquired pneumonia. The interprofessional collaboration is role modelled between nursing, medical radiology, medical laboratory, and health care workers in the emergency department.
         router-link(:to="{path: 'ehr', query: {demoOnlyKey: 'erin2Seed'}}") Erin JOHNS case study
@@ -27,6 +27,14 @@
 
     div(v-else)
       p {{ ehrOnlyDemoText.noAccess }}
+
+    section(class="content")
+      h2(class="has-text-centered") References
+      p Health Case Studies
+      p Subtitle: Toward Closing the Healthcare Communication Gap
+      p Authors: Glynda Rees; Rob Kruger; and Janet Morrison
+      a(href="https://pressbooks.bccampus.ca/healthcasestudies") https://pressbooks.bccampus.ca/healthcasestudies
+
 
 </template>
 

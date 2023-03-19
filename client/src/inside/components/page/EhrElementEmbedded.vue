@@ -1,6 +1,5 @@
 <template lang='pug'>
   div(class="embedded-data")
-    div eeemb inputval: {{ inputVal }}
     ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp", viewOnly=true)
 </template>
 
@@ -32,7 +31,6 @@ export default {
   },
   data () {
     return {
-      refRow: ''
     }
   },
   computed: {
@@ -71,11 +69,8 @@ export default {
      * @param refValue
      */
     setEmbeddedGroupData (refValue) {
-      // The ref contains pageKey.tableKey.rowIndex
-      this.refRow = refValue.split('.')[2]
-      // we could use the refValue to get the refPage and/or the refTable but we have these from properties
-      // Get the data from the page's table's row
-      const rowData = EhrData.getTableRowData(this.refPage, this.refTable, this.refRow)
+      // The refValue contains a row id e.g. pageKey.tableKey.rowNum
+      const rowData = EhrData.getTableRowData(refValue)
       const options = {}
       // stuff the data from the source table row into the inputs. This will be picked up
       // when the channel event is emitted for the referenced table
@@ -89,16 +84,8 @@ export default {
       // first thing to happen so include "isEmbedded: true" in the eData. Then the dialog itself
       // can skip the dialog open.
       eData.isEmbedded= true
-      // TODO do we need to send the table key?
-      // eData.tableKey=this.refTable
-      // sending true in the value to indicate this is a dialog open event.  Later another event
-      // is emitted when the dialog is to be closed. In that case we send a value with false.
-      // eData.open = true
       eData = Object.assign(eData, options)
       const _this = this
-      // console.log('segd emit channel',
-      //   _this.ehrHelp.getDialogEventChannel(_this.refTable),
-      //   'eData:', JSON.stringify(eData))
       Vue.nextTick(function () {
         EventBus.$emit(_this.ehrHelp.getDialogEventChannel(_this.refTable), eData)
       })

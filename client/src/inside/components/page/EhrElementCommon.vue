@@ -36,12 +36,17 @@ export default {
     viewOnly: { type: Boolean, default: false }
   },
   computed: {
+    devEnv () { return process.env.NODE_ENV === 'development' },
+    elementIsId () { return this.element.inputType === EhrTypes.dataInputTypes.generatedId },
     element () {
       return EhrDefs.getPageChildElement(this.pageDataKey, this.elementKey)
     },
     helperText () { return this.element.helperText },
     helperHtml () { return this.element.helperHtml },
-    _id () { return this.tableKey + '.' + this.element.fqn},
+    hideElement () { return (this.element.formOption === 'hideElement' && this.hideIfId)},
+    hideIfId () { return this.elementIsId ? !this.devEnv : true },
+
+    _id () { return this.element.fqn}, // element fqn are pageKey.tableKey.childKey
     inputId () {
       return this.elementKey + this.element.inputType
     },
@@ -96,10 +101,14 @@ export default {
       }
       return name
     },
-    internalSetInputValue (val) {
+    internalSetInputValue (value) {
       // this should trigger the watch ...
-      this.inputVal = val
+      this.inputVal = value
     },
+    /**
+     * Set this element's model value (inputVal).
+     * @param value
+     */
     setInitialValue (value) {
       if (dbInputs) console.log('EhrCommon set initial value ', value, this.elementKey)
       this.initialVal = value
@@ -163,7 +172,8 @@ export default {
     },
     handleDialogEvent (options) {
       const open = options.open
-      // console.log('EEC dialog event. eKey:', this.elementKey,', options:', JSON.stringify(options))
+      // const { key, tableAction, sendersTableDef, sourceRowId, tableActionDraftRowIndex, draftRowData, draftRowId } = options
+      // console.log('EEC dialog event.', key, tableAction, sourceRowId, tableActionDraftRowIndex, draftRowId)
       /*
       this.dialogIsOpen = open
       TODO Change this.dialogIsOpen from a local value per element to an accessor on the single source of truth.
@@ -174,8 +184,8 @@ export default {
         // console.log('EEC If closing (not open) then just return')
         return
       }
-      // isEmbedded is provided by the parent.
       if (this.isEmbedded) {
+        // console.log('isEmbedded is provided by the parent', this.isEmbedded)
         /*
           let inputs = options.inputs ? options.inputs : options.data
           Change this. Data should not come from two different object types without a strong and clear need
@@ -222,12 +232,18 @@ export default {
     },
     setupEventHandlers () {
       const _this = this
+      if (EhrTypes.nondataInputType[this.inputType]) {
+        // skip setting up listeners on elements that don't change
+        return
+      }
+      // is the container a page?
       if (this.isPageElement) {
         this.pageRefreshEventHandler = function () {
           _this.refreshPage()
         }
         EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.pageRefreshEventHandler)
       }
+      // is the container a table?
       if (this.isTableElement) {
         this.dialogEventHandler = function (eData) {
           _this.handleDialogEvent(eData)

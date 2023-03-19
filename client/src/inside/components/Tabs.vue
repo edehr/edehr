@@ -28,7 +28,7 @@ export default {
         tab.isActive = selectedTab.name === tab.name
       })
       // emit the page refresh event so the newly selected tab can process a refresh event and load its content
-      console.log('Tab change emit PAGE_DATA_REFRESH_EVENT')
+      // console.log('Tab change emit PAGE_DATA_REFRESH_EVENT')
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
     }
   }

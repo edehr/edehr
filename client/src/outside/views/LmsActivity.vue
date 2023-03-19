@@ -79,7 +79,7 @@ export default {
       return this.$store.getters['activityStore/activityId']
     },
     assignment () {
-      return this.$store.getters['assignmentStore/assignment' || {}]
+      return this.$store.getters['assignmentStore/assignment'] || {}
     },
     classList () {
       return this.$store.getters['instructor/list']

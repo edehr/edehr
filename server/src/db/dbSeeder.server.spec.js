@@ -93,8 +93,7 @@ const sampleAD = {
 }
 
 function verifyVersion (ehrData) {
-  const model = new EhrDataModel(ehrData)
-  const version = model.metaEhrVersion
+  const version = EhrDataModel.MetaEhrVersion(ehrData)
   should.exist(version)
   version.major.should.be.greaterThanOrEqual(2)
   version.minor.should.be.greaterThanOrEqual(1)

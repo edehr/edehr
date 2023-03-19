@@ -3,6 +3,8 @@ import { ok, fail } from '../common/utils'
 import BaseController from '../common/base'
 import ActivityData from './activity-data'
 import EhrDataModel from './../../ehr-definitions/EhrDataModel'
+import { EHR_AD_EVENT, EHR_EVENT_BUS } from '../../server/trace-ehr'
+import { decoupleObject } from '../../ehr-definitions/common-utils'
 
 const debug = require('debug')('server')
 
@@ -13,48 +15,47 @@ export default class ActivityDataController extends BaseController {
 
   /**
    * place date into the ehr data's page element
+   * @param visitId
    * @param id
    * @param dataPayload
-       let data = {
+   let data = {
         property: 'progressNotes',
         value: activityData.assignmentData.progressNotes || []
+   * @param action
    * @return {*}
    * @see updateSeedEhrProperty in seedData-controller
    */
-  putAssignmentData (id, dataPayload) {
-    // debug('ActivityData updateAssignmentData '+ id +' ehrData with data: ' + JSON.stringify(dataPayload))
-    return this.baseFindOneQuery(id).then(activityData => {
-      if (activityData) {
-        const propertyName = dataPayload.propertyName
-        const value = dataPayload.value
-        value.lastUpdate = moment().format()
-        let ehrData = activityData.assignmentData || {}
-        ehrData[propertyName] = value
-        return this._saveEhrData(activityData, ehrData)
-      }
-    })
+  async putAssignmentData (visitId, userId, id, dataPayload, action) {
+    // console.log('PUT AD', visitId, id, action)
+    const ad = await this.baseFindOneQuery(id)
+    if (ad) {
+      const propertyName = dataPayload.propertyName
+      const value = dataPayload.value
+      value.lastUpdate = moment().format()
+      let ehrData = ad.assignmentData || {}
+      const previous = decoupleObject(ehrData)
+      ehrData[propertyName] = value
+      const doc = await this._saveEhrData(ad, ehrData)
+      EHR_EVENT_BUS.emit(EHR_AD_EVENT, visitId, userId, action, previous, doc.assignmentData)
+      return doc
+    }
   }
 
-  updateAndSaveAssignmentEhrData (id, ehrData) {
-    // debug('ActivityData updateAssignmentData '+ id +' ehrData with data: ' + JSON.stringify(ehrData))
+  async updateAndSaveAssignmentEhrData (id, ehrData) {
     if (!ehrData) {
       return Promise.resolve()
     }
-    // put the data into an EhrDataModel to get the data transformed to the latest version, if needed
-    const ehrDataModel = new EhrDataModel(ehrData)
-    ehrData = ehrDataModel.ehrData
-    // console.log('updateAndSaveAssignmentEhrData', ehrData)
-    return this.baseFindOneQuery(id).then(activityData => {
-      if (activityData) {
-        return this._saveEhrData(activityData, ehrData)
-      }
-    })
+    const ad = await this.baseFindOneQuery(id)
+    if (ad) {
+      const previous = decoupleObject(ad.assignmentData)
+      const doc = await this._saveEhrData(ad, ehrData)
+      EHR_EVENT_BUS.emit(EHR_AD_EVENT, 'system', 'system', 'update', previous, doc.assignmentData)
+      return doc
+    }
   }
 
-  _saveEhrData (activityData, ehrData) {
-    // Be sure both the seed and activity-data controllers do similar things when they save
-    // ehr data. For example, they both update the metadata
-    EhrDataModel.updateEhrDataMeta(ehrData)
+  async _saveEhrData (activityData, ehrData) {
+    ehrData = EhrDataModel.PrepareForDb(ehrData)
     activityData.lastDate = Date.now()
     activityData.assignmentData = ehrData
     // tell the db to see a change on this subfield
@@ -120,10 +121,13 @@ export default class ActivityDataController extends BaseController {
         .then(ok(res))
         .then(null, fail(res))
     })
-    router.put('/assignment-data/:key/', (req, res) => {
+    router.put('/assignment-data/:key/:action', (req, res) => {
       const id = req.params.key
+      let action = req.params.action
       const data = req.body
-      this.putAssignmentData(id, data)
+      const authPayload = req.authPayload
+      const { visitId, userId } = authPayload
+      this.putAssignmentData(visitId, userId, id, data, action)
         .then(ok(res))
         .then(null, fail(res))
     })

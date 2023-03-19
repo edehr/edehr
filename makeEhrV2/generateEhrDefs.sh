@@ -12,9 +12,5 @@ cp generated/ehrDefs/ehr-page-defs.js ../client/src/ehr-definitions/
 cp generated/ehrDefs/ehr-page-defs.js ../server/src/ehr-definitions/
 cp generated/ehrDefs/ehr-page-defs.js ../ehr-workspace/src/ehr-definitions/
 
-cp source/ehr-types.js ../client/src/ehr-definitions/
-cp source/ehr-types.js ../server/src/ehr-definitions/
-cp source/ehr-types.js ../ehr-workspace/src/ehr-definitions/
-
 # clean up generated files
 #rm generated/ehrDefs/*.js

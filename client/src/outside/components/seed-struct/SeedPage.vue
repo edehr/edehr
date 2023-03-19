@@ -13,14 +13,12 @@
           seed-table-horiz(v-show='tableOrientation',
             :pageKey="pageKey",
             :pageChildren="pageChildren",
-            :pageElement='pageElement',
-            :pageSeedData='pageSeedData'
+            :pageElement='pageElement'
           )
           seed-table-vert(v-show='!tableOrientation',
             :pageKey="pageKey",
             :pageChildren="pageChildren",
-            :pageElement='pageElement',
-            :pageSeedData='pageSeedData'
+            :pageElement='pageElement'
           )
     div(v-if='pageElement.isPageForm')
       div(v-for='group in pageElement.ehr_groups')

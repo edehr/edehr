@@ -75,7 +75,7 @@ const actions = {
     //   value: value
     // }
     let adi = context.state.dataStore._id
-    let url = `assignment-data/${adi}`
+    let url = `assignment-data/${adi}/save`
     if (debug) console.log(NAME+ ' sendAssignmentDataUpdate', payload)
     return context.dispatch('putActiveData', {url: url, data: payload })
   },
@@ -91,7 +91,7 @@ const actions = {
   sendAssignmentDataDraft (context, payload) {
     // console.log('sendAssignmentDataDraft',payload)
     let adi = context.state.dataStore._id
-    let url = `assignment-data/${adi}`
+    let url = `assignment-data/${adi}/draft`
     if (debug) console.log(NAME+ ' sendAssignmentDataUpdate', payload)
     return context.dispatch('putActiveDataSilent', {url: url, data: payload })
   },

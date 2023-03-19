@@ -6,19 +6,19 @@
         tbody
           tr(v-for="(column, colIndex) in transposed", :class="tableColumnCss(column)")
             td(:class="transposeLabelCss(column)", class="tableLabelElement")
-              div(v-if="colIndex === 0", style="min-height:3rem;") &nbsp;
               span(v-html="transposeLabel(column)")
             td(v-for="(cell, index) in transposeData(column)", :class="transposeValueCss(cell, index)")
-              ui-button(v-if="!cell.isDraft && colIndex === 0", v-on:buttonClicked="viewReport(pageDataKey, tableKey, index)")
-                span View &nbsp;
-                fas-icon(icon="file-pdf")
+              div(v-if="!cell.isDraft && colIndex === 0")
+                  ui-button(v-on:buttonClicked="viewReport(getIdFromStack(cell))")
+                    span View &nbsp;
+                    fas-icon(icon="file-pdf")
               ui-button(
                   v-if="!cell.isDraft && showTableAction && colIndex === 0",
-                  v-on:buttonClicked="tableAction(tableDef.tableKey, tableDef.tableAction, index)"
+                  v-on:buttonClicked="tableAction(tableDef, index)"
                   )
                 span {{ tableDef.tableActionLabel }} &nbsp;
                 fas-icon(icon="notes-medical")
-              ui-button(v-if="cell.isDraft && colIndex === 0 && canEdit", v-on:buttonClicked="editDraft(pageDataKey, tableKey, index)")
+              ui-button(v-if="cell.isDraft && colIndex === 0 && canEdit", v-on:buttonClicked="editDraft(getIdFromStack(cell))")
                 span Edit &nbsp;
                 fas-icon(icon="edit")
               div(v-for="cPart in cell.stack")

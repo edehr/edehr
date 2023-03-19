@@ -5,7 +5,11 @@ import { isString } from './common-utils'
 const PROPS = EhrTypes.elementProperties
 
 export const MAR_PAGE_KEY = 'medAdminRec'
+export const MAR_V1_TABLE_KEY = 'table'
+export const MAR_V2_TABLE_KEY = 'marRecords'
+
 export const MED_ORDERS_PAGE_KEY = 'medicationOrders'
+export const MED_ORDERS_TABLE_KEY = 'medicationOrdersTable'
 
 class EhrDefsWorker {
   constructor () {
@@ -32,10 +36,8 @@ class EhrDefsWorker {
     return pageKeys
   }
 
-  getAllPageChildren () {
-    const pc = []
-    keys.map(k => pageDefs[k].pageChildren).map(item => pc.push(...item))
-    return pc
+  getPageChildren (pageKey) {
+    return this.pageDefs[pageKey].pageChildren
   }
 
   getChildElements (pageKey, filterKey, filterValue, desiredProperty) {
@@ -104,6 +106,47 @@ class EhrDefsWorker {
     let elements = this.getPageElements(pageKey)
     return Object.values(elements).filter( (e) => {return e.isTable})
   }
+
+  parseDependentOn (given) {
+    /*
+      visble:administration=sched,prn
+      visble:administration=set
+      visble:administration=once
+      Here we split the given definition into parts. The expected structure is
+      (visible|disable):key[=refValue]
+      The first part is the action. Does this dependancy control visibility or enabled.
+      Second part is the element key to listen for.
+      The optional third part gives the value to look for in the target element. Default to treat the value as boolean.
+       */
+    let key, type, action, refValue
+    const depDefs = EhrTypes.dependentOn
+    key = given
+    if (key) {
+      const parts = key.split(depDefs.splitActionKeyOn)
+      action = parts[0] // e.g. visble (misspelled), disable, onChange
+      key = parts[1] // e.g. administration=sched,prn
+      if (key.includes(depDefs.splitKeyValueOn)) {
+        const kv = key.split(depDefs.splitKeyValueOn)
+        key = kv[0] // e.g. administration a key to a page element
+        refValue = kv[1] // e.g. sched,prn - the criteria
+        type = depDefs.type.select
+      } else if (depDefs.type.onChange === action) {
+        type = depDefs.type.onChange
+        action = depDefs.type.onChange
+        refValue = key
+      }  else if (depDefs.type.echo === action) {
+        type = depDefs.type.echo
+        action = depDefs.type.echo
+        refValue = key
+      } else if (depDefs.action.age === action) {
+        type = depDefs.type.age
+      } else {
+        type = depDefs.type.check
+      }
+    }
+    return {key: key, type: type, action: action, refValue: refValue}
+  }
+
 }
 const EhrDefs = new EhrDefsWorker()
 export default EhrDefs

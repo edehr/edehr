@@ -52,8 +52,11 @@ export default {
     seedListStoreSeedId () {
       return this.$store.getters['seedListStore/seedId']
     },
+    seedDataListStore () {
+      return this.$store.getters['seedListStore/list']
+    },
     seedDataList () {
-      let seeds = StoreHelper.getSeedDataList().filter( sv => !sv.isDefault )
+      let seeds = this.seedDataListStore.filter( sv => !sv.isDefault )
       return seeds.map( sv => new SeedModel(sv))
     },
     seedDataListFiltered () {

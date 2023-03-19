@@ -102,7 +102,20 @@ Define the styles for the left hand side components in the EHR
 $panelContentPadding: 0.5rem 1rem;
 .EhrPanelContent {
   padding: $panelContentPadding;
+  // make space for the absolutely positioned ehr-page-footer
+  margin-bottom: 3rem;
 }
+.ehr-page{
+  min-height: 100vh;
+  border: 1px solid black;
+  padding: 5px;
+  position: relative;
+}
+.ehr-page-footer {
+  position: absolute;
+  bottom: 0;
+}
+
 
 .EhrContextBanner {
   background: $context-banner-background-color;

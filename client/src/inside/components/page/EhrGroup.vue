@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(v-show="groupIsVisible")
+  div(v-show="groupIsVisible", :class='{hiddenGroup: hideGroup}')
     h3(v-if="group.label") {{ group.label }}
     div(class="ehr-group-wrapper", :class="groupClass")
       div(v-for="child in group.gChildren", :key="forIndex(child)", class="ehr-group-for", :class="childClass(child)")
@@ -34,12 +34,15 @@ export default {
   },
   computed: {
     elementKey () { return this.group.elementKey },
+    hideGroup () { return (this.group.formOption === 'hideGroup')},
     groupIsVisible () {
+      let testValue = this.dependentOnValue
+      let ref =  this.dependentDef && this.dependentDef.refValue ? this.dependentDef.refValue : undefined
       let visible = true
-      // console.log('EhrGroup visible?', this.dependentDef, this.dependentOnValue)
-      if(this.dependentDef && this.dependentDef.refValue) {
-        visible = this.dependentDef.refValue.includes(this.dependentOnValue)
+      if (ref) {
+        visible =  !!testValue && ref.includes(testValue)
       }
+      // console.log('EhrGroup visible?', visible, testValue, !!testValue,  ref)
       return visible
     },
     groupClass () {
@@ -80,5 +83,8 @@ export default {
   //border: 1px solid rgb(55,45,45,0.1);
   //border-radius: 5px;
   //padding: 4px;
+}
+.hiddenGroup {
+  display: none;
 }
 </style>

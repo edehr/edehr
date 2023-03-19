@@ -2,6 +2,7 @@
 import EhrDefs from '../../../ehr-definitions/ehr-defs-grid'
 import EventBus from '../../../helpers/event-bus'
 import EhrTypes from '@/ehr-definitions/ehr-types'
+import { processDependentOnChange } from '@/ehr-definitions/ehr-def-utils'
 const dbug = false
 const PROPS = EhrTypes.dependentOn
 const UI_TYPES = EhrTypes.inputTypes
@@ -33,6 +34,20 @@ export default {
       const type = this.inputType
       return type === UI_TYPES.select || type === UI_TYPES.checkbox || type === UI_TYPES.personAge
     },
+    /**
+     * Get this element's dependentOn property.
+     * If the subclass is an EhrGroup then there may be a group property. Get it's dependentOn property.
+     * Samples:
+     * dateOfBirth age:personAge
+     * Many samples in the medications form set visibility.  E.g. 'visble:med_timing=cont'  Note the misspelling is legacy.
+     * This says the element's visibility is dependent on the element with key 'med_timing' and this element is expected
+     * to be a select with a value of 'cont'
+     * Another sample, 'visble:med_timing=prn,sched,set' shows that the values can be a CSV string
+     *
+     * Samples in the test pages.
+     *
+     * @returns {*|undefined}
+     */
     dependentOn () {
       return this.element ? this.element.dependentOn : (this.group ? this.group.dependentOn : undefined)
     },
@@ -46,6 +61,11 @@ export default {
     },
     setDependentValue (value) {
       if (dbug) console.log('eDep setDependentValue', this.elementKey, value, this.dependentDef)
+      if (this.dependentDef.type === 'onChange') {
+        value = processDependentOnChange(this.dependentDef, value, this.pageDataKey, this.elementKey)
+        // bad form to use a subclass' method but need to do it
+        this.setInitialValue(value)
+      }
       this.dependentOnValue = value
     },
     dependentUIEvent () {
@@ -71,45 +91,17 @@ export default {
       this.dependentEventHandler = (eData) => { this._dReceiveEvent(eData) }
       EventBus.$on(this.dChannel, this.dependentEventHandler)
     },
-    _dependentKeys (given) {
-      /*
-        visble:administration=sched,prn
-        visble:administration=set
-        visble:administration=once
-        Here we split the given definition into parts. The expected structure is
-        (visible|disable):key[=refValue]
-        The first part is the action. Does this dependancy control visibility or enabled.
-        Second part is the element key to listen for.
-        The optional third part gives the value to look for in the target element. Default to treat the value as boolean.
-         */
-      let key, type, action, refValue
-      key = given
-      if (key) {
-        const parts = key.split(PROPS.splitActionKeyOn)
-        action = parts[0] // e.g. visible
-        key = parts[1] // e.g. administration=sched,prn
-        if (key.includes(PROPS.splitKeyValueOn)) {
-          const kv = key.split(PROPS.splitKeyValueOn)
-          key = kv[0] // e.g. administration
-          refValue = kv[1] // e.g. sched,prn
-          type = PROPS.type.select
-        } else if (PROPS.action.age === action) {
-          type = PROPS.type.age
-        } else {
-          type = PROPS.type.check
-        }
-      }
-      return {key: key, type: type, action: action, refValue: refValue}
-    },
+
     dependentPropertySetUp () {
       if (this.dependentOn) {
-        if (dbug) console.log('eDep do we have dependentOn and element', this.dependentOn, this.elementKey)
-        this.dependentDef = this._dependentKeys(this.dependentOn)
-        if (dbug) console.log('eDep dependentDef', this.dependentDef)
-        if (this.dependentDef.key) {
+        const depOnValue = this.dependentOn
+        const def = this.dependentDef = EhrDefs.parseDependentOn(depOnValue)
+        // console.log('depOnValue', depOnValue)
+        // console.log('dependentDef', def)
+        if (def.key) {
           this._dReceiveSetup()
-          this.dependentOnValue = EhrDefs.getDefaultValue(this.pageDataKey, this.dependentDef.key)
-          if (PROPS.type.check === this.dependentDef.type) {
+          this.dependentOnValue = EhrDefs.getDefaultValue(this.pageDataKey, def.key)
+          if (PROPS.type.check === def.type) {
             // ... coerce to be boolean
             this.dependentOnValue = !!this.dependentOnValue
           }

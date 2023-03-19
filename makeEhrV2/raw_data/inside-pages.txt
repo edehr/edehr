@@ -47,5 +47,9 @@
 {path: /ehr/external}	{routeName: test-page}	{pageDataKey: testPage}	{label: Test Page}	{redirect: }	{generateComponent: yes}	{menuIndex: 48}
 {path: /ehr/external}	{routeName: test-table}	{pageDataKey: testTable}	{label: Test Table}	{redirect: }	{generateComponent: yes}	{menuIndex: 49}
 {path: /ehr/current/assessments}	{routeName: integumentary-assessment}	{pageDataKey: integumentaryAssessment}	{label: Integumentary assessment}	{redirect: }	{generateComponent: custom}	{menuIndex: 50}
-{path: /ehr/chart/reports}	{routeName: hematology}	{pageDataKey: hematology}	{label: Hematology}	{redirect: }	{generateComponent: custom}	{menuIndex: 51}
+eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {path: /ehr/current}	{routeName: discharge-plan}	{pageDataKey: dishargeplan}	{label: Discharge plan}	{redirect: }	{generateComponent: yes}	{menuIndex: 31}
+{path: /ehr}	{routeName: med-lab}	eCell	{label: Med Lab}	{redirect: hematology}	eCell	{menuIndex: 52}
+{path: /ehr/med-lab}	{routeName: hematology}	{pageDataKey: hematology}	{label: Med Lab Hematology}	{redirect: }	{generateComponent: custom}	{menuIndex: 54}
+{path: /ehr/med-lab}	{routeName: medLabChemistry}	{pageDataKey: medLabChemistry}	{label: Med Lab Chemistry}	{redirect: }	{generateComponent: wip}	{menuIndex: 55}
+{path: /ehr/med-lab}	{routeName: med-lab-imaging}	{pageDataKey: medLabImaging}	{label: Med Lab Medical Imaging}	eCell	{generateComponent: wip}	{menuIndex: 56}

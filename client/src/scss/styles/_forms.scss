@@ -48,6 +48,15 @@ textarea {
     width: 20rem;
   }
 }
+.form_label_mandatory {
+  color: $brand-highlight-red;
+}
+
+/* EHR tables have ids. This hides them from view */
+.row-id {
+  display: none;
+}
+
 .checkbox_label,
 .radio_label {
   display: inline;

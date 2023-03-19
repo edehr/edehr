@@ -76,13 +76,6 @@ export default {
         canSave = true
       } else {
         canSave = this.errorList.length === 0 && this.hasData
-        if (canSave && this.ehrHelp.activeTableDialogHasRecordHeader()) {
-          const { name, profession, day, time } = this.ehrHelp.activeTableDialogRecordHeader()
-          canSave = name && name.length > 0 &&
-            profession && profession.length > 0 &&
-            day && day.length > 0 &&
-            time && time.length > 0
-        }
       }
       return !canSave
     },
@@ -104,6 +97,7 @@ export default {
       }
     },
     cancelConfirmed: async function () {
+      // TODO fix this future defect. Remove the row the dialog was opened on and not just the first draft row.
       await this.ehrHelp.removeDraftRow()
       this.closeDialog()
       this.errorList = []
@@ -114,11 +108,11 @@ export default {
       }
     },
     receiveShowHideEvent (eData) {
+      // console.log('receiveShowHideEvent (eData)', eData)
+      // this event doesn't happen on embedded forms so the following does nothing
       if (eData.isEmbedded) {
-        /*
-        When a portion of the dialog form is used as an embedded form fragment we want to be
-        sure to not open the underlying dialog that would normally contain that fragment.
-         */
+        console.log('When a portion of the dialog form is used as an embedded form fragment we must not open the dialog associated that fragment.', this.tableKey)
+        this.ehrHelp.setViewOnly(this.tableKey)
         return
       }
       if(eData.open) {
@@ -128,28 +122,41 @@ export default {
       }
     },
     receiveInputChangeEvent (eData) {
-      if (!this.isViewOnly) {
-        // some pages have more than one table, each with a dialog. Only respond to events for the right table
-        if (eData.tableKey === this.tableKey) {
+      const showMsgs = false
+      const {element, tableKey, value} = eData
+      const { elementKey, formIndex } = element
+      if (showMsgs) console.log('receiveInputChangeEvent', tableKey, elementKey, formIndex, value)
+      if ( this.isEmbedded) {
+        if (showMsgs) console.log('skip receiveInputChangeEvent on elements because this dialog form is isEmbedded',tableKey, elementKey, formIndex, value)
+        return
+      }
+      if (this.isViewOnly) {
+        if (showMsgs) console.log('skip receiveInputChangeEvent on elements in view only areas',tableKey, elementKey, formIndex, value)
+        return
+      }
+      if (tableKey !== this.tableKey) {
+        if (showMsgs) console.log('skip receiveInputChangeEvent on elements from different table:', this.tableKey, tableKey, elementKey, formIndex, value)
+        return
+      }
+      // some pages have more than one table, each with a dialog. Only respond to events for the right table
+      if (showMsgs) console.log('SET UP VALIDATION AND SAVE FOR ', tableKey, elementKey)
+      // Delay validation until input stream goes quiet for the timeout period
+      const VALIDATION_TIMEOUT = 500
+      if (this.validationTimeoutId) {
+        clearTimeout(this.validationTimeoutId)
+      }
+      this.validationTimeoutId = setTimeout(() => {
+        this.errorList = this.ehrHelp.validateDialog() || []
+      }, VALIDATION_TIMEOUT)
 
-          // Delay validation until input stream goes quiet for the timeout period
-          const VALIDATION_TIMEOUT = 500
-          if (this.validationTimeoutId) {
-            clearTimeout(this.validationTimeoutId)
-          }
-          this.validationTimeoutId = setTimeout(() => {
-            this.errorList = this.ehrHelp.validateDialog() || []
-          }, VALIDATION_TIMEOUT)
-
-          // Any input change sets up a draft save after timeout. Don't wait for quiet time.
-          const SAVE_DRAFT_TIMEOUT = 3000
-          if ( !this.saveDraftTimeoutId ) { // IF a save is pending then done else set up a delayed save
-            this.saveDraftTimeoutId = setTimeout(() => {
-              this.ehrHelp.saveDialogDraft()
-              this.saveDraftTimeoutId = undefined // reset so another save can be queued up
-            }, SAVE_DRAFT_TIMEOUT)
-          }
-        }
+      // Any input change sets up a draft save after timeout. Don't wait for quiet time.
+      const SAVE_DRAFT_TIMEOUT = 3000
+      if ( !this.saveDraftTimeoutId ) { // IF a save is pending then done else set up a delayed save
+        // console.log('input change set up timeout to save draft', eData, this.tableDef)
+        this.saveDraftTimeoutId = setTimeout(async () => {
+          await this.ehrHelp.saveDialogDraft()
+          this.saveDraftTimeoutId = undefined // reset so another save can be queued up
+        }, SAVE_DRAFT_TIMEOUT)
       }
     },
     saveConfirmed: async function () {
@@ -161,7 +168,7 @@ export default {
     },
     saveDialog: function () {
       if (this.hasRecHeader) {
-        const { name, profession, day, time } = this.ehrHelp.activeTableDialogRecordHeader()
+        const { name, profession, day, time } = this.ehrHelp.prepareAndGetActiveDialogRecordHeader()
         const msg = ehrText.saveDialogVerifyMessage(name, profession, day, time)
         this.$refs.confirmSaveDialog.showDialog(ehrText.saveDialogVerifyTitle, msg)
       } else {

@@ -221,8 +221,8 @@ Wheeze
 Crackles
 Absent
 Decreased}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 15}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 15}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer1}	{pN: 15}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer2}	{pN: 15}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Right middle lung}	eCell	{elementKey: rml}	{pN: 15}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Right middle lung}	{tableColumn: 7}	eCell	eCell	eCell	eCell	"{Options: Normal
 Wheeze
 Crackles
@@ -239,7 +239,7 @@ Wheeze
 Crackles
 Absent
 Decreased}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 15}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer3}	{pN: 15}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 15}	{fN: 1}	{gN: 4}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Respiratory rhythm}	eCell	{elementKey: respiratoryRhythm}	{pN: 15}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Respiratory rhythm}	{tableColumn: 10}	eCell	eCell	eCell	eCell	"{Options: Regular
 Irregular
@@ -247,7 +247,7 @@ Paradoxical}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Respiratory depth}	eCell	{elementKey: respiratoryDepth}	{pN: 15}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Respiratory depth}	{tableColumn: 11}	eCell	eCell	eCell	eCell	"{Options: Normal
 Shallow
 Deep}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 15}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer4}	{pN: 15}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Cough}	eCell	{elementKey: cough}	{pN: 15}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Cough}	{tableColumn: 12}	eCell	eCell	eCell	eCell	"{Options: No
 Nonproductive
 Productive}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -261,7 +261,7 @@ Profuse, colourless
 Bloody}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Sputum comments}	eCell	{elementKey: sputumComments}	{pN: 15}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Sputum comments}	{tableColumn: 14}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 15}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: General comments}	eCell	{elementKey: generalComments}	{pN: 15}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: General comments}	{tableColumn: 15}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: generalComments}	{pN: 15}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Comments}	{tableColumn: 15}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 20}	{Label: Cardiovascular assessment}	eCell	{elementKey: cardiovascular}	{pN: 16}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: Cardiovascular assessment}	eCell	{elementKey: table}	{pN: 16}	{fN: 1}	{gN: }	{sgN: }	eCell	{formOption: transpose}	eCell	eCell	eCell	{addButtonText: Add a cardiovascular assessment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 16}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

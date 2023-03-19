@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="form-element")
-    ehr-page-form-label(:element="element", css="ehrFile_label")
+    ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="ehrFile_label")
     div(class="file-element")
       div(class="inline")
         ehr-file-link(v-if="inputVal && inputVal.fName", :ehrFile="inputVal", :alink="false")

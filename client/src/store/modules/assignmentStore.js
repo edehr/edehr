@@ -7,9 +7,9 @@ const API = 'assignments'
 const NAME = 'AssignmentStore'
 const OBJ = 'assignment'
 const debug = false
-
+const L_OBJ_INIT = {}
 const state = {
-  learningObject: {},
+  learningObject: L_OBJ_INIT,
   learningObjectId: ''
 }
 
@@ -100,10 +100,11 @@ const mutations = {
     const learningObjectId = assignment ? assignment._id : ''
     if (assignment) {
       localStorage.setItem(sKeys.LOBJ_ID, learningObjectId)
+      state.learningObjectId = learningObjectId
     } else {
       localStorage.removeItem(sKeys.LOBJ_ID)
+      state.learningObjectId = L_OBJ_INIT
     }
-    state.learningObjectId = learningObjectId
   }
 }
 

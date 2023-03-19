@@ -4,7 +4,7 @@ import {
   validNumberStr,
   validRangeStr,
   VISIT_DAY_LIMIT
-} from '@/helpers/ehr-utils'
+} from './common-utils'
 
 /**
  * Export a dictionary of validators. Each key is the input type as set from the generated ehr definitions.

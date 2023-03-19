@@ -96,7 +96,7 @@ const actions = {
    * @return {*}
    */
   createSeedItem (context, payload) {
-    let url = undefined
+    let url = '/createSeed/'
     if(debugSL) console.log('SeedList send seed data ', url, payload)
     return InstoreHelper.postRequest(context, API, url, payload).then(results => {
       if(debugSL) console.log('SeedList after create seed:', results.data )
@@ -125,7 +125,7 @@ const actions = {
   updateSeedItem (context, dataIdPlusPayload) {
     let id = dataIdPlusPayload.id
     let payload = dataIdPlusPayload.payload
-    let url = id
+    let url = '/updateSeed/' + id
     if(debugSL) console.log('SeedList update seed', url, payload)
     return InstoreHelper.putRequest(context, API, url, payload)
       .then( () => {
@@ -147,7 +147,7 @@ const actions = {
     // stash in the store
     // emit event to refresh table data
     let id = context.state.sSeedId
-    let url = 'updateSeedEhrProperty/' + id
+    let url = 'updateSeedEhrProperty/' + id +'/draft'
     const sd = await InstoreHelper.putRequestSilent(context, API, url, payload)
     await context.commit('_setSeedContent', sd.data)
   },
@@ -163,7 +163,7 @@ const actions = {
    */
   updateSeedEhrProperty (context, payload) {
     let id = context.state.sSeedId
-    let url = 'updateSeedEhrProperty/' + id
+    let url = 'updateSeedEhrProperty/' + id +'/save'
     if(debugSL) console.log('SeedList updateSeedEhrProperty url, payload', url, payload)
     return InstoreHelper.putRequest(context, API, url, payload)
       .then(() => {
@@ -184,21 +184,21 @@ const actions = {
    * @param payload { ehrData, id }
    * @return {*}
    */
-  importSeedEhrData (context, payload) {
-    let url = 'importSeedEhrData/' + payload.id
-    if(debugSL) console.log('SeedList importSeedEhrData', url, payload.ehrData)
-    return InstoreHelper.putRequest(context, API, url, payload.ehrData)
-      .then( () => {
-        if(debugSL) console.log('SeedList after seed replace ehr data reload seed list')
-        return context.dispatch('loadSeeds')
-      })
-      .then(() => {
-        if (context.state.sSeedId) {
-          if(debugSL) console.log('SeedList after seed replace ehr data reload current seed item')
-          return context.dispatch('loadSeedContent', context.state.sSeedId)
-        }
-      })
-  }
+  // importSeedEhrData (context, payload) {
+  //   let url = 'importSeedEhrData/' + payload.id
+  //   if(debugSL) console.log('SeedList importSeedEhrData', url, payload.ehrData)
+  //   return InstoreHelper.putRequest(context, API, url, payload.ehrData)
+  //     .then( () => {
+  //       if(debugSL) console.log('SeedList after seed replace ehr data reload seed list')
+  //       return context.dispatch('loadSeeds')
+  //     })
+  //     .then(() => {
+  //       if (context.state.sSeedId) {
+  //         if(debugSL) console.log('SeedList after seed replace ehr data reload current seed item')
+  //         return context.dispatch('loadSeedContent', context.state.sSeedId)
+  //       }
+  //     })
+  // }
 
 }
 

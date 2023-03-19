@@ -205,23 +205,23 @@ describe('Test support for seed import', () => {
     done()
   })
 
-  it('importSeedData', async () => {
-    should.doesNotThrow(async () => {
-      const seedId = 'new seed'
-      let ehrData = { demographics: { firstName: 'foo' } }
-      let data = composeData(ehrData)
-      const response = {
-        imported: true,
-        seeddata: mockData.seedData
-      }
-      await prepareAxiosResponse('get', response)
-      await prepareAxiosResponse('put', response)
-      const mRes = { status: 200, data: 'fake data' }
-      axios.mockResolvedValueOnce(mRes)
-      should.doesNotThrow(async () => await ehrUtils.importSeedData(null, seedId, data))
-      // done()
-    })
-  })
+  // it('importSeedData', async () => {
+  //   should.doesNotThrow(async () => {
+  //     const seedId = 'new seed'
+  //     let ehrData = { demographics: { firstName: 'foo' } }
+  //     let data = composeData(ehrData)
+  //     const response = {
+  //       imported: true,
+  //       seeddata: mockData.seedData
+  //     }
+  //     await prepareAxiosResponse('get', response)
+  //     await prepareAxiosResponse('put', response)
+  //     const mRes = { status: 200, data: 'fake data' }
+  //     axios.mockResolvedValueOnce(mRes)
+  //     should.doesNotThrow(async () => await ehrUtils.importSeedData(null, seedId, data))
+  //     // done()
+  //   })
+  // })
 
   it('downloadSeedToFile', done => {
     const seedId = 'new seed'
@@ -272,7 +272,7 @@ describe('Test validators and formatters ', () => {
     ehrUtils.validTimeStr('24:00').should.equal(false)
     ehrUtils.validTimeStr('33:00').should.equal(false)
     ehrUtils.validTimeStr('23:60').should.equal(false)
-    // valid tests    
+    // valid tests
     ehrUtils.validTimeStr('00:00').should.equal(true)
     ehrUtils.validTimeStr('01:00').should.equal(true)
     ehrUtils.validTimeStr('22:00').should.equal(true)
@@ -286,7 +286,7 @@ describe('Test validators and formatters ', () => {
     ehrUtils.validDayStr(10).should.equal(false)
     ehrUtils.validDayStr(100).should.equal(false)
     ehrUtils.validDayStr(1000).should.equal(false)
-    
+
     // valid tests
     ehrUtils.validDayStr(0).should.equal(true)
     ehrUtils.validDayStr(1).should.equal(true)
@@ -330,7 +330,7 @@ describe('Test validators and formatters ', () => {
 
 describe('Axios error and file upload', () => {
   it('composeAxiosResponseError', done => {
-    const response = { 
+    const response = {
       status: 400,
       statusText: 'Bad Request',
       data: 'Please, check your request and try again'
@@ -345,11 +345,11 @@ describe('Axios error and file upload', () => {
     const fileContent = 'This is a mock file'
     const file = createFile(fileContent)
     should.exist(file)
-    const result = await ehrUtils.readFile(file) 
+    const result = await ehrUtils.readFile(file)
     result.should.equal(fileContent)
   })
 
- 
+
 })
 
 

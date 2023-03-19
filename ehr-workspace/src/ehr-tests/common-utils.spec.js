@@ -2,7 +2,7 @@
 import should from 'should'
 import {
   decamelize,
-  decoupleObject, isObject, isString, removeEmptyProperties,
+  decoupleObject, hashString, isObject, isString, removeEmptyProperties,
   validDayStr,
   validNumberStr,
   validRangeStr,
@@ -73,5 +73,56 @@ describe('removeEmptyProperties tests', function () {
 describe('decamelize tests', function () {
   it ('decamelize', () => {
     decamelize('ThisIsACamelCaseString').should.equal('this_is_a_camel_case_string')
+  })
+})
+
+describe.skip('hash string tests', function () {
+  it ('hash undefined --> undefined',() => {
+    let hsh
+    hsh = hashString()
+    should.not.exist(hsh)
+  })
+  it ('hash number --> undefined',() => {
+    let hsh
+    hsh = hashString(42)
+    should.not.exist(hsh)
+  })
+  it ('hash object --> undefined',() => {
+    let hsh
+    hsh = hashString({})
+    should.not.exist(hsh)
+  })
+  it ('hash array --> undefined',() => {
+    let hsh
+    hsh = hashString([])
+    should.not.exist(hsh)
+  })
+  it ('hash a small string',() => {
+    let hsh
+    hsh = hashString('ThisIsACamelCaseString')
+    should.exist(hsh)
+    hsh.should.equal('ThisIsACamelCaseString')
+  })
+  it ('hash a larger string',() => {
+    let str = 'ThisIsACamelCaseString ThisIsACamelCaseString ThisIsACamelCaseString'
+    let h1 = 'dd9cff979d671fa936c74670f6eb7c77'
+    let h2 = '7e9a7897f2554c45878798c633af609c'
+    let hsh
+    hsh = hashString(str)
+    should.exist(hsh)
+    hsh.should.equal(h1)
+    str += '.'
+    hsh = hashString(str)
+    hsh.should.not.equal(h1)
+    hsh.should.equal(h2)
+  })
+  it ('hash the same sting',() => {
+    let str = 'ThisIsACamelCaseString ThisIsACamelCaseString ThisIsACamelCaseString'
+    let h1 = 'dd9cff979d671fa936c74670f6eb7c77'
+    let hsh
+    hsh = hashString(str)
+    hsh.should.equal(h1)
+    hsh = hashString(str)
+    hsh.should.equal(h1)
   })
 })

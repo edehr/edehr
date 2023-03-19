@@ -2,64 +2,54 @@ import EhrTypes from '@/ehr-definitions/ehr-types'
 import StoreHelper from '@/helpers/store-helper'
 import { ehrText } from '@/appText'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
-import EhrData from '@/inside/components/page/ehr-data'
+// import * as assert from 'assert'
 
 const ehrPages = new EhrPages()
 
 export default class EhrTableActions {
 
-  static getTableActionGetDraftRowIndex (pageKey, sourceTableKey, sourceRowIndex, targetTableKey) {
+  static getTableActionGetDraftRowIndex (tableDef, sourceRowId) {
+    const { taTargetPageKey, taTargetTableKey} = tableDef
     let targetDraftRowIndex = -1
-    const desiredRowValue = this.getTableActionGetRef(pageKey, sourceTableKey, sourceRowIndex)
-    const srcElemKey = this.getTableActionTargetElementKey(pageKey, sourceTableKey, targetTableKey)
+    const desiredRowValue = sourceRowId
+    const srcElemKey = this.getTableActionTargetElementKey(tableDef)
     if (!srcElemKey) {
-      StoreHelper.setApiError(ehrText.ERROR_IN_TABLE_ACTION_DEF(targetTableKey))
-      return targetDraftRowIndex
+      const msg = ehrText.ERROR_IN_TABLE_ACTION_DEF(JSON.stringify(tableDef))
+      StoreHelper.setApiError(msg)
+      throw new Error(msg)
     }
     const mData = StoreHelper.getMergedData()
-    const pData = mData[pageKey] || {}
-    const tData = pData[targetTableKey] || []
+    const pData = mData[taTargetPageKey] || {}
+    const tData = pData[taTargetTableKey] || []
     targetDraftRowIndex = tData.findIndex( row => row.isDraft && row[srcElemKey] === desiredRowValue )
-    // console.log('targetDraftRowIndex', pageKey, sourceTableKey, sourceRowIndex, targetTableKey, targetDraftRowIndex)
+    // console.log('getTableActionGetDraftRowIndex', sourceRowId, targetDraftRowIndex)
     return targetDraftRowIndex
   }
 
-  static getTableActionGetRef (pageKey, sourceTableKey, sourceRowIndex) {
-    return pageKey + '.' + sourceTableKey + '.' + sourceRowIndex
-  }
-
-  static getTableActionLabel (pageKey, tableDef, sourceRowIndex) {
-    const targetTableKey = tableDef.tableAction
-    const sourceTableKey = tableDef.tableKey
-    const draftRowIndex = this.getTableActionGetDraftRowIndex(pageKey, sourceTableKey, sourceRowIndex, targetTableKey)
+  static getTableActionLabel (tableDef, sourceRowId) {
+    // console.log('getTableActionLabel', tableDef)
+    const draftRowIndex = this.getTableActionGetDraftRowIndex(tableDef, sourceRowId)
     return draftRowIndex >= 0 ? 'Resume' : tableDef.tableActionLabel
   }
 
-  static getTableActionTargetElementKey (pageKey, sourceTableKey, targetTableKey) {
+  static getTableActionTargetElementKey (tableDef) {
+    // this is complicated but it is cool.
     const desiredInputType = EhrTypes.inputTypes.ehr_embedded
     const desiredProperty = EhrTypes.elementProperties.embedRef
-    const desiredPropertyValue = pageKey + '.' + sourceTableKey // e.g. 'hematology.tableCbcAnalysis'
+    const { taTargetPageKey, taTargetTableKey, taSourcePageKey, taSourceTableKey} = tableDef
+    const desiredPropertyValue = taSourcePageKey + '.' + taSourceTableKey // e.g. 'hematology.tableCbcAnalysis'
     // get list of elements, from the target table def, that have the desired input type
-    const embList = ehrPages.findTableElementsByInputType(pageKey, targetTableKey, desiredInputType)
+    // assert.ok(taTargetPageKey, `getTableActionTargetElementKey has target page key ${taTargetPageKey}`)
+    const embList = ehrPages.findTableElementsByInputType(taTargetPageKey, taTargetTableKey, desiredInputType)
     // get element from list that has the desired property
     const tElem = embList.find(elem => elem.getProperty(desiredProperty) === desiredPropertyValue)
+    // console.log('------ desiredInputType', desiredInputType)
+    // console.log('------ desiredProperty', desiredProperty)
+    // console.log('------ taTargetPageKey, taTargetTableKey, taSourcePageKey, taSourceTableKey-----', taTargetPageKey, taTargetTableKey, taSourcePageKey, taSourceTableKey)
+    // console.log('------ embList', JSON.stringify(embList))
+    // console.log('------ tElem', JSON.stringify(tElem))
     // get the key for the element
     return tElem ? tElem.elementKey : undefined
-  }
-
-  /**
-   * Search the table data looking for a row marked with the isDraft flag. Return the index of
-   * that row or -1 if not found.
-   * @param pageKey
-   * @param tableKey
-   * @returns {number}
-   */
-  getTableDraftRowIndex (pageKey, tableKey) {
-    const tableData = EhrData.getMergedTableData(pageKey, tableKey)
-    // console.log('checking for draft row in tableKey, tableData ', tableKey, tableData.length)
-    return tableData.findIndex((row) => {
-      return Object.keys(row).find(e => e === 'isDraft')
-    })
   }
 
   /**
@@ -80,58 +70,40 @@ export default class EhrTableActions {
    * The process of loading that embedded data will also invoke the open form dialog with two flags set.
    * One to keep the embedded form view only and the second to indicate the form is "embedded".
    *
-   * @param sourceTableKey
-   * @param targetTableKey
-   * @param sourceRowIndex
+   * @param sendersTableDef
+   * @param sourceRowId
    */
-  static getTableActionRequestOptions (pageKey, sourceTableKey, sourceRowIndex, targetTableKey) {
+  static getTableActionRequestOptions (sendersTableDef, sourceRowId) {
     const options = {
       tableAction: true,
-      pageKey: pageKey,
-      sourceTableKey: sourceTableKey,
-      sourceRowIndex: sourceRowIndex,
-      targetTableKey: targetTableKey
+      sendersTableDef: sendersTableDef,
+      sourceRowId: sourceRowId
     }
-    const draftRowIndex = this.getTableActionGetDraftRowIndex(
-      pageKey, sourceTableKey, sourceRowIndex, targetTableKey)
-    if (draftRowIndex >= 0) {
-      /*
-      If we have a draft row then we are resuming editing, and we use the existing table data
-      to initialize the input fields
-       */
-      // options.draftRowIndex = draftRowIndex
-      options.tableActionDraftRowIndex = draftRowIndex
-    } else {
-      /*
-      No draft means we're starting fresh.
-      The source table definition has a property 'tableAction' that contains the target table key.
-      This all assumes the source and target are on the same page.
-      Inside the target table will be an element with type ehr_embedded
-      that wants to get the data from the source row.
-      The ehr_embedded element has a property 'embedRef' that is in the
-      form <page key>.<source table key>.<source row index>
-      The ehr_embedded element just needs the source row index to know where to retrieve the data from.
-       */
-      const embedRefValue = this.getTableActionGetRef(pageKey, sourceTableKey, sourceRowIndex)
-      options.embedRefValue = embedRefValue
-    }
+    options.embedRefValue = sourceRowId
+
+    // const draftRowIndex = this.getTableActionGetDraftRowIndex(sendersTableDef, sourceRowId)
+    // if (draftRowIndex >= 0) {
+    //   /*
+    //   If we have a draft row then we are resuming editing, and we use the existing table data
+    //   to initialize the input fields
+    //    */
+    //   // options.draftRowIndex = draftRowIndex
+    //   options.tableActionDraftRowIndex = draftRowIndex
+    // } else {
+    //   /*
+    //   No draft means we're starting fresh.
+    //   The source table definition has a property 'tableAction' that contains the target table key.
+    //   This all assumes the source and target are on the same page.
+    //   Inside the target table will be an element with type ehr_embedded
+    //   that wants to get the data from the source row.
+    //   The ehr_embedded element has a property 'embedRef' that is in the
+    //   form <page key>.<source table key>.<source row index>
+    //   The ehr_embedded element just needs the source row index to know where to retrieve the data from.
+    //    */
+    //   options.embedRefValue = sourceRowId
+    // }
     // console.log('gtaro', JSON.stringify(options))
     return options
   }
-
-  // async removeDraftRow () {
-  //   const dialog = this._getActiveTableDialog()
-  //   const pageKey = this.pageKey
-  //   const tableKey = dialog.tableKey
-  //   let asLoadedPageData = this.getMergedPageData(pageKey)
-  //   let table = asLoadedPageData[tableKey]
-  //   // find the row with draft data or
-  //   const previousRow = table.findIndex(row => !!row.isDraft)
-  //   if (previousRow >= 0) {
-  //     table.splice(previousRow, 1)
-  //   }
-  //   let dataToSave = this._prepareTableSaveData(pageKey, asLoadedPageData)
-  //   await this._saveData(pageKey, dataToSave)
-  // }
 
 }

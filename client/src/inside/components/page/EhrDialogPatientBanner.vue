@@ -5,6 +5,7 @@
       div PHN: {{ patientData.phn }}
       div DoB: {{ patientData.dateOfBirth }} ({{ patientData.personAge }} yrs)
       div Gender: {{ patientData.gender }}
+      div Weight: {{ patientData.weight }}
     div(class="patient-data")
       div Code Status: {{ patientData.codeStatus ? patientData.codeStatus : 'N/A' }}
       div Allergies: {{ patientData.allergies }}

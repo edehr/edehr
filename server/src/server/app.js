@@ -8,6 +8,7 @@ import { apiMiddle, apiError } from './api.js'
 import { Text } from '../config/text'
 import { sentryDebugLimiter } from '../helpers/middleware'
 import { logError } from '../helpers/log-error'
+import { setUpEhrTraceLogger } from './trace-ehr'
 const debug = require('debug')('server')
 const helmet = require('helmet')
 
@@ -47,6 +48,7 @@ export default class EhrApp {
   }
 
   setup (config) {
+    setUpEhrTraceLogger(config)
     let app = this.app
     if (config.sentryDsn) {
       // RequestHandler creates a separate execution context using domains, so that every

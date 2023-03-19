@@ -998,30 +998,6 @@
                   "zone": "ehr"
                 },
                 "children": []
-              },
-              {
-                "name": "hematology",
-                "label": "Hematology",
-                "pageDataKey": "hematology",
-                "routeName": "hematology",
-                "topLevel": "chart",
-                "def": {
-                  "path": "/ehr/chart/reports",
-                  "routeName": "hematology",
-                  "pageDataKey": "hematology",
-                  "label": "Hematology",
-                  "redirect": "",
-                  "generateComponent": "custom",
-                  "menuIndex": "51",
-                  "componentName": "Hematology",
-                  "dataName": "hematology",
-                  "fullPath": "/ehr/chart/reports/hematology",
-                  "title": "Hematology",
-                  "topLevel": "chart",
-                  "componentPath": "./inside/custom",
-                  "zone": "ehr"
-                },
-                "children": []
               }
             ]
           }
@@ -1212,6 +1188,101 @@
               "title": "Test Table",
               "topLevel": "external",
               "componentPath": "./inside/views",
+              "zone": "ehr"
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "med-lab",
+        "redirect": "hematology",
+        "label": "Med Lab",
+        "routeName": "med-lab",
+        "topLevel": "med-lab",
+        "def": {
+          "path": "/ehr",
+          "routeName": "med-lab",
+          "label": "Med Lab",
+          "redirect": "hematology",
+          "menuIndex": "52",
+          "componentName": "MedLab",
+          "dataName": "medLab",
+          "fullPath": "/ehr/med-lab",
+          "title": "Med Lab",
+          "topLevel": "med-lab",
+          "componentPath": "./inside/views",
+          "zone": "ehr"
+        },
+        "children": [
+          {
+            "name": "hematology",
+            "label": "Med Lab Hematology",
+            "pageDataKey": "hematology",
+            "routeName": "hematology",
+            "topLevel": "med-lab",
+            "def": {
+              "path": "/ehr/med-lab",
+              "routeName": "hematology",
+              "pageDataKey": "hematology",
+              "label": "Med Lab Hematology",
+              "redirect": "",
+              "generateComponent": "custom",
+              "menuIndex": "54",
+              "componentName": "Hematology",
+              "dataName": "hematology",
+              "fullPath": "/ehr/med-lab/hematology",
+              "title": "Hematology",
+              "topLevel": "med-lab",
+              "componentPath": "./inside/custom",
+              "zone": "ehr"
+            },
+            "children": []
+          },
+          {
+            "name": "medLabChemistry",
+            "label": "Med Lab Chemistry",
+            "pageDataKey": "medLabChemistry",
+            "routeName": "medLabChemistry",
+            "topLevel": "med-lab",
+            "def": {
+              "path": "/ehr/med-lab",
+              "routeName": "medLabChemistry",
+              "pageDataKey": "medLabChemistry",
+              "label": "Med Lab Chemistry",
+              "redirect": "",
+              "generateComponent": "wip",
+              "menuIndex": "55",
+              "componentName": "UnderConstruction",
+              "dataName": "medLabChemistry",
+              "fullPath": "/ehr/med-lab/medLabChemistry",
+              "title": "Med Lab Chemistry",
+              "topLevel": "med-lab",
+              "componentPath": "./inside/custom",
+              "zone": "ehr"
+            },
+            "children": []
+          },
+          {
+            "name": "med-lab-imaging",
+            "label": "Med Lab Medical Imaging",
+            "pageDataKey": "medLabImaging",
+            "routeName": "med-lab-imaging",
+            "topLevel": "med-lab",
+            "def": {
+              "path": "/ehr/med-lab",
+              "routeName": "med-lab-imaging",
+              "pageDataKey": "medLabImaging",
+              "label": "Med Lab Medical Imaging",
+              "generateComponent": "wip",
+              "menuIndex": "56",
+              "componentName": "UnderConstruction",
+              "dataName": "medLabImaging",
+              "fullPath": "/ehr/med-lab/med-lab-imaging",
+              "title": "Med Lab Imaging",
+              "redirect": "",
+              "topLevel": "med-lab",
+              "componentPath": "./inside/custom",
               "zone": "ehr"
             },
             "children": []

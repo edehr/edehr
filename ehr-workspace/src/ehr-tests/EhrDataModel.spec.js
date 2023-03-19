@@ -32,11 +32,73 @@ const ehrData = {
   }
 }
 
+const f = {
+  admissionDay: 'Day 0',
+  admissionTime: '0600',
+  diagnosis: 'COPD\nShortness of breath\nDizzy',
+  status: 'Admitted',
+  table: [{
+    location: 'here',
+    transferInDay: 0,
+    transferInTime: '0030',
+    transferOutDay: 1,
+    transferOutTime: '0400',
+    createdDate: '2022-08-17T00:37:42-07:00',
+    table_id: 'visit.table.0'
+  }, {
+    location: 'there',
+    transferInDay: 1,
+    transferInTime: '2131',
+    transferOutDay: 2,
+    transferOutTime: '2332',
+    createdDate: '2022-08-17T00:37:42-07:00',
+    table_id: 'visit.table.1'
+  }],
+  lastUpdate: '2022-08-17T00:37:42-07:00'
+}
+
+const expected = {
+  visit: {
+    admissionDay: 'Day 0',
+    admissionTime: '0600',
+    diagnosis: 'COPD\nShortness of breath\nDizzy',
+    status: 'Admitted',
+    table: [
+      {
+        location: 'here',
+        transferInDay: 0,
+        transferInTime: '0030',
+        transferOutDay: 1,
+        transferOutTime: '0400',
+        createdDate: '2022-08-17T00:37:42-07:00',
+        table_id: 'visit.table.0'
+      },
+      {
+        location: 'there',
+        transferInDay: 1,
+        transferInTime: '2131',
+        transferOutDay: 2,
+        transferOutTime: '2332',
+        createdDate: '2022-08-17T00:37:42-07:00',
+        table_id: 'visit.table.1'
+      }
+    ],
+    lastUpdate: '2022-08-17T00:37:42-07:00'
+  },
+  meta: {
+    simTime: {
+      visitDay: 0,
+      visitTime: '0000'
+    },
+    ehrVersion: 'ev2.1.1'
+  }
+}
 const PK = 'visit'
 describe( 'EhrDataModel', () => {
   let model
   before(function () {
     model = new EhrDataModel(ehrData)
+    // console.log(JSON.stringify(model.ehrData,null,2))
   })
   it('EhrDataModel', () => {
     should.exist(model)
@@ -48,8 +110,8 @@ describe( 'EhrDataModel', () => {
     model.should.have.property('getPageTableData')
     model.should.have.property('getPageFormData')
     // getRowData
-    model.should.have.property('updatePageFormData')
-    model.should.have.property('updateRowElem')
+    model.should.have.property('_updatePageFormData')
+    model.should.have.property('_updateRowElem')
   })
   it('page data', () => {
     let data = model.getPageData(PK)
@@ -58,9 +120,12 @@ describe( 'EhrDataModel', () => {
     data.should.have.property('admissionTime')
     data.admissionTime.should.equal('0600')
     const result = JSON.stringify(data)
-    const expected = JSON.stringify(ehrData.visit)
-    const same = result.localeCompare(expected)
-    same.should.equal(0)
+    const expectedStr = JSON.stringify(expected.visit)
+    console.log(result)
+    console.log(expectedStr)
+    // const same = result.localeCompare(expectedStr)
+    result.should.equal(expectedStr)
+    // same.should.equal(0,expectedStr)
   })
   it('form data', () => {
     let data = model.getPageFormData(PK,'admissionDay')
@@ -81,17 +146,17 @@ describe( 'EhrDataModel', () => {
     data.should.have.property('transferInTime')
     data.transferInTime.should.equal('0030')
   })
-  it('updatePageFormData', () => {
-    model = new EhrDataModel(Object.assign({},ehrData))
-    model.updatePageFormData(PK, 'admissionTime', '0600')
-    model = new EhrDataModel(Object.assign({},model.ehrData))
+  it('_updatePageFormData', () => {
+    model = new EhrDataModel(ehrData)
+    model._updatePageFormData(PK, 'admissionTime', '0634')
+    model = new EhrDataModel(model.ehrData)
     let data = model.getPageData(PK)
     data.should.have.property('admissionTime')
-    data.admissionTime.should.equal('0600')
+    data.admissionTime.should.equal('0634')
   })
-  it('updateRowElem', () => {
-    model = new EhrDataModel(Object.assign({},ehrData))
-    model.updateRowElem(PK, 'table', 1,'transferInTime', '0030')
+  it('private _updateRowElem', () => {
+    model = new EhrDataModel(ehrData)
+    model._updateRowElem(PK, 'table', 1,'transferInTime', '0030')
     model = new EhrDataModel(model.ehrData)
     let data = model.getRowData(PK,'table', 1)
     data.should.be.instanceOf(Object)
@@ -99,3 +164,70 @@ describe( 'EhrDataModel', () => {
     data.transferInTime.should.equal('0030')
   })
 })
+
+describe ('EhrDataModel class methods', () => {
+  it ('MetaEhrVersion', () => {
+    let e = {
+      meta: {
+        ehrVersion: 'ev2.8.1'
+      }
+    }
+    let ver = EhrDataModel.MetaEhrVersion(e)
+    ver.major.should.equal(2)
+    ver.minor.should.equal(8)
+    ver.patch.should.equal(1)
+  })
+
+  it ('CheckVer', () => {
+    let e
+    e = {
+      meta: {
+        simTime: {
+          visitDay: 0,
+          visitTime: '0000'
+        },
+        ehrVersion: 'ev2.1.1'
+      }
+    }
+    true.should.equal(EhrDataModel.CheckVer(e, 2, 1, 0), 'pre')
+    true.should.equal(EhrDataModel.CheckVer(e, 2, 1, 1), 'now')
+    false.should.equal(EhrDataModel.CheckVer(e, 2, 1, 2), 'after')
+  })
+
+  it ('IsUpToDate', () => {
+    // NOTE MUST MANUALLY UPDATE THIS TEST WHENEVER VERSON CHANGES
+    let e = { meta: {} }
+    e.meta.ehrVersion = 'ev2.1.1'
+    EhrDataModel.IsUpToDate(e).should.equal(false, e.meta.ehrVersion)
+    e.meta.ehrVersion = 'ev2.2.0'
+    EhrDataModel.IsUpToDate(e).should.equal(true, e.meta.ehrVersion)
+    e.meta.ehrVersion = 'ev2.2.1'
+    EhrDataModel.IsUpToDate(e).should.equal(true, e.meta.ehrVersion)
+    e.meta.ehrVersion = 'ev2.2.11'
+    EhrDataModel.IsUpToDate(e).should.equal(true, e.meta.ehrVersion)
+  })
+
+})
+
+describe ('GenerateRowId', () => {
+  it ('generate', () => {
+    let tbl = [
+      {t_id: 'p.t.1'},
+      {t_id: 'p.t.22'},
+      {t_id: 'p.t.12'},
+      {t_id: 'p.t.3'},
+      {t_id: 'p.t.4'},
+      {t_id: 'p.t.5'},
+    ]
+    let ver = EhrDataModel.GenerateRowId('p','t',tbl)
+    'p.t.23'.should.equal(ver)
+  })
+  it ('empty table', () => {
+    let tbl = [
+    ]
+    let ver = EhrDataModel.GenerateRowId('p','t',tbl)
+    'p.t.0'.should.equal(ver)
+  })
+
+})
+

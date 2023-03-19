@@ -7,10 +7,7 @@ const should = require('should')
 
 const pageDefs = EhrDefs
 
-let case1 = require('../resources/erin-johns-seed-day0-mid.json')
-let case2 = require('../resources/erin-johns-seed-day2-end.json')
-let case3 = require('../resources/wound-case-1.json')
-const case1PageCount = 43 - 2 // take two off because 2 pages are skipped
+const case1PageCount = 45 - 2 // take two off because 2 pages are skipped
 
 describe('Ehr Page', function () {
   it('pages has page list', () => {

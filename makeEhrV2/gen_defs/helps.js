@@ -1,5 +1,5 @@
 'use strict'
-import EhrTypes from '../source/ehr-types'
+import EhrTypes from '../../ehr-workspace/src/ehr-definitions/ehr-types'
 const assert = require('assert').strict
 const camelCase = require('camelcase')
 

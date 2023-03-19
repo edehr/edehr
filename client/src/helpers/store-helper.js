@@ -23,8 +23,21 @@ class StoreHelperWorker {
 
   getMergedData () { return store.getters['ehrDataStore/mergedData']  }
 
-  getHasDataForPagesList () { return store.getters['ehrDataStore/hasDataForPagesList'] }
+  /**
+   *
+   * @returns {visitDay:num|visitTime:milTime|(function(): *)|*}
+   */
+  getSimTime () {
+    const mData = StoreHelper.getMergedData()
+    // { visitDay, visitTime }
+    return mData.meta.simTime
+  }
 
+  getHasDataForPagesList () { return store.getters['ehrDataStore/hasDataForPagesList'] }
+  hasDataOnPage (pageKey) {
+    const pageList = this.getHasDataForPagesList()
+    return pageList[pageKey]
+  }
 
   /* **********   Internal  ************** */
   _getActivityDataProperty (key) { return store.getters['activityDataStore/' + key]}
@@ -58,6 +71,7 @@ class StoreHelperWorker {
   isStudent () { return store.getters['authStore/isStudent'] }
 
   userId () { return this._getUserProperty('userId') }
+  givenName () { return this._getUserProperty('givenName') }
   fullName () { return this._getUserProperty('fullName') }
   lmsUrl () { return this._getVisitProperty('returnUrl') }
   isDeveloper () { return this._getVisitProperty('isDeveloper') }
@@ -299,13 +313,13 @@ class StoreHelperWorker {
     return this._dispatchSeedListProperty('updateSeedItem', dataIdPlusPayload)
   }
 
-  importSeedEhrData (seedId, ehrData) {
-    let payload = {
-      id: seedId,
-      ehrData: ehrData
-    }
-    return this._dispatchSeedListProperty('importSeedEhrData', payload)
-  }
+  // importSeedEhrData (seedId, ehrData) {
+  //   let payload = {
+  //     id: seedId,
+  //     ehrData: ehrData
+  //   }
+  //   return this._dispatchSeedListProperty('importSeedEhrData', payload)
+  // }
 
   sendSeedEhrDataDraft (payload ) {
     return this._dispatchSeedListProperty('sendSeedEhrDataDraft', payload)

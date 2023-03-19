@@ -77,6 +77,10 @@ function flushDefs (defs, forInside) {
     } else {
       def.componentPath = def.componentFolder ? def.componentFolder : './outside/views'
     }
+    if (def.generateComponent === 'wip') {
+      def.componentName = 'UnderConstruction'
+      def.componentPath = './inside/custom'
+    }
   })
 }
 
@@ -174,7 +178,8 @@ function makeMenu (tree, outfilename) {
   tree.root.children.forEach((c) => elements.push(JSON.stringify(c, null, 2)))
   content.push(elements.join(','))
   content.push(']')
-  var txtContent = content.join('\n')
+  let txtContent = content.join('\n')
+  txtContent = JSON.stringify(JSON.parse(txtContent),null,2)
   // console.log('write file with menu',outfilename)
   fs.writeFileSync(outfilename, txtContent, 'utf8')
 }

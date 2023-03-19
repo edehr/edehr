@@ -426,15 +426,6 @@ module.exports = function () {
     'menuIndex': '50'
   },
   {
-    'path': '/ehr/chart/reports',
-    'routeName': 'hematology',
-    'pageDataKey': 'hematology',
-    'label': 'Hematology',
-    'redirect': '',
-    'generateComponent': 'custom',
-    'menuIndex': '51'
-  },
-  {
     'path': '/ehr/current',
     'routeName': 'discharge-plan',
     'pageDataKey': 'dishargeplan',
@@ -442,6 +433,39 @@ module.exports = function () {
     'redirect': '',
     'generateComponent': 'yes',
     'menuIndex': '31'
+  },
+  {
+    'path': '/ehr',
+    'routeName': 'med-lab',
+    'label': 'Med Lab',
+    'redirect': 'hematology',
+    'menuIndex': '52'
+  },
+  {
+    'path': '/ehr/med-lab',
+    'routeName': 'hematology',
+    'pageDataKey': 'hematology',
+    'label': 'Med Lab Hematology',
+    'redirect': '',
+    'generateComponent': 'custom',
+    'menuIndex': '54'
+  },
+  {
+    'path': '/ehr/med-lab',
+    'routeName': 'medLabChemistry',
+    'pageDataKey': 'medLabChemistry',
+    'label': 'Med Lab Chemistry',
+    'redirect': '',
+    'generateComponent': 'wip',
+    'menuIndex': '55'
+  },
+  {
+    'path': '/ehr/med-lab',
+    'routeName': 'med-lab-imaging',
+    'pageDataKey': 'medLabImaging',
+    'label': 'Med Lab Medical Imaging',
+    'generateComponent': 'wip',
+    'menuIndex': '56'
   }
 ]
 }

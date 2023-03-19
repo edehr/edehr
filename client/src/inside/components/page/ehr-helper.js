@@ -7,17 +7,19 @@ import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_REFRESH_EVENT } from '@/helpers/e
 import {
   decoupleObject,
   ehrRemoveMarkedSeed,
-  formatTimeStr,
+  formatTimeStr, isEmptyString,
   isString,
   removeEmptyProperties
 } from '@/helpers/ehr-utils'
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import StoreHelper from '@/helpers/store-helper'
-import validations from './ehr-validations'
+import ehrValidations from '@/ehr-definitions/ehr-validations'
 import store from '@/store'
 import EhrData from '@/inside/components/page/ehr-data'
 import EhrTableDraft from '@/inside/components/page/ehr-table-draft'
 import EhrTableActions from '@/inside/components/page/ehr-table-actions'
+import EhrDataModel from '@/ehr-definitions/EhrDataModel'
+import { validDayStr, validTimeStr } from '@/ehr-definitions/common-utils'
 
 export const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
@@ -38,6 +40,7 @@ export default class EhrPageHelper {
     const tables = this.getPageTableDefs()
     tables.forEach((tableDef) => {
       const tableKey = tableDef.tableKey
+      // insert a structure that defines a "dialog" for each table on the page
       this.tableFormMap[tableKey] = { tableKey: tableKey, tableDef: tableDef, inputs: {}, errorList: [], active: false, viewOnly: false }
     })
     this._setupEventHandlers()
@@ -71,21 +74,25 @@ export default class EhrPageHelper {
     let dialog = this.tableFormMap[tableKey]
     return dialog ? dialog.errorList : []
   }
-  getLastPageDataUpdateDate () {
-    let data = EhrData.getMergedPageData(this.pageKey)
-    return data ? this.formatDate(data.lastUpdate) : ''
-  }
 
   getPageDef () { return EhrDefs.getPageDefinition(this.pageKey) }
   getPageErrors () {
+    // TODO code clean up needed here
     return []
   }
   getPageForms () { return EhrDefs.getPageForms(this.pageKey) }
+
+  /**
+   * Get the date string that says when this EHR page definition was last updated.
+   * @returns {string}
+   */
   getPageGeneratedDate () {
     return this.formatDate(this.getPageDef().generated)
   }
   getPageKey () { return this.pageKey }
   getPageTableDefs () { return EhrDefs.getPageTables(this.pageKey) }
+
+  // TODO rename getTableForm to getDialog
   getTableForm (tableKey) { return this.tableFormMap[tableKey]}
 
   _canEdit () {
@@ -100,8 +107,22 @@ export default class EhrPageHelper {
     let ehrOnly = EhrOnlyDemo.isActiveEhrOnlyDemo()
     return devContent || ehrOnly
   }
+
+  /**
+   * Get the dialog that is open.
+   *
+   * @returns {unknown}
+   * @private
+   */
   _getActiveTableDialog () {
+    // the embedded dialog, if present, is not marked active.
     return Object.values(this.tableFormMap).find( (tbl) => { return tbl.active })
+  }
+  isAnythingHappening () {
+    const formEditing = this.isEditing()
+    const dialog = this._getActiveTableDialog()
+    return formEditing || dialog && dialog.active && !dialog.viewOnly
+
   }
   _isDevelopingContent () {
     return StoreHelper.isDevelopingContent()
@@ -112,48 +133,79 @@ export default class EhrPageHelper {
   _isSubmitted () {
     return StoreHelper.isSubmitted()
   }
-  _injectDataIntoTable (pageKey, tableKey, dialog, committing) {
+
+  /**
+   * _injectDataIntoTable
+   * Get the as loaded table data (unsorted)
+   * Get the new data from the dialog.
+   * If committing remove draft flag else add flag
+   * Adding row id, if not previously set, is eventually done by EhrDataModel.
+   * Locate draft row in table and if found update. if not found then append new row
+   *
+   * @param dialog
+   * @param committing
+   * @returns {*}
+   * @private
+   */
+  _injectDataIntoTable (dialog, committing) {
+    const rowId = dialog.draftRowId
+    const { pageKey, tableKey } = EhrDataModel.IdToParts(rowId)
+    const rowElementKey = tableKey + '_id'
+    let asLoadedPageData = EhrData.getMergedPageData(pageKey)
+    let theTable = asLoadedPageData[tableKey]
+    if (!theTable) {
+      theTable = []
+      asLoadedPageData[tableKey] = theTable
+    }
     const dialogValues = decoupleObject(dialog.inputs)
     dialogValues.createdDate = moment().format()
-    if(!committing) {
+    if (committing) {
+      delete dialogValues.isDraft
+    } else {
+
       dialogValues.isDraft = 'isDraft' // mark the data as draft
     }
-    let asLoadedPageData = EhrData.getMergedPageData(pageKey)
-    let table = asLoadedPageData[tableKey]
-    if (!table) {
-      table = []
-      asLoadedPageData[tableKey] = table
+    if (!dialogValues[rowElementKey]) {
+      dialogValues[rowElementKey] = rowId
     }
-    // Use the row marked as draft when the dialog opened
-    const previousRow = dialog.options.draftRowIndex
-    // console.log('inject data previousRow', previousRow)
-    if (previousRow >= 0) {
-      if ( committing ) {
-        delete dialogValues.isDraft
-      }
-      table.splice(previousRow, 1, dialogValues)
+    const insertIndex = EhrTableDraft.findRowIndexByIdInTable(rowId, theTable)
+    if( insertIndex >= 0) {
+      theTable.splice(insertIndex, 1, dialogValues)
     } else {
-      // or push a new row of data
-      table.push(dialogValues)
-      dialog.options.draftRowIndex = table.length - 1
-      // console.log('after creating a new row use that for future saves', dialog.options.draftRowIndex)
+      theTable.push(dialogValues)
     }
-    return asLoadedPageData
+    return asLoadedPageData  // with the updated table
   }
+
+  /**
+   *
+   * @param formKey
+   * @private
+   */
   _loadPageFormData (formKey) {
     let asLoadedData = EhrData.getMergedPageData(this.pageKey)
     this.pageFormData.cacheData = JSON.stringify(asLoadedData)
     this.pageFormData.formKey = formKey
     /*
+    TODO explore page form data handling and improve documentation
     If _isDevelopingContent then the EhrElementCommon has told this helper to stash
     the asLoaded or the DataCaseStudy value into the pageFormData.value. We want
     to use this.
-    Otherwise, this is a student and we want to use the asLoadedData
+    Otherwise, this is a student, and we want to use the asLoadedData
      */
     if (!this._isDevelopingContent) {
       this.pageFormData.value = asLoadedData
     } // else use what is already in this.pageFormData.value
   }
+
+  /**
+   * EHR data is composed of the seed data and, optionally, the activity data. If the latter
+   * then we need to separate the two parts.
+   * @param pageKey
+   * @param dataToSave
+   * @returns {*}
+   * @private
+   */
   _prepareTableSaveData (pageKey, dataToSave) {
     if (this._isStudent() || EhrOnlyDemo.isActiveEhrOnlyDemo()) {
       dataToSave = decoupleObject(dataToSave)
@@ -166,15 +218,6 @@ export default class EhrPageHelper {
     this.pageFormData.cacheData = undefined
     this.pageFormData.formKey = undefined
     this.pageFormData.value = undefined
-  }
-  _showControl (prop) {
-    let show = false
-    if (this._canEdit()) {
-      let pd = this.getPageDef()
-      // console.log('decide to show or not this page def', prop, pd[prop], pd)
-      show = pd[prop]
-    }
-    return show
   }
 
   activeTableDialogHasData () {
@@ -196,15 +239,33 @@ export default class EhrPageHelper {
     const dialog = this._getActiveTableDialog()
     return dialog && dialog.tableDef.hasRecHeader
   }
-  activeTableDialogRecordHeader () {
+  prepareAndGetActiveDialogRecordHeader () {
     const results = {}
     const dialog = this._getActiveTableDialog()
     if (dialog.tableDef.hasRecHeader) {
-      const { name, profession, day, time } = dialog.inputs
-      results.name = name
-      results.profession = profession
-      results.day = day
-      results.time = time
+      const tableKey = dialog.tableDef.tableKey
+      const inputs = dialog.inputs
+      const mData = StoreHelper.getMergedData()
+      const { visitDay, visitTime } = mData.meta.simTime
+      let key
+      key = tableKey + '_day'
+      if (!validDayStr(inputs[key])) {
+        const previous = inputs[key]
+        inputs[key] = parseInt(visitDay)
+        console.log('dialog saving set sim day', key, previous, inputs[key])
+      }
+      key = tableKey + '_time'
+      if (!validTimeStr(inputs[key])) {
+        const previous = inputs[key]
+        inputs[key] = visitTime
+        console.log('dialog saving set sim time', key, previous, inputs[key])
+      }
+
+      const KEYS = ['name', 'profession', 'day', 'time']
+      KEYS.forEach(key => {
+        let newKey = tableKey + '_' + key
+        results[key] = inputs[newKey]
+      })
     }
     return results
   }
@@ -239,6 +300,16 @@ export default class EhrPageHelper {
     // By doing a page refresh here we get the same results as a page load.
     customRouter.go(0)
   }
+
+  /**
+   * Empty any data in the table specified, on the current page.
+   *
+   * TODO consider removing the element rather than just emptying the array.
+   * To remove the element restores the data to the original condition.
+   * Whereas leaving the array makes it seem as if the table has data and "is empty?" checking is now more complicated.
+   * @param tableKey
+   * @returns {Promise<void>}
+   */
   async clearTable (tableKey) {
     const pageKey = this.pageKey
     let asLoadedPageData = EhrData.getMergedPageData(pageKey)
@@ -249,9 +320,10 @@ export default class EhrPageHelper {
   closeDialog () {
     const dialog = this._getActiveTableDialog()
     const tableKey = dialog.tableKey
-    this._dialogEvent(tableKey, false, {})
+    this._dialogCloseEvent(tableKey)
   }
   formatDate (d) {
+    // TODO just use this function in the one and only place needed
     return formatTimeStr(d)
   }
   isEditing () {
@@ -272,14 +344,31 @@ export default class EhrPageHelper {
     let dialog = this.tableFormMap[tableKey]
     return dialog ? dialog.viewOnly : []
   }
+  setViewOnly (tableKey) {
+    let dialog = this.tableFormMap[tableKey]
+    // console.log('set table dialog to be view only', tableKey)
+    dialog.viewOnly = true
+  }
+
+  /**
+   * This method is a future defect. It must be fixed for MARs to work
+   * TODO fix this future defect. Remove the row the dialog was opened on and not just the first draft row.  See cancelConfirmed in EhrDialogForm. Use const { draftRowId } = dialog
+   * @returns {Promise<void>}
+   */
   async removeDraftRow () {
     const pageKey = this.pageKey
     const activeDialog = this._getActiveTableDialog()
     const tableKey = activeDialog.tableKey
-    let revisedData = EhrTableDraft.removeDraftRow(pageKey, tableKey)
+    let revisedData = EhrTableDraft.removeFirstDraftRow(pageKey, tableKey)
     let dataToSave = this._prepareTableSaveData(pageKey, revisedData)
     await this._saveData(pageKey, dataToSave)
   }
+
+  /**
+   * Clear the data for a EHR page form
+   * @param childrenKeys
+   * @returns {Promise<undefined>}
+   */
   async resetFormData (childrenKeys) {
     const { pageKey } = this
     const ehrSeed = StoreHelper.getSeedEhrData()
@@ -295,34 +384,48 @@ export default class EhrPageHelper {
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
     return undefined
   }
+  savePageFormEdit () {
+    let payload = this.pageFormData
+    const asLoadedPageData = EhrData.getMergedPageData(this.pageKey)
+    const mergedValues = {
+      ...asLoadedPageData,
+      ...payload.value
+    }
+    StoreHelper.setEditingMode(false)
+    let dataToSave = this._prepareTableSaveData(this.pageKey, mergedValues)
+    this._saveData(this.pageKey, dataToSave)
+  }
+
   async saveDialogData () {
-    const dialog = this._getActiveTableDialog()
-    const pageKey = this.pageKey
-    const tableKey = dialog.tableKey
-    let asLoadedPageData = this._injectDataIntoTable(pageKey, tableKey, dialog, true )
-    let dataToSave = this._prepareTableSaveData(pageKey, asLoadedPageData)
-    await this._saveData(pageKey, dataToSave)
+    await this._saveDialogData(true)
   }
   async saveDialogDraft () {
+    await this._saveDialogData(false)
+  }
+  async _saveDialogData (committingFlag) {
     const dialog = this._getActiveTableDialog()
-    if (!dialog ) return // this can happen when called by the setTimeout after dialog is closed
-    const pageKey = this.pageKey
-    const tableKey = dialog.tableKey
-    if (dbDraft) console.log('save draft', pageKey, tableKey, JSON.stringify(dialog.inputs))
-    if (!dialog.tableDef.hasRecHeader) {
-      // only allow draft rows when there is a record header, for now.
+    if (!dialog) {
+      console.log('Rare case when the save dialog timer fires after dialog is closed')
       return
     }
-    let asLoadedPageData = this._injectDataIntoTable(pageKey, tableKey, dialog, false)
+    const { draftRowId } = dialog
+    if (!draftRowId) {
+      console.error('Save dialog requires the dialog open to set up the draft row id')
+      throw new Error('Can not save table data without an id')
+    }
+    let asLoadedPageData = this._injectDataIntoTable(dialog, committingFlag )
+    const { pageKey } = EhrDataModel.IdToParts(draftRowId)
     let dataToSave = this._prepareTableSaveData(pageKey, asLoadedPageData)
-    await this._saveDataDraft(pageKey, dataToSave)
+    await committingFlag ?
+      this._saveData(pageKey, dataToSave) :
+      this._saveDataDraft(pageKey, dataToSave)
   }
   _saveDataDraft (pageKey, dataToSave) {
+    // TODO I do not like how save draft is different from save data, for seeds. Explain or make the same.
     let payload = {
       propertyName: pageKey,
       value: dataToSave
     }
-    if (dbDraft) console.log('_saveDataDraft', JSON.stringify(payload))
     if (this._isStudent()) {
       return StoreHelper.sendAssignmentDataDraft(payload)
     } else if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
@@ -344,80 +447,87 @@ export default class EhrPageHelper {
       return StoreHelper.updateSeedEhrProperty(pageKey, dataToSave)
     }
   }
-
+  editDraftRow (rowId) {
+    const options = { draftRowId: rowId }
+    const { pageKey, tableKey } = EhrDataModel.IdToParts(rowId)
+    this.showDialogForTable(pageKey, tableKey, options)
+  }
   /**
-   * Entry point to show the form dialog for a page table element.
+   * Entry point to open the form dialog for a page table element. This is invoked when the user presses
+   * the top page add report button.  We may be creating a new report, or we may need to reopen a
+   * draft report.
+   * Or we invoke this when a user presses a table action on a row of an associated table.
+   *
+   * Options
+   *    For a regular table or Vitals add report action the options are empty.
+   *    For MarMedGrid  & Hematology the options describe the table action.
    * @param pageKey
    * @param tableKey
    * @param options
    */
   showDialogForTable (pageKey, tableKey, options) {
-    /*
-    Options from regular EhrPageTable has empty options.
-    Options from table action can have two forms
-      const options = {
-          tableAction: true,
-          pageKey: pageKey,
-          sourceTableKey: sourceTableKey,
-          sourceRowIndex: sourceRowIndex,
-          targetTableKey: targetTableKey
-        }
-    1. tableActionDraftRowIndex: draftRowIndex
-          OR
-    2. plus  embedRefValue: embedRefValue,
-    In case (1.) transform the row index into row data for the draft row
-    In case (2.) just pass the options on through to the dialog event handler.
-     */
-    let rowIndex = -1
+    let draftRowData
+    let { draftRowId }  = options
+    const rowElementKey = tableKey + '_id'
+
     if (options.tableAction) {
-      if (options.tableActionDraftRowIndex >= 0) {
-        rowIndex = options.tableActionDraftRowIndex
-      }
-      // else just pass on the options with embedRefValue
-      // do not set row index because there is no previous draft
+      console.error('TODO or not TODO for options.tableAction', options.tableAction)
+      // TODO table action show
+      // 1. is new report
+      // 2. is reopen previous draft
+    }
+    if( draftRowId ) {
+      draftRowData = EhrTableDraft.findDraftRowDataById(draftRowId)
     } else {
-      // else EhrPageTable show dialog action
-      // Check for existing draft row ...
-      rowIndex = EhrTableDraft.getTableDraftRowIndex(pageKey, tableKey)
+      // User invoked main add report button
+      // does the table data already contain a draft row ... ?
+      draftRowData = EhrTableDraft.getTableDraftRow(pageKey, tableKey)
+      if (draftRowData) {
+        // table has a draft row so this action is now an edit row action
+        draftRowId = draftRowData[rowElementKey]
+      }
+      // else proceed and create a new row
     }
-    if (rowIndex >= 0) {
-      // either table action resume edit or regular resume edit
-      // Also see ehr-helper.editDraftRow
-      EhrTableDraft.addEditDraftRowOptions(options, pageKey, tableKey, rowIndex)
+    if( !draftRowId ) {
+      // just generate the new id. the first call to save either data or draft will insert a new row with this id.
+      draftRowId = EhrTableDraft.generateId(pageKey, tableKey)
     }
-    // console.log('invoke _dialogEvent ', JSON.stringify(options))
-    this._dialogEvent(tableKey, true, options)
-  }
-  savePageFormEdit () {
-    let payload = this.pageFormData
-    const asLoadedPageData = EhrData.getMergedPageData(this.pageKey)
-    const mergedValues = {
-      ...asLoadedPageData,
-      ...payload.value
+    if (!draftRowId) {
+      console.error('Coding error. Must have draftRowId by now to open dialog')
+      throw new Error('Can not open table dialog without an id')
     }
-    StoreHelper.setEditingMode(false)
-    let dataToSave = this._prepareTableSaveData(this.pageKey, mergedValues)
-    this._saveData(this.pageKey, dataToSave)
+    options.draftRowData = draftRowData // maybe empty
+    options.draftRowId = draftRowId // exists
+    this._dialogOpenEvent(tableKey, options)
   }
-  editDraftRow (pageKey, tableKey, rowIndex) {
-    // Also see ehr-helper.showDialogForTable where there is a draft row index found
-    const options = {}
-    EhrTableDraft.addEditDraftRowOptions(options, pageKey, tableKey, rowIndex)
-    // results:  options = { draftRowData: rowData, draftRowIndex: rowIndex }
-    this._dialogEvent(tableKey, true, options)
-  }
-  showReport (pageKey, tableKey, rowIndex) {
-    const rowData = EhrData.getTableRowData(pageKey, tableKey, rowIndex)
+
+  /**
+   * Open the dialog on the row in view only mode
+   * @param rowId
+   */
+  showReport (rowId) {
+    const rowData = EhrData.getTableRowData(rowId)
     const options = { viewOnlyData: rowData, viewOnly: true}
-    if (dbDraft) console.log('Show view only row', pageKey, tableKey, rowIndex, options)
-    // console.log('Show view only row', pageKey, tableKey, rowIndex, options)
-    this._dialogEvent(tableKey, true, options)
+    if (dbDraft) console.log('Show view only row', rowId, options)
+    const { tableKey } = EhrDataModel.IdToParts(rowId)
+    this._dialogOpenEvent(tableKey, options)
   }
   showTableAddButton () {
     return this._showControl('hasGridTable')
   }
+  _showControl (prop) {
+    let show = false
+    if (this._canEdit()) {
+      let pd = this.getPageDef()
+      // console.log('decide to show or not this page def', prop, pd[prop], pd)
+      show = pd[prop]
+    }
+    return show
+  }
+
 
   stashActiveData (elementKey, value) {
+    // TODO why do we need the try catch block here?
     try {
       let data = this.getActiveData()
       data[elementKey] = value
@@ -427,7 +537,8 @@ export default class EhrPageHelper {
     }
   }
   /**
-   * Report if there is a page form open for edit and the data on the form has been modified
+   * Report if there is a page form open for edit and the data on the form has been modified, or if
+   * there is a dialog open.  This method is used in route guards to prevent leaving the page.
    * @return {boolean}
    */
   unsavedData () {
@@ -447,88 +558,110 @@ export default class EhrPageHelper {
     return result
   }
 
-  /*
-   * Cause the associated dialog to open.
-   * If options contains data then the dialog is to open in view only mode and display the data.
-   * This is an event handler for the dialog open/close event
-   *
-   * @param tableKey
-   * @param open
-   * @param options ....
-   * From table action can have two forms
-   * 1. options = { embedRefValue: embedRefValue, ... }
-   * If the table row is draft then ...
-   * 2. options = { draftRowData: rowData, draftRowIndex: index }
-   * 3. options = { viewOnlyData: rowData, viewOnly: true}
-   * @private
-   */
-  _dialogEvent (tableKey, open, options) {
-    options.open = open
-    if (dbDialog) console.log('EhrHelpV2 dialog event', tableKey, open, JSON.stringify(options))
+  _dialogCloseEvent (tableKey) {
+    let dialog = this.tableFormMap[tableKey]
+    dialog.active = false
+    let eData = Object.assign({ key: tableKey, open: false}, {} )
+    const _this = this
+    const options = { open: false }
+    Vue.nextTick(function () {
+      EventBus.$emit(_this.getDialogEventChannel(tableKey), eData, options)
+    })
+  }
+  /**
+     * Cause the dialog associated with the given table to open.
+     * The options may say to open in view only mode and display the data.
+     *
+     * @param tableKey
+     * @param options ....
+     * From table action can have two forms
+     * 1. options = { embedRefValue: embedRefValue, ... }
+     * 2. options = { draftRowData: rowData, draftRowId: rowId }
+     * 3. options = { viewOnlyData: rowData, viewOnly: true}
+     * @private
+     */
+  _dialogOpenEvent (tableKey,  options) {
+    options.open = true
+    if (dbDialog) console.log('EhrHelpV2 dialog open event', tableKey, JSON.stringify(options))
     // Get the dialog object for the target table
     let dialog = this.tableFormMap[tableKey]
-    // stash all the options. The important option is any draft row index for the save operation to
-    // reinsert the row in the correct location
+    // stash the options into the dialog definition.
     dialog.options = options
     dialog.viewOnly = options.viewOnly
     let hasRecHeader = dialog.tableDef.hasRecHeader
     /*
+    Set the dialog "open" flag to false for the initialization step.
     See EhrElementCommon.dialogEvent. See the setInitialValue call.  Normally, all changes to
     a dialog input triggers a FORM_INPUT_EVENT which now also triggers a save to draft. But only
-    if the dialog is open.
-    Because we need to reset the dialog and load any previous values we must delay setting the
-    open flag until after initializing the dialog inputs so that we do not trigger the
-    FORM_INPUT_EVENT.
-    Set the dialog "open" flag to false for the initialization step.
+    if the dialog is open. Because we need to reset the dialog and load any previous values we must delay setting the
+    open flag until after initializing the dialog inputs so that we do not trigger the FORM_INPUT_EVENT.
      */
     dialog.active = false
-    /*
-     * begin here.  this is where the dialog is opened and needs to be initialized based on the content
-     * if viewing or editing draft, or initialized with form defaults if a new record.
-     * Will use this flow ...
-     * be sure form input update events are not going to fire
-     * set to defaults
+    /* Now can ....
+     * set inputs to any default values
      * set simTime
      * if there is data then load it
      * then turn on form input updates
      */
     dialog.errorList = []
     this._clearDialogInputs(dialog)
-    if(open && hasRecHeader) {
-      // push in the current sim day/time
-      const mData = StoreHelper.getMergedData()
-      // console.log('mData', mData)
-      const { visitDay, visitTime } = mData.meta.simTime
-      // console.log('sim time', visitDay, visitTime)
-      dialog.inputs['day'] = ''+ visitDay
-      dialog.inputs['time'] = ''+ visitTime
+    if (options.draftRowId) {
+      dialog.draftRowId = options.draftRowId
     }
+    // TODO what about default values?  From a code review it seems these are not set into table dialogs.
+    //  Furthermore, the assignment below is too blunt and would overwrite the defaults, like it overwrites
+    //  the simTime. The assignment below should be rewritten to use a property by property copy.
     if (options.draftRowData) {
-      // may override the sim day/time here if previously set to something else
+      // will override the sim day/time here if previously set to something else
       dialog.inputs = { ...options.draftRowData }
     }
     if (options.viewOnlyData) {
-      console.log('data from request to view a record', options.viewOnlyData)
-      // may override the sim day/time here if previously set to something else
+      // For view only we only want to see the data given in the options
       dialog.inputs = { ...options.viewOnlyData }
     }
-
-    if (open && options.embedRefValue) {
-      const srcElemKey = EhrTableActions.getTableActionTargetElementKey(options.pageKey, options.sourceTableKey, options.targetTableKey)
-      console.log('Setup dialog for embedded ref. Source element key', srcElemKey)
-      console.log('options.embedRefValue', options.embedRefValue)
+    if (options.embedRefValue) {
+      // When the embedded element, inside the current table, gets the "dialog is opened" event it will
+      // use this embedRefValue to in turn load the source row into the dialog.
+      const srcElemKey = EhrTableActions.getTableActionTargetElementKey(options.sendersTableDef)
+      // console.log('Setup dialog for embedded ref. Source element key', srcElemKey)
+      // console.log('options.embedRefValue', options.embedRefValue)
       dialog.inputs[srcElemKey] = options.embedRefValue
     }
-    // NOW set the open/close state flag based on what is happening
-    dialog.active = open
-    // End by sending out the "i'm opened/closed event"
-    let eData = Object.assign({ key: tableKey, open: open}, options )
-    /* Send an event on our transmission channel
-     with a payload containing the open flag
+    if(hasRecHeader) {
+      const inputs = dialog.inputs
+      const mData = StoreHelper.getMergedData()
+      const { visitDay, visitTime } = mData.meta.simTime
+      let key
+      key = tableKey + '_day'
+      if (!validDayStr(inputs[key])) {
+        const previous = inputs[key]
+        inputs[key] = parseInt(visitDay)
+        console.log('dialog opening set sim day', key, previous, inputs[key])
+      }
+      key = tableKey + '_time'
+      if (!validTimeStr(inputs[key])) {
+        const previous = inputs[key]
+        inputs[key] = visitTime
+        console.log('dialog opening set sim time', key, previous, inputs[key])
+      }
+      key = tableKey + '_name'
+      function _nonEmptyString (text) { return text && text.trim().length > 0 }
+      if (!_nonEmptyString(inputs[key])) {
+        const previous = inputs[key]
+        inputs[key] = StoreHelper.givenName()
+        console.log('dialog opening set name', key, previous, inputs[key])
+      }
+    }
+
+    // NOW set the open state flag which enables the FORM_INPUT_EVENT event to fire when a dialog input is changed.
+    dialog.active = true
+    // End by sending out the "I'm opened event"
+    let eData = Object.assign({ key: tableKey, open: true}, options )
+    /* Send an event on our transmission channel with a payload containing the open flag
      This is picked up by each form element (see EhrElementCommon)
 
      Also in the EhrDialogForm (see receiveShowHideEvent). This is used to call the "open"
-     event on embedded forms so they get loaded.  this.$refs.theDialog.onOpen()
+     event on embedded forms, so they get loaded.  this.$refs.theDialog.onOpen()
      Might be better to not reused the open event here?
 
      This event on channel is also EMITTED by the EhrElementEmbedded when setEmbeddedGroupData() is invoked
@@ -567,12 +700,12 @@ export default class EhrPageHelper {
       if (dbDialog) console.log('check vDef for functions parts', vDef)
       const parts = vDef.match(functionPattern)
       if (parts && parts.length >= 1 ) {
-        result.func = validations[parts[1]]
+        result.func = ehrValidations[parts[1]]
         let args = parts[2].split(',')
-        result.arguments = args.map(n => parseInt(n))
+        result.args = args.map(n => parseInt(n))
       } else {
-        result.func = validations[vDef]
-        result.arguments = []
+        result.func = ehrValidations[vDef]
+        result.args = []
       }
     }
     return result
@@ -591,15 +724,14 @@ export default class EhrPageHelper {
       let value = inputs[eKey]
       let valid = true
       value = isString(value) ? value.trim() : value
-      if (dbDialog) console.log('EhrHelpV2 validate:', eKey, value, 'eDef:', eDef)
-      if (mandatory && (value === undefined)) {
+      if (mandatory && isEmptyString(value)) {
         const msg = label + ' is required'
         dialog.errorList.push(msg)
         valid = false
       }
       if (valid && validator.func) {
         if (dbDialog) console.log('ehr helper validator', validator)
-        let errMsg = validator.func(label, value, ...validator.arguments)
+        let errMsg = validator.func(label, value, ...validator.args)
         if(errMsg) {
           if (dbDialog) console.log(`EhrHelpV2 validate for key ${eKey} value ${inputs[eKey]}: ${errMsg}`)
           dialog.errorList.push(errMsg)
@@ -618,7 +750,7 @@ export default class EhrPageHelper {
   This helper class is listening for PAGE_DATA_REFRESH_EVENT.
   When this event is received this helper will compose data for the current page.
 
-  The page components (page form, page table, elements, etc) will listen for this PAGE_DATA_READY_EVENT event
+  The page components (page form, page table, elements, etc.) will listen for this PAGE_DATA_READY_EVENT event,
   and they will, in turn, pull fresh data for display.
    */
   _setupEventHandlers () {
@@ -631,6 +763,7 @@ export default class EhrPageHelper {
     }
     this.refreshEventHandler = async function () {
       const dbPerf = false
+      // TODO might put page load information in the page footer, but this is only for ehr pages and will need to implement something for outside pages, perhaps look into the page controller load?
       let startTime = performance.now()
       if (dbPerf) console.log('EhrHelperV2 PAGE_DATA_REFRESH_EVENT refresh', _this.pageKey)
       let visitInfo = store.getters['visit/visitData']
@@ -697,7 +830,6 @@ export default class EhrPageHelper {
       e.preventDefault()
       // many browsers ignore the prompt and provide their own
       e.returnValue = LEAVE_PROMPT
-      // } else {
       // if you set any value into e.returnValue it will be converted to a string and that makes the prompt appear
       // So avoid this ...
       // e.returnValue = null
@@ -708,8 +840,8 @@ export default class EhrPageHelper {
   /**
    * When a dialog form input changes we get an update message here.
    * FORM_INPUT_EVENT
-   * This message is from a child component and it's passing the new value up to the parent's helper (here).
-   * Take the value and stash it into the appropriate input so we have access to the inputs when it's time to save.
+   * This message is from a child component, and it's passing the new value up to the parent's helper (here).
+   * Take the value and stash it into the appropriate input, so we have access to the inputs when it's time to save.
    * @param eData
    * @private
    */

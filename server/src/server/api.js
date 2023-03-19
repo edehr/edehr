@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import cors from 'cors'
 // To Do refactor dbSeeder to export named function
-import dbSeeder from '../db/dbSeeder'
+import dbSeeder, { updateAllEhrData } from '../db/dbSeeder'
 import { AssignmentMismatchError } from '../mcr/common/errors'
 import {
   validatorMiddlewareWrapper,
@@ -134,8 +134,10 @@ export function apiMiddle (app, config) {
       }
     })
     .then(() => {
-      if (config.seedDB) {
-        debug('seeding done')
+      if(config.dbUpdateOnStart) {
+        return updateAllEhrData()
+      } else {
+        debug('Skipping db updates. See env setting DB_UPDATE_ON_START.')
       }
     })
     .then(lti.initializeApp(app))

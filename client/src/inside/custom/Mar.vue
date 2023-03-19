@@ -2,7 +2,7 @@
 <template lang="pug">
   div(class="ehr-page")
     ehr-panel-content
-      mar-tabs(:ehrHelp="ehrHelp")
+      mar-tabs(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
     ehr-page-footer(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 </template>
 

@@ -1,0 +1,664 @@
+{
+  "demographics": {},
+  "allergies": {},
+  "medical": {},
+  "psychosocial": {},
+  "surgical": {},
+  "immunization": {},
+  "familyHistory": {},
+  "careTeam": {},
+  "pastAppointments": {},
+  "visit": {
+    "diagnosisTable": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "vitals": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "fluidBalance": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "neurological": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "respiratory": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "cardiovascular": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "gastrointestinal": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "genitourinary": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "musculoskeletal": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "pain": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "biopsychosocial": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "nonmedOrders": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ],
+    "dietOrders": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "referrals": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "labRequisitions": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ],
+    "requisitions": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ],
+    "histologyRequisitions": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ],
+    "med_image_req": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ],
+    "microRequisitions": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "medicationOrders": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ],
+    "medicationOrdersTable": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "medAdminRec": {
+    "marTable": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "dischargeSummary": {},
+  "billing": {},
+  "progressNotes": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "carePlan": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "consults": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "labResults": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ],
+    "labResultHematology": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ],
+    "labResultUrine": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "medicalImaging": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "operationReports": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "codeLookup": {},
+  "diagnosticCodes": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "interventionCodes": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "caseMixGroup": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "testTable": {
+    "stacked": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "integumentaryAssessment": {
+    "tableIncision": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ],
+    "tableIncisionAssessment": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ],
+    "tableWound": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ],
+    "tableWoundAssessment": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "hematology": {
+    "tablePbfReview": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "dishargeplan": {
+    "table": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "medLabChemistry": {
+    "tableChem": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  },
+  "medLabImaging": {
+    "tableImages": [
+      {
+        "name": "foo",
+        "profession": "RN",
+        "day": 0,
+        "time": "0900"
+      },
+      {
+        "name": "bar",
+        "profession": "MD",
+        "day": 1,
+        "time": "1900"
+      }
+    ]
+  }
+}

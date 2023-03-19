@@ -76,7 +76,7 @@ export default {
     buttonLabel () { return this.hasDraft ? 'Resume editing' : this.tableDef.addButtonText},
     canResetTableData () { return this.hasData &&  this.ehrHelp.canResetTableData() },
     hasData () { return this.cTableData.length > 0},
-    hasDraft () { return EhrTableDraft.getTableDraftRowIndex(this.pageDataKey, this.tableKey) > -1 },
+    hasDraft () { return !!EhrTableDraft.getTableDraftRow(this.pageDataKey, this.tableKey)},
     cTableForm () { return this.ehrHelp.getTableForm(this.tableDef.tableKey) },
     rowTemplate () {
       let rowTemplate = []
@@ -98,11 +98,10 @@ export default {
       })
       return rowTemplate
     },
-    cTableData () {
-      const pageDataKey = this.pageDataKey
-      const tableKey = this.tableDef.tableKey
-      const thePageData = EhrData.getMergedPageData(pageDataKey)
-      const dbData = thePageData[tableKey]
+    // TABLE DATA IS SORTED BY SIM TIME
+    tableData () { return EhrData.getMergedTableData(this.pageDataKey, this.tableDef.tableKey) },
+    cTableData () { // STACKED TABLE DATA ...
+      const dbData = this.tableData
       const tableData = []
       const rowTemplate = this.rowTemplate
       if (dbData) {
@@ -112,7 +111,7 @@ export default {
             templateCell.stack.forEach((cell) => {
               let dbVal = dbRow[cell.key] === 0 ? '0' : dbRow[cell.key]
               if (cell.inputType === EhrTypes.dataInputTypes.checkset) {
-                dbVal = EhrCheckset.makeHuman(dbVal, pageDataKey, cell.key)
+                dbVal = EhrCheckset.makeHuman(dbVal, this.pageDataKey, cell.key)
               }
               cell.value = dbVal || ''
               cell.tableCss = templateCell.tableCss
@@ -149,11 +148,11 @@ export default {
     }
   },
   methods: {
-    editDraft (pageKey, tableKey, rowIndex) {
-      this.ehrHelp.editDraftRow(pageKey, tableKey, rowIndex)
+    editDraft (rowId) {
+      this.ehrHelp.editDraftRow(rowId)
     },
-    showReport (pageKey, tableKey, rowIndex) {
-      this.ehrHelp.showReport(pageKey, tableKey, rowIndex)
+    showReport (rowId) {
+      this.ehrHelp.showReport(rowId)
     },
 
     showDialog: function () {

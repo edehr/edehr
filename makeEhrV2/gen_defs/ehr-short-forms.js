@@ -1,4 +1,4 @@
-import EhrTypes from '../source/ehr-types'
+import EhrTypes from '../../ehr-workspace/src/ehr-definitions/ehr-types'
 
 const Defs = {
   recordHeader: [
@@ -6,38 +6,32 @@ const Defs = {
       elementKey: 'name',
       inputType: 'practitionerName',
       label: 'Name',
+
       tableLabel: 'Identification',
-      mandatory: true,
       recHeader: true
     },
     {
       elementKey: 'profession',
       inputType: 'practitionerProfession',
       label: 'Profession',
-      mandatory: true,
       recHeader: true
     },
     {
       elementKey: 'day',
       inputType: 'visitDay',
       label: 'Day',
-      mandatory: true,
       validation: 'visitDay',
+      mandatory: true,
       recHeader: true
     },
     {
       elementKey: 'time',
       inputType: 'visitTime',
       label: 'Time',
-      mandatory: true,
       validation: 'time24',
+      mandatory: true,
       recHeader: true
-    },
-    // {
-      // elementKey: 'recordConfirm',
-      // inputType: 'recordConfirm',
-      // recHeader: true
-    // }
+    }
   ],
 
   checkBoxTextSpacer: [

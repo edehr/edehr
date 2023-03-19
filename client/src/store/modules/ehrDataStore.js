@@ -3,6 +3,7 @@ import { decoupleObject, ehrMergeEhrData, ehrMarkSeed } from '@/helpers/ehr-util
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import StoreHelper from '@/helpers/store-helper'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
+import EhrDataModel from '@/ehr-definitions/EhrDataModel'
 
 const debug = false
 
@@ -24,8 +25,9 @@ const getters = {
       secondLevelData = rootGetters['activityDataStore/assignmentData']
     }
     if ( secondLevelData ) {
-      secondLevelData.meta = secondLevelData.meta || { simTime: { visitDay: 0, visitTime: '0000' } }
-      secondLevelData = decoupleObject(secondLevelData)
+      // place data into a model update meta data and transform model to latest version if needed
+      const model = new EhrDataModel(secondLevelData)
+      secondLevelData = model.ehrData
     }
     return secondLevelData  || {}
   },
@@ -42,7 +44,9 @@ const getters = {
       // type = 'Student merged data'
       baseLevelData = ehrMarkSeed(baseLevelData)
     }
-    baseLevelData.meta = baseLevelData.meta || {simTime: {visitDay: 0, visitTime: '0000'}}
+    // place data into a model update meta data and transform model to latest version if needed
+    const model = new EhrDataModel(baseLevelData)
+    baseLevelData = model.ehrData
     return baseLevelData
   },
   mergedData: (state, getters, rootState, rootGetters) => {
@@ -64,42 +68,14 @@ const getters = {
 
     // console.log('baseLevelData', baseLevelData)
     if (secondLevelData) {
-      mData = decoupleObject(ehrMergeEhrData(baseLevelData, secondLevelData))
-      mData.meta = {}
-      const start = {visitDay: 0, visitTime: '0000'}
-      let baseMeta = baseLevelData.meta || {}
-      let secondMeta = secondLevelData.meta || {}
-      let baseMetaSimTime = baseMeta.simTime ||  start
-      let secondMetaSimTime = secondMeta.simTime || start
-      let baseTime = parseInt(baseMetaSimTime.visitTime)
-      let secondTime = parseInt(secondMetaSimTime.visitTime)
-      let baseDay = baseMetaSimTime.visitDay
-      let secondDay = secondMetaSimTime.visitDay
-      if (secondDay === 0 && secondTime === 0) {
-        // secondLevelData.meta.simTime  may have zero values if the ehr data is empty or has no time stamped records
-        mData.meta.simTime = baseMetaSimTime
-      } else if (baseDay > secondDay || ( baseDay === secondDay && baseTime > secondTime ) ) {
-        console.log('Weird data. Case study simTime is after student\'s simTime. Case study time:',
-          baseLevelData.meta.simTime, 'student simTime:', secondMetaSimTime)
-        // use the later time ...
-        mData.meta.simTime = baseMetaSimTime
-      } else {
-        let vDay = baseDay
-        let mTime = baseTime
-        if (baseDay === secondDay) {
-          mTime = secondTime
-        } else {
-          vDay = secondDay
-          mTime = secondTime
-        }
-        let vTime = '' + mTime // convert to string
-        mData.meta = { simTime: { visitDay: vDay, visitTime: vTime.padStart(4,'0')}}
-      }
-      if (debug) {
-        console.log('EhrData base  ', baseLevelData)
-        console.log('EhrData second  ', secondLevelData)
-        console.log('EhrData merged', mData)
-      }
+      //EhrDataModel both updates the data as needed it also computes the sim time
+      mData = EhrDataModel.PrepareForDb(ehrMergeEhrData(baseLevelData, secondLevelData))
+    }
+    if (debug) {
+      console.log('EhrData base  ', baseLevelData)
+      console.log('EhrData second  ', secondLevelData)
+      console.log('EhrData merged', mData)
+      console.log('merged data has this meta', mData.meta)
     }
     return mData || {meta:{}}
   },
