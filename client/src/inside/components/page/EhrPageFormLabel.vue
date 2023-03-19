@@ -1,6 +1,6 @@
 <template lang="pug">
   div(:class="css", v-if="showLabel")
-    label(v-html="label", :for="forElement", class="form_label", :class='{form_label_mandatory: isEditing && mandatory}')
+    label(v-html="label", :for="forElement", class="form_label", :class='{form_label_mandatory: useMandatoryCss}')
     ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
     span(v-if="helperText") &nbsp; &nbsp;
 </template>
@@ -25,11 +25,13 @@ export default {
     css: { type: String },
     forElement: { type: String }
   },
+  inject: ['isEmbedded'],
   computed: {
-    isEditing () {
-      return this.ehrHelp.isAnythingHappening()
-    },
-    mandatory () { return !!this.element.mandatory}
+    useMandatoryCss () {
+      return !!this.element.mandatory &&
+        !this.isEmbedded &&
+        this.ehrHelp.isAnythingHappening()
+    }
   },
   methods: {
     setupCommon () {
