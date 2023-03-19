@@ -14,6 +14,7 @@
 <script>
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import EhrData from '@/inside/components/page/ehr-data'
+import EhrTypes from '@/ehr-definitions/ehr-types'
 export default {
   props: {
     pageKey: { type: String },
@@ -35,7 +36,10 @@ export default {
         for(let k = 0; k < items.length; k++) {
           const item = items[k]
           const def = EhrDefs.getPageChildElement(this.pageKey, item)
-          cols.push(def)
+          // skip the rowId
+          if (def.inputType !== EhrTypes.dataInputTypes.generatedId) {
+            cols.push(def)
+          }
         }
       }
       return cols

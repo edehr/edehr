@@ -1,20 +1,21 @@
 <template lang='pug'>
   div(class="seed-table")
     table(v-show="hasData", class="table_horizontal")
+      // table heard element for each column. Just for visual. Cell is empty.
       tr
         th &nbsp;
-        th(v-for="rowIndex in tableRowCount", :class='{draft:rowIsDraft(rowIndex)}').
-          {{ timestamp(rowIndex) }}
+        th(v-for="rowIndex in tableRowCount", :class='{draft:rowIsDraft(rowIndex)}') &nbsp;
       tr(v-for="(fieldDef, colIndex) in tableFields")
         td(v-text-to-html='label(fieldDef)')
-        td(v-for="rowIndex in tableRowCount", :class='{draft:rowIsDraft(rowIndex)}').
-          {{ fieldData(fieldDef, rowIndex) }}
+        td(v-for="rowIndex in tableRowCount", :class='{draft:rowIsDraft(rowIndex)}')
+          span {{ fieldData(fieldDef, rowIndex) }}
     div(v-show='!hasData') No data in this table.
 </template>
 
 <script>
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import EhrData from '@/inside/components/page/ehr-data'
+import EhrTypes from '@/ehr-definitions/ehr-types'
 export default {
   props: {
     pageKey: { type: String },
@@ -31,14 +32,14 @@ export default {
     },
     tableFields () {
       const ehr_list = this.pageElement.ehr_list
-      const headerFields = ['name', 'profession', 'day', 'time']
       const cols = []
       for(let i = 0; i< ehr_list.length; i++) {
         const items = ehr_list[i].items
         for(let k = 0; k < items.length; k++) {
           const item = items[k]
           const def = EhrDefs.getPageChildElement(this.pageKey, item)
-          if (! headerFields.includes(def.elementKey)) {
+          // skip the rowId
+          if (def.inputType !== EhrTypes.dataInputTypes.generatedId) {
             cols.push(def)
           }
         }
@@ -49,15 +50,6 @@ export default {
   },
   methods: {
     label ( fieldDef ) { return fieldDef.label || fieldDef.tableLabel },
-    timestamp (index) {
-      const row = this.tableData[index-1]
-      const parts = []
-      row.name ? parts.push(row.name) : null
-      row.profession ? parts.push(row.profession + ',') : null
-      row.day ? parts.push('Sim time: ' + row.day) : null
-      row.time ? parts.push(' - ' + row.time) : null
-      return parts.join(' ')
-    },
     fieldData (fieldDef, index) {
       const row = this.tableData[index-1]
       const elementKey = fieldDef.elementKey
