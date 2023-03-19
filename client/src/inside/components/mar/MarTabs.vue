@@ -1,8 +1,12 @@
 <template lang="pug">
   div()
     tabs
-      tab(name="V2 MAR", :selected="true")
-        button(v-on:click='setupTimeline')
+      tab(:name="todayTabName", :selected="true")
+        mar-today-content(:ehrHelp="ehrHelp", :marToday="marToday")
+      tab(name="V1 Summary")
+        mar-summary(:ehrHelp="ehrHelp")
+      tab(name="V2 MAR")
+        h2 This MAR page is under construction. Use at your own risk.
         mar-med-grid(
           v-for="prefix in groups",
           :ehrHelp="ehrHelp"
@@ -12,13 +16,9 @@
           :idPrefix='prefix',
           @selectedDayChange='setSelectedDay')
         //mar-today-content-v2(:ehrHelp="ehrHelp")
-      tab(name="MAR table v2")
+      tab(name="V2 MAR table")
+        h2 This MAR page is under construction. Use at your own risk.
         ehr-page-element(:element="tableDefV2", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
-
-      tab(:name="todayTabName")
-        mar-today-content(:ehrHelp="ehrHelp", :marToday="marToday")
-      tab(name="Summary")
-        mar-summary(:ehrHelp="ehrHelp")
 
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDefV2", :errorList="errorList" )
 
@@ -75,7 +75,7 @@ export default {
   },
   computed: {
     todayTabName () {
-      return 'Today - Day ' + this.marToday.getCurrentDay()
+      return 'V1 Day ' + this.marToday.getCurrentDay()
     },
     // v2
     errorList () {
