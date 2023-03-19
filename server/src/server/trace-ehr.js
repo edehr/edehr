@@ -7,6 +7,7 @@ const EventEmitter = require('events')
 let traceSeedLogger
 let traceAdLogger
 
+const isTestEnv = 'test' === process.env.NODE_ENV
 /*
 Usage
 EHR_EVENT_BUS.emit(EHR_SEED_EVENT, sourceId, userId, action, previousEhrData, updatedEhrData)
@@ -27,6 +28,10 @@ function composeRec (sourceId, userId, action, previous, updated) {
 }
 
 EHR_EVENT_BUS.on(EHR_AD_EVENT, (sourceId, userId, action, previous, updated) => {
+  if(isTestEnv) {
+    debug(action, 'update AD updated:', updated)
+    return
+  }
   const rec = composeRec(sourceId, userId, action, previous, updated)
   // console.log('EHR_AD_EVENT activity change')
   ehrTrace(JSON.stringify(rec))
@@ -34,6 +39,10 @@ EHR_EVENT_BUS.on(EHR_AD_EVENT, (sourceId, userId, action, previous, updated) => 
 })
 
 EHR_EVENT_BUS.on(EHR_SEED_EVENT, (sourceId, userId, action, previous, updated) => {
+  if(isTestEnv) {
+    debug(action, 'update Seed updated:', updated)
+    return
+  }
   if ('properties' === action) {
     // someone is using the Properties dialog. We only want to track changes to ehrData
     if (0 === JSON.stringify(previous).localeCompare(JSON.stringify(updated)) ) {

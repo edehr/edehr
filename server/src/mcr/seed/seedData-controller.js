@@ -78,7 +78,7 @@ export default class SeedDataController extends BaseController {
   async updateAndSaveSeedEhrData (id, ehrData) {
     const model = await this.baseFindOneQuery(id)
     const previous = decoupleObject(model.seedData)
-    const doc = this._saveSeedEhrData(model, ehrData)
+    const doc = await this._saveSeedEhrData(model, ehrData)
     EHR_EVENT_BUS.emit(EHR_SEED_EVENT, 'system', 'system', 'update', previous, doc.ehrData)
   }
 
