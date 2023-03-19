@@ -66,8 +66,8 @@ export default class VitalModel {
 
   getDates (table) {
     let values = table.map(element => {
-      let day = element.day || 'x'
-      let time = element.time || 'xx'
+      let day = element.table_day || 'x'
+      let time = element.table_time || 'xx'
       return `Day ${day}\n${time}`
     })
     let chartData = {
