@@ -48,7 +48,7 @@
 import UiButton from '@/app/ui/UiButton.vue'
 import EhrTableActions from '@/inside/components/page/ehr-table-actions'
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
-const assert = require('assert').strict
+// const assert = require('assert').strict
 
 export default {
   components: { UiButton },
@@ -122,8 +122,8 @@ export default {
       const sourcePageKey = 'medicationOrders'
       const sourceTableKey = 'medicationOrdersTable'
       const sendersTableDef = EhrDefs.getPageTable(sourcePageKey, sourceTableKey)
-      assert.ok(sendersTableDef, `Did not find table def for ${sourcePageKey} ${sourceTableKey}` )
-      assert.ok(sendersTableDef.tableAction, `Table definition does not have expected table action property ${sourcePageKey} ${sourceTableKey}` )
+      // assert.ok(sendersTableDef, `Did not find table def for ${sourcePageKey} ${sourceTableKey}` )
+      // assert.ok(sendersTableDef.tableAction, `Table definition does not have expected table action property ${sourcePageKey} ${sourceTableKey}` )
       const options = EhrTableActions.getTableActionRequestOptions(sendersTableDef, sourceRowId)
       const { taTargetPageKey, taTargetTableKey} = sendersTableDef
       this.ehrHelp.showDialogForTable(taTargetPageKey, taTargetTableKey, options)
