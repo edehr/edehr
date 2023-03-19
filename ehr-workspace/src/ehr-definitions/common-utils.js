@@ -27,9 +27,7 @@ export function validTimeStr (text) {
  */
 export const VISIT_DAY_LIMIT = 19
 export function validDayStr (text) {
-  const isNum = validNumberStr(text)
-  const inRange = validRangeStr(text, 0, VISIT_DAY_LIMIT)
-  return isNum && inRange
+  return validRangeStr(text, 0, VISIT_DAY_LIMIT)
 }
 
 /**

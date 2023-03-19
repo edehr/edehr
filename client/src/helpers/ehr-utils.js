@@ -130,7 +130,10 @@ export function isString (possibleStr) {
   return typeof possibleStr === 'string'
 }
 export function isEmptyString (str) {
-  return (!str || isString(str) && str.trim().length === 0 )
+  /*
+  The comparison str === "" is true only if the input is of type string, and it is not empty
+   */
+  return str === ''
 }
 
 export function formatDateStr (dateStrFromDb) {

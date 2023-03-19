@@ -22,7 +22,13 @@ describe ( 'Common utilities', () => {
   })
 
   it ('validDayStr', () => {
+    validDayStr(0).should.equal(true)
     validDayStr('0').should.equal(true)
+    validDayStr('').should.equal(false)
+    validDayStr('a').should.equal(false)
+    validDayStr(' ').should.equal(false)
+    validDayStr(null).should.equal(false)
+    validDayStr().should.equal(false)
   })
 
   it ('validNumberStr', () => {
