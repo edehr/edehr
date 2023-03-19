@@ -61,7 +61,7 @@ describe(`${typeName} controller testing`, function () {
 
   it(`${typeName} use putAssignmentData`, function (done) {
     const data = {propertyName: 'someProp', value: { foo : 'bar'}}
-    controller.putAssignmentData(theActivityData._id, data)
+    controller.putAssignmentData('visitId', 'userId', theActivityData._id, data)
       .then(doc => {
         should.exist(doc)
         doc.should.have.property('assignmentData')
@@ -122,7 +122,7 @@ describe('Test EhrDataModel with activity controller', function () {
 
   it('use putAssignmentData which used Prepare', function (done) {
     const PAGE_KEY = 'hematology'
-    const ID = '_id'
+    const ID = 'tableCbcAnalysis_id'
     const payload = {
       propertyName: PAGE_KEY,
       value: {
@@ -130,7 +130,7 @@ describe('Test EhrDataModel with activity controller', function () {
         tablePbfReview: [{ name: 'foo' }, { name: 'bar' }]
       }
     }
-    controller.putAssignmentData(theActivityData._id, payload)
+    controller.putAssignmentData('visitId', 'userId', theActivityData._id, payload)
       .then(doc => {
         should.exist(doc)
         doc.should.have.property('assignmentData')
