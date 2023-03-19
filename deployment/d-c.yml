@@ -56,6 +56,7 @@ services:
       - "../server/src/:/usr/src/app/src/"
       - "../server/resources/:/usr/src/app/resources/"
       - "../server/api-logs/:/usr/src/app/api-logs/"
+      - "../server/ehr-logs/:/usr/src/app/ehr-logs/"
       - "../server/files-common/:/usr/src/app/files-common/"
       - "../server/files-ehr/:/usr/src/app/files-ehr/"
     entrypoint:
