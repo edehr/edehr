@@ -39,10 +39,6 @@
     div(v-else-if="isType('ehr_embedded')")
       ehr-element-embedded(:elementKey="elementKey", :ehrHelp="ehrHelp", :inputVal="inputVal")
 
-    div(v-else-if="isType('generatedId')", class="text_input_wrapper")
-      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
-      div -- {{ inputVal }} --
-
     hr(v-else-if="isType('horizontal')")
     // type lookahead should have been named 'medication'
     div(v-else-if="isType('lookahead')", class="text_input_wrapper")

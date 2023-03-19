@@ -7,7 +7,6 @@
         thead
           tr
             th(v-if="showTableAction") &nbsp;
-            th &nbsp;
             th(v-for="(tCell, cIndex) in rowTemplate", :key='cIndex')
               span(v-html="tCell.tableLabel", :class="tableColumnCss(tCell)")
         tbody

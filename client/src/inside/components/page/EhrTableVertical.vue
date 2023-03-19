@@ -6,7 +6,6 @@
         tbody
           tr(v-for="(column, colIndex) in transposed", :class="tableColumnCss(column)")
             td(:class="transposeLabelCss(column)", class="tableLabelElement")
-              div(v-if="colIndex === 0", style="min-height:3rem;") &nbsp;
               span(v-html="transposeLabel(column)")
             td(v-for="(cell, index) in transposeData(column)", :class="transposeValueCss(cell, index)")
               div(v-if="!cell.isDraft && colIndex === 0")
