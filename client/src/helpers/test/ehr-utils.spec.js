@@ -1,11 +1,9 @@
 /**
  * @jest-environment jsdom
  */
-import axios from 'axios'
 import * as ehrUtils from '../ehr-utils'
 import { Text } from '../ehr-text'
 import { createFile } from './testHelper'
-import { prepareAxiosResponse } from './axios-mock-helper'
 import { isString, validNumberStr } from '../ehr-utils'
 const should = require('should')
 const mockData = require('./mockData.json')

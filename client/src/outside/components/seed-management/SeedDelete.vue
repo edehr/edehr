@@ -57,7 +57,6 @@ export default {
     },
     async confirmSeedDeletion () {
       const seedId = this.seed._id
-      console.log('About to delete seed', seedId)
       await StoreHelper.deleteSeed(seedId)
         .then( () => {
           console.log('After seed deleted', seedId)

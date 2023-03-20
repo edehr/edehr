@@ -4,10 +4,10 @@
     div(v-else)
       table.table_vertical
         tbody
-          tr(v-for="(column, colIndex) in transposed", :class="tableColumnCss(column)")
-            td(:class="transposeLabelCss(column)", class="tableLabelElement")
-              span(v-html="transposeLabel(column)")
-            td(v-for="(cell, index) in transposeData(column)", :class="transposeValueCss(cell, index)")
+          tr(v-for="(column, colIndex) in transposed")
+            td(class="tableLabelElement")
+              span(:class="transposeLabelCss(column)", v-html="transposeLabel(column)")
+            td(v-for="(cell, index) in transposeData(column)")
               div(v-if="!cell.isDraft && colIndex === 0")
                   ui-button(v-on:buttonClicked="viewReport(getIdFromStack(cell))")
                     span View &nbsp;
@@ -22,7 +22,7 @@
                 span Edit &nbsp;
                 fas-icon(icon="edit")
               div(v-for="cPart in cell.stack")
-                ehr-table-element(v-if="!!cPart.value", :cell="cPart")
+                ehr-table-element(v-if="!!cPart.value", :cell="cPart", :class="transposeValueCss(cell, index)")
 </template>
 
 <script>
@@ -98,8 +98,6 @@ export default {
     transposeData (column) {
       // take off the labels
       return column.slice(1,column.length)
-    },
-    tableColumnCss: function (column) {
     },
   }
 }

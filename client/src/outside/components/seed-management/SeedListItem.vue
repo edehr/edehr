@@ -49,7 +49,6 @@
 
 <script>
 import SeedDuplicate from '@/outside/components/seed-management/SeedDuplicate'
-import SeedDelete from '@/outside/components/seed-management/SeedDelete'
 import UiButton from '@/app/ui/UiButton.vue'
 import StoreHelper from '@/helpers/store-helper'
 import SeedActions from '@/outside/components/seed-management/SeedActions'
@@ -59,7 +58,7 @@ import UiLink from '@/app/ui/UiLink'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
 
 export default {
-  components: { UiLink, SeedActions, SeedDelete, SeedDuplicate, UiButton, },
+  components: { UiLink, SeedActions, SeedDuplicate, UiButton, },
   data () {
     return {
       text: Text.SEED_VIEW_PAGE,

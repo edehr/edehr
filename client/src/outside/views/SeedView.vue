@@ -52,7 +52,6 @@ import { Text } from '@/helpers/ehr-text'
 import SeedDuplicate from '@/outside/components/seed-management/SeedDuplicate'
 import UiButton from '@/app/ui/UiButton'
 import SeedListLink from '@/outside/components/seed-management/SeedListLink'
-import SeedDelete from '@/outside/components/seed-management/SeedDelete'
 import SeedDataDialog from '@/outside/components/seed-management/SeedDataDialog'
 import OutsideCommon from '@/outside/views/OutsideCommon'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
@@ -60,7 +59,7 @@ import { EhrPages } from '@/ehr-definitions/ehr-models'
 
 export default {
   extends: OutsideCommon,
-  components: { ZoneLmsPageBanner, SeedActions, SeedDataDialog, SeedListLink, SeedDelete, UiButton, SeedDuplicate, SeedStructural, UiLink },
+  components: { ZoneLmsPageBanner, SeedActions, SeedDataDialog, SeedListLink, UiButton, SeedDuplicate, SeedStructural, UiLink },
   data () {
     return {
       appIcons: APP_ICONS,
@@ -119,9 +118,6 @@ export default {
       // reload
       const fromStore = this.$store.getters['seedListStore/seedId']
       this.$router.push({ name: 'seed-view', query: { seedId: fromStore } })
-    },
-    seedDeleted () {
-      this.$router.push({ name: 'seed-list' })
     },
     loadComponent () {
       const fromRoute = this.$route.query.seedId
