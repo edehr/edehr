@@ -17,44 +17,32 @@ export const EHR_EVENT_BUS = new EventEmitter()
 export const EHR_SEED_EVENT = 'EHR_SEED_EVENT'
 export const EHR_AD_EVENT = 'EHR_AD_EVENT'
 
-function composeRec (sourceId, userId, action, previous, updated) {
-  return {
-    action: action,
-    sourceId: sourceId,
-    userId: userId,
-    previous: previous,
-    updated: updated
-  }
-}
 
-EHR_EVENT_BUS.on(EHR_AD_EVENT, (sourceId, userId, action, previous, updated) => {
+EHR_EVENT_BUS.on(EHR_AD_EVENT, (payload) => {
   if(isTestEnv) {
-    debug(action, 'update AD updated:', updated)
+    debug(payload.action, 'update AD updated:', payload.updated)
     return
   }
-  const rec = composeRec(sourceId, userId, action, previous, updated)
-  // console.log('EHR_AD_EVENT activity change')
-  ehrTrace(JSON.stringify(rec))
-  traceAdLogger.info(rec)
+  ehrTrace(JSON.stringify(payload))
+  traceAdLogger.info(payload)
 })
 
-EHR_EVENT_BUS.on(EHR_SEED_EVENT, (sourceId, userId, action, previous, updated) => {
+EHR_EVENT_BUS.on(EHR_SEED_EVENT, (payload) => {
   if(isTestEnv) {
-    debug(action, 'update Seed updated:', updated)
+    debug(payload.action, 'update Seed updated:', payload.updated)
     return
   }
-  if ('properties' === action) {
+  if ('properties' === payload.action) {
     // someone is using the Properties dialog. We only want to track changes to ehrData
-    if (0 === JSON.stringify(previous).localeCompare(JSON.stringify(updated)) ) {
+    if (JSON.stringify(payload.previous) === (JSON.stringify(payload.updated)) ) {
       // skip no change
-      debug('Skip seed event. new is same as old')
+      // debug('Skip seed update event. new is same as old')
       return
     }
   }
-  debug('Seed update event.', action)
-  const rec = composeRec(sourceId, userId, action, previous, updated)
-  ehrTrace(JSON.stringify(rec))
-  traceSeedLogger.info(rec)
+  debug('Seed update event.', payload.action)
+  ehrTrace(JSON.stringify(payload))
+  traceSeedLogger.info(payload)
 })
 
 function createTransport (pathSpec, fileSpec) {

@@ -63,7 +63,16 @@ export default class SeedDataController extends BaseController {
       // place date into the ehr data's page element
       ehrData[propertyName] = value
       const doc = await this._saveSeedEhrData(model, ehrData)
-      EHR_EVENT_BUS.emit(EHR_SEED_EVENT, visitId, userId, action, previous, doc.ehrData)
+      const payload = {
+        toolConsumer: doc.toolConsumer,
+        sourceId: visitId,
+        userId: userId,
+        objId: id,
+        action: action,
+        previous: previous,
+        updated: doc.ehrData
+      }
+      EHR_EVENT_BUS.emit(EHR_SEED_EVENT, payload)
       return doc
     }
   }
@@ -79,7 +88,16 @@ export default class SeedDataController extends BaseController {
     const model = await this.baseFindOneQuery(id)
     const previous = decoupleObject(model.seedData)
     const doc = await this._saveSeedEhrData(model, ehrData)
-    EHR_EVENT_BUS.emit(EHR_SEED_EVENT, 'system', 'system', 'update', previous, doc.ehrData)
+    const payload = {
+      toolConsumer: doc.toolConsumer,
+      sourceId: 'system',
+      userId: 'system',
+      objId: id,
+      action: 'update',
+      previous: previous,
+      updated: doc.ehrData
+    }
+    EHR_EVENT_BUS.emit(EHR_SEED_EVENT, payload)
   }
 
   deleteSeed (id) {
@@ -114,7 +132,16 @@ export default class SeedDataController extends BaseController {
         .create(req.body)
         .then(res => {
           const newData = res.ehrData
-          EHR_EVENT_BUS.emit(EHR_SEED_EVENT, visitId, userId, 'create', previous, newData)
+          const payload = {
+            toolConsumer: res.toolConsumer,
+            sourceId: visitId,
+            userId: userId,
+            objId: res._id,
+            action: 'create',
+            previous: previous,
+            updated: newData
+          }
+          EHR_EVENT_BUS.emit(EHR_SEED_EVENT, payload)
           return res
         })
         .then(ok(res))
@@ -125,18 +152,29 @@ export default class SeedDataController extends BaseController {
       const authPayload = req.authPayload
       const { visitId, userId } = authPayload
       let previous
+      let toolConsumer
       this
         .baseFindOneQuery(id)
         .then(model => {
           // get previous ehrData for event below
           previous = model.ehrData
+          toolConsumer = model.toolConsumer
           return this.update(id, req.body)
         })
         .then(res => {
           // note all lowercase seeddata
           const newData = res && res.seeddata ? res.seeddata.ehrData : undefined
           // with action 'properties' the event handler will only process change if the prev != new
-          EHR_EVENT_BUS.emit(EHR_SEED_EVENT, visitId, userId, 'properties', previous, newData)
+          const payload = {
+            toolConsumer: toolConsumer,
+            sourceId: visitId,
+            userId: userId,
+            objId: id,
+            action: 'properties',
+            previous: previous,
+            updated: newData
+          }
+          EHR_EVENT_BUS.emit(EHR_SEED_EVENT, payload)
           return res
         })
         .then(ok(res))
@@ -154,32 +192,37 @@ export default class SeedDataController extends BaseController {
         .catch(fail(res))
     })
 
-    // TODO remove when sure this is not used
-    // router.put('/importSeedEhrData/:key/', (req, res) => {
-    //   let id = req.params.key
-    //   let data = req.body
-    //   this.updateAndSaveSeedEhrData(id, data)
-    //     .then(ok(res))
-    //     .catch(fail(res))
-    // })
-
     router.delete('/:key', (req, res) => {
       const authPayload = req.authPayload
       const { visitId, userId } = authPayload
       const seedId = req.params.key
       let previous
+      let toolConsumer
+      // TODO For DELETE seed (a) user is admin or (b) ...
+      //  (1) check no assignments use seed
+      //  (2) check user is at least instructor
+      //  (3) match tool consumer too
       debug('Delete seed api endpoint with id: ', seedId)
       this
-        .baseFindOneQuery(id)
+        .baseFindOneQuery(seedId)
         .then(model => {
           // get previous ehrData for event below
           previous = model.ehrData
+          toolConsumer = model.toolConsumer
           // then do the action of deletion
           return this.deleteSeed(seedId)
         })
         .then(res => {
-          debug('delete seed ', seedId)
-          EHR_EVENT_BUS.emit(EHR_SEED_EVENT, visitId, userId, 'delete', previous, undefined)
+          const payload = {
+            toolConsumer: toolConsumer,
+            sourceId: visitId,
+            userId: userId,
+            objId: seedId,
+            action: 'delete',
+            previous: previous,
+            updated: undefined
+          }
+          EHR_EVENT_BUS.emit(EHR_SEED_EVENT, payload)
           return res
         })
         .then(ok(res))

@@ -15,7 +15,9 @@ export default class ActivityDataController extends BaseController {
 
   /**
    * place date into the ehr data's page element
+   * @param toolConsumer
    * @param visitId
+   * @param userId
    * @param id
    * @param dataPayload
    let data = {
@@ -25,7 +27,7 @@ export default class ActivityDataController extends BaseController {
    * @return {*}
    * @see updateSeedEhrProperty in seedData-controller
    */
-  async putAssignmentData (visitId, userId, id, dataPayload, action) {
+  async putAssignmentData (toolConsumer, visitId, userId, id, dataPayload, action) {
     // console.log('PUT AD', visitId, id, action)
     const ad = await this.baseFindOneQuery(id)
     if (ad) {
@@ -36,7 +38,16 @@ export default class ActivityDataController extends BaseController {
       const previous = decoupleObject(ehrData)
       ehrData[propertyName] = value
       const doc = await this._saveEhrData(ad, ehrData)
-      EHR_EVENT_BUS.emit(EHR_AD_EVENT, visitId, userId, action, previous, doc.assignmentData)
+      const payload = {
+        toolConsumer: toolConsumer,
+        sourceId: visitId,
+        userId: userId,
+        objId: id,
+        action: action,
+        previous: previous,
+        updated: doc.assignmentData
+      }
+      EHR_EVENT_BUS.emit(EHR_AD_EVENT, payload)
       return doc
     }
   }
@@ -49,7 +60,16 @@ export default class ActivityDataController extends BaseController {
     if (ad) {
       const previous = decoupleObject(ad.assignmentData)
       const doc = await this._saveEhrData(ad, ehrData)
-      EHR_EVENT_BUS.emit(EHR_AD_EVENT, 'system', 'system', 'update', previous, doc.assignmentData)
+      const payload = {
+        toolConsumer: ad.toolConsumer,
+        sourceId: 'system',
+        userId: 'system',
+        objId: id,
+        action: 'update',
+        previous: previous,
+        updated: doc.assignmentData
+      }
+      EHR_EVENT_BUS.emit(EHR_AD_EVENT, payload)
       return doc
     }
   }
@@ -126,8 +146,8 @@ export default class ActivityDataController extends BaseController {
       let action = req.params.action
       const data = req.body
       const authPayload = req.authPayload
-      const { visitId, userId } = authPayload
-      this.putAssignmentData(visitId, userId, id, data, action)
+      const { consumerKey, visitId, userId } = authPayload
+      this.putAssignmentData(consumerKey, visitId, userId, id, data, action)
         .then(ok(res))
         .then(null, fail(res))
     })

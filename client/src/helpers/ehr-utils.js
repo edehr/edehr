@@ -4,7 +4,6 @@ import { saveAs } from 'file-saver'
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import { Text } from '@/helpers/ehr-text'
 import validFilename from 'valid-filename'
-import StoreHelper from '@/helpers/store-helper'
 
 const debug = false
 const debugErrs = false
