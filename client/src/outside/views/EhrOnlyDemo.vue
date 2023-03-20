@@ -20,7 +20,7 @@
       div(class="list-card list-element")
         p A case study for hematology lab technologists where a learner normally completes a peripheral blood film (PBF) review based on the CBC analysis and on viewing a blood smear under a microscope.  In this case the PBF is completed to illustrate the whole activity.
         p This is a sample of how the EdEHR can support lab technologist learners within an EHR context.  The EdEHR is evolving and, eventually, the parts that belong in a lab information system (LIS) will be visually separated from the EHR components.
-        router-link(:to="{path: 'ehr/chart/reports/hematology', query: {demoOnlyKey: 'pbf'}}") PBF review
+        router-link(:to="{path: 'ehr/med-lab/hematology', query: {demoOnlyKey: 'pbf'}}") PBF review
 
       div(v-if="isDev", class="list-card list-element")
         router-link(:to="{path: 'ehr', query: {demoOnlyKey: 'devSeed'}}") Dev Seed

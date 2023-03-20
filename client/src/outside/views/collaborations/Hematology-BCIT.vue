@@ -10,7 +10,7 @@
 
       p.
         Click this image to see the sample case study in the EHR.
-      a(href='/ehr/chart/reports/hematology?demoOnlyKey=pbf')
+      a(href='ehr/med-lab/hematology?demoOnlyKey=pbf')
         img(src='/assets/images/pbf-review.png', alt='PBF Review module', class="screenshot")
     collab-list
 
