@@ -114,7 +114,7 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
   let result = 0
 
   function mapToNums (values) {
-    return values.map(v => parseInt(v))
+    return values.map(v => parseFloat(v))
   }
 
   if (calculationType.includes('multiplyBy')) {
