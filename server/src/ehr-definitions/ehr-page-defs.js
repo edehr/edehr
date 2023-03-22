@@ -1776,7 +1776,6 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'checkbox',
         'label': 'Consent for blood products',
-        'tableCss': 'hr-table',
         'fqn': 'visit.consentForBlood'
       },
       {
@@ -2232,7 +2231,6 @@ const DEFS = {
           }
         ],
         'tableColumn': '4',
-        'tableCss': 'hr-table',
         'tableLabel': 'Patient position',
         'fqn': 'vitals.patientPosition'
       },
@@ -2273,7 +2271,6 @@ const DEFS = {
           }
         ],
         'tableColumn': '6',
-        'tableCss': 'hr-table',
         'tableLabel': 'Source',
         'fqn': 'vitals.source'
       },
@@ -2328,7 +2325,6 @@ const DEFS = {
           }
         ],
         'tableColumn': '9',
-        'tableCss': 'hr-table',
         'tableLabel': 'Pulse rhythm',
         'fqn': 'vitals.rhythm'
       },
@@ -2479,7 +2475,6 @@ const DEFS = {
           },
           {
             'label': 'Patient position',
-            'tableCss': 'hr-table',
             'ehr_list_index': '4',
             'items': [
               'patientPosition'
@@ -2494,7 +2489,6 @@ const DEFS = {
           },
           {
             'label': 'Source',
-            'tableCss': 'hr-table',
             'ehr_list_index': '6',
             'items': [
               'source'
@@ -2516,7 +2510,6 @@ const DEFS = {
           },
           {
             'label': 'Pulse rhythm',
-            'tableCss': 'hr-table',
             'ehr_list_index': '9',
             'items': [
               'rhythm'
@@ -2908,7 +2901,6 @@ const DEFS = {
           }
         ],
         'tableColumn': '2',
-        'tableCss': 'hr-table',
         'tableLabel': 'Status',
         'fqn': 'neurological.alert'
       },
@@ -3034,7 +3026,6 @@ const DEFS = {
           }
         ],
         'tableColumn': '6',
-        'tableCss': 'hr-table',
         'tableLabel': 'Glasgow Coma Scale',
         'fqn': 'neurological.glasgowCalculation'
       },
@@ -3067,7 +3058,6 @@ const DEFS = {
         'inputType': 'text',
         'label': 'Duration',
         'tableColumn': '8',
-        'tableCss': 'hr-table',
         'tableLabel': 'Duration',
         'fqn': 'neurological.duration'
       },
@@ -3235,7 +3225,6 @@ const DEFS = {
         'inputType': 'textarea',
         'label': 'General comments',
         'tableColumn': '14',
-        'tableCss': 'hr-table',
         'tableLabel': 'General comments',
         'fqn': 'neurological.comments'
       },
@@ -3319,7 +3308,6 @@ const DEFS = {
         ],
         'passToFunction': 'strokeAssessmentCalculation',
         'tableColumn': '17',
-        'tableCss': 'hr-table',
         'tableLabel': 'Level of conciousness commands',
         'fqn': 'neurological.levelOfConciousnessCommands'
       },
@@ -3478,7 +3466,6 @@ const DEFS = {
         ],
         'passToFunction': 'strokeAssessmentCalculation',
         'tableColumn': '22',
-        'tableCss': 'hr-table',
         'tableLabel': 'Limb ataxia',
         'fqn': 'neurological.limbAtaxia'
       },
@@ -3659,7 +3646,6 @@ const DEFS = {
         ],
         'passToFunction': 'strokeAssessmentCalculation',
         'tableColumn': '29',
-        'tableCss': 'hr-table',
         'tableLabel': 'Extinction and inattention',
         'fqn': 'neurological.extinctionAndInattention'
       },
@@ -3705,7 +3691,6 @@ const DEFS = {
           },
           {
             'label': 'Status',
-            'tableCss': 'hr-table',
             'ehr_list_index': '2',
             'items': [
               'alert'
@@ -3734,7 +3719,6 @@ const DEFS = {
           },
           {
             'label': 'Glasgow Coma Scale',
-            'tableCss': 'hr-table',
             'ehr_list_index': '6',
             'items': [
               'glasgowCalculation'
@@ -3749,7 +3733,6 @@ const DEFS = {
           },
           {
             'label': 'Duration',
-            'tableCss': 'hr-table',
             'ehr_list_index': '8',
             'items': [
               'duration'
@@ -3792,7 +3775,6 @@ const DEFS = {
           },
           {
             'label': 'General comments',
-            'tableCss': 'hr-table',
             'ehr_list_index': '14',
             'items': [
               'comments'
@@ -3814,7 +3796,6 @@ const DEFS = {
           },
           {
             'label': 'Level of conciousness commands',
-            'tableCss': 'hr-table',
             'ehr_list_index': '17',
             'items': [
               'levelOfConciousnessCommands'
@@ -3850,7 +3831,6 @@ const DEFS = {
           },
           {
             'label': 'Limb ataxia',
-            'tableCss': 'hr-table',
             'ehr_list_index': '22',
             'items': [
               'limbAtaxia'
@@ -3900,7 +3880,6 @@ const DEFS = {
           },
           {
             'label': 'Extinction and inattention',
-            'tableCss': 'hr-table',
             'ehr_list_index': '29',
             'items': [
               'extinctionAndInattention'
@@ -4188,7 +4167,6 @@ const DEFS = {
         'label': 'Flow rate',
         'suffix': '/lpm',
         'tableColumn': '4',
-        'tableCss': 'hr-table',
         'tableLabel': 'Flow rate',
         'fqn': 'respiratory.flowRate',
         'suffixText': '<p>/lpm</p>',
@@ -4364,7 +4342,6 @@ const DEFS = {
           }
         ],
         'tableColumn': '9',
-        'tableCss': 'hr-table',
         'tableLabel': 'Right lower lung',
         'fqn': 'respiratory.rll'
       },
@@ -4498,7 +4475,6 @@ const DEFS = {
         'inputType': 'text',
         'label': 'Sputum comments',
         'tableColumn': '14',
-        'tableCss': 'hr-table',
         'tableLabel': 'Sputum comments',
         'fqn': 'respiratory.sputumComments'
       },
@@ -4556,7 +4532,6 @@ const DEFS = {
           },
           {
             'label': 'Flow rate',
-            'tableCss': 'hr-table',
             'ehr_list_index': '4',
             'items': [
               'flowRate'
@@ -4592,7 +4567,6 @@ const DEFS = {
           },
           {
             'label': 'Right lower lung',
-            'tableCss': 'hr-table',
             'ehr_list_index': '9',
             'items': [
               'rll'
@@ -4628,7 +4602,6 @@ const DEFS = {
           },
           {
             'label': 'Sputum comments',
-            'tableCss': 'hr-table',
             'ehr_list_index': '14',
             'items': [
               'sputumComments'
@@ -4870,7 +4843,6 @@ const DEFS = {
           }
         ],
         'tableColumn': '3',
-        'tableCss': 'hr-table',
         'tableLabel': 'Skin appearance',
         'fqn': 'cardiovascular.skinAppearance'
       },
@@ -4933,7 +4905,6 @@ const DEFS = {
           }
         ],
         'tableColumn': '4',
-        'tableCss': 'hideLabel',
         'tableLabel': 'Cap refill: Right hand',
         'fqn': 'cardiovascular.capRefillLeftHand'
       },
@@ -5009,7 +4980,7 @@ const DEFS = {
           }
         ],
         'tableColumn': '7',
-        'tableCss': 'hr-table hideLabel',
+        'tableCss': 'hideLabel',
         'tableLabel': 'Nail bed colour: Right hand',
         'fqn': 'cardiovascular.nailBedColourRightHand'
       },
@@ -5112,7 +5083,7 @@ const DEFS = {
           }
         ],
         'tableColumn': '11',
-        'tableCss': 'hr-table hideLabel',
+        'tableCss': 'hideLabel',
         'tableLabel': 'Nail bed colour: Left hand',
         'fqn': 'cardiovascular.nailBedColourLeftHand'
       },
@@ -5215,7 +5186,7 @@ const DEFS = {
           }
         ],
         'tableColumn': '15',
-        'tableCss': 'hr-table hideLabel',
+        'tableCss': 'hideLabel',
         'tableLabel': 'Nail bed colour: Right Foot',
         'fqn': 'cardiovascular.nailBedColourRightFoot'
       },
@@ -5318,7 +5289,7 @@ const DEFS = {
           }
         ],
         'tableColumn': '19',
-        'tableCss': 'hr-table hideLabel',
+        'tableCss': 'hideLabel',
         'tableLabel': 'Nail bed colour: Left foot',
         'fqn': 'cardiovascular.nailBedColourLeftFoot'
       },
@@ -5369,7 +5340,6 @@ const DEFS = {
           },
           {
             'label': 'Skin appearance',
-            'tableCss': 'hr-table',
             'ehr_list_index': '3',
             'items': [
               'skinAppearance'
@@ -5377,7 +5347,6 @@ const DEFS = {
           },
           {
             'label': 'Cap refill: Right hand',
-            'tableCss': 'hideLabel',
             'ehr_list_index': '4',
             'items': [
               'capRefillLeftHand'
@@ -5401,7 +5370,7 @@ const DEFS = {
           },
           {
             'label': 'Nail bed colour: Right hand',
-            'tableCss': 'hr-table hideLabel',
+            'tableCss': 'hideLabel',
             'ehr_list_index': '7',
             'items': [
               'nailBedColourRightHand'
@@ -5433,7 +5402,7 @@ const DEFS = {
           },
           {
             'label': 'Nail bed colour: Left hand',
-            'tableCss': 'hr-table hideLabel',
+            'tableCss': 'hideLabel',
             'ehr_list_index': '11',
             'items': [
               'nailBedColourLeftHand'
@@ -5465,7 +5434,7 @@ const DEFS = {
           },
           {
             'label': 'Nail bed colour: Right Foot',
-            'tableCss': 'hr-table hideLabel',
+            'tableCss': 'hideLabel',
             'ehr_list_index': '15',
             'items': [
               'nailBedColourRightFoot'
@@ -5497,7 +5466,7 @@ const DEFS = {
           },
           {
             'label': 'Nail bed colour: Left foot',
-            'tableCss': 'hr-table hideLabel',
+            'tableCss': 'hideLabel',
             'ehr_list_index': '19',
             'items': [
               'nailBedColourLeftFoot'
@@ -5926,7 +5895,6 @@ const DEFS = {
           }
         ],
         'tableColumn': '9',
-        'tableCss': 'hr-table',
         'tableLabel': 'Approximate volume',
         'fqn': 'gastrointestinal.amount'
       },
@@ -5988,7 +5956,6 @@ const DEFS = {
         'inputType': 'text',
         'label': 'Weight loss',
         'tableColumn': '14',
-        'tableCss': 'hr-table',
         'tableLabel': 'Weight loss',
         'fqn': 'gastrointestinal.weightLoss'
       },
@@ -6088,7 +6055,6 @@ const DEFS = {
           }
         ],
         'tableColumn': '19',
-        'tableCss': 'hr-table',
         'tableLabel': 'Source',
         'fqn': 'gastrointestinal.stoolSource'
       },
@@ -6181,7 +6147,6 @@ const DEFS = {
           },
           {
             'label': 'Approximate volume',
-            'tableCss': 'hr-table',
             'ehr_list_index': '9',
             'items': [
               'amount'
@@ -6217,7 +6182,6 @@ const DEFS = {
           },
           {
             'label': 'Weight loss',
-            'tableCss': 'hr-table',
             'ehr_list_index': '14',
             'items': [
               'weightLoss'
@@ -6253,7 +6217,6 @@ const DEFS = {
           },
           {
             'label': 'Source',
-            'tableCss': 'hr-table',
             'ehr_list_index': '19',
             'items': [
               'stoolSource'
@@ -6639,7 +6602,6 @@ const DEFS = {
           }
         ],
         'tableColumn': '8',
-        'tableCss': 'hr-table',
         'fqn': 'genitourinary.toilettingMethod'
       },
       {
@@ -6687,7 +6649,6 @@ const DEFS = {
         'inputType': 'visitDay',
         'label': 'Last catheter change (day)',
         'tableColumn': '12',
-        'tableCss': 'hr-table',
         'tableLabel': 'Last catheter change (day)',
         'fqn': 'genitourinary.lastChange'
       },
@@ -6697,7 +6658,6 @@ const DEFS = {
         'inputType': 'visitTime',
         'label': 'Last catheter change (time)',
         'tableColumn': '13',
-        'tableCss': 'hr-table',
         'tableLabel': 'Last catheter change (time)',
         'fqn': 'genitourinary.lastChangeTime'
       },
@@ -6749,7 +6709,6 @@ const DEFS = {
           }
         ],
         'tableColumn': '16',
-        'tableCss': 'hr-table',
         'tableLabel': 'Pelvic pain source',
         'fqn': 'genitourinary.pelvicPainSource'
       },
@@ -6794,7 +6753,6 @@ const DEFS = {
         'inputType': 'date',
         'label': 'Last menstrual period date',
         'tableColumn': '19',
-        'tableCss': 'hr-table',
         'tableLabel': 'Last menstrual period date',
         'fqn': 'genitourinary.lastMenstrualPeriodDate'
       },
@@ -6845,7 +6803,6 @@ const DEFS = {
         'inputType': 'text',
         'label': 'Living children',
         'tableColumn': '23',
-        'tableCss': 'hr-table',
         'tableLabel': 'Living children',
         'fqn': 'genitourinary.livingChildren'
       },
@@ -6930,7 +6887,6 @@ const DEFS = {
             ]
           },
           {
-            'tableCss': 'hr-table',
             'ehr_list_index': '8',
             'items': [
               'toilettingMethod'
@@ -6959,7 +6915,6 @@ const DEFS = {
           },
           {
             'label': 'Last catheter change (day)',
-            'tableCss': 'hr-table',
             'ehr_list_index': '12',
             'items': [
               'lastChange'
@@ -6967,7 +6922,6 @@ const DEFS = {
           },
           {
             'label': 'Last catheter change (time)',
-            'tableCss': 'hr-table',
             'ehr_list_index': '13',
             'items': [
               'lastChangeTime'
@@ -6989,7 +6943,6 @@ const DEFS = {
           },
           {
             'label': 'Pelvic pain source',
-            'tableCss': 'hr-table',
             'ehr_list_index': '16',
             'items': [
               'pelvicPainSource'
@@ -7011,7 +6964,6 @@ const DEFS = {
           },
           {
             'label': 'Last menstrual period date',
-            'tableCss': 'hr-table',
             'ehr_list_index': '19',
             'items': [
               'lastMenstrualPeriodDate'
@@ -7040,7 +6992,6 @@ const DEFS = {
           },
           {
             'label': 'Living children',
-            'tableCss': 'hr-table',
             'ehr_list_index': '23',
             'items': [
               'livingChildren'
@@ -7502,7 +7453,6 @@ const DEFS = {
           }
         ],
         'tableColumn': '11',
-        'tableCss': 'hr-table',
         'tableLabel': 'Type',
         'fqn': 'musculoskeletal.type'
       },
@@ -7610,7 +7560,6 @@ const DEFS = {
           },
           {
             'label': 'Type',
-            'tableCss': 'hr-table',
             'ehr_list_index': '11',
             'items': [
               'type'
@@ -7837,7 +7786,6 @@ const DEFS = {
         'inputType': 'text',
         'label': 'Precipitating events',
         'tableColumn': '9',
-        'tableCss': 'hr-table',
         'tableLabel': 'Precipitating events',
         'fqn': 'pain.precipitatingEvents'
       },
@@ -7847,7 +7795,6 @@ const DEFS = {
         'inputType': 'textarea',
         'label': 'Comments',
         'tableColumn': '10',
-        'tableCss': 'hr-table',
         'tableLabel': 'Comments',
         'fqn': 'pain.comments'
       },
@@ -7926,7 +7873,6 @@ const DEFS = {
         'inputType': 'text',
         'label': 'Precipitating events',
         'tableColumn': '19',
-        'tableCss': 'hr-table',
         'tableLabel': 'Precipitating events',
         'fqn': 'pain.precipitatingEvents2'
       },
@@ -8019,7 +7965,6 @@ const DEFS = {
           },
           {
             'label': 'Precipitating events',
-            'tableCss': 'hr-table',
             'ehr_list_index': '9',
             'items': [
               'precipitatingEvents'
@@ -8027,7 +7972,6 @@ const DEFS = {
           },
           {
             'label': 'Comments',
-            'tableCss': 'hr-table',
             'ehr_list_index': '10',
             'items': [
               'comments'
@@ -8084,7 +8028,6 @@ const DEFS = {
           },
           {
             'label': 'Precipitating events',
-            'tableCss': 'hr-table',
             'ehr_list_index': '19',
             'items': [
               'precipitatingEvents2'
@@ -8316,7 +8259,6 @@ const DEFS = {
           }
         ],
         'tableColumn': '3',
-        'tableCss': 'hr-table',
         'tableLabel': 'Social worker?',
         'fqn': 'biopsychosocial.requestContact'
       },
@@ -8346,7 +8288,6 @@ const DEFS = {
         'inputType': 'textarea',
         'label': 'Hygiene comments',
         'tableColumn': '5',
-        'tableCss': 'hr-table',
         'tableLabel': 'Hygiene comments',
         'fqn': 'biopsychosocial.hygieneComments'
       },
@@ -8386,7 +8327,6 @@ const DEFS = {
           }
         ],
         'tableColumn': '6',
-        'tableCss': 'hr-table',
         'tableLabel': 'Behaviour',
         'fqn': 'biopsychosocial.behaviour'
       },
@@ -8414,7 +8354,6 @@ const DEFS = {
           }
         ],
         'tableColumn': '7',
-        'tableCss': 'hr-table',
         'tableLabel': 'Behaviour',
         'fqn': 'biopsychosocial.hallucinations'
       },
@@ -8475,7 +8414,6 @@ const DEFS = {
           }
         ],
         'tableColumn': '10',
-        'tableCss': 'hr-table',
         'fqn': 'biopsychosocial.speech'
       },
       {
@@ -8494,7 +8432,6 @@ const DEFS = {
         'inputType': 'textarea',
         'label': 'Support comments',
         'tableColumn': '12',
-        'tableCss': 'hr-table',
         'fqn': 'biopsychosocial.supportComments'
       },
       {
@@ -8513,7 +8450,6 @@ const DEFS = {
         'inputType': 'textarea',
         'label': 'Security comments',
         'tableColumn': '14',
-        'tableCss': 'hr-table',
         'fqn': 'biopsychosocial.securityComments'
       },
       {
@@ -8560,7 +8496,6 @@ const DEFS = {
         'inputType': 'textarea',
         'label': 'Restraint comments',
         'tableColumn': '18',
-        'tableCss': 'hr-table',
         'tableLabel': 'Restraint comments',
         'fqn': 'biopsychosocial.restraintComments'
       },
@@ -8611,7 +8546,6 @@ const DEFS = {
           },
           {
             'label': 'Social worker?',
-            'tableCss': 'hr-table',
             'ehr_list_index': '3',
             'items': [
               'requestContact'
@@ -8626,7 +8560,6 @@ const DEFS = {
           },
           {
             'label': 'Hygiene comments',
-            'tableCss': 'hr-table',
             'ehr_list_index': '5',
             'items': [
               'hygieneComments'
@@ -8634,7 +8567,6 @@ const DEFS = {
           },
           {
             'label': 'Behaviour',
-            'tableCss': 'hr-table',
             'ehr_list_index': '6',
             'items': [
               'behaviour'
@@ -8642,7 +8574,6 @@ const DEFS = {
           },
           {
             'label': 'Behaviour',
-            'tableCss': 'hr-table',
             'ehr_list_index': '7',
             'items': [
               'hallucinations'
@@ -8662,7 +8593,6 @@ const DEFS = {
             ]
           },
           {
-            'tableCss': 'hr-table',
             'ehr_list_index': '10',
             'items': [
               'speech'
@@ -8676,7 +8606,6 @@ const DEFS = {
             ]
           },
           {
-            'tableCss': 'hr-table',
             'ehr_list_index': '12',
             'items': [
               'supportComments'
@@ -8690,7 +8619,6 @@ const DEFS = {
             ]
           },
           {
-            'tableCss': 'hr-table',
             'ehr_list_index': '14',
             'items': [
               'securityComments'
@@ -8719,7 +8647,6 @@ const DEFS = {
           },
           {
             'label': 'Restraint comments',
-            'tableCss': 'hr-table',
             'ehr_list_index': '18',
             'items': [
               'restraintComments'
@@ -20954,7 +20881,6 @@ const DEFS = {
         'label': 'Wound pain',
         'suffix': '/10',
         'tableColumn': '33',
-        'tableCss': 'hr-table',
         'tableLabel': 'Wound pain',
         'validation': 'range(0,10)',
         'fqn': 'integumentaryAssessment.woundPain',
@@ -21006,7 +20932,6 @@ const DEFS = {
           }
         ],
         'tableColumn': '36',
-        'tableCss': 'hr-table',
         'tableLabel': 'Treatments as per plan of care',
         'fqn': 'integumentaryAssessment.treatmentComplete'
       },
@@ -21725,7 +21650,6 @@ const DEFS = {
           },
           {
             'label': 'Wound pain',
-            'tableCss': 'hr-table',
             'ehr_list_index': '33',
             'items': [
               'woundPain'
@@ -21747,7 +21671,6 @@ const DEFS = {
           },
           {
             'label': 'Treatments as per plan of care',
-            'tableCss': 'hr-table',
             'ehr_list_index': '36',
             'items': [
               'treatmentComplete'
