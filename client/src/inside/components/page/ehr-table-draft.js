@@ -37,9 +37,11 @@ export default class EhrTableDraft {
   static removeFirstDraftRow (pageKey, tableKey) {
     const asLoadedPageData = EhrData.getMergedPageData(pageKey)
     let table = asLoadedPageData[tableKey]
-    const previousRow = table.findIndex(row => !!row.isDraft)
-    if (previousRow >= 0) {
-      table.splice(previousRow, 1)
+    if (table ) {
+      const previousRow = table.findIndex(row => !!row.isDraft)
+      if (previousRow >= 0) {
+        table.splice(previousRow, 1)
+      }
     }
     return asLoadedPageData
   }

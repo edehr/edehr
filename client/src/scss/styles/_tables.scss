@@ -95,15 +95,12 @@ table,
   width: auto;
 }
 
-/* TODO remove hr-table from definitions
-    No longer need this decoration.
- */
-.hr-table, .content table td.hr-table, .content table th.hr-table {
-  //border-bottom: 1px solid $grey40;
-}
-
 .no-data {
     font-size: 16px;
     font-style: italic;
     margin-bottom: 3em;
+}
+
+.table-cell-textarea {
+  min-width: 20rem;
 }

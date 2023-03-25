@@ -12,7 +12,7 @@ Discharge pending
 Discharged}"	eCell	{Mandatory: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: Location records are below}	eCell	{elementKey: locationLabel}	{pN: 10}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkbox}	eCell	{Label: Consent for treatment}	eCell	{elementKey: consentForTreatment}	{pN: 10}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Consent for blood products}	eCell	{elementKey: consentForBlood}	{pN: 10}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: Consent for blood products}	eCell	{elementKey: consentForBlood}	{pN: 10}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Code status}	eCell	{elementKey: codeStatus}	{pN: 10}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 10}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: textarea}	eCell	{Label: Physician admitting diagnosis}	eCell	{elementKey: diagnosis}	{pN: 10}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -28,7 +28,7 @@ Discharged}"	eCell	{Mandatory: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	e
 {inputType: visitTime}	eCell	{Label: Transfer out time}	eCell	{elementKey: transferOutTime}	{pN: 10}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: Diagnosis}	eCell	{elementKey: diagnosisTable}	{pN: 10}	{fN: 2}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add a diagnosis record}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 10}	{fN: 2}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 10}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 10}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 10}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Diagnosis}	eCell	{elementKey: diagnosisRecord}	{pN: 10}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Diagnosis}	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: textarea}	eCell	{Label: Details}	eCell	{elementKey: diagnosisDetails}	{pN: 10}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Details}	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -39,11 +39,11 @@ Discharged}"	eCell	{Mandatory: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	e
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Systolic blood pressure}	eCell	{elementKey: systolic}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Systolic blood pressure}	{tableColumn: 2}	eCell	{addButtonText: Add a row to the test table}	eCell	eCell	eCell	eCell	eCell	{Validation: numeric}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Diastolic blood pressure}	eCell	{elementKey: diastolic}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Diastolic blood pressure}	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Validation: numeric}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Patient position}	eCell	{elementKey: patientPosition}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Patient position}	{tableColumn: 4}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Supine
+{inputType: select}	eCell	{Label: Patient position}	eCell	{elementKey: patientPosition}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Patient position}	{tableColumn: 4}	eCell	eCell	eCell	eCell	"{Options: Supine
 Sitting
 Standing}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Temperature}	eCell	{elementKey: temperature}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Temperature}	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	{Suffix: Celcius}	eCell	{Validation: numeric}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Temperature source}	eCell	{elementKey: source}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Source}	{tableColumn: 6}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Oral
+{inputType: select}	eCell	{Label: Temperature source}	eCell	{elementKey: source}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Source}	{tableColumn: 6}	eCell	eCell	eCell	eCell	"{Options: Oral
 Axilla
 Rectal
 Tympanic}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -51,7 +51,7 @@ Tympanic}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Pulse site}	{Comments: CHECK THE OPTIONS WITH SMEs}	{elementKey: strength}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Pulse site}	{tableColumn: 7}	eCell	eCell	eCell	eCell	"{Options: Peripheral
 Other}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Pulse rate}	eCell	{elementKey: rate}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Pulse rate}	{tableColumn: 8}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Validation: numeric}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Pulse rhythm}	eCell	{elementKey: rhythm}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Pulse rhythm}	{tableColumn: 9}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Regular
+{inputType: select}	eCell	{Label: Pulse rhythm}	eCell	{elementKey: rhythm}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Pulse rhythm}	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: Regular
 Irregular}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Respiration rate}	eCell	{elementKey: respirationRate}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Respiration rate}	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Validation: numeric}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -68,16 +68,16 @@ Optiflow}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 16}	{Label: Fluid balance}	eCell	{elementKey: fluidBalance}	{pN: 12}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: Fluid balance}	eCell	{elementKey: table}	{pN: 12}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add a fluid in/out record}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 12}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 12}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 12}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 12}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Fluid in}	eCell	{elementKey: fluidIn}	{pN: 12}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Fluid in}	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Fluid out}	eCell	{elementKey: fluidOut}	{pN: 12}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Fluid out}	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: page}	{pRef: 18}	{Label: Neurological assessment}	eCell	{elementKey: neurological}	{pN: 14}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: page}	{pRef: 18}	{Label: Neurological assessments}	eCell	{elementKey: neurological}	{pN: 14}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: Neurological assessment}	eCell	{elementKey: table}	{pN: 14}	{fN: 1}	{gN: }	{sgN: }	eCell	{formOption: transpose}	eCell	eCell	eCell	{addButtonText: Add a neurological assessment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 14}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 14}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: ID}	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 14}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Status}	eCell	{elementKey: alert}	{pN: 14}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: grid-span-2-columns}	eCell	{tableLabel: Status}	{tableColumn: 2}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Alert
+{inputType: checkset}	eCell	{Label: Status}	eCell	{elementKey: alert}	{pN: 14}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: grid-span-2-columns}	eCell	{tableLabel: Status}	{tableColumn: 2}	eCell	eCell	eCell	eCell	"{Options: Alert
 Oriented
 Confused
 Drowsy
@@ -103,12 +103,12 @@ Blurred vision}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCe
 4 = Abnormal flexion
 5 = Localising
 6 = Obeys commands}"	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: glasgowCalculation}	eCell	eCell	eCell	eCell
-{inputType: calculatedValue}	eCell	{Label: Glasgow Coma Scale}	eCell	{elementKey: glasgowCalculation}	{pN: 14}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Glasgow Coma Scale}	{tableColumn: 6}	{tableCss: hr-table}	eCell	eCell	{Default_value: 0}	{Options: =14+14+14}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{calculationType: sum}	eCell	eCell	eCell
+{inputType: calculatedValue}	eCell	{Label: Glasgow Coma Scale}	eCell	{elementKey: glasgowCalculation}	{pN: 14}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Glasgow Coma Scale}	{tableColumn: 6}	eCell	eCell	eCell	{Default_value: 0}	{Options: =14+14+14}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{calculationType: sum}	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Conciousness}	eCell	eCell	{pN: 14}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Loss of conciousness}	eCell	{elementKey: loss}	{pN: 14}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Loss of conciousness}	{tableColumn: 7}	eCell	eCell	eCell	eCell	"{Options: No
 Yes
 Unknown}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Duration}	eCell	{elementKey: duration}	{pN: 14}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Duration}	{tableColumn: 8}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Duration}	eCell	{elementKey: duration}	{pN: 14}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Duration}	{tableColumn: 8}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 14}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Left pupil size}	eCell	{elementKey: leftPupilSize}	{pN: 14}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Left pupil size}	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: 1
 2
@@ -136,7 +136,7 @@ Fixed}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Both pupils}	eCell	{elementKey: bothPupils}	{pN: 14}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Both pupils}	{tableColumn: 13}	eCell	eCell	eCell	eCell	"{Options: Equal
 Unequal}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 14}	{fN: 1}	{gN: 6}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: General comments}	eCell	{elementKey: comments}	{pN: 14}	{fN: 1}	{gN: 6}	{sgN: }	{formCss: grid-span-2-columns}	eCell	{tableLabel: General comments}	{tableColumn: 14}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: General comments}	eCell	{elementKey: comments}	{pN: 14}	{fN: 1}	{gN: 6}	{sgN: }	{formCss: grid-span-2-columns}	eCell	{tableLabel: General comments}	{tableColumn: 14}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: <b>Resources</b><p><a target="_blank" href="/assets/standardized-assessment-tools/Morse-Fall-Scale-score.png">Morse Fall Score </a></br><a target="_blank" href="/assets/standardized-assessment-tools/mini-mental-health-screen.pdf">Mini-mental state examination (MMSE)</a></p>}	eCell	{elementKey: resources}	{pN: 14}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Stroke assessment}	eCell	eCell	{pN: 14}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Level of conciousness}	eCell	{elementKey: levelOfConciousness}	{pN: 14}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Level of conciousness}	{tableColumn: 15}	eCell	eCell	eCell	eCell	"{Options: 0 = Alert; keenly responsive
@@ -146,7 +146,7 @@ Unequal}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Level of conciousness questions}	eCell	{elementKey: levelOfConciousnessQuestions}	{pN: 14}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Level of conciousness questions}	{tableColumn: 16}	eCell	eCell	eCell	eCell	"{Options: 0 = Answers two questions correctly
 1 = Answers one question correctly
 2 = Answers neither question correctly}"	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: strokeAssessmentCalculation}	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Level of conciousness commands}	eCell	{elementKey: levelOfConciousnessCommands}	{pN: 14}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Level of conciousness commands}	{tableColumn: 17}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: 0 = Performs both tasks correctly
+{inputType: select}	eCell	{Label: Level of conciousness commands}	eCell	{elementKey: levelOfConciousnessCommands}	{pN: 14}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Level of conciousness commands}	{tableColumn: 17}	eCell	eCell	eCell	eCell	"{Options: 0 = Performs both tasks correctly
 1 = Performs one task correctly
 2 = Performs neither task correctly}"	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: strokeAssessmentCalculation}	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Motor - left arm}	eCell	{elementKey: motorLeftArm}	{pN: 14}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Motor - left arm}	{tableColumn: 18}	eCell	eCell	eCell	eCell	"{Options: 0 = No drift
@@ -170,7 +170,7 @@ Unequal}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 2 = Some effort against gravity
 3 = No effort against gravity
 4 = No movement}"	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: strokeAssessmentCalculation}	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Limb ataxia}	eCell	{elementKey: limbAtaxia}	{pN: 14}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Limb ataxia}	{tableColumn: 22}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: 0 = Absent
+{inputType: select}	eCell	{Label: Limb ataxia}	eCell	{elementKey: limbAtaxia}	{pN: 14}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Limb ataxia}	{tableColumn: 22}	eCell	eCell	eCell	eCell	"{Options: 0 = Absent
 1 = Present in one limb
 2 = Present in two limbs}"	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: strokeAssessmentCalculation}	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Best gaze}	eCell	{elementKey: bestGaze}	{pN: 14}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Best gaze}	{tableColumn: 23}	eCell	eCell	eCell	eCell	"{Options: 0 = Normal
@@ -194,11 +194,56 @@ Unequal}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Dysarthria}	eCell	{elementKey: dysarthria}	{pN: 14}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Dysarthria}	{tableColumn: 28}	eCell	eCell	eCell	eCell	"{Options: 0 = Normal
 1 = Mild to moderate
 2 = Severe dysarthria}"	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: strokeAssessmentCalculation}	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Extinction and inattention}	eCell	{elementKey: extinctionAndInattention}	{pN: 14}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Extinction and inattention}	{tableColumn: 29}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: 0 = No abnormality
+{inputType: select}	eCell	{Label: Extinction and inattention}	eCell	{elementKey: extinctionAndInattention}	{pN: 14}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Extinction and inattention}	{tableColumn: 29}	eCell	eCell	eCell	eCell	"{Options: 0 = No abnormality
 1 = Visual, tactile, auditory, spatial, or personal inattention
 2 = Profound hemi-inattention or extinction}"	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: strokeAssessmentCalculation}	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 14}	{fN: 1}	{gN: 8}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: calculatedValue}	eCell	{Label: <b>Stroke assessment calculation</b>}	eCell	{elementKey: strokeAssessmentCalculation}	{pN: 14}	{fN: 1}	{gN: 8}	{sgN: }	eCell	eCell	{tableLabel: Stroke assessment score}	{tableColumn: 30}	eCell	eCell	eCell	{Default_value: 0}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{calculationType: sum}	eCell	eCell	eCell
+{inputType: table_form}	eCell	{Label: Delirium risk assessment}	eCell	{elementKey: del_table}	{pN: 14}	{fN: 2}	{gN: }	{sgN: }	eCell	{formOption: transpose}	eCell	eCell	eCell	{addButtonText: Add a risk assessment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 14}	{fN: 2}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 14}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 14}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkset}	eCell	{Label: Individual / Environmental Risks}	eCell	{elementKey: del_individual}	{pN: 14}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	"{Options: Age 75 or older
+Alcohol / drug / tobacco use
+Cognitive impairment
+Functional impairment
+History of depression
+Previous delirium
+Reloaction
+Sleep disturbance
+Use of restraints
+Vision / hearing loss}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkset}	eCell	{Label: Medical risks}	eCell	{elementKey: del_medicaal}	{pN: 14}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	"{Options: Advanced illness
+Chronic illness
+Electrolyte imbalance
+Fever
+History of TIA / stroke
+Hypotension
+Hypoxia
+Infection
+Multiple co-morbidities
+Surgery / anesthesia
+Unrelieved pain}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkset}	eCell	{Label: Medication risks}	eCell	{elementKey: del_medication}	{pN: 14}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 4}	eCell	eCell	eCell	eCell	"{Options: Antipsychotics
+Benzodiazepines
+Cardiac drugs
+Opiod analgesics
+Receiving 5 or more meds}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 14}	{fN: 2}	{gN: 3}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: form_label}	eCell	{Label: <p>&bull; Person has 3 or more risk factors: Initiate CAM screening everying 12 hours and intitate PRISME.</p><p>&bull; Person has less than 3 risk factors: DO NOT intiate CAM but continue to monitor for changes in risk factors and initiate as appropriate PRISME.</p>}	eCell	eCell	{pN: 14}	{fN: 2}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	{tableCss: hide-table-element}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: Initiate CAM and PRISME}	eCell	{elementKey: del_doCam}	{pN: 14}	{fN: 2}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: form_label}	eCell	{Label: See CAM assessments as per <a target="_blank" href="https://www2.gov.bc.ca/assets/gov/health/practitioner-pro/bc-guidelines/cogimp-appendix-c.pdf">BC Guidlines.ca Delirium Screening and Assessment Tools – CAM & PRISME</a>}	eCell	eCell	{pN: 14}	{fN: 2}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	{tableCss: hide-table-element}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: del_comments}	{pN: 14}	{fN: 2}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: table_form}	eCell	{Label: CAM assessment}	eCell	{elementKey: cam_table}	{pN: 14}	{fN: 3}	{gN: }	{sgN: }	eCell	{formOption: transpose}	eCell	eCell	eCell	{addButtonText: Add a confusion assessment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 14}	{fN: 3}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 14}	{fN: 3}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 14}	{fN: 3}	{gN: 2}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: form_label}	eCell	{Label: <a target="_blank" href="https://www2.gov.bc.ca/assets/gov/health/practitioner-pro/bc-guidelines/cogimp-appendix-c.pdf">BC Guidlines.ca Delirium Screening and Assessment Tools – CAM & PRISME</a>}	eCell	eCell	{pN: 14}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	{tableCss: hide-table-element}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: Feature 1: Acute onset and fluctuating course}	eCell	{elementKey: cam_1}	{pN: 14}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: Feature 2: Inattention}	eCell	{elementKey: cam_2}	{pN: 14}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: Feature 3: Disorganized thinking}	eCell	{elementKey: cam_3}	{pN: 14}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: Feature 4: Altered level of consciousness}	eCell	{elementKey: cam_4}	{pN: 14}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Assessment}	eCell	{elementKey: cam_assessment}	{pN: 14}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 19}	{Label: Respiratory assessment}	eCell	{elementKey: respiratory}	{pN: 15}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: Respiratory assessment}	eCell	{elementKey: table}	{pN: 15}	{fN: 1}	{gN: }	{sgN: }	eCell	{formOption: transpose}	eCell	eCell	eCell	{addButtonText: Add a respiratory assessment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 15}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -209,7 +254,7 @@ Obstructed
 Oral endotracheal tube
 Other}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Oxygen therapy}	eCell	{elementKey: oxygenTherapy}	{pN: 15}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Oxygen therapy}	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Flow rate}	eCell	{elementKey: flowRate}	{pN: 15}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Flow rate}	{tableColumn: 4}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	{Suffix: /lpm}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Flow rate}	eCell	{elementKey: flowRate}	{pN: 15}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Flow rate}	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	{Suffix: /lpm}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 15}	{fN: 1}	{gN: 3}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Left upper lung}	eCell	{elementKey: lul}	{pN: 15}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Left upper lung}	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: Normal
 Wheeze
@@ -234,7 +279,7 @@ Wheeze
 Crackles
 Absent
 Decreased}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Right lower lung}	eCell	{elementKey: rll}	{pN: 15}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Right lower lung}	{tableColumn: 9}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Normal
+{inputType: select}	eCell	{Label: Right lower lung}	eCell	{elementKey: rll}	{pN: 15}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Right lower lung}	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: Normal
 Wheeze
 Crackles
 Absent
@@ -259,7 +304,7 @@ Pink, blood tinged
 Pink, frothy
 Profuse, colourless
 Bloody}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Sputum comments}	eCell	{elementKey: sputumComments}	{pN: 15}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Sputum comments}	{tableColumn: 14}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Sputum comments}	eCell	{elementKey: sputumComments}	{pN: 15}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Sputum comments}	{tableColumn: 14}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 15}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: generalComments}	{pN: 15}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Comments}	{tableColumn: 15}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 20}	{Label: Cardiovascular assessment}	eCell	{elementKey: cardiovascular}	{pN: 16}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -272,7 +317,7 @@ Irregular
 Normal
 Weak
 Bounding}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Skin appearance}	eCell	{elementKey: skinAppearance}	{pN: 16}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Skin appearance}	{tableColumn: 3}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Normal
+{inputType: select}	eCell	{Label: Skin appearance}	eCell	{elementKey: skinAppearance}	{pN: 16}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Skin appearance}	{tableColumn: 3}	eCell	eCell	eCell	eCell	"{Options: Normal
 Pale
 Mottled
 Cyanotic
@@ -286,63 +331,63 @@ Delayed > 3 seconds}"	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: Peripheral edema}	eCell	{elementKey: labelPeripheral}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: Nail bed colour}	eCell	{elementKey: labelNailBed}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: Right hand}	eCell	{elementKey: labelRight}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: capRefillLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Cap refill: Right hand}	{tableColumn: 4}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: Normal < 3 seconds
+{inputType: select}	eCell	eCell	eCell	{elementKey: capRefillLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Cap refill: Right hand}	{tableColumn: 4}	eCell	eCell	eCell	eCell	"{Options: Normal < 3 seconds
 Delayed > 3 seconds}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: temperatureRightHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Temperature: Right hand}	{tableColumn: 5}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: Warm
+{inputType: select}	eCell	eCell	eCell	{elementKey: temperatureRightHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Temperature: Right hand}	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: Warm
 Cool
 Hot}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: peripheralEdemaRightHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Peripheral edema: Right hand}	{tableColumn: 6}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: No
+{inputType: select}	eCell	eCell	eCell	{elementKey: peripheralEdemaRightHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Peripheral edema: Right hand}	{tableColumn: 6}	eCell	eCell	eCell	eCell	"{Options: No
 Ankle
 Pedal
 Sacral
 Pitting}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: nailBedColourRightHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Right hand}	{tableColumn: 7}	{tableCss: hr-table hideLabel}	eCell	eCell	eCell	"{Options: Pink
+{inputType: select}	eCell	eCell	eCell	{elementKey: nailBedColourRightHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Right hand}	{tableColumn: 7}	eCell	eCell	eCell	eCell	"{Options: Pink
 Cyanotic}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: Left hand}	eCell	{elementKey: labelLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: capRefillRightHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Cap refill: Left hand}	{tableColumn: 8}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: Normal < 3 seconds
+{inputType: select}	eCell	eCell	eCell	{elementKey: capRefillRightHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Cap refill: Left hand}	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: Normal < 3 seconds
 Delayed > 3 seconds}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: temperatureLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Temperature: Left hand}	{tableColumn: 9}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: Warm
+{inputType: select}	eCell	eCell	eCell	{elementKey: temperatureLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Temperature: Left hand}	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: Warm
 Cool
 Hot}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: peripheralEdemaLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Peripheral edema: Left hand}	{tableColumn: 10}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: No
+{inputType: select}	eCell	eCell	eCell	{elementKey: peripheralEdemaLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Peripheral edema: Left hand}	{tableColumn: 10}	eCell	eCell	eCell	eCell	"{Options: No
 Ankle
 Pedal
 Sacral
 Pitting}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: nailBedColourLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Left hand}	{tableColumn: 11}	{tableCss: hr-table hideLabel}	eCell	eCell	eCell	"{Options: Pink
+{inputType: select}	eCell	eCell	eCell	{elementKey: nailBedColourLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Left hand}	{tableColumn: 11}	eCell	eCell	eCell	eCell	"{Options: Pink
 Cyanotic}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: Right foot}	eCell	{elementKey: labelRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: capRefillRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Cap refill: Right foot}	{tableColumn: 12}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: Normal < 3 seconds
+{inputType: select}	eCell	eCell	eCell	{elementKey: capRefillRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Cap refill: Right foot}	{tableColumn: 12}	eCell	eCell	eCell	eCell	"{Options: Normal < 3 seconds
 Delayed > 3 seconds}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: temperatureRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Temperature: Right foot}	{tableColumn: 13}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: Warm
+{inputType: select}	eCell	eCell	eCell	{elementKey: temperatureRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Temperature: Right foot}	{tableColumn: 13}	eCell	eCell	eCell	eCell	"{Options: Warm
 Cool
 Hot}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: peripheralEdemaRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Peripheral edema: Right foot}	{tableColumn: 14}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: No
+{inputType: select}	eCell	eCell	eCell	{elementKey: peripheralEdemaRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Peripheral edema: Right foot}	{tableColumn: 14}	eCell	eCell	eCell	eCell	"{Options: No
 Ankle
 Pedal
 Sacral
 Pitting}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: nailBedColourRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Right Foot}	{tableColumn: 15}	{tableCss: hr-table hideLabel}	eCell	eCell	eCell	"{Options: Pink
+{inputType: select}	eCell	eCell	eCell	{elementKey: nailBedColourRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Right Foot}	{tableColumn: 15}	eCell	eCell	eCell	eCell	"{Options: Pink
 Cyanotic}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: Left foot}	eCell	{elementKey: labelLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: capRefillLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Cap refill: Left foot}	{tableColumn: 16}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: Normal < 3 seconds
+{inputType: select}	eCell	eCell	eCell	{elementKey: capRefillLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Cap refill: Left foot}	{tableColumn: 16}	eCell	eCell	eCell	eCell	"{Options: Normal < 3 seconds
 Delayed > 3 seconds}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: temperatureLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Temperature: Left foot}	{tableColumn: 17}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: Warm
+{inputType: select}	eCell	eCell	eCell	{elementKey: temperatureLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Temperature: Left foot}	{tableColumn: 17}	eCell	eCell	eCell	eCell	"{Options: Warm
 Cool
 Hot}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: peripheralEdemaLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Peripheral edema: Left foot}	{tableColumn: 18}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: No
+{inputType: select}	eCell	eCell	eCell	{elementKey: peripheralEdemaLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Peripheral edema: Left foot}	{tableColumn: 18}	eCell	eCell	eCell	eCell	"{Options: No
 Ankle
 Pedal
 Sacral
 Pitting}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: nailBedColourLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Left foot}	{tableColumn: 19}	{tableCss: hr-table hideLabel}	eCell	eCell	eCell	"{Options: Pink
+{inputType: select}	eCell	eCell	eCell	{elementKey: nailBedColourLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Left foot}	{tableColumn: 19}	eCell	eCell	eCell	eCell	"{Options: Pink
 Cyanotic}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 16}	{fN: 1}	{gN: 4}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: comments}	{pN: 16}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Comments}	{tableColumn: 20}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 21}	{Label: Gastrointestinal assessment}	eCell	{elementKey: gastrointestinal}	{pN: 17}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: Gastrointestinal assessment}	eCell	{elementKey: table}	{pN: 17}	{fN: 1}	{gN: }	{sgN: }	eCell	{formOption: transpose}	eCell	eCell	eCell	{addButtonText: Add a gastrointestinal assessment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 17}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 17}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 17}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 17}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkset}	eCell	{Label: Bowel}	eCell	{elementKey: bowel}	{pN: 17}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Bowel}	{tableColumn: 2}	eCell	eCell	eCell	eCell	"{Options: Normal
 Constipation
@@ -379,7 +424,7 @@ Bright red
 Dark red
 Black}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Description}	eCell	{elementKey: description}	{pN: 17}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Description}	{tableColumn: 8}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Approximate volume}	eCell	{elementKey: amount}	{pN: 17}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Approximate volume}	{tableColumn: 9}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Small
+{inputType: select}	eCell	{Label: Approximate volume}	eCell	{elementKey: amount}	{pN: 17}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Approximate volume}	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: Small
 Moderate
 Large}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Eating}	eCell	{elementKey: eatingGroup}	{pN: 17}	{fN: 1}	{gN: 4}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -389,7 +434,7 @@ Difficult}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 17}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: visitDay}	eCell	{Label: NPO since day}	eCell	{elementKey: npoSinceDay}	{pN: 17}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: NPO since day}	{tableColumn: 12}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: visitTime}	eCell	{Label: NPO since time}	eCell	{elementKey: npoSinceTime}	{pN: 17}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: NPO since time}	{tableColumn: 13}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Weight loss}	eCell	{elementKey: weightLoss}	{pN: 17}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Weight loss}	{tableColumn: 14}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Weight loss}	eCell	{elementKey: weightLoss}	{pN: 17}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Weight loss}	{tableColumn: 14}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Stool}	eCell	{elementKey: stool}	{pN: 17}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Last bowel movement}	eCell	{elementKey: lastBm}	{pN: 17}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Last bowel movement}	{tableColumn: 15}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Stool colour}	eCell	{elementKey: stoolColour}	{pN: 17}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Stool colour}	{tableColumn: 16}	eCell	eCell	eCell	eCell	"{Options: Brown
@@ -402,7 +447,7 @@ Dark red}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Description}	eCell	{elementKey: stoolDescription}	{pN: 17}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Description}	{tableColumn: 17}	eCell	eCell	eCell	eCell	"{Options: Runny
 Hard pellets}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Amount}	eCell	{elementKey: stoolAmount}	{pN: 17}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Amount}	{tableColumn: 18}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Source}	eCell	{elementKey: stoolSource}	{pN: 17}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Source}	{tableColumn: 19}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Observed
+{inputType: select}	eCell	{Label: Source}	eCell	{elementKey: stoolSource}	{pN: 17}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Source}	{tableColumn: 19}	eCell	eCell	eCell	eCell	"{Options: Observed
 As per patient observed
 Not observed}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 17}	{fN: 1}	{gN: 6}	{sgN: }	{formCss: grid-left-to-right-1 section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

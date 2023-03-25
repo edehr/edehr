@@ -2,9 +2,9 @@
   div(class="seed-table")
     table(v-show="hasData", class="table_horizontal")
       tr
-        th(v-for="col in columns", v-text-to-html='col.label')
+        th(v-for="col in columns", v-text-to-html='col.label', :class="tableCellCss(col, {})")
       tr(v-for="row in rows")
-        td(v-for="(d, index) in rowData(row)", :class="{draft: rowIsDraft(row)}" )
+        td(v-for="(d, index) in rowData(row)", :class="tableCellCss(columns[index], row)" )
           pre(v-if='columns[index].inputType === "textarea"') {{d}}
           span(v-else) {{d}}
     div(v-show='!hasData') No data in this table.
@@ -58,6 +58,12 @@ export default {
     },
     rowIsDraft ( seedRow ) {
       return seedRow.isDraft
+    },
+    tableCellCss (column, row) {
+      let css = []
+      this.rowIsDraft(row) ? css.push('draft') : null
+      column.tableCss ? css.push(column.tableCss) : null
+      return css.join(' ')
     }
   }
 }
