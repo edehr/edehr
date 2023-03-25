@@ -38,6 +38,7 @@ function getSheets(auth) {
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-2'+RANGE, 'raw_data/current-visit-2.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-3'+RANGE, 'raw_data/current-visit-3.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-Mar'+RANGE, 'raw_data/current-mar.txt')
+  getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-4'+RANGE, 'raw_data/current-visit-4.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'medLab'+RANGE, 'raw_data/med-lab.txt')
 }
 

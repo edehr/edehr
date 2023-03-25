@@ -52,14 +52,13 @@ describe('page-definitions tests', () => {
     })
   })
 
-  it('select options has length > 1', () => {
+  it('all select elements have options list with length > 1', () => {
     const pageKeys = keys.map(k => ehrPageDefs[k].pageDataKey)
     pageKeys.map(pk => {
       const pageChildren = EhrDefs.getPageChildren(pk)
       pageChildren.filter(pc => pc.inputType === inputTypes.select).map(pc => {
         should.exist(pc.options, `select options should exist for pc ${JSON.stringify(pc)}`)
-        const cnt = pc.elementKey === 'micro_culture' ? 0 : 1
-        pc.options.length.should.be.greaterThan(cnt, `select options should have length >  for ${JSON.stringify(pc)}`)
+        pc.options.length.should.be.greaterThan(1, `select options should have length > 1. For ${JSON.stringify(pc)}`)
       })
     })
   })

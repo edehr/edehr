@@ -21,6 +21,7 @@ ____HERE
 LINT=true
 PULL=true
 ALL=false
+CUSTOM=false
 for i in "$@"
 do
 echo i: $i
@@ -49,6 +50,10 @@ case $i in
     LINT=false
     shift
     ;;
+    -co)
+    CUSTOM=true
+    shift
+    ;;
     *)
     echo unknown option $i.
     usage
@@ -56,6 +61,19 @@ case $i in
     ;;
 esac
 done
+
+# Process custom forms.  Edit the pug in the custom_forms/inputs directory to make changes to custom forms
+# if -c sets CUSTOM to true then stop after running the custom file generator
+mkdir -p custom_forms/outputs
+mkdir -p ../client/src/custom_forms
+node ./generate-customForms.js
+cp ./custom_forms/outputs/*.txt ../client/src/custom_forms
+echo DONE custom form generation
+if [[ "$CUSTOM" == "true" ]]
+then
+  exit 3
+fi
+
 
 if [[ "$ALL" == "true" ]]
 then

@@ -21,8 +21,15 @@ li {
   list-style-type: none;
 }
 
-.hide-table-element {
+/* used in EHR defs.  Also appears as the attribute hideTableElement */
+.hide-table-element, .hideTableElement {
   display: none;
+}
+
+/* EHR tables have ids. This hides them from view */
+.row-id {
+  display: none;
+  //border: 1px solid red;
 }
 
 label,
@@ -52,10 +59,6 @@ textarea {
   color: $brand-highlight-red;
 }
 
-/* EHR tables have ids. This hides them from view */
-.row-id {
-  display: none;
-}
 
 .checkbox_label,
 .radio_label {

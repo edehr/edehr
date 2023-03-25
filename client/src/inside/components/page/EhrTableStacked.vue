@@ -7,8 +7,9 @@
         thead
           tr
             th(v-if="showTableAction") &nbsp;
-            th(v-for="(tCell, cIndex) in rowTemplate", :key='cIndex')
-              span(v-html="tCell.tableLabel", :class="tableColumnCss(tCell)")
+            th &nbsp;
+            th(v-for="(tCell, cIndex) in rowTemplate", :key='cIndex', :class="tableColumnCss(tCell)")
+              span(v-html="tCell.tableLabel")
         tbody
           tr(v-for="(dRow, rIndex) in cTableData", :key='rIndex', :class='{draftRow : isDraft(dRow) }')
             td(v-if="showTableAction")
@@ -23,8 +24,8 @@
               ui-button(v-if="isDraft(dRow) && canEdit", v-on:buttonClicked="editDraft(getIdFromRow(dRow))")
                 span Edit &nbsp;
                 fas-icon(icon="edit")
-            td(v-for="(cell, cIndex) in dRow", :key="cIndex", :class="cell.tableCss",  v-if="!!cell.stack")
-              ehr-table-element(v-for="(cPart, pIndex) in cell.stack", v-if="!!cPart.value", :key='pIndex', :cell="cPart")
+            td(v-for="(cell, cIndex) in dRow", :key="cIndex", :class="tableCellCss(cell)",  v-if="!!cell.stack")
+                ehr-table-element(v-for="(cPart, pIndex) in cell.stack", v-if="!!cPart.value", :key='pIndex', :cell="cPart")
 </template>
 
 <script>
@@ -32,6 +33,7 @@ import EhrTableCommon from './EhrTableCommon'
 import EhrTableElement from './EhrTableElement'
 import UiButton from '@/app/ui/UiButton'
 import EhrTableActions from '@/inside/components/page/ehr-table-actions'
+import EhrTypes from '@/ehr-definitions/ehr-types'
 
 export default {
   extends: EhrTableCommon,
@@ -61,12 +63,19 @@ export default {
     tableColumnCss: function (stack) {
       return stack.tableCss
     },
+    tableCellCss (cell) {
+      const stack = cell.stack || []
+      const sRow = stack[0] || {}
+      const css = sRow.inputType === EhrTypes.dataInputTypes.textarea ? 'table-cell-textarea' : ''
+      return cell.tableCss ? cell.tableCss : css
+    }
+
   },
 
 }
 </script>
 
-<style>
+<style lang='scss' scoped>
 /* the ehr content has overflow hidden yet tables may be big ...*/
 .ehr-table-stacked {
   overflow-x: auto;

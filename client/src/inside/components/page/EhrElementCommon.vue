@@ -113,6 +113,10 @@ export default {
       if (dbInputs) console.log('EhrCommon set initial value ', value, this.elementKey)
       this.initialVal = value
       this.inputVal = value
+      if (this.setInitialValueExtended) {
+        // setInitialValueExtended is for components that extend this one.
+        this.setInitialValueExtended(value)
+      }
       // invoke setInitialDependentValue after inputVal is set
       this.setInitialDependentValue()
     },

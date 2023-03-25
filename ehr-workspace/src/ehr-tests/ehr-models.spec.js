@@ -7,10 +7,10 @@ const should = require('should')
 
 const pageDefs = EhrDefs
 
-const case1PageCount = 45 - 2 // take two off because 2 pages are skipped
+const case1PageCount = 46 - 2 // take two off because 2 pages are skipped
 
 describe('Ehr Page', function () {
-  it('pages has page list', () => {
+  it('Expected page count check.', () => {
     const pages = new EhrPages(pageDefs)
     pages.should.have.property('pageList')
     should(pages.pageList).be.an.Array()

@@ -3,13 +3,13 @@
   div(class="ehr-page")
     ehr-page(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
     div(style="display:none")
-      p This Neurological page is generated.
-      p Label: Neurological assessments
-      p Data Key: neurological
-      p Component name: Neurological
+      p This Order Sets page is generated.
+      p Label: Clinical Order Sets
+      p Data Key: orderSets
+      p Component name: OrderSets
       p Redirect: 
-      p Route name: neurological
-      p Full path: /ehr/current/assessments/neurological
+      p Route name: order-sets
+      p Full path: /ehr/current/order-sets
 </template>
 
 <script>
@@ -17,11 +17,11 @@ import EhrPage from '../components/page/EhrPage'
 import EhrPageHelper from '../components/page/ehr-helper'
 
 export default {
-  name: 'Neurological',
+  name: 'OrderSets',
   components: { EhrPage },
   data: function () {
     return {
-      pageDataKey: 'neurological',
+      pageDataKey: 'orderSets',
       ehrHelp: undefined
     }
   },

@@ -12,6 +12,14 @@ module.exports = {
     sourceMap: true
   },
   configureWebpack: {
+    module: {
+      rules: [
+        {
+          test: /\.txt/,
+          type: 'asset/source',
+        }
+      ]
+    },
     performance: {
       hints: false
     },

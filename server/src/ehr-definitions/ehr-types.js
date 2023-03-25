@@ -23,6 +23,7 @@ const EhrTypes = {
     select: 'select',
     calculatedValue: 'calculatedValue',
     checkset: 'checkset',
+    custom_form: 'custom_form',
     date: 'date',
     ehrDOB: 'ehrDOB', // date of birth copied from demographics page
     ehrPHN: 'ehrPHN',
@@ -65,7 +66,6 @@ const EhrTypes = {
     }
   },
   nondataInputType: {
-    // recordConfirm: 'recordConfirm', // confirm button and message for EHR dialogs
     form_label: 'form_label',
     assetLink: 'assetLink',
     spacer: 'spacer',

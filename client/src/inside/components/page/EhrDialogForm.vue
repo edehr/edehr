@@ -154,7 +154,10 @@ export default {
       if ( !this.saveDraftTimeoutId ) { // IF a save is pending then done else set up a delayed save
         // console.log('input change set up timeout to save draft', eData, this.tableDef)
         this.saveDraftTimeoutId = setTimeout(async () => {
-          await this.ehrHelp.saveDialogDraft()
+          // only save if there is data. Otherwise, we create an empty draft row that needs to be removed if user just cancels
+          if (this.hasData) {
+            await this.ehrHelp.saveDialogDraft()
+          }
           this.saveDraftTimeoutId = undefined // reset so another save can be queued up
         }, SAVE_DRAFT_TIMEOUT)
       }
