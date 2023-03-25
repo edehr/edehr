@@ -2,6 +2,8 @@
   div
     span(v-if="cell.inputType==='ehrFile'")
       ehr-file-link(:ehrFile="cell.value")
+    span(v-else-if="cell.inputType==='custom_form'")
+      span Use View to see contents
     span(v-else) {{getCellData(cell)}}
 </template>
 
