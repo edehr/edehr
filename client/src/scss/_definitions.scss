@@ -7,7 +7,8 @@ $brand-primary: $brand-color;
 $brand-primary-hover: $brand-highlight;
 $brand-primary-dark: #051F54;
 $brand-primary-light: #e8f2fd;
-$table-draft-colour: hsla(42, 100%, 50%, 0.5);
+/* use opaque color because the style may be applied both to a table cell and to the content */
+$table-draft-colour: rgba(255, 210, 0, 1);
 $nav-draft-colour: rgba(255, 22, 0, 1);
 
 $white: #FFF;

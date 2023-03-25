@@ -118,7 +118,7 @@ export function inside () {
       name: 'neurological',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Neurological.vue'),
-      meta: { layout: 'inside', label: 'Neurological assessment', topLevel: 'current', zone: 'ehr' }
+      meta: { layout: 'inside', label: 'Neurological assessments', topLevel: 'current', zone: 'ehr' }
     },
     {
       path: '/ehr/current/assessments/respiratory',
@@ -378,6 +378,13 @@ export function inside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/UnderConstruction.vue'),
       meta: { layout: 'inside', label: 'Med Lab Medical Imaging', topLevel: 'med-lab', zone: 'ehr' }
+    },
+    {
+      path: '/ehr/current/order-sets',
+      name: 'order-sets',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/OrderSets.vue'),
+      meta: { layout: 'inside', label: 'Clinical Order Sets', topLevel: 'current', zone: 'ehr' }
     }
   ]
 }

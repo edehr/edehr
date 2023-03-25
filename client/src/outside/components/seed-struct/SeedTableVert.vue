@@ -5,7 +5,7 @@
       tr
         th &nbsp;
         th(v-for="rowIndex in tableRowCount", :class='{draft:rowIsDraft(rowIndex)}') &nbsp;
-      tr(v-for="(fieldDef, colIndex) in tableFields")
+      tr(v-for="(fieldDef, colIndex) in tableFields", :class='fieldDef.tableCss')
         td(v-text-to-html='label(fieldDef)')
         td(v-for="rowIndex in tableRowCount", :class='{draft:rowIsDraft(rowIndex)}')
           span {{ fieldData(fieldDef, rowIndex) }}

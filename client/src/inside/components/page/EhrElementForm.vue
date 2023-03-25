@@ -1,5 +1,5 @@
 <template lang='pug'>
-  div(class="form-element", :class='{invalidElement : !validData, hiddenElement: hideElement}')
+  div(class="form-element", :class='{invalidElement : !validData, hideTableElement: hideElement}')
     div(v-if="isType('form_label')")
       div(v-html="label", class='form_label_wrapper')
       ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
@@ -16,12 +16,12 @@
     div(v-else-if="isType('checkset')", class="checkset_wrapper")
       ehr-element-checkset(:elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
-    div(v-else-if="isType('recordConfirm')")
-      ehr-element-record-confirm
-
     div(v-else-if="isType('checkbox')", class="checkbox_wrapper")
       input(:id="inputId", class="checkbox", type="checkbox", :disabled="disabled || viewOnly ", :name="elementKey", v-model="inputVal", v-on:change="dependentUIEvent()")
       ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="checkbox_label, check-label", :forElement="inputId")
+
+    div(v-else-if="isType('custom_form')", class='grid-span-3-columns')
+      ehr-element-custom-form(:element="element", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
     div(v-else-if="isType('date')", class="text_wrapper")
       ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
@@ -162,11 +162,13 @@ import EhrElementPractitioner from '@/inside/components/page/EhrElementPractitio
 import EhrElementProfession from '@/inside/components/page/EhrElementProfession'
 import EhrElementMedication from '@/inside/components/page/EhrElementMedication'
 import UiInfo from '@/app/ui/UiInfo'
+import EhrElementCustomForm from '@/inside/components/page/EhrElementCustomForm.vue'
 
 export default {
   name: 'EhrElementForm',
   extends: EhrElementCommon,
   components: {
+    EhrElementCustomForm,
     EhrElementMedication,
     EhrElementProfession,
     EhrElementPractitioner,
@@ -204,8 +206,5 @@ export default {
 
 .invalidElement {
   border: 1px $error solid
-}
-.hiddenElement {
-  display: none;
 }
 </style>

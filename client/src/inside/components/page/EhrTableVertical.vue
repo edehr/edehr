@@ -4,23 +4,26 @@
     div(v-else)
       table.table_vertical
         tbody
-          tr(v-for="(column, colIndex) in transposed")
+          tr(v-for="(column, colIndex) in transposed",
+            :class='{tableLabelElement: colIndex === 0, hideTableElement: column[0].tableCss === "hide-table-element"}')
             td(class="tableLabelElement")
               span(:class="transposeLabelCss(column)", v-html="transposeLabel(column)")
-            td(v-for="(cell, index) in transposeData(column)")
-              div(v-if="!cell.isDraft && colIndex === 0")
+            td(v-for="(cell, index) in transposeData(column)", :class="tdCss(cell, index)")
+              div(v-if="!cell.isDraft && colIndex === 0", class='cell-action')
                   ui-button(v-on:buttonClicked="viewReport(getIdFromStack(cell))")
                     span View &nbsp;
                     fas-icon(icon="file-pdf")
-              ui-button(
-                  v-if="!cell.isDraft && showTableAction && colIndex === 0",
-                  v-on:buttonClicked="tableAction(tableDef, index)"
-                  )
-                span {{ tableDef.tableActionLabel }} &nbsp;
-                fas-icon(icon="notes-medical")
-              ui-button(v-if="cell.isDraft && colIndex === 0 && canEdit", v-on:buttonClicked="editDraft(getIdFromStack(cell))")
-                span Edit &nbsp;
-                fas-icon(icon="edit")
+              div(class="cell-action")
+                ui-button(
+                    v-if="!cell.isDraft && showTableAction && colIndex === 0",
+                    v-on:buttonClicked="tableAction(tableDef, index)"
+                    )
+                  span {{ tableDef.tableActionLabel }} &nbsp;
+                  fas-icon(icon="notes-medical")
+              div(class="cell-action")
+                ui-button(v-if="cell.isDraft && colIndex === 0 && canEdit", v-on:buttonClicked="editDraft(getIdFromStack(cell))")
+                  span Edit &nbsp;
+                  fas-icon(icon="edit")
               div(v-for="cPart in cell.stack")
                 ehr-table-element(v-if="!!cPart.value", :cell="cPart", :class="transposeValueCss(cell, index)")
 </template>
@@ -89,6 +92,9 @@ export default {
       let cell = column[0] || {}
       return cell.tableCss
     },
+    tdCss (cell, index ) {
+      return this.draftColumnIndex === index ? ' draftTableElem' : ''
+    },
     transposeValueCss (cell, index) {
       let hdrCss = 'column_value' + (cell.tableCss ? ' ' + cell.tableCss : '')
       hdrCss += index % 2 ? ' tableValueElementOdd' : ''
@@ -102,3 +108,12 @@ export default {
   }
 }
 </script>
+
+<style lang='scss' scoped>
+.cell-action {
+  margin-bottom: 5px;
+  & .button {
+    min-width: 9rem;
+  }
+}
+</style>

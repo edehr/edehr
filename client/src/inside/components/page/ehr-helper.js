@@ -224,14 +224,15 @@ export default class EhrPageHelper {
     const dialog = this._getActiveTableDialog()
     if (dialog && dialog.inputs) {
       const values = decoupleObject(dialog.inputs)
-      // {"day":0,"time":"1930","oxygenTherapy":"xd","createdDate":"2022-12-17T20:17:09-08:00","isDraft":"isDraft"}
-      // delete values.day
-      // delete values.time
-      delete values.createdDate
-      delete values.isDraft
       let reduced = removeEmptyProperties(values)
-      reduced = JSON.stringify(reduced)
-      return reduced.length > 2
+      const keys = Object.keys(reduced)
+      const tableKey = dialog.tableKey
+      const KEYS = ['_id', 'name', 'profession', 'day', 'time']
+      const recHdrKeys = KEYS.map(key => tableKey + '_' + key)
+      recHdrKeys.push('isDraft', 'createdDate')
+      const otherKeys = keys.filter( key => !recHdrKeys.includes(key))
+      // console.log('has data keys', otherKeys)
+      return otherKeys.length > 0
     }
     return false
   }
