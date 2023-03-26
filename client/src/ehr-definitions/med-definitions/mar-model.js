@@ -86,7 +86,7 @@ export class MarDayBlock {
       return {
         medName: mo.med_medication,
         max: mo.maxDose,
-        mid: mo.id,
+        id: mo.id,
         timeElements: this.dayTimeLine.map(ts => {
           // this is a complicated way to write a function that returns an object
           return (new TimeElement(this.dayNum, ts, mo)).struct

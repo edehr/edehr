@@ -1,46 +1,62 @@
 <template lang='pug'>
   div
-    div Title: {{ idPrefix }}
-    // Grid for the given medication type (sched, prn, cont, stat, etc.)
-    div(class='time-line row-container')
-      // Medication name column
-      div(class='col-container')
-        div(class="medication-element")
-          div Medication Order
-        div(class="medication-element", v-for='med in medList', :key='med.id', :title='med.medName')
-          div(class="") {{med.medName }}
-      // Day Block with Time Grid
-      div(class="a-day row-container", v-for='aDay in dayList', :key='aDay.dayId')
-        input(
-          type="radio",
-          :id="`${idPrefix}-${aDay.dayId}`",
-          :value="aDay.dayNum",
-          :checked="aDay.dayNum === selectedDay",
-          @change='setSelectedDay'
-          )
-        label(:for="`${idPrefix}-${aDay.dayId}`", :class='dayLabelSizeCss(aDay.dayNum)')
-          // Day Block expanded - show day number and blocks for each medication with day values
-          div(v-if='dayIsActive(aDay.dayNum)')
-            // Title block
-            div(class="day-bar-element day-bar-element-title")
-              div {{ aDay.dayNum }} {{ idPrefix }}
-            // Day Block Element -- medication information. total given today, max allowed for day
-            div(class="day-bar-element", v-for='med in dayMedSchedule(aDay, idPrefix)', :key='med.medName')
-              div total:
-              div max: {{med.max}}
-          // Day Block unexpanded - just show the day number
-          div(v-else)
-            div(class="day-bar-element-title") {{ aDay.dayNum }}
-        div(class="day-content")
-          div(class="day-visible col-container")
-            // title row
-            div(class="row-container")
-              div(v-for='time in aDay.timeElements', :key='time.key', class='time-element')
-                div {{ aDay.label }}
-                div {{ time.label }}
-            div(class="row-container", v-for='med in dayMedSchedule(aDay, idPrefix)', :key='med.medName')
-              div(v-for='timeElement in med.timeElements', :key='timeElement.key', class='time-element')
-                button(v-if='timeElement.isScheduled', class='mar-ready-button', v-on:click='showMarDialog(timeElement)')  {{ timeElement.medOrder.dose }}
+    div(v-if='medList.length>0')
+      // Grid for the given medication type (sched, prn, cont, stat, etc.)
+      div(class='time-line row-container')
+        // Medication name column
+        div(class='col-container')
+          div(class="medication-element title-row-element")
+            h4 {{ title }}
+            //div Medication Ordered
+          div(class="medication-element", v-for='med in medList', :id='med.id' :key='med.id', :title='med.medName')
+            div
+              span {{ medicationSummary(med) }}
+              span &nbsp;
+              button(class='mar-button', v-on:click='showMarDialog()')  {{ title }}
+
+        // Day Block with Time Grid
+        div(class="a-day row-container", v-for='aDay in dayList', :key='aDay.dayId')
+          input(
+            type="radio",
+            :id="`${idPrefix}-${aDay.dayId}`",
+            :value="aDay.dayNum",
+            :checked="aDay.dayNum === selectedDay",
+            @change='setSelectedDay'
+            )
+          label(:for="`${idPrefix}-${aDay.dayId}`", :class='dayLabelSizeCss(aDay.dayNum)')
+            // Day Block expanded - show day number and blocks for each medication with day values
+            div(v-if='dayIsActive(aDay.dayNum)')
+              // Title block
+              div(class="day-bar-element day-bar-element-title title-row-element")
+                div day {{ aDay.dayNum }}
+              // Day Block Element -- medication information. total given today, max allowed for day
+              div(v-for='med in dayMedSchedule(aDay, idPrefix)',
+                :key='med.medName'
+                class="day-bar-element",
+                :style="{ height: calcHeight(med) + 'px'}"
+                )
+                div total: <i>WIP</i>
+                div(v-if="idPrefix === 'prn'") Max: {{med.max}}
+            // Day Block unexpanded - just show the day number
+            div(v-else)
+              div(class="day-bar-element-title  title-row-element") {{ aDay.dayNum }}
+          div(class="day-content")
+            div(class="day-visible col-container")
+              // title row
+              div(class="row-container")
+                div(v-for='time in aDay.timeElements', :key='time.key', class='time-element title-row-element')
+                  div {{ aDay.label }}
+                  div {{ time.label }}
+              // mar rows
+              div(class="row-container", v-for='med in dayMedSchedule(aDay, idPrefix)', :key='med.medName')
+                div(v-for='timeElement in med.timeElements',
+                  :key='timeElement.key',
+                  class='time-element',
+                  :style="{ height: calcHeight(timeElement.medOrder) + 'px'}"
+                  )
+                  button(v-if='timeElement.isScheduled', class='mar-button mar-ready-button', v-on:click='showMarDialog(timeElement)')  {{ timeElement.medOrder.dose }}
+      // place a gap between rows
+      div &nbsp;
 </template>
 
 <script>
@@ -97,6 +113,10 @@ export default {
     },
   },
   methods: {
+    calcHeight ( medOrder ) {
+      const main = document.getElementById(medOrder.id)
+      return main ? main.offsetHeight : 0
+    },
     dayIsActive (dN) {
       return this.selectedDay === dN
     },
@@ -111,6 +131,13 @@ export default {
       const results = !!idPrefix ? aDay.getTimeElements(idPrefix) : []
       // console.log(idPrefix, results)
       return results
+    },
+    medicationSummary ( med ) {
+      let txt = []
+      txt.push(med.medName)
+      med.dose ? txt.push(med.dose) : null
+      med.route ? txt.push(med.route) : null
+      return txt.join(' ')
     },
     setSelectedDay (n) {
       this.$emit('selectedDayChange', Number.parseInt(n.target.value))
@@ -188,24 +215,26 @@ time-element are the boxes containing either a time value or
   height: $time-element-height;
   padding: $element-padding;
 }
-.time-element button {
-  height: calc($time-element-height - 2 * $element-padding);
+.title-row-element {
+  height: $time-element-height;
+}
+.mar-button {
+  border-radius: 4px;
+  box-shadow: 3px 3px 3px $grey20;
 }
 
 .medication-element {
   border-bottom: solid 1px $border-colour;
-  height: $time-element-height;
+  //height: let height of this cell grow to fit content
   margin-right: $space-between-day-blocks; // This puts space between the days blocks.
   max-width: $medication-element-width;
   min-width: $medication-element-width;
   padding: $element-padding;
-  overflow: hidden;
-  overflow-wrap: break-word;
 }
 
 .day-bar-element {
   border-bottom: solid 1px $border-colour;
-  height: $time-element-height;
+  //height: is calculated to match height of first cell
   text-align: left;
 }
 .day-bar-element-title {
@@ -250,10 +279,6 @@ label {
 .col-container {
   display: flex;
   flex-flow: column;
-}
-
-.mar-ready-button {
-  height: $time-element-height;
 }
 
 </style>
