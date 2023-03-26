@@ -19,14 +19,19 @@ export default {
       tabs: []
     }
   },
+  inject: [ 'pageDataKey' ],
   created () {
     this.tabs = this.$children
   },
+  computed: {
+    tabNames () { return this.tabs.map( t => t.name)}
+  },
+  mounted () {
+    this.$store.dispatch('ehrPageTab/pageActivated', {pageKey: this.pageDataKey, tabNames: this.tabNames})
+  },
   methods: {
     selectTab (selectedTab) {
-      this.tabs.forEach(function (tab) {
-        tab.isActive = selectedTab.name === tab.name
-      })
+      this.$store.dispatch('ehrPageTab/tabSelected', {pageKey: this.pageDataKey, tabName: selectedTab.name})
       // emit the page refresh event so the newly selected tab can process a refresh event and load its content
       // console.log('Tab change emit PAGE_DATA_REFRESH_EVENT')
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)

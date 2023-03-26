@@ -10,6 +10,7 @@ import consumerStore from './modules/consumerStore'
 import demoStore from './modules/demoStore'
 import ehrDataStore from './modules/ehrDataStore'
 import ehrOnlyDemoStore from '@/store/modules/ehrOnlyDemoStore'
+import ehrPageTab from '@/store/modules/ehrPageTab'
 import fileListStore from './modules/fileListStore'
 import instructor from './modules/instructor'
 import seedListStore from './modules/seedListStore'
@@ -36,6 +37,7 @@ export default new Vuex.Store({
     demoStore,
     ehrDataStore,
     ehrOnlyDemoStore,
+    ehrPageTab,
     fileListStore,
     instructor,
     seedListStore,

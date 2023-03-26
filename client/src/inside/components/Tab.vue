@@ -5,23 +5,15 @@
 
 <script>
 export default {
-  name: 'Tab',
+  inject: [ 'pageDataKey' ],
   props: {
     name: {
       required: true
     },
-    selected: {
-      default: false
-    }
   },
-  data () {
-    return {
-      isActive: false
-    }
+  computed: {
+    isActive () { return this.$store.getters['ehrPageTab/isTabSelected'] ( this.pageDataKey, this.name) }
   },
-  mounted () {
-    this.isActive = this.selected
-  }
 }
 </script>
 
