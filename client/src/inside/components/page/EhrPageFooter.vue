@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="ehr-page-footer ehr-footer-content")
-    div {{ contentDate }} {{ evVersion }}
+    div {{ contentDate }} ({{ evVersion }})
     div Page design last saved: {{ ehrHelp.getPageGeneratedDate() }}
 </template>
 
@@ -16,7 +16,7 @@ export default {
   computed: {
     contentData () { return StoreHelper.getMergedData()},
     metaData () { return this.contentData.meta || {} },
-    evVersion () { return this.metaData  },
+    evVersion () { return this.metaData.ehrVersion  },
     contentDate () {
       let results = 'No page content'
       const pageStats = StoreHelper.hasDataOnPage(this.pageDataKey)
