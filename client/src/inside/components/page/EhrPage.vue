@@ -1,5 +1,6 @@
 <template lang="pug">
   div
+    div(v-if="pageDef.tableLabel") {{ pageDef.tableLabel }}
     ehr-panel-content
       div(v-if="useTabs")
         tabs

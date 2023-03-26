@@ -26967,6 +26967,7 @@ const DEFS = {
     'pageTitle': 'Clinical Order Sets',
     'pIndex': '48',
     'hasGridTable': true,
+    'tableLabel': 'This order set area is under development',
     'pageChildren': [
       {
         'elementKey': 'insulinOrderSets_name',
@@ -27021,17 +27022,8 @@ const DEFS = {
         'formIndex': '1',
         'formOption': 'insulin-orders',
         'inputType': 'custom_form',
-        'label': 'Insulin subcutaneous orders',
         'tableColumn': '2',
         'fqn': 'orderSets.insulinOrderSetForm'
-      },
-      {
-        'elementKey': 'insulinLabel',
-        'formIndex': '1',
-        'inputType': 'form_label',
-        'label': 'This order set area is under development',
-        'tableColumn': '3',
-        'fqn': 'orderSets.insulinLabel'
       },
       {
         'elementKey': 'anotherOrderSet_name',
@@ -27089,14 +27081,6 @@ const DEFS = {
         'label': 'CForm',
         'tableColumn': '2',
         'fqn': 'orderSets.anotherOrderSetForm'
-      },
-      {
-        'elementKey': 'anotherOrderLabel',
-        'formIndex': '2',
-        'inputType': 'form_label',
-        'label': 'This order set area is under development',
-        'tableColumn': '3',
-        'fqn': 'orderSets.anotherOrderLabel'
       }
     ],
     'pageElements': {
@@ -27132,12 +27116,6 @@ const DEFS = {
             'items': [
               'insulinOrderSetForm'
             ]
-          },
-          {
-            'ehr_list_index': '3',
-            'items': [
-              'insulinLabel'
-            ]
           }
         ],
         'form': {
@@ -27162,8 +27140,7 @@ const DEFS = {
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
               'gChildren': [
-                'insulinOrderSetForm',
-                'insulinLabel'
+                'insulinOrderSetForm'
               ]
             }
           ],
@@ -27181,8 +27158,7 @@ const DEFS = {
           'insulinOrderSets_profession',
           'insulinOrderSets_day',
           'insulinOrderSets_time',
-          'insulinOrderSetForm',
-          'insulinLabel'
+          'insulinOrderSetForm'
         ],
         'hasRecHeader': true
       },
@@ -27218,12 +27194,6 @@ const DEFS = {
             'items': [
               'anotherOrderSetForm'
             ]
-          },
-          {
-            'ehr_list_index': '3',
-            'items': [
-              'anotherOrderLabel'
-            ]
           }
         ],
         'form': {
@@ -27248,8 +27218,7 @@ const DEFS = {
               'formCss': 'record-header',
               'gIndex': '2',
               'gChildren': [
-                'anotherOrderSetForm',
-                'anotherOrderLabel'
+                'anotherOrderSetForm'
               ]
             }
           ],
@@ -27267,8 +27236,7 @@ const DEFS = {
           'anotherOrderSet_profession',
           'anotherOrderSet_day',
           'anotherOrderSet_time',
-          'anotherOrderSetForm',
-          'anotherOrderLabel'
+          'anotherOrderSetForm'
         ],
         'hasRecHeader': true
       }
