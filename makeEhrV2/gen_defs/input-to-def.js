@@ -182,7 +182,7 @@ class RawInputToDef {
     form.formKey = entry.elementKey
     form.ehr_groups = {}
     assert.ok(page.elementKey,'page for table has a key ' + JSON.stringify(page))
-    assert.ok(form.addButtonText,'Need addButtonText property to set up the add button for table ')
+    assert.ok(form.addButtonText,'Need addButtonText property to set up the add button for table ' + form.addButtonText)
     let table = {
       elementKey: entry.elementKey,
       pageElementIndex: fKey,
@@ -197,8 +197,29 @@ class RawInputToDef {
       form: form,
     }
     if (entry.tableAction) {
-      // unit testing in ehr-workspace makes sure this field can be split and the parts are valid keys
-      const parts = entry.tableAction.split('.')
+      /*
+      tableAction specifies the name of the target table.
+      When this definition begins with [ it says the def has extra requirements.
+      Currently, the Medication Orders table has an action to the MAR table with
+      an extra requirement to hide the action button on the med orders page.
+      NOTE. The table action contains either a string or a proper JSON array.
+      Many other definitions that use [ ... ] syntax are not proper arrays, because they are missing the commas.
+       */
+      // set up default tableActionType to not hide the open dialog button
+      table.tableActionType = EhrTypes.tableActions.actionTypes.openDialog
+      if (entry.tableAction.includes('[')) {
+        // e.g. ["hideButton",  "medAdminRec.marTable"]
+        // NOTE when finished the table.tableAction will hold the target table reference
+        // console.log('---- Set up table action with complex definition', entry.tableAction)
+        const def = JSON.parse(entry.tableAction)
+        // NOTE the values in the array are ordered!
+        table.tableActionType = def[0] === 'hideButton' ? EhrTypes.tableActions.actionTypes.hideButton : table.tableActionType
+        // Reset tableAction to the page/table key definition
+        table.tableAction = def[1]
+      }
+      // unit testing in ehr-workspace makes sure the table.tableAction can be split and the parts are valid keys
+      // The definition has the form pageKey.tableKey
+      const parts = table.tableAction.split('.')
       table.taTargetPageKey = parts[0]
       table.taTargetTableKey = parts[1]
       table.taSourcePageKey = page.elementKey

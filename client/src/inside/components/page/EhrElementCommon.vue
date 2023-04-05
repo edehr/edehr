@@ -79,6 +79,9 @@ export default {
           }
         }
       }
+      if (this.element.formOption === 'elementViewOnly') {
+        disable = true
+      }
       return disable
     },
     options () { return this.element.options },
@@ -215,7 +218,9 @@ export default {
         this.setInitialValue(initialValue)
         if (this.inputType === EhrTypes.dataInputTypes.ehr_embedded) {
           if( options.viewOnly ) {
-            console.log('EEC what happens if we skip sending input event on embedded ')
+            // skip sending input event on embedded.
+            // This may impact dynamic values inside the embedded form but
+            // that should be avoided in the design of the page/form.
           } else {
             const refValue = options.embedRefValue
             // console.log('EEC set embedded refValue', refValue)

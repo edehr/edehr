@@ -6,7 +6,7 @@ const PROPS = EhrTypes.elementProperties
 
 export const MAR_PAGE_KEY = 'medAdminRec'
 export const MAR_V1_TABLE_KEY = 'table'
-export const MAR_V2_TABLE_KEY = 'marRecords'
+export const MAR_V2_TABLE_KEY = 'marTable'
 
 export const MED_ORDERS_PAGE_KEY = 'medicationOrders'
 export const MED_ORDERS_TABLE_KEY = 'medicationOrdersTable'
@@ -78,6 +78,9 @@ class EhrDefsWorker {
 
   getPageChildProperty (pageKey, key, prop) {
     let child = this.getPageChildElement(pageKey, key)
+    if (!child) {
+      console.error('Failed getPageChildProperty', pageKey, key, prop)
+    }
     let value = child[prop]
     return value
   }

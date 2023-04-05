@@ -20,6 +20,7 @@ import EhrTableDraft from '@/inside/components/page/ehr-table-draft'
 import EhrTableActions from '@/inside/components/page/ehr-table-actions'
 import EhrDataModel from '@/ehr-definitions/EhrDataModel'
 import { validDayStr, validTimeStr } from '@/ehr-definitions/common-utils'
+import { EhrPages } from '@/ehr-definitions/ehr-models'
 
 export const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
@@ -29,6 +30,7 @@ const dbPageForm = false
 const dbLeave = false
 const dbDraft = false
 
+const ehrPages = new EhrPages()
 
 export default class EhrPageHelper {
   constructor (pageKey) {
@@ -41,7 +43,8 @@ export default class EhrPageHelper {
     tables.forEach((tableDef) => {
       const tableKey = tableDef.tableKey
       // insert a structure that defines a "dialog" for each table on the page
-      this.tableFormMap[tableKey] = { tableKey: tableKey, tableDef: tableDef, inputs: {}, errorList: [], active: false, viewOnly: false }
+      // include the page key to support getting information about the EHR page
+      this.tableFormMap[tableKey] = { pageKey: pageKey, tableKey: tableKey, tableDef: tableDef, inputs: {}, errorList: [], active: false, viewOnly: false }
     })
     this._setupEventHandlers()
   }
@@ -227,11 +230,18 @@ export default class EhrPageHelper {
       let reduced = removeEmptyProperties(values)
       const keys = Object.keys(reduced)
       const tableKey = dialog.tableKey
+      const pageKey = dialog.pageKey
+      // remove rec header fields because they are not important unless there is other data
       const KEYS = ['_id', 'name', 'profession', 'day', 'time']
       const recHdrKeys = KEYS.map(key => tableKey + '_' + key)
       recHdrKeys.push('isDraft', 'createdDate')
-      const otherKeys = keys.filter( key => !recHdrKeys.includes(key))
-      // console.log('has data keys', otherKeys)
+      let otherKeys = keys.filter( key => !recHdrKeys.includes(key))
+      // remove any elements that are calculated
+      otherKeys = otherKeys.filter( oKey => {
+        const child = ehrPages.getPageChild(pageKey, oKey)
+        return child && child.inputType !== EhrTypes.dataInputTypes.calculatedValue
+      })
+      // console.log('has data keys 2', otherKeys)
       return otherKeys.length > 0
     }
     return false
@@ -480,12 +490,15 @@ export default class EhrPageHelper {
     if( draftRowId ) {
       draftRowData = EhrTableDraft.findDraftRowDataById(draftRowId)
     } else {
-      // User invoked main add report button
-      // does the table data already contain a draft row ... ?
-      draftRowData = EhrTableDraft.getTableDraftRow(pageKey, tableKey)
-      if (draftRowData) {
-        // table has a draft row so this action is now an edit row action
-        draftRowId = draftRowData[rowElementKey]
+      // explicitDraftRowOnly is set true by the Med Mar tables because they don't use the main page button for opening dialogs.
+      if (!options.explicitDraftRowOnly) {
+        // User invoked main add report button
+        // does the table data already contain a draft row ... ?
+        draftRowData = EhrTableDraft.getTableDraftRow(pageKey, tableKey)
+        if (draftRowData) {
+          // table has a draft row so this action is now an edit row action
+          draftRowId = draftRowData[rowElementKey]
+        }
       }
       // else proceed and create a new row
     }
@@ -582,10 +595,11 @@ export default class EhrPageHelper {
      * @private
      */
   _dialogOpenEvent (tableKey,  options) {
+    let key
     options.open = true
     if (dbDialog) console.log('EhrHelpV2 dialog open event', tableKey, JSON.stringify(options))
     // Get the dialog object for the target table
-    let dialog = this.tableFormMap[tableKey]
+    const dialog = this.tableFormMap[tableKey]
     // stash the options into the dialog definition.
     dialog.options = options
     dialog.viewOnly = options.viewOnly
@@ -628,32 +642,45 @@ export default class EhrPageHelper {
       // console.log('options.embedRefValue', options.embedRefValue)
       dialog.inputs[srcElemKey] = options.embedRefValue
     }
-    if(hasRecHeader) {
-      const inputs = dialog.inputs
+    if (hasRecHeader) {
       const mData = StoreHelper.getMergedData()
       const { visitDay, visitTime } = mData.meta.simTime
-      let key
       key = tableKey + '_day'
-      if (!validDayStr(inputs[key])) {
-        const previous = inputs[key]
-        inputs[key] = parseInt(visitDay)
-        console.log('dialog opening set sim day', key, previous, inputs[key])
+      if (!validDayStr(dialog.inputs[key])) {
+        dialog.inputs[key] = parseInt(visitDay)
+        // console.log('dialog opening set sim day', key, dialog.inputs[key])
       }
       key = tableKey + '_time'
-      if (!validTimeStr(inputs[key])) {
-        const previous = inputs[key]
-        inputs[key] = visitTime
-        console.log('dialog opening set sim time', key, previous, inputs[key])
+      if (!validTimeStr(dialog.inputs[key])) {
+        dialog.inputs[key] = visitTime
+        // console.log('dialog opening set sim time', key, dialog.inputs[key])
+      }
+
+      function _nonEmptyString (text) {
+        return text && text.trim().length > 0
       }
       key = tableKey + '_name'
-      function _nonEmptyString (text) { return text && text.trim().length > 0 }
-      if (!_nonEmptyString(inputs[key])) {
-        const previous = inputs[key]
-        inputs[key] = StoreHelper.givenName()
-        console.log('dialog opening set name', key, previous, inputs[key])
+      if (!_nonEmptyString(dialog.inputs[key])) {
+        dialog.inputs[key] = StoreHelper.givenName()
+        // console.log('dialog opening set rec hdr name', key, dialog.inputs[key])
       }
     }
+    if (options.simDay) {
+      key = tableKey + '_day'
+      dialog.inputs[key] = options.simDay
+      // console.log('dialog opening set sim day from options', key, dialog.inputs[key])
+    }
+    if (options.simTime) {
+      key = tableKey + '_time'
+      dialog.inputs[key] = options.simTime
+      // console.log('dialog opening set sim time from options', key, dialog.inputs[key])
+    }
 
+    if (options.presetValues) {
+      options.presetValues.forEach( pv => {
+        dialog.inputs[pv.key] = pv.value
+      })
+    }
     // NOW set the open state flag which enables the FORM_INPUT_EVENT event to fire when a dialog input is changed.
     dialog.active = true
     // End by sending out the "I'm opened event"

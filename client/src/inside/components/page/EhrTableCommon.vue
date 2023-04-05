@@ -5,6 +5,7 @@ import { formatDateStr } from '@/helpers/ehr-utils'
 import EventBus from '@/helpers/event-bus'
 import { TABLE_ACTION_EVENT } from '@/helpers/event-bus'
 import StoreHelper from '@/helpers/store-helper'
+import EhrTypes from '@/ehr-definitions/ehr-types'
 
 export default {
   components: {
@@ -21,7 +22,7 @@ export default {
   computed: {
     hasData () { return this.cTableData.length > 0},
     isSubmitted () { return StoreHelper.isSubmitted() },
-    showTableAction () { return this.tableDef.tableAction && !this.isSubmitted }
+    showTableAction () { return this.tableDef.tableActionType === EhrTypes.tableActions.actionTypes.openDialog && !this.isSubmitted }
   },
   methods: {
     getCellCss: function (cell) {

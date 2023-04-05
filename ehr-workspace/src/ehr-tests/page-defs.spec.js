@@ -138,20 +138,26 @@ describe('page-definitions tests', () => {
       Object.keys(pageElements).forEach(pek => {
         const tableDef = pageElements[pek]
         if (tableDef.tableAction) {
+          // console.log('tableDef.tableAction', typeof tableDef.tableAction)
           tableDef.should.have.property('tableActionLabel')
           tableDef.should.have.property('taTargetTableKey')
           tableDef.should.have.property('taTargetPageKey')
           tableDef.should.have.property('taSourcePageKey')
           tableDef.should.have.property('taSourceTableKey')
+          tableDef.should.have.property('tableActionType')
           const parts = tableDef.tableAction.split('.')
           // does the ref have a page key that exists
           parts.should.have.length(2)
           const targetPage = ehrPageDefs[parts[0]]
           should.exist(targetPage)
-          // does the page have a have a table with a key that matches the ref?
+          // does the page have a table with a key that matches the ref?
           const targetElements = EhrDefs.getPageElements(parts[0])
           const keys = Object.keys(targetElements)
           keys.includes(parts[1]).should.be.true
+          const hideButton = EhrTypes.tableActions.actionTypes.hideButton
+          const dialog = EhrTypes.tableActions.actionTypes.openDialog
+          const type = tableDef.tableActionType
+          true.should.equal(type === hideButton || type === dialog)
         }
       })
     })

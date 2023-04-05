@@ -175,6 +175,10 @@ export default {
     margin: 2rem 0;
   }
 
+  input[type=checkbox] {
+    transform: scale(1.5);
+  }
+
   & .boxed {
     margin: 1rem;
     padding: 1rem;

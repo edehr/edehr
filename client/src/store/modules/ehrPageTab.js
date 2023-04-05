@@ -20,6 +20,10 @@ const getters = {
   isTabSelected:  state => (pageKey, tabName) => {
     const pData = state.pageTabs[pageKey]
     return pData && pData[tabName]
+  },
+  activeTab: state => (pageKey) => {
+    const pTab = state.pageTabs[pageKey]
+    return pTab ? Object.keys(pTab).find( tn  => !!pTab[tn]) : undefined
   }
 }
 
@@ -55,7 +59,6 @@ const mutations = {
       // replace whole object to trigger reactivity
       clone[pageKey] = pTab
       state.pageTabs = clone
-      console.log('-[-[-', JSON.stringify(clone))
     }
   }
 }

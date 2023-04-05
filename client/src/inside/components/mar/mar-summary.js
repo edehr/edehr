@@ -16,7 +16,7 @@ export default class MarSummary {
     let db = false
     let db2 = false
     if (!marRecords || !medOrders) {
-      console.log('MarSummary call to refresh before system is set up. There will be another call in a sec')
+      // console.log('MarSummary call to refresh before system is set up. There will be another call in a sec')
       return
     }
     const EMPTY = _createElement(MS.KEY_EMPTY,{})

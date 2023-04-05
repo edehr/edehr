@@ -69,6 +69,11 @@ export class EhrPages {
     }
     return embList
   }
+
+  getPageChild (pageKey, elementKey) {
+    const page = this.findPage(pageKey)
+    return page.pageChildren.find( child => child.elementKey === elementKey)
+  }
 }
 
 export class PageDef {

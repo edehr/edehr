@@ -36,7 +36,7 @@ export default {
   visitDay: function (fieldName, dayString) {
     const valid = validDayStr(dayString)
     if (!valid) {
-      return `${fieldName} must be a visit day (number) between 0 and ${VISIT_DAY_LIMIT}`
+      return `${fieldName} must be a visit day (number) between 0 and ${VISIT_DAY_LIMIT}. Given ${dayString}`
     }
   },
   numeric: function (fieldName, value) {

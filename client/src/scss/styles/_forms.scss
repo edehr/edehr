@@ -55,8 +55,12 @@ textarea {
     width: 20rem;
   }
 }
-.form_label_mandatory {
+.form_label_mandatory::before {
+  content: '*';
   color: $brand-highlight-red;
+  display: inline-block;
+  width: 12px;
+  vertical-align: -4px;
 }
 
 
