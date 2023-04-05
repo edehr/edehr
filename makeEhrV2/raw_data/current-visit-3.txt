@@ -110,7 +110,7 @@ skin:=Skin}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 4}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{elementKey: reqMi_notice}	{pN: 24}	{fN: 4}	{gN: 2}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: This lab requisition form is a prototype.}	eCell	{elementKey: reqMi_noticeLabel}	{pN: 24}	{fN: 4}	{gN: 2}	{sgN: }	{formCss: grid-span-3-columns}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.}	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Type of diagnositc}	eCell	{elementKey: reqMi_type}	{pN: 24}	{fN: 4}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	"{Options: angio=Angiogram
+{inputType: select}	eCell	{Label: Type of diagnositc}	eCell	{elementKey: reqMi_type}	{pN: 24}	{fN: 4}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	"{Options: angio:=Angiogram
 ecg:=Echo cardiogram
 ct:=CT scan
 mri:=MRI

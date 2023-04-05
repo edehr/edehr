@@ -10953,8 +10953,8 @@ const DEFS = {
         'label': 'Type of diagnositc',
         'options': [
           {
-            'key': 'angio=Angiogram',
-            'text': 'angio=Angiogram'
+            'key': 'angio',
+            'text': 'Angiogram'
           },
           {
             'key': 'ecg',

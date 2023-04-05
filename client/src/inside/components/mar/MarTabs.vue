@@ -7,7 +7,7 @@
       tab(name="V1 Summary")
         mar-summary(:ehrHelp="ehrHelp")
       tab(name="V2 MAR")
-        h2 This MAR page is under construction. Use at your own risk.
+        p {{v2Message}}
         mar-med-grid(
           v-for="prefix in groups",
           :ehrHelp="ehrHelp"
@@ -20,7 +20,7 @@
         )
         //mar-today-content-v2(:ehrHelp="ehrHelp")
       tab(name="V2 MAR table")
-        h2 This MAR page is under construction. Use at your own risk.
+        p {{v2Message}}
         ehr-page-element(:element="tableDefV2", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDefV2", :errorList="errorList" )
@@ -50,7 +50,8 @@ export default {
       groups: MED_GROUPS,
       tableKey: MAR_V2_TABLE_KEY,
       selectedDay: -1,
-      timeLineModel: undefined
+      timeLineModel: undefined,
+      v2Message: 'V2 MAR.  This is a new approach, for the EdEHR, to medication administration records (MARs). This second version is under construction so if you create records here they may not work once this page is completed.'
     }
   },
   components: {
