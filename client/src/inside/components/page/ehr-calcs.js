@@ -2,6 +2,7 @@ import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import { isObject, isString, validNumberStr } from '@/helpers/ehr-utils'
 import StoreHelper from '@/helpers/store-helper'
 import { calculateMedicationConcentration, calculateMedicationMaxDosage } from '@/ehr-definitions/ehr-def-utils'
+import { MedOrder } from '@/ehr-definitions/med-definitions/medOrder-model'
 
 // export for testing
 export function extractComboValue (src)  {
@@ -127,6 +128,9 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
       // console.log('multiplyBy', result)
     }
   } else if (calculationType.includes('embedValue')) {
+    // pull a value from an embedded object. The calculationType specifies the page, table and field
+    // the row of the table is used to load the embedded object in the values
+    // embedValue(medicationOrders, medicationOrdersTable, med_timing)
     const refs = extractEmbedValueReferences(calculationType)
     result = values[0] ? values[0][refs.cellRef] : undefined
     // console.log('---------- cal type embedValue srcValues:', srcValues)
@@ -134,6 +138,14 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
     // console.log('---------- cal type embedValue refs, result:', refs, result)
   } else if (calculationType.includes('medConcentration')) {
     result = calculateMedicationConcentration(values)
+
+  } else if (calculationType.includes('medOrderSummary')) {
+    // values is array with one element; the medication order
+    // console.log('medOrderSummary', values[0])
+    const mo = new MedOrder(values[0])
+    result = mo.medOrderSummary()
+    isNumberResult = false
+    // result = calculateMedicationConcentration(values)
   } else if (calculationType.includes('medMaxDosage')) {
     result = calculateMedicationMaxDosage(srcValues)
     // EXIT

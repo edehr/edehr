@@ -85,6 +85,13 @@ const EhrTypes = {
     checkBoxTextSpacer: 'checkbox_text_spacer',
     checkBoxDate: 'checkbox_date',
     textDate: 'text_date'
+  },
+
+  tableActions: {
+    actionTypes: {
+      hideButton: 'hideButton',
+      openDialog: 'openDialog'
+    }
   }
 }
 

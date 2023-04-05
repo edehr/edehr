@@ -1,7 +1,8 @@
 <template lang="pug">
-  div()
+  div
     tabs
-      tab(:name="todayTabName", :selected="true")
+      tab(name="V1 MAR")
+        h3 {{ todayTabName }}
         mar-today-content(:ehrHelp="ehrHelp", :marToday="marToday")
       tab(name="V1 Summary")
         mar-summary(:ehrHelp="ehrHelp")
@@ -14,7 +15,9 @@
           :timeLineModel='timeLineModel',
           :selectedDay='selectedDay',
           :idPrefix='prefix',
-          @selectedDayChange='setSelectedDay')
+          @selectedDayChange='setSelectedDay',
+          @viewReport='showReport'
+        )
         //mar-today-content-v2(:ehrHelp="ehrHelp")
       tab(name="V2 MAR table")
         h2 This MAR page is under construction. Use at your own risk.
@@ -32,9 +35,9 @@ import Tab from '../Tab'
 import MarToday from './mar-today'
 import MarMedGrid from '@/inside/components/marV2/MarMedGrid.vue'
 import EhrDataModel from '@/ehr-definitions/EhrDataModel'
-import { MarTimelineModel } from '@/ehr-definitions/med-definitions/mar-model'
+import { MarTimelineModel, MED_GROUPS } from '@/ehr-definitions/med-definitions/mar-model'
 import EhrDialogForm from '@/inside/components/page/EhrDialogForm.vue'
-import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
+import EhrDefs, { MAR_V2_TABLE_KEY } from '@/ehr-definitions/ehr-defs-grid'
 import EhrPageElement from '@/inside/components/page/EhrPageElement.vue'
 import StoreHelper from '@/helpers/store-helper'
 import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
@@ -44,10 +47,10 @@ export default {
     return {
       marToday: {}, // helper class
       // v2
-      groups: ['sched', 'stat', 'once', 'od', 'prn', 'cont'],
-      tableKey: 'marTable',
+      groups: MED_GROUPS,
+      tableKey: MAR_V2_TABLE_KEY,
       selectedDay: -1,
-      timeLineModel: {}
+      timeLineModel: undefined
     }
   },
   components: {
@@ -61,7 +64,7 @@ export default {
   },
   props: {
     ehrHelp: { type: Object },
-    pageDataKey: { type: String }
+    pageDataKey: { type: String, required: true }
   },
   provide () {
     return {
@@ -74,18 +77,19 @@ export default {
     }
   },
   computed: {
+    activeTab () { return this.$store.getters['ehrPageTab/activeTab'](this.pageDataKey) },
     todayTabName () {
-      return 'V1 Day ' + this.marToday.getCurrentDay()
+      return 'Day ' + this.marToday.getCurrentDay()
     },
     // v2
     errorList () {
-      return this.ehrHelp.getErrorList('marTable')
+      return this.ehrHelp.getErrorList(MAR_V2_TABLE_KEY)
     },
     tableDefs () {
       return EhrDefs.getPageTables(this.pageDataKey)
     },
     tableDefV2 () {
-      return this.tableDefs.find( td => td.elementKey === 'marTable')
+      return this.tableDefs.find( td => td.elementKey === MAR_V2_TABLE_KEY)
     },
     // mergedData () { return StoreHelper.getMergedData() },
     // ehrDataModel () { return new EhrDataModel(this.mergedData) },
@@ -105,7 +109,10 @@ export default {
       // console.log('mar tabs ehrDataModel', JSON.stringify(ehrDataModel.ehrData))
       this.timeLineModel = new MarTimelineModel(ehrDataModel)
       this.selectedDay = this.timeLineModel.numberOfDays - 1
-    }
+    },
+    showReport (rowId) {
+      this.ehrHelp.showReport(rowId)
+    },
   },
   // v2
   mounted () { this.setupTimeline() },
