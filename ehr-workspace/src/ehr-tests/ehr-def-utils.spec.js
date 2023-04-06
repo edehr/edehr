@@ -92,24 +92,32 @@ describe ( ' med admin times', () => {
     }
   }
   it('BID', () => {
+    const times = medAdminTimes('BID')
+    testit(times,['0900','1700'])
+  })
+  it('BID / Q12H', () => {
     const times = medAdminTimes('BID / Q12H')
-    testit(times,['0800','2000','','','',''])
+    testit(times,['0800','2000'])
   })
   it('TID', () => {
     const times = medAdminTimes('TID')
-    testit(times,['0800', '1600', '2200','','',''])
+    testit(times,['0800', '1600', '2200'])
+  })
+  it('Q12H', () => {
+    const times = medAdminTimes('Q12H')
+    testit(times, ['0800', '2000'])
   })
   it('Q8H', () => {
     const times = medAdminTimes('Q8H')
-    testit(times, ['0600','1400', '2200','','',''])
+    testit(times, ['0600','1400', '2200'])
   })
   it('QID', () => {
     const times = medAdminTimes('QID')
-    testit(times, ['0800','1200', '1700', '2200','',''])
+    testit(times, ['0800','1200', '1700', '2200'])
   })
   it('Q6H', () => {
     const times = medAdminTimes('Q6H')
-    testit(times, ['0200', '0600', '1200', '1800', '2200', ''])
+    testit(times, ['0200', '0600', '1200', '1800', '2200'])
   })
   it('Q4H', () => {
     const times = medAdminTimes('Q4H')
@@ -128,25 +136,23 @@ describe (' process dependent on change', () => {
     value = 'Q4H'
     elementKey = 'med_time1'
     result = processDependentOnChange(dependentDef, value, pageKey, elementKey)
-    should.exist(result)
+    should.exist(result, 'Q4H med_time1')
     result.should.equal('0200')
 
     value = 'Q4H'
     elementKey = 'med_time3'
     result = processDependentOnChange(dependentDef, value, pageKey, elementKey)
-    should.exist(result)
+    should.exist(result, 'Q4H med_time3')
     result.should.equal('1000')
 
     value = 'Q8H'
     elementKey = 'med_time1'
     result = processDependentOnChange(dependentDef, value, pageKey, elementKey)
-    should.exist(result)
+    should.exist(result, 'Q8H med_time1')
     result.should.equal('0600')
     elementKey = 'med_time6'
     result = processDependentOnChange(dependentDef, value, pageKey, elementKey)
-    should.exist(result)
-    result.should.equal('')
-
+    should.not.exist(result, 'Q8H dependent ')
   })
 })
 

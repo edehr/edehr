@@ -1,5 +1,5 @@
 import StoreHelper from '../../../helpers/store-helper'
-
+import { MED_SCHEDULE_OPTIONS } from '@/ehr-definitions/ehr-def-utils'
 const SCHEDULED='SCHED'
 const PRESCRIBED='PRN'
 const SETTIMES='SET'
@@ -11,18 +11,7 @@ for (let i = 1; i <= 6; i++) {
 // This list of keys with schedules must be kept in sync with the schedule
 // dropdown options shown on the Medications page.
 export class ScheduleOptions {
-  static OPTIONS = {
-    'BID / Q12H' : ['0800','2000'], // keep vor V1 med orders
-    BID : ['0900','1700'],
-    TID: ['0800', '1600', '2200'],
-    QID: ['0800','1200', '1700', '2200'],
-    Q12H : ['0800','2000'],
-    Q8H: ['0600','1400', '2200'],
-    Q6H: ['0600', '1200', '1800', '2200', '0200'],
-    Q4H: ['0600', '1000', '1400', '1800', '2200', '0200'],
-    Q2H: [],
-    Q1H: []
-  }
+  static OPTIONS = MED_SCHEDULE_OPTIONS
 
   static getKeys () {
     return Object.keys(this.OPTIONS)

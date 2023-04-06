@@ -1,10 +1,23 @@
 // noinspection DuplicatedCode
 
-export function validateAgeValue ( age) {
+import EhrTypes from './ehr-types'
+import EhrCheckset from './ehr-checkset'
+import { selectValueMakeHuman } from './ehr-select'
+
+export function validateAgeValue (age) {
   const ageValue = Number.parseInt(age)
   return 0 <= ageValue && ageValue <= 150
 }
 
+export function makeHumanTableCell ( pageKey, elementKey, inputType, dbVal) {
+  if (inputType === EhrTypes.dataInputTypes.checkset) {
+    dbVal = EhrCheckset.makeHuman(dbVal, pageKey, elementKey)
+  }
+  if (inputType === EhrTypes.dataInputTypes.select) {
+    dbVal = selectValueMakeHuman(dbVal, pageKey, elementKey )
+  }
+  return dbVal
+}
 export function extractMonth (dateStr) {
   let results
   // getMonth and getDate use local time so make sure the dateStr has a fixed time
@@ -92,21 +105,21 @@ export function calculateMedicationMaxDosage (srcValues) {
   return results
 }
 
+export const MED_SCHEDULE_OPTIONS = {
+  'BID / Q12H' : ['0800','2000'], // keep vor V1 med orders
+  BID : ['0900','1700'],
+  TID: ['0800', '1600', '2200'],
+  QID: ['0800','1200', '1700', '2200'],
+  Q12H: ['0800','2000'],
+  Q8H: ['0600','1400', '2200'],
+  Q6H: ['0200', '0600', '1200', '1800', '2200'],
+  Q4H: ['0200', '0600', '1000', '1400', '1800', '2200'],
+  Q2H: [],
+  Q1H: []
+}
 export function medAdminTimes (abbreviation) {
   let r
-  const OPTIONS = {
-    'BID / Q12H' : ['0800','2000'], // keep vor V1 med orders
-    BID : ['0900','1700'],
-    TID: ['0800', '1600', '2200'],
-    QID: ['0800','1200', '1700', '2200'],
-    Q12H : ['0800','2000'],
-    Q8H: ['0600','1400', '2200'],
-    Q6H: ['0600', '1200', '1800', '2200', '0200'],
-    Q4H: ['0600', '1000', '1400', '1800', '2200', '0200'],
-    Q2H: [],
-    Q1H: []
-  }
-  r =  OPTIONS[abbreviation] || ['','','','','','']
+  r =  MED_SCHEDULE_OPTIONS[abbreviation] || ['','','','','','']
   // console.log('medAdmintimes', abbreviation, r)
   return r
 }

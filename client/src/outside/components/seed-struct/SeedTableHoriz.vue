@@ -6,7 +6,7 @@
       tr(v-for="row in rows")
         td(v-for="(d, index) in rowData(row)", :class="tableCellCss(columns[index], row)" )
           pre(v-if='columns[index].inputType === "textarea"') {{d}}
-          span(v-else) {{d}}
+          span(v-else) {{human(columns[index], d)}}
     div(v-show='!hasData') No data in this table.
 
 </template>
@@ -15,6 +15,8 @@
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import EhrData from '@/inside/components/page/ehr-data'
 import EhrTypes from '@/ehr-definitions/ehr-types'
+import { makeHumanTableCell } from '@/ehr-definitions/ehr-def-utils'
+
 export default {
   props: {
     pageKey: { type: String },
@@ -46,6 +48,9 @@ export default {
     },
   },
   methods: {
+    human ( cell, d ) {
+      return makeHumanTableCell(this.pageKey, cell.elementKey, cell.inputType, d)
+    },
     rowData ( seedRow ) {
       const cols = this.columns
       const row = []

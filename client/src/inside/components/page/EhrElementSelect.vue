@@ -1,0 +1,39 @@
+<template lang="pug">
+  div(class="select_wrapper")
+    ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="select_label")
+    div(v-if="!viewOnly", class="select", :title='inputVal')
+      select(:name="elementKey", :disabled="disabled", v-model="inputVal", v-on:change="dependentUIEvent()")
+        option(value="")
+        option(v-for="option in options", :key="option.key", :value="option.key") {{ option.text}}
+    div(v-if="viewOnly") {{ human(inputVal) }}
+</template>
+
+<script>
+import EhrElementCommon from './EhrElementCommon'
+import { makeHumanTableCell } from '@/ehr-definitions/ehr-def-utils'
+
+
+export default {
+  extends: EhrElementCommon,
+  // for props, etc see EhrCommonElement
+  data () {
+    return {
+    }
+  },
+  computed : {
+    options () {
+      return this.element.options
+    }
+  },
+  methods: {
+    human ( d ) {
+      return makeHumanTableCell(this.pageDataKey,
+        this.elementKey, this.inputType, d)
+    },
+  },
+}
+</script>
+<style lang='scss'>
+@import '../../../scss/definitions';
+
+</style>

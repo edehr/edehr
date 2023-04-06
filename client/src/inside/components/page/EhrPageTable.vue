@@ -41,11 +41,9 @@ import UiButton from '@/app/ui/UiButton.vue'
 import UiConfirm from '@/app/ui/UiConfirm'
 import MarHelper from '../mar/mar-helper'
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
-import EhrTypes from '@/ehr-definitions/ehr-types'
-import EhrCheckset from '@/ehr-definitions/ehr-checkset'
 import EhrData from '@/inside/components/page/ehr-data'
 import EhrTableDraft from '@/inside/components/page/ehr-table-draft'
-
+import { makeHumanTableCell } from '@/ehr-definitions/ehr-def-utils'
 export default {
   components: {
     EhrTableStacked,
@@ -110,9 +108,7 @@ export default {
           Object.values(dataRow).forEach((templateCell) => {
             templateCell.stack.forEach((cell) => {
               let dbVal = dbRow[cell.key] === 0 ? '0' : dbRow[cell.key]
-              if (cell.inputType === EhrTypes.dataInputTypes.checkset) {
-                dbVal = EhrCheckset.makeHuman(dbVal, this.pageDataKey, cell.key)
-              }
+              dbVal = makeHumanTableCell( this.pageDataKey,cell.key, cell.inputType, dbVal)
               cell.value = dbVal || ''
               cell.tableCss = templateCell.tableCss
             })

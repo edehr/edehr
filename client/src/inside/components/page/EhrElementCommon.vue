@@ -84,7 +84,6 @@ export default {
       }
       return disable
     },
-    options () { return this.element.options },
     suffix () { return this.element.suffix }
   },
   methods: {

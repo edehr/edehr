@@ -24,6 +24,7 @@ export default {
     }
   },
   computed : {
+    options () { return this.element.options },
     checkOptions () { return EhrCheckset.optionsToChecklist(this.options) }
   },
   watch: {
