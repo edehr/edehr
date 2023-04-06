@@ -4,6 +4,7 @@ const dbugSecs = false
 const MINUTE = 60 //seconds
 const HOUR = 60 * MINUTE
 const DAY = HOUR * 24
+const NUMBER_OF_DAYS = 30
 
 export default class Monitor {
   constructor () {
@@ -32,10 +33,13 @@ export default class Monitor {
   }
 
   apiEvent (rec) {
-    this.active += rec.elapsedMs
+    this.active += 1 // instead of counting cumulative milliseconds response time (rec.elapsedMs) just count api calls
   }
 
   doDay () {
+    this.days[this.dX] = this.hurs.reduce((p, a) => p + a, 0)
+    this.pD = this.dX
+    this.dX = (this.dX + 1) % NUMBER_OF_DAYS
     console.log('doDay TODO implement')
     this.doHour()
   }

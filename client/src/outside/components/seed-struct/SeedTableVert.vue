@@ -16,6 +16,7 @@
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import EhrData from '@/inside/components/page/ehr-data'
 import EhrTypes from '@/ehr-definitions/ehr-types'
+import { makeHumanTableCell } from '@/ehr-definitions/ehr-def-utils'
 export default {
   props: {
     pageKey: { type: String },
@@ -53,7 +54,8 @@ export default {
     fieldData (fieldDef, index) {
       const row = this.tableData[index-1]
       const elementKey = fieldDef.elementKey
-      const v = row[elementKey]
+      let v = row[elementKey]
+      v = makeHumanTableCell(this.pageKey, elementKey, fieldDef.inputType, v)
       return v ? v : ''
     },
     rowIsDraft ( index ) {

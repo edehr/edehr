@@ -125,7 +125,7 @@ export default class FileController {
   async _validateRequest (req, res, next) {
     const id = (req.authPayload ? req.authPayload.toolConsumerId : req.params.consumer)
     let dirName = filesCommon
-    if (id && id != 'undefined') {
+    if (id && id !== 'undefined') {
       dirName = await this._convertIdToKey(id)
         .catch(() => {
           logError('File validation no consumer id')
@@ -210,6 +210,62 @@ export default class FileController {
   publicRoute () {
     const router = new Router()
 
+    /**
+     *  API to get a file from the common or consumer directory. Note the file name is the last parameter.
+     *  This is important so the client uses this name for the file that is saved.
+     */
+    router.get('/consumer/:consumer/name/:name', async (req, res, next) => {
+      if (await this._validateRequest(req, res, next)) {
+        // default look for the file in this consumer's folder
+        // if not there then look in the common files
+        const options = {
+          dotfiles: 'deny',
+          headers: {
+            'x-timestamp': Date.now(),
+            'x-sent': true
+          },
+          // From Express documentation
+          // When the root option is provided, the path argument is allowed to be a relative path, including containing ... Express will validate that the relative path provided as path will resolve within the given root option.
+          // consumerDirectory is set in _validateRequest
+          root: req.consumerDirectory
+        }
+        const fileName = req.params.name
+        let testName = path.join(req.consumerDirectory, fileName)
+        function sendIt (fileName, options) {
+          console.log('sendFile', fileName, ' options', options)
+          res.sendFile(fileName, options, function (err) {
+            if (err) {
+              next(err)
+            } else {
+              console.log('Sent:', fileName)
+            }
+          })
+        }
+        // console.log('CN fs.access with testName', testName)
+        fs.access(testName, fs.constants.F_OK, (err) => {
+          if (!err) {
+            sendIt(fileName, options)
+          } else {
+            // console.log('CN could not find file in consumer\'s directory', fileName)
+            let testName = path.join(filesCommon, fileName)
+            // console.log('CN testName', testName)
+            fs.access(testName, fs.constants.F_OK, (err) => {
+              if (!err) {
+                // console.log('CN found in common', fileName, filesCommon)
+                // Change the root to the common directory
+                options.root = filesCommon
+                sendIt(fileName, options)
+              }
+            })
+          }
+        })
+      }
+    })
+
+    /**
+     * Retain this name/consumer API endpoint for a short time.
+     * TODO remove this end point
+     */
     router.get('/:name/consumer/:consumer', async (req, res, next) => {
       if (await this._validateRequest(req, res, next)) {
         const options = {

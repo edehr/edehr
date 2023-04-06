@@ -100,12 +100,7 @@
         //)
 
     div(v-else-if="isType('select')", class="select_wrapper")
-      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="select_label")
-      div(v-if="!viewOnly", class="select", :title='inputVal')
-        select(:name="elementKey", :disabled="disabled", v-model="inputVal", v-on:change="dependentUIEvent()")
-          option(value="")
-          option(v-for="option in options", :key="option.key", :value="option.key") {{ option.text}}
-      div(v-if="viewOnly") {{ inputVal }}
+      ehr-element-select(:elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
     div(v-else-if="isType('spacer')", class="label_wrapper") <!--class="spacer"-->
       div &nbsp;
@@ -163,11 +158,13 @@ import EhrElementProfession from '@/inside/components/page/EhrElementProfession'
 import EhrElementMedication from '@/inside/components/page/EhrElementMedication'
 import UiInfo from '@/app/ui/UiInfo'
 import EhrElementCustomForm from '@/inside/components/page/EhrElementCustomForm.vue'
+import EhrElementSelect from '@/inside/components/page/EhrElementSelect.vue'
 
 export default {
   name: 'EhrElementForm',
   extends: EhrElementCommon,
   components: {
+    EhrElementSelect,
     EhrElementCustomForm,
     EhrElementMedication,
     EhrElementProfession,

@@ -23,8 +23,8 @@ export default {
     url () {
       const apiUrl = StoreHelper.apiUrlGet()
       const consumerId = StoreHelper.getAuthdConsumerId()
-      // https://edehr.org/api/files/public/Morse-Fall-Scale-score.png/consumer/5f4824e9e2e063001e4b43a6
-      return apiUrl + '/files/public/' + this.name + '/consumer/' + consumerId
+      // https://edehr.org/api/files/public/consumer/5f4824e9e2e063001e4b43a6/name/Morse-Fall-Scale-score.png
+      return apiUrl + '/files/public/consumer/' + consumerId + '/name/' + this.name
     }
   },
 }
