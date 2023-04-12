@@ -18,18 +18,26 @@ export default class Monitor {
     this.tick = 0
     this.ts = Date.now()
     this.interval = setInterval(() => {
-      this.tick++
-      this.ts = Date.now()
-      if (this.tick % DAY === 0) {
-        this.doDay()
-      } else if (this.tick % HOUR === 0) {
-        this.doHour()
-      } else if (this.tick % MINUTE === 0) {
-        this.doMinute()
-      } else {
-        this.doSecond()
+      try { this.worker() }
+      catch (error) {
+        console.error('Exit monitor.js interval worker.', error)
+        clearInterval(this.interval)
       }
     }, 1000)
+  }
+
+  worker () {
+    this.tick++
+    this.ts = Date.now()
+    if (this.tick % DAY === 0) {
+      this.doDay()
+    } else if (this.tick % HOUR === 0) {
+      this.doHour()
+    } else if (this.tick % MINUTE === 0) {
+      this.doMinute()
+    } else {
+      this.doSecond()
+    }
   }
 
   apiEvent (rec) {
@@ -37,10 +45,9 @@ export default class Monitor {
   }
 
   doDay () {
-    this.days[this.dX] = this.hurs.reduce((p, a) => p + a, 0)
+    this.days[this.dX] = this.hours.reduce((p, a) => p + a, 0)
     this.pD = this.dX
     this.dX = (this.dX + 1) % NUMBER_OF_DAYS
-    console.log('doDay TODO implement')
     this.doHour()
   }
 
@@ -110,7 +117,8 @@ export default class Monitor {
     data.lists = {
       secs: this.displayList(this.pS, this.secs),
       mins: this.displayList(this.pM, this.mins),
-      hours: this.displayList(this.pH, this.hours)
+      hours: this.displayList(this.pH, this.hours),
+      days:  this.displayList(this.pD, this.days),
     }
     return data
   }
