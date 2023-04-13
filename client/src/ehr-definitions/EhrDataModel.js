@@ -9,6 +9,9 @@ import { decoupleObject } from './common-utils'
 import {
   updateMedicationRoute
 } from './med-definitions/med-ehrData-upgrade-utils'
+import { updateRespiratory } from './ehr-data-upgrade-utils'
+
+const CURRENT_EHR_DATA_VERSION = 'ev2.2.2'
 
 /**
  * WARNING Do not edit this code unless you are working in the ehr-workspace common
@@ -16,7 +19,6 @@ import {
  */
 
 export default class EhrDataModel {
-
 
   static MetaEhrVersion (ehrData) {
     const meta = ehrData.meta || {}
@@ -63,13 +65,16 @@ export default class EhrDataModel {
     this._ehrData = updateAllVisitTime(this)
     // med route just updates inhaler to inhalation in med orders
     this._ehrData = updateMedicationRoute(this)
+
+    console.log('---------------- update resp')
+    this._ehrData = updateRespiratory(this)
     // updateAllRowIds inserts a row id into any row that doesn't yet have one.
-    // This is the prefered way to generate row ids. Insert new row and reload the whole ehr object into this model.
+    // This is the preferred way to generate row ids. Insert new row and reload the whole ehr object into this model.
     // It's fast enough for the size of data sets we see.
     // Think, max 40ish pages, average 1.5 tables/pg, average 1.5 rows/table ... 90 rows to look at
     this._ehrData = updateAllRowIds(this._ehrData)
     this._ehrData.meta.simTime = visitTimeInEhrDataV2(this._ehrData)
-    this._ehrData.meta.ehrVersion = 'ev2.2.0'
+    this._ehrData.meta.ehrVersion = CURRENT_EHR_DATA_VERSION
     // console.log('Loaded EhrDataModel', this._ehrData.meta)
   }
 

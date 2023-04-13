@@ -1,6 +1,5 @@
 import EhrDataModel from '../ehr-definitions/EhrDataModel'
 import { updateAllVisitTime } from '../ehr-definitions/ehr-data-model-utils'
-import initialData from '../resources/sampleMedsForTimeline.json'
 
 const should = require('should')
 const ehrData = {
