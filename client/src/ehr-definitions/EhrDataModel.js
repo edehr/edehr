@@ -66,7 +66,6 @@ export default class EhrDataModel {
     // med route just updates inhaler to inhalation in med orders
     this._ehrData = updateMedicationRoute(this)
 
-    console.log('---------------- update resp')
     this._ehrData = updateRespiratory(this)
     // updateAllRowIds inserts a row id into any row that doesn't yet have one.
     // This is the preferred way to generate row ids. Insert new row and reload the whole ehr object into this model.

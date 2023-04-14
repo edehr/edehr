@@ -17,10 +17,13 @@ export const EHR_EVENT_BUS = new EventEmitter()
 export const EHR_SEED_EVENT = 'EHR_SEED_EVENT'
 export const EHR_AD_EVENT = 'EHR_AD_EVENT'
 
+export const FOR_TEST_LAST_EVENT = { lastAction: '', lastType: '' }
 
 EHR_EVENT_BUS.on(EHR_AD_EVENT, (payload) => {
   if(isTestEnv) {
     debug(payload.action, 'update AD updated:', payload.updated)
+    FOR_TEST_LAST_EVENT.lastAction = payload.action
+    FOR_TEST_LAST_EVENT.lastType = 'AD'
     return
   }
   ehrTrace(JSON.stringify(payload))
@@ -30,6 +33,8 @@ EHR_EVENT_BUS.on(EHR_AD_EVENT, (payload) => {
 EHR_EVENT_BUS.on(EHR_SEED_EVENT, (payload) => {
   if(isTestEnv) {
     debug(payload.action, 'update Seed updated:', payload.updated)
+    FOR_TEST_LAST_EVENT.lastAction = payload.action
+    FOR_TEST_LAST_EVENT.lastType = 'SEED'
     return
   }
   if ('properties' === payload.action) {
