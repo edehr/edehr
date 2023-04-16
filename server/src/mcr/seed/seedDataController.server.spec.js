@@ -1,3 +1,5 @@
+import { FOR_TEST_LAST_EVENT } from '../../server/trace-ehr'
+
 const should = require('should')
 const mongoose = require('mongoose')
 import Helper from '../common/test-helper'
@@ -26,22 +28,17 @@ describe('SeedDataController controller testing', function () {
     done()
   })
 
-  it('SeedDataController create model', function (done) {
-    controller.create(sampleEhrData)
+  it('SeedDataController create model', function () {
+    return controller.create(sampleEhrData)
       .then(doc => {
         should.exist(doc)
         doc.should.have.property('ehrData')
         doc.ehrData.should.have.property('foo')
         seedObj = doc
-        done()
-      })
-      .catch(err => {
-        logError(`SeedDataController create ${modelName} error ${err}`)
-        done()
       })
   })
 
-  it('SeedDataController update a property in the ehr data', function (done) {
+  it('SeedDataController update a property in the ehr data', function () {
     controller.should.have.property('updateSeedEhrProperty')
     should.exist(seedObj)
     seedObj.should.have.property('_id')
@@ -50,23 +47,19 @@ describe('SeedDataController controller testing', function () {
       propertyName: 'aNewPage',
       value: { someProperty: 'someValue' }
     }
-    controller.updateSeedEhrProperty(id, payload)
+    const dummyId = 'foo'
+    return controller.updateSeedEhrProperty(dummyId, dummyId, id, payload, 'action')
       .then((resultDoc) => {
         should.exist(resultDoc)
         resultDoc.should.have.property('ehrData')
         resultDoc.ehrData.should.have.property('aNewPage')
         // should have pre-existing property
         resultDoc.ehrData.should.have.property('foo')
-        done()
-      })
-      .catch(err => {
-        logError(`SeedDataController create ${modelName} error ${err}`)
-        done()
+        'action'.should.equal(FOR_TEST_LAST_EVENT.lastAction)
       })
   })
 
-  it('SeedDataController update all the ehr data', function (done) {
-    const ID = '_id'
+  it('SeedDataController update all the ehr data', function () {
     controller.should.have.property('updateAndSaveSeedEhrData')
     should.exist(seedObj)
     seedObj.should.have.property('_id')
@@ -77,22 +70,17 @@ describe('SeedDataController controller testing', function () {
         tablePbfReview: [{ name: 'foo' }, { name: 'bar' }]
       }
     }
-    controller.updateAndSaveSeedEhrData(id, newEhrData)
+    return controller.updateAndSaveSeedEhrData(id, newEhrData)
       .then((resultDoc) => {
         should.exist(resultDoc)
         resultDoc.should.have.property('ehrData')
         resultDoc.ehrData.should.have.property('hematology')
         const pageData = resultDoc.ehrData.hematology
         pageData.should.have.property('tableCbcAnalysis')
+        /*        All rows should have id property.   */
         pageData.tableCbcAnalysis.should.have.length(2)
         const row = pageData.tableCbcAnalysis[0]
-        row.should.have.property(ID)
-        row[ID].should.equal('hematology.tableCbcAnalysis.0')
-        done()
-      })
-      .catch(err => {
-        console.error('ERROR updateAndSaveSeedEhrData', err)
-        done()
+        row['tableCbcAnalysis_id'].should.equal('hematology.tableCbcAnalysis.0')
       })
   })
 

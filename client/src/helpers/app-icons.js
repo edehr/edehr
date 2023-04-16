@@ -2,6 +2,7 @@ export const APP_ICONS = {
   activity: 'notes-medical',
   activityClose: 'hourglass-end',
   activityOpen: 'hourglass-start',
+  classList: 'user-friends',
   configure: 'cogs',
   copy: 'copy',
   consumer: 'school',

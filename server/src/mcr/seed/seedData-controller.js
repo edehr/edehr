@@ -49,6 +49,10 @@ export default class SeedDataController extends BaseController {
    * @see updateAssignmentData in activity-data-controller
    */
   async updateSeedEhrProperty (visitId, userId, id, payload, action) {
+    if (!id) {
+      console.error('updateSeedEhrProperty throw no id', id )
+      throw new Error(Text.INVALID_BASE_ID(id,'seed data'))
+    }
     let propertyName = payload.propertyName
     let value = payload.value
     const model = await this.baseFindOneQuery(id)
@@ -85,6 +89,10 @@ export default class SeedDataController extends BaseController {
     return model.save()
   }
   async updateAndSaveSeedEhrData (id, ehrData) {
+    if (!id) {
+      console.error('updateAndSaveSeedEhrData throw no id', id )
+      throw new Error(Text.INVALID_BASE_ID(id,'seed data'))
+    }
     const model = await this.baseFindOneQuery(id)
     const previous = decoupleObject(model.seedData)
     const doc = await this._saveSeedEhrData(model, ehrData)
@@ -98,6 +106,7 @@ export default class SeedDataController extends BaseController {
       updated: doc.ehrData
     }
     EHR_EVENT_BUS.emit(EHR_SEED_EVENT, payload)
+    return doc
   }
 
   deleteSeed (id) {

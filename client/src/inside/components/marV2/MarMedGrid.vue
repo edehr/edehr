@@ -169,7 +169,6 @@ export default {
     showMainMedAdminButton (med) {
       let show = false
       if (med.isStatOrOnce()) {
-        const dc = this.getDraftMarsForMed(med).length
         const mc = this.getMarsForMed(med).length
         show = mc === 0
       } else if (med.isPrn()) {
