@@ -15,7 +15,7 @@
         div(class="details-name") {{text.CLASS_LIST}}
         div(class="details-value")
           ui-link(:name="'classList'", :query="{activityId: activityId}")
-            fas-icon(class='fa', :icon='appIcons.activity')
+            fas-icon(class='fa', :icon='appIcons.classList')
             span &nbsp; {{text.CLASS_LIST_BTN}}
           span &nbsp; {{text.STUDENTS_VAL(classList.length, classSubmittedList.length)}}
       div(class="details-row")

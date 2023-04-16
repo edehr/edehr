@@ -1,16 +1,6 @@
 <template lang="pug">
   div
     // Evaluate a student page
-    div(class="flow_across menu_space_across details-container")
-      ui-link(:name="'classList'", :query="{activityId: activityId}")
-        fas-icon(class="fa", :icon="appIcons.activity")
-        span &nbsp; Return to: class list
-      div
-        span {{ activity.resource_link_title }}
-        span &nbsp; / &nbsp;
-        span {{ assignment.name }}
-
-
     div(class="details-container card selected")
       student-eval-control
       seed-structural(:ehrData='student.activityData.assignmentData')
@@ -24,7 +14,6 @@
 </template>
 
 <script>
-import { APP_ICONS } from '@/helpers/app-icons'
 import StoreHelper from '@/helpers/store-helper'
 import EvalHelper from '@/helpers/eval-helper'
 import { downArrayToCsvFile, formatTimeStr } from '@/helpers/ehr-utils'
@@ -38,7 +27,6 @@ export default {
   components: { StudentEvalControl, SeedStructural, UiButton, UiLink  },
   data () {
     return {
-      appIcons: APP_ICONS,
       testingDev: true,
     }
   },

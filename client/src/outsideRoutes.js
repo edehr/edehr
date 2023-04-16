@@ -88,7 +88,7 @@ export function outside () {
       name: 'classList',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/ClassList.vue'),
-      meta: { layout: 'lms', label: NAMES.CLASS_LIST, icon: APP_ICONS.activity, zone: ZONE_LMS }
+      meta: { layout: 'lms', label: NAMES.CLASS_LIST, icon: APP_ICONS.classList, zone: ZONE_LMS }
     },
     {
       path: '/consumer',
