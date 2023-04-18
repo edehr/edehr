@@ -319,6 +319,7 @@ export function downloadSeedToFile (seedId, sSeedContent, ehrData) {
   let name = sSeedContent.name
   let ver = sSeedContent.version
   let desc = sSeedContent.description
+  let contributors = sSeedContent.contributors
   let fName = camelcase(name)
     + (ver ? '_' + ver : '')
     + '_' + lastUpdate
@@ -326,6 +327,7 @@ export function downloadSeedToFile (seedId, sSeedContent, ehrData) {
   let data = {
     id: seedId,
     license: Text.LICENSE_FULL_TEXT,
+    contributors: contributors,
     ehrData: ehrData,
     description: desc,
     name: name,
