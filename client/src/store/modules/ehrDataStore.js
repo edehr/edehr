@@ -18,7 +18,7 @@ const getters = {
     if (StoreHelper.isSeedEditing()) {
       // no second level
     } else if (getters.ehrOnly) {
-      secondLevelData = rootGetters['ehrOnlyDemoStore/ehrOnlyData']
+      // no second level
     } else if (InstoreHelper.instoreIsInstructor(rootState)) {
       secondLevelData = StoreHelper.getCurrentEvaluationStudentAssignmentData()
     } else {
@@ -36,7 +36,7 @@ const getters = {
     if (StoreHelper.isSeedEditing()) {
       // base already set above
     } else if (getters.ehrOnly) {
-      baseLevelData = decoupleObject(rootGetters['ehrOnlyDemoStore/ehrOnlyDataSeed'])
+      baseLevelData = decoupleObject(rootGetters['ehrOnlyDemoStore/ehrOnlyData'])
       baseLevelData = ehrMarkSeed(baseLevelData)
     } else if (InstoreHelper.instoreIsInstructor(rootState)) {
       // base already set above
