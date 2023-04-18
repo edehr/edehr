@@ -1,13 +1,16 @@
 <template lang="pug">
   div(class="ehr-context-banner")
     div(v-if='isEhrOnlyDemo')
-      div {{ehrOnlyDemoText.ehrContextBannerTitle}}
-      ui-button(v-on:buttonClicked="downloadEhrOnlyData")
-        fas-icon(class="fa", :icon="appIcons.download")
-        span Download Data
+      div(class="flow_across menu_space_across")
+        div {{ehrOnlyDemoText.ehrContextBannerTitle}}
+        div(class="flow_across_last_item")
+          ui-button(v-on:buttonClicked="promptDownload")
+            fas-icon(class="fa", :icon="appIcons.upload")
+            span &nbsp; Download Data
 
     div(v-else)
       ehr-context-banner-header(@showChanged="(showVal) => show = showVal")
+    ui-confirm(ref="promptDialog", v-on:confirm="downloadEhrOnlyData", saveLabel='Save')
 </template>
 
 <script>
@@ -19,11 +22,12 @@ import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import { APP_ICONS } from '@/helpers/app-icons'
 import { ehrOnlyDemoText } from '@/appText'
 import EhrSimTime from '@/inside/components/EhrSimTime'
-import { downloadEhrOnlyToFile } from '@/helpers/ehr-utils'
+import { downloadEhrOnlyToFile, getDownloadEhrOnlyFileName } from '@/helpers/ehr-utils'
+import UiConfirm from '@/app/ui/UiConfirm.vue'
 
 export default {
   name: 'EhrContextBanner',
-  components: { UiButton, EhrSimTime, EhrContextBannerHeader, UiLink },
+  components: { UiConfirm, UiButton, EhrSimTime, EhrContextBannerHeader, UiLink },
   data: function () {
     return {
       show: false,
@@ -50,9 +54,16 @@ export default {
     },
   },
   methods: {
-    downloadEhrOnlyData () {
-      let data = StoreHelper.getMergedData()//.ehrData
-      downloadEhrOnlyToFile(data)
+    promptDownload () {
+      this.$refs.promptDialog.showDialog('Save EHR Data', 'Save the EHR data in a file that can be shared with others or imported into the EHR at a later date.')
+    },
+    closeDialog () {
+      this.$refs.promptDialog.cancelDialog()
+    },
+    downloadEhrOnlyData (filename) {
+      filename = getDownloadEhrOnlyFileName()
+      let data = StoreHelper.getMergedData()
+      downloadEhrOnlyToFile(data, filename)
     }
   },
   mounted: function () {
@@ -67,7 +78,8 @@ export default {
 @import '../../scss/definitions';
 .ehr-context-banner {
   background-color: $brand-primary-light;
-  padding: 0 $ehr-layout-padding-left;
+  padding: 5px $ehr-layout-padding-left;
   border-top: 1px solid $grey40;
+
 }
 </style>

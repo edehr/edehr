@@ -268,7 +268,7 @@ export const ehrOnlyDemoText = {
   enterEHRButtonLabel: 'Enter the EHR',
   noAccess: 'You are already logged in and using the EdEHR either from your learning management system ' +
     'or via the full EdEHR demonstration. You can not also try the EHR only demo. ',
-  ehrContextBannerTitle: 'EHR Only Demonstration View',
+  ehrContextBannerTitle: 'EHR Demonstration View',
   navPanelSubmitButton: 'Submit',
   navPanelActivityButton: 'Activity Details'
 }

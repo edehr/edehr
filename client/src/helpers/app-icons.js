@@ -28,6 +28,7 @@ export const APP_ICONS = {
   tags: 'tag', // for filtering by tag applied to an object
   trash: 'trash',
   undo: 'undo',
+  upload: 'upload',
   view: 'eye',
 
 }
