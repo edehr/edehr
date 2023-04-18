@@ -269,6 +269,10 @@ export const ehrOnlyDemoText = {
   noAccess: 'You are already logged in and using the EdEHR either from your learning management system ' +
     'or via the full EdEHR demonstration. You can not also try the EHR only demo. ',
   ehrContextBannerTitle: 'EHR Demonstration View',
+  ehrContextBannerButtonLabelDownload: 'Download EHR Data',
+  ehrContextBannerButtonLabelUpload: 'Import EHR Data',
+  ehrContextBannerSaveLabelDownload: 'Save',
+  ehrContextBannerSaveLabelUpload: 'Import',
   navPanelSubmitButton: 'Submit',
   navPanelActivityButton: 'Activity Details'
 }
