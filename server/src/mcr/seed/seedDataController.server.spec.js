@@ -5,9 +5,6 @@ const mongoose = require('mongoose')
 import Helper from '../common/test-helper'
 const helper = new Helper()
 import SeedDataController from './seedData-controller'
-import { logError} from '../../helpers/log-error'
-
-const modelName = 'SeedData'
 
 /* global describe it */
 describe('SeedDataController controller testing', function () {

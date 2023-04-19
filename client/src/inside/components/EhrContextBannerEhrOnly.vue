@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     div(class="flow_across menu_space_across")
-        div {{ehrOnlyDemoText.ehrContextBannerTitle}}
+        h3 {{ehrOnlyDemoText.ehrContextBannerTitle}}
         div Case study: {{ seedObj.name }}
         div(v-if="seedDescription") Description:
           ui-info(:text='seedDescription')
@@ -17,6 +17,7 @@
             ui-button(v-on:buttonClicked="promptDownload")
               fas-icon(class="fa", :icon="appIcons.download")
               span &nbsp; {{ehrOnlyDemoText.ehrContextBannerButtonLabelDownload}}
+        ui-button(@buttonClicked="gotoEhrOnly") Other case studies
 
     ui-confirm(ref="confirmDownload", v-on:confirm="downloadFile", :saveLabel='ehrOnlyDemoText.ehrContextBannerSaveLabelDownload')
     ui-upload-file-dialog(ref="uploadDialog", @upload='uploadSeedObj')
@@ -71,6 +72,9 @@ export default {
     },
   },
   methods: {
+    gotoEhrOnly () {
+      this.$router.push({name: 'ehrOnlyDemo'} )
+    },
     promptDownload () {
       this.$refs.confirmDownload.showDialog('Save EHR Data', 'Save the EHR data in a file that can be shared with others or imported into the EHR at a later date.')
     },
