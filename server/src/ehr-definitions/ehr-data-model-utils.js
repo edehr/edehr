@@ -5,6 +5,15 @@ import { EhrPages } from './ehr-models'
 import EhrDataModel from './EhrDataModel'
 import { decoupleObject } from './common-utils'
 
+export function updateRowElem (ehrData, pageKey, tableKey, rowIndex, elementKey, value)
+{
+  // extract the table data, update the value in the specified row and then replace table data in main data object
+  const targetData = ehrData[pageKey][tableKey]
+  targetData[rowIndex][elementKey] = value
+  ehrData[pageKey][tableKey] = targetData
+  return ehrData
+}
+
 export function updateRecHeaderElementKeys (givenEhrData) {
   const ehrData = decoupleObject(givenEhrData)
   return visitAllTables(ehrData, (page, tableKey, tableData) => {
