@@ -26,6 +26,8 @@ For further reference to writing Vue tests, please refer to the Vue Testing Hand
 
 For writing good Express tests, you should consider the following:
 
+- All files using the extension ``.spec.js`` are considered tests (and therefore run by ``npm run test``). However, since a lot of the tests required an attached database, they cannot be run in the CI pipeline (Github Actions). Therefore, all tests that do not require a database connection should be written in a file with the extension ``.system.spec.js``. Please, make sure to name your test files accordingly.
+
 - Tests should be written in a way that is easy to understand and maintain.
 
 - All axios tests should be mocked by using the project's ``axios-mock-helper`` which can be found under ``src/tests/helpers/axios-mock-helper.js``

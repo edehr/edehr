@@ -3,7 +3,7 @@
 
 ## Description
 
-EdEHR is an open source web application developed to teach medical students how to use an EHR before they enter the workforce. It can be accessed only through a learning management system (LMS) and requires a technical person to set it up. Once set up, users can access the system either as an instructor or a student. Credentials to try out either role are included below.
+EdEHR is an open source web application developed to teach medical students how to use an EHR before they enter the workforce. It can be accessed only through a learning management system (LMS) and requires a technical person to set it up. Once set up, users can access the system either as an instructor or a student.
 
 ## License
 

@@ -1,8 +1,15 @@
 # Project - EdEHR
 > Educational Electronic Health Record system: a [BCcampus](https://bccampus.ca) project.
 
-This project aims to create a student-focused Eletronic Health System where students and professors would be able to keep track of their 
-assessments. For more information on the project and it's guidelines, please refer to the [About](./about.md) section.
+
+EdEHR is an open source web application developed to teach medical students how to use an EHR before they enter the workforce. It can be accessed only through a learning management system (LMS) and requires a technical person to set it up. Once set up, users can access the system either as an instructor or a student.
+
+
+## License
+
+The master-bccampus branch is released under a copyright licence (MIT). This includes all work funded by BC Campus from project start, September 2018 to project end, January 31, 2020.
+
+Work since the BC Campus project is released under a copyleft license (GNU Affero General Public License).
 
 
 ## Documentation
@@ -32,9 +39,9 @@ The following section will walk you through the process of installing and runnin
 
 * The second step is to make sure you have a working version of npm and Node.js installed on your machine. You can find the installation instructions [here](https://nodejs.org/en/download/).
 
-* (Optional) The third step is to make sure you have a working version of Docker installed on your machine. You can find the installation instructions [here](https://docs.docker.com/engine/install/).
+* The third step is to make sure you have a working version of Docker installed on your machine. You can find the installation instructions [here](https://docs.docker.com/engine/install/).
 
-    Keep in mind that the third step is optional, in case you want the project to run in a locally installed mongodb instance, make sure to follow these steps alternatively to the third one. You can find instructions for it here [here](https://docs.mongodb.com/manual/installation/).
+    Keep in mind that, if you are able to use an installed version of MongoDB, this is optional, in case you want the project to run in a locally installed mongodb instance, make sure to follow these steps alternatively to the third one. You can find instructions for it here [here](https://docs.mongodb.com/manual/installation/).
 
 
 ## Clone the repository
@@ -63,7 +70,7 @@ By running this command in the root of the repository, you will install all the 
 
 In order to run the project, you will need to set it up in different terminal instances. The first one will be the server-side, which will be running the API and the database. The second one will be the client-side, which will be running the Vue.js application.
 
-Start the API server. From project root:
+Start the API server. From project root (make sure you have MongoDB running before starting the server):
 ```
 npm run start:server
 ```

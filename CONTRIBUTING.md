@@ -4,7 +4,7 @@ Welcome to our Github project! We are happy to have you here. We welcome contrib
 
 ## Getting started
 
-For code-related instructions, please refer to the [README](./README.md) file. You can find issues in the project's issues page and you can submit pull requests to the project's pull requests page. If you are a first-time contributor, you may find value in filtering the issues that are labeled as "good first issue".
+For code-related instructions, please refer to the [README](./README.md) file. You can find issues in the project's issues page and you can submit pull requests to the project's pull requests page. If you are a first-time contributor, you may find value in filtering the issues that are labeled as ["good first issue"](https://github.com/edehr/edehr/labels/good%20first%20issue).
 
 ## Documentation
 
@@ -13,12 +13,12 @@ We value good documentation. Please ensure that any code you contribute is well-
 Although keep in mind that the code should be straightforward and provide enough context for the reader to understand what it does. One should consider code readability as a priority over documentation. And documentation should be present to fill in the gaps, as needed.
 
 
-Another good way of documenting the behaviour of a feature should include tests. Unit tests are a great way to include documentation in the codebase. If you are adding a new feature, please consider adding tests for it. We appreciate good test coverage.
+Another good way of documenting the behaviour of a feature should include tests. Unit tests are a great way to include documentation in the codebase. If you are adding a new feature, please consider adding tests for it. We appreciate good test coverage and every server-side PR must strive for 95% coverage.
 
 For more information on testing, please refer to the [Testing](./testing.md) section.
 
 ## Filing an issue
-When filing an issue on the project, please provide these details:
+When filing an issue on the EdEHR project, please provide these details:
 
 A comprehensive list of steps to reproduce the issue.
 What you're expecting to happen compared with what's actually happening.
@@ -29,11 +29,12 @@ Please remember to format code using triple backticks (`) so that it is neatly f
 Any issue that is open for 14 days without actionable information or activity will be marked as "stalled" and then closed. Stalled issues can be re-opened if the information requested is provided.
 
 When creating an issue, please use the appropriate template. If you are unsure which template to use, please use the "Bug report" template.
-Other templates that are valuable include: 
 
-- Feature request
-- Documentation Update
-- Features to be added
+Here is a brief description of each template currently available:
+
+- Bug report- Create a report to help us improve
+- Custom issue template - Fully spec'ed out feature
+- Small task template- A task to support a larger issue
 
 ## Commit Messages
 When pushing code, you should follow the following guidelines:
