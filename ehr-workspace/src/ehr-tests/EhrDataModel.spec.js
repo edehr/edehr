@@ -204,6 +204,8 @@ describe ('EhrDataModel class methods', () => {
     e.meta.ehrVersion = 'ev2.2.1'
     EhrDataModel.IsUpToDate(e).should.equal(false, e.meta.ehrVersion)
     e.meta.ehrVersion = 'ev2.2.2'
+    EhrDataModel.IsUpToDate(e).should.equal(false, e.meta.ehrVersion)
+    e.meta.ehrVersion = 'ev2.2.3'
     EhrDataModel.IsUpToDate(e).should.equal(true, e.meta.ehrVersion)
     e.meta.ehrVersion = 'ev2.2.11'
     EhrDataModel.IsUpToDate(e).should.equal(true, e.meta.ehrVersion)
@@ -233,3 +235,15 @@ describe ('GenerateRowId', () => {
 
 })
 
+describe ('Id to parts', () => {
+  it ('IdToParts', () => {
+    const rowId = 'page.table.row'
+    const { pageKey, tableKey, rowIndex } = EhrDataModel.IdToParts(rowId)
+    should.exist(pageKey, 'pageKey')
+    should.exist(tableKey, 'tableKey')
+    should.exist(rowIndex, 'rowIndex')
+    pageKey.should.equal('page')
+    tableKey.should.equal('table')
+    rowIndex.should.equal('row')
+  })
+})

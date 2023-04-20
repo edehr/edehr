@@ -795,7 +795,9 @@ export default class EhrPageHelper {
       let startTime = performance.now()
       if (dbPerf) console.log('EhrHelperV2 PAGE_DATA_REFRESH_EVENT refresh', _this.pageKey)
       let visitInfo = store.getters['visit/visitData']
-      await store.dispatch('activityDataStore/loadActivityData', visitInfo.activityData)
+      if (visitInfo.activityData) {
+        await store.dispatch('activityDataStore/loadActivityData', visitInfo.activityData)
+      } // else is an EHR only demo situation and there is not visit data
       let elapsedTime = performance.now() - startTime
       if (dbPerf) console.log('ehr helper refreshEventHandler elapsed time ', elapsedTime)
       if (dbPerf) console.log('to do --- refresh instructor and seed editor')

@@ -1,13 +1,20 @@
 <template lang="pug">
   div(class="UiInfo showing-labels")
+    span &nbsp;
     span(:title="text")
       button(class="info-button", v-on:click="buttonClicked")
         fas-icon(class="info-icon", icon="info-circle")
-    app-dialog(:isModal="false", ref="theDialog", :useSave="false", @cancel="cancelDialog")
+    app-dialog(
+      :isModal="false",
+      ref="theDialog",
+      :useSave="false",
+      @cancel="cancelDialog",
+      cancelButtonLabel='Close'
+      )
       h2(slot="header") {{ title }}
       div(slot="body")
         p(v-html="content")
-  
+
 </template>
 
 <script>

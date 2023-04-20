@@ -9,12 +9,6 @@ class EhrOnlyDemoInner {
   isActiveEhrOnlyDemo () {
     return store.getters['ehrOnlyDemoStore/isActiveEhrOnlyDemo']
   }
-  getEhrOnlySeedData () {
-    return store.getters['ehrOnlyDemoStore/ehrOnlyDataSeed']
-  }
-  loadEhrOnlyDemo () {
-    return store.getters['ehrOnlyDemoStore/ehrOnlyData']
-  }
   saveEhrOnlyUserData (pageKey, newPageValue) {
     const payload = {pageKey, value: newPageValue}
     // console.log('saveEhrOnlyUserData:', JSON.stringify(newPageValue))
@@ -26,6 +20,10 @@ class EhrOnlyDemoInner {
   }
   selectCaseStudy (demoKey) {
     return store.dispatch('ehrOnlyDemoStore/selectCaseStudy', demoKey)
+  }
+
+  setCaseStudy (seedObj) {
+    return store.dispatch('ehrOnlyDemoStore/setCaseStudy', seedObj)
   }
 }
 

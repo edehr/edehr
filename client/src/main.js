@@ -43,6 +43,7 @@ Vue.component('inside-layout', insideLayout)
  * @param info - where in the Vue world did the error happen. In a lifecylce event? during render?
  */
 Vue.config.errorHandler = function (err, vm, info)  {
+  StoreHelper.setApiError(err.message)
   const msg = '[Global Error Handler]: Error in (' + info + '): (' + err.message + ')'
   console.error(msg)
   if (window.location.origin.includes('localhost')) {
