@@ -1,3 +1,12 @@
+# Deploying the code
+
+This document provides information on how to deploy the code. Please read it carefully.
+
+# Introduction
+
+Before deploying the code, please make sure you have read the [Code Generation Documentation](../code_generation.md). It contains crucial information regarding the code reutilization process among the front-end and back-end. Once you have carefully read the documentation, please make sure that the ``ehr-definitions`` folder is up to date between the client-side and the server-side, by making sure that all the tests pass and that the copy-common-src.sh script returns no errors. If it does, you will need to fix the errors before deploying
+
+
 ## Build for Production
 
 To run a production-ready instance you check out the code as above and have the prerequisite tools installed.
