@@ -63,12 +63,14 @@ export const Text = {
 
   ACTIVITY_PAGE: {
     ACTIVITY_LABEL: 'LMS activity',
+    ACTIVITY_MISSING: 'No learning object is linked to this activity.',
     DESCRIPTION: 'Description',
     DATES: 'Dates',
     DATES_VAL: (c,l) => `Created on ${c}. Last modified on ${l} `,
     CASE_STUDY: 'Case study',
     CLASS_LIST: 'Class list',
     CLASS_LIST_BTN: 'Go to the class list',
+    EMPTY_CLASSLIST: 'No student has yet attempted this activity.',
     LOBJ: 'Learning object',
     STATUS: 'Status',
     STUDENTS_VAL: (total, submitted) => `${total} students participating and ${submitted} students with submitted work`,

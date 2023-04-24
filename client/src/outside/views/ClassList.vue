@@ -17,9 +17,9 @@
             ui-link(:name="'learning-object'", :query="{learningObjectId: assignment._id}")
               fas-icon(class='fa', :icon='appIcons.lobj')
               span &nbsp; {{ assignment.name }}
-          div(v-else) No learning object is linked to this activity
+          div(v-else) {{ text.ACTIVITY_MISSING}}
     div(class="classlist-body")
-      div(v-if="classList.length===0") No students have attempted this activity.
+      div(v-if="classList.length===0", class='empty-message') {{ text.EMPTY_CLASSLIST }}
       div(v-else, v-for="(studentVisit) in classList", class="list-card list-element", :class="rowClass(studentVisit)")
         class-list-item(:studentVisit="studentVisit")
 </template>
@@ -99,3 +99,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '../../scss/definitions';
+.classlist-body {
+  margin-top: 1rem;
+}
+
+.empty-message {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+</style>
