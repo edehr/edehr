@@ -5,6 +5,10 @@ import { version } from 'process'
 import { logError } from '../helpers/log-error'
 const debug = require('debug')('server')
 
+if (!validateNode()) {
+  process.exit(1)
+}
+
 const ehrApp = new EhrApp(configuration)
 ehrApp.setup(configuration)
   .then(() => {
