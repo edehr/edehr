@@ -443,8 +443,7 @@ Demarcated
 Attached
 Not attached
 Epithelialization
-Rolled
-}"	eCell	eCell	eCell	eCell	eCell	"{helperText: Wound Edge: The perimeter of the wound
+Rolled}"	eCell	eCell	eCell	eCell	eCell	"{helperText: Wound Edge: The perimeter of the wound
 Diffuse: Not well defined, indistinct, difficult to clearly define wound outline
 Demarcated: Well defined, distinct, easy to clearly define wound outline
 Attached: Edge appears flush with wound bed or as a “sloping” edge

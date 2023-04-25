@@ -21860,10 +21860,6 @@ const DEFS = {
           {
             'key': 'rolled',
             'text': 'Rolled'
-          },
-          {
-            'key': '',
-            'text': ''
           }
         ],
         'tableColumn': '31',
