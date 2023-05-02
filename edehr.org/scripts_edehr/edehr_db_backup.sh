@@ -14,8 +14,8 @@ if [[ -z "$MONGODB_PWORD" ]]; then
     echo Must provide the /opt/edehr/project/deployment/.env.site file with MONGODB_PWORD
     exit
 fi
-if [[ -z "$VOLUME_STORAGE" ]]; then
-    echo Must provide the /opt/edehr/project/deployment/.env.site file with VOLUME_STORAGE
+if [[ -z "STORAGE_BACKUPS" ]]; then
+    echo Must provide the .env.site file with STORAGE_BACKUPS
     exit
 fi
 
@@ -32,7 +32,7 @@ fi
 # Location withing the docker container
 dArchive="/data/backups/${fName}"
 # Location in the file system.
-sArchive="${VOLUME_STORAGE}/backups/${fName}"
+sArchive="${STORAGE_BACKUPS}/${fName}"
 
 docker exec $ddb mongodump --db $dbName --authenticationDatabase admin -u root --archive=$dArchive --gzip --password=$MONGODB_PWORD
 echo "The new back up file is ${sArchive}"

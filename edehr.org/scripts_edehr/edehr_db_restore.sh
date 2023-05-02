@@ -13,8 +13,8 @@ if [[ -z "$MONGODB_PWORD" ]]; then
     echo Must provide the /opt/edehr/project/deployment/.env.site file with MONGODB_PWORD
     exit
 fi
-if [[ -z "$VOLUME_STORAGE" ]]; then
-    echo Must provide the /opt/edehr/project/deployment/.env.site file with VOLUME_STORAGE
+if [[ -z "STORAGE_BACKUPS" ]]; then
+    echo Must provide the .env.site file with STORAGE_BACKUPS
     exit
 fi
 
@@ -26,7 +26,7 @@ if [[ -z "$ddb" ]]; then
 fi
 
 # Location in the file system.
-sArchive="${VOLUME_STORAGE}/backups/${fName}"
+sArchive="${STORAGE_BACKUPS}/${fName}"
 
 if [ -e ${sArchive} ]
 then

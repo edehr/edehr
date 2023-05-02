@@ -26,10 +26,14 @@ toCheck.forEach( v => globalValid = globalValid && testExists(v, true) )
 
 if (testExists('NODE_ENV=production')) {
   console.log('production')
-  globalValid = globalValid && testExists('VOLUME_STORAGE=/')
+  globalValid = globalValid && testExists('STORAGE_BACKUPS=/')
+  globalValid = globalValid && testExists('STORAGE_DB_SCRIPTS=/')
+  globalValid = globalValid && testExists('STORAGE_DATABASE=/')
 } else if (testExists('NODE_ENV=development')) {
   console.log('development')
-  globalValid = globalValid && testExists('VOLUME_STORAGE=')
+  globalValid = globalValid && testExists('STORAGE_BACKUPS=')
+  globalValid = globalValid && testExists('STORAGE_DB_SCRIPTS=')
+  globalValid = globalValid && testExists('STORAGE_DATABASE=')
 } else {
   console.log('Unexpected value in NODE_ENV')
   globalValid = false
