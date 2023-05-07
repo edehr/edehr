@@ -17,6 +17,9 @@ const toCheck = [
   'MONGODB_PORT=',
   'MONGODB_PWORD=',
   'MONGODB_USER=',
+  'STORAGE_DB_SCRIPTS=',
+  'STORAGE_DATABASE=',
+  'STORAGE_BACKUPS=',
   'NODE_ENV='
 ]
 
