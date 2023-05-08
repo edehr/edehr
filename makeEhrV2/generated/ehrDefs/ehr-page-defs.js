@@ -11302,6 +11302,7 @@ const DEFS = {
         'isTable': true,
         'label': 'Lab requisitions v1',
         'addButtonText': 'Add a lab requisition assessment',
+        'tableLabel': 'This table data needs to be updated. Contact EdEHR for assistance.',
         'ehr_list': [
           {
             'label': 'Row id',
@@ -12908,6 +12909,7 @@ const DEFS = {
         'isTable': true,
         'label': 'Medication orders v1',
         'addButtonText': 'Add a v1 medication order',
+        'tableLabel': 'This data is for an older version and it needs to be updated. Contact EdEHR for assistance.',
         'ehr_list': [
           {
             'label': 'Row id',
@@ -13758,6 +13760,7 @@ const DEFS = {
         'isTable': true,
         'label': 'Medication administration records',
         'addButtonText': 'Administered',
+        'tableLabel': 'This data is for an older version and it needs to be updated. Contact EdEHR for assistance.',
         'ehr_list': [
           {
             'label': 'Row id',
@@ -15959,8 +15962,9 @@ const DEFS = {
         'pageKey': 'labResults',
         'tableKey': 'table',
         'isTable': true,
-        'label': 'Laboratory reports',
+        'label': 'Laboratory reports v1',
         'addButtonText': 'Add a laboratory report',
+        'tableLabel': 'This data is for an older version and it needs to be updated. Contact EdEHR for assistance.',
         'ehr_list': [
           {
             'label': 'Row id',
@@ -15997,7 +16001,7 @@ const DEFS = {
         ],
         'form': {
           'elementKey': 'table',
-          'label': 'Laboratory reports',
+          'label': 'Laboratory reports v1',
           'addButtonText': 'Add a laboratory report',
           'formKey': 'table',
           'ehr_groups': [

@@ -192,6 +192,7 @@ class RawInputToDef {
       label: entry.label,
       addButtonText: entry.addButtonText,
       tableAction: entry.tableAction,
+      tableLabel: entry.tableLabel,
       tableActionLabel: entry.tableActionLabel,
       ehr_list: {},
       form: form,
