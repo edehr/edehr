@@ -68,19 +68,13 @@ export default async function (forceSeeding = false) {
  */
 async function doIntegrations () {
   debug('dbSeeder. BEGIN')
+  const start = performance.now()
   const doConsumer = await checkIntegration('consumers', false)
   if (doConsumer) {
     // warning -- this function deletes all existing consumers. Since this is seeding this never happens after the first time.
     debug('dbSeeder. consumer')
     await dbCreateConsumers(true)
   }
-
-  /**
-   * Iterate over the entire db any collection that contains ehr data. E.g. seeds and activity-data
-   */
-  const start = performance.now()
-  debug('dbSeeder. updateAllEhrData')
-  await updateAllEhrData()
   const end = performance.now()
   debug('dbSeeder. DONE.', Math.round(end - start), 'ms')
 }
