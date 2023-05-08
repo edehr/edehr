@@ -11,7 +11,8 @@ export class EhrPages {
     this.pageKeyList = Object.keys(EhrDefs)
 
     /*
-    TODO These two pages contain elements with ehr_subgroups.  The constructors below do not
+    TODO remove the ehr_subgroups from the page definition system. This is an issue for an advanced developer.
+    The pages ['testPage','assessmentTools'] contain elements with ehr_subgroups.  The constructors below do not
     handle this condition.  The test page is not important. The assessmentTools page only provides
     static links and they all work on the page so they are not yet important to this EhrPages
     modeling classes.

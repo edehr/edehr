@@ -1,5 +1,6 @@
 <template lang="pug">
   div
+    div(class="page-table-intro-text", v-if="element.tableLabel") {{ element.tableLabel }}
     ehr-page-form(v-if="element.isPageForm", :form="element", :ehrHelp="ehrHelp")
     ehr-page-table(v-else, :tableDef="element", :ehrHelp="ehrHelp")
     hr
@@ -37,4 +38,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.page-table-intro-text {
+  margin-bottom: 1rem;
+}
 </style>

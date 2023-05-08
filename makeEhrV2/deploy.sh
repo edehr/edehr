@@ -3,6 +3,8 @@
 # set to exit on error and pipe error to container script
 set -e
 set -o pipefail
+source $NVM_DIR/nvm.sh;
+nvm use 18
 
 function usage() {
     echo "Usage $0 "
@@ -95,7 +97,9 @@ if [[ "$LINT" == "true" ]]
 then
   echo Run tests on EHR workspace
   echo Linting client files, including newly generated files.
+  nvm use 14
   cd ../client &&  npm run lint
+  nvm use 18
   cd ../server &&  npm run lint
   cd ../ehr-workspace && npm run test
 fi

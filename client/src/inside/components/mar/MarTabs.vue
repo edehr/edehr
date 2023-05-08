@@ -1,10 +1,10 @@
 <template lang="pug">
   div
     tabs
-      tab(name="V1 MAR")
+      tab(name="V1 MAR", v-if='showV1')
         h3 {{ todayTabName }}
         mar-today-content(:ehrHelp="ehrHelp", :marToday="marToday")
-      tab(name="V1 Summary")
+      tab(name="V1 Summary", v-if='showV1')
         mar-summary(:ehrHelp="ehrHelp")
       tab(name="V2 MAR")
         p {{v2Message}}
@@ -37,10 +37,11 @@ import MarMedGrid from '@/inside/components/marV2/MarMedGrid.vue'
 import EhrDataModel from '@/ehr-definitions/EhrDataModel'
 import { MarTimelineModel, MED_GROUPS } from '@/ehr-definitions/med-definitions/mar-model'
 import EhrDialogForm from '@/inside/components/page/EhrDialogForm.vue'
-import EhrDefs, { MAR_V2_TABLE_KEY } from '@/ehr-definitions/ehr-defs-grid'
+import EhrDefs, { MED_ORDERS_PAGE_KEY, MAR_V1_TABLE_KEY, MAR_V2_TABLE_KEY } from '@/ehr-definitions/ehr-defs-grid'
 import EhrPageElement from '@/inside/components/page/EhrPageElement.vue'
 import StoreHelper from '@/helpers/store-helper'
 import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
+import EhrData from '@/inside/components/page/ehr-data'
 
 export default {
   data () {
@@ -85,6 +86,12 @@ export default {
     // v2
     errorList () {
       return this.ehrHelp.getErrorList(MAR_V2_TABLE_KEY)
+    },
+    showV1 () {
+      const pageData = EhrData.getMergedPageData(MED_ORDERS_PAGE_KEY) || {}
+      const v1TableData = pageData[MAR_V1_TABLE_KEY]
+      console.log('v1TableData',v1TableData)
+      return v1TableData && Array.isArray(v1TableData) && v1TableData.length > 0
     },
     tableDefs () {
       return EhrDefs.getPageTables(this.pageDataKey)
