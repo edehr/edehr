@@ -4,7 +4,7 @@
 
 ## Project setup
 
-Your system needs to have nodejs version 14 (and not 13 nor 15), and npm version 6 installed.  Best to use the ```nvm``` node js version manager. https://github.com/nvm-sh/nvm 
+Your system needs to have nodejs version 18, and npm version 9 installed.  Best to use the ```nvm``` node js version manager. https://github.com/nvm-sh/nvm
 
 1. Run install on this project.
 
