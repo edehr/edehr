@@ -80,10 +80,6 @@ export default class VisitController extends BaseController {
             role: role.asText(),
             isStudent: role.isStudent,
             isInstructor: role.isInstructor,
-            // TODO use the actual incoming role to set isDeveloper
-            isDeveloper: role.isInstructor,
-            // ltiData: [JSON.stringify(ltiData)],
-            // isDeveloper: role.isDeveloper,
             returnUrl: ltiData.launch_presentation_return_url
           }
           return Visit.create(data)
