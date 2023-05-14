@@ -1,5 +1,5 @@
 const DEFAULT_FONT = '18px Source Sans Pro'
-const DEFAULT_DATA_FONT = '14px Source Sans Pro'
+const DEFAULT_DATA_FONT = '18px Source Sans Pro'
 
 export const POINT_TYPES = {
   POINT: 'point',
@@ -11,8 +11,8 @@ export const POINT_TYPES = {
 
 /* Need to used RGB values with colours. */
 export const options = {
-  pointFillColour: '#858B94', //'$grey40',
-  pointMediumColour: '#FFA500', //'orange',
+  pointFillColour: '#333333FF', //'$grey90',
+  pointMediumColour: '#FF00FF', //'#FFA500', //'orange',
   pointHighColour: '#F00',
   pointLowColour: '#00F',
   invalidMaxFontColour: '#F00',

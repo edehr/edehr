@@ -133,6 +133,7 @@ export default class VitalModel {
       v2 = [],
       v3 = []
     let bloodPressure = vitalRanges.bloodPressure
+    let pulseRate = vitalRanges.pulseRate
     let ns = bloodPressure.normal.systolic
     let dia = bloodPressure.normal.diastolic
     let systolic = {min: ns[0], high1: ns[1], high2: ns[2] }
@@ -140,17 +141,35 @@ export default class VitalModel {
     table.forEach(element => {
       let pointFillColour = options.pointFillColour
       let v = element
-      if (v.systolic < systolic.min || v.diastolic < diastolic.min) {
+      if (v.systolic < systolic.min) {
         pointFillColour = options.pointLowColour
       }
-      if (v.systolic > systolic.high1 || v.diastolic > diastolic.high1) {
+      if (v.systolic > systolic.high1) {
         pointFillColour = options.pointMediumColour
       }
-      if (v.systolic >= systolic.high2 || v.diastolic >= diastolic.high2) {
+      if (v.systolic >= systolic.high2) {
         pointFillColour = options.pointHighColour
       }
       v1.push({ value: v.systolic, pointFillColour: pointFillColour })
+
+      pointFillColour = options.pointFillColour
+      if (v.diastolic < diastolic.min) {
+        pointFillColour = options.pointLowColour
+      }
+      if (v.diastolic > diastolic.high1) {
+        pointFillColour = options.pointMediumColour
+      }
+      if (v.diastolic >= diastolic.high2) {
+        pointFillColour = options.pointHighColour
+      }
       v2.push({ value: v.diastolic, pointFillColour: pointFillColour })
+
+      pointFillColour = options.pointFillColour
+      if (v.rate > pulseRate.normal[1]) {
+        pointFillColour = options.pointHighColour
+      } else if (v.rate < pulseRate.normal[0]) {
+        pointFillColour = options.pointLowColour
+      }
       v3.push({ value: v.rate, pointFillColour: pointFillColour })
     })
 
