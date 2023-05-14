@@ -104,7 +104,6 @@ export default class UserController extends BaseController {
           activityData: 'abcde318492371857a129e0',
           consumerKey: 'Demo-1673801716740-dop5vpc',
           createDate: '2023-01-18T03:32:01.846Z',
-          isDeveloper: false,
           isInstructor: false,
           isStudent: true,
           lastVisitDate: '2023-01-18T03:32:38.435Z',

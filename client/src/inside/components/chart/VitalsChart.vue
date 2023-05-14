@@ -95,22 +95,28 @@ export default {
 
       space = 60
       ht = 250
-      vitalChart.drawChart(this.bloodSugar, y, ht)
+      vitalChart.drawChart(this.respiratory, y, ht)
+      // vitalChart.drawChart(this.bloodSugar, y, ht)
+      y += ht + space
+
+      space = 60
+      // ht = 250
+      ht = 80
+      vitalChart.drawChart(this.oxygen, y, ht)
+      // vitalChart.drawChart(this.cvp, y, ht)
       y += ht + space
 
       space = 60
       ht = 250
       vitalChart.drawChart(this.cvp, y, ht)
-      y += ht + space
-
-      space = 60
-      ht = 250
-      vitalChart.drawChart(this.respiratory, y, ht)
+      // vitalChart.drawChart(this.respiratory, y, ht)
       y += ht + space
 
       space = 20
-      ht = 80
-      vitalChart.drawChart(this.oxygen, y, ht)
+      // ht = 80
+      ht = 250
+      vitalChart.drawChart(this.bloodSugar, y, ht)
+      // vitalChart.drawChart(this.oxygen, y, ht)
       y += ht + space
 
       vitalChart.drawYLine(y)

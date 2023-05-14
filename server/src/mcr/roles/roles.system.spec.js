@@ -12,8 +12,6 @@ describe(`${typeName} testing`, function () {
     m.isValid.should.equal(true)
     m.should.have.property('isInstructor')
     m.should.have.property('isStudent')
-    m.should.have.property('isAdmin')
-    m.should.have.property('isDeveloper')
     m.isStudent.should.equal(true)
   })
 
@@ -32,32 +30,32 @@ describe(`${typeName} testing`, function () {
     }
   })
 
-  it(`${typeName} create admin`, function () {
-    let r = ['Administrator', 'SysAdmin']
-    for (let i = 0; i < r.length; i++) {
-      let m = new Role(r[i])
-      should.ok(m.isAdmin)
-      should.ok(m.isValid)
-    }
-  })
-
-  it(`${typeName} create content developer`, function () {
-    let r = ['ContentDeveloper', 'AccountAdmin', 'Creator']
-    for (let i = 0; i < r.length; i++) {
-      let m = new Role(r[i])
-      should.ok(m.isDeveloper)
-      should.ok(m.isValid)
-    }
-  })
-
-  it(`${typeName} create mixed roles`, function () {
-    let r = ['ContentDeveloper', 'Administrator', 'Instructor'].join(', ')
-    let m = new Role(r)
-    should.ok(m.isInstructor, 'instructor')
-    should.ok(m.isDeveloper, 'content developer')
-    should.ok(m.isAdmin, 'admin')
-    should.ok(m.isValid, 'valid')
-  })
+  // it(`${typeName} create admin`, function () {
+  //   let r = ['Administrator', 'SysAdmin']
+  //   for (let i = 0; i < r.length; i++) {
+  //     let m = new Role(r[i])
+  //     should.ok(m.isAdmin)
+  //     should.ok(m.isValid)
+  //   }
+  // })
+  //
+  // it(`${typeName} create content developer`, function () {
+  //   let r = ['ContentDeveloper', 'AccountAdmin', 'Creator']
+  //   for (let i = 0; i < r.length; i++) {
+  //     let m = new Role(r[i])
+  //     should.ok(m.isDeveloper)
+  //     should.ok(m.isValid)
+  //   }
+  // })
+  //
+  // it(`${typeName} create mixed roles`, function () {
+  //   let r = ['ContentDeveloper', 'Administrator', 'Instructor'].join(', ')
+  //   let m = new Role(r)
+  //   should.ok(m.isInstructor, 'instructor')
+  //   should.ok(m.isDeveloper, 'content developer')
+  //   should.ok(m.isAdmin, 'admin')
+  //   should.ok(m.isValid, 'valid')
+  // })
 
   /*
   it('should test for multiple roles being passed into the body', () => {

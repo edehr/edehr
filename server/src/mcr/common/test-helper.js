@@ -239,7 +239,6 @@ export default class Helper {
       assignment: assignment._id,
       isStudent: theRole.isStudent,
       isInstructor: theRole.isInstructor,
-      isDeveloper: theRole.isDeveloper,
       returnUrl: theLTI.launch_presentation_return_url
     }
     return data

@@ -17,7 +17,6 @@ const VisitSchema = new mongoose.Schema({
   activityData: {type: ObjectId, ref: 'ActivityData'},
   isStudent: {type: Boolean, default: false},
   isInstructor: {type: Boolean, default: false},
-  isDeveloper: {type: Boolean, default: false},
   returnUrl: {type: String},
   createDate: {type: Date, default: Date.now},
   lastVisitDate: {type: Date, default: Date.now}

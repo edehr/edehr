@@ -6,8 +6,8 @@
         mar-today-content(:ehrHelp="ehrHelp", :marToday="marToday")
       tab(name="V1 Summary", v-if='showV1')
         mar-summary(:ehrHelp="ehrHelp")
-      tab(name="V2 MAR")
-        p {{v2Message}}
+      tab(name="MAR")
+        //p {{v2Message}}
         mar-med-grid(
           v-for="prefix in groups",
           :ehrHelp="ehrHelp"
@@ -19,8 +19,8 @@
           @viewReport='showReport'
         )
         //mar-today-content-v2(:ehrHelp="ehrHelp")
-      tab(name="V2 MAR table")
-        p {{v2Message}}
+      tab(name="MAR table")
+        //p {{v2Message}}
         ehr-page-element(:element="tableDefV2", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDefV2", :errorList="errorList" )

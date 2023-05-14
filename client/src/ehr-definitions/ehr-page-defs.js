@@ -10264,6 +10264,10 @@ const DEFS = {
             'text': 'CBC with differential'
           },
           {
+            'key': 'hemoglobin',
+            'text': 'Hemoglobin'
+          },
+          {
             'key': 'hemoglobinA1C',
             'text': 'Hemoglobin A1-C'
           }

@@ -11,6 +11,7 @@
 {inputType: text}	eCell	{Label: Reason test is required}	eCell	{elementKey: reason}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkset}	eCell	{Label: Hematology}	eCell	{elementKey: hematology}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: CBC
 CBC with differential
+Hemoglobin
 Hemoglobin A1-C}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkset}	eCell	{Label: Electrolytes}	eCell	{elementKey: electrolytes}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: K
 Na
