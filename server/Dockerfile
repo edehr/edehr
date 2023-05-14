@@ -8,6 +8,7 @@ WORKDIR /usr/src/app
 
 # copy both the package.json and the package-lock.json
 COPY package*.json ./
+COPY checkNodeVersion.js ./
 
 # Force git to use https and not git protocol. Need this for the lti module
 RUN git config --global url."https://github.com/".insteadOf ssh://git@github.com/
