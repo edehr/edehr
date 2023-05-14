@@ -120,22 +120,23 @@ export function updateAllVisitTime (ehrDataModel) {
  * @returns {{visitDay: number, visitTime: string}}
  */
 export function visitTimeInEhrDataV2 (ehrData) {
+  const vdbg = false
   let vDay = 0
   let vTime = 0
   const rowWork = (pageKey, tableKey, row) => {
     const tKey = tableKey +'_time'
     const dKey = tableKey + '_day'
     if(!row.isDraft) {
-      const day = Number.parseInt(row[dKey])
-      const time = convertTimeStr(row[tKey])
-      if (!isNaN(day) && day > vDay) {
-        vDay = day
-        vTime = time ? time : vTime
-        // console.log('up the day ', vDay, vTime, pageKey, row)
+      const rowDay = Number.parseInt(row[dKey])
+      const rowTime = convertTimeStr(row[tKey])
+      if (!isNaN(rowDay) && rowDay > vDay) {
+        vDay = rowDay
+        vTime = rowTime ? rowTime : vTime
+        if (vdbg) console.log('up the day ', vDay, vTime, pageKey, row)
       } else {
-        if (time && time > vTime) {
-          vTime = time > vTime ? time : vTime
-          // console.log('up the time ', vDay, vTime, pageKey, row)
+        if (!isNaN(rowDay) && rowDay >= vDay && rowTime && rowTime > vTime) {
+          vTime = rowTime > vTime ? rowTime : vTime
+          if (vdbg) console.log('up the time ', vDay, vTime, pageKey, row)
         }
       }
     }
@@ -159,5 +160,6 @@ export function visitTimeInEhrDataV2 (ehrData) {
   // convert the found time into a string and then pad it.
   let mTime = ''+vTime
   mTime = mTime.padStart(4,'0')
+  if (vdbg) console.log('DONE ', vDay, vTime)
   return { visitDay: vDay, visitTime: mTime }
 }

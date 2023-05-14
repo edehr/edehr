@@ -18,6 +18,8 @@ export default class EhrData {
    * @returns {*|*[]}
    */
   static getMergedTableData (pageKey, tableKey) {
+    const dK = tableKey + '_day'
+    const tK = tableKey + '_time'
     const pageData = this.getMergedPageData(pageKey) || {}
     let td = pageData[tableKey]
     // decouple the table data so we don't sort the underlying merged data
@@ -30,8 +32,8 @@ export default class EhrData {
       return (a - b) * order
     }
     td.sort( (a,b) => {
-      let d = sorter(a.day, b.day)
-      let t = sorter(a.time, b.time)
+      let d = sorter(a[dK], b[dK])
+      let t = sorter(a[tK], b[tK])
       return d === 0 ? t : d
     })
     return td
