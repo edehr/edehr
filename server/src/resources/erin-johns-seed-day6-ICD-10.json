@@ -67,6 +67,9 @@
         }
       ]
     },
+    "allergies": {
+      "checkbox": "TRUE"
+    },
     "surgical": {
       "pastSurgery": [
         {
@@ -156,6 +159,112 @@
           "reasonForVisit": "Shortness of breath x 24 hours",
           "diagnosis": "COPD",
           "createdDate": "2019-05-30T09:43:19-07:00"
+        }
+      ]
+    },
+    "vitals": {
+      "table": [
+        {
+          "name": "Jason",
+          "profession": "RN",
+          "entryDay": "1",
+          "entryTime": "18:00",
+          "day": "1",
+          "time": "18:00",
+          "temperature": "36.5",
+          "source": "Axilla",
+          "strength": "Peripheral",
+          "rate": "96",
+          "rhythm": "Regular",
+          "systolic": "180",
+          "diastolic": "90",
+          "patientPosition": "Supine",
+          "respirationRate": "28",
+          "oxygenSaturation": "85%",
+          "oxygenMode": "Optiflow",
+          "createdDate": "2019-05-30T10:18:43-07:00"
+        },
+        {
+          "name": "Jason",
+          "profession": "RN",
+          "entryDay": "1",
+          "entryTime": "07:00",
+          "day": "1",
+          "time": "07:00",
+          "temperature": "36.5",
+          "source": "Axilla",
+          "strength": "Peripheral",
+          "rate": "90",
+          "rhythm": "Regular",
+          "systolic": "165",
+          "diastolic": "90",
+          "patientPosition": "Supine",
+          "respirationRate": "24",
+          "oxygenSaturation": "90%",
+          "oxygenMode": "Nasal prongs",
+          "flowRate": "5",
+          "createdDate": "2019-05-30T10:04:20-07:00"
+        },
+        {
+          "name": "Jason",
+          "profession": "RN",
+          "entryDay": "1",
+          "entryTime": "02:00",
+          "day": "1",
+          "time": "02:00",
+          "temperature": "36.5",
+          "source": "Axilla",
+          "strength": "Peripheral",
+          "rate": "86",
+          "rhythm": "Regular",
+          "systolic": "160",
+          "diastolic": "90",
+          "patientPosition": "Supine",
+          "respirationRate": "22",
+          "oxygenSaturation": "90%",
+          "oxygenMode": "Nasal prongs",
+          "createdDate": "2019-05-30T09:57:51-07:00",
+          "flowRate": "2L"
+        },
+        {
+          "name": "Jason",
+          "profession": "RN",
+          "entryDay": "0",
+          "entryTime": "20:00",
+          "day": "0",
+          "time": "20:00",
+          "temperature": "36.4",
+          "source": "Axilla",
+          "strength": "Peripheral",
+          "rate": "92",
+          "rhythm": "Regular",
+          "systolic": "170",
+          "diastolic": "90",
+          "patientPosition": "Supine",
+          "respirationRate": "26",
+          "oxygenSaturation": "84%",
+          "oxygenMode": "Room air",
+          "createdDate": "2019-05-30T09:56:14-07:00"
+        },
+        {
+          "name": "Jason",
+          "profession": "RN",
+          "entryDay": "0",
+          "entryTime": "18:00",
+          "day": "0",
+          "time": "18:00",
+          "temperature": "36.5",
+          "source": "Axilla",
+          "strength": "Peripheral",
+          "rate": "96",
+          "rhythm": "Regular",
+          "systolic": "180",
+          "diastolic": "90",
+          "patientPosition": "Sitting",
+          "respirationRate": "28",
+          "oxygenSaturation": "85%",
+          "oxygenMode": "Room air",
+          "createdDate": "2019-05-30T09:53:32-07:00"
         }
       ]
     },
@@ -336,13 +445,140 @@
         }
       ]
     },
+    "nonmedOrders": {
+      "table": [
+        {
+          "name": "Dr. Singh",
+          "profession": "Physician",
+          "day": "0",
+          "time": "20:00",
+          "order": "Chest xray",
+          "orderedBy": "Dr. Singh",
+          "dayOfReferral": "0",
+          "startDay": "0",
+          "startTime": "20:00",
+          "status": "Ordered",
+          "createdDate": "2019-05-30T22:50:10-07:00"
+        },
+        {
+          "name": "Dr. Singh",
+          "profession": "Physician",
+          "day": "0",
+          "time": "20:00",
+          "order": "ABG",
+          "orderedBy": "Dr. Singh",
+          "dayOfReferral": "0",
+          "startDay": "0",
+          "startTime": "20:00",
+          "status": "Ordered",
+          "createdDate": "2019-05-30T22:50:45-07:00"
+        },
+        {
+          "name": "Dr. Singh",
+          "profession": "Physician",
+          "day": "0",
+          "time": "20:00",
+          "order": "CBC, electrolytes, BUN, creatine",
+          "orderedBy": "Dr. Singh",
+          "dayOfReferral": "0",
+          "startDay": "0",
+          "startTime": "20:00",
+          "status": "Ordered",
+          "createdDate": "2019-05-30T22:51:21-07:00"
+        },
+        {
+          "name": "Dr. Singh",
+          "profession": "Physician",
+          "day": "0",
+          "time": "20:00",
+          "order": "Spirometry",
+          "orderedBy": "Dr. Singh",
+          "dayOfReferral": "0",
+          "startDay": "0",
+          "startTime": "20:00",
+          "status": "Ordered",
+          "createdDate": "2019-05-30T22:51:50-07:00"
+        }
+      ]
+    },
+    "referrals": {
+      "table": [
+        {
+          "name": "Dr. Singh",
+          "profession": "Physician",
+          "day": "0",
+          "time": "19:30",
+          "referralName": "Matt",
+          "referralProfession": "Resp therapy",
+          "appointmentDate": "One week",
+          "appointmentTime": "20:00",
+          "status": "Active",
+          "createdDate": "2019-05-30T22:52:30-07:00"
+        }
+      ]
+    },
+    "dischargeSummary": {
+      "clinicalSummary": "Patient arrived with chronic COPD in acute form\nPreviously diagnosed with hypertension\nDeveloped bilateral gram positive cocci pneumonia\nTreated with intravenous antibiotics and responded well",
+      "dischargeDay": "Day 1",
+      "dischargeTime": "08:00",
+      "dischargedTo": "Home"
+    },
     "billing": {
       "msp": "MSP",
       "thirdParty": false,
       "federal": false
+    },
+    "diagnosticCodes": {
+      "table": [
+        {
+          "name": "Pat",
+          "day": "6",
+          "time": "10:15",
+          "condition": "COPD",
+          "code": "J44.9",
+          "type": "M",
+          "createdDate": "2019-05-30T23:11:12-07:00"
+        },
+        {
+          "name": "Pat",
+          "day": "6",
+          "time": "10:15",
+          "condition": "COPD",
+          "code": "Z86.42",
+          "type": "3",
+          "createdDate": "2019-05-30T23:11:44-07:00"
+        },
+        {
+          "name": "Pat",
+          "day": "6",
+          "time": "10:15",
+          "condition": "COPD",
+          "code": "I10",
+          "type": "3",
+          "createdDate": "2019-05-30T23:12:04-07:00"
+        }
+      ]
+    },
+    "interventionCodes": {
+      "table": [
+        {
+          "name": "Pat",
+          "day": "6",
+          "time": "10:15",
+          "intervention": "3.GY.10.VA",
+          "createdDate": "2019-05-30T23:12:40-07:00"
+        },
+        {
+          "name": "Pat",
+          "day": "6",
+          "time": "10:15",
+          "intervention": "2.GZ.21.EA",
+          "createdDate": "2019-05-30T23:12:59-07:00"
+        }
+      ]
     }
   },
-  "description": "This EHR Seed is based on a case from 'Health Case Studies - Toward Closing the Healthcare Communication Gap'. This EHR seed reflects the initial period of a patient's stay in the hospital ",
-  "name": "Erin Johns Day 0",
+  "description": "This EHR Seed is based on a case from 'Health Case Studies - Toward Closing the Healthcare Communication Gap'. This EHR seed reflects a point during a patient's Day 2 stay in the hospital ",
+  "name": "Erin Johns Day 2",
   "version": "1.0"
 }
