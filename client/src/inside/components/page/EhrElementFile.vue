@@ -3,7 +3,7 @@
     ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="ehrFile_label")
     div(class="file-element")
       div(class="inline")
-        ehr-file-link(v-if="inputVal && inputVal.fName", :ehrFile="inputVal", :alink="false")
+        ehr-file-link(v-if="inputVal && inputVal.fName", :ehrFile="inputVal", :alink="true")
       div(class="inline select-file")
         ui-button(v-on:buttonClicked="showSelectDialog", v-bind:disabled="disabled || viewOnly", secondary, title="Select a file") {{ buttonLabel }}
     file-select-dialog(ref="fileSelectDialog", @fileSelected="fileSelected")

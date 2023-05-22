@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    a(v-if="alink", :href="url")
+    a(v-if="alink", target="_blank", :href="url")
       img(v-if="isImage", :src="url", class="thumbnail")
       div {{ name }}
     div(v-else)
