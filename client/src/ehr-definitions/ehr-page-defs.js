@@ -23409,12 +23409,12 @@ const DEFS = {
         'fqn': 'hematology.spacer166'
       },
       {
-        'elementKey': 'plot',
+        'elementKey': 'cbcScatterPlot',
         'formIndex': '1',
         'inputType': 'ehrFile',
         'label': 'CBC scatter plot',
         'tableColumn': '22',
-        'fqn': 'hematology.plot'
+        'fqn': 'hematology.cbcScatterPlot'
       },
       {
         'elementKey': 'comments',
@@ -25031,7 +25031,7 @@ const DEFS = {
           {
             'ehr_list_index': '22',
             'items': [
-              'plot'
+              'cbcScatterPlot'
             ]
           },
           {
@@ -25099,7 +25099,7 @@ const DEFS = {
               'elementKey': 'ehr_group167',
               'gIndex': '3',
               'gChildren': [
-                'plot'
+                'cbcScatterPlot'
               ]
             },
             {
@@ -25135,7 +25135,7 @@ const DEFS = {
             'PLT-interp': '',
             'MPV': '',
             'MPV-interp': '',
-            'plot': '',
+            'cbcScatterPlot': '',
             'comments': ''
           }
         },
@@ -25170,7 +25170,7 @@ const DEFS = {
           'PLT-interp',
           'MPV',
           'MPV-interp',
-          'plot',
+          'cbcScatterPlot',
           'comments'
         ],
         'hasRecHeader': true
