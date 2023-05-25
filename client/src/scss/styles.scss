@@ -158,6 +158,17 @@ $panelContentPadding: 0.5rem 1rem;
   }
 }
 
+.bigger-than-threshold4 {
+  display: inherit !important;
+}
+@media screen and (max-width: $main-width-threshold4) {
+  .smaller-than-threshold4 {
+    display: inherit !important;
+  }
+  .bigger-than-threshold4 {
+    display: none !important;
+  }
+}
 
 /* for about pages that show images of the ehr for collaborations */
 .screenshot {

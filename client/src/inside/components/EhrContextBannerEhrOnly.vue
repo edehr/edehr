@@ -1,23 +1,23 @@
 <template lang="pug">
   div
     div(class="flow_across menu_space_across")
-        h3 {{ehrOnlyDemoText.ehrContextBannerTitle}}
-        div Case study: {{ seedObj.name }}
-        div(v-if="seedDescription") Description:
-          ui-info(:text='seedDescription')
-        div(v-if="seedContributors") Contributors:
-          ui-info(title="Contributors", :text='seedContributors')
-        div(v-if="seedLicense") License:
-          ui-info(title="License", :text='seedLicense')
-        div(class="flow_across_last_item")
-          div(class="flow_across menu_space_across")
-            ui-button(v-on:buttonClicked="promptUpload")
-              fas-icon(class="fa", :icon="appIcons.upload")
-              span &nbsp; {{ehrOnlyDemoText.ehrContextBannerButtonLabelUpload}}
-            ui-button(v-on:buttonClicked="promptDownload")
-              fas-icon(class="fa", :icon="appIcons.download")
-              span &nbsp; {{ehrOnlyDemoText.ehrContextBannerButtonLabelDownload}}
-        ui-button(@buttonClicked="gotoEhrOnly") Other case studies
+      div(class="bTitle") {{ehrOnlyDemoText.ehrContextBannerTitle}}
+      div(class="bTitle") {{ seedObj.name }}
+      div(class="bigger-than-threshold4", v-if="seedDescription") Description:
+        ui-info(:text='seedDescription')
+      div(class="bigger-than-threshold4", v-if="seedContributors") Contributors:
+        ui-info(title="Contributors", :text='seedContributors')
+      div(class="bigger-than-threshold4", v-if="seedLicense") License:
+        ui-info(title="License", :text='seedLicense')
+      div(class="flow_across_last_item")
+        div(class="flow_across menu_space_across")
+          ui-button(v-on:buttonClicked="promptUpload")
+            fas-icon(class="fa", :icon="appIcons.upload")
+            span &nbsp; {{ehrOnlyDemoText.ehrContextBannerButtonLabelUpload}}
+          ui-button(v-on:buttonClicked="promptDownload")
+            fas-icon(class="fa", :icon="appIcons.download")
+            span &nbsp; {{ehrOnlyDemoText.ehrContextBannerButtonLabelDownload}}
+      ui-button(@buttonClicked="gotoEhrOnly") Other case studies
 
     ui-confirm(ref="confirmDownload", v-on:confirm="downloadFile", :saveLabel='ehrOnlyDemoText.ehrContextBannerSaveLabelDownload')
     ui-upload-file-dialog(ref="uploadDialog", @upload='uploadSeedObj')
@@ -105,6 +105,9 @@ export default {
   background-color: $brand-primary-light;
   padding: 5px $ehr-layout-padding-left;
   border-top: 1px solid $grey40;
+}
 
+.bTitle {
+  flex-grow: 4;
 }
 </style>
