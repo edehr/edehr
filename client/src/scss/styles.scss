@@ -186,7 +186,7 @@ $panelContentPadding: 0.5rem 1rem;
 @media screen and (min-width: $main-width-threshold3){
   .main-with-side-content {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 5fr 1fr;
   }
 }
 
