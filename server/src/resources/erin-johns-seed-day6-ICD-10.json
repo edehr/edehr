@@ -478,7 +478,7 @@
           "profession": "Physician",
           "day": "0",
           "time": "20:00",
-          "order": "CBC, electrolytes, BUN, creatinine",
+          "order": "CBC, electrolytes, BUN, creatine",
           "orderedBy": "Dr. Singh",
           "dayOfReferral": "0",
           "startDay": "0",
@@ -516,6 +516,12 @@
           "createdDate": "2019-05-30T22:52:30-07:00"
         }
       ]
+    },
+    "dischargeSummary": {
+      "clinicalSummary": "Patient arrived with chronic COPD in acute form\nPreviously diagnosed with hypertension\nDeveloped bilateral gram positive cocci pneumonia\nTreated with intravenous antibiotics and responded well",
+      "dischargeDay": "Day 1",
+      "dischargeTime": "08:00",
+      "dischargedTo": "Home"
     },
     "billing": {
       "msp": "MSP",
@@ -714,6 +720,55 @@
           "mar_dose": "2 puffs",
           "createdDate": "2023-05-21T22:28:30-07:00",
           "marTable_id": "medAdminRec.marTable.5"
+        }
+      ]
+    },
+    "diagnosticCodes": {
+      "table": [
+        {
+          "name": "Pat",
+          "day": "6",
+          "time": "10:15",
+          "condition": "COPD",
+          "code": "J44.9",
+          "type": "M",
+          "createdDate": "2019-05-30T23:11:12-07:00"
+        },
+        {
+          "name": "Pat",
+          "day": "6",
+          "time": "10:15",
+          "condition": "COPD",
+          "code": "Z86.42",
+          "type": "3",
+          "createdDate": "2019-05-30T23:11:44-07:00"
+        },
+        {
+          "name": "Pat",
+          "day": "6",
+          "time": "10:15",
+          "condition": "COPD",
+          "code": "I10",
+          "type": "3",
+          "createdDate": "2019-05-30T23:12:04-07:00"
+        }
+      ]
+    },
+    "interventionCodes": {
+      "table": [
+        {
+          "name": "Pat",
+          "day": "6",
+          "time": "10:15",
+          "intervention": "3.GY.10.VA",
+          "createdDate": "2019-05-30T23:12:40-07:00"
+        },
+        {
+          "name": "Pat",
+          "day": "6",
+          "time": "10:15",
+          "intervention": "2.GZ.21.EA",
+          "createdDate": "2019-05-30T23:12:59-07:00"
         }
       ]
     }

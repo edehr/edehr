@@ -70,6 +70,13 @@ export function outside () {
       meta: { layout: 'outside', label: NAMES.ABOUT_SASS, zone: ZONE_PUBLIC }
     },
     {
+      path: '/LabCon2023',
+      name: 'LabCon2023',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/landing/LabCon2023.vue'),
+      meta: { layout: 'outside', label: 'LabCon 2023', zone: ZONE_PUBLIC }
+    },
+    {
       path: '/error',
       name: 'error',
       component: () =>

@@ -51,6 +51,7 @@ export class MarTimelineModel {
    * @returns {*}
    */
   dayMedEventCount (dayNum, medOrder) {
+    dayNum = 1 * dayNum
     const moId = medOrder.id
     const tld = this.timeLineDays.find ( tlDay => dayNum === tlDay.dayNum )
     const mdb = tld.medDayBlocks.find( mdb => moId === mdb.id )
@@ -121,6 +122,8 @@ export class MarTimelineModel {
   }
 
   findTimeElement (moId, dayNum, hr) {
+    // force a string val into a number
+    dayNum = 1 * dayNum
     // MarTimelineModel days is array of TimeLineDay
     // Each TimeLineDay has dayId, dayNum, label, medOrders, array of MedDayBlock
     // Each MedDayBlock has medName, timing, max, id, medOrder, array of TimeElement

@@ -67,9 +67,6 @@
         }
       ]
     },
-    "allergies": {
-      "checkbox": "TRUE"
-    },
     "surgical": {
       "pastSurgery": [
         {
@@ -161,9 +158,6 @@
           "createdDate": "2019-05-30T09:43:19-07:00"
         }
       ]
-    },
-    "vitals": {
-      "table": []
     },
     "neurological": {
       "table": [
@@ -346,6 +340,109 @@
       "msp": "MSP",
       "thirdParty": false,
       "federal": false
+    },
+    "medicationOrders": {
+      "lastUpdate": "2023-05-21T22:07:22-07:00",
+      "medicationOrdersTable": [
+        {
+          "medicationOrdersTable_name": "Dr Notley",
+          "medicationOrdersTable_profession": "Physician",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "1400",
+          "med_timing": "od",
+          "med_route": "inha",
+          "med_reason": "to alleviate bronchospasm and improve airflow",
+          "med_medication": "Tiotropium bromide (Spiriva) inhalation capsules, 18 mcg",
+          "med_dose": "1",
+          "createdDate": "2023-05-21T21:52:33-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.0"
+        },
+        {
+          "medicationOrdersTable_name": "Dr Notley",
+          "medicationOrdersTable_profession": "Physician",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "1400",
+          "med_timing": "prn",
+          "med_route": "inha",
+          "med_medication": "Salbutamol (Ventolin) inhaler, 100 mcg:",
+          "med_dose": "2 puffs",
+          "med_scheduled": "Q6H",
+          "med_time1": "0200",
+          "med_time2": "0600",
+          "med_time3": "1200",
+          "med_time4": "1800",
+          "med_time5": "2200",
+          "med_instructions": "2 puffs as needed every 4-6 hours for rescue relief of acute symptoms.",
+          "createdDate": "2023-05-21T21:54:12-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.1"
+        },
+        {
+          "medicationOrdersTable_name": "Dr Notley",
+          "medicationOrdersTable_profession": "Physician",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "1400",
+          "med_timing": "od",
+          "med_route": "oral",
+          "med_medication": "Amlodipine besylate",
+          "med_dose": "5 mg",
+          "med_instructions": "Take one tablet orally with or without food.\nIt is important to take the medication at the same time each day to maintain consistent blood pressure control.\nMonitor blood pressure regularly to assess the response to treatment and ensure blood pressure remains within target ranges.\nAdvise the patient to adhere to a healthy lifestyle, including a balanced diet, regular exercise, weight management, and reduction in sodium intake.\nEducate the patient about potential side effects of the medication and the importance of reporting any adverse effects or concerns promptly.",
+          "createdDate": "2023-05-21T22:07:21-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.2"
+        }
+      ]
+    },
+    "medAdminRec": {
+      "lastUpdate": "2023-05-21T22:28:30-07:00",
+      "marTable": [
+        {
+          "marTable_name": "Dorothea",
+          "marTable_profession": "RN",
+          "marTable_day": "0",
+          "marTable_time": "1800",
+          "med_order_embedded": "medicationOrders.medicationOrdersTable.1",
+          "mo_medOrder": "Salbutamol (Ventolin) inhaler, 100 mcg: 2 puffs inha Q6H",
+          "mo_medInstructions": "2 puffs as needed every 4-6 hours for rescue relief of acute symptoms.",
+          "mo_schedDay": 0,
+          "mo_schedTime": "1800",
+          "mo_id": "medicationOrders.medicationOrdersTable.1",
+          "mar_status": "Administered",
+          "mar_dose": "2 puffs",
+          "medicationOrdersTable_name": "Dr Notley",
+          "medicationOrdersTable_profession": "Physician",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "1400",
+          "med_timing": "prn",
+          "med_route": "inha",
+          "med_medication": "Salbutamol (Ventolin) inhaler, 100 mcg:",
+          "med_dose": "2 puffs",
+          "med_scheduled": "Q6H",
+          "med_time1": "0200",
+          "med_time2": "0600",
+          "med_time3": "1200",
+          "med_time4": "1800",
+          "med_time5": "2200",
+          "med_instructions": "2 puffs as needed every 4-6 hours for rescue relief of acute symptoms.",
+          "createdDate": "2023-05-21T22:14:38-07:00",
+          "marTable_id": "medAdminRec.marTable.0"
+        },
+        {
+          "marTable_name": "Dorothea",
+          "marTable_profession": "RN",
+          "marTable_day": "0",
+          "marTable_time": "1800",
+          "med_order_embedded": "medicationOrders.medicationOrdersTable.0",
+          "mo_medOrder": "Tiotropium bromide (Spiriva) inhalation capsules, 18 mcg 1 inha ",
+          "mo_id": "medicationOrders.medicationOrdersTable.0",
+          "mar_status": "Administered",
+          "mar_dose": "1 puff",
+          "med_timing": "od",
+          "med_reason": "to alleviate bronchospasm and improve airflow",
+          "med_medication": "Tiotropium bromide (Spiriva) inhalation capsules, 18 mcg",
+          "med_dose": "1",
+          "createdDate": "2023-05-21T22:26:51-07:00",
+          "marTable_id": "medAdminRec.marTable.2"
+        }
+      ]
     }
   },
   "description": "This EHR Seed is based on a case from 'Health Case Studies - Toward Closing the Healthcare Communication Gap'. This EHR seed reflects the initial period of a patient's stay in the hospital ",

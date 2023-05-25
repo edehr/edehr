@@ -413,62 +413,6 @@
         }
       ]
     },
-    "medicationOrders": {
-      "lastUpdate": "2022-10-24T10:21:32-04:00",
-      "table": [
-        {
-          "name": "Leah",
-          "profession": "PharmTech",
-          "day": 0,
-          "time": "0900",
-          "medication": "med  Q6H",
-          "dose": "80mg",
-          "route": "Oral",
-          "administration": "sched",
-          "scheduled": "q6h",
-          "reason": "some reason here",
-          "instructions": "special instructions here",
-          "createdDate": "2022-10-24T10:20:25-04:00",
-          "isFromSeed": true
-        },
-        {
-          "name": "Leah",
-          "profession": "PharmTech",
-          "day": 0,
-          "time": "0900",
-          "medication": "Lisinopril",
-          "dose": "10mg",
-          "route": "Oral",
-          "administration": "od",
-          "isFromSeed": true
-        },
-        {
-          "name": "Leah",
-          "profession": "PharmTech",
-          "day": 0,
-          "time": "0910",
-          "medication": "something PRN",
-          "dose": "80mg",
-          "route": "Oral",
-          "administration": "prn",
-          "scheduled": "q6h",
-          "reason": "for pain",
-          "instructions": "special instructions here",
-          "createdDate": "2022-10-24T10:20:25-04:00",
-          "isFromSeed": true
-        },
-        {
-          "name": "Leah",
-          "profession": "PharmTech",
-          "medication": "another thing BID",
-          "dose": "81mg",
-          "route": "Oral",
-          "administration": "sched",
-          "scheduled": "BID / q12h",
-          "isFromSeed": true
-        }
-      ]
-    },
     "meta": {
       "simTime": {
         "visitDay": 1,

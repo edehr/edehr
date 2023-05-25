@@ -50,17 +50,15 @@ q4h}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: Medication orders v2}	eCell	{elementKey: medicationOrdersTable}	{pN: 25}	{fN: 2}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add a v2 medication order}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{tableAction: ["hideButton",  "medAdminRec.marTable"]}	{tableActionLabel: MAR}	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 25}	{fN: 2}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 25}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 25}	{fN: 2}	{gN: 2}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: form_label}	eCell	{Label: This new medication order form is a prototype.}	eCell	{elementKey: med_noticeLabel}	{pN: 25}	{fN: 2}	{gN: 2}	{sgN: }	{formCss: grid-span-3-columns}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.}	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	{elementKey: med_group_main}	{pN: 25}	{fN: 2}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Timing}	eCell	{elementKey: med_timing}	{pN: 25}	{fN: 2}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	"{Options: cont:=Continuous
+{inputType: ehr_group}	eCell	eCell	eCell	{elementKey: med_group_main}	{pN: 25}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Timing}	eCell	{elementKey: med_timing}	{pN: 25}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	"{Options: cont:=Continuous
 od := OD (Once a Day)
 once := Once
 prn := PRN (as needed)
 sched := Scheduled
 set := Set times
 stat := Stat}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Route}	eCell	{elementKey: med_route}	{pN: 25}	{fN: 2}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	"{Options: oral:=Oral
+{inputType: select}	eCell	{Label: Route}	eCell	{elementKey: med_route}	{pN: 25}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	"{Options: oral:=Oral
 bucc:=Buccal
 cuta:=Cutaneous
 impl:=Implant
@@ -75,9 +73,9 @@ rect:=Rectal
 subl:=Sublingual
 tran:=Transdermal
 vagi:=Vaginal}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Reason}	eCell	{elementKey: med_reason}	{pN: 25}	{fN: 2}	{gN: 3}	{sgN: }	{formCss: grid-span-3-columns}	eCell	eCell	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	{elementKey: med_group_inje}	{pN: 25}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: visble:med_route=inje,intra}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Injection location}	eCell	{elementKey: med_injectionLocation}	{pN: 25}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: arterial:=Arterial
+{inputType: text}	eCell	{Label: Reason}	eCell	{elementKey: med_reason}	{pN: 25}	{fN: 2}	{gN: 2}	{sgN: }	{formCss: grid-span-3-columns}	eCell	eCell	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	{elementKey: med_group_inje}	{pN: 25}	{fN: 2}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: visble:med_route=inje,intra}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Injection location}	eCell	{elementKey: med_injectionLocation}	{pN: 25}	{fN: 2}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: arterial:=Arterial
 epidural:=Epidural
 intramuscular:=Intramuscular
 intraosseous:=Intraosseous
@@ -85,11 +83,11 @@ intraperitoneal:=Intraperitoneal
 intrathecal:=Intrathecal
 intravenous:=Intravenous
 subcutaneous:=Subcutaneous}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	{Comments: Non-continuous}	{elementKey: med_group_non_continuous}	{pN: 25}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: lookahead}	eCell	{Label: Medication}	eCell	{elementKey: med_medication}	{pN: 25}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Medication}	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: TRUE}	eCell	eCell	eCell	{helperText: For your reference, here is a link to the EdEHR medications table. <a href="/assets/static-databases/drug.txt" target="_blank">Medications</a>. Source is <a href="https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/drug-product-database/what-data-extract-drug-product-database.html" target="_blank">https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/drug-product-database/what-data-extract-drug-product-database.html</a>}	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Dose}	eCell	{elementKey: med_dose}	{pN: 25}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	{Comments: with times}	{elementKey: med_group_with_times}	{pN: 25}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: visble:med_timing=prn,sched,set}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Scheduled}	eCell	{elementKey: med_scheduled}	{pN: 25}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: BID
+{inputType: ehr_group}	eCell	eCell	{Comments: Non-continuous}	{elementKey: med_group_non_continuous}	{pN: 25}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: lookahead}	eCell	{Label: Medication}	eCell	{elementKey: med_medication}	{pN: 25}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Medication}	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: TRUE}	eCell	eCell	eCell	{helperText: For your reference, here is a link to the EdEHR medications table. <a href="/assets/static-databases/drug.txt" target="_blank">Medications</a>. Source is <a href="https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/drug-product-database/what-data-extract-drug-product-database.html" target="_blank">https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/drug-product-database/what-data-extract-drug-product-database.html</a>}	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Dose}	eCell	{elementKey: med_dose}	{pN: 25}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	{Comments: with times}	{elementKey: med_group_with_times}	{pN: 25}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: visble:med_timing=prn,sched,set}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Scheduled}	eCell	{elementKey: med_scheduled}	{pN: 25}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: BID
 TID
 QID
 Q12H
@@ -98,19 +96,19 @@ Q6H
 Q4H
 Q2H
 Q1H}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	{Comments: with times}	{elementKey: med_prn_group}	{pN: 25}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: visble:med_timing=prn}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Max dosage}	eCell	{elementKey: med_prnMaxDosage}	{pN: 25}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	{tableColumn: 9}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	{elementKey: med_group_times}	{pN: 25}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: visble:med_timing=prn,sched,set}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Time 1}	eCell	{elementKey: med_time1}	{pN: 25}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	{dependentOn: onChange:med_scheduled}	eCell	eCell	eCell	eCell	{Validation: time24}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Time 2}	eCell	{elementKey: med_time2}	{pN: 25}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 11}	eCell	eCell	{dependentOn: onChange:med_scheduled}	eCell	eCell	eCell	eCell	{Validation: time24}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Time 3}	eCell	{elementKey: med_time3}	{pN: 25}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 12}	eCell	eCell	{dependentOn: onChange:med_scheduled}	eCell	eCell	eCell	eCell	{Validation: time24}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Time 4}	eCell	{elementKey: med_time4}	{pN: 25}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 13}	eCell	eCell	{dependentOn: onChange:med_scheduled}	eCell	eCell	eCell	eCell	{Validation: time24}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Time 5}	eCell	{elementKey: med_time5}	{pN: 25}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 14}	eCell	eCell	{dependentOn: onChange:med_scheduled}	eCell	eCell	eCell	eCell	{Validation: time24}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Time 6}	eCell	{elementKey: med_time6}	{pN: 25}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 15}	eCell	eCell	{dependentOn: onChange:med_scheduled}	eCell	eCell	eCell	eCell	{Validation: time24}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	{elementKey: med_group_infusion_c1}	{pN: 25}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	{dependentOn: visble:med_timing=cont}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Continuous description}	eCell	{elementKey: med_continuous_description}	{pN: 25}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 16}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	{elementKey: med_group_notes}	{pN: 25}	{fN: 2}	{gN: 10}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Instructions}	eCell	{elementKey: med_instructions}	{pN: 25}	{fN: 2}	{gN: 10}	{sgN: }	eCell	eCell	{tableLabel: Instructions}	{tableColumn: 17}	eCell	eCell	eCell	eCell	eCell	{Suffix: medAdminRec}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	{Comments: with times}	{elementKey: med_prn_group}	{pN: 25}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: visble:med_timing=prn}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Max dosage}	eCell	{elementKey: med_prnMaxDosage}	{pN: 25}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 9}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	{elementKey: med_group_times}	{pN: 25}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: visble:med_timing=prn,sched,set}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Time 1}	eCell	{elementKey: med_time1}	{pN: 25}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	{dependentOn: onChange:med_scheduled}	eCell	eCell	eCell	eCell	{Validation: time24}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Time 2}	eCell	{elementKey: med_time2}	{pN: 25}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	{tableColumn: 11}	eCell	eCell	{dependentOn: onChange:med_scheduled}	eCell	eCell	eCell	eCell	{Validation: time24}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Time 3}	eCell	{elementKey: med_time3}	{pN: 25}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	{tableColumn: 12}	eCell	eCell	{dependentOn: onChange:med_scheduled}	eCell	eCell	eCell	eCell	{Validation: time24}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Time 4}	eCell	{elementKey: med_time4}	{pN: 25}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	{tableColumn: 13}	eCell	eCell	{dependentOn: onChange:med_scheduled}	eCell	eCell	eCell	eCell	{Validation: time24}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Time 5}	eCell	{elementKey: med_time5}	{pN: 25}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	{tableColumn: 14}	eCell	eCell	{dependentOn: onChange:med_scheduled}	eCell	eCell	eCell	eCell	{Validation: time24}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Time 6}	eCell	{elementKey: med_time6}	{pN: 25}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	{tableColumn: 15}	eCell	eCell	{dependentOn: onChange:med_scheduled}	eCell	eCell	eCell	eCell	{Validation: time24}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	{elementKey: med_group_infusion_c1}	{pN: 25}	{fN: 2}	{gN: 8}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	{dependentOn: visble:med_timing=cont}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Continuous description}	eCell	{elementKey: med_continuous_description}	{pN: 25}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 16}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	{elementKey: med_group_notes}	{pN: 25}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Instructions}	eCell	{elementKey: med_instructions}	{pN: 25}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	{tableLabel: Instructions}	{tableColumn: 17}	eCell	eCell	eCell	eCell	eCell	{Suffix: medAdminRec}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 31}	{Label: Medication administration records}	eCell	{elementKey: medAdminRec}	{pN: 26}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: Medication administration records}	eCell	{elementKey: table}	{pN: 26}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	{tableLabel: This data is for an older version and it needs to be updated. Contact EdEHR for assistance.}	eCell	eCell	{addButtonText: Administered}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 26}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
