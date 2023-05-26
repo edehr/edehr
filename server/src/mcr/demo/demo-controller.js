@@ -3,7 +3,7 @@ import axios from 'axios'
 import qs from 'qs'
 import { demoPersonae } from '../../helpers/demo-personae'
 import { demoLimiter, validatorMiddlewareWrapper } from '../../helpers/middleware'
-import { activity1, activity2, activity3 } from '../common/assignment-defs'
+import { activity1, activity2, activity3, activity4, activity5 } from '../common/assignment-defs'
 import { fail, ok } from '../common/utils'
 import Consumer from '../consumer/consumer'
 const ObjectID = require('mongodb').ObjectId
@@ -75,6 +75,8 @@ export default class DemoController {
     await this.addSample(activity1, toolC)
     await this.addSample(activity2, toolC)
     await this.addSample(activity3, toolC)
+    await this.addSample(activity4, toolC)
+    await this.addSample(activity5, toolC)
     if (debugDC) debug('DemoController generate token')
     const demoData = {
       toolConsumerKey: theId,
@@ -95,7 +97,7 @@ export default class DemoController {
 
   listDemoActivities () {
     const response = { activities: [
-      activity1, activity2, activity3
+      activity1, activity2, activity3, activity4, activity5
     ]}
     return Promise.resolve(response)
   }
