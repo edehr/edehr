@@ -1,7 +1,7 @@
 <template lang='pug'>
   a(:href='iPath', target="_blank", class='iLink')
     img(:src='iPath', alt='bloodSmear', class='iImage')
-    div {{iName}}
+    div(class='smear-link-name') {{iName}}
 </template>
 
 <script>
@@ -34,4 +34,7 @@ export default {
   align-self: center;
 }
 
+.smear-link-name {
+  font-size: 0.9rem;
+}
 </style>
