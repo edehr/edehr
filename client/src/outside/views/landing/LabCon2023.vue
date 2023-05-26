@@ -2,16 +2,17 @@
   div(class='labcon2023')
     div(class='lcInner')
       div(class="welcome")
-        h2(class="wTitle") Welcome attendees of LabCon 2023
-        //div(class="wTitle")
-        //  a(href='https://csmls.org/')
-        //    img(src='/assets/landing/labcon2023/csmls-logo.png', alt='CSMLS Logo', width='300px')
+        h2(class="wTitle") Welcome attendees of LabCon 2023 &nbsp;
+          a(href='https://csmls.org/')
+            img(src='/assets/landing/labcon2023/csmls-logo.png', alt='CSMLS Logo', width='200px')
 
         div(class="wPanel")
           p.
-            Welcome to the EdEHR, an Educational Electronic Health Record system that contains a Lab Information System
+            Welcome to the EdEHR, an <strong>Educational</strong> Electronic Health Record system that
+            contains a Lab Information System.  This application is for anyone involved in
+            the education of healthcare professionals, in any field of practice.
 
-        lab-con-section(title="Does the EdEHR have MedLab modules?")
+        lab-con-section(title="What Med Lab modules does the EdEHR support?")
           lis-panel
 
         lab-con-section(title="Tell me how BCIT uses the EdEHR in their Hematology lab course?")
@@ -28,6 +29,9 @@
 
         lab-con-section(title="I like the EdEHR yet my school needs a feature added. Is this possible?")
           add-feature-panel
+
+        lab-con-section(title="What does 'open source' mean?")
+          open-source-panel
 
         lab-con-section(title="Who has funded the development?")
           funders-panel
@@ -55,9 +59,10 @@ import AddFeaturePanel from '@/outside/views/landing/AddFeaturePanel.vue'
 import RoadmapPanel from '@/outside/views/landing/RoadmapPanel.vue'
 import BcitHemaPanel from '@/outside/views/landing/BcitHemaPanel.vue'
 import HemaCaseStudyPanel from '@/outside/views/landing/HemaCaseStudyPanel.vue'
+import OpenSourcePanel from '@/outside/views/landing/OpenSourcePanel.vue'
 
 export default {
-  components: { HemaCaseStudyPanel, BcitHemaPanel, RoadmapPanel, AddFeaturePanel, WhyPanel, LmsPanel, LisPanel, LabConSection, FundersPanel, SaasPanel, IntroPanel, SmearImage, AppQuote },
+  components: { OpenSourcePanel, HemaCaseStudyPanel, BcitHemaPanel, RoadmapPanel, AddFeaturePanel, WhyPanel, LmsPanel, LisPanel, LabConSection, FundersPanel, SaasPanel, IntroPanel, SmearImage, AppQuote },
   data () {
     return {
       appText: appText,
@@ -111,10 +116,8 @@ export default {
     position: relative;
 
     & .wTitle {
-      margin: auto;
-      width: 50%;
-      //border: 3px solid red;
-      padding: 10px;
+      display: inline-block;
+      margin-bottom: 2rem;
     }
 
     & .wPanel {
