@@ -11,20 +11,31 @@
           p.
             Welcome to the EdEHR, an Educational Electronic Health Record system that contains a Lab Information System
 
-        button(class="accButton") What is it and why should I care?
-        div(class="accPanel")
-          intro-panel
+        lab-con-section(title="Does the EdEHR have MedLab modules?")
+          lis-panel
 
-        button(class="accButton") I like the EdEHR yet my school needs a feature added. Is this possible?
-        div(class="accPanel")
+        lab-con-section(title="Tell me how BCIT uses the EdEHR in their Hematology lab course?")
+          bcit-hema-panel
+
+        lab-con-section(title="Can I see a sample hematology case study?")
+          hema-case-study-panel
+
+        lab-con-section(title="Does it work with my school's learning management system?")
+          lms-panel
+
+        lab-con-section(title="Why is the EdEHR good?")
+          why-panel
+
+        lab-con-section(title="I like the EdEHR yet my school needs a feature added. Is this possible?")
+          add-feature-panel
+
+        lab-con-section(title="Who has funded the development?")
           funders-panel
 
-        button(class="accButton") Can I try a hematology case study?
-        div(class="accPanel")
-          hema-panel
+        lab-con-section(title="What features are on the roadmap?")
+          roadmap-panel
 
-        button(class="accButton") How can my school use this educational LIS (EdEHR)?
-        div(class="accPanel")
+        lab-con-section(title="How can my school use this educational LIS (EdEHR)?")
           saas-panel
 
 </template>
@@ -35,28 +46,50 @@ import AppQuote from '@/app/components/AppQuote'
 import SmearImage from '@/outside/views/landing/SmearImage.vue'
 import IntroPanel from '@/outside/views/landing/IntroPanel.vue'
 import SaasPanel from '@/outside/views/landing/SaasPanel.vue'
-import HemaPanel from '@/outside/views/landing/HemaPanel.vue'
 import FundersPanel from '@/outside/views/landing/FundersPanel.vue'
+import LabConSection from '@/outside/views/landing/LabConSection.vue'
+import LisPanel from '@/outside/views/landing/LisPanel.vue'
+import LmsPanel from '@/outside/views/landing/LmsPanel.vue'
+import WhyPanel from '@/outside/views/landing/WhyPanel.vue'
+import AddFeaturePanel from '@/outside/views/landing/AddFeaturePanel.vue'
+import RoadmapPanel from '@/outside/views/landing/RoadmapPanel.vue'
+import BcitHemaPanel from '@/outside/views/landing/BcitHemaPanel.vue'
+import HemaCaseStudyPanel from '@/outside/views/landing/HemaCaseStudyPanel.vue'
 
 export default {
-  components: { FundersPanel, HemaPanel, SaasPanel, IntroPanel, SmearImage, AppQuote },
+  components: { HemaCaseStudyPanel, BcitHemaPanel, RoadmapPanel, AddFeaturePanel, WhyPanel, LmsPanel, LisPanel, LabConSection, FundersPanel, SaasPanel, IntroPanel, SmearImage, AppQuote },
   data () {
     return {
       appText: appText,
     }
   },
   mounted () {
+    function openClose (panel, closer) {
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null
+        closer.style.display = 'none'
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + 'px'
+        closer.style.display = 'block'
+      }
+    }
+
     const acc = document.getElementsByClassName('accButton')
-    let i
-    for (i = 0; i < acc.length; i++) {
+    for (let i = 0; i < acc.length; i++) {
       acc[i].addEventListener('click', function () {
         this.classList.toggle('active')
         let panel = this.nextElementSibling
-        if (panel.style.maxHeight) {
-          panel.style.maxHeight = null
-        } else {
-          panel.style.maxHeight = panel.scrollHeight + 'px'
-        }
+        let closer = panel.nextElementSibling
+        openClose(panel, closer)
+      })
+    }
+    const closers = document.getElementsByClassName('closeButton')
+    for (let i = 0; i < closers.length; i++) {
+      closers[i].addEventListener('click', function () {
+        let panel = this.previousElementSibling
+        let accButton = panel.previousElementSibling
+        accButton.classList.toggle('active')
+        openClose(panel, this)
       })
     }
   }
@@ -64,30 +97,36 @@ export default {
 </script>
 <style lang='scss'>
 @import '../../../scss/definitions';
+
+.labcon2023 a {
+  font-size: 20pt;
+}
+
 .labcon2023 {
+  & h3 {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+  }
   & .welcome {
     position: relative;
 
     & .wTitle {
       margin: auto;
-      width: 40%;
+      width: 50%;
       //border: 3px solid red;
       padding: 10px;
     }
 
     & .wPanel {
       height: inherit;
-      padding: 0 18px;
-      background-color: white;
+      padding: 0;
 
       & p {
         font-size: 18pt;
       }
     }
   }
-}
 
-.labcon2023 {
   & .lcInner {
     width: 60%;
     margin: auto
@@ -142,6 +181,13 @@ export default {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
   }
 
+  & .closeButton {
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    margin-left: 10px;
+    text-decoration-line: underline;
+  }
   & .bSmears {
     display: flex;
     flex-direction: row;

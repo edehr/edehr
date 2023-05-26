@@ -1,5 +1,6 @@
 <template lang="pug">
   div
+    h3 Funding history
     p From 2018 to 2020, the
       strong  British Columbia Ministry of Advanced Education, Skills and Training
       |  funded the initial EdEHR project through
