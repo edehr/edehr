@@ -4,6 +4,8 @@ const devSeed = require('@/demos/dev-ehr-only-seed.json')
 const erin2Seed = require('@/demos/erin-johns-seed-day2-end.json')
 const woundSeed = require('@/demos/wound-case-1.json')
 const pbfCase = require('@/demos/pbf-jackson.json')
+const bonlanleBefore = require('@/demos/BonlanleAkosua_before.json')
+const bonlanleAfter = require('@/demos/BonlanleAkosua_after.json')
 
 const state = {
   ehrData: undefined,
@@ -66,6 +68,10 @@ const mutations = {
       seed = erin2Seed
     } else  if (key === 'devSeed') {
       seed = devSeed
+    } else  if (key === 'bonlanleBefore') {
+      seed = bonlanleBefore
+    }  else  if (key === 'bonlanleAfter') {
+      seed = bonlanleAfter
     }
     setSeed(state, seed)
   }

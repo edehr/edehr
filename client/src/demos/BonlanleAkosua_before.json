@@ -1,0 +1,85 @@
+{
+  "id": "646bd2e4640b290012134889",
+  "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "contributors": "Katrina Lavallee",
+  "ehrData": {
+    "meta": {
+      "simTime": {
+        "visitDay": 1,
+        "visitTime": "0730"
+      },
+      "ehrVersion": "ev2.2.3"
+    },
+    "demographics": {
+      "givenName": "Akosua",
+      "familyName": "BONLANLE",
+      "personAge": "17",
+      "gender": "Female",
+      "dateOfBirth": "2006-01-19",
+      "phn": "2013114",
+      "lastUpdate": "2023-05-22T20:40:32+00:00"
+    },
+    "hematology": {
+      "lastUpdate": "2023-05-22T20:42:25+00:00",
+      "tableCbcAnalysis": [
+        {
+          "tableCbcAnalysis_name": "Instructor",
+          "tableCbcAnalysis_day": "1",
+          "tableCbcAnalysis_time": "0730",
+          "wbc": "16.4",
+          "wbc-interp": "normal",
+          "rbc": "3.85",
+          "rbc-interp": "normal",
+          "hgb": "75",
+          "hgb-interp": "low",
+          "HCT": "0.234",
+          "HCT-interp": "low",
+          "MCV": "60.8",
+          "MCV-interp": "low",
+          "MCH": "19.5",
+          "MCH-interp": "low",
+          "MCHC": "321",
+          "MCHC-interp": "normal",
+          "RDW": "20.9",
+          "RDW-interp": "high",
+          "PLT": "395",
+          "PLT-interp": "normal",
+          "MPV": "9.8",
+          "MPV-interp": "low",
+          "comments": "Run on Sysmex XE. \nWBC Count flagged by analyzer. \nCHEMISTRY RESULTS:\nBilirubin, Total = 35 umol/L (Nvalue = 0-18umol/L)\nAlkaline Phosphatase = 64 U/L (Nvalue = 50-160 U/L)\nGGT = 49 U/L (Nvalue = <38 U/L)\nALT = 47 U/L (Nvalue = 10-50 U/L)\nAST = 52 U/L (Nvalue = <35 U/L)\nLactate Dehydrogenase = 477 U/L (Nvalue = 90-240 U/L)\nLipase = 57 U/L (Nvalue = 0-393 U/L)\nC-Reactive Protein = 11.1mg/L (Nvalue = <3.1mg/L)",
+          "wbcAverage": 0,
+          "wbcEstimate": 0,
+          "wbcLowRange": 0,
+          "wbcHighRange": 0,
+          "pltAverage": 0,
+          "pltEstimate": 0,
+          "pltLowRange": 0,
+          "pltHighRange": 0,
+          "cellCntSegNeutrophilAbs": 0,
+          "cellCntBandCellsAbs": 0,
+          "cellCntLymphAbs": 0,
+          "cellCntMonoAbs": 0,
+          "cellCntEosinAbs": 0,
+          "cellCntBasoAbs": 0,
+          "cellCntMetaAbs": 0,
+          "cellCntMyeloAbs": 0,
+          "cellCntPromyeloAbs": 0,
+          "cellCntBlastAbs": 0,
+          "cellCntReactiveLymphsAbs": 0,
+          "cellCntOtherAbs": 0,
+          "cellCntTotal": 0,
+          "createdDate": "2023-05-22T13:42:20-07:00",
+          "tableCbcAnalysis_id": "hematology.tableCbcAnalysis.0"
+        }
+      ]
+    },
+    "medical": {
+      "history": "Patient recently immigrated from Cameroon for work in Vancouver and requires blood work as part of her medical examination. ",
+      "lastUpdate": "2023-05-26T00:51:16+00:00"
+    }
+  },
+  "description": "Slide Number 18-212. Patient recently immigrated from Cameroon for work in Vancouver and requires bloodwork as part of her medical examination.",
+  "name": "Case Study Demo BEFORE - BONLANLE Akosua",
+  "version": "1.0",
+  "fileName": "caseStudyDemoBeforeBonlanleAkosua_1.0_25 May 2023.json"
+}

@@ -25,6 +25,19 @@
         p Select this case study to see a sample hematology lab technologist assignment. This case study shows the final result after a learner has completed a peripheral blood film (PBF) review based on the CBC analysis and on viewing a blood smear under a microscope.
         p This sample shows how MedLab learners can experience a part of a lab information system.  The EdEHR is evolving and, eventually, a lab information system (LIS) will be visually separated from the EHR components.
 
+      div(class="list-card list-element")
+        p
+          router-link(:to="{path: 'ehr/med-lab/hematology', query: {demoOnlyKey: 'bonlanleBefore'}}") BONLANLE Before
+        p.
+          This is a sample hematology lab technologist assignment where the blood is not normal.
+
+      div(class="list-card list-element")
+        p
+          router-link(:to="{path: 'ehr/med-lab/hematology', query: {demoOnlyKey: 'bonlanleAfter'}}") BONLANLE After
+        p.
+          This sample hematology lab technologist assignment is the same as the previous on but
+          now the PBF is completed.  
+
       div(v-if="isDev", class="list-card list-element")
         router-link(:to="{path: 'ehr', query: {demoOnlyKey: 'devSeed'}}") Dev Seed
 
