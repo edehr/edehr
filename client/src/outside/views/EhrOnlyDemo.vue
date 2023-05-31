@@ -29,14 +29,29 @@
         p
           router-link(:to="{path: 'ehr/med-lab/hematology', query: {demoOnlyKey: 'bonlanleBefore'}}") BONLANLE Before
         p.
-          This is a sample hematology lab technologist assignment where the blood is not normal.
+          Click the link above to see a sample case study for a hematology lab technologist.
+          In the learning situation the student would be given a blood smear to examine under
+          the microscope. The images below are samples that apply to this sample case study.
+        p.
+          The sample case study has been prepared with patient demographic information and
+          a CBC (complete blood count) as would typically be produced by a CBC analysis machine.
+          The technologist will prepare a PBF (peripheral blood film) review which will be the
+          basis for the lab report that will be sent to the attending physician.
+        div(class="bSmears")
+          smear-image(iName="Slide18-212BONLANLE_Akosua_004.jpg")
+          smear-image(iName="Slide18-212BONLANLE_Akosua_006.jpg")
+          smear-image(iName="Slide18-212BONLANLE_Akosua_013.jpg")
+          smear-image(iName="Slide18-212BONLANLE_Akosua_018.jpg")
+          smear-image(iName="Slide18-212BONLANLE_Akosua_020.jpg")
+          smear-image(iName="Slide18-212BONLANLE_Akosua_022.jpg")
+
 
       div(class="list-card list-element")
         p
           router-link(:to="{path: 'ehr/med-lab/hematology', query: {demoOnlyKey: 'bonlanleAfter'}}") BONLANLE After
         p.
-          This sample hematology lab technologist assignment is the same as the previous on but
-          now the PBF is completed.  
+          In this sample case study the hematology lab technologist has completed the PBF review for the
+          case study above.
 
       div(v-if="isDev", class="list-card list-element")
         router-link(:to="{path: 'ehr', query: {demoOnlyKey: 'devSeed'}}") Dev Seed
@@ -60,9 +75,11 @@ import StoreHelper from '../../helpers/store-helper'
 import UiButton from '../../app/ui/UiButton'
 import UiLink from '../../app/ui/UiLink.vue'
 import { ehrOnlyDemoText } from '@/appText'
+import SmearImage from '@/outside/views/landing/SmearImage.vue'
 
 export default {
   components: {
+    SmearImage,
     UiButton, UiLink
   },
   data () {
@@ -103,5 +120,10 @@ select {
   .ehr-only-demo {
     margin-left: 4rem;
   }
+}
+.bSmears {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 </style>
