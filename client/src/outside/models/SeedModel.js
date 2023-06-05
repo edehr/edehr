@@ -10,8 +10,8 @@ export default class SeedModel {
   }
   get pageKeys () { return this.ehrDataModel.pageKeys }
   tagListAsString () { return this.sData.tagList || ''}
-  tagListAsArray () { return this.tagListAsString.split(' ') }
-  tagListIncludes (value) { return this.tagListAsString.includes(value)}
+  tagListAsArray () { return this.tagListAsString().split(' ') }
+  tagListIncludes (value) { return this.tagListAsString().includes(value)}
 
   get hideEHRNav () { return this.tagListIncludes(HideEHR)}
   get hideLISNav () { return this.tagListIncludes(HideLIS)}
