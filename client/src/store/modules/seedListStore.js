@@ -11,12 +11,16 @@ const debugSL = false
 export const state = {
   seedDataList: [],
   sSeedId: '',
-  seedModel : {}
+  // Initialize seedModel with the inner seed property so that components
+  // can do their initial rendering while waiting for the seed data to load from API call
+  seedModel : { seed: {} }
 }
 
 export const getters = {
   seedContent: state => { return state.seedModel.seed || {}  },
   seedModel: state => { return state.seedModel },
+  hideEHRNav: state => { return state.seedModel.hideEHRNav },
+  hideLISNav: state => { return state.seedModel.hideLISNav },
 
   seedEhrData: state => {
     const edm = state.seedModel.ehrDataModel

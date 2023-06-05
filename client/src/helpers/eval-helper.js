@@ -1,5 +1,5 @@
 import router from '../router'
-import StoreHelper from './store-helper'
+import StoreHelper, { INSTRUCTOR_ACTION } from './store-helper'
 
 /**
  * Helper class with methods that assist instructors during evaluation of student's work.
@@ -16,7 +16,7 @@ class EvalHelperWorker {
     // console.log('EvalHelper forceSubmit sv', studentVisit)
     return this.changeStudent(studentVisit._id)
       .then(() => {
-        return StoreHelper.studentSubmitsAssignment(true)
+        return StoreHelper.forceSubmitsAssignment(true)
       })
       .then(() => {
         return StoreHelper.dispatchLoadClassList()
@@ -33,6 +33,7 @@ class EvalHelperWorker {
       })
   }
   goToEhr (studentVisit, customRouter = router) {
+    StoreHelper.postActionEvent(INSTRUCTOR_ACTION, 'evalInEHr')
     // The customRouter parameter is used by unit tests. Default to normal router
     customRouter.push({ name: 'ehr', query: { studentId: studentVisit._id } })
   }

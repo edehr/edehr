@@ -24,7 +24,8 @@ const ej0SeedDef = {
     ' Based on Case Study #1.' +
     ' In this case the patient has chronic obstructive pulmonary disease (COPD) with a history of asthma.',
   version: '1',
-  ehrData: ej0Seed.ehrData
+  ehrData: ej0Seed.ehrData,
+  tagList: ej0Seed.tagList
 }
 const assignment2 = {
   description: 'This learning object/assignment is based on Case Study #2.\n ' +
@@ -44,7 +45,8 @@ const ej2SeedDef = {
     ' The patient in this case study has a complicated health history.' +
     ' This simulation follows the case study up to 18:00 of Day 1.  The case study continues through to discharge on Day 4. ',
   version: '1',
-  ehrData: ej2Seed.ehrData
+  ehrData: ej2Seed.ehrData,
+  tagList: ej2Seed.tagList
 }
 const assignment3 = {
   description: 'This is a demonstration assignment illustrating how wounds (or incisions) can be monitored within the EdEHR.\n' +
@@ -60,7 +62,8 @@ const wound1SeedDef = {
   name: 'George Henry - Age 75 - Wound Care',
   description: 'George Henry is in the hospital (Day 0 12:00) and a wound assessment order has been issued for a stage 4 pressure injury',
   version: '1',
-  ehrData: wound1Seed.ehrData
+  ehrData: wound1Seed.ehrData,
+  tagList: wound1Seed.tagList
 }
 
 const assignment4 = {
@@ -75,7 +78,8 @@ const seedDef4 = {
   name: 'BONLANLE Akosua - Hematology - Before',
   description: 'Slide Number 18-212. Patient recently immigrated from Cameroon for work in Vancouver and requires bloodwork as part of her medical examination. ',
   version: '1',
-  ehrData: seed4.ehrData
+  ehrData: seed4.ehrData,
+  tagList: seed4.tagList
 }
 
 const assignment5 = {
@@ -91,7 +95,8 @@ const seedDef5 = {
   name: 'BONLANLE Akosua - Hematology - After',
   description: 'Slide Number 18-212. Patient recently immigrated from Cameroon for work in Vancouver and requires bloodwork as part of her medical examination. ',
   version: '1',
-  ehrData: seed5.ehrData
+  ehrData: seed5.ehrData,
+  tagList: seed5.tagList
 }
 export const activity1 = {
   learningObject: assignment1,

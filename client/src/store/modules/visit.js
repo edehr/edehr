@@ -78,6 +78,17 @@ const actions = {
       if (debug) console.log('loadVisit what is the visitInfo? ', visit)
       context.commit('setVisitData', visit)
     })
+  },
+  restoreAsInstructor (context) {
+    return InstoreHelper.postRequest(context, API, 'restoreAsInstructor').then(results => {
+      return results.data.token
+    })
+  },
+  visitAsStudent (context, currentActivityId) {
+    const postBody = { activityId: currentActivityId }
+    return InstoreHelper.postRequest(context, API, 'visitAsStudent', postBody).then(results => {
+      return results.data.token
+    })
   }
 }
 

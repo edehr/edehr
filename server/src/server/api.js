@@ -36,6 +36,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 const debug = require('debug')('server')
 import { logError} from '../helpers/log-error'
+import ActionsController from '../mcr/metric/actions-controller'
 
 export function apiMiddle (app, config) {
   const fileStoreOptions = {}
@@ -75,10 +76,11 @@ export function apiMiddle (app, config) {
   const acc = new ActivityDataController()
   const as = new AssignmentController(config)
   const auth = new AuthController(config)
+  const actions = new ActionsController()
   const fc = new FeedbackController(config)
   const fileC = new FilesController(config)
   const look = new LookaheadController()
-  const vc = new VisitController()
+  const vc = new VisitController(config)
   const cc = new ConsumerController()
   const uc = new UserController(config)
   const sd = new SeedDataController()
@@ -104,6 +106,7 @@ export function apiMiddle (app, config) {
   cc.setSharedControllers(lcc)
   demo.setSharedControllers(lcc)
   act.setSharedControllers(lcc)
+  vc.setSharedControllers(lcc)
 
   // const justCors = [
   //   cors(corsOptions)
@@ -154,6 +157,7 @@ export function apiMiddle (app, config) {
 
       api.use('/api/metric', cors(corsOptions), metric.route())
       api.use('/metric', cors(corsOptions), metric.route())
+      api.use('/actions', cors(), actions.route())
 
       // Inside API
       api.use('/activities', middleWare, act.route())
@@ -169,6 +173,7 @@ export function apiMiddle (app, config) {
       // for use behind a proxy:
       api.use('/utils', cors(corsOptions), utils.route(config))
       api.use('/api/utils', cors(corsOptions), utils.route(config))
+      api.use('/api/actions', cors(), actions.route())
 
       api.use('/api/activities', middleWare, act.route())
       api.use('/api/activity-data', middleWare, acc.route())

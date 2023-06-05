@@ -12,12 +12,12 @@
         div(class="details-name") Type
         div(class="details-value") {{ course.type }}
       div(
-        v-for="(activity, index) in course.activities",
-        :key="activity._id",
+        v-for="(activityItem, index) in course.activities",
+        :key="activityItem._id",
         class="list-card list-element",
-        :class="rowClass(course)"
+        :class="rowClass(activityItem)"
         )
-        course-activity-list-item(:id="activity._id", :activity='activity')
+        course-activity-list-item(:id="activityItem._id", :activity='activityItem')
 </template>
 
 <script>
@@ -35,11 +35,15 @@ export default {
   computed: {
     courses () {
       return this.$store.getters['instructor/courseList']
-    }
+    },
+    selectedActivityId () {
+      return this.$store.getters['activityStore/activityId']
+    },
+
   },
   methods: {
     rowClass: function (item) {
-      let selected = item._id === this.$route.query.activityId
+      let selected = item._id === this.selectedActivityId
       let classString = selected ? 'selected ' : ''
       return `${classString}`
     },

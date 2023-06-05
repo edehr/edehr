@@ -20,6 +20,8 @@ const state = {
   outsideShowButtonLabels: true,
   smallWindow: false,
   sysMessage: '',
+  showingEHR: true,
+  showingLIS: true
 }
 
 const getters = {
@@ -36,6 +38,8 @@ const getters = {
   pageTitle: state => state.pageTitle,
   pageZone: state => state.pageZone,
   sysMessage: state => state.sysMessage,
+  showingEHR: state => state.showingEHR,
+  showingLIS: state => state.showingLIS
 }
 
 const actions = {
@@ -59,6 +63,12 @@ const actions = {
       return rData
     })
   },
+  postActionEvent (context, payload) {
+    const url = 'action'
+    return InstoreHelper.postRequest(context, 'actions', url, payload).then(response => {
+      return response.data
+    })
+  },
   setOutsideShowButtonLabels ({ commit }, value) {
     if (trace) console.log('set show', value)
     commit('setOutsideShowButtonLabels', value)
@@ -69,6 +79,18 @@ const actions = {
   },
   setCondensedTableVertical ( {commit}, value) {
     commit('setCondensedTableVertical', value)
+  },
+  setShowEHR ( {commit}, value ) {
+    commit('setShowEHR', value)
+  },
+  setShowLIS ( {commit}, value ) {
+    commit('setShowLIS', value)
+  },
+  toggleShowEHR ( {commit} ) {
+    commit('toggleShowEHR')
+  },
+  toggleShowLIS ( {commit} ) {
+    commit('toggleShowLIS')
   }
 }
 
@@ -145,6 +167,18 @@ const mutations = {
   setOutsideShowButtonLabels: (state, value) => {
     localStorage.setItem('ShowButtonLabels', value)
     state.outsideShowButtonLabels = value
+  },
+  setShowEHR: (state, show) => {
+    state.showingEHR = show
+  },
+  setShowLIS: (state, show) => {
+    state.showingLIS = show
+  },
+  toggleShowEHR: (state) => {
+    state.showingEHR = !state.showingEHR
+  },
+  toggleShowLIS: (state) => {
+    state.showingLIS = !state.showingLIS
   },
 }
 

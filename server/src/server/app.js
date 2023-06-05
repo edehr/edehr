@@ -9,6 +9,7 @@ import { Text } from '../config/text'
 import { sentryDebugLimiter } from '../helpers/middleware'
 import { logError } from '../helpers/log-error'
 import { setUpEhrTraceLogger } from './trace-ehr'
+import { setUpActionLogger } from './trace-actions'
 const debug = require('debug')('server')
 const helmet = require('helmet')
 
@@ -48,6 +49,7 @@ export default class EhrApp {
   }
 
   setup (config) {
+    setUpActionLogger(config)
     setUpEhrTraceLogger(config)
     let app = this.app
     if (config.sentryDsn) {

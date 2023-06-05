@@ -97,7 +97,7 @@ async  function onPageChange (toRoute, fromRoute) {
       // client will use. This two step token verification process makes sure the incoming request
       // is from the expected api server and no-where else.
       if (dbApp) console.log('_loadAuth refresh token', authHelper.hashToken(refreshToken))
-      await StoreHelper.fetchAndStoreAuthToken(refreshToken)
+      await StoreHelper.fetchAndStoreRefreshToken(refreshToken)
       // fetch throws if token is expired or invalid
       if (dbApp) console.log('on new auth we need to clear out previous visit id')
       await StoreHelper.setVisitId()
@@ -174,7 +174,7 @@ async  function onPageChange (toRoute, fromRoute) {
 
     // If a student is coming from the My Activities page then the query has the intended visitId
     const optionalVisitId = toRoute.query.visitId
-    // console.log('optionalVisitId',optionalVisitId)
+    if (dbApp && optionalVisitId) console.log('query string came with visitId:',optionalVisitId)
 
     if (authToken) {
       if (dbApp) console.log('onPageChange is authed so load data')

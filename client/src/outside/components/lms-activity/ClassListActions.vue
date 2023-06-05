@@ -37,7 +37,7 @@
 
 <script>
 import { APP_ICONS } from '@/helpers/app-icons'
-import StoreHelper from '@/helpers/store-helper'
+import StoreHelper, { INSTRUCTOR_ACTION } from '@/helpers/store-helper'
 import EvalHelper from '@/helpers/eval-helper'
 import { Text } from '@/helpers/ehr-text'
 import UiButton from '@/app/ui/UiButton.vue'
@@ -66,6 +66,7 @@ export default {
   methods: {
     // evaluation
     goToEvaluation () {
+      StoreHelper.postActionEvent(INSTRUCTOR_ACTION, 'evalInCondensed')
       this.$router.push({ name: 'eval-student', query: { visitId: this.studentVisitId } })
     },
     enableEvaluation () {

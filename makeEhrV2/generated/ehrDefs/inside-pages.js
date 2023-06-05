@@ -448,7 +448,7 @@ module.exports = function () {
     'label': 'Med Lab Hematology',
     'redirect': '',
     'generateComponent': 'custom',
-    'menuIndex': '54'
+    'menuIndex': '56'
   },
   {
     'path': '/ehr/med-lab',
@@ -457,7 +457,7 @@ module.exports = function () {
     'label': 'Med Lab Chemistry',
     'redirect': '',
     'generateComponent': 'wip',
-    'menuIndex': '55'
+    'menuIndex': '57'
   },
   {
     'path': '/ehr/med-lab',
@@ -465,7 +465,7 @@ module.exports = function () {
     'pageDataKey': 'medLabImaging',
     'label': 'Med Lab Medical Imaging',
     'generateComponent': 'wip',
-    'menuIndex': '56'
+    'menuIndex': '58'
   },
   {
     'path': '/ehr/current',
@@ -474,6 +474,22 @@ module.exports = function () {
     'label': 'Clinical Order Sets',
     'generateComponent': 'yes',
     'menuIndex': '25'
+  },
+  {
+    'path': '/ehr/med-lab',
+    'routeName': 'med-lab-demographics',
+    'pageDataKey': 'medLabDemographics',
+    'label': 'Med Lab Demographics',
+    'generateComponent': 'yes',
+    'menuIndex': '54'
+  },
+  {
+    'path': '/ehr/med-lab',
+    'routeName': 'med-lab-accession',
+    'pageDataKey': 'medLabAccession',
+    'label': 'Med Lab Accessioning',
+    'generateComponent': 'yes',
+    'menuIndex': '55'
   }
 ]
 }

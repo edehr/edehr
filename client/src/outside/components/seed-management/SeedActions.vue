@@ -31,7 +31,7 @@ export default {
     }
   },
   props: {
-    seed: {type: Object},
+    seedModel: {type: Object},
     hideCondensed: {type: Boolean, default: false}
   },
   computed: {
@@ -41,8 +41,9 @@ export default {
       let assList = StoreHelper.getAssignmentsList()
       return assList.filter(a => a.seedDataId === seed._id)
     },
+    seed () { return this.seedModel.seed },
     showLabels () { return StoreHelper.isOutsideShowButtonLabels() },
-    seedId () { return this.seed._id}
+    seedId () { return this.seedModel.id}
   },
   methods: {
     downloadSeed () {
@@ -51,13 +52,13 @@ export default {
       let sSeedContent = this.seed
       let data = sSeedContent.ehrData
 
-      downloadSeedToFile(seedId, sSeedContent, data)
+      downloadSeedToFile(seedId, sSeedContent, data, this.seedModel.tagListAsString())
     },
     gotoEhrWithSeed () {
       this.$router.push({ name: 'ehr', query: { seedEditId: this.seedId } })
     },
     showEditDialog: function () {
-      this.$refs.theDialog.showDialog(this.seed)
+      this.$refs.theDialog.showDialog(this.seedModel)
     },
     viewEhrCondensed () {
       this.$router.push({ name: 'seed-view-condensed', query: { seedId: this.seedId } })

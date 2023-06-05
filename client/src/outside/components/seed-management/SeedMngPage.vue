@@ -113,7 +113,7 @@ export default {
       // console.log('download seed for ', this.seedId)
       let sSeedContent = this.findSeed(this.seedId)
       let data = sSeedContent.ehrData
-      downloadSeedToFile(this.seedId, sSeedContent, data)
+      downloadSeedToFile(this.seedId, sSeedContent, data, sv.tagList)
     },
     downloadAll () {
       let sdList = this.seedDataList

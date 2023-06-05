@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="EhrNavList")
-    div(class="EhrNavList__teaserList")
+    div(v-show="showSystem(path)", class="EhrNavList__teaserList")
       ehr-nav-list-item(:path="path", :level="level", :opened='open')
       div(v-show="open")
         ehr-nav-list(v-for="child in path.children", v-bind:key="child.name" :path="child" :level="level + 1")
@@ -9,6 +9,7 @@
 <script>
 import EhrNavList from './EhrNavList'
 import EhrNavListItem from './EhrNavListItem'
+import StoreHelper from '@/helpers/store-helper'
 
 export default {
   name: 'EhrNavList',
@@ -22,6 +23,15 @@ export default {
         return true
       }
       return this.$store.state.visit.topLevelMenu === this.path.name
+    }
+  },
+  methods: {
+    showSystem (path) {
+      let showingLIS = StoreHelper.isLIS_Showing()
+      let showingEHR = StoreHelper.isEHR_Showing()
+      let showLIS = path.isLIS && showingLIS
+      let showEHR = path.isEHR && showingEHR
+      return showLIS || showEHR
     }
   },
   watch: {

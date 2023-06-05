@@ -24,8 +24,9 @@ export default {
     }
   },
   computed: {
+    isInstructorAsStudent () { return StoreHelper.isInstructorAsStudent() },
     items () {
-      return [
+      const menu = [
         {
           label: 'My activities',
           toolTip: 'See list of all my EdEHR activities.',
@@ -53,6 +54,18 @@ export default {
           icon: 'sign-out-alt'
         }
       ]
+      if (this.isInstructorAsStudent) {
+        menu.push({
+          horizontal: true
+        })
+        menu.push({
+          label: 'Return to my normal role',
+          toolTip: 'Exit the view as student role.',
+          callback: () => StoreHelper.restoreAsInstructor(this.$router),
+          icon: this.appIcons.course
+        })
+      }
+      return menu
     },
     panelInfo () {
       return StoreHelper.getPanelData()
@@ -60,8 +73,12 @@ export default {
     evalNotes () {
       return this.panelInfo.evaluationData ? this.panelInfo.evaluationData : 'No comments yet.'
     }
-
   },
+  methods: {
+    restoreAsInstructor () {
+      StoreHelper.restoreAsInstructor()
+    },
+  }
 }
 </script>
 

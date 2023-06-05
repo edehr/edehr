@@ -385,6 +385,20 @@ export function inside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/OrderSets.vue'),
       meta: { layout: 'inside', label: 'Clinical Order Sets', topLevel: 'current', zone: 'ehr' }
+    },
+    {
+      path: '/ehr/med-lab/med-lab-demographics',
+      name: 'med-lab-demographics',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/MedLabDemographics.vue'),
+      meta: { layout: 'inside', label: 'Med Lab Demographics', topLevel: 'med-lab', zone: 'ehr' }
+    },
+    {
+      path: '/ehr/med-lab/med-lab-accession',
+      name: 'med-lab-accession',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/MedLabAccession.vue'),
+      meta: { layout: 'inside', label: 'Med Lab Accessioning', topLevel: 'med-lab', zone: 'ehr' }
     }
   ]
 }

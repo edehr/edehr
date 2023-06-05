@@ -52,6 +52,7 @@ export default class DemoController {
     aSeed.name = theSeed.name
     aSeed.description = theSeed.description
     aSeed.ehrData = theSeed.ehrData
+    aSeed.tagList = theSeed.tagList
     let seed = await this.comCon.seedController.create(aSeed)
     const ass = Object.assign({}, assignmentData, { toolConsumer: toolC })
     if (debugDC) debug('DemoController create assignment', ass.title)

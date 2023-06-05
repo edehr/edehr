@@ -1,15 +1,15 @@
 <template lang="pug">
   div
-    div
-      zone-lms-page-banner
-        seed-list-actions
-    div
-      div(v-if="seedDataListFiltered.length === 0") Empty list
-      div(v-else, v-for="sv in seedDataListFiltered", class="list-card list-element", :class="rowClass(sv)")
-        seed-list-item(:seedModel='sv'
-          :showIds='showIds'
-          @selectSeed='(seed) => selectSeed(seed)',
-        )
+    zone-lms-page-banner
+      seed-list-actions(
+        @update:pages="updateSelectedPages"
+      )
+    div(v-if="seedDataListFiltered.length === 0") Empty list
+    div(v-else, v-for="sv in seedDataListFiltered", class="list-card list-element", :class="rowClass(sv)")
+      seed-list-item(:seedModel='sv'
+        :showIds='showIds'
+        @selectSeed='(seed) => selectSeed(seed)',
+      )
 </template>
 
 <script>

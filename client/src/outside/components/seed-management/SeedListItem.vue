@@ -7,7 +7,7 @@
       div(class="flow_across_last_item")
         div(class="flow_across")
           a(class="show-more", @click="showMore = !showMore") {{showMore ? 'show less' : 'show more'}}
-          seed-actions(:seed='seed')
+          seed-actions(:seedModel='seedModel')
     div(v-if="hasDraftReports", class="draftStyle")
       div(class="details-row")
         div(class="details-name") WARNING
@@ -44,6 +44,7 @@
         div(class="details-name") Id
         div(class="details-value") {{ seed._id }}
     div(v-if="!showMore")
+      app-tag-list(:tag-list="tagList")
       div(class="") {{truncate(seed.description, 180)}}
 </template>
 
@@ -56,9 +57,10 @@ import { Text } from '@/helpers/ehr-text'
 import SeedModel from '@/outside/models/SeedModel'
 import UiLink from '@/app/ui/UiLink'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
+import AppTagList from '@/app/components/AppTagList.vue'
 
 export default {
-  components: { UiLink, SeedActions, SeedDuplicate, UiButton, },
+  components: { AppTagList, UiLink, SeedActions, SeedDuplicate, UiButton, },
   data () {
     return {
       text: Text.SEED_VIEW_PAGE,
@@ -96,8 +98,8 @@ export default {
     },
     seed () { return this.seedModel.seed},
     seedStats () { return this.seed.ehrData ? this.ehrPages.ehrPagesStats(this.seed.ehrData) : {} },
-    statsMeta ( ) { return this.seedStats.meta || {}}
-
+    statsMeta ( ) { return this.seedStats.meta || {}},
+    tagList () { return this.seedModel.tagListAsArray()}
   },
   methods: {
     truncate (input, lim) {

@@ -226,7 +226,7 @@ describe('Test support for seed import', () => {
     const sSeedContent = mockData.seedData
     const ehrData = { demographics: { firstName: 'foo' } }
     should.doesNotThrow(() => {
-      const result = ehrUtils.downloadSeedToFile(seedId, sSeedContent, ehrData)
+      const result = ehrUtils.downloadSeedToFile(seedId, sSeedContent, ehrData,'A tag list')
       should.not.exist(result)
       done()
     })

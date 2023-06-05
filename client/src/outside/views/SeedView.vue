@@ -1,7 +1,7 @@
 <template lang='pug'>
   div
     zone-lms-page-banner
-      seed-actions(class="flow_across_last_item", :seed="seed")
+      seed-actions(class="flow_across_last_item", :seedModel='seedModel')
     div(class="details-container card selected", :class='{ draftStyle: hasDraftReports }')
       div(v-if="hasDraftReports", class="details-row")
         div(class="details-name") WARNING
@@ -12,6 +12,10 @@
       div(class="details-row")
         div(class="details-name") {{ text.SEED_LABEL }}
         div(class="details-value") {{seed.name}}
+      div(class="details-row")
+        div(class="details-name") Tags
+        div(class="details-value")
+          app-tag-list(:tag-list="tagList")
       div(class="details-row")
         div(class="details-name") {{text.DESCRIPTION}}
         div(class="details-value")
@@ -56,10 +60,11 @@ import SeedDataDialog from '@/outside/components/seed-management/SeedDataDialog'
 import OutsideCommon from '@/outside/views/OutsideCommon'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
+import AppTagList from '@/app/components/AppTagList.vue'
 
 export default {
   extends: OutsideCommon,
-  components: { ZoneLmsPageBanner, SeedActions, SeedDataDialog, SeedListLink, UiButton, SeedDuplicate, SeedStructural, UiLink },
+  components: { AppTagList, ZoneLmsPageBanner, SeedActions, SeedDataDialog, SeedListLink, UiButton, SeedDuplicate, SeedStructural, UiLink },
   data () {
     return {
       appIcons: APP_ICONS,
@@ -89,11 +94,14 @@ export default {
       // console.log( withContent[0] ? withContent[0].pageTitle : '' )
       return withContent.map( pg => pg.pageTitle).sort()
     },
-    seed () { return this.$store.getters['seedListStore/seedContent'] },
+    seed () { return this.seedModel.seed || {} },
     seedId () { return this.seedModel.id},
-    seedModel () { return this.$store.getters['seedListStore/seedModel'] },
+    seedModel () {
+      return this.$store.getters['seedListStore/seedModel']
+    },
     seedStats () { return this.seed.ehrData ? this.ehrPages.ehrPagesStats(this.seed.ehrData) : {} },
-    statsMeta ( ) { return this.seedStats.meta || {}}
+    statsMeta ( ) { return this.seedStats.meta || {}},
+    tagList () { return this.seedModel.tagListAsArray()}
   },
   methods: {
     downloadSeed () {
@@ -101,7 +109,7 @@ export default {
       // console.log('download seed for ', seedId)
       let sSeedContent = this.seed
       let data = sSeedContent.ehrData
-      downloadSeedToFile(seedId, sSeedContent, data)
+      downloadSeedToFile(seedId, sSeedContent, data, this.seed.tagList)
     },
     gotoEhrWithSeed () {
       this.$router.push({ name: 'ehr', query: { seedEditId: this.seedId } })
