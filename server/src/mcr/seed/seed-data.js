@@ -13,7 +13,8 @@ const Schema = new mongoose.Schema(
     contributors: { type: String },
     ehrData: { type: Object, default: {} },
     createDate: { type: Date, default: Date.now },
-    lastUpdateDate: { type: Date, default: Date.now }
+    lastUpdateDate: { type: Date, default: Date.now },
+    tagList: { type: String } // space separated array of strings (tags)
   },
   { minimize: false } // need this to get default empty object
 )

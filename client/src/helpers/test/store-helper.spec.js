@@ -758,12 +758,12 @@ describe('auth/admin tests', () => {
 
   beforeEach(() => _beforeEach())
 
-  it('fetchAndStoreAuthToken', async () => {
+  it('fetchAndStoreRefreshToken', async () => {
     should.doesNotThrow(async () => {
       const refreshToken = 'testRefreshToken'
       const token = 'authToken'
       await axiosMockHelper.prepareAxiosResponse('post', {token})
-      const result = await StoreHelper.fetchAndStoreAuthToken(refreshToken)
+      const result = await StoreHelper.fetchAndStoreRefreshToken(refreshToken)
       should.exist(result)
       result.should.equal(token)
     })
@@ -824,7 +824,7 @@ describe('auth/admin tests', () => {
       const token = 'authToken'
       const refreshToken = 'testRefreshToken'
       await axiosMockHelper.prepareAxiosResponse('post', { token })
-      await StoreHelper.fetchAndStoreAuthToken(refreshToken)
+      await StoreHelper.fetchAndStoreRefreshToken(refreshToken)
       const result = StoreHelper.getAuthToken()
       should.exist(result)
       result.should.equal(token)

@@ -45,6 +45,10 @@ export default class AuthUtil {
     return this.validateToken(sliced)
   }
 
+  extractTokenFromAuthHeader (authHeader) {
+    return authHeader.replace('Bearer ', '')
+  }
+
   createToken (data, expiry) {
     const options = expiry ?  { expiresIn: expiry } : undefined
     logAuth.enabled ? logAuth('authController -- createToken', options, data) : debug('authUtils -- createToken')

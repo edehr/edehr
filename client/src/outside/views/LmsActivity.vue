@@ -126,6 +126,7 @@ export default {
       const fromRoute = this.$route.query.activityId
       const fromStore = this.$store.getters['activityStore/activityId']
       const activityId = fromRoute ? fromRoute : fromStore
+      console.log('setActivityId', activityId)
       await this.$store.dispatch('activityStore/setActivityId', activityId)
       const activity = await this.$store.dispatch('activityStore/loadCurrentActivity')
       if (activity.assignment) {

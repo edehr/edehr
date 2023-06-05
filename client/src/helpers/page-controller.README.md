@@ -62,7 +62,7 @@ graph TD
     F --> DD{haveDemoToken <br> && !isDemoLti}
     DD --> |yes| LD(Log out of demo)
     LD --> FT
-    DD --> |no| FT(fetchAndStoreAuthToken)
+    DD --> |no| FT(fetchAndStoreRefreshToken)
     FT --> AT(getAuthToken)
     AT --> HT{authToken?}
     HT --> |yes| FD(Fetch token data)

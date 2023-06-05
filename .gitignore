@@ -41,5 +41,6 @@ server/lib/**
 **/build/**
 server/api-logs/**
 server/ehr-logs/**
+server/action-logs/**
 server/logs-analytics/**
 server/logs-api/**

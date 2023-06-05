@@ -303,8 +303,9 @@ export default class LTIController {
       return this.visitController.updateCreateVisit(
         req.user,
         req.toolConsumer,
-        req.activity,
-        req.ltiData
+        req.activity._id,
+        req.ltiData.roles,
+        req.ltiData.launch_presentation_return_url
       ).then(visit => {
         req.visit = visit
       })

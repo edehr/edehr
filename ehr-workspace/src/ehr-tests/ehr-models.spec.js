@@ -7,7 +7,7 @@ const should = require('should')
 
 const pageDefs = EhrDefs
 
-const case1PageCount = 46 - 2 // take two off because 2 pages are skipped
+const case1PageCount = 48 - 2 // take two off because 2 pages are skipped
 
 describe('Ehr Page', function () {
   it('Expected page count check.', () => {

@@ -25,7 +25,7 @@ export default {
   extends: EhrElementCommon,
   components: { EhrPageFormLabel, EhrFileLink, FileSelectDialog, UiAgree, UiButton },
   props: {
-    containerInputValue: {type: Object}
+    containerInputValue: {type: [String, Object]}
   },
   computed: {
     fValue () { return this.containerInputValue },

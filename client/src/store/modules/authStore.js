@@ -35,6 +35,9 @@ const getters = {
   isStudent: state => {
     return state.authData.isStudent
   },
+  isInstructorAsStudent: state => {
+    return state.authData.instructorAsStudent || false
+  },
   visitId: state => {
     return state.authData.visitId
   },
@@ -49,14 +52,23 @@ const actions = {
     commit('setToken', undefined)
     commit('setAuthData', {})
   },
-  fetchAndStoreAuthToken: function ({ commit }, { refreshToken }) {
-    if(logAuth) console.log('fetchAndStoreAuthToken refreshToken', hashToken(refreshToken))
+  fetchAndStoreRefreshToken: function ({ commit }, { refreshToken }) {
+    if(logAuth) console.log('fetchAndStoreRefreshToken refreshToken', hashToken(refreshToken))
     return authHelper.getToken(refreshToken)
       .then(res => {
         const { token } = res.data
-        if(logAuth) console.log('fetchAndStoreAuthToken token', hashToken(token))
+        if(logAuth) console.log('fetchAndStoreRefreshToken token', hashToken(token))
         commit('setToken', token)
         return token
+      })
+  },
+  storeReplaceToken: function ({ commit }, { replaceToken }) {
+    commit('setToken', replaceToken)
+    return authHelper.getData(replaceToken)
+      .then(res => {
+        const { data } = res
+        if(logAuth) console.log('storeReplaceToken authToken -> data', data)
+        return commit('setAuthData', data)
       })
   },
   fetchData: function ({commit}, { authToken }) {

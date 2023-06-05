@@ -77,6 +77,15 @@ export default {
         checkbox: true,
         isChecked: () => this.isOutsideShowButtonLabels
       })
+      menuItems.push({
+        horizontal: true
+      })
+      menuItems.push( {
+        icon: APP_ICONS.student,
+        label: 'Switch role to student',
+        toolTip: 'View your current activity as a student experiences it.',
+        callback: () => { StoreHelper.visitAsStudent(this.$router) },
+      })
       return menuItems
     },
   },

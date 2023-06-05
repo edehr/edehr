@@ -24,6 +24,7 @@ export const APP_ICONS = {
   seed: 'hand-holding-medical',
   returnToSeedList: 'list',
   rawEhr: 'th-large',
+  student: 'user-graduate',
   table: 'table',
   tags: 'tag', // for filtering by tag applied to an object
   trash: 'trash',

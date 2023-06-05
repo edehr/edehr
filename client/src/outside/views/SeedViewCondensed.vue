@@ -1,11 +1,12 @@
 <template lang='pug'>
   div
     zone-lms-page-banner
-      seed-actions(class="flow_across_last_item", :seed="seed", :hideCondensed='true')
+      seed-actions(class="flow_across_last_item", :seedModel='seedModel', :hideCondensed='true')
     div(class="details-container card selected")
       ui-link(:name="'seed-view'",  :query='{ seedId: seedId }' )
         span(class='clickable') {{seed.name}}
       div(v-text-to-html="seed.description")
+      app-tag-list(:tag-list="tagList")
 
     seed-structural(:ehrData='seed.ehrData', class='structural-container card selected ')
 </template>
@@ -19,9 +20,10 @@ import SeedListLink from '@/outside/components/seed-management/SeedListLink'
 import OutsideCommon from '@/outside/views/OutsideCommon'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
 import SeedActions from '@/outside/components/seed-management/SeedActions'
+import AppTagList from '@/app/components/AppTagList.vue'
 export default {
   extends: OutsideCommon,
-  components: { SeedActions, ZoneLmsPageBanner, SeedListLink, SeedStructural, UiLink },
+  components: { AppTagList, SeedActions, ZoneLmsPageBanner, SeedListLink, SeedStructural, UiLink },
   data () {
     return {
       appIcons: APP_ICONS,
@@ -34,6 +36,8 @@ export default {
     seed () {
       return this.$store.getters['seedListStore/seedContent']
     },
+    seedModel () { return this.$store.getters['seedListStore/seedModel'] },
+    tagList () { return this.seedModel.tagListAsArray()}
   },
   methods: {
     loadComponent () {

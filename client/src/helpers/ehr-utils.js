@@ -314,7 +314,7 @@ export function validateSeedFileContents (dataAsString) {
 //   })
 // }
 
-export function downloadSeedToFile (seedId, sSeedContent, ehrData) {
+export function downloadSeedToFile (seedId, sSeedContent, ehrData, tagList) {
   let lastUpdate = formatDateStr(sSeedContent.lastUpdateDate)
   let name = sSeedContent.name
   let ver = sSeedContent.version
@@ -331,6 +331,7 @@ export function downloadSeedToFile (seedId, sSeedContent, ehrData) {
     ehrData: ehrData,
     description: desc,
     name: name,
+    tagList: tagList,
     version: ver,
     fileName: fName
   }

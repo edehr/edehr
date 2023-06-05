@@ -7,7 +7,9 @@
       slot(class='titleBarLabel', name="dropdownTitle") &nbsp;
       fas-icon(class="fa bars", icon="bars")
     div(v-show="showDropdown", class='dropdownWindow', ref='dropdownMenu')
-      app-dropdown-item(v-for="item in items", :key='item.label', :itemDef='item', @dropdownEvent='dropdownEvent')
+      div(v-for="item in items", :key='item.label')
+        hr(v-if="item.horizontal")
+        app-dropdown-item(v-else, :itemDef='item', @dropdownEvent='dropdownEvent')
 </template>
 
 <script>

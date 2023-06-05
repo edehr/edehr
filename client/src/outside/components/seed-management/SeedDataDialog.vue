@@ -23,6 +23,11 @@
                 input(class="input", type="text", v-model="version")
           div(class="grid-left-to-right-1")
             div
+              label Tags
+                ui-info(:title="tagHelperText")
+              app-tag-list-editor(:tagList="tagList", @update='updateTagList')
+          div(class="grid-left-to-right-1")
+            div
               label Description
               textarea(class="textarea", v-model="description")
           div(class="grid-left-to-right-1")
@@ -38,6 +43,7 @@
                 div Version: {{uploadSeed.version}}
                 div License: {{uploadSeed.license}}
                 div Original Name: {{uploadSeed.name}}
+                div Tags: {{ uploadSeed.tagList}}
                 div Pages: {{ uploadSeedPages }}
             label(class="file-label")
               input(
@@ -57,6 +63,7 @@ import StoreHelper from '@/helpers/store-helper'
 import UiButton from '@/app/ui/UiButton.vue'
 import UiInfo from '@/app/ui/UiInfo'
 import { readFile, validateSeedFileContents } from '@/helpers/ehr-utils'
+import AppTagListEditor from '@/app/components/AppTagListEditor.vue'
 
 const TITLES = {
   edit: 'Edit seed data properties',
@@ -71,7 +78,7 @@ const EDIT_ACTION= 'edit'
 const CREATE_ACTION = 'create'
 
 export default {
-  components: { AppDialog, UiButton, UiInfo },
+  components: { AppTagListEditor, AppDialog, UiButton, UiInfo },
   data () {
     return {
       name: '',
@@ -83,6 +90,10 @@ export default {
       actionType: '',
       seedId: '',
       seedFile: null,
+      tagHelperText: 'Tags will provide a way to categorize case studies. Two special tags are ' +
+        '\'HideLIS\' and \'HideEHR\'.  These will tell the UI to hide the MedLab or EHR pages.' +
+        'The default if these tags are missing is to show both MedLab and EHR pages. ',
+      tagList: '',
       upload: false,
       uploadSeed: {},
       uploadError: ''
@@ -117,32 +128,28 @@ export default {
   },
   methods: {
     clearInputs: function () {
-      this.selectedSeed
-        = this.actionType
-        = this.name
-        = this.version
-        = this.description
-        = this.contributors
-        = this.seedId = ''
       this.ehrData = {}
       this.seedFile = null
       this.uploadSeed = {}
       this.uploadError = ''
     },
-    showDialog (seedData) {
+    showDialog (seedModel) {
       this.clearInputs()
-      if (seedData) {
+      if (seedModel) {
+        const seedData = seedModel.seed
         this.actionType = EDIT_ACTION
         this.name = seedData.name
         this.version = seedData.version
         this.contributors = seedData.contributors || ''
         this.ehrData = seedData.ehrData
         this.description = seedData.description
-        this.seedId = seedData._id
+        this.seedId = seedModel.id
+        this.tagList = seedModel.tagListAsString()
       } else {
         this.actionType = CREATE_ACTION
         this.version = '1.0'
         this.ehrData = {}
+        this.tagList = ''
       }
       if (!this.contributors.includes(this.userName)) {
         // console.log('adding user to contrib list', this.contributors, this.userName)
@@ -166,6 +173,7 @@ export default {
         description: this.description,
         contributors: this.contributors,
         ehrData: this.ehrData,
+        tagList: this.tagList,
         toolConsumer: StoreHelper.getAuthdConsumerId()
       }
       this.$refs.theDialog.onClose()
@@ -191,6 +199,9 @@ export default {
         }
       })
     },
+    updateTagList (newList) {
+      this.tagList = newList
+    }
   }
 }
 </script>

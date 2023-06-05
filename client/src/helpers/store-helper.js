@@ -2,9 +2,16 @@ import store from '../store'
 import { removeEmptyProperties } from './ehr-utils'
 import sKeys from './session-keys'
 import { ZONE_ADMIN, ZONE_DEMO, ZONE_EHR, ZONE_LMS, ZONE_PUBLIC } from '@/router'
+import { setAuthHeader } from '@/helpers/axios-helper'
 
 const debugSH = false
 
+export const ADMIN_ACTION = 'admin'
+export const CREATOR_ACTION = 'creator'
+export const DEMO_ACTION = 'demo'
+export const INSTRUCTOR_ACTION = 'instructor'
+export const STUDENT_ACTION = 'student'
+export const SYSTEM_ACTION = 'system'
 /*
 https://softwareengineering.stackexchange.com/a/247277/346750
 "A Helper class is a lesser known code smell where a coder has identified some miscellaneous,
@@ -69,6 +76,7 @@ class StoreHelperWorker {
   toolConsumerId () { return store.getters['consumerStore/consumerId']}
   isInstructor () { return store.getters['authStore/isInstructor'] }
   isStudent () { return store.getters['authStore/isStudent'] }
+  isInstructorAsStudent () { return store.getters['authStore/isInstructorAsStudent'] }
 
   userId () { return this._getUserProperty('userId') }
   givenName () { return this._getUserProperty('givenName') }
@@ -117,7 +125,10 @@ class StoreHelperWorker {
   isReadOnlyInstructor () { return this._getVisitProperty('isReadOnlyInstructor')}
 
   isDevelopingContent () { return this._getVisitProperty('isDevelopingContent')  }
-  setIsDevelopingContent (state) { store.commit('visit/setIsDevelopingContent', state) }
+  setIsDevelopingContent (state) {
+    StoreHelper.postActionEvent(INSTRUCTOR_ACTION, state ? 'setCreator' : 'unsetCreator')
+    store.commit('visit/setIsDevelopingContent', state)
+  }
 
   getCourseTitle () { return this._getActivityProperty('courseTitle') }
 
@@ -150,7 +161,10 @@ class StoreHelperWorker {
   setSystemMessage (msg) {  store.commit('system/setSystemMessage', msg, { root: true }) }
 
   isOutsideShowButtonLabels () { return this._getSystemProperty('outsideShowButtonLabels') }
-  setOutsideShowButtonLabels (value) { return this._dispatchSystem('setOutsideShowButtonLabels', value) }
+  setOutsideShowButtonLabels (value) {
+    StoreHelper.postActionEvent(INSTRUCTOR_ACTION, value ? 'showButtonLabels' : 'hideButtonLabels')
+    return this._dispatchSystem('setOutsideShowButtonLabels', value)
+  }
 
   /* **********
    * **********   File List  **************
@@ -170,7 +184,10 @@ class StoreHelperWorker {
    * @param payload { file, onUploadProgress }  File and Function(progressEvent)
    * @return {Promise<*>}
    */
-  addFileToList (payload) { return this._dispatchFileList('addFileToList', payload)}
+  addFileToList (payload) {
+    StoreHelper.postActionEvent(CREATOR_ACTION,'addFile')
+    return this._dispatchFileList('addFileToList', payload)
+  }
 
 
   /* **********
@@ -193,7 +210,10 @@ class StoreHelperWorker {
   }
 
   // when instructor forces submitted state so they can evaluate the work
-  forceSubmitAssignment () { return this._dispatchActivityData('sendSubmitted', true)}
+  forceSubmitAssignment () {
+    StoreHelper.postActionEvent(INSTRUCTOR_ACTION,'forceSubmit')
+    return this._dispatchActivityData('sendSubmitted', true)
+  }
 
   async loadClassList () {
     let activityId = this.getActivityId()
@@ -205,19 +225,31 @@ class StoreHelperWorker {
 
   // when the student submits their work.
   studentSubmitsAssignment (submitted) {
+    StoreHelper.postActionEvent(STUDENT_ACTION,'studentSubmits')
+    return this._dispatchActivityData('sendSubmitted', true)
+  }
+  forceSubmitsAssignment (submitted) {
+    StoreHelper.postActionEvent(INSTRUCTOR_ACTION,'forceSubmits')
     return this._dispatchActivityData('sendSubmitted', true)
   }
 
   // // When the instructor sends the work back to the student for further edits.
   instructorUnsubmitsAssignment () {
+    StoreHelper.postActionEvent(INSTRUCTOR_ACTION, 'sendBackToStudent')
     return this._dispatchActivityData('sendSubmitted', false)
   }
 
   // select which student's work is viewed for evaluation
-  changeStudentForInstructor (studentVisitId) { return this._dispatchInstructor('changeCurrentEvaluationStudentId', studentVisitId)}
+  changeStudentForInstructor (studentVisitId) {
+    StoreHelper.postActionEvent(INSTRUCTOR_ACTION,'changeStudent')
+    return this._dispatchInstructor('changeCurrentEvaluationStudentId', studentVisitId)
+  }
 
   // When instructor saves their evaluation notes.
-  saveEvaluationNotes (evalNotes ) { return this._dispatchActivityData('sendEvaluationNotes', evalNotes) }
+  saveEvaluationNotes (evalNotes ) {
+    StoreHelper.postActionEvent(INSTRUCTOR_ACTION, 'saveEvalNotes')
+    return this._dispatchActivityData('sendEvaluationNotes', evalNotes)
+  }
 
   /* **********
    * **********   Activity  **************
@@ -256,6 +288,7 @@ class StoreHelperWorker {
   async _toggleActivity (activityId, direction) {
     await this._dispatchActivity(direction, activityId)
     await StoreHelper.loadInstructorWithStudent()
+    StoreHelper.postActionEvent(INSTRUCTOR_ACTION, direction === 'open' ? 'openActivity' : 'closeActivity')
   }
 
   /* **********
@@ -279,16 +312,45 @@ class StoreHelperWorker {
     const assignment = await this._dispatchAssignment('load', assignmentId)
     const seedId = assignment.seedDataId
     await this._dispatchSeedListProperty('loadSeedContent', seedId)
+    StoreHelper.postActionEvent(CREATOR_ACTION, 'updateAssignment')
     return assignment
   }
   // returns promise that resolves to assignment list
   async createAssignment (assignmentData) {
     const duped = await this._dispatchAssignmentList('createAssignment', assignmentData)
     await this._dispatchAssignment('load', duped._id)
+    StoreHelper.postActionEvent(CREATOR_ACTION,'createAssignment')
     return duped
   }
   getAssignmentsList () { return this._getAssignmentListProperty('list') }
 
+  async restoreAsInstructor (router) {
+    const newToken = await this._dispatchVisit('restoreAsInstructor')
+    // console.log('newToken', newToken)
+    setAuthHeader(newToken)
+    await StoreHelper.storeReplaceToken(newToken)
+    router.push({name: 'lms-activity'})
+    StoreHelper.postActionEvent(INSTRUCTOR_ACTION,'restoreNormalRole')
+  }
+
+  async visitAsStudent (router) {
+    const currentActivityId = StoreHelper.getActivityId()
+    const newToken = await this._dispatchVisit('visitAsStudent', currentActivityId)
+    /*
+    This new token has the same properties as the origin user token with these changes:
+        newToken.isStudent = true
+        newToken.instructorAsStudent = true
+        newToken.isInstructor = false
+        newToken.instructorToken = original instructor token
+    newToken can now be used as the users auth until they change back to being an instructor.
+    Use the instructorToken to restore the user to instructor.
+    */
+    setAuthHeader(newToken)
+    await StoreHelper.storeReplaceToken(newToken)
+    const visitId = StoreHelper.getAuthVisitId()
+    router.push({ name: 'ehr', query: { visitId: visitId } })
+    StoreHelper.postActionEvent(INSTRUCTOR_ACTION,'visitAsStudent')
+  }
 
   /* **********
    * **********   Seed Data  / Case Studies **************
@@ -302,13 +364,23 @@ class StoreHelperWorker {
   getSeedEhrData () { return this._getSeedListProperty('seedEhrData')}
   getSeedContent () { return this._getSeedListProperty('seedContent') }
 
-  deleteSeed (id) { return this._dispatchSeedListProperty('deleteSeed', id)}
+  deleteSeed (id) {
+    StoreHelper.postActionEvent(CREATOR_ACTION,'deleteSeed')
+    return this._dispatchSeedListProperty('deleteSeed', id)
+  }
 
-  async loadSeed (seedId) { await this._dispatchSeedListProperty('loadSeedContent', seedId) }
+  async loadSeed (seedId) {
+    await this._dispatchSeedListProperty('loadSeedContent', seedId)
+    const seedModel = this._getSeedListProperty('seedModel')
+    // present the NAV menus based on seed
+    StoreHelper.setShowEHR(!seedModel.hideEHRNav)
+    StoreHelper.setShowLIS(!seedModel.hideLISNav)
+  }
   async loadSeedLists () { return await this._dispatchSeedListProperty('loadSeeds') }
 
   updateSeed (component, seedId, theData) {
   // console.log('SH Seed Data update ', seedId, theData)
+    StoreHelper.postActionEvent(CREATOR_ACTION,'updateSeed')
     let dataIdPlusPayload = { id: seedId, payload: theData }
     return this._dispatchSeedListProperty('updateSeedItem', dataIdPlusPayload)
   }
@@ -325,6 +397,7 @@ class StoreHelperWorker {
     return this._dispatchSeedListProperty('sendSeedEhrDataDraft', payload)
   }
   updateSeedEhrProperty (propertyName, value ) {
+    StoreHelper.postActionEvent(STUDENT_ACTION,'updateEhr-' + propertyName)
     let payload = {
       propertyName: propertyName,
       value: removeEmptyProperties(value)
@@ -332,7 +405,10 @@ class StoreHelperWorker {
     return this._dispatchSeedListProperty('updateSeedEhrProperty', payload)
   }
 
-  createSeed (component, seedData) { return this._dispatchSeedListProperty('createSeedItem', seedData) }
+  createSeed (component, seedData) {
+    StoreHelper.postActionEvent(CREATOR_ACTION,'createSeed')
+    return this._dispatchSeedListProperty('createSeedItem', seedData)
+  }
 
   getSeedDataList () { return this._getSeedListProperty('list') }
 
@@ -347,13 +423,20 @@ class StoreHelperWorker {
   lmsName () { return store.getters['consumerStore/lmsName'] }
   consumerId () { return store.getters['consumerStore/consumerId'] }
 
-  async clearConsumer () { await store.dispatch('consumerStore/clearConsumer')}
-  createConsumer (consumerData) { return store.dispatch('consumerStore/createConsumer', consumerData) }
+  async clearConsumer () {
+    StoreHelper.postActionEvent(SYSTEM_ACTION,'clearConsumer')
+    await store.dispatch('consumerStore/clearConsumer')
+  }
+  createConsumer (consumerData) {
+    StoreHelper.postActionEvent(SYSTEM_ACTION,'createConsumer')
+    return store.dispatch('consumerStore/createConsumer', consumerData)
+  }
   getConsumer () { return store.getters['consumerStore/consumer'] }
   async loadConsumer (id) {  return await store.dispatch('consumerStore/loadConsumer', id) }
   getConsumersList () { return store.getters['consumerStore/consumerList'] }
   loadConsumerList () {  return store.dispatch('consumerStore/loadConsumers') }
   updateConsumer (consumerId, consumerData) {
+    StoreHelper.postActionEvent(SYSTEM_ACTION,'updateConsumer')
     let dataIdPlusPayload = { id: consumerId, payload: consumerData }
     return store.dispatch('consumerStore/updateConsumer', dataIdPlusPayload)
   }
@@ -364,7 +447,10 @@ class StoreHelperWorker {
 
   getUsersList () { return this._getUserProperty('list') }
   loadUsersList (consumerId) { return this._dispatchUser('loadUsers', consumerId) }
-  adminLogin (adminPassword) { return this._dispatchAuthStore('adminLogin', { adminPassword }) }
+  adminLogin (adminPassword) {
+    StoreHelper.postActionEvent(ADMIN_ACTION,'adminLogin')
+    return this._dispatchAuthStore('adminLogin', { adminPassword })
+  }
 
   async adminValidate () {
     const r = await this._dispatchAuthStore('adminValidate')
@@ -416,6 +502,18 @@ class StoreHelperWorker {
   getAppTitle () { return this.getApiData().appTitle  }
   getAppVersion () { return this.getApiData().appVersion  }
 
+  postActionEvent (role, actionTag) {
+    setTimeout( async () => {
+      const payload = {}
+      payload.isDemo = StoreHelper.isDemoMode()
+      payload.role = role
+      payload.action = actionTag
+      payload.userId = StoreHelper._getUserProperty('userId')
+      payload.consumerId = StoreHelper.toolConsumerId()
+      await StoreHelper._dispatchSystem('postActionEvent', payload)
+    }, 50)
+  }
+
   /* **********
    * **********   Loading data  **************
    */
@@ -425,6 +523,7 @@ class StoreHelperWorker {
     await this._dispatchVisit('loadVisitRecord')
   }
   async setVisitId (visitId) {
+    StoreHelper.postActionEvent(SYSTEM_ACTION,'setVisitId-'+visitId)
     if (debugSH) console.log('SH setVisitId dispatch the load visit id', visitId)
     await this._dispatchVisit('setVisitId', visitId)
   }
@@ -483,12 +582,17 @@ class StoreHelperWorker {
    * **********   Authorization related    **************
    */
 
-  async fetchAndStoreAuthToken (refreshToken) {
-    return await this._dispatchAuthStore('fetchAndStoreAuthToken', { refreshToken })
+  async fetchAndStoreRefreshToken (refreshToken) {
+    StoreHelper.postActionEvent(SYSTEM_ACTION,'refreshToken')
+    return await this._dispatchAuthStore('fetchAndStoreRefreshToken', { refreshToken })
   }
 
   async fetchTokenData (authToken = this.getAuthToken()) {
     return await this._dispatchAuthStore('fetchData', {authToken})
+  }
+  async storeReplaceToken (replaceToken) {
+    StoreHelper.postActionEvent(SYSTEM_ACTION,'replaceToken')
+    return await this._dispatchAuthStore('storeReplaceToken', {replaceToken})
   }
 
   getAuthData () {
@@ -501,8 +605,12 @@ class StoreHelperWorker {
   getAuthToken () {
     return this._getAuthStore('token')
   }
+  getAuthVisitId () {
+    return this._getAuthStore('visitId')
+  }
 
   async logUserOutOfEdEHR (clearDemo=true) {
+    StoreHelper.postActionEvent(SYSTEM_ACTION,'logUserOut')
     const dt = StoreHelper.getDemoToken()
     if (clearDemo && dt) {
       await this._dispatchDemoStore('demoLogout')
@@ -517,6 +625,7 @@ class StoreHelperWorker {
   }
 
   async exitToLms () {
+    StoreHelper.postActionEvent(SYSTEM_ACTION,'exitToLms')
     const url = StoreHelper.lmsUrl()
     const clearDemo = false
     await StoreHelper.logUserOutOfEdEHR(clearDemo)
@@ -532,6 +641,7 @@ class StoreHelperWorker {
   _dispatchDemoStore (key, payload) { return store.dispatch(`demoStore/${key}`, payload) }
 
   createDemoToolConsumer () {
+    StoreHelper.postActionEvent(DEMO_ACTION,'createDemoConsumer')
     return this._dispatchDemoStore('createToolConsumer')
   }
 
@@ -564,14 +674,17 @@ class StoreHelperWorker {
   setDemoToken (demoToken) { return this._dispatchDemoStore('setDemoToken', demoToken) }
 
   setDemoPersona (demoPersona) {
+    StoreHelper.postActionEvent(DEMO_ACTION,'demoPersona-'+demoPersona.name)
     return this._dispatchDemoStore('setDemoPersona', demoPersona)
   }
 
   setDemoAssignment (assignment) {
+    StoreHelper.postActionEvent(DEMO_ACTION,'setDemoAssignment')
     return this._dispatchDemoStore('setDemoAssignment', assignment)
   }
 
   submitPersona (submitData) {
+    StoreHelper.postActionEvent(DEMO_ACTION,'submitPersona')
     return this._dispatchDemoStore('submitPersona', submitData)
   }
 
@@ -583,9 +696,36 @@ class StoreHelperWorker {
     return this._getDemoStorage('getDemoFeatureFlag')
   }
   setDemoFeatureFlag (flag) {
+    StoreHelper.postActionEvent(SYSTEM_ACTION,'setDemoFeature')
     return this._dispatchDemoStore('setDemoFeatureFlag', flag)
   }
 
+  isEHR_Showing () {
+    return this._getSystemProperty('showingEHR')
+  }
+  toggleShowEHR (  ) {
+    StoreHelper.postActionEvent(CREATOR_ACTION,
+      StoreHelper.isEHR_Showing() ? 'hideEhrNav' : 'showEhrNav')
+    this._dispatchSystem('toggleShowEHR')
+  }
+  setShowEHR ( value ) {
+    StoreHelper.postActionEvent(CREATOR_ACTION,
+      value ? 'hideEhrNav' : 'showEhrNav')
+    this._dispatchSystem('setShowEHR', value)
+  }
+  isLIS_Showing () {
+    return this._getSystemProperty('showingLIS')
+  }
+  toggleShowLIS (  ) {
+    StoreHelper.postActionEvent(CREATOR_ACTION,
+      StoreHelper.isLIS_Showing() ? 'hideLisNav' : 'showLisNav')
+    this._dispatchSystem('toggleShowLIS')
+  }
+  setShowLIS ( value ) {
+    StoreHelper.postActionEvent(CREATOR_ACTION,
+      value ? 'hideLisNav' : 'showLisNav')
+    this._dispatchSystem('setShowLIS', value)
+  }
 }
 
 const StoreHelper = new StoreHelperWorker()

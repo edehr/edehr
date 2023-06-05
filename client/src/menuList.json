@@ -1,6 +1,7 @@
 [
   {
     "name": "patient",
+    "isEHR": true,
     "redirect": "demographics",
     "label": "Patient profile",
     "routeName": "patient",
@@ -22,6 +23,7 @@
     "children": [
       {
         "name": "demographics",
+        "isEHR": true,
         "label": "Demographics",
         "pageDataKey": "demographics",
         "routeName": "demographics",
@@ -46,6 +48,7 @@
       },
       {
         "name": "allergies",
+        "isEHR": true,
         "label": "Allergies",
         "pageDataKey": "allergies",
         "routeName": "allergies",
@@ -70,6 +73,7 @@
       },
       {
         "name": "history",
+        "isEHR": true,
         "redirect": "medical",
         "label": "History",
         "routeName": "history",
@@ -92,6 +96,7 @@
         "children": [
           {
             "name": "medical",
+            "isEHR": true,
             "label": "Medical history",
             "pageDataKey": "medical",
             "routeName": "medical",
@@ -116,6 +121,7 @@
           },
           {
             "name": "psychosocial",
+            "isEHR": true,
             "label": "Psychosocial history",
             "pageDataKey": "psychosocial",
             "routeName": "psychosocial",
@@ -140,6 +146,7 @@
           },
           {
             "name": "surgical",
+            "isEHR": true,
             "label": "Surgical history",
             "pageDataKey": "surgical",
             "routeName": "surgical",
@@ -164,6 +171,7 @@
           },
           {
             "name": "immunization",
+            "isEHR": true,
             "label": "Immunization history",
             "pageDataKey": "immunization",
             "routeName": "immunization",
@@ -188,6 +196,7 @@
           },
           {
             "name": "family-history",
+            "isEHR": true,
             "label": "Family history",
             "pageDataKey": "familyHistory",
             "routeName": "family-history",
@@ -214,6 +223,7 @@
       },
       {
         "name": "care-team",
+        "isEHR": true,
         "label": "Care team",
         "pageDataKey": "careTeam",
         "routeName": "care-team",
@@ -238,6 +248,7 @@
       },
       {
         "name": "past-appointments",
+        "isEHR": true,
         "label": "Past appointments",
         "pageDataKey": "pastAppointments",
         "routeName": "past-appointments",
@@ -264,6 +275,7 @@
   },
   {
     "name": "current",
+    "isEHR": true,
     "redirect": "visit-details",
     "label": "Current visit",
     "routeName": "current",
@@ -285,6 +297,7 @@
     "children": [
       {
         "name": "visit-details",
+        "isEHR": true,
         "label": "Admission, diagnosis, location",
         "pageDataKey": "visit",
         "routeName": "visit-details",
@@ -309,6 +322,7 @@
       },
       {
         "name": "vital-signs",
+        "isEHR": true,
         "label": "Vital signs",
         "pageDataKey": "vitals",
         "routeName": "vital-signs",
@@ -333,6 +347,7 @@
       },
       {
         "name": "fluid-balance",
+        "isEHR": true,
         "label": "Fluid balance",
         "pageDataKey": "fluidBalance",
         "routeName": "fluid-balance",
@@ -357,6 +372,7 @@
       },
       {
         "name": "assessments",
+        "isEHR": true,
         "redirect": "neurological",
         "label": "Assessments",
         "routeName": "assessments",
@@ -378,6 +394,7 @@
         "children": [
           {
             "name": "neurological",
+            "isEHR": true,
             "label": "Neurological assessments",
             "pageDataKey": "neurological",
             "routeName": "neurological",
@@ -402,6 +419,7 @@
           },
           {
             "name": "respiratory",
+            "isEHR": true,
             "label": "Respiratory assessment",
             "pageDataKey": "respiratory",
             "routeName": "respiratory",
@@ -426,6 +444,7 @@
           },
           {
             "name": "cardiovascular",
+            "isEHR": true,
             "label": "Cardiovascular assessment",
             "pageDataKey": "cardiovascular",
             "routeName": "cardiovascular",
@@ -450,6 +469,7 @@
           },
           {
             "name": "gastrointestinal",
+            "isEHR": true,
             "label": "Gastrointestinal assessment",
             "pageDataKey": "gastrointestinal",
             "routeName": "gastrointestinal",
@@ -474,6 +494,7 @@
           },
           {
             "name": "genitourinary",
+            "isEHR": true,
             "label": "Genitourinary assessment",
             "pageDataKey": "genitourinary",
             "routeName": "genitourinary",
@@ -498,6 +519,7 @@
           },
           {
             "name": "musculoskeletal",
+            "isEHR": true,
             "label": "Musculoskeletal assessment",
             "pageDataKey": "musculoskeletal",
             "routeName": "musculoskeletal",
@@ -522,6 +544,7 @@
           },
           {
             "name": "pain",
+            "isEHR": true,
             "label": "Pain assessment",
             "pageDataKey": "pain",
             "routeName": "pain",
@@ -546,6 +569,7 @@
           },
           {
             "name": "biopsychosocial",
+            "isEHR": true,
             "label": "Biopsychosocial assessment",
             "pageDataKey": "biopsychosocial",
             "routeName": "biopsychosocial",
@@ -570,6 +594,7 @@
           },
           {
             "name": "integumentary-assessment",
+            "isEHR": true,
             "label": "Integumentary assessment",
             "pageDataKey": "integumentaryAssessment",
             "routeName": "integumentary-assessment",
@@ -596,6 +621,7 @@
       },
       {
         "name": "order-sets",
+        "isEHR": true,
         "label": "Clinical Order Sets",
         "pageDataKey": "orderSets",
         "routeName": "order-sets",
@@ -620,6 +646,7 @@
       },
       {
         "name": "no-med",
+        "isEHR": true,
         "redirect": "no-med-orders",
         "label": "Non-medication orders",
         "routeName": "no-med",
@@ -641,6 +668,7 @@
         "children": [
           {
             "name": "no-med-orders",
+            "isEHR": true,
             "label": "Orders",
             "pageDataKey": "nonmedOrders",
             "routeName": "no-med-orders",
@@ -665,6 +693,7 @@
           },
           {
             "name": "referrals",
+            "isEHR": true,
             "label": "Referrals to other disciplines",
             "pageDataKey": "referrals",
             "routeName": "referrals",
@@ -689,6 +718,7 @@
           },
           {
             "name": "lab-requisitions",
+            "isEHR": true,
             "label": "Lab requisitions",
             "pageDataKey": "labRequisitions",
             "routeName": "lab-requisitions",
@@ -715,6 +745,7 @@
       },
       {
         "name": "meds",
+        "isEHR": true,
         "label": "Medication orders",
         "pageDataKey": "medicationOrders",
         "routeName": "meds",
@@ -739,6 +770,7 @@
       },
       {
         "name": "mar",
+        "isEHR": true,
         "label": "Medication administration records",
         "pageDataKey": "medAdminRec",
         "routeName": "mar",
@@ -763,6 +795,7 @@
       },
       {
         "name": "discharge-plan",
+        "isEHR": true,
         "label": "Discharge plan",
         "pageDataKey": "dishargeplan",
         "routeName": "discharge-plan",
@@ -787,6 +820,7 @@
       },
       {
         "name": "discharge",
+        "isEHR": true,
         "label": "Discharge summary",
         "pageDataKey": "dischargeSummary",
         "routeName": "discharge",
@@ -811,6 +845,7 @@
       },
       {
         "name": "billing",
+        "isEHR": true,
         "label": "Billing",
         "pageDataKey": "billing",
         "routeName": "billing",
@@ -837,6 +872,7 @@
   },
   {
     "name": "chart",
+    "isEHR": true,
     "redirect": "progress-notes",
     "label": "Patient chart",
     "routeName": "chart",
@@ -858,6 +894,7 @@
     "children": [
       {
         "name": "progress-notes",
+        "isEHR": true,
         "label": "Progress notes",
         "pageDataKey": "progressNotes",
         "routeName": "progress-notes",
@@ -882,6 +919,7 @@
       },
       {
         "name": "care-plan",
+        "isEHR": true,
         "label": "Interprofessional plan of care",
         "pageDataKey": "carePlan",
         "routeName": "care-plan",
@@ -906,6 +944,7 @@
       },
       {
         "name": "reports",
+        "isEHR": true,
         "redirect": "consults",
         "label": "Reports and documents",
         "routeName": "reports",
@@ -927,6 +966,7 @@
         "children": [
           {
             "name": "consults",
+            "isEHR": true,
             "label": "Consults",
             "pageDataKey": "consults",
             "routeName": "consults",
@@ -951,6 +991,7 @@
           },
           {
             "name": "lab-reports",
+            "isEHR": true,
             "label": "Laboratory reports",
             "pageDataKey": "labResults",
             "routeName": "lab-reports",
@@ -975,6 +1016,7 @@
           },
           {
             "name": "diagnostic-reports",
+            "isEHR": true,
             "label": "Medical imaging",
             "pageDataKey": "medicalImaging",
             "routeName": "diagnostic-reports",
@@ -999,6 +1041,7 @@
           },
           {
             "name": "operative-anaesthesia",
+            "isEHR": true,
             "label": "Operative and anaesthesia records",
             "pageDataKey": "operationReports",
             "routeName": "operative-anaesthesia",
@@ -1027,6 +1070,7 @@
   },
   {
     "name": "external",
+    "isEHR": true,
     "redirect": "assessment-tools",
     "label": "External resources",
     "routeName": "external",
@@ -1048,6 +1092,7 @@
     "children": [
       {
         "name": "assessment-tools",
+        "isEHR": true,
         "label": "Standardized assessment tools",
         "pageDataKey": "assessmentTools",
         "routeName": "assessment-tools",
@@ -1072,6 +1117,7 @@
       },
       {
         "name": "code-lookup",
+        "isEHR": true,
         "label": "Code lookup",
         "pageDataKey": "codeLookup",
         "routeName": "code-lookup",
@@ -1096,6 +1142,7 @@
       },
       {
         "name": "diagnostic-codes",
+        "isEHR": true,
         "label": "Diagnostic codes (ICD-10)",
         "pageDataKey": "diagnosticCodes",
         "routeName": "diagnostic-codes",
@@ -1120,6 +1167,7 @@
       },
       {
         "name": "intervention-codes",
+        "isEHR": true,
         "label": "Intervention codes",
         "pageDataKey": "interventionCodes",
         "routeName": "intervention-codes",
@@ -1144,6 +1192,7 @@
       },
       {
         "name": "case-mix-group",
+        "isEHR": true,
         "label": "Case mix group",
         "pageDataKey": "caseMixGroup",
         "routeName": "case-mix-group",
@@ -1168,6 +1217,7 @@
       },
       {
         "name": "test-page",
+        "isEHR": true,
         "label": "Test Page",
         "pageDataKey": "testPage",
         "routeName": "test-page",
@@ -1192,6 +1242,7 @@
       },
       {
         "name": "test-table",
+        "isEHR": true,
         "label": "Test Table",
         "pageDataKey": "testTable",
         "routeName": "test-table",
@@ -1218,6 +1269,8 @@
   },
   {
     "name": "med-lab",
+    "isLIS": true,
+    "isEHR": false,
     "redirect": "hematology",
     "label": "Med Lab",
     "routeName": "med-lab",
@@ -1238,7 +1291,61 @@
     },
     "children": [
       {
+        "name": "med-lab-demographics",
+        "isLIS": true,
+        "isEHR": false,
+        "label": "Med Lab Demographics",
+        "pageDataKey": "medLabDemographics",
+        "routeName": "med-lab-demographics",
+        "topLevel": "med-lab",
+        "def": {
+          "path": "/ehr/med-lab",
+          "routeName": "med-lab-demographics",
+          "pageDataKey": "medLabDemographics",
+          "label": "Med Lab Demographics",
+          "generateComponent": "yes",
+          "menuIndex": "54",
+          "componentName": "MedLabDemographics",
+          "dataName": "medLabDemographics",
+          "fullPath": "/ehr/med-lab/med-lab-demographics",
+          "title": "Med Lab Demographics",
+          "redirect": "",
+          "topLevel": "med-lab",
+          "componentPath": "./inside/views",
+          "zone": "ehr"
+        },
+        "children": []
+      },
+      {
+        "name": "med-lab-accession",
+        "isLIS": true,
+        "isEHR": false,
+        "label": "Med Lab Accessioning",
+        "pageDataKey": "medLabAccession",
+        "routeName": "med-lab-accession",
+        "topLevel": "med-lab",
+        "def": {
+          "path": "/ehr/med-lab",
+          "routeName": "med-lab-accession",
+          "pageDataKey": "medLabAccession",
+          "label": "Med Lab Accessioning",
+          "generateComponent": "yes",
+          "menuIndex": "55",
+          "componentName": "MedLabAccession",
+          "dataName": "medLabAccession",
+          "fullPath": "/ehr/med-lab/med-lab-accession",
+          "title": "Med Lab Accession",
+          "redirect": "",
+          "topLevel": "med-lab",
+          "componentPath": "./inside/views",
+          "zone": "ehr"
+        },
+        "children": []
+      },
+      {
         "name": "hematology",
+        "isLIS": true,
+        "isEHR": false,
         "label": "Med Lab Hematology",
         "pageDataKey": "hematology",
         "routeName": "hematology",
@@ -1250,7 +1357,7 @@
           "label": "Med Lab Hematology",
           "redirect": "",
           "generateComponent": "custom",
-          "menuIndex": "54",
+          "menuIndex": "56",
           "componentName": "Hematology",
           "dataName": "hematology",
           "fullPath": "/ehr/med-lab/hematology",
@@ -1263,6 +1370,8 @@
       },
       {
         "name": "medLabChemistry",
+        "isLIS": true,
+        "isEHR": false,
         "label": "Med Lab Chemistry",
         "pageDataKey": "medLabChemistry",
         "routeName": "medLabChemistry",
@@ -1274,7 +1383,7 @@
           "label": "Med Lab Chemistry",
           "redirect": "",
           "generateComponent": "wip",
-          "menuIndex": "55",
+          "menuIndex": "57",
           "componentName": "UnderConstruction",
           "dataName": "medLabChemistry",
           "fullPath": "/ehr/med-lab/medLabChemistry",
@@ -1287,6 +1396,8 @@
       },
       {
         "name": "med-lab-imaging",
+        "isLIS": true,
+        "isEHR": false,
         "label": "Med Lab Medical Imaging",
         "pageDataKey": "medLabImaging",
         "routeName": "med-lab-imaging",
@@ -1297,7 +1408,7 @@
           "pageDataKey": "medLabImaging",
           "label": "Med Lab Medical Imaging",
           "generateComponent": "wip",
-          "menuIndex": "56",
+          "menuIndex": "58",
           "componentName": "UnderConstruction",
           "dataName": "medLabImaging",
           "fullPath": "/ehr/med-lab/med-lab-imaging",
