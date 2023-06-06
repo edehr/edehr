@@ -109,7 +109,7 @@ export default class ActivityController extends BaseController {
   }
 
   _extractLtiData (ltiData, toolConsumerId) {
-    let learningObjectName = ltiData.resource_link_title.replace('LOA-','AC-')
+    let learningObjectName = ltiData.resource_link_title ? ltiData.resource_link_title.replace('LOA-','AC-') : 'LTI did not provide property: resource_link_title'
     var data = {
       context_id: ltiData.context_id,
       context_label: ltiData.context_label,
