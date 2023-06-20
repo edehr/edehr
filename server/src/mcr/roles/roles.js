@@ -9,7 +9,10 @@ export default class Role {
     logLti('Role constructor with role:', ltiRole)
     this.ltiRole = ltiRole || ''
     let r = this.ltiRole.toLowerCase()
-    this.isInstructor = r.includes('instructor') || r.includes('staff') || r.includes('faculty')
+    this.isInstructor = r.includes('instructor')
+      || r.includes('staff')
+      || r.includes('faculty')
+      || r.includes('teaching') // role: urn:lti:role:ims/lis/TeachingAssistant
     // default to student role if not one of the more privileged roles.
     this.isStudent = !(this.isInstructor)
     this.isValid = this.isInstructor || this.isStudent
