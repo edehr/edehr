@@ -1,19 +1,15 @@
 # Working with Case Studies
 
-> One Case Study is often used by many Learning Objects. Just as one Learning Object can be used by many Activities.
-> 
-> A Case Study provides the EHR simulation data.  This is for a single simulated patient during an encounter in a hospital.
-> 
-> Case Studies have also been called Seeds. So if you encounter the term "seed" think "case study". The term "seed" will be phased out over time.
+> A Case Study can be used by many Learning Objects (content). A Case Study provides the EHR simulation data for a single simulated patient during an encounter in a hospital.
+> Case Studies have also been called Seeds. So if you encounter the term "seed" think "case study".
 
 
 ## Accessing Case Studies
 
-Each Learning Object has a link that takes a user directly to the linked Case Study.
+Here are two ways to reach a case study:
 
-From the Instructor tools menu select Case Studies to go to the Case Studies list page.
-
-Each EdEHR instance has one default Case Study that is empty. This Case Study does not appear on the list page.
+1. From a Learning Object page use its Case Study link.
+2. From the Instructor tools menu select Case Studies and then find the Case Study you wish and select it.
 
 
 ## Editing a Case Study
@@ -48,6 +44,7 @@ Each saved Case Study file will contain this license: *This work is licensed und
 > *You can remove Creative Commons license if you wish.* 
 
 
+
 ## Viewing Metadata for a Case Studies
 
 Each Case Study has metadata, as well as EHR content. This metadata includes the properties mentioned above and
@@ -64,6 +61,20 @@ Both Instructor and Content Creator users can view the EHR data in the "Condense
 
 Only Content Creator users can edit the EHR case study data in the EHR pages with the ![6] button. This launches the EHR with the case study data and lets you contribute more to the chart. Like a student user you will be able to modify the content of forms and add new assessments to tables. If you need to make other types of modifications then contact your EdEHR administrator for help.
 
+## Sharing EHR content
+
+You've just created a Case Study that you want to share with another content editor. Here are two ways you can share this content.
+
+1. If the other person can access the list of Case Studies then have them find the case study by name and view it. (Remember they will need to self-promote themselves to "Course designer mode" to use the Edit in EHR button.).
+2. Or use the EHR only demonstration
+   1. Download your case study (see above).
+   1. email the file to your friend.
+   2. Have your friend visit https://edehr.org and select EHR Only Demonstration.
+   3. Ask them to select any case study. It doesn't matter which because they will soon replace it with yours.
+   4. Ask them to use the Import button and then press "Import case study json file" and select your file from their computer.
+   5. The EHR demo will display your case study.
+
+See [Import (open) a case study](/demo-ehr/#import-open-a-case-study)
 
 [1]: ../images/upload-seed-button.png "Upload seed"
 [2]: ../images/duplicate-button.png "Duplicate"
