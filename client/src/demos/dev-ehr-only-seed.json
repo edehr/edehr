@@ -1,6 +1,7 @@
 {
   "id": "5d6786b88d19fb14c0994a5f",
   "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "appType": "EHR",
   "ehrData": {
     "allergies": {
       "checkbox": "TRUE"

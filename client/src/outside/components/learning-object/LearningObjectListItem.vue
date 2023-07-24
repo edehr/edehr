@@ -22,10 +22,10 @@
       div(class="details-row")
         div(class="details-name") {{text.ACTIVITIES}}
         div(class="details-value")
-          div(v-for="act in accessibleActivities", :key="act._id")
-            ui-link(:name="'lms-activity'", :query="{activityId: act._id}")
+          div(v-for="act in accessibleActivities", :key="act.id")
+            ui-link(:name="'lms-instructor-activity'", :query="{activityId: act.id}")
               fas-icon(class="fa", :icon="appIcons.activity")
-              span &nbsp; {{act.resource_link_title}}
+              span &nbsp; {{act.title}}
           div(v-if="unreachableActivityCount > 0 ") {{unreachableActivityText}}
       div(class="details-row")
         div(class="details-name") {{text.DATES}}

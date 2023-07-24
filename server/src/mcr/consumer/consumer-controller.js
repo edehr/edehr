@@ -19,7 +19,7 @@ import { logError} from '../../helpers/log-error'
 
 export default class ConsumerController extends BaseController {
   constructor () {
-    super(Consumer, '_id')
+    super(Consumer)
   }
 
   setSharedControllers (cc) {

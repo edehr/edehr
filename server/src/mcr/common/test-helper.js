@@ -14,11 +14,14 @@ import VisitController from '../visit/visit-controller'
 import UserController from '../user/user-controller'
 import SeedDataController from '../seed/seedData-controller'
 import { applicationConfiguration, getDbUri } from '../../config/config'
+import CourseController from '../course/course-controller'
+import Course from '../course/course'
 const configuration = applicationConfiguration('test')
 let dburi = getDbUri(configuration)
 let dbConfig = configuration.database
 
 const act = new ActivityController()
+const courseController = new CourseController()
 const as = new AssignmentController(configuration)
 const fileC = new FilesController(configuration)
 const vc = new VisitController()
@@ -37,6 +40,7 @@ const consumerController = new ConsumerController()
 const lcc = {
   activityController: act,
   assignmentController: as,
+  courseController: courseController,
   authUtil,
   filesController: fileC,
   consumerController: consumerController,
@@ -115,15 +119,17 @@ export default class Helper {
     return mongoose.disconnect()
   }
 
-  static sampleActivity (consumer, assignment) {
+  static sampleActivity (consumer, course, assignment) {
+    if (!course) throw new Error('expecting course in call to sampleActivity')
     return {
       toolConsumer: consumer._id,
-      resource_link_id: '346',
-      context_id: 'context id',
-      context_label: 'test context label',
-      context_title: 'title',
-      context_type: 'context type',
-      resource_link_title: 'resource link title',
+      course: course ? course._id: undefined,
+      resource_link_id: 'lmsActivityIdId346',
+      context_id: 'lmsCourseId',
+      context_label: 'test course label',
+      context_title: 'course title',
+      context_type: 'course type',
+      resource_link_title: 'lms activity link title',
       resource_link_description: 'blah blah',
       assignment: assignment
     }
@@ -136,7 +142,7 @@ export default class Helper {
     }
   }
 
-  static sampleAssignmentSpec (seedDataId, externalId) {
+  static sampleAssignmentSpec (seedDataId) {
     // if empty use something that works and ObjectID
     seedDataId = seedDataId || '56955ca46063c5600627f393'
     let consumer = new ObjectID('56955ca46063c5600627f393')
@@ -146,7 +152,6 @@ export default class Helper {
     }
     return {
       toolConsumer: consumer,
-      externalId: externalId || '59',
       name: 'test assignment',
       description: 'an assignment',
       ehrRoutePath: '/ehr/path',
@@ -237,6 +242,7 @@ export default class Helper {
       userName: user.fullName,
       activity: activity._id,
       assignment: assignment._id,
+      role: theRole.asText(),
       isStudent: theRole.isStudent,
       isInstructor: theRole.isInstructor,
       returnUrl: theLTI.launch_presentation_return_url
@@ -284,9 +290,29 @@ export default class Helper {
   }
 
 
+  static createSampleCourseData () {
+    return {
+      context_id: 'ltiData.context_id',
+      context_label: 'ltiData.context_label',
+      context_title: 'ltiData.context_title',
+      context_type: 'ltiData.context_type',
+      custom_title: ''
+    }
+  }
+  static createSampleCourse (consumerId) {
+    let data = Helper.createSampleCourseData()
+    data.toolConsumer = consumerId
+    const model = new Course(data)
+    return model.save()
+  }
+
   static createUser (consumer, user_id) {
     should.exist(consumer)
     const model = new User(Helper.sampleUserSpec(consumer, user_id))
+    return model.save()
+  }
+  static createUserFromSpec (userSpec) {
+    const model = new User(userSpec)
     return model.save()
   }
 
@@ -295,13 +321,20 @@ export default class Helper {
     return model.save()
   }
 
-  static createActivity (consumer, assignment) {
-    const model = new Activity(Helper.sampleActivity(consumer, assignment))
+  static createActivity (consumer, course, assignment, resource_link_id = undefined) {
+    const data = Helper.sampleActivity(consumer, course, assignment)
+    if (resource_link_id) {
+      data.resource_link_id = resource_link_id
+    }
+    const model = new Activity(data)
     return model.save()
   }
 
-  static createAssignment (consumer, assignment) {
-    let data = Helper.sampleAssignmentSpec()
+  static createAssignment (consumerId, seedDataId) {
+    let data = Helper.sampleAssignmentSpec(seedDataId)
+    if(consumerId) {
+      data.toolConsumer= consumerId
+    }
     const model = new Assignment(data)
     return model.save()
   }

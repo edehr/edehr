@@ -718,7 +718,7 @@
       ]
     }
   },
-  "tagList": "HideLIS",
+  "tagList": "COPD",
   "description": "This EHR Seed is based on a case from 'Health Case Studies - Toward Closing the Healthcare Communication Gap'. This EHR seed reflects a point during a patient's Day 2 stay in the hospital ",
   "name": "Erin Johns Day 2",
   "version": "1.0"

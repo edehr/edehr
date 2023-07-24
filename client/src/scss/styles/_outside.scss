@@ -32,9 +32,11 @@
 .dropdownWindow {
   border-radius: 5px;
   border: 1px solid $grey60;
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: $white;
   color: $grey80;
+  // make the list align left
+  text-align: left;
 }
 
 .details-container {
@@ -42,9 +44,18 @@
 }
 .details-row {
   display: grid;
-  grid-template-columns: 1fr 6fr;
   padding: 5px;
 }
+.details-row {
+  grid-template-columns: 1fr 3fr;
+}
+// if larger than threshold ...
+@media screen and (min-width: $main-width-threshold4){
+  .details-row {
+    grid-template-columns: 1fr 4fr;
+  }
+}
+
 .details-name {
   text-align: right;
   margin-right: 8px;
@@ -61,4 +72,16 @@
 }
 .with-title {
   grid-template-columns: 1fr 2fr 1fr;
+}
+
+.router-item {
+  display: block;
+  color: $brand-primary;
+  font-family: $bodyFontFamily;
+  text-decoration: none;
+  box-shadow: none;
+  .fa {
+    display: inline-block;
+    width: 2rem;
+  }
 }

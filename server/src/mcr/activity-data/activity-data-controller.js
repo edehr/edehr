@@ -10,7 +10,7 @@ const debug = require('debug')('server')
 
 export default class ActivityDataController extends BaseController {
   constructor () {
-    super(ActivityData, '_id')
+    super(ActivityData)
   }
 
   /**
@@ -76,7 +76,8 @@ export default class ActivityDataController extends BaseController {
 
   async _saveEhrData (activityData, ehrData) {
     ehrData = EhrDataModel.PrepareForDb(ehrData)
-    activityData.lastDate = Date.now()
+    // don't change time if student is just modifying their personal notes. Otherwise, instructors will see a change in data without a change in the ehr data.
+    // activityData.lastDate = Date.now()
     activityData.assignmentData = ehrData
     // tell the db to see a change on this subfield
     activityData.markModified('assignmentData')
@@ -90,7 +91,7 @@ export default class ActivityDataController extends BaseController {
    * @return {*}
    */
   updateScratchData (id, data) {
-    debug(`ActivityData update ${id} scratch data [${JSON.stringify(data)}]`)
+    // debug(`ActivityData update ${id} scratch data [${JSON.stringify(data)}]`)
     const value = data.value
     return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {

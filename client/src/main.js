@@ -61,6 +61,14 @@ router.afterEach(async (to, from) => {
   console.log('page change elapsed', elapsedTime, JSON.stringify(perfStat.elapsed))
 })
 
+window.addEventListener('storage', (event) => {
+  console.log('----------------- Hey Dev, this is listener on changes to local storage', event)
+  // TODO consider that this event listener does not fire on the window that changed the local storage
+  // But it does fire on other tabs.
+  // Could be used to (a) open a second window for instructors to select the student to evaluate and
+  // use listener like this in the main window to advance to the next student when local storage changes.
+})
+
 if (!LOCALHOST) {
   //only install Sentry on non-localhost
   Sentry.init({

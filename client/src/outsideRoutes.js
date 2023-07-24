@@ -108,8 +108,15 @@ export function outside () {
       path: '/courses',
       name: 'courses',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Courses.vue'),
-      meta: { layout: 'lms', label: 'My Activities', icon: APP_ICONS.course, zone: ZONE_LMS }
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/CourseList.vue'),
+      meta: { layout: 'lms', label: 'Courses', icon: APP_ICONS.course, zone: ZONE_LMS }
+    },
+    {
+      path: '/course',
+      name: 'course',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Course.vue'),
+      meta: { layout: 'lms', label: 'Course', icon: APP_ICONS.course, zone: ZONE_LMS }
     },
     {
       path: '/eval-student',
@@ -140,10 +147,17 @@ export function outside () {
     },
 
     {
-      path: '/lms-activity',
-      name: 'lms-activity',
+      path: '/lms-instructor-activity',
+      name: 'lms-instructor-activity',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/LmsActivity.vue'),
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/LmsInstructorActivity.vue'),
+      meta: { layout: 'lms', label: NAMES.ACTIVITY, icon: APP_ICONS.activity, zone: ZONE_LMS }
+    },
+    {
+      path: '/lms-student-activity',
+      name: 'lms-student-activity',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/LmsStudentActivity.vue'),
       meta: { layout: 'lms', label: NAMES.ACTIVITY, icon: APP_ICONS.activity, zone: ZONE_LMS }
     },
     {
@@ -166,13 +180,6 @@ export function outside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/SeedViewCondensed.vue'),
       meta: { layout: 'lms', label: NAMES.SEED_CONDENSED, icon: APP_ICONS.seed, zone: ZONE_LMS }
-    },
-    {
-      path: '/student-courses',
-      name: 'student-courses',
-      component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/StudentCourses.vue'),
-      meta: { layout: 'lms', label: 'My Activities', icon: APP_ICONS.course, zone: ZONE_LMS }
     },
     {
       path: '/admin-login',

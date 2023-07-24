@@ -154,22 +154,23 @@ export const ehrText = {
   ERROR_IN_TABLE_ACTION_DEF: (tableDef) => `Error in the TableAction EHR definitions. Missing source for table ${tableDef} `
 }
 export const demoText = {
-  courseTitle: 'Sample Course - Intro to EHR',
-  personaLabel: 'Demo Persona',
-  roleLabel: 'Demo Role',
+  course1Title: 'Sample Course - Health Care',
+  course2Title: 'Sample Course - Med Lab',
+  personaLabel: 'Your demo persona is',
+  roleLabel: 'With role',
   selectUserLabel: 'Select a user',
-  lmsTitle: 'Demonstration LMS',
-  lmsHint: 'A LMS is a learning management system such as Moodle, Brightspace, D2L and etc.',
+  lmsTitle: 'Demonstration learning management system (LMS)',
+  lmsHint: 'Typical learning management systems are: Moodle, Canvas, Brightspace, D2L and etc.',
   switchRoleExplain: 'When you click on an activity this \'instructor\' will become a \'student\' same as how Moodle allows users to switch roles.',
-  switchRoleLabel: 'Change to another persona',
-  switchRoleSegmentTitle: 'Switch role:',
-  title: 'Demonstration - "Log In" Page',
-  intro: 'Here you can "log in", as a student or instructor, to a simulated learning management system (LMS) and try out a sample course that ' +
-    'uses the EdEHR. ' +
-    ' Once you log in you will see a sample course with three activities, each set to use the EdEHR. ' +
+  switchRoleLabel: 'Logout and change to another persona',
+  switchRoleSegmentTitle: 'Check to switch role:',
+  title: 'Demonstration - "Log In"',
+  intro: 'Here you can "log in", as a student or instructor, to a simulated learning management system (LMS) and try out the EdEHR. ' +
+    ' Once you log in you can choose a sample course with sample activities that use the EdEHR. ' +
     ' In the real world, your school\'s lead instructors will create course content that will use a special connector that will' +
-    ' open the EdEHR.'
-  ,
+    ' open the EdEHR.\n' +
+    'Tip: Log in as a student and do some documentation in the EHR or LIS. Submit your work and then come log in as an instructor to grade your student\'s work.',
+  advanced: 'Once you have explored the roles of student and instructor you may wish to try out the role of creator.  We recommend that you read the documentation first. A link to the documentation is in the top banner. We also recommend that you reach out to mailto:info@edehr.org to request a guided tour. ',
 
   explanation: [
     {
@@ -223,12 +224,14 @@ export const demoText = {
         ' Reach out to mailto:info@edehr.org if you have questions.',
     }
   ],
-  lmsAside: 'To the right is a simple one-page learning management system with sample activities each ready to be connected with ' +
-    ' a learning object inside the EdEHR. Some of those learning objects are ' +
+  lmsAside: 'To the right is a simple one-page learning management system with sample courses and activities that are connected to EdEHR content.',
+  lmsAside2: 'Some of those learning objects are ' +
     ' based on the open text-book <a href="https://pressbooks.bccampus.ca/healthcasestudies/">Health Case Studies - Toward Closing the Healthcare Communication Gap</a> by:  Glynda Rees, Rob Kruger, Janet Morrison.',
   login: {
-    title: 'Welcome to your personal EdEHR playground',
-    body: 'This is a sandbox area for you to explore the EdEHR and how it works with learning management systems such as Moodle, Brightspace, etc. This demonstration mode is only meant for short term explorations. If you create any course content you need to keep then be sure to download a copy. Contact mailto:info@edehr.org if you have any questions or need help.\n'
+    title: 'Welcome to your personal EdEHR sandbox',
+    body: 'This is a sandbox for you to explore the EdEHR and how it works with learning management systems such as Moodle, Brightspace, etc. ' +
+      'This sandbox is only intended for exploring, yet, you can  create content and download a copy for later use. \n' +
+      'Please contact mailto:info@edehr.org if you have any questions or need help.\n'
   },
   logout: {
     title: 'Confirm exit demonstration mode',

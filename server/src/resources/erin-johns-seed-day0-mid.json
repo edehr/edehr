@@ -1,6 +1,7 @@
 {
   "id": "5d6786b88d19fb14c0994a5f",
   "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "appType": "EHR",
   "ehrData": {
     "demographics": {
       "familyName": "Johns",
@@ -445,7 +446,7 @@
       ]
     }
   },
-  "tagList": "HideLIS",
+  "tagList": "COPD",
   "description": "This EHR Seed is based on a case from 'Health Case Studies - Toward Closing the Healthcare Communication Gap'. This EHR seed reflects the initial period of a patient's stay in the hospital ",
   "name": "Erin Johns Day 0",
   "version": "1.0"

@@ -4,17 +4,20 @@ import InstoreHelper from '../store/modules/instoreHelper'
 
 const debugDC = false
 
-export function demoGoToEhr (toolKey, toolSecret, personaName, role, resource_link_title, resource_link_description, resource_link_id, returnUrl) {
-  const submitData = {
-    resource_link_title: resource_link_title,
-    resource_link_description: resource_link_description,
-    resource_link_id: resource_link_id,
-    personaName: personaName,
-    personaRole: role,
-    returnUrl: returnUrl,
-    toolKey: toolKey,
-    secret: toolSecret
-  }
+export function demoGoToEhr (submitData) {
+  // const submitData = {
+  //   resource_link_title: resource_link_title,
+  //   resource_link_description: resource_link_description,
+  //   resource_link_id: resource_link_id,
+  //   personaName: personaName,
+  //   personaRole: role,
+  //   returnUrl: returnUrl,
+  //   toolKey: toolKey,
+  //   secret: toolSecret,
+  //   userId: userId,
+  //   demo_lobjId: demo_lobjId,
+  //   appType: appType
+  // }
   if (debugDC) console.log('DemoCourse goto ehr with ', submitData)
   StoreHelper.setLoading(null, true)
   StoreHelper.submitPersona(submitData)

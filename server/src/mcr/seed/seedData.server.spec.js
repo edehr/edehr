@@ -15,8 +15,10 @@ const tokenData = Helper.sampleTokenData()
 const token = Helper.generateToken(tokenData)
 
 // these tests cause mocha to stay running.  Skip until we can resolve this problem
-describe.skip(`Make server calls on ${TYPE}`, function () {
+describe(`Make server calls on ${TYPE}`, function () {
   let app
+  let theData
+  let theId
   before(function (done) {
     helper.beforeTestAppAndDbDrop(ehrApp, configuration, mongoose)
       .then( () => {
@@ -27,10 +29,6 @@ describe.skip(`Make server calls on ${TYPE}`, function () {
   after(function (done) {
     helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
-
-
-  let theData
-  let theId
 
   it('seed-data setup sample', function () {
     theData = Helper.sampleSeedDataSpec()
@@ -127,7 +125,7 @@ describe.skip(`Make server calls on ${TYPE}`, function () {
       propertyName: 'aNewPage',
       value: {someProperty: 'someValue'}
     }
-    let url = BASE + '/updateSeedEhrProperty/' +  theId
+    let url = BASE + '/updateSeedEhrProperty/' +  theId + '/save'
     request(app)
       .put(url)
       .send(payload)

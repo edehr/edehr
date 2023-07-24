@@ -22,8 +22,12 @@ export const APP_ICONS = {
   menu: 'bars',
   new: 'magic',
   seed: 'hand-holding-medical',
+  search: 'search',
   returnToSeedList: 'list',
   rawEhr: 'th-large',
+  sortAsc: 'sort-down',
+  sortDesc: 'sort-up',
+  sortNone: 'sort',
   student: 'user-graduate',
   table: 'table',
   tags: 'tag', // for filtering by tag applied to an object

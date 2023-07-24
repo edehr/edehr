@@ -8,8 +8,6 @@ const helper = new Helper()
 import EhrApp from '../../server/app'
 import { applicationConfiguration } from '../../config/config'
 const configuration = applicationConfiguration('test')
-const TYPE = 'Assignment'
-const NAME = 'assignment'
 const PROPERTY = 'assignment'
 const BASE = '/api/assignments'
 const BASE_SEED_DATA = '/api/seed-data'
@@ -18,10 +16,8 @@ const ehrApp = new EhrApp(configuration)
 const tokenData = Helper.sampleTokenData()
 const token = Helper.generateToken(tokenData)
 
-const debug = require('debug')('server')
-
 // skip until resolve issue --- validatorMiddleware Invalid token. Please, return to you....
-describe.skip(`Make server calls on ${TYPE}`, function () {
+describe('Make server calls on Assignment', function () {
   let app
 
   before(function (done) {
@@ -54,13 +50,13 @@ describe.skip(`Make server calls on ${TYPE}`, function () {
         should.exist(res.body)
         let obj = res.body
         obj.should.have.property('_id')
-        debug('created', obj._id)
+        // debug('created', obj._id)
         theSeedId = obj._id
         done()
       })
   })
 
-  it(`create ${NAME}`, function (done) {
+  it('create assignment', function (done) {
     let url = BASE
     if(theSeedId) {
       theData.seedDataId = theSeedId
@@ -78,12 +74,12 @@ describe.skip(`Make server calls on ${TYPE}`, function () {
         should.exist(res.body)
         let obj = res.body
         obj.should.have.property('seedDataId')
-        debug('created', obj._id, 'with seed', obj.seedDataId)
+        // debug('created', obj._id, 'with seed', obj.seedDataId)
         done()
       })
   })
 
-  it(`get ${NAME} list`, function (done) {
+  it('get assignment list', function (done) {
     let url = BASE
     let property = 'assignments'
     request(app)
@@ -109,7 +105,7 @@ describe.skip(`Make server calls on ${TYPE}`, function () {
       })
   })
 
-  it(`find ${NAME} by id`, function (done) {
+  it('find assignment by id', function (done) {
     let url = BASE + '/get/' + theId
     request(app)
       .get(url)
@@ -126,7 +122,7 @@ describe.skip(`Make server calls on ${TYPE}`, function () {
       })
   })
 
-  it(`update ${NAME}`, function (done) {
+  it('update assignment', function (done) {
     theData.name = '2.0'
     let url = BASE + '/' + theId
     request(app)
@@ -149,7 +145,7 @@ describe.skip(`Make server calls on ${TYPE}`, function () {
       })
   })
 
-  it(`create ${NAME}`, function (done) {
+  it('create assignment', function (done) {
     let url = BASE
     if(theSeedId) {
       theData.seedDataId = theSeedId
@@ -162,7 +158,7 @@ describe.skip(`Make server calls on ${TYPE}`, function () {
       .set('Accept', 'application/json')
       .expect(200)
       .end(function (err, res) {
-        debug('Creating a second assignment with the same external id should not fail.', err, res.body)
+        // debug('Creating a second assignment with the same external id should not fail.', err, res.body)
         should.exist(res.body)
         done()
       })

@@ -37,7 +37,6 @@
 
 <script>
 import { APP_ICONS } from '@/helpers/app-icons'
-import StoreHelper, { INSTRUCTOR_ACTION } from '@/helpers/store-helper'
 import EvalHelper from '@/helpers/eval-helper'
 import { Text } from '@/helpers/ehr-text'
 import UiButton from '@/app/ui/UiButton.vue'
@@ -59,22 +58,23 @@ export default {
   computed: {
     activityData () { return this.studentVisit.activityData},
     studentVisitId ( ) { return this.studentVisit._id },
-    showLabels () { return StoreHelper.isOutsideShowButtonLabels() },
+    // change of plan, Always hide the labels for class list actions. Gives compact UI
+    showLabels () { return false }, //return StoreHelper.isOutsideShowButtonLabels() },
     isSubmitted () { return this.activityData.submitted },
-    css () { return this.evaluating ? ' ': 'flow_across flow_across_right menu_space_across' }
+    // when appearing in the class listing arrange for table layout
+    css () { return this.evaluating ? ' ': 'flow_across flow_across_right table_space_across' }
   },
   methods: {
-    // evaluation
     goToEvaluation () {
-      StoreHelper.postActionEvent(INSTRUCTOR_ACTION, 'evalInCondensed')
-      this.$router.push({ name: 'eval-student', query: { visitId: this.studentVisitId } })
+      const inEhr = false
+      EvalHelper.studentEvaluation(this.studentVisitId, inEhr)
     },
     enableEvaluation () {
       return this.activityData.closed || (this.activityData.submitted && !this.activityData.evaluated)
     },
-    // evaluation in EHR
     goToEhr () {
-      return EvalHelper.goToEhr(this.studentVisit)
+      const inEhr = true
+      EvalHelper.studentEvaluation(this.studentVisitId, inEhr)
     },
     forceSubmit () { EvalHelper.forceSubmit(this.studentVisit) },
     blockEditing () { EvalHelper.instructorUnsubmitsAssignment(this.studentVisit) },

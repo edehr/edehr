@@ -2,9 +2,9 @@ import store from '../store'
 import { removeEmptyProperties } from './ehr-utils'
 import sKeys from './session-keys'
 import { ZONE_ADMIN, ZONE_DEMO, ZONE_EHR, ZONE_LMS, ZONE_PUBLIC } from '@/router'
-import { setAuthHeader } from '@/helpers/axios-helper'
+import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 
-const debugSH = false
+let debugSH = false
 
 export const ADMIN_ACTION = 'admin'
 export const CREATOR_ACTION = 'creator'
@@ -12,6 +12,11 @@ export const DEMO_ACTION = 'demo'
 export const INSTRUCTOR_ACTION = 'instructor'
 export const STUDENT_ACTION = 'student'
 export const SYSTEM_ACTION = 'system'
+export const USER_ACTION = 'user'
+
+export const APP_TYPE_EHR = 'EHR'
+export const APP_TYPE_LIS = 'LIS'
+
 /*
 https://softwareengineering.stackexchange.com/a/247277/346750
 "A Helper class is a lesser known code smell where a coder has identified some miscellaneous,
@@ -64,6 +69,7 @@ class StoreHelperWorker {
   _dispatchAssignmentList (key, payload) { return store.dispatch('assignmentListStore/' + key, payload)}
   async _dispatchAuthStore (key, payload) { return await store.dispatch(`authStore/${key}`, payload) }
   _dispatchClassList (key, payload) { return store.dispatch('classListStore/' + key, payload)}
+  _dispatchCourse (key, payload) { return store.dispatch('courseStore/' + key, payload)}
   async _dispatchFileList (key, payload) { return await store.dispatch('fileListStore/' + key, payload)}
   async _dispatchSeedListProperty (key, payload) { return await store.dispatch('seedListStore/' + key, payload)}
   async _dispatchInstructor (key, payload) { return await store.dispatch('instructor/' + key, payload)}
@@ -149,8 +155,7 @@ class StoreHelperWorker {
     if (value > 0) {
       store.commit('system/setLoading', value)
     } else {
-      // delay the decrement to allow other process a chance to increment.
-      // this reduces flashing of the spinner. a lot!
+      // delay the decrement to allow other process a chance to increment. This reduces flashing of the spinner, a lot!
       setTimeout(() => {
         store.commit('system/setLoading', value)
       }, 50)
@@ -194,9 +199,9 @@ class StoreHelperWorker {
    * **********   Instructor  **************
    */
 
-  getClassList () { return this._getInstructorProperty('list') }
+  getClassList () { return this._getInstructorProperty('classList') }
   async getClassListForActivity ( activityId) { return await this._dispatchClassList('getClassList', activityId) }
-  getCourseList () { return store.state.instructor.sCourses || [] }
+  getCourseList () { return store.getters['courseStore/courseList']}
 
   dispatchLoadClassList ( ) { return this._dispatchInstructor('loadClassList' )  }
 
@@ -259,18 +264,17 @@ class StoreHelperWorker {
 
   getActivityTitle () { return this._getActivityProperty('activityTitle') }
   getActivityDescription () { return this._getActivityProperty('activityDescription') }
+  getActivityRecord () { return this._getActivityProperty('activityRecord') }
+
   lmsActivitiesUsingLearningObject (lObjId) {
     let list = []
     let courses = this.getCourseList()
     courses.forEach(course => {
-      let clist = course.activities.filter( a => a.assignment && a.assignment._id === lObjId)
+      let clist = course.courseActivities.filter( a => a.assignment && a.assignment._id === lObjId)
       list = [...list, ...clist]
     })
     return list
   }
-
-  async setActivityId (activityId) { return await this._dispatchActivity('setActivityId', activityId) }
-  async loadCurrentActivity () { return await this._dispatchActivity('loadCurrentActivity') }
 
   async closeActivity (activityId) {
     await this._toggleActivity(activityId, 'close')
@@ -323,13 +327,24 @@ class StoreHelperWorker {
     return duped
   }
   getAssignmentsList () { return this._getAssignmentListProperty('list') }
+  getInstructorCourses () { return this._getInstructorProperty('courseList') }
+  dispatchLoadCourses ( ) { return this._dispatchInstructor('loadCourses' )  }
+  async updateCourse (course, title, description) {
+    let courseData = {
+      custom_title: title,
+      custom_description: description
+    }
+    let dataIdPlusPayload = { id: course.id, payload: courseData }
+    await this._dispatchCourse('updateCourse', dataIdPlusPayload)
+    StoreHelper.postActionEvent(CREATOR_ACTION, 'updateCourse')
+  }
 
   async restoreAsInstructor (router) {
     const newToken = await this._dispatchVisit('restoreAsInstructor')
     // console.log('newToken', newToken)
-    setAuthHeader(newToken)
     await StoreHelper.storeReplaceToken(newToken)
-    router.push({name: 'lms-activity'})
+    const visitId = StoreHelper.getAuthVisitId()
+    router.push({name: 'lms-instructor-activity', query: { visitId: visitId } })
     StoreHelper.postActionEvent(INSTRUCTOR_ACTION,'restoreNormalRole')
   }
 
@@ -337,7 +352,7 @@ class StoreHelperWorker {
     const currentActivityId = StoreHelper.getActivityId()
     const newToken = await this._dispatchVisit('visitAsStudent', currentActivityId)
     /*
-    This new token has the same properties as the origin user token with these changes:
+    This new token has the same properties as the original user token with these changes:
         newToken.isStudent = true
         newToken.instructorAsStudent = true
         newToken.isInstructor = false
@@ -345,7 +360,6 @@ class StoreHelperWorker {
     newToken can now be used as the users auth until they change back to being an instructor.
     Use the instructorToken to restore the user to instructor.
     */
-    setAuthHeader(newToken)
     await StoreHelper.storeReplaceToken(newToken)
     const visitId = StoreHelper.getAuthVisitId()
     router.push({ name: 'ehr', query: { visitId: visitId } })
@@ -356,6 +370,9 @@ class StoreHelperWorker {
    * **********   Seed Data  / Case Studies **************
    */
   isSeedEditing () { return this._getVisitProperty('isSeedEditing')  }
+  isInstructorEvalMode () {
+    return StoreHelper.isInstructor() && !StoreHelper.isSeedEditing()
+  }
   setSeedEditId (id) { store.commit('visit/setSeedEditId', id) }
   getSeedEditId (id) { return this._getVisitProperty('seedEditId')  }
   getAssignmentSeedId () { return this._getAssignmentProperty('seedDataId') }
@@ -363,6 +380,7 @@ class StoreHelperWorker {
   getSeedId () { return this._getSeedListProperty('seedId')}
   getSeedEhrData () { return this._getSeedListProperty('seedEhrData')}
   getSeedContent () { return this._getSeedListProperty('seedContent') }
+  getSeedAppType () { return this._getSeedListProperty('appType') }
 
   deleteSeed (id) {
     StoreHelper.postActionEvent(CREATOR_ACTION,'deleteSeed')
@@ -371,10 +389,6 @@ class StoreHelperWorker {
 
   async loadSeed (seedId) {
     await this._dispatchSeedListProperty('loadSeedContent', seedId)
-    const seedModel = this._getSeedListProperty('seedModel')
-    // present the NAV menus based on seed
-    StoreHelper.setShowEHR(!seedModel.hideEHRNav)
-    StoreHelper.setShowLIS(!seedModel.hideLISNav)
   }
   async loadSeedLists () { return await this._dispatchSeedListProperty('loadSeeds') }
 
@@ -522,14 +536,27 @@ class StoreHelperWorker {
     if (debugSH) console.log('SH loadVisitRecord dispatch the load visit information')
     await this._dispatchVisit('loadVisitRecord')
   }
+
+  /**
+   * Always use this StoreHelper.setVisitid to establish the current visit record. We do this, so that we can keep the auth token in sync.
+   * @param visitId
+   * @returns {Promise<void>}
+   */
   async setVisitId (visitId) {
-    StoreHelper.postActionEvent(SYSTEM_ACTION,'setVisitId-'+visitId)
+    const authVisitId = store.getters['authStore/visitId']
+    if (visitId && authVisitId !== visitId) {
+      // console.log('--- Call to set visit id to something different from what the auth token has.', authVisitId, visitId)
+      const newToken = await this._dispatchVisit('changeVisitId', visitId)
+      // console.log('set visit id with new token', newToken)
+      await StoreHelper.storeReplaceToken(newToken)
+      StoreHelper.postActionEvent(USER_ACTION,'changeVisitId')
+    }
     if (debugSH) console.log('SH setVisitId dispatch the load visit id', visitId)
-    await this._dispatchVisit('setVisitId', visitId)
+    await this._dispatchVisit('setVisitIdViaSh', visitId)
   }
-  async getVisitId () {
+  getVisitId () {
     if (debugSH) console.log('SH getVisitId')
-    return await this._getVisitProperty('visitId')
+    return this._getVisitProperty('visitId')
   }
 
   /**
@@ -538,44 +565,17 @@ class StoreHelperWorker {
    * @param optionalVisitId
    * @returns {Promise<void>}
    */
-  async loadCommon (optionalVisitId) {
-    const toolConsumerId = store.getters['authStore/consumerId']
-    await this.loadConsumer(toolConsumerId)
-    // Load the user based on auth message
-    const userId = store.getters['authStore/userId']
-    await this._dispatchUser('load', userId)
-    // load the visit record (assignment, activity, activityData, etc)
-    // store.getters['authStore/visitId'] is the visit id from the auth message. This always exists to get here.
-    // store.getters['visit/visitId'] is the previously saved visit id
-    const storedVisit = store.getters['visit/visitId']
-    const authVisit = store.getters['authStore/visitId']
-    // console.log('loadCommon optionalVisitId, storedVisit, authVisit', optionalVisitId, storedVisit, authVisit)
-    let visitId = optionalVisitId || storedVisit || authVisit
-    await StoreHelper.setVisitId(visitId) //note this stores the visit id to survive page changes and browser refresh
-    await StoreHelper.loadVisitRecord()
-  }
 
   async loadInstructorWithStudent () {
-    if(debugSH) console.log('SH loadInstructorWithStudent')
-    let activityId = this.getActivityId()
-    let result = {}
-    if (!activityId) {
-      console.error('Can\'t find a current activity id')
-      return result
-    }
-    if(debugSH) console.log('SH loadInstructorWithStudent activityId', activityId)
-    let theActivity = await this.loadCurrentActivity()
-    result.activity = theActivity
-    if(debugSH) console.log('SH loadInstructorWithStudent theActivity', theActivity)
-    let theAssignment = await this.loadAssignment(theActivity.assignment)
-    result.assignment = theAssignment
-    if(debugSH) console.log('SH loadInstructorWithStudent theAssignment', theAssignment)
-    await this.dispatchLoadClassList()
-    let seedId = StoreHelper.getAssignmentSeedId()
-    result.seedId = seedId
-    if(debugSH) console.log('SH loadInstructorWithStudent seedId', seedId)
+    await store.dispatch('visit/loadVisitRecord')
+    const theActivity = await store.dispatch('activityStore/loadActivityRecord')
+    const seedId = theActivity.caseStudyId
+    const learningObjectId = theActivity.learningObjectId
+    if(debugSH) console.log('SH liws theActivity', theActivity)
+    await store.dispatch('assignmentStore/load', learningObjectId)
+    await store.dispatch('instructor/loadClassList')
     await this.loadSeed(seedId)
-    return result
+    return theActivity
   }
 
   /* **********
@@ -617,6 +617,7 @@ class StoreHelperWorker {
     }
     await this._dispatchAssignment('clearAssignment')
     await this._dispatchAuthStore('logOutUser')
+    await this._dispatchCourse('clearCourse')
     await this._dispatchVisit('clearVisitData')
     await this._dispatchSeedListProperty('clearSeedData')
     await this._dispatchActivity(('clearActivity'))
@@ -670,6 +671,13 @@ class StoreHelperWorker {
     return this._getDemoStorage('demoTokenData')
   }
 
+  getDemoLObjInfoFromName (activity) {
+    const activityTitle = activity.lObjDef.title
+    const dd = this.getDemoTokenData()
+    const lObjList = dd.lObjList
+    const item = lObjList.find( item => activityTitle.startsWith(item.title))
+    return item ? { id: item.demo_lobjId, appType: item.appType }  : undefined
+  }
   isDemoMode () { return this._getDemoStorage('isDemo')}
   setDemoToken (demoToken) { return this._dispatchDemoStore('setDemoToken', demoToken) }
 
@@ -681,6 +689,16 @@ class StoreHelperWorker {
   setDemoAssignment (assignment) {
     StoreHelper.postActionEvent(DEMO_ACTION,'setDemoAssignment')
     return this._dispatchDemoStore('setDemoAssignment', assignment)
+  }
+
+  async autoLinkDemoLobj (theActivity, demo_lobjId) {
+    // console.log('HERE is where we set up the demo to auto link the activity and lObj', theActivity, demo_lobjId)
+    const payload = { activity: theActivity.id, assignment: demo_lobjId }
+    await store.dispatch('activityStore/linkAssignment', payload)
+    // console.log('reload the activity now that the activity is linked to an learning object')
+    theActivity = await store.dispatch('activityStore/loadActivityRecord')
+    // console.log('fully linked activity', theActivity)
+    return theActivity
   }
 
   submitPersona (submitData) {
@@ -701,30 +719,23 @@ class StoreHelperWorker {
   }
 
   isEHR_Showing () {
-    return this._getSystemProperty('showingEHR')
-  }
-  toggleShowEHR (  ) {
-    StoreHelper.postActionEvent(CREATOR_ACTION,
-      StoreHelper.isEHR_Showing() ? 'hideEhrNav' : 'showEhrNav')
-    this._dispatchSystem('toggleShowEHR')
-  }
-  setShowEHR ( value ) {
-    StoreHelper.postActionEvent(CREATOR_ACTION,
-      value ? 'hideEhrNav' : 'showEhrNav')
-    this._dispatchSystem('setShowEHR', value)
+    // const activityRecord = StoreHelper.getActivityRecord()
+    // return APP_TYPE_EHR === activityRecord.appType
+    if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+      const seed = EhrOnlyDemo.ehrOnlySeed()
+      console.log('EHR only demo', seed.appType, seed)
+      return APP_TYPE_EHR === seed.appType
+    }
+    // console.log('SH this.getSeedAppType()',this.getSeedAppType())
+    return APP_TYPE_EHR === this.getSeedAppType()
   }
   isLIS_Showing () {
-    return this._getSystemProperty('showingLIS')
-  }
-  toggleShowLIS (  ) {
-    StoreHelper.postActionEvent(CREATOR_ACTION,
-      StoreHelper.isLIS_Showing() ? 'hideLisNav' : 'showLisNav')
-    this._dispatchSystem('toggleShowLIS')
-  }
-  setShowLIS ( value ) {
-    StoreHelper.postActionEvent(CREATOR_ACTION,
-      value ? 'hideLisNav' : 'showLisNav')
-    this._dispatchSystem('setShowLIS', value)
+    if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+      const seed = EhrOnlyDemo.ehrOnlySeed()
+      console.log('EHR only demo', seed.appType, seed)
+      return APP_TYPE_LIS === seed.appType
+    }
+    return APP_TYPE_LIS === this.getSeedAppType()
   }
 }
 

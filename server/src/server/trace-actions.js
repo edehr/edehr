@@ -5,7 +5,7 @@ const trace = require('debug')('actions')
 const EventEmitter = require('events')
 let traceLogger
 
-const isDevEnv = process.env.NODE_ENV !== 'production'
+// const isDevEnv = process.env.NODE_ENV !== 'production'
 export const ACTION_EVENT_BUS = new EventEmitter()
 export const ACTION_EVENT = 'ACTION_EVENT'
 

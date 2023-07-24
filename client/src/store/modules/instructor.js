@@ -23,7 +23,7 @@ const getters = {
     })
    * @return {Array|*}
    */
-  list: state => { return state.sClassList },
+  classList: state => { return state.sClassList },
 
   currentEvaluationStudentId: state => {
     return state.sCurrentEvaluationStudentId
@@ -53,13 +53,13 @@ const actions = {
   clearInstructor: function (context) {
     context.commit('setCurrentEvaluationStudentId', undefined)
   },
-  changeCurrentEvaluationStudentId: (context, currentId) => {
-    if (debug) { console.log(NAME + 'change current evaluation student id to ', currentId)}
-    context.commit('setCurrentEvaluationStudentId', currentId)
+  changeCurrentEvaluationStudentId: async (context, currentStudentVisitId) => {
+    if (debug) console.log(NAME + 'change current evaluation student id to ', currentStudentVisitId)
+    context.commit('setCurrentEvaluationStudentId', currentStudentVisitId)
     let sv = context.getters.currentEvaluationStudent
     let adId = sv.activityData._id
-    if(debug) console.log(NAME + 'currentEvaluationStudent activityData._id',adId)
-    return context.dispatch('activityDataStore/loadActivityData', adId, {root:true})
+    if (debug) console.log(NAME + 'currentEvaluationStudent activityData._id', adId)
+    await context.dispatch('activityDataStore/loadActivityData', adId, { root: true })
   },
 
   saveEvaluationNotes (context, payload) {
@@ -76,20 +76,6 @@ const actions = {
         resolve(evaluationData)
       })
     })
-  },
-
-  loadCourses (context) {
-    if(debug) console.log(NAME + 'loadCourses')
-    let userId = context.rootGetters['userStore/userId']
-    let api = 'users'
-    let url = 'instructor/courses/' + userId
-    return InstoreHelper.getRequest(context, api, url)
-      .then(response => {
-        let courses = response.data['courses']
-        if(debug) console.log(NAME + 'loadCourses', courses)
-        context.commit('setCourses', courses)
-        return courses
-      })
   },
 
   loadClassList (context) {
@@ -111,8 +97,7 @@ const actions = {
         context.commit('setClassList', classList)
         return classList
       })
-  },
-
+  }
 }
 
 const INSTRUCTOR_LOCAL_STORE ='currentEvaluationStudentId'

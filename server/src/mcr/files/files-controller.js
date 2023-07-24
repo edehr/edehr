@@ -104,7 +104,7 @@ export default class FileController {
       }
       await this._setupDirectory(req)
       this._setupFileName(req, file)
-      console.log('is req method post', req.method)
+      // console.log('is req method post', req.method)
       if (req.method === 'POST' && !this._validateFileDoesNotExist(req, file)) {
         return callback(req.badRequestError)
       }
@@ -135,7 +135,7 @@ export default class FileController {
           return false
         })
     }
-    debug(`File _validateRequest consumer id ${id} leads to key '${dirName}'`)
+    // debug(`File _validateRequest consumer id ${id} leads to key '${dirName}'`)
     if (!dirName) {
       logError('File upload - found badRequestError ', req.badRequestError ? req.badRequestError.message : '')
       const error = new Error(Text.INVALID_AUTH_CONSUMER)
@@ -232,12 +232,12 @@ export default class FileController {
         const fileName = req.params.name
         let testName = path.join(req.consumerDirectory, fileName)
         function sendIt (fileName, options) {
-          console.log('sendFile', fileName, ' options', options)
+          // console.log('sendFile', fileName, ' options', options)
           res.sendFile(fileName, options, function (err) {
             if (err) {
               next(err)
             } else {
-              console.log('Sent:', fileName)
+              // console.log('Sent:', fileName)
             }
           })
         }

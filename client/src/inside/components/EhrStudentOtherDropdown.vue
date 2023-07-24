@@ -1,7 +1,7 @@
 <template lang='pug'>
   div
     app-dropdown(:items="items")
-    ehr-context-activity-dialog(ref='activityDialog')
+    //ehr-context-activity-dialog(ref='activityDialog')
     ehr-scratch-pad-dialog(ref='scratchPad')
     ui-agree(ref='evalNotes')
 </template>
@@ -10,13 +10,15 @@
 import AppDropdown from '@/app/components/app-dropdown/AppDropdown'
 import { APP_ICONS } from '@/helpers/app-icons'
 import EhrScratchPadDialog from '@/inside/components/EhrScratchPadDialog'
-import EhrContextActivityDialog from '@/inside/components/EhrContextActivityDialog'
+// import EhrContextActivityDialog from '@/inside/components/EhrContextActivityDialog'
 import StoreHelper from '@/helpers/store-helper'
 import UiAgree from '@/app/ui/UiAgree'
 export default {
   components: {
     UiAgree,
-    AppDropdown, EhrContextActivityDialog, EhrScratchPadDialog
+    AppDropdown,
+    // EhrContextActivityDialog,
+    EhrScratchPadDialog
   },
   data: function () {
     return {
@@ -24,21 +26,41 @@ export default {
     }
   },
   computed: {
+    activity () { return this.$store.getters['activityStore/activityRecord'] || {} },
     isInstructorAsStudent () { return StoreHelper.isInstructorAsStudent() },
+    activityTooltip () { return this.activity.learningObjectName },
+    visitId () { return this.$store.getters['visit/visitId']},
+
     items () {
       const menu = [
         {
-          label: 'My activities',
-          toolTip: 'See list of all my EdEHR activities.',
-          callback: () => this.$router.push('/student-courses'),
+          label: 'Courses',
+          toolTip: 'See list of all my EdEHR courses and activities.',
+          callback: () => {
+            const path = '/course'
+            if (this.$route.path !== path) {
+              this.$router.push(path)
+            }
+          },
           icon: this.appIcons.course
         },
         {
-          label: 'Activity information',
-          toolTip: 'See details about the assigned activity.',
-          callback: () => this.$refs.activityDialog.showDialog(),
-          icon: 'book-open'
+          label: 'Activity',
+          toolTip: this.activityTooltip,
+          icon: this.appIcons.activity,
+          callback: () => {
+            const path = '/lms-student-activity'
+            if (this.$route.path !== path) {
+              this.$router.push({ name: 'lms-student-activity', query: {visitId: this.visitId} })
+            }
+          }
         },
+        // {
+        //   label: 'Activity information',
+        //   toolTip: 'See details about the assigned activity.',
+        //   callback: () => this.$refs.activityDialog.showDialog(),
+        //   icon: 'book-open'
+        // },
         {
           label: 'Scratch pad',
           toolTip: 'A place for you to place notes. This is visible only to you.',

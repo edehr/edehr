@@ -9,7 +9,7 @@ const _common =     '"Health Case Studies - Toward Closing the Healthcare Commun
   'by:  Glynda Rees, Rob Kruger, Janet Morrison. '
 
 const assignment1 = {
-  title: 'Demonstration Assignment #1: COPD',
+  title: 'Erin Johns: COPD',
   description: 'This learning object/assignment is based on Case Study #1.\n' +
     ' In this case the patient has chronic obstructive pulmonary disease (COPD) with a history of asthma.' +
     ' The interprofessional collaboration is role modelled between nursing, medical radiology, ' +
@@ -25,7 +25,8 @@ const ej0SeedDef = {
     ' In this case the patient has chronic obstructive pulmonary disease (COPD) with a history of asthma.',
   version: '1',
   ehrData: ej0Seed.ehrData,
-  tagList: ej0Seed.tagList
+  tagList: ej0Seed.tagList,
+  appType: 'EHR'
 }
 const assignment2 = {
   description: 'This learning object/assignment is based on Case Study #2.\n ' +
@@ -34,7 +35,7 @@ const assignment2 = {
     ' The focus for this assignment is help the student complement their assessment and monitoring ' +
     ' skills with accurate and careful recording within an electronic health record system.' +
     ' The EHR records take you to 18:00 of Day 1 of a four day stay.',
-  title: 'Demonstration Assignment #2: Pneumonia'
+  title: 'Erin Johns: COPD with pneumonia'
 }
 const ej2SeedDef = {
   toolConsumer: '',
@@ -46,7 +47,8 @@ const ej2SeedDef = {
     ' This simulation follows the case study up to 18:00 of Day 1.  The case study continues through to discharge on Day 4. ',
   version: '1',
   ehrData: ej2Seed.ehrData,
-  tagList: ej2Seed.tagList
+  tagList: ej2Seed.tagList,
+  appType: 'EHR'
 }
 const assignment3 = {
   description: 'This is a demonstration assignment illustrating how wounds (or incisions) can be monitored within the EdEHR.\n' +
@@ -63,7 +65,8 @@ const wound1SeedDef = {
   description: 'George Henry is in the hospital (Day 0 12:00) and a wound assessment order has been issued for a stage 4 pressure injury',
   version: '1',
   ehrData: wound1Seed.ehrData,
-  tagList: wound1Seed.tagList
+  tagList: wound1Seed.tagList,
+  appType: 'EHR'
 }
 
 const assignment4 = {
@@ -79,7 +82,8 @@ const seedDef4 = {
   description: 'Slide Number 18-212. Patient recently immigrated from Cameroon for work in Vancouver and requires bloodwork as part of her medical examination. ',
   version: '1',
   ehrData: seed4.ehrData,
-  tagList: seed4.tagList
+  tagList: seed4.tagList,
+  appType: 'LIS'
 }
 
 const assignment5 = {
@@ -96,10 +100,11 @@ const seedDef5 = {
   description: 'Slide Number 18-212. Patient recently immigrated from Cameroon for work in Vancouver and requires bloodwork as part of her medical examination. ',
   version: '1',
   ehrData: seed5.ehrData,
-  tagList: seed5.tagList
+  tagList: seed5.tagList,
+  appType: 'LIS'
 }
 export const activity1 = {
-  learningObject: assignment1,
+  lObjDef: assignment1,
   seedDef: ej0SeedDef,
   resource_link_title: `${assignment1.title} - Activity`,
   resource_link_description: 'This demonstration activity uses the ' +
@@ -109,7 +114,7 @@ export const activity1 = {
     '',
 }
 export const activity2 = {
-  learningObject: assignment2,
+  lObjDef: assignment2,
   seedDef: ej2SeedDef,
   resource_link_title: `${assignment2.title} - Activity`,
   resource_link_description: 'This demonstration activity uses the ' +
@@ -120,18 +125,18 @@ export const activity2 = {
 }
 
 export const activity3 = {
-  learningObject: assignment3,
+  lObjDef: assignment3,
   seedDef: wound1SeedDef,
-  resource_link_title: `${assignment3.title} - Activity`,
+  resource_link_title: `${assignment3.title}`,
   resource_link_description: 'This demonstration activity uses the ' +
     ` "${assignment3.title}" learning object, located in this demo instance of the EdEHR.` +
     ' This activity\'s learning object is a case study devised to illustrate the Integumentary and Wound Care module in the EdEHR ',
 }
 
 export const activity4 = {
-  learningObject: assignment4,
+  lObjDef: assignment4,
   seedDef: seedDef4,
-  resource_link_title: `${assignment4.title} - Activity`,
+  resource_link_title: `${assignment4.title}`,
   resource_link_description: 'This demonstration activity illustrates the Hematology module in the EdEHR and shows a' +
     'case study ready for the student to begin their lab exercise.  The student will exam a blood sample under' +
     'a microscope and complete what is called a peripheral blood film (PBF) review.  The next activity shows the ' +
@@ -139,8 +144,8 @@ export const activity4 = {
 }
 
 export const activity5 = {
-  learningObject: assignment5,
+  lObjDef: assignment5,
   seedDef: seedDef5,
-  resource_link_title: `${assignment5.title} - Activity`,
+  resource_link_title: `${assignment5.title}`,
   resource_link_description: 'This activity complements the previous one by showing the completed PBF in the Med Lab Hematology module',
 }

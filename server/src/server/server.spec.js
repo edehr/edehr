@@ -13,7 +13,7 @@ const tokenData = Helper.sampleTokenData()
 const token = Helper.generateToken(tokenData)
 
 // these tests cause mocha to stay running.  Skip until we can resolve this problem
-describe.skip('Make some server calls', function () {
+describe('Make some server calls', function () {
   let app
   before(function (done) {
     helper.beforeTestAppAndDbDrop(ehrApp, configuration, mongoose)

@@ -14383,7 +14383,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group195',
+              'elementKey': 'ehr_group199',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -14394,7 +14394,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group196',
+              'elementKey': 'ehr_group200',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
               'gChildren': [
@@ -14603,7 +14603,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group197',
+              'elementKey': 'ehr_group201',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -14614,7 +14614,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group198',
+              'elementKey': 'ehr_group202',
               'gIndex': '2',
               'gChildren': [
                 'clinical',
@@ -14776,7 +14776,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group201',
+              'elementKey': 'ehr_group205',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -14787,7 +14787,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group202',
+              'elementKey': 'ehr_group206',
               'gIndex': '2',
               'gChildren': [
                 'consultReport',
@@ -15992,7 +15992,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group207',
+              'elementKey': 'ehr_group211',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -16003,7 +16003,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group208',
+              'elementKey': 'ehr_group212',
               'gIndex': '2',
               'gChildren': [
                 'laboratoryReport',
@@ -16135,7 +16135,7 @@ const DEFS = {
           'formKey': 'labResultHematology',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group209',
+              'elementKey': 'ehr_group213',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -16146,7 +16146,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group210',
+              'elementKey': 'ehr_group214',
               'label': 'Hematology',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
@@ -16160,7 +16160,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group211',
+              'elementKey': 'ehr_group215',
               'label': 'WBC Types',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '3',
@@ -16276,7 +16276,7 @@ const DEFS = {
           'formKey': 'labResultCoagulation',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group212',
+              'elementKey': 'ehr_group216',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -16287,7 +16287,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group213',
+              'elementKey': 'ehr_group217',
               'label': 'Coagulation',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
@@ -16530,7 +16530,7 @@ const DEFS = {
           'formKey': 'labResultGeneral',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group214',
+              'elementKey': 'ehr_group218',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -16541,7 +16541,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group215',
+              'elementKey': 'ehr_group219',
               'label': 'Chemistry',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
@@ -16559,7 +16559,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group216',
+              'elementKey': 'ehr_group220',
               'label': 'Renal Profile',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '3',
@@ -16570,7 +16570,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group217',
+              'elementKey': 'ehr_group221',
               'label': 'Liver function',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '4',
@@ -16586,7 +16586,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group218',
+              'elementKey': 'ehr_group222',
               'label': 'Blood gas tests',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '5',
@@ -16599,7 +16599,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group219',
+              'elementKey': 'ehr_group223',
               'label': 'Group and screen',
               'gIndex': '6',
               'gChildren': [
@@ -16734,7 +16734,7 @@ const DEFS = {
           'formKey': 'troponinTable',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group220',
+              'elementKey': 'ehr_group224',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -16745,7 +16745,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group221',
+              'elementKey': 'ehr_group225',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
               'gChildren': [
@@ -16970,7 +16970,7 @@ const DEFS = {
           'formKey': 'labResultUrine',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group222',
+              'elementKey': 'ehr_group226',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -16981,7 +16981,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group223',
+              'elementKey': 'ehr_group227',
               'label': 'General',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
@@ -16993,7 +16993,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group224',
+              'elementKey': 'ehr_group228',
               'label': 'Chemistry',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '3',
@@ -17019,7 +17019,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group225',
+              'elementKey': 'ehr_group229',
               'label': 'Microsopy',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '4',
@@ -17227,7 +17227,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group203',
+              'elementKey': 'ehr_group207',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -17238,7 +17238,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group204',
+              'elementKey': 'ehr_group208',
               'gIndex': '2',
               'gChildren': [
                 'laboratoryReport',
@@ -17391,7 +17391,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group205',
+              'elementKey': 'ehr_group209',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -17402,7 +17402,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group206',
+              'elementKey': 'ehr_group210',
               'gIndex': '2',
               'gChildren': [
                 'laboratoryReport',
@@ -17582,7 +17582,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group226',
+            'elementKey': 'ehr_group230',
             'gIndex': '1',
             'gChildren': [
               {
@@ -17683,7 +17683,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group227',
+            'elementKey': 'ehr_group231',
             'gIndex': '1',
             'gChildren': [
               'snomed',
@@ -17906,7 +17906,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group228',
+              'elementKey': 'ehr_group232',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -17917,7 +17917,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group229',
+              'elementKey': 'ehr_group233',
               'gIndex': '2',
               'gChildren': [
                 'icd10',
@@ -18114,7 +18114,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group230',
+              'elementKey': 'ehr_group234',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -18125,7 +18125,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group231',
+              'elementKey': 'ehr_group235',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
               'gChildren': [
@@ -18339,7 +18339,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group232',
+              'elementKey': 'ehr_group236',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -18350,7 +18350,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group233',
+              'elementKey': 'ehr_group237',
               'gIndex': '2',
               'gChildren': [
                 'clinicalCategory',
@@ -18721,11 +18721,11 @@ const DEFS = {
         'fqn': 'testPage.textDateDate'
       },
       {
-        'elementKey': 'spacer239',
+        'elementKey': 'spacer243',
         'formIndex': '3',
         'inputType': 'spacer',
         'label': 'TextDate',
-        'fqn': 'testPage.spacer239'
+        'fqn': 'testPage.spacer243'
       },
       {
         'elementKey': 'name',
@@ -18751,7 +18751,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group234',
+            'elementKey': 'ehr_group238',
             'label': 'A group label',
             'formCss': 'grid-left-to-right-1',
             'gIndex': '1',
@@ -18760,7 +18760,7 @@ const DEFS = {
             ]
           },
           {
-            'elementKey': 'ehr_group235',
+            'elementKey': 'ehr_group239',
             'label': 'A group label',
             'gIndex': '2',
             'gChildren': [
@@ -18777,7 +18777,7 @@ const DEFS = {
             ]
           },
           {
-            'elementKey': 'ehr_group236',
+            'elementKey': 'ehr_group240',
             'label': 'Second group',
             'gIndex': '3',
             'gChildren': [
@@ -18854,7 +18854,7 @@ const DEFS = {
           'formKey': 'table1',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group237',
+              'elementKey': 'ehr_group241',
               'label': 'Group 1',
               'gIndex': '1',
               'gChildren': [
@@ -18882,7 +18882,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group238',
+            'elementKey': 'ehr_group242',
             'label': 'A group label',
             'gIndex': '1',
             'gChildren': [
@@ -18892,7 +18892,7 @@ const DEFS = {
               'form2_time',
               'textDate',
               'textDateDate',
-              'spacer239',
+              'spacer243',
               'name',
               'place'
             ]
@@ -19243,13 +19243,13 @@ const DEFS = {
         'fqn': 'testTable.cd1Date'
       },
       {
-        'elementKey': 'spacer245',
+        'elementKey': 'spacer249',
         'formIndex': '2',
         'inputType': 'spacer',
         'label': 'C D 1',
         'tableColumn': '2',
         'tableLabel': 'Chk 1',
-        'fqn': 'testTable.spacer245'
+        'fqn': 'testTable.spacer249'
       },
       {
         'elementKey': 'cd2',
@@ -19271,13 +19271,13 @@ const DEFS = {
         'fqn': 'testTable.cd2Date'
       },
       {
-        'elementKey': 'spacer246',
+        'elementKey': 'spacer250',
         'formIndex': '2',
         'inputType': 'spacer',
         'label': 'C D 2',
         'tableColumn': '3',
         'tableLabel': 'Chk 2',
-        'fqn': 'testTable.spacer246'
+        'fqn': 'testTable.spacer250'
       },
       {
         'elementKey': 'td1',
@@ -19298,13 +19298,13 @@ const DEFS = {
         'fqn': 'testTable.td1Date'
       },
       {
-        'elementKey': 'spacer247',
+        'elementKey': 'spacer251',
         'formIndex': '2',
         'inputType': 'spacer',
         'label': 'TextDate',
         'tableColumn': '4',
         'tableLabel': 'Txt 1',
-        'fqn': 'testTable.spacer247'
+        'fqn': 'testTable.spacer251'
       },
       {
         'elementKey': 'referralName',
@@ -19625,7 +19625,7 @@ const DEFS = {
           'formKey': 'table1',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group240',
+              'elementKey': 'ehr_group244',
               'label': 'Group 1',
               'gIndex': '1',
               'gChildren': [
@@ -19641,7 +19641,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group241',
+              'elementKey': 'ehr_group245',
               'gIndex': '2',
               'gChildren': [
                 {
@@ -19676,7 +19676,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group242',
+              'elementKey': 'ehr_group246',
               'formOption': '1',
               'formCss': 'full-width',
               'gIndex': '3',
@@ -19756,7 +19756,7 @@ const DEFS = {
             'items': [
               'cd1',
               'cd1Date',
-              'spacer245'
+              'spacer249'
             ]
           },
           {
@@ -19765,7 +19765,7 @@ const DEFS = {
             'items': [
               'cd2',
               'cd2Date',
-              'spacer246'
+              'spacer250'
             ]
           },
           {
@@ -19774,7 +19774,7 @@ const DEFS = {
             'items': [
               'td1',
               'td1Date',
-              'spacer247'
+              'spacer251'
             ]
           },
           {
@@ -19808,7 +19808,7 @@ const DEFS = {
           'formKey': 'stacked',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group243',
+              'elementKey': 'ehr_group247',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -19819,22 +19819,22 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group244',
+              'elementKey': 'ehr_group248',
               'gIndex': '2',
               'gChildren': [
                 'cd1',
                 'cd1Date',
-                'spacer245',
+                'spacer249',
                 'cd2',
                 'cd2Date',
-                'spacer246',
+                'spacer250',
                 'td1',
                 'td1Date',
-                'spacer247'
+                'spacer251'
               ]
             },
             {
-              'elementKey': 'ehr_group248',
+              'elementKey': 'ehr_group252',
               'gIndex': '3',
               'gChildren': [
                 'referralName',
@@ -19872,13 +19872,13 @@ const DEFS = {
           'stacked_time',
           'cd1',
           'cd1Date',
-          'spacer245',
+          'spacer249',
           'cd2',
           'cd2Date',
-          'spacer246',
+          'spacer250',
           'td1',
           'td1Date',
-          'spacer247',
+          'spacer251',
           'referralName',
           'referralProfession',
           'appointmentDate',
@@ -26479,7 +26479,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group199',
+              'elementKey': 'ehr_group203',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -26490,7 +26490,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group200',
+              'elementKey': 'ehr_group204',
               'gIndex': '2',
               'gChildren': [
                 'goal',
@@ -27055,6 +27055,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'First name',
+        'tableColumn': '2',
         'fqn': 'medLabDemographics.givenName'
       },
       {
@@ -27062,6 +27063,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Middle name(s)',
+        'tableColumn': '3',
         'fqn': 'medLabDemographics.middleName'
       },
       {
@@ -27069,6 +27071,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Last name',
+        'tableColumn': '4',
         'fqn': 'medLabDemographics.familyName'
       },
       {
@@ -27076,6 +27079,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Preferred name',
+        'tableColumn': '5',
         'fqn': 'medLabDemographics.preferredName'
       },
       {
@@ -27084,6 +27088,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'mainDOB',
         'label': 'Date of birth',
+        'tableColumn': '6',
         'fqn': 'medLabDemographics.dateOfBirth'
       },
       {
@@ -27091,6 +27096,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'personAge',
         'label': 'Age',
+        'tableColumn': '7',
         'fqn': 'medLabDemographics.personAge'
       },
       {
@@ -27099,6 +27105,7 @@ const DEFS = {
         'inputType': 'text',
         'label': 'Height',
         'suffix': 'cm',
+        'tableColumn': '8',
         'fqn': 'medLabDemographics.height',
         'suffixText': '<p>cm</p>',
         'suffixHtml': 'cm'
@@ -27109,6 +27116,7 @@ const DEFS = {
         'inputType': 'text',
         'label': 'Weight',
         'suffix': 'kg',
+        'tableColumn': '9',
         'fqn': 'medLabDemographics.weight',
         'suffixText': '<p>kg</p>',
         'suffixHtml': 'kg'
@@ -27148,6 +27156,7 @@ const DEFS = {
             'text': 'Prefer not to say'
           }
         ],
+        'tableColumn': '10',
         'fqn': 'medLabDemographics.gender'
       },
       {
@@ -27181,6 +27190,7 @@ const DEFS = {
             'text': 'Widowed'
           }
         ],
+        'tableColumn': '11',
         'fqn': 'medLabDemographics.martialStatus'
       },
       {
@@ -27210,6 +27220,7 @@ const DEFS = {
             'text': 'Chinese'
           }
         ],
+        'tableColumn': '12',
         'fqn': 'medLabDemographics.languagePrimary'
       },
       {
@@ -27217,6 +27228,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Religion',
+        'tableColumn': '13',
         'fqn': 'medLabDemographics.religion'
       },
       {
@@ -27234,6 +27246,7 @@ const DEFS = {
             'text': 'No'
           }
         ],
+        'tableColumn': '14',
         'fqn': 'medLabDemographics.indigenousIdentifyAs'
       },
       {
@@ -27242,6 +27255,7 @@ const DEFS = {
         'formCss': 'grid-span-2-columns',
         'inputType': 'text',
         'label': 'Street address',
+        'tableColumn': '15',
         'fqn': 'medLabDemographics.streetAddress'
       },
       {
@@ -27249,6 +27263,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'City',
+        'tableColumn': '16',
         'fqn': 'medLabDemographics.city'
       },
       {
@@ -27257,6 +27272,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Country',
+        'tableColumn': '17',
         'fqn': 'medLabDemographics.country'
       },
       {
@@ -27264,6 +27280,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Postal code',
+        'tableColumn': '18',
         'fqn': 'medLabDemographics.postalCode'
       },
       {
@@ -27272,6 +27289,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'checkbox',
         'label': 'No address',
+        'tableColumn': '19',
         'fqn': 'medLabDemographics.noAddress'
       },
       {
@@ -27279,6 +27297,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Primary phone number',
+        'tableColumn': '20',
         'fqn': 'medLabDemographics.phoneNumber'
       },
       {
@@ -27286,6 +27305,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Email',
+        'tableColumn': '21',
         'fqn': 'medLabDemographics.emailAddress'
       },
       {
@@ -27293,6 +27313,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Occupation/student',
+        'tableColumn': '22',
         'fqn': 'medLabDemographics.occupationStudent'
       },
       {
@@ -27300,6 +27321,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'PHN',
+        'tableColumn': '23',
         'fqn': 'medLabDemographics.phn'
       },
       {
@@ -27307,6 +27329,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'MRN',
+        'tableColumn': '24',
         'fqn': 'medLabDemographics.mrn'
       },
       {
@@ -27314,6 +27337,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Patient service',
+        'tableColumn': '25',
         'fqn': 'medLabDemographics.patientService'
       }
     ],
@@ -27371,7 +27395,6 @@ const DEFS = {
     'pageTitle': 'Med Lab Accessioning',
     'pIndex': '50',
     'hasGridTable': true,
-    'hasGridForm': true,
     'pageChildren': [
       {
         'elementKey': 'mlAccessioning_name',
@@ -27382,6 +27405,13 @@ const DEFS = {
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'medLabAccession.name'
+      },
+      {
+        'elementKey': 'mlAccessioning_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
       },
       {
         'elementKey': 'mlAccessioning_profession',
@@ -27415,7 +27445,203 @@ const DEFS = {
         'fqn': 'medLabAccession.time'
       },
       {
-        'elementKey': 'mlChainOfCustody_name',
+        'elementKey': 'accessionID',
+        'formIndex': '1',
+        'inputType': 'text',
+        'label': 'Accession ID',
+        'tableColumn': '2',
+        'fqn': 'medLabAccession.accessionID'
+      },
+      {
+        'elementKey': 'accRequisitionID',
+        'formIndex': '1',
+        'inputType': 'text',
+        'label': 'Requisition ID',
+        'tableColumn': '3',
+        'fqn': 'medLabAccession.accRequisitionID'
+      },
+      {
+        'elementKey': 'accSpecimenType',
+        'formIndex': '1',
+        'inputType': 'select',
+        'label': 'Specimen Type',
+        'options': [
+          {
+            'key': 'Blood',
+            'text': 'Blood'
+          },
+          {
+            'key': 'Urine',
+            'text': 'Urine'
+          },
+          {
+            'key': 'Tissue',
+            'text': 'Tissue'
+          },
+          {
+            'key': 'Saliva',
+            'text': 'Saliva'
+          },
+          {
+            'key': 'Stool',
+            'text': 'Stool'
+          },
+          {
+            'key': 'Swab',
+            'text': 'Swab'
+          },
+          {
+            'key': 'Sputum',
+            'text': 'Sputum'
+          },
+          {
+            'key': 'Fluid',
+            'text': 'Fluid'
+          },
+          {
+            'key': 'Bone',
+            'text': 'Bone'
+          },
+          {
+            'key': 'Hair',
+            'text': 'Hair'
+          }
+        ],
+        'tableColumn': '4',
+        'fqn': 'medLabAccession.accSpecimenType'
+      },
+      {
+        'elementKey': 'accTestPanel',
+        'formIndex': '1',
+        'inputType': 'select',
+        'label': 'Test (Panel)',
+        'options': [
+          {
+            'key': 'CBC (Complete Blood Count)',
+            'text': 'CBC (Complete Blood Count)'
+          },
+          {
+            'key': 'CMP (Comprehensive Metabolic Panel)',
+            'text': 'CMP (Comprehensive Metabolic Panel)'
+          },
+          {
+            'key': 'Lipid Panel',
+            'text': 'Lipid Panel'
+          },
+          {
+            'key': 'HbA1c (Glycated Hemoglobin)',
+            'text': 'HbA1c (Glycated Hemoglobin)'
+          },
+          {
+            'key': 'PT/INR (Prothrombin Time/International Normalized Ratio)',
+            'text': 'PT/INR (Prothrombin Time/International Normalized Ratio)'
+          },
+          {
+            'key': 'TSH (Thyroid-Stimulating Hormone)',
+            'text': 'TSH (Thyroid-Stimulating Hormone)'
+          },
+          {
+            'key': 'PSA (Prostate-Specific Antigen)',
+            'text': 'PSA (Prostate-Specific Antigen)'
+          },
+          {
+            'key': 'Urinalysis',
+            'text': 'Urinalysis'
+          },
+          {
+            'key': 'Fasting Glucose',
+            'text': 'Fasting Glucose'
+          },
+          {
+            'key': 'Hepatitis C Antibody Test',
+            'text': 'Hepatitis C Antibody Test'
+          },
+          {
+            'key': 'Vitamin D Levels',
+            'text': 'Vitamin D Levels'
+          },
+          {
+            'key': 'Thyroid Panel',
+            'text': 'Thyroid Panel'
+          },
+          {
+            'key': 'Coagulation Profile',
+            'text': 'Coagulation Profile'
+          },
+          {
+            'key': 'Iron Studies',
+            'text': 'Iron Studies'
+          },
+          {
+            'key': 'Pregnancy Test',
+            'text': 'Pregnancy Test'
+          },
+          {
+            'key': 'Other',
+            'text': 'Other'
+          }
+        ],
+        'tableColumn': '5',
+        'fqn': 'medLabAccession.accTestPanel'
+      },
+      {
+        'elementKey': 'accTestOther',
+        'formIndex': '1',
+        'inputType': 'text',
+        'label': 'Test other',
+        'tableColumn': '6',
+        'fqn': 'medLabAccession.accTestOther'
+      },
+      {
+        'elementKey': 'preAnalytic',
+        'formIndex': '1',
+        'inputType': 'text',
+        'label': 'Pre-analytic',
+        'tableColumn': '7',
+        'fqn': 'medLabAccession.preAnalytic'
+      },
+      {
+        'elementKey': 'postAnalytic',
+        'formIndex': '1',
+        'inputType': 'text',
+        'label': 'Post-analytic',
+        'tableColumn': '8',
+        'fqn': 'medLabAccession.postAnalytic'
+      },
+      {
+        'elementKey': 'collectionDate',
+        'formIndex': '1',
+        'inputType': 'text',
+        'label': 'Collection Date',
+        'tableColumn': '9',
+        'fqn': 'medLabAccession.collectionDate'
+      },
+      {
+        'elementKey': 'collectionTime',
+        'formIndex': '1',
+        'inputType': 'text',
+        'label': 'Collection Time',
+        'tableColumn': '10',
+        'fqn': 'medLabAccession.collectionTime'
+      },
+      {
+        'elementKey': 'collectionLocation',
+        'formIndex': '1',
+        'inputType': 'text',
+        'label': 'Collection Location',
+        'tableColumn': '11',
+        'fqn': 'medLabAccession.collectionLocation'
+      },
+      {
+        'elementKey': 'accComments',
+        'formIndex': '1',
+        'inputType': 'textarea',
+        'label': 'Comments',
+        'tableColumn': '12',
+        'fqn': 'medLabAccession.accComments'
+      },
+      {
+        'elementKey': 'mlChain_name',
         'formIndex': '2',
         'inputType': 'practitionerName',
         'label': 'Name',
@@ -27425,14 +27651,14 @@ const DEFS = {
         'fqn': 'medLabAccession.name'
       },
       {
-        'elementKey': 'mlChainOfCustody_id',
+        'elementKey': 'mlChain_id',
         'inputType': 'generatedId',
         'tableColumn': 0,
         'label': 'Row id',
         'tableCss': 'row-id'
       },
       {
-        'elementKey': 'mlChainOfCustody_profession',
+        'elementKey': 'mlChain_profession',
         'formIndex': '2',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
@@ -27441,7 +27667,7 @@ const DEFS = {
         'fqn': 'medLabAccession.profession'
       },
       {
-        'elementKey': 'mlChainOfCustody_day',
+        'elementKey': 'mlChain_day',
         'formIndex': '2',
         'inputType': 'visitDay',
         'label': 'Day',
@@ -27452,7 +27678,7 @@ const DEFS = {
         'fqn': 'medLabAccession.day'
       },
       {
-        'elementKey': 'mlChainOfCustody_time',
+        'elementKey': 'mlChain_time',
         'formIndex': '2',
         'inputType': 'visitTime',
         'label': 'Time',
@@ -27461,37 +27687,319 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'medLabAccession.time'
+      },
+      {
+        'elementKey': 'chainAccessionID',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Accession ID',
+        'tableColumn': '2',
+        'fqn': 'medLabAccession.chainAccessionID'
+      },
+      {
+        'elementKey': 'chainEvent',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Event Type',
+        'tableColumn': '3',
+        'fqn': 'medLabAccession.chainEvent'
+      },
+      {
+        'elementKey': 'chainDate',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Event Date',
+        'tableColumn': '4',
+        'fqn': 'medLabAccession.chainDate'
+      },
+      {
+        'elementKey': 'chainTime',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Event Time',
+        'tableColumn': '5',
+        'fqn': 'medLabAccession.chainTime'
+      },
+      {
+        'elementKey': 'chainDetails',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Event Details',
+        'tableColumn': '6',
+        'fqn': 'medLabAccession.chainDetails'
+      },
+      {
+        'elementKey': 'chainComments',
+        'formIndex': '2',
+        'inputType': 'textarea',
+        'label': 'Comments',
+        'tableColumn': '7',
+        'fqn': 'medLabAccession.chainComments'
+      },
+      {
+        'elementKey': 'mlTestStatus_name',
+        'formIndex': '3',
+        'inputType': 'practitionerName',
+        'label': 'Name',
+        'tableColumn': '1',
+        'tableLabel': 'Identification',
+        'recHeader': true,
+        'fqn': 'medLabAccession.name'
+      },
+      {
+        'elementKey': 'mlTestStatus_id',
+        'inputType': 'generatedId',
+        'tableColumn': 0,
+        'label': 'Row id',
+        'tableCss': 'row-id'
+      },
+      {
+        'elementKey': 'mlTestStatus_profession',
+        'formIndex': '3',
+        'inputType': 'practitionerProfession',
+        'label': 'Profession',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'medLabAccession.profession'
+      },
+      {
+        'elementKey': 'mlTestStatus_day',
+        'formIndex': '3',
+        'inputType': 'visitDay',
+        'label': 'Day',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'visitDay',
+        'recHeader': true,
+        'fqn': 'medLabAccession.day'
+      },
+      {
+        'elementKey': 'mlTestStatus_time',
+        'formIndex': '3',
+        'inputType': 'visitTime',
+        'label': 'Time',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'time24',
+        'recHeader': true,
+        'fqn': 'medLabAccession.time'
+      },
+      {
+        'elementKey': 'testAccessionID',
+        'formIndex': '3',
+        'inputType': 'text',
+        'label': 'Accession ID',
+        'tableColumn': '2',
+        'fqn': 'medLabAccession.testAccessionID'
+      },
+      {
+        'elementKey': 'testStatus',
+        'formIndex': '3',
+        'inputType': 'text',
+        'label': 'Test Status',
+        'tableColumn': '3',
+        'fqn': 'medLabAccession.testStatus'
+      },
+      {
+        'elementKey': 'testDate',
+        'formIndex': '3',
+        'inputType': 'text',
+        'label': 'Test Date',
+        'tableColumn': '4',
+        'fqn': 'medLabAccession.testDate'
+      },
+      {
+        'elementKey': 'testTime',
+        'formIndex': '3',
+        'inputType': 'text',
+        'label': 'Test Time',
+        'tableColumn': '5',
+        'fqn': 'medLabAccession.testTime'
+      },
+      {
+        'elementKey': 'testComments',
+        'formIndex': '3',
+        'inputType': 'textarea',
+        'label': 'Comments',
+        'tableColumn': '6',
+        'fqn': 'medLabAccession.testComments'
       }
     ],
     'pageElements': {
       'mlAccessioning': {
         'elementKey': 'mlAccessioning',
-        'label': 'Accessioning',
-        'addButtonText': 'Create a medical imaging report',
         'pageElementIndex': '1',
-        'formKey': 'mlAccessioning',
-        'isPageForm': true,
-        'ehr_groups': [
+        'pageKey': 'medLabAccession',
+        'tableKey': 'mlAccessioning',
+        'isTable': true,
+        'label': 'Accessioning',
+        'addButtonText': 'Create an accessioning record',
+        'ehr_list': [
           {
-            'elementKey': 'ehr_group193',
-            'formCss': 'record-header',
-            'gIndex': '1',
-            'gChildren': [
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'mlAccessioning_id'
+            ]
+          },
+          {
+            'label': 'Identification',
+            'ehr_list_index': '1',
+            'items': [
               'mlAccessioning_name',
               'mlAccessioning_profession',
               'mlAccessioning_day',
               'mlAccessioning_time'
             ]
+          },
+          {
+            'ehr_list_index': '2',
+            'items': [
+              'accessionID'
+            ]
+          },
+          {
+            'ehr_list_index': '3',
+            'items': [
+              'accRequisitionID'
+            ]
+          },
+          {
+            'ehr_list_index': '4',
+            'items': [
+              'accSpecimenType'
+            ]
+          },
+          {
+            'ehr_list_index': '5',
+            'items': [
+              'accTestPanel'
+            ]
+          },
+          {
+            'ehr_list_index': '6',
+            'items': [
+              'accTestOther'
+            ]
+          },
+          {
+            'ehr_list_index': '7',
+            'items': [
+              'preAnalytic'
+            ]
+          },
+          {
+            'ehr_list_index': '8',
+            'items': [
+              'postAnalytic'
+            ]
+          },
+          {
+            'ehr_list_index': '9',
+            'items': [
+              'collectionDate'
+            ]
+          },
+          {
+            'ehr_list_index': '10',
+            'items': [
+              'collectionTime'
+            ]
+          },
+          {
+            'ehr_list_index': '11',
+            'items': [
+              'collectionLocation'
+            ]
+          },
+          {
+            'ehr_list_index': '12',
+            'items': [
+              'accComments'
+            ]
           }
-        ]
+        ],
+        'form': {
+          'elementKey': 'mlAccessioning',
+          'label': 'Accessioning',
+          'addButtonText': 'Create an accessioning record',
+          'formKey': 'mlAccessioning',
+          'ehr_groups': [
+            {
+              'elementKey': 'ehr_group193',
+              'formCss': 'record-header',
+              'gIndex': '1',
+              'gChildren': [
+                'mlAccessioning_name',
+                'mlAccessioning_profession',
+                'mlAccessioning_day',
+                'mlAccessioning_time'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group194',
+              'gIndex': '2',
+              'gChildren': [
+                'accessionID',
+                'accRequisitionID',
+                'accSpecimenType',
+                'accTestPanel',
+                'accTestOther',
+                'preAnalytic',
+                'postAnalytic',
+                'collectionDate',
+                'collectionTime',
+                'collectionLocation',
+                'accComments'
+              ]
+            }
+          ],
+          'ehr_data': {
+            'mlAccessioning_name': '',
+            'mlAccessioning_profession': '',
+            'mlAccessioning_day': '',
+            'mlAccessioning_time': '',
+            'accessionID': '',
+            'accRequisitionID': '',
+            'accSpecimenType': '',
+            'accTestPanel': '',
+            'accTestOther': '',
+            'preAnalytic': '',
+            'postAnalytic': '',
+            'collectionDate': '',
+            'collectionTime': '',
+            'collectionLocation': '',
+            'accComments': ''
+          }
+        },
+        'tableChildren': [
+          'mlAccessioning_id',
+          'mlAccessioning_name',
+          'mlAccessioning_profession',
+          'mlAccessioning_day',
+          'mlAccessioning_time',
+          'accessionID',
+          'accRequisitionID',
+          'accSpecimenType',
+          'accTestPanel',
+          'accTestOther',
+          'preAnalytic',
+          'postAnalytic',
+          'collectionDate',
+          'collectionTime',
+          'collectionLocation',
+          'accComments'
+        ],
+        'hasRecHeader': true
       },
-      'mlChainOfCustody': {
-        'elementKey': 'mlChainOfCustody',
+      'mlChain': {
+        'elementKey': 'mlChain',
         'pageElementIndex': '2',
         'pageKey': 'medLabAccession',
-        'tableKey': 'mlChainOfCustody',
+        'tableKey': 'mlChain',
         'isTable': true,
-        'label': 'CustodyChain',
+        'label': 'Chain of Custody',
         'addButtonText': 'Create a chain of custody record',
         'ehr_list': [
           {
@@ -27499,51 +28007,224 @@ const DEFS = {
             'tableCss': 'row-id',
             'ehr_list_index': 0,
             'items': [
-              'mlChainOfCustody_id'
+              'mlChain_id'
             ]
           },
           {
             'label': 'Identification',
             'ehr_list_index': '1',
             'items': [
-              'mlChainOfCustody_name',
-              'mlChainOfCustody_profession',
-              'mlChainOfCustody_day',
-              'mlChainOfCustody_time'
+              'mlChain_name',
+              'mlChain_profession',
+              'mlChain_day',
+              'mlChain_time'
+            ]
+          },
+          {
+            'ehr_list_index': '2',
+            'items': [
+              'chainAccessionID'
+            ]
+          },
+          {
+            'ehr_list_index': '3',
+            'items': [
+              'chainEvent'
+            ]
+          },
+          {
+            'ehr_list_index': '4',
+            'items': [
+              'chainDate'
+            ]
+          },
+          {
+            'ehr_list_index': '5',
+            'items': [
+              'chainTime'
+            ]
+          },
+          {
+            'ehr_list_index': '6',
+            'items': [
+              'chainDetails'
+            ]
+          },
+          {
+            'ehr_list_index': '7',
+            'items': [
+              'chainComments'
             ]
           }
         ],
         'form': {
-          'elementKey': 'mlChainOfCustody',
-          'label': 'CustodyChain',
+          'elementKey': 'mlChain',
+          'label': 'Chain of Custody',
           'addButtonText': 'Create a chain of custody record',
-          'formKey': 'mlChainOfCustody',
+          'formKey': 'mlChain',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group194',
+              'elementKey': 'ehr_group195',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
-                'mlChainOfCustody_name',
-                'mlChainOfCustody_profession',
-                'mlChainOfCustody_day',
-                'mlChainOfCustody_time'
+                'mlChain_name',
+                'mlChain_profession',
+                'mlChain_day',
+                'mlChain_time'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group196',
+              'gIndex': '2',
+              'gChildren': [
+                'chainAccessionID',
+                'chainEvent',
+                'chainDate',
+                'chainTime',
+                'chainDetails',
+                'chainComments'
               ]
             }
           ],
           'ehr_data': {
-            'mlChainOfCustody_name': '',
-            'mlChainOfCustody_profession': '',
-            'mlChainOfCustody_day': '',
-            'mlChainOfCustody_time': ''
+            'mlChain_name': '',
+            'mlChain_profession': '',
+            'mlChain_day': '',
+            'mlChain_time': '',
+            'chainAccessionID': '',
+            'chainEvent': '',
+            'chainDate': '',
+            'chainTime': '',
+            'chainDetails': '',
+            'chainComments': ''
           }
         },
         'tableChildren': [
-          'mlChainOfCustody_id',
-          'mlChainOfCustody_name',
-          'mlChainOfCustody_profession',
-          'mlChainOfCustody_day',
-          'mlChainOfCustody_time'
+          'mlChain_id',
+          'mlChain_name',
+          'mlChain_profession',
+          'mlChain_day',
+          'mlChain_time',
+          'chainAccessionID',
+          'chainEvent',
+          'chainDate',
+          'chainTime',
+          'chainDetails',
+          'chainComments'
+        ],
+        'hasRecHeader': true
+      },
+      'mlTestStatus': {
+        'elementKey': 'mlTestStatus',
+        'pageElementIndex': '3',
+        'pageKey': 'medLabAccession',
+        'tableKey': 'mlTestStatus',
+        'isTable': true,
+        'label': 'Test Status',
+        'addButtonText': 'Create a test status record',
+        'ehr_list': [
+          {
+            'label': 'Row id',
+            'tableCss': 'row-id',
+            'ehr_list_index': 0,
+            'items': [
+              'mlTestStatus_id'
+            ]
+          },
+          {
+            'label': 'Identification',
+            'ehr_list_index': '1',
+            'items': [
+              'mlTestStatus_name',
+              'mlTestStatus_profession',
+              'mlTestStatus_day',
+              'mlTestStatus_time'
+            ]
+          },
+          {
+            'ehr_list_index': '2',
+            'items': [
+              'testAccessionID'
+            ]
+          },
+          {
+            'ehr_list_index': '3',
+            'items': [
+              'testStatus'
+            ]
+          },
+          {
+            'ehr_list_index': '4',
+            'items': [
+              'testDate'
+            ]
+          },
+          {
+            'ehr_list_index': '5',
+            'items': [
+              'testTime'
+            ]
+          },
+          {
+            'ehr_list_index': '6',
+            'items': [
+              'testComments'
+            ]
+          }
+        ],
+        'form': {
+          'elementKey': 'mlTestStatus',
+          'label': 'Test Status',
+          'addButtonText': 'Create a test status record',
+          'formKey': 'mlTestStatus',
+          'ehr_groups': [
+            {
+              'elementKey': 'ehr_group197',
+              'formCss': 'record-header',
+              'gIndex': '1',
+              'gChildren': [
+                'mlTestStatus_name',
+                'mlTestStatus_profession',
+                'mlTestStatus_day',
+                'mlTestStatus_time'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group198',
+              'gIndex': '2',
+              'gChildren': [
+                'testAccessionID',
+                'testStatus',
+                'testDate',
+                'testTime',
+                'testComments'
+              ]
+            }
+          ],
+          'ehr_data': {
+            'mlTestStatus_name': '',
+            'mlTestStatus_profession': '',
+            'mlTestStatus_day': '',
+            'mlTestStatus_time': '',
+            'testAccessionID': '',
+            'testStatus': '',
+            'testDate': '',
+            'testTime': '',
+            'testComments': ''
+          }
+        },
+        'tableChildren': [
+          'mlTestStatus_id',
+          'mlTestStatus_name',
+          'mlTestStatus_profession',
+          'mlTestStatus_day',
+          'mlTestStatus_time',
+          'testAccessionID',
+          'testStatus',
+          'testDate',
+          'testTime',
+          'testComments'
         ],
         'hasRecHeader': true
       }

@@ -44,6 +44,7 @@ Import styles
 @import '../scss/styles/buttons';
 @import '../scss/styles/sections';
 @import '../scss/styles/outside';
+@import '../scss/styles/apptags';
 @import '@bryan-gilbert/typeahead-standalone/dist/basic.css';
 
 * {
@@ -233,6 +234,9 @@ footer {
 .menu_space_across {
   gap: 1.5rem;
 }
+.table_space_across {
+  gap: 5px;
+}
 .content_space_across {
   gap: 3rem;
 }
@@ -259,4 +263,7 @@ footer {
 }
 .clickable {
   cursor: pointer;
+}
+.clickable:hover {
+  background-color: $brand-primary-hover;
 }

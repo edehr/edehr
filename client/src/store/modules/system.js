@@ -17,7 +17,9 @@ const state = {
   pageTitle: '',
   pageZone: '',
   pageIcon: undefined,
-  outsideShowButtonLabels: true,
+  // disable this ability to toggle labels. Force all to be hidden to be icon only.
+  // TODO IF this doesn't cause problems for users then come back and remove the code that manages this state
+  outsideShowButtonLabels: false,
   smallWindow: false,
   sysMessage: '',
   showingEHR: true,
@@ -80,17 +82,13 @@ const actions = {
   setCondensedTableVertical ( {commit}, value) {
     commit('setCondensedTableVertical', value)
   },
-  setShowEHR ( {commit}, value ) {
-    commit('setShowEHR', value)
+  setShowEHR ( {commit} ) {
+    commit('setShowLIS', false)
+    commit('setShowEHR', true)
   },
-  setShowLIS ( {commit}, value ) {
-    commit('setShowLIS', value)
-  },
-  toggleShowEHR ( {commit} ) {
-    commit('toggleShowEHR')
-  },
-  toggleShowLIS ( {commit} ) {
-    commit('toggleShowLIS')
+  setShowLIS ( {commit} ) {
+    commit('setShowLIS', true)
+    commit('setShowEHR', false)
   }
 }
 
@@ -99,10 +97,12 @@ const mutations = {
     state.caseContextFeature = localStorage.getItem('CaseContextFeature') === 'true'
     state.condensedTableVertical = localStorage.getItem('CondensedTableVertical') === 'true'
     state.lmsNavCollapsed = localStorage.getItem('LmsNavCollapsed') === 'true'
-    const storedShow = localStorage.getItem('ShowButtonLabels')
-    if (storedShow) {
-      state.outsideShowButtonLabels = storedShow === 'true'
-    }
+    // disable this ability to toggle labels. Force all to be hidden to be icon only.
+    // TODO IF this doesn't cause problems for users then come back and remove the code that manages this state
+    // const storedShow = localStorage.getItem('ShowButtonLabels')
+    // if (storedShow) {
+    //   state.outsideShowButtonLabels = storedShow === 'true'
+    // }
   },
   setApiData: (state, apiData) => {
     // console.log('System store set ApiData: ', apiData)
@@ -120,12 +120,7 @@ const mutations = {
     state.condensedTableVertical = value
   },
   setLoading: (state, isLoading) => {
-    if (trace) console.log('system loading counter', isLoading)
-    if (isLoading) {
-      state.loadingCnt++
-    } else {
-      state.loadingCnt--
-    }
+    state.loadingCnt += isLoading ? 1 : -1
     state._isLoading = state.loadingCnt > 0
     if (trace) console.log('system loading state.loadingCnt', state.loadingCnt)
     if (trace) console.log('system loading state._isLoading', state._isLoading)
@@ -173,13 +168,7 @@ const mutations = {
   },
   setShowLIS: (state, show) => {
     state.showingLIS = show
-  },
-  toggleShowEHR: (state) => {
-    state.showingEHR = !state.showingEHR
-  },
-  toggleShowLIS: (state) => {
-    state.showingLIS = !state.showingLIS
-  },
+  }
 }
 
 export default {

@@ -14,7 +14,7 @@ const tokenData = Helper.sampleTokenData()
 const adminToken = Helper.generateToken(tokenData, true)
 
 /* global describe it */
-describe.skip('Consumer mongoose schema testing', function () {
+describe('Consumer mongoose schema testing', function () {
   before(function (done) {
     helper.beforeTestDbDrop(done, mongoose)
   })
@@ -28,8 +28,17 @@ describe.skip('Consumer mongoose schema testing', function () {
       done()
     })
   })
-  let consumerSpec = Helper.sampleConsumerSpec()
-  it('Consumner can save one ', function (done) {
+  it('Consumer should be valid if key and secret are given', function (done) {
+    let consumerSpec = Helper.sampleConsumerSpec()
+    const model = new Consumer(consumerSpec)
+    // console.log('consumer created', model)
+    model.validate(function (err) {
+      should.not.exist(err)
+      done()
+    })
+  })
+  it('Consumer can save one ', function (done) {
+    let consumerSpec = Helper.sampleConsumerSpec()
     const model = new Consumer(consumerSpec)
     model
       .save()
@@ -42,6 +51,7 @@ describe.skip('Consumer mongoose schema testing', function () {
       })
   })
   it('Consumer can find one ', function (done) {
+    let consumerSpec = Helper.sampleConsumerSpec()
     Consumer.findOne({oauth_consumer_key: consumerSpec.oauth_consumer_key}, function (err, doc) {
       should.exist(doc)
       should.not.exist(err)

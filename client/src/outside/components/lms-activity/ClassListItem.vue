@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     activity () {
-      return this.$store.getters['activityStore/activity']
+      return this.$store.getters['activityStore/activityRecord']
     },
     activityData () { return this.studentVisit.activityData},
     assignment () { return this.$store.getters['assignmentStore/assignment']},
@@ -36,7 +36,7 @@ export default {
       const lim = 100
       return this.showMore ? txt : (txt.length > lim ? txt.substr(0, lim) + '...' : txt)
     },
-    hasLinkedLearningObject () { return this.activity.assignment },
+    hasLinkedLearningObject () { return this.activity.learningObjectId },
     showLabels () { return StoreHelper.isOutsideShowButtonLabels() },
     studentName () { return this.studentVisit.user.fullName },
   },

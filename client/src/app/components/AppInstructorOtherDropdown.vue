@@ -18,6 +18,8 @@ export default {
   computed: {
     isDevelopingContent () { return StoreHelper.isDevelopingContent() },
     isOutsideShowButtonLabels () { return StoreHelper.isOutsideShowButtonLabels() },
+    exitUrl () { return this.visitData.returnUrl },
+    visitData () { return this.$store.getters['visit/visitData'] || {}},
     items () {
       const menuItems = [
       ]
@@ -30,7 +32,7 @@ export default {
       menuItems.push( {
         label: MENU_TEXT.ACTIVITIES,
         toolTip: MENU_TEXT.ACTIVITIES_TOOLTIP,
-        callback: () => { this.navigate('/lms-activity') },
+        callback: () => { this.navigate('/lms-instructor-activity') },
         icon: APP_ICONS.activity
       })
       menuItems.push( {
@@ -57,12 +59,14 @@ export default {
         callback: () => { this.navigate({ name: 'consumer', query: { consumerId: StoreHelper.consumerId() } }) },
         icon: APP_ICONS.consumer
       })
-      menuItems.push( {
-        label: MENU_TEXT.EXIT_LABEL,
-        toolTip: MENU_TEXT.EXIT_TOOLTIP,
-        callback: () => { StoreHelper.exitToLms() },
-        icon: APP_ICONS.exitToLms
-      })
+      if(this.exitUrl) {
+        menuItems.push({
+          label: MENU_TEXT.EXIT_LABEL,
+          toolTip: this.exitUrl,
+          callback: () => { StoreHelper.exitToLms() },
+          icon: APP_ICONS.exitToLms
+        })
+      }
       menuItems.push( {
         label: MENU_TEXT.DESIGNER_MODE_LABEL,
         toolTip: `${this.isDevelopingContent ? MENU_TEXT.DESIGNER_MODE_TURN_OFF_TOOLTIP : MENU_TEXT.DESIGNER_MODE_TURN_ON_TOOLTIP}`,
@@ -70,22 +74,13 @@ export default {
         checkbox: true,
         isChecked: () => this.isDevelopingContent
       })
-      menuItems.push( {
-        label: MENU_TEXT.SHOW_BUTTON_LABELS(this.isOutsideShowButtonLabels),
-        toolTip: MENU_TEXT.SHOW_BUTTON_LABELS_TOOLTIP(this.isOutsideShowButtonLabels),
-        callback: () => { StoreHelper.setOutsideShowButtonLabels( !this.isOutsideShowButtonLabels) },
-        checkbox: true,
-        isChecked: () => this.isOutsideShowButtonLabels
-      })
-      menuItems.push({
-        horizontal: true
-      })
-      menuItems.push( {
-        icon: APP_ICONS.student,
-        label: 'Switch role to student',
-        toolTip: 'View your current activity as a student experiences it.',
-        callback: () => { StoreHelper.visitAsStudent(this.$router) },
-      })
+      // menuItems.push( {
+      //   label: MENU_TEXT.SHOW_BUTTON_LABELS(this.isOutsideShowButtonLabels),
+      //   toolTip: MENU_TEXT.SHOW_BUTTON_LABELS_TOOLTIP(this.isOutsideShowButtonLabels),
+      //   callback: () => { StoreHelper.setOutsideShowButtonLabels( !this.isOutsideShowButtonLabels) },
+      //   checkbox: true,
+      //   isChecked: () => this.isOutsideShowButtonLabels
+      // })
       return menuItems
     },
   },

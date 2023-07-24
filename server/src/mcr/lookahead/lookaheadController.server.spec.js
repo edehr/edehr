@@ -18,7 +18,7 @@ const token = Helper.generateToken(tokenData)
 // Use following to leave results in test database for inspection
 /* global describe it */
 // these tests cause mocha to stay running.  Skip until we can resolve this problem
-describe.skip(`${typeName} controller testing`, function () {
+describe(`${typeName} controller testing`, function () {
 
   let app
   let looker

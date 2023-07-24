@@ -58,9 +58,28 @@ const actions = {
     context.commit('setSeedEditId', undefined)
     localStorage.removeItem(IS_CONTENT_EDITING)
   },
-  setVisitId (context, vId) {
+  async changeVisitId (context, visitId) {
+    const postBody = { visitId: visitId }
+    return InstoreHelper.postRequest(context, API, 'change-visit', postBody).then(results => {
+      return results.data.token
+    })
+  },
+  setVisitIdViaSh (context, visitId) {
     // console.log('Set visit id', vId)
-    context.commit('setVisitId', vId)
+    context.commit('setVisitId', visitId)
+  },
+  /**
+   * Convenience action that does three common tasks. Sets a visitId into storage, loads the visit record,
+   * and then loads the activity record associated with the visit.
+   *
+   * @param context
+   * @param visitId
+   * @returns {Promise<*>}
+   */
+  async setLoadVisitActivity (context, visitId) {
+    await context.dispatch('setVisitId', visitId)
+    await context.dispatch('loadVisitRecord')
+    return await context.dispatch('activityStore/loadActivityRecord', {}, {root:true})
   },
   loadVisitRecord (context) {
     const visitId = context.getters.visitId

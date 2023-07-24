@@ -21,14 +21,15 @@
                 {{persona.name}}
                 ({{ persona.role==='instructor' ? "instructor" : persona.role==='student' ? "student" : "" }})
 
-            div(v-else) Select a user to start the demonstration mode.
+            div(v-else) &nbsp;
             div
               ui-button(:disabled="!isFormValid", @buttonClicked="submitDemoAccess")
-                span Login to Demo LMS
+                span Login to Demonstration
+        div(v-text-to-html="demoText.advanced")
       div
-        div(v-for="part in demoText.explanation")
-          h4(v-if="part.title") {{ part.title }}
-          div(v-text-to-html="part.body")
+        //div(v-for="part in demoText.explanation")
+        //  h4(v-if="part.title") {{ part.title }}
+        //  div(v-text-to-html="part.body")
       ui-confirm(
         class="confirmDialog",
         ref="confirmDialog",

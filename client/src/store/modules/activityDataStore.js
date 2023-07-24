@@ -16,48 +16,19 @@ function _sendHelper (context, parameter, data) {
   return context.dispatch('sendActivityData', { parameter: parameter, data: data })
 }
 const getters = {
-  assignmentData: state => {
-    let prop =  state.dataStore.assignmentData || {}
-    if (debug) console.log(NAME + ' get assignmentData', prop)
-    return prop
-  },
+  assignmentData: state => state.dataStore.assignmentData || {},
   hasDraftRows: state => {
     let assignmentData =  state.dataStore.assignmentData || {}
     const ehrPages = new EhrPages()
     const statsSeed = ehrPages.ehrPagesStats(assignmentData)
     return statsSeed.meta.draftRows > 0
   },
-  lastUpdateDate: state => {
-    // unlike other models this one's update field is called lastDate
-    let prop =  state.dataStore.lastDate
-    if (debug) console.log(NAME + ' get lastUpdateDate', prop)
-    return prop
-  },
-  scratchData: state => {
-    let prop =  state.dataStore.scratchData
-    if (debug) console.log(NAME + ' get scratchData', prop)
-    return prop
-  },
-  submitted: state => {
-    let prop =  state.dataStore.submitted || false
-    if (debug) console.log(NAME + ' get submitted', prop)
-    return prop
-  },
-  evaluationData: state => {
-    let prop =  state.dataStore.evaluationData
-    if (debug) console.log(NAME + ' get evaluationData', prop)
-    return prop
-  },
-  id: state => {
-    let prop =  state.dataStore._id
-    if (debug) console.log(NAME + ' get activityDataId', prop)
-    return prop
-  },
-  activityData: state => {
-    let prop =  state.dataStore
-    if (debug) console.log(NAME + ' get activityDataId', prop)
-    return prop
-  },
+  lastUpdateDate: state => state.dataStore.lastDate,
+  scratchData: state => state.dataStore.scratchData,
+  submitted: state => state.dataStore.submitted || false,
+  evaluationData: state => state.dataStore.evaluationData,
+  id: state => state.dataStore._id,
+  activityData: state => state.dataStore,
 }
 
 const actions = {

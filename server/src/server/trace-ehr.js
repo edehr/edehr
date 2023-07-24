@@ -32,7 +32,7 @@ EHR_EVENT_BUS.on(EHR_AD_EVENT, (payload) => {
 
 EHR_EVENT_BUS.on(EHR_SEED_EVENT, (payload) => {
   if(isTestEnv) {
-    debug(payload.action, 'update Seed updated:', payload.updated)
+    // debug(payload.action, 'update Seed updated:', payload.updated)
     FOR_TEST_LAST_EVENT.lastAction = payload.action
     FOR_TEST_LAST_EVENT.lastType = 'SEED'
     return
@@ -45,7 +45,7 @@ EHR_EVENT_BUS.on(EHR_SEED_EVENT, (payload) => {
       return
     }
   }
-  debug('Seed update event.', payload.action)
+  // debug('Seed update event.', payload.action)
   ehrTrace(JSON.stringify(payload))
   traceSeedLogger.info(payload)
 })

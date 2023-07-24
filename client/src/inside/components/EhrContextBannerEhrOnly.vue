@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import EhrContextBannerHeader from '@/inside/components/EhrContextBannerHeader'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import EhrSimTime from '@/inside/components/EhrSimTime'
 import StoreHelper from '@/helpers/store-helper'
@@ -39,37 +38,20 @@ import UiInfo from '@/app/ui/UiInfo.vue'
 import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 
 export default {
-  components: { UiInfo, UiUploadFileDialog, UiConfirm, UiButton, EhrSimTime, EhrContextBannerHeader, UiLink },
+  components: { UiInfo, UiUploadFileDialog, UiConfirm, UiButton, EhrSimTime, UiLink },
   data: function () {
     return {
-      show: false,
       appIcons: APP_ICONS,
       ehrOnlyDemoText: ehrOnlyDemoText
     }
   },
   computed: {
-    activity () {
-      return this.$store.getters['activityStore/activity']
-    },
-    md () { return StoreHelper.getMergedData() },
-    isEhrOnlyDemo () {
-      return EhrOnlyDemo.isActiveEhrOnlyDemo()
-    },
     seedObj () {
       return this.$store.getters['ehrOnlyDemoStore/ehrOnlySeed'] || {}
     },
     seedContributors () { return this.seedObj.contributors },
     seedDescription () { return this.seedObj.description },
     seedLicense () { return this.seedObj.license },
-    showStudent () {
-      return StoreHelper.isStudent()
-    },
-    showInstructor () {
-      return StoreHelper.isInstructor() && !StoreHelper.isSeedEditing()
-    },
-    showSeeding () {
-      return StoreHelper.isSeedEditing()
-    },
   },
   methods: {
     gotoEhrOnly () {
@@ -91,21 +73,11 @@ export default {
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
     }
   },
-  mounted: function () {
-    if (StoreHelper.isInstructor(this)){
-      this.show = true
-    }
-  },
 }
 </script>
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-.ehr-context-banner {
-  background-color: $brand-primary-light;
-  padding: 5px $ehr-layout-padding-left;
-  border-top: 1px solid $grey40;
-}
 
 .bTitle {
   flex-grow: 4;

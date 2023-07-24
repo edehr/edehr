@@ -12,7 +12,6 @@
       div(v-if="canEdit", class="resetFormButton")
         ui-button(
           v-on:buttonClicked="promptConfirmDialog",
-          v-bind:secondary="true",
           :disabled="ehrHelp.isEditingForm(formKey)"
         ) Reset form data
     ui-confirm(ref="confirmDialog", @confirm="resetFormData")

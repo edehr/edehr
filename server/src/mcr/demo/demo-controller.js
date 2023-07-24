@@ -26,14 +26,6 @@ const consumerBaseDef = {
   lti_message_type: 'basic-lti-launch-request',
 }
 
-const seedTemplate = {
-  toolConsumer: '',
-  name: 'Demonstration seed data',
-  description: 'This a demonstration empty seed data',
-  version: '1',
-  ehrData: {}
-}
-
 export default class DemoController {
 
   constructor (config) {
@@ -44,19 +36,19 @@ export default class DemoController {
     this.comCon = cc
   }
 
-  async addSample (activity, toolC) {
-    const theSeed = activity.seedDef
-    const assignmentData = activity.learningObject
-    if (debugDC) debug('DemoController create', theSeed.name)
-    const aSeed = Object.assign({}, seedTemplate, { toolConsumer: toolC._id })
-    aSeed.name = theSeed.name
-    aSeed.description = theSeed.description
-    aSeed.ehrData = theSeed.ehrData
-    aSeed.tagList = theSeed.tagList
-    let seed = await this.comCon.seedController.create(aSeed)
-    const ass = Object.assign({}, assignmentData, { toolConsumer: toolC })
-    if (debugDC) debug('DemoController create assignment', ass.title)
-    await this.comCon.assignmentController.createAssignment(ass, seed._id)
+  async createSampleSeedAndObj (activity, toolC) {
+    console.log('---- activityDef', activity)
+    const lObjDef = activity.lObjDef // has title, description
+    lObjDef.toolConsumer = toolC // just needs toolConsumer and seed to be ready to create db object
+    const seedDef = activity.seedDef
+    seedDef.toolConsumer = toolC._id
+    let seed = await this.comCon.seedController.create(seedDef)
+    const lBbj = await this.comCon.assignmentController.createAssignment(lObjDef, seed._id)
+    return {
+      title: lObjDef.title, // provide name and app type without need to query
+      appType: seed.appType,
+      demo_lobjId: lBbj._id // can get seed from lObj
+    }
   }
 
   async _createDemoToolConsumer (req, res, next) {
@@ -73,20 +65,24 @@ export default class DemoController {
     consumerDef.is_primary = false
     let toolC = await this.comCon.consumerController.createToolConsumer(consumerDef)
     if (debugDC) debug('DemoController tool consumer ready', toolC)
-    await this.addSample(activity1, toolC)
-    await this.addSample(activity2, toolC)
-    await this.addSample(activity3, toolC)
-    await this.addSample(activity4, toolC)
-    await this.addSample(activity5, toolC)
-    if (debugDC) debug('DemoController generate token')
     const demoData = {
       toolConsumerKey: theId,
       toolConsumerId: toolC._id,
-      personaList: demoPersonae
+      personaList: demoPersonae,
+      lObjList: []
     }
+    // see comment below about lObjList
+    const activities = [ activity1, activity2, activity3, activity4, activity5 ]
+    await Promise.all(
+      activities.map(async (activity) => {
+        demoData.lObjList.push(await this.createSampleSeedAndObj(activity, toolC))
+      })
+    )
+    console.log('Demo data is ready', demoData)
+    if (debugDC) debug('DemoController generate token')
     try {
-      // the demo token contains information about the demo system.  it doesn't need to
-      // any expiry since its not a user log in control its just information.
+      // the demo token contains information about the demo system.  It doesn't need
+      // any expiry since it's not a user log in control, it's just information.
       const demoToken = this.comCon.authUtil.createToken({ demoData: demoData }, undefined /* no expiry */)
       if (debugDC) debug('DemoController _createDemoToolConsumer generated token')
       res.status(200).json({ demoToken })
@@ -96,10 +92,36 @@ export default class DemoController {
     }
   }
 
+  /*
+  A lengthy comment about the lObjList.
+  Tip: search for 'demo_lobjId' on both client and server to find the main parts to support this feature.
+
+  Normally, when a user first clicks a link in an LMS the activity does not have a link to EdEHR content (Learning Object/Assignment). It is "unlinked" and an instructor user must make the connection on the UnlinkedActivity page.
+
+  But this is too complex for a demonstration. So we want to automatically link activities to content.  The lObjList contains the activity name and the id to the context.  This data has a long and convoluted path to when it gets used.
+
+  First it is sent to the client in the demo token, as data. The client used demo data to flush out the demo LMS page. The user clicks one of these activity links and the client needs to send the LObj id along with the other demo data to the server.
+  The server composes the LTI post on behalf of the client, and sends it to the LTI endpoint (just like all other clients). But this post includes the LObj id.
+  The LTI process looks for this custom LObj id and includes it in the query port of the url when it redirects.
+  The page-controller client gets the lti redirect and the refresh token. It sends the refresh token back to the server for verification and then redirects to the same page. But when the page controller has that LObj id it includes that in the redirect.
+  Finally, the page controller gets the LObj id and gets to the point it looks at the current activity to find it is unlinked. It then uses the LObj id to create the link and refreshes its copy of the activity data.
+
+  Generally, this code base strives to make the code tell the story so that when code is changed the story is immediately changed too. But sometimes the story is too complex so documentation is needed. But that risks confusion when code is eventually changed and the documentation is not kept in sync.
+   */
+
   listDemoActivities () {
-    const response = { activities: [
-      activity1, activity2, activity3, activity4, activity5
-    ]}
+    const response = {
+      courses: [
+        {
+          courseTitle: 'Intro to EHR',
+          activities: [activity1, activity2, activity3]
+        },
+        {
+          courseTitle: 'Intro to MedLab',
+          activities: [activity4, activity5]
+        }
+      ]
+    }
     return Promise.resolve(response)
   }
 

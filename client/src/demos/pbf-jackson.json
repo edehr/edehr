@@ -1,6 +1,7 @@
 {
   "id": "63405311b1e90f00133a7c06",
   "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "appType": "EHR",
   "ehrData": {
     "meta": {
       "simTime": {

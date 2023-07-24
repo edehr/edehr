@@ -1,11 +1,15 @@
 <template lang="pug">
   div(class='zone_lms_page_name')
     fas-icon( class='fa', :icon='pageIcon')
-    span  &nbsp; {{pageTitle}}
+    span  &nbsp; {{pageTitle}}  &nbsp;   &nbsp;
+      slot
 </template>
 <script>
 import StoreHelper from '../../helpers/store-helper'
 export default {
+  props: {
+    title: { type: String, default: undefined },
+  },
   computed: {
     pageIcon () {
       // icon comes from route meta data
@@ -13,7 +17,7 @@ export default {
       icon = icon && icon.length > 0 ? icon : undefined
       return icon
     },
-    pageTitle () { return StoreHelper.getPageTitle() },
+    pageTitle () { return this.title ? this.title : StoreHelper.getPageTitle() },
   }
 }
 </script>

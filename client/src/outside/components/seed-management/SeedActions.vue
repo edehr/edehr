@@ -2,11 +2,11 @@
   div
     div(class="flow_across flow_across_right flow_wrap menu_space_across")
       zone-lms-button(v-if="!hideCondensed", @action="viewEhrCondensed", :icon='appIcons.view', :title='text.VIEW_TP', :text='text.VIEW')
-      zone-lms-button(v-if="canDo", @action="gotoEhrWithSeed", :icon='appIcons.edit', :title='text.EDIT_TP', :text='text.EDIT')
-      zone-lms-button(v-if="canDo", @action="showEditDialog", :icon='appIcons.configure', :title='text.PROPERTIES_TP', :text='text.PROPERTIES')
-      seed-duplicate(v-if="canDo", :seed='seed', @newSeed='seedDuplicated()')
+      zone-lms-button(v-show="canDo", @action="gotoEhrWithSeed", :icon='appIcons.edit', :title='text.EDIT_TP', :text='text.EDIT')
+      zone-lms-button(v-show="canDo", @action="showEditDialog", :icon='appIcons.configure', :title='text.PROPERTIES_TP', :text='text.PROPERTIES')
+      seed-duplicate(v-show="canDo", :seed='seed', @newSeed='seedDuplicated()')
       zone-lms-button(@action="downloadSeed", :icon='appIcons.download', :title='text.DOWNLOAD_TP', :text='text.DOWNLOAD')
-      seed-delete(v-if="canDo"
+      seed-delete(v-show="canDo"
         :disabled="assignmentList.length > 0",
         :seed='seed',
         @seedDeleted='seedDeleted')

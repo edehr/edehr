@@ -196,7 +196,6 @@ export default {
   },
   methods: {
     childUpdate (update) {
-      console.log('EhrElementForm update', update)
       this.internalSetInputValue(update)
     }
   }

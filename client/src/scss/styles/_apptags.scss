@@ -1,0 +1,29 @@
+@import '../definitions';
+
+
+.app-tag {
+  background-color: $app-tag-colour;
+  border-radius: 1rem;
+  display: inline-block;
+  padding: 0;
+  margin: 2px;
+  color: $brand-primary-dark;
+  & span {
+    padding: 8px;
+  }
+  & button {
+    color: $app-tag-button-colour;
+    border-radius: 1rem;
+    border: none;
+    //font-size: 1.5rem;
+    padding: 0 10px;
+    height: 2rem;
+    //margin: 0 0 0 10px;
+    background-color: transparent;
+  }
+  & button:hover {
+    color: $app-tag-button-hover-colour;
+    background-color: $grey10;
+    //background-color: $grey10;
+  }
+}

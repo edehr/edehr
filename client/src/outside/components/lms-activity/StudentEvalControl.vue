@@ -32,23 +32,12 @@
         ui-link(:name="'classList'", :query="{activityId: activityId}")
           fas-icon(class="fa", :icon="appIcons.classList")
           span &nbsp; Return to: class list
-      h4
-        span {{ activity.resource_link_title }}
-        span &nbsp; / &nbsp;
-        span {{ assignment.name }}
+      h4 {{ activityName }}
     ui-confirm(class="confirmDialog",
       ref="confirmDialog",
       @confirm="resetNotesConfirmed",
       save-label="Confirm")
 
-    div(style='display:none')
-      div isClosed {{ isClosed }}
-      div studentLastActive {{ studentLastActive | formatDateTime }}
-      div submitted {{ submitted }}
-      div evaluated {{ evaluated }}
-      div studentName {{ studentName }}
-      div currentIndex {{ currentIndex }} of {{ listLen }}
-      div currentEvaluationStudentId {{ currentEvaluationStudentId }}
 </template>
 
 <script>
@@ -80,24 +69,21 @@ export default {
       return t
     },
     activity () {
-      return this.$store.getters['activityStore/activity']
+      return this.$store.getters['activityStore/activityRecord']
     },
     activityId () {
-      return this.$store.getters['activityStore/activityId']
+      return this.activity.id
     },
     activityName () {
-      return this.activity.resource_link_title
+      return this.activity.learningObjectName
     },
     activityData () {
       return this.student.activityData
     },
-    assignment () {
-      return this.$store.getters['assignmentStore/assignment']
-    },
     canSave () {
       return this.hasNewData
     },
-    classList () { return StoreHelper.getClassList()  },
+    classList () { return this.$store.getters['instructor/classList']  },
     currentIndex () {
       let inx = this.student.index
       return inx + 1
@@ -169,7 +155,7 @@ export default {
       index--
       if (index >= 0) {
         let sv = this.classList[index]
-        this.changeStudent(sv)
+        EvalHelper.studentEvaluation(sv._id, this.inEhr)
       }
     },
     nextStudent () {
@@ -177,14 +163,7 @@ export default {
       index++
       if (index < this.classList.length) {
         let sv = this.classList[index]
-        this.changeStudent(sv)
-      }
-    },
-    changeStudent (sv) {
-      if (this.inEhr) {
-        EvalHelper.goToEhr(sv)
-      } else {
-        this.$router.push({ name: 'eval-student', query: { visitId: sv._id } })
+        EvalHelper.studentEvaluation(sv._id, this.inEhr)
       }
     },
     resetNotes () {

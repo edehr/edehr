@@ -37,6 +37,7 @@ import { v4 as uuidv4 } from 'uuid'
 const debug = require('debug')('server')
 import { logError} from '../helpers/log-error'
 import ActionsController from '../mcr/metric/actions-controller'
+import CourseController from '../mcr/course/course-controller'
 
 export function apiMiddle (app, config) {
   const fileStoreOptions = {}
@@ -77,12 +78,13 @@ export function apiMiddle (app, config) {
   const as = new AssignmentController(config)
   const auth = new AuthController(config)
   const actions = new ActionsController()
+  const crs = new CourseController()
   const fc = new FeedbackController(config)
   const fileC = new FilesController(config)
   const look = new LookaheadController()
   const vc = new VisitController(config)
   const cc = new ConsumerController()
-  const uc = new UserController(config)
+  const uc = new UserController()
   const sd = new SeedDataController()
   const lti = new LTIController(config)
   const pc = new PlaygroundController()
@@ -96,16 +98,19 @@ export function apiMiddle (app, config) {
     assignmentController : as,
     authUtil,
     consumerController : cc,
+    courseController: crs,
     filesController: fileC,
     seedController: sd,
     userController: uc,
     visitController: vc
   }
   auth.setSharedControllers(lcc)
+  crs.setSharedControllers(lcc)
   lti.setSharedControllers(lcc)
   cc.setSharedControllers(lcc)
   demo.setSharedControllers(lcc)
   act.setSharedControllers(lcc)
+  uc.setSharedControllers(lcc)
   vc.setSharedControllers(lcc)
 
   // const justCors = [
@@ -163,6 +168,7 @@ export function apiMiddle (app, config) {
       api.use('/activities', middleWare, act.route())
       api.use('/activity-data', middleWare, acc.route())
       api.use('/assignments', middleWare, as.route())
+      api.use('/courses', middleWare, crs.route())
       api.use('/feedback', middleWare, fc.route())
       api.use('/files', middleWare, fileC.route())
       api.use('/consumers', middleWare, cc.route())
@@ -179,6 +185,7 @@ export function apiMiddle (app, config) {
       api.use('/api/activity-data', middleWare, acc.route())
       api.use('/api/assignments', middleWare, as.route())
       api.use('/api/consumers', middleWare, cc.route())
+      api.use('/api/courses', middleWare, crs.route())
       api.use('/api/feedback', middleWare, fc.route())
       api.use('/api/files', middleWare, fileC.route())
       api.use('/api/lookahead', allCors, look.route())

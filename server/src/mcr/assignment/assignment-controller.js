@@ -13,13 +13,14 @@ import pluralize from 'pluralize'
 
 const debug = require('debug')('server')
 import { logError} from '../../helpers/log-error'
+import SeedData from '../seed/seed-data'
 const debugAC = false
 
 const sd = new SeedDataController()
 
 export default class AssignmentController extends BaseController {
   constructor (config) {
-    super(Assignment, '_id')
+    super(Assignment)
     this.config = config
     this.defaultAssignmentDescription = config.ehr.defaultAssignmentDescription
   }
@@ -101,14 +102,16 @@ export default class AssignmentController extends BaseController {
   async read (id) {
     if (debugAC) debug('Assignment. read id: ', id)
     let modelInstance = await this.baseFindOneQuery(id)
-    if (debugAC) debug('Assignment. read modelInstance: ', modelInstance)
+    // decouple from the mongoose object so we can add properties
+    const temp = JSON.parse(JSON.stringify(modelInstance))
+    let seed = await SeedData.findById(modelInstance.seedDataId)
+    temp.seedName = seed.name
     const thisId = modelInstance._id.toString()
     const query = {toolConsumer: modelInstance.toolConsumer}
     const activities = await Activity.find(query)
     const countable = activities.filter( activity => {
       return activity.assignment && activity.assignment.toString() === thisId
     })
-    const temp = JSON.parse(JSON.stringify(modelInstance))
     temp.activityCount = countable.length
     let response = {}
     response[this.modelName] = temp
@@ -158,6 +161,37 @@ export default class AssignmentController extends BaseController {
         if (debugAC) debug('Assignment. create from def', data.name)
         return this.create(data)
       })
+  }
+
+  paginateQuery (options) {
+    let query = super.paginateQuery(options)
+    if (options.searchTerm) {
+      let searchTerm = options.searchTerm
+      query['$or'] = [
+        { name: { $regex: searchTerm, $options : 'i' } },
+        { description: { $regex: searchTerm, $options : 'i' } }
+      ]
+      // console.log(' seed data paginate search query ', searchTerm, JSON.stringify(query))
+    }
+    return query
+  }
+  paginateResultFields () {
+    return {
+      name: 1,
+      description: 1,
+      seedDataId: 1,
+      createDate: 1,
+      lastUpdateDate: 1,
+    }
+  }
+  paginateInitialFindPopulate () {
+    return 'seedDataId'
+  }
+  paginateInitialFieldSet () {
+    return { _id: 1, name:1, seedDataId: 1 }
+  }
+  paginateInitialFilter (resultSet, options) {
+    return resultSet.filter( item => options.appTypes.includes(item.seedDataId.appType))
   }
 
   route () {

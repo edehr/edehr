@@ -202,7 +202,7 @@ export default {
 }
 .dialog-header{
   width: 100%;
-  max-height: 6rem;
+  //max-height: 6rem;
   overflow-y: hidden;
   background-color: $grey03;
   border-bottom: 1px solid $grey30;

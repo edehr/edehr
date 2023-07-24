@@ -1,47 +1,44 @@
 <template lang='pug'>
   div(class="toggle-button")
-    div(class='toggle-label', :class='labelClass') {{ label }}
-    label(class="switch")
-      div
-        input(type="checkbox", v-on:click="toggle", :checked='toggleValue')
+    label(class='flow_across')
+      div(class='toggle-label-left') {{ labelOff }}
+      div(class="switch")
+        input(type="checkbox", v-on:click="toggle", :checked='modelValue')
         span(class="slider round")
-
+      div(class='toggle-label-right') {{ labelOn }}
 </template>
 
 <script>
 export default {
   props: {
-    toggleValue: {type: Boolean, default: false},
-    label: {type: String},
-    theme: {type: String}
+    modelValue: {type: Boolean, default: false},
+    labelOn: {type: String},
+    labelOff: {type: String}
   },
   computed: {
-    labelClass () {
-      return {
-        darkLabel: this.theme === 'dark'
-      }
-    }
   },
   methods: {
     toggle: function (event) {
-      this.$emit('toggle', event, this.value)
+      this.$emit('change', event)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/definitions';
+@import '../../../scss/definitions';
 .toggle-button {
   display: flex;
   flex-direction: row;
   padding: 5px;
 }
-.toggle-label {
+.toggle-label-left {
   text-align: right;
-  max-width: 15rem;
-  width: 15rem;
-  margin-right: 10px;
+  margin-right: 5px;
+}
+.toggle-label-right {
+  text-align: left;
+  margin-left: 5px;
 }
 .darkLabel {
   color: white;
@@ -51,7 +48,7 @@ export default {
 .switch {
   position: relative;
   display: inline-block;
-  width: 3.0rem;
+  width: 2.8rem;
   height: 1.6rem;
 }
 
@@ -70,9 +67,9 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
+  box-shadow: 1px 1px 2px $grey20;
 }
 
 .slider:before {
@@ -80,19 +77,15 @@ export default {
   content: "";
   height: 1.6rem;
   width: 1.6rem;
-  left: 4px;
+  left: 2px;
   bottom: 0;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
 }
 
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 2px 2px 2px $grey60
 }
 
 input:checked + .slider:before {
@@ -107,4 +100,14 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+/* BRANDING */
+.slider {
+  background-color: $colour-brand-lis;
+}
+
+input:checked + .slider {
+  background-color: $colour-brand-ehr;
+}
+
 </style>

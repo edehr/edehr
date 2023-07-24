@@ -3,24 +3,26 @@ import sKeys from '../../helpers/session-keys'
 import StoreHelper from '../../helpers/store-helper'
 import SeedModel from '@/outside/models/SeedModel'
 const API = 'seed-data'
-const debugSL = false
+let debugSL = false
 
 // exporting elements so they can be accessed in unit tests.
 // working code should only use the default exported module.
 
 export const state = {
   seedDataList: [],
+  listMetadata: {},
   sSeedId: '',
   // Initialize seedModel with the inner seed property so that components
   // can do their initial rendering while waiting for the seed data to load from API call
-  seedModel : { seed: {} }
+  seedModel : { seed: {} },
+  allTagList: []
 }
 
 export const getters = {
+  appType: state => { return state.seedModel.seed.appType },
   seedContent: state => { return state.seedModel.seed || {}  },
+  listMetadata: state => { return state.listMetadata },
   seedModel: state => { return state.seedModel },
-  hideEHRNav: state => { return state.seedModel.hideEHRNav },
-  hideLISNav: state => { return state.seedModel.hideLISNav },
 
   seedEhrData: state => {
     const edm = state.seedModel.ehrDataModel
@@ -29,7 +31,8 @@ export const getters = {
 
   list: state => { return state.seedDataList },
 
-  seedId: state => state.sSeedId
+  seedId: state => state.sSeedId,
+  allTagList: state => state.allTagList
 }
 
 const actions = {
@@ -55,15 +58,18 @@ const actions = {
    * @param seedId
    * @return {*}
    */
-  loadSeedContent (context, seedId) {
-    if(debugSL) console.log('SeedList load seed content stash seed id', seedId)
-    context.commit('_setSeedId', seedId)
-    let url =  'get/' + seedId
-    if(debugSL) console.log('SeedList load seed content from url', url)
+  async loadSeedContent (context, seedId) {
+    let oldVal = debugSL
+    // debugSL = true
+    if (debugSL) console.log('SeedList load seed content stash seed id', seedId)
+    await context.commit('_setSeedId', seedId)
+    let url = 'get/' + seedId
+    if (debugSL) console.log('SeedList load seed content from url', url)
     return InstoreHelper.getRequest(context, API, url).then(response => {
       let sd = response.data.seeddata
-      if(debugSL) console.log('SeedList load seed content sd >>', sd)
-      context.commit('_setSeedContent', sd)
+      if (debugSL) console.log('SeedList load seed content sd >>', sd)
+      debugSL = oldVal
+      return context.commit('_setSeedContent', sd)
     })
   },
 
@@ -92,6 +98,52 @@ const actions = {
       return list
     })
   },
+
+  loadAllTags (context) {
+    let consumerId = StoreHelper.getAuthdConsumerId()
+    if (!consumerId) {
+      console.error('ERROR the system should have consumer')
+      return
+    }
+    let url = 'allTags/' + consumerId
+    return InstoreHelper.getRequest(context, API, url).then(response => {
+      let allTagList = response.data.tagList
+      if (!allTagList) {
+        console.error('ERROR the system should have tag list')
+        return
+      }
+      context.commit('_setAllTagList', allTagList)
+      return allTagList
+    })
+  },
+  loadPage (context, payload) {
+    let consumerId = StoreHelper.getAuthdConsumerId()
+    if (!consumerId) {
+      // this can happen if you visit the Seed Lists page and then refresh the page. No worries. Load will happen later.
+      // console.log('seedListStore. Will not load seeds at this time because the consumer id is not yet set up.')
+      return
+    }
+    let { offset, limit, sortKey, sortDir, tagList, appTypes, searchTerm } = payload
+    let qs = `toolConsumerId=${consumerId}&offset=${offset}&limit=${limit}&sortKey=${sortKey}&sortDir=${sortDir}&appTypes=${appTypes}`
+    if (tagList) {
+      qs += '&tagList=' + tagList
+    }
+    if (searchTerm) {
+      qs += '&searchTerm=' + searchTerm
+    }
+    let url = 'paginate?' + qs
+    return InstoreHelper.getRequest(context, API, url).then(response => {
+      let list = response.data.list
+      if (!list) {
+        console.error('ERROR the system should have seeddata')
+        return
+      }
+      context.commit('_setSeedDataList', list)
+      context.commit('_setListMeta', response.data.metadata)
+      return list
+    })
+  },
+
 
   /**
    * Create a new ehr seed
@@ -230,7 +282,15 @@ export const mutations = {
   },
   _setSeedDataList: (state, list) => {
     state.seedDataList = list
-  }
+  },
+  _setListMeta: (state, metadata) => {
+    state.listMetadata = metadata
+  },
+  _setAllTagList: (state, allTagList) => {
+    state.allTagList = allTagList
+  },
+
+
 }
 
 export default {

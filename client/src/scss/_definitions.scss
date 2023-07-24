@@ -2,17 +2,41 @@
 // matches color in new icon
 $brand-color: #273890;
 $brand-highlight: #1CA7E1;
+$brand-highlight-light: #AED1FF;
 $brand-highlight-red: #EC1C24;
 $brand-primary: $brand-color;
-$brand-primary-hover: $brand-highlight;
 $brand-primary-dark: #051F54;
 $brand-primary-light: #e8f2fd;
 /* use opaque color because the style may be applied both to a table cell and to the content */
 $table-draft-colour: rgba(255, 210, 0, 1);
 $nav-draft-colour: rgba(255, 22, 0, 1);
 
+$table-cell-border-colour: rgba(39,56,144,0.25);
+$table-header-row-colour: rgba(28,167,225, 0.05);
+
+$app-tag-colour: #8DD3F0;
+$app-tag-button-colour: $brand-primary-dark;
+$app-tag-button-hover-colour: $brand-highlight-red;
+
+$brand-primary-hover: $brand-highlight-light;
+
+$button-border-radius: 3px;
+
+$ehr-brand-option1: #4d74ff;
+$ehr-brand-option1: rgb(77,116,255);
+$ehr-brand-option2: #1CA7E1;
+$ehr-hover-brand-option1: #859FFF;
+$ehr-hover-brand-option2: #49B9E9;
+
+$colour-brand-ehr:  $ehr-brand-option1;
+$colour-brand-ehr-hover: $ehr-hover-brand-option1;
+
+$colour-brand-lis: #1C9B75; // #23BE8F; //#249141;
+$colour-brand-lis-hover: #23BE8F;
+
 $white: #FFF;
 $grey03: hsl(0, 0%, 97%);
+$grey05: hsl(0, 0%, 95%);
 $grey10: hsl(0, 0%, 90%);
 $grey15: hsl(0, 0%, 85%);
 $grey20: hsl(0, 0%, 80%);
@@ -47,7 +71,7 @@ $toolbar-background-color: $brand-primary-dark;
 $toolbar-color: $grey10;
 
 $nav-background-medium: $black;
-$nav-active: $brand-primary-hover;
+$nav-active: #AED1FF; // $brand-highlight;
 $nav-level1: $grey80;
 $nav-level2: $grey70;
 $nav-level3: $grey60;

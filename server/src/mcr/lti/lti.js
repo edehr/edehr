@@ -23,12 +23,10 @@ const PROPS_CONSUMER = [
   'tool_consumer_instance_name',
   'tool_consumer_info_product_family_code',
   'tool_consumer_instance_description',
-  'lti_version'
 ]
 
 const PROPS_LTI = [
   'lti_message_type',
-  'lti_version',
   'lti_version'
 ]
 
@@ -60,6 +58,7 @@ export default class LTIController {
   }
   setSharedControllers (cc) {
     this.assignmentController = cc.assignmentController
+    this.activityController = cc.activityController
     this.authUtil = cc.authUtil
     this.visitController = cc.visitController
     this.activityController = cc.activityController
@@ -286,29 +285,23 @@ export default class LTIController {
     // see models/outcomes.js
   }
 
-  updateActivity (req, results) {
-    if (debugFine) debug('updateActivity with assignment')
-    return this.activityController.updateCreateActivity(
-      req.ltiData,
-      req.toolConsumer._id
-    ).then(activity => {
-      if (debugFine) debug('store the activity in the req')
-      req.activity = activity
-    })
-  }
+  // async updateActivity (req) {
+  //   if (debugFine) debug('updateActivity with assignment')
+  //   req.activity = this.activityController.updateCreateActivity(req.ltiData, req.toolConsumer._id)
+  // }
 
-  updateVisit (req) {
+  async updateVisit (req) {
     if (debugFine) debug('updateVisit')
-    if(req.activity) {
-      return this.visitController.updateCreateVisit(
+    if (req.activity) {
+      const visit = await this.visitController.updateCreateVisit(
         req.user,
         req.toolConsumer,
         req.activity._id,
         req.ltiData.roles,
         req.ltiData.launch_presentation_return_url
-      ).then(visit => {
-        req.visit = visit
-      })
+      )
+      await this.activityController.updateActivityVisit(req.activity._id, visit._id)
+      req.visit = visit
     }
   }
 
@@ -325,9 +318,17 @@ export default class LTIController {
       // pass this flag onto the client
       params.push('isDemoLti=true')
     }
+    if (req.ltiData.demo_lobjId) {
+      // pass this flag onto the client
+      params.push('demo_lobjId='+ req.ltiData.demo_lobjId)
+    }
+    if (req.ltiData.appType) {
+      // pass this flag onto the client
+      params.push('appType='+ req.ltiData.appType)
+    }
     if (visit.isInstructor) {
       if (debugFine) debug('Route to instructor page ')// + JSON.stringify(req.ltiData, null, 2))
-      route = '/lms-activity'
+      route = '/lms-instructor-activity'
       params.push('activityId=' + visit.activity._id)
     }
     try {
@@ -370,12 +371,15 @@ export default class LTIController {
     await _this.updateToolConsumer(req)
     if (db) console.log('Do update user')
     await _this.updateUser(req)
-    if (db) console.log('Do update activity')
-    await _this.updateActivity(req)
+    if (db) console.log('Do update activity and course')
+    // update activity may create a new Course object too.
+    // await _this.updateActivity(req)
+    req.activity = await this.activityController.updateCreateActivity(req.ltiData, req.toolConsumer._id)
     if (db) console.log('Do updateVisit')
     await _this.updateVisit(req)
-    if (db) console.log('Do composeLtiNextUrl')
-    await _this.composeLtiNextUrl(req)
+    let activityRecord = await this.activityController.getActivityRecord(req.visit)
+    if (db) console.log('Do composeLtiNextUrl', activityRecord)
+    await _this.composeLtiNextUrl(req, activityRecord)
     return req
   }
 

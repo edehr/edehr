@@ -1,5 +1,5 @@
 <template lang="pug">
-  transition(name="modal")
+  transition(name="fade")
     div(class="modal-mask", v-show="loading")
       div(class="modal-wrapper")
         div(class="modal-container is-centered")
@@ -28,8 +28,8 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  //background-color: white;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: white;
+  //background-color: rgba(0, 0, 0, 1);
   display: table;
   //transition: opacity 0.3s ease;
 }
@@ -49,4 +49,15 @@ export default {
 }
 spinner {
 }
+
+//.fade-enter-active {
+//  transition: opacity .15s;
+//}
+.fade-leave-active {
+  transition: opacity .25s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
 </style>

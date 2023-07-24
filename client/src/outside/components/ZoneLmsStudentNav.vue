@@ -1,24 +1,39 @@
 <template lang="pug">
   div(id='nav-menu', :class='{ iconsOnly: iconsOnly }')
-    button(@click="gotoCourses", :title='navText.COURSES_LABEL')
+    router-link(
+      :class="routeClass('/courses')",
+      to="/courses", class='router-item level1')
       fas-icon(class="fa", :icon="appIcons.course")
-      span(v-show='!iconsOnly') {{navText.COURSES_LABEL}}
-    button(@click="gotoActivity", :title='navText.ACTIVITIES')
+      span(v-show='!iconsOnly') &nbsp; {{navText.COURSES_NAV_LABEL}}
+    router-link(
+      v-if="hasCourse",
+      :class="routeClass('/course')",
+      :to="{ name: 'course', query: { courseId: course._id }}",
+      :title='navText.GOTO_COURSE(courseTitle)',
+      class='router-item level2')
+      fas-icon(class="fa", :icon="appIcons.course")
+      span(v-show='!iconsOnly') &nbsp; {{truncate(courseTitle)}}
+    router-link(
+      :class="routeClass('/lms-student-activity')",
+      v-if="hasCourse && hasActivity",
+      to="/lms-student-activity",
+      :title='navText.GOTO_ACTIVITY(activityName)',
+      class='router-item level3'
+      )
       fas-icon(class="fa", :icon="appIcons.activity")
-      span(v-show='!iconsOnly') {{navText.ACTIVITIES}}
-    hr
-    button(@click="exitToLms", :title='navText.EXIT_LABEL')
+      span(v-show='!iconsOnly') &nbsp; {{truncate(activityName)}}
+    a(href="#", @click.prevent="exitToLms", :title='navText.EXIT_LABEL', class='router-item level1')
       fas-icon(class="fa", :icon="appIcons.exitToLms")
-      span(v-show='!iconsOnly') {{navText.EXIT_LABEL}}
-    hr
+      span(v-show='!iconsOnly') &nbsp; {{navText.EXIT_LABEL}}
 </template>
 
 <script>
 import { APP_ICONS } from '@/helpers/app-icons'
 import StoreHelper from '../../helpers/store-helper'
 import { Text } from '@/helpers/ehr-text'
+import UiLink from '@/app/ui/UiLink.vue'
 export default {
-  components: {},
+  components: { UiLink },
   props: {
     iconsOnly: { type: Boolean }
   },
@@ -29,6 +44,16 @@ export default {
     }
   },
   computed: {
+    activity () { return this.$store.getters['activityStore/activityRecord'] },
+    activityName () { return this.activity.learningObjectName },
+    consumerId () { return StoreHelper.consumerId() },
+    hasActivity () { return this.$store.getters['activityStore/hasActivity'] },
+    hasCourse () { return this.$store.getters['courseStore/hasCourse'] },
+    course () { return this.$store.getters['courseStore/course']},
+    courseTitle () { return this.course ? this.course.title : undefined },
+    exitUrl () { return this.visitData.returnUrl },
+    visitData () { return this.$store.getters['visit/visitData'] || {}}
+
   },
   methods: {
     exitToLms () {
@@ -36,10 +61,12 @@ export default {
     },
     gotoActivity () {
       this.navigate('/ehr')
-      // router-link(:to="{ name: `ehr` }", class="navLink") Activity
     },
     gotoCourses () {
-      this.navigate('/student-courses')
+      this.navigate('/courses')
+    },
+    gotoCourse () {
+      this.navigate({ name: 'course', query: { courseId: this.course._id } })
     },
     navigate (path) {
       // prevent Vue's NavigationDuplicated
@@ -47,6 +74,13 @@ export default {
         this.$router.push(path)
       }
     },
+    routeClass ( path) {
+      return this.$route.path === path ? 'active-link' : ''
+    },
+    truncate (text) {
+      const lim = 25
+      return text && text.length > lim ? `${text.substring(0, lim)}...` : text
+    }
   }
 }
 
@@ -72,4 +106,21 @@ export default {
   }
 }
 
+/*
+.router-item is defined in outside.css. Here we adjust its bottom margin
+*/
+.router-item {
+  margin-bottom: 5px;
+  padding: 5px;
+  text-decoration: none;
+}
+.active-link {
+  background-color: $nav-active;
+}
+.level2 {
+  margin-left: 8px;
+}
+.level3 {
+  margin-left: 16px;
+}
 </style>
