@@ -106,7 +106,7 @@ export default {
     downloadConsumer () {
       const fName = 'EdEHR-Consumer' + this.consumer._id + '.json'
       let data = JSON.parse(JSON.stringify(this.consumer))
-      data.returnUrl = this.$store.getters['visit/returnUrl']
+      data.returnUrl = StoreHelper.lmsUrl()
       data.currentVisitId = this.$store.getters['authStore/visitId']
       let sorted = {}
       Object.keys(data).sort().forEach(k => {

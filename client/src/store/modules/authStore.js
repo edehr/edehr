@@ -44,6 +44,10 @@ const getters = {
   userId: state => {
     return state.authData.userId
   },
+  lmsUrl: state => {
+    return state.authData.returnUrl
+  },
+
 
 }
 

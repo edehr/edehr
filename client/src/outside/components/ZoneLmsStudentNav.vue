@@ -51,7 +51,7 @@ export default {
     hasCourse () { return this.$store.getters['courseStore/hasCourse'] },
     course () { return this.$store.getters['courseStore/course']},
     courseTitle () { return this.course ? this.course.title : undefined },
-    exitUrl () { return this.visitData.returnUrl },
+    exitUrl () { return StoreHelper.lmsUrl() },
     visitData () { return this.$store.getters['visit/visitData'] || {}}
 
   },

@@ -37,9 +37,6 @@ const getters = {
   seedEditId: state => {
     return state._seedEditId
   },
-  returnUrl: state => {
-    return state.sVisitData.returnUrl
-  },
   lastUpdateDate: state => {
     // unlike other models this one's update field is called lastVisitDate
     return state.sVisitData.lastVisitDate
@@ -76,11 +73,12 @@ const actions = {
    * @param visitId
    * @returns {Promise<*>}
    */
-  async setLoadVisitActivity (context, visitId) {
-    await context.dispatch('setVisitId', visitId)
-    await context.dispatch('loadVisitRecord')
-    return await context.dispatch('activityStore/loadActivityRecord', {}, {root:true})
-  },
+  // See loadActivityRecord in activityStore.js
+  // async setLoadVisitActivity (context, visitId) {
+  //   await context.dispatch('setVisitId', visitId)
+  //   await context.dispatch('loadVisitRecord')
+  //   return await context.dispatch('activityStore/loadActivityRecord', {}, {root:true})
+  // },
   loadVisitRecord (context) {
     const visitId = context.getters.visitId
     if (!visitId) {
@@ -135,6 +133,7 @@ const mutations = {
   },
   setVisitData: (state, info) => {
     if(debug) console.log('visit store setVisitData ', info)
+    console.log('visit store setVisitData ', info)
     state.sVisitData = info
   },
   setVisitId: (state, id) => {

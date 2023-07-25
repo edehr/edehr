@@ -87,7 +87,7 @@ class StoreHelperWorker {
   userId () { return this._getUserProperty('userId') }
   givenName () { return this._getUserProperty('givenName') }
   fullName () { return this._getUserProperty('fullName') }
-  lmsUrl () { return this._getVisitProperty('returnUrl') }
+  lmsUrl () { return this._getAuthStore('lmsUrl') }
   isDeveloper () { return this._getVisitProperty('isDeveloper') }
   getPageTitle () { return this._getSystemProperty('pageTitle')}
   setPageTitle (pageTitle) { return store.commit('system/setPageTitle', pageTitle)}

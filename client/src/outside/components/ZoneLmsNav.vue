@@ -36,7 +36,7 @@
       to="/fileList", :title='navText.FILE_LABEL', class='router-item level1')
       fas-icon(class="fa", :icon="appIcons.file")
       span(v-show='!iconsOnly') &nbsp; {{navText.FILE_LABEL}}
-    a(href="#", @click.prevent="exitToLms", :title='navText.EXIT_LABEL', class='router-item level1')
+    a(v-if="exitUrl", href="#", @click.prevent="exitToLms", :title='navText.EXIT_LABEL', class='router-item level1')
       fas-icon(class="fa", :icon="appIcons.exitToLms")
       span(v-show='!iconsOnly') &nbsp; {{navText.EXIT_LABEL}}
     router-link(
@@ -85,7 +85,7 @@ export default {
     courseTitle () { return this.course ? this.course.title : undefined },
     isDevelopingContent () { return StoreHelper.isDevelopingContent() },
     isOutsideShowButtonLabels () { return StoreHelper.isOutsideShowButtonLabels() },
-    exitUrl () { return this.visitData.returnUrl },
+    exitUrl () { return StoreHelper.lmsUrl() },
     visitData () { return this.$store.getters['visit/visitData'] || {}}
   },
   methods: {

@@ -336,6 +336,7 @@ export default class LTIController {
         consumerKey: visit.consumerKey,
         isInstructor: visit.isInstructor,
         isStudent: visit.isStudent,
+        returnUrl: visit.returnUrl,
         toolConsumerId: req.toolConsumer._id,
         userId: visit.user,
         visitId: visit._id
