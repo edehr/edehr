@@ -50,7 +50,7 @@ export default {
     }
   },
   computed: {
-    demoFeatureFlag () { return StoreHelper.getDemoFeatureFlag() },
+    demoFeatureFlag () { return true }, //StoreHelper.getDemoFeatureFlag() },
     isActive () { return this.isStudent || this.isInstructor || this.isDemo  },
     isDemo () { return StoreHelper.isDemoMode()  },
     isStudent () { return StoreHelper.isStudent() },
@@ -100,9 +100,9 @@ export default {
     async logoutUser () {
       // do a complete reset but keep the full demo feature flag
       await StoreHelper.logUserOutOfEdEHR()
-      const df = this.$store.getters['demoStore/getDemoFeatureFlag']
-      localStorage.clear()
-      await this.$store.dispatch('demoStore/setDemoFeatureFlag', df)
+      // const df = this.$store.getters['demoStore/getDemoFeatureFlag']
+      // localStorage.clear()
+      // await this.$store.dispatch('demoStore/setDemoFeatureFlag', df)
       // console.log('localStorage', localStorage)
       // refresh this page
       this.$router.go(0)

@@ -710,13 +710,13 @@ class StoreHelperWorker {
     return this._dispatchDemoStore('acceptsTerms', { accepts  })
   }
 
-  getDemoFeatureFlag () {
-    return this._getDemoStorage('getDemoFeatureFlag')
-  }
-  setDemoFeatureFlag (flag) {
-    StoreHelper.postActionEvent(SYSTEM_ACTION,'setDemoFeature')
-    return this._dispatchDemoStore('setDemoFeatureFlag', flag)
-  }
+  // getDemoFeatureFlag () {
+  //   return this._getDemoStorage('getDemoFeatureFlag')
+  // }
+  // setDemoFeatureFlag (flag) {
+  //   StoreHelper.postActionEvent(SYSTEM_ACTION,'setDemoFeature')
+  //   return this._dispatchDemoStore('setDemoFeatureFlag', flag)
+  // }
 
   isEHR_Showing () {
     // const activityRecord = StoreHelper.getActivityRecord()

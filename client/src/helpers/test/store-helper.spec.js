@@ -1013,12 +1013,12 @@ describe.skip('Demonstration related', () => {
     done()
   })
 
-  it.skip('getDemoFeatureFlag', done => {
-    const flag = StoreHelper.getDemoFeatureFlag()
-    should.exist(flag)
-    flag.should.equal(true)
-    done()
-  })
+  // it.skip('getDemoFeatureFlag', done => {
+  //   const flag = StoreHelper.getDemoFeatureFlag()
+  //   should.exist(flag)
+  //   flag.should.equal(true)
+  //   done()
+  // })
 
   it.skip('demoLogout', async () => {
     should.doesNotThrow(async () => {

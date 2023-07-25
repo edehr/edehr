@@ -61,7 +61,7 @@ const getters = {
 const state = {
   demoData: undefined, // load from a fetch token
   persona: undefined, // selected by user on the Demo page
-  demoFeature: false
+  demoFeature: true // ToDo remove this flag soon. and ui code. We shouldn't need it if full demo is easy enough to use.
 }
 
 const actions = {
@@ -91,9 +91,9 @@ const actions = {
     commit('setDemoData', undefined)
     commit('setPersona', undefined)
   },
-  setDemoFeatureFlag: function ({ commit }, data) {
-    commit('demoFeature', data)
-  },
+  // setDemoFeatureFlag: function ({ commit }, data) {
+  //   commit('demoFeature', data)
+  // },
   loadDemoData: function ({ commit }) {
     const token = _getStoredDemoToken()
     if (!token ) {
@@ -131,7 +131,7 @@ const actions = {
 
 const mutations = {
   initialize: function (state) {
-    state.demoFeature = _getStoredDemoFeature() === 'true'
+    state.demoFeature = true // _getStoredDemoFeature() === 'true'
     if (debugDS) console.log('DemoStore initialize: demo feature state',  state.demoFeature)
     const stashedDemoData = _getStoredDemoData()
     const stashedPersona = _getStoredDemoPersona()
@@ -156,11 +156,11 @@ const mutations = {
       localStorage.removeItem(DEMO_DATA)
     }
   },
-  demoFeature: function (state, data) {
-    if (debugDS) console.log('DemoStore set demo feature', data)
-    state.demoFeature = data
-    _setDemoFeature(data)
-  },
+  // demoFeature: function (state, data) {
+  //   if (debugDS) console.log('DemoStore set demo feature', data)
+  //   state.demoFeature = data
+  //   _setDemoFeature(data)
+  // },
   setPersona: function (state, data) {
     if (debugDS) console.log('DemoStore set persona', data)
     state.persona = data

@@ -14,9 +14,9 @@
     section(id="ehrValues", class="no-container features features-dark")
       ed-ehr-values
 
-    section(class="no-container")
-      div(class="content")
-        input(type="checkbox", v-model="activateDemoMode", class="is-pulled-right")
+    //section(class="no-container")
+    //  div(class="content")
+    //    input(type="checkbox", v-model="activateDemoMode", class="is-pulled-right")
 
 
 </template>
@@ -38,7 +38,7 @@ export default {
   data () {
     return {
       appText: appText,
-      activateDemoMode: false
+      // activateDemoMode: false
     }
   },
   computed: {
@@ -46,12 +46,12 @@ export default {
   methods: {
   },
   mounted: function () {
-    this.activateDemoMode = StoreHelper.getDemoFeatureFlag()
+    // this.activateDemoMode = StoreHelper.getDemoFeatureFlag()
   },
   watch: {
-    activateDemoMode: function (val) {
-      StoreHelper.setDemoFeatureFlag(val)
-    }
+    // activateDemoMode: function (val) {
+    //   // StoreHelper.setDemoFeatureFlag(val)
+    // }
   }
 }
 </script>
