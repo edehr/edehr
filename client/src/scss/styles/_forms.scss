@@ -371,3 +371,21 @@ select, .select {
   //  top: 4px;
   //}
 }
+
+.field_full_line {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+.wbcmAbnormalTypeMorphology {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.wbcmToxicTypeMorphology {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+.rcm_grading {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}

@@ -84,6 +84,7 @@ high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: calculatedValue}	eCell	{Label: WBC acceptable range (low)}	{Comments: <compute:  (WCB * (0.75)>}	{elementKey: wbcLowRange}	{pN: 43}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 20}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Validation: numeric}	eCell	eCell	eCell	eCell	{calculationType: multiplyBy(0.75)}	eCell	eCell	eCell
 {inputType: calculatedValue}	eCell	{Label: WBC acceptable range (high)}	{Comments: <compute:  WCB * (1.25) ) >}	{elementKey: wbcHighRange}	{pN: 43}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 21}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Validation: numeric}	eCell	eCell	eCell	eCell	{calculationType: multiplyBy(1.25)}	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Internal WBC comment}	eCell	{elementKey: wbcComment}	{pN: 43}	{fN: 2}	{gN: 4}	{sgN: }	{formCss: grid-span-2-columns}	eCell	eCell	{tableColumn: 22}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: number}	eCell	{Label: Corrected WBC Count}	eCell	{elementKey: wbcCorrectedWbc}	{pN: 43}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 23}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: PLT Estimate}	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 5}	{sgN: }	{formCss: grid-left-to-right-4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: number}	eCell	{Label: PLT - 1}	eCell	{elementKey: plt-1}	{pN: 43}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 23}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Validation: numeric}	eCell	eCell	eCell	{passToFunction: pltAverage}	eCell	eCell	eCell	eCell
 {inputType: number}	eCell	{Label: PLT - 2}	eCell	{elementKey: plt-2}	{pN: 43}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 24}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Validation: numeric}	eCell	eCell	eCell	{passToFunction: pltAverage}	eCell	eCell	eCell	eCell
@@ -140,111 +141,98 @@ Dysplastic}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Specify}	eCell	{elementKey: cellCntOtherSpecify}	{pN: 43}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	{tableColumn: 67}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: calculatedValue}	eCell	{Label: Total}	{Comments: <sum of all above except NRBCs>}	{elementKey: cellCntTotal}	{pN: 43}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	{tableColumn: 68}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{calculationType: sum}	eCell	eCell	eCell
 {inputType: number}	eCell	{Label: NRBCs}	eCell	{elementKey: cellCntNRBCs}	{pN: 43}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	{tableColumn: 69}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: nucleated red blood cells}	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Internal WBC Diff comment}	eCell	{elementKey: cellCntComment}	{pN: 43}	{fN: 2}	{gN: 7}	{sgN: }	{formCss: grid-span-2-columns}	eCell	eCell	{tableColumn: 70}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: White Cell Morphology}	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Normal}	eCell	{elementKey: wbcmNormalMorphology}	{pN: 43}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 70}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Abnormal}	eCell	{elementKey: wbcmAbnormalMorphology}	{pN: 43}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 71}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Type}	eCell	{elementKey: wbcmAbnormalTypeMorphology}	{pN: 43}	{fN: 2}	{gN: 8}	{sgN: }	{formCss: form_label_short}	eCell	eCell	{tableColumn: 72}	eCell	eCell	eCell	eCell	"{Options: Abnormal Lymphocytes
-Auer Rods
-Dysplastic Cells
-Hairy Cells
+{inputType: checkbox}	eCell	{Label: Normal}	eCell	{elementKey: wbcmNormalMorphology}	{pN: 43}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 71}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: Abnormal}	eCell	{elementKey: wbcmAbnormalMorphology}	{pN: 43}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 72}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkset}	eCell	{Label: Type}	eCell	{elementKey: wbcmAbnormalTypeMorphology}	{pN: 43}	{fN: 2}	{gN: 8}	{sgN: }	{formCss: form_label_short, wbcmAbnormalTypeMorphology}	eCell	eCell	{tableColumn: 73}	eCell	eCell	eCell	eCell	"{Options: Immature Cells
 Hypersegmented Neutrophils
-Immature Cells
-Increased Reactive Lymphocytes
-Necrobiotic Cells
+Dysplastic Cells
 Pelger-Huët Cells
-Smudge Cells}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Toxic Signs}	eCell	{elementKey: wbcmToxicMorphology}	{pN: 43}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 73}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Type}	eCell	{elementKey: wbcmToxicTypeMorphology}	{pN: 43}	{fN: 2}	{gN: 8}	{sgN: }	{formCss: form_label_short}	eCell	eCell	{tableColumn: 74}	eCell	eCell	eCell	eCell	"{Options: Döhle Bodies
+Auer Rods
+Smudge Cells
+Abnormal Lymphocytes
+Hairy Cells
+Necrobiotic Cells}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: Toxic Signs}	eCell	{elementKey: wbcmToxicMorphology}	{pN: 43}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 74}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkset}	eCell	{Label: Type}	eCell	{elementKey: wbcmToxicTypeMorphology}	{pN: 43}	{fN: 2}	{gN: 8}	{sgN: }	{formCss: form_label_short, wbcmToxicTypeMorphology}	eCell	eCell	{tableColumn: 75}	eCell	eCell	eCell	eCell	"{Options: Döhle Bodies
 Toxic Granulation
 Toxic Vacuolation}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Red Cell Morphology}	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: grid-left-to-right-2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Normal}	eCell	{elementKey: rcmNormal}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 75}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Consistent with indices}	eCell	{elementKey: rcmConsistent}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 76}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Acanthocytes}	eCell	{elementKey: rcmAcanthocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 77}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Acanthocytes grading}	eCell	{elementKey: rcmAcanthocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: form_label_long}	eCell	eCell	{tableColumn: 78}	eCell	eCell	eCell	eCell	"{Options: 1+
+{inputType: checkbox}	eCell	{Label: Normal}	eCell	{elementKey: rcmNormal}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: field_full_line}	eCell	eCell	{tableColumn: 76}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: Consistent with indices}	eCell	{elementKey: rcmConsistent}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: field_full_line}	eCell	eCell	{tableColumn: 77}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: Anisocytosis}	eCell	{elementKey: rcmAnisocytosis}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: field_full_line}	eCell	eCell	{tableColumn: 78}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: Polychromasia}	eCell	{elementKey: rcmPolychromasia}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: field_full_line}	eCell	eCell	{tableColumn: 79}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: Acanthocytes}	eCell	{elementKey: rcmAcanthocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 80}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: grading}	eCell	{elementKey: rcmAcanthocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: rcm_grading}	eCell	eCell	{tableColumn: 81}	eCell	eCell	eCell	eCell	"{Options: 1+
 2+
 3+
 4+}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Codocytes (Target Cells)}	eCell	{elementKey: rcmCodocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 79}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Codocytes (Target Cells) grading}	eCell	{elementKey: rcmCodocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: form_label_long}	eCell	eCell	{tableColumn: 80}	eCell	eCell	eCell	eCell	"{Options: 1+
+{inputType: checkbox}	eCell	{Label: Codocytes (Target Cells)}	eCell	{elementKey: rcmCodocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 82}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: grading}	eCell	{elementKey: rcmCodocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: rcm_grading}	eCell	eCell	{tableColumn: 83}	eCell	eCell	eCell	eCell	"{Options: 1+
 2+
 3+
 4+}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Dacryocytes (Tear Drop Cells)}	eCell	{elementKey: rcmDacryocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 81}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Dacryocytes (Tear Drop Cells) grading}	eCell	{elementKey: rcmDacryocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: form_label_long}	eCell	eCell	{tableColumn: 82}	eCell	eCell	eCell	eCell	"{Options: 1+
+{inputType: checkbox}	eCell	{Label: Dacryocytes (Tear Drop Cells)}	eCell	{elementKey: rcmDacryocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 84}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: grading}	eCell	{elementKey: rcmDacryocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: rcm_grading}	eCell	eCell	{tableColumn: 85}	eCell	eCell	eCell	eCell	"{Options: 1+
 2+
 3+
 4+}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Drepanocytes (Sickle Cells)}	eCell	{elementKey: rcmDrepanocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 83}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Drepanocytes (Sickle Cells) grading}	eCell	{elementKey: rcmDrepanocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: form_label_long}	eCell	eCell	{tableColumn: 84}	eCell	eCell	eCell	eCell	"{Options: 1+
+{inputType: checkbox}	eCell	{Label: Drepanocytes (Sickle Cells)}	eCell	{elementKey: rcmDrepanocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 86}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: grading}	eCell	{elementKey: rcmDrepanocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: rcm_grading}	eCell	eCell	{tableColumn: 87}	eCell	eCell	eCell	eCell	"{Options: 1+
 2+
 3+
 4+}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Echinocytes (Burr Cells)}	eCell	{elementKey: rcmEchinocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 85}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Echinocytes (Burr Cells) grading}	eCell	{elementKey: rcmEchinocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: form_label_long}	eCell	eCell	{tableColumn: 86}	eCell	eCell	eCell	eCell	"{Options: 1+
+{inputType: checkbox}	eCell	{Label: Echinocytes (Burr Cells)}	eCell	{elementKey: rcmEchinocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 88}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: grading}	eCell	{elementKey: rcmEchinocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: rcm_grading}	eCell	eCell	{tableColumn: 89}	eCell	eCell	eCell	eCell	"{Options: 1+
 2+
 3+
 4+}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Elliptocytes/Ovalocytes}	eCell	{elementKey: rcmOvalocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 87}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Elliptocytes/Ovalocytes grading}	eCell	{elementKey: rcmOvalocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: form_label_long}	eCell	eCell	{tableColumn: 88}	eCell	eCell	eCell	eCell	"{Options: 1+
+{inputType: checkbox}	eCell	{Label: Elliptocytes/Ovalocytes}	eCell	{elementKey: rcmOvalocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 90}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: grading}	eCell	{elementKey: rcmOvalocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: rcm_grading}	eCell	eCell	{tableColumn: 91}	eCell	eCell	eCell	eCell	"{Options: 1+
 2+
 3+
 4+}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Macro-ovalocytes}	eCell	{elementKey: rcmMacroOvalocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 89}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Macro-ovalocytes grading}	eCell	{elementKey: rcmMacroOvalocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: form_label_long}	eCell	eCell	{tableColumn: 90}	eCell	eCell	eCell	eCell	"{Options: 1+
+{inputType: checkbox}	eCell	{Label: Macro-ovalocytes}	eCell	{elementKey: rcmMacroOvalocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 92}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: grading}	eCell	{elementKey: rcmMacroOvalocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: rcm_grading}	eCell	eCell	{tableColumn: 93}	eCell	eCell	eCell	eCell	"{Options: 1+
 2+
 3+
 4+}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Stomatocytes}	eCell	{elementKey: rcmStomatocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 91}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Stomatocytes grading}	eCell	{elementKey: rcmStomatocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: form_label_long}	eCell	eCell	{tableColumn: 92}	eCell	eCell	eCell	eCell	"{Options: 1+
+{inputType: checkbox}	eCell	{Label: Stomatocytes}	eCell	{elementKey: rcmStomatocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 94}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: grading}	eCell	{elementKey: rcmStomatocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: rcm_grading}	eCell	eCell	{tableColumn: 95}	eCell	eCell	eCell	eCell	"{Options: 1+
 2+
 3+
 4+}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Spherocytes}	eCell	{elementKey: rcmSpherocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 93}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Spherocytes grading}	eCell	{elementKey: rcmSpherocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: form_label_long}	eCell	eCell	{tableColumn: 94}	eCell	eCell	eCell	eCell	"{Options: 1+
+{inputType: checkbox}	eCell	{Label: Spherocytes}	eCell	{elementKey: rcmSpherocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 96}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: grading}	eCell	{elementKey: rcmSpherocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: rcm_grading}	eCell	eCell	{tableColumn: 97}	eCell	eCell	eCell	eCell	"{Options: 1+
 2+
 3+
 4+}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Irregularly Contracted Cells (ICC)}	eCell	{elementKey: rcmICC}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 95}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Irregularly Contracted Cells (ICC) grading}	eCell	{elementKey: rcmICCGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: form_label_long}	eCell	eCell	{tableColumn: 96}	eCell	eCell	eCell	eCell	"{Options: 1+
+{inputType: checkbox}	eCell	{Label: Irregularly Contracted Cells (ICC)}	eCell	{elementKey: rcmICC}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 98}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: grading}	eCell	{elementKey: rcmICCGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: rcm_grading}	eCell	eCell	{tableColumn: 99}	eCell	eCell	eCell	eCell	"{Options: 1+
 2+
 3+
 4+}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Bite Cells}	eCell	{elementKey: rcmICCBite}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 97}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Bite Cells grading}	eCell	{elementKey: rcmICCBiteGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: form_label_long}	eCell	eCell	{tableColumn: 98}	eCell	eCell	eCell	eCell	"{Options: 1+
-2+
-3+
-4+}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Helmet Cells}	eCell	{elementKey: rcmICCHelmut}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 99}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Helmet Cells grading}	eCell	{elementKey: rcmICCHelmutGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: form_label_long}	eCell	eCell	{tableColumn: 100}	eCell	eCell	eCell	eCell	"{Options: 1+
-2+
-3+
-4+}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Schistocytes}	eCell	{elementKey: rcmICCSchistocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 101}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Grading}	eCell	{elementKey: rcmICCSchistocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: form_label_long}	eCell	eCell	{tableColumn: 102}	eCell	eCell	eCell	eCell	"{Options: 1+
+{inputType: checkbox}	eCell	{Label: Schistocytes}	eCell	{elementKey: rcmICCSchistocytes}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 100}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: grading}	eCell	{elementKey: rcmICCSchistocytesGrading}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: rcm_grading}	eCell	eCell	{tableColumn: 101}	eCell	eCell	eCell	eCell	"{Options: 1+
 2+
 3+
 4+}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: RBC Inclusions}	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 10}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Coarse Basophilic Stippling}	eCell	{elementKey: rcmBasophilicStippling}	{pN: 43}	{fN: 2}	{gN: 10}	{sgN: }	eCell	eCell	eCell	{tableColumn: 103}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Howell-Jolly Bodies}	eCell	{elementKey: rcmHowellJollyBodies}	{pN: 43}	{fN: 2}	{gN: 10}	{sgN: }	eCell	eCell	eCell	{tableColumn: 104}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Pappenheimer Bodies}	eCell	{elementKey: rcmPappenheimerBodies}	{pN: 43}	{fN: 2}	{gN: 10}	{sgN: }	eCell	eCell	eCell	{tableColumn: 105}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Malaria}	eCell	{elementKey: rcmMalaria}	{pN: 43}	{fN: 2}	{gN: 10}	{sgN: }	eCell	eCell	eCell	{tableColumn: 106}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Type}	eCell	{elementKey: rcmMalariaType}	{pN: 43}	{fN: 2}	{gN: 10}	{sgN: }	{formCss: form_label_short}	eCell	eCell	{tableColumn: 107}	eCell	eCell	eCell	eCell	"{Options: Gametocyte
+{inputType: checkbox}	eCell	{Label: Coarse Basophilic Stippling}	eCell	{elementKey: rcmBasophilicStippling}	{pN: 43}	{fN: 2}	{gN: 10}	{sgN: }	eCell	eCell	eCell	{tableColumn: 102}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: Howell-Jolly Bodies}	eCell	{elementKey: rcmHowellJollyBodies}	{pN: 43}	{fN: 2}	{gN: 10}	{sgN: }	eCell	eCell	eCell	{tableColumn: 103}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: Pappenheimer Bodies}	eCell	{elementKey: rcmPappenheimerBodies}	{pN: 43}	{fN: 2}	{gN: 10}	{sgN: }	eCell	eCell	eCell	{tableColumn: 104}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: Malaria}	eCell	{elementKey: rcmMalaria}	{pN: 43}	{fN: 2}	{gN: 10}	{sgN: }	eCell	eCell	eCell	{tableColumn: 105}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkset}	eCell	{Label: Type}	eCell	{elementKey: rcmMalariaType}	{pN: 43}	{fN: 2}	{gN: 10}	{sgN: }	{formCss: form_label_short, rcmMalariaType}	eCell	eCell	{tableColumn: 106}	eCell	eCell	eCell	eCell	"{Options: Gametocyte
 Ring Form/Trophozoite
 Schizont}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 11}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Internal RBC comments}	eCell	{elementKey: rbcComments}	{pN: 43}	{fN: 2}	{gN: 11}	{sgN: }	eCell	eCell	eCell	{tableColumn: 108}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Internal RBC comments}	eCell	{elementKey: rbcComments}	{pN: 43}	{fN: 2}	{gN: 11}	{sgN: }	eCell	eCell	eCell	{tableColumn: 107}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 11}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 11}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 12}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Referral to hematopathologist}	{Comments: yes/no}	{elementKey: referralToHema}	{pN: 43}	{fN: 2}	{gN: 12}	{sgN: }	eCell	eCell	eCell	{tableColumn: 109}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Reason for referral}	eCell	{elementKey: explain}	{pN: 43}	{fN: 2}	{gN: 12}	{sgN: }	eCell	eCell	eCell	{tableColumn: 110}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: Referral to hematopathologist}	{Comments: yes/no}	{elementKey: referralToHema}	{pN: 43}	{fN: 2}	{gN: 12}	{sgN: }	eCell	eCell	eCell	{tableColumn: 108}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Reason for referral}	eCell	{elementKey: explain}	{pN: 43}	{fN: 2}	{gN: 12}	{sgN: }	eCell	eCell	eCell	{tableColumn: 109}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 55}	{Label: Med Lab Chemistry}	eCell	{elementKey: medLabChemistry}	{pN: 45}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: Chemistry analysis}	eCell	{elementKey: tableChem}	{pN: 45}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Create a chemistry lab report}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 45}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
