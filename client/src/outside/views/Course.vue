@@ -146,7 +146,7 @@ export default {
       this.$refs.theDialog.showDialog(course, this.canDo)
     },
     truncate (input, lim) {
-      return input.length > lim ? `${input.substring(0, lim)}...` : input
+      return input && input.length > lim ? `${input.substring(0, lim)}...` : input
     },
     async updateCourseProperties () {
       await this.$store.dispatch('courseStore/loadCurrentCourse')
