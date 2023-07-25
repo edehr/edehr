@@ -21,10 +21,10 @@ const { activityData, activity } = mockData
 
 const _prepareChangeStudent = (submitted = true, activity = mockData.activity) => {
   let activitydata = Object.assign(
-    {}, 
-    activityData, 
+    {},
+    activityData,
     { submitted, evaluated: !mockData.activityData.evaluated }
-  ) 
+  )
   testHelper.instructorCommit(classes, 'setClassList')
   testHelper.setActivityDataMocks(found.activityData)
   return prepareAxiosResponse('get', { activitydata, classList: mockData.classList, activity })
@@ -37,7 +37,7 @@ describe('Testing evalHelper', () => {
   it('changeStudent', async () => {
     _prepareChangeStudent()
     const found = mockData.classList.find(c => c._id === studentVisitId)
-    should.doesNotThrow(async () => await evalHelper.changeStudent(studentVisitId))
+    should.doesNotThrow(async () => await evalHelper._changeStudent(studentVisitId))
     const result = StoreHelper.getActivityData()
     // const result = StoreHelper.getActivityData()
     result.should.equal(found.activityData)
@@ -80,18 +80,18 @@ describe('Testing evalHelper', () => {
     result.closed.should.be.equal(false)
   })
 
-  it('goToEhr', async () => {
+  it.skip('goToEhr', async () => {
     await evalHelper.goToEhr({_id: studentVisitId}, router)
-    // This is following jest's function mocking 
-    // (https://jestjs.io/docs/en/mock-function-api.html#mockfnmockcalls). 
-    // This mock makes sure that the router.push function was 
+    // This is following jest's function mocking
+    // (https://jestjs.io/docs/en/mock-function-api.html#mockfnmockcalls).
+    // This mock makes sure that the router.push function was
     // called only once and that it redirects properly (by asserting the ehr link)...
     const [call] = router.push.mock.calls
     const isDev = StoreHelper.isDevelopingContent()
     call.length.should.equal(1)
     call[0].name.should.equal('ehr')
     call[0].query.evaluatingStudent.should.equal(true)
-    call[0].query.studentId.should.equal(studentVisitId)
+    call[0].query.evaluateStudentVisitId.should.equal(studentVisitId)
     isDev.should.equal(true)
   })
 })

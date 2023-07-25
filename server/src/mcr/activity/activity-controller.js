@@ -2,6 +2,9 @@ import BaseController from '../common/base'
 import Visit from '../visit/visit'
 import Activity from './activity'
 import {ok, fail} from '../common/utils'
+import Assignment from '../assignment/assignment'
+import SeedData from '../seed/seed-data'
+import ActivityData from '../activity-data/activity-data'
 const debug = require('debug')('server')
 const debugAC = false
 /*
@@ -10,13 +13,67 @@ resource_link_id 	required 	unique id referencing the link, or "placement", of t
  */
 export default class ActivityController extends BaseController {
   constructor () {
-    super(Activity, '_id')
+    super(Activity)
   }
   setSharedControllers (cc) {
     this.comCon = cc
   }
 
+  async getActivityRecord (visit) {
+    // Each visit is for one Activity. Each Activity is related to the LMS Activity.
+    // Activity may have one assignment (aka LearningObject)
+    const activity = await Activity.findById(visit.activity)
+    const courseRecord = await this.comCon.courseController.getBasicCourseRecord(activity.course)
+
+    let userActivity = {
+      id: activity._id,
+      courseId: activity.course,
+      courseTitle: courseRecord.title,
+      courseDescription: courseRecord.description,
+      createDate: activity.createDate,
+      lastUpdate: activity.lastDate,
+      visitId: visit._id,
+      isStudent: visit.isStudent,
+      isInstructor: visit.isInstructor,
+      title: activity.custom_title || activity.resource_link_title || 'Unknown',
+      description: activity.custom_description || activity.resource_link_description || undefined,
+      resource_link_title: activity.resource_link_title,
+      resource_link_description: activity.resource_link_description
+    }
+    const assignmentId = activity.assignment
+    const assignment = assignmentId ? await Assignment.findById(assignmentId) : undefined
+    userActivity.hasLinkedLearningObject = !!assignment
+    if (assignment) {
+      userActivity.learningObjectId = assignment._id
+      userActivity.learningObjectName = assignment.name
+      userActivity.learningObjectDescription = assignment.description
+
+      // convert ObjectId to string for searching
+      const sId = assignment.seedDataId.toString()
+      const caseStudy = await SeedData.findById(sId) || {}
+      userActivity.caseStudyId = caseStudy._id
+      userActivity.caseStudyName = caseStudy.name
+      userActivity.appType = caseStudy.appType
+
+      const activityData = await ActivityData.findById(visit.activityData)
+      userActivity.activityDataId = activityData._id
+      userActivity.evaluationData = activityData.evaluationData
+      userActivity.scratchData = activityData.scratchData
+      userActivity.submitted = activityData.submitted
+      userActivity.activityLastDate = activityData.lastDate
+    } else {
+      // console.error('Coding error? should there always be an assignment if we are here?', activity)
+    }
+    // console.log('user rec', userActivity)
+    return userActivity
+  }
+
+  findActivityByLti (lti_activity_id, toolConsumerId) {
+    return this.findOne({$and: [{resource_link_id: lti_activity_id}, {toolConsumer: toolConsumerId}]})
+  }
+
   closeOpenActivity (id, direction) {
+    // TODO change this to async and use for loop for each visit
     return this.baseFindOneQuery(id).then(async (activity) => {
       if (activity) {
         const aId = activity._id
@@ -46,35 +103,49 @@ export default class ActivityController extends BaseController {
    *
    * @param ltiData
    * @param toolConsumerId
-   * @param assignment
    * @return {Promise<any>}
    */
-  updateCreateActivity (ltiData, toolConsumerId) {
-    const _this = this
-    if (debugAC) debug('updateCreateActivity search for existing activity ' + ltiData.resource_link_id)
-    return new Promise(function (resolve, reject) {
-      const data = _this._extractLtiData(ltiData)
-      _this.findOne({$and: [{resource_link_id: ltiData.resource_link_id}, {toolConsumer: toolConsumerId}]})
-        .then((activity) => {
-          if (activity) {
-            activity.lastDate = Date.now()
-            return _this._updateHelper(activity, data)
-          } else {
-            data.toolConsumer = toolConsumerId
-            if (debugAC) debug('updateCreateActivity create activity')
-            return _this._createHelper(activity, data)
-          }
-        })
-        .then((activity) => {
-          resolve(activity)
-        })
-    })
+  async updateCreateActivity (ltiData, toolConsumerId) {
+    // resource_link_id is required
+    const ltiActivityId = ltiData.resource_link_id
+    if (debugAC) debug('updateCreateActivity search for existing activity ' + ltiActivityId)
+    const activity = await this.findActivityByLti(ltiActivityId, toolConsumerId)
+    if (activity) {
+      activity.lastDate = Date.now()
+      return activity.save()
+    } else {
+      const course = await this.comCon.courseController.findOrCreateCourse(ltiData, toolConsumerId)
+      const activityData = {
+        toolConsumer: toolConsumerId,
+        course: course._id,
+        context_id: ltiData.context_id,
+        context_label: ltiData.context_label,
+        context_title: ltiData.context_title,
+        context_type: ltiData.context_type,
+        resource_link_id: ltiActivityId,
+        resource_link_title: ltiData.resource_link_title,
+        resource_link_description: ltiData.resource_link_description
+      }
+      return this.create(activityData)
+    }
+  }
+  async updateActivityVisit (activityId, visitId) {
+    const activity = await Activity.findById(activityId)
+    activity.visitors.push({ visitId: visitId})
+    // console.log('updateActivityVisit', activityId, visitId)
+    await activity.save()
+  }
+  async updateText (activityId, custom_title, custom_description) {
+    const activity = await Activity.findById(activityId)
+    activity.custom_title = custom_title
+    activity.custom_description = custom_description
+    // console.log('activity-controller update text ', activity)
+    return activity.save()
   }
 
   listClassList (_id) {
     return Visit.find({ $and: [ {isStudent: true }, {activity: _id} ] })
-      .populate('activityData', 'submitted evaluated assignmentData evaluationData')
-      .populate('assignment', 'name description seedDataId')
+      .populate('activityData', 'submitted assignmentData evaluationData lastDate')
       .populate('user', 'givenName familyName fullName user_id')
       .select('userName lastVisitDate')
       .then((visits) => {
@@ -82,19 +153,15 @@ export default class ActivityController extends BaseController {
       })
   }
 
-  findActivity (id) {
-    return this.baseFindOneQuery(id)
-      .populate('assignment')
+  async findActivity (id) {
+    let activity = await this.baseFindOneQuery(id)
+    if (activity) {
+      activity = JSON.parse(JSON.stringify(activity))
+      activity.course = await this.comCon.courseController.getBasicCourseRecord(activity.course)
+    }
+    return Promise.resolve({ activity: activity })
   }
 
-  _createHelper (activity, data) {
-    if (debugAC) debug('createHelper create new activity record ' + JSON.stringify((data)))
-    return this.create(data)
-      .then((newActivity) => {
-        if (debugAC) debug('createHelper new activity ' + newActivity._id)
-        return newActivity
-      })
-  }
   _updateHelper (activity, data) {
     let current = JSON.stringify(activity)
     Object.assign(activity, data)
@@ -111,6 +178,7 @@ export default class ActivityController extends BaseController {
   _extractLtiData (ltiData, toolConsumerId) {
     let learningObjectName = ltiData.resource_link_title ? ltiData.resource_link_title.replace('LOA-','AC-') : 'LTI did not provide property: resource_link_title'
     var data = {
+      // TODO stop using context (course) data here once the Course object is fully functional
       context_id: ltiData.context_id,
       context_label: ltiData.context_label,
       context_title: ltiData.context_title,
@@ -124,6 +192,19 @@ export default class ActivityController extends BaseController {
 
   route () {
     const router = super.route()
+
+    router.get('/getActivityRecord/:visitId', (req, res) => {
+      let visitId = req.params.visitId
+      Visit.findById(visitId)
+        .then(visit => {
+          return this.getActivityRecord(visit)
+        })
+        .then(activityRecord => {
+          return { activityRecord: activityRecord }
+        })
+        .then(ok(res))
+        .then(null, fail(res))
+    })
 
     router.get('/class-list/:key', (req, res) => {
       this
@@ -157,6 +238,15 @@ export default class ActivityController extends BaseController {
       let assignmentId = req.body.assignmentId
       debug('router path link-assignment req.params:', req.params, 'req.body:', req.body)
       this.linkAssignment(id, assignmentId)
+        .then(ok(res))
+        .catch(fail(res))
+    })
+
+    router.put('/update-text/:id/', (req, res) => {
+      let id = req.params.id
+      let {custom_title, custom_description } = req.body
+      // console.log('activity-controller route update text body contains', req.body)
+      this.updateText(id, custom_title, custom_description)
         .then(ok(res))
         .catch(fail(res))
     })

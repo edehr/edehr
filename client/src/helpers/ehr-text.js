@@ -1,3 +1,5 @@
+import { formatTimeStr } from '@/helpers/ehr-utils'
+
 export const Text = {
   // STUDENT_INTRO: 'Click the edit icon to fill in the form.'
   EHRDATA_CAN_NOT_BE_EMPTY: 'Seed data can not be empty',
@@ -15,8 +17,8 @@ export const Text = {
   SEED_MUST_HAVE_LICENSE: 'Seed data must have a valid licence',
   SEED_MUST_HAVE_EHRDATA: 'Seed data must have EHR data (the ehrData property)',
   SEND_FOR_EVAL: 'Send for evaluation',
-  SEND_FOR_EVAL_TITLE: 'Send assignment to your instructor for evaluation',
-  SEND_FOR_EVAL_BODY: 'You will not be able to edit your assignment after submission. Are you sure you want to submit?',
+  SEND_FOR_EVAL_TITLE: 'Send your work to your instructor for evaluation',
+  SEND_FOR_EVAL_BODY: 'Please confirm that you want to submit your work for your instructor to review?  Once you press submit you will not be able to make any further changes to this activity.',
   IS_SUBMITTED: 'Status: closed for edits.',
 
   // Authentication
@@ -64,13 +66,16 @@ export const Text = {
   ACTIVITY_PAGE: {
     ACTIVITY_LABEL: 'LMS activity',
     ACTIVITY_MISSING: 'No learning object is linked to this activity.',
-    DESCRIPTION: 'Description',
+    COURSE_LABEL: 'Course',
+    DESCRIPTION: 'Activity description',
     DATES: 'Dates',
-    DATES_VAL: (c,l) => `Created on ${c}. Last modified on ${l} `,
+    DATES_VAL: (c,l) => `Created on ${formatTimeStr(c)}. Last modified on ${formatTimeStr(l)} `,
     CASE_STUDY: 'Case study',
     CLASS_LIST: 'Class list',
     CLASS_LIST_BTN: 'Go to the class list',
     EMPTY_CLASSLIST: 'No student has yet attempted this activity.',
+    EVALUATION: 'Feedback',
+    SCRATCH: 'Student\'s notes',
     LOBJ: 'Learning object',
     STATUS: 'Status',
     STUDENTS_VAL: (total, submitted) => `${total} students participating and ${submitted} students with submitted work`,
@@ -104,6 +109,46 @@ export const Text = {
     SEEDS: 'Case studies',
 
   },
+
+  COURSE_PAGE: {
+    DESCRIPTION: 'Description',
+    ACTIVITY_STUDENT_SELECT_NAV: 'Click on an activity name to see details about the activity or click on the \'Go to EHR\' button jump into the EHR.',
+    ACTIVITY_INSTRUCTOR_SELECT_NAV: 'Click on an activity to see its details.',
+    COURSE_SELECT_NAV: 'Click on a course name to see all of its activities and details.',
+  },
+  UPDATE_COURSE_ERROR: (err) => `error in update course ${err}`,
+  COURSE_DIALOG: {
+    TITLES: {
+      edit: 'Edit course properties',
+      view: 'View course properties'
+    },
+    BUTTON_TEXT: {
+      EDIT: 'Edit course',
+      VIEW: 'View properties'
+    },
+    ERRORS: {
+      NAME_REQUIRED: 'Course name is required',
+    },
+    LABELS: {
+      NAME: 'Course name',
+      ID: 'LMS course id',
+      TITLE: 'LMS course name',
+      DESCRIPTION: 'Course description',
+      LMS_DESCRIPTION: 'LMS course description',
+      TYPE: 'LMS Type',
+      CANCEL_BUTTON_VIEW_MODE: 'Close',
+      CANCEL_BUTTON_EDIT_MODE: 'Cancel'
+    },
+    DESCRIPTIONS: {
+      ID: 'Internal id of the course within the learning management system',
+      TITLE: 'This is the course name that your learning management system provided.',
+      DESCRIPTION: 'Course description.',
+      LMS_DESCRIPTION: 'Course description as provided by the learning management system.',
+      TYPE: 'Course type as provided by the learning management system.',
+    }
+
+  },
+
   FILES_PAGE: {
     P1: 'Files can be uploaded to the EdEHR server and later used within the EHR pages, where ever a normal file upload action would appear.  Say, for example, on the Laboratory Reports or the Medical Imaging pages.',
     P2: 'As a course designer (someone who creates course content) you will upload files here and then navigate to the EHR case study and edit the EHR content.  When you go to pages like Laboratory Reports and click to add a record you will be able to select a file from those listed below.',
@@ -114,8 +159,11 @@ export const Text = {
   },
   INSTRUCTOR_TOOLS: {
     ACTIVITIES: 'Activity',
+    GOTO_ACTIVITY: (name) => `Go to the activity ${name}`,
+    GOTO_COURSE: (name) => `Go to the course ${name}`,
     ACTIVITIES_TOOLTIP: 'See the current activity and access the class list and learning object.',
-    COURSES_LABEL: 'My activities', // match route names
+    COURSES_LABEL: 'Courses', // match route names
+    COURSES_NAV_LABEL: 'All Courses', // shown on sidebar
     COURSES_TOOLTIP: 'See all your courses and their activities',
     EXIT_LABEL: 'Exit to LMS',
     EXIT_TOOLTIP: 'Return to your school\'s learning management system',
@@ -131,8 +179,8 @@ export const Text = {
     DESIGNER_MODE_LABEL: 'Course designer mode',
     DESIGNER_MODE_TURN_OFF_TOOLTIP: 'Return to regular instructor role',
     DESIGNER_MODE_TURN_ON_TOOLTIP: 'Elevate your role to modify course content',
-    SHOW_BUTTON_LABELS: (state) => state ? 'Hide button labels' : 'Show button labels',
-    SHOW_BUTTON_LABELS_TOOLTIP: (state) => state ? 'Buttons show icons only' : 'Buttons show icons and text labels',
+    // SHOW_BUTTON_LABELS: (state) => state ? 'Hide button labels' : 'Show button labels',
+    // SHOW_BUTTON_LABELS_TOOLTIP: (state) => state ? 'Buttons show icons only' : 'Buttons show icons and text labels',
   },
   LOBJ_LIST_LINK_TEXT: 'Learning Objects List',
   LOBJ_ACTIONS: {
@@ -178,7 +226,7 @@ export const Text = {
   LOBJ_PAGE: {
     ACTIVITIES: 'Activities',
     LOBJ: 'Learning object',
-    DESCRIPTION: 'Description',
+    DESCRIPTION: 'Learning object description',
     DATES: 'Dates',
     SEED: 'Case study',
     USED: 'Used by',
@@ -230,7 +278,7 @@ export const Text = {
   SEED_VIEW_PAGE: {
     SEED_LABEL: 'Case study',
     DATES: 'Dates',
-    DESCRIPTION: 'Description',
+    DESCRIPTION: 'Case study description',
     CONTRIBUTORS: 'Contributors',
     LOBJ_LABEL: 'Learning objects',
     LOBJ_VALUE: (cnt) => `Used by ${cnt} learning object${ cnt === 1 ? cnt : 's' }`,

@@ -30,9 +30,5 @@ export default {
   a,
   .table_link {
     color: $brand-primary;
-
-    &:hover {
-      color: $brand-primary-hover;
-    }
   }
 </style>

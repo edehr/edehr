@@ -3,10 +3,10 @@
     div(class="flow_across flow_across_right flow_wrap menu_space_across")
       ui-button(v-on:buttonClicked="confirmOpen", title="Allow all students to work on the assignment.")
         fas-icon(class="icon-right", :icon="appIcons.retractSubmit")
-        span(v-if="showLabels") &nbsp; All students can edit
+        span(v-if="showLabels") &nbsp; Allow all
       ui-button(v-on:buttonClicked="confirmClose", title="Force the submission of all work.")
         fas-icon(class="icon-right", :icon="appIcons.forceSubmit")
-        span(v-if="showLabels") &nbsp; Force all submissions
+        span(v-if="showLabels") &nbsp; Force all
 
       ui-button(
         data-test-id="ClassList.button.download",
@@ -36,7 +36,7 @@ import UiConfirm from '@/app/ui/UiConfirm'
 const TEXT = {
   closeAllTip: 'Block all students from working on the activity',
   closeAllLabel: 'Block all student edits',
-  downloadButtonLabel: 'Download evaluation notes',
+  downloadButtonLabel: 'Export notes',
   downloadTip: 'Download a CSV file with all your student evaluations to later import into your course grade book.',
   openAllTip: 'Allow all students to work on the activity',
   openAllLabel: 'Open activity',
@@ -55,7 +55,7 @@ export default {
   },
   computed: {
     activity () {
-      return this.$store.getters['activityStore/activity']
+      return this.$store.getters['activityStore/activityRecord']
     },
     activityId () {
       return this.$store.getters['activityStore/activityId']
@@ -70,7 +70,7 @@ export default {
       return this.classList.filter(sv => sv.activityData.submitted)
     },
     activityName () {
-      return this.activity.resource_link_title
+      return this.activity.learningObjectName
     },
     downloadFileName () {
       const name = this.activityName || ''

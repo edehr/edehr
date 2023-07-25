@@ -9,6 +9,9 @@ class EhrOnlyDemoInner {
   isActiveEhrOnlyDemo () {
     return store.getters['ehrOnlyDemoStore/isActiveEhrOnlyDemo']
   }
+  ehrOnlySeed () {
+    return store.getters['ehrOnlyDemoStore/ehrOnlySeed']
+  }
   saveEhrOnlyUserData (pageKey, newPageValue) {
     const payload = {pageKey, value: newPageValue}
     // console.log('saveEhrOnlyUserData:', JSON.stringify(newPageValue))

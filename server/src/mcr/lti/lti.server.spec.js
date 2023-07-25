@@ -1,3 +1,5 @@
+import CourseController from '../course/course-controller'
+
 const should = require('should')
 const mongoose = require('mongoose')
 import { Text } from '../../config/text'
@@ -22,6 +24,7 @@ const helper = new Helper()
 const act = new ActivityController()
 const as = new AssignmentController(configuration)
 const authUtil = new AuthUtil(configuration)
+const courseController = new CourseController()
 const fileC = new FilesController(configuration)
 const vc = new VisitController()
 const cc = new ConsumerController()
@@ -31,11 +34,13 @@ const lcc = {
   activityController: act,
   assignmentController: as,
   authUtil,
+  courseController: courseController,
   filesController: fileC,
   consumerController: cc,
   userController: uc,
   visitController: vc
 }
+act.setSharedControllers(lcc)
 
 const oauth_consumer_key = ['key1', 'key2']
 const oauth_consumer_secret = ['secret1', 'secret1']

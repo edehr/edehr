@@ -29,9 +29,10 @@ async function createObjectsFromConsumerSpec (consumerSpec, lastVisitDate) {
   let seedSpec = Helper.sampleSeedDataSpec()
   seedSpec.toolConsumer = realConsumer._id
   let seed = await createOneSeed(seedSpec)
-  let assignment = await Helper.createAssignment('testassignment', seed._id, realConsumer)
+  let theCourse = await Helper.createSampleCourse(realConsumer._id)
+  let assignment = await Helper.createAssignment(realConsumer, seed._id)
   let user = await Helper.createUser(realConsumer)
-  let activity = await Helper.createActivity(realConsumer, assignment)
+  let activity = await Helper.createActivity(realConsumer, theCourse, assignment)
   let visitSpec = Helper.sampleVisit(realConsumer, user, activity, assignment)
   if (lastVisitDate) visitSpec.lastVisitDate = lastVisitDate
   // let visit =
@@ -41,7 +42,7 @@ async function createObjectsFromConsumerSpec (consumerSpec, lastVisitDate) {
 
 // these tests cause mocha to stay running.  Skip until we can resolve this problem
 /* global describe it */
-describe.skip('Utils controller testing', function () {
+describe('Utils controller testing', function () {
 
   let app
   let utilController

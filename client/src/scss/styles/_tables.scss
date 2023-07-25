@@ -16,6 +16,54 @@
   background-color: $table-draft-colour !important;
 }
 
+.e-table-container {
+  overflow-x: auto;
+}
+.e-table {
+  display: table;
+  border-collapse: collapse;
+  letter-spacing: 1px;
+  width: 100%;
+  .tbody {
+    display: table-row-group
+  }
+
+  .thead {
+    display: table-header-group
+  }
+
+  .row {
+    display: table-row;
+  }
+
+  .cell {
+    display: table-cell;
+    padding: 5px;
+    border: 1px solid $table-cell-border-colour;
+  }
+
+  .caption {
+    display: table-caption;
+    text-align: right;
+  }
+
+  .thcell {
+    display: table-cell;
+    background-color: $table-header-row-colour;
+    text-align: center;
+    font-weight: bold;
+    padding: 5px;
+    border: 1px solid $table-cell-border-colour;
+  }
+  .row:nth-child(odd)  { background-color: $grey03; }
+  .row:nth-child(even) { background-color: $grey05; }
+  .row:hover {
+    transition: background-color 0.5s ease;
+    background-color: $brand-primary-hover;
+  }
+
+}
+
 
 table,
 .table {

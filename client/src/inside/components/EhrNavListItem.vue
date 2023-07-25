@@ -89,6 +89,8 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 
+$indicator-color: $grey10;
+
 .linkElement {
   display: flex;
   justify-content: space-between;
@@ -104,97 +106,127 @@ export default {
   }
 }
 
-.linkElement:hover {
-  background-color: $nav-active;
-}
 a:hover {
   color: #ffffff;
 }
-.EhrNavListItem {
-  margin-top: 1px;
-  &__level1,
-  &__level2,
-  &__level3 {
-    display: flex;
-    align-items: center;
-    padding-top: 2px;
-    padding-bottom: 2px;
-  }
-
-  &__level1,
-  &__level2 {
-    & a {
-      color: $grey20;
-    }
-  }
+.ehr-branding {
   .router-link-active {
-    background-color: $nav-active;
-    color: $white;
+    background-color: $colour-brand-ehr;
   }
-  &__level1 {
-    color: $nav-color-level1;
-    background-color: $nav-level1;
-    font-size: 1.4rem;
-    & a {
-      color: $nav-color-level1;
-    }
-  }
-  &__level2 {
-    color: $nav-color-level2;
-    background-color: $nav-level2;
-    & a {
-    }
-  }
-  &__level3 {
-    color: $nav-color-level3;
-    background-color: $nav-level3;
-    & a {
-      color: $nav-color-level3;
-    }
-  }
-  &__link1 {
-    padding-left: $ehr-layout-padding-left;
-    & a {
-      color: $nav-color-level3;
-    }
-  }
-  &__link2 {
-    padding-left: $ehr-layout-padding-left-level2;
-  }
-  &__link3 {
-    padding-left: $ehr-layout-padding-left-level3;
-  }
-  .linkElement {
-    width: 100%;
-  }
-  .linkLabel {
-    width: 80%;
-  }
-  @media screen and (max-width: $main-width-threshold1){
-    .linkElement {
-      // reduce on small screens to keep the green indicator from touching the edge
-      width: 95%;
-    }
-  }
-  .circle {
-    border-radius: 50%;
-    height: 12px;
-    width: 12px;
-  }
-  .empty-circle {
-    border: 2px solid $green;
-  }
-  .green-circle {
-    background: $green;
-  }
-  .empty-draft-circle {
-    border: 2px solid $nav-draft-colour;
-  }
-  .draft-circle {
-    background: $nav-draft-colour;
-  }
-  .top-level {
-    color: $green;
+  .linkElement:hover {
+    background-color: $colour-brand-ehr-hover;
   }
 }
+.lis-branding {
+  .router-link-active {
+    background-color: $colour-brand-lis;
+  }
+  .linkElement:hover {
+    background-color: $colour-brand-lis-hover;
+  }
+}
+  .EhrNavListItem {
+    margin-top: 1px;
+
+    &__level1,
+    &__level2,
+    &__level3 {
+      display: flex;
+      align-items: center;
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+
+    &__level1,
+    &__level2 {
+      & a {
+        color: $grey20;
+      }
+    }
+
+    .router-link-active {
+      color: $white;
+    }
+
+    &__level1 {
+      color: $nav-color-level1;
+      background-color: $nav-level1;
+      font-size: 1.4rem;
+
+      & a {
+        color: $nav-color-level1;
+      }
+    }
+
+    &__level2 {
+      color: $nav-color-level2;
+      background-color: $nav-level2;
+
+      & a {
+      }
+    }
+
+    &__level3 {
+      color: $nav-color-level3;
+      background-color: $nav-level3;
+
+      & a {
+        color: $nav-color-level3;
+      }
+    }
+
+    &__link1 {
+      padding-left: $ehr-layout-padding-left;
+
+      & a {
+        color: $nav-color-level3;
+      }
+    }
+
+    &__link2 {
+      padding-left: $ehr-layout-padding-left-level2;
+    }
+
+    &__link3 {
+      padding-left: $ehr-layout-padding-left-level3;
+    }
+
+    .linkElement {
+      width: 100%;
+    }
+
+    .linkLabel {
+      width: 80%;
+    }
+
+    @media screen and (max-width: $main-width-threshold1) {
+      .linkElement {
+        // reduce on small screens to keep the green indicator from touching the edge
+        width: 95%;
+      }
+    }
+
+    .circle {
+      border-radius: 50%;
+      height: 12px;
+      width: 12px;
+      border: 1px solid $indicator-color;
+    }
+
+    .draft-circle {
+      background: $nav-draft-colour;
+    }
+
+    .empty-circle {
+      border: 1px solid $indicator-color;
+    }
+
+    .green-circle {
+      background-color: $indicator-color;
+    }
+
+    .top-level {
+      color: $indicator-color;
+    }
+  }
 </style>

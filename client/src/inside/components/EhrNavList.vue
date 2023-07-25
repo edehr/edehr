@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="EhrNavList")
-    div(v-show="showSystem(path)", class="EhrNavList__teaserList")
+    div(v-show="showNavPath(path)", class="EhrNavList__teaserList")
       ehr-nav-list-item(:path="path", :level="level", :opened='open')
       div(v-show="open")
         ehr-nav-list(v-for="child in path.children", v-bind:key="child.name" :path="child" :level="level + 1")
@@ -17,6 +17,10 @@ export default {
     EhrNavList,
     EhrNavListItem
   },
+  props: {
+    path: { type: Object },
+    level: { type: Number }
+  },
   computed: {
     open () {
       if (this.level > 1) {
@@ -26,11 +30,9 @@ export default {
     }
   },
   methods: {
-    showSystem (path) {
-      let showingLIS = StoreHelper.isLIS_Showing()
-      let showingEHR = StoreHelper.isEHR_Showing()
-      let showLIS = path.isLIS && showingLIS
-      let showEHR = path.isEHR && showingEHR
+    showNavPath (path) {
+      let showLIS = path.isLIS && StoreHelper.isLIS_Showing()
+      let showEHR = path.isEHR && StoreHelper.isEHR_Showing()
       return showLIS || showEHR
     }
   },
@@ -41,10 +43,6 @@ export default {
       }
     }
   },
-  props: {
-    path: { type: Object },
-    level: { type: Number }
-  }
 }
 </script>
 

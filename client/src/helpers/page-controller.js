@@ -14,6 +14,10 @@ import authHelper from '@/helpers/auth-helper'
 
 const dbApp = false
 
+function perfExit (perfStat) {
+  perfStat.elapsed.loading = performance.now() - perfStat.start.loading
+  return perfStat
+}
 /**
    * onPageChange is invoked from main.js whenever a route has changed.
    * This complex page change handler is responsible for these transitions:
@@ -27,21 +31,25 @@ const dbApp = false
    * @param toRoute - the 'to' route. We can get the 'from' if needed.
    * @return {Promise<unknown>}
    */
-async  function onPageChange (toRoute, fromRoute) {
-  console.log('page change to: ', toRoute.name)
-  // console.log('onPageChange localStorage', localStorage)
-  // console.log('onPageChange route.meta', route.meta)
-  // console.log('onPageChange route.query', route.query)
+async  function onPageChange (toRoute) {
+  console.log('toRoute', toRoute.path)
+  // console.log('toRoute', toRoute.fullPath)
+  // console.log('page change to: ', toRoute.name, JSON.stringify(toRoute.meta), JSON.stringify(toRoute.query))
   const perfStat = { start: {}, elapsed: {} }
+  perfStat.start.loading = performance.now()
   const routeName = toRoute.name
   const {
     isDemoLti, // lti request from the full demo
+    demo_lobjId, // see server side demo-controller _createDemoToolConsumer
+    appType,
     demoOnlyKey, // just the ehr demo mode
     seedEditId, // instructor user just started editing a seed in the ehr
     seedId, // instructor user selected a seed (case study) in the LMS area
-    studentId, // instructor selected to evaluate a student, possibly in the EHR
-    token: refreshToken // user has just arrived via a LTI request from an LMS
+    evaluateStudentVisitId, // instructor selected to evaluate a student, possibly in the EHR
+    token: refreshToken, // user has just arrived via a LTI request from an LMS
+    visitId: optionalVisitId // user is coming from an LmsStudentActivity page
   } = toRoute.query
+
   {
     const { label, icon, zone } = toRoute.meta
     StoreHelper.setPageTitle(label)
@@ -53,33 +61,39 @@ async  function onPageChange (toRoute, fromRoute) {
     perfStat.elapsed.loadApi = performance.now() - perfStat.start.loadApi
     document.title = StoreHelper.getAppTitle()
   }
+  // **** If public page ... prep and EXIT
   if (StoreHelper.inZonePublic()) {
     // console.log('on a public page', routeName)
-    return perfStat
+    return perfExit(perfStat)
     // EXIT
   }
 
+  // **** If demo only then ... prep and EXIT
   if (demoOnlyKey) {
     // user has selected something that is loading the ehr only demo.
     // The url query demoOnlyKey says which case study to display.
     // See the last sections of this page change handler for the case a user has
     // entered the ehr demo and has paged to another ehr page
     await EhrOnlyDemo.selectCaseStudy(demoOnlyKey)
-    if(dbApp) console.log('loaded demo only ', demoOnlyKey)
+    if (dbApp) console.log('loaded demo only ', demoOnlyKey)
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
-    return perfStat
+    return perfExit(perfStat)
     // EXIT
   }
-
+  if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+    console.log('ehr only demo is active')
+    EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
+    return perfExit(perfStat)
+    // EXIT
+  }
   try {
     // Start the progress indicator
     StoreHelper.setLoading(null, true)
-
     let haveDemoToken = !!StoreHelper.getDemoToken() // may change if user is forced out of full demo
 
-    // **** LTI login
-    perfStat.start.refreshToken = performance.now()
+    // **** LTI login ... process and EXIT redirecting to the same page with visitId
     if (refreshToken) {
+      if (dbApp) console.log('refresh token')
       // If user is arriving via LTI then any active ehr only demo is over ...
       await EhrOnlyDemo.clearEhrOnly()
 
@@ -92,20 +106,32 @@ async  function onPageChange (toRoute, fromRoute) {
         await StoreHelper.logUserOutOfEdEHR()
         haveDemoToken = !!StoreHelper.getDemoToken()
       }
+      if (dbApp) console.log('on new auth we need to clear out previous visit id')
+      await StoreHelper.setVisitId(undefined)
       // The LTI service provides a token in the query. We send this back to our preconfigured api
       // server to verify the incoming request and to get the actual token this
-      // client will use. This two step token verification process makes sure the incoming request
+      // client will use. This two-step token verification process makes sure the incoming request
       // is from the expected api server and no-where else.
       if (dbApp) console.log('_loadAuth refresh token', authHelper.hashToken(refreshToken))
       await StoreHelper.fetchAndStoreRefreshToken(refreshToken)
       // fetch throws if token is expired or invalid
-      if (dbApp) console.log('on new auth we need to clear out previous visit id')
-      await StoreHelper.setVisitId()
+      const authToken = StoreHelper.getAuthToken()
+      setAuthHeader(authToken)
+      await StoreHelper.fetchTokenData(authToken)
+      const visitId = store.getters['authStore/visitId']
+      const path = toRoute.path
+      const query = { visitId: visitId }
+      if(demo_lobjId) {
+        query.demo_lobjId = demo_lobjId
+      }
+      if(appType) {
+        query.appType = appType
+      }
+      await router.push({ path: path, query: query })
+      return perfExit(perfStat)
     }
-    perfStat.elapsed.refreshToken = performance.now() - perfStat.start.refreshToken
 
-    // **** auth token process and unpack.  Do this before any API calls that require auth
-    perfStat.start.authTokenGet = performance.now()
+    // **** auth token process and unpack.  Do this before any API calls that require auth ... CONTINUE
     const authToken = StoreHelper.getAuthToken()
     if (authToken) {
       if (dbApp) console.log('_loadAuth. We have an auth token. Get the auth data....')
@@ -113,142 +139,132 @@ async  function onPageChange (toRoute, fromRoute) {
       setAuthHeader(authToken)
       await StoreHelper.fetchTokenData(authToken)
     }
-    perfStat.elapsed.authTokenGet = performance.now() - perfStat.start.authTokenGet
 
-    // **** Full demo setup
-    perfStat.start.demoToken = performance.now()
+    // **** Full demo setup ... prep and CONTINUE
     if (haveDemoToken) {
       if (dbApp) console.log('onPageChange loadDemoData')
       // Must have auth setup to succeed
       await StoreHelper.loadDemoData()
     }
-    perfStat.elapsed.demoToken = performance.now() - perfStat.start.demoToken
 
+    // **** If in zone Admin .... prep and EXIT via new route
     if (StoreHelper.inZoneAdmin() && routeName !== ADMIN_LOGIN_ROUTE_NAME) {
       // console.log('in admin zone')
       if (!authToken) {
         // console.log('in admin zone AND USER IS NOT LMS LOGGED IN')
         await router.push('/')
-        return
+        return perfExit(perfStat)
         // EXIT
       }
       const isAdmin = await StoreHelper.adminValidate()
-      if (! isAdmin ) {
+      if (!isAdmin) {
         // console.log('Redirect user to admin login')
         await router.push('/admin-login')
-        return
+        return perfExit(perfStat)
         // EXIT
       }
     }
 
-    // *** -- On a Demo page (LMS login, mock LMS)
+    // **** If in demo zone (LMS login, mock LMS) .... prep and EXIT
     if (StoreHelper.inZoneDemo()) {
       console.log('on a Demo page', routeName)
       // nothing else needs to be done in this page change handler
-      return perfStat
+      EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
+      return perfExit(perfStat)
       // EXIT
     }
 
-    // **** Just EHR demo
+
+    // *** If user is here and is not auth'd then something is wrong ... EXIT
+    if (!authToken) {
+      console.error('Coding error. At this point the user must be auth\'d to be in the ehr zone')
+      return perfExit(perfStat)
+      // EXIT
+    }
+
+    // If a student is coming from the "My Activities" page then the query has the intended visitId
+    // user is authorized to enter the EHR zone (Note the EHR only entry is already handled. See if (demoOnlyKey) above)
+    if (dbApp) console.log('onPageChange is authed so load data')
+
+    const toolConsumerId = store.getters['authStore/consumerId']
+    await store.dispatch('consumerStore/loadConsumer', toolConsumerId)
+
+    // Load the user based on auth message
+    const userId = store.getters['authStore/userId']
+    await store.dispatch('userStore/load', userId)
+
+    // **** if not in zone EHR (e.g. in LMS area or other) .... prep and EXIT
     if (!StoreHelper.inZoneEHR()) {
+      if (dbApp) console.log('Page change to non-EHR page.')
       // If user has left the ehr zone then ehr only demo is over
       // TODO consider that this means the browser history and back button will not work
       await EhrOnlyDemo.clearEhrOnly()
-    }
-
-    if (seedEditId || seedId) {
-      // All seed editing pages have the seedId in the querystring
-      // the go to ehr seed edit url has the seedEditId in the querystring
-      const sdid = seedEditId || seedId
-      StoreHelper.setSeedEditId(sdid)
-    }
-    if (studentId && StoreHelper.isSeedEditing()) {
-      console.log('Switch to evaluation student id')
-      StoreHelper.setSeedEditId('')
-    }
-
-    // **** Load data via API calls based on state:
-    //  - on auth token data or
-    //  - saved evaluation student or seed editing ids
-    perfStat.start.authToken = performance.now()
-
-    // If a student is coming from the My Activities page then the query has the intended visitId
-    const optionalVisitId = toRoute.query.visitId
-    if (dbApp && optionalVisitId) console.log('query string came with visitId:',optionalVisitId)
-
-    if (authToken) {
-      if (dbApp) console.log('onPageChange is authed so load data')
-      perfStat.start.loadCommon = performance.now()
-      await StoreHelper.loadCommon(optionalVisitId) // loads auth'd consumer, user and visit
-      perfStat.elapsed.loadCommon = performance.now() - perfStat.start.loadCommon
-      if (dbApp) console.log('onPageChange is after load common data')
-      if (refreshToken) {
-        // just made an lti connection which means the user is freshly authed and has just arrived here.
-        // 1. Stash the activity id as the "current" activity so that the application
-        // can be refreshed and the current activity will be available.
-        // Note that the user can change the current activity from their "My activities" dashboard page.
-        // 2. Check if the activity has been linked to content. If not then send the user to the unlinked page.
-        const activityId = store.getters['visit/activityId']
-        if (dbApp) console.log('onPageChange first time using the new auth token. activityId', activityId)
-        await StoreHelper.setActivityId(activityId)
-        let activity = await StoreHelper.loadCurrentActivity()
-        console.log('loaded current activity', activity)
-        if (!activity.assignment) {
-          if (dbApp) console.log('No assignment for activity', activity)
-          await router.push({ name: UNLINKED_ACTIVITY_ROUTE_NAME, query: { activityId: activityId } })
-          perfStat.elapsed.authToken = performance.now() - perfStat.start.authToken
-          return perfStat
-          // EXIT
-        }
-      } else {
-        // Not a new LTI connection so reload what is needed based on stashed data.
-      }
-      perfStat.elapsed.authToken = performance.now() - perfStat.start.authToken
-
-      perfStat.start.loading = performance.now()
-      if ( routeName === UNLINKED_ACTIVITY_ROUTE_NAME ) {
-        console.log('finish page change for unlinked activity')
-      } else {
-        if (StoreHelper.isInstructor()) {
-          if (StoreHelper.isSeedEditing()) {
-            await StoreHelper.loadSeedEditor()
-          }
-          // **** Instructor evaluating student id management
-          if (studentId) {
-            console.log('stash the evaluation student id')
-            await StoreHelper.changeStudentForInstructor(studentId)
-          }
-        } else if (StoreHelper.isStudent()) {
-          const fromZone = fromRoute.meta.zone
-          if (fromZone === 'ehr') {
-            console.log('page - change from ehr')
-          } else {
-            const activityId = store.getters['visit/activityId']
-            await StoreHelper.setActivityId(activityId)
-            const activity = await StoreHelper.loadCurrentActivity()
-            if (activity.assignment) {
-              // only when the activity has an assignment(learning object) can the visit have any activity data
-              let visitInfo = store.getters['visit/visitData']
-              // console.log('get activity data based on visitInfo', visitInfo)
-              await StoreHelper._dispatchActivityData('loadActivityData', visitInfo.activityData)
-              await StoreHelper.loadAssignment(activity.assignment)
-              let seedId = StoreHelper.getAssignmentSeedId()
-              await StoreHelper.loadSeed(seedId)
-            }
-          }
-        }
-      }
+      // Exit. All pages beyond the EHR zone perform their own loading as needed.
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
+      return perfExit(perfStat)
+      // EXIT
     }
-    perfStat.elapsed.loading = performance.now() - perfStat.start.loading
 
-    // *** Just EHR demo (no auth token)
-    if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
-      if(dbApp) console.log('the ehr only demo is active ')
-      // (which means neither the full demo nor full application are active
-      // and the user has changed to another ehr page
+    // Proceed to manage page load for EHR pages.
+    const storedVisitId = store.getters['visit/visitId']
+    const authVisitId = store.getters['authStore/visitId']
+    let visitId = optionalVisitId || storedVisitId || authVisitId
+    await StoreHelper.setVisitId(visitId) //note this stores the visit id to survive page changes and browser refresh
+    await store.dispatch('visit/loadVisitRecord')
+
+    let theActivity = await store.dispatch('activityStore/loadActivityRecord')
+    if (dbApp) console.log('loaded current activity', theActivity)
+
+    // **** If page is the one that handles unlinked activities then we are done ... EXIT
+    if (routeName === UNLINKED_ACTIVITY_ROUTE_NAME) {
+      console.log('UNLINKED_ACTIVITY_ROUTE_NAME --- OKAY? ---finish page change for unlinked activity')
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
+      return perfExit(perfStat)
+      // EXIT
     }
+
+    // **** If activity does not have linked LObj then ... push new route EXIT via new route
+    if (!theActivity.learningObjectId) {
+      if(demo_lobjId) {
+        theActivity = await StoreHelper.autoLinkDemoLobj(theActivity, demo_lobjId)
+      } else {
+        if (dbApp) console.log('No assignment for activity', theActivity.id)
+        await router.push({ name: UNLINKED_ACTIVITY_ROUTE_NAME, query: { activityId: theActivity.id } })
+        return perfExit(perfStat)
+        // EXIT
+      }
+    }
+
+    if (StoreHelper.isInstructor()) {
+      if (seedEditId || seedId) {
+        // All seed editing pages have the seedId in the querystring
+        // the go to ehr seed edit url has the seedEditId in the querystring
+        const sdid = seedEditId || seedId
+        await StoreHelper.setSeedEditId(sdid)
+      }
+      if (evaluateStudentVisitId && StoreHelper.isSeedEditing()) {
+        console.log('Switch to evaluation student id')
+        await StoreHelper.setSeedEditId('')
+      }
+      if (StoreHelper.isSeedEditing()) {
+        await StoreHelper.loadSeedEditor()
+      }
+      // **** Instructor evaluating student id management
+      if (evaluateStudentVisitId) {
+        // console.log('stash the evaluation student id')
+        await StoreHelper.changeStudentForInstructor(evaluateStudentVisitId)
+      }
+      if (StoreHelper.isInstructorEvalMode()) {
+        await StoreHelper.loadInstructorWithStudent()
+      }
+    }
+    if (StoreHelper.isStudent()) {
+      if (dbApp) console.log('student ehr page load')
+      await StoreHelper._dispatchActivityData('loadActivityData', theActivity.activityDataId)
+      await StoreHelper.loadAssignment(theActivity.learningObjectId)
+      await StoreHelper.loadSeed(theActivity.caseStudyId)
+    }
+    EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   } catch (err) {
     // TODO check how we handle expired auth tokens
     let msg = err.message
@@ -266,7 +282,7 @@ async  function onPageChange (toRoute, fromRoute) {
   } finally {
     StoreHelper.setLoading(null, false)
   }
-  return perfStat
+  return perfExit(perfStat)
   // EXIT
 }
 

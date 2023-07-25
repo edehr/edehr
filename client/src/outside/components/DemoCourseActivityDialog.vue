@@ -17,17 +17,22 @@
           ui-info(title="Consumer key", :text="documentation.consumerKey")
           div Consumer key
           div
-            input(class="input text-input", type="text", v-model="submitData.consumerKey", v-validate="cKeyValidate")
+            input(class="input text-input", type="text", v-model="submitData.oauth_consumer_key", v-validate="cKeyValidate")
         div(class="config-data-block")
           ui-info(title="Consumer secret", :text="documentation.consumerSecret")
           div Consumer secret
           div
-            input(class="input text-input", type="text", v-model="submitData.consumerSecret", v-validate="cSecretValidate")
+            input(class="input text-input", type="text", v-model="submitData.oauth_consumer_secret", v-validate="cSecretValidate")
         div(class="config-data-block")
           ui-info(title="Tool Url", :text="documentation.toolUrl")
           div Tool URL
           div
             input(class="input text-input", type="text", v-model="submitData.toolUrl" disabled)
+        div(class="config-data-block")
+          ui-info(title="Tool Url", text="The LMS user id")
+          div User Id
+          div
+            input(class="input text-input", type="text", v-model="submitData.user_id")
 </template>
 
 <script>
@@ -46,8 +51,8 @@ export default {
       submitData: {
         resource_link_title: '',
         resource_link_description: '',
-        consumerKey: '',
-        consumerSecret: '',
+        oauth_consumer_key: '',
+        oauth_consumer_secret: '',
         toolUrl: ''
       }
     }
@@ -76,10 +81,10 @@ export default {
       return this.submitData.resource_link_title.trim() ? undefined : ERRORS.NAME_REQUIRED
     },
     cKeyValidate () {
-      return this.submitData.consumerKey.trim() ? undefined : ERRORS.CONSUMER_KEY
+      return this.submitData.oauth_consumer_key.trim() ? undefined : ERRORS.CONSUMER_KEY
     },
     cSecretValidate () {
-      return this.submitData.consumerSecret.trim() ? undefined : ERRORS.CONSUMER_SECRET
+      return this.submitData.oauth_consumer_secret.trim() ? undefined : ERRORS.CONSUMER_SECRET
     },
     errors () {
       const errMsgs = this.nameValidate || this.cKeyValidate || this.cSecretValidate
@@ -93,8 +98,8 @@ export default {
     }
   },
   methods: {
-    showDialog (assignmentData, resetCallback, saveCallback) {
-      this.submitData = assignmentData
+    showDialog (submitData, resetCallback, saveCallback) {
+      this.submitData = submitData
       this.resetCallback = resetCallback
       this.saveCallback = saveCallback
       this.$refs.theDialog.onOpen()

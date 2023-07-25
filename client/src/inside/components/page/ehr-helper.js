@@ -14,7 +14,6 @@ import {
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import StoreHelper from '@/helpers/store-helper'
 import ehrValidations from '@/ehr-definitions/ehr-validations'
-import store from '@/store'
 import EhrData from '@/inside/components/page/ehr-data'
 import EhrTableDraft from '@/inside/components/page/ehr-table-draft'
 import EhrTableActions from '@/inside/components/page/ehr-table-actions'
@@ -99,7 +98,7 @@ export default class EhrPageHelper {
   getTableForm (tableKey) { return this.tableFormMap[tableKey]}
 
   _canEdit () {
-    if(StoreHelper.isInstructor() && !StoreHelper.isSeedEditing()) {
+    if(StoreHelper.isInstructorEvalMode()) {
       // the instructor is evaluating student work. Do not allow edit of content.
       return false
     }
@@ -789,29 +788,28 @@ export default class EhrPageHelper {
     this.inputChangeEventHandler = function (eData) {
       _this._handleInputChangeEvent(eData)
     }
-    this.refreshEventHandler = async function () {
-      const dbPerf = false
-      // TODO might put page load information in the page footer, but this is only for ehr pages and will need to implement something for outside pages, perhaps look into the page controller load?
-      let startTime = performance.now()
-      if (dbPerf) console.log('EhrHelperV2 PAGE_DATA_REFRESH_EVENT refresh', _this.pageKey)
-      let visitInfo = store.getters['visit/visitData']
-      if (visitInfo.activityData) {
-        await store.dispatch('activityDataStore/loadActivityData', visitInfo.activityData)
-      } // else is an EHR only demo situation and there is not visit data
-      let elapsedTime = performance.now() - startTime
-      if (dbPerf) console.log('ehr helper refreshEventHandler elapsed time ', elapsedTime)
-      if (dbPerf) console.log('to do --- refresh instructor and seed editor')
-
-    }
+    // this.refreshEventHandler = async function () {
+    //   const dbPerf = false
+    //   // TODO might put page load information in the page footer, but this is only for ehr pages and will need to implement something for outside pages, perhaps look into the page controller load?
+    //   let startTime = performance.now()
+    //   if (dbPerf) console.log('EhrHelperV2 PAGE_DATA_REFRESH_EVENT refresh', _this.pageKey)
+    //   let visitInfo = store.getters['visit/visitData']
+    //   if (visitInfo.activityData) {
+    //     await store.dispatch('activityDataStore/loadActivityData', visitInfo.activityData)
+    //   } // else is an EHR only demo situation and there is not visit data
+    //   let elapsedTime = performance.now() - startTime
+    //   if (dbPerf) console.log('ehr helper refreshEventHandler elapsed time ', elapsedTime)
+    //   if (dbPerf) console.log('to do --- refresh instructor and seed editor')
+    // }
     window.addEventListener('beforeunload', this.windowUnloadHandler)
     EventBus.$on(FORM_INPUT_EVENT, this.inputChangeEventHandler)
-    EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+    // EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
   }
 
   _takeDownEventHandlers () {
     window.removeEventListener('beforeunload', this.windowUnloadHandler)
     EventBus.$off(FORM_INPUT_EVENT, this.inputChangeEventHandler)
-    EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+    // EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
   }
 
   beforeDestroy (pageKey) {

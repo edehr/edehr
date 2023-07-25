@@ -35,6 +35,10 @@ module.exports = {
         ]
       },
       {
+        title: "Demo mode - EHR Only",
+        path: '/demo-ehr/',
+      },
+      {
         title: "Instructor guide",
         path: '/instructor/',
         children: [

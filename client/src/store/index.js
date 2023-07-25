@@ -7,6 +7,7 @@ import assignmentStore from './modules/assignmentStore'
 import assignmentListStore from './modules/assignmentListStore'
 import classListStore from './modules/classListStore'
 import consumerStore from './modules/consumerStore'
+import courseStore from '@/store/modules/courseStore'
 import demoStore from './modules/demoStore'
 import ehrDataStore from './modules/ehrDataStore'
 import ehrOnlyDemoStore from '@/store/modules/ehrOnlyDemoStore'
@@ -14,7 +15,6 @@ import ehrPageTab from '@/store/modules/ehrPageTab'
 import fileListStore from './modules/fileListStore'
 import instructor from './modules/instructor'
 import seedListStore from './modules/seedListStore'
-import student from '@/store/modules/student'
 import system from './modules/system'
 import userStore from './modules/userStore'
 import visit from './modules/visit'
@@ -34,6 +34,7 @@ export default new Vuex.Store({
     assignmentStore,
     classListStore,
     consumerStore,
+    courseStore,
     demoStore,
     ehrDataStore,
     ehrOnlyDemoStore,
@@ -41,7 +42,6 @@ export default new Vuex.Store({
     fileListStore,
     instructor,
     seedListStore,
-    student,
     system,
     userStore,
     visit,
@@ -57,6 +57,7 @@ export function initializeStore (store) {
   store.dispatch('activityStore/initialize')
   store.dispatch('assignmentStore/initialize')
   store.dispatch('authStore/initialize')
+  store.dispatch('courseStore/initialize')
   store.dispatch('demoStore/initialize')
   store.dispatch('instructor/initialize')
   store.dispatch('system/initialize')

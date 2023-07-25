@@ -14,7 +14,7 @@ class EvalHelperWorker {
 
   forceSubmit (studentVisit) {
     // console.log('EvalHelper forceSubmit sv', studentVisit)
-    return this.changeStudent(studentVisit._id)
+    return this._changeStudent(studentVisit._id)
       .then(() => {
         return StoreHelper.forceSubmitsAssignment(true)
       })
@@ -24,7 +24,7 @@ class EvalHelperWorker {
   }
 
   instructorUnsubmitsAssignment (studentVisit) {
-    return this.changeStudent(studentVisit._id)
+    return this._changeStudent(studentVisit._id)
       .then(() => {
         return StoreHelper.instructorUnsubmitsAssignment()
       })
@@ -32,13 +32,25 @@ class EvalHelperWorker {
         return StoreHelper.dispatchLoadClassList()
       })
   }
-  goToEhr (studentVisit, customRouter = router) {
-    StoreHelper.postActionEvent(INSTRUCTOR_ACTION, 'evalInEHr')
-    // The customRouter parameter is used by unit tests. Default to normal router
-    customRouter.push({ name: 'ehr', query: { studentId: studentVisit._id } })
+  // goToEhr (studentVisit, customRouter = router) {
+  //   StoreHelper.postActionEvent(INSTRUCTOR_ACTION, 'evalInEHr')
+  //   // The customRouter parameter is used by unit tests. Default to normal router
+  //   customRouter.push({ name: 'ehr', query: { evaluateStudentVisitId: studentVisit._id } })
+  // }
+  studentEvaluation (studentVisitId, inEhr) {
+    let pathName, actionTag
+    if (inEhr) {
+      pathName = 'ehr'
+      actionTag = 'evalInEhr'
+    } else {
+      pathName = 'eval-student'
+      actionTag = 'evalInCondensed'
+    }
+    StoreHelper.postActionEvent(INSTRUCTOR_ACTION, actionTag)
+    router.push({ name: pathName, query: { evaluateStudentVisitId: studentVisitId } })
   }
 
-  changeStudent (studentVisitId) {
+  _changeStudent (studentVisitId) {
     // just record who is the current student
     return StoreHelper.changeStudentForInstructor(studentVisitId)
   }

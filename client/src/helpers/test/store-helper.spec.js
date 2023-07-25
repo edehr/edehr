@@ -855,27 +855,6 @@ describe.skip('Compound loading function tests', () => {
     })
   })
 
-  it('loadCommon', async () => {
-    await axiosMockHelper.createCompoundGetResponse()
-    should.doesNotThrow(async () => {
-      await StoreHelper.loadCommon()
-      const activityId = StoreHelper.getActivityId()
-      const assignments = StoreHelper.getAssignmentsList()
-      const consumer = StoreHelper._getConsumerProperty('consumer')
-      const user = StoreHelper._getUserProperty('user')
-      const seedData = StoreHelper.getSeedDataList()
-      should.exist(activityId)
-      should.exist(assignments)
-      should.exist(consumer)
-      should.exist(user)
-      activityId.should.equal(mockData.activity._id)
-      assignments.should.equal(mockData.assignmentListing)
-      consumer.should.equal(mockData.consumer)
-      user.should.equal(mockData.user)
-      JSON.stringify(seedData).should.equal(JSON.stringify(mockData.seedDataList))
-    })
-  })
-
   // it('loadStudent2', async () => {
   //   await axiosMockHelper.createCompoundGetResponse()
   //   should.doesNotThrow(async () => {

@@ -1,6 +1,6 @@
 <template lang='pug'>
   div
-    zone-lms-page-banner
+    zone-lms-page-banner(:title="seed.name")
       seed-actions(class="flow_across_last_item", :seedModel='seedModel')
     div(class="details-container card selected", :class='{ draftStyle: hasDraftReports }')
       div(v-if="hasDraftReports", class="details-row")
@@ -10,16 +10,13 @@
           before using this case study with a student assignment.
           Edit this case study in the EHR and complete the reports (or remove them)
       div(class="details-row")
-        div(class="details-name") {{ text.SEED_LABEL }}
-        div(class="details-value") {{seed.name}}
-      div(class="details-row")
-        div(class="details-name") Tags
-        div(class="details-value")
-          app-tag-list(:tag-list="tagList")
-      div(class="details-row")
         div(class="details-name") {{text.DESCRIPTION}}
         div(class="details-value")
           div(v-text-to-html="seed.description")
+      div(class="details-row")
+        div(class="details-name") Tags
+        div(class="details-value")
+          app-tag-list(:tagList="tagList")
       div(class="details-row")
         div(class="details-name") {{text.CONTRIBUTORS}}
         div(class="details-value") {{ seed.contributors }}
@@ -42,7 +39,6 @@
       div(v-if="showIds", class="details-row")
         div(class="details-name") Id
         div(class="details-value") {{ seedId }}
-    seed-data-dialog(ref="theDialog")
 </template>
 
 <script>
@@ -56,15 +52,15 @@ import { Text } from '@/helpers/ehr-text'
 import SeedDuplicate from '@/outside/components/seed-management/SeedDuplicate'
 import UiButton from '@/app/ui/UiButton'
 import SeedListLink from '@/outside/components/seed-management/SeedListLink'
-import SeedDataDialog from '@/outside/components/seed-management/SeedDataDialog'
 import OutsideCommon from '@/outside/views/OutsideCommon'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
 import AppTagList from '@/app/components/AppTagList.vue'
+import AppTagListEditor from '@/app/components/AppTagListEditor.vue'
 
 export default {
   extends: OutsideCommon,
-  components: { AppTagList, ZoneLmsPageBanner, SeedActions, SeedDataDialog, SeedListLink, UiButton, SeedDuplicate, SeedStructural, UiLink },
+  components: { AppTagListEditor, AppTagList, ZoneLmsPageBanner, SeedActions, SeedListLink, UiButton, SeedDuplicate, SeedStructural, UiLink },
   data () {
     return {
       appIcons: APP_ICONS,
@@ -97,11 +93,11 @@ export default {
     seed () { return this.seedModel.seed || {} },
     seedId () { return this.seedModel.id},
     seedModel () {
-      return this.$store.getters['seedListStore/seedModel']
+      return this.$store.getters['seedListStore/seedModel'] || {}
     },
     seedStats () { return this.seed.ehrData ? this.ehrPages.ehrPagesStats(this.seed.ehrData) : {} },
     statsMeta ( ) { return this.seedStats.meta || {}},
-    tagList () { return this.seedModel.tagListAsArray()}
+    tagList () { return this.seed.tagList || []}
   },
   methods: {
     downloadSeed () {
@@ -114,9 +110,6 @@ export default {
     gotoEhrWithSeed () {
       this.$router.push({ name: 'ehr', query: { seedEditId: this.seedId } })
     },
-    showEditDialog: function () {
-      this.$refs.theDialog.showDialog(this.seed)
-    },
     viewEhrCondensed () {
       this.$router.push({ name: 'seed-view-condensed', query: { seedId: this.seedId } })
     },
@@ -127,14 +120,19 @@ export default {
       const fromStore = this.$store.getters['seedListStore/seedId']
       this.$router.push({ name: 'seed-view', query: { seedId: fromStore } })
     },
-    loadComponent () {
+    async loadComponent () {
       const fromRoute = this.$route.query.seedId
       const fromStore = this.$store.getters['seedListStore/seedId']
       const seedId = fromRoute ? fromRoute : fromStore
+      await this.$store.dispatch('seedListStore/loadSeedContent', seedId)
+      // let sd = this.$store.getters['seedListStore/seedContent']
+      // console.log('SeedView loaded ', sd)
+      // await this._dispatchSeedListProperty('loadSeedContent', seedId)
+
       // console.log('loading seed view', seedId)
-      StoreHelper.loadAssignmentAndSeedLists()
-      StoreHelper.loadSeed(seedId)
-    },
+      // StoreHelper.loadAssignmentAndSeedLists()
+      // StoreHelper.loadSeed(seedId)
+    }
   },
 }
 </script>

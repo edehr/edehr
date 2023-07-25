@@ -45,6 +45,8 @@ function defaultConfig (env) {
     ehrFileTypes: 'jpeg,jpg,png,gif,tiff,tif,bmp,pdf,json,txt,text',
     seedDB: process.env.SEED_DB !== 'false', // defaults to true
     database: {
+      // useful for bash shell:
+      // export MONGODB_NAME=edehr-prod
       name: process.env.MONGODB_NAME || 'edehr-dev',
       host: process.env.MONGODB_HOST || 'localhost',
       port: process.env.MONGODB_PORT || 27018,

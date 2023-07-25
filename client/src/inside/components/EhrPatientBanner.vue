@@ -21,22 +21,22 @@
         div
           span Diagnosis
           span {{ patientData.diagnosis }}
-        ehr-sim-time(:ehr-data="md")
         div
-          span Weight:
+          span Weight
           span {{ patientData.weight }}
         div
-          span Location:
+          span Location
           span {{ patientData.location }}
         div
-          span MRN:
+          span MRN
           span {{ patientData.mrn }}
         div
-          span MRP:
+          span MRP
           span {{ patientData.mrp }}
         div
-          span MRP phone:
+          span MRP phone
           span {{ patientData.mrpPhone}}
+        ehr-sim-time(:ehr-data="md")
 
     //li Isolation precautions:
     //  b none

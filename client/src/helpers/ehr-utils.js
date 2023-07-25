@@ -4,6 +4,7 @@ import { saveAs } from 'file-saver'
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import { Text } from '@/helpers/ehr-text'
 import validFilename from 'valid-filename'
+import { format } from 'date-fns'
 
 const debug = false
 const debugErrs = false
@@ -140,7 +141,12 @@ export function formatDateStr (dateStrFromDb) {
 }
 
 export function formatTimeStr (dateStrFromDb) {
-  return moment(dateStrFromDb).format('YYYY-MM-DD h:mm a')
+  // console.log('dateStrFromDb',dateStrFromDb)
+  return dateStrFromDb ? format(new Date(dateStrFromDb), 'yyyy-MM-dd h:mm a') : ''
+  // changed to use date-fn format from using moment due to warnings and because moment is not needed.
+  // TODO continue to swap out moment
+  // return dateStrFromDb && dateStrFromDb.length > 0 ? (new Date(dateStrFromDb)).toLocaleTimeString() : ''
+  // return moment(dateStrFromDb).format('YYYY-MM-DD h:mm a')
 }
 
 export function composeAxiosResponseError (error, msg = '') {

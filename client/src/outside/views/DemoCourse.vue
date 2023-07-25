@@ -1,32 +1,29 @@
 <template lang="pug">
   div(class="demo-course-content")
-    section(class="columns")
-      div(class="column is-3 aside")
-        div(class="aside-section showing-labels")
-          div {{demoText.personaLabel}}: {{ demoPersona.name }}
-          div {{demoText.roleLabel}}: {{ demoPersona.role}}
-          div(v-if='demoPersona.role === "instructor"') {{demoText.switchRoleSegmentTitle}} &nbsp;
-            label
-              input(class="checkbox", type="checkbox", v-model="asStudent")
-              span as student
-            div(v-if='asStudent') {{demoText.switchRoleExplain}}
-          div
-            ui-button(v-on:buttonClicked="gotoChangeCharacter()",
-              :secondary="true",
-              :title='demoText.switchRoleLabel') {{ demoText.switchRoleLabel }}
-        div(class="aside-section", v-text-to-html.noAutoLink="demoText.lmsAside")
-      div(class="column is-8 is-offset-1 is-centered")
-        div(class="columns")
-          div(class="column is-11")
-            h2 {{demoText.lmsTitle}}
-              ui-info(:title="demoText.lmsTitle", :text="demoText.lmsHint")
-            h3 {{demoText.courseTitle}}
-          div(class="column is-1")
-            ui-button(v-on:buttonClicked="editMode = !editMode", :class="editButtonClass", title='Edit activity configuration')
-              fas-icon(:icon="appIcons.edit")
-        section(v-for="activity in activities", :key="`des-${activity.resource_link_title}`")
-          demo-course-activity(:activity="activity", :switch-role="asStudent", :edit-mode='editMode')
-          hr
+    div(class="aside-section showing-labels")
+      div(class="aside-login")
+        div {{demoText.personaLabel}}: <strong>{{ demoPersona.name }}</strong>
+        div {{demoText.roleLabel}}: <strong>{{ demoPersona.role}}</strong>
+        ui-button(v-on:buttonClicked="gotoChangeCharacter()",
+          :title='demoText.switchRoleLabel') {{ demoText.switchRoleLabel }}
+      div(class="aside-intro", v-text-to-html.noAutoLink="demoText.lmsAside")
+      div(class="aside-intro", v-text-to-html.noAutoLink="demoText.lmsAside2")
+    div(class="sample-lms")
+      div(class="sample-lms-header")
+        h2 {{demoText.lmsTitle}}
+          ui-info(:title="demoText.lmsTitle", :text="demoText.lmsHint")
+        div(class="margin-match-h2")
+          ui-button(v-on:buttonClicked="editMode = !editMode", :class="editButtonClass",
+            title='Edit activity configuration'
+            )
+            span {{ !editMode ? "Advanced edit mode" : "Normal display" }} &nbsp;
+            //fas-icon(:icon="appIcons.edit")
+      div
+        div(v-for="course in courses", :key="course.courseTitle")
+          h3 {{course.courseTitle}}
+          section(v-for="activity in course.activities", :key="`des-${activity.resource_link_title}`")
+            demo-course-activity(:activity="activity", :course="course", :switch-role="asStudent", :edit-mode='editMode')
+            hr
 </template>
 
 <script>
@@ -49,7 +46,7 @@ export default {
     return {
       appIcons: APP_ICONS,
       asStudent: false,
-      activities: [],
+      courses: [],
       demoText: demoText,
       editMode: false
     }
@@ -73,7 +70,7 @@ export default {
       demoHelper.loadActivities()
         .then((response) => {
           if (debugDC) console.log('load acts', response)
-          this.activities = response.data.activities
+          this.courses = response.data.courses
         })
     }
   },
@@ -108,21 +105,34 @@ export default {
 @import '../../scss/definitions';
 
 .demo-course-content {
-  //font-size: 1.2rem;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
 }
 
-.aside {
-  .aside-section {
-    margin-bottom: 3rem;
-    padding-left: $ehr-layout-padding-left;
-  }
+.sample-lms {
+  border: 1px solid blue;
+  border-radius: 10px;
+  padding: $ehr-layout-padding-left;
+}
+.sample-lms-header {
+  display: grid;
+  grid-template-columns: 4fr 0.5fr;
+}
+
+.margin-match-h2 {
+  margin-top: 0.625em;
+}
+.aside-section {
+  padding: $ehr-layout-padding-left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  //height: 60vh;
 }
 
 @media screen and (max-width: $main-width-threshold1){
-  .aside {
-    .aside-section {
-      margin-bottom: 0.5rem;
-    }
+  .aside-section {
+    margin-bottom: 0.5rem;
   }
 }
 section {

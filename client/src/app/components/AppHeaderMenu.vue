@@ -5,10 +5,10 @@
         img(src="/edehr-Logo.png", class='brand-image', alt='EdEHR')
       div(class="flow_across menu_space_across flow_across_last_item side-menu")
         app-header-documentation-menu
+        router-link(v-if="isDemo", :to="{ name: `demo` }", class="navLink") Demonstration
         app-header-public-menu(v-if="!isStudent && !isInstructor && isPublic")
         app-header-student-menu(v-if="isStudent")
         app-header-instructor-menu(v-if="isInstructor")
-        router-link(v-if="isDemo", :to="{ name: `demo` }", class="navLink") Demonstration
     // app styling -- coloured line under header
     div(class="app-header-bottom")
       div(class="app-header-bottom-left")
@@ -24,7 +24,7 @@ export default {
   components: { AppHeaderDocumentationMenu, AppHeaderInstructorMenu, AppHeaderStudentMenu, AppHeaderPublicMenu },
   computed: {
     isPublic () { return StoreHelper.inZonePublic() },
-    isDemo () { return StoreHelper.inZoneDemo() },
+    isDemo () { return StoreHelper.isDemoMode() },
     isStudent () { return StoreHelper.isStudent()  },
     isInstructor () { return StoreHelper.isInstructor() },
   },

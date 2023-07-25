@@ -5,39 +5,53 @@
 
     div(class="details-container card selected")
       div(class="details-row")
-        div(class="details-name") {{ text.ACTIVITY_LABEL}}
+        div(class="details-name") Return to activity
         div(class="details-value")
-          ui-link(:name="'lms-activity'", :query="{activityId: activity._id}")
+          ui-link(:name="'lms-instructor-activity'")
+            // no visit id because we are not changing visit
             fas-icon(class="fa", :icon="appIcons.activity")
-            span &nbsp; {{activity.resource_link_title}}
+            span &nbsp; {{activity.learningObjectName}}
       div(class="details-row")
         div(class="details-name") {{text.LOBJ}}
         div(class="details-value")
           div(v-if='hasLinkedLearningObject')
-            ui-link(:name="'learning-object'", :query="{learningObjectId: assignment._id}")
+            ui-link(:name="'learning-object'", :query="{learningObjectId: activity.learningObjectId}")
               fas-icon(class='fa', :icon='appIcons.lobj')
-              span &nbsp; {{ assignment.name }}
+              span &nbsp; {{ activity.learningObjectName }}
           div(v-else) {{ text.ACTIVITY_MISSING}}
     div(class="classlist-body")
       div(v-if="classList.length===0", class='empty-message') {{ text.EMPTY_CLASSLIST }}
-      div(v-else, v-for="(studentVisit) in classList", class="list-card list-element", :class="rowClass(studentVisit)")
-        class-list-item(:studentVisit="studentVisit")
+      div(v-else, class="e-table")
+        div(class="thead")
+          div(class="thcell e-name") Student
+          div(class="thcell e-status") Submitted
+          div(class="thcell e-date") Last date
+          div(class="thcell e-description") Evaluation
+          div(class="thcell e-actions") &nbsp;
+        div(class="tbody")
+          div(class="row", v-for="(studentVisit) in classList", :class="rowClass(studentVisit)")
+            div(class='cell e-name') {{ studentVisit.user.fullName }}
+            div(class='cell e-status') {{ studentVisit.activityData.submitted ? 'Yes' : '' }}
+            div(class='cell e-date') {{ studentVisit.activityData.lastDate | formatDateTime }}
+            div(class="cell e-description").
+              {{ truncate(studentVisit.activityData.evaluationData, 100) }}
+            div(class='cell e-actions')
+              class-list-actions(:studentVisit='studentVisit')
 </template>
 
 <script>
 import StoreHelper from '@/helpers/store-helper'
-import UiLink from '@/app/ui/UiLink.vue'
-import ClassListItem from '@/outside/components/lms-activity/ClassListItem'
-import ActivityActions from '@/outside/components/lms-activity/ActivityActions'
 import OutsideCommon from '@/outside/views/OutsideCommon'
-import ZoneLmsPageName from '@/outside/components/ZoneLmsPageName'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
 import { Text } from '@/helpers/ehr-text'
+import ClassListActions from '@/outside/components/lms-activity/ClassListActions.vue'
+import ActivityActions from '@/outside/components/lms-activity/ActivityActions.vue'
+import UiLink from '@/app/ui/UiLink.vue'
 
 const debug = false
 export default {
   extends: OutsideCommon,
-  components: { ZoneLmsPageBanner, ZoneLmsPageName, ActivityActions, UiLink, ClassListItem  },
+  components: { UiLink, ActivityActions, ClassListActions, ZoneLmsPageBanner  },
   data () {
     return {
       text: Text.ACTIVITY_PAGE,
@@ -45,21 +59,18 @@ export default {
   },
   computed: {
     activity () {
-      return this.$store.getters['activityStore/activity']
+      return this.$store.getters['activityStore/activityRecord']
     },
     activityId () {
       return this.$store.getters['activityStore/activityId']
     },
     activityName () {
-      return this.activity.resource_link_title
-    },
-    assignment () {
-      return this.$store.getters['assignmentStore/assignment'] || {}
+      return this.activity.learningObjectName
     },
     classList () {
       return StoreHelper.getClassList()
     },
-    hasLinkedLearningObject () { return this.activity.assignment },
+    hasLinkedLearningObject () { return this.activity.hasLinkedLearningObject },
     showLabels () { return StoreHelper.isOutsideShowButtonLabels() },
   },
   methods: {
@@ -72,29 +83,21 @@ export default {
        */
       if (debug) console.log('CL loadComponent', this.activityId)
       try {
-        const fromRoute = this.$route.query.activityId
-        const fromStore = this.$store.getters['activityStore/activityId']
-        const activityId = fromRoute ? fromRoute : fromStore
-        await this.$store.dispatch('activityStore/setActivityId', activityId)
-        const activity = await this.$store.dispatch('activityStore/loadCurrentActivity')
-        if (activity.assignment) {
-          await this.$store.dispatch('assignmentStore/load', activity.assignment)
-          const seedId = this.assignment.seedDataId
-          await this.$store.dispatch('seedListStore/loadSeedContent', seedId)
-        }
+        const vFromRoute = this.$route.query.visitId
+        const vFomStore = this.$store.getters['visit/visitId']
+        const visitId = vFromRoute ? vFromRoute : vFomStore
+        await StoreHelper.setVisitId(visitId)
+        const activityRecord = await this.$store.dispatch('visit/setLoadVisitActivity', visitId)
+        await this.$store.dispatch('courseStore/setCourseId', activityRecord.courseId)
+        await this.$store.dispatch('courseStore/loadCurrentCourse')
         await this.$store.dispatch('instructor/loadClassList')
 
-        // await StoreHelper.loadCurrentActivity()
-        // if (debug) console.log('CL loadComponent loadInstructorWithStudent', this.activityId)
-        // let result = await StoreHelper.loadInstructorWithStudent()
-        // if (result) {
-        //   if (debug) console.log('CL results', result)
-        // } else {
-        //   console.error('CL loadComponent no results', this.activityId)
-        // }
       } catch(error){
         console.error('CL loadComponent failed', error)
       }
+    },
+    truncate (input, lim) {
+      return input && input.length > lim ? `${input.substring(0, lim)}...` : input
     },
   }
 }
@@ -109,5 +112,21 @@ export default {
 .empty-message {
   font-weight: bold;
   font-size: 1.5rem;
+}
+.e-name {
+  min-width: 10rem;
+  width: 10rem;
+}
+.e-date {
+  min-width: 7rem;
+  width: 7rem;
+}
+.e-status {
+  min-width: 4rem;
+  width: 4rem;
+}
+.e-actions {
+  min-width: 9rem;
+  width: 9rem;
 }
 </style>

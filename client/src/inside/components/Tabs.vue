@@ -69,8 +69,15 @@ export default {
     &.is-active a {
       color: $black;
       cursor: default;
-      border-bottom: 6px solid $brand-primary-hover;
+      //border-bottom: 6px solid $brand-primary-hover;
     }
   }
 }
+.ehr-branding .tabs li.is-active a {
+  border-bottom: 6px solid $colour-brand-ehr;
+}
+.lis-branding .tabs li.is-active a {
+  border-bottom: 6px solid $colour-brand-lis;
+}
+
 </style>

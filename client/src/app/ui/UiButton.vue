@@ -35,6 +35,8 @@ export default {
   },
   methods: {
     buttonClicked: function (event) {
+      event.preventDefault()
+
       this.$emit('buttonClicked', event, this.value)
     }
   }

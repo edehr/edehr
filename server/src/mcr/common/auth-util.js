@@ -1,3 +1,6 @@
+import { logError } from '../../helpers/log-error'
+import { Text } from '../../config/text'
+
 const jwt = require('jsonwebtoken')
 const debug = require('debug')('server')
 const logAuth = require('debug')('auth')
@@ -13,6 +16,32 @@ export default class AuthUtil {
   constructor (config) {
     this.tokenSecret = config.authTokenSecret
     logAuth('authUtils -- tokenSecret', this.tokenSecret)
+  }
+
+  async getTokenAndProcessChange (authHeader, res, processChangeCallBack) {
+    if (authHeader) {
+      try {
+        // debug('vas auth hdr', authHeader)
+        const tokenData = await this.authenticate(authHeader)
+        const nextToken = await processChangeCallBack(tokenData)
+        // debug('_getTokenAndProcess send back new token', nextToken)
+        return res.status(200).json({ token: nextToken })
+      } catch (err) {
+        debug('_getTokenAndProcess error', err)
+        // EXPIRED_TOKEN
+        if (err.name === 'TokenExpiredError') {
+          logError('AuthController _getTokenContent --- Token is expired!')
+          res.status(401).send(Text.EXPIRED_TOKEN)
+        } else {
+          logError('_getTokenContent threw >> ', JSON.stringify(err))
+          // Here this can be 500, since it catches and error from the jwt.verify function
+          res.status(500).send(Text.SYS_ERROR)
+        }
+      }
+    } else {
+      logError('AuthController _getTokenContent --- Token is required!')
+      res.status(401).send(Text.TOKEN_REQUIRED)
+    }
   }
 
   hashToken (token) {

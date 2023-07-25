@@ -2,6 +2,7 @@
   "id": "6466bd56640b29001212d5fa",
   "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
   "contributors": "Katrina Lavallee",
+  "appType": "LIS",
   "ehrData": {
     "meta": {
       "simTime": {
@@ -18,6 +19,15 @@
       "dateOfBirth": "2006-01-19",
       "phn": "2013114",
       "lastUpdate": "2023-05-19T00:06:33+00:00"
+    },
+    "medLabDemographics": {
+      "givenName": "Akosua",
+      "familyName": "BONLANLE",
+      "personAge": "17",
+      "gender": "Female",
+      "dateOfBirth": "2006-01-19",
+      "phn": "2013114",
+      "lastUpdate": "2023-05-22T20:40:32+00:00"
     },
     "hematology": {
       "lastUpdate": "2023-05-19T18:19:45+00:00",
@@ -182,6 +192,7 @@
       "lastUpdate": "2023-05-26T00:50:17+00:00"
     }
   },
+  "tagList": "HideEHR Hematology",
   "description": "Slide Number 18-212. Patient recently immigrated from Cameroon for work in Vancouver and requires bloodwork as part of her medical examination. ",
   "name": "Case Study Demo - BONLANLE, Akosua",
   "version": "1.0",

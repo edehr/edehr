@@ -201,6 +201,8 @@ input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:dis
 
 input[type="checkbox"]{
   margin-right: 5px;
+  max-width: 1rem;
+  vertical-align: middle;
 }
 
 select, .select {
@@ -352,4 +354,20 @@ select, .select {
   vertical-align: middle;
   max-height: 100px;
   max-width: 100px;
+}
+
+.outside-layout .search-box {
+  input {
+    border: 1px solid blue;
+    height: 2.1rem;
+    width: 9rem;
+  }
+  .search-button {
+    padding: 5px;
+  }
+  //.fa {
+  //  position: relative;
+  //  margin-left: 5px;
+  //  top: 4px;
+  //}
 }

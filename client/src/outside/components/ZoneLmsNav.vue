@@ -1,37 +1,62 @@
 <template lang="pug">
   div(id='nav-menu', :class='{ iconsOnly: iconsOnly }')
-    button(@click="gotoCourses", :title='navText.COURSES_LABEL')
+    router-link(
+      :class="routeClass('/courses')",
+      to="/courses", class='router-item level1')
       fas-icon(class="fa", :icon="appIcons.course")
-      span(v-show='!iconsOnly') {{navText.COURSES_LABEL}}
-    button(@click="gotoActivity", :title='navText.ACTIVITIES')
+      span(v-show='!iconsOnly') &nbsp; {{navText.COURSES_NAV_LABEL}}
+    router-link(
+      v-if="hasCourse",
+      :class="routeClass('/course')",
+      :to="{ name: 'course', query: { courseId: course._id }}",
+      :title='navText.GOTO_COURSE(courseTitle)',
+      class='router-item level2')
+      fas-icon(class="fa", :icon="appIcons.course")
+      span(v-show='!iconsOnly') &nbsp; {{truncate(courseTitle)}}
+    router-link(
+      :class="routeClass('/lms-instructor-activity')",
+      v-if="hasCourse && hasActivity",
+      to="/lms-instructor-activity",
+      :title='navText.GOTO_ACTIVITY(activityName)',
+      class='router-item level3')
       fas-icon(class="fa", :icon="appIcons.activity")
-      span(v-show='!iconsOnly') {{navText.ACTIVITIES}}
-    button(@click="gotoLObj", :title='navText.LOBJ_LABEL')
+      span(v-show='!iconsOnly') &nbsp; {{truncate(activityName)}}
+    router-link(
+      :class="routeClass('/learning-objects')",
+      to="/learning-objects", :title='navText.LOBJ_LABEL', class='router-item level1')
       fas-icon(class="fa", :icon="appIcons.lobj")
-      span(v-show='!iconsOnly') {{navText.LOBJ_LABEL}}
-    button(@click="gotoSeeds", :title='navText.SEED_LIST_LABEL')
+      span(v-show='!iconsOnly') &nbsp; {{navText.LOBJ_LABEL}}
+    router-link(
+      :class="routeClass('/seed-list')",
+      to="/seed-list", :title='navText.SEED_LIST_LABEL', class='router-item level1')
       fas-icon(class="fa", :icon="appIcons.seed")
-      span(v-show='!iconsOnly') {{navText.SEED_LIST_LABEL}}
-    button(@click="gotoFiles", :title='navText.FILE_LABEL')
+      span(v-show='!iconsOnly') &nbsp; {{navText.SEED_LIST_LABEL}}
+    router-link(
+      :class="routeClass('/fileList')",
+      to="/fileList", :title='navText.FILE_LABEL', class='router-item level1')
       fas-icon(class="fa", :icon="appIcons.file")
-      span(v-show='!iconsOnly') {{navText.FILE_LABEL}}
-    button(@click="gotoLms", :title='navText.LMS_LABEL')
+      span(v-show='!iconsOnly') &nbsp; {{navText.FILE_LABEL}}
+    a(href="#", @click.prevent="exitToLms", :title='navText.EXIT_LABEL', class='router-item level1')
+      fas-icon(class="fa", :icon="appIcons.exitToLms")
+      span(v-show='!iconsOnly') &nbsp; {{navText.EXIT_LABEL}}
+    router-link(
+      :class="routeClass('/consumer')",
+      :to="{ name: 'consumer', query: { consumerId: consumerId } }",
+      :title='navText.LMS_LABEL',
+      class='router-item level1')
       fas-icon(class="fa", :icon="appIcons.consumer")
-      span(v-show='!iconsOnly') {{navText.LMS_LABEL}}
+      span(v-show='!iconsOnly') &nbsp; {{navText.LMS_LABEL}}
     div(v-show='!iconsOnly')
-      hr
       div(class="clickable")
         input(type="checkbox", id="creator", @input="setDevContent",
           :checked="isDevelopingContent")
         label(for='creator') {{navText.DESIGNER_MODE_LABEL}}
-      div(class="clickable")
-        input(type="checkbox", id="showLabels", @input="setOutsideLabels",
-          :checked="isOutsideShowButtonLabels")
-        label(for='showLabels') {{navText.SHOW_BUTTON_LABELS(this.isOutsideShowButtonLabels)}}
-    hr
-    button(@click="exitToLms", :title='navText.EXIT_LABEL')
-      fas-icon(class="fa", :icon="appIcons.exitToLms")
-      span(v-show='!iconsOnly') {{navText.EXIT_LABEL}}
+      // hiding show button labels.
+      // TODO consider removal of unused code
+      //div(v-if="false", class="clickable")
+      //  input(type="checkbox", id="showLabels", @input="setOutsideLabels",
+      //    :checked="isOutsideShowButtonLabels")
+      //  label(for='showLabels') {{navText.SHOW_BUTTON_LABELS(this.isOutsideShowButtonLabels)}}
     hr
 </template>
 
@@ -51,19 +76,27 @@ export default {
     }
   },
   computed: {
-    isDevelopingContent () {
-      return StoreHelper.isDevelopingContent()
-    },
-    isOutsideShowButtonLabels () {
-      return StoreHelper.isOutsideShowButtonLabels()
-    }
+    activity () { return this.$store.getters['activityStore/activityRecord'] },
+    activityName () { return this.activity.learningObjectName },
+    consumerId () { return StoreHelper.consumerId() },
+    hasActivity () { return this.$store.getters['activityStore/hasActivity'] },
+    hasCourse () { return this.$store.getters['courseStore/hasCourse'] },
+    course () { return this.$store.getters['courseStore/course']},
+    courseTitle () { return this.course ? this.course.title : undefined },
+    isDevelopingContent () { return StoreHelper.isDevelopingContent() },
+    isOutsideShowButtonLabels () { return StoreHelper.isOutsideShowButtonLabels() },
+    exitUrl () { return this.visitData.returnUrl },
+    visitData () { return this.$store.getters['visit/visitData'] || {}}
   },
   methods: {
     exitToLms () {
       StoreHelper.exitToLms()
     },
     gotoActivity () {
-      this.navigate('/lms-activity')
+      this.navigate('/lms-instructor-activity')
+    },
+    gotoCourse () {
+      this.navigate({ name: 'course', query: { courseId: this.course._id } })
     },
     gotoCourses () {
       this.navigate('/courses')
@@ -86,11 +119,18 @@ export default {
         this.$router.push(path)
       }
     },
+    routeClass ( path) {
+      return this.$route.path === path ? 'active-link' : ''
+    },
     setOutsideLabels () {
       StoreHelper.setOutsideShowButtonLabels( !this.isOutsideShowButtonLabels)
     },
     setDevContent () {
       StoreHelper.setIsDevelopingContent( !this.isDevelopingContent)
+    },
+    truncate (text) {
+      const lim = 25
+      return text && text.length > lim ? `${text.substring(0, lim)}...` : text
     }
   }
 }
@@ -102,22 +142,25 @@ export default {
 .iconsOnly button {
   width: 2rem;
 }
-#nav-menu button {
-  display: block;
-  background-color: $grey03;
-  border: none;
-  margin-bottom: 0.5rem;
-  &:hover {
-    box-shadow: 2px 2px 5px $grey20
-  }
-  .fa {
-    display: inline-block;
-    margin-right: 1rem;
-    width: 2rem;
-  }
-}
 .clickable {
   margin-left: 0.75rem;
-  margin-bottom: 1rem;
+}
+
+/*
+.router-item is defined in outside.css. Here we adjust its bottom margin
+*/
+.router-item {
+  margin-bottom: 5px;
+  padding: 5px;
+  text-decoration: none;
+}
+.active-link {
+  background-color: $nav-active;
+}
+.level2 {
+  margin-left: 8px;
+}
+.level3 {
+  margin-left: 16px;
 }
 </style>

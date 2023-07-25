@@ -57,5 +57,5 @@ jobs:
       - run: npm run lint -- --no-fix
         working-directory: server
       # run a subset of the tests avoiding those that require a database connection (i.e. *.server.spec.js)
-      - run: npm run test:system
+      - run: npm run test:all:system
         working-directory: server

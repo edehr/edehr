@@ -6,7 +6,10 @@ import { logError} from '../helpers/log-error'
 import dropSchemas from './dropschemas'
 import ActivityDataController from '../mcr/activity-data/activity-data-controller'
 import SeedDataController from '../mcr/seed/seedData-controller'
-import EhrDataModel from '../ehr-definitions/EhrDataModel'
+import EhrDataModel, { CURRENT_EHR_DATA_VERSION } from '../ehr-definitions/EhrDataModel'
+import dbCreateMissingCourses from './courseIntegtrations'
+import { dbAnonymizeUsers, dbAnonymizeActivityData } from './dbAnonymize'
+import dbSeedDataAppType from './dbSeedDataAppTypes'
 const activityDataController = new ActivityDataController()
 const seedController = new SeedDataController()
 
@@ -55,6 +58,8 @@ export default async function (forceSeeding = false) {
   return await doIntegrations()
 }
 
+
+
 /**
  * Integrations are database transformations (updates) that take place when the server starts.
  * These operate over the data that is in the database.
@@ -67,24 +72,83 @@ export default async function (forceSeeding = false) {
  * @returns {Promise<void>}
  */
 async function doIntegrations () {
-  debug('dbSeeder. BEGIN')
+  debug('dbSeeder - doIntegrations. BEGIN')
   const start = performance.now()
+  await doConsumerIntegrations()
+  await doCourseIntegrations()
+  await doSeedAppTypeIntegrations()
+  // console.log('THIS NEXT LINE ANONYMIZES THE DATABASE. Good to do on a real db for use with development.')
+  // await doAnonymize()
+  const end = performance.now()
+  debug('dbSeeder - doIntegrations. DONE.', Math.round(end - start), 'ms')
+}
+
+/**
+ *
+ * @returns {Promise<void>}
+ */
+async function doConsumerIntegrations () {
   const doConsumer = await checkIntegration('consumers', false)
   if (doConsumer) {
+    debug('dbSeeder. Consumers. BEGIN')
+    const start = performance.now()
     // warning -- this function deletes all existing consumers. Since this is seeding this never happens after the first time.
     debug('dbSeeder. consumer')
     await dbCreateConsumers(true)
+    const end = performance.now()
+    debug('dbSeeder. Consumers. DONE.', Math.round(end - start), 'ms')
   }
+}
+
+async function doCourseIntegrations () {
+  const doUpdate = await checkIntegration('introduceCourse', false)
+  if(doUpdate) {
+    debug('introduceCourse. BEGIN')
+    const start = performance.now()
+    await dbCreateMissingCourses(true)
+    const end = performance.now()
+    debug('introduceCourse. DONE.', Math.round(end - start), 'ms')
+  }
+}
+
+async function doSeedAppTypeIntegrations () {
+  const doUpdate = await checkIntegration('seedAppType', false)
+  if(doUpdate) {
+    debug('seedAppType. BEGIN')
+    const start = performance.now()
+    await dbSeedDataAppType()
+    const end = performance.now()
+    debug('seedAppType. DONE.', Math.round(end - start), 'ms')
+  }
+}
+
+// eslint-disable-next-line no-unused-vars
+async function doAnonymize () {
+  debug('doAnonymize. BEGIN')
+  const start = performance.now()
+  await dbAnonymizeUsers()
+  await dbAnonymizeActivityData()
   const end = performance.now()
-  debug('dbSeeder. DONE.', Math.round(end - start), 'ms')
+  debug('doAnonymize. DONE.', Math.round(end - start), 'ms')
 }
 
 export async function updateAllEhrData () {
-  await _updateActivityData()
-  await _updateSeeds()
+  const checkName = 'updateEhr_' + CURRENT_EHR_DATA_VERSION
+  const doUpdate = await checkIntegration(checkName, false)
+  if(doUpdate) {
+    debug('updateAllEhrData. BEGIN')
+    const start = performance.now()
+    await _updateActivityData()
+    await _updateSeeds()
+    const end = performance.now()
+    debug('updateAllEhrData. DONE.', Math.round(end - start), 'ms')
+  } else {
+    debug('updateAllEhrData. HISTORY')
+  }
 }
 
 async function _updateActivityData () {
+  debug('updateAllEhrData. activity data')
   const start = performance.now()
   let cnt = 0
   const activityDataList = await activityDataController.list({assignmentData: { $exists: true} },{assignmentData: true})
@@ -93,6 +157,9 @@ async function _updateActivityData () {
     if (!EhrDataModel.IsUpToDate(ad.assignmentData)) {
       cnt++
       await activityDataController.updateAndSaveAssignmentEhrData(ad._id, ad.assignmentData)
+      if (cnt % 100 === 0) {
+        debug('updateAllEhrData. updated ', cnt)
+      }
     }
   }
   const end = performance.now()
@@ -100,11 +167,12 @@ async function _updateActivityData () {
 }
 
 async function _updateSeeds () {
+  debug('updateAllEhrData. case studies')
   const start = performance.now()
   let cnt = 0
-  const seedDataList = await seedController.list({isDefault: false}, {name: true, ehrData: true})
+  const seedDataList = await seedController.list({ isDefault: false }, { name: true, ehrData: true })
   const list = seedDataList.seeddata
-  for ( const seed of list) {
+  for (const seed of list) {
     if (!EhrDataModel.IsUpToDate(seed.ehrData)) {
       cnt++
       await seedController.updateAndSaveSeedEhrData(seed._id, seed.ehrData)

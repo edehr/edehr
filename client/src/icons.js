@@ -49,10 +49,14 @@ import {
   faPen,
   faPlus,
   faPrescription,
+  faSearch,
   faSchool,
   faSignOutAlt,
   faStethoscope,
   faStickyNote,
+  faSort,
+  faSortUp,
+  faSortDown,
   faTable,
   faTag,
   faThLarge,
@@ -66,7 +70,7 @@ import {
   faUserGraduate,
   faUserClock,
   faUserFriends,
-  faUserInjured,
+  faUserInjured
 } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome, faCanadianMapleLeaf } from '@fortawesome/free-brands-svg-icons'
 
@@ -115,6 +119,7 @@ export default function (Vue) {
     faList,
     faLock,
     faMagic,
+    faSearch,
     faMedkit,
     faMinus,
     faNotesMedical,
@@ -125,6 +130,9 @@ export default function (Vue) {
     faSignOutAlt,
     faStethoscope,
     faStickyNote,
+    faSort,
+    faSortUp,
+    faSortDown,
     faTable,
     faTag,
     faThLarge,

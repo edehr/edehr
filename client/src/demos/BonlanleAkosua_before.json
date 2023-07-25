@@ -2,6 +2,7 @@
   "id": "646bd2e4640b290012134889",
   "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
   "contributors": "Katrina Lavallee",
+  "appType": "LIS",
   "ehrData": {
     "meta": {
       "simTime": {
@@ -11,6 +12,15 @@
       "ehrVersion": "ev2.2.3"
     },
     "demographics": {
+      "givenName": "Akosua",
+      "familyName": "BONLANLE",
+      "personAge": "17",
+      "gender": "Female",
+      "dateOfBirth": "2006-01-19",
+      "phn": "2013114",
+      "lastUpdate": "2023-05-22T20:40:32+00:00"
+    },
+    "medLabDemographics": {
       "givenName": "Akosua",
       "familyName": "BONLANLE",
       "personAge": "17",

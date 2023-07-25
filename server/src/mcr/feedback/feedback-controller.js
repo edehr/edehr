@@ -3,7 +3,7 @@ import Feedback from '../feedback/feedback'
 
 export default class FeedbackController extends BaseController {
   constructor (config) {
-    super(Feedback, '_id')
+    super(Feedback)
     this.config = config
   }
 

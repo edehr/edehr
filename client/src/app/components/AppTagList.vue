@@ -1,19 +1,20 @@
 <template lang='pug'>
   div
-    app-tag(v-for='(tag, x) in tagList', :key='tag + x', :tag='tag')
+    div(v-for='(tag) in nonEmptyList',
+      :key='tag',
+      class="app-tag"
+    )
+      span {{tag}}
 </template>
 
 <script>
-import AppTag from '@/app/components/AppTag.vue'
-
 export default {
-  components: { AppTag },
   props: {
     tagList: {type: Array}
+  },
+  computed: {
+    // sometimes the tag list may contain an empty string
+    nonEmptyList () { return this.tagList.filter(e => e.length > 0)}
   }
 }
 </script>
-
-<style scoped>
-
-</style>

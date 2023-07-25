@@ -5,6 +5,7 @@
       div(v-if="showSideNav", class="left_side bigger-screens-900", :class='{left_side_small: lgScreenNavCollapsed}')
         div(class="lmsNavPanel lgScrnNavPanel")
           div(class="flow_across collapse-button")
+            div(v-show="!lgScreenNavCollapsed")  {{givenName}} / {{ role }}
             zone-lms-button(
               class="flow_across_last_item",
               @action="toggleCollapseNavPanel",
@@ -52,6 +53,8 @@ export default {
   },
   computed: {
     isStudent () { return StoreHelper.isStudent() },
+    asStudent () { return StoreHelper.isInstructorAsStudent() },
+    isInstructor () { return StoreHelper.isInstructor() },
     inZoneLMS () { return StoreHelper.inZoneLMS() },
     showSideNav () { return this.inZoneLMS && this.$route.name !== UNLINKED_ACTIVITY_ROUTE_NAME },
     pageIcon () {
@@ -68,31 +71,25 @@ export default {
     },
     lmsName ()          { return StoreHelper.lmsName() },
     lgScreenNavCollapsed () { return this.$store.getters['system/lmsNavCollapsed']},
+    givenName () { return StoreHelper.givenName()},
+    role () {
+      return this.isInstructor ? 'instructor' :
+        this.asStudent ? 'as student' :
+          'student'
+    }
   },
   methods: {
     toggleCollapseNavPanel () {
       const value = this.lgScreenNavCollapsed
       this.$store.dispatch('system/setLmsNavCollapsed', !value)
     },
-    gotoActivity () { this.navigate('/lms-activity') },
-    gotoCourses () { this.navigate('/courses') },
-    gotoFiles () { this.navigate('/fileList') },
-    gotoLObj () { this.navigate('/learning-objects') },
-    gotoLms () { this.navigate({ name: 'consumer', query: { consumerId: StoreHelper.consumerId() } }) },
-    gotoSeeds () { this.navigate('/seed-list') },
-    navigate (path) {
-      // prevent Vue's NavigationDuplicated
-      if (this.$route.path !== path) {
-        this.$router.push(path)
-      }
-    }
   },
   watch: {
     $route: function (curr, prev) {
       if (curr !== prev && this.smScrnShowNav) {
         const currArray = curr.path.split('/')
         const prevArray = prev.path.split('/')
-        console.log('currArray[2] === prevArray[2]', currArray[2], prevArray[2])
+        console.log('LayoutLms fix smScrnShowNav. currArray[2] === prevArray[2]', currArray[2], prevArray[2])
         // The third item in the path array contains information about the
         // page, which was making the navigation awkward on mobile devices.
         // By implementing this, we assure that the navPanel will only be hidden
@@ -148,7 +145,7 @@ main {
   background-color: $grey20;
   color: $brand-primary;
   box-shadow: none;
-  border-radius: 3px;
+  border-radius: $button-border-radius;
   margin-right: 5px;
   margin-top: 5px;
   width: 1.75rem;
@@ -168,9 +165,6 @@ main {
   transition: .3s width ease-in-out;
 }
 
-.lgScrnNavPanel {
-  height: 100vh;
-}
 .smScrnShowNav {
   height: auto !important;
 }

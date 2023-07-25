@@ -1,14 +1,12 @@
 import {ok, fail} from '../common/utils'
-import { Text } from '../../config/text'
 import BaseController from '../common/base'
 import Visit from './visit'
 import ActivityData from '../activity-data/activity-data'
 import Role from '../roles/roles'
 import mongoose from 'mongoose'
-import { ParameterError, SystemError } from '../common/errors'
+import { SystemError } from '../common/errors'
 import { ObjectId as ObjectID } from 'mongodb'
 import { logError } from '../../helpers/log-error'
-import qs from 'qs'
 
 const debug = require('debug')('server')
 function debugvc (msg) {
@@ -18,7 +16,7 @@ function debugvc (msg) {
 
 export default class VisitController extends BaseController {
   constructor (config) {
-    super(Visit, '_id')
+    super(Visit)
     this.config = config
   }
   setSharedControllers (cc) {
@@ -33,7 +31,7 @@ export default class VisitController extends BaseController {
     return this.model.find(filter)
       .populate('activity')
       .populate('activityData')
-      .populate('user', 'givenName familyName fullName emailPrimary')
+      .populate('user', 'givenName familyName fullName')
   }
 
   findVisit (id) {
@@ -145,57 +143,49 @@ export default class VisitController extends BaseController {
 
     router.post('/restoreAsInstructor', async (req, res, next) =>  {
       const authHeader = req.headers.authorization
-      return await this._getTokenAndProcess(authHeader, res, (payload) => {
+      return await this.authUtil.getTokenAndProcessChange(authHeader, res, (tokenData) => {
         // console.log('Current token contents', payload)
-        return payload.instructorToken
+        return tokenData.instructorToken
       })
     })
 
     router.post('/visitAsStudent', async (req, res, next) =>  {
-      const authHeader = req.headers.authorization
       if (!req.body || !req.body.activityId) {
         logError('Visit as student requires activity id in body')
         return res.status(400).send('Visit as student requires activity id in body')
       }
       const activityId = req.body.activityId
-      return await this._getTokenAndProcess(authHeader, res, async (payload) => {
-        debug('visitAsStudent callback start with activityId', activityId)
-        const instructorToken = this.authUtil.extractTokenFromAuthHeader(authHeader)
-        // debug('vas instructor token contents', payload)
-        const instructorAsStudentPayload = await this.visitAsStudent(payload, activityId)
-        instructorAsStudentPayload.instructorToken = instructorToken
-        // debug('vas', instructorAsStudentPayload)
-        debug('visitAsStudent callback end by creating new token')
+      const authHeader = req.headers.authorization
+      return await this.authUtil.getTokenAndProcessChange(authHeader, res, async (tokenData) => {
+        // debug('visitAsStudent callback start with activityId', activityId)
+        const instructorAsStudentPayload = await this.visitAsStudent(tokenData, activityId)
+        // place previous token inside the new token data. Will use this to restore role back to instructor.
+        instructorAsStudentPayload.instructorToken = this.authUtil.extractTokenFromAuthHeader(authHeader)
         return this.authUtil.createToken(instructorAsStudentPayload /*no expires, payload already has expires*/)
+      })
+    })
+
+
+    router.post('/change-visit', async (req, res, next) =>  {
+      if (!req.body || !req.body.visitId) {
+        const msg = 'Change visit requires new visit id in request body.'
+        logError(msg)
+        return res.status(400).send(msg)
+      }
+      const authHeader = req.headers.authorization
+      const visitId = req.body.visitId
+      return await this.authUtil.getTokenAndProcessChange(authHeader, res, async (tokenData) => {
+        debug('change-visit to visitId', visitId)
+        tokenData.visitId = visitId
+        if (!tokenData.history) {
+          tokenData.history = []
+        }
+        tokenData.history.push( { v: visitId, t: Date.now() })
+        return this.authUtil.createToken(tokenData /*no expires, payload already has expires*/)
       })
     })
 
     return router
   }
 
-  async _getTokenAndProcess (authHeader, res, cb) {
-    if (authHeader) {
-      try {
-        // debug('vas auth hdr', authHeader)
-        const payload = await this.authUtil.authenticate(authHeader)
-        const nextToken = await cb(payload)
-        // debug('_getTokenAndProcess send back new token', nextToken)
-        return res.status(200).json({ token: nextToken })
-      } catch (err) {
-        debug('_getTokenAndProcess error', err)
-        // EXPIRED_TOKEN
-        if (err.name === 'TokenExpiredError') {
-          logError('AuthController _getTokenContent --- Token is expired!')
-          res.status(401).send(Text.EXPIRED_TOKEN)
-        } else {
-          logError('_getTokenContent threw >> ', JSON.stringify(err))
-          // Here this can be 500, since it catches and error from the jwt.verify function
-          res.status(500).send(Text.SYS_ERROR)
-        }
-      }
-    } else {
-      logError('AuthController _getTokenContent --- Token is required!')
-      res.status(401).send(Text.TOKEN_REQUIRED)
-    }
-  }
 }

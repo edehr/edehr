@@ -5,16 +5,14 @@ const API = 'activities'
 const OBJ = 'activity'
 
 const state = {
-  activity: {},
+  activityRecord: {},
   activityId: ''
 }
 
 const getters = {
-  activity: state => state.activity,
   activityId: state => state.activityId,
-  activityTitle: state => state.activity.resource_link_title,
-  activityDescription: state => state.activity.resource_link_description,
-  courseTitle: state => state.activity.context_title,
+  activityRecord: state => state.activityRecord,
+  hasActivity: state => JSON.stringify(state.activityRecord).length > 2,
 }
 
 const actions = {
@@ -46,18 +44,26 @@ const actions = {
   setActivityId (context, id) {
     context.commit('setActivityId', id)
   },
-  loadCurrentActivity ({dispatch, commit, state}) {
-    const id = state.activityId
-    if(!id || id.length===0) {
-      throw new Error('System failure. Can not load the current activity because no activity id has been set')
-    }
-    return dispatch('get',id)
-      .then( (results) => {
-        commit('setActivity', results)
-        return results
-      })
+  clearCurrentActivity (context) {
+    context.commit('clearActivity')
+    context.commit('setActivityId', undefined)
   },
-
+  loadActivityRecord (context) {
+    const visitId = context.rootGetters['visit/visitId']
+    let url = 'getActivityRecord/' + visitId
+    return InstoreHelper.getRequest(context, API, url).then(async response => {
+      let results = response.data['activityRecord']
+      // console.log('in load activity record', visitId, results)
+      if (!results) {
+        let msg = Text.GET_ACTIVITY_STORE_ERROR(id)
+        StoreHelper.setApiError(msg)
+        return
+      }
+      await context.commit('setActivityId', results.id)
+      await context.commit('setActivityRecord', results)
+      return results
+    })
+  },
   get (context, id) {
     let url = 'get/' + id
     return InstoreHelper.getRequest(context, API, url).then(response => {
@@ -70,14 +76,20 @@ const actions = {
       return results
     })
   },
+  updateTitleDescription ({dispatch, commit}, payload) {
+    // const {custom_title, custom_description} = payload
+    const {activityId } = payload
+    let url = 'update-text/' + activityId
+    let data = { url: url, data: payload }
+    // console.log('activity-store update title. data ', data)
+    return dispatch('put', data)
+  },
   put (context, payload) {
     // console.log('activityStore put payload', payload)
     let url = payload.url
     let data = payload.data
     return InstoreHelper.putRequest(context, API, url, data).then(response => {
-      let results = response.data
-      context.commit('setActivity', results)
-      return results
+      return context.dispatch('loadActivityRecord')
     })
   },
 }
@@ -98,9 +110,11 @@ const mutations = {
       localStorage.setItem(ACTIVITY_LOCAL_STORE, state.activityId)
     } else {
       state.activityId = ''
-      // This id needs to survive a browser refresh
       localStorage.removeItem(ACTIVITY_LOCAL_STORE)
     }
+  },
+  clearActivity: (state) => {
+    state.activityRecord = {}
   },
   setActivity: (state, activity) => {
     if(state.activityId !== activity._id) {
@@ -108,17 +122,12 @@ const mutations = {
     }
     state.activity = activity
   },
-
-  // set: (state, data) => {
-  //   console.log('activityStore MAKE THIS GO OBSOLETE set')
-  //   // console.log('activityStore set data', data)
-  //   // transfer the db id to the field we use
-  //   state.activityId = data._id
-  //   // This id needs to survive a browser refresh
-  //   localStorage.setItem(ACTIVITY_LOCAL_STORE, state.activityId)
-  //   state.activity = data
-  // },
-
+  setActivityRecord: (state, activityRecord) => {
+    if(state.activityId !== activityRecord.id) {
+      throw new Error('System failure. The given activity has a different id then expected.')
+    }
+    state.activityRecord = activityRecord
+  }
 }
 
 export default {

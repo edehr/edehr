@@ -6,12 +6,14 @@ const debug = false
 
 const state = {
   assignmentsListing: [],
+  listMetadata: {},
 }
 
 const getters = {
   list: state => {
     return state.assignmentsListing
-  }
+  },
+  listMetadata: state => { return state.listMetadata },
 }
 
 function getAssignmentViaApi (context, url) {
@@ -42,6 +44,32 @@ const actions = {
   getAssignmentsWithCounts (context) {
     let url = 'withActivityCount/' + StoreHelper.getAuthdConsumerId()
     return getAssignmentViaApi(context, url)
+  },
+
+  loadPage (context, payload) {
+    let consumerId = StoreHelper.getAuthdConsumerId()
+    if (!consumerId) {
+      // this can happen if you visit the L Objs page and then refresh the page. No worries. Load will happen later.
+      // console.log('L Obj List. Will not load lobjs at this time because the consumer id is not yet set up.')
+      return
+    }
+    let { offset, limit, sortKey, sortDir, appTypes, searchTerm } = payload
+    // appTypes a CSV string with appTypes like EHR and LIS
+    let qs = `toolConsumerId=${consumerId}&offset=${offset}&limit=${limit}&sortKey=${sortKey}&sortDir=${sortDir}&appTypes=${appTypes}`
+    if (searchTerm) {
+      qs += '&searchTerm=' + searchTerm
+    }
+    let url = 'paginate?' + qs
+    return InstoreHelper.getRequest(context, API, url).then(response => {
+      let list = response.data.list
+      if (!list) {
+        console.error('ERROR the system should have seeddata')
+        return
+      }
+      context.commit('setAssignmentsListing', list)
+      context.commit('_setListMeta', response.data.metadata)
+      return list
+    })
   },
 
 
@@ -95,8 +123,11 @@ const actions = {
 const mutations = {
   setAssignmentsListing: (state, cData) => {
     if(debug) console.log('setAssignmentsListing ', cData)
-    cData.sort( (a,b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()) )
+    // cData.sort( (a,b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()) )
     state.assignmentsListing = cData
+  },
+  _setListMeta: (state, metadata) => {
+    state.listMetadata = metadata
   },
 }
 

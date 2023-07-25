@@ -38,6 +38,9 @@ describe(`${typeName} controller testing`, function () {
     let data = Helper.sampleActivityData(theConsumerId, theVisitId)
     controller.create(data).then(doc => {
       should.exist(doc)
+      let err = doc.validateSync()
+      // console.log('--------------------', doc, '. error:', err)
+      should.not.exist(err)
       theActivityData = doc
       controller.findOne(theActivityData._id).then(doc => {
         // debug('findOne results', doc)

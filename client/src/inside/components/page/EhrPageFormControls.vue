@@ -1,13 +1,14 @@
 <template lang="pug">
   div
     <!--div isEditing {{ isEditing}} canEdit {{canEdit}}-->
-    ui-button(v-on:buttonClicked="beginEdit", v-show="canEdit", class=" button is-light")
-      fas-icon(icon="edit", class="icon-left") 
+    ui-button(v-on:buttonClicked="beginEdit", v-show="canEdit")
+      fas-icon(icon="edit", class="icon-left")
       span Edit form
-    ui-button(v-on:buttonClicked="saveEdit", v-show="isEditing", class=" button is-primary")
+    ui-button(v-on:buttonClicked="saveEdit", v-show="isEditing")
       fas-icon(icon="check-circle", class="icon-left")
       span Save
-    ui-button(v-on:buttonClicked="cancelEdit", v-show="isEditing", class=" button is-light")
+    span(v-show="isEditing") &nbsp;
+    ui-button(v-on:buttonClicked="cancelEdit", v-show="isEditing")
       fas-icon(icon="times-circle", class="icon-left")
       span Cancel
 </template>

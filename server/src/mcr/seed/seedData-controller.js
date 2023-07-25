@@ -3,17 +3,18 @@ import BaseController from '../common/base'
 import Assignment from '../assignment/assignment'
 import SeedData from './seed-data'
 import { Text }  from '../../config/text'
-import { NotAllowedError } from '../common/errors'
+import { NotAllowedError, ParameterError } from '../common/errors'
 import {ok, fail} from '../common/utils'
 import { logError} from '../../helpers/log-error'
 import EhrDataModel from '../../ehr-definitions/EhrDataModel'
 import { EHR_EVENT_BUS, EHR_SEED_EVENT } from '../../server/trace-ehr'
 import { decoupleObject } from '../../ehr-definitions/common-utils'
+import mongoose from 'mongoose'
 const debug = require('debug')('server')
 
 export default class SeedDataController extends BaseController {
   constructor () {
-    super(SeedData, '_id')
+    super(SeedData)
   }
 
   /**
@@ -30,12 +31,77 @@ export default class SeedDataController extends BaseController {
    * @returns {*}
    */
   create (data) {
-    debug('SeedData. Create seed with', JSON.stringify(data))
+    // debug('SeedData. Create seed with', JSON.stringify(data))
     // put the data into an EhrDataModel to get the data transformed to the latest version, if needed
     const ehrDataModel = new EhrDataModel(data.ehrData)
     data.ehrData = ehrDataModel.ehrData
     return super.create(data)
   }
+
+  async collectAllTags (toolConsumerId) {
+    // use set to get unique tags
+    let tagSet = new Set()
+    if (!mongoose.Types.ObjectId.isValid(toolConsumerId)) {
+      throw new ParameterError(Text.INVALID_CONSUMER_ID(toolConsumerId))
+    }
+    // collect all the seeds with tagLists
+    const seedList = await this.model.find({ toolConsumer: toolConsumerId, tagList: { $ne: null} }, { tagList: 1 })
+    seedList.forEach(seed => {
+      let tagList = seed.tagList
+      if (tagList.length > 0) {
+        tagList.forEach(tag => {
+          tagSet.add(tag)
+        })
+      }
+    })
+    // convert set to array and then sort tags
+    return { tagList: Array.from(tagSet).sort() }
+  }
+
+  paginateInitialFieldSet () {
+    return { _id: 1, name:1, appType: 1 }
+  }
+  paginateInitialFilter (resultSet, options) {
+    if(options.appTypes) {
+      return resultSet.filter(item => options.appTypes.includes(item.appType))
+    }
+    return resultSet
+  }
+  paginateQuery (options) {
+    let query = super.paginateQuery(options)
+    query.isDefault = false
+    if (options.tagList) {
+      const tagList = options.tagList.split(',')
+      query.tagList = { $in: tagList }
+    }
+    if (options.searchTerm) {
+      let searchTerm = options.searchTerm
+      query['$or'] = [
+        { name: { $regex: searchTerm, $options : 'i' } },
+        { description: { $regex: searchTerm, $options : 'i' } }
+      ]
+      // console.log(' seed data paginate search query ', searchTerm, JSON.stringify(query))
+    }
+    return query
+  }
+  paginateResultFields () {
+    return {
+      appType: 1,
+      contributors: 1,
+      name: 1,
+      description: 1,
+      createDate: 1,
+      lastUpdateDate: 1,
+      tagList: 1,
+      ehrData: 1, // need ehrData to compute the seed stats
+      version: 1,
+      draftRows: 1
+    }
+  }
+  paginateFinalPopulate () {
+    return 'assignmentCount'
+  }
+
 
   /**
    * Update a property inside the EHR seed data.  Invoked when client saves data while user is editing a seed.
@@ -133,6 +199,14 @@ export default class SeedDataController extends BaseController {
 
   route () {
     const router = super.route()
+
+    router.get('/allTags/:toolConsumerId', (req, res) => {
+      let toolConsumerId = req.params.toolConsumerId
+      this.collectAllTags(toolConsumerId)
+        .then(ok(res))
+        .then(null, fail(res))
+    })
+
     router.post('/createSeed', (req, res) => {
       const authPayload = req.authPayload
       const { visitId, userId } = authPayload

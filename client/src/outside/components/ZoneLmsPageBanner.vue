@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="flow_across page_banner")
-    zone-lms-page-name(class='left_side')
+    zone-lms-page-name(class='left_side', :title='title')
     div(class='flow_across_last_item')
       slot
 </template>
@@ -8,6 +8,9 @@
 import ZoneLmsPageName from '@/outside/components/ZoneLmsPageName'
 export default {
   components: { ZoneLmsPageName },
+  props: {
+    title: { type: String, default: undefined },
+  },
   computed: {
   }
 }
@@ -29,7 +32,7 @@ export default {
 }
 
 .left_side {
-  width: 30%;
+  min-width: 30%;
 }
 .right_side {
   width: 75%;

@@ -28,13 +28,21 @@ let routes = [
     meta: { layout: 'home', label: 'Home', zone: 'public' }
   },
   {
-    path: '/ehr', name: 'ehr', redirect: '/ehr/patient/demographics'
+    // Redirect from LTI entry to appropriate part of application based on current appType (from seed)
+    path: '/ehr', name: 'ehr', redirect: (to) => {
+      // search for demo_lobjId to see where the appType comes from. Especially in server demo-controller.js
+      const appType = to.query.appType
+      const ehrUrl = '/ehr/patient/demographics'
+      const lisUrl = '/ehr/med-lab/med-lab-accession'
+      return appType === APP_TYPE_LIS ? lisUrl  : appType === APP_TYPE_EHR ? ehrUrl : ehrUrl /* default to ehr */
+    }
   }
 ]
 
 import { outside } from './outsideRoutes'
 routes = routes.concat(outside())
 import { inside } from './insideRoutes'
+import { APP_TYPE_EHR, APP_TYPE_LIS } from '@/helpers/store-helper'
 routes = routes.concat(inside())
 
 routes.push({

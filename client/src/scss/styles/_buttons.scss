@@ -26,7 +26,23 @@ button,
   background-color: $grey10;
   color: $brand-primary;
   border: 1px solid $grey60;
+}
+.outside-layout .paginate-button {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.2rem 0.5rem;
+}
+.outside-layout .paginate-button:hover {
+  color: $brand-highlight;
+  box-shadow: 1px 1px 2px $grey60;
+  border: 1px solid $grey30;
+  font-weight: bolder;
+}
 
+.paginate-button.is-primary:focus,
+{
+  border-color: inherit;
+  color: inherit;
 }
 
 /* .is-primary is, by default, included in the following*/
@@ -35,7 +51,22 @@ button,
   height: 2rem;
   background-color: $brand-highlight;
   color:  $white;
+  font-weight: bolder;
   border: none;
+}
+.ehr-branding button,
+.ehr-branding .button{
+  background-color: $colour-brand-ehr;
+  &:hover {
+    background-color: $colour-brand-ehr-hover;
+  }
+}
+.lis-branding button,
+.lis-branding .button{
+  background-color: $colour-brand-lis;
+  &:hover {
+    background-color: $colour-brand-lis-hover;
+  }
 }
 
 /* .is-primary is, by default, included in the following*/
@@ -115,16 +146,3 @@ button,
   }
 }
 
-// TODO remove this and let the pages handle layout
-//button + button {
-//  margin-left: $buttonRowLeftMargin;
-//}
-///* Small screens */
-//@media screen and (max-width: $main-width-threshold1) {
-//  button + button {
-//    margin-left: 0;
-//  }
-//  button {
-//    margin-bottom: 5px;
-//  }
-//}

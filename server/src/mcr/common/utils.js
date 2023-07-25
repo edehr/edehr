@@ -26,6 +26,10 @@ export function fail (res) {
   return (error) => {
     let code, message
     switch (error.name) {
+    case 'ParameterError':
+      code = error.status
+      message = error.name + ' ' + error.message
+      break
     case 'ValidationError':
     case 'NotAllowedError':
       code = 400

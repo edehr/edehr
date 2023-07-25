@@ -1,46 +1,69 @@
 <template lang='pug'>
-  div
-    app-tag-list(:tag-list="tagListAsArray")
-    input(class="input", type="text", v-model="liveList", @input="handleUpdate")
+  div(class="tag-list-editor")
+    div(v-for='(tag) in tagList',
+      :key='tag',
+      class="app-tag"
+      )
+      span {{tag}}
+      button(v-on:click="removeTagAction(tag)", :title='removeTagText(tag)') x
+    input(class="input", type="text", v-model="tagInput", @change="addTag", @keydown='noSpace', placeholder='Add tag')
 
 </template>
 
 <script>
-
 import AppTagList from '@/app/components/AppTagList.vue'
 
 export default {
   components: { AppTagList },
   data: function () {
     return {
-      // local property that is used by input
-      liveList: ''
+      tagInput: '',
+      liveList: []
     }
   },
   props: {
-    // parent provided property
-    tagList: {type: String}
+    tagList: {type: Array}
   },
   computed: {
-    tagListAsArray () {
-      return this.liveList.split(' ')
-    }
   },
   methods: {
     // inform parent about update
-    handleUpdate () {
-      this.$emit('update',this.liveList)
+    addTag (event) {
+      const val = event.target.value
+      if(val) {
+        let newList = this.liveList
+        newList.push(val)
+        newList.sort()
+        let unique = [...new Set(newList)]
+        let newTagList = unique.join(',')
+        this.tagInput = ''
+        this.$emit('update', newTagList)
+      }
+    },
+    noSpace (event) {
+      // if the key is a space then prevent the default action to prevent spaces in the text
+      if(event.which === 32) {
+        event.preventDefault()
+      }
+    },
+    removeTagAction (tag) {
+      let oldList = this.tagList
+      let newList = oldList.filter( t => t !== tag )
+      this.$emit('update', newList.join(','))
+    },
+    removeTagText (tag) {
+      return `Remove tag "${tag}"`
     }
+  },
+  mounted () {
+    this.liveList = this.tagList || []
   },
   watch: {
     // parent changes property. copy to local
     tagList () {
-      this.liveList = this.tagList || ''
+      this.liveList = this.tagList || []
     },
   }
 }
 </script>
 
-<style scoped>
-
-</style>
