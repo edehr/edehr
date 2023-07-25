@@ -47,7 +47,7 @@
     "test:seed:c": "NODE_ENV=test DEBUG='testing, server, error' node_modules/.bin/mocha --exit --require @babel/register --require @babel/runtime/regenerator --require @babel/polyfill src/mcr/seed/seedDataController.server.spec.js",
     "test:seed:s": "NODE_ENV=test DEBUG='testing, server, error' node_modules/.bin/mocha --exit --require @babel/register --require @babel/runtime/regenerator --require @babel/polyfill src/mcr/seed/seedData.server.spec.js",
     "test:system,comment": "test:system is used in the Git workflow. Not :server because that requires a database",
-    "test:util": "NODE_ENV=test DEBUG='server, error' node_modules/.bin/mocha --exit --bail --require @babel/register --require @babel/runtime/regenerator --require @babel/polyfill src/mcr/util/utilController.system.spec.js",
+    "test:util": "NODE_ENV=test DEBUG='server, error' node_modules/.bin/mocha --exit --bail --require @babel/register --require @babel/runtime/regenerator --require @babel/polyfill src/mcr/util/utilController.spec.js",
     "test:verbose": "npm run build && NODE_ENV=test DEBUG='server, error' node_modules/.bin/mocha dotenv/config --recursive --sort --bail 'build/**/*.spec.js'",
     "test:verbose.comment": "make test.versbose the same as test but add in DEBUG",
     "test:visit": "NODE_ENV=test DEBUG='testing, server, error' node_modules/.bin/mocha --bail --require @babel/register --require @babel/runtime/regenerator --require @babel/polyfill src/mcr/visit/visit-controller.server.spec.js"
