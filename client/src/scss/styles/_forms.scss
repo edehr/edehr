@@ -38,7 +38,6 @@ textarea {
   display: inline-block;
 }
 .form_label {
-  min-width: 7rem;
   text-align: right;
   padding-right: 5px;
   &::after {
@@ -348,6 +347,24 @@ select, .select {
     grid-column: span 1;
   }
 }
+.compact_5_col {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr 0.5fr;
+  gap: 1px;
+  .ehr-group-for {
+    border: 1px solid black;
+    padding: 5px;
+  }
+}
+.med-lab-urin-micro {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
+  gap: 1px;
+  .ehr-group-for {
+    border: 1px solid black;
+    padding: 5px;
+  }
+}
 
 .thumbnail {
   display: inline-block;
@@ -388,4 +405,20 @@ select, .select {
 .rcm_grading {
   grid-column-start: 1;
   grid-column-end: 4;
+}
+
+.form_label {
+  min-width: 8rem;
+  max-width: 8rem;
+}
+.check-label label {
+  min-width: 18rem;
+  max-width: 18rem;
+}
+.text-area-2-rows textarea {
+  height: 3rem;
+}
+
+.grid-left-to-right-2 select {
+  min-width: 15rem;
 }

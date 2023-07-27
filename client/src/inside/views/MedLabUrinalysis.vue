@@ -3,13 +3,13 @@
   div(class="ehr-page")
     ehr-page(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
     div(style="display:none")
-      p This Med Lab Chemistry page is generated.
-      p Label: Med Lab Chemistry
-      p Data Key: medLabChemistry
-      p Component name: UnderConstruction
+      p This Med Lab Urinalysis page is generated.
+      p Label: Med Lab Urinalysis
+      p Data Key: medLabUrinalysis
+      p Component name: MedLabUrinalysis
       p Redirect: 
-      p Route name: med-lab-chemistry
-      p Full path: /ehr/med-lab/med-lab-chemistry
+      p Route name: med-lab-urinalysis
+      p Full path: /ehr/med-lab/med-lab-urinalysis
 </template>
 
 <script>
@@ -17,11 +17,11 @@ import EhrPage from '../components/page/EhrPage'
 import EhrPageHelper from '../components/page/ehr-helper'
 
 export default {
-  name: 'UnderConstruction',
+  name: 'MedLabUrinalysis',
   components: { EhrPage },
   data: function () {
     return {
-      pageDataKey: 'medLabChemistry',
+      pageDataKey: 'medLabUrinalysis',
       ehrHelp: undefined
     }
   },
