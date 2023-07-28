@@ -16,6 +16,9 @@
     div(v-else-if="isType('checkset')", class="checkset_wrapper")
       ehr-element-checkset(:elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
+    div(v-else-if="isType('radioset')", class="checkset_wrapper")
+      ehr-element-radioset(:elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
+
     div(v-else-if="isType('checkbox')", class="checkbox_wrapper")
       input(:id="inputId", class="checkbox", type="checkbox", :disabled="disabled || viewOnly ", :name="elementKey", v-model="inputVal", v-on:change="dependentUIEvent()")
       ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="checkbox_label, check-label", :forElement="inputId")
@@ -164,11 +167,13 @@ import EhrElementMedication from '@/inside/components/page/EhrElementMedication'
 import UiInfo from '@/app/ui/UiInfo'
 import EhrElementCustomForm from '@/inside/components/page/EhrElementCustomForm.vue'
 import EhrElementSelect from '@/inside/components/page/EhrElementSelect.vue'
+import EhrElementRadioset from '@/inside/components/page/EhrElementRadioset.vue'
 
 export default {
   name: 'EhrElementForm',
   extends: EhrElementCommon,
   components: {
+    EhrElementRadioset,
     EhrElementSelect,
     EhrElementCustomForm,
     EhrElementMedication,

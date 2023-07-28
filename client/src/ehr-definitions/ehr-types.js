@@ -38,6 +38,7 @@ const EhrTypes = {
     personAge: 'personAge',
     practitionerName: 'practitionerName',
     practitionerProfession: 'practitionerProfession',
+    radioset: 'radioset',
     text: 'text',
     textarea: 'textarea',
     // time: 'time',

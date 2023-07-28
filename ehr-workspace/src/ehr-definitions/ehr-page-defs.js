@@ -26764,14 +26764,14 @@ const DEFS = {
       {
         'elementKey': 'uchemMorAGlucose',
         'formIndex': '1',
-        'inputType': 'checkset',
+        'inputType': 'radioset',
         'options': [
           {
-            'key': 'manual',
+            'key': 'Manual',
             'text': 'Manual'
           },
           {
-            'key': 'automatic',
+            'key': 'Automatic',
             'text': 'Automatic'
           }
         ],
@@ -26809,7 +26809,7 @@ const DEFS = {
       {
         'elementKey': 'uchemMorABilirubin',
         'formIndex': '1',
-        'inputType': 'select',
+        'inputType': 'radioset',
         'options': [
           {
             'key': 'Manual',
@@ -26854,7 +26854,7 @@ const DEFS = {
       {
         'elementKey': 'uchemMorAKetone',
         'formIndex': '1',
-        'inputType': 'select',
+        'inputType': 'radioset',
         'options': [
           {
             'key': 'Manual',
@@ -26899,7 +26899,7 @@ const DEFS = {
       {
         'elementKey': 'uchemMorASpecific Gravity',
         'formIndex': '1',
-        'inputType': 'select',
+        'inputType': 'radioset',
         'options': [
           {
             'key': 'Manual',
@@ -26948,7 +26948,7 @@ const DEFS = {
       {
         'elementKey': 'uchemMorABlood',
         'formIndex': '1',
-        'inputType': 'select',
+        'inputType': 'radioset',
         'options': [
           {
             'key': 'Manual',
@@ -26993,7 +26993,7 @@ const DEFS = {
       {
         'elementKey': 'uchemMorApH',
         'formIndex': '1',
-        'inputType': 'select',
+        'inputType': 'radioset',
         'options': [
           {
             'key': 'Manual',
@@ -27042,7 +27042,7 @@ const DEFS = {
       {
         'elementKey': 'uchemMorAProtein',
         'formIndex': '1',
-        'inputType': 'select',
+        'inputType': 'radioset',
         'options': [
           {
             'key': 'Manual',
@@ -27090,7 +27090,7 @@ const DEFS = {
       {
         'elementKey': 'uchemMorAUrobilinogin',
         'formIndex': '1',
-        'inputType': 'select',
+        'inputType': 'radioset',
         'options': [
           {
             'key': 'Manual',
@@ -27139,7 +27139,7 @@ const DEFS = {
       {
         'elementKey': 'uchemMorANitrite',
         'formIndex': '1',
-        'inputType': 'select',
+        'inputType': 'radioset',
         'options': [
           {
             'key': 'Manual',
@@ -27187,7 +27187,7 @@ const DEFS = {
       {
         'elementKey': 'uchemMorALeukocytes',
         'formIndex': '1',
-        'inputType': 'select',
+        'inputType': 'radioset',
         'options': [
           {
             'key': 'Manual',
@@ -27446,6 +27446,7 @@ const DEFS = {
             'text': 'RTE'
           }
         ],
+        'tableColumn': '34',
         'fqn': 'medLabUrinalysis.umicroTypesEpitheal'
       },
       {
@@ -27488,7 +27489,7 @@ const DEFS = {
             'text': 'obscures field'
           }
         ],
-        'tableColumn': '34',
+        'tableColumn': '35',
         'tableLabel': 'Casts',
         'fqn': 'medLabUrinalysis.umicroCasts'
       },
@@ -27526,6 +27527,7 @@ const DEFS = {
             'text': 'Epithelial'
           }
         ],
+        'tableColumn': '36',
         'fqn': 'medLabUrinalysis.umicroTypesCasts'
       },
       {
@@ -27559,7 +27561,7 @@ const DEFS = {
             'text': 'obscures field'
           }
         ],
-        'tableColumn': '35',
+        'tableColumn': '37',
         'tableLabel': 'Crystals',
         'fqn': 'medLabUrinalysis.umicroCrystals'
       },
@@ -27629,6 +27631,7 @@ const DEFS = {
             'text': 'Sulfonamides'
           }
         ],
+        'tableColumn': '38',
         'fqn': 'medLabUrinalysis.umicroTypesCrystals'
       },
       {
@@ -27662,7 +27665,7 @@ const DEFS = {
             'text': 'obscures field'
           }
         ],
-        'tableColumn': '36',
+        'tableColumn': '39',
         'tableLabel': 'Yeast',
         'fqn': 'medLabUrinalysis.umicroYeast'
       },
@@ -27703,7 +27706,7 @@ const DEFS = {
             'text': 'obscures field'
           }
         ],
-        'tableColumn': '37',
+        'tableColumn': '40',
         'tableLabel': 'Bacteria',
         'fqn': 'medLabUrinalysis.umicroBacteria'
       },
@@ -27748,7 +27751,7 @@ const DEFS = {
             'text': 'Starch'
           }
         ],
-        'tableColumn': '38',
+        'tableColumn': '41',
         'fqn': 'medLabUrinalysis.umicroOther'
       },
       {
@@ -27768,7 +27771,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'textarea',
         'label': 'Department comments\rand dilutions',
-        'tableColumn': '39',
+        'tableColumn': '42',
         'fqn': 'medLabUrinalysis.urnInternal'
       },
       {
@@ -27776,7 +27779,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'textarea',
         'label': 'Discrepancies manual\rvs automatic',
-        'tableColumn': '40',
+        'tableColumn': '43',
         'fqn': 'medLabUrinalysis.urnDiscMA'
       },
       {
@@ -27784,7 +27787,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'textarea',
         'label': 'Discrepancies Chem vs\rMicro',
-        'tableColumn': '41',
+        'tableColumn': '44',
         'fqn': 'medLabUrinalysis.urnDiscCE'
       }
     ],
@@ -27796,7 +27799,7 @@ const DEFS = {
         'tableKey': 'tableUrinalysis',
         'isTable': true,
         'label': 'Urinalysis',
-        'addButtonText': 'Create a medical imaging report',
+        'addButtonText': 'Create a urinalysis report',
         'ehr_list': [
           {
             'label': 'Row id',
@@ -28022,53 +28025,71 @@ const DEFS = {
             ]
           },
           {
-            'label': 'Casts',
             'ehr_list_index': '34',
+            'items': [
+              'umicroTypesEpitheal'
+            ]
+          },
+          {
+            'label': 'Casts',
+            'ehr_list_index': '35',
             'items': [
               'umicroCasts'
             ]
           },
           {
+            'ehr_list_index': '36',
+            'items': [
+              'umicroTypesCasts'
+            ]
+          },
+          {
             'label': 'Crystals',
-            'ehr_list_index': '35',
+            'ehr_list_index': '37',
             'items': [
               'umicroCrystals'
             ]
           },
           {
+            'ehr_list_index': '38',
+            'items': [
+              'umicroTypesCrystals'
+            ]
+          },
+          {
             'label': 'Yeast',
-            'ehr_list_index': '36',
+            'ehr_list_index': '39',
             'items': [
               'umicroYeast'
             ]
           },
           {
             'label': 'Bacteria',
-            'ehr_list_index': '37',
+            'ehr_list_index': '40',
             'items': [
               'umicroBacteria'
             ]
           },
           {
-            'ehr_list_index': '38',
+            'ehr_list_index': '41',
             'items': [
               'umicroOther'
             ]
           },
           {
-            'ehr_list_index': '39',
+            'ehr_list_index': '42',
             'items': [
               'urnInternal'
             ]
           },
           {
-            'ehr_list_index': '40',
+            'ehr_list_index': '43',
             'items': [
               'urnDiscMA'
             ]
           },
           {
-            'ehr_list_index': '41',
+            'ehr_list_index': '44',
             'items': [
               'urnDiscCE'
             ]
@@ -28077,7 +28098,7 @@ const DEFS = {
         'form': {
           'elementKey': 'tableUrinalysis',
           'label': 'Urinalysis',
-          'addButtonText': 'Create a medical imaging report',
+          'addButtonText': 'Create a urinalysis report',
           'formKey': 'tableUrinalysis',
           'ehr_groups': [
             {
@@ -28334,8 +28355,11 @@ const DEFS = {
           'umicroWBC',
           'umicroRBC',
           'umicroEpitheal',
+          'umicroTypesEpitheal',
           'umicroCasts',
+          'umicroTypesCasts',
           'umicroCrystals',
+          'umicroTypesCrystals',
           'umicroYeast',
           'umicroBacteria',
           'umicroOther',

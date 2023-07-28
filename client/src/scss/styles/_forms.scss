@@ -148,7 +148,7 @@ input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:dis
   width: 100%
 }
 
-.text_input_wrapper, .textarea_wrapper, .select_wrapper, .date_wrapper, .checkset_wrapper {
+.text_input_wrapper, .textarea_wrapper, .select_wrapper, .date_wrapper, .checkset_wrapper, .radio_wrapper {
   position: relative;
   display: flex;
   align-content: space-between
@@ -363,6 +363,9 @@ select, .select {
   .ehr-group-for {
     border: 1px solid black;
     padding: 5px;
+  }
+  .select {
+    width: 12rem;
   }
 }
 
