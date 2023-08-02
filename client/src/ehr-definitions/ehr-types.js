@@ -20,6 +20,7 @@ const EhrTypes = {
   },
   dataInputTypes: {
     checkbox: 'checkbox',
+    boxcheckset: 'boxcheckset',
     select: 'select',
     calculatedValue: 'calculatedValue',
     checkset: 'checkset',

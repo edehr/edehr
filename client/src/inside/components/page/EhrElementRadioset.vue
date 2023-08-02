@@ -1,6 +1,6 @@
 <template lang="pug">
-  div(class="radio_wrapper")
-    ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="checkset_label")
+  div(class="radio_wrapper", :class='formCss')
+    ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="radioset_label")
     div(class="radio_set")
       div(v-for="option in options")
         input(type="radio", :id="option.key", :disabled="disabled || viewOnly", :value="option.key", v-model="radioValue")

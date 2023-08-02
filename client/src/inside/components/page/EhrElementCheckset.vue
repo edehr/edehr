@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="checkset_wrapper")
+  div(class="checkset_wrapper", :class='formCss')
     ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="checkset_label")
     div(class="checkset_list")
       div(v-for="option in checkOptions")

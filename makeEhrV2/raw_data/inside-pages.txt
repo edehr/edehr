@@ -51,7 +51,7 @@ eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {path: /ehr/current}	{routeName: discharge-plan}	{pageDataKey: dishargeplan}	{label: Discharge plan}	{redirect: }	{generateComponent: yes}	{menuIndex: 32}
 {path: /ehr}	{routeName: med-lab}	eCell	{label: Med Lab}	{redirect: hematology}	eCell	{menuIndex: 52}
 {path: /ehr/med-lab}	{routeName: hematology}	{pageDataKey: hematology}	{label: Med Lab Hematology}	{redirect: }	{generateComponent: custom}	{menuIndex: 56}
-{path: /ehr/med-lab}	{routeName: med-lab-chemistry}	{pageDataKey: medLabChemistry}	{label: Med Lab Chemistry}	{redirect: }	{generateComponent: wip}	{menuIndex: 57}
+{path: /ehr/med-lab}	{routeName: med-lab-chemistry}	{pageDataKey: medLabChemistry}	{label: Med Lab Chemistry}	{redirect: }	{generateComponent: yes}	{menuIndex: 57}
 {path: /ehr/med-lab}	{routeName: med-lab-urinalysis}	{pageDataKey: medLabUrinalysis}	{label: Med Lab Urinalysis}	eCell	{generateComponent: yes}	{menuIndex: 58}
 {path: /ehr/current}	{routeName: order-sets}	{pageDataKey: orderSets}	{label: Clinical Order Sets}	eCell	{generateComponent: yes}	{menuIndex: 25}
 {path: /ehr/med-lab}	{routeName: med-lab-demographics}	{pageDataKey: medLabDemographics}	{label: Med Lab Demographics}	eCell	{generateComponent: yes}	{menuIndex: 54}

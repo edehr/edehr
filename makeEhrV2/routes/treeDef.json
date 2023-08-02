@@ -1332,14 +1332,14 @@
               "pageDataKey": "medLabChemistry",
               "label": "Med Lab Chemistry",
               "redirect": "",
-              "generateComponent": "wip",
+              "generateComponent": "yes",
               "menuIndex": "57",
-              "componentName": "UnderConstruction",
+              "componentName": "MedLabChemistry",
               "dataName": "medLabChemistry",
               "fullPath": "/ehr/med-lab/med-lab-chemistry",
               "title": "Med Lab Chemistry",
               "topLevel": "med-lab",
-              "componentPath": "./inside/custom",
+              "componentPath": "./inside/views",
               "zone": "ehr"
             },
             "children": []

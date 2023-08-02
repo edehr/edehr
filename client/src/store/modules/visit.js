@@ -133,7 +133,6 @@ const mutations = {
   },
   setVisitData: (state, info) => {
     if(debug) console.log('visit store setVisitData ', info)
-    console.log('visit store setVisitData ', info)
     state.sVisitData = info
   },
   setVisitId: (state, id) => {

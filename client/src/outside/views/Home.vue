@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import StoreHelper from '@/helpers/store-helper'
 import UiButton from '../../app/ui/UiButton'
 import UiLink from '../../app/ui/UiLink.vue'
 import DemoAccess from '../components/DemoAccess.vue'

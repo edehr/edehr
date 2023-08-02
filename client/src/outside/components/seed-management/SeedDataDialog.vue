@@ -104,7 +104,7 @@ export default {
       seedId: '',
       seedFile: null,
       tagHelperText: 'Tags let you categorize case studies.',
-      tagList: '',
+      tagList: [],
       upload: false,
       uploadSeed: {},
       uploadError: ''

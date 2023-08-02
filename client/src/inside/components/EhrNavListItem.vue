@@ -33,7 +33,7 @@ export default {
       let k = this.path.pageDataKey
       let d = this.pageDataList()[k]
       if (!d) {
-        if (k) console.log('Missing page in pageInfo listing', k)
+        if (k) console.error('Missing page in pageInfo listing', k, this.path, this.pageDataList())
         d = {}
       }
       return d

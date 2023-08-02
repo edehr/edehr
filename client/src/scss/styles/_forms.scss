@@ -425,3 +425,44 @@ select, .select {
 .grid-left-to-right-2 select {
   min-width: 15rem;
 }
+
+.form-table-group {
+  display: grid;
+  gap: 1px;
+  .form-element {
+    padding: 0;
+    border: 1px $grey20 solid;
+    height: 3rem;
+    .form_label_wrapper {
+      padding-left: 10px;
+    }
+    .text-input {
+      height: 2.8rem; // slightly smaller then the form-element so there is a bottom border
+      border: none;
+    }
+  }
+}
+.chem-results {
+  grid-template-columns: 1fr 1fr 0.5fr 1fr;
+  .chem-results-lhclch .radio_set  {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 1rem;
+  }
+}
+.chem-qc-assay {
+  grid-template-columns: 3fr 1fr;
+  .chem-qc-assay-into {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  .radio_set {
+    display: flex;
+    flex-flow: row;
+    gap: 1rem;
+    padding-left: 10px;
+  }
+}
+.chem-qc-trouble {
+  grid-template-columns: repeat(5, 1fr);
+}

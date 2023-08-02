@@ -456,7 +456,7 @@ module.exports = function () {
     'pageDataKey': 'medLabChemistry',
     'label': 'Med Lab Chemistry',
     'redirect': '',
-    'generateComponent': 'wip',
+    'generateComponent': 'yes',
     'menuIndex': '57'
   },
   {

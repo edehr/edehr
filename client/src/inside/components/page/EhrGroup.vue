@@ -46,14 +46,7 @@ export default {
       return visible
     },
     groupClass () {
-      let css = this.group.formCss
-      const theDefault = 'grid-left-to-right-3'
-      if (css && !css.includes('grid') && css !== 'record-header') {
-        css += ' ' + theDefault
-      } else if (!css) {
-        css = theDefault
-      }
-      return css
+      return this.group.formCss
     },
   },
   methods: {

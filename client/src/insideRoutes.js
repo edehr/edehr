@@ -369,7 +369,7 @@ export function inside () {
       path: '/ehr/med-lab/med-lab-chemistry',
       name: 'med-lab-chemistry',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/UnderConstruction.vue'),
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/MedLabChemistry.vue'),
       meta: { layout: 'inside', label: 'Med Lab Chemistry', topLevel: 'med-lab', zone: 'ehr' }
     },
     {
