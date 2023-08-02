@@ -14,10 +14,31 @@
     div(v-else) {{ text.ACTIVITY_STUDENT_SELECT_NAV }}
     div(class="e-table")
       div(class="thead")
-        div(class="thcell") Activity Name
+        div(class="thcell")
+          div(class="flow_across")
+            div Activity Name
+            ui-table-header-button(
+              class="flow_across_last_item",
+              v-on:buttonClicked="sortColumnToggle(columnName)",
+              title="Sort by name")
+              fas-icon(class="fa", :icon="sortColumnIcon(columnName)")
         div(class="thcell") Activity Description
-        div(class="thcell") Last update
-        div(class="thcell") Created date
+        div(class="thcell")
+          div(class="flow_across")
+            div Last update
+            ui-table-header-button(
+              class="flow_across_last_item",
+              v-on:buttonClicked="sortColumnToggle(columnUpdated)",
+              title="Sort by updated date")
+              fas-icon(class="fa", :icon="sortColumnIcon(columnUpdated)")
+        div(class="thcell")
+          div(class="flow_across")
+            div Created date
+            ui-table-header-button(
+              class="flow_across_last_item",
+              v-on:buttonClicked="sortColumnToggle(columnCreated)",
+              title="Sort by created date")
+              fas-icon(class="fa", :icon="sortColumnIcon(columnCreated)")
         div(v-if="isStudent", class="thcell") Status
         div(v-if="isStudent", class="thcell e-actions") &nbsp;
       div(class="tbody")
@@ -32,7 +53,7 @@
               fas-icon(class="fa", :icon="appIcons.course")
               span {{ activityItem.title }}
           div(class='cell e-description')
-            span {{truncate(activityItem.description, 240)}}
+            span {{truncate(activityItem.description, 100)}}
           div(class='cell e-date')
             span {{ activityItem.lastUpdate | formatDateTime }}
           div(class='cell e-date')
@@ -52,13 +73,19 @@ import InstructorCourseListItem from '@/outside/components/lms-course/Instructor
 import StudentCourseListItem from '@/outside/components/lms-course/StudentCourseListItem.vue'
 import { APP_ICONS } from '@/helpers/app-icons'
 import { Text } from '@/helpers/ehr-text'
-import StoreHelper, { APP_TYPE_EHR, APP_TYPE_LIS } from '@/helpers/store-helper'
+import StoreHelper, { APP_TYPE_EHR, APP_TYPE_LIS, CREATOR_ACTION } from '@/helpers/store-helper'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton.vue'
 import CourseDialog from '@/outside/components/lms-course/CourseDialog.vue'
 import UiButton from '@/app/ui/UiButton.vue'
+import UiTableHeaderButton from '@/app/ui/UiTableHeaderButton.vue'
+
+const ASC = 'asc'
+const DESC = 'desc'
+
 export default {
   extends: OutsideCommon,
   components: {
+    UiTableHeaderButton,
     UiButton,
     CourseDialog,
     ZoneLmsButton,
@@ -71,6 +98,12 @@ export default {
     return {
       appIcons: APP_ICONS,
       text: Text.COURSE_PAGE,
+      courseId: '',
+      columnName: 'title',
+      columnCreated: 'createDate',
+      columnUpdated: 'lastUpdate',
+      sortKey: 'title',
+      sortDir: ASC,
     }
   },
   computed: {
@@ -123,27 +156,57 @@ export default {
       }
     },
     async loadComponent () {
-      try {
-        const fromRoute = this.$route.query.courseId
-        const fromStore = this.$store.getters['courseStore/courseId']
-        console.log('Load course page', fromRoute, fromStore)
-        const courseId = fromRoute || fromStore
-        if (courseId) {
-          await this.$store.dispatch('courseStore/setCourseId', courseId)
-          await this.$store.dispatch('courseStore/loadCurrentCourse')
-          if(fromRoute !== fromStore) {
-            console.log('Changing course ', fromRoute, fromStore, '. Clear current activity')
-            await this.$store.dispatch('activityStore/clearCurrentActivity')
-          }
-        } else {
-          console.error('Course page load did not receive course id. This is a coding error')
-        }
-      } catch(error){
-        console.error('Course loadComponent failed', error)
+      const query = this.$route.query
+      const fromRoute = query.courseId
+      const fromStore = this.$store.getters['courseStore/courseId']
+      this.courseId = fromRoute || fromStore
+      if (!this.courseId) {
+        console.error('Course page load did not receive course id. This is a coding error')
+        return
       }
+      const fromRouteSort = query.sortKey || this.columnName
+      const fromRouteDirection = query.sortDir || ASC
+      let queryPayload = {
+        sortKey: fromRouteSort,
+        sortDir: fromRouteDirection,
+      }
+      await this.$store.dispatch('courseStore/setCourseId', this.courseId)
+      await this.$store.dispatch('courseStore/loadCurrentCourse', queryPayload)
+      if(fromRoute !== fromStore) {
+        console.log('Changing course ', fromRoute, fromStore, '. Clear current activity')
+        await this.$store.dispatch('activityStore/clearCurrentActivity')
+      }
+    },
+
+    route () {
+      let query = {}
+      query.courseId = this.courseId
+      query.sortKey = this.sortKey
+      query.sortDir = this.sortDir
+      this.$router.push({ query: query })
+      const qs = JSON.stringify(query).replace(/"/g,'\'')
+      StoreHelper.postActionEvent(CREATOR_ACTION,'courseList-'+qs)
     },
     showEditDialog: function (course) {
       this.$refs.theDialog.showDialog(course, this.canDo)
+    },
+    sortColumnIcon (columnName) {
+      let icon = APP_ICONS.sortNone
+      if (this.sortKey === columnName) {
+        icon = this.sortDir === ASC ? APP_ICONS.sortAsc : APP_ICONS.sortDesc
+      }
+      return icon
+    },
+    sortColumnToggle (columnName) {
+      if (this.sortKey === columnName) {
+        this.sortDir = this.sortDir === ASC ? DESC : ASC
+      } else {
+        // reset starting position when changing sort column
+        this.offset = 0
+        this.sortKey = columnName
+        this.sortDir = ASC
+      }
+      this.route()
     },
     truncate (input, lim) {
       return input && input.length > lim ? `${input.substring(0, lim)}...` : input
