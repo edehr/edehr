@@ -235,7 +235,9 @@ export const Text = {
   ROUTE_NAMES: {
     ADMIN: 'Admin login',
     ADMIN_DASH: 'Admin dashboard',
+    ADMIN_ACTIVITIES: 'Admin activities',
     ADMIN_CONSUMER: 'Admin consumer',
+    ADMIN_USERS: 'Admin users',
     ABOUT: 'About',
     ABOUT_EDEHR: 'About the EdEHR Project',
     ABOUT_SASS: 'About the edehr.org SaaS',

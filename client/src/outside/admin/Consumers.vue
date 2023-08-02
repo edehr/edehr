@@ -8,8 +8,8 @@
     table.table
       thead
         tr
-          th Name
-          th Name
+          th &nbsp;
+          th &nbsp;
           th Name
           th Key
           th LTI version
@@ -23,7 +23,7 @@
           td
             div
               div
-                router-link(:to="{ name:'admin-consumer', query: { id: item._id }}") Details
+                router-link(:to="{ name:'admin-consumer', query: { consumerId: item._id }}") Details
               div
                 router-link(:to="{ name:'admin-seeds', query: { id: item._id }}") Seeds
           td

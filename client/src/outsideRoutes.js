@@ -203,6 +203,13 @@ export function outside () {
       meta: { layout: 'outside', label: NAMES.CONSUMERS, zone: ZONE_ADMIN }
     },
     {
+      path: '/admin-activities',
+      name: 'admin-activities',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/admin/AdminActivities.vue'),
+      meta: { layout: 'outside', label: NAMES.ADMIN_ACTIVITIES, zone: ZONE_ADMIN }
+    },
+    {
       path: '/admin-consumer',
       name: 'admin-consumer',
       component: () =>
@@ -215,6 +222,13 @@ export function outside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/admin/AdminSeedsView.vue'),
       meta: { layout: 'outside', label: NAMES.ADMIN_CONSUMER, zone: ZONE_ADMIN }
+    },
+    {
+      path: '/admin-users',
+      name: 'admin-users',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/admin/AdminUsers.vue'),
+      meta: { layout: 'outside', label: NAMES.ADMIN_USERS, zone: ZONE_ADMIN }
     },
     {
       path: '/ehrOnlyDemo',
