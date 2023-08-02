@@ -154,10 +154,12 @@ export default {
         sortDir: fromRouteDirection
       }
       // appType
-      const fromRouteAppTypes = query.appTypes || ''
+      const fromRouteAppTypes = query.appTypes
       if(fromRouteAppTypes) {
-        // only modify appTypes if the qs has something to say
         this.checkAppTypes = fromRouteAppTypes.split(',')
+        await this.$store.dispatch('system/setAppTypes', this.checkAppTypes)
+      } else {
+        this.checkAppTypes = this.$store.getters['system/checkAppTypes']
       }
       let ats = this.checkAppTypes.join(',')
       ats ? queryPayload.appTypes = ats : undefined
@@ -166,7 +168,6 @@ export default {
         this.searchTerm = query.searchTerm
       }
       this.searchTerm ? queryPayload.searchTerm = this.searchTerm : undefined
-
       await this.$store.dispatch('assignmentListStore/loadPage', queryPayload)
     },
     route () {

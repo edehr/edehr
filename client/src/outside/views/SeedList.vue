@@ -203,10 +203,12 @@ export default {
         tagList: fromRouteTagList
       }
       // appType
-      const fromRouteAppTypes = query.appTypes || ''
+      const fromRouteAppTypes = query.appTypes
       if(fromRouteAppTypes) {
-        // only modify appTypes if the qs has something to say
         this.checkAppTypes = fromRouteAppTypes.split(',')
+        await this.$store.dispatch('system/setAppTypes', this.checkAppTypes)
+      } else {
+        this.checkAppTypes = this.$store.getters['system/checkAppTypes']
       }
       let ats = this.checkAppTypes.join(',')
       ats ? queryPayload.appTypes = ats : undefined
