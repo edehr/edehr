@@ -103,7 +103,7 @@ describe('VisitController controller testing', function () {
     let list = await m.findUserVisitList(theUser._id)
     should.exist(list)
     list.should.be.Array()
-    list.length.should.equals(2)
+    list.length.should.equals(3)
   })
 
   let userController
