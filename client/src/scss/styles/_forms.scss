@@ -234,6 +234,19 @@ select, .select {
 
 .ehr-page-form {
   margin-bottom: 8em;
+  .ehr-group-for {
+    margin-bottom: 5px;
+    .form_label {
+      min-width: 9rem;
+      max-width: 9rem;
+      text-wrap: normal;
+    }
+    .input {
+      max-width: inherit;
+      width: inherit;
+    }
+
+  }
 }
 
 

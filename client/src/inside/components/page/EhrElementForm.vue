@@ -70,14 +70,14 @@
         div(v-if="viewOnly") {{ inputVal }}
         div(class="lab_result_suffix", v-text-to-html="element.suffixHtml")
 
-    div(v-else-if="isType('mainDOB')")
-      ehr-element-birth-date(
-        :elementKey="elementKey",
-        :ehrHelp="ehrHelp",
-        :viewOnly='viewOnly',
-        :containerInputValue="inputVal"
-        @update="childUpdate"
-        )
+    ehr-element-birth-date(
+      v-else-if="isType('mainDOB')"
+      :elementKey="elementKey",
+      :ehrHelp="ehrHelp",
+      :viewOnly='viewOnly',
+      :containerInputValue="inputVal"
+      @update="childUpdate"
+      )
 
     div(v-else-if="isType('number') || isType('personAge')", class="text_input_wrapper", :class='formCss')
       ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
