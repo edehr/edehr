@@ -26624,6 +26624,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '5',
+        'tableLabel': 'Sodium',
         'fqn': 'medLabChemistry.chemSodium'
       },
       {
@@ -26671,6 +26672,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '1',
+        'tableLabel': 'Potassium',
         'fqn': 'medLabChemistry.chemPotassium'
       },
       {
@@ -26717,6 +26719,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '7',
+        'tableLabel': 'Chloride',
         'fqn': 'medLabChemistry.chemChloride'
       },
       {
@@ -26763,6 +26766,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '3',
+        'tableLabel': 'tCO2',
         'fqn': 'medLabChemistry.chemtCO2'
       },
       {
@@ -26809,6 +26813,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '5',
+        'tableLabel': 'Anion Gap',
         'fqn': 'medLabChemistry.chemAnionGap'
       },
       {
@@ -26855,6 +26860,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '7',
+        'tableLabel': 'Osmality, Measured',
         'fqn': 'medLabChemistry.chemOsmalityMeasured'
       },
       {
@@ -26901,6 +26907,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '9',
+        'tableLabel': 'Osmality, Calculated',
         'fqn': 'medLabChemistry.chemOsmalityCalculated'
       },
       {
@@ -26947,6 +26954,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '11',
+        'tableLabel': 'Osmolar Gap',
         'fqn': 'medLabChemistry.chemOsmolarGap'
       },
       {
@@ -26993,6 +27001,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '13',
+        'tableLabel': 'Glugose (Fasting Random)',
         'fqn': 'medLabChemistry.chemGlugoseFastingRandom'
       },
       {
@@ -27039,6 +27048,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '15',
+        'tableLabel': 'Creatinine',
         'fqn': 'medLabChemistry.chemCreatinine'
       },
       {
@@ -27085,6 +27095,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '17',
+        'tableLabel': 'Urea (BUN)',
         'fqn': 'medLabChemistry.chemUreaBun'
       },
       {
@@ -27131,6 +27142,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '19',
+        'tableLabel': 'Calcium',
         'fqn': 'medLabChemistry.chemCalcium'
       },
       {
@@ -27177,6 +27189,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '21',
+        'tableLabel': 'Magnesium',
         'fqn': 'medLabChemistry.chemMagnesium'
       },
       {
@@ -27223,6 +27236,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '23',
+        'tableLabel': 'Phosphorus',
         'fqn': 'medLabChemistry.chemPhosphorus'
       },
       {
@@ -27269,6 +27283,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '25',
+        'tableLabel': 'Total Protein',
         'fqn': 'medLabChemistry.chemTotalProtein'
       },
       {
@@ -27315,6 +27330,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '27',
+        'tableLabel': 'Albumin',
         'fqn': 'medLabChemistry.chemAlbumin'
       },
       {
@@ -27350,11 +27366,387 @@ const DEFS = {
         'fqn': 'medLabChemistry.form_label220'
       },
       {
+        'elementKey': 'chemOpt1Analyte',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '29',
+        'fqn': 'medLabChemistry.chemOpt1Analyte'
+      },
+      {
+        'elementKey': 'chemOpt1Result',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '30',
+        'fqn': 'medLabChemistry.chemOpt1Result'
+      },
+      {
+        'elementKey': 'chemOpt1Type',
+        'formIndex': '1',
+        'formCss': 'chem-results-lhclch',
+        'inputType': 'radioset',
+        'options': [
+          {
+            'key': 'L',
+            'text': 'L'
+          },
+          {
+            'key': 'H',
+            'text': 'H'
+          },
+          {
+            'key': 'CL',
+            'text': 'CL'
+          },
+          {
+            'key': 'CH',
+            'text': 'CH'
+          }
+        ],
+        'tableColumn': '31',
+        'fqn': 'medLabChemistry.chemOpt1Type'
+      },
+      {
+        'elementKey': 'chemOpt1RI',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '32',
+        'fqn': 'medLabChemistry.chemOpt1RI'
+      },
+      {
+        'elementKey': 'chemOpt2Analyte',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '32',
+        'fqn': 'medLabChemistry.chemOpt2Analyte'
+      },
+      {
+        'elementKey': 'chemOpt2Result',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '33',
+        'fqn': 'medLabChemistry.chemOpt2Result'
+      },
+      {
+        'elementKey': 'chemOpt2Type',
+        'formIndex': '1',
+        'formCss': 'chem-results-lhclch',
+        'inputType': 'radioset',
+        'options': [
+          {
+            'key': 'L',
+            'text': 'L'
+          },
+          {
+            'key': 'H',
+            'text': 'H'
+          },
+          {
+            'key': 'CL',
+            'text': 'CL'
+          },
+          {
+            'key': 'CH',
+            'text': 'CH'
+          }
+        ],
+        'tableColumn': '34',
+        'fqn': 'medLabChemistry.chemOpt2Type'
+      },
+      {
+        'elementKey': 'chemOpt2RI',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '35',
+        'fqn': 'medLabChemistry.chemOpt2RI'
+      },
+      {
+        'elementKey': 'chemOpt3Analyte',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '35',
+        'fqn': 'medLabChemistry.chemOpt3Analyte'
+      },
+      {
+        'elementKey': 'chemOpt3Result',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '36',
+        'fqn': 'medLabChemistry.chemOpt3Result'
+      },
+      {
+        'elementKey': 'chemOpt3Type',
+        'formIndex': '1',
+        'formCss': 'chem-results-lhclch',
+        'inputType': 'radioset',
+        'options': [
+          {
+            'key': 'L',
+            'text': 'L'
+          },
+          {
+            'key': 'H',
+            'text': 'H'
+          },
+          {
+            'key': 'CL',
+            'text': 'CL'
+          },
+          {
+            'key': 'CH',
+            'text': 'CH'
+          }
+        ],
+        'tableColumn': '37',
+        'fqn': 'medLabChemistry.chemOpt3Type'
+      },
+      {
+        'elementKey': 'chemOpt3RI',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '38',
+        'fqn': 'medLabChemistry.chemOpt3RI'
+      },
+      {
+        'elementKey': 'chemOpt4Analyte',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '38',
+        'fqn': 'medLabChemistry.chemOpt4Analyte'
+      },
+      {
+        'elementKey': 'chemOpt4Result',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '39',
+        'fqn': 'medLabChemistry.chemOpt4Result'
+      },
+      {
+        'elementKey': 'chemOpt4Type',
+        'formIndex': '1',
+        'formCss': 'chem-results-lhclch',
+        'inputType': 'radioset',
+        'options': [
+          {
+            'key': 'L',
+            'text': 'L'
+          },
+          {
+            'key': 'H',
+            'text': 'H'
+          },
+          {
+            'key': 'CL',
+            'text': 'CL'
+          },
+          {
+            'key': 'CH',
+            'text': 'CH'
+          }
+        ],
+        'tableColumn': '40',
+        'fqn': 'medLabChemistry.chemOpt4Type'
+      },
+      {
+        'elementKey': 'chemOpt4RI',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '41',
+        'fqn': 'medLabChemistry.chemOpt4RI'
+      },
+      {
+        'elementKey': 'chemOpt5Analyte',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '41',
+        'fqn': 'medLabChemistry.chemOpt5Analyte'
+      },
+      {
+        'elementKey': 'chemOpt5Result',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '42',
+        'fqn': 'medLabChemistry.chemOpt5Result'
+      },
+      {
+        'elementKey': 'chemOpt5Type',
+        'formIndex': '1',
+        'formCss': 'chem-results-lhclch',
+        'inputType': 'radioset',
+        'options': [
+          {
+            'key': 'L',
+            'text': 'L'
+          },
+          {
+            'key': 'H',
+            'text': 'H'
+          },
+          {
+            'key': 'CL',
+            'text': 'CL'
+          },
+          {
+            'key': 'CH',
+            'text': 'CH'
+          }
+        ],
+        'tableColumn': '43',
+        'fqn': 'medLabChemistry.chemOpt5Type'
+      },
+      {
+        'elementKey': 'chemOpt5RI',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '44',
+        'fqn': 'medLabChemistry.chemOpt5RI'
+      },
+      {
+        'elementKey': 'chemOpt6Analyte',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '44',
+        'fqn': 'medLabChemistry.chemOpt6Analyte'
+      },
+      {
+        'elementKey': 'chemOpt6Result',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '45',
+        'fqn': 'medLabChemistry.chemOpt6Result'
+      },
+      {
+        'elementKey': 'chemOpt6Type',
+        'formIndex': '1',
+        'formCss': 'chem-results-lhclch',
+        'inputType': 'radioset',
+        'options': [
+          {
+            'key': 'L',
+            'text': 'L'
+          },
+          {
+            'key': 'H',
+            'text': 'H'
+          },
+          {
+            'key': 'CL',
+            'text': 'CL'
+          },
+          {
+            'key': 'CH',
+            'text': 'CH'
+          }
+        ],
+        'tableColumn': '46',
+        'fqn': 'medLabChemistry.chemOpt6Type'
+      },
+      {
+        'elementKey': 'chemOpt6RI',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '47',
+        'fqn': 'medLabChemistry.chemOpt6RI'
+      },
+      {
+        'elementKey': 'chemOpt7Analyte',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '47',
+        'fqn': 'medLabChemistry.chemOpt7Analyte'
+      },
+      {
+        'elementKey': 'chemOpt7Result',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '48',
+        'fqn': 'medLabChemistry.chemOpt7Result'
+      },
+      {
+        'elementKey': 'chemOpt7Type',
+        'formIndex': '1',
+        'formCss': 'chem-results-lhclch',
+        'inputType': 'radioset',
+        'options': [
+          {
+            'key': 'L',
+            'text': 'L'
+          },
+          {
+            'key': 'H',
+            'text': 'H'
+          },
+          {
+            'key': 'CL',
+            'text': 'CL'
+          },
+          {
+            'key': 'CH',
+            'text': 'CH'
+          }
+        ],
+        'tableColumn': '49',
+        'fqn': 'medLabChemistry.chemOpt7Type'
+      },
+      {
+        'elementKey': 'chemOpt7RI',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '50',
+        'fqn': 'medLabChemistry.chemOpt7RI'
+      },
+      {
+        'elementKey': 'chemOpt8Analyte',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '50',
+        'fqn': 'medLabChemistry.chemOpt8Analyte'
+      },
+      {
+        'elementKey': 'chemOpt8Result',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '51',
+        'fqn': 'medLabChemistry.chemOpt8Result'
+      },
+      {
+        'elementKey': 'chemOpt8Type',
+        'formIndex': '1',
+        'formCss': 'chem-results-lhclch',
+        'inputType': 'radioset',
+        'options': [
+          {
+            'key': 'L',
+            'text': 'L'
+          },
+          {
+            'key': 'H',
+            'text': 'H'
+          },
+          {
+            'key': 'CL',
+            'text': 'CL'
+          },
+          {
+            'key': 'CH',
+            'text': 'CH'
+          }
+        ],
+        'tableColumn': '52',
+        'fqn': 'medLabChemistry.chemOpt8Type'
+      },
+      {
+        'elementKey': 'chemOpt8RI',
+        'formIndex': '1',
+        'inputType': 'text',
+        'tableColumn': '53',
+        'fqn': 'medLabChemistry.chemOpt8RI'
+      },
+      {
         'elementKey': 'urnInternal',
         'formIndex': '1',
         'inputType': 'textarea',
         'label': 'Technologists comments',
-        'tableColumn': '29',
+        'tableColumn': '54',
         'fqn': 'medLabChemistry.urnInternal'
       },
       {
@@ -27376,7 +27768,7 @@ const DEFS = {
             'text': 'Whole blood'
           }
         ],
-        'tableColumn': '30',
+        'tableColumn': '55',
         'fqn': 'medLabChemistry.chemSpecimumType'
       },
       {
@@ -27384,7 +27776,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Serum appearance',
-        'tableColumn': '31',
+        'tableColumn': '56',
         'fqn': 'medLabChemistry.chemSerumAppearance'
       },
       {
@@ -27420,7 +27812,7 @@ const DEFS = {
             'text': 'N/A'
           }
         ],
-        'tableColumn': '32',
+        'tableColumn': '57',
         'fqn': 'medLabChemistry.chemQcAllAcceptable'
       },
       {
@@ -27448,7 +27840,7 @@ const DEFS = {
             'text': 'N/A'
           }
         ],
-        'tableColumn': '33',
+        'tableColumn': '58',
         'fqn': 'medLabChemistry.chemQcAllDuplicatesAcceptable'
       },
       {
@@ -27476,7 +27868,7 @@ const DEFS = {
             'text': 'N/A'
           }
         ],
-        'tableColumn': '34',
+        'tableColumn': '59',
         'fqn': 'medLabChemistry.chemQcAllPlausible'
       },
       {
@@ -27504,7 +27896,7 @@ const DEFS = {
             'text': 'N/A'
           }
         ],
-        'tableColumn': '35',
+        'tableColumn': '60',
         'fqn': 'medLabChemistry.chemQcAllCanBeReported'
       },
       {
@@ -27553,140 +27945,140 @@ const DEFS = {
         'elementKey': 'chmQcAnalyte1',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '36',
+        'tableColumn': '61',
         'fqn': 'medLabChemistry.chmQcAnalyte1'
       },
       {
         'elementKey': 'chmQcLevel1',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '37',
+        'tableColumn': '62',
         'fqn': 'medLabChemistry.chmQcLevel1'
       },
       {
         'elementKey': 'chmQcRule1',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '38',
+        'tableColumn': '63',
         'fqn': 'medLabChemistry.chmQcRule1'
       },
       {
         'elementKey': 'chmQcSeRe1',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '39',
+        'tableColumn': '64',
         'fqn': 'medLabChemistry.chmQcSeRe1'
       },
       {
         'elementKey': 'chmQcDescribe1',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '40',
+        'tableColumn': '65',
         'fqn': 'medLabChemistry.chmQcDescribe1'
       },
       {
         'elementKey': 'chmQcAnalyte2',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '41',
+        'tableColumn': '66',
         'fqn': 'medLabChemistry.chmQcAnalyte2'
       },
       {
         'elementKey': 'chmQcLevel2',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '42',
+        'tableColumn': '67',
         'fqn': 'medLabChemistry.chmQcLevel2'
       },
       {
         'elementKey': 'chmQcRule2',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '43',
+        'tableColumn': '68',
         'fqn': 'medLabChemistry.chmQcRule2'
       },
       {
         'elementKey': 'chmQcSeRe2',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '44',
+        'tableColumn': '69',
         'fqn': 'medLabChemistry.chmQcSeRe2'
       },
       {
         'elementKey': 'chmQcDescribe2',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '45',
+        'tableColumn': '70',
         'fqn': 'medLabChemistry.chmQcDescribe2'
       },
       {
         'elementKey': 'chmQcAnalyte3',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '46',
+        'tableColumn': '71',
         'fqn': 'medLabChemistry.chmQcAnalyte3'
       },
       {
         'elementKey': 'chmQcLevel3',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '47',
+        'tableColumn': '72',
         'fqn': 'medLabChemistry.chmQcLevel3'
       },
       {
         'elementKey': 'chmQcRule3',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '48',
+        'tableColumn': '73',
         'fqn': 'medLabChemistry.chmQcRule3'
       },
       {
         'elementKey': 'chmQcSeRe3',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '49',
+        'tableColumn': '74',
         'fqn': 'medLabChemistry.chmQcSeRe3'
       },
       {
         'elementKey': 'chmQcDescribe3',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '50',
+        'tableColumn': '75',
         'fqn': 'medLabChemistry.chmQcDescribe3'
       },
       {
         'elementKey': 'chmQcAnalyte4',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '51',
+        'tableColumn': '76',
         'fqn': 'medLabChemistry.chmQcAnalyte4'
       },
       {
         'elementKey': 'chmQcLevel4',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '52',
+        'tableColumn': '77',
         'fqn': 'medLabChemistry.chmQcLevel4'
       },
       {
         'elementKey': 'chmQcRule4',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '53',
+        'tableColumn': '78',
         'fqn': 'medLabChemistry.chmQcRule4'
       },
       {
         'elementKey': 'chmQcSeRe4',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '54',
+        'tableColumn': '79',
         'fqn': 'medLabChemistry.chmQcSeRe4'
       },
       {
         'elementKey': 'chmQcDescribe4',
         'formIndex': '1',
         'inputType': 'text',
-        'tableColumn': '55',
+        'tableColumn': '80',
         'fqn': 'medLabChemistry.chmQcDescribe4'
       },
       {
@@ -27754,6 +28146,7 @@ const DEFS = {
             ]
           },
           {
+            'label': 'Sodium',
             'ehr_list_index': '5',
             'items': [
               'chemSodium',
@@ -27768,6 +28161,7 @@ const DEFS = {
             ]
           },
           {
+            'label': 'Chloride',
             'ehr_list_index': '7',
             'items': [
               'chemChloride',
@@ -27782,6 +28176,7 @@ const DEFS = {
             ]
           },
           {
+            'label': 'Osmality, Calculated',
             'ehr_list_index': '9',
             'items': [
               'chemOsmalityCalculated'
@@ -27794,6 +28189,7 @@ const DEFS = {
             ]
           },
           {
+            'label': 'Osmolar Gap',
             'ehr_list_index': '11',
             'items': [
               'chemOsmolarGap'
@@ -27806,6 +28202,7 @@ const DEFS = {
             ]
           },
           {
+            'label': 'Glugose (Fasting Random)',
             'ehr_list_index': '13',
             'items': [
               'chemGlugoseFastingRandom'
@@ -27818,6 +28215,7 @@ const DEFS = {
             ]
           },
           {
+            'label': 'Creatinine',
             'ehr_list_index': '15',
             'items': [
               'chemCreatinine'
@@ -27830,6 +28228,7 @@ const DEFS = {
             ]
           },
           {
+            'label': 'Urea (BUN)',
             'ehr_list_index': '17',
             'items': [
               'chemUreaBun'
@@ -27842,6 +28241,7 @@ const DEFS = {
             ]
           },
           {
+            'label': 'Calcium',
             'ehr_list_index': '19',
             'items': [
               'chemCalcium'
@@ -27854,6 +28254,7 @@ const DEFS = {
             ]
           },
           {
+            'label': 'Magnesium',
             'ehr_list_index': '21',
             'items': [
               'chemMagnesium'
@@ -27866,6 +28267,7 @@ const DEFS = {
             ]
           },
           {
+            'label': 'Phosphorus',
             'ehr_list_index': '23',
             'items': [
               'chemPhosphorus'
@@ -27878,6 +28280,7 @@ const DEFS = {
             ]
           },
           {
+            'label': 'Total Protein',
             'ehr_list_index': '25',
             'items': [
               'chemTotalProtein'
@@ -27890,6 +28293,7 @@ const DEFS = {
             ]
           },
           {
+            'label': 'Albumin',
             'ehr_list_index': '27',
             'items': [
               'chemAlbumin'
@@ -27904,161 +28308,318 @@ const DEFS = {
           {
             'ehr_list_index': '29',
             'items': [
-              'urnInternal'
+              'chemOpt1Analyte'
             ]
           },
           {
             'ehr_list_index': '30',
             'items': [
-              'chemSpecimumType'
+              'chemOpt1Result'
             ]
           },
           {
             'ehr_list_index': '31',
             'items': [
-              'chemSerumAppearance'
+              'chemOpt1Type'
             ]
           },
           {
             'ehr_list_index': '32',
             'items': [
-              'chemQcAllAcceptable'
+              'chemOpt1RI',
+              'chemOpt2Analyte'
             ]
           },
           {
             'ehr_list_index': '33',
             'items': [
-              'chemQcAllDuplicatesAcceptable'
+              'chemOpt2Result'
             ]
           },
           {
             'ehr_list_index': '34',
             'items': [
-              'chemQcAllPlausible'
+              'chemOpt2Type'
             ]
           },
           {
             'ehr_list_index': '35',
             'items': [
-              'chemQcAllCanBeReported'
+              'chemOpt2RI',
+              'chemOpt3Analyte'
             ]
           },
           {
             'ehr_list_index': '36',
             'items': [
-              'chmQcAnalyte1'
+              'chemOpt3Result'
             ]
           },
           {
             'ehr_list_index': '37',
             'items': [
-              'chmQcLevel1'
+              'chemOpt3Type'
             ]
           },
           {
             'ehr_list_index': '38',
             'items': [
-              'chmQcRule1'
+              'chemOpt3RI',
+              'chemOpt4Analyte'
             ]
           },
           {
             'ehr_list_index': '39',
             'items': [
-              'chmQcSeRe1'
+              'chemOpt4Result'
             ]
           },
           {
             'ehr_list_index': '40',
             'items': [
-              'chmQcDescribe1'
+              'chemOpt4Type'
             ]
           },
           {
             'ehr_list_index': '41',
             'items': [
-              'chmQcAnalyte2'
+              'chemOpt4RI',
+              'chemOpt5Analyte'
             ]
           },
           {
             'ehr_list_index': '42',
             'items': [
-              'chmQcLevel2'
+              'chemOpt5Result'
             ]
           },
           {
             'ehr_list_index': '43',
             'items': [
-              'chmQcRule2'
+              'chemOpt5Type'
             ]
           },
           {
             'ehr_list_index': '44',
             'items': [
-              'chmQcSeRe2'
+              'chemOpt5RI',
+              'chemOpt6Analyte'
             ]
           },
           {
             'ehr_list_index': '45',
             'items': [
-              'chmQcDescribe2'
+              'chemOpt6Result'
             ]
           },
           {
             'ehr_list_index': '46',
             'items': [
-              'chmQcAnalyte3'
+              'chemOpt6Type'
             ]
           },
           {
             'ehr_list_index': '47',
             'items': [
-              'chmQcLevel3'
+              'chemOpt6RI',
+              'chemOpt7Analyte'
             ]
           },
           {
             'ehr_list_index': '48',
             'items': [
-              'chmQcRule3'
+              'chemOpt7Result'
             ]
           },
           {
             'ehr_list_index': '49',
             'items': [
-              'chmQcSeRe3'
+              'chemOpt7Type'
             ]
           },
           {
             'ehr_list_index': '50',
             'items': [
-              'chmQcDescribe3'
+              'chemOpt7RI',
+              'chemOpt8Analyte'
             ]
           },
           {
             'ehr_list_index': '51',
             'items': [
-              'chmQcAnalyte4'
+              'chemOpt8Result'
             ]
           },
           {
             'ehr_list_index': '52',
             'items': [
-              'chmQcLevel4'
+              'chemOpt8Type'
             ]
           },
           {
             'ehr_list_index': '53',
             'items': [
-              'chmQcRule4'
+              'chemOpt8RI'
             ]
           },
           {
             'ehr_list_index': '54',
             'items': [
-              'chmQcSeRe4'
+              'urnInternal'
             ]
           },
           {
             'ehr_list_index': '55',
+            'items': [
+              'chemSpecimumType'
+            ]
+          },
+          {
+            'ehr_list_index': '56',
+            'items': [
+              'chemSerumAppearance'
+            ]
+          },
+          {
+            'ehr_list_index': '57',
+            'items': [
+              'chemQcAllAcceptable'
+            ]
+          },
+          {
+            'ehr_list_index': '58',
+            'items': [
+              'chemQcAllDuplicatesAcceptable'
+            ]
+          },
+          {
+            'ehr_list_index': '59',
+            'items': [
+              'chemQcAllPlausible'
+            ]
+          },
+          {
+            'ehr_list_index': '60',
+            'items': [
+              'chemQcAllCanBeReported'
+            ]
+          },
+          {
+            'ehr_list_index': '61',
+            'items': [
+              'chmQcAnalyte1'
+            ]
+          },
+          {
+            'ehr_list_index': '62',
+            'items': [
+              'chmQcLevel1'
+            ]
+          },
+          {
+            'ehr_list_index': '63',
+            'items': [
+              'chmQcRule1'
+            ]
+          },
+          {
+            'ehr_list_index': '64',
+            'items': [
+              'chmQcSeRe1'
+            ]
+          },
+          {
+            'ehr_list_index': '65',
+            'items': [
+              'chmQcDescribe1'
+            ]
+          },
+          {
+            'ehr_list_index': '66',
+            'items': [
+              'chmQcAnalyte2'
+            ]
+          },
+          {
+            'ehr_list_index': '67',
+            'items': [
+              'chmQcLevel2'
+            ]
+          },
+          {
+            'ehr_list_index': '68',
+            'items': [
+              'chmQcRule2'
+            ]
+          },
+          {
+            'ehr_list_index': '69',
+            'items': [
+              'chmQcSeRe2'
+            ]
+          },
+          {
+            'ehr_list_index': '70',
+            'items': [
+              'chmQcDescribe2'
+            ]
+          },
+          {
+            'ehr_list_index': '71',
+            'items': [
+              'chmQcAnalyte3'
+            ]
+          },
+          {
+            'ehr_list_index': '72',
+            'items': [
+              'chmQcLevel3'
+            ]
+          },
+          {
+            'ehr_list_index': '73',
+            'items': [
+              'chmQcRule3'
+            ]
+          },
+          {
+            'ehr_list_index': '74',
+            'items': [
+              'chmQcSeRe3'
+            ]
+          },
+          {
+            'ehr_list_index': '75',
+            'items': [
+              'chmQcDescribe3'
+            ]
+          },
+          {
+            'ehr_list_index': '76',
+            'items': [
+              'chmQcAnalyte4'
+            ]
+          },
+          {
+            'ehr_list_index': '77',
+            'items': [
+              'chmQcLevel4'
+            ]
+          },
+          {
+            'ehr_list_index': '78',
+            'items': [
+              'chmQcRule4'
+            ]
+          },
+          {
+            'ehr_list_index': '79',
+            'items': [
+              'chmQcSeRe4'
+            ]
+          },
+          {
+            'ehr_list_index': '80',
             'items': [
               'chmQcDescribe4'
             ]
@@ -28163,7 +28724,39 @@ const DEFS = {
                 'form_label219',
                 'chemAlbumin',
                 'chemAlbuminFlag',
-                'form_label220'
+                'form_label220',
+                'chemOpt1Analyte',
+                'chemOpt1Result',
+                'chemOpt1Type',
+                'chemOpt1RI',
+                'chemOpt2Analyte',
+                'chemOpt2Result',
+                'chemOpt2Type',
+                'chemOpt2RI',
+                'chemOpt3Analyte',
+                'chemOpt3Result',
+                'chemOpt3Type',
+                'chemOpt3RI',
+                'chemOpt4Analyte',
+                'chemOpt4Result',
+                'chemOpt4Type',
+                'chemOpt4RI',
+                'chemOpt5Analyte',
+                'chemOpt5Result',
+                'chemOpt5Type',
+                'chemOpt5RI',
+                'chemOpt6Analyte',
+                'chemOpt6Result',
+                'chemOpt6Type',
+                'chemOpt6RI',
+                'chemOpt7Analyte',
+                'chemOpt7Result',
+                'chemOpt7Type',
+                'chemOpt7RI',
+                'chemOpt8Analyte',
+                'chemOpt8Result',
+                'chemOpt8Type',
+                'chemOpt8RI'
               ]
             },
             {
@@ -28293,6 +28886,38 @@ const DEFS = {
             'chemTotalProteinFlag': '',
             'chemAlbumin': '',
             'chemAlbuminFlag': '',
+            'chemOpt1Analyte': '',
+            'chemOpt1Result': '',
+            'chemOpt1Type': '',
+            'chemOpt1RI': '',
+            'chemOpt2Analyte': '',
+            'chemOpt2Result': '',
+            'chemOpt2Type': '',
+            'chemOpt2RI': '',
+            'chemOpt3Analyte': '',
+            'chemOpt3Result': '',
+            'chemOpt3Type': '',
+            'chemOpt3RI': '',
+            'chemOpt4Analyte': '',
+            'chemOpt4Result': '',
+            'chemOpt4Type': '',
+            'chemOpt4RI': '',
+            'chemOpt5Analyte': '',
+            'chemOpt5Result': '',
+            'chemOpt5Type': '',
+            'chemOpt5RI': '',
+            'chemOpt6Analyte': '',
+            'chemOpt6Result': '',
+            'chemOpt6Type': '',
+            'chemOpt6RI': '',
+            'chemOpt7Analyte': '',
+            'chemOpt7Result': '',
+            'chemOpt7Type': '',
+            'chemOpt7RI': '',
+            'chemOpt8Analyte': '',
+            'chemOpt8Result': '',
+            'chemOpt8Type': '',
+            'chemOpt8RI': '',
             'urnInternal': '',
             'chemSpecimumType': '',
             'chemSerumAppearance': '',
@@ -28363,6 +28988,38 @@ const DEFS = {
           'chemTotalProteinFlag',
           'chemAlbumin',
           'chemAlbuminFlag',
+          'chemOpt1Analyte',
+          'chemOpt1Result',
+          'chemOpt1Type',
+          'chemOpt1RI',
+          'chemOpt2Analyte',
+          'chemOpt2Result',
+          'chemOpt2Type',
+          'chemOpt2RI',
+          'chemOpt3Analyte',
+          'chemOpt3Result',
+          'chemOpt3Type',
+          'chemOpt3RI',
+          'chemOpt4Analyte',
+          'chemOpt4Result',
+          'chemOpt4Type',
+          'chemOpt4RI',
+          'chemOpt5Analyte',
+          'chemOpt5Result',
+          'chemOpt5Type',
+          'chemOpt5RI',
+          'chemOpt6Analyte',
+          'chemOpt6Result',
+          'chemOpt6Type',
+          'chemOpt6RI',
+          'chemOpt7Analyte',
+          'chemOpt7Result',
+          'chemOpt7Type',
+          'chemOpt7RI',
+          'chemOpt8Analyte',
+          'chemOpt8Result',
+          'chemOpt8Type',
+          'chemOpt8RI',
           'urnInternal',
           'chemSpecimumType',
           'chemSerumAppearance',
