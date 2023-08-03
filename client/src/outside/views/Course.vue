@@ -70,7 +70,6 @@ import UiLink from '@/app/ui/UiLink'
 import OutsideCommon from '@/outside/views/OutsideCommon'
 import ZoneLmsPageName from '@/outside/components/ZoneLmsPageName'
 import InstructorCourseListItem from '@/outside/components/lms-course/InstructorCourseListItem.vue'
-import StudentCourseListItem from '@/outside/components/lms-course/StudentCourseListItem.vue'
 import { APP_ICONS } from '@/helpers/app-icons'
 import { Text } from '@/helpers/ehr-text'
 import StoreHelper, { APP_TYPE_EHR, APP_TYPE_LIS, CREATOR_ACTION } from '@/helpers/store-helper'
@@ -90,7 +89,6 @@ export default {
     CourseDialog,
     ZoneLmsButton,
     InstructorCourseListItem,
-    StudentCourseListItem,
     ZoneLmsPageName,
     UiLink
   },

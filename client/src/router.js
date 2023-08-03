@@ -33,7 +33,7 @@ let routes = [
       // search for demo_lobjId to see where the appType comes from. Especially in server demo-controller.js
       const appType = to.query.appType
       const ehrUrl = '/ehr/patient/demographics'
-      const lisUrl = '/ehr/med-lab/med-lab-accession'
+      const lisUrl = '/ehr/med-lab/med-lab-demographics'
       return appType === APP_TYPE_LIS ? lisUrl  : appType === APP_TYPE_EHR ? ehrUrl : ehrUrl /* default to ehr */
     }
   }

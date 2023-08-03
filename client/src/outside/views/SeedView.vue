@@ -108,7 +108,7 @@ export default {
       downloadSeedToFile(seedId, sSeedContent, data, this.seed.tagList)
     },
     gotoEhrWithSeed () {
-      this.$router.push({ name: 'ehr', query: { seedEditId: this.seedId } })
+      this.$router.push({ name: 'ehr', query: { seedEditId: this.seedId, appType: this.seed.appType } })
     },
     viewEhrCondensed () {
       this.$router.push({ name: 'seed-view-condensed', query: { seedId: this.seedId } })
