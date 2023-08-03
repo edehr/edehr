@@ -428,7 +428,7 @@ const DEFS = {
         'ehr_groups': [
           {
             'elementKey': 'ehr_group1',
-            'formCss': 'section-divider',
+            'formCss': 'section-divider grid-left-to-right-3',
             'gIndex': '1',
             'gChildren': [
               'givenName',
@@ -448,7 +448,7 @@ const DEFS = {
           },
           {
             'elementKey': 'ehr_group2',
-            'formCss': 'section-divider',
+            'formCss': 'section-divider grid-left-to-right-3',
             'gIndex': '2',
             'gChildren': [
               'streetAddress',
@@ -9249,7 +9249,7 @@ const DEFS = {
             },
             {
               'elementKey': 'ehr_group104',
-              'formCss': 'section-divider',
+              'formCss': 'section-divider grid-left-to-right-3',
               'gIndex': '3',
               'gChildren': [
                 'hygieneGrooming',
@@ -22151,7 +22151,7 @@ const DEFS = {
             {
               'elementKey': 'incisionLocationGroup',
               'label': 'Incision Location',
-              'formCss': 'section-divider',
+              'formCss': 'section-divider grid-left-to-right-3',
               'gIndex': '2',
               'gChildren': [
                 'incisionLabel',
@@ -22298,7 +22298,7 @@ const DEFS = {
             {
               'elementKey': 'incisionStatusGroup',
               'label': 'Incision',
-              'formCss': 'section-divider',
+              'formCss': 'section-divider grid-left-to-right-3',
               'gIndex': '2',
               'gChildren': [
                 'incisionLabel',
@@ -22310,7 +22310,7 @@ const DEFS = {
             {
               'elementKey': 'exudateGroup',
               'label': 'Exudate Charateristics',
-              'formCss': 'section-divider',
+              'formCss': 'section-divider grid-left-to-right-3',
               'gIndex': '3',
               'gChildren': [
                 'exudateAmount',
@@ -22320,7 +22320,7 @@ const DEFS = {
             {
               'elementKey': 'periIncisionGroup',
               'label': 'Peri-Incisional Skin',
-              'formCss': 'section-divider',
+              'formCss': 'section-divider grid-left-to-right-3',
               'gIndex': '4',
               'gChildren': [
                 'periIncisionSkin',
@@ -22466,7 +22466,7 @@ const DEFS = {
             },
             {
               'elementKey': 'ehr_group87',
-              'formCss': 'section-divider',
+              'formCss': 'section-divider grid-left-to-right-3',
               'gIndex': '2',
               'gChildren': [
                 'woundLocation',
@@ -22476,7 +22476,7 @@ const DEFS = {
             },
             {
               'elementKey': 'woundTypeGroup',
-              'formCss': 'section-divider',
+              'formCss': 'section-divider grid-left-to-right-3',
               'gIndex': '3',
               'gChildren': [
                 'stageType',
@@ -22819,7 +22819,7 @@ const DEFS = {
             },
             {
               'elementKey': 'woundMeasureGroup',
-              'formCss': 'section-divider',
+              'formCss': 'section-divider grid-left-to-right-3',
               'gIndex': '2',
               'gChildren': [
                 'woundLabel',
@@ -22829,7 +22829,7 @@ const DEFS = {
             {
               'elementKey': 'woundMeasureGroup',
               'label': 'Wound measurements',
-              'formCss': 'section-divider',
+              'formCss': 'section-divider grid-left-to-right-3',
               'gIndex': '3',
               'gChildren': [
                 'length',
@@ -22852,7 +22852,7 @@ const DEFS = {
             {
               'elementKey': 'woundBed',
               'label': 'Wound bed',
-              'formCss': 'section-divider',
+              'formCss': 'section-divider grid-left-to-right-3',
               'gIndex': '4',
               'gChildren': [
                 'pinkred',
@@ -22870,7 +22870,7 @@ const DEFS = {
             },
             {
               'elementKey': 'ehr_group91',
-              'formCss': 'section-divider',
+              'formCss': 'section-divider grid-left-to-right-3',
               'gIndex': '5',
               'gChildren': [
                 'exudateAmount',
@@ -22879,7 +22879,7 @@ const DEFS = {
             },
             {
               'elementKey': 'ehr_group92',
-              'formCss': 'section-divider',
+              'formCss': 'section-divider grid-left-to-right-3',
               'gIndex': '6',
               'gChildren': [
                 'odour'
@@ -22887,7 +22887,7 @@ const DEFS = {
             },
             {
               'elementKey': 'ehr_group93',
-              'formCss': 'section-divider',
+              'formCss': 'section-divider grid-left-to-right-3',
               'gIndex': '7',
               'gChildren': [
                 'woundEdge',
@@ -22896,7 +22896,7 @@ const DEFS = {
             },
             {
               'elementKey': 'ehr_group94',
-              'formCss': 'section-divider',
+              'formCss': 'section-divider grid-left-to-right-3',
               'gIndex': '8',
               'gChildren': [
                 'woundPain'
@@ -22905,7 +22905,7 @@ const DEFS = {
             {
               'elementKey': 'ehr_group95',
               'label': 'Treatment',
-              'formCss': 'section-divider',
+              'formCss': 'section-divider grid-left-to-right-3',
               'gIndex': '9',
               'gChildren': [
                 'packingOut',

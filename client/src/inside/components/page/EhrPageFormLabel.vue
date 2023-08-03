@@ -1,7 +1,7 @@
 <template lang="pug">
   div(:class="css", v-if="showLabel")
     label(v-if="hasLabel", v-html="label", :for="forElement", class="form_label", :class='{form_label_mandatory: useMandatoryCss}')
-    ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
+    //ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
     span(v-if="helperText") &nbsp; &nbsp;
 </template>
 

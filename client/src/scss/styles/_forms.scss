@@ -479,3 +479,19 @@ select, .select {
 .chem-qc-trouble {
   grid-template-columns: repeat(5, 1fr);
 }
+
+
+.ehr-group-for {
+  margin-bottom: 5px;
+
+  .form_label {
+    min-width: 9rem;
+    max-width: 9rem;
+    text-wrap: normal;
+  }
+
+  .input {
+    max-width: inherit;
+    width: inherit;
+  }
+}
