@@ -233,6 +233,7 @@ class RawInputToDef {
   _group (pages, entry) {
     let page = pages[entry.pN]
     let group = rawHelper._transferProperties(entry, groupProperties)
+    assert.ok(group.formCss,'Group must have formCss attribute. PK: ' + page.elementKey + ' Group: ' + JSON.stringify(group))
     // group.label = entry.label
     group.gIndex = entry.gN
     group.gChildren = {}
@@ -432,7 +433,7 @@ class RawInputToDef {
 
   _validateEntry (entry) {
     if (DATA_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
-      assert(entry.elementKey, 'Must have element key for input types ' + entry)
+      assert(entry.elementKey, 'Must have element key for input types ' + JSON.stringify(entry))
     } else if (NONDATA_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
       // OK
     } else if (STRUCT_INPUT_TYPES.indexOf(entry.inputType) >= 0) {

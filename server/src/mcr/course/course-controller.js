@@ -60,14 +60,17 @@ export default class CourseController extends BaseController {
     return theCourse
   }
 
-  async getCourseRecordWithActivities (courseId, userId, consumerId, isInstructor) {
+  async getCourseRecordWithActivities (courseId, userId, consumerId, isInstructor, sortKey, sortDir) {
     let theCourse = await this.getCourseRecord(courseId)
-    theCourse.courseActivities = await this.activitiesForCourse(courseId, userId, consumerId, isInstructor)
+    theCourse.courseActivities = await this.activitiesForCourse(courseId, userId, consumerId, isInstructor, sortKey, sortDir)
     return Promise.resolve({ course: theCourse })
   }
 
-  async activitiesForCourse (courseId, userId, consumerId, isInstructor) {
+  async activitiesForCourse (courseId, userId, consumerId, isInstructor, sortKey = 'title', sortDir = 'asc') {
     const courseActivities = []
+    if (!(sortDir && (sortDir === 'asc' || sortDir === 'desc') )) {
+      throw new ParameterError(`Invalid sort direction for pagination. Must be asc or desc. Got '${sortDir}'`)
+    }
     let filter
     if (isInstructor) {
       filter = { $and: [{ isInstructor: true }, { user: new ObjectID(userId) }] }
@@ -83,7 +86,30 @@ export default class CourseController extends BaseController {
       let userActivity = await this.comCon.activityController.getActivityRecord(visit)
       courseActivities.push(userActivity)
     }
-    courseActivities.sort( ( a, b ) => a.title.localeCompare(b.title) )
+    if(sortKey === 'title') {
+      if(sortDir === 'asc') {
+        courseActivities.sort((a, b) => a.title.localeCompare(b.title))
+      }
+      else {
+        courseActivities.sort((a, b) => b.title.localeCompare(a.title))
+      }
+    }
+    if(sortKey === 'createDate') {
+      if(sortDir === 'asc') {
+        courseActivities.sort((a, b) => a.createDate - b.createDate)
+      }
+      else {
+        courseActivities.sort((a, b) => b.createDate - a.createDate)
+      }
+    }
+    if(sortKey === 'lastUpdate') {
+      if(sortDir === 'asc') {
+        courseActivities.sort((a, b) => a.lastUpdate - b.lastUpdate)
+      }
+      else {
+        courseActivities.sort((a, b) => b.lastUpdate - a.lastUpdate)
+      }
+    }
     return courseActivities
   }
 
@@ -151,11 +177,12 @@ export default class CourseController extends BaseController {
       if (!courseId || courseId === 'undefined') {
         throw new ParameterError(Text.REQUIRES_COURSE_ID)
       }
+      const { sortKey, sortDir } = req.query
       const authPayload = req.authPayload
       const userId = authPayload.userId
       const isInstructor = authPayload.isInstructor
       const consumerId = authPayload.toolConsumerId
-      this.getCourseRecordWithActivities(courseId, userId, consumerId, isInstructor)
+      this.getCourseRecordWithActivities(courseId, userId, consumerId, isInstructor, sortKey, sortDir)
         .then(ok(res))
         .then(null, fail(res))
     })

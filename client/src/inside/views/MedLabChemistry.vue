@@ -6,7 +6,7 @@
       p This Med Lab Chemistry page is generated.
       p Label: Med Lab Chemistry
       p Data Key: medLabChemistry
-      p Component name: UnderConstruction
+      p Component name: MedLabChemistry
       p Redirect: 
       p Route name: med-lab-chemistry
       p Full path: /ehr/med-lab/med-lab-chemistry
@@ -17,7 +17,7 @@ import EhrPage from '../components/page/EhrPage'
 import EhrPageHelper from '../components/page/ehr-helper'
 
 export default {
-  name: 'UnderConstruction',
+  name: 'MedLabChemistry',
   components: { EhrPage },
   data: function () {
     return {

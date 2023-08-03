@@ -28,6 +28,7 @@ const TOKEN_PATH = '.token.json'
 function getSheets(auth) {
   const sheets = google.sheets({ version: 'v4', auth })
   const RANGE = '!AG2:BI400'
+  const MLRANGE = '!AG2:BI900'
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'pages!J2:P100', 'raw_data/inside-pages.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'External'+RANGE, 'raw_data/external-resources.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'pProfile'+RANGE, 'raw_data/patient-profile.txt')
@@ -39,7 +40,7 @@ function getSheets(auth) {
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-3'+RANGE, 'raw_data/current-visit-3.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-Mar'+RANGE, 'raw_data/current-mar.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-4'+RANGE, 'raw_data/current-visit-4.txt')
-  getSheet(sheets, INPUT_SPREADSHEET_ID, 'medLab'+RANGE, 'raw_data/med-lab.txt')
+  getSheet(sheets, INPUT_SPREADSHEET_ID, 'medLab'+MLRANGE, 'raw_data/med-lab.txt')
 }
 
 function getSheet(sheets, sheetId, range, fName) {

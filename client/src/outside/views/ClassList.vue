@@ -87,7 +87,7 @@ export default {
         const vFomStore = this.$store.getters['visit/visitId']
         const visitId = vFromRoute ? vFromRoute : vFomStore
         await StoreHelper.setVisitId(visitId)
-        const activityRecord = await this.$store.dispatch('visit/setLoadVisitActivity', visitId)
+        const activityRecord = await this.$store.dispatch('activityStore/loadActivityRecord')
         await this.$store.dispatch('courseStore/setCourseId', activityRecord.courseId)
         await this.$store.dispatch('courseStore/loadCurrentCourse')
         await this.$store.dispatch('instructor/loadClassList')

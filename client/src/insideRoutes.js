@@ -366,18 +366,18 @@ export function inside () {
       meta: { layout: 'inside', label: 'Med Lab Hematology', topLevel: 'med-lab', zone: 'ehr' }
     },
     {
-      path: '/ehr/med-lab/medLabChemistry',
-      name: 'medLabChemistry',
+      path: '/ehr/med-lab/med-lab-chemistry',
+      name: 'med-lab-chemistry',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/UnderConstruction.vue'),
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/MedLabChemistry.vue'),
       meta: { layout: 'inside', label: 'Med Lab Chemistry', topLevel: 'med-lab', zone: 'ehr' }
     },
     {
-      path: '/ehr/med-lab/med-lab-imaging',
-      name: 'med-lab-imaging',
+      path: '/ehr/med-lab/med-lab-urinalysis',
+      name: 'med-lab-urinalysis',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/UnderConstruction.vue'),
-      meta: { layout: 'inside', label: 'Med Lab Medical Imaging', topLevel: 'med-lab', zone: 'ehr' }
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/MedLabUrinalysis.vue'),
+      meta: { layout: 'inside', label: 'Med Lab Urinalysis', topLevel: 'med-lab', zone: 'ehr' }
     },
     {
       path: '/ehr/current/order-sets',

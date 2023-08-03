@@ -452,19 +452,19 @@ module.exports = function () {
   },
   {
     'path': '/ehr/med-lab',
-    'routeName': 'medLabChemistry',
+    'routeName': 'med-lab-chemistry',
     'pageDataKey': 'medLabChemistry',
     'label': 'Med Lab Chemistry',
     'redirect': '',
-    'generateComponent': 'wip',
+    'generateComponent': 'yes',
     'menuIndex': '57'
   },
   {
     'path': '/ehr/med-lab',
-    'routeName': 'med-lab-imaging',
-    'pageDataKey': 'medLabImaging',
-    'label': 'Med Lab Medical Imaging',
-    'generateComponent': 'wip',
+    'routeName': 'med-lab-urinalysis',
+    'pageDataKey': 'medLabUrinalysis',
+    'label': 'Med Lab Urinalysis',
+    'generateComponent': 'yes',
     'menuIndex': '58'
   },
   {

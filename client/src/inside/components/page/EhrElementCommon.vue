@@ -41,6 +41,7 @@ export default {
     element () {
       return EhrDefs.getPageChildElement(this.pageDataKey, this.elementKey)
     },
+    formCss () { return this.element.formCss || ''},
     helperText () { return this.element.helperText },
     helperHtml () { return this.element.helperHtml },
     hideElement () { return (this.element.formOption === 'hideElement' && this.hideIfId)},

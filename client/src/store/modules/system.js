@@ -1,6 +1,8 @@
 import InstoreHelper from '@/store/modules/instoreHelper'
 // import { Text } from '@/helpers/ehr-text'
 // import StoreHelper from '@/helpers/store-helper'
+const appTypeEHR = 'EHR'
+const appTypeLIS = 'LIS'
 const trace = false
 const state = {
   _isLoading: false,
@@ -8,6 +10,7 @@ const state = {
   apiError: '',
   appDialogCount: 0,
   caseContextFeature: false,
+  checkAppTypes: [appTypeEHR, appTypeLIS],
   currentPageKey: '',
   lmsNavCollapsed: false,
   condensedTableVertical: false, // false = horizontal, See SeedPage.
@@ -29,6 +32,7 @@ const state = {
 const getters = {
   apiData: state => state.apiData,
   apiError: state => state.apiError,
+  checkAppTypes: state => state.checkAppTypes,
   appDialogCount: state => state.appDialogCount,
   caseContextFeature: state => state.caseContextFeature,
   condensedTableVertical: state => state.condensedTableVertical,
@@ -71,6 +75,13 @@ const actions = {
       return response.data
     })
   },
+  setAppTypes ( {commit}, value) {
+    if(!value || ! Array.isArray(value)) {
+      console.error('Coding error setting app types with providing an array')
+      return
+    }
+    commit('setAppTypes', value)
+  },
   setOutsideShowButtonLabels ({ commit }, value) {
     if (trace) console.log('set show', value)
     commit('setOutsideShowButtonLabels', value)
@@ -97,6 +108,10 @@ const mutations = {
     state.caseContextFeature = localStorage.getItem('CaseContextFeature') === 'true'
     state.condensedTableVertical = localStorage.getItem('CondensedTableVertical') === 'true'
     state.lmsNavCollapsed = localStorage.getItem('LmsNavCollapsed') === 'true'
+    const asStored = localStorage.getItem('appTypes')
+    if (asStored) {
+      state.checkAppTypes = asStored.split(',')
+    }
     // disable this ability to toggle labels. Force all to be hidden to be icon only.
     // TODO IF this doesn't cause problems for users then come back and remove the code that manages this state
     // const storedShow = localStorage.getItem('ShowButtonLabels')
@@ -107,6 +122,10 @@ const mutations = {
   setApiData: (state, apiData) => {
     // console.log('System store set ApiData: ', apiData)
     state.apiData = apiData
+  },
+  setAppTypes: (state, appTypesArray) => {
+    state.checkAppTypes = appTypesArray
+    localStorage.setItem('appTypes', appTypesArray.join(','))
   },
   incrAppDialogCount: (state) => {
     state.appDialogCount++

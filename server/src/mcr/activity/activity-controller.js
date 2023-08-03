@@ -5,6 +5,7 @@ import {ok, fail} from '../common/utils'
 import Assignment from '../assignment/assignment'
 import SeedData from '../seed/seed-data'
 import ActivityData from '../activity-data/activity-data'
+import { isAdmin } from '../../helpers/middleware'
 const debug = require('debug')('server')
 const debugAC = false
 /*
@@ -143,6 +144,35 @@ export default class ActivityController extends BaseController {
     return activity.save()
   }
 
+  async listAdminActivities (consumerId) {
+    let list = await Activity.find({ toolConsumer: consumerId })
+      .populate('assignment', {name:1, description: 1, seedDataId: 1})
+      .populate('course', {context_title: 1, context_label: 1, title: 1, description: 1}) // must query for context_title context_label to get virtual values title and description
+
+    // decouple so we can add properties
+    list = JSON.parse(JSON.stringify(list))
+    list.forEach( activity => {
+      activity.title = activity.custom_title || activity.resource_link_title || 'Unknown'
+      activity.description = activity.custom_description || activity.resource_link_description || undefined
+    })
+    list.sort( (a,b) => a.course.title.localeCompare(b.course.title))
+    const results = []
+    list.forEach( activity => {
+      const ct = activity.course.title
+      let cs = results.find( c => c.title === ct)
+      if(!cs) {
+        cs = {
+          title: ct,
+          activities: []
+        }
+        results.push(cs)
+      }
+      cs.activities.push(activity)
+    })
+    console.log('----------------',results)
+    return { activities: results }
+  }
+
   listClassList (_id) {
     return Visit.find({ $and: [ {isStudent: true }, {activity: _id} ] })
       .populate('activityData', 'submitted assignmentData evaluationData lastDate')
@@ -192,6 +222,15 @@ export default class ActivityController extends BaseController {
 
   route () {
     const router = super.route()
+    const adminMiddleware = [
+      isAdmin
+    ]
+    router.get('/admin-activities/:consumerId', adminMiddleware, (req, res) => {
+      let consumerId = req.params.consumerId
+      this.listAdminActivities(consumerId)
+        .then(ok(res))
+        .then(null, fail(res))
+    })
 
     router.get('/getActivityRecord/:visitId', (req, res) => {
       let visitId = req.params.visitId

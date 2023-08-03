@@ -55,7 +55,7 @@ export default {
       downloadSeedToFile(seedId, sSeedContent, data, this.seedModel.tagListAsString())
     },
     gotoEhrWithSeed () {
-      this.$router.push({ name: 'ehr', query: { seedEditId: this.seedId } })
+      this.$router.push({ name: 'ehr', query: { seedEditId: this.seedId, appType: this.seed.appType } })
     },
     showEditDialog: function () {
       this.$refs.theDialog.showDialog(this.seedModel)

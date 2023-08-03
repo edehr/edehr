@@ -6,12 +6,14 @@ const OBJ = 'activity'
 
 const state = {
   activityRecord: {},
-  activityId: ''
+  activityId: '',
+  adminActivities: []
 }
 
 const getters = {
   activityId: state => state.activityId,
   activityRecord: state => state.activityRecord,
+  adminActivities: state => state.adminActivities,
   hasActivity: state => JSON.stringify(state.activityRecord).length > 2,
 }
 
@@ -76,6 +78,23 @@ const actions = {
       return results
     })
   },
+  loadAdminActivities (context, consumerId) {
+    if (!consumerId) {
+      console.log('loadAdminActivities. Must provide consumer id')
+      return
+    }
+    // console.log('seedListStore. Fetch seed list')
+    let url = 'admin-activities/' + consumerId
+    return InstoreHelper.getRequest(context, API, url).then(response => {
+      let list = response.data.activities
+      if (!list) {
+        console.error('ERROR the system should have activities')
+        return
+      }
+      context.commit('_setAdminActivities', list)
+      return list
+    })
+  },
   updateTitleDescription ({dispatch, commit}, payload) {
     // const {custom_title, custom_description} = payload
     const {activityId } = payload
@@ -112,6 +131,9 @@ const mutations = {
       state.activityId = ''
       localStorage.removeItem(ACTIVITY_LOCAL_STORE)
     }
+  },
+  _setAdminActivities: ( state, list ) => {
+    state.adminActivities = list
   },
   clearActivity: (state) => {
     state.activityRecord = {}

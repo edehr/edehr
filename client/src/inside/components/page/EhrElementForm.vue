@@ -1,29 +1,35 @@
 <template lang='pug'>
   div(class="form-element", :class='{invalidElement : !validData, hideTableElement: hideElement}')
-    div(v-if="isType('form_label')")
+    div(v-if="isType('form_label')", :class='formCss')
       div(v-html="label", class='form_label_wrapper')
       ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
 
 
-    div(v-else-if="isType('assetLink')", class="assetLink")
+    div(v-else-if="isType('assetLink')", class="assetLink", :class='formCss')
       a(:href="assetUrl()", target="_blank")
         fas-icon(class="linkIcon", icon="file-pdf")
         span {{assetName()}}
 
-    div(v-else-if="isType('calculatedValue')", class="computed_wrapper")
+    div(v-else-if="isType('calculatedValue')", class="computed_wrapper", :class='formCss')
       ehr-element-calculated(:element="element", :ehrHelp="ehrHelp", :elementKey="elementKey" )
 
-    div(v-else-if="isType('checkset')", class="checkset_wrapper")
-      ehr-element-checkset(:elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
+    ehr-element-box-checkset(v-else-if="isType('boxcheckset')", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
-    div(v-else-if="isType('checkbox')", class="checkbox_wrapper")
+    ehr-element-checkset(v-else-if="isType('checkset')", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
+
+    ehr-element-radioset(v-else-if="isType('radioset')",
+      :elementKey="elementKey",
+      :ehrHelp="ehrHelp",
+      :viewOnly='viewOnly')
+
+    div(v-else-if="isType('checkbox')", class="checkbox_wrapper", :class='formCss')
       input(:id="inputId", class="checkbox", type="checkbox", :disabled="disabled || viewOnly ", :name="elementKey", v-model="inputVal", v-on:change="dependentUIEvent()")
       ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="checkbox_label, check-label", :forElement="inputId")
 
-    div(v-else-if="isType('custom_form')", class='grid-span-3-columns')
+    div(v-else-if="isType('custom_form')", class='grid-span-3-columns', :class='formCss')
       ehr-element-custom-form(:element="element", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
-    div(v-else-if="isType('date')", class="text_wrapper")
+    div(v-else-if="isType('date')", class="text_wrapper", :class='formCss')
       ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
       div(class="columns")
         input(v-if="!viewOnly", class="column is-10 input text-input", :disabled="disabled", :name="elementKey", v-model="inputVal")
@@ -57,23 +63,23 @@
           :inputVal="inputVal"
         )
 
-    div(v-else-if="isType('lab_result')", class="lab_result_wrapper")
+    div(v-else-if="isType('lab_result')", class="lab_result_wrapper", :class='formCss')
       div(class="lab_result_element")
         ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="lab_result_label")
         input(v-if="!viewOnly", class="input text-input", :disabled="disabled", :name="elementKey", v-model="inputVal")
         div(v-if="viewOnly") {{ inputVal }}
         div(class="lab_result_suffix", v-text-to-html="element.suffixHtml")
 
-    div(v-else-if="isType('mainDOB')")
-      ehr-element-birth-date(
-        :elementKey="elementKey",
-        :ehrHelp="ehrHelp",
-        :viewOnly='viewOnly',
-        :containerInputValue="inputVal"
-        @update="childUpdate"
-        )
+    ehr-element-birth-date(
+      v-else-if="isType('mainDOB')"
+      :elementKey="elementKey",
+      :ehrHelp="ehrHelp",
+      :viewOnly='viewOnly',
+      :containerInputValue="inputVal"
+      @update="childUpdate"
+      )
 
-    div(v-else-if="isType('number') || isType('personAge')", class="text_input_wrapper")
+    div(v-else-if="isType('number') || isType('personAge')", class="text_input_wrapper", :class='formCss')
       ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
       input(v-if="!viewOnly", class="input numb-input", type="text", :disabled="disabled", :name="elementKey", v-model="inputVal")
       div(v-if="viewOnly") {{ inputVal }}
@@ -104,24 +110,24 @@
         //  :inputVal="inputVal"
         //)
 
-    div(v-else-if="isType('select')", class="select_wrapper")
+    div(v-else-if="isType('select')", class="select_wrapper", :class='formCss')
       ehr-element-select(:elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
     div(v-else-if="isType('spacer')", class="label_wrapper") <!--class="spacer"-->
       div &nbsp;
 
-    div(v-else-if="isType('text')", class="text_input_wrapper")
+    div(v-else-if="isType('text')", class="text_input_wrapper", :class='formCss')
       ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
       input(v-if="!viewOnly", class="input text-input", :disabled="disabled", :name="elementKey", v-model="inputVal")
       div(v-if="viewOnly") {{ inputVal }}
       span(class="suffix") {{suffix }}
 
-    div(v-else-if="isType('textarea')", class="textarea_wrapper")
+    div(v-else-if="isType('textarea')", class="textarea_wrapper", :class='formCss')
       ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="textarea_label")
       textarea(class="ehr-page-form-textarea", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
 
     //div(v-else-if="isType('number') || isType('personAge')", class="text_input_wrapper")
-    div(v-else-if="isType(dataTypes.visitDay) || isType(dataTypes.visitTime)", class="text_input_wrapper")
+    div(v-else-if="isType(dataTypes.visitDay) || isType(dataTypes.visitTime)", class="text_input_wrapper", :class='formCss')
       ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
       input(v-if="!viewOnly", class="input numb-input", type="text", :disabled="disabled", :name="elementKey", v-model="inputVal")
       div(v-if="viewOnly") {{ inputVal }}
@@ -164,11 +170,15 @@ import EhrElementMedication from '@/inside/components/page/EhrElementMedication'
 import UiInfo from '@/app/ui/UiInfo'
 import EhrElementCustomForm from '@/inside/components/page/EhrElementCustomForm.vue'
 import EhrElementSelect from '@/inside/components/page/EhrElementSelect.vue'
+import EhrElementRadioset from '@/inside/components/page/EhrElementRadioset.vue'
+import EhrElementBoxCheckset from '@/inside/components/page/EhrElementBoxCheckset.vue'
 
 export default {
   name: 'EhrElementForm',
   extends: EhrElementCommon,
   components: {
+    EhrElementBoxCheckset,
+    EhrElementRadioset,
     EhrElementSelect,
     EhrElementCustomForm,
     EhrElementMedication,

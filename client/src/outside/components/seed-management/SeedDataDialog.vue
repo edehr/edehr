@@ -12,29 +12,27 @@
       div(slot="body")
         div
           div(class="grid-left-to-right-2")
+            div(class="flow_across table_space_across")
+              label(class="name-label") Name
+              input(class="input", type="text", v-model="name", v-validate="nameValidate")
+            div(class="flow_across table_space_across")
+              label(class="version-label") Version
+              ui-info(title="Optional versioning", text="You can update the version number to indicate a change in content.")
+              input(class="input version-input", type="text", v-model="version")
+          div(class="grid-left-to-right-2")
             div
-              div(class="text_input_wrapper")
-                label Name
-                input(class="input", type="text", v-model="name", v-validate="nameValidate")
-            div
-              div(class="text_input_wrapper")
-                label Version
-                  ui-info(title="Optional versioning", text="You can update the version number to indicate a change in content.")
-                input(class="input", type="text", v-model="version")
-          div(class="grid-left-to-right-1")
-            div
-              label Application Type
-              app-type-toggle-button(
-                :modelValue='isEHR_Showing',
-                @change='changeApp',
-                labelOn='EHR'
-                labelOff='LIS'
-              )
+              div(class="flow_across table_space_across app-type-section")
+                label Application type
+                app-type-toggle-button(
+                  :modelValue='isEHR_Showing',
+                  @change='changeApp',
+                  labelOn='EHR'
+                  labelOff='LIS'
+                )
               div {{ appTypeDescriptionText }}
-          div(class="grid-left-to-right-1")
-            div
-              label Tags
-                ui-info(title="Tags", :html="tagHelperText")
+            div(class="flow_across table_space_across tags-section")
+              label(class="tags-label") Tags
+              ui-info(title="Tags", :html="tagHelperText")
               app-tag-list-editor(:tagList="tagList", @update='updateTagList')
           div(class="grid-left-to-right-1")
             div
@@ -93,7 +91,7 @@ export default {
   components: { AppTypeToggleButton,  AppTagListEditor, AppDialog, UiButton, UiInfo },
   data () {
     return {
-      appType: '',
+      appType: 'EHR',
       name: '',
       version: '',
       contributors: '',
@@ -104,7 +102,7 @@ export default {
       seedId: '',
       seedFile: null,
       tagHelperText: 'Tags let you categorize case studies.',
-      tagList: '',
+      tagList: [],
       upload: false,
       uploadSeed: {},
       uploadError: ''
@@ -114,8 +112,8 @@ export default {
   computed: {
     appTypeDescriptionText () {
       return this.isEHR_Showing ?
-        'User will see electronic health record (EHR) content.' :
-        'User will see lab information system (LIS) content.'
+        'Present the electronic health record (EHR) application.' :
+        'Present the lab information system (LIS) application.'
     },
     dialogHeader () {
       return TITLES[this.actionType] || ''
@@ -236,5 +234,18 @@ export default {
 @import '@/scss/definitions';
 .file-label {
   margin-bottom: 1px !important;
+}
+.version-label, .tags-label, .name-label {
+  width: 7rem;
+}
+.version-input {
+  width: 10rem;
+}
+
+.app-type-section {
+  label {
+    position: relative;
+    top: 5px; // to align with the toggle button
+  }
 }
 </style>

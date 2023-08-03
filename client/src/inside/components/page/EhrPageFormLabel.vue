@@ -1,6 +1,6 @@
 <template lang="pug">
   div(:class="css", v-if="showLabel")
-    label(v-html="label", :for="forElement", class="form_label", :class='{form_label_mandatory: useMandatoryCss}')
+    label(v-if="hasLabel", v-html="label", :for="forElement", class="form_label", :class='{form_label_mandatory: useMandatoryCss}')
     ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
     span(v-if="helperText") &nbsp; &nbsp;
 </template>
@@ -14,6 +14,7 @@ export default {
   data: function () {
     return {
       label: '',
+      hasLabel: false,
       helperHtml: '',
       helperText: '',
       showLabel: true,
@@ -40,6 +41,7 @@ export default {
       // this.showLabel = !(element.formOption === 'hideLabel') && element.label
       this.showLabel = !(element.formOption === 'hideLabel')
       this.label = element.label
+      this.hasLabel = !!this.label
       this.helperText = element.helperText
       this.helperHtml = element.helperHtml
     }

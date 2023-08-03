@@ -20,6 +20,7 @@ const EhrTypes = {
   },
   dataInputTypes: {
     checkbox: 'checkbox',
+    boxcheckset: 'boxcheckset',
     select: 'select',
     calculatedValue: 'calculatedValue',
     checkset: 'checkset',
@@ -38,6 +39,7 @@ const EhrTypes = {
     personAge: 'personAge',
     practitionerName: 'practitionerName',
     practitionerProfession: 'practitionerProfession',
+    radioset: 'radioset',
     text: 'text',
     textarea: 'textarea',
     // time: 'time',

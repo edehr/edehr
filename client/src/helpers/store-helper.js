@@ -87,7 +87,7 @@ class StoreHelperWorker {
   userId () { return this._getUserProperty('userId') }
   givenName () { return this._getUserProperty('givenName') }
   fullName () { return this._getUserProperty('fullName') }
-  lmsUrl () { return this._getVisitProperty('returnUrl') }
+  lmsUrl () { return this._getAuthStore('lmsUrl') }
   isDeveloper () { return this._getVisitProperty('isDeveloper') }
   getPageTitle () { return this._getSystemProperty('pageTitle')}
   setPageTitle (pageTitle) { return store.commit('system/setPageTitle', pageTitle)}
@@ -348,7 +348,7 @@ class StoreHelperWorker {
     StoreHelper.postActionEvent(INSTRUCTOR_ACTION,'restoreNormalRole')
   }
 
-  async visitAsStudent (router) {
+  async visitAsStudent (router, appType) {
     const currentActivityId = StoreHelper.getActivityId()
     const newToken = await this._dispatchVisit('visitAsStudent', currentActivityId)
     /*
@@ -362,7 +362,7 @@ class StoreHelperWorker {
     */
     await StoreHelper.storeReplaceToken(newToken)
     const visitId = StoreHelper.getAuthVisitId()
-    router.push({ name: 'ehr', query: { visitId: visitId } })
+    router.push({ name: 'ehr', query: { visitId: visitId, appType: appType } })
     StoreHelper.postActionEvent(INSTRUCTOR_ACTION,'visitAsStudent')
   }
 

@@ -168,6 +168,8 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
       // product value is 0 until there are at least two values
       values = mapToNums(values)
       result = values.length >= 2 ? values.reduce((a, b) => a * b, 1) : 0
+      // the only two places that product is used they want a whole number result
+      result = Math.round(result)
       isNumberResult = true
       break
     case 'wbcAbs':

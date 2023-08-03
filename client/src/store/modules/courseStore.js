@@ -41,12 +41,15 @@ const actions = {
       })
   },
 
-  loadCurrentCourse (context) {
+  loadCurrentCourse (context, payload) {
     const id = state.courseId
     if(!id || id.length===0) {
       throw new Error('System failure. Can not load the current course because no course id has been set')
     }
     let url = 'course/' + id
+    if (payload && payload.sortKey) {
+      url += '?sortKey=' + payload.sortKey +'&sortDir=' + payload.sortDir
+    }
     return InstoreHelper.getRequest(context, API, url).then(response => {
       let results = response.data['course']
       if (!results) {

@@ -36,6 +36,9 @@
             fas-icon(class='fa', :icon='appIcons.lobj')
             span &nbsp; {{ activity.learningObjectName }}
       div(class="details-row")
+        div(class="details-name") Application type
+        div(class="details-value") {{ activity.appType }}
+      div(class="details-row")
         div(class="details-name") {{text.DESCRIPTION}}
         div(class="details-value")
           div(v-text-to-html="activity.learningObjectDescription")
@@ -100,7 +103,8 @@ export default {
   },
   methods: {
     switchToStudent () {
-      StoreHelper.visitAsStudent(this.$router)
+      const appType = this.activity.appType
+      StoreHelper.visitAsStudent(this.$router, appType)
     },
     /*
     LmsActivity is THE landing place for all instructor users. The LTI process brings all

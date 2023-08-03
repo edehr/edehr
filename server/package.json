@@ -14,6 +14,7 @@
     "lint": "eslint --fix 'src/**/*.js'",
     "scale-test": "node test/scale-testing.js",
     "start": "NODE_ENV=development DEBUG='server, error, actions' nodemon -r dotenv/config --exec babel-node src/index.js",
+    "start:proddb": "MONGODB_NAME=edehr-prod NODE_ENV=development DEBUG='server, error, actions' nodemon -r dotenv/config --exec babel-node src/index.js",
     "start:auth": "NODE_ENV=development DEBUG_COLORS=no DEBUG='auth, trace, server, error' nodemon -r dotenv/config --exec babel-node src/index.js",
     "start:auth:lti": "NODE_ENV=development DEBUG_COLORS=no DEBUG='auth, lti, trace, server, error' nodemon -r dotenv/config --exec babel-node src/index.js",
     "start:lti": "NODE_ENV=development DEBUG_COLORS=no DEBUG='lti, server, error' nodemon -r dotenv/config --exec babel-node src/index.js",

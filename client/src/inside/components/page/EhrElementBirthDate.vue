@@ -3,8 +3,7 @@
     ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
     div(v-if="viewOnly") {{ containerInputValue }}
     div(v-else)
-      div(v-if="disabled")
-        input(class="input text-input", disabled="true", :value="containerInputValue")
+      input(v-if="disabled", class="input text-input", disabled="true", :value="containerInputValue")
       div(v-else)
         ui-button(v-on:buttonClicked="showDialog", :disabled="!canEdit",) Edit
         span &nbsp; {{containerInputValue }}

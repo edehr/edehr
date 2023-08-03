@@ -16,12 +16,9 @@ function _getHelper () {
 
 const DEMO_DATA = 'DemoData'
 const DEMO_PERSONA = 'DemoPersona'
-const DEMO_FEATURE = 'DemoFeature'
 
 const _getStoredDemoData = () => localStorage.getItem(DEMO_DATA)
 const _setDemoData = (value) => localStorage.setItem(DEMO_DATA, value)
-const _getStoredDemoFeature = () => localStorage.getItem(DEMO_FEATURE)
-const _setDemoFeature = (value) => localStorage.setItem(DEMO_FEATURE, value)
 const _getStoredDemoPersona = () => localStorage.getItem(DEMO_PERSONA)
 const _setDemoPersona = (value) => localStorage.setItem(DEMO_PERSONA, value)
 const _getStoredDemoToken = () => localStorage.getItem(sKeys.DEMO_TOKEN)

@@ -20,7 +20,8 @@ export default class EhrCheckset {
    * @returns Array converted to csv string (no spaces)
    */
   static checkSetToDbValue (val) {
-    return val.filter( v => v.length > 0).join(',')
+    const nonEmpties = val.filter( v => v.length > 0)
+    return nonEmpties.length > 0 ? nonEmpties.join(',') : ''
   }
 
   static makeHuman (inputValue, pageDataKey, elementKey) {

@@ -38,7 +38,6 @@ textarea {
   display: inline-block;
 }
 .form_label {
-  min-width: 7rem;
   text-align: right;
   padding-right: 5px;
   &::after {
@@ -149,7 +148,7 @@ input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:dis
   width: 100%
 }
 
-.text_input_wrapper, .textarea_wrapper, .select_wrapper, .date_wrapper, .checkset_wrapper {
+.text_input_wrapper, .textarea_wrapper, .select_wrapper, .date_wrapper, .checkset_wrapper, .radio_wrapper {
   position: relative;
   display: flex;
   align-content: space-between
@@ -235,6 +234,19 @@ select, .select {
 
 .ehr-page-form {
   margin-bottom: 8em;
+  .ehr-group-for {
+    margin-bottom: 5px;
+    .form_label {
+      min-width: 9rem;
+      max-width: 9rem;
+      text-wrap: normal;
+    }
+    .input {
+      max-width: inherit;
+      width: inherit;
+    }
+
+  }
 }
 
 
@@ -348,6 +360,27 @@ select, .select {
     grid-column: span 1;
   }
 }
+.compact_5_col {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr 0.5fr;
+  gap: 1px;
+  .ehr-group-for {
+    border: 1px solid black;
+    padding: 5px;
+  }
+}
+.med-lab-urin-micro {
+  display: grid;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
+  gap: 1px;
+  .ehr-group-for {
+    border: 1px solid black;
+    padding: 5px;
+  }
+  .select {
+    width: 12rem;
+  }
+}
 
 .thumbnail {
   display: inline-block;
@@ -370,4 +403,79 @@ select, .select {
   //  margin-left: 5px;
   //  top: 4px;
   //}
+}
+
+.field_full_line {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+.wbcmAbnormalTypeMorphology {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.wbcmToxicTypeMorphology {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+.rcm_grading {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.form_label {
+  min-width: 8rem;
+  max-width: 8rem;
+}
+.check-label label {
+  min-width: 18rem;
+  max-width: 18rem;
+}
+.text-area-2-rows textarea {
+  height: 3rem;
+}
+
+.grid-left-to-right-2 select {
+  min-width: 15rem;
+}
+
+.form-table-group {
+  display: grid;
+  gap: 1px;
+  .form-element {
+    padding: 0;
+    border: 1px $grey20 solid;
+    height: 3rem;
+    .form_label_wrapper {
+      padding-left: 10px;
+    }
+    .text-input {
+      height: 2.8rem; // slightly smaller then the form-element so there is a bottom border
+      border: none;
+    }
+  }
+}
+.chem-results {
+  grid-template-columns: 1fr 1fr 0.5fr 1fr;
+  .chem-results-lhclch .radio_set  {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 1rem;
+  }
+}
+.chem-qc-assay {
+  grid-template-columns: 3fr 1fr;
+  .chem-qc-assay-into {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  .radio_set {
+    display: flex;
+    flex-flow: row;
+    gap: 1rem;
+    padding-left: 10px;
+  }
+}
+.chem-qc-trouble {
+  grid-template-columns: repeat(5, 1fr);
 }

@@ -4,9 +4,9 @@
       div
         span Case Study:
         router-link(class="seed-name", :to="{ name: 'seed-view', query: { seedId: seedInfo._id } }") {{ truncate(seedInfo.name, 50)}}
+      div(class="seed-description") Description:  {{ truncate(seedInfo.description, 260)}}
       div
         zone-lms-button(class="shrink", @action="showEditDialog", :icon='appIcons.configure', :title='text.PROPERTIES_TP', :text='text.PROPERTIES')
-      div(class="seed-description") Description:  {{ truncate(seedInfo.description, 260)}}
     seed-data-dialog(ref="theDialog")
 </template>
 
@@ -63,7 +63,8 @@ export default {
 @import '../../scss/definitions';
 .ehr-context-case-study {
   display: grid;
-  grid-template-columns: 1fr 0.25fr 3fr;
+  grid-template-columns: 1fr 3fr 0.25fr;
+  gap: 1rem;
 
   .seed-name {
     //color: $black;
