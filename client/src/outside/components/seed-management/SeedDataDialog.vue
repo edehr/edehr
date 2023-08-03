@@ -91,7 +91,7 @@ export default {
   components: { AppTypeToggleButton,  AppTagListEditor, AppDialog, UiButton, UiInfo },
   data () {
     return {
-      appType: '',
+      appType: 'EHR',
       name: '',
       version: '',
       contributors: '',
