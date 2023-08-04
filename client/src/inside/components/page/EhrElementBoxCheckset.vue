@@ -36,11 +36,11 @@ export default {
   watch: {
     checkValues (value) {
       const newVal = EhrCheckset.checkSetToDbValue(value)
-      console.log('Send value for BoxCheckset with ', value, newVal)
+      // console.log('Send value for BoxCheckset with ', value, newVal)
       this.sendInputEvent(newVal)
     },
     mainCheck (value) {
-      console.log('watching main check value change?', this.mainCheck, value)
+      // console.log('watching main check value change?', this.mainCheck, value)
       if (! value ) {
         this.checkValues = []
       }
@@ -49,9 +49,10 @@ export default {
   methods: {
     setInitialValue (value) {
       this.checkValues = EhrCheckset.dbValueToCheckSet(value)
-      console.log('checkOptions', this.checkOptions)
-      console.log('set initial value of BoxCheckset with ', value, this.checkValues)
-      this.mainCheck = this.checkValues.length > 0
+      // console.log('set initial value of BoxCheckset with ', value)
+      // console.log('checkOptions', this.checkOptions)
+      // console.log('checkValues', this.checkValues)
+      this.mainCheck = this.checkValues.length > 0 && this.checkValues[0] !== ''
     },
     setup () {
     }

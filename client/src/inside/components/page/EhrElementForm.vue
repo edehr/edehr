@@ -40,13 +40,13 @@
     div(v-else-if="isPatientData" )
       ehr-element-patient(:element="element", :elementKey="elementKey", :ehrHelp="ehrHelp")
 
-    div(v-else-if="isType('ehrFile')")
-      ehr-element-file(
-        :containerInputValue="inputVal",
-        :elementKey="elementKey",
-        :ehrHelp="ehrHelp",
-        :viewOnly='viewOnly',
-        @update="childUpdate")
+    ehr-element-file(
+      v-else-if="isType('ehrFile')"
+      :containerInputValue="inputVal",
+      :elementKey="elementKey",
+      :ehrHelp="ehrHelp",
+      :viewOnly='viewOnly',
+      @update="childUpdate")
 
     div(v-else-if="isType('ehr_embedded')")
       ehr-element-embedded(:elementKey="elementKey", :ehrHelp="ehrHelp", :inputVal="inputVal")

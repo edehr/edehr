@@ -130,8 +130,11 @@ input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:dis
   width: 100%;
 }
 
+/* input-element-small is applied to an ehr form field wrapper so we need to shape the inner text input */
 .input-element-small {
-  flex: 1 0 5rem;
+  input {
+    max-width: 10rem;
+  }
 }
 
 .input-element-medium {
@@ -291,6 +294,7 @@ select, .select {
 
 .cardio-assessment,
 .ehr-banner-grid,
+.grid-left-to-right-custom,
 .grid-left-to-right-1,
 .grid-left-to-right-2,
 .grid-left-to-right-3,
@@ -452,6 +456,11 @@ select, .select {
     padding-top: 5px;
   }
 
+}
+
+/* Hematology */
+.wbc-differential-group {
+  grid-template-columns: 1fr 1fr 1fr;
 }
 /*
  Table specific styling
