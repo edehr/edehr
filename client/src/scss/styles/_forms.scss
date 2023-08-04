@@ -62,7 +62,6 @@ textarea {
   vertical-align: -4px;
 }
 
-
 .checkbox_label,
 .radio_label {
   display: inline;
@@ -131,8 +130,11 @@ input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:dis
   width: 100%;
 }
 
+/* input-element-small is applied to an ehr form field wrapper so we need to shape the inner text input */
 .input-element-small {
-  flex: 1 0 5rem;
+  input {
+    max-width: 10rem;
+  }
 }
 
 .input-element-medium {
@@ -204,6 +206,12 @@ input[type="checkbox"]{
   vertical-align: middle;
 }
 
+/* A radio set is a group of radio inputs with labels. */
+.radio_set {
+  label {
+    margin-left: 5px;
+  }
+}
 select, .select {
   background: linear-gradient(180deg, rgba(203, 206, 209, 0.2) 0%, rgba(133, 139, 148, 0.2) 100%);
   height: 2.25em;
@@ -271,11 +279,22 @@ select, .select {
   border-bottom: 1px solid $grey20;
   margin-bottom: 2.5em;
   padding-bottom: .75em;
+  display: flex;
+}
+/* Reduce size of day and time label and input */
+.record-header > div:nth-child(3) input,
+.record-header > div:nth-child(4) input {
+  width: 4rem;
+}
+.record-header > div:nth-child(3) label,
+.record-header > div:nth-child(4) label {
+  min-width: 4rem;
+  max-width: 4rem;
 }
 
 .cardio-assessment,
-.record-header,
 .ehr-banner-grid,
+.grid-left-to-right-custom,
 .grid-left-to-right-1,
 .grid-left-to-right-2,
 .grid-left-to-right-3,
@@ -285,16 +304,6 @@ select, .select {
   grid-gap: 0.3rem 0.5rem;
   grid-auto-flow: row;
   margin-bottom: 1rem;
-}
-
-.record-header {
-  grid-template-columns: repeat(4, 1fr);
-  //.form_label {
-  //  width: 6rem;
-  //}
-  //.select_wrapper {
-  //  width: 12rem;
-  //}
 }
 
 .grid-left-to-right-1 {
@@ -343,7 +352,7 @@ select, .select {
     grid-template-columns: repeat(1, 1fr);
   }
 
-  .record-header, .grid-left-to-right-4 {
+  .grid-left-to-right-4 {
     grid-template-columns: repeat(1, 1fr);
   }
 
@@ -358,27 +367,6 @@ select, .select {
 
   .grid-span-2-columns {
     grid-column: span 1;
-  }
-}
-.compact_5_col {
-  display: grid;
-  grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr 0.5fr;
-  gap: 1px;
-  .ehr-group-for {
-    border: 1px solid black;
-    padding: 5px;
-  }
-}
-.med-lab-urin-micro {
-  display: grid;
-  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
-  gap: 1px;
-  .ehr-group-for {
-    border: 1px solid black;
-    padding: 5px;
-  }
-  .select {
-    width: 12rem;
   }
 }
 
@@ -442,21 +430,60 @@ select, .select {
 .form-table-group {
   display: grid;
   gap: 1px;
+  margin-bottom: 30px;
+  .ehr-group-for {
+    border: 1px solid black;
+    padding: 5px;
+    margin-bottom: 0;
+    min-height: 3rem;
+  }
   .form-element {
-    padding: 0;
-    border: 1px $grey20 solid;
-    height: 3rem;
+    //padding: 0;
+    //border: 1px $grey20 solid;
     .form_label_wrapper {
-      padding-left: 10px;
+      //padding-left: 10px;
     }
     .text-input {
-      height: 2.8rem; // slightly smaller then the form-element so there is a bottom border
-      border: none;
+      height: 2.1rem; // slightly smaller then the form-element so there is a bottom border
+      //border: none;
     }
   }
+  .formTableHeader {
+    font-weight: bold;
+  }
+  .formTableHeader, .formTableText {
+    padding-left: 5px;
+    padding-top: 5px;
+  }
+
 }
-.chem-results {
+
+/* Hematology */
+.wbc-differential-group {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+/*
+ Table specific styling
+ */
+.med-lab-urin-micro {
+  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
+  .select {
+    width: 12rem;
+  }
+}
+
+.urin-macro-exam {
+  grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr 0.5fr;
+  .input {
+    width: 10rem;
+  }
+}
+
+.chem-results-table {
   grid-template-columns: 1fr 1fr 0.5fr 1fr;
+  .input {
+    width: 10rem;
+  }
   .chem-results-lhclch .radio_set  {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -478,20 +505,4 @@ select, .select {
 }
 .chem-qc-trouble {
   grid-template-columns: repeat(5, 1fr);
-}
-
-
-.ehr-group-for {
-  margin-bottom: 5px;
-
-  .form_label {
-    min-width: 9rem;
-    max-width: 9rem;
-    text-wrap: normal;
-  }
-
-  .input {
-    max-width: inherit;
-    width: inherit;
-  }
 }

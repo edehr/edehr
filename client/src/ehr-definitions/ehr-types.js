@@ -69,6 +69,8 @@ const EhrTypes = {
   },
   nondataInputType: {
     form_label: 'form_label',
+    formTableHeader: 'formTableHeader',
+    formTableText: 'formTableText',
     assetLink: 'assetLink',
     spacer: 'spacer',
     horizontal: 'horizontal'

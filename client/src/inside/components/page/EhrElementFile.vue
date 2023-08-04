@@ -4,7 +4,7 @@
     div(class="file-element")
       div(class="inline")
         ehr-file-link(v-if="fValue && fValue.fName", :ehrFile="fValue", :alink="true")
-      div(class="inline select-file")
+      div(v-if="!viewOnly", class="inline select-file")
         ui-button(v-on:buttonClicked="showSelectDialog", v-bind:disabled="disabled || viewOnly", secondary, title="Select a file") {{ buttonLabel }}
     file-select-dialog(ref="fileSelectDialog", @fileSelected="fileSelected")
     ui-agree(ref="ehrOnlyDialog")

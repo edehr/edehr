@@ -3,7 +3,8 @@
     div(v-if="isType('form_label')", :class='formCss')
       div(v-html="label", class='form_label_wrapper')
       ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
-
+    div(v-else-if="isType('formTableHeader')", class="formTableHeader", :class='formCss', v-html="label")
+    div(v-else-if="isType('formTableText')", class="formTableText", :class='formCss', v-html="label")
 
     div(v-else-if="isType('assetLink')", class="assetLink", :class='formCss')
       a(:href="assetUrl()", target="_blank")
@@ -39,13 +40,13 @@
     div(v-else-if="isPatientData" )
       ehr-element-patient(:element="element", :elementKey="elementKey", :ehrHelp="ehrHelp")
 
-    div(v-else-if="isType('ehrFile')")
-      ehr-element-file(
-        :containerInputValue="inputVal",
-        :elementKey="elementKey",
-        :ehrHelp="ehrHelp",
-        :viewOnly='viewOnly',
-        @update="childUpdate")
+    ehr-element-file(
+      v-else-if="isType('ehrFile')"
+      :containerInputValue="inputVal",
+      :elementKey="elementKey",
+      :ehrHelp="ehrHelp",
+      :viewOnly='viewOnly',
+      @update="childUpdate")
 
     div(v-else-if="isType('ehr_embedded')")
       ehr-element-embedded(:elementKey="elementKey", :ehrHelp="ehrHelp", :inputVal="inputVal")
