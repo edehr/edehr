@@ -170,35 +170,35 @@ export function inside () {
       meta: { layout: 'inside', label: 'Biopsychosocial assessment', topLevel: 'current', zone: 'ehr' }
     },
     {
-      path: '/ehr/current/no-med',
-      name: 'no-med',
+      path: '/ehr/current/orders',
+      name: 'orders',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/NoMed.vue'),
-      meta: { layout: 'inside', label: 'Non-medication orders', topLevel: 'current', zone: 'ehr' }
-    },
-    {
-      path: '/ehr/current/no-med/no-med-orders',
-      name: 'no-med-orders',
-      component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/NoMedOrders.vue'),
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Orders.vue'),
       meta: { layout: 'inside', label: 'Orders', topLevel: 'current', zone: 'ehr' }
     },
     {
-      path: '/ehr/current/no-med/referrals',
+      path: '/ehr/current/orders/no-med-orders',
+      name: 'no-med-orders',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/NoMedOrders.vue'),
+      meta: { layout: 'inside', label: 'Non-medication orders', topLevel: 'current', zone: 'ehr' }
+    },
+    {
+      path: '/ehr/current/orders/referrals',
       name: 'referrals',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Referrals.vue'),
       meta: { layout: 'inside', label: 'Referrals to other disciplines', topLevel: 'current', zone: 'ehr' }
     },
     {
-      path: '/ehr/current/no-med/lab-requisitions',
+      path: '/ehr/current/orders/lab-requisitions',
       name: 'lab-requisitions',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/LabRequisitions.vue'),
       meta: { layout: 'inside', label: 'Lab requisitions', topLevel: 'current', zone: 'ehr' }
     },
     {
-      path: '/ehr/current/meds',
+      path: '/ehr/current/orders/meds',
       name: 'meds',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Meds.vue'),
@@ -380,18 +380,11 @@ export function inside () {
       meta: { layout: 'inside', label: 'Med Lab Urinalysis', topLevel: 'med-lab', zone: 'ehr' }
     },
     {
-      path: '/ehr/current/order-sets',
+      path: '/ehr/current/orders/order-sets',
       name: 'order-sets',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/OrderSets.vue'),
       meta: { layout: 'inside', label: 'Clinical Order Sets', topLevel: 'current', zone: 'ehr' }
-    },
-    {
-      path: '/ehr/med-lab/med-lab-demographics',
-      name: 'med-lab-demographics',
-      component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/MedLabDemographics.vue'),
-      meta: { layout: 'inside', label: 'Med Lab Demographics', topLevel: 'med-lab', zone: 'ehr' }
     },
     {
       path: '/ehr/med-lab/med-lab-accession',
