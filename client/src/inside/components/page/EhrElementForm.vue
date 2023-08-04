@@ -3,7 +3,8 @@
     div(v-if="isType('form_label')", :class='formCss')
       div(v-html="label", class='form_label_wrapper')
       ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
-
+    div(v-else-if="isType('formTableHeader')", class="formTableHeader", :class='formCss', v-html="label")
+    div(v-else-if="isType('formTableText')", class="formTableText", :class='formCss', v-html="label")
 
     div(v-else-if="isType('assetLink')", class="assetLink", :class='formCss')
       a(:href="assetUrl()", target="_blank")

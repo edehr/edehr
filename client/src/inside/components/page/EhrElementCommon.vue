@@ -331,8 +331,8 @@ export default {
   display: inline-block;
 }
 
+/* shift the suffix a bit to the left of the input */
 .suffix {
-  position: absolute;
-  right: 10px;
+  margin-left: 5px
 }
 </style>

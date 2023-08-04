@@ -3,7 +3,7 @@
     ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="radioset_label")
     div(class="radio_set")
       div(v-for="option in options")
-        input(type="radio", :id="option.key", :disabled="disabled || viewOnly", :value="option.key", v-model="radioValue")
+        input(type="radio", :name="elementKey", :id="option.key", :disabled="disabled || viewOnly", :value="option.key", v-model="radioValue")
         label(:for='option.key') {{ option.text}}
 </template>
 

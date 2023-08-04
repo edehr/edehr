@@ -26529,9 +26529,9 @@ const DEFS = {
         'fqn': 'medLabChemistry.chemCollTime'
       },
       {
-        'elementKey': 'form_label185',
+        'elementKey': 'formTableHeader185',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableHeader',
         'label': 'Analyte',
         'options': [
           {
@@ -26551,12 +26551,12 @@ const DEFS = {
             'text': 'Turbid'
           }
         ],
-        'fqn': 'medLabChemistry.form_label185'
+        'fqn': 'medLabChemistry.formTableHeader185'
       },
       {
-        'elementKey': 'form_label186',
+        'elementKey': 'formTableHeader186',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableHeader',
         'label': 'Patient Result',
         'options': [
           {
@@ -26596,28 +26596,31 @@ const DEFS = {
             'text': 'Green'
           }
         ],
-        'fqn': 'medLabChemistry.form_label186'
+        'fqn': 'medLabChemistry.formTableHeader186'
       },
       {
-        'elementKey': 'form_label187',
+        'elementKey': 'formTableHeader187',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableHeader',
         'label': 'Flag',
-        'fqn': 'medLabChemistry.form_label187'
+        'fqn': 'medLabChemistry.formTableHeader187'
       },
       {
-        'elementKey': 'form_label188',
+        'elementKey': 'formTableHeader188',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableHeader',
         'label': 'Reference Interval',
-        'fqn': 'medLabChemistry.form_label188'
+        'fqn': 'medLabChemistry.formTableHeader188'
       },
       {
-        'elementKey': 'form_label189',
+        'elementKey': 'formTableText189',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Sodium',
-        'fqn': 'medLabChemistry.form_label189'
+        'suffix': 'mmol/L',
+        'fqn': 'medLabChemistry.formTableText189',
+        'suffixText': '<p>mmol/L</p>',
+        'suffixHtml': 'mmol/L'
       },
       {
         'elementKey': 'chemSodium',
@@ -26654,18 +26657,18 @@ const DEFS = {
         'fqn': 'medLabChemistry.chemSodiumFlag'
       },
       {
-        'elementKey': 'form_label190',
+        'elementKey': 'formTableText190',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': '135 – 145 mmol/L',
-        'fqn': 'medLabChemistry.form_label190'
+        'fqn': 'medLabChemistry.formTableText190'
       },
       {
-        'elementKey': 'form_label191',
+        'elementKey': 'formTableText191',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Potassium',
-        'fqn': 'medLabChemistry.form_label191'
+        'fqn': 'medLabChemistry.formTableText191'
       },
       {
         'elementKey': 'chemPotassium',
@@ -26702,17 +26705,17 @@ const DEFS = {
         'fqn': 'medLabChemistry.chemPotassiumFlag'
       },
       {
-        'elementKey': 'form_label192',
+        'elementKey': 'formTableText192',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabChemistry.form_label192'
+        'inputType': 'formTableText',
+        'fqn': 'medLabChemistry.formTableText192'
       },
       {
-        'elementKey': 'form_label193',
+        'elementKey': 'formTableText193',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Chloride',
-        'fqn': 'medLabChemistry.form_label193'
+        'fqn': 'medLabChemistry.formTableText193'
       },
       {
         'elementKey': 'chemChloride',
@@ -26749,17 +26752,17 @@ const DEFS = {
         'fqn': 'medLabChemistry.chemChlorideFlag'
       },
       {
-        'elementKey': 'form_label194',
+        'elementKey': 'formTableText194',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabChemistry.form_label194'
+        'inputType': 'formTableText',
+        'fqn': 'medLabChemistry.formTableText194'
       },
       {
-        'elementKey': 'form_label195',
+        'elementKey': 'formTableText195',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'tCO2',
-        'fqn': 'medLabChemistry.form_label195'
+        'fqn': 'medLabChemistry.formTableText195'
       },
       {
         'elementKey': 'chemtCO2',
@@ -26796,17 +26799,17 @@ const DEFS = {
         'fqn': 'medLabChemistry.chemtCO2Flag'
       },
       {
-        'elementKey': 'form_label196',
+        'elementKey': 'formTableText196',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabChemistry.form_label196'
+        'inputType': 'formTableText',
+        'fqn': 'medLabChemistry.formTableText196'
       },
       {
-        'elementKey': 'form_label197',
+        'elementKey': 'formTableText197',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Anion Gap',
-        'fqn': 'medLabChemistry.form_label197'
+        'fqn': 'medLabChemistry.formTableText197'
       },
       {
         'elementKey': 'chemAnionGap',
@@ -26843,17 +26846,17 @@ const DEFS = {
         'fqn': 'medLabChemistry.chemAnionGapFlag'
       },
       {
-        'elementKey': 'form_label198',
+        'elementKey': 'formTableText198',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabChemistry.form_label198'
+        'inputType': 'formTableText',
+        'fqn': 'medLabChemistry.formTableText198'
       },
       {
-        'elementKey': 'form_label199',
+        'elementKey': 'formTableText199',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Osmality, Measured',
-        'fqn': 'medLabChemistry.form_label199'
+        'fqn': 'medLabChemistry.formTableText199'
       },
       {
         'elementKey': 'chemOsmalityMeasured',
@@ -26890,17 +26893,17 @@ const DEFS = {
         'fqn': 'medLabChemistry.chemOsmalityMeasuredFlag'
       },
       {
-        'elementKey': 'form_label200',
+        'elementKey': 'formTableText200',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabChemistry.form_label200'
+        'inputType': 'formTableText',
+        'fqn': 'medLabChemistry.formTableText200'
       },
       {
-        'elementKey': 'form_label201',
+        'elementKey': 'formTableText201',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Osmality, Calculated',
-        'fqn': 'medLabChemistry.form_label201'
+        'fqn': 'medLabChemistry.formTableText201'
       },
       {
         'elementKey': 'chemOsmalityCalculated',
@@ -26937,17 +26940,17 @@ const DEFS = {
         'fqn': 'medLabChemistry.chemOsmalityCalculatedFlag'
       },
       {
-        'elementKey': 'form_label202',
+        'elementKey': 'formTableText202',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabChemistry.form_label202'
+        'inputType': 'formTableText',
+        'fqn': 'medLabChemistry.formTableText202'
       },
       {
-        'elementKey': 'form_label203',
+        'elementKey': 'formTableText203',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Osmolar Gap',
-        'fqn': 'medLabChemistry.form_label203'
+        'fqn': 'medLabChemistry.formTableText203'
       },
       {
         'elementKey': 'chemOsmolarGap',
@@ -26984,17 +26987,17 @@ const DEFS = {
         'fqn': 'medLabChemistry.chemOsmolarGapFlag'
       },
       {
-        'elementKey': 'form_label204',
+        'elementKey': 'formTableText204',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabChemistry.form_label204'
+        'inputType': 'formTableText',
+        'fqn': 'medLabChemistry.formTableText204'
       },
       {
-        'elementKey': 'form_label205',
+        'elementKey': 'formTableText205',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Glugose (Fasting Random)',
-        'fqn': 'medLabChemistry.form_label205'
+        'fqn': 'medLabChemistry.formTableText205'
       },
       {
         'elementKey': 'chemGlugoseFastingRandom',
@@ -27031,17 +27034,17 @@ const DEFS = {
         'fqn': 'medLabChemistry.chemGlugoseFastingRandomFlag'
       },
       {
-        'elementKey': 'form_label206',
+        'elementKey': 'formTableText206',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabChemistry.form_label206'
+        'inputType': 'formTableText',
+        'fqn': 'medLabChemistry.formTableText206'
       },
       {
-        'elementKey': 'form_label207',
+        'elementKey': 'formTableText207',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Creatinine',
-        'fqn': 'medLabChemistry.form_label207'
+        'fqn': 'medLabChemistry.formTableText207'
       },
       {
         'elementKey': 'chemCreatinine',
@@ -27078,17 +27081,17 @@ const DEFS = {
         'fqn': 'medLabChemistry.chemCreatinineFlag'
       },
       {
-        'elementKey': 'form_label208',
+        'elementKey': 'formTableText208',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabChemistry.form_label208'
+        'inputType': 'formTableText',
+        'fqn': 'medLabChemistry.formTableText208'
       },
       {
-        'elementKey': 'form_label209',
+        'elementKey': 'formTableText209',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Urea (BUN)',
-        'fqn': 'medLabChemistry.form_label209'
+        'fqn': 'medLabChemistry.formTableText209'
       },
       {
         'elementKey': 'chemUreaBun',
@@ -27125,17 +27128,17 @@ const DEFS = {
         'fqn': 'medLabChemistry.chemUreaBunFlag'
       },
       {
-        'elementKey': 'form_label210',
+        'elementKey': 'formTableText210',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabChemistry.form_label210'
+        'inputType': 'formTableText',
+        'fqn': 'medLabChemistry.formTableText210'
       },
       {
-        'elementKey': 'form_label211',
+        'elementKey': 'formTableText211',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Calcium',
-        'fqn': 'medLabChemistry.form_label211'
+        'fqn': 'medLabChemistry.formTableText211'
       },
       {
         'elementKey': 'chemCalcium',
@@ -27172,17 +27175,17 @@ const DEFS = {
         'fqn': 'medLabChemistry.chemCalciumFlag'
       },
       {
-        'elementKey': 'form_label212',
+        'elementKey': 'formTableText212',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabChemistry.form_label212'
+        'inputType': 'formTableText',
+        'fqn': 'medLabChemistry.formTableText212'
       },
       {
-        'elementKey': 'form_label213',
+        'elementKey': 'formTableText213',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Magnesium',
-        'fqn': 'medLabChemistry.form_label213'
+        'fqn': 'medLabChemistry.formTableText213'
       },
       {
         'elementKey': 'chemMagnesium',
@@ -27219,17 +27222,17 @@ const DEFS = {
         'fqn': 'medLabChemistry.chemMagnesiumFlag'
       },
       {
-        'elementKey': 'form_label214',
+        'elementKey': 'formTableText214',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabChemistry.form_label214'
+        'inputType': 'formTableText',
+        'fqn': 'medLabChemistry.formTableText214'
       },
       {
-        'elementKey': 'form_label215',
+        'elementKey': 'formTableText215',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Phosphorus',
-        'fqn': 'medLabChemistry.form_label215'
+        'fqn': 'medLabChemistry.formTableText215'
       },
       {
         'elementKey': 'chemPhosphorus',
@@ -27266,17 +27269,17 @@ const DEFS = {
         'fqn': 'medLabChemistry.chemPhosphorusFlag'
       },
       {
-        'elementKey': 'form_label216',
+        'elementKey': 'formTableText216',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabChemistry.form_label216'
+        'inputType': 'formTableText',
+        'fqn': 'medLabChemistry.formTableText216'
       },
       {
-        'elementKey': 'form_label217',
+        'elementKey': 'formTableText217',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Total Protein',
-        'fqn': 'medLabChemistry.form_label217'
+        'fqn': 'medLabChemistry.formTableText217'
       },
       {
         'elementKey': 'chemTotalProtein',
@@ -27313,17 +27316,17 @@ const DEFS = {
         'fqn': 'medLabChemistry.chemTotalProteinFlag'
       },
       {
-        'elementKey': 'form_label218',
+        'elementKey': 'formTableText218',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabChemistry.form_label218'
+        'inputType': 'formTableText',
+        'fqn': 'medLabChemistry.formTableText218'
       },
       {
-        'elementKey': 'form_label219',
+        'elementKey': 'formTableText219',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Albumin',
-        'fqn': 'medLabChemistry.form_label219'
+        'fqn': 'medLabChemistry.formTableText219'
       },
       {
         'elementKey': 'chemAlbumin',
@@ -27360,10 +27363,10 @@ const DEFS = {
         'fqn': 'medLabChemistry.chemAlbuminFlag'
       },
       {
-        'elementKey': 'form_label220',
+        'elementKey': 'formTableText220',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabChemistry.form_label220'
+        'inputType': 'formTableText',
+        'fqn': 'medLabChemistry.formTableText220'
       },
       {
         'elementKey': 'chemOpt1Analyte',
@@ -27800,15 +27803,15 @@ const DEFS = {
         'inputType': 'radioset',
         'options': [
           {
-            'key': 'Yes',
+            'key': 'y',
             'text': 'Yes'
           },
           {
-            'key': 'No',
+            'key': 'n',
             'text': 'No'
           },
           {
-            'key': 'N/A',
+            'key': 'na',
             'text': 'N/A'
           }
         ],
@@ -27828,15 +27831,15 @@ const DEFS = {
         'inputType': 'radioset',
         'options': [
           {
-            'key': 'Yes',
+            'key': 'y',
             'text': 'Yes'
           },
           {
-            'key': 'No',
+            'key': 'n',
             'text': 'No'
           },
           {
-            'key': 'N/A',
+            'key': 'na',
             'text': 'N/A'
           }
         ],
@@ -27856,15 +27859,15 @@ const DEFS = {
         'inputType': 'radioset',
         'options': [
           {
-            'key': 'Yes',
+            'key': 'y',
             'text': 'Yes'
           },
           {
-            'key': 'No',
+            'key': 'n',
             'text': 'No'
           },
           {
-            'key': 'N/A',
+            'key': 'na',
             'text': 'N/A'
           }
         ],
@@ -27884,15 +27887,15 @@ const DEFS = {
         'inputType': 'radioset',
         'options': [
           {
-            'key': 'Yes',
+            'key': 'y',
             'text': 'Yes'
           },
           {
-            'key': 'No',
+            'key': 'n',
             'text': 'No'
           },
           {
-            'key': 'N/A',
+            'key': 'na',
             'text': 'N/A'
           }
         ],
@@ -27907,39 +27910,39 @@ const DEFS = {
         'fqn': 'medLabChemistry.form_label230'
       },
       {
-        'elementKey': 'form_label232',
+        'elementKey': 'formTableHeader232',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableHeader',
         'label': 'Analyte',
-        'fqn': 'medLabChemistry.form_label232'
+        'fqn': 'medLabChemistry.formTableHeader232'
       },
       {
-        'elementKey': 'form_label233',
+        'elementKey': 'formTableHeader233',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableHeader',
         'label': 'QC level',
-        'fqn': 'medLabChemistry.form_label233'
+        'fqn': 'medLabChemistry.formTableHeader233'
       },
       {
-        'elementKey': 'form_label234',
+        'elementKey': 'formTableHeader234',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableHeader',
         'label': 'QC rule failed',
-        'fqn': 'medLabChemistry.form_label234'
+        'fqn': 'medLabChemistry.formTableHeader234'
       },
       {
-        'elementKey': 'form_label235',
+        'elementKey': 'formTableHeader235',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableHeader',
         'label': 'SE or RE*',
-        'fqn': 'medLabChemistry.form_label235'
+        'fqn': 'medLabChemistry.formTableHeader235'
       },
       {
-        'elementKey': 'form_label236',
+        'elementKey': 'formTableText236',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Describe trouble shooting required',
-        'fqn': 'medLabChemistry.form_label236'
+        'fqn': 'medLabChemistry.formTableText236'
       },
       {
         'elementKey': 'chmQcAnalyte1',
@@ -28654,77 +28657,77 @@ const DEFS = {
             },
             {
               'elementKey': 'ehr_group184',
-              'formCss': 'chem-results form-table-group',
+              'formCss': 'chem-results-table form-table-group',
               'gIndex': '3',
               'gChildren': [
-                'form_label185',
-                'form_label186',
-                'form_label187',
-                'form_label188',
-                'form_label189',
+                'formTableHeader185',
+                'formTableHeader186',
+                'formTableHeader187',
+                'formTableHeader188',
+                'formTableText189',
                 'chemSodium',
                 'chemSodiumFlag',
-                'form_label190',
-                'form_label191',
+                'formTableText190',
+                'formTableText191',
                 'chemPotassium',
                 'chemPotassiumFlag',
-                'form_label192',
-                'form_label193',
+                'formTableText192',
+                'formTableText193',
                 'chemChloride',
                 'chemChlorideFlag',
-                'form_label194',
-                'form_label195',
+                'formTableText194',
+                'formTableText195',
                 'chemtCO2',
                 'chemtCO2Flag',
-                'form_label196',
-                'form_label197',
+                'formTableText196',
+                'formTableText197',
                 'chemAnionGap',
                 'chemAnionGapFlag',
-                'form_label198',
-                'form_label199',
+                'formTableText198',
+                'formTableText199',
                 'chemOsmalityMeasured',
                 'chemOsmalityMeasuredFlag',
-                'form_label200',
-                'form_label201',
+                'formTableText200',
+                'formTableText201',
                 'chemOsmalityCalculated',
                 'chemOsmalityCalculatedFlag',
-                'form_label202',
-                'form_label203',
+                'formTableText202',
+                'formTableText203',
                 'chemOsmolarGap',
                 'chemOsmolarGapFlag',
-                'form_label204',
-                'form_label205',
+                'formTableText204',
+                'formTableText205',
                 'chemGlugoseFastingRandom',
                 'chemGlugoseFastingRandomFlag',
-                'form_label206',
-                'form_label207',
+                'formTableText206',
+                'formTableText207',
                 'chemCreatinine',
                 'chemCreatinineFlag',
-                'form_label208',
-                'form_label209',
+                'formTableText208',
+                'formTableText209',
                 'chemUreaBun',
                 'chemUreaBunFlag',
-                'form_label210',
-                'form_label211',
+                'formTableText210',
+                'formTableText211',
                 'chemCalcium',
                 'chemCalciumFlag',
-                'form_label212',
-                'form_label213',
+                'formTableText212',
+                'formTableText213',
                 'chemMagnesium',
                 'chemMagnesiumFlag',
-                'form_label214',
-                'form_label215',
+                'formTableText214',
+                'formTableText215',
                 'chemPhosphorus',
                 'chemPhosphorusFlag',
-                'form_label216',
-                'form_label217',
+                'formTableText216',
+                'formTableText217',
                 'chemTotalProtein',
                 'chemTotalProteinFlag',
-                'form_label218',
-                'form_label219',
+                'formTableText218',
+                'formTableText219',
                 'chemAlbumin',
                 'chemAlbuminFlag',
-                'form_label220',
+                'formTableText220',
                 'chemOpt1Analyte',
                 'chemOpt1Result',
                 'chemOpt1Type',
@@ -28809,11 +28812,11 @@ const DEFS = {
               'formCss': 'chem-qc-trouble form-table-group',
               'gIndex': '8',
               'gChildren': [
-                'form_label232',
-                'form_label233',
-                'form_label234',
-                'form_label235',
-                'form_label236',
+                'formTableHeader232',
+                'formTableHeader233',
+                'formTableHeader234',
+                'formTableHeader235',
+                'formTableText236',
                 'chmQcAnalyte1',
                 'chmQcLevel1',
                 'chmQcRule1',
@@ -29206,46 +29209,46 @@ const DEFS = {
         'fqn': 'medLabUrinalysis.urinColour'
       },
       {
-        'elementKey': 'form_label244',
+        'elementKey': 'formTableHeader244',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableHeader',
         'label': 'Reactive Strip',
-        'fqn': 'medLabUrinalysis.form_label244'
+        'fqn': 'medLabUrinalysis.formTableHeader244'
       },
       {
-        'elementKey': 'form_label245',
+        'elementKey': 'formTableHeader245',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableHeader',
         'label': 'Patient Result',
-        'fqn': 'medLabUrinalysis.form_label245'
+        'fqn': 'medLabUrinalysis.formTableHeader245'
       },
       {
-        'elementKey': 'form_label246',
+        'elementKey': 'formTableHeader246',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableHeader',
         'label': 'Manual / Automated',
-        'fqn': 'medLabUrinalysis.form_label246'
+        'fqn': 'medLabUrinalysis.formTableHeader246'
       },
       {
-        'elementKey': 'form_label247',
+        'elementKey': 'formTableHeader247',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableHeader',
         'label': 'Reference Indicator',
-        'fqn': 'medLabUrinalysis.form_label247'
+        'fqn': 'medLabUrinalysis.formTableHeader247'
       },
       {
-        'elementKey': 'form_label248',
+        'elementKey': 'formTableHeader248',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableHeader',
         'label': 'Normal',
-        'fqn': 'medLabUrinalysis.form_label248'
+        'fqn': 'medLabUrinalysis.formTableHeader248'
       },
       {
-        'elementKey': 'form_label249',
+        'elementKey': 'formTableText249',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Glucose',
-        'fqn': 'medLabUrinalysis.form_label249'
+        'fqn': 'medLabUrinalysis.formTableText249'
       },
       {
         'elementKey': 'uchemGlucose',
@@ -29264,36 +29267,36 @@ const DEFS = {
         'inputType': 'radioset',
         'options': [
           {
-            'key': 'Manual',
+            'key': 'man',
             'text': 'Manual'
           },
           {
-            'key': 'Automatic',
-            'text': 'Automatic'
+            'key': 'auto',
+            'text': 'Automated'
           }
         ],
         'tableColumn': '8',
         'fqn': 'medLabUrinalysis.uchemMorAGlucose'
       },
       {
-        'elementKey': 'form_label250',
+        'elementKey': 'formTableText250',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabUrinalysis.form_label250'
+        'inputType': 'formTableText',
+        'fqn': 'medLabUrinalysis.formTableText250'
       },
       {
-        'elementKey': 'form_label251',
+        'elementKey': 'formTableText251',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Negative',
-        'fqn': 'medLabUrinalysis.form_label251'
+        'fqn': 'medLabUrinalysis.formTableText251'
       },
       {
-        'elementKey': 'form_label252',
+        'elementKey': 'formTableText252',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Bilirubin',
-        'fqn': 'medLabUrinalysis.form_label252'
+        'fqn': 'medLabUrinalysis.formTableText252'
       },
       {
         'elementKey': 'uchemBilirubin',
@@ -29309,36 +29312,36 @@ const DEFS = {
         'inputType': 'radioset',
         'options': [
           {
-            'key': 'Manual',
+            'key': 'man',
             'text': 'Manual'
           },
           {
-            'key': 'Automatic',
-            'text': 'Automatic'
+            'key': 'auto',
+            'text': 'Automated'
           }
         ],
         'tableColumn': '10',
         'fqn': 'medLabUrinalysis.uchemMorABilirubin'
       },
       {
-        'elementKey': 'form_label253',
+        'elementKey': 'formTableText253',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabUrinalysis.form_label253'
+        'inputType': 'formTableText',
+        'fqn': 'medLabUrinalysis.formTableText253'
       },
       {
-        'elementKey': 'form_label254',
+        'elementKey': 'formTableText254',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Negative',
-        'fqn': 'medLabUrinalysis.form_label254'
+        'fqn': 'medLabUrinalysis.formTableText254'
       },
       {
-        'elementKey': 'form_label255',
+        'elementKey': 'formTableText255',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Ketone',
-        'fqn': 'medLabUrinalysis.form_label255'
+        'fqn': 'medLabUrinalysis.formTableText255'
       },
       {
         'elementKey': 'uchemKetone',
@@ -29354,36 +29357,36 @@ const DEFS = {
         'inputType': 'radioset',
         'options': [
           {
-            'key': 'Manual',
+            'key': 'man',
             'text': 'Manual'
           },
           {
-            'key': 'Automatic',
-            'text': 'Automatic'
+            'key': 'auto',
+            'text': 'Automated'
           }
         ],
         'tableColumn': '12',
         'fqn': 'medLabUrinalysis.uchemMorAKetone'
       },
       {
-        'elementKey': 'form_label256',
+        'elementKey': 'formTableText256',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabUrinalysis.form_label256'
+        'inputType': 'formTableText',
+        'fqn': 'medLabUrinalysis.formTableText256'
       },
       {
-        'elementKey': 'form_label257',
+        'elementKey': 'formTableText257',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Negative',
-        'fqn': 'medLabUrinalysis.form_label257'
+        'fqn': 'medLabUrinalysis.formTableText257'
       },
       {
-        'elementKey': 'form_label258',
+        'elementKey': 'formTableText258',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Specific Gravity',
-        'fqn': 'medLabUrinalysis.form_label258'
+        'fqn': 'medLabUrinalysis.formTableText258'
       },
       {
         'elementKey': 'uchemSpecific Gravity',
@@ -29399,37 +29402,37 @@ const DEFS = {
         'inputType': 'radioset',
         'options': [
           {
-            'key': 'Manual',
+            'key': 'man',
             'text': 'Manual'
           },
           {
-            'key': 'Automatic',
-            'text': 'Automatic'
+            'key': 'auto',
+            'text': 'Automated'
           }
         ],
         'tableColumn': '14',
         'fqn': 'medLabUrinalysis.uchemMorASpecific Gravity'
       },
       {
-        'elementKey': 'form_label259',
+        'elementKey': 'formTableText259',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': '1.005 - 1.030',
-        'fqn': 'medLabUrinalysis.form_label259'
+        'fqn': 'medLabUrinalysis.formTableText259'
       },
       {
-        'elementKey': 'form_label260',
+        'elementKey': 'formTableText260',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': '1.017',
-        'fqn': 'medLabUrinalysis.form_label260'
+        'fqn': 'medLabUrinalysis.formTableText260'
       },
       {
-        'elementKey': 'form_label261',
+        'elementKey': 'formTableText261',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Blood',
-        'fqn': 'medLabUrinalysis.form_label261'
+        'fqn': 'medLabUrinalysis.formTableText261'
       },
       {
         'elementKey': 'uchemBlood',
@@ -29448,36 +29451,36 @@ const DEFS = {
         'inputType': 'radioset',
         'options': [
           {
-            'key': 'Manual',
+            'key': 'man',
             'text': 'Manual'
           },
           {
-            'key': 'Automatic',
-            'text': 'Automatic'
+            'key': 'auto',
+            'text': 'Automated'
           }
         ],
         'tableColumn': '16',
         'fqn': 'medLabUrinalysis.uchemMorABlood'
       },
       {
-        'elementKey': 'form_label262',
+        'elementKey': 'formTableText262',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabUrinalysis.form_label262'
+        'inputType': 'formTableText',
+        'fqn': 'medLabUrinalysis.formTableText262'
       },
       {
-        'elementKey': 'form_label263',
+        'elementKey': 'formTableText263',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Negative',
-        'fqn': 'medLabUrinalysis.form_label263'
+        'fqn': 'medLabUrinalysis.formTableText263'
       },
       {
-        'elementKey': 'form_label264',
+        'elementKey': 'formTableText264',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'pH',
-        'fqn': 'medLabUrinalysis.form_label264'
+        'fqn': 'medLabUrinalysis.formTableText264'
       },
       {
         'elementKey': 'uchempH',
@@ -29493,37 +29496,37 @@ const DEFS = {
         'inputType': 'radioset',
         'options': [
           {
-            'key': 'Manual',
+            'key': 'man',
             'text': 'Manual'
           },
           {
-            'key': 'Automatic',
-            'text': 'Automatic'
+            'key': 'auto',
+            'text': 'Automated'
           }
         ],
         'tableColumn': '18',
         'fqn': 'medLabUrinalysis.uchemMorApH'
       },
       {
-        'elementKey': 'form_label265',
+        'elementKey': 'formTableText265',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': '5.0 - 8.0',
-        'fqn': 'medLabUrinalysis.form_label265'
+        'fqn': 'medLabUrinalysis.formTableText265'
       },
       {
-        'elementKey': 'form_label266',
+        'elementKey': 'formTableText266',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': '0.6',
-        'fqn': 'medLabUrinalysis.form_label266'
+        'fqn': 'medLabUrinalysis.formTableText266'
       },
       {
-        'elementKey': 'form_label267',
+        'elementKey': 'formTableText267',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Protein',
-        'fqn': 'medLabUrinalysis.form_label267'
+        'fqn': 'medLabUrinalysis.formTableText267'
       },
       {
         'elementKey': 'uchemProtein',
@@ -29542,36 +29545,36 @@ const DEFS = {
         'inputType': 'radioset',
         'options': [
           {
-            'key': 'Manual',
+            'key': 'man',
             'text': 'Manual'
           },
           {
-            'key': 'Automatic',
-            'text': 'Automatic'
+            'key': 'auto',
+            'text': 'Automated'
           }
         ],
         'tableColumn': '20',
         'fqn': 'medLabUrinalysis.uchemMorAProtein'
       },
       {
-        'elementKey': 'form_label268',
+        'elementKey': 'formTableText268',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabUrinalysis.form_label268'
+        'inputType': 'formTableText',
+        'fqn': 'medLabUrinalysis.formTableText268'
       },
       {
-        'elementKey': 'form_label269',
+        'elementKey': 'formTableText269',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Negative',
-        'fqn': 'medLabUrinalysis.form_label269'
+        'fqn': 'medLabUrinalysis.formTableText269'
       },
       {
-        'elementKey': 'form_label270',
+        'elementKey': 'formTableText270',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Urobilinogin',
-        'fqn': 'medLabUrinalysis.form_label270'
+        'fqn': 'medLabUrinalysis.formTableText270'
       },
       {
         'elementKey': 'uchemUrobilinogin',
@@ -29590,37 +29593,37 @@ const DEFS = {
         'inputType': 'radioset',
         'options': [
           {
-            'key': 'Manual',
+            'key': 'man',
             'text': 'Manual'
           },
           {
-            'key': 'Automatic',
-            'text': 'Automatic'
+            'key': 'auto',
+            'text': 'Automated'
           }
         ],
         'tableColumn': '22',
         'fqn': 'medLabUrinalysis.uchemMorAUrobilinogin'
       },
       {
-        'elementKey': 'form_label271',
+        'elementKey': 'formTableText271',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': '≤ 3.2 mmol/L',
-        'fqn': 'medLabUrinalysis.form_label271'
+        'fqn': 'medLabUrinalysis.formTableText271'
       },
       {
-        'elementKey': 'form_label272',
+        'elementKey': 'formTableText272',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': '0.3 mmol/L',
-        'fqn': 'medLabUrinalysis.form_label272'
+        'fqn': 'medLabUrinalysis.formTableText272'
       },
       {
-        'elementKey': 'form_label273',
+        'elementKey': 'formTableText273',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Nitrite',
-        'fqn': 'medLabUrinalysis.form_label273'
+        'fqn': 'medLabUrinalysis.formTableText273'
       },
       {
         'elementKey': 'uchemNitrite',
@@ -29639,36 +29642,36 @@ const DEFS = {
         'inputType': 'radioset',
         'options': [
           {
-            'key': 'Manual',
+            'key': 'man',
             'text': 'Manual'
           },
           {
-            'key': 'Automatic',
-            'text': 'Automatic'
+            'key': 'auto',
+            'text': 'Automated'
           }
         ],
         'tableColumn': '24',
         'fqn': 'medLabUrinalysis.uchemMorANitrite'
       },
       {
-        'elementKey': 'form_label274',
+        'elementKey': 'formTableText274',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabUrinalysis.form_label274'
+        'inputType': 'formTableText',
+        'fqn': 'medLabUrinalysis.formTableText274'
       },
       {
-        'elementKey': 'form_label275',
+        'elementKey': 'formTableText275',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Negative',
-        'fqn': 'medLabUrinalysis.form_label275'
+        'fqn': 'medLabUrinalysis.formTableText275'
       },
       {
-        'elementKey': 'form_label276',
+        'elementKey': 'formTableText276',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Leukocytes',
-        'fqn': 'medLabUrinalysis.form_label276'
+        'fqn': 'medLabUrinalysis.formTableText276'
       },
       {
         'elementKey': 'uchemLeukocytes',
@@ -29687,29 +29690,29 @@ const DEFS = {
         'inputType': 'radioset',
         'options': [
           {
-            'key': 'Manual',
+            'key': 'man',
             'text': 'Manual'
           },
           {
-            'key': 'Automatic',
-            'text': 'Automatic'
+            'key': 'auto',
+            'text': 'Automated'
           }
         ],
         'tableColumn': '26',
         'fqn': 'medLabUrinalysis.uchemMorALeukocytes'
       },
       {
-        'elementKey': 'form_label277',
+        'elementKey': 'formTableText277',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabUrinalysis.form_label277'
+        'inputType': 'formTableText',
+        'fqn': 'medLabUrinalysis.formTableText277'
       },
       {
-        'elementKey': 'form_label278',
+        'elementKey': 'formTableText278',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Negative',
-        'fqn': 'medLabUrinalysis.form_label278'
+        'fqn': 'medLabUrinalysis.formTableText278'
       },
       {
         'elementKey': 'uchemMicroIndicater',
@@ -29741,43 +29744,43 @@ const DEFS = {
         'formIndex': '1',
         'formCss': 'text-area-2-rows',
         'inputType': 'textarea',
-        'label': 'Icotest',
+        'label': 'Ictotest',
         'tableColumn': '30',
         'fqn': 'medLabUrinalysis.uchemIcotest'
       },
       {
-        'elementKey': 'form_label282',
+        'elementKey': 'formTableHeader282',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabUrinalysis.form_label282'
+        'inputType': 'formTableHeader',
+        'fqn': 'medLabUrinalysis.formTableHeader282'
       },
       {
-        'elementKey': 'form_label283',
+        'elementKey': 'formTableHeader283',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableHeader',
         'label': 'Patient Result',
-        'fqn': 'medLabUrinalysis.form_label283'
+        'fqn': 'medLabUrinalysis.formTableHeader283'
       },
       {
-        'elementKey': 'form_label284',
+        'elementKey': 'formTableHeader284',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableHeader',
         'label': 'Type',
-        'fqn': 'medLabUrinalysis.form_label284'
+        'fqn': 'medLabUrinalysis.formTableHeader284'
       },
       {
-        'elementKey': 'form_label285',
+        'elementKey': 'formTableHeader285',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableHeader',
         'label': 'Reference Indicator',
-        'fqn': 'medLabUrinalysis.form_label285'
+        'fqn': 'medLabUrinalysis.formTableHeader285'
       },
       {
-        'elementKey': 'form_label286',
+        'elementKey': 'formTableText286',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'WBC',
-        'fqn': 'medLabUrinalysis.form_label286'
+        'fqn': 'medLabUrinalysis.formTableText286'
       },
       {
         'elementKey': 'umicroWBC',
@@ -29824,18 +29827,18 @@ const DEFS = {
         'fqn': 'medLabUrinalysis.spacer287'
       },
       {
-        'elementKey': 'form_label288',
+        'elementKey': 'formTableText288',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': '0-5/ HPF',
-        'fqn': 'medLabUrinalysis.form_label288'
+        'fqn': 'medLabUrinalysis.formTableText288'
       },
       {
-        'elementKey': 'form_label289',
+        'elementKey': 'formTableText289',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'RBC',
-        'fqn': 'medLabUrinalysis.form_label289'
+        'fqn': 'medLabUrinalysis.formTableText289'
       },
       {
         'elementKey': 'umicroRBC',
@@ -29843,32 +29846,32 @@ const DEFS = {
         'inputType': 'select',
         'options': [
           {
-            'key': '0-1',
+            'key': '1',
             'text': '0-1'
           },
           {
-            'key': '2-5',
+            'key': '5',
             'text': '2-5'
           },
           {
-            'key': '6-10',
+            'key': '10',
             'text': '6-10'
           },
           {
-            'key': '11-20',
+            'key': '20',
             'text': '11-20'
           },
           {
-            'key': '21-50',
+            'key': '50',
             'text': '21-50'
           },
           {
-            'key': '50+',
+            'key': 'plus',
             'text': '50+'
           },
           {
-            'key': 'obscures field',
-            'text': 'obscures field'
+            'key': 'field',
+            'text': 'Obscures field'
           }
         ],
         'tableColumn': '32',
@@ -29882,18 +29885,18 @@ const DEFS = {
         'fqn': 'medLabUrinalysis.spacer290'
       },
       {
-        'elementKey': 'form_label291',
+        'elementKey': 'formTableText291',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': '0-5/ HPF',
-        'fqn': 'medLabUrinalysis.form_label291'
+        'fqn': 'medLabUrinalysis.formTableText291'
       },
       {
-        'elementKey': 'form_label292',
+        'elementKey': 'formTableText292',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Epithelial Cells',
-        'fqn': 'medLabUrinalysis.form_label292'
+        'fqn': 'medLabUrinalysis.formTableText292'
       },
       {
         'elementKey': 'umicroEpithelial',
@@ -29901,24 +29904,24 @@ const DEFS = {
         'inputType': 'select',
         'options': [
           {
-            'key': '0-2',
+            'key': '2',
             'text': '0-2'
           },
           {
-            'key': '3-5',
+            'key': '5',
             'text': '3-5'
           },
           {
-            'key': '6-10',
+            'key': '10',
             'text': '6-10'
           },
           {
-            'key': '10+',
+            'key': 'plus',
             'text': '10+'
           },
           {
-            'key': 'obscures field',
-            'text': 'obscures field'
+            'key': 'field',
+            'text': 'Obscures field'
           }
         ],
         'tableColumn': '33',
@@ -29947,18 +29950,18 @@ const DEFS = {
         'fqn': 'medLabUrinalysis.umicroTypesEpithelial Cells'
       },
       {
-        'elementKey': 'form_label293',
+        'elementKey': 'formTableText293',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': '0-2/ HPF',
-        'fqn': 'medLabUrinalysis.form_label293'
+        'fqn': 'medLabUrinalysis.formTableText293'
       },
       {
-        'elementKey': 'form_label294',
+        'elementKey': 'formTableText294',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Casts',
-        'fqn': 'medLabUrinalysis.form_label294'
+        'fqn': 'medLabUrinalysis.formTableText294'
       },
       {
         'elementKey': 'umicroCasts',
@@ -29966,24 +29969,24 @@ const DEFS = {
         'inputType': 'select',
         'options': [
           {
-            'key': '0-2',
+            'key': '2',
             'text': '0-2'
           },
           {
-            'key': '3-5',
+            'key': '5',
             'text': '3-5'
           },
           {
-            'key': '6-10',
+            'key': '10',
             'text': '6-10'
           },
           {
-            'key': '10+',
+            'key': 'plus',
             'text': '10+'
           },
           {
-            'key': 'obscures field',
-            'text': 'obscures field'
+            'key': 'field',
+            'text': 'Obscures field'
           }
         ],
         'tableColumn': '35',
@@ -30028,17 +30031,17 @@ const DEFS = {
         'fqn': 'medLabUrinalysis.umicroTypesCasts'
       },
       {
-        'elementKey': 'form_label295',
+        'elementKey': 'formTableText295',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabUrinalysis.form_label295'
+        'inputType': 'formTableText',
+        'fqn': 'medLabUrinalysis.formTableText295'
       },
       {
-        'elementKey': 'form_label296',
+        'elementKey': 'formTableText296',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Crystals',
-        'fqn': 'medLabUrinalysis.form_label296'
+        'fqn': 'medLabUrinalysis.formTableText296'
       },
       {
         'elementKey': 'umicroCrystals',
@@ -30046,16 +30049,16 @@ const DEFS = {
         'inputType': 'select',
         'options': [
           {
-            'key': 'None seen',
+            'key': 'none',
             'text': 'None seen'
           },
           {
             'key': 'present',
-            'text': 'present'
+            'text': 'Present'
           },
           {
-            'key': 'obscures field',
-            'text': 'obscures field'
+            'key': 'field',
+            'text': 'Obscures field'
           }
         ],
         'tableColumn': '37',
@@ -30068,63 +30071,67 @@ const DEFS = {
         'inputType': 'select',
         'options': [
           {
-            'key': 'Calcium Oxalate',
+            'key': 'calciumOxalate',
             'text': 'Calcium Oxalate'
           },
           {
-            'key': 'Calcium Carbonate',
-            'text': 'Calcium Carbonate'
+            'key': 'calcium',
+            'text': 'Calcium'
           },
           {
-            'key': 'Uric Acid',
+            'key': 'carbonate',
+            'text': 'Carbonate'
+          },
+          {
+            'key': 'uricAcid',
             'text': 'Uric Acid'
           },
           {
-            'key': 'Calcium Phosphate',
+            'key': 'calciumPhosphate',
             'text': 'Calcium Phosphate'
           },
           {
-            'key': 'Triple Phosphate',
+            'key': 'triplePhosphate',
             'text': 'Triple Phosphate'
           },
           {
-            'key': 'Amorphous Urates',
+            'key': 'amorphousUrates',
             'text': 'Amorphous Urates'
           },
           {
-            'key': 'Amorphous Phosphates',
+            'key': 'amorphousPhosphates',
             'text': 'Amorphous Phosphates'
           },
           {
-            'key': 'Cystine',
+            'key': 'cystine',
             'text': 'Cystine'
           },
           {
-            'key': 'Tyrosine',
+            'key': 'tyrosine',
             'text': 'Tyrosine'
           },
           {
-            'key': 'Cholesterol',
+            'key': 'cholesterol',
             'text': 'Cholesterol'
           },
           {
-            'key': 'Ammonium Biurate',
+            'key': 'ammoniumBiurate',
             'text': 'Ammonium Biurate'
           },
           {
-            'key': 'Hippuric Acid',
+            'key': 'hippuricAcid',
             'text': 'Hippuric Acid'
           },
           {
-            'key': 'Bilirubin',
+            'key': 'bilirubin',
             'text': 'Bilirubin'
           },
           {
-            'key': 'Leucine',
+            'key': 'leucine',
             'text': 'Leucine'
           },
           {
-            'key': 'Sulfonamides',
+            'key': 'sulfonamides',
             'text': 'Sulfonamides'
           }
         ],
@@ -30132,17 +30139,17 @@ const DEFS = {
         'fqn': 'medLabUrinalysis.umicroTypesCrystals'
       },
       {
-        'elementKey': 'form_label297',
+        'elementKey': 'formTableText297',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabUrinalysis.form_label297'
+        'inputType': 'formTableText',
+        'fqn': 'medLabUrinalysis.formTableText297'
       },
       {
-        'elementKey': 'form_label298',
+        'elementKey': 'formTableText298',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Yeast',
-        'fqn': 'medLabUrinalysis.form_label298'
+        'fqn': 'medLabUrinalysis.formTableText298'
       },
       {
         'elementKey': 'umicroYeast',
@@ -30150,16 +30157,16 @@ const DEFS = {
         'inputType': 'select',
         'options': [
           {
-            'key': 'None seen',
+            'key': 'none',
             'text': 'None seen'
           },
           {
             'key': 'present',
-            'text': 'present'
+            'text': 'Present'
           },
           {
-            'key': 'obscures field',
-            'text': 'obscures field'
+            'key': 'field',
+            'text': 'Obscures field'
           }
         ],
         'tableColumn': '39',
@@ -30167,23 +30174,23 @@ const DEFS = {
         'fqn': 'medLabUrinalysis.umicroYeast'
       },
       {
-        'elementKey': 'form_label299',
+        'elementKey': 'formTableText299',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabUrinalysis.form_label299'
+        'inputType': 'formTableText',
+        'fqn': 'medLabUrinalysis.formTableText299'
       },
       {
-        'elementKey': 'form_label300',
+        'elementKey': 'formTableText300',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabUrinalysis.form_label300'
+        'inputType': 'formTableText',
+        'fqn': 'medLabUrinalysis.formTableText300'
       },
       {
-        'elementKey': 'form_label301',
+        'elementKey': 'formTableText301',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Bacteria',
-        'fqn': 'medLabUrinalysis.form_label301'
+        'fqn': 'medLabUrinalysis.formTableText301'
       },
       {
         'elementKey': 'umicroBacteria',
@@ -30191,16 +30198,16 @@ const DEFS = {
         'inputType': 'select',
         'options': [
           {
-            'key': 'None seen',
+            'key': 'none',
             'text': 'None seen'
           },
           {
             'key': 'present',
-            'text': 'present'
+            'text': 'Present'
           },
           {
-            'key': 'obscures field',
-            'text': 'obscures field'
+            'key': 'field',
+            'text': 'Obscures field'
           }
         ],
         'tableColumn': '40',
@@ -30208,23 +30215,23 @@ const DEFS = {
         'fqn': 'medLabUrinalysis.umicroBacteria'
       },
       {
-        'elementKey': 'form_label302',
+        'elementKey': 'formTableText302',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabUrinalysis.form_label302'
+        'inputType': 'formTableText',
+        'fqn': 'medLabUrinalysis.formTableText302'
       },
       {
-        'elementKey': 'form_label303',
+        'elementKey': 'formTableText303',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabUrinalysis.form_label303'
+        'inputType': 'formTableText',
+        'fqn': 'medLabUrinalysis.formTableText303'
       },
       {
-        'elementKey': 'form_label304',
+        'elementKey': 'formTableText304',
         'formIndex': '1',
-        'inputType': 'form_label',
+        'inputType': 'formTableText',
         'label': 'Other',
-        'fqn': 'medLabUrinalysis.form_label304'
+        'fqn': 'medLabUrinalysis.formTableText304'
       },
       {
         'elementKey': 'umicroOther',
@@ -30258,10 +30265,10 @@ const DEFS = {
         'fqn': 'medLabUrinalysis.spacer305'
       },
       {
-        'elementKey': 'form_label306',
+        'elementKey': 'formTableText306',
         'formIndex': '1',
-        'inputType': 'form_label',
-        'fqn': 'medLabUrinalysis.form_label306'
+        'inputType': 'formTableText',
+        'fqn': 'medLabUrinalysis.formTableText306'
       },
       {
         'elementKey': 'urnInternal',
@@ -30611,6 +30618,7 @@ const DEFS = {
             },
             {
               'elementKey': 'ehr_group241',
+              'label': 'Tracking',
               'formCss': 'grid-left-to-right-3',
               'gIndex': '2',
               'gChildren': [
@@ -30631,65 +30639,65 @@ const DEFS = {
             },
             {
               'elementKey': 'ehr_group243',
-              'label': 'Chemical Examination',
-              'formCss': 'compact_5_col',
+              'label': 'Macroscopic Examination',
+              'formCss': 'urin-macro-exam form-table-group',
               'gIndex': '4',
               'gChildren': [
-                'form_label244',
-                'form_label245',
-                'form_label246',
-                'form_label247',
-                'form_label248',
-                'form_label249',
+                'formTableHeader244',
+                'formTableHeader245',
+                'formTableHeader246',
+                'formTableHeader247',
+                'formTableHeader248',
+                'formTableText249',
                 'uchemGlucose',
                 'uchemMorAGlucose',
-                'form_label250',
-                'form_label251',
-                'form_label252',
+                'formTableText250',
+                'formTableText251',
+                'formTableText252',
                 'uchemBilirubin',
                 'uchemMorABilirubin',
-                'form_label253',
-                'form_label254',
-                'form_label255',
+                'formTableText253',
+                'formTableText254',
+                'formTableText255',
                 'uchemKetone',
                 'uchemMorAKetone',
-                'form_label256',
-                'form_label257',
-                'form_label258',
+                'formTableText256',
+                'formTableText257',
+                'formTableText258',
                 'uchemSpecific Gravity',
                 'uchemMorASpecific Gravity',
-                'form_label259',
-                'form_label260',
-                'form_label261',
+                'formTableText259',
+                'formTableText260',
+                'formTableText261',
                 'uchemBlood',
                 'uchemMorABlood',
-                'form_label262',
-                'form_label263',
-                'form_label264',
+                'formTableText262',
+                'formTableText263',
+                'formTableText264',
                 'uchempH',
                 'uchemMorApH',
-                'form_label265',
-                'form_label266',
-                'form_label267',
+                'formTableText265',
+                'formTableText266',
+                'formTableText267',
                 'uchemProtein',
                 'uchemMorAProtein',
-                'form_label268',
-                'form_label269',
-                'form_label270',
+                'formTableText268',
+                'formTableText269',
+                'formTableText270',
                 'uchemUrobilinogin',
                 'uchemMorAUrobilinogin',
-                'form_label271',
-                'form_label272',
-                'form_label273',
+                'formTableText271',
+                'formTableText272',
+                'formTableText273',
                 'uchemNitrite',
                 'uchemMorANitrite',
-                'form_label274',
-                'form_label275',
-                'form_label276',
+                'formTableText274',
+                'formTableText275',
+                'formTableText276',
                 'uchemLeukocytes',
                 'uchemMorALeukocytes',
-                'form_label277',
-                'form_label278'
+                'formTableText277',
+                'formTableText278'
               ]
             },
             {
@@ -30703,6 +30711,7 @@ const DEFS = {
             },
             {
               'elementKey': 'ehr_group280',
+              'label': 'Confirmatory Tests',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '6',
               'gChildren': [
@@ -30713,45 +30722,45 @@ const DEFS = {
             {
               'elementKey': 'ehr_group281',
               'label': 'Microscopic Examination',
-              'formCss': 'med-lab-urin-micro',
+              'formCss': 'med-lab-urin-micro form-table-group',
               'gIndex': '7',
               'gChildren': [
-                'form_label282',
-                'form_label283',
-                'form_label284',
-                'form_label285',
-                'form_label286',
+                'formTableHeader282',
+                'formTableHeader283',
+                'formTableHeader284',
+                'formTableHeader285',
+                'formTableText286',
                 'umicroWBC',
                 'spacer287',
-                'form_label288',
-                'form_label289',
+                'formTableText288',
+                'formTableText289',
                 'umicroRBC',
                 'spacer290',
-                'form_label291',
-                'form_label292',
+                'formTableText291',
+                'formTableText292',
                 'umicroEpithelial',
                 'umicroTypesEpithelial Cells',
-                'form_label293',
-                'form_label294',
+                'formTableText293',
+                'formTableText294',
                 'umicroCasts',
                 'umicroTypesCasts',
-                'form_label295',
-                'form_label296',
+                'formTableText295',
+                'formTableText296',
                 'umicroCrystals',
                 'umicroTypesCrystals',
-                'form_label297',
-                'form_label298',
+                'formTableText297',
+                'formTableText298',
                 'umicroYeast',
-                'form_label299',
-                'form_label300',
-                'form_label301',
+                'formTableText299',
+                'formTableText300',
+                'formTableText301',
                 'umicroBacteria',
-                'form_label302',
-                'form_label303',
-                'form_label304',
+                'formTableText302',
+                'formTableText303',
+                'formTableText304',
                 'umicroOther',
                 'spacer305',
-                'form_label306'
+                'formTableText306'
               ]
             },
             {
@@ -31454,7 +31463,7 @@ const DEFS = {
         'ehr_groups': [
           {
             'elementKey': 'main',
-            'formCss': 'section-divider',
+            'formCss': 'section-divider grid-left-to-right-3',
             'gIndex': '1',
             'gChildren': [
               'givenName',
@@ -31474,7 +31483,7 @@ const DEFS = {
           },
           {
             'elementKey': 'address',
-            'formCss': 'section-divider',
+            'formCss': 'section-divider grid-left-to-right-3',
             'gIndex': '2',
             'gChildren': [
               'streetAddress',
