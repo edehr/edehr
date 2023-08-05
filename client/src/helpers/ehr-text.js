@@ -113,7 +113,7 @@ export const Text = {
   COURSE_PAGE: {
     DESCRIPTION: 'Description',
     ACTIVITY_STUDENT_SELECT_NAV: 'Click on an activity name to see details about the activity or click on the \'Go to EHR\' button to enter the health record application.',
-    ACTIVITY_INSTRUCTOR_SELECT_NAV: 'Click on an activity to see its details.',
+    ACTIVITY_INSTRUCTOR_SELECT_NAV: 'Click on an activity name to see its details.',
     COURSE_SELECT_NAV: 'Click on a course name to see all of its activities and details.',
   },
   UPDATE_COURSE_ERROR: (err) => `error in update course ${err}`,

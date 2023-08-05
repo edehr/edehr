@@ -10,9 +10,11 @@
               input(type="text", v-model="assignmentName", v-validate="nameValidate")
             div
               label(:title="labelText.SEED_OBJ_TP")  {{labelText.SEED_OBJ}}
-              select(v-model="selectedSeed", v-validate="seedValidate")
+              select(v-if="!isCreate", v-model="selectedSeed", v-validate="seedValidate")
                 option(value="")
                 option(v-for="seed in seedOptionList", :value="seed.id", :selected="seed.selected") {{ seed.name}} {{seed.selected}}
+              div(v-else)
+                input(type="text", disabled , :value='seedModel.seed.name')
           div
             label {{labelText.DESCRIPTION}}
             textarea(v-model="description")
@@ -36,17 +38,19 @@ export default {
       labelText: LABELS,
       selectedSeed: '',
       inUseIds: [],
-      showAdvanced: false
+      showAdvanced: false,
+      seedModel: undefined
     }
   },
   components: { AppDialog },
   computed: {
     cText () { return TextLearningObjects },
+    isCreate () { return this.actionType === CREATE_ACTION },
     nameValidate () {
       return this.assignmentName.trim() ? undefined :  ERRORS.NAME_REQUIRED
     },
     seedValidate () {
-      return this.selectedSeed.trim() ? undefined :  ERRORS.SEED_REQUIRED
+      return this.isCreate || this.selectedSeed.trim() ? undefined :  ERRORS.SEED_REQUIRED
     },
     errors () {
       const errmsg = this.nameValidate || this.seedValidate
@@ -78,8 +82,9 @@ export default {
         = this.description
         = this.assignmentId
         = ''
+      this.seedModel = undefined
     },
-    showDialog (assignmentData) {
+    showDialog (assignmentData, seedModel) {
       this.clearInputs()
       if (assignmentData) {
         this.actionType = EDIT_ACTION
@@ -89,6 +94,7 @@ export default {
         this.selectedSeed = assignmentData.seedDataId || ''
       } else {
         this.actionType = CREATE_ACTION
+        this.seedModel = seedModel
       }
       this.$refs.theDialog.onOpen()
     },
@@ -97,7 +103,13 @@ export default {
       this.$refs.theDialog.onClose()
     },
     saveDialog: function () {
-      let sId = this.selectedSeed && this.selectedSeed.length > 0 ? this.selectedSeed : null
+      let sId
+      if(this.isCreate) {
+        sId = this.seedModel.id
+      }
+      else {
+        sId = this.selectedSeed && this.selectedSeed.length > 0 ? this.selectedSeed : null
+      }
       let aAssignment = {
         name: this.assignmentName,
         description: this.description,
@@ -108,7 +120,7 @@ export default {
       this.$refs.theDialog.onClose()
       if (this.actionType === EDIT_ACTION) {
         return StoreHelper.updateAssignment(this, this.assignmentId, aAssignment)
-      } else if (this.actionType === CREATE_ACTION) {
+      } else if (this.isCreate) {
         return StoreHelper.createAssignment( aAssignment)
       }
     }

@@ -26,9 +26,16 @@
             fas-icon(icon="angle-left", class='fa')
           ui-button(v-on:buttonClicked="nextPage", :disabled="!enableNext", title='Next page', class='paginate-button')
             fas-icon(icon="angle-right", class='fa')
-        div(class="flow_across table_space_across")
-          learning-objects-actions(class="flow_across_last_item")
-    div(class="e-table")
+        //div(class="flow_across table_space_across")
+        //  learning-objects-actions(class="flow_across_last_item")
+    div(class="details-container card intro")
+      div(class="instructions").
+        Learning objects encapsulate a case study with expected learning outcomes.
+      div(class="instructions").
+        Click on the learning object name to see its details.
+      div(v-if="canDo", class="instructions").
+        To create a new learning object go to the case studies page, select the case study you wish to use and create the learning object from there.
+    div(class="details-container e-table")
       div(class="thead")
         div(class="thcell e-name")
           div(class="flow_across")
@@ -229,24 +236,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-.list-element {
-  padding: 1rem 1.5rem;
-  margin-bottom: 1rem;
+.details-container {
+  margin-top: 1rem;
 }
-.key {
-  font-weight: bold;
-}
-.key::after {
-  content: ': '
-}
-
-.un-configured {
-  background: $greyWarn;
-  opacity: 0.8;
-}
-
-.un-configured-warning {
-  color: $grey80;
-}
-
 </style>

@@ -29,7 +29,7 @@
           zone-lms-button(v-show="canDo", @action="showCreateDialog", :icon='appIcons.new', :title='text.CREATE_TP', :text='text.CREATE')
           //zone-lms-button(@action="downloadAll", :icon='appIcons.download', :title='text.DOWNLOAD_TP', :text='text.DOWNLOAD')
     div(class="e-table-container")
-      div(class="e-table")
+      div(class="details-container e-table")
         div(class="thead")
           div(class="thcell e-name")
             div(class="flow_across")
@@ -311,6 +311,7 @@ export default {
   min-width: 7rem;
   width: 7rem;
 }
-
-
+.details-container {
+  margin-top: 1rem;
+}
 </style>

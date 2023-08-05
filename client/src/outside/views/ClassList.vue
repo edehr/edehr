@@ -1,9 +1,10 @@
 <template lang="pug">
   div
     zone-lms-page-banner
-      activity-actions(class="flow_across_last_item")
+      div(class="flow_across menu_space_across flow_across_right")
+        activity-actions(class="flow_across_last_item")
 
-    div(class="details-container card selected")
+    div(class="details-container card")
       div(class="details-row")
         div(class="details-name") Return to activity
         div(class="details-value")

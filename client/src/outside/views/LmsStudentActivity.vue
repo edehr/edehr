@@ -1,11 +1,9 @@
 <template lang="pug">
   div
-    div(class="flow_across")
-      zone-lms-page-name(:title="activityName")
-      div(class="flow_across_last_item")
-        div(class="flow_across menu_space_across")
-          span &nbsp; {{ submitted ? 'Submitted' : 'Open to edit' }}
-          ui-button(@buttonClicked="goToEhr") Go to EHR
+    zone-lms-page-banner(:title="activityName")
+      div(class="flow_across menu_space_across flow_across_right")
+        span &nbsp; {{ submitted ? 'Submitted' : 'Open to edit' }}
+        ui-button(@buttonClicked="goToEhr") Go to EHR
 
     div(class="details-container card")
       div(class="details-row")
@@ -37,9 +35,11 @@ import OutsideCommon from '@/outside/views/OutsideCommon'
 import ZoneLmsPageName from '@/outside/components/ZoneLmsPageName'
 import UiButton from '@/app/ui/UiButton.vue'
 import StoreHelper from '@/helpers/store-helper'
+import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner.vue'
 export default {
   extends: OutsideCommon,
   components: {
+    ZoneLmsPageBanner,
     UiButton,
     ZoneLmsPageName,
     ActivityActions,

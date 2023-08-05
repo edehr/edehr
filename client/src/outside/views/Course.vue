@@ -1,17 +1,19 @@
 <template lang="pug">
   div
-    zone-lms-page-name(:title="course.title")
-      div(v-if="isInstructor", class="flow_across menu_space_across flow_across_right")
+    zone-lms-page-banner(:title="course.title")
+      div(class="flow_across menu_space_across flow_across_right")
         zone-lms-button(
+          v-if="isInstructor",
           @action="showEditDialog(course)",
           :title="toolTip",
           :icon='appIcons.configure',
           :text='buttonText'
         )
-    div(class="course-description") {{ course.description }}
-    div(v-if='isInstructor', class="instructions") {{ text.ACTIVITY_INSTRUCTOR_SELECT_NAV }}
-      span &nbsp; This course has {{countActivities}} activities.
-    div(v-else, class="instructions") {{ text.ACTIVITY_STUDENT_SELECT_NAV }}
+    div(class="details-container card")
+      div(class="course-description") {{ course.description }}
+      div(v-if='isInstructor', class="instructions") {{ text.ACTIVITY_INSTRUCTOR_SELECT_NAV }}
+        span &nbsp; This course has {{countActivities}} activities.
+      div(v-else, class="instructions") {{ text.ACTIVITY_STUDENT_SELECT_NAV }}
     div(class="e-table")
       div(class="thead")
         div(class="thcell")
@@ -77,6 +79,7 @@ import ZoneLmsButton from '@/outside/components/ZoneLmsButton.vue'
 import CourseDialog from '@/outside/components/lms-course/CourseDialog.vue'
 import UiButton from '@/app/ui/UiButton.vue'
 import UiTableHeaderButton from '@/app/ui/UiTableHeaderButton.vue'
+import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner.vue'
 
 const ASC = 'asc'
 const DESC = 'desc'
@@ -84,6 +87,7 @@ const DESC = 'desc'
 export default {
   extends: OutsideCommon,
   components: {
+    ZoneLmsPageBanner,
     UiTableHeaderButton,
     UiButton,
     CourseDialog,
@@ -227,10 +231,7 @@ export default {
   font-size: 1.5rem;
 }
 .course-description {
-  margin-top: 1rem;
   margin-bottom: 1rem;
 }
-.instructions {
-  margin-bottom: 1rem;
-}
+
 </style>

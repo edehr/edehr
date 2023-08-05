@@ -33,7 +33,7 @@ let routes = [
       // Now that the ehr patient page is visible in both EHR and LIS we don't need the following. And we can remove the appType query parameter in all callers.gener
       // const appType = to.query.appType
       const ehrUrl = '/ehr/patient/demographics'
-      const lisUrl = '/ehr/med-lab/med-lab-demographics'
+      // const lisUrl = '/ehr/med-lab/med-lab-demographics'
       // return appType === APP_TYPE_LIS ? lisUrl  : appType === APP_TYPE_EHR ? ehrUrl : ehrUrl /* default to ehr */
       return ehrUrl
     }
@@ -43,7 +43,6 @@ let routes = [
 import { outside } from './outsideRoutes'
 routes = routes.concat(outside())
 import { inside } from './insideRoutes'
-import { APP_TYPE_EHR, APP_TYPE_LIS } from '@/helpers/store-helper'
 routes = routes.concat(inside())
 
 routes.push({
