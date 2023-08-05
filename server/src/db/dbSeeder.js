@@ -10,6 +10,7 @@ import EhrDataModel, { CURRENT_EHR_DATA_VERSION } from '../ehr-definitions/EhrDa
 import dbCreateMissingCourses from './courseIntegtrations'
 import { dbAnonymizeUsers, dbAnonymizeActivityData } from './dbAnonymize'
 import dbSeedDataAppType from './dbSeedDataAppTypes'
+import desire2learnActivitiesIntegtrations from './desire2learn-activities-integtrations'
 const activityDataController = new ActivityDataController()
 const seedController = new SeedDataController()
 
@@ -76,6 +77,7 @@ async function doIntegrations () {
   const start = performance.now()
   await doConsumerIntegrations()
   await doCourseIntegrations()
+  await doD2LIntegrations()
   await doSeedAppTypeIntegrations()
   // console.log('THIS NEXT LINE ANONYMIZES THE DATABASE. Good to do on a real db for use with development.')
   // await doAnonymize()
@@ -108,6 +110,17 @@ async function doCourseIntegrations () {
     await dbCreateMissingCourses(true)
     const end = performance.now()
     debug('introduceCourse. DONE.', Math.round(end - start), 'ms')
+  }
+}
+
+async function doD2LIntegrations () {
+  const doUpdate = await checkIntegration('desire2learn-activities', false)
+  if(doUpdate) {
+    debug('doD2LIntegrations. BEGIN')
+    const start = performance.now()
+    await desire2learnActivitiesIntegtrations(true)
+    const end = performance.now()
+    debug('doD2LIntegrations. DONE.', Math.round(end - start), 'ms')
   }
 }
 

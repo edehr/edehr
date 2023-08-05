@@ -135,7 +135,7 @@ function makeTreeItem (def, tree) {
   let parent = findTreeItem(def, tree)
   let item = {}
   item.name = def.routeName
-  // Med Lab and/or EHR navigation
+  // demcoaMed Lab and/or EHR navigation
   item.isLIS = !!def.lis
   item.isEHR = !!def.ehr
   if (def.redirect.length > 0) {
