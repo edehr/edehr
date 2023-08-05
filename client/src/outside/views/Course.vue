@@ -9,9 +9,9 @@
           :text='buttonText'
         )
     div(class="course-description") {{ course.description }}
-    div(v-if='isInstructor') {{ text.ACTIVITY_INSTRUCTOR_SELECT_NAV }}
+    div(v-if='isInstructor', class="instructions") {{ text.ACTIVITY_INSTRUCTOR_SELECT_NAV }}
       span &nbsp; This course has {{countActivities}} activities.
-    div(v-else) {{ text.ACTIVITY_STUDENT_SELECT_NAV }}
+    div(v-else, class="instructions") {{ text.ACTIVITY_STUDENT_SELECT_NAV }}
     div(class="e-table")
       div(class="thead")
         div(class="thcell")
@@ -225,5 +225,12 @@ export default {
 .course-title {
   font-weight: bold;
   font-size: 1.5rem;
+}
+.course-description {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.instructions {
+  margin-bottom: 1rem;
 }
 </style>

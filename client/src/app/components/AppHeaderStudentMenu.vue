@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class="flow_across menu_space_across")
-    div(class="flow_across menu_space_across bigger-than-threshold1")
-      ehr-student-submit(v-if='inZoneEHR')
+    //div(class="flow_across menu_space_across bigger-than-threshold1")
+    //  ehr-student-submit(v-if='inZoneEHR')
     ehr-student-other-dropdown(class="flow_across_last_item")
 </template>
 <script>

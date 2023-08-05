@@ -3,8 +3,8 @@
     zone-lms-page-name
     //div currentCourseId {{ currentCourseId }}
     //div course {{ course.title}}
-    div {{ text.COURSE_SELECT_NAV }}
-    div(class="e-table")
+    div(class="instructions") {{ text.COURSE_SELECT_NAV }}
+    div(class="e-table details-container")
       div(class="thead")
         div(class="thcell") Name
         div(class="thcell") Description
@@ -101,5 +101,11 @@ export default {
   width: 6rem;
 }
 
-
+.details-container {
+  margin-top: 1rem;
+}
+.instructions {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 </style>

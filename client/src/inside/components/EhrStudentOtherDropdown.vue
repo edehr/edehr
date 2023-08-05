@@ -30,52 +30,50 @@ export default {
     isInstructorAsStudent () { return StoreHelper.isInstructorAsStudent() },
     activityTooltip () { return this.activity.learningObjectName },
     visitId () { return this.$store.getters['visit/visitId']},
+    hasActivity () { return this.$store.getters['activityStore/hasActivity'] },
+    hasCourse () { return this.$store.getters['courseStore/hasCourse'] },
 
     items () {
-      const menu = [
-        {
-          label: 'Courses',
-          toolTip: 'See list of all my EdEHR courses and activities.',
-          callback: () => {
-            const path = '/course'
-            if (this.$route.path !== path) {
-              this.$router.push(path)
-            }
-          },
-          icon: this.appIcons.course
+      const menu = []
+      menu.push({
+        label: 'Courses',
+        toolTip: 'See list of all my EdEHR courses.',
+        callback: () => {
+          const path = '/courses'
+          if (this.$route.path !== path) {
+            this.$router.push(path)
+          }
         },
-        {
+        icon: this.appIcons.course
+      })
+      if(this.hasCourse && this.hasActivity) {
+        menu.push({
           label: 'Activity',
           toolTip: this.activityTooltip,
           icon: this.appIcons.activity,
           callback: () => {
             const path = '/lms-student-activity'
             if (this.$route.path !== path) {
-              this.$router.push({ name: 'lms-student-activity', query: {visitId: this.visitId} })
+              this.$router.push({ name: 'lms-student-activity', query: { visitId: this.visitId } })
             }
           }
+        })
+      }
+      menu.push({
+        label: 'Scratch pad',
+        toolTip: 'A place for you to place notes. This is visible only to you.',
+        callback: () => this.$refs.scratchPad.showDialog(),
+        icon: 'pen'
+      })
+      menu.push({
+        label: 'Exit to LMS',
+        toolTip: 'Return to your school\'s learning management system. ' + StoreHelper.lmsName() + ' ' + StoreHelper.lmsUrl(),
+        callback: () => {
+          StoreHelper.exitToLms()
         },
-        // {
-        //   label: 'Activity information',
-        //   toolTip: 'See details about the assigned activity.',
-        //   callback: () => this.$refs.activityDialog.showDialog(),
-        //   icon: 'book-open'
-        // },
-        {
-          label: 'Scratch pad',
-          toolTip: 'A place for you to place notes. This is visible only to you.',
-          callback: () => this.$refs.scratchPad.showDialog(),
-          icon: 'pen'
-        },
-        {
-          label: 'Exit to LMS',
-          toolTip: 'Return to your school\'s learning management system. ' + StoreHelper.lmsName() + ' ' + StoreHelper.lmsUrl(),
-          callback: () => {
-            StoreHelper.exitToLms()
-          },
-          icon: 'sign-out-alt'
-        }
-      ]
+        icon: 'sign-out-alt'
+      })
+
       if (this.isInstructorAsStudent) {
         menu.push({
           horizontal: true

@@ -2,13 +2,12 @@
   div
     div(class="flow_across")
       zone-lms-page-name(:title="activityName")
-        span {{ learningObjectName }}
       div(class="flow_across_last_item")
         div(class="flow_across menu_space_across")
           span &nbsp; {{ submitted ? 'Submitted' : 'Open to edit' }}
           ui-button(@buttonClicked="goToEhr") Go to EHR
 
-    div(class="details-container card selected")
+    div(class="details-container card")
       div(class="details-row")
         div(class="details-name") {{ text.COURSE_LABEL}}
         div(class="details-value") {{ courseTitle }}
@@ -110,15 +109,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-.lms-activity-page {
-  margin-left: 5rem;
-}
-.activity-list {
-  margin: 2rem 0;
-}
-@media screen and (max-width: $main-width-threshold2){
-  .lms-activity-page {
-    margin-left: 0;
-  }
+.details-container {
+  margin-top: 1rem;
 }
 </style>
