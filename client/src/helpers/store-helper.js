@@ -361,6 +361,8 @@ class StoreHelperWorker {
     Use the instructorToken to restore the user to instructor.
     */
     await StoreHelper.storeReplaceToken(newToken)
+    // clear any previous seed id to turn off the seed editing mode. Otherwise, instructors see Case Study context banner and not Student context banner.
+    await StoreHelper.setSeedEditId('')
     const visitId = StoreHelper.getAuthVisitId()
     router.push({ name: 'ehr', query: { visitId: visitId, appType: appType } })
     StoreHelper.postActionEvent(INSTRUCTOR_ACTION,'visitAsStudent')
