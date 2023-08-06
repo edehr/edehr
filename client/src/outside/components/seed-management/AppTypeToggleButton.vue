@@ -1,5 +1,5 @@
 <template lang='pug'>
-  div(class="toggle-button")
+  div(class="toggle-button", :class='useColourClass')
     label(class='flow_across')
       div(class='toggle-label-left') {{ labelOff }}
       div(class="switch")
@@ -13,9 +13,13 @@ export default {
   props: {
     modelValue: {type: Boolean, default: false},
     labelOn: {type: String},
-    labelOff: {type: String}
+    labelOff: {type: String},
+    useColour: {type: Boolean, default: true},
   },
   computed: {
+    useColourClass () {
+      return this.useColour ? 'useColour' : 'noColour'
+    }
   },
   methods: {
     toggle: function (event) {
@@ -101,13 +105,24 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-/* BRANDING */
-.slider {
-  background-color: $colour-brand-lis;
-}
+.useColour {
+  /* BRANDING */
+  .slider {
+    background-color: $colour-brand-lis;
+  }
 
-input:checked + .slider {
-  background-color: $colour-brand-ehr;
+  input:checked + .slider {
+    background-color: $colour-brand-ehr;
+  }
 }
+.noColour {
+  /* BRANDING */
+  .slider {
+    background-color: $grey40;
+  }
 
+  input:checked + .slider {
+    background-color: $grey40;
+  }
+}
 </style>

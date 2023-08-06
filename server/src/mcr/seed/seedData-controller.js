@@ -10,6 +10,8 @@ import EhrDataModel from '../../ehr-definitions/EhrDataModel'
 import { EHR_EVENT_BUS, EHR_SEED_EVENT } from '../../server/trace-ehr'
 import { decoupleObject } from '../../ehr-definitions/common-utils'
 import mongoose from 'mongoose'
+import pluralize from 'pluralize'
+import { ObjectId } from 'mongodb'
 const debug = require('debug')('server')
 
 export default class SeedDataController extends BaseController {
@@ -38,6 +40,27 @@ export default class SeedDataController extends BaseController {
     return super.create(data)
   }
 
+  fetchSeedSelectionList (tool, appType, searchTerm) {
+    let query = { toolConsumer: new ObjectId(tool)}
+    if (appType) {
+      query.appType = appType
+    }
+    if (searchTerm) {
+      query['$or'] = [
+        { name: { $regex: searchTerm, $options : 'i' } },
+        { description: { $regex: searchTerm, $options : 'i' } }
+      ]
+    }
+    console.log('search seed list', tool, searchTerm)
+    return this.model
+      .find(query, {name: 1, description: 1})
+      .sort({name:1})
+      .then((modelInstances) => {
+        return {
+          seedList: modelInstances
+        }
+      })
+  }
   async collectAllTags (toolConsumerId) {
     // use set to get unique tags
     let tagSet = new Set()
@@ -203,6 +226,12 @@ export default class SeedDataController extends BaseController {
     router.get('/allTags/:toolConsumerId', (req, res) => {
       let toolConsumerId = req.params.toolConsumerId
       this.collectAllTags(toolConsumerId)
+        .then(ok(res))
+        .then(null, fail(res))
+    })
+    router.get('/seedSelectionList/:tool', (req, res) => {
+      this
+        .fetchSeedSelectionList(req.params.tool, req.query.appType, req.query.searchTerm)
         .then(ok(res))
         .then(null, fail(res))
     })

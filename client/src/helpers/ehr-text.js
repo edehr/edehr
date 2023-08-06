@@ -213,7 +213,8 @@ export const Text = {
       ID_IN_USE: (id) => `The learning object id ${id} is already in use. The id is case insensitive so upper and lower case letters are consider the same.`,
       NAME_REQUIRED: 'Learning object name is required',
       SEED_REQUIRED: 'Must select a case study for this learning object.',
-      INVALID_TIME: 'Please, enter a valid 24hrs time'
+      INVALID_TIME: 'Please, enter a valid 24hrs time',
+      CASE_STUDY_NAME: 'To create a case study you must provide a name.'
     },
     LABELS: {
       DESCRIPTION: 'Description',
@@ -291,5 +292,21 @@ export const Text = {
 }
 
 export const TextLearningObjects = {
-  nameLabel: 'Learning object name'
+  nameLabel: 'Learning object name',
+  intro: 'The Learning Object defines the content for use by an activity. ',
+  explain: 'The Learning Object defines the content that will be used by a number of activities. ' +
+    'Each academic year instructors clone existing courses with their activities. ' +
+    'These activities are linked to Learning Objects which, in turn, are linked to a case study ' +
+    'and provides instructions about how to use the case study to achieve a set of learning objectives. ' +
+    '<br/>' +
+    'Note how one case study can be reused by any number of learning objects and ' +
+    'how one Learing Object is reused by any number of activities',
+  step2: 'Describe what the student needs to do with the content and what learning objectives they ought to accomplish. ' +
+    '<br/>' +
+    'After someone creates an activity in your learning management system they need to connect it to EdEHR content. ' +
+    'The first time they click on the link they will see a list of Learning Objects to select from.  ' +
+    'The description you enter here will help that user decide which content to use. ' +
+    '<br/>' +
+    'But also instructors may use this description in the activity\'s description property and ' +
+    'that is the text the students will see when they come to do the assignment. '
 }

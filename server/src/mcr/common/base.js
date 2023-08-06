@@ -62,7 +62,7 @@ export default class BaseController {
   }
 
   list (filter={}, projection={}) {
-    console.error('Not and error but important. Need to know who uses list. Model is', this.modelName)
+    console.error('Not an error but important. Need to know who uses list. Model is', this.modelName)
     return this.model
       .find(filter, projection)
       .then((modelInstances) => {

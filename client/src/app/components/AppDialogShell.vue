@@ -207,7 +207,7 @@ export default {
   background-color: $grey03;
   border-bottom: 1px solid $grey30;
   padding: 0.5rem 1rem 0.5rem 1rem;
-  margin-bottom: 1rem;
+  //margin-bottom: 1rem;
   touch-action: none;
   cursor: move;
 }
