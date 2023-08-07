@@ -60,6 +60,7 @@ import ActivityDialog from '@/outside/components/lms-activity/ActivityDialog.vue
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton.vue'
 import StoreHelper from '@/helpers/store-helper'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner.vue'
+import router, { UNLINKED_ACTIVITY_ROUTE_NAME } from '@/router'
 export default {
   extends: OutsideCommon,
   components: {
@@ -130,6 +131,11 @@ export default {
       if(demo_lobjId) {
         activityRecord = await StoreHelper.autoLinkDemoLobj(activityRecord, demo_lobjId)
       }
+      if (!activityRecord.learningObjectId) {
+        await router.push({ name: UNLINKED_ACTIVITY_ROUTE_NAME, query: { activityId: activityRecord.id } })
+        return
+      }
+
       await this.$store.dispatch('courseStore/setCourseId', activityRecord.courseId)
       await this.$store.dispatch('courseStore/loadCurrentCourse')
       await this.$store.dispatch('instructor/loadClassList')
