@@ -12,7 +12,7 @@
           label Give this content a name. Often this is the simulation patient name.
         div(class="dialog-item")
           label Learning object name
-          input(type="text", class="object-name", v-model="assignmentName", v-validate="nameValidate")
+          input(type="text", class="object-name", v-model="learningObjectName", v-validate="nameValidate")
         div(class="dialog-step")
           h2 Step 2
           label  Describe the learning objectives.
@@ -109,13 +109,13 @@ export default {
   data () {
     return {
       appType: 'EHR',
-      assignmentName: '',
+      learningObjectName: '',
       caseStudyName: '',
       caseStudyDescription: '',
       createNewCaseStudy: false,
       description: '',
       actionType: '',
-      assignmentId: '',
+      learningObjectId: '',
       labelText: LABELS,
       searchTerm: '',
       selectedSeedId: '',
@@ -145,7 +145,7 @@ export default {
       return undefined
     },
     nameValidate () {
-      return this.assignmentName.trim() ? /* OK */ undefined :  ERRORS.NAME_REQUIRED
+      return this.learningObjectName.trim() ? /* OK */ undefined :  ERRORS.NAME_REQUIRED
     },
     seedDescription () {
       return this.selectedSeed ? this.selectedSeed.description : ''
@@ -185,18 +185,16 @@ export default {
     clearInputs: function () {
       this.selectedSeedId
         = this.actionType
-        = this.assignmentName
+        = this.learningObjectName
         = this.description
-        = this.assignmentId
+        = this.learningObjectId
         = ''
       this.seedModel = undefined
     },
     createOrSelect (val) {
       this.createNewCaseStudy = !this.createNewCaseStudy
-      console.log('createOrSelect', this.createNewCaseStudy)
     },
     async fetchSeedSelectionList () {
-      console.log('fetchSeedSelectionList searchTerm', this.searchTerm)
       const options = {
         appType: this.appType,
         searchTerm: this.searchTerm
@@ -204,18 +202,32 @@ export default {
       this.seedList = await this.$store.dispatch('seedListStore/fetchSeedSelectionList', options)
       this.seedList.length ? this.selectedSeedId = this.seedList[0]._id : null
     },
-    showDialog (assignmentData, seedModel) {
+    async showLObjDialog (options) {
       this.clearInputs()
-      this.fetchSeedSelectionList()
-      if (assignmentData) {
+      if (options.action === 'edit') {
+        const learningObject = options.learningObject
+        if (!learningObject) {
+          console.error('Coding error. Must provide learning object to edit')
+          return
+        }
         this.actionType = EDIT_ACTION
-        this.assignmentName = assignmentData.name
-        this.description = assignmentData.description
-        this.assignmentId = assignmentData._id
-        this.selectedSeedId = assignmentData.seedDataId || ''
-      } else {
+        this.learningObjectName = learningObject.name
+        this.description = learningObject.description
+        this.learningObjectId = learningObject._id
+        this.appType = learningObject.appType
+        await this.fetchSeedSelectionList()
+        this.selectedSeedId = learningObject.seedDataId || ''
+      } else if (options.action === 'create') {
         this.actionType = CREATE_ACTION
-        this.seedModel = seedModel
+        // seedModel is optional. If given then load the correct list of seeds and per-select the given seed
+        if (options.seed) {
+          this.appType = options.seed.appType
+          await this.fetchSeedSelectionList()
+          this.selectedSeedId = options.seed._id
+        }
+      } else {
+        console.error('Coding error. Must provide edit or create option for this dialog open')
+        return
       }
       this.$refs.theDialog.onOpen()
     },
@@ -232,7 +244,7 @@ export default {
         sId = this.selectedSeedId && this.selectedSeedId.length > 0 ? this.selectedSeedId : null
       }
       let aAssignment = {
-        name: this.assignmentName,
+        name: this.learningObjectName,
         description: this.description,
         seedDataId: sId,
         toolConsumer: StoreHelper.getAuthdConsumerId(),
@@ -240,14 +252,11 @@ export default {
       // console.log('save learning object', aAssignment)
       this.$refs.theDialog.onClose()
       if (this.actionType === EDIT_ACTION) {
-        return StoreHelper.updateAssignment(this, this.assignmentId, aAssignment)
+        return StoreHelper.updateAssignment(this, this.learningObjectId, aAssignment)
       } else if (this.isCreate) {
         return StoreHelper.createAssignment( aAssignment)
       }
     }
-  },
-  mounted () {
-    this.showDialog()
   }
 }
 </script>

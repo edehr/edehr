@@ -81,7 +81,6 @@
 import StoreHelper, { CREATOR_ACTION } from '@/helpers/store-helper'
 import LearningObjectListItem from '@/outside/components/learning-object/LearningObjectListItem'
 import OutsideCommon from '@/outside/views/OutsideCommon'
-import LearningObjectsActions from '@/outside/components/learning-object/LearningObjectsActions'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
 import UiTableHeaderButton from '@/app/ui/UiTableHeaderButton.vue'
 import { APP_ICONS } from '@/helpers/app-icons'
@@ -111,7 +110,7 @@ export default {
       checkAppTypes: ['EHR']
     }
   },
-  components: { UiButton, UiTableHeaderButton, ZoneLmsPageBanner, LearningObjectsActions, LearningObjectListItem },
+  components: { UiButton, UiTableHeaderButton, ZoneLmsPageBanner, LearningObjectListItem },
   computed: {
     canDo () {
       return StoreHelper.isDevelopingContent()

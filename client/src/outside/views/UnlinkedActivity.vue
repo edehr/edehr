@@ -91,7 +91,7 @@ export default {
     },
     exit () { StoreHelper.exitToLms() },
     showCreateDialog: function () {
-      this.$refs.theDialog.showDialog()
+      this.$refs.theDialog.showLObjDialog({action: 'create'})
     },
     selectLearningObject (lObj) {
       this.selectedLObj = lObj

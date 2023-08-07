@@ -41,7 +41,7 @@ export default {
     }
   },
   props: {
-    learningObject: {type: Object},
+    learningObject: {type: Object, required: true},
     showDetails: {type: Boolean, default: true}
   },
   computed: {
@@ -57,7 +57,7 @@ export default {
       this.$router.push({ name: 'learning-object', query: { learningObjectId: this.learningObjectId } })
     },
     showEditDialog: function () {
-      this.$refs.theDialog.showDialog(this.learningObject)
+      this.$refs.theDialog.showLObjDialog({ action:'edit', learningObject: this.learningObject})
     },
     learningObjectDuplicated () {
       // delete part of query to prevent NavigationDuplication error from vue router.

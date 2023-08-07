@@ -69,8 +69,8 @@ export default {
       this.$refs.theDialog.showDialog(this.seedModel)
     },
     showLobjCreateDialog: function () {
-      // pas undefined for first parameter to set up for a create action. Give the new LObj the case study
-      this.$refs.theLObjDialog.showDialog(undefined, this.seedModel)
+      // pas undefined for first parameter to set up for the 'create' action. Give the new LObj the case study
+      this.$refs.theLObjDialog.showLObjDialog({ action:'create', seed: this.seed})
     },
     viewEhrCondensed () {
       this.$router.push({ name: 'seed-view-condensed', query: { seedId: this.seedId } })
