@@ -1,7 +1,9 @@
 <template lang="pug">
   div
-    unlinked-instructor-activity(v-if="isInstructor")
-    unlinked-student-activity(v-else)
+    div(v-if="isInstructor")
+      unlinked-instructor-activity(ref='instructorActivity')
+    div(v-else)
+      unlinked-student-activity()
 </template>
 
 <script>
@@ -26,7 +28,9 @@ export default {
       const activityId = this.$route.query.activityId
       await this.$store.dispatch('activityStore/setActivityId', activityId)
       await this.$store.dispatch('activityStore/loadActivityRecord')
-      await this.$store.dispatch('assignmentListStore/loadAssignmentsWithCounts')
+      if(this.isInstructor) {
+        this.$refs.instructorActivity.loadPage()
+      }
     },
   },
 }

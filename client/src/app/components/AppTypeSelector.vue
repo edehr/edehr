@@ -18,6 +18,9 @@ export default {
       checkAppTypes: ['EHR']
     }
   },
+  props: {
+    value: { type: Array }
+  },
   methods: {
     checkedAppType ( event) {
       event.stopPropagation()
@@ -25,7 +28,11 @@ export default {
       this.checkAppTypes = this.checkAppTypes.filter( t => !!t)
       this.$emit('changeAppTypes', this.checkAppTypes)
     },
-
+  },
+  watch: {
+    value () {
+      this.checkAppTypes = this.value
+    }
   }
 }
 </script>

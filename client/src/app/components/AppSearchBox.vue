@@ -2,13 +2,13 @@
   div(class="flow_across table_space_across search-box")
     input(
       type="text",
-      v-model='searchTerm',
-      v-on:keyup.enter="$emit('updateSearchTerm', searchTerm)",
-      v-on:keyup.esc="searchTerm = ''",
+      v-model='value',
+      v-on:keyup.enter="$emit('updateSearchTerm', value)",
+      v-on:keyup.esc="value = ''",
     )
     button(
       v-on:buttonClicked="$emit('updateSearchTerm')",
-      :disabled="!searchTerm",
+      :disabled="!value",
       class='search-button'
     )
       fas-icon(icon="search", class='fa')
@@ -21,12 +21,17 @@ import { Text } from '@/helpers/ehr-text'
 export default {
   data () {
     return {
-      searchTerm: '',
+      value: '',
     }
   },
-  // props: {
-  //   searchTerm: {type: String, required: true}
-  // }
+  props: {
+    searchTerm: {type: String, required: true}
+  },
+  watch: {
+    searchTerm () {
+      this.value = this.searchTerm
+    }
+  }
 }
 </script>
 

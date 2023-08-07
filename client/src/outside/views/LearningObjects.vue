@@ -1,16 +1,10 @@
 <template lang="pug">
   div
-    div checkAppTypes {{ checkAppTypes }}
     zone-lms-page-banner
       div(class="flow_across menu_space_across flow_across_right")
         app-search-box(:searchTerm="searchTerm", @updateSearchTerm='updateSearchTerm')
-        app-type-selector(@changeAppTypes='changeAppTypes')
-        div(class="flow_across table_space_across")
-          div {{ pagesOfText }}
-          ui-button(v-on:buttonClicked="previousPage", :disabled="!enablePrev", title='Previous page', class='paginate-button')
-            fas-icon(icon="angle-left", class='fa')
-          ui-button(v-on:buttonClicked="nextPage", :disabled="!enableNext", title='Next page', class='paginate-button')
-            fas-icon(icon="angle-right", class='fa')
+        app-type-selector(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
+        app-paginate-controls(:offset='offset', :limit='paginateLimit', :listMetadata="listMetadata", @repage='repage')
         //div(class="flow_across table_space_across")
         //  learning-objects-actions(class="flow_across_last_item")
     div(class="details-container card intro")
@@ -73,6 +67,7 @@ import { Text } from '@/helpers/ehr-text'
 import UiButton from '@/app/ui/UiButton.vue'
 import AppSearchBox from '@/app/components/AppSearchBox.vue'
 import AppTypeSelector from '@/app/components/AppTypeSelector.vue'
+import AppPaginateControls from '@/app/components/AppPaginateControls.vue'
 const ASC = 'asc'
 const DESC = 'desc'
 export default {
@@ -82,7 +77,6 @@ export default {
       appIcons: APP_ICONS,
       text: Text.LOBJ_PAGE,
       offset: 0,
-      limit: 10,
       selectedLObjId: '',
       columnName: 'name',
       columnCreated: 'createDate',
@@ -93,7 +87,7 @@ export default {
       checkAppTypes: ['EHR']
     }
   },
-  components: { AppTypeSelector, AppSearchBox, UiButton, UiTableHeaderButton, ZoneLmsPageBanner, LearningObjectListItem },
+  components: { AppPaginateControls, AppTypeSelector, AppSearchBox, UiButton, UiTableHeaderButton, ZoneLmsPageBanner, LearningObjectListItem },
   computed: {
     canDo () {
       return StoreHelper.isDevelopingContent()
@@ -101,31 +95,13 @@ export default {
     assignmentsListing () {
       return this.$store.getters['assignmentListStore/list']
     },
-    enablePrev () {
-      return this.hasPrev
-    },
-    enableNext () {
-      return this.hasNext
-    },
-    hasNext () {
-      let { totalCount, offset, limit } = this.listMetadata
-      return offset + limit < totalCount
-    },
-    hasPrev () {
-      let { offset } = this.listMetadata
-      return offset > 0
-    },
     listMetadata () { return this.$store.getters['assignmentListStore/listMetadata']},
-    pagesOfText () {
-      let { totalCount, offset, limit } = this.listMetadata
-      let start = offset + 1
-      let end = Math.min(offset + limit, totalCount)
-      return `${start} to ${end} of ${totalCount}`
-    },
+    paginateLimit () { return this.$store.getters['system/paginateLimit']}
   },
   methods: {
     async changeAppTypes (checkAppTypes) {
       this.checkAppTypes = checkAppTypes
+      this.offset = 0
       await this.$store.dispatch('system/setAppTypes', this.checkAppTypes)
       console.log('got', this.checkAppTypes)
       this.route()
@@ -138,7 +114,7 @@ export default {
       this.offset = parseInt(fromRouteOffset)
       let queryPayload = {
         offset: fromRouteOffset,
-        limit: this.limit,
+        limit: this.paginateLimit,
         sortKey: fromRouteSort,
         sortDir: fromRouteDirection
       }
@@ -162,7 +138,7 @@ export default {
     route () {
       let query = {}
       query.offset = this.offset
-      query.limit = this.limit
+      query.limit = this.paginateLimit
       query.sortKey = this.sortKey
       query.sortDir = this.sortDir
       // only add appType to query if there are some selections
@@ -174,13 +150,8 @@ export default {
       const qs = JSON.stringify(query).replace(/"/g,'\'')
       StoreHelper.postActionEvent(CREATOR_ACTION,'lobjlist-'+qs)
     },
-    nextPage () {
-      let { totalCount } = this.listMetadata
-      this.offset = Math.min(totalCount, this.offset + this.limit)
-      this.route()
-    },
-    previousPage () {
-      this.offset = Math.max(0, this.offset - this.limit)
+    repage (offset) {
+      this.offset = offset
       this.route()
     },
     rowClass: function (item) {
@@ -210,6 +181,7 @@ export default {
       return input.length > lim ? `${input.substring(0, lim)}...` : input
     },
     updateSearchTerm (searchTerm) {
+      this.offset = 0
       this.searchTerm = searchTerm
       this.route()
     }
