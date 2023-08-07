@@ -2,23 +2,8 @@
   div
     zone-lms-page-banner
       div(class="flow_across menu_space_across flow_across_right")
-        div(class="flow_across table_space_across search-box")
-          input(
-            type="text",
-            v-model='searchTerm',
-            v-on:keyup.enter="updateSearchTerm",
-            v-on:keyup.esc="searchTerm = ''",
-          )
-          button(
-            v-on:buttonClicked="updateSearchTerm",
-            :disabled="!searchTerm",
-            class='search-button'
-            )
-            fas-icon(icon="search", class='fa')
-        div(class="flow_across table_space_across")
-          label(class="clickable", v-for="t in appTypes", :key='t.key')
-            input(type="checkbox", :value="t.key", id="t.key", v-model="checkAppTypes", @change="checkedAppType($event)")
-            span {{t.key}}
+        app-search-box(:searchTerm="searchTerm", @updateSearchTerm='updateSearchTerm')
+        app-type-selector(@changeAppTypes='changeAppTypes')
         div(class="flow_across table_space_across")
           div {{ pagesOfText }}
           ui-button(v-on:buttonClicked="previousPage", :disabled="!enablePrev", title='Previous page', class='paginate-button')
@@ -94,7 +79,8 @@ import UiTableHeaderButton from '@/app/ui/UiTableHeaderButton.vue'
 import UiTableSortButton from '@/app/ui/UiTableHeaderButton.vue'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton.vue'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
-
+import AppSearchBox from '@/app/components/AppSearchBox.vue'
+import AppTypeSelector from '@/app/components/AppTypeSelector.vue'
 
 const ASC = 'asc'
 const DESC = 'desc'
@@ -102,8 +88,10 @@ const DESC = 'desc'
 export default {
   extends: OutsideCommon,
   components: {
+    AppSearchBox,
     AppTagFilter,
     AppTagList,
+    AppTypeSelector,
     SeedActions,
     SeedDataDialog,
     SeedListActions,
@@ -173,10 +161,10 @@ export default {
     },
   },
   methods: {
-    checkedAppType ( event) {
-      event.stopPropagation()
-      // remove empty strings
-      this.checkAppTypes = this.checkAppTypes.filter( t => !!t)
+    async changeAppTypes (checkAppTypes) {
+      this.checkAppTypes = checkAppTypes
+      await this.$store.dispatch('system/setAppTypes', this.checkAppTypes)
+      console.log('got', this.checkAppTypes)
       this.route()
     },
     rowClass: function (sv) {
@@ -288,8 +276,8 @@ export default {
       this.offset = 0
       this.route()
     },
-    updateSearchTerm (event) {
-      // console.log('search term is ', this.searchTerm)
+    updateSearchTerm (searchTerm) {
+      this.searchTerm = searchTerm
       this.route()
     }
   },
