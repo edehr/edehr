@@ -40,24 +40,17 @@ const actions = {
   clearAssignment: function (context) {
     context.commit('set', undefined)
   },
-  load ({dispatch, commit}, id) {
-    if(debug) console.log(NAME + ' load id ', id)
-    return dispatch('get',id).then( (results) => {
-      if(debug) console.log(NAME + ' loaded ', results)
-      commit('set', results)
-      return results
-    })
-  },
-  get (context, id) {
-    let url = 'get/' + id
-    if(debug) console.log(NAME + ' get url ', url)
+  load (context, id) {
+    let url = 'getLObj/' + id
+    if(debug) console.log(NAME + ' load learning object url ', url)
     return InstoreHelper.getRequest(context, API, url).then(response => {
-      let results = response.data[OBJ]
+      let results = response.data['learningObject']
       if (!results) {
         let msg = Text.GET_ASSIGNMENT_ERROR(NAME, id)
         StoreHelper.setApiError(msg)
         return
       }
+      context.commit('set', results)
       return results
     })
   },
