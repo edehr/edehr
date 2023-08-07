@@ -102,7 +102,4 @@ export default {
   width: 6rem;
 }
 
-.details-container {
-  margin-top: 1rem;
-}
 </style>

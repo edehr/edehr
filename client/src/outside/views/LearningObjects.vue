@@ -236,7 +236,4 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-.details-container {
-  margin-top: 1rem;
-}
 </style>

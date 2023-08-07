@@ -311,7 +311,5 @@ export default {
   min-width: 7rem;
   width: 7rem;
 }
-.details-container {
-  margin-top: 1rem;
-}
+
 </style>

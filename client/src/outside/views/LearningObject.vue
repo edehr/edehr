@@ -3,7 +3,7 @@
     div
       zone-lms-page-banner(:title="learningObject.name")
         learning-object-actions(class="flow_across_last_item", :learningObject="learningObject", :showDetails='false')
-    div(class="details-container card selected")
+    div(class="details-container card")
       div(class="details-row")
         div(class="details-name") {{ text.DESCRIPTION }}
         div(class="details-value")
