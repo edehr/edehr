@@ -17,7 +17,9 @@ export default {
       icon = icon && icon.length > 0 ? icon : undefined
       return icon
     },
-    pageTitle () { return this.title ? this.title : StoreHelper.getPageTitle() },
+    mainTitle () { return StoreHelper.getPageTitle() },
+    pageTitle () {
+      return this.title ? this.mainTitle + ': ' + this.title : StoreHelper.getPageTitle() },
   }
 }
 </script>

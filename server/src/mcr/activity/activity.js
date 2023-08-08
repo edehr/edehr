@@ -35,8 +35,14 @@ const Schema = new mongoose.Schema({
     visitId: { type: ObjectId, ref: 'Visit' },
     visitDate: { type: Date, default: Date.now },
   } ]
+}, {
+  toObject: { virtuals: true },
+  toJSON: { virtuals: true }
 })
 
+Schema.virtual('title').get(function () {
+  return this.custom_title || this.resource_link_title || 'Unknown'
+})
 const Activity = mongoose.model('Activity', Schema)
 
 export default Activity

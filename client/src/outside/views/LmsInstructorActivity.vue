@@ -1,9 +1,8 @@
 <template lang="pug">
   div
-    div(class="flow_across")
-      zone-lms-page-name(:title='activity.title')
-        // Note that all instructors can invoke the editor and change title or description.
-      div(class='flow_across flow_across_last_item menu_space_across')
+    zone-lms-page-banner(:title='activity.title')
+      // Note that all instructors can invoke the editor and change title or description.
+      div(class="flow_across menu_space_across flow_across_right")
         zone-lms-button(
           title="Edit activity title and description",
           @action="showEditDialog",
@@ -15,7 +14,7 @@
           :icon='appIcons.student',
           class='flow_across_last_item'
         )
-    div(class="details-container card selected")
+    div(class="details-container card")
       div(class="details-row")
         div(class="details-name") {{ text.COURSE_LABEL}}
         div(class="details-value")
@@ -60,9 +59,12 @@ import ZoneLmsPageName from '@/outside/components/ZoneLmsPageName.vue'
 import ActivityDialog from '@/outside/components/lms-activity/ActivityDialog.vue'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton.vue'
 import StoreHelper from '@/helpers/store-helper'
+import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner.vue'
+import router, { UNLINKED_ACTIVITY_ROUTE_NAME } from '@/router'
 export default {
   extends: OutsideCommon,
   components: {
+    ZoneLmsPageBanner,
     ZoneLmsButton,
     ActivityDialog,
     ZoneLmsPageName,
@@ -129,6 +131,11 @@ export default {
       if(demo_lobjId) {
         activityRecord = await StoreHelper.autoLinkDemoLobj(activityRecord, demo_lobjId)
       }
+      if (!activityRecord.learningObjectId) {
+        await router.push({ name: UNLINKED_ACTIVITY_ROUTE_NAME, query: { activityId: activityRecord.id } })
+        return
+      }
+
       await this.$store.dispatch('courseStore/setCourseId', activityRecord.courseId)
       await this.$store.dispatch('courseStore/loadCurrentCourse')
       await this.$store.dispatch('instructor/loadClassList')
@@ -142,15 +149,5 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-.lms-activity-page {
-  margin-left: 5rem;
-}
-.activity-list {
-  margin: 2rem 0;
-}
-@media screen and (max-width: $main-width-threshold2){
-  .lms-activity-page {
-    margin-left: 0;
-  }
-}
+
 </style>

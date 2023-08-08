@@ -1,5 +1,6 @@
 import SeedData from '../mcr/seed/seed-data'
 import EhrDataModel from '../ehr-definitions/EhrDataModel'
+const debug = require('debug')('server')
 
 /**
  * Initialize the appType of case studies.
@@ -23,7 +24,7 @@ export default async function dbSeedDataAppType () {
       appType = 'LIS'
     }
     await SeedData.updateOne({_id: sd._id}, {appType: appType})
-    console.log('updated ', sd.name)
+    debug('updated appType on seed', sd.name)
   }
 
 }

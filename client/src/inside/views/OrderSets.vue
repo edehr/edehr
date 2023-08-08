@@ -9,7 +9,7 @@
       p Component name: OrderSets
       p Redirect: 
       p Route name: order-sets
-      p Full path: /ehr/current/order-sets
+      p Full path: /ehr/current/orders/order-sets
 </template>
 
 <script>

@@ -1,8 +1,9 @@
 <template lang="pug">
   div
     zone-lms-page-banner
-      zone-lms-button(v-if="isDevelopingContent", @action="openDialog", :icon='appIcons.file', :text='text.ADD_LABEL')
-    div(class="details-container card selected intro")
+      div(class="flow_across menu_space_across flow_across_right")
+        zone-lms-button(v-if="isDevelopingContent", @action="openDialog", :icon='appIcons.file', :text='text.ADD_LABEL')
+    div(class="details-container card intro")
       p {{ text.P1 }}
       p {{ text.P2 }}
     file-list

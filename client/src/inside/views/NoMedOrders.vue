@@ -4,12 +4,12 @@
     ehr-page(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
     div(style="display:none")
       p This No Med Orders page is generated.
-      p Label: Orders
+      p Label: Non-medication orders
       p Data Key: nonmedOrders
       p Component name: NoMedOrders
       p Redirect: 
       p Route name: no-med-orders
-      p Full path: /ehr/current/no-med/no-med-orders
+      p Full path: /ehr/current/orders/no-med-orders
 </template>
 
 <script>

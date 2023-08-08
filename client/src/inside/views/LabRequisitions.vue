@@ -9,7 +9,7 @@
       p Component name: LabRequisitions
       p Redirect: 
       p Route name: lab-requisitions
-      p Full path: /ehr/current/no-med/lab-requisitions
+      p Full path: /ehr/current/orders/lab-requisitions
 </template>
 
 <script>

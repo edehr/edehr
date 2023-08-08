@@ -2,34 +2,12 @@
   div
     zone-lms-page-banner
       div(class="flow_across menu_space_across flow_across_right")
-        div(class="flow_across table_space_across search-box")
-          input(
-            type="text",
-            v-model='searchTerm',
-            v-on:keyup.enter="updateSearchTerm",
-            v-on:keyup.esc="searchTerm = ''",
-          )
-          button(
-            v-on:buttonClicked="updateSearchTerm",
-            :disabled="!searchTerm",
-            class='search-button'
-            )
-            fas-icon(icon="search", class='fa')
-        div(class="flow_across table_space_across")
-          label(class="clickable", v-for="t in appTypes", :key='t.key')
-            input(type="checkbox", :value="t.key", id="t.key", v-model="checkAppTypes", @change="checkedAppType($event)")
-            span {{t.key}}
-        div(class="flow_across table_space_across")
-          div {{ pagesOfText }}
-          ui-button(v-on:buttonClicked="previousPage", :disabled="!enablePrev", title='Previous page', class='paginate-button')
-            fas-icon(icon="angle-left", class='fa')
-          ui-button(v-on:buttonClicked="nextPage", :disabled="!enableNext", title='Next page', class='paginate-button')
-            fas-icon(icon="angle-right", class='fa')
-        div(class="flow_across table_space_across")
-          zone-lms-button(v-show="canDo", @action="showCreateDialog", :icon='appIcons.new', :title='text.CREATE_TP', :text='text.CREATE')
-          //zone-lms-button(@action="downloadAll", :icon='appIcons.download', :title='text.DOWNLOAD_TP', :text='text.DOWNLOAD')
+        app-search-box(:searchTerm="searchTerm", @updateSearchTerm='updateSearchTerm')
+        app-type-selector(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
+        app-paginate-controls(:offset='offset', :limit='paginateLimit', :listMetadata="listMetadata" @repage='repage')
+        //zone-lms-button(@action="downloadAll", :icon='appIcons.download', :title='text.DOWNLOAD_TP', :text='text.DOWNLOAD')
     div(class="e-table-container")
-      div(class="e-table")
+      div(class="details-container e-table")
         div(class="thead")
           div(class="thcell e-name")
             div(class="flow_across")
@@ -94,7 +72,9 @@ import UiTableHeaderButton from '@/app/ui/UiTableHeaderButton.vue'
 import UiTableSortButton from '@/app/ui/UiTableHeaderButton.vue'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton.vue'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
-
+import AppSearchBox from '@/app/components/AppSearchBox.vue'
+import AppTypeSelector from '@/app/components/AppTypeSelector.vue'
+import AppPaginateControls from '@/app/components/AppPaginateControls.vue'
 
 const ASC = 'asc'
 const DESC = 'desc'
@@ -102,8 +82,11 @@ const DESC = 'desc'
 export default {
   extends: OutsideCommon,
   components: {
+    AppPaginateControls,
+    AppSearchBox,
     AppTagFilter,
     AppTagList,
+    AppTypeSelector,
     SeedActions,
     SeedDataDialog,
     SeedListActions,
@@ -120,7 +103,6 @@ export default {
       appIcons: APP_ICONS,
       text: Text.SEEDS_PAGE,
       offset: 0,
-      limit: 10,
       selectedSeedId: '',
       selectedTags: [],
       columnName: 'name',
@@ -144,39 +126,20 @@ export default {
     canDo () {
       return StoreHelper.isDevelopingContent()
     },
-    enablePrev () {
-      return this.hasPrev
-    },
-    enableNext () {
-      return this.hasNext
-    },
-    hasNext () {
-      let { totalCount, offset, limit } = this.listMetadata
-      return offset + limit < totalCount
-    },
-    hasPrev () {
-      let { offset } = this.listMetadata
-      return offset > 0
-    },
     listMetadata () { return this.$store.getters['seedListStore/listMetadata']},
-    pagesOfText () {
-      let { totalCount, offset, limit } = this.listMetadata
-      let start = offset + 1
-      let end = Math.min(offset + limit, totalCount)
-      return `${start} to ${end} of ${totalCount}`
-    },
     seedListStoreSeedId () {
       return this.$store.getters['seedListStore/seedId']
     },
+    paginateLimit () { return this.$store.getters['system/paginateLimit']},
     seedDataListFiltered () {
       return this.$store.getters['seedListStore/list']
     },
   },
   methods: {
-    checkedAppType ( event) {
-      event.stopPropagation()
-      // remove empty strings
-      this.checkAppTypes = this.checkAppTypes.filter( t => !!t)
+    async changeAppTypes (checkAppTypes) {
+      this.checkAppTypes = checkAppTypes
+      this.offset = 0
+      await this.$store.dispatch('system/setAppTypes', this.checkAppTypes)
       this.route()
     },
     rowClass: function (sv) {
@@ -197,7 +160,7 @@ export default {
       this.selectedTags = fromRouteTagList.split(',')
       let queryPayload = {
         offset: fromRouteOffset,
-        limit: this.limit,
+        limit: this.paginateLimit,
         sortKey: fromRouteSort,
         sortDir: fromRouteDirection,
         tagList: fromRouteTagList
@@ -220,19 +183,14 @@ export default {
       await this.$store.dispatch('seedListStore/loadPage', queryPayload)
       await this.$store.dispatch('seedListStore/loadAllTags')
     },
-    nextPage () {
-      let { totalCount } = this.listMetadata
-      this.offset = Math.min(totalCount, this.offset + this.limit)
-      this.route()
-    },
-    previousPage () {
-      this.offset = Math.max(0, this.offset - this.limit)
+    repage (offset) {
+      this.offset = offset
       this.route()
     },
     route () {
       let query = {}
       query.offset = this.offset
-      query.limit = this.limit
+      query.limit = this.paginateLimit
       query.sortKey = this.sortKey
       query.sortDir = this.sortDir
       this.selectedTags.length > 0 ? query.tagList = this.selectedTags.join(',') : undefined
@@ -288,8 +246,9 @@ export default {
       this.offset = 0
       this.route()
     },
-    updateSearchTerm (event) {
-      // console.log('search term is ', this.searchTerm)
+    updateSearchTerm (searchTerm) {
+      this.offset = 0
+      this.searchTerm = searchTerm
       this.route()
     }
   },
@@ -311,6 +270,5 @@ export default {
   min-width: 7rem;
   width: 7rem;
 }
-
 
 </style>

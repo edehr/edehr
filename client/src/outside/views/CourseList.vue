@@ -1,10 +1,9 @@
 <template lang="pug">
   div
-    zone-lms-page-name
-    //div currentCourseId {{ currentCourseId }}
-    //div course {{ course.title}}
-    div {{ text.COURSE_SELECT_NAV }}
-    div(class="e-table")
+    zone-lms-page-banner
+    div(class="details-container card intro")
+      div(class="instructions") {{ text.COURSE_SELECT_NAV }}
+    div(class="e-table details-container")
       div(class="thead")
         div(class="thcell") Name
         div(class="thcell") Description
@@ -41,9 +40,11 @@ import UiLink from '@/app/ui/UiLink.vue'
 import { APP_ICONS } from '@/helpers/app-icons'
 import { Text } from '@/helpers/ehr-text'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton.vue'
+import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner.vue'
 export default {
   extends: OutsideCommon,
   components: {
+    ZoneLmsPageBanner,
     CourseDialog,
     ZoneLmsButton,
     UiLink,
@@ -100,6 +101,5 @@ export default {
   min-width: 6rem;
   width: 6rem;
 }
-
 
 </style>

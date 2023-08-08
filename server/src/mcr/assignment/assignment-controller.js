@@ -14,6 +14,7 @@ import pluralize from 'pluralize'
 const debug = require('debug')('server')
 import { logError} from '../../helpers/log-error'
 import SeedData from '../seed/seed-data'
+import { ObjectId } from 'mongodb'
 const debugAC = false
 
 const sd = new SeedDataController()
@@ -98,26 +99,57 @@ export default class AssignmentController extends BaseController {
     return response
   }
 
-  // override the method that GET uses to add in the activity count
-  async read (id) {
-    if (debugAC) debug('Assignment. read id: ', id)
+  async getLObj (id, userId) {
+    if (debugAC) debug('Assignment. getLObj id: ', id)
     let modelInstance = await this.baseFindOneQuery(id)
     // decouple from the mongoose object so we can add properties
-    const temp = JSON.parse(JSON.stringify(modelInstance))
+    const learningObject = JSON.parse(JSON.stringify(modelInstance))
+    // Add Seed (Case Study) information
     let seed = await SeedData.findById(modelInstance.seedDataId)
-    temp.seedName = seed.name
-    const thisId = modelInstance._id.toString()
-    const query = {toolConsumer: modelInstance.toolConsumer}
-    const activities = await Activity.find(query)
-    const countable = activities.filter( activity => {
-      return activity.assignment && activity.assignment.toString() === thisId
+    learningObject.seedName = seed.name
+    learningObject.appType = seed.appType
+    // Add information about Activities related to this LObj
+    let query = {
+      toolConsumer: modelInstance.toolConsumer,
+      assignment: modelInstance._id
+    }
+    let activities = await Activity.find(query, { _id: 1 })
+    // only place the count into the response
+    learningObject.activityCount = activities.length
+    activities = activities.map( a => a._id)
+    // Now add in a list of all activities this user, as an instructor, has authorization to visit
+    query = {
+      toolConsumer: modelInstance.toolConsumer,
+      user: userId,
+      isInstructor: true,
+      activity: { $in: activities.map( a => a._id) }
+    }
+    // let populateSpec = {resource_link_title: 1, custom_title: 1}
+    let populateSpec = {
+      path: 'activity',
+      select: 'title custom_title resource_link_title',
+      populate: {
+        path: 'course',
+        select: 'title custom_title context_title',
+      }
+    }
+    let userVisits = await Visit.find(query)
+      .populate(populateSpec)
+    userVisits = userVisits.map( a => {
+      return {
+        visitId: a._id,
+        activityId: a.activity._id,
+        activityTitle: a.activity.title,
+        courseId: a.activity.course._id,
+        courseTitle: a.activity.course.title,
+      }
     })
-    temp.activityCount = countable.length
-    let response = {}
-    response[this.modelName] = temp
-    if (debugAC) debug('Assignment. read response: ', response)
+    learningObject.userVisits = userVisits
+    let response = { learningObject: learningObject }
+    if (debugAC) debug('Assignment. getLObj response: ', response)
     return response
   }
+
   /**
    * Create a learning object / assignment.
    * These are wrappers for case studies (seeds) which set out the learning objectives and the
@@ -194,11 +226,25 @@ export default class AssignmentController extends BaseController {
     return resultSet.filter( item => options.appTypes.includes(item.seedDataId.appType))
   }
 
+  paginateFinalPopulate () {
+    return {
+      path: 'seedDataId',
+      select: 'name appType',
+    }
+  }
+
+
   route () {
     const router = super.route()
     router.get('/withActivityCount/:tool', (req, res) => {
       this
         .assignmentsWithActivityUsageCount(req.params.tool)
+        .then(ok(res))
+        .then(null, fail(res))
+    })
+    router.get('/getLObj/:id', (req, res) => {
+      this
+        .getLObj(req.params.id, req.authPayload.userId)
         .then(ok(res))
         .then(null, fail(res))
     })

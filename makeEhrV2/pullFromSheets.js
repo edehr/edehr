@@ -13,7 +13,12 @@ const { google } = require('googleapis')
 
 // New file for V2.1
 // https://docs.google.com/spreadsheets/d/1TSCiTCGOokSfecPD1XGkMdDLktbQ4GRSIvcLiHeQCR4/edit#gid=2133408929
-const INPUT_SPREADSHEET_ID = '1TSCiTCGOokSfecPD1XGkMdDLktbQ4GRSIvcLiHeQCR4'
+// const INPUT_SPREADSHEET_ID = '1TSCiTCGOokSfecPD1XGkMdDLktbQ4GRSIvcLiHeQCR4'
+
+
+// https://docs.google.com/spreadsheets/d/1k69B3Tw7m25yvetRIM0X7ck1InJlcFtVU2fABKQNFvs/edit#gid=0
+const INPUT_SPREADSHEET_ID = '1k69B3Tw7m25yvetRIM0X7ck1InJlcFtVU2fABKQNFvs'
+
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
@@ -29,7 +34,7 @@ function getSheets(auth) {
   const sheets = google.sheets({ version: 'v4', auth })
   const RANGE = '!AG2:BI400'
   const MLRANGE = '!AG2:BI900'
-  getSheet(sheets, INPUT_SPREADSHEET_ID, 'pages!J2:P100', 'raw_data/inside-pages.txt')
+  getSheet(sheets, INPUT_SPREADSHEET_ID, 'pages!M2:U100', 'raw_data/inside-pages.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'External'+RANGE, 'raw_data/external-resources.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'pProfile'+RANGE, 'raw_data/patient-profile.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'pChart'+RANGE, 'raw_data/patient-chart.txt')

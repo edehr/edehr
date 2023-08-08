@@ -3,7 +3,7 @@
     div
       zone-lms-page-banner(:title="learningObject.name")
         learning-object-actions(class="flow_across_last_item", :learningObject="learningObject", :showDetails='false')
-    div(class="details-container card selected")
+    div(class="details-container card")
       div(class="details-row")
         div(class="details-name") {{ text.DESCRIPTION }}
         div(class="details-value")
@@ -13,12 +13,15 @@
         div(class="details-value")
           ui-link(:name="'seed-view'", :query="{seedId: learningObject.seedDataId}") {{ learningObject.seedName }}
       div(class="details-row")
+        div(class="details-name") Application type
+        div(class="details-value") {{ learningObject.appType }}
+      div(class="details-row")
         div(class="details-name") {{text.USED}}
         div(class="details-value")
-          div(v-for="act in accessibleActivities", :key="act.id")
-            ui-link(:name="'lms-instructor-activity'", :query="{activityId: act.id}")
+          div(v-for="act in accessibleActivities", :key="act.visitId")
+            ui-link(:name="'lms-instructor-activity'", :query="{visitId: act.visitId}")
               fas-icon(class="fa", :icon="appIcons.activity")
-              span &nbsp; {{act.title}}
+              span &nbsp; {{act.courseTitle}} / {{act.activityTitle}}
           div(v-if="unreachableActivityCount > 0 ") {{unreachableActivityText}}
       div(class="details-row")
         div(class="details-name") {{ text.DATES }}
@@ -48,7 +51,7 @@ export default {
   },
   computed: {
     accessibleActivities () {
-      return StoreHelper.lmsActivitiesUsingLearningObject(this.learningObject._id)
+      return this.learningObject && this.learningObject.userVisits ? this.learningObject.userVisits : []
     },
     unreachableActivityCount () {
       return this.learningObject.activityCount - this.accessibleActivities.length

@@ -52,6 +52,27 @@ const actions = {
       })
   },
 
+  async fetchSeedSelectionList (context, options) {
+    if (!options.appType) {
+      console.error('Coding error. Must provide options.appType.')
+      return []
+    }
+    let consumerId = StoreHelper.getAuthdConsumerId()
+    let url = 'seedSelectionList/' + consumerId
+    url += '?appType=' + options.appType
+    options.searchTerm ? url += '&searchTerm=' + options.searchTerm : null
+    console.log('fetchSeedSelectionList url: ', url)
+    return InstoreHelper.getRequest(context, API, url).then(response => {
+      let list = response.data.seedList
+      if (!list) {
+        console.error('ERROR in seed list store attempting to obtain seed selection list.')
+        return []
+      }
+      // console.log('fetchSeedSelectionList results: ', list)
+      return list
+    })
+  },
+
   /**
    * Load a seed record and set seed id as current seed
    * @param context

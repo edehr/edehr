@@ -20,6 +20,7 @@ const state = {
   pageTitle: '',
   pageZone: '',
   pageIcon: undefined,
+  paginateLimit: 10,
   // disable this ability to toggle labels. Force all to be hidden to be icon only.
   // TODO IF this doesn't cause problems for users then come back and remove the code that manages this state
   outsideShowButtonLabels: false,
@@ -43,6 +44,7 @@ const getters = {
   pageIcon: state => state.pageIcon,
   pageTitle: state => state.pageTitle,
   pageZone: state => state.pageZone,
+  paginateLimit: state => state.paginateLimit,
   sysMessage: state => state.sysMessage,
   showingEHR: state => state.showingEHR,
   showingLIS: state => state.showingLIS
@@ -111,6 +113,8 @@ const mutations = {
     const asStored = localStorage.getItem('appTypes')
     if (asStored) {
       state.checkAppTypes = asStored.split(',')
+    } else {
+      state.checkAppTypes = []
     }
     // disable this ability to toggle labels. Force all to be hidden to be icon only.
     // TODO IF this doesn't cause problems for users then come back and remove the code that manages this state

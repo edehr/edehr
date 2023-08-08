@@ -135,11 +135,9 @@ function makeTreeItem (def, tree) {
   let parent = findTreeItem(def, tree)
   let item = {}
   item.name = def.routeName
-  /* ***************
-  Med Lab navigation items are flagged as part of the LIS, while all the rest are EHR
-   */
-  item.isLIS = 'med-lab' === item.name || parent.isLIS
-  item.isEHR = !item.isLIS
+  // demcoaMed Lab and/or EHR navigation
+  item.isLIS = !!def.lis
+  item.isEHR = !!def.ehr
   if (def.redirect.length > 0) {
     item.redirect = def.redirect
   }

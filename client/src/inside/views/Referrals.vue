@@ -9,7 +9,7 @@
       p Component name: Referrals
       p Redirect: 
       p Route name: referrals
-      p Full path: /ehr/current/no-med/referrals
+      p Full path: /ehr/current/orders/referrals
 </template>
 
 <script>

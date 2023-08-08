@@ -3,13 +3,13 @@
   div(class="ehr-page")
     ehr-page(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
     div(style="display:none")
-      p This No Med page is generated.
+      p This Orders page is generated.
       p Label: Orders
       p Data Key: undefined
-      p Component name: NoMed
+      p Component name: Orders
       p Redirect: no-med-orders
-      p Route name: no-med
-      p Full path: /ehr/current/no-med
+      p Route name: orders
+      p Full path: /ehr/current/orders
 </template>
 
 <script>
@@ -17,7 +17,7 @@ import EhrPage from '../components/page/EhrPage'
 import EhrPageHelper from '../components/page/ehr-helper'
 
 export default {
-  name: 'NoMed',
+  name: 'Orders',
   components: { EhrPage },
   data: function () {
     return {

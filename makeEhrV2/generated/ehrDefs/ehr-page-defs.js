@@ -9373,7 +9373,7 @@ const DEFS = {
   },
   'nonmedOrders': {
     'pageDataKey': 'nonmedOrders',
-    'pageTitle': 'Orders',
+    'pageTitle': 'Non-medication orders',
     'pIndex': '22',
     'hasGridTable': true,
     'pageChildren': [
@@ -24408,6 +24408,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'text',
         'label': 'Internal WBC Diff comment',
+        'tableColumn': '2',
         'fqn': 'hematology.cellCntComment'
       },
       {
@@ -24415,6 +24416,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Normal',
+        'tableColumn': '3',
         'fqn': 'hematology.wbcmNormalMorphology'
       },
       {
@@ -24460,6 +24462,7 @@ const DEFS = {
             'text': 'Necrobiotic Cells'
           }
         ],
+        'tableColumn': '4',
         'fqn': 'hematology.wbcmAbnormalTypeMorphology'
       },
       {
@@ -24481,6 +24484,7 @@ const DEFS = {
             'text': 'Toxic Vacuolation'
           }
         ],
+        'tableColumn': '5',
         'fqn': 'hematology.wbcmToxicTypeMorphology'
       },
       {
@@ -24489,6 +24493,7 @@ const DEFS = {
         'formCss': 'field_full_line',
         'inputType': 'checkbox',
         'label': 'Normal',
+        'tableColumn': '6',
         'fqn': 'hematology.rcmNormal'
       },
       {
@@ -24497,6 +24502,7 @@ const DEFS = {
         'formCss': 'field_full_line',
         'inputType': 'checkbox',
         'label': 'Consistent with indices',
+        'tableColumn': '7',
         'fqn': 'hematology.rcmConsistent'
       },
       {
@@ -24505,6 +24511,7 @@ const DEFS = {
         'formCss': 'field_full_line input-element-small',
         'inputType': 'text',
         'label': 'MCV/MCHC',
+        'tableColumn': '8',
         'fqn': 'hematology.rcmMcvMchc'
       },
       {
@@ -24513,6 +24520,7 @@ const DEFS = {
         'formCss': 'field_full_line',
         'inputType': 'checkbox',
         'label': 'Anisocytosis',
+        'tableColumn': '9',
         'fqn': 'hematology.rcmAnisocytosis'
       },
       {
@@ -24521,6 +24529,7 @@ const DEFS = {
         'formCss': 'field_full_line',
         'inputType': 'checkbox',
         'label': 'Polychromasia',
+        'tableColumn': '10',
         'fqn': 'hematology.rcmPolychromasia'
       },
       {
@@ -24528,6 +24537,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Acanthocytes',
+        'tableColumn': '11',
         'fqn': 'hematology.rcmAcanthocytes'
       },
       {
@@ -24554,6 +24564,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
+        'tableColumn': '12',
         'fqn': 'hematology.rcmAcanthocytesGrading'
       },
       {
@@ -24561,6 +24572,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Codocytes (Target Cells)',
+        'tableColumn': '13',
         'fqn': 'hematology.rcmCodocytes'
       },
       {
@@ -24587,6 +24599,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
+        'tableColumn': '14',
         'fqn': 'hematology.rcmCodocytesGrading'
       },
       {
@@ -24594,6 +24607,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Dacryocytes (Tear Drop Cells)',
+        'tableColumn': '15',
         'fqn': 'hematology.rcmDacryocytes'
       },
       {
@@ -24620,6 +24634,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
+        'tableColumn': '16',
         'fqn': 'hematology.rcmDacryocytesGrading'
       },
       {
@@ -24627,6 +24642,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Drepanocytes (Sickle Cells)',
+        'tableColumn': '17',
         'fqn': 'hematology.rcmDrepanocytes'
       },
       {
@@ -24653,6 +24669,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
+        'tableColumn': '18',
         'fqn': 'hematology.rcmDrepanocytesGrading'
       },
       {
@@ -24660,6 +24677,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Echinocytes (Burr Cells)',
+        'tableColumn': '19',
         'fqn': 'hematology.rcmEchinocytes'
       },
       {
@@ -24686,6 +24704,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
+        'tableColumn': '20',
         'fqn': 'hematology.rcmEchinocytesGrading'
       },
       {
@@ -24693,6 +24712,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Elliptocytes/Ovalocytes',
+        'tableColumn': '21',
         'fqn': 'hematology.rcmOvalocytes'
       },
       {
@@ -24719,6 +24739,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
+        'tableColumn': '22',
         'fqn': 'hematology.rcmOvalocytesGrading'
       },
       {
@@ -24726,6 +24747,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Macro-ovalocytes',
+        'tableColumn': '23',
         'fqn': 'hematology.rcmMacroOvalocytes'
       },
       {
@@ -24752,6 +24774,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
+        'tableColumn': '24',
         'fqn': 'hematology.rcmMacroOvalocytesGrading'
       },
       {
@@ -24759,6 +24782,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Stomatocytes',
+        'tableColumn': '25',
         'fqn': 'hematology.rcmStomatocytes'
       },
       {
@@ -24785,6 +24809,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
+        'tableColumn': '26',
         'fqn': 'hematology.rcmStomatocytesGrading'
       },
       {
@@ -24792,6 +24817,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Spherocytes',
+        'tableColumn': '27',
         'fqn': 'hematology.rcmSpherocytes'
       },
       {
@@ -24818,6 +24844,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
+        'tableColumn': '28',
         'fqn': 'hematology.rcmSpherocytesGrading'
       },
       {
@@ -24825,6 +24852,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Irregularly Contracted Cells (ICC)',
+        'tableColumn': '29',
         'fqn': 'hematology.rcmICC'
       },
       {
@@ -24851,6 +24879,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
+        'tableColumn': '30',
         'fqn': 'hematology.rcmICCGrading'
       },
       {
@@ -24858,6 +24887,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Schistocytes',
+        'tableColumn': '31',
         'fqn': 'hematology.rcmICCSchistocytes'
       },
       {
@@ -24884,6 +24914,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
+        'tableColumn': '32',
         'fqn': 'hematology.rcmICCSchistocytesGrading'
       },
       {
@@ -24891,6 +24922,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Coarse Basophilic Stippling',
+        'tableColumn': '33',
         'fqn': 'hematology.rcmBasophilicStippling'
       },
       {
@@ -24898,6 +24930,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Howell-Jolly Bodies',
+        'tableColumn': '34',
         'fqn': 'hematology.rcmHowellJollyBodies'
       },
       {
@@ -24905,6 +24938,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Pappenheimer Bodies',
+        'tableColumn': '35',
         'fqn': 'hematology.rcmPappenheimerBodies'
       },
       {
@@ -24927,6 +24961,7 @@ const DEFS = {
             'text': 'Schizont'
           }
         ],
+        'tableColumn': '36',
         'fqn': 'hematology.rcmMalariaType'
       },
       {
@@ -24934,6 +24969,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'textarea',
         'label': 'Internal RBC comments',
+        'tableColumn': '37',
         'fqn': 'hematology.rbcComments'
       },
       {
@@ -24941,6 +24977,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Referral to hematopathologist',
+        'tableColumn': '38',
         'fqn': 'hematology.referralToHema'
       },
       {
@@ -24948,6 +24985,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'textarea',
         'label': 'Reason for referral',
+        'tableColumn': '39',
         'fqn': 'hematology.explain'
       }
     ],
@@ -25284,230 +25322,268 @@ const DEFS = {
           {
             'ehr_list_index': '2',
             'items': [
-              'bloodAnalysis'
+              'bloodAnalysis',
+              'cellCntComment'
             ]
           },
           {
             'ehr_list_index': '3',
             'items': [
-              'actionsRequired'
+              'actionsRequired',
+              'wbcmNormalMorphology'
             ]
           },
           {
             'ehr_list_index': '4',
             'items': [
-              'actionsTaken'
+              'actionsTaken',
+              'wbcmAbnormalTypeMorphology'
             ]
           },
           {
             'ehr_list_index': '5',
             'items': [
-              'scanComments'
+              'scanComments',
+              'wbcmToxicTypeMorphology'
             ]
           },
           {
             'ehr_list_index': '6',
             'items': [
-              'wbc-1'
+              'wbc-1',
+              'rcmNormal'
             ]
           },
           {
             'ehr_list_index': '7',
             'items': [
-              'wbc-2'
+              'wbc-2',
+              'rcmConsistent'
             ]
           },
           {
             'ehr_list_index': '8',
             'items': [
-              'wbc-3'
+              'wbc-3',
+              'rcmMcvMchc'
             ]
           },
           {
             'ehr_list_index': '9',
             'items': [
-              'wbc-4'
+              'wbc-4',
+              'rcmAnisocytosis'
             ]
           },
           {
             'ehr_list_index': '10',
             'items': [
-              'wbc-5'
+              'wbc-5',
+              'rcmPolychromasia'
             ]
           },
           {
             'ehr_list_index': '11',
             'items': [
-              'wbc-6'
+              'wbc-6',
+              'rcmAcanthocytes'
             ]
           },
           {
             'ehr_list_index': '12',
             'items': [
-              'wbc-7'
+              'wbc-7',
+              'rcmAcanthocytesGrading'
             ]
           },
           {
             'ehr_list_index': '13',
             'items': [
-              'wbc-8'
+              'wbc-8',
+              'rcmCodocytes'
             ]
           },
           {
             'ehr_list_index': '14',
             'items': [
-              'wbc-9'
+              'wbc-9',
+              'rcmCodocytesGrading'
             ]
           },
           {
             'ehr_list_index': '15',
             'items': [
-              'wbc-10'
+              'wbc-10',
+              'rcmDacryocytes'
             ]
           },
           {
             'ehr_list_index': '16',
             'items': [
-              'wbcFieldFactor'
+              'wbcFieldFactor',
+              'rcmDacryocytesGrading'
             ]
           },
           {
             'ehr_list_index': '17',
             'items': [
-              'wbcAverage'
+              'wbcAverage',
+              'rcmDrepanocytes'
             ]
           },
           {
             'ehr_list_index': '18',
             'items': [
-              'wbcEstimate'
+              'wbcEstimate',
+              'rcmDrepanocytesGrading'
             ]
           },
           {
             'ehr_list_index': '19',
             'items': [
-              'wbcAnalysis'
+              'wbcAnalysis',
+              'rcmEchinocytes'
             ]
           },
           {
             'ehr_list_index': '20',
             'items': [
-              'wbcLowRange'
+              'wbcLowRange',
+              'rcmEchinocytesGrading'
             ]
           },
           {
             'ehr_list_index': '21',
             'items': [
-              'wbcHighRange'
+              'wbcHighRange',
+              'rcmOvalocytes'
             ]
           },
           {
             'ehr_list_index': '22',
             'items': [
-              'wbcComment'
+              'wbcComment',
+              'rcmOvalocytesGrading'
             ]
           },
           {
             'ehr_list_index': '23',
             'items': [
               'wbcCorrectedWbc',
-              'plt-1'
+              'plt-1',
+              'rcmMacroOvalocytes'
             ]
           },
           {
             'ehr_list_index': '24',
             'items': [
-              'plt-2'
+              'plt-2',
+              'rcmMacroOvalocytesGrading'
             ]
           },
           {
             'ehr_list_index': '25',
             'items': [
-              'plt-3'
+              'plt-3',
+              'rcmStomatocytes'
             ]
           },
           {
             'ehr_list_index': '26',
             'items': [
-              'plt-4'
+              'plt-4',
+              'rcmStomatocytesGrading'
             ]
           },
           {
             'ehr_list_index': '27',
             'items': [
-              'plt-5'
+              'plt-5',
+              'rcmSpherocytes'
             ]
           },
           {
             'ehr_list_index': '28',
             'items': [
-              'plt-6'
+              'plt-6',
+              'rcmSpherocytesGrading'
             ]
           },
           {
             'ehr_list_index': '29',
             'items': [
-              'plt-7'
+              'plt-7',
+              'rcmICC'
             ]
           },
           {
             'ehr_list_index': '30',
             'items': [
-              'plt-8'
+              'plt-8',
+              'rcmICCGrading'
             ]
           },
           {
             'ehr_list_index': '31',
             'items': [
-              'plt-9'
+              'plt-9',
+              'rcmICCSchistocytes'
             ]
           },
           {
             'ehr_list_index': '32',
             'items': [
-              'plt-10'
+              'plt-10',
+              'rcmICCSchistocytesGrading'
             ]
           },
           {
             'ehr_list_index': '33',
             'items': [
-              'pltFieldFactor'
+              'pltFieldFactor',
+              'rcmBasophilicStippling'
             ]
           },
           {
             'ehr_list_index': '34',
             'items': [
-              'pltAverage'
+              'pltAverage',
+              'rcmHowellJollyBodies'
             ]
           },
           {
             'ehr_list_index': '35',
             'items': [
-              'pltEstimate'
+              'pltEstimate',
+              'rcmPappenheimerBodies'
             ]
           },
           {
             'ehr_list_index': '36',
             'items': [
-              'pltAnalysis'
+              'pltAnalysis',
+              'rcmMalariaType'
             ]
           },
           {
             'ehr_list_index': '37',
             'items': [
-              'pltLowRange'
+              'pltLowRange',
+              'rbcComments'
             ]
           },
           {
             'ehr_list_index': '38',
             'items': [
-              'pltHighRange'
+              'pltHighRange',
+              'referralToHema'
             ]
           },
           {
             'ehr_list_index': '39',
             'items': [
-              'pltComment'
+              'pltComment',
+              'explain'
             ]
           },
           {
@@ -26126,7 +26202,45 @@ const DEFS = {
           'cellCntOtherAbs',
           'cellCntOtherSpecify',
           'cellCntTotal',
-          'cellCntNRBCs'
+          'cellCntNRBCs',
+          'cellCntComment',
+          'wbcmNormalMorphology',
+          'wbcmAbnormalTypeMorphology',
+          'wbcmToxicTypeMorphology',
+          'rcmNormal',
+          'rcmConsistent',
+          'rcmMcvMchc',
+          'rcmAnisocytosis',
+          'rcmPolychromasia',
+          'rcmAcanthocytes',
+          'rcmAcanthocytesGrading',
+          'rcmCodocytes',
+          'rcmCodocytesGrading',
+          'rcmDacryocytes',
+          'rcmDacryocytesGrading',
+          'rcmDrepanocytes',
+          'rcmDrepanocytesGrading',
+          'rcmEchinocytes',
+          'rcmEchinocytesGrading',
+          'rcmOvalocytes',
+          'rcmOvalocytesGrading',
+          'rcmMacroOvalocytes',
+          'rcmMacroOvalocytesGrading',
+          'rcmStomatocytes',
+          'rcmStomatocytesGrading',
+          'rcmSpherocytes',
+          'rcmSpherocytesGrading',
+          'rcmICC',
+          'rcmICCGrading',
+          'rcmICCSchistocytes',
+          'rcmICCSchistocytesGrading',
+          'rcmBasophilicStippling',
+          'rcmHowellJollyBodies',
+          'rcmPappenheimerBodies',
+          'rcmMalariaType',
+          'rbcComments',
+          'referralToHema',
+          'explain'
         ],
         'hasRecHeader': true
       }
@@ -31054,352 +31168,6 @@ const DEFS = {
           'preOrderSetFile'
         ],
         'hasRecHeader': true
-      }
-    }
-  },
-  'medLabDemographics': {
-    'pageDataKey': 'medLabDemographics',
-    'pageTitle': 'Med Lab Demographics',
-    'pIndex': '49',
-    'hasGridForm': true,
-    'pageChildren': [
-      {
-        'elementKey': 'givenName',
-        'formIndex': '1',
-        'inputType': 'text',
-        'label': 'First name',
-        'tableColumn': '1',
-        'fqn': 'medLabDemographics.givenName'
-      },
-      {
-        'elementKey': 'middleName',
-        'formIndex': '1',
-        'inputType': 'text',
-        'label': 'Middle name(s)',
-        'tableColumn': '2',
-        'fqn': 'medLabDemographics.middleName'
-      },
-      {
-        'elementKey': 'familyName',
-        'formIndex': '1',
-        'inputType': 'text',
-        'label': 'Last name',
-        'tableColumn': '3',
-        'fqn': 'medLabDemographics.familyName'
-      },
-      {
-        'elementKey': 'preferredName',
-        'formIndex': '1',
-        'inputType': 'text',
-        'label': 'Preferred name',
-        'tableColumn': '4',
-        'fqn': 'medLabDemographics.preferredName'
-      },
-      {
-        'elementKey': 'dateOfBirth',
-        'dependentOn': 'age:personAge',
-        'formIndex': '1',
-        'inputType': 'mainDOB',
-        'label': 'Date of birth',
-        'tableColumn': '5',
-        'fqn': 'medLabDemographics.dateOfBirth'
-      },
-      {
-        'elementKey': 'personAge',
-        'formIndex': '1',
-        'inputType': 'personAge',
-        'label': 'Age',
-        'tableColumn': '6',
-        'fqn': 'medLabDemographics.personAge'
-      },
-      {
-        'elementKey': 'height',
-        'formIndex': '1',
-        'inputType': 'text',
-        'label': 'Height',
-        'suffix': 'cm',
-        'tableColumn': '7',
-        'fqn': 'medLabDemographics.height',
-        'suffixText': '<p>cm</p>',
-        'suffixHtml': 'cm'
-      },
-      {
-        'elementKey': 'weight',
-        'formIndex': '1',
-        'inputType': 'text',
-        'label': 'Weight',
-        'suffix': 'kg',
-        'tableColumn': '8',
-        'fqn': 'medLabDemographics.weight',
-        'suffixText': '<p>kg</p>',
-        'suffixHtml': 'kg'
-      },
-      {
-        'elementKey': 'gender',
-        'formIndex': '1',
-        'inputType': 'select',
-        'label': 'Gender',
-        'options': [
-          {
-            'key': 'Unknown',
-            'text': 'Unknown'
-          },
-          {
-            'key': 'Female',
-            'text': 'Female'
-          },
-          {
-            'key': 'Male',
-            'text': 'Male'
-          },
-          {
-            'key': 'Transgender female',
-            'text': 'Transgender female'
-          },
-          {
-            'key': 'Transgender male',
-            'text': 'Transgender male'
-          },
-          {
-            'key': 'Undifferentiated',
-            'text': 'Undifferentiated'
-          },
-          {
-            'key': 'Prefer not to say',
-            'text': 'Prefer not to say'
-          }
-        ],
-        'tableColumn': '9',
-        'fqn': 'medLabDemographics.gender'
-      },
-      {
-        'elementKey': 'martialStatus',
-        'formIndex': '1',
-        'inputType': 'select',
-        'label': 'Martial status',
-        'options': [
-          {
-            'key': 'Married',
-            'text': 'Married'
-          },
-          {
-            'key': 'Single',
-            'text': 'Single'
-          },
-          {
-            'key': 'Life partner',
-            'text': 'Life partner'
-          },
-          {
-            'key': 'Divorced',
-            'text': 'Divorced'
-          },
-          {
-            'key': 'Separated',
-            'text': 'Separated'
-          },
-          {
-            'key': 'Widowed',
-            'text': 'Widowed'
-          }
-        ],
-        'tableColumn': '10',
-        'fqn': 'medLabDemographics.martialStatus'
-      },
-      {
-        'elementKey': 'languagePrimary',
-        'formIndex': '1',
-        'inputType': 'select',
-        'label': 'Primary language',
-        'options': [
-          {
-            'key': 'English',
-            'text': 'English'
-          },
-          {
-            'key': 'French',
-            'text': 'French'
-          },
-          {
-            'key': 'Spanish',
-            'text': 'Spanish'
-          },
-          {
-            'key': 'German',
-            'text': 'German'
-          },
-          {
-            'key': 'Chinese',
-            'text': 'Chinese'
-          }
-        ],
-        'tableColumn': '11',
-        'fqn': 'medLabDemographics.languagePrimary'
-      },
-      {
-        'elementKey': 'religion',
-        'formIndex': '1',
-        'inputType': 'text',
-        'label': 'Religion',
-        'tableColumn': '12',
-        'fqn': 'medLabDemographics.religion'
-      },
-      {
-        'elementKey': 'indigenousIdentifyAs',
-        'formIndex': '1',
-        'inputType': 'select',
-        'label': 'Do you identify as an indigenous person?',
-        'options': [
-          {
-            'key': 'Yes',
-            'text': 'Yes'
-          },
-          {
-            'key': 'No',
-            'text': 'No'
-          }
-        ],
-        'tableColumn': '13',
-        'fqn': 'medLabDemographics.indigenousIdentifyAs'
-      },
-      {
-        'elementKey': 'streetAddress',
-        'formIndex': '1',
-        'formCss': 'grid-span-2-columns',
-        'inputType': 'text',
-        'label': 'Street address',
-        'tableColumn': '14',
-        'fqn': 'medLabDemographics.streetAddress'
-      },
-      {
-        'elementKey': 'city',
-        'formIndex': '1',
-        'inputType': 'text',
-        'label': 'City',
-        'tableColumn': '15',
-        'fqn': 'medLabDemographics.city'
-      },
-      {
-        'elementKey': 'country',
-        'defaultValue': 'Canada',
-        'formIndex': '1',
-        'inputType': 'text',
-        'label': 'Country',
-        'tableColumn': '16',
-        'fqn': 'medLabDemographics.country'
-      },
-      {
-        'elementKey': 'postalCode',
-        'formIndex': '1',
-        'inputType': 'text',
-        'label': 'Postal code',
-        'tableColumn': '17',
-        'fqn': 'medLabDemographics.postalCode'
-      },
-      {
-        'elementKey': 'noAddress',
-        'defaultValue': false,
-        'formIndex': '1',
-        'inputType': 'checkbox',
-        'label': 'No address',
-        'tableColumn': '18',
-        'fqn': 'medLabDemographics.noAddress'
-      },
-      {
-        'elementKey': 'phoneNumber',
-        'formIndex': '1',
-        'inputType': 'text',
-        'label': 'Primary phone number',
-        'tableColumn': '19',
-        'fqn': 'medLabDemographics.phoneNumber'
-      },
-      {
-        'elementKey': 'emailAddress',
-        'formIndex': '1',
-        'inputType': 'text',
-        'label': 'Email',
-        'tableColumn': '20',
-        'fqn': 'medLabDemographics.emailAddress'
-      },
-      {
-        'elementKey': 'occupationStudent',
-        'formIndex': '1',
-        'inputType': 'text',
-        'label': 'Occupation/student',
-        'tableColumn': '21',
-        'fqn': 'medLabDemographics.occupationStudent'
-      },
-      {
-        'elementKey': 'phn',
-        'formIndex': '1',
-        'inputType': 'text',
-        'label': 'PHN',
-        'tableColumn': '22',
-        'fqn': 'medLabDemographics.phn'
-      },
-      {
-        'elementKey': 'mrn',
-        'formIndex': '1',
-        'inputType': 'text',
-        'label': 'MRN',
-        'tableColumn': '23',
-        'fqn': 'medLabDemographics.mrn'
-      },
-      {
-        'elementKey': 'patientService',
-        'formIndex': '1',
-        'inputType': 'text',
-        'label': 'Patient service',
-        'tableColumn': '24',
-        'fqn': 'medLabDemographics.patientService'
-      }
-    ],
-    'pageElements': {
-      'lisDemographics': {
-        'elementKey': 'lisDemographics',
-        'pageElementIndex': '1',
-        'formKey': 'lisDemographics',
-        'isPageForm': true,
-        'ehr_groups': [
-          {
-            'elementKey': 'main',
-            'formCss': 'section-divider grid-left-to-right-3',
-            'gIndex': '1',
-            'gChildren': [
-              'givenName',
-              'middleName',
-              'familyName',
-              'preferredName',
-              'dateOfBirth',
-              'personAge',
-              'height',
-              'weight',
-              'gender',
-              'martialStatus',
-              'languagePrimary',
-              'religion',
-              'indigenousIdentifyAs'
-            ]
-          },
-          {
-            'elementKey': 'address',
-            'formCss': 'section-divider grid-left-to-right-3',
-            'gIndex': '2',
-            'gChildren': [
-              'streetAddress',
-              'city',
-              'country',
-              'postalCode',
-              'noAddress',
-              'phoneNumber',
-              'emailAddress',
-              'occupationStudent',
-              'phn',
-              'mrn',
-              'patientService'
-            ]
-          }
-        ]
       }
     }
   },

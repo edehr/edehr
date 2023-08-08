@@ -2,7 +2,7 @@
   div
     zone-lms-page-banner(:title="seed.name")
       seed-actions(class="flow_across_last_item", :seedModel='seedModel')
-    div(class="details-container card selected", :class='{ draftStyle: hasDraftReports }')
+    div(class="details-container card", :class='{ draftStyle: hasDraftReports }')
       div(v-if="hasDraftReports", class="details-row")
         div(class="details-name") WARNING
         div(class="details-value").

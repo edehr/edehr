@@ -20,21 +20,28 @@ export default {
     isOutsideShowButtonLabels () { return StoreHelper.isOutsideShowButtonLabels() },
     exitUrl () { return this.visitData.returnUrl },
     visitData () { return this.$store.getters['visit/visitData'] || {}},
+    hasActivity () { return this.$store.getters['activityStore/hasActivity'] },
+    hasCourse () { return this.$store.getters['courseStore/hasCourse'] },
     items () {
-      const menuItems = [
-      ]
-      menuItems.push( {
+      const menuItems = []
+      menuItems.push({
         label: MENU_TEXT.COURSES_LABEL,
         toolTip: MENU_TEXT.COURSES_TOOLTIP,
-        callback: () => { this.navigate('/courses') },
+        callback: () => {
+          this.navigate('/courses')
+        },
         icon: APP_ICONS.course
       })
-      menuItems.push( {
-        label: MENU_TEXT.ACTIVITIES,
-        toolTip: MENU_TEXT.ACTIVITIES_TOOLTIP,
-        callback: () => { this.navigate('/lms-instructor-activity') },
-        icon: APP_ICONS.activity
-      })
+      if (this.hasCourse && this.hasActivity) {
+        menuItems.push({
+          label: MENU_TEXT.ACTIVITIES,
+          toolTip: MENU_TEXT.ACTIVITIES_TOOLTIP,
+          callback: () => {
+            this.navigate('/lms-instructor-activity')
+          },
+          icon: APP_ICONS.activity
+        })
+      }
       menuItems.push( {
         label: MENU_TEXT.LOBJ_LABEL,
         toolTip: MENU_TEXT.LOBJ_TOOLTIP,

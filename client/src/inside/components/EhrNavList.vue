@@ -23,6 +23,10 @@ export default {
   },
   computed: {
     open () {
+      if(StoreHelper.isLIS_Showing()) {
+        console.log('is lis')
+        return true
+      }
       if (this.level > 1) {
         return true
       }

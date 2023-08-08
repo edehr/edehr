@@ -1,15 +1,20 @@
 <template lang="pug">
-  div
-    div(class='ehr-context-student')
-      div {{givenName}}.  You are working on the "{{ assignmentName }}" activity.
-      div(v-show="hasEvaluationData") Instructor's comments: {{ activityData.evaluationData }}
+  div(class='ehr-context-student flow_across')
+    div
+      div {{givenName}}.  You are working on:
+        span(class='content') {{ truncate(assignmentName, 50) }}
+      div(v-show="hasEvaluationData") Instructor's comments:
+        span(class="content") {{ activityData.evaluationData }}
+    div(class="flow_across_last_item")
+      ehr-student-submit
 </template>
 
 <script>
 import StoreHelper from '@/helpers/store-helper'
+import EhrStudentSubmit from '@/inside/components/EhrStudentSubmit.vue'
 
 export default {
-  components: { },
+  components: { EhrStudentSubmit },
   data () {
     return {
     }
@@ -23,11 +28,17 @@ export default {
     hasEvaluationData () { return this.evaluationData && this.evaluationData.length > 0 }
   },
   methods: {
+    truncate (input, lim) {
+      return input && input.length > lim ? `${input.substring(0, lim)}...` : input
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-
+.content {
+  font-weight: bold;
+  padding: 0 5px;
+}
 </style>

@@ -18,6 +18,10 @@ export const APP_TYPE_EHR = 'EHR'
 export const APP_TYPE_LIS = 'LIS'
 
 /*
+ For in dev only! Devs can set ENABLE_FULL_DEMO_AUTO_LINK to false to disable the autolink when developing the actions around the unlinked page. It's useful to be able to use the full demo and get to the unlinked page even though we don't want to inflict this on our users.
+ */
+export const ENABLE_FULL_DEMO_AUTO_LINK = true
+/*
 https://softwareengineering.stackexchange.com/a/247277/346750
 "A Helper class is a lesser known code smell where a coder has identified some miscellaneous,
 commonly used operations and attempted to make them reusable by lumping them together in an unnatural grouping."
@@ -361,6 +365,8 @@ class StoreHelperWorker {
     Use the instructorToken to restore the user to instructor.
     */
     await StoreHelper.storeReplaceToken(newToken)
+    // clear any previous seed id to turn off the seed editing mode. Otherwise, instructors see Case Study context banner and not Student context banner.
+    await StoreHelper.setSeedEditId('')
     const visitId = StoreHelper.getAuthVisitId()
     router.push({ name: 'ehr', query: { visitId: visitId, appType: appType } })
     StoreHelper.postActionEvent(INSTRUCTOR_ACTION,'visitAsStudent')
@@ -692,12 +698,14 @@ class StoreHelperWorker {
   }
 
   async autoLinkDemoLobj (theActivity, demo_lobjId) {
-    // console.log('HERE is where we set up the demo to auto link the activity and lObj', theActivity, demo_lobjId)
-    const payload = { activity: theActivity.id, assignment: demo_lobjId }
-    await store.dispatch('activityStore/linkAssignment', payload)
-    // console.log('reload the activity now that the activity is linked to an learning object')
-    theActivity = await store.dispatch('activityStore/loadActivityRecord')
-    // console.log('fully linked activity', theActivity)
+    if(ENABLE_FULL_DEMO_AUTO_LINK) {
+      // console.log('HERE is where we set up the demo to auto link the activity and lObj', theActivity, demo_lobjId)
+      const payload = { activity: theActivity.id, assignment: demo_lobjId }
+      await store.dispatch('activityStore/linkAssignment', payload)
+      // console.log('reload the activity now that the activity is linked to an learning object')
+      theActivity = await store.dispatch('activityStore/loadActivityRecord')
+      // console.log('fully linked activity', theActivity)
+    }
     return theActivity
   }
 

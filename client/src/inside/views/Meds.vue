@@ -9,7 +9,7 @@
       p Component name: Meds
       p Redirect: 
       p Route name: meds
-      p Full path: /ehr/current/meds
+      p Full path: /ehr/current/orders/meds
 </template>
 
 <script>
