@@ -6,7 +6,7 @@
       zone-lms-button(v-show="canDo", @action="showEditDialog", :icon='appIcons.configure', :title='text.PROPERTIES_TP', :text='text.PROPERTIES')
       zone-lms-button(v-if="canDo", @action="showLobjCreateDialog",
         :title="text.createLearningObjectTip",
-        :icon='appIcons.new',
+        :icon='appIcons.lobj',
         :text='text.createLearningObjectBL')
 
       seed-duplicate(v-show="canDo", :seed='seed', @newSeed='seedDuplicated()')

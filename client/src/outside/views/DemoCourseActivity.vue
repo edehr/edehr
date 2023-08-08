@@ -14,7 +14,6 @@
           ui-button(v-on:buttonClicked="showEditDialog", title='Edit activity')
             fas-icon(:icon="appIcons.edit")
       div(class="config-data", v-show='editMode')
-        div DEV TO DO: Show a toogle state that enables/disables the sending of the LObj ID so that dev can test unlinked behaviour
         div(class="config-data-block")
           ui-info(title='Tool Url', text="This is the URL to the EdEHR server's api endpoint that is listening for LTI connections.")
           div(class="field-head") Tool Url

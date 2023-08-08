@@ -13,7 +13,7 @@
             fas-icon(class="fa", :icon="appIcons.activity")
             span &nbsp; {{activity.learningObjectName}}
       div(class="details-row")
-        div(class="details-name") {{text.LOBJ}}
+        div(class="details-name") {{text.GOTOLOBJ}}
         div(class="details-value")
           div(v-if='hasLinkedLearningObject')
             ui-link(:name="'learning-object'", :query="{learningObjectId: activity.learningObjectId}")

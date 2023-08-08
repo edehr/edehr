@@ -112,8 +112,8 @@ export default {
   computed: {
     appTypeDescriptionText () {
       return this.isEHR_Showing ?
-        'Present the electronic health record (EHR) application.' :
-        'Present the lab information system (LIS) application.'
+        'Will use the electronic health record (EHR) application.' :
+        'Will use the lab information system (LIS) application.'
     },
     dialogHeader () {
       return TITLES[this.actionType] || ''

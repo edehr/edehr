@@ -117,7 +117,7 @@ main {
   margin-left: 1rem;
 }
 .left_side_small {
-  width: 2.5rem !important;
+  width: 3.3rem !important;
 }
 .right_side_large {
   width: 94% !important;
