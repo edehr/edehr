@@ -41,7 +41,7 @@ export default class SeedDataController extends BaseController {
   }
 
   fetchSeedSelectionList (tool, appType, searchTerm) {
-    let query = { toolConsumer: new ObjectId(tool)}
+    let query = { isDefault: false, toolConsumer: new ObjectId(tool)}
     if (appType) {
       query.appType = appType
     }

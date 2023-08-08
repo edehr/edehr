@@ -151,7 +151,7 @@ export default {
       return this.selectedSeed ? this.selectedSeed.description : ''
     },
     seedValidate () {
-      return this.isCreate || this.selectedSeedId.trim() ? /* OK */ undefined :  ERRORS.SEED_REQUIRED
+      return this.selectedSeedId.trim() ? /* OK */ undefined :  ERRORS.SEED_REQUIRED
     },
     errors () {
       const errMsg = this.nameValidate || this.seedValidate || this.caseStudyNameValidate
@@ -224,6 +224,8 @@ export default {
           this.appType = options.seed.appType
           await this.fetchSeedSelectionList()
           this.selectedSeedId = options.seed._id
+        } else {
+          await this.fetchSeedSelectionList()
         }
       } else {
         console.error('Coding error. Must provide edit or create option for this dialog open')

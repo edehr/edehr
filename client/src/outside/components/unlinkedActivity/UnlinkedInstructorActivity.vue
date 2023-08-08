@@ -1,7 +1,6 @@
 <template lang="pug">
   div
     h1 Activity needs to be linked with content
-    p Hi {{givenName}}.
     p.
       The activity you selected is not yet linked to any EdEHR content.
       Please see below and select a learning object (content) for this activity.
@@ -38,7 +37,7 @@
             div(class="cell") {{ appType(lObj) }}
             div(class='cell') {{ lObj.description }}
 
-    ui-confirm(ref="confirmDialog", saveLabel="Connect", v-on:confirm="selectConnect()", html-body=true)
+    ui-confirm(ref="confirmDialog", saveLabel="Connect", v-on:confirm="selectConnect", html-body=true)
     learning-object-dialog(ref="theDialog")
 
 </template>
