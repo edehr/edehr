@@ -35,7 +35,7 @@
             div(class="cell")
               ui-button(v-on:buttonClicked="selectLearningObject(lObj)", class='link-button') Use this
             div(class='cell') {{ lObj.name }}
-            div(class="cell") {{ appType}}
+            div(class="cell") {{ appType(lObj) }}
             div(class='cell') {{ lObj.description }}
 
     ui-confirm(ref="confirmDialog", saveLabel="Connect", v-on:confirm="selectConnect()", html-body=true)
@@ -64,7 +64,6 @@ const DESC = 'desc'
 export default {
   data () {
     return {
-      appType: 'EHR',
       showDetails: false,
       appIcons: APP_ICONS,
       text: TEXT,
@@ -94,6 +93,7 @@ export default {
     returnToLmsText () { return 'Return to ' + this.lmsName}
   },
   methods: {
+    appType (lobj) { return lobj.seedDataId.appType },
     async changeAppTypes (checkAppTypes) {
       this.checkAppTypes = checkAppTypes
       this.offset = 0

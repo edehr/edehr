@@ -226,6 +226,14 @@ export default class AssignmentController extends BaseController {
     return resultSet.filter( item => options.appTypes.includes(item.seedDataId.appType))
   }
 
+  paginateFinalPopulate () {
+    return {
+      path: 'seedDataId',
+      select: 'name appType',
+    }
+  }
+
+
   route () {
     const router = super.route()
     router.get('/withActivityCount/:tool', (req, res) => {
