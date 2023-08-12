@@ -141,7 +141,7 @@ export default class ActivityController extends BaseController {
     activity.custom_title = custom_title
     activity.custom_description = custom_description
     // console.log('activity-controller update text ', activity)
-    return activity.save()
+    return await activity.save()
   }
 
   async listAdminActivities (consumerId) {
