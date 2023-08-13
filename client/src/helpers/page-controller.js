@@ -214,6 +214,10 @@ async  function onPageChange (toRoute) {
 
     let theActivity = await store.dispatch('activityStore/loadActivityRecord')
     if (dbApp) console.log('loaded current activity', theActivity)
+    await store.dispatch('courseStore/setCourseId', theActivity.courseId)
+    await store.dispatch('courseStore/loadCurrentCourse')
+    if (dbApp) console.log('loadeded course')
+
 
     // **** If page is the one that handles unlinked activities then we are done ... EXIT
     if (routeName === UNLINKED_ACTIVITY_ROUTE_NAME) {
@@ -263,6 +267,13 @@ async  function onPageChange (toRoute) {
       await StoreHelper._dispatchActivityData('loadActivityData', theActivity.activityDataId)
       await StoreHelper.loadAssignment(theActivity.learningObjectId)
       await StoreHelper.loadSeed(theActivity.caseStudyId)
+      if (StoreHelper.isDevelopingContent()) {
+        // If a user is able to log into the LMS first as an instructor (and they set themselves as a content editor)
+        // and then they log into their LMS as a student the system will remember they are also a content editor
+        // which means certain menu items appear. Such as the content creators documentation link in the
+        // application banner.
+        StoreHelper.setIsDevelopingContent(false)
+      }
     }
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   } catch (err) {
