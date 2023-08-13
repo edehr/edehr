@@ -2,8 +2,9 @@
   ui-button(class="zone-lms-button",
     v-on:buttonClicked="$emit('action')",
     :disabled='disabled',
-    :title="title")
-    fas-icon(v-for='icon in iconList', :key="icon", class="fa", :icon="icon", :class='iconClass')
+    :title="title"
+    )
+    fas-icon(v-for='icon in iconList', :key="icon", class="fa", :icon="icon", :class='iconClass', :title="title")
     span(v-if="showLabels") &nbsp; {{text}}
 </template>
 
