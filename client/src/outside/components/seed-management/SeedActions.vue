@@ -66,7 +66,7 @@ export default {
       this.$router.push({ name: 'ehr', query: { seedEditId: this.seedId, appType: this.seed.appType } })
     },
     showEditDialog: function () {
-      this.$refs.theDialog.showDialog(this.seedModel)
+      this.$refs.theDialog.showSeedDataDialog(this.seedModel)
     },
     showLobjCreateDialog: function () {
       // pas undefined for first parameter to set up for the 'create' action. Give the new LObj the case study

@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     showEditDialog: function () {
-      this.$refs.theDialog.showDialog(this.seedModel)
+      this.$refs.theDialog.showSeedDataDialog(this.seedModel)
     },
     saveSeedProperties: async function () {
       let seedData = {

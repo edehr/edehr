@@ -157,7 +157,7 @@ export default {
         this.appType = APP_TYPE_EHR
       }
     },
-    showDialog (seedModel) {
+    showSeedDataDialog (seedModel) {
       this.clearInputs()
       if (seedModel) {
         const seedData = seedModel.seed
@@ -203,8 +203,10 @@ export default {
       this.$refs.theDialog.onClose()
       if (this.actionType === EDIT_ACTION) {
         await StoreHelper.updateSeed(this, this.seedId, seedData)
+        this.$emit('update')
       } else if (this.actionType === CREATE_ACTION) {
         await StoreHelper.createSeed(this, seedData)
+        this.$emit('create')
       }
     },
     setFile (event) {
