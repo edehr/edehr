@@ -11,92 +11,128 @@ All access to the EdEHR is through your school's learning management system (LMS
 The main parts of your student's view of the EdEHR include
 
 - Application menu banner
-- EHR content
+- Learning activity banner
+- Health record
+  - banner
+  - navigation
+  - content
 
-> For more information on the EHR content see the [Electronic health records](/ehr) sections of this documentation.
+> For more information on the health record area please see the [Electronic health records](/ehr) sections of this documentation.
 
 
 ## Application banner
 
 - ```Students guide``` brings you to this web page in the EdEHR documentation.
-- ```Activity``` brings you back to the EHR content pages.
-- ```Submit Activity``` sends your activity to your instructor for evaluation.
-- The ```Tools``` menu provides useful links such as the ```My Activities``` action that takes you to your student dashboard.
-
+- ```Demonstration``` is ONLY visible when using the Full Demonstration mode. This button takes you to the demo home page.
+- The ```Tools``` menu provides quick access to the student's tools (see below)
 ![2]
 
-## Submit Activity
 
-When you are ready to submit your work for evaluation by your instructor then use the ```Submit Activity``` button. 
-When you do this your instructor can view and evaluate your work.
-Once your work is "submitted" you can no longer make changes to the EHR content. 
-Your instructor may also close off the activity for you or for the whole class. 
-And they can also send the activity back to you so you can do more work.
+# Student tools menu
+The ```Tools``` menu lets the student access their courses, the current activity, the student's scratch pad, and to return back to your learning management system (LMS). The tools menu is always available in the application banner.
+![8]
 
-When you submit your work the EdEHR will take you to your [```My Activities```](/student/#my-activities) dashboard.
+### Tools menu: Courses
 
-### Pending draft reports
-![5]
+This link takes you to the [```dashboard```](/student/#dashboard) course listing page.
 
-If you have any [draft reports](/ehr/#draft-reports-and-verifying-correctness) then the submit button will change colour to give you a warning. You can submit your work with drafts but your work is not complete so your instructor may not accept it.
+### Tools menu: Activity
 
-
-## Student tools menu
-The ```Tools``` menu lets you access information about the activity, 
-see any evaluation comments your instructor may have left for you, 
-work with a scratch pad for taking notes, and
-to return back to your learning management system (LMS)
-
-![3]
-
-### Tools menu: My Activities
-
-This action takes you to your dashboard where you can revisit all of your previous activities and see comments from your instructors.
-
-### Tools menu: Activity information
-
-Select Activity Information from the student ```Tools``` menu to see details about the current activity.
-
-![4]
-
-**Course** This is the name of the course from your LMS.
-
-**Activity** This is the activity name that you see in your LMS.  If the LMS provided a description then this appears here too.
-
-**Learning Object**.  This is the information entered into the EdEHR about the Learning Object.  This area shows the name and description. The description often contains the learning objectives for this activity.
-
+This link takes you to the [```dashboard```](/student/#dashboard) current activity page.
 
 ### Tools menu: Scratch pad
 
-You have a private scratch pad for taking notes as you work. The text you see here is visible only to you and is for this current activity.
+Each student has a private scratch pad for taking notes while working within the EHR application. The text you see here is visible only to the student and each activity has its own scratch pad.  The student can also see the contents of their scratch pad on the activity page.
 
 ### Tools menu: Exit to LMS
 
-This is a link that takes you back to your LMS.  (It uses a URL that your LMS gave to the EdEHR when you clicked the link in your LMS.)
+This is a link that takes you back to your LMS.  Note that this link does not appear if your school is using D2L because D2L does not provide the necessary information.
 
-## My Activities
 
-This is your dashboard where you can access all your activities in one place.  This is also where you can read what your instructor has said about your work.
+## Learning activity banner
+
+The region below the Application Banner is the Learning activity banner.  This area contains tools and information about the learning activity.
+
+![3]
+When you, as a student, begin working on an activity this banner will tell you the name of the activity and show 
+the ```Submit``` button. You use this button when you are finished working on the assignment and are ready 
+to submit your work for your instructor's evaluation. Once you submit you can no longer make any changes. 
+So, the application asks you to confirm that you really are ready to make the submission.
+![7]
+
+Immediately after submission the application will show the student user their [```dashboard```](/student/#dashboard)
+
+While you are working in the patient charts you may have incomplete reports. Any incomplete report is 
+called a [draft](/ehr/#draft-reports-and-verifying-correctness) report and if there is one or more draft reports the submit button changes colour to warn you to finish these reports before submitting your work for evaluation.
+
+![4]
+
+After submission the learning activity banner shows the status as "closed for edits". Meaning the work is now in the hands of the instructor to evaluate the work. (Note that instructors may later send the work back to the student for further edits. In which case the Submit button will reappear.)
+
+![5]
+
+Once the instructor has evaluated the work and released these evaluation notes, the learning activity banner displays the instructor's feedback.
 
 ![6]
 
-This ```My Activities``` page will list every course that you have used the EdEHR with. Under each course will be an alphabetically sorted list of each of your activities.  You can see at a glance if this activity is still open for you to edit or submitted.  In either case, you can get back into the activity with the ```Go to EHR``` button.
+## Dashboard
 
-### Instructor's feedback
+This is your dashboard where you can access all your activities in one place.  This is also where you can read what your instructor has said about your work.
 
-Once you have submitted your work your instructor may provide evaluation comments. Use this menu item to view these comments.
+![9]
 
-### Show more / show less
+The main parts of the student's dashboard include
 
-Expand an activity's panel to see more details about the activity and whatever notes you may have placed into your [personal scratch page](/student/#student-tools-menu) in the EHR
-![7]
+- Application menu banner (as above)
+- Dashboard navigation
+- Content area such as courses, course, activity, etc.
 
+### Dashboard navigation
+
+![10]
+
+The dashboard navigation provides quick access to your courses, the currently selected course, and the currently selected activity. 
+
+The ```exit to LMS``` link that takes you back to your LMS.  Note that this link does not appear if your school is using D2L because D2L does not provide the necessary information.
+
+
+## Courses
+
+The ```Courses``` page will list every course that you have used the EdEHR with.
+
+![11]
+
+Select a course by clicking on its name which is a link to the Course page.
+
+## Course
+
+The ```Course``` page displays course information.
+
+![12]
+
+The course title and description are in the top area while the bottom area presents a list of all the activities you have accessed (via your LMS).
+
+Each activity displays its name, description, time stamp of when the activity was last touched and when it was created, and the current status of the activity (open for edits, closed for evaluation) and a button to select the activity and open it in the EHR application.
+
+Click on an activity's name to select it and go to the Activity page
+
+## Activity
+
+The Activity page displays the activity name, description, the current status (open or submitted), a button to return to the health record application, any evaluation feedback from the instructor, the student's scratch notes, and the last time stamps for this activity.  
+
+![13]
 
 
 [1]: ../images/student-main-ehr-page.png "Main page"
 [2]: ../images/student-application-banner.png "Student top banner"
-[3]: ../images/student-tools.png "Student tools menu"
-[4]: ../images/student-activity-dialog.png "Activity dialog"
-[5]: ../images/student-submit-draft-warning.png "Submit with drafts pending"
-[6]: ../images/student-my-activities-page.png 'My activities page'
-[7]: ../images/student-my-activities-details.png "My activities detauils"
+[3]: ../images/student-learning-activity-banner-1.png "Student learning activity banner - 1"
+[4]: ../images/student-learning-activity-banner-2.png "Student learning activity banner - 2"
+[5]: ../images/student-learning-activity-banner-3.png "Student learning activity banner - 3"
+[6]: ../images/student-learning-activity-banner-4.png "Student learning activity banner - 4"
+[7]: ../images/student-submit-confirm.png "Student submit confirm dialog"
+[8]: ../images/student-tools.png "Studnet tools"
+[9]: ../images/student-dashboard.png "Student dashboard"
+[10]: ../images/student-dashboard-navigation.png "Student dashboard navigation"
+[11]: ../images/student-courses-page.png "Student courses page"
+[12]: ../images/student-course-page.png "Student course page"
+[13]: ../images/student-activity-page.png "Student activity page"

@@ -35,6 +35,8 @@ Student users only see the EHR pages that will display the snapshot of the EHR d
 
 ## Instructor's activity page
 
+> THIS SECTION AND EVERYTHING BELOW IS OUT OF DATE AND WILL BE BEING UPDATED SOON
+
 When instructors access the EdEHR they start on the EdEHR Activity page
 ![3]
 
