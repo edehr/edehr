@@ -63,7 +63,7 @@ There are two ways a learning institution can use the EdEHR project.
 
 You can read more about these options here: [https://edehr.org/aboutSaaS](https://edehr.org/aboutSaaS)
 
-## Getting Started 
+## Getting started with an instance of the EdEHR 
 
 1. Once you have your EdEHR instance available the next step is for the EdEHR administrator to help the LMS administrator to create a LTI connection tool for the EdEHR.  This is usually a simple task that produces a LMS connection tool that instructors can then use in any course. In Moodle this tool is called an "External Tool".  See [LMS admin guide](/lms-admin)
 

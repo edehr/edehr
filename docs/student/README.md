@@ -4,7 +4,7 @@
 
 ## Getting Started
 
-All access to the EdEHR is through your school's learning management system (LMS). You start by logging into your LMS and navigate to your course. You will see many activities to complete and some of these may launch the EdEHR with a case study for you to work with.
+All access to the EdEHR is through your school's learning management system (LMS). You start by logging into your LMS and navigate to your course. If some activities are linked to an instance of the EdEHR then these will launch the EdEHR with a case study for you to work with.
 
 ![1]
 
@@ -23,7 +23,7 @@ The main parts of your student's view of the EdEHR include
 ## Application banner
 
 - ```Students guide``` brings you to this web page in the EdEHR documentation.
-- ```Demonstration``` is ONLY visible when using the Full Demonstration mode. This button takes you to the demo home page.
+- ```Demonstration``` is ONLY visible when using the [Full Demonstration](/#full-demonstration-mode) mode. This button takes you to the demo home page.
 - The ```Tools``` menu provides quick access to the student's tools (see below)
 ![2]
 
@@ -123,16 +123,16 @@ The Activity page displays the activity name, description, the current status (o
 ![13]
 
 
-[1]: ../images/student-main-ehr-page.png "Main page"
-[2]: ../images/student-application-banner.png "Student top banner"
-[3]: ../images/student-learning-activity-banner-1.png "Student learning activity banner - 1"
-[4]: ../images/student-learning-activity-banner-2.png "Student learning activity banner - 2"
-[5]: ../images/student-learning-activity-banner-3.png "Student learning activity banner - 3"
-[6]: ../images/student-learning-activity-banner-4.png "Student learning activity banner - 4"
-[7]: ../images/student-submit-confirm.png "Student submit confirm dialog"
-[8]: ../images/student-tools.png "Studnet tools"
-[9]: ../images/student-dashboard.png "Student dashboard"
-[10]: ../images/student-dashboard-navigation.png "Student dashboard navigation"
-[11]: ../images/student-courses-page.png "Student courses page"
-[12]: ../images/student-course-page.png "Student course page"
-[13]: ../images/student-activity-page.png "Student activity page"
+[1]: ./student-main-ehr-page.png "Main page"
+[2]: ./student-application-banner.png "Student top banner"
+[3]: ./student-learning-activity-banner-1.png "Student learning activity banner - 1"
+[4]: ./student-learning-activity-banner-2.png "Student learning activity banner - 2"
+[5]: ./student-learning-activity-banner-3.png "Student learning activity banner - 3"
+[6]: ./student-learning-activity-banner-4.png "Student learning activity banner - 4"
+[7]: ./student-submit-confirm.png "Student submit confirm dialog"
+[8]: ./student-tools.png "Studnet tools"
+[9]: ./student-dashboard.png "Student dashboard"
+[10]: ./student-dashboard-navigation.png "Student dashboard navigation"
+[11]: ./student-courses-page.png "Student courses page"
+[12]: ./student-course-page.png "Student course page"
+[13]: ./student-activity-page.png "Student activity page"
