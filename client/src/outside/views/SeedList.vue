@@ -5,6 +5,7 @@
         app-search-box(:searchTerm="searchTerm", @updateSearchTerm='updateSearchTerm')
         app-type-selector(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
         app-paginate-controls(:offset='offset', :limit='paginateLimit', :listMetadata="listMetadata" @repage='repage')
+        seed-list-actions(@create="refreshAfterUpdateCreate")
         //zone-lms-button(@action="downloadAll", :icon='appIcons.download', :title='text.DOWNLOAD_TP', :text='text.DOWNLOAD')
     div(class="e-table-container")
       div(class="details-container e-table")
@@ -21,6 +22,7 @@
             div(class="flow_across")
               div(class="") Tags
               app-tag-filter(class="flow_across_last_item", :selectedTags="selectedTags", @update:tags="updateSelectedTags")
+          div(class="thcell") Type
           div(class="thcell") Usage
           div(class="thcell e-date")
             div(class="flow_across")
@@ -46,12 +48,11 @@
                 span(class='clickable') {{truncate(seedModel.name, 40)}}
             div(class='cell e-tags')
               app-tag-list(class="list-item-taglist", :tagList="seedModel.tagList")
+            div(class="cell") {{ seedModel.appType }}
             div(class="cell") {{ seedModel.assignmentCount }}
             div(class="cell e-date") {{ seedModel.createDate | formatDateTime }}.
             div(class="cell e-date") {{ seedModel.lastUpdateDate | formatDateTime }}
             div(class="cell") {{truncate(seedModel.description, 200)}}
-
-    seed-data-dialog(ref="theDialog")
 
 </template>
 
@@ -64,7 +65,6 @@ import AppTagFilter from '@/app/components/AppTagFilter.vue'
 import AppTagList from '@/app/components/AppTagList.vue'
 import OutsideCommon from '@/outside/views/OutsideCommon'
 import SeedActions from '@/outside/components/seed-management/SeedActions.vue'
-import SeedDataDialog from '@/outside/components/seed-management/SeedDataDialog.vue'
 import SeedListActions from '@/outside/components/seed-management/SeedListActions'
 import UiButton from '@/app/ui/UiButton.vue'
 import UiLink from '@/app/ui/UiLink.vue'
@@ -88,7 +88,6 @@ export default {
     AppTagList,
     AppTypeSelector,
     SeedActions,
-    SeedDataDialog,
     SeedListActions,
     SeedListItem,
     UiButton,
@@ -205,14 +204,13 @@ export default {
     selectSeed (sv ) {
       this.selectedSeedId = sv.id
     },
-    showSeedDialog: function (seed) {
-      this.$refs.theDialog.showDialog()
-    },
-    showCreateDialog: function () {
-      this.$refs.theDialog.showDialog()
-    },
     tagList ( sv ) {
       return sv.tagList ? sv.tagList.split(' ') : []
+    },
+    refreshAfterUpdateCreate () {
+      this.sortKey = this.columnUpdated
+      this.sortDir = DESC
+      this.route()
     },
     sortColumnIcon (columnName) {
       let icon = APP_ICONS.sortNone

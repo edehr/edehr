@@ -80,7 +80,7 @@ export default class BaseController {
    * Return set to populate after final page selection has taken place. For example, the
    * SeedData has a virtual property 'assignmentCount'.  This is only populated with a value
    * if 'assignmentCount' is given in the call to populate().
-   * @returns {string}
+   * @returns {(string|Array)}
    */
   paginateFinalPopulate () {
     return ''

@@ -40,7 +40,7 @@
       div(class="details-row")
         div(class="details-name") {{text.DESCRIPTION}}
         div(class="details-value")
-          div(v-text-to-html="activity.learningObjectDescription")
+          div(v-text-to-html="activity.description")
       div(class="details-row")
         div(class="details-name") {{text.DATES}}
         div(class="details-value").

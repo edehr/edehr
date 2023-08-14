@@ -227,10 +227,15 @@ export default class AssignmentController extends BaseController {
   }
 
   paginateFinalPopulate () {
-    return {
-      path: 'seedDataId',
-      select: 'name appType',
-    }
+    return [
+      {
+        path: 'seedDataId',
+        select: 'name appType',
+      },
+      {
+        path: 'activityCount'
+      }
+    ]
   }
 
 

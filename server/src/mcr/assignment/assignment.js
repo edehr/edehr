@@ -13,10 +13,21 @@ const Schema = new mongoose.Schema({
   seedDataId: {type: mongoose.Schema.Types.ObjectId, ref: 'SeedData', required: true},
   createDate: { type: Date, default: Date.now },
   lastUpdateDate: { type: Date, default: Date.now }
+}, {
+  toObject: { virtuals: true },
+  toJSON: { virtuals: true },
+  minimize: false  // need this to get default empty object
 })
 
 Schema.plugin(uniqueValidator)
 
+// to get the activity count you need to use populate('activityCount')
+Schema.virtual('activityCount', {
+  ref: 'Activity',
+  localField: '_id',
+  foreignField: 'assignment',
+  count: true,
+})
 
 const Assignment = mongoose.model('Assignment', Schema)
 // need to sync indexes because prior to v2.0.1 there was an index on this doc based on the now obsolete externalId

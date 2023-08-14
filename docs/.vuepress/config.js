@@ -21,6 +21,13 @@ module.exports = {
         path: '/',
       },
       {
+        title: "Full demonstration mode",
+        path: '/full-demo/',
+        children: [
+          '/full-demo/',
+        ]
+      },
+      {
         title: "Student guide",
         path: '/student/',
         children: [
