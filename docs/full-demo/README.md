@@ -1,6 +1,8 @@
 # About the full demonstration 
 The full demonstration lets you see how the EdEHR supports schools that use learning management systems (LMS).  Contact
-[info@edehr.org](mailto:info@edehr.org) for a personal demonstration or go to [https://edehr.org](https://edehr.org) and select the "Full EdEHR demonstration" button.  In this demonstration mode.
+[info@edehr.org](mailto:info@edehr.org) for a personal demonstration or go to [https://edehr.org](https://edehr.org) and select the "Full EdEHR demonstration" button.  
+
+In the full demonstration mode you can ....
 - You can mimic logging into a very simplistic learning management system (LMS).
 - You can try out the role of student or instructor. (Try student first.)
 - As a student you can
@@ -22,7 +24,7 @@ The full demonstration lets you see how the EdEHR supports schools that use lear
 
 ![1]
 
-On the home page find and press the ```Full EdEHR demonstration``` button.  You will see an explanation of what is going to happen. Namely, that you are about to create your own personal sandbox to try out the EdEHR.
+On the [https://edehr.org](https://edehr.org) home page find and press the ```Full EdEHR demonstration``` button. The application will explain that you are about to create your own personal sandbox to try out the EdEHR.
 
 ![2]
 
@@ -34,16 +36,16 @@ Across the top of this page is the ```Application banner```. This banner stays t
 
 The application banner also has a ```Documentation``` link that brings you to these help pages. This link changes depending on the user role and, essentially, the links are just shortcuts to different parts of these help pages. For example, a student role has a link to the student guide, instructor role to instructor guide, etc.
 
-This login page has ```Exit Full Demo``` button in the top right hand corner of the page. Press this button when you are done exploring the EdEHR so that you can free up the database space.
+This login page has ```Exit Full Demo``` button in the top right hand corner of the page. Press this button when you are done exploring the EdEHR so that you can free up the database space.  And you can use this exit button to reset the demo back to its starting position. 
 
 ## Student experience
 
 To begin your exploration of the EdEHR we suggest you select any of the three student roles.  When you select a persona the login button becomes active. Click it to visit a page with a very simple learning management system. 
 
 ![4]
-This LMS has two courses, on one webpage, and this page looks exactly the same for any instructor role. One course lets you explore the EHR application and the other lets you explore an LIS application.  
+This LMS has two courses on one webpage, and this page looks the same the instructor role. One course lets you explore the EHR application and the other lets you explore an LIS application.  
 
-These LMS activities look like regular web links, but they are not regular. These are special links that the LMS uses to launch a special type of connection with the EdEHR.  This connection tells the EdEHR who you are and what role (student or instructor) you have.  Privacy is very important to the creators of the EdEHR, so we only ask the LMS to send the user's name (mainly for instructors to communicate with their students) and the user's internal LMS id (so the EdEHR can recognize the user when they return again and again.) 
+These LMS activities look like regular web links, but they are not your typical link. Instead, these special links are provided by the LMS and it used them to launch a special connection with the EdEHR.  This connection tells the EdEHR who you are and what role (student or instructor) you have.  Privacy is very important to the creators of the EdEHR, so we only ask the LMS to send the user's name (mainly for instructors to communicate with their students) and the user's internal LMS id (so the EdEHR can recognize the user when they return again and again.)  To read more about these special links see the [LMS Admin](/lms-admin) page. 
 
 These special links will open the EdEHR but the browser's back button will not bring you back to the LMS page.  
 

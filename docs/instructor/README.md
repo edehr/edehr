@@ -17,44 +17,50 @@ This section of the documentation is meant for healthcare educators who conduct 
 : Any LMS Activity link that connects to the EdEHR will connect to a single EdEHR Activity. This contains the student class list and connects to a single EdEHR Learning Object.  The EdEHR Activity is automatically created the first time an LMS user clicks on an LMS Activity that uses the EdEHR.  After that every LMS user who clicks on that link sees the same EdEHR Activity.
 
 **EdEHR Learning Object**
-: Each activity needs to have a set of learning objectives.  The EdEHR Learning Object is a reusable component of the EdEHR that is created by your school's course content creation team. They will set up the Learning Object to contain a description of the learning objectives, and a link to an EdEHR Case Study.  They will also establish the link between the EdEHR Activity and the EdEHR Learning Object. (See the Course designer guide.)
+: Each activity needs to have a set of learning objectives and case study patient data.  The EdEHR Learning Object is a reusable component of the EdEHR that is created by your school's course content creation team. They will set up the Learning Object to contain a description of the learning objectives, and a link to an EdEHR Case Study.  They will also establish the link between the EdEHR Activity and the EdEHR Learning Object. (See the Course designer guide.)
 
 **EdEHR Case Study**
 : Any number of EdEHR Learning Objects may wish to use the same simulated patient data.  This is why the EHR data is placed in another reusable component called the EdEHR Case Study. Think of this as a snapshot of a EHR database, focused on a particular patient at a particular point of time in their hospital stay.
 
+> We usually drop the EdEHR prefix and just call the above "Activity", "Learning Object", and "Case Study"
 
 ## Class lists and students
 
-> Prerequisites. The following assumes that your LMS admin and course content creation teams have set up your course with EdEHR activities and they have made the first connection to the EdEHR.  See more in the LMS Admin and Course designer guides.
+> Prerequisites. The following assumes that your LMS admin and course content creation teams have set up your course with EdEHR activities, and they have made the first connection to the EdEHR.  See more in the LMS Admin and Course designer guides.
 
-All users access the EdEHR from their learning management system (LMS).  The LMS provides the authentication and authorization, which means, the LMS says whether a user is a student or instructor.  When student users access the EdEHR they are added into the class list for the EdEHR Activity.  Instructor users can see this class list as well as they can view the EdEHR Learning Object and Case Study.  
+All users access the EdEHR via their learning management system (LMS).  The LMS provides the authentication and authorization, which means, the LMS says whether a user is a student or instructor.  When student users access the EdEHR they are added into the class list for the EdEHR Activity.  Instructor users can see this class list as well as they can view the EdEHR Learning Object and Case Study.  
 
-Student users only see the EHR pages that will display the snapshot of the EHR database, called the Case Study. The student can work in the EHR, leave and return via the link in the LMS, and eventually "submit" their work.  Once they submit their work they can no longer make changes. The instructor can now see what the student has done. 
+Please review the [Student guide](/student) to understand what a user with the rule of student can do in the EdEHR.
 
-> See the Student and Electronic Health Record sections for more information about the EHR pages and their use.
+Please review the [Electronic health records](/ehr) pages to understand more about the EHR side of this application.
+
 
 ## Instructor's activity page
 
-> THIS SECTION AND EVERYTHING BELOW IS OUT OF DATE AND WILL BE BEING UPDATED SOON
-
 When instructors access the EdEHR they start on the EdEHR Activity page
+
 ![3]
 
 This page has three main sections: the application banner, the navigation section on the left and the main content. 
 
-The application banner has a link to this page of the documentation.  It also has a ```Activity``` link that links to the main EdEHR Activity page. 
-The third item in the banner is a menu button that contains the same items as appear in the navigation section.
+The application banner has a link to this page of the documentation.
+
+The ```Demonstration``` link is only visible when using the [Full demo](/full-demo).  Most peole will never see this because they will access the EdERH via their LMS.
+
+The third item in the application banner is the ```Instructors tool menu``` that contains the same items as appear in the navigation section.
 
 The navigation section is describe in another part of this documentation.  See [Instructor tool guide](../instructor-tools) 
 
 The main content displays the name and description that comes from the LMS Activity.  The content also has links to the LMS Learning Object and Case Study.  The content also links to the class list.
+
+![9]
 
 ## Evaluating assignments
 
 Instructors can assess the class list via the Activity page.
 ![4]
 
-Only when a student's work is "submitted" can an instructor review and comment on the student's work. Students normally submit their work but instructors can toggle the submission status on a per student or whole classlist basis. The status of all students can be set with the "All students can edit" and "Force all submissions" buttons.  Instructors can toggle the status for a particular student with the "Force submission" and "Send back" buttons.
+Only when a student's work is "submitted" can an instructor review and comment on the student's work. Students normally submit their work but instructors can toggle the submission status on a per student or whole class list basis. The status of all students can be set with the "All students can edit" and "Force all submissions" buttons.  Instructors can toggle the status for a particular student with the "Force submission" and "Send back" buttons.
 ![5]
 
 A student's work can be evaluated by selecting either of the ![2] buttons. The 'Evaluate' button will show the student's work in the condensed view, without any base case data. The 'Eval in EHR' button will show the student's work in the EHR with base case data.
@@ -86,9 +92,10 @@ Check you LMS manual for instructions on importing this CSV file into the grade 
 
 [1]: ../images/download-evaluation-button.png "Download evaluation notes"
 [2]: ../images/evaluation-buttons.png "Evaluation buttons"
-[3]: ../images/instructor-activity.png "Instructor activity page"
+[3]: ./instructor-activity-page.png "Activity page"
 [4]: ../images/instructor-classlist.png "Class list"
 [5]: ../images/instructor-sumit-all.png "Submit all"
 [6]: ../images/instructor-ehr-nav.png "EHR Navigation"
 [7]: ../images/instructor-evaluation-panel.png "Evaluation panel"
 [8]: ../images/instructor-condensed.png "Condensed view"
+[9]: ./instructor-activity-page-content.png "Activity page content"

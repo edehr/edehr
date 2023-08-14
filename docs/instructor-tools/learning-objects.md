@@ -3,7 +3,7 @@
 > Learning objects contain the learning objectives.
 
 **EdEHR Learning Object**
-: Each activity needs to have a set of learning objectives.  The EdEHR Learning Object is a reusable component of the EdEHR that is created by your school's course content creation team. They will set up the Learning Object to contain a description of the learning objectives, and a link to an EdEHR Case Study.  They will also establish the link between the EdEHR Activity and the EdEHR Learning Object. (See the Course designer guide.)
+: Each activity needs to have a set of learning objectives and case study patient data.  The EdEHR Learning Object is a reusable component of the EdEHR that is created by your school's course content creation team. They will set up the Learning Object to contain a description of the learning objectives, and a link to an EdEHR Case Study.  They will also establish the link between the EdEHR Activity and the EdEHR Learning Object. (See the Course designer guide.)
 
 
 ![1]
