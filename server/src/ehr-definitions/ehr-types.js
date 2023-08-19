@@ -12,6 +12,7 @@ const EhrTypes = {
     ehrFile: 'ehrFile',
     embedRef: 'embedRef',
     label: 'label',
+    tableLabel: 'tableLabel',
     validation: 'validation',
     mandatory: 'mandatory',
     dataCaseStudy: 'dataCaseStudy'

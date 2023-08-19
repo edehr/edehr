@@ -745,7 +745,7 @@ export default class EhrPageHelper {
     dialog.errorList = []
     Object.keys(ehr_data).forEach( (eKey) => {
       const eDef = EhrDefs.getPageChildElement(pageKey, eKey)
-      const label = eDef[PROPS.label]
+      const label = eDef[PROPS.label] || eDef[PROPS.tableLabel]
       const validator = this._validator(eDef)
       const mandatory = eDef[PROPS.mandatory]
       let value = inputs[eKey]
