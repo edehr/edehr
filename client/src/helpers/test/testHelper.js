@@ -1,10 +1,10 @@
-import EhrDefs from '../ehr-defs-grid'
+import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import store from '../../store'
 import MockFile from './MockFile'
 
 const axiosMockHelper = require('./axios-mock-helper')
 const mockData = require('./mockData.json')
-  
+
 export const isTruthy = val => (val === true || val === 'true')
 
 
@@ -29,7 +29,7 @@ export const setAuthMocks = (payload = mockData.authData) => {
 export const instructorCommit = (payload, key) => {
   store.commit(`instructor/${key}`, payload)
 }
- 
+
 export const setActivityMocks = (payload = mockData.activity) => {
   const key = 'set'
   store.commit('activityStore/' + key, payload)
@@ -70,12 +70,12 @@ export const setUserMocks = (payload = mockData.user) => {
   const key = 'set'
   store.commit('userStore/' + key, payload)
 }
-  
+
 export const setVisitMocks = (payload = mockData.visit) => {
   const key = 'setVisitData'
   store.commit('visit/' + key, payload)
 }
-  
+
 export const setConsumerMocks = (payload = mockData.consumer) => {
   const key = 'setDataStore'
   store.commit('consumerStore/' + key, payload)

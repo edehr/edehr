@@ -12,7 +12,7 @@
     "test": "npm run checkVer && npm run test:unit",
     "test:cov": "vue-cli-service test:unit --coverage",
     "test:e2e": "vue-cli-service test:e2e",
-    "test:unit": "vue-cli-service test:unit",
+    "test:unit": "vue-cli-service test:unit --bail",
     "test:updateSnapshots": "vue-cli-service test:unit -- -u",
     "test:it": "npm run test:unit -t src/inside/components/chart/charting.spec.js",
     "test:one": "npm run test:unit --trace-warnings -t src/helpers/test/page-defs.spec.js",

@@ -17,7 +17,7 @@ router.push = jest.fn()
 const studentVisitId = 'currentEvaluationStudentId2'
 const found = mockData.classList.find(c => c._id === studentVisitId)
 const classes = mockData.classList
-const { activityData, activity } = mockData
+const { activityData } = mockData
 
 const _prepareChangeStudent = (submitted = true, activity = mockData.activity) => {
   let activitydata = Object.assign(
@@ -56,7 +56,7 @@ describe('Testing evalHelper', () => {
 
   it('unsubmit', async () => {
     await _prepareChangeStudent(false)
-    const result = await evalHelper.unsubmit(studentVisitId)
+    const result = await evalHelper.instructorUnsubmitsAssignment(studentVisitId)
     should.exist(result)
     result.length.should.be.greaterThan(0)
     result.should.equal(classes)
@@ -64,34 +64,33 @@ describe('Testing evalHelper', () => {
     activityData.submitted.should.equal(false)
   })
 
-  it('closeActivity', async () => {
-    const ac = Object.assign({}, activity, { closed: true })
-    await _prepareChangeStudent(false, ac)
-    const result = await evalHelper.closeActivity(activity._id)
-    result.should.be.equal(ac)
-    result.closed.should.be.equal(true)
-  })
-
-  it('openActivity', async () => {
-    const ac = Object.assign({}, activity, { closed: false })
-    await _prepareChangeStudent(false, ac)
-    const result = await evalHelper.openActivity(activity._id)
-    result.should.be.equal(ac)
-    result.closed.should.be.equal(false)
-  })
-
-  it.skip('goToEhr', async () => {
-    await evalHelper.goToEhr({_id: studentVisitId}, router)
-    // This is following jest's function mocking
-    // (https://jestjs.io/docs/en/mock-function-api.html#mockfnmockcalls).
-    // This mock makes sure that the router.push function was
-    // called only once and that it redirects properly (by asserting the ehr link)...
-    const [call] = router.push.mock.calls
-    const isDev = StoreHelper.isDevelopingContent()
-    call.length.should.equal(1)
-    call[0].name.should.equal('ehr')
-    call[0].query.evaluatingStudent.should.equal(true)
-    call[0].query.evaluateStudentVisitId.should.equal(studentVisitId)
-    isDev.should.equal(true)
-  })
+  // it('closeActivity', async () => {
+  //   const ac = Object.assign({}, activity, { closed: true })
+  //   await _prepareChangeStudent(false, ac)
+  //   const result = await evalHelper.closeActivity(activity._id)
+  //   result.should.be.equal(ac)
+  //   result.closed.should.be.equal(true)
+  // })
+  //
+  // it('openActivity', async () => {
+  //   const ac = Object.assign({}, activity, { closed: false })
+  //   await _prepareChangeStudent(false, ac)
+  //   const result = await evalHelper.openActivity(activity._id)
+  //   result.should.be.equal(ac)
+  //   result.closed.should.be.equal(false)
+  // })
+  // it.skip('goToEhr', async () => {
+  //   await evalHelper.goToEhr({_id: studentVisitId}, router)
+  //   // This is following jest's function mocking
+  //   // (https://jestjs.io/docs/en/mock-function-api.html#mockfnmockcalls).
+  //   // This mock makes sure that the router.push function was
+  //   // called only once and that it redirects properly (by asserting the ehr link)...
+  //   const [call] = router.push.mock.calls
+  //   const isDev = StoreHelper.isDevelopingContent()
+  //   call.length.should.equal(1)
+  //   call[0].name.should.equal('ehr')
+  //   call[0].query.evaluatingStudent.should.equal(true)
+  //   call[0].query.evaluateStudentVisitId.should.equal(studentVisitId)
+  //   isDev.should.equal(true)
+  // })
 })

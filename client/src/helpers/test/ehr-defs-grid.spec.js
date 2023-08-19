@@ -1,7 +1,5 @@
-import EhrDefs from '../ehr-defs-grid'
-
 const should = require('should')
-import EhrDefsGrid from '../ehr-defs-grid'
+import EhrDefsGrid from '@/ehr-definitions/ehr-defs-grid'
 
 const DEFAULT_KEY = 'allergies'
 const PAGE_TABLE_KEY = 'biopsychosocial'
@@ -17,7 +15,7 @@ describe ('testing calculation supports', () =>{
     const filterValue = 'wbcEstimate'
     const filterKey = 'elementKey'
     const desiredProperty = 'calculationType'
-    const result = EhrDefs.getChildElements(pageDataKey, filterKey, filterValue, desiredProperty)
+    const result = EhrDefsGrid.getChildElements(pageDataKey, filterKey, filterValue, desiredProperty)
     should.exists(result)
     result.length.should.equal(1)
     result[0].should.equal('product')
@@ -28,7 +26,7 @@ describe ('testing calculation supports', () =>{
     const filterValue = 'wbcLowRange'
     const filterKey = 'elementKey'
     const desiredProperty = 'calculationType'
-    const result = EhrDefs.getChildElements(pageDataKey, filterKey, filterValue, desiredProperty)
+    const result = EhrDefsGrid.getChildElements(pageDataKey, filterKey, filterValue, desiredProperty)
     should.exists(result)
     result.length.should.equal(1)
     result[0].should.equal('multiplyBy(0.75, 1)')
@@ -39,7 +37,7 @@ describe ('testing calculation supports', () =>{
     const filterValue = 'wbcAverage'
     const filterKey = 'elementKey'
     const desiredProperty = 'calculationType'
-    const result = EhrDefs.getChildElements(pageDataKey, filterKey, filterValue, desiredProperty)
+    const result = EhrDefsGrid.getChildElements(pageDataKey, filterKey, filterValue, desiredProperty)
     should.exists(result)
     result.length.should.equal(1)
     result[0].should.equal('average')
@@ -51,7 +49,7 @@ describe ('testing calculation supports', () =>{
     const filterValue = 'wbcAverage'
     const filterKey = 'passToFunction'
     const desiredProperty = 'elementKey'
-    const result = EhrDefs.getChildElements(pageDataKey, filterKey, filterValue, desiredProperty)
+    const result = EhrDefsGrid.getChildElements(pageDataKey, filterKey, filterValue, desiredProperty)
     // console.log(result)
     should.exists(result)
     result.length.should.equal(10)
@@ -63,7 +61,7 @@ describe ('testing calculation supports', () =>{
     const filterValue = 'wbcLowRange'
     const filterKey = 'passToFunction'
     const desiredProperty = 'elementKey'
-    const result = EhrDefs.getChildElements(pageDataKey, filterKey, filterValue, desiredProperty)
+    const result = EhrDefsGrid.getChildElements(pageDataKey, filterKey, filterValue, desiredProperty)
     // console.log(result)
     should.exists(result)
     result.length.should.equal(1)
@@ -77,7 +75,7 @@ describe ('Important demographic elements', () => {
     const pageDataKey = 'demographics'
     const filterValue = 'phn'
     const filterKey = 'elementKey'
-    const result = EhrDefs.getChildElements(pageDataKey, filterKey, filterValue)
+    const result = EhrDefsGrid.getChildElements(pageDataKey, filterKey, filterValue)
     should.exists(result)
     result.length.should.equal(1)
     // console.log(result)
@@ -87,7 +85,7 @@ describe ('Important demographic elements', () => {
     const pageDataKey = 'demographics'
     const filterValue = 'dateOfBirth'
     const filterKey = 'elementKey'
-    const result = EhrDefs.getChildElements(pageDataKey, filterKey, filterValue)
+    const result = EhrDefsGrid.getChildElements(pageDataKey, filterKey, filterValue)
     should.exists(result)
     result.length.should.equal(1)
     // console.log(result)

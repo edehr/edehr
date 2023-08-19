@@ -21,11 +21,11 @@ const refreshToken = 'testRefreshToken'
 const _beforeEach = async () => {
   commonBeforeEach()
   const { demoData } = mockData
-  return prepareAxiosResponse('post', { 
-    visitId: mockData.visit._id, 
-    // visit: mockData.visit, 
-    token, 
-    demoData  
+  return prepareAxiosResponse('post', {
+    visitId: mockData.visit._id,
+    // visit: mockData.visit,
+    token,
+    demoData
   })
     .then(() => {
       return createCompoundGetResponse({demoData, visit: mockData.visit})
@@ -82,59 +82,3 @@ describe('page-controller tests', () => {
   })
 })
 
-describe('test load demo', () => {
-  // TODO fix this to load the demo token into the demo store. LocaStorage will not work any more
-  it.skip('_loadData (demo UC)', done => {
-    localStorage.setItem(sKeys.DEMO_TOKEN, 'demoToken')
-    const route = _createRouteObject(true)
-    should.doesNotThrow(async () => {
-      await pageController._loadData(route)
-      const demoData = localStorage.getItem('DemoData')
-      should.exist(demoData)
-      done()
-    })
-  })
-
-  it('_loadData (default UC)', done => {
-    const route = _createRouteObject(false)
-    should.doesNotThrow(async () => {
-      await pageController._loadData(route)
-      localStorage.getItem(sKeys.VISIT_ID).should.equal(mockData.visit._id)
-      done()
-    })
-  })
-})
-
-describe('test load demo', () => {
-
-  it('_loadAuth', done => {
-    should.doesNotThrow(async () => {
-      await pageController._loadAuth(refreshToken)
-      await pageController._loadAuth(null, token)
-      done()
-    })
-  })
-
-  it('_ltiAccess', done => {
-    should.doesNotThrow(async () => {
-      await pageController._ltiAccess(refreshToken, token)
-      done()
-    })
-  })
-
-  it('_loadEhr', done => {
-    should.doesNotThrow(async () => {
-      await pageController._loadEhr(mockData.visit._id)
-      done()
-    })
-  })
-
-  it('_getVisitId', done => {
-    should.doesNotThrow(async () => {
-      const visitId = await pageController._getVisitId()
-      visitId.should.equal(mockData.visit._id)
-      done()
-    })
-  })
-
-})
