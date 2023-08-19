@@ -12,29 +12,35 @@ describe ('extractComboValue', () => {
 
 describe ( 'multiply by extraction', () => {
   it ('multiplyBy(113.4)', () => {
-    let v = extractMultiplyByFactor('multiplyBy(113.4)')
+    let v = extractMultiplyByFactor('multiplyBy(113.4, 2)')
     should.exists(v)
-    v.should.equal(113.4)
+    should.exists(v.value)
+    should.exists(v.round)
+    v.value.should.equal(113.4)
   })
   it ('multiplyBy(-.4)', () => {
-    let v = extractMultiplyByFactor('multiplyBy(-.4)')
+    let v = extractMultiplyByFactor('multiplyBy(-.4, 0)')
     should.exists(v)
-    v.should.equal(-.4)
+    should.exists(v.value)
+    should.exists(v.round)
+    v.value.should.equal(-.4)
   })
   it ('multiplyBy(-.)', () => {
     let v = extractMultiplyByFactor('multiplyBy(-.)')
     should.exist(v)
-    v.should.be.NaN()
+    should.not.exist(v.value)
+    should.not.exist(v.round)
   })
   it ('multiplyBy(34.)', () => {
     let v = extractMultiplyByFactor('multiplyBy(34.)')
     should.exists(v)
-    v.should.equal(34)
+    should.not.exist(v.value)
+    should.not.exist(v.round)
   })
   it.skip ('multiplyBy(1e5)', () => {
     // the regexp is returning '1' and really it should not return anything
     let v = extractMultiplyByFactor('multiplyBy(1e5)')
-    should.not.exist(v)
+    should.not.exist(v.value)
   })
   it.skip ('invalid just a number ', () => {
     let v = extractMultiplyByFactor('113.4')

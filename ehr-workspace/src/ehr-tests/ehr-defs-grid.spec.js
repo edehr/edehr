@@ -26,7 +26,7 @@ describe ('testing calculation supports', () =>{
     result[0].should.equal('product')
     done()
   })
-  it('wbcLowRange has multiplyBy(0.75) calculationType', done => {
+  it('wbcLowRange has multiplyBy(0.75, 1) calculationType', done => {
     const pageDataKey = 'hematology'
     const filterValue = 'wbcLowRange'
     const filterKey = 'elementKey'
@@ -34,7 +34,7 @@ describe ('testing calculation supports', () =>{
     const result = EhrDefs.getChildElements(pageDataKey, filterKey, filterValue, desiredProperty)
     should.exists(result)
     result.length.should.equal(1)
-    result[0].should.equal('multiplyBy(0.75)')
+    result[0].should.equal('multiplyBy(0.75, 1)')
     done()
   })
   it('wbcAverage has average calculationType', done => {
