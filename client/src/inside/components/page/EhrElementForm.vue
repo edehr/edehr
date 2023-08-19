@@ -11,8 +11,7 @@
         fas-icon(class="linkIcon", icon="file-pdf")
         span {{assetName()}}
 
-    div(v-else-if="isType('calculatedValue')", class="computed_wrapper", :class='formCss')
-      ehr-element-calculated(:element="element", :ehrHelp="ehrHelp", :elementKey="elementKey" )
+    ehr-element-calculated(v-else-if="isType('calculatedValue')",:element="element", :ehrHelp="ehrHelp", :elementKey="elementKey" )
 
     ehr-element-box-checkset(v-else-if="isType('boxcheckset')", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
@@ -30,12 +29,11 @@
     div(v-else-if="isType('custom_form')", class='grid-span-3-columns', :class='formCss')
       ehr-element-custom-form(:element="element", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
-    div(v-else-if="isType('date')", class="text_wrapper", :class='formCss')
+    div(v-else-if="isType('date')", class="text_input_wrapper", :class='formCss')
       ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
-      div(class="columns")
-        input(v-if="!viewOnly", class="column is-10 input text-input", :disabled="disabled", :name="elementKey", v-model="inputVal")
-        div(v-if="viewOnly") {{ inputVal }}
-        ui-info(class="column is-2", title="Time since", text="Describe when this happened prior to the current visit. e.g. '4 years ago'")
+      input(v-if="!viewOnly", class="input text-input", :disabled="disabled", :name="elementKey", v-model="inputVal")
+      div(v-if="viewOnly") {{ inputVal }}
+      ui-info(title="When", text="Describe when this happened relative to the current visit. e.g. '4 years ago', 'tomorrow', etc.")
 
     div(v-else-if="isPatientData" )
       ehr-element-patient(:element="element", :elementKey="elementKey", :ehrHelp="ehrHelp")
@@ -111,8 +109,7 @@
         //  :inputVal="inputVal"
         //)
 
-    div(v-else-if="isType('select')", class="select_wrapper", :class='formCss')
-      ehr-element-select(:elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
+    ehr-element-select(v-else-if="isType('select')", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
     div(v-else-if="isType('spacer')", class="label_wrapper") <!--class="spacer"-->
       div &nbsp;
@@ -127,10 +124,13 @@
       ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="textarea_label")
       textarea(class="ehr-page-form-textarea", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
 
-    //div(v-else-if="isType('number') || isType('personAge')", class="text_input_wrapper")
-    div(v-else-if="isType(dataTypes.visitDay) || isType(dataTypes.visitTime)", class="text_input_wrapper", :class='formCss')
+    div(v-else-if="isType(dataTypes.visitDay)", class="sim_day_wrapper", :class='formCss')
       ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
       input(v-if="!viewOnly", class="input numb-input", type="text", :disabled="disabled", :name="elementKey", v-model="inputVal")
+      div(v-if="viewOnly") {{ inputVal }}
+    div(v-else-if="isType(dataTypes.visitTime)", class="sim_time_wrapper", :class='formCss')
+      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
+      input(v-if="!viewOnly", class="input", type="text", :disabled="disabled", :name="elementKey", v-model="inputVal")
       div(v-if="viewOnly") {{ inputVal }}
 
     //div(v-else-if="isType(dataTypes.visitDay) || isType(dataTypes.visitTime)", class="select_wrapper")

@@ -5,7 +5,6 @@ import sKeys from '@/helpers/session-keys'
 
 const API = 'assignments'
 const NAME = 'AssignmentStore'
-const OBJ = 'assignment'
 const debug = false
 const L_OBJ_INIT = {}
 const state = {

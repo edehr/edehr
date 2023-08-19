@@ -3,7 +3,6 @@
  */
 import should from 'should'
 import pageController from '../page-controller'
-import sKeys from '../session-keys'
 import { prepareAxiosResponse, createCompoundGetResponse  } from './axios-mock-helper'
 import mockData from './mockData.json'
 import StoreHelper from '../store-helper'

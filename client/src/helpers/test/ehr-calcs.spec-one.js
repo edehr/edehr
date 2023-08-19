@@ -1,6 +1,7 @@
 import should from 'should'
 
-import { ehrCalculateProperty, extractComboValue, extractMultiplyByFactor } from '@/inside/components/page/ehr-calcs'
+import { ehrCalculateProperty //, extractComboValue, extractMultiplyByFactor
+} from '@/inside/components/page/ehr-calcs'
 
 describe ('ehrCalculateProperty' , () => {
   // it('wbcAverage - average', done => {

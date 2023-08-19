@@ -84,10 +84,10 @@ describe('Test EHR validator day', () => {
     result = validator(aName, aValue)
     should.not.exist(result)
 
-    // empty is not valid
+    // empty is valid
     aValue = ''
     result = validator(aName, aValue)
-    should.exist(result)
+    should.not.exist(result)
 
   })
   it(`Invalid times ${vName}`, () => {

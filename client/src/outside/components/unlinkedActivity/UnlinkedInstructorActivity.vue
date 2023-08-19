@@ -58,7 +58,7 @@ const TEXT = {
   createLearningObjectBL: 'Create and use new content',
 }
 const ASC = 'asc'
-const DESC = 'desc'
+// const DESC = 'desc'
 
 export default {
   data () {

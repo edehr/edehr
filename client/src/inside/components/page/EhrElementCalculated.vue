@@ -1,18 +1,20 @@
 <template lang="pug">
-  div(class="text_input_wrapper")
+  div(class="computed_wrapper", :class='formCss')
     ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
     input(class="input text-input", disabled, :name="elementKey", v-model="value")
 </template>
 
 <script>
-import EventBus from '../../../helpers/event-bus'
-import { FORM_INPUT_EVENT } from '../../../helpers/event-bus'
+import EventBus from '@/helpers/event-bus'
+import { FORM_INPUT_EVENT } from '@/helpers/event-bus'
 import { ehrCalculateProperty } from './ehr-calcs'
 import EhrPageFormLabel from '@/inside/components/page/EhrPageFormLabel.vue'
+import EhrElementCommon from '@/inside/components/page/EhrElementCommon.vue'
 
 let db = false
 
 export default {
+  extends: EhrElementCommon,
   components: { EhrPageFormLabel },
   inject: [ 'pageDataKey' ],
   props: {
