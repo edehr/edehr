@@ -165,10 +165,14 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
   } else {
     switch (calculationType) {
     case 'sum':
-      values = mapToNums(values)
-      result = values.reduce((a, b) => a + b, 0)
-      // console.log('calculationType sum',targetKey, result, values)
-      isNumberResult = true
+      isNumberResult = false
+      result = undefined
+      if (values.length > 0) {
+        values = mapToNums(values)
+        result = values.reduce((a, b) => a + b, 0)
+        // console.log('calculationType sum',targetKey, result, values)
+        isNumberResult = true
+      }
       break
     case 'average':
       values = mapToNums(values)
