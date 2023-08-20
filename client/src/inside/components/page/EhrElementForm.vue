@@ -11,7 +11,7 @@
         fas-icon(class="linkIcon", icon="file-pdf")
         span {{assetName()}}
 
-    ehr-element-calculated(v-else-if="isType('calculatedValue')",:element="element", :ehrHelp="ehrHelp", :elementKey="elementKey" )
+    ehr-element-calculated(v-else-if="isType('calculatedValue')", :elementKey="elementKey", :ehrHelp="ehrHelp" )
 
     ehr-element-box-checkset(v-else-if="isType('boxcheckset')", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 

@@ -263,17 +263,20 @@ async  function onPageChange (toRoute) {
       }
     }
     if (StoreHelper.isStudent()) {
+      // If a user is able to log into the LMS first as an instructor, and they set themselves as a content editor,
+      // and then they log into their LMS as a student the system will remember they are also a content editor
+      // which means certain menu items appear. Such as the content creators documentation link in the
+      // application banner.
+      if (StoreHelper.isSeedEditing()) {
+        await StoreHelper.setSeedEditId('')
+      }
+      if (StoreHelper.isDevelopingContent()) {
+        StoreHelper.setIsDevelopingContent(false)
+      }
       if (dbApp) console.log('student ehr page load')
       await StoreHelper._dispatchActivityData('loadActivityData', theActivity.activityDataId)
       await StoreHelper.loadAssignment(theActivity.learningObjectId)
       await StoreHelper.loadSeed(theActivity.caseStudyId)
-      if (StoreHelper.isDevelopingContent()) {
-        // If a user is able to log into the LMS first as an instructor (and they set themselves as a content editor)
-        // and then they log into their LMS as a student the system will remember they are also a content editor
-        // which means certain menu items appear. Such as the content creators documentation link in the
-        // application banner.
-        StoreHelper.setIsDevelopingContent(false)
-      }
     }
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   } catch (err) {

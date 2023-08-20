@@ -19,8 +19,7 @@ export default {
   inject: [ 'pageDataKey' ],
   props: {
     ehrHelp: { type: Object },
-    elementKey: { type: String },
-    element: {type: Object} // cell definition
+    elementKey: { type: String }
   },
   data () {
     return {
