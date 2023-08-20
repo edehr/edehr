@@ -152,6 +152,7 @@ input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:dis
 
 .computed_wrapper,
 .checkset_wrapper,
+.checkbox_wrapper,
 .file_wrapper,
 .form_label_wrapper,
 .radio_wrapper,
@@ -296,7 +297,6 @@ select, .select {
 .ehr-page-form {
   margin-bottom: 8em;
   .ehr-group-for {
-    margin-bottom: 5px;
     .input {
       max-width: inherit;
       width: inherit;
@@ -308,9 +308,17 @@ select, .select {
         width: 4rem;
       }
     }
-
   }
 }
+
+// for dialog and page forms ...
+.ehr-group-wrapper {
+  .ehr-group-for {
+    margin-bottom: 2px;
+    //border: 1px solid blue;
+  }
+}
+
 
 .column_table {
   .column_label {
@@ -335,17 +343,6 @@ select, .select {
   padding-bottom: .75em;
   display: flex;
 }
-
-/* Reduce size of day and time label and input */
-//.record-header > div:nth-child(3) input,
-//.record-header > div:nth-child(4) input {
-//  width: 4rem;
-//}
-//.record-header > div:nth-child(3) label,
-//.record-header > div:nth-child(4) label {
-//  min-width: 4rem;
-//  max-width: 4rem;
-//}
 
 .cardio-assessment,
 .ehr-banner-grid,
@@ -460,8 +457,50 @@ select, .select {
   grid-column-start: 1;
   grid-column-end: 4;
 }
-.rcm_grading {
-  grid-column-start: 1;
+
+.rcm-morphology-group {
+  display: grid;
+  grid-auto-flow: row;
+  margin-bottom: 1rem;
+  // last column is empty to push content to left
+  grid-template-columns: 0.25fr 1fr 0.7fr 3fr;
+
+  // reduce the size of the checkbox labels to make the rcm morphology area more compact
+  .check-label label {
+    min-width: 14rem;
+    max-width: 8rem;
+  }
+  .form_label {
+    min-width: inherit;
+    max-width: inherit;
+  }
+  .select_wrapper .select {
+    max-width: inherit;
+    width: inherit;
+    height: inherit;
+  }
+}
+@media all and (max-width: $main-width-threshold1) {
+  .rcm-morphology-group {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+// the following select the grouping elements that have both the classes
+// note the group element and the internal wrapper are given the same formCss
+// here we are laying out the groups
+.ehr-group-for.rcm-one-part {
+  grid-column-start: span 3;
+}
+.ehr-group-for.rcm-one-part-indented {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+.ehr-group-for.rcm-two-part-1 {
+  grid-column-start: 2;
+}
+.ehr-group-for.rcm-two-part-2 {
+  grid-column-start: 3;
   grid-column-end: 4;
 }
 

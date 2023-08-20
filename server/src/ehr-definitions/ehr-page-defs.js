@@ -24499,7 +24499,7 @@ const DEFS = {
       {
         'elementKey': 'rcmNormal',
         'formIndex': '2',
-        'formCss': 'field_full_line',
+        'formCss': 'rcm-one-part',
         'inputType': 'checkbox',
         'label': 'Normal',
         'tableColumn': '73',
@@ -24508,7 +24508,7 @@ const DEFS = {
       {
         'elementKey': 'rcmConsistent',
         'formIndex': '2',
-        'formCss': 'field_full_line',
+        'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Consistent with indices',
         'tableColumn': '74',
@@ -24517,7 +24517,7 @@ const DEFS = {
       {
         'elementKey': 'rcmMcvMchc',
         'formIndex': '2',
-        'formCss': 'field_full_line input-element-small',
+        'formCss': 'rcm-two-part-2',
         'inputType': 'text',
         'label': 'MCV/MCHC',
         'tableColumn': '75',
@@ -24526,7 +24526,7 @@ const DEFS = {
       {
         'elementKey': 'rcmAnisocytosis',
         'formIndex': '2',
-        'formCss': 'field_full_line',
+        'formCss': 'rcm-one-part-indented',
         'inputType': 'checkbox',
         'label': 'Anisocytosis',
         'tableColumn': '76',
@@ -24535,7 +24535,7 @@ const DEFS = {
       {
         'elementKey': 'rcmPolychromasia',
         'formIndex': '2',
-        'formCss': 'field_full_line',
+        'formCss': 'rcm-one-part-indented',
         'inputType': 'checkbox',
         'label': 'Polychromasia',
         'tableColumn': '77',
@@ -24544,6 +24544,7 @@ const DEFS = {
       {
         'elementKey': 'rcmAcanthocytes',
         'formIndex': '2',
+        'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Acanthocytes',
         'tableColumn': '78',
@@ -24552,7 +24553,7 @@ const DEFS = {
       {
         'elementKey': 'rcmAcanthocytesGrading',
         'formIndex': '2',
-        'formCss': 'rcm_grading',
+        'formCss': 'rcm-two-part-2',
         'inputType': 'select',
         'label': 'grading',
         'options': [
@@ -24579,6 +24580,7 @@ const DEFS = {
       {
         'elementKey': 'rcmCodocytes',
         'formIndex': '2',
+        'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Codocytes (Target Cells)',
         'tableColumn': '80',
@@ -24587,7 +24589,7 @@ const DEFS = {
       {
         'elementKey': 'rcmCodocytesGrading',
         'formIndex': '2',
-        'formCss': 'rcm_grading',
+        'formCss': 'rcm-two-part-2',
         'inputType': 'select',
         'label': 'grading',
         'options': [
@@ -24614,6 +24616,7 @@ const DEFS = {
       {
         'elementKey': 'rcmDacryocytes',
         'formIndex': '2',
+        'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Dacryocytes (Tear Drop Cells)',
         'tableColumn': '82',
@@ -24622,7 +24625,7 @@ const DEFS = {
       {
         'elementKey': 'rcmDacryocytesGrading',
         'formIndex': '2',
-        'formCss': 'rcm_grading',
+        'formCss': 'rcm-two-part-2',
         'inputType': 'select',
         'label': 'grading',
         'options': [
@@ -24649,6 +24652,7 @@ const DEFS = {
       {
         'elementKey': 'rcmDrepanocytes',
         'formIndex': '2',
+        'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Drepanocytes (Sickle Cells)',
         'tableColumn': '84',
@@ -24657,7 +24661,7 @@ const DEFS = {
       {
         'elementKey': 'rcmDrepanocytesGrading',
         'formIndex': '2',
-        'formCss': 'rcm_grading',
+        'formCss': 'rcm-two-part-2',
         'inputType': 'select',
         'label': 'grading',
         'options': [
@@ -24684,6 +24688,7 @@ const DEFS = {
       {
         'elementKey': 'rcmEchinocytes',
         'formIndex': '2',
+        'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Echinocytes (Burr Cells)',
         'tableColumn': '86',
@@ -24692,7 +24697,7 @@ const DEFS = {
       {
         'elementKey': 'rcmEchinocytesGrading',
         'formIndex': '2',
-        'formCss': 'rcm_grading',
+        'formCss': 'rcm-two-part-2',
         'inputType': 'select',
         'label': 'grading',
         'options': [
@@ -24719,6 +24724,7 @@ const DEFS = {
       {
         'elementKey': 'rcmOvalocytes',
         'formIndex': '2',
+        'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Elliptocytes/Ovalocytes',
         'tableColumn': '88',
@@ -24727,7 +24733,7 @@ const DEFS = {
       {
         'elementKey': 'rcmOvalocytesGrading',
         'formIndex': '2',
-        'formCss': 'rcm_grading',
+        'formCss': 'rcm-two-part-2',
         'inputType': 'select',
         'label': 'grading',
         'options': [
@@ -24754,6 +24760,7 @@ const DEFS = {
       {
         'elementKey': 'rcmMacroOvalocytes',
         'formIndex': '2',
+        'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Macro-ovalocytes',
         'tableColumn': '90',
@@ -24762,7 +24769,7 @@ const DEFS = {
       {
         'elementKey': 'rcmMacroOvalocytesGrading',
         'formIndex': '2',
-        'formCss': 'rcm_grading',
+        'formCss': 'rcm-two-part-2',
         'inputType': 'select',
         'label': 'grading',
         'options': [
@@ -24789,6 +24796,7 @@ const DEFS = {
       {
         'elementKey': 'rcmStomatocytes',
         'formIndex': '2',
+        'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Stomatocytes',
         'tableColumn': '92',
@@ -24797,7 +24805,7 @@ const DEFS = {
       {
         'elementKey': 'rcmStomatocytesGrading',
         'formIndex': '2',
-        'formCss': 'rcm_grading',
+        'formCss': 'rcm-two-part-2',
         'inputType': 'select',
         'label': 'grading',
         'options': [
@@ -24824,6 +24832,7 @@ const DEFS = {
       {
         'elementKey': 'rcmSpherocytes',
         'formIndex': '2',
+        'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Spherocytes',
         'tableColumn': '94',
@@ -24832,7 +24841,7 @@ const DEFS = {
       {
         'elementKey': 'rcmSpherocytesGrading',
         'formIndex': '2',
-        'formCss': 'rcm_grading',
+        'formCss': 'rcm-two-part-2',
         'inputType': 'select',
         'label': 'grading',
         'options': [
@@ -24859,6 +24868,7 @@ const DEFS = {
       {
         'elementKey': 'rcmICC',
         'formIndex': '2',
+        'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Irregularly Contracted Cells (ICC)',
         'tableColumn': '96',
@@ -24867,7 +24877,7 @@ const DEFS = {
       {
         'elementKey': 'rcmICCGrading',
         'formIndex': '2',
-        'formCss': 'rcm_grading',
+        'formCss': 'rcm-two-part-2',
         'inputType': 'select',
         'label': 'grading',
         'options': [
@@ -24894,6 +24904,7 @@ const DEFS = {
       {
         'elementKey': 'rcmICCSchistocytes',
         'formIndex': '2',
+        'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Schistocytes',
         'tableColumn': '98',
@@ -24902,7 +24913,7 @@ const DEFS = {
       {
         'elementKey': 'rcmICCSchistocytesGrading',
         'formIndex': '2',
-        'formCss': 'rcm_grading',
+        'formCss': 'rcm-two-part-2',
         'inputType': 'select',
         'label': 'grading',
         'options': [
@@ -26073,7 +26084,7 @@ const DEFS = {
             {
               'elementKey': 'ehr_group175',
               'label': 'PLT morphology',
-              'formCss': 'grid-left-to-right-1',
+              'formCss': 'grid-left-to-right-3',
               'gIndex': '6',
               'gChildren': [
                 'pltNormalMorphology',
@@ -26142,7 +26153,7 @@ const DEFS = {
             {
               'elementKey': 'ehr_group194',
               'label': 'White Cell Morphology',
-              'formCss': 'grid-left-to-right-1',
+              'formCss': 'grid-left-to-right-3',
               'gIndex': '9',
               'gChildren': [
                 'wbcmNormalMorphology',
@@ -26153,7 +26164,7 @@ const DEFS = {
             {
               'elementKey': 'ehr_group195',
               'label': 'Red Cell Morphology',
-              'formCss': 'grid-left-to-right-2',
+              'formCss': 'rcm-morphology-group',
               'gIndex': '10',
               'gChildren': [
                 'rcmNormal',
