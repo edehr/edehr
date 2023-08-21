@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="form-element")
+  div(class="file_wrapper")
     ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="ehrFile_label")
     div(class="file-element")
       div(class="inline")

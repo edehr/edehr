@@ -77,6 +77,9 @@ Once the instructor has evaluated the work and released these evaluation notes, 
 
 ## Dashboard
 
+
+
+
 This is your dashboard where you can access all your activities in one place.  This is also where you can read what your instructor has said about your work.
 
 ![9]

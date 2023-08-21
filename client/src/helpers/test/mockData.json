@@ -32,7 +32,7 @@
     "toolConsumer": "5eb2b706df6c04d3212355d9",
     "name": "Test Assignment",
     "description": "This a default test assignment",
-    "seedDataId": "5eb2b706df6c04d3212355db",
+    "seedDataId": "5eb2b706df6c04d3212355db"
   },
   "assignmentListing": [
     {
@@ -40,14 +40,14 @@
       "toolConsumer": "5eb2b706df6c04d3212355d9",
       "name": "Test Assignment",
       "description": "This a default test assignment",
-      "seedDataId": "5eb2b706df6c04d3212355db",
+      "seedDataId": "5eb2b706df6c04d3212355db"
     },
     {
       "_id": "assignmentId2",
       "toolConsumer": "5eb2b706df6c04d3212355d9",
       "name": "Test Assignment2",
       "description": "This a second test assignment",
-      "seedDataId": "5eb2b706df6c04d3212355db",
+      "seedDataId": "5eb2b706df6c04d3212355db"
     }
   ],
   "authData": {
@@ -66,7 +66,7 @@
     "tool_consumer_instance_description": "Ed EHR Prototype LMS",
     "tool_consumer_instance_guid": "moodle.edehr.org"
   },
-  
+
   "consumerListing": [
     {
       "_id":"5eb2b706df6c04d3212355d9",
@@ -76,7 +76,7 @@
       "tool_consumer_instance_name":"EdEhrTest",
       "createDate":"2020-05-06T13:09:26.448Z",
       "lastUpdateDate":"2020-05-06T13:09:26.448Z"
-    }, 
+    },
     {
       "_id": "testConsumerId",
       "tool_consumer_instance_name": "EdEHRTests",
@@ -123,15 +123,19 @@
     "activityData":"5eb2bf6edf6c04d3212355e3"
   },
   "classList":  [
-    { 
-    "_id": "currentEvaluationStudentId", 
-    "user": "test user", 
+    {
+    "_id": "currentEvaluationStudentId",
+    "user": {
+      "fullName": "test user"
+    },
     "activity": "testActivity",
-    "activityData": { "_id": "activitityDataId", "assignmentData": "test activity data" } 
+    "activityData": { "_id": "activitityDataId", "assignmentData": "test activity data" }
     },
     {
-      "_id": "currentEvaluationStudentId2", 
-      "user": "test user2", 
+      "_id": "currentEvaluationStudentId2",
+      "user": {
+        "fullName": "test user2"
+      },
       "activity": "testActivity2",
       "activityData": { "_id": "activitityDataId2", "assignmentData": "test activity data2" }
     }
@@ -140,16 +144,16 @@
     {
       "_id": "acourseid",
       "activities": [
-        { 
-          "_id": "activityId1", 
+        {
+          "_id": "activityId1",
           "assignment": "assignment1"
         },
-        { 
-          "_id": "activityId2", 
+        {
+          "_id": "activityId2",
           "assignment": "assignment2"
         },
-        { 
-          "_id": "activityId3", 
+        {
+          "_id": "activityId3",
           "assignment": "assignment3"
         }
       ]
@@ -157,16 +161,16 @@
     {
       "_id": "anothercourseid",
       "activities": [
-        { 
-          "_id": "activityId1", 
+        {
+          "_id": "activityId1",
           "assignment": "assignment1"
         },
-        { 
-          "_id": "activityId2", 
+        {
+          "_id": "activityId2",
           "assignment": "assignment2"
         },
-        { 
-          "_id": "activityId3", 
+        {
+          "_id": "activityId3",
           "assignment": "assignment3"
         }
       ]
@@ -211,7 +215,7 @@
     "toolConsumerKey": "80e96b6f-d2d0-4a82-af50-99883bf1c369",
     "toolConsumerId": "5eedefab5efef21b3ba93f03",
     "personaList": [
-      { 
+      {
         "id": 1,
         "name": "Instructor A",
         "email": "instructor@bccampus.org",

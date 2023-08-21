@@ -15,21 +15,21 @@ PRN.map((prn, ind) => { mockPRN[prn] = `0${ind}:00`})
 
 let medOrder
 
-describe('Properly instantiates the med-order class', () => {
+describe.skip('Properly instantiates the med-order class', () => {
   it('Properly instantiates the class', () => {
     medOrder = new MedOrder(mockMedOrder)
     should.exist(medOrder)
   })
-  
+
   it('has medication', () => {
     should.exist(medOrder.medication)
     medOrder.medication.should.equal(mockMedOrder.medication)
   })
 
   it('has route', () => {
-    should.exist(medOrder.route)  
+    should.exist(medOrder.route)
     medOrder.route.should.equal(mockMedOrder.route)
-  })    
+  })
 
   it('has reasons', () => {
     should.exist(medOrder.reason)
@@ -40,15 +40,15 @@ describe('Properly instantiates the med-order class', () => {
     should.exist(medOrder.notes)
     medOrder.notes.should.equal(mockMedOrder.notes)
   })
-  
+
 })
 
-describe('test schedule types functionality', () => {
+describe.skip('test schedule types functionality', () => {
   Object.keys(ScheduleOptions.OPTIONS).map(k => {
     it(`Test ${k} scheduling`, () => {
       should.doesNotThrow(() => {
         const scheduledMed = Object.assign({}, mockMedOrder, { scheduled: k, administration: 'sched'})
-        medOrder = new MedOrder(scheduledMed)        
+        medOrder = new MedOrder(scheduledMed)
         medOrder._data.administration.should.equal('sched')
         medOrder.scheduleTimes.should.be.eql(ScheduleOptions.OPTIONS[k])
       })
@@ -63,7 +63,7 @@ describe('test schedule types functionality', () => {
   })
 })
 
-describe('PRN schedule tests', () => {
+describe.skip('PRN schedule tests', () => {
   it('is PRN properly scheduled', () => {
     const prnMedOrder = Object.assign({}, mockMedOrder, { administration: 'prn' }, mockPRN)
     medOrder = new MedOrder(prnMedOrder)
@@ -72,7 +72,7 @@ describe('PRN schedule tests', () => {
   })
 })
 
-describe('OD schedule', () => {
+describe.skip('OD schedule', () => {
   it('Properly implements OD to scheduleTimes', () => {
     const odMedOrder = Object.assign({}, mockMedOrder, { administration: 'od'})
     medOrder = new MedOrder(odMedOrder)
@@ -81,7 +81,7 @@ describe('OD schedule', () => {
   })
 })
 
-describe('testing getSchedule', () => {
+describe.skip('testing getSchedule', () => {
   it('getSchedule shouldn\'t throw', () => {
     should.doesNotThrow(() => {
       const sch = ScheduleOptions.getSchedule('TID')

@@ -19,15 +19,21 @@ export function extractComboValue (src)  {
 
 // export for testing
 export function extractMultiplyByFactor ( input ) {
-  const reNum = /([+-]?((\d+\.?\d*)|(\.\d+)))/
-  let factor
+  const reNum = /([+-]?\d+\.?\d*|[+-]?\.\d+),\s*(\d+)/
+  let result = {}
   if (input.includes('multiplyBy')) {
     const match = input.match(reNum)
     if (match && match[1]) {
-      factor = match[1]
+      let factor = match[1]
+      result.value = parseFloat(factor)
+    }
+    if (match && match[2]) {
+      let round = match[2]
+      result.round = parseInt(round)
     }
   }
-  return parseFloat(factor)
+  // console.log('extractMultiplyByFactor', input, result)
+  return result
 }
 
 export function extractEmbedValueReferences ( input ) {
@@ -112,7 +118,7 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
       // do nothing .. it is ok to not yet have a value for one of the sources
     }
   })
-  let result = 0
+  let result = undefined
 
   function mapToNums (values) {
     return values.map(v => parseFloat(v))
@@ -121,11 +127,17 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
   if (calculationType.includes('multiplyBy')) {
     let factor = extractMultiplyByFactor(calculationType)
     // console.log('multiplyBy', factor, values)
-    if (factor) {
+    if (factor.value) {
       values = mapToNums(values)
-      result = values.reduce((a,b) => a + b * factor, 0)
+      result = values.reduce((a,b) => a + b * factor.value, 0)
       isNumberResult = true
       // console.log('multiplyBy', result)
+    }
+    if (!isNaN(factor.round)) {
+      // the round parameter is present then do the requested rounding here.
+      isNumberResult = false
+      let f = Math.pow(10, factor.round)
+      result = Math.round(result * f) / f
     }
   } else if (calculationType.includes('embedValue')) {
     // pull a value from an embedded object. The calculationType specifies the page, table and field
@@ -153,10 +165,14 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
   } else {
     switch (calculationType) {
     case 'sum':
-      values = mapToNums(values)
-      result = values.reduce((a, b) => a + b, 0)
-      // console.log('calculationType sum',targetKey, result, values)
-      isNumberResult = true
+      isNumberResult = false
+      result = undefined
+      if (values.length > 0) {
+        values = mapToNums(values)
+        result = values.reduce((a, b) => a + b, 0)
+        // console.log('calculationType sum',targetKey, result, values)
+        isNumberResult = true
+      }
       break
     case 'average':
       values = mapToNums(values)

@@ -49,11 +49,3 @@ export default {
   }
 }
 </script>
-<style lang='scss'>
-@import '../../../scss/definitions';
-
-.checkset_list {
-  display: flex;
-  flex-direction: column;
-}
-</style>

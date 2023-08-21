@@ -156,7 +156,7 @@ export async function updateAllEhrData () {
     const end = performance.now()
     debug('updateAllEhrData. DONE.', Math.round(end - start), 'ms')
   } else {
-    debug('updateAllEhrData. HISTORY')
+    debug('updateAllEhrData. HISTORY',checkName)
   }
 }
 

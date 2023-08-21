@@ -6,6 +6,7 @@
 **/\.nyc_output/**
 **/coverage/**
 **/dbDump/**
+**/dump/**
 **/logs/**
 **/node_modules/**
 **/sessions/**

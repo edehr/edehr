@@ -150,10 +150,56 @@ input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:dis
   width: 100%
 }
 
-.text_input_wrapper, .textarea_wrapper, .select_wrapper, .date_wrapper, .checkset_wrapper, .radio_wrapper {
+.computed_wrapper,
+.checkset_wrapper,
+.checkbox_wrapper,
+.file_wrapper,
+.form_label_wrapper,
+.radio_wrapper,
+.select_wrapper,
+.sim_day_wrapper,
+.sim_time_wrapper,
+.textarea_wrapper,
+.text_input_wrapper
+{
   position: relative;
   display: flex;
   align-content: space-between
+}
+
+$select_width: 12rem;
+
+.computed_wrapper {
+  .input {
+    max-width: $select_width;
+  }
+}
+
+.select_wrapper {
+  .select {
+    max-width: $select_width;
+    margin-bottom: 5px;
+  }
+}
+.sim_day_wrapper,
+.text_input_wrapper {
+  .input {
+    margin-bottom: 5px;
+  }
+}
+
+.textarea_wrapper {
+  textarea {
+    margin-bottom: 5px;
+  }
+}
+
+.checkset_wrapper {
+  .checkset_list {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+  }
 }
 
 .lab_result_wrapper {
@@ -240,20 +286,36 @@ select, .select {
   flex: 1 0 66%;
 }
 
+.sim_day_wrapper,
+.sim_time_wrapper
+{
+  .input {
+    width: 4rem;
+  }
+}
+
 .ehr-page-form {
   margin-bottom: 8em;
   .ehr-group-for {
-    margin-bottom: 5px;
-    .form_label {
-      min-width: 9rem;
-      max-width: 9rem;
-      text-wrap: normal;
-    }
     .input {
       max-width: inherit;
       width: inherit;
     }
+    .sim_day_wrapper,
+    .sim_time_wrapper
+    {
+      .input {
+        width: 4rem;
+      }
+    }
+  }
+}
 
+// for dialog and page forms ...
+.ehr-group-wrapper {
+  .ehr-group-for {
+    margin-bottom: 2px;
+    //border: 1px solid blue;
   }
 }
 
@@ -281,16 +343,6 @@ select, .select {
   padding-bottom: .75em;
   display: flex;
 }
-/* Reduce size of day and time label and input */
-.record-header > div:nth-child(3) input,
-.record-header > div:nth-child(4) input {
-  width: 4rem;
-}
-.record-header > div:nth-child(3) label,
-.record-header > div:nth-child(4) label {
-  min-width: 4rem;
-  max-width: 4rem;
-}
 
 .cardio-assessment,
 .ehr-banner-grid,
@@ -301,7 +353,6 @@ select, .select {
 .grid-left-to-right-4,
 .grid-left-to-right-5 {
   display: grid;
-  grid-gap: 0.3rem 0.5rem;
   grid-auto-flow: row;
   margin-bottom: 1rem;
 }
@@ -406,8 +457,50 @@ select, .select {
   grid-column-start: 1;
   grid-column-end: 4;
 }
-.rcm_grading {
-  grid-column-start: 1;
+
+.rcm-morphology-group {
+  display: grid;
+  grid-auto-flow: row;
+  margin-bottom: 1rem;
+  // last column is empty to push content to left
+  grid-template-columns: 0.25fr 1fr 0.7fr 3fr;
+
+  // reduce the size of the checkbox labels to make the rcm morphology area more compact
+  .check-label label {
+    min-width: 14rem;
+    max-width: 8rem;
+  }
+  .form_label {
+    min-width: inherit;
+    max-width: inherit;
+  }
+  .select_wrapper .select {
+    max-width: inherit;
+    width: inherit;
+    height: inherit;
+  }
+}
+@media all and (max-width: $main-width-threshold1) {
+  .rcm-morphology-group {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+// the following select the grouping elements that have both the classes
+// note the group element and the internal wrapper are given the same formCss
+// here we are laying out the groups
+.ehr-group-for.rcm-one-part {
+  grid-column-start: span 3;
+}
+.ehr-group-for.rcm-one-part-indented {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+.ehr-group-for.rcm-two-part-1 {
+  grid-column-start: 2;
+}
+.ehr-group-for.rcm-two-part-2 {
+  grid-column-start: 3;
   grid-column-end: 4;
 }
 
@@ -424,7 +517,7 @@ select, .select {
 }
 
 .grid-left-to-right-2 select {
-  min-width: 15rem;
+  min-width: $select_width;
 }
 
 .form-table-group {
@@ -455,7 +548,30 @@ select, .select {
     padding-left: 5px;
     padding-top: 5px;
   }
-
+  .form-table-center-content {
+    .form_label_wrapper {
+      text-align: center;
+      display: block;
+    }
+  }
+  .form-table-span-7 {
+    grid-column: span 7;
+  }
+  .form-table-span-6 {
+    grid-column: span 6;
+  }
+  .form-table-span-5 {
+    grid-column: span 5;
+  }
+  .form-table-span-4 {
+    grid-column: span 4;
+  }
+  .form-table-span-3 {
+    grid-column: span 3;
+  }
+  .form-table-span-2 {
+    grid-column: span 2;
+  }
 }
 
 /* Hematology */
@@ -468,8 +584,12 @@ select, .select {
 .med-lab-urin-micro {
   grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
   .select {
-    width: 12rem;
+    width: $select_width;
   }
+}
+
+.med-lab-urin-qc-table {
+  grid-template-columns: repeat(7, 1fr);
 }
 
 .urin-macro-exam {

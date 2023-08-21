@@ -15,8 +15,6 @@
 </template>
 
 <script>
-import { APP_ICONS } from '@/helpers/app-icons'
-import { Text } from '@/helpers/ehr-text'
 
 export default {
   data () {

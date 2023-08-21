@@ -145,7 +145,7 @@ export function apiMiddle (app, config) {
       if(config.dbUpdateOnStart) {
         return updateAllEhrData()
       } else {
-        debug('Skipping db updates. See env setting DB_UPDATE_ON_START.')
+        debug('Skip EhrData updates because the env var DB_UPDATE_ON_START is not set to "true".')
       }
     })
     .then(lti.initializeApp(app))

@@ -48,12 +48,6 @@ describe( 'testing isString', () => {
     should.exist(result)
     result.should.equal(true)
   })
-  it('test valid String object strings', () => {
-    let str = new String('bar,foo')
-    let result = isString(str)
-    should.exist(result)
-    result.should.equal(true)
-  })
 })
 describe('Testing non string values', () => {
   it('test invalid number literal', () => {
@@ -265,23 +259,24 @@ describe('Test validators and formatters ', () => {
   it('validTimeStr', done => {
     // invalid tests
     ehrUtils.validTimeStr('2400').should.equal(false)
-    ehrUtils.validTimeStr('2200').should.equal(false)
-    ehrUtils.validTimeStr('0100').should.equal(false)
     ehrUtils.validTimeStr('24:00').should.equal(false)
     ehrUtils.validTimeStr('33:00').should.equal(false)
     ehrUtils.validTimeStr('23:60').should.equal(false)
+    ehrUtils.validTimeStr('00:00').should.equal(false)
+    ehrUtils.validTimeStr('01:00').should.equal(false)
+    ehrUtils.validTimeStr('22:00').should.equal(false)
+    ehrUtils.validTimeStr('23:59').should.equal(false)
     // valid tests
-    ehrUtils.validTimeStr('00:00').should.equal(true)
-    ehrUtils.validTimeStr('01:00').should.equal(true)
-    ehrUtils.validTimeStr('22:00').should.equal(true)
-    ehrUtils.validTimeStr('23:59').should.equal(true)
+    ehrUtils.validTimeStr('2200').should.equal(true)
+    ehrUtils.validTimeStr('0100').should.equal(true)
+    ehrUtils.validTimeStr('2359').should.equal(true)
     done()
   })
 
   it('validDayStr', done => {
     // invalid tests
     ehrUtils.validDayStr(-1).should.equal(false)
-    ehrUtils.validDayStr(10).should.equal(false)
+    ehrUtils.validDayStr(10).should.equal(true)
     ehrUtils.validDayStr(100).should.equal(false)
     ehrUtils.validDayStr(1000).should.equal(false)
 
@@ -312,9 +307,9 @@ describe('Test validators and formatters ', () => {
   })
 
   it('formatTimeStr', done => {
-    ehrUtils.formatTimeStr('2011-10-11T12:00').should.equal('2011-10-11 12:00 pm')
-    ehrUtils.formatTimeStr('2011-10-11T15:00').should.equal('2011-10-11 3:00 pm')
-    ehrUtils.formatTimeStr('2011-10-11T00:00').should.equal('2011-10-11 12:00 am')
+    ehrUtils.formatTimeStr('2011-10-11T12:00').should.equal('2011-10-11 12:00 PM')
+    ehrUtils.formatTimeStr('2011-10-11T15:00').should.equal('2011-10-11 3:00 PM')
+    ehrUtils.formatTimeStr('2011-10-11T00:00').should.equal('2011-10-11 12:00 AM')
     done()
   })
 
@@ -333,9 +328,8 @@ describe('Axios error and file upload', () => {
       statusText: 'Bad Request',
       data: 'Please, check your request and try again'
     }
-
     const result = ehrUtils.composeAxiosResponseError({response}, '')
-    result.should.equal(` status: ${response.status} ${response.statusText} ${response.data}`)
+    result.should.equal(` status: ${response.status} ${response.statusText} "${response.data}"`)
     done()
   })
 

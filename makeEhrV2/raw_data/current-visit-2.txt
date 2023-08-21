@@ -2,7 +2,7 @@
 {inputType: table_form}	eCell	{Label: Genitourinary assessment}	eCell	{elementKey: table}	{pN: 18}	{fN: 1}	{gN: }	{sgN: }	eCell	{formOption: transpose}	eCell	eCell	eCell	{addButtonText: Add a genitourinary assessment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 18}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 18}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Urinary}	eCell	{elementKey: urinaryGroup2}	{pN: 18}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Urinary}	eCell	{elementKey: urinaryGroup2}	{pN: 18}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: section-divider grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkset}	eCell	{Label: Urinary symptoms}	eCell	{elementKey: urinaryGroup1}	{pN: 18}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Urinary symptoms}	{tableColumn: 2}	eCell	eCell	eCell	eCell	"{Options: None
 Increased frequency
 Dysuria
@@ -32,14 +32,14 @@ Brief
 Mesh pant/pad
 Clean intermittent catheter
 Indwelling catheter}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Indwelling Catheter}	eCell	{elementKey: foleyGroup}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Indwelling Catheter}	eCell	{elementKey: foleyGroup}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	{formCss: section-divider grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Indwelling Catheter}	{Comments: Foley is a specific 'type'}	{elementKey: foley}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Indwelling Catheter}	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: Yes
 No}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Type }	{Comments: Change to drop down box with two options (urethral or suprapubic)}	{elementKey: foleyType}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Type }	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: eg. indwelling catheter}	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Size}	eCell	{elementKey: foleySize}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Size}	{tableColumn: 11}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: visitDay}	eCell	{Label: Last catheter change (day)}	{Comments: added 'day'}	{elementKey: lastChange}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Last catheter change (day)}	{tableColumn: 12}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: visitTime}	eCell	{Label: Last catheter change (time)}	eCell	{elementKey: lastChangeTime}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Last catheter change (time)}	{tableColumn: 13}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Pelvic}	{Comments: Consider renaming or regrouping into a Reproductive page or table. Also consider adding a male reproducive system. This work needs to wait until EdEHR can manage seed versions}	{elementKey: pelvicGroup}	{pN: 18}	{fN: 1}	{gN: 4}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Pelvic}	{Comments: Consider renaming or regrouping into a Reproductive page or table. Also consider adding a male reproducive system. This work needs to wait until EdEHR can manage seed versions}	{elementKey: pelvicGroup}	{pN: 18}	{fN: 1}	{gN: 4}	{sgN: }	{formCss: section-divider grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Pelvic pain}	{Comments: ALL Pelvic, Vaginal, Preg, categorized to Gynecology?}	{elementKey: pelvicPain}	{pN: 18}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Pelvic pain}	{tableColumn: 14}	eCell	eCell	eCell	eCell	"{Options: Yes
 No}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Location}	eCell	{elementKey: location}	{pN: 18}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Location}	{tableColumn: 15}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -47,12 +47,12 @@ No}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 As per patient observed
 Not observed}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: If answered yes, please complete the pain assessment}	eCell	{elementKey: aLabel}	{pN: 18}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Vagina}	{Comments: changed label to vagina }	{elementKey: vaginal}	{pN: 18}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Vagina}	{Comments: changed label to vagina }	{elementKey: vaginal}	{pN: 18}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: section-divider grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkset}	eCell	{Label: Discharge}	eCell	{elementKey: discharge}	{pN: 18}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Discharge}	{tableColumn: 17}	eCell	eCell	eCell	eCell	"{Options: Discharge
 Bleeding}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Description}	eCell	{elementKey: description}	{pN: 18}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Description}	{tableColumn: 18}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: date}	eCell	{Label: Last menstrual period date}	eCell	{elementKey: lastMenstrualPeriodDate}	{pN: 18}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Last menstrual period date}	{tableColumn: 19}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Pregnancy}	eCell	{elementKey: pregnantGroup}	{pN: 18}	{fN: 1}	{gN: 6}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: date}	eCell	{Label: Last menstrual period date}	eCell	{elementKey: lastMenstrualPeriodDate}	{pN: 18}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Last menstrual period date}	{tableColumn: 18}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Description}	eCell	{elementKey: description}	{pN: 18}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: grid-span-3-columns}	eCell	{tableLabel: Description}	{tableColumn: 19}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Pregnancy}	eCell	{elementKey: pregnantGroup}	{pN: 18}	{fN: 1}	{gN: 6}	{sgN: }	{formCss: section-divider grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Pregnant}	eCell	{elementKey: pregnant}	{pN: 18}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Pregnant}	{tableColumn: 20}	eCell	eCell	eCell	eCell	"{Options: Yes
 No
 Unknown}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -108,7 +108,7 @@ Other}"	eCell	eCell	eCell	{assetBase: ?}	eCell	eCell	eCell	eCell	eCell	eCell	eCe
 {inputType: select}	eCell	{Label: Incision label}	eCell	{elementKey: incisionLabel}	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	"{Options: Incision 1
 Incision 2
 Incision 3
-Incision 4}"	eCell	eCell	eCell	eCell	eCell	{helperText: Enter incision label 1 to 4}	eCell	eCell	eCell	eCell	eCell
+Incision 4}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Incision location}	eCell	{elementKey: incisionLocation}	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	"{Options: Head
 Face
 Neck
@@ -135,7 +135,7 @@ SurgiGlue
 Steri-Strip
 Not Applicable}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehrFile}	eCell	{Label: Image}	eCell	{elementKey: incisionProfileImage}	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: incisionProfileComments}	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: incisionProfileComments}	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: grid-span-3-columns}	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: Incision assessment}	eCell	{elementKey: tableIncisionAssessment}	{pN: 42}	{fN: 2}	{gN: }	{sgN: }	eCell	{formOption: transpose}	eCell	eCell	eCell	{addButtonText: Add an incision assessment}	eCell	eCell	eCell	eCell	eCell	eCell	{assetBase: ?}	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 2}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -169,7 +169,7 @@ Induration less than 2cm
 Induration greater than 2cm
 Other}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Other}	eCell	{elementKey: periIncisionSkinOther}	{pN: 42}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 9}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: incisionStatusComments}	{pN: 42}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Comments}	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: incisionStatusComments}	{pN: 42}	{fN: 2}	{gN: 4}	{sgN: }	{formCss: grid-span-3-columns}	eCell	{tableLabel: Comments}	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: Wound profile}	eCell	{elementKey: tableWound}	{pN: 42}	{fN: 3}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add a wound profile}	eCell	eCell	eCell	eCell	eCell	eCell	{assetBase: ?}	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 3}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 3}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -231,7 +231,7 @@ Diabetic/Neuropathic Ulcers: A result of neuropathy, structural foot changes, an
 To maintain
 To monitor/manage}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehrFile}	eCell	{Label: Image}	eCell	{elementKey: woundProfileImage}	{pN: 42}	{fN: 3}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Image}	{tableColumn: 8}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: woundProfileComments}	{pN: 42}	{fN: 3}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Comments}	{tableColumn: 9}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: woundProfileComments}	{pN: 42}	{fN: 3}	{gN: 3}	{sgN: }	{formCss: grid-span-3-columns}	eCell	{tableLabel: Comments}	{tableColumn: 9}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: Wound assessment}	eCell	{elementKey: tableWoundAssessment}	{pN: 42}	{fN: 4}	{gN: }	{sgN: }	eCell	{formOption: transpose}	eCell	eCell	eCell	{addButtonText: Add a wound assessment}	eCell	eCell	eCell	eCell	eCell	eCell	{assetBase: ?}	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 4}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 4}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -481,7 +481,7 @@ See Pain Assessment for details}"	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 4}	{gN: 9}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Treatments as per plan of care}	eCell	{elementKey: treatmentComplete}	{pN: 42}	{fN: 4}	{gN: 9}	{sgN: }	eCell	eCell	{tableLabel: Treatments as per plan of care}	{tableColumn: 36}	eCell	eCell	eCell	eCell	"{Options: Yes
 No}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: woundAssessmentComments}	{pN: 42}	{fN: 4}	{gN: 9}	{sgN: }	eCell	eCell	{tableLabel: Comments}	{tableColumn: 37}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: woundAssessmentComments}	{pN: 42}	{fN: 4}	{gN: 9}	{sgN: }	{formCss: grid-span-3-columns}	eCell	{tableLabel: Comments}	{tableColumn: 37}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 24}	{Label: Pain assessment}	eCell	{elementKey: pain}	{pN: 20}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: Pain assessment}	eCell	{elementKey: table}	{pN: 20}	{fN: 1}	{gN: }	{sgN: }	eCell	{formOption: transpose}	eCell	eCell	eCell	{addButtonText: Add a pain assessment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 20}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -602,7 +602,7 @@ Discontinued}"	eCell	{Mandatory: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 Discharged}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 32}	{Label: Discharge summary}	eCell	{elementKey: dischargeSummary}	{pN: 27}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page_form}	eCell	eCell	eCell	{elementKey: pageForm}	{pN: 27}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: section-divider grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: visitDay}	eCell	{Label: Admission day}	eCell	{elementKey: admissionDay}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: 0}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Discharging physician/NP}	eCell	{elementKey: dischargingPhysician/np}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Dr. Notley
 Dr. Hunicutt
@@ -612,7 +612,7 @@ Dr. Ng
 Dr. Walker
 Dr. Brooks}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Clinical summary}	eCell	{elementKey: clinicalSummary}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: grid-span-2-columns section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Clinical summary}	eCell	{elementKey: clinicalSummary}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: grid-span-2-columns}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page_form}	eCell	eCell	eCell	{elementKey: pageForm2}	{pN: 27}	{fN: 2}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	{formCss: grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: textarea}	eCell	{Label: Discharge diagnosis}	eCell	{elementKey: dischargeDiagnosis}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

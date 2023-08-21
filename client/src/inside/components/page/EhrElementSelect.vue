@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="select_wrapper")
+  div(class="select_wrapper", :class='formCss')
     ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="select_label")
     div(v-if="!viewOnly", class="select", :title='inputVal')
       select(:name="elementKey", :disabled="disabled", v-model="inputVal", v-on:change="dependentUIEvent()")
@@ -33,7 +33,4 @@ export default {
   },
 }
 </script>
-<style lang='scss'>
-@import '../../../scss/definitions';
 
-</style>

@@ -10,7 +10,6 @@ import EhrDataModel from '../../ehr-definitions/EhrDataModel'
 import { EHR_EVENT_BUS, EHR_SEED_EVENT } from '../../server/trace-ehr'
 import { decoupleObject } from '../../ehr-definitions/common-utils'
 import mongoose from 'mongoose'
-import pluralize from 'pluralize'
 import { ObjectId } from 'mongodb'
 const debug = require('debug')('server')
 

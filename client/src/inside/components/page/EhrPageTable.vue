@@ -39,7 +39,6 @@ import EhrTableStacked from './EhrTableStacked'
 import EhrTableVertical from './EhrTableVertical'
 import UiButton from '@/app/ui/UiButton.vue'
 import UiConfirm from '@/app/ui/UiConfirm'
-import MarHelper from '../mar/mar-helper'
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import EhrData from '@/inside/components/page/ehr-data'
 import EhrTableDraft from '@/inside/components/page/ehr-table-draft'
@@ -165,8 +164,6 @@ export default {
     async proceedClearAllData () {
       console.log('EhrPageTable clearAllData ', this.tableDef)
       await this.ehrHelp.clearTable(this.tableKey)
-      const helper = new MarHelper(this.ehrHelp)
-      helper.triggerActionByPageKey()
     },
   },
 }

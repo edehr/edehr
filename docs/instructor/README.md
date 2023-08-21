@@ -35,23 +35,49 @@ Please review the [Student guide](/student) to understand what a user with the r
 Please review the [Electronic health records](/ehr) pages to understand more about the EHR side of this application.
 
 
-## Instructor's activity page
+## Instructor's dashboard
 
-When instructors access the EdEHR they start on the EdEHR Activity page
+When instructors access the EdEHR they start on the EdEHR Activity page, in the instructor's dashboard.
 
 ![3]
 
-This page has three main sections: the application banner, the navigation section on the left and the main content. 
+This all dashboard pages have three main sections: the application banner, the navigation section on the left and the main content. 
 
-The application banner has a link to this page of the documentation.
+The ```Application banner ``` has 
+- a link to this page of the documentation.
+- a link back to the demonstration log in page but this only appears when you are using the [Full demo](/full-demo)
+- the ```Instructors tool menu``` that contains the same items as appear in the navigation section.
 
-The ```Demonstration``` link is only visible when using the [Full demo](/full-demo).  Most peole will never see this because they will access the EdERH via their LMS.
+The ```Dashboard navigation``` is described here [Instructor tool guide](../instructor-tools) 
 
-The third item in the application banner is the ```Instructors tool menu``` that contains the same items as appear in the navigation section.
+The ```Content area``` displays the page content. E.g. the Activity, Course, Course List, Class list, Case study, Learning Object, or Case study file listing.
 
-The navigation section is describe in another part of this documentation.  See [Instructor tool guide](../instructor-tools) 
+## Activity 
 
-The main content displays the name and description that comes from the LMS Activity.  The content also has links to the LMS Learning Object and Case Study.  The content also links to the class list.
+An ```Activity``` is the entry into the EdEHR for both the instructor and student users.  Student users enter the EHR section to complete the
+
+The Activity page displays 
+- the Activity's name and description
+- a link to the Course the activity belongs to 
+- a link to the activity's class list
+- a link to the Learning Object the activity is linked to
+- the application type: EHR or LIS (from the Learning Object's Case Study)
+- dates when the activity was created and last accessed or modified
+
+
+that comes from the LMS Activity.  The content also has links to the LMS Learning Object and Case Study.  The content also links to the class list.
+
+### Activity name and description
+
+### Activity's Learning Object and application type
+
+
+## Class list
+
+
+## Course
+
+
 
 ![9]
 

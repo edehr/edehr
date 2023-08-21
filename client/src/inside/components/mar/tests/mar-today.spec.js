@@ -20,22 +20,22 @@ describe('mar-today tests', () => {
       })
     })
   })
-  
+
   it('isTimeValid - valid times', () => {
-    isTimeValid('08:00').should.equal(true)
-    isTimeValid('23:00').should.equal(true)
-    isTimeValid('00:00').should.equal(true)
-    isTimeValid('23:59').should.equal(true)
-    isTimeValid('04:00').should.equal(true)
-    isTimeValid('00:59').should.equal(true)
-    isTimeValid('11:59').should.equal(true)
-    isTimeValid('04:59').should.equal(true)
+    isTimeValid('0800').should.equal(true)
+    isTimeValid('2300').should.equal(true)
+    isTimeValid('0000').should.equal(true)
+    isTimeValid('2359').should.equal(true)
+    isTimeValid('0400').should.equal(true)
+    isTimeValid('0059').should.equal(true)
+    isTimeValid('1159').should.equal(true)
+    isTimeValid('0459').should.equal(true)
   })
-  
+
   it('isTimeValid - invalid times', () => {
     isTimeValid('24:00').should.equal(false)
     isTimeValid('00:60').should.equal(false)
-    isTimeValid('0800').should.equal(false)
+    isTimeValid('08:00').should.equal(false)
     isTimeValid('99:99').should.equal(false)
     isTimeValid('11:99').should.equal(false)
     isTimeValid('00:60').should.equal(false)

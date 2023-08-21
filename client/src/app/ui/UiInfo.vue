@@ -1,6 +1,5 @@
 <template lang="pug">
   div(class="UiInfo showing-labels")
-    span &nbsp;
     span(:title="text")
       button(class="info-button", v-on:click="buttonClicked")
         fas-icon(class="info-icon", icon="info-circle")
@@ -57,7 +56,8 @@ export default {
 
 .UiInfo {
   display: inline;
-  //margin-left: 8px;
+  margin-left: 4px;
+  margin-right: 5px;
   .info-button {
     background: none;
     color: $grey40;

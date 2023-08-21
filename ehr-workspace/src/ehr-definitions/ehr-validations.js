@@ -30,13 +30,17 @@ export default {
   /**
    * Day as in days in the hospital. Expect the value to be 0,1,2,..., 19
    * @param fieldName: the name of the input field for error messages
-   * @param value: the input value
-   * @return {string} If valid return's nothing. Otherwise returns error message.
+   * @param dayString: the input value
+   * @return {string} If valid return's nothing. Otherwise, returns error message.
    */
   visitDay: function (fieldName, dayString) {
-    const valid = validDayStr(dayString)
-    if (!valid) {
-      return `${fieldName} must be a visit day (number) between 0 and ${VISIT_DAY_LIMIT}. Given ${dayString}`
+    if (dayString) {
+      console.log('valid day?', dayString)
+      // only invalid if there is both some input content, and it is invalid. Use mandatory test for validation of content existence
+      const valid = validDayStr(dayString)
+      if (!valid) {
+        return `${fieldName} must be a visit day (number) between 0 and ${VISIT_DAY_LIMIT}.`
+      }
     }
   },
   numeric: function (fieldName, value) {
