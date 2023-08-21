@@ -548,7 +548,30 @@ select, .select {
     padding-left: 5px;
     padding-top: 5px;
   }
-
+  .form-table-center-content {
+    .form_label_wrapper {
+      text-align: center;
+      display: block;
+    }
+  }
+  .form-table-span-7 {
+    grid-column: span 7;
+  }
+  .form-table-span-6 {
+    grid-column: span 6;
+  }
+  .form-table-span-5 {
+    grid-column: span 5;
+  }
+  .form-table-span-4 {
+    grid-column: span 4;
+  }
+  .form-table-span-3 {
+    grid-column: span 3;
+  }
+  .form-table-span-2 {
+    grid-column: span 2;
+  }
 }
 
 /* Hematology */
@@ -563,6 +586,10 @@ select, .select {
   .select {
     width: $select_width;
   }
+}
+
+.med-lab-urin-qc-table {
+  grid-template-columns: repeat(7, 1fr);
 }
 
 .urin-macro-exam {

@@ -156,8 +156,16 @@ describe('testing ehr-defs-grid', () => {
       const uniqKeys = [... (new Set(filtered))]
       const setLen = uniqKeys.length
       if (filtered.length !== setLen) {
-        filtered.sort()
-        console.log('Duplicate keys found in page', pKey, filtered)
+        function findFirstDiffPos (a, b) {
+          var i = 0
+          if (a === b) return -1
+          while (a[i] === b[i]) i++
+          return i
+        }
+        let a = filtered.sort().toString()
+        let b = uniqKeys.sort().toString()
+        let di = findFirstDiffPos(a, b)
+        console.log('Duplicate keys found in page', pKey, di, a.substring(di-5, di+5), b.substring(di-5, di+5), a, b)
       }
       filtered.length.should.equal(setLen, `${pKey} has duplicates in children`)
       // }
