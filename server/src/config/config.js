@@ -31,7 +31,7 @@ function defaultConfig (env) {
     clientPort: process.env.CLIENT_PORT || 28000,
     clientHost: process.env.DOMAIN || 'localhost',
     clientUrl: '',
-    dbUpdateOnStart: process.env.DB_UPDATE_ON_START !== 'true', // defaults to true
+    dbUpdateOnStart: process.env.DB_UPDATE_ON_START === 'true', // only if true do we update data on start
     domain: process.env.DOMAIN || 'localhost',
     serverPort: process.env.SERVER_PORT || 27000,
     authTokenSecret: process.env.AUTH_TOKEN_SECRET || 'defaultTokenSecretForJWT',

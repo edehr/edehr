@@ -24459,8 +24459,8 @@ const DEFS = {
             'text': 'Smudge Cells'
           },
           {
-            'key': 'Abnormal Lymphocytes',
-            'text': 'Abnormal Lymphocytes'
+            'key': 'Lymphoma Cells',
+            'text': 'Lymphoma Cells'
           },
           {
             'key': 'Hairy Cells',
@@ -24941,7 +24941,7 @@ const DEFS = {
         'elementKey': 'rcmBasophilicStippling',
         'formIndex': '2',
         'inputType': 'checkbox',
-        'label': 'Coarse Basophilic Stippling',
+        'label': 'Basophilic Stippling',
         'tableColumn': '100',
         'fqn': 'hematology.rcmBasophilicStippling'
       },
