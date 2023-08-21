@@ -24435,8 +24435,40 @@ const DEFS = {
         'label': 'Abnormal;Type',
         'options': [
           {
-            'key': '1',
-            'text': '1'
+            'key': 'Immature Cells',
+            'text': 'Immature Cells'
+          },
+          {
+            'key': 'Hypersegmented Neutrophils',
+            'text': 'Hypersegmented Neutrophils'
+          },
+          {
+            'key': 'Dysplastic Cells',
+            'text': 'Dysplastic Cells'
+          },
+          {
+            'key': 'Pelger-Huët Cells',
+            'text': 'Pelger-Huët Cells'
+          },
+          {
+            'key': 'Auer Rods',
+            'text': 'Auer Rods'
+          },
+          {
+            'key': 'Smudge Cells',
+            'text': 'Smudge Cells'
+          },
+          {
+            'key': 'Lymphoma Cells',
+            'text': 'Lymphoma Cells'
+          },
+          {
+            'key': 'Hairy Cells',
+            'text': 'Hairy Cells'
+          },
+          {
+            'key': 'Necrobiotic Cells',
+            'text': 'Necrobiotic Cells'
           }
         ],
         'tableColumn': '71',
