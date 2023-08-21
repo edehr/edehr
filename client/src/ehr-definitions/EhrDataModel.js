@@ -11,8 +11,9 @@ import {
 } from './med-definitions/med-ehrData-upgrade-utils'
 import { updateRespiratory } from './ehr-data-upgrade-utils'
 import { updateWoundCaseStudy } from './ehr-data-upgrade-woundCaseStudy'
+import { updateHematologyLymphocytes } from './ehr-data-upgrade-hematology'
 
-const CURRENT_EHR_DATA_VERSION = 'ev2.2.3'
+const CURRENT_EHR_DATA_VERSION = 'ev2.3.5'
 
 /**
  * WARNING Do not edit this code unless you are working in the ehr-workspace common
@@ -65,15 +66,17 @@ export default class EhrDataModel {
     // update visit time convert 00:00 to 0000
     this._ehrData = updateAllVisitTime(this)
 
-    // TODO change updateMedicationRoute to be like updateSanguineous
+    // TODO change updateMedicationRoute to be like updateWoundCaseStudy
     // med route just updates inhaler to inhalation in med orders
     this._ehrData = updateMedicationRoute(this)
 
-    // TODO change updateRespiratory to be like updateSanguineous
+    // TODO change updateRespiratory to be like updateWoundCaseStudy
     this._ehrData = updateRespiratory(this)
 
     // fix a problem in the wound assessment sample case study.
     this._ehrData = updateWoundCaseStudy(this._ehrData)
+
+    this._ehrData = updateHematologyLymphocytes(this._ehrData)
 
     // updateAllRowIds inserts a row id into any row that doesn't yet have one.
     // This is the preferred way to generate row ids. Insert new row and reload the whole ehr object into this model.

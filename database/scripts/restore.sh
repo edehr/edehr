@@ -1,5 +1,3 @@
-mongorestore --authenticationDatabase admin -u root --db edehr-prod ./dump/edehr-prod/
+#mongorestore --port=27018  --drop --nsInclude 'edehr-dev.*'
 
-# mongorestore --authenticationDatabase admin -u root --db edehr-dev ./dump/edehr-dev/
-
-# mongorestore --db edehr-dev edehr-dev/
+mongorestore --port=27018  --drop --nsInclude 'edehr-prod.*'
