@@ -1,4 +1,5 @@
 import authHelper from '@/helpers/auth-helper'
+import jwt_decode from 'jwt-decode'
 import { setAuthHeader } from '@/helpers/axios-helper'
 const hashToken = authHelper.hashToken
 const logAuth = false
@@ -103,10 +104,8 @@ const actions = {
     let token = state.token || ''
     let jwtData = token.split('.')
     if (jwtData.length === 3) {
-      // JWT's are two base64-encoded JSON objects and a trailing signature
-      // joined by periods. The middle section is the data payload.
-      let data = JSON.parse(atob(jwtData[1]))
-      // console.log('adminValidate token data >> ', data)
+      let data = jwt_decode(token)
+      // console.log('jwt_decode(token)', data)
       if (data.isAdmin) {
         return authHelper.adminValidate(token)
           .then((r) => {
