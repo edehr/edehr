@@ -30,7 +30,7 @@
           app-type-toggle-button(
             v-bind:useColour="false",
             :modelValue='createNewCaseStudy',
-            @change='createOrSelect',
+            @change='toggleCreateOrSelect',
             labelOn='Create new'
             labelOff='Select'
           )
@@ -112,9 +112,9 @@ export default {
       learningObjectName: '',
       caseStudyName: '',
       caseStudyDescription: '',
-      createNewCaseStudy: false,
+      createNewCaseStudy: false, // select or create new seed for the learning object
       description: '',
-      actionType: '',
+      actionType: '', // edit or create the learning object
       learningObjectId: '',
       labelText: LABELS,
       searchTerm: '',
@@ -151,7 +151,10 @@ export default {
       return this.selectedSeed ? this.selectedSeed.description : ''
     },
     seedValidate () {
-      return this.selectedSeedId.trim() ? /* OK */ undefined :  ERRORS.SEED_REQUIRED
+      if(!this.createNewCaseStudy) {
+        return this.selectedSeedId.trim() ? /* OK */ undefined : ERRORS.SEED_REQUIRED
+      }
+      return undefined
     },
     errors () {
       const errMsg = this.nameValidate || this.seedValidate || this.caseStudyNameValidate
@@ -191,7 +194,7 @@ export default {
         = ''
       this.seedModel = undefined
     },
-    createOrSelect (val) {
+    toggleCreateOrSelect (val) {
       this.createNewCaseStudy = !this.createNewCaseStudy
     },
     async fetchSeedSelectionList () {
@@ -237,13 +240,31 @@ export default {
       this.clearInputs()
       this.$refs.theDialog.onClose()
     },
-    saveDialog: function () {
-      let sId
-      if(this.seedModel) {
-        sId = this.seedModel.id
+    saveSeed: async function () {
+      let seedData = {
+        name: this.caseStudyName,
+        appType: this.appType,
+        description: this.caseStudyDescription,
+        contributors: StoreHelper.fullName(),
+        ehrData: {},
+        tagList: [],
+        toolConsumer: StoreHelper.getAuthdConsumerId()
       }
-      else {
-        sId = this.selectedSeedId && this.selectedSeedId.length > 0 ? this.selectedSeedId : null
+      return await StoreHelper.createSeed(undefined, seedData)
+    },
+    saveDialog: async function () {
+      let sId
+      if (this.createNewCaseStudy) {
+        let seedModel = await this.saveSeed()
+        console.log('just created seed', seedModel)
+        sId = seedModel.id
+        console.log('save learning object with newly created seed', sId)
+      } else {
+        if (this.seedModel) {
+          sId = this.seedModel.id
+        } else {
+          sId = this.selectedSeedId && this.selectedSeedId.length > 0 ? this.selectedSeedId : null
+        }
       }
       let aAssignment = {
         name: this.learningObjectName,
@@ -254,10 +275,11 @@ export default {
       // console.log('save learning object', aAssignment)
       this.$refs.theDialog.onClose()
       if (this.actionType === EDIT_ACTION) {
-        return StoreHelper.updateAssignment(this, this.learningObjectId, aAssignment)
+        await StoreHelper.updateAssignment(this, this.learningObjectId, aAssignment)
       } else if (this.isCreate) {
-        return StoreHelper.createAssignment( aAssignment)
+        await StoreHelper.createAssignment(aAssignment)
       }
+      this.$emit('update')
     }
   }
 }

@@ -19,6 +19,7 @@
     "start:auth:lti": "NODE_ENV=development DEBUG_COLORS=no DEBUG='auth, lti, trace, server, error' nodemon -r dotenv/config --exec babel-node src/index.js",
     "start:lti": "NODE_ENV=development DEBUG_COLORS=no DEBUG='lti, server, error' nodemon -r dotenv/config --exec babel-node src/index.js",
     "start:all": "NODE_ENV=development DEBUG_COLORS=no DEBUG='trace, auth, lti, server, error, details' nodemon -r dotenv/config --exec babel-node src/index.js",
+    "start:trace": "NODE_ENV=development DEBUG_COLORS=no DEBUG='trace, server, error, details' nodemon -r dotenv/config --exec babel-node src/index.js",
     "start:prod": "NODE_ENV=production DEBUG='server, error, actions' node build/index.js",
     "start:prod:auth": "NODE_ENV=production DEBUG='auth, server, error' node build/index.js",
     "start:prod:lti": "NODE_ENV=production DEBUG='lti, server, error' node build/index.js",

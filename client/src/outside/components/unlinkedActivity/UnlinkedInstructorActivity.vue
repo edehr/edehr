@@ -25,20 +25,23 @@
     div(class="details-container")
       div(class="e-table")
         div(class="thead")
-          div(class="thcell") Connect to
-          div(class="thcell") Activity Name
+          div(class="thcell") Select content for activity
+          // div(class="thcell") Learning Object
           div(class="thcell") Type
+          div(class="thcell") Last update
           div(class="thcell") Description
         div(class="tbody")
           div(class="row", v-for="lObj in assignmentsListing")
             div(class="cell")
-              ui-button(v-on:buttonClicked="selectLearningObject(lObj)", class='link-button') Use this
-            div(class='cell') {{ lObj.name }}
+              ui-button(v-on:buttonClicked="selectLearningObject(lObj)", class='link-button') Connect to: {{ lObj.name }}
+            // div(class='cell') {{ lObj.name }}
             div(class="cell") {{ appType(lObj) }}
+            div(class="cell date") {{ lObj.lastUpdateDate | formatDateTime }}
             div(class='cell') {{ lObj.description }}
 
+
     ui-confirm(ref="confirmDialog", saveLabel="Connect", v-on:confirm="selectConnect", html-body=true)
-    learning-object-dialog(ref="theDialog")
+    learning-object-dialog(ref="theDialog",@update='loadPage')
 
 </template>
 
@@ -58,7 +61,7 @@ const TEXT = {
   createLearningObjectBL: 'Create and use new content',
 }
 const ASC = 'asc'
-// const DESC = 'desc'
+const DESC = 'desc'
 
 export default {
   data () {
@@ -68,8 +71,8 @@ export default {
       text: TEXT,
       selectedLObj: undefined,
       offset: 0,
-      sortKey: 'name',
-      sortDir: ASC,
+      sortKey: 'lastUpdateDate',
+      sortDir: DESC,
       searchTerm: '',
       appTypes: [
         {key: 'EHR'},
@@ -106,12 +109,11 @@ export default {
     async loadPage () {
       const query = this.$route.query
       const fromRouteOffset = query.offset || 0
-      const fromRouteSort = query.sortKey || this.columnName
-      const fromRouteDirection = query.sortDir || ASC
+      const fromRouteSort = query.sortKey || 'lastUpdateDate'
+      const fromRouteDirection = query.sortDir || DESC
       // from the query the tag list is a CSV string
       const fromRouteTagList = query.tagList || ''
       this.offset = parseInt(fromRouteOffset)
-      this.selectedTags = fromRouteTagList.split(',')
       let queryPayload = {
         offset: fromRouteOffset,
         limit: this.paginateLimit,
@@ -134,6 +136,7 @@ export default {
         this.searchTerm = query.searchTerm
       }
       this.searchTerm ? queryPayload.searchTerm = this.searchTerm : undefined
+      console.log('loading unlinked dispatch load page', queryPayload)
       await this.$store.dispatch('assignmentListStore/loadPage', queryPayload)
     },
 
@@ -163,7 +166,7 @@ export default {
       query.limit = this.paginateLimit
       query.sortKey = this.sortKey
       query.sortDir = this.sortDir
-      this.selectedTags.length > 0 ? query.tagList = this.selectedTags.join(',') : undefined
+      query.ts = Date.now()
       // only add appType to query if there are some selections
       let ats = this.checkAppTypes.join(',')
       ats ? query.appTypes = ats : undefined

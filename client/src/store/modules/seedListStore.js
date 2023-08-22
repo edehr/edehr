@@ -172,26 +172,24 @@ const actions = {
    * @param payload
    * @return {*}
    */
-  createSeedItem (context, payload) {
+  async createSeedItem (context, payload) {
     let url = '/createSeed/'
-    if(debugSL) console.log('SeedList send seed data ', url, payload)
-    return InstoreHelper.postRequest(context, API, url, payload).then(results => {
-      if(debugSL) console.log('SeedList after create seed:', results.data )
-      return context.commit('_setSeedId', results.data._id)
-    })
-      .then( () => {
-        if(debugSL) console.log('SeedList after seed create. Now loadSeeds')
-        return context.dispatch('loadSeeds')
-      })
-      .then(() => {
-        if (context.state.sSeedId) {
-          if(debugSL) console.log('SeedList after seed create now load created seed content')
-          return context.dispatch('loadSeedContent', context.state.sSeedId)
-        }
-      })
-
+    if (debugSL) console.log('SeedList send seed data ', url, payload)
+    const results = await InstoreHelper.postRequest(context, API, url, payload)
+    if (debugSL) console.log('SeedList after create seed:', results.data)
+    // set the new seed id into store
+    await context.commit('_setSeedId', results.data._id)
+    // next call the load all seeds
+    if (debugSL) console.log('SeedList after seed create. Now loadSeeds')
+    await context.dispatch('loadSeeds')
+    // next api call to load the newly created seed (i.e. get data from server not the input to this method)
+    if (debugSL) console.log('SeedList after seed create now load created seed content')
+    await context.dispatch('loadSeedContent', context.state.sSeedId)
+    // return the newly created and loaded seed
+    const seedModel =  context.getters.seedModel
+    if (debugSL) console.log('SeedList new seed model:', seedModel)
+    return seedModel
   },
-
   /**
    * support saving new or updating seed meta data
    * (Can include ehr content but to update just a part of the ehr data use updateSeedEhrProperty)
