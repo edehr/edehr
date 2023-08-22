@@ -1,5 +1,5 @@
 <template lang='pug'>
-  div(class="form-element", :class='{invalidElement : !validData, hideTableElement: hideElement}')
+  div(:id="elementKey", class="form-element", :class='{invalidElement : !validData, hideTableElement: hideElement}')
     div(v-if="isType('form_label')", :class='formCss')
       div(v-html="label", class='form_label_wrapper')
       ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")

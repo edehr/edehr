@@ -486,6 +486,14 @@ select, .select {
   }
 }
 
+#rcmMcvMchc {
+  label {
+    min-width: 14rem;
+  }
+  input {
+    min-width: 30rem;
+  }
+}
 // the following select the grouping elements that have both the classes
 // note the group element and the internal wrapper are given the same formCss
 // here we are laying out the groups
