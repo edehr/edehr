@@ -31,8 +31,8 @@ export default {
     },
   },
   methods: {
-    downloadAll () {
-      let sdList = this.seedDataList
+    async downloadAll () {
+      let sdList = await this.$store.dispatch('seedListStore/loadSeeds')
       downObjectToFile('EdEHR-seed-listings.json', sdList)
     },
     showCreateDialog: function () {

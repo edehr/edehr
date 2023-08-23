@@ -41,6 +41,7 @@
                 title="Sort by updated date")
                 fas-icon(class="fa", :icon="sortColumnIcon(columnUpdated)")
           div(class="thcell") Description
+          div(class="thcell") Actions
         div(class="tbody")
           div(class="row", v-for="seedModel in seedDataListFiltered", :class="rowClass(seedModel)")
             div(class='cell e-name')
@@ -52,7 +53,12 @@
             div(class="cell") {{ seedModel.assignmentCount }}
             div(class="cell e-date") {{ seedModel.createDate | formatDateTime }}.
             div(class="cell e-date") {{ seedModel.lastUpdateDate | formatDateTime }}
-            div(class="cell") {{truncate(seedModel.description, 200)}}
+            div(class="cell").
+              {{truncate(seedModel.description, 200)}}
+            div(class="cell")
+              zone-lms-button(@action="viewEhrCondensed(seedModel)", :icon='appIcons.view', :title='actionText.VIEW_TP', :actionText='text.VIEW')
+              zone-lms-button(v-show="canDo", @action="gotoEhrWithSeed(seedModel)", :icon='appIcons.edit', :title='actionText.EDIT_TP', :actionText='text.EDIT')
+
 
 </template>
 
@@ -101,6 +107,7 @@ export default {
     return {
       appIcons: APP_ICONS,
       text: Text.SEEDS_PAGE,
+      actionText: Text.SEED_ACTIONS,
       offset: 0,
       selectedSeedId: '',
       selectedTags: [],
@@ -248,7 +255,14 @@ export default {
       this.offset = 0
       this.searchTerm = searchTerm
       this.route()
-    }
+    },
+    viewEhrCondensed (seed) {
+      this.$router.push({ name: 'seed-view-condensed', query: { seedId: seed._id } })
+    },
+    gotoEhrWithSeed (seed) {
+      this.$router.push({ name: 'ehr', query: { seedEditId: seed._id, appType: seed.appType } })
+    },
+
   },
 }
 </script>
