@@ -58,8 +58,7 @@
             div(class="cell")
               zone-lms-button(@action="viewEhrCondensed(seedModel)", :icon='appIcons.view', :title='actionText.VIEW_TP', :actionText='text.VIEW')
               zone-lms-button(v-show="canDo", @action="gotoEhrWithSeed(seedModel)", :icon='appIcons.edit', :title='actionText.EDIT_TP', :actionText='text.EDIT')
-
-
+              zone-lms-button(@action="downloadSeed(seedModel)", :icon='appIcons.download', :actionText='text.DOWNLOAD_TP', :text='actionText.DOWNLOAD')
 </template>
 
 <script>
@@ -81,6 +80,7 @@ import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
 import AppSearchBox from '@/app/components/AppSearchBox.vue'
 import AppTypeSelector from '@/app/components/AppTypeSelector.vue'
 import AppPaginateControls from '@/app/components/AppPaginateControls.vue'
+import { downloadSeedToFile } from '@/helpers/ehr-utils'
 
 const ASC = 'asc'
 const DESC = 'desc'
@@ -148,6 +148,9 @@ export default {
       await this.$store.dispatch('system/setAppTypes', this.checkAppTypes)
       this.route()
     },
+    downloadSeed (seed) {
+      downloadSeedToFile(seed._id, seed, seed.ehrData, seed.tagList)
+    },
     rowClass: function (sv) {
       let selected = sv.id === this.selectedSeedId
       let css = []
@@ -210,9 +213,6 @@ export default {
     },
     selectSeed (sv ) {
       this.selectedSeedId = sv.id
-    },
-    tagList ( sv ) {
-      return sv.tagList ? sv.tagList.split(' ') : []
     },
     refreshAfterUpdateCreate () {
       this.sortKey = this.columnUpdated
