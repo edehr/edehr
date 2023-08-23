@@ -6,7 +6,7 @@
       ui-link(:name="'seed-view'",  :query='{ seedId: seedId }' )
         span(class='clickable') {{seed.name}}
       div(v-text-to-html="seed.description")
-      app-tag-list(:tagList="seed.tagList")
+      app-tag-list(:tagList="tagList")
 
     seed-structural(:ehrData='seed.ehrData', class='structural-container card selected ')
 </template>
@@ -37,7 +37,7 @@ export default {
       return this.$store.getters['seedListStore/seedContent']
     },
     seedModel () { return this.$store.getters['seedListStore/seedModel'] },
-    tagList () { return this.seedModel.tagListAsArray()}
+    tagList () { return this.seed.tagList || []}
   },
   methods: {
     loadComponent () {
