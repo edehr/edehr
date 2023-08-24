@@ -14,6 +14,9 @@
         div(class="details-value")
           div(v-text-to-html="seed.description")
       div(class="details-row")
+        div(class="details-name") Type
+        div(class="details-value") {{ seed.appType }}
+      div(class="details-row")
         div(class="details-name") Tags
         div(class="details-value")
           app-tag-list(:tagList="tagList")

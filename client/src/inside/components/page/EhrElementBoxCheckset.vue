@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class="box-checkset-wrapper", :class='formCss')
     div
-      input(:id="elementKey", class="checkbox", type="checkbox", :name="elementKey", v-model="mainCheck")
+      input(class="checkbox", type="checkbox", :disabled="disabled || viewOnly", :name="elementKey", v-model="mainCheck")
       label(:for="elementKey", class="main_label") {{mainLabel}}
     div(class="sub-section")
       div {{ subLabel }}

@@ -22,7 +22,11 @@ export default {
   computed: {
     hasData () { return this.cTableData.length > 0},
     isSubmitted () { return StoreHelper.isSubmitted() },
-    showTableAction () { return this.tableDef.tableActionType === EhrTypes.tableActions.actionTypes.openDialog && !this.isSubmitted }
+    isDevContent () { return StoreHelper.isDevelopingContent() },
+    showTableAction () {
+      const c1 = this.tableDef.tableActionType === EhrTypes.tableActions.actionTypes.openDialog
+      return this.isDevContent ? c1 : c1 && !this.isSubmitted
+    }
   },
   methods: {
     getCellCss: function (cell) {

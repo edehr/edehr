@@ -47,7 +47,7 @@ class EvalHelperWorker {
       actionTag = 'evalInCondensed'
     }
     StoreHelper.postActionEvent(INSTRUCTOR_ACTION, actionTag)
-    if (StoreHelper.inZoneEHR()) {
+    if (inEhr && StoreHelper.inZoneEHR()) {
       // if user is inside the ehr area then don't change the path, let user stay on ehr page.
       router.push({ query: { evaluateStudentVisitId: studentVisitId } })
     } else {
