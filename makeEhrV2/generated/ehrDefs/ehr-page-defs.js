@@ -10760,11 +10760,11 @@ const DEFS = {
           },
           {
             'key': 'fcbg',
-            'text': 'Venous blood gas (FCBG)'
+            'text': 'Venous blood gas (VBG)'
           },
           {
             'key': 'vbg',
-            'text': 'Fetal cord blood gas (VBG)'
+            'text': 'Fetal cord blood gas (FCBG)'
           }
         ],
         'tableColumn': '8',
@@ -15303,20 +15303,37 @@ const DEFS = {
         'suffixHtml': '1.14–1.28 mmol/L'
       },
       {
+        'elementKey': 'lrh_CO2',
+        'formIndex': '4',
+        'inputType': 'lab_result',
+        'label': 'Carbon dioxide (CO2)',
+        'suffix': '23–28 mmol/L',
+        'tableColumn': '5',
+        'fqn': 'labResults.lrh_CO2',
+        'suffixText': '<p>23–28 mmol/L</p>',
+        'suffixHtml': '23–28 mmol/L'
+      },
+      {
         'elementKey': 'lrh_chloride',
         'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Chloride',
-        'tableColumn': '5',
-        'fqn': 'labResults.lrh_chloride'
+        'suffix': '98 - 107 mmol/L',
+        'tableColumn': '6',
+        'fqn': 'labResults.lrh_chloride',
+        'suffixText': '<p>98 - 107 mmol/L</p>',
+        'suffixHtml': '98 - 107 mmol/L'
       },
       {
         'elementKey': 'lrh_ck',
         'formIndex': '4',
         'inputType': 'lab_result',
         'label': 'Creatinine Kinase',
-        'tableColumn': '6',
-        'fqn': 'labResults.lrh_ck'
+        'suffix': 'F: 30 - 190 IU/L-NL-M: 30 - 250 IU/L',
+        'tableColumn': '7',
+        'fqn': 'labResults.lrh_ck',
+        'suffixText': '<p>F: 30 - 190 IU/L</p>\n<p>M: 30 - 250 IU/L</p>',
+        'suffixHtml': 'F: 30 - 190 IU/L\nM: 30 - 250 IU/L'
       },
       {
         'elementKey': 'lrh_glucose',
@@ -15324,7 +15341,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Glucose',
         'suffix': '3.9 - 5.6 mmol/L (fasting)',
-        'tableColumn': '7',
+        'tableColumn': '8',
         'fqn': 'labResults.lrh_glucose',
         'suffixText': '<p>3.9 - 5.6 mmol/L (fasting)</p>',
         'suffixHtml': '3.9 - 5.6 mmol/L (fasting)'
@@ -15335,7 +15352,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Magnesium',
         'suffix': '0.74–1.03 mmol/L',
-        'tableColumn': '8',
+        'tableColumn': '9',
         'fqn': 'labResults.lrh_Mg',
         'suffixText': '<p>0.74–1.03 mmol/L</p>',
         'suffixHtml': '0.74–1.03 mmol/L'
@@ -15346,7 +15363,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Phosphate',
         'suffix': '0.81–1.58 mmol/L',
-        'tableColumn': '9',
+        'tableColumn': '10',
         'fqn': 'labResults.lrh_PO4',
         'suffixText': '<p>0.81–1.58 mmol/L</p>',
         'suffixHtml': '0.81–1.58 mmol/L'
@@ -15357,7 +15374,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Potassium',
         'suffix': '3.5–5.1 mmol/L',
-        'tableColumn': '10',
+        'tableColumn': '11',
         'fqn': 'labResults.lrh_K',
         'suffixText': '<p>3.5–5.1 mmol/L</p>',
         'suffixHtml': '3.5–5.1 mmol/L'
@@ -15368,7 +15385,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Sodium',
         'suffix': '136–146 mmol/L',
-        'tableColumn': '11',
+        'tableColumn': '12',
         'fqn': 'labResults.lrh_Na',
         'suffixText': '<p>136–146 mmol/L</p>',
         'suffixHtml': '136–146 mmol/L'
@@ -15379,7 +15396,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Blood Urea Nitrogen',
         'suffix': 'F: 22–75 µmol/L-NL-M: 49–93 µmol/L',
-        'tableColumn': '12',
+        'tableColumn': '13',
         'fqn': 'labResults.lrh_bun',
         'suffixText': '<p>F: 22–75 µmol/L</p>\n<p>M: 49–93 µmol/L</p>',
         'suffixHtml': 'F: 22–75 µmol/L\nM: 49–93 µmol/L'
@@ -15390,7 +15407,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Creatinine',
         'suffix': 'F: 22–75 µmol/L-NL-M: 49–93 µmol/L',
-        'tableColumn': '13',
+        'tableColumn': '14',
         'fqn': 'labResults.lrh_cr',
         'suffixText': '<p>F: 22–75 µmol/L</p>\n<p>M: 49–93 µmol/L</p>',
         'suffixHtml': 'F: 22–75 µmol/L\nM: 49–93 µmol/L'
@@ -15401,7 +15418,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Estimated GFR',
         'suffix': '> 60 mL/min',
-        'tableColumn': '14',
+        'tableColumn': '15',
         'fqn': 'labResults.lrh_egfr',
         'suffixText': '<p>> 60 mL/min</p>',
         'suffixHtml': '> 60 mL/min'
@@ -15412,7 +15429,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Alanine transaminase (ALT)',
         'suffix': '17–63 IU/L',
-        'tableColumn': '15',
+        'tableColumn': '16',
         'fqn': 'labResults.lrh_alt',
         'suffixText': '<p>17–63 IU/L</p>',
         'suffixHtml': '17–63 IU/L'
@@ -15423,7 +15440,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Aspartate transferase (AST)',
         'suffix': '15–37 IU/L',
-        'tableColumn': '16',
+        'tableColumn': '17',
         'fqn': 'labResults.lrh_ast',
         'suffixText': '<p>15–37 IU/L</p>',
         'suffixHtml': '15–37 IU/L'
@@ -15434,7 +15451,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Alkaline phosphatase (ALP)',
         'suffix': '50–136 IU/L',
-        'tableColumn': '17',
+        'tableColumn': '18',
         'fqn': 'labResults.lrh_alp',
         'suffixText': '<p>50–136 IU/L</p>',
         'suffixHtml': '50–136 IU/L'
@@ -15445,7 +15462,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Bilirubin direct',
         'suffix': '2–9 µmol/L',
-        'tableColumn': '18',
+        'tableColumn': '19',
         'fqn': 'labResults.lrh_bilirubinD',
         'suffixText': '<p>2–9 µmol/L</p>',
         'suffixHtml': '2–9 µmol/L'
@@ -15456,7 +15473,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Bilirubin total',
         'suffix': '3–17 µmol/L',
-        'tableColumn': '19',
+        'tableColumn': '20',
         'fqn': 'labResults.lrh_bilirubinT',
         'suffixText': '<p>3–17 µmol/L</p>',
         'suffixHtml': '3–17 µmol/L'
@@ -15467,7 +15484,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Gamma glutamyl transferase (GGT)',
         'suffix': 'F: 5.0–55.0 IU/L-NL-M: 15.0–85.0 IU/L',
-        'tableColumn': '20',
+        'tableColumn': '21',
         'fqn': 'labResults.lrh_ggt',
         'suffixText': '<p>F: 5.0–55.0 IU/L</p>\n<p>M: 15.0–85.0 IU/L</p>',
         'suffixHtml': 'F: 5.0–55.0 IU/L\nM: 15.0–85.0 IU/L'
@@ -15478,7 +15495,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Lactate dehydrogenase (LDH)',
         'suffix': '100–205 IU/L',
-        'tableColumn': '21',
+        'tableColumn': '22',
         'fqn': 'labResults.lrh_ldh',
         'suffixText': '<p>100–205 IU/L</p>',
         'suffixHtml': '100–205 IU/L'
@@ -15489,7 +15506,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Lipase',
         'suffix': '73–393 IU/L',
-        'tableColumn': '22',
+        'tableColumn': '23',
         'fqn': 'labResults.lrh_lipase',
         'suffixText': '<p>73–393 IU/L</p>',
         'suffixHtml': '73–393 IU/L'
@@ -15500,7 +15517,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Bicarbonate HCO3',
         'suffix': '22–27 mmol/L',
-        'tableColumn': '23',
+        'tableColumn': '24',
         'fqn': 'labResults.lrh_abg_hco3',
         'suffixText': '<p>22–27 mmol/L</p>',
         'suffixHtml': '22–27 mmol/L'
@@ -15511,7 +15528,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Oxygen saturation (O2Sat)',
         'suffix': '96-100%',
-        'tableColumn': '24',
+        'tableColumn': '25',
         'fqn': 'labResults.lrh_abg_o2sat',
         'suffixText': '<p>96-100%</p>',
         'suffixHtml': '96-100%'
@@ -15522,7 +15539,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Partial pressure of carbon dioxide (PcO2)',
         'suffix': '32–45 mm Hg',
-        'tableColumn': '25',
+        'tableColumn': '26',
         'fqn': 'labResults.lrh_abg_pco2',
         'suffixText': '<p>32–45 mm Hg</p>',
         'suffixHtml': '32–45 mm Hg'
@@ -15533,7 +15550,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Partial pressure of oxygen (PO2)',
         'suffix': '83–116 mm Hg',
-        'tableColumn': '26',
+        'tableColumn': '27',
         'fqn': 'labResults.lrh_po2',
         'suffixText': '<p>83–116 mm Hg</p>',
         'suffixHtml': '83–116 mm Hg'
@@ -15544,7 +15561,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'ph',
         'suffix': '7.38–7.46',
-        'tableColumn': '27',
+        'tableColumn': '28',
         'fqn': 'labResults.lrh_abg_ph',
         'suffixText': '<p>7.38–7.46</p>',
         'suffixHtml': '7.38–7.46'
@@ -15588,7 +15605,7 @@ const DEFS = {
             'text': 'O+'
           }
         ],
-        'tableColumn': '28',
+        'tableColumn': '29',
         'fqn': 'labResults.lrh_bloodGroup'
       },
       {
@@ -15596,7 +15613,7 @@ const DEFS = {
         'formIndex': '4',
         'inputType': 'checkbox',
         'label': 'Antibody positive',
-        'tableColumn': '29',
+        'tableColumn': '30',
         'fqn': 'labResults.lrh_antibody'
       },
       {
@@ -16439,149 +16456,155 @@ const DEFS = {
           {
             'ehr_list_index': '5',
             'items': [
-              'lrh_chloride'
+              'lrh_CO2'
             ]
           },
           {
             'ehr_list_index': '6',
             'items': [
-              'lrh_ck'
+              'lrh_chloride'
             ]
           },
           {
             'ehr_list_index': '7',
             'items': [
-              'lrh_glucose'
+              'lrh_ck'
             ]
           },
           {
             'ehr_list_index': '8',
             'items': [
-              'lrh_Mg'
+              'lrh_glucose'
             ]
           },
           {
             'ehr_list_index': '9',
             'items': [
-              'lrh_PO4'
+              'lrh_Mg'
             ]
           },
           {
             'ehr_list_index': '10',
             'items': [
-              'lrh_K'
+              'lrh_PO4'
             ]
           },
           {
             'ehr_list_index': '11',
             'items': [
-              'lrh_Na'
+              'lrh_K'
             ]
           },
           {
             'ehr_list_index': '12',
             'items': [
-              'lrh_bun'
+              'lrh_Na'
             ]
           },
           {
             'ehr_list_index': '13',
             'items': [
-              'lrh_cr'
+              'lrh_bun'
             ]
           },
           {
             'ehr_list_index': '14',
             'items': [
-              'lrh_egfr'
+              'lrh_cr'
             ]
           },
           {
             'ehr_list_index': '15',
             'items': [
-              'lrh_alt'
+              'lrh_egfr'
             ]
           },
           {
             'ehr_list_index': '16',
             'items': [
-              'lrh_ast'
+              'lrh_alt'
             ]
           },
           {
             'ehr_list_index': '17',
             'items': [
-              'lrh_alp'
+              'lrh_ast'
             ]
           },
           {
             'ehr_list_index': '18',
             'items': [
-              'lrh_bilirubinD'
+              'lrh_alp'
             ]
           },
           {
             'ehr_list_index': '19',
             'items': [
-              'lrh_bilirubinT'
+              'lrh_bilirubinD'
             ]
           },
           {
             'ehr_list_index': '20',
             'items': [
-              'lrh_ggt'
+              'lrh_bilirubinT'
             ]
           },
           {
             'ehr_list_index': '21',
             'items': [
-              'lrh_ldh'
+              'lrh_ggt'
             ]
           },
           {
             'ehr_list_index': '22',
             'items': [
-              'lrh_lipase'
+              'lrh_ldh'
             ]
           },
           {
             'ehr_list_index': '23',
             'items': [
-              'lrh_abg_hco3'
+              'lrh_lipase'
             ]
           },
           {
             'ehr_list_index': '24',
             'items': [
-              'lrh_abg_o2sat'
+              'lrh_abg_hco3'
             ]
           },
           {
             'ehr_list_index': '25',
             'items': [
-              'lrh_abg_pco2'
+              'lrh_abg_o2sat'
             ]
           },
           {
             'ehr_list_index': '26',
             'items': [
-              'lrh_po2'
+              'lrh_abg_pco2'
             ]
           },
           {
             'ehr_list_index': '27',
             'items': [
-              'lrh_abg_ph'
+              'lrh_po2'
             ]
           },
           {
             'ehr_list_index': '28',
             'items': [
-              'lrh_bloodGroup'
+              'lrh_abg_ph'
             ]
           },
           {
             'ehr_list_index': '29',
+            'items': [
+              'lrh_bloodGroup'
+            ]
+          },
+          {
+            'ehr_list_index': '30',
             'items': [
               'lrh_antibody'
             ]
@@ -16614,6 +16637,7 @@ const DEFS = {
                 'lrh_HCO3',
                 'lrh_Ca',
                 'lrh_Ca_Ion',
+                'lrh_CO2',
                 'lrh_chloride',
                 'lrh_ck',
                 'lrh_glucose',
@@ -16682,6 +16706,7 @@ const DEFS = {
             'lrh_HCO3': '',
             'lrh_Ca': '',
             'lrh_Ca_Ion': '',
+            'lrh_CO2': '',
             'lrh_chloride': '',
             'lrh_ck': '',
             'lrh_glucose': '',
@@ -16718,6 +16743,7 @@ const DEFS = {
           'lrh_HCO3',
           'lrh_Ca',
           'lrh_Ca_Ion',
+          'lrh_CO2',
           'lrh_chloride',
           'lrh_ck',
           'lrh_glucose',
@@ -32674,71 +32700,95 @@ const DEFS = {
       {
         'elementKey': 'accTestPanel',
         'formIndex': '1',
-        'inputType': 'select',
+        'inputType': 'checkset',
         'label': 'Test (Panel)',
         'options': [
           {
-            'key': 'CBC (Complete Blood Count)',
+            'key': 'cbc',
             'text': 'CBC (Complete Blood Count)'
           },
           {
-            'key': 'CMP (Comprehensive Metabolic Panel)',
-            'text': 'CMP (Comprehensive Metabolic Panel)'
-          },
-          {
-            'key': 'Lipid Panel',
-            'text': 'Lipid Panel'
-          },
-          {
-            'key': 'HbA1c (Glycated Hemoglobin)',
+            'key': 'hba1c',
             'text': 'HbA1c (Glycated Hemoglobin)'
           },
           {
-            'key': 'PT/INR (Prothrombin Time/International Normalized Ratio)',
+            'key': 'ptinr',
             'text': 'PT/INR (Prothrombin Time/International Normalized Ratio)'
           },
           {
-            'key': 'TSH (Thyroid-Stimulating Hormone)',
-            'text': 'TSH (Thyroid-Stimulating Hormone)'
-          },
-          {
-            'key': 'PSA (Prostate-Specific Antigen)',
-            'text': 'PSA (Prostate-Specific Antigen)'
-          },
-          {
-            'key': 'Urinalysis',
-            'text': 'Urinalysis'
-          },
-          {
-            'key': 'Fasting Glucose',
-            'text': 'Fasting Glucose'
-          },
-          {
-            'key': 'Hepatitis C Antibody Test',
-            'text': 'Hepatitis C Antibody Test'
-          },
-          {
-            'key': 'Vitamin D Levels',
-            'text': 'Vitamin D Levels'
-          },
-          {
-            'key': 'Thyroid Panel',
-            'text': 'Thyroid Panel'
-          },
-          {
-            'key': 'Coagulation Profile',
+            'key': 'coag',
             'text': 'Coagulation Profile'
           },
           {
-            'key': 'Iron Studies',
+            'key': 'cmp',
+            'text': 'CMP (Comprehensive Metabolic Panel)'
+          },
+          {
+            'key': 'glufast',
+            'text': 'Glucose, Fasting'
+          },
+          {
+            'key': 'glurandom',
+            'text': 'Glucose, Random'
+          },
+          {
+            'key': 'iron',
             'text': 'Iron Studies'
           },
           {
-            'key': 'Pregnancy Test',
-            'text': 'Pregnancy Test'
+            'key': 'lipid',
+            'text': 'Lipid Panel'
           },
           {
-            'key': 'Other',
+            'key': 'psa',
+            'text': 'PSA (Prostate-Specific Antigen)'
+          },
+          {
+            'key': 'thyroid',
+            'text': 'Thyroid Panel'
+          },
+          {
+            'key': 'troponin',
+            'text': 'Troponin'
+          },
+          {
+            'key': 'tsh',
+            'text': 'TSH (Thyroid-Stimulating Hormone)'
+          },
+          {
+            'key': 'vitd',
+            'text': 'Vitamin D Levels'
+          },
+          {
+            'key': 'pregblood',
+            'text': 'Pregnancy test, blood'
+          },
+          {
+            'key': 'pregurin',
+            'text': 'Pregnancy test, urine'
+          },
+          {
+            'key': 'urinalysis',
+            'text': 'Urinalysis'
+          },
+          {
+            'key': 'bgasa',
+            'text': 'Blood gas, arterial'
+          },
+          {
+            'key': 'bgasv',
+            'text': 'Blood gas, veneous'
+          },
+          {
+            'key': 'bgasf',
+            'text': 'Blood gase, fetal cord'
+          },
+          {
+            'key': 'hepatitisc',
+            'text': 'Hepatitis C Antibody Test'
+          },
+          {
+            'key': 'other',
             'text': 'Other'
           }
         ],

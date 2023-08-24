@@ -783,21 +783,27 @@ Sputum
 Fluid
 Bone
 Hair}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Test (Panel)}	eCell	{elementKey: accTestPanel}	{pN: 50}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: CBC (Complete Blood Count)
-CMP (Comprehensive Metabolic Panel)
-Lipid Panel
-HbA1c (Glycated Hemoglobin)
-PT/INR (Prothrombin Time/International Normalized Ratio)
-TSH (Thyroid-Stimulating Hormone)
-PSA (Prostate-Specific Antigen)
-Urinalysis
-Fasting Glucose
-Hepatitis C Antibody Test
-Vitamin D Levels
-Thyroid Panel
-Coagulation Profile
-Iron Studies
-Pregnancy Test
+{inputType: checkset}	eCell	{Label: Test (Panel)}	eCell	{elementKey: accTestPanel}	{pN: 50}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: cbc:=CBC (Complete Blood Count)
+hba1c:=HbA1c (Glycated Hemoglobin)
+ptinr:=PT/INR (Prothrombin Time/International Normalized Ratio)
+coag:=Coagulation Profile
+cmp:=CMP (Comprehensive Metabolic Panel)
+glufast:=Glucose, Fasting
+glurandom:=Glucose, Random
+iron:=Iron Studies
+lipid:=Lipid Panel
+psa:=PSA (Prostate-Specific Antigen)
+thyroid:=Thyroid Panel
+troponin:=Troponin
+tsh:=TSH (Thyroid-Stimulating Hormone)
+vitd:=Vitamin D Levels
+pregblood:=Pregnancy test, blood
+pregurin:=Pregnancy test, urine
+urinalysis:=Urinalysis
+bgasa:=Blood gas, arterial
+bgasv:=Blood gas, veneous
+bgasf:=Blood gase, fetal cord
+hepatitisc:=Hepatitis C Antibody Test
 Other}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Test other}	eCell	{elementKey: accTestOther}	{pN: 50}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Pre-analytic}	eCell	{elementKey: preAnalytic}	{pN: 50}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
