@@ -4,7 +4,6 @@
       @click="toggle", class='titleBar'
       @keydown.esc="close",
       tabindex=0 )
-      slot(class='titleBarLabel', name="dropdownTitle") &nbsp;
       fas-icon(class="fa bars", icon="bars")
     div(v-show="showDropdown", class='dropdownWindow', ref='dropdownMenu')
       div(v-for="item in items", :key='item.label')
@@ -95,6 +94,7 @@ export default {
 @import '../../../scss/definitions';
 .fa {
   height: 1.5em;
+  font-size: 1.6rem;
   color: $brand-primary;
   padding-left: 5px;
 }
@@ -104,10 +104,6 @@ export default {
   line-height: 1.25rem;
   cursor: pointer;
   text-align: right;
-}
-.titleBarLabel > div {
-  font-size: 3.2rem;
-  padding-right: 15px;
 }
 .dropdownWindow {
   border-radius: 5px;

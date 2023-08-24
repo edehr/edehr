@@ -24,7 +24,7 @@ ehrApp.setup(configuration)
 function validateNode () {
   // allow transition to v18 (skip v16)
   let valid
-  if (version.includes('v14') || version.includes('v18')) {
+  if (version.includes('v18')) {
     debug(`Node Version: ${version}`)
     valid = true
   } else {
