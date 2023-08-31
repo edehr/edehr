@@ -172,7 +172,7 @@ export const Text = {
     LMS_TOOLTIP: 'Details about the learning management system (LMS) also called the LTI Consumer',
     LOBJ_LABEL: 'Learning objects',
     LOBJ_TOOLTIP: 'Learning objects provide the EHR content and set up the simulation',
-    FILE_LABEL: 'Case study files',
+    FILE_LABEL: 'Files for case studies',
     FILE_TOOLTIP: 'Files that can be used in EHR case studies.',
     SEED_LIST_LABEL: 'Case studies',
     SEED_LIST_TOOLTIP: 'EHR seeds (simulation case study data)',

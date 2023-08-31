@@ -52,11 +52,12 @@ export default class EhrCheckset {
       if (!fnd) {
         const errMsg = 'Could not match checkset for option "' + p + '" from value "' + inputValue +
           '". ' + PK + ' ' + JSON.stringify(options)
-        throw new Error(errMsg)
+        console.error(errMsg)
+        return undefined
       }
       return fnd.text
     })
-    results = human.join(', ')
+    results = human.filter(e => !!e).join(', ')
     return results
   }
 

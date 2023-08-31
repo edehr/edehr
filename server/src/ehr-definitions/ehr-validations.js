@@ -35,7 +35,7 @@ export default {
    */
   visitDay: function (fieldName, dayString) {
     if (dayString) {
-      console.log('valid day?', dayString)
+      // console.log('valid day?', dayString)
       // only invalid if there is both some input content, and it is invalid. Use mandatory test for validation of content existence
       const valid = validDayStr(dayString)
       if (!valid) {

@@ -1,5 +1,6 @@
 @import '../definitions';
 
+$form-threshold: $main-width-threshold1;
 /*
 The datepicker plugin has styling that needs adjustments.
 1. Need to over ride the border to display one.
@@ -174,6 +175,13 @@ $select_width: 12rem;
     max-width: $select_width;
   }
 }
+@media all and (max-width: $form-threshold) {
+  .computed_wrapper {
+    .input {
+      max-width: inherit;
+    }
+  }
+}
 
 .select_wrapper {
   .select {
@@ -242,6 +250,15 @@ $select_width: 12rem;
   }
 
 }
+@media all and (max-width: $form-threshold) {
+  .lab_result_wrapper {
+    .lab_result_label {
+      label {
+        min-width: inherit;
+      }
+    }
+  }
+}
 .checkbox_wrapper {
     margin-bottom: .625em;
 }
@@ -299,7 +316,7 @@ select, .select {
   .ehr-group-for {
     .input {
       max-width: inherit;
-      width: inherit;
+      width: 100%;
     }
     .sim_day_wrapper,
     .sim_time_wrapper
@@ -343,7 +360,11 @@ select, .select {
   padding-bottom: .75em;
   display: flex;
 }
-
+@media all and (max-width: $form-threshold) {
+  .record-header {
+    flex-flow: wrap;
+  }
+}
 .cardio-assessment,
 .ehr-banner-grid,
 .grid-left-to-right-custom,
@@ -393,8 +414,17 @@ select, .select {
 }
 
 
+.grid-span-2-columns,
+.grid-span-3-columns {
+  .computed_wrapper {
+    .input {
+      max-width: inherit;
+    }
+  }
+}
+
 /* Small screens */
-@media all and (max-width: $main-width-threshold1) {
+@media all and (max-width: $form-threshold) {
   .grid-left-to-right-2 {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -419,6 +449,10 @@ select, .select {
   .grid-span-2-columns {
     grid-column: span 1;
   }
+  .grid-span-3-columns {
+    grid-column: span 1;
+  }
+
 }
 
 .thumbnail {
@@ -480,7 +514,7 @@ select, .select {
     height: inherit;
   }
 }
-@media all and (max-width: $main-width-threshold1) {
+@media all and (max-width: $form-threshold) {
   .rcm-morphology-group {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -519,6 +553,16 @@ select, .select {
 .check-label label {
   min-width: 18rem;
   max-width: 18rem;
+}
+@media all and (max-width: $form-threshold) {
+  .form_label {
+    min-width: inherit;
+    max-width: inherit;
+  }
+  .check-label label {
+    min-width: inherit;
+    max-width: inherit;
+  }
 }
 .text-area-2-rows textarea {
   height: 3rem;

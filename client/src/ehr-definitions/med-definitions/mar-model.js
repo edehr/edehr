@@ -18,7 +18,7 @@ export function hourString (hr) {
 }
 
 export function hourStringToHour (ts) {
-  return parseInt(ts.slice(0,2))
+  return ts ? parseInt(ts.slice(0,2)) : ''
 }
 
 const HOURS = 24

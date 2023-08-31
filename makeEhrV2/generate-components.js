@@ -68,7 +68,9 @@ function flushDefs (defs, forInside) {
     def.fullPath = def.path + '/' + def.routeName
     def.title = def.title || splitCamelCase(def.componentName)
     def.label = def.label || def.title
-    def.redirect = def.redirect ? def.redirect : ''
+    // console.log('REDIRECT', def.redirect, def.redirectEhr, def.redirectLis)
+    def.redirectEhr = def.redirectEhr ? def.redirectEhr : ''
+    def.redirectLis = def.redirectLis ? def.redirectLis : ''
     // the first part past '/ehr/' is the top level menu item name ...
     if (forInside) {
       def.topLevel = def.fullPath.split('/')[2]
@@ -138,8 +140,11 @@ function makeTreeItem (def, tree) {
   // demcoaMed Lab and/or EHR navigation
   item.isLIS = !!def.lis
   item.isEHR = !!def.ehr
-  if (def.redirect.length > 0) {
-    item.redirect = def.redirect
+  if (def.redirectEhr.length > 0) {
+    item.redirectEhr = def.redirectEhr
+  }
+  if (def.redirectLis.length > 0) {
+    item.redirectLis = def.redirectLis
   }
   item.label = def.label
   item.pageDataKey = def.pageDataKey
@@ -213,7 +218,7 @@ function makeVueFile (def, componentTemplate) {
     .replace(/{label}/g, def.label)
     .replace(/{componentName}/g, def.componentName)
     .replace(/{insertPageDataKey}/g, def.pageDataKey)
-    .replace(/{redirect}/g, def.redirect)
+    .replace(/{redirect}/g, def.redirectEhr)
     .replace(/{routeName}/g, def.routeName)
     .replace(/{path}/g, def.fullPath)
   content = '// Generated VUE file. Before modifying see docs about Vue file generation\n' + content
