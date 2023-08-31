@@ -1,6 +1,6 @@
 # Instructors and the class list
 
-This section of the documentation is meant for healthcare educators who conduct classes and simulations with students. This section describes how an instructor can view an EdEHR activity and review their student's work.  
+This section of the documentation is meant for healthcare educators who conduct classes and simulations with students. This section describes how an instructor can view an EdEHR activity and review their student's work and generally navigate and use the EdEHR.  
 
 > Effective health record documentation is much more than just *entering data*. First there is the need to learn about critical decision-making based on the evidence. Evidence which comes directly from the patient but also from the electronic health records. These records can be complex and lengthy.  As well, healthcare students need to develop communication skills that support the care team who is helping the patient. Developing these skills requires guidance from faculty and practice on the part of the student. Practice within the safety of the simulation setting.
 
