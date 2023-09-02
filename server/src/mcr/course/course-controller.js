@@ -50,6 +50,8 @@ export default class CourseController extends BaseController {
       title: full.custom_title || full.context_title || 'Unknown',
       description: d === undefined ? full.context_label : d,
       id: full._id,
+      skillsAssessmentMode: full.skillsAssessmentMode,
+      skillsAssessmentActivity: full.skillsAssessmentActivity
     }
   }
 
@@ -113,6 +115,18 @@ export default class CourseController extends BaseController {
     return courseActivities
   }
 
+  updateSkillsAssessment (id, data) {
+    debug(`enableSkillsAssessment course ${id} data: [${JSON.stringify(data)}]`)
+    return this.baseFindOneQuery(id).then(course => {
+      if (course) {
+        course.skillsAssessmentMode = data.skillsAssessmentMode
+        course.skillsAssessmentActivity = data.skillsAssessmentActivity
+        return course.save()
+      } else {
+        logError('Coding error, possibility. Could not find course by id ' + id + ' to perform update')
+      }
+    })
+  }
   updateCourse (id, data) {
     debug(`Update course ${id} data: [${JSON.stringify(data)}]`)
     return this.baseFindOneQuery(id).then(course => {
@@ -194,6 +208,15 @@ export default class CourseController extends BaseController {
         .then(null, fail(res))
     })
 
+    router.put('/enable-skills-assessment/:id', (req, res) => {
+      if (!req.authPayload.isInstructor) {
+        return res.status(401).send(Text.MUST_BE_INSTRUCTOR)
+      }
+      this
+        .updateSkillsAssessment(req.params.key, req.body)
+        .then(ok(res))
+        .then(null, fail(res))
+    })
     return router
   }
 }

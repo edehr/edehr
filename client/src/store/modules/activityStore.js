@@ -15,6 +15,7 @@ const getters = {
   activityRecord: state => state.activityRecord,
   adminActivities: state => state.adminActivities,
   hasActivity: state => JSON.stringify(state.activityRecord).length > 2,
+  feedbackViewable: state => state.activityRecord.feedbackViewable
 }
 
 const actions = {
@@ -49,6 +50,14 @@ const actions = {
   clearCurrentActivity (context) {
     context.commit('clearActivity')
     context.commit('setActivityId', undefined)
+  },
+  setFeedbackViewable ({dispatch, commit}, payload) {
+    const {activity, flag} = payload
+    console.log('setFeedbackViewable payload', payload)
+    let url = 'update-viewable-feedback/' + activity
+    let data = { url: url, data: {isViewable: flag} }
+    // console.log('activityStore.linkAssignment data:', data)
+    return dispatch('put', data)
   },
   loadActivityRecord (context) {
     const visitId = context.rootGetters['visit/visitId']

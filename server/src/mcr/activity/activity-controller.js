@@ -6,6 +6,8 @@ import Assignment from '../assignment/assignment'
 import SeedData from '../seed/seed-data'
 import ActivityData from '../activity-data/activity-data'
 import { isAdmin } from '../../helpers/middleware'
+import { ParameterError } from '../common/errors'
+import { Text } from '../../config/text'
 const debug = require('debug')('server')
 const debugAC = false
 /*
@@ -31,6 +33,9 @@ export default class ActivityController extends BaseController {
       courseId: activity.course,
       courseTitle: courseRecord.title,
       courseDescription: courseRecord.description,
+      skillsAssessmentMode: courseRecord.skillsAssessmentMode,
+      skillsAssessmentActivity: courseRecord.skillsAssessmentActivity,
+      feedbackViewable: activity.feedbackViewable,
       createDate: activity.createDate,
       lastUpdate: activity.lastDate,
       visitId: visit._id,
@@ -143,7 +148,17 @@ export default class ActivityController extends BaseController {
     // console.log('activity-controller update text ', activity)
     return await activity.save()
   }
-
+  async updateViewableFeedback (activityId, viewable) {
+    if(!activityId) {
+      throw new ParameterError(Text.REQUIRES_ACTIVITY_ID)
+    }
+    if (typeof viewable !== 'boolean') {
+      throw new ParameterError(Text.INVALID_PARAMETER_NOT_BOOLEAN)
+    }
+    const activity = await Activity.findById(activityId)
+    activity.feedbackViewable = viewable
+    return await activity.save()
+  }
   async listAdminActivities (consumerId) {
     let list = await Activity.find({ toolConsumer: consumerId })
       .populate('assignment', {name:1, description: 1, seedDataId: 1})
@@ -290,6 +305,17 @@ export default class ActivityController extends BaseController {
         .catch(fail(res))
     })
 
+    router.put('/update-viewable-feedback/:id', (req, res) => {
+      if (!req.authPayload.isInstructor) {
+        return res.status(401).send(Text.MUST_BE_INSTRUCTOR)
+      }
+      let id = req.params.id
+      let {isViewable } = req.body
+      // console.log('activity-controller update-viewable-feedback', req.body)
+      this.updateViewableFeedback(id, isViewable)
+        .then(ok(res))
+        .catch(fail(res))
+    })
     return router
   }
 }

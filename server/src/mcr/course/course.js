@@ -12,6 +12,8 @@ const Schema = new mongoose.Schema({
   context_type: {type: String}, // ltiData.context_type,
   custom_title: { type: String }, // user supplied override to context_title
   custom_description: { type: String }, // user supplied override to context_label
+  skillsAssessmentMode: { type: Boolean, default: false }, // if true then limit students to viewing and using only ..
+  skillsAssessmentActivity: { type: ObjectId, ref: 'Activity' },
   createDate: {type: Date, default: Date.now},
   lastDate: {type: Date, default: Date.now}
 }, {

@@ -28,6 +28,14 @@
             fas-icon(class='fa', :icon='appIcons.classList')
             span &nbsp; {{text.CLASS_LIST_BTN}}
           span &nbsp; {{text.STUDENTS_VAL(classList.length, classSubmittedList.length)}}
+      div feedbackViewable  {{ feedbackViewable }}
+        app-type-toggle-button(
+          :modelValue='feedbackViewable',
+          @change='changeFeedbackViewable',
+          labelOn='Viewable'
+          labelOff='Locked'
+        )
+
       div(class="details-row")
         div(class="details-name") {{text.LOBJ}}
         div(class="details-value")
@@ -61,9 +69,11 @@ import ZoneLmsButton from '@/outside/components/ZoneLmsButton.vue'
 import StoreHelper from '@/helpers/store-helper'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner.vue'
 import router, { UNLINKED_ACTIVITY_ROUTE_NAME } from '@/router'
+import AppTypeToggleButton from '@/outside/components/seed-management/AppTypeToggleButton.vue'
 export default {
   extends: OutsideCommon,
   components: {
+    AppTypeToggleButton,
     ZoneLmsPageBanner,
     ZoneLmsButton,
     ActivityDialog,
@@ -96,6 +106,9 @@ export default {
     courseTitle () {
       return this.course.title
     },
+    feedbackViewable () {
+      return this.$store.getters['activityStore/feedbackViewable']
+    },
     lastUpdate () {
       return formatTimeStr(this.activity.lastDate)
     },
@@ -107,6 +120,13 @@ export default {
     switchToStudent () {
       const appType = this.activity.appType
       StoreHelper.visitAsStudent(this.$router, appType)
+    },
+    changeFeedbackViewable () {
+      const payload = {
+        activity: this.activity.id,
+        flag: !this.feedbackViewable
+      }
+      this.$store.dispatch('activityStore/setFeedbackViewable', payload)
     },
     /*
     LmsActivity is THE landing place for all instructor users. The LTI process brings all

@@ -14,6 +14,7 @@
         div(class="details-value")
           div(v-text-to-html="learningObjectDescription")
       div(class="details-row")
+        div feedbackViewable {{ feedbackViewable }}
         div(class="details-name") {{text.EVALUATION}}
         div(class="details-value") {{ evaluationData }}
       div(class="details-row")
@@ -64,6 +65,9 @@ export default {
     activityId () {
       return this.activityRecord.id
       // return this.$store.getters['activityStore/activityId']
+    },
+    feedbackViewable () {
+      return this.$store.getters['activityStore/feedbackViewable']
     },
     // assignment () {
     //   return this.$store.getters['assignmentStore/assignment'] || {}
