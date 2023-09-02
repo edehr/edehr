@@ -10,6 +10,7 @@ import { sentryDebugLimiter } from '../helpers/middleware'
 import { logError } from '../helpers/log-error'
 import { setUpEhrTraceLogger } from './trace-ehr'
 import { setUpActionLogger } from './trace-actions'
+import AuthUtil from '../mcr/common/auth-util'
 const debug = require('debug')('server')
 const helmet = require('helmet')
 
@@ -26,6 +27,8 @@ function sentryEnvironment (config) {
 export default class EhrApp {
   constructor (config) {
     const app = this.app = express()
+    app.authUtil = new AuthUtil(config)
+
     if (config.sentryDsn) {
       const sentryEnv = sentryEnvironment (config)
       debug('Sentry set environment to ', sentryEnv)

@@ -129,6 +129,7 @@ const AUTH_TOKEN_KEY = 'authToken'
 const mutations = {
   initialize: function (state) {
     state.token = localStorage.getItem(AUTH_TOKEN_KEY)
+    setAuthHeader(state.token)
     if(logAuth) console.log('authStore initialize with ', hashToken(state.token))
   },
   setAuthData: function (none, data) {

@@ -114,9 +114,9 @@ async  function onPageChange (toRoute) {
       // is from the expected api server and no-where else.
       if (dbApp) console.log('_loadAuth refresh token', authHelper.hashToken(refreshToken))
       await StoreHelper.fetchAndStoreRefreshToken(refreshToken)
+      // fetchAndStoreRefreshToken also sets the axios header, and that emits a USER_LOGIN_EVENT event
       // fetch throws if token is expired or invalid
       const authToken = StoreHelper.getAuthToken()
-      setAuthHeader(authToken)
       await StoreHelper.fetchTokenData(authToken)
       const visitId = store.getters['authStore/visitId']
       const path = toRoute.path

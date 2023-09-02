@@ -3,6 +3,7 @@ import { removeEmptyProperties } from './ehr-utils'
 import sKeys from './session-keys'
 import { ZONE_ADMIN, ZONE_DEMO, ZONE_EHR, ZONE_LMS, ZONE_PUBLIC } from '@/router'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
+import EventBus, { USER_LOGOUT_EVENT } from '@/helpers/event-bus'
 
 let debugSH = false
 
@@ -107,6 +108,16 @@ class StoreHelperWorker {
   inZoneLMS () { return store.getters['system/pageZone'] === ZONE_LMS}
   inZonePublic () { return store.getters['system/pageZone'] === ZONE_PUBLIC}
   // isDemo see demo section
+
+  wsUrlGet () {
+    let url = window.location.origin || ''
+    if (url.includes('localhost')) {
+      url = 'ws://localhost:27000'
+    } else {
+      url = 'wss:' + url.split(':')[1]
+    }
+    return url
+  }
 
   /**
    * The API server must provide the url to call back into the server.
@@ -617,6 +628,7 @@ class StoreHelperWorker {
 
   async logUserOutOfEdEHR (clearDemo=true) {
     StoreHelper.postActionEvent(SYSTEM_ACTION,'logUserOut')
+    EventBus.$emit(USER_LOGOUT_EVENT)
     const dt = StoreHelper.getDemoToken()
     if (clearDemo && dt) {
       await this._dispatchDemoStore('demoLogout')

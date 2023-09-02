@@ -18,6 +18,7 @@ Import the global style sheet
  */
 import './scss/styles.scss'
 import StoreHelper from '@/helpers/store-helper'
+import { setupWebSocket } from '@/helpers/web-socket-client'
 /*
 Configure Vue
  */
@@ -98,5 +99,7 @@ new Vue({
   render: h => h(App),
   created: function () {
     initializeStore(store)
+
+    setupWebSocket()
   }
 }).$mount('#app')
