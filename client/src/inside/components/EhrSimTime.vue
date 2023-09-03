@@ -1,5 +1,5 @@
 <template lang='pug'>
-  div  Simulation time {{visitTime}}. Encounter day {{visitDay}} &nbsp;
+  div  Encounter day {{visitDay}} time {{visitTime}}
     ui-info(title="Simulation time", text="This is simulated visit day and time.")
 </template>
 

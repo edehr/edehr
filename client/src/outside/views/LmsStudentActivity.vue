@@ -12,11 +12,14 @@
       div(class="details-row")
         div(class="details-name") {{text.DESCRIPTION}}
         div(class="details-value")
-          div(v-text-to-html="learningObjectDescription")
+          div(v-text-to-html="studentInstructions")
       div(class="details-row")
-        div feedbackViewable {{ feedbackViewable }}
         div(class="details-name") {{text.EVALUATION}}
-        div(class="details-value") {{ evaluationData }}
+        div(class="details-value")
+          div(v-if='feedbackViewable')
+            div(v-if="hasEvaluationData") {{ evaluationData }}
+            div(v-else) No instructor has provided feedback for this work.
+          div(v-else) Feedback viewing is blocked
       div(class="details-row")
         div(class="details-name") {{text.SCRATCH}}
         div(class="details-value") {{ scratchData }}
@@ -79,8 +82,10 @@ export default {
       return this.course.title
     },
     evaluationData () { return this.activityRecord.evaluationData},
+    hasEvaluationData () { return this.evaluationData && this.evaluationData.length > 0 },
     learningObjectId () { return this.activityRecord.learningObjectId },
     learningObjectName () { return this.activityRecord.learningObjectName },
+    studentInstructions () { return this.activityRecord.description },
     learningObjectDescription () { return this.activityRecord.learningObjectDescription },
     scratchData () { return this.activityRecord.scratchData },
     submitted () { return this.activityRecord.submitted },

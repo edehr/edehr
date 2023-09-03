@@ -114,10 +114,10 @@ class InstoreHelperWorker {
     })
   }
   // TODO remove context parameter
-  getRequest (context, api, url) {
+  getRequest (context, api, url, silent) {
     url = this.composeUrl(context, api, url)
     if(debug) console.log('GET to this url', url)
-    StoreHelper.setLoading(context, true)
+    if (!silent) StoreHelper.setLoading(context, true)
     return new Promise((resolve, reject) => {
       axios
         .get(url)
@@ -134,7 +134,7 @@ class InstoreHelperWorker {
         })
         .finally( () => {
           if(debug) console.log('GOT ', api, '>> finally')
-          StoreHelper.setLoading(context, false)
+          if (!silent) StoreHelper.setLoading(context, false)
         })
     })
   }

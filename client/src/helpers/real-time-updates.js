@@ -1,6 +1,7 @@
 import EventBus, { MESSAGE_FROM_SERVER } from '@/helpers/event-bus'
 import store from '../store'
 import StoreHelper from '@/helpers/store-helper'
+import System from '@/store/modules/system'
 
 const map = {
   ACTIVITY: [updateActivity],
@@ -9,7 +10,7 @@ const map = {
 }
 export function setupRealTime () {
   EventBus.$on(MESSAGE_FROM_SERVER, (value) => {
-    // console.log('WWWWWWWW', value)
+    console.log('RT message', value)
     try {
       let payload = JSON.parse(value)
       let actions = map[payload.channel]
@@ -31,7 +32,12 @@ async function updateActivity (payload) {
 async function updateActivityData (payload) {
   let id = store.getters['activityDataStore/id']
   if (payload.id === id) {
-    await store.dispatch('activityDataStore/loadActivityData')
+    try {
+      StoreHelper.setLoadingEnabled( false)
+      await store.dispatch('activityDataStore/loadActivityData')
+    } finally {
+      StoreHelper.setLoadingEnabled( true)
+    }
   }
   if (StoreHelper.isInstructor()) {
     let needsUpdate = false

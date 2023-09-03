@@ -66,21 +66,23 @@ const actions = {
     if (debug) console.log(NAME+ ' sendAssignmentDataUpdate', payload)
     return context.dispatch('putActiveDataSilent', {url: url, data: payload })
   },
-  loadActivityData (context, id) {
-    id = id || context.state.dataStore._id
-    if (!id) {
+  loadActivityData (context, payload) {
+    if (!payload) throw new Error('Coding error. Must provide payload to loadActivityData')
+    if (!payload.id) payload.id = context.state.dataStore._id
+    if (!payload.id) {
       console.error(NAME + ' can not get activityData from null id ')
       return
     }
-    return context.dispatch('getActivityData',id)
+    return context.dispatch('getActivityData',payload)
       .then( (results) => {
         if (debug) console.log(NAME + ' loaded ', results)
         return context.commit('set', results)
       })
   },
-  getActivityData (context, id) {
+  getActivityData (context, payload) {
+    const { id, silent } = payload
     let url = 'get/' + id
-    return InstoreHelper.getRequest(context, API, url).then(response => {
+    return InstoreHelper.getRequest(context, API, url, silent).then(response => {
       let results = response.data[OBJ]
       if (!results) {
         let msg = Text.GET_ACTIVITY_DATA_ERROR(NAME, id)

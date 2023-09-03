@@ -274,7 +274,7 @@ async  function onPageChange (toRoute) {
         StoreHelper.setIsDevelopingContent(false)
       }
       if (dbApp) console.log('student ehr page load')
-      await StoreHelper._dispatchActivityData('loadActivityData', theActivity.activityDataId)
+      await StoreHelper._dispatchActivityData('loadActivityData', { id: theActivity.activityDataId })
       await StoreHelper.loadAssignment(theActivity.learningObjectId)
       await StoreHelper.loadSeed(theActivity.caseStudyId)
     }

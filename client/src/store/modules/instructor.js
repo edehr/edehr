@@ -59,7 +59,7 @@ const actions = {
     let sv = context.getters.currentEvaluationStudent
     let adId = sv.activityData._id
     if (debug) console.log(NAME + 'currentEvaluationStudent activityData._id', adId)
-    await context.dispatch('activityDataStore/loadActivityData', adId, { root: true })
+    await context.dispatch('activityDataStore/loadActivityData', { id: adId }, { root: true })
   },
 
   saveEvaluationNotes (context, payload) {

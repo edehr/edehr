@@ -174,8 +174,10 @@ class StoreHelperWorker {
       setTimeout(() => {
         store.commit('system/setLoading', value)
       }, 50)
-
     }
+  }
+  setLoadingEnabled (context, enable) {
+    store.commit('system/setLoadingEnable', enable)
   }
   setApiError (msg) {  store.commit('system/setApiError', msg, { root: true }) }
   setSystemMessage (msg) {  store.commit('system/setSystemMessage', msg, { root: true }) }
