@@ -2,7 +2,7 @@
 import WebSocket from 'ws'
 import EventEmitter from 'events'
 
-const details = process.env.WEBSOCKET_DEBUGGING || true
+const details = process.env.WEBSOCKET_DEBUGGING || false
 const PX = '--- websocket ---- ' // a prefix for each debug stmt from this module. This helps if there are many other messages in the console.
 
 if (details && process.env.NODE_ENV === 'production') {
@@ -122,7 +122,7 @@ export function setupWebSocket (appServer, authUtil) {
       }
     }
 
-    send('Welcome client' + ws.clientId)
+    // send('Welcome client' + ws.clientId)
 
     ws.pingInterval = setInterval(ping, PING_DELAY)
 

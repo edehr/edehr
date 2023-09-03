@@ -1,7 +1,7 @@
 import StoreHelper from '@/helpers/store-helper'
 import EventBus, { MESSAGE_FROM_SERVER, USER_LOGIN_EVENT, USER_LOGOUT_EVENT } from '@/helpers/event-bus'
 
-const details = process.env.WEBSOCKET_DEBUGGING || true
+const details = process.env.WEBSOCKET_DEBUGGING || false
 const detailMessages = true
 const PX = '--- websocket ---- ' // a prefix for each debug stmt from this module. This helps if there are many other messages in the console.
 

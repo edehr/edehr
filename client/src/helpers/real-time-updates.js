@@ -9,7 +9,7 @@ const map = {
 }
 export function setupRealTime () {
   EventBus.$on(MESSAGE_FROM_SERVER, (value) => {
-    console.log('WWWWWWWW', value)
+    // console.log('WWWWWWWW', value)
     try {
       let payload = JSON.parse(value)
       let actions = map[payload.channel]
@@ -17,15 +17,15 @@ export function setupRealTime () {
         actions.forEach(action => action(payload))
       }
     } catch (err) {
-      console.log('Realtime handler got a message that is not JSON', value)
+      console.error('Realtime handler got a message that is not JSON', value)
     }
   })
 }
 
-function updateActivity (payload) {
+async function updateActivity (payload) {
   let id = store.getters['activityStore/activityId']
-  if(payload.id === id) {
-    store.dispatch('activityStore/loadActivityRecord')
+  if (payload.id === id) {
+    await store.dispatch('activityStore/loadActivityRecord')
   }
 }
 async function updateActivityData (payload) {
@@ -38,7 +38,7 @@ async function updateActivityData (payload) {
     let classList = store.getters['instructor/classList']
     for (const sv of classList) {
       let aId = sv.activityData._id
-      console.log(' is this aID match', aId, payload.id)
+      // console.log(' is this aID match', aId, payload.id)
       if (payload.id === aId) {
         needsUpdate = true
         break
