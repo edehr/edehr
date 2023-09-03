@@ -28,13 +28,16 @@
             fas-icon(class='fa', :icon='appIcons.classList')
             span &nbsp; {{text.CLASS_LIST_BTN}}
           span &nbsp; {{text.STUDENTS_VAL(classList.length, classSubmittedList.length)}}
-      div feedbackViewable  {{ feedbackViewable }}
-        app-type-toggle-button(
-          :modelValue='feedbackViewable',
-          @change='changeFeedbackViewable',
-          labelOn='Viewable'
-          labelOff='Locked'
-        )
+      div(class="details-row")
+        div(class="details-name") Feedback viewable
+        div(class="details-value")
+          app-type-toggle-button(
+            :modelValue='feedbackViewable',
+            @change='changeFeedbackViewable',
+            labelOn='Viewable'
+            labelOff='Locked'
+          )
+          div Students  {{ feedbackViewable ? 'are able to' : 'are not able to' }} see the instructor feedback and grading
 
       div(class="details-row")
         div(class="details-name") {{text.LOBJ}}

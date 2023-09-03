@@ -67,7 +67,7 @@ export const Text = {
     ACTIVITY_LABEL: 'LMS activity',
     ACTIVITY_MISSING: 'No learning object is linked to this activity.',
     COURSE_LABEL: 'Course',
-    DESCRIPTION: 'Activity description',
+    DESCRIPTION: 'Student instructions',
     DATES: 'Dates',
     DATES_VAL: (c,l) => `Created on ${formatTimeStr(c)}. Last modified on ${formatTimeStr(l)} `,
     CASE_STUDY: 'Case study',

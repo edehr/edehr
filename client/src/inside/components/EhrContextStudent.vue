@@ -3,6 +3,7 @@
     div
       div {{givenName}}.  You are working on:
         span(class='content') {{ truncate(assignmentName, 50) }}
+        ui-info(title="Instructions", :html="instructions")
       div(v-if='feedbackViewable')
         div(v-if="hasEvaluationData") Instructor's comments:
           span(class="content") {{ activityData.evaluationData }}
@@ -15,9 +16,10 @@
 <script>
 import StoreHelper from '@/helpers/store-helper'
 import EhrStudentSubmit from '@/inside/components/EhrStudentSubmit.vue'
+import UiInfo from '@/app/ui/UiInfo.vue'
 
 export default {
-  components: { EhrStudentSubmit },
+  components: { UiInfo, EhrStudentSubmit },
   data () {
     return {
     }
@@ -26,6 +28,7 @@ export default {
     activityData () { return StoreHelper.getActivityData() },
     activityRecord () { return this.$store.getters['activityStore/activityRecord'] },
     assignmentName () { return this.activityRecord.title },
+    instructions () { return this.activityRecord.description },
     evaluationData () { return this.activityData.evaluationData },
     givenName () { return StoreHelper.givenName()},
     feedbackViewable () { return this.activityRecord.feedbackViewable },
