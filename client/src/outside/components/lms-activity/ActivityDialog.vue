@@ -114,7 +114,6 @@ export default {
       }
       this.$refs.theDialog.onClose()
       await this.$store.dispatch('activityStore/updateTitleDescription', payload)
-      await this.$store.dispatch('activityStore/loadActivityRecord')
     },
     useLMS () {
       this.name = this.activity.resource_link_title

@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import { WS_EVENT_BUS, WS_S2C_MESSAGE_EVENT } from '../../server/push-server'
 const ObjectId = mongoose.Schema.Types.ObjectId
 
 /*
@@ -20,6 +21,10 @@ const VisitSchema = new mongoose.Schema({
   returnUrl: {type: String},
   createDate: {type: Date, default: Date.now},
   lastVisitDate: {type: Date, default: Date.now}
+})
+
+VisitSchema.post('save', function (doc) {
+  WS_EVENT_BUS.emit(WS_S2C_MESSAGE_EVENT, JSON.stringify({channel: 'VISIT', id: doc._id}))
 })
 
 const Visit = mongoose.model('Visit', VisitSchema)

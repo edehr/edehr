@@ -19,6 +19,7 @@ Import the global style sheet
 import './scss/styles.scss'
 import StoreHelper from '@/helpers/store-helper'
 import { setupWebSocket } from '@/helpers/web-socket-client'
+import { setupRealTime } from '@/helpers/real-time-updates'
 /*
 Configure Vue
  */
@@ -101,5 +102,6 @@ new Vue({
     initializeStore(store)
 
     setupWebSocket()
+    setupRealTime()
   }
 }).$mount('#app')

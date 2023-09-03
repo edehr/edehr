@@ -1,7 +1,8 @@
 import StoreHelper from '@/helpers/store-helper'
 import EventBus, { MESSAGE_FROM_SERVER, USER_LOGIN_EVENT, USER_LOGOUT_EVENT } from '@/helpers/event-bus'
 
-const details = process.env.WEBSOCKET_DEBUGGING || false
+const details = process.env.WEBSOCKET_DEBUGGING || true
+const detailMessages = true
 const PX = '--- websocket ---- ' // a prefix for each debug stmt from this module. This helps if there are many other messages in the console.
 
 // Message sent to server that it will echo back to be used by the client to check the server is accessible
@@ -32,7 +33,7 @@ export function setupWebSocket () {
           // do nothing. Server is responding to this client's message.
           if (details) console.log(PX + HEARTBEAT)
         } else {
-          if (details) console.log('socket onmessage', value)
+          if (detailMessages) console.log('socket onmessage', value)
           // send the message to another part of the application, for processing
           EventBus.$emit(MESSAGE_FROM_SERVER, value)
         }

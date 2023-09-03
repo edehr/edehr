@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import { EhrPages } from '../../ehr-definitions/ehr-models'
+import { WS_EVENT_BUS, WS_S2C_MESSAGE_EVENT } from '../../server/push-server'
 const ObjectId = mongoose.Schema.Types.ObjectId
 /*
  */
@@ -35,6 +36,11 @@ Schema.virtual('draftRowCount').get(function () {
   const stats = this.ehrData ? ehrPages.ehrPagesStats(this.ehrData) : {}
   const meta = stats.meta || {}
   return meta.draftRows || 0
+})
+
+
+Schema.post('save', function (doc) {
+  WS_EVENT_BUS.emit(WS_S2C_MESSAGE_EVENT, JSON.stringify({channel: 'CASE_STUDY', id: doc._id}))
 })
 
 // to get the assignment count you need to use populate('assignmentCount')

@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import { WS_EVENT_BUS, WS_S2C_MESSAGE_EVENT } from '../../server/push-server'
 const ObjectId = mongoose.Schema.Types.ObjectId
 
 /*
@@ -39,6 +40,10 @@ const Schema = new mongoose.Schema({
 }, {
   toObject: { virtuals: true },
   toJSON: { virtuals: true }
+})
+
+Schema.post('save', function (doc) {
+  WS_EVENT_BUS.emit(WS_S2C_MESSAGE_EVENT, JSON.stringify({channel: 'ACTIVITY', id: doc._id}))
 })
 
 Schema.virtual('title').get(function () {

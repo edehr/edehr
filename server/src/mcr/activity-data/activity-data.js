@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import { WS_EVENT_BUS, WS_S2C_MESSAGE_EVENT } from '../../server/push-server'
 const ObjectId = mongoose.Schema.Types.ObjectId
 
 /*
@@ -12,7 +13,7 @@ Via the visit record we can access the LMS activity, the student, and the EdEHR 
 The tool consumer field is here, as in other cases, to provide future sharding and data management tasks based
 on tool consumer (e.g. locate all records for a particular consumer, or shard data based on consumer)
  */
-const ActivityDataSchema = new mongoose.Schema({
+const Schema = new mongoose.Schema({
   toolConsumer: {type: ObjectId, ref: 'Consumer', required: true},
   visit: {type: ObjectId, ref: 'Visit', required: true},
   assignmentData: {type: Object}, // place for student's data
@@ -26,6 +27,10 @@ const ActivityDataSchema = new mongoose.Schema({
   toJSON: { virtuals: true }
 })
 
-const ActivityData = mongoose.model('ActivityData', ActivityDataSchema)
+Schema.post('save', function (doc) {
+  WS_EVENT_BUS.emit(WS_S2C_MESSAGE_EVENT, JSON.stringify({channel: 'ACTIVITY_DATA', id: doc._id}))
+})
+
+const ActivityData = mongoose.model('ActivityData', Schema)
 
 export default ActivityData
