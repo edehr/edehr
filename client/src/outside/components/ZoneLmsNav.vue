@@ -77,7 +77,7 @@ export default {
   },
   computed: {
     activity () { return this.$store.getters['activityStore/activityRecord'] },
-    activityName () { return this.activity.learningObjectName },
+    activityName () { return this.activity.title },
     consumerId () { return StoreHelper.consumerId() },
     hasActivity () { return this.$store.getters['activityStore/hasActivity'] },
     hasCourse () { return this.$store.getters['courseStore/hasCourse'] },

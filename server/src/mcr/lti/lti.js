@@ -138,9 +138,9 @@ export default class LTIController {
         logLti('LTI. Here are the details used to create the signature', details)
       } : undefined
       let secret = req.toolConsumer.oauth_consumer_secret
-      debug('strategyVerify secret', secret)
+      logLti('strategyVerify secret', secret)
       let provider = new lti.Provider(ltiData, secret, null, null, withDetailsCallback)
-      logLti('strategyVerify validate msg with provider')
+      logLti('strategyVerify validated msg with provider')
       provider.valid_request(_req,  async (err, isValid) => {
         if (err) {
           logError('strategyVerify invalid lti request ' + err.message)
@@ -341,7 +341,7 @@ export default class LTIController {
         userId: visit.user,
         visitId: visit._id
       }
-      debug('LTI create token with', tokenData)
+      debug('LTI create token with' + JSON.stringify(tokenData))
       const token = this.authUtil.createToken(tokenData, this.config.authTokenLives)
       const refreshToken = this.authUtil.createRefreshToken(token)
       params.push('lti=' + (visit.isInstructor ? 'instructor' : 'student'))
