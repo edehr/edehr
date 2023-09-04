@@ -11,7 +11,7 @@
           ui-link(:name="'lms-instructor-activity'")
             // no visit id because we are not changing visit
             fas-icon(class="fa", :icon="appIcons.activity")
-            span &nbsp; {{activity.learningObjectName}}
+            span &nbsp; {{activity.title}}
       div(class="details-row")
         div(class="details-name") {{text.GOTOLOBJ}}
         div(class="details-value")

@@ -97,7 +97,7 @@ if [[ "$LINT" == "true" ]]
 then
   echo Run tests on EHR workspace
   echo Linting client files, including newly generated files.
-  nvm use 14
+  nvm use 18
   cd ../client &&  npm run lint
   nvm use 18
   cd ../server &&  npm run lint

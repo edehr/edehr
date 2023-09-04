@@ -17,6 +17,7 @@ const state = {
   isEditing: false,
   isSeeding: false,
   loadingCnt: 0,
+  loadingEnabled: true,
   pageTitle: '',
   pageZone: '',
   pageIcon: undefined,
@@ -143,10 +144,14 @@ const mutations = {
     state.condensedTableVertical = value
   },
   setLoading: (state, isLoading) => {
-    state.loadingCnt += isLoading ? 1 : -1
-    state._isLoading = state.loadingCnt > 0
-    if (trace) console.log('system loading state.loadingCnt', state.loadingCnt)
-    if (trace) console.log('system loading state._isLoading', state._isLoading)
+    if(state.loadingEnabled) {
+      state.loadingCnt += isLoading ? 1 : -1
+      state._isLoading = state.loadingCnt > 0
+      if (trace) console.log('system loading state.loadingCnt', state.loadingCnt, state._isLoading)
+    }
+  },
+  setLoadingEnable: (state, enable) => {
+    state.loadingEnabled = enable
   },
   setEditing: (state, isEditing) => {
     state.isEditing = isEditing

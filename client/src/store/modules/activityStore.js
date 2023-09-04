@@ -2,7 +2,6 @@ import InstoreHelper from '@/store/modules/instoreHelper'
 import StoreHelper from '@/helpers/store-helper'
 import { Text } from '@/helpers/ehr-text'
 const API = 'activities'
-const OBJ = 'activity'
 
 const state = {
   activityRecord: {},
@@ -15,6 +14,7 @@ const getters = {
   activityRecord: state => state.activityRecord,
   adminActivities: state => state.adminActivities,
   hasActivity: state => JSON.stringify(state.activityRecord).length > 2,
+  feedbackViewable: state => state.activityRecord.feedbackViewable
 }
 
 const actions = {
@@ -50,6 +50,14 @@ const actions = {
     context.commit('clearActivity')
     context.commit('setActivityId', undefined)
   },
+  setFeedbackViewable ({dispatch, commit}, payload) {
+    const {activity, flag} = payload
+    console.log('setFeedbackViewable payload', payload)
+    let url = 'update-viewable-feedback/' + activity
+    let data = { url: url, data: {isViewable: flag} }
+    // console.log('activityStore.linkAssignment data:', data)
+    return dispatch('put', data)
+  },
   loadActivityRecord (context) {
     const visitId = context.rootGetters['visit/visitId']
     let url = 'getActivityRecord/' + visitId
@@ -63,18 +71,6 @@ const actions = {
       }
       await context.commit('setActivityId', results.id)
       await context.commit('setActivityRecord', results)
-      return results
-    })
-  },
-  get (context, id) {
-    let url = 'get/' + id
-    return InstoreHelper.getRequest(context, API, url).then(response => {
-      let results = response.data[OBJ]
-      if (!results) {
-        let msg = Text.GET_ACTIVITY_STORE_ERROR(id)
-        StoreHelper.setApiError(msg)
-        return
-      }
       return results
     })
   },

@@ -9,7 +9,7 @@
       has-left-button
     )
       h2(slot="header") Activity:  {{ name }}
-      div(slot='header-extra-content', class='intro') The student will see the following activity title and description so it is important to give them context and guidance. Edit the title and description below. Or choose to use the content provided either by the {{ lmsName }} or by the Learning Object.
+      div(slot='header-extra-content', class='intro') The student sees the activity title and instructions. You can edit the title and instructions below, or use the content provided by your LMS ({{ lmsName }}) or by the Learning Object.
       div(slot="body")
         section
           fieldset
@@ -17,7 +17,7 @@
               label Title
               input(class="input", type="text", v-model="name", v-validate="nameValidate")
             div(class="flow_across")
-              label Description
+              label Student instructions
               textarea(v-model="description")
         section(class="other-source")
           div <strong> Provided by: {{ lmsName }} </strong>
@@ -114,7 +114,6 @@ export default {
       }
       this.$refs.theDialog.onClose()
       await this.$store.dispatch('activityStore/updateTitleDescription', payload)
-      await this.$store.dispatch('activityStore/loadActivityRecord')
     },
     useLMS () {
       this.name = this.activity.resource_link_title

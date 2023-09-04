@@ -7,6 +7,9 @@
           span PHN
           span {{ patientData.phn }}
         div
+          span MRN
+          span {{ patientData.mrn }}
+        div
           span DoB
           span {{ patientData.dateOfBirth }} ({{ patientData.personAge }} yrs)
         div
@@ -27,9 +30,6 @@
         div
           span Location
           span {{ patientData.location }}
-        div
-          span MRN
-          span {{ patientData.mrn }}
         div
           span MRP
           span {{ patientData.mrp }}

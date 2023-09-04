@@ -3,6 +3,7 @@ import {configuration} from '../config/config'
 import EhrApp from './app.js'
 import { version } from 'process'
 import { logError } from '../helpers/log-error'
+import { setupWebSocket } from './push-server'
 const debug = require('debug')('server')
 
 if (!validateNode()) {
@@ -15,9 +16,10 @@ ehrApp.setup(configuration)
     const app = ehrApp.application
     const {serverPort} = configuration
     if (validateNode()) {
-      app.listen(serverPort, () => {
+      const appServer = app.listen(serverPort, () => {
         console.log('Server running...', serverPort)
       })
+      setupWebSocket(appServer, app.authUtil)
     }
   })
 

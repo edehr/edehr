@@ -126,13 +126,16 @@ export default {
       // }
     },
     reset () {
+      // if the window is smaller than the threshold defined in the CSS then set the left side to 0
+      // $main-width-threshold2: 650px;
+      const threshold = 650
       // Set the top/left position based on window and dialog dimensions
       let d = this.$refs.theDialog
       let ew = d.clientWidth
       let eh = d.clientHeight
       let ww = window.innerWidth
       let wh = window.innerHeight
-      let mx = (ww - ew) / 2
+      let mx = ww > threshold ? (ww - ew) / 2 : 0
       let my = (wh - eh) / 8
       my = Math.max(my, 5) // don't let top disappear
       // console.log('The Dialog w', ww, ew, mx, d)
@@ -234,11 +237,14 @@ export default {
 @media screen and (max-width: $dialog-width-threshold){
   .dialog-wrapper{
     min-width: inherit;
-    max-width: inherit;
+    max-width: 100%; /* fit the contents to the screen */
   }
   .dialog-content {
     min-width: inherit;
     max-width: inherit;
+  }
+  .dialog-header {
+    max-height: inherit; /* let the patient banner height fit the content */
   }
 }
 

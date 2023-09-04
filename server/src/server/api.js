@@ -13,7 +13,6 @@ import ActivityController from '../mcr/activity/activity-controller'
 import ActivityDataController from '../mcr/activity-data/activity-data-controller'
 import AssignmentController from '../mcr/assignment/assignment-controller'
 import AuthController from '../mcr/auth/auth-controller'
-import AuthUtil from '../mcr/common/auth-util'
 import ConsumerController from '../mcr/consumer/consumer-controller'
 import DemoController from '../mcr/demo/demo-controller'
 import FeedbackController from '../mcr/feedback/feedback-controller'
@@ -72,7 +71,7 @@ export function apiMiddle (app, config) {
     origin: [ config.clientUrl, config.apiUrl ]
   }
   debug('corsOptions', corsOptions)
-  const authUtil = new AuthUtil(config)
+  const authUtil = app.authUtil
   const act = new ActivityController()
   const acc = new ActivityDataController()
   const as = new AssignmentController(config)

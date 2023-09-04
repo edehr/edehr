@@ -57,6 +57,7 @@ const groupProperties = [
   'dependentOn',
   'formOption',
   'label',
+  'tableLabel',
   'formCss',
 ]
 

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import uniqueValidator from 'mongoose-unique-validator'
+import { WS_EVENT_BUS, WS_S2C_MESSAGE_EVENT } from '../../server/push-server'
 const ObjectId = mongoose.Schema.Types.ObjectId
 
 /*
@@ -20,6 +21,10 @@ const Schema = new mongoose.Schema({
 })
 
 Schema.plugin(uniqueValidator)
+
+Schema.post('save', function (doc) {
+  WS_EVENT_BUS.emit(WS_S2C_MESSAGE_EVENT, JSON.stringify({channel: 'LEARNING_OBJECT', id: doc._id}))
+})
 
 // to get the activity count you need to use populate('activityCount')
 Schema.virtual('activityCount', {

@@ -239,7 +239,7 @@ describe('General testing', () => {
   it('setLoading', done => {
     should.doesNotThrow(() => {
       const isLoading = !StoreHelper.isLoading()
-      StoreHelper.setLoading(null, isLoading)
+      StoreHelper.setLoading('unit tester', isLoading)
       const result = StoreHelper.isLoading()
       should.exist(result)
       result.should.equal(isLoading)

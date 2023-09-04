@@ -57,7 +57,7 @@ export default {
         this.duplicateIds = idDup.join(', ')
       }
       if (this.duplicateIds && this.duplicateIds.length >0 ) {
-        console.log('Found duplicate ids so stop set up of custom form')
+        console.error('Found duplicate ids so stop set up of custom form')
         return
       }
       this.customSetupCheckboxes()

@@ -107,30 +107,25 @@ export const activity1 = {
   lObjDef: assignment1,
   seedDef: ej0SeedDef,
   resource_link_title: `${assignment1.title} - Activity`,
-  resource_link_description: 'This demonstration activity uses the ' +
-    ` "${assignment1.title}" learning object, located in this demo instance of the EdEHR.` +
-    ' This activity\'s learning object is based on Case Study #1. ' +
-    ' See: Case Study #1 in https://pressbooks.bccampus.ca/healthcasestudies/' +
-    '',
+  resource_link_description: 'This demonstration activity is based on Case Study #1 from the open text book ' +
+    'https://pressbooks.bccampus.ca/healthcasestudies/' +
+    '. Your task is to expore the patient\'s current status, determine what interventions are required and record your recommendations in a nursing note (progress note).',
 }
 export const activity2 = {
   lObjDef: assignment2,
   seedDef: ej2SeedDef,
   resource_link_title: `${assignment2.title} - Activity`,
-  resource_link_description: 'This demonstration activity uses the ' +
-    ` "${assignment2.title}" learning object, located in this demo instance of the EdEHR.` +
-    ' This activity\'s learning object is based on Case Study #2 at the end of the patient\'s stay. ' +
-    ' See: Case Study #2 in https://pressbooks.bccampus.ca/healthcasestudies/' +
-    ''
+  resource_link_description: 'This demonstration activity is based on Case Study #2 from the open text book ' +
+    'https://pressbooks.bccampus.ca/healthcasestudies/' +
+    '. Your task is to expore the patient\'s current status, determine what interventions are required and record your recommendations in a nursing note (progress note).',
 }
 
 export const activity3 = {
   lObjDef: assignment3,
   seedDef: wound1SeedDef,
   resource_link_title: `${assignment3.title}`,
-  resource_link_description: 'This demonstration activity uses the ' +
-    ` "${assignment3.title}" learning object, located in this demo instance of the EdEHR.` +
-    ' This activity\'s learning object is a case study devised to illustrate the Integumentary and Wound Care module in the EdEHR ',
+  resource_link_description: 'This demonstration activity is a case study devised to illustrate the Integumentary and Wound Care module in the EdEHR. ' +
+    'Your task is to conduct and record a wound assessment. ',
 }
 
 export const activity4 = {

@@ -74,8 +74,14 @@ export default {
   },
   methods: {
     routeName (path) {
-      // console.log('path', path.name)
-      return path.redirect ? path.redirect : path.name
+      let route = path.name
+      // this is how we let user click on a top level item and get to a page in that item's children
+      if (StoreHelper.isEHR_Showing() && path.redirectEhr) {
+        route = path.redirectEhr
+      } else if (StoreHelper.isLIS_Showing() && path.redirectLis) {
+        route = path.redirectLis
+      }
+      return route
     }
   },
   props: {

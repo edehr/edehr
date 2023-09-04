@@ -49,20 +49,21 @@ class InstoreHelperWorker {
     url = this.composeUrl(context, api, url)
     if(debug) console.log('PUT to this url', url)
     if(debug) console.log('with this data "', bodyData, '"')
-    StoreHelper.setLoading(context, true)
+    StoreHelper.setLoading('putRequest', true)
     return new Promise((resolve, reject) => {
       axios
         .put(url, bodyData)
         .then(results => {
           // console.log('success instoreHelper putRequest')
-          StoreHelper.setLoading(context, false)
           resolve(results)
         })
         .catch(error => {
           let msg = composeAxiosResponseError(error, 'Update failed: ')
           StoreHelper.setApiError(msg)
-          StoreHelper.setLoading(context, false)
           reject(msg)
+        })
+        .finally(() => {
+          StoreHelper.setLoading('putRequest', false)
         })
     })
   }
@@ -70,21 +71,20 @@ class InstoreHelperWorker {
     url = this.composeUrl(context, api, url)
     if(debug) console.log('POST to this url', url)
     if(debug) console.log('POST with this data "', bodyData, '"')
-    StoreHelper.setLoading(context, true)
+    StoreHelper.setLoading('postRequest', true)
     return new Promise((resolve, reject) => {
       axios
         .post(url, bodyData)
         .then(results => {
           // console.log('success instoreHelper putRequest', results)
-          StoreHelper.setLoading(context, false)
           resolve(results)
         })
         .catch(error => {
           let msg = composeAxiosResponseError(error, 'Create failed: ')
           StoreHelper.setApiError(msg)
-          StoreHelper.setLoading(context, false)
           reject(msg)
         })
+        .finally(() => StoreHelper.setLoading('postRequest', false))
     })
   }
 
@@ -96,28 +96,27 @@ class InstoreHelperWorker {
     config.data = bodyData
     console.log('here in  upsert', config)
     if(debug) console.log('POST to this url', url)
-    StoreHelper.setLoading(context, true)
+    StoreHelper.setLoading('upsert', true)
     return new Promise((resolve, reject) => {
       axios(config)
         .then(results => {
           console.log('success instoreHelper upsert', results)
-          StoreHelper.setLoading(context, false)
           resolve(results)
         })
         .catch(error => {
           console.log('success instoreHelper catch', error)
           let msg = composeAxiosResponseError(error, 'Create failed: ')
           StoreHelper.setApiError(msg)
-          StoreHelper.setLoading(context, false)
           reject(msg)
         })
+        .finally(() => StoreHelper.setLoading('upsert', false))
     })
   }
   // TODO remove context parameter
-  getRequest (context, api, url) {
+  getRequest (context, api, url, silent) {
     url = this.composeUrl(context, api, url)
     if(debug) console.log('GET to this url', url)
-    StoreHelper.setLoading(context, true)
+    if (!silent) StoreHelper.setLoading('getRequest - not silent', true)
     return new Promise((resolve, reject) => {
       axios
         .get(url)
@@ -134,25 +133,24 @@ class InstoreHelperWorker {
         })
         .finally( () => {
           if(debug) console.log('GOT ', api, '>> finally')
-          StoreHelper.setLoading(context, false)
+          if (!silent) StoreHelper.setLoading('getRequest - not silent', false)
         })
     })
   }
   deleteRequest (context, api, url) {
     url = this.composeUrl(context, api, url)
     if (debug) console.log('delete TO URL ', url, context)
-    StoreHelper.setLoading(context, true)
+    StoreHelper.setLoading('deleteRequest', true)
     return new Promise ((resolve, reject) => {
       axios.delete(url)
         .then(result => {
-          StoreHelper.setLoading(context, false)
           resolve(result)
         }).catch(err => {
           const msg = composeAxiosResponseError(err, 'Delete failed: ')
           StoreHelper.setApiError(msg)
-          StoreHelper.setLoading(context, false)
           reject(msg)
         })
+        .finally(() => StoreHelper.setLoading('deleteRequest', false))
     })
   }
 }

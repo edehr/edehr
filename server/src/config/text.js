@@ -7,10 +7,11 @@ export const Text = {
   DEFAULT_SEED_DESCRIPTION: 'This EHR seed data can not be modified. It is the default seed used when any learning object is created',
   SEED_NOT_ALLOWED_TO_EDIT_DEFAULT: 'Can not edit the default seed',
   SEED_IN_USE_NO_DELETE: 'Can not delete a seed that is used by a learning object',
-  MUST_BE_INSTRUCTOR: 'Must be an instructor to get consumer details',
+  MUST_BE_INSTRUCTOR: 'Must be an instructor to invoke this action',
   MUST_BE_STUDENT: 'Must be a student to get student course list',
   NOT_AUTH_TO_SEE_CONSUMER: 'You are not authorized to see the requested consumer',
   NOT_AUTH_TO_SEE_USER_DATA: 'You are not authorized to see the requested user',
+  REQUIRES_ACTIVITY_ID: 'Query requires an activity id',
   REQUIRES_CONSUMER_ID: 'Query requires a consumer id',
   REQUIRES_COURSE_ID: 'Query requires the database id of a Course object.',
   REQUIRES_USER_ID: 'Query requires a user id',
@@ -72,6 +73,8 @@ export const Text = {
 
   // For utility that cleans up consumers and other objects
   INVALID_MONTH: (m) => `Invalid month ${m}. Must be an integer >= 1 and <= 60`,
+
+  INVALID_PARAMETER_NOT_BOOLEAN: 'Expected to receive a boolean value'
 
 }
 

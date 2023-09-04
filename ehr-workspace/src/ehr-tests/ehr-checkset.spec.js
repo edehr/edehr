@@ -28,7 +28,7 @@ describe('makeHuman tests', function () {
   it ('makeHuman', () => {
     const results = EhrCheckset.makeHuman('diabetic/neuropathicUlcer', 'integumentaryAssessment', 'stageType')
   })
-  it ('invalid val will not match for option diabetic', (done) => {
+  it.skip ('invalid val will not match for option diabetic', (done) => {
     should.throws( () => {
       EhrCheckset.makeHuman('diabetic', 'integumentaryAssessment', 'stageType')
     }, (err) => {

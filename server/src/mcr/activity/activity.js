@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import { WS_EVENT_BUS, WS_S2C_MESSAGE_EVENT } from '../../server/push-server'
 const ObjectId = mongoose.Schema.Types.ObjectId
 
 /*
@@ -24,6 +25,7 @@ const Schema = new mongoose.Schema({
   context_label: { type: String }, // ltiData.context_label,
   context_title: { type: String }, // ltiData.context.context_title,
   context_type: { type: String }, // ltiData.context_type,
+  feedbackViewable: { type: Boolean, default: true }, // if false then prevent students from seeing the instructor's evaluation comments. See evaluationData in activity-data
   resource_link_title: { type: String }, // ltiData.resource_link_title,
   resource_link_description: { type: String }, // ltiData.resource_link_description,
   custom_title: { type: String }, // user supplied override to resource_link_title
@@ -38,6 +40,10 @@ const Schema = new mongoose.Schema({
 }, {
   toObject: { virtuals: true },
   toJSON: { virtuals: true }
+})
+
+Schema.post('save', function (doc) {
+  WS_EVENT_BUS.emit(WS_S2C_MESSAGE_EVENT, JSON.stringify({channel: 'ACTIVITY', id: doc._id}))
 })
 
 Schema.virtual('title').get(function () {

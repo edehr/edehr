@@ -53,6 +53,10 @@ const actions = {
       return results
     })
   },
+  reload (context) {
+    let id = context.state.learningObjectId
+    return context.dispatch('load', id)
+  },
   activityUsingLearningObjectCount (context, id) {
     let url = 'activityCount/' + id
     return InstoreHelper.getRequest(context, API, url).then(response => {

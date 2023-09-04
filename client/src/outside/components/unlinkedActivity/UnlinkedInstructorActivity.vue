@@ -60,6 +60,7 @@ const TEXT = {
   createLearningObjectTip:'Create a new learning object',
   createLearningObjectBL: 'Create and use new content',
 }
+// eslint-disable-next-line no-unused-vars
 const ASC = 'asc'
 const DESC = 'desc'
 

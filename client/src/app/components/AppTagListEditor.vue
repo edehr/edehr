@@ -31,7 +31,7 @@ export default {
     addTag (event) {
       const val = event.target.value
       if(val) {
-        let newList = this.liveList
+        let newList = JSON.parse(JSON.stringify(this.liveList))
         newList.push(val)
         newList.sort()
         let unique = [...new Set(newList)]

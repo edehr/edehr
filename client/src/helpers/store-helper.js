@@ -3,6 +3,7 @@ import { removeEmptyProperties } from './ehr-utils'
 import sKeys from './session-keys'
 import { ZONE_ADMIN, ZONE_DEMO, ZONE_EHR, ZONE_LMS, ZONE_PUBLIC } from '@/router'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
+import EventBus, { USER_LOGOUT_EVENT } from '@/helpers/event-bus'
 
 let debugSH = false
 
@@ -108,6 +109,16 @@ class StoreHelperWorker {
   inZonePublic () { return store.getters['system/pageZone'] === ZONE_PUBLIC}
   // isDemo see demo section
 
+  wsUrlGet () {
+    let url = window.location.origin || ''
+    if (url.includes('localhost')) {
+      url = 'ws://localhost:27000'
+    } else {
+      url = 'wss:' + url.split(':')[1]
+    }
+    return url
+  }
+
   /**
    * The API server must provide the url to call back into the server.
    */
@@ -154,8 +165,9 @@ class StoreHelperWorker {
   sendAssignmentDataDraft (payload) {return this._dispatchActivityData('sendAssignmentDataDraft', payload)}
 
   isLoading () { return this._getSystemProperty('isLoading')}
-  // TODO remove context in all calls to this method
+
   setLoading (context, value) {
+    // console.log('setLoading ', context, value)
     if (value > 0) {
       store.commit('system/setLoading', value)
     } else {
@@ -163,8 +175,10 @@ class StoreHelperWorker {
       setTimeout(() => {
         store.commit('system/setLoading', value)
       }, 50)
-
     }
+  }
+  setLoadingEnabled (context, enable) {
+    store.commit('system/setLoadingEnable', enable)
   }
   setApiError (msg) {  store.commit('system/setApiError', msg, { root: true }) }
   setSystemMessage (msg) {  store.commit('system/setSystemMessage', msg, { root: true }) }
@@ -617,6 +631,7 @@ class StoreHelperWorker {
 
   async logUserOutOfEdEHR (clearDemo=true) {
     StoreHelper.postActionEvent(SYSTEM_ACTION,'logUserOut')
+    EventBus.$emit(USER_LOGOUT_EVENT)
     const dt = StoreHelper.getDemoToken()
     if (clearDemo && dt) {
       await this._dispatchDemoStore('demoLogout')

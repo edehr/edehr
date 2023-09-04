@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import { WS_EVENT_BUS, WS_S2C_MESSAGE_EVENT } from '../../server/push-server'
 // import uniqueValidator from 'mongoose-unique-validator'
 
 const Schema = new mongoose.Schema({
@@ -12,6 +13,10 @@ const Schema = new mongoose.Schema({
   // emailPrimary: {type: String},
   createDate: {type: Date, default: Date.now},
   lastUpdateDate: { type: Date, default: Date.now }
+})
+
+Schema.post('save', function (doc) {
+  WS_EVENT_BUS.emit(WS_S2C_MESSAGE_EVENT, JSON.stringify({channel: 'USER', id: doc._id}))
 })
 
 // UserSchema.plugin(uniqueValidator)

@@ -88,7 +88,7 @@ async  function onPageChange (toRoute) {
   }
   try {
     // Start the progress indicator
-    StoreHelper.setLoading(null, true)
+    StoreHelper.setLoading('page-controller', true)
     let haveDemoToken = !!StoreHelper.getDemoToken() // may change if user is forced out of full demo
 
     // **** LTI login ... process and EXIT redirecting to the same page with visitId
@@ -114,9 +114,9 @@ async  function onPageChange (toRoute) {
       // is from the expected api server and no-where else.
       if (dbApp) console.log('_loadAuth refresh token', authHelper.hashToken(refreshToken))
       await StoreHelper.fetchAndStoreRefreshToken(refreshToken)
+      // fetchAndStoreRefreshToken also sets the axios header, and that emits a USER_LOGIN_EVENT event
       // fetch throws if token is expired or invalid
       const authToken = StoreHelper.getAuthToken()
-      setAuthHeader(authToken)
       await StoreHelper.fetchTokenData(authToken)
       const visitId = store.getters['authStore/visitId']
       const path = toRoute.path
@@ -274,7 +274,7 @@ async  function onPageChange (toRoute) {
         StoreHelper.setIsDevelopingContent(false)
       }
       if (dbApp) console.log('student ehr page load')
-      await StoreHelper._dispatchActivityData('loadActivityData', theActivity.activityDataId)
+      await StoreHelper._dispatchActivityData('loadActivityData', { id: theActivity.activityDataId })
       await StoreHelper.loadAssignment(theActivity.learningObjectId)
       await StoreHelper.loadSeed(theActivity.caseStudyId)
     }
@@ -294,7 +294,7 @@ async  function onPageChange (toRoute) {
       await router.push({ name: ERROR_ROUTE_NAME })
     }
   } finally {
-    StoreHelper.setLoading(null, false)
+    StoreHelper.setLoading('page-controller', false)
   }
   return perfExit(perfStat)
   // EXIT

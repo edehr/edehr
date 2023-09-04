@@ -7,7 +7,7 @@
       p Label: Med Lab
       p Data Key: undefined
       p Component name: MedLab
-      p Redirect: hematology
+      p Redirect: med-lab-accession
       p Route name: med-lab
       p Full path: /ehr/med-lab
 </template>

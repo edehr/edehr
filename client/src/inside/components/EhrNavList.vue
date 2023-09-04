@@ -24,7 +24,7 @@ export default {
   computed: {
     open () {
       if(StoreHelper.isLIS_Showing()) {
-        console.log('is lis')
+        // force all LIS nav groups to be open
         return true
       }
       if (this.level > 1) {

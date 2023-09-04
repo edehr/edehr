@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import { WS_EVENT_BUS, WS_S2C_MESSAGE_EVENT } from '../../server/push-server'
 const ObjectId = mongoose.Schema.Types.ObjectId
 
 /*
@@ -12,11 +13,17 @@ const Schema = new mongoose.Schema({
   context_type: {type: String}, // ltiData.context_type,
   custom_title: { type: String }, // user supplied override to context_title
   custom_description: { type: String }, // user supplied override to context_label
+  skillsAssessmentMode: { type: Boolean, default: false }, // if true then limit students to viewing and using only ..
+  skillsAssessmentActivity: { type: ObjectId, ref: 'Activity' },
   createDate: {type: Date, default: Date.now},
   lastDate: {type: Date, default: Date.now}
 }, {
   toObject: { virtuals: true },
   toJSON: { virtuals: true }
+})
+
+Schema.post('save', function (doc) {
+  WS_EVENT_BUS.emit(WS_S2C_MESSAGE_EVENT, JSON.stringify({channel: 'COURSE', id: doc._id}))
 })
 
 Schema.virtual('title').get(function () {
