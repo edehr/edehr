@@ -13143,8 +13143,8 @@ const DEFS = {
         'pageKey': 'medicationOrders',
         'tableKey': 'medicationOrdersTable',
         'isTable': true,
-        'label': 'Medication orders v2',
-        'addButtonText': 'Add a v2 medication order',
+        'label': 'Medication orders',
+        'addButtonText': 'Add a medication order',
         'tableAction': 'medAdminRec.marTable',
         'tableActionLabel': 'MAR',
         'ehr_list': [
@@ -13267,8 +13267,8 @@ const DEFS = {
         ],
         'form': {
           'elementKey': 'medicationOrdersTable',
-          'label': 'Medication orders v2',
-          'addButtonText': 'Add a v2 medication order',
+          'label': 'Medication orders',
+          'addButtonText': 'Add a medication order',
           'formKey': 'medicationOrdersTable',
           'ehr_groups': [
             {
