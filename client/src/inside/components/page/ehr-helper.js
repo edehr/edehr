@@ -305,10 +305,7 @@ export default class EhrPageHelper {
     this._resetPageFormData()
     StoreHelper.setEditingMode(false)
     // To restore the data we do a full page load to get the same flow as happens when the user comes to this page.
-    // This is a good solution here because we want to restore the data as it was found and
-    // there are many ways a user can come to the page. As a student, as a seed editor or someday in demo mode.
-    // By doing a page refresh here we get the same results as a page load.
-    customRouter.go(0)
+    EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   }
 
   /**

@@ -24,7 +24,12 @@ export default {
       return (this.$route.meta.layout || DefaultLayout) + '-layout'
     },
     isLoading () {
-      return StoreHelper.isLoading()
+      /*
+      Stop using this global spinner during loading.  It's annoying and after some experimentation
+      it turns out that it's not really needed.
+      We **could** put component local spinners into areas that really need it using the same logic.
+       */
+      return false // && StoreHelper.isLoading()
     },
     appCssClass () {
       let css = []

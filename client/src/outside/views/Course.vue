@@ -24,7 +24,7 @@
               v-on:buttonClicked="sortColumnToggle(columnName)",
               title="Sort by name")
               fas-icon(class="fa", :icon="sortColumnIcon(columnName)")
-        div(class="thcell") Activity Description
+        div(class="thcell") Activity Instructions
         div(class="thcell") Feedback Viewable
         div(class="thcell")
           div(class="flow_across")
