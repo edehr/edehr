@@ -115,6 +115,7 @@ class StoreHelperWorker {
       url = 'ws://localhost:27000'
     } else {
       url = 'wss:' + url.split(':')[1]
+      url += '/api'
     }
     return url
   }
