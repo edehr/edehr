@@ -144,14 +144,14 @@ export default {
     deleteSeed (sv) {
       return StoreHelper.deleteSeed(sv._id)
         .then(() => {
-          StoreHelper.setLoading(null, true)
+          StoreHelper.setLoading('deleteSeed', true)
           return StoreHelper.loadSeedLists()
         })
         .catch(error => {
           console.log('Sedd Data list delete error', error)
           this.$refs.aggreeDialog.showDialog('Error', error)
         })
-        .finally(() => StoreHelper.setLoading(null, false))
+        .finally(() => StoreHelper.setLoading('deleteSeed', false))
     },
     duplicateSeed (sv) {
       delete sv._id

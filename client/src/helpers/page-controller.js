@@ -88,7 +88,7 @@ async  function onPageChange (toRoute) {
   }
   try {
     // Start the progress indicator
-    StoreHelper.setLoading(null, true)
+    StoreHelper.setLoading('page-controller', true)
     let haveDemoToken = !!StoreHelper.getDemoToken() // may change if user is forced out of full demo
 
     // **** LTI login ... process and EXIT redirecting to the same page with visitId
@@ -294,7 +294,7 @@ async  function onPageChange (toRoute) {
       await router.push({ name: ERROR_ROUTE_NAME })
     }
   } finally {
-    StoreHelper.setLoading(null, false)
+    StoreHelper.setLoading('page-controller', false)
   }
   return perfExit(perfStat)
   // EXIT

@@ -25,6 +25,7 @@
               title="Sort by name")
               fas-icon(class="fa", :icon="sortColumnIcon(columnName)")
         div(class="thcell") Activity Description
+        div(class="thcell") Feedback Viewable
         div(class="thcell")
           div(class="flow_across")
             div Last update
@@ -56,6 +57,8 @@
               span {{ activityItem.title }}
           div(class='cell e-description')
             span {{truncate(activityItem.description, 100)}}
+          div(class='cell')
+            span {{ activityItem.feedbackViewable ? 'Yes' : 'No'}}
           div(class='cell e-date')
             span {{ activityItem.lastUpdate | formatDateTime }}
           div(class='cell e-date')

@@ -19,22 +19,21 @@ export function demoGoToEhr (submitData) {
   //   appType: appType
   // }
   if (debugDC) console.log('DemoCourse goto ehr with ', submitData)
-  StoreHelper.setLoading(null, true)
+  StoreHelper.setLoading('demoGoToEhr', true)
   StoreHelper.submitPersona(submitData)
     .then(({ url }) => {
-      StoreHelper.setLoading(null, false)
       if (debugDC) console.log('DemoCourse goto url ', url)
       window.location.replace(url)
     }).catch(err => {
-      StoreHelper.setLoading(null, false)
       let msg = err.message || 'An error occurred during the launch of the demonstration mode.'
       StoreHelper.setApiError(msg)
     })
+    .finally(() => StoreHelper.setLoading('demoGoToEhr', false))
 }
 
 export default class DemoHelper {
   proceedDemoToolConsumerCreation () {
-    StoreHelper.setLoading(null, true)
+    StoreHelper.setLoading('proceedDemoToolConsumerCreation', true)
     if (debugDC) console.log('Demo proceedDemoToolConsumerCreation')
     return StoreHelper.createDemoToolConsumer()
       .then((demoToken) => {
@@ -53,7 +52,7 @@ export default class DemoHelper {
         StoreHelper.setApiError(msg)
       })
       .finally(() => {
-        StoreHelper.setLoading(null, false)
+        StoreHelper.setLoading('proceedDemoToolConsumerCreation', false)
       })
   }
 

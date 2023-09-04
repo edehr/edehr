@@ -165,8 +165,9 @@ class StoreHelperWorker {
   sendAssignmentDataDraft (payload) {return this._dispatchActivityData('sendAssignmentDataDraft', payload)}
 
   isLoading () { return this._getSystemProperty('isLoading')}
-  // TODO remove context in all calls to this method
+
   setLoading (context, value) {
+    // console.log('setLoading ', context, value)
     if (value > 0) {
       store.commit('system/setLoading', value)
     } else {

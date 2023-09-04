@@ -2,7 +2,7 @@ import StoreHelper from '@/helpers/store-helper'
 import EventBus, { MESSAGE_FROM_SERVER, USER_LOGIN_EVENT, USER_LOGOUT_EVENT } from '@/helpers/event-bus'
 
 const details = process.env.WEBSOCKET_DEBUGGING || false
-const detailMessages = true
+const detailMessages = false
 const PX = '--- websocket ---- ' // a prefix for each debug stmt from this module. This helps if there are many other messages in the console.
 
 // Message sent to server that it will echo back to be used by the client to check the server is accessible
