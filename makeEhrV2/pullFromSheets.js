@@ -17,8 +17,10 @@ const { google } = require('googleapis')
 
 
 // https://docs.google.com/spreadsheets/d/1k69B3Tw7m25yvetRIM0X7ck1InJlcFtVU2fABKQNFvs/edit#gid=0
-const INPUT_SPREADSHEET_ID = '1k69B3Tw7m25yvetRIM0X7ck1InJlcFtVU2fABKQNFvs'
+// const INPUT_SPREADSHEET_ID = '1k69B3Tw7m25yvetRIM0X7ck1InJlcFtVU2fABKQNFvs'
 
+// V2.3.6
+const INPUT_SPREADSHEET_ID = '1rmzLnZ9CVCN6zZoeRrZsVhNevwbujVrZAOqX27pVlWo'
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']

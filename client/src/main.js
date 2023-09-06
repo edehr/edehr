@@ -101,7 +101,7 @@ new Vue({
   created: function () {
     initializeStore(store)
 
-    setupWebSocket()
-    setupRealTime()
+    // setupWebSocket()
+    // setupRealTime()
   }
 }).$mount('#app')

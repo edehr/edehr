@@ -137,7 +137,7 @@ export default class ActivityController extends BaseController {
   }
   async updateActivityVisit (activityId, visitId) {
     const activity = await Activity.findById(activityId)
-    activity.visitors.push({ visitId: visitId})
+    // activity.visitors.push({ visitId: visitId})
     // console.log('updateActivityVisit', activityId, visitId)
     await activity.save()
   }

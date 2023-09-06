@@ -9,6 +9,10 @@ if (details && process.env.NODE_ENV === 'production') {
   console.error('WARNING ------- \nWARNING ------- \nWARNING ------- Push server will log sensitive information. Disable in code and rebuild.')
 }
 
+let evt = require('events')
+console.log('---------------- ', evt.EventEmitter.prototype._maxListeners)
+evt.EventEmitter.prototype._maxListeners = 100
+console.log('---------------- ', evt.EventEmitter.prototype._maxListeners)
 const PING_DELAY = 5000 // ms
 
 export const WS_EVENT_BUS = new EventEmitter()

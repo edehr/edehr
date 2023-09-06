@@ -19,7 +19,7 @@ ehrApp.setup(configuration)
       const appServer = app.listen(serverPort, () => {
         console.log('Server running...', serverPort)
       })
-      setupWebSocket(appServer, app.authUtil)
+      //setupWebSocket(appServer, app.authUtil)
     }
   })
 
