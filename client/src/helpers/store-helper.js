@@ -3,7 +3,6 @@ import { removeEmptyProperties } from './ehr-utils'
 import sKeys from './session-keys'
 import { ZONE_ADMIN, ZONE_DEMO, ZONE_EHR, ZONE_LMS, ZONE_PUBLIC } from '@/router'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
-import EventBus, { USER_LOGOUT_EVENT } from '@/helpers/event-bus'
 
 let debugSH = false
 
@@ -630,13 +629,12 @@ class StoreHelperWorker {
     return this._getAuthStore('visitId')
   }
 
-  async logUserOutOfEdEHR (clearDemo=true) {
+  async exitFullDemo () {
+    await this.logUserOutOfEdEHR()
+    await this._dispatchDemoStore('demoLogout')
+  }
+  async logUserOutOfEdEHR () {
     StoreHelper.postActionEvent(SYSTEM_ACTION,'logUserOut')
-    EventBus.$emit(USER_LOGOUT_EVENT)
-    const dt = StoreHelper.getDemoToken()
-    if (clearDemo && dt) {
-      await this._dispatchDemoStore('demoLogout')
-    }
     await this._dispatchAssignment('clearAssignment')
     await this._dispatchAuthStore('logOutUser')
     await this._dispatchCourse('clearCourse')
@@ -650,8 +648,7 @@ class StoreHelperWorker {
   async exitToLms () {
     StoreHelper.postActionEvent(SYSTEM_ACTION,'exitToLms')
     const url = StoreHelper.lmsUrl()
-    const clearDemo = false
-    await StoreHelper.logUserOutOfEdEHR(clearDemo)
+    await StoreHelper.logUserOutOfEdEHR()
     window.location = url
   }
 

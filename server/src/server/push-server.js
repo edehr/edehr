@@ -3,27 +3,20 @@ import WebSocket from 'ws'
 import EventEmitter from 'events'
 
 const details = process.env.WEBSOCKET_DEBUGGING || false
+const pongDetails = false
 const PX = '--- websocket ---- ' // a prefix for each debug stmt from this module. This helps if there are many other messages in the console.
 
 if (details && process.env.NODE_ENV === 'production') {
   console.error('WARNING ------- \nWARNING ------- \nWARNING ------- Push server will log sensitive information. Disable in code and rebuild.')
 }
 
-let evt = require('events')
-console.log('---------------- ', evt.EventEmitter.prototype._maxListeners)
-evt.EventEmitter.prototype._maxListeners = 100
-console.log('---------------- ', evt.EventEmitter.prototype._maxListeners)
 const PING_DELAY = 5000 // ms
+const HEARTBEAT = 'heartbeat'
 
 export const WS_EVENT_BUS = new EventEmitter()
 export const WS_S2C_MESSAGE_EVENT = 'WS_S2C_MESSAGE_EVENT' // server to client
 export const WS_C2S_MESSAGE_EVENT = 'WS_C2S_MESSAGE_EVENT' // client to server
-
-if (details) { // if showing all details then show incoming messages from clients
-  WS_EVENT_BUS.on(WS_C2S_MESSAGE_EVENT, (payload) => {
-    console.log(PX, WS_C2S_MESSAGE_EVENT, payload)
-  })
-}
+export const WS_CLIENT_CLOSING_EVENT = 'WS_CLIENT_CLOSING_EVENT'
 
 // Status Code
 // These are custom codes used by this service
@@ -40,6 +33,145 @@ const EXIT_STATUS_GOING_AWAY = 1001
 // eslint-disable-next-line no-unused-vars
 const EXIT_STATUS_BAD_INPUT = 1003
 
+let clientId = 0
+let theAuthUtil
+
+class Client {
+  constructor (wsClient, url) {
+    this.wsClient = wsClient
+    this.clientId = ++clientId // id for debug tracing
+    if (details) console.log(PX + 'connection opened.', this.clientId)
+    this.tokenData = this.validateConnectionAndGetTokenData(url, (code, msg) => this.closeClient(code, msg))
+    if (!this.tokenData) {
+      if (details) console.log(PX + 'not auth\'d so close immediately.', this.clientId)
+      return
+    }
+    this.msgCnt = 0
+    wsClient.on('error', console.error)
+    if (pongDetails) wsClient.on('pong', () => console.log('Got pong', this.clientId) )
+    wsClient.on('close', () => WS_EVENT_BUS.emit(WS_CLIENT_CLOSING_EVENT, this.clientId))
+    wsClient.on('message', (data, origin) => this.handleMessage(data, origin))
+  }
+  get readyState () { return this.wsClient.readyState }
+
+  checkExpired () {
+    const now = Math.round((new Date()).getTime() / 1000)
+    const { exp } = this.tokenData
+    const secondsRemaining = now < exp ? exp - now : 0
+    return (secondsRemaining <= 0)
+  }
+  closeClient (code = EXIT_STATUS_GOING_AWAY, msg = 'closing') {
+    if (details) console.log('close client ', this.clientId)
+    this.wsClient.close(code, msg) // will result in close event
+  }
+
+  handleMessage (data, origin) {
+    this.msgCnt++
+    const { clientId } = this
+    if (details) console.log('handleMessage message', clientId, this.msgCnt)
+    if (this.checkExpired()) {
+      if (details) console.log('token date is expired so close the connection', clientId)
+      this.closeClient(EXIT_STATUS_EXPIRED, 'connection expired')
+      return
+    }
+    let value = data.toString() // websocket data is a buffer
+    if (value === HEARTBEAT) {
+      if (details) console.log(PX + HEARTBEAT, clientId)
+      this.wsClient.send(HEARTBEAT)
+    } else {
+      if (details) console.log(PX + 'received', clientId, value)
+      try {
+        const payload = JSON.parse(value)
+        WS_EVENT_BUS.emit(WS_C2S_MESSAGE_EVENT, payload) // broadcast the incoming message
+      } catch (err) {
+        console.error(PX + 'Error parsing message', value)
+      }
+    }
+  }
+  pingClient () {
+    this.wsClient.ping()
+  }
+
+  sendData (data) {
+    this.wsClient.send(data)
+  }
+  validateConnectionAndGetTokenData (url, errCb ) {
+    let tknData
+    // expect req.url to look like this: /?token=<jwt>
+    let parts = url.split('=')
+    if (parts.length !== 2 || !parts[0].includes('token')) {
+      console.log(PX + 'invalid creds', url)
+      errCb(EXIT_STATUS_NO_TOKEN, 'NO TOKEN')
+      return
+    }
+    try {
+      let token = parts[1]
+      // validateToken throws if token is invalid
+      tknData = theAuthUtil.validateToken(token)
+      if (details) console.log(PX + 'validated token uId', tknData.userId, 'vId', tknData.visitId)
+    } catch (err) {
+      if (details) console.log(PX + 'invalid creds', err.message)
+      errCb(EXIT_STATUS_AUTH_FAIL, 'connection refused')
+    }
+    return tknData
+  }
+}
+
+// -------------------------- Manage list of client --------------------------
+const clients = {}
+function registerClient (client) {
+  if (clients[client.clientId]) {
+    console.error('Registering a duplicate websocket client. Will close the original')
+    clients[client.clientId].closeClient()
+  }
+  clients[client.clientId] = client
+  if (details) console.log(PX + 'registerClient', client.clientId, clientCount())
+}
+function delistClient (clientId) {
+  if (!clients[clientId]) {
+    console.error('Delisting a websocket client that is not registered', clientId)
+    return
+  }
+  delete clients[clientId]
+  if (details) console.log(PX + 'delistClient', clientId, clientCount())
+}
+function pingAllClients () {
+  if (pongDetails) console.log('Ping all websocket clients', Object.keys(clients))
+  for (const clientId in clients) {
+    const wsClient = clients[clientId]
+    if (wsClient.readyState === WebSocket.OPEN) {
+      wsClient.pingClient()
+    } else {
+      // this should never happen
+      console.error('This should not happen ... ping when client is not open', clientId + ' ' + wsClient.readyState)
+      wsClient.closeClient(EXIT_STATUS_GOING_AWAY, 'Can not ping because ws is not open.')
+    }
+  }
+}
+
+setInterval(pingAllClients, PING_DELAY)
+
+function sendAll (data) {
+  data = typeof data === 'string' ? data : JSON.stringify(data)
+  if (details) console.log('someone wants to send this data (', data, ') to all clients', Object.keys(clients))
+  for (const clientId in clients) {
+    let client = clients[clientId]
+    client.sendData(data)
+  }
+}
+
+function clientCount () {
+  return Object.keys(clients).length
+}
+
+// --------------------------------- Global event handlers ----------------
+
+// something in app wants to send msg to client
+WS_EVENT_BUS.on(WS_S2C_MESSAGE_EVENT, sendAll)
+
+WS_EVENT_BUS.on(WS_CLIENT_CLOSING_EVENT, (client) => delistClient(client))
+
+// -------------------------------------------- Setup -------------------
 /**
  * Assumes all internet connections are done with wss (https) and not just ws.
  *
@@ -47,91 +179,9 @@ const EXIT_STATUS_BAD_INPUT = 1003
  * @param authUtil - a util that can verify a JWT token
  */
 export function setupWebSocket (appServer, authUtil) {
-
-  const HEARTBEAT = 'heartbeat'
-  let clientId = 0
+  theAuthUtil = authUtil
   const wss = new WebSocket.Server({ server: appServer })
-
-  wss.on('connection', function (ws, req) {
-    ws.clientId = ++clientId // id to help debug tracing, no other purpose so far
-    if (details) console.log(PX + 'connection', ws.clientId)
-    ws.tokenData = undefined
-    // expect req.url to look like this: /?token=<jwt>
-    let parts = req.url.split('=')
-    if (parts.length !== 2 || !parts[0].includes('token')) {
-      console.log(PX + 'invalid creds')
-      ws.close(EXIT_STATUS_NO_TOKEN, 'NO TOKEN')
-      return
-    }
-    try {
-      let token = parts[1]
-      // validateToken throws if token is invalid
-      ws.tokenData = authUtil.validateToken(token)
-      if (details) console.log(PX + 'token data', ws.tokenData)
-    } catch (err) {
-      if (details) console.log(PX + 'invalid creds', err.message)
-      ws.close(EXIT_STATUS_AUTH_FAIL, 'connection refused')
-      return
-    }
-    ws.on('error', console.error)
-    ws.on('close', () => {
-      if (details) console.log(PX + 'closing', ws.clientId)
-      if (ws.pingInterval) {
-        // stop pinging and release memory
-        clearInterval(ws.pingInterval)
-        WS_EVENT_BUS.off(WS_S2C_MESSAGE_EVENT, send)
-      }
-    })
-    ws.on('message', function (data, origin) {
-      const now = Math.round((new Date()).getTime() / 1000)
-      const { exp } = ws.tokenData
-      const secondsRemaining = now < exp ? exp - now : 0
-      if (details) console.log(PX + 'message check seconds remaining', secondsRemaining)
-      if (secondsRemaining <= 0) {
-        console.log('token date is expired')
-        ws.close(EXIT_STATUS_EXPIRED, 'connection expired')
-        return
-      }
-
-      let value = data.toString()
-      if (details) console.log(PX + 'received', ws.clientId, value)
-      if (value === HEARTBEAT) {
-        if (details) console.log(PX + HEARTBEAT, ws.clientId)
-        ws.send(HEARTBEAT)
-      } else {
-        try {
-          const payload = JSON.parse(value)
-          WS_EVENT_BUS.emit(WS_C2S_MESSAGE_EVENT, payload) // broadcast the incoming message
-        } catch (err) {
-          console.error(PX + 'Error parsing message', value)
-        }
-      }
-    })
-
-    function send (data) {
-      ws.send(typeof data === 'string' ? data : JSON.stringify(data))
-    }
-
-    WS_EVENT_BUS.on(WS_S2C_MESSAGE_EVENT, send) // something in app wants to send msg to client
-
-    function ping () {
-      if (ws && ws.readyState === WebSocket.OPEN) {
-        // pings happen a lot so uncomment to trace these
-        // if(details) console.log(PX + 'send ping to client', ws.clientId, wss.clients.size)
-        ws.ping()
-      } else {
-        // this should never happen
-        console.error('what to do about ping when client is not open?', ws ? ws.clientId + ' ' + ws.readyState : null)
-        ws ? ws.close(EXIT_STATUS_GOING_AWAY) : null
-      }
-    }
-
-    // send('Welcome client' + ws.clientId)
-
-    ws.pingInterval = setInterval(ping, PING_DELAY)
-
-  }) // end ws.on connection
+  wss.on('connection', function (wsClient, req) {
+    registerClient(new Client(wsClient, req.url))
+  })
 }
-
-
-
