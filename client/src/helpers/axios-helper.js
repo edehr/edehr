@@ -2,6 +2,7 @@ import axios from 'axios'
 import authHelper from '@/helpers/auth-helper'
 import EventBus, { USER_LOGIN_EVENT, USER_LOGOUT_EVENT } from '@/helpers/event-bus'
 
+const debug = false
 const PX = 'Axios helper --- '
 
 /**
