@@ -138,6 +138,8 @@ export default class AuthController {
     if(req.headers.authorization) {
       try {
         const result = this.authUtil.authenticate(req.headers.authorization)
+        const { visitId, secondsRemaining } = result
+        debug('Get auth tkn content for visit: ' + visitId + ' time remaining: ' + secondsRemaining)
         res.status(200).json(result)
       } catch(err) {
         // EXPIRED_TOKEN

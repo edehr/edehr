@@ -80,7 +80,7 @@ export default class AuthUtil {
 
   createToken (data, expiry) {
     const options = expiry ?  { expiresIn: expiry } : undefined
-    logAuth.enabled ? logAuth('authController -- createToken', options, data) : debug('authUtils -- createToken')
+    logAuth.enabled ? logAuth('authUtils -- createToken', options, data) : debug('authUtils -- createToken')
     const token = jwt.sign(data, this.tokenSecret, options)
     logAuth('authController -- created this token', this.hashToken(token))
     return token

@@ -103,7 +103,7 @@ async  function onPageChange (toRoute) {
         // Need to clear away that full demo....
         if (dbApp) console.log('Actual LTI request needs to stop full demo. Will log user out without adieu.')
         // TODO.  Alert the user and offer to keep the demo data and stop the LTI log in.
-        await StoreHelper.logUserOutOfEdEHR()
+        await StoreHelper.exitFullDemo()
         haveDemoToken = !!StoreHelper.getDemoToken()
       }
       if (dbApp) console.log('on new auth we need to clear out previous visit id')

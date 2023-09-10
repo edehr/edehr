@@ -3,7 +3,7 @@
     section(v-if="canAccessDemo", class="content")
       div(style="display: flex;")
         h2(class="has-text-centered") {{ demoText.title }}
-        ui-button(@buttonClicked="logout" secondary, style='margin-left: auto;')
+        ui-button(@buttonClicked="fullExit" secondary, style='margin-left: auto;')
           span Exit Full Demo
       div
         div(v-text-to-html="demoText.intro")
@@ -33,7 +33,7 @@
       ui-confirm(
         class="confirmDialog",
         ref="confirmDialog",
-        @confirm="demoLogOut",
+        @confirm="confirmedFullExit",
         save-label="Logout")
 
     div(v-else)
@@ -78,19 +78,12 @@ export default {
       StoreHelper.setDemoPersona(this.persona)
       this.$router.push('demo-course')
     },
-    logout () {
+    fullExit () {
       this.$refs.confirmDialog.showDialog(demoText.logout.title, demoText.logout.body)
     },
-    async demoLogOut () {
-      await StoreHelper.logUserOutOfEdEHR()
+    async confirmedFullExit () {
+      await StoreHelper.exitFullDemo()
       this.$router.push('/')
-    },
-
-  },
-  watch: {
-    $route: function (route) {
-      console.log('Demo page nav. Clear any previous AuthToken whether user came from an LMS or from the demo')
-      StoreHelper.logUserOutOfEdEHR()
     }
   }
 }
