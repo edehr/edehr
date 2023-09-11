@@ -2,7 +2,7 @@
   div(class="seed-table")
     table(v-show="hasData", class="table_horizontal")
       tr
-        th(v-for="col in columns", v-text-to-html='col.label', :class="tableCellCss(col, {})")
+        th(v-for="col in columns", v-text-to-html='colLabel(col)', :class="tableCellCss(col, {})")
       tr(v-for="row in rows")
         td(v-for="(d, index) in rowData(row)", :class="tableCellCss(columns[index], row)" )
           pre(v-if='columns[index].inputType === "textarea"') {{d}}
@@ -50,6 +50,9 @@ export default {
   methods: {
     human ( cell, d ) {
       return makeHumanTableCell(this.pageKey, cell.elementKey, cell.inputType, d)
+    },
+    colLabel (col) {
+      return col.label || col.tableLabel
     },
     rowData ( seedRow ) {
       const cols = this.columns

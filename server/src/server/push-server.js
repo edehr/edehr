@@ -137,16 +137,21 @@ function delistClient (clientId) {
 }
 function pingAllClients () {
   if (pongDetails) console.log('Ping all websocket clients', Object.keys(clients))
+  const toRemove = []
   for (const clientId in clients) {
     const wsClient = clients[clientId]
     if (wsClient.readyState === WebSocket.OPEN) {
       wsClient.pingClient()
+    } else if (wsClient.readyState === WebSocket.CLOSED) {
+      toRemove.push(clientId)
     } else {
-      // this should never happen
       console.error('This should not happen ... ping when client is not open', clientId + ' ' + wsClient.readyState)
       wsClient.closeClient(EXIT_STATUS_GOING_AWAY, 'Can not ping because ws is not open.')
     }
   }
+  toRemove.forEach(clientId => {
+    delistClient(clientId)
+  })
 }
 
 setInterval(pingAllClients, PING_DELAY)
