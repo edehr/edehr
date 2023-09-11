@@ -1,14 +1,16 @@
 /* eslint-disable quote-props,quotes */
 
-const commonTitle = "Canadian, open source, educational electronic health record system"
+// const commonTitle = "Canadian, open source, educational electronic health record and lab information system"
+const commonTitle = "Educational electronic health record and lab information system"
 
 export const appText = {
   heroText: {
     title: commonTitle,
-    subTitle: "Student focused, customizable simulated case studies, that can be laddered, with decision supports",
+    yesItIs: 'A simulated EHR and a simulated LIS that is evolving for BSN, MLT, MLA, and more programs',
+    subTitle: "Puts pedagogy first, reflects real life, student focused, customizable case studies",
     goal: 'A key EdEHR project goal is to let pedagogy drive the technology and not the other way around.',
     what: 'EdEHR is short for Educational Electronic Health Record.',
-    introText: "EdEHR is an essential educational tool designed for medical education programs that seek a Canadian system that is focused on the student experience. EdEHR is suitable for all health care programs including, but not limited to, nursing, medicine, pharmacy, physiotherapy and more. " +
+    introText: "EdEHR is an essential educational tool designed for medical education programs that seek a Canadian system that is focused on the student experience. EdEHR is suitable for all health care programs including, but not limited to, nursing, med lab, medicine, pharmacy, physiotherapy and more. " +
       "Students find the EdEHR easy to use and intuitive. "+
       "EdEHR can be connected with many learning management systems including Moodle, Canvas, Blackboard, D2L, and other <a href=\"https://www.imsglobal.org/activity/learning-tools-interoperability\">LTI</a> compliant learning systems. " +
       "Instructors can customize the course content to suit and provide guidance to students while evaluating their work. ",
@@ -309,7 +311,7 @@ export const edEhrValues = [
   {
     icon: 'heartbeat',
     title: 'Interprofessional',
-    body: 'The EdEHR can be used for any healthcare profession including; nursing, physiotherapy, medicine, pharmacy, midwifery, etc. Assignments can share case study data yet ask students in different faculties to complete work relative to their course of study.'
+    body: 'The EdEHR can be used for any healthcare profession including; nursing, med lab, physiotherapy, medicine, pharmacy, midwifery, etc. Assignments can share case study data yet ask students in different faculties to complete work relative to their course of study.'
   },
   {
     icon: 'user-injured',
