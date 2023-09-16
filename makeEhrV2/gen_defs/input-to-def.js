@@ -28,6 +28,7 @@ const pageChildElementProperties = [
   'calculationType',
   { sKey: 'cN', dKey: 'cIndex'},
   'dataCaseStudy',
+  'decimals',
   'defaultValue',
   'dependentOn',
   { sKey: 'fN', dKey: 'formIndex'},
