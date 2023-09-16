@@ -9,8 +9,7 @@
 </template>
 
 <script>
-import EventBus from '../../helpers/event-bus'
-import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
+import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 
 export default {
   name: 'Tab',

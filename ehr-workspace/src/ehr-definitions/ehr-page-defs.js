@@ -11638,7 +11638,7 @@ const DEFS = {
             },
             {
               'elementKey': 'ehr_group126',
-              'label': 'Urinanlysis',
+              'label': 'Urinalysis',
               'formCss': 'grid-left-to-right-3',
               'gIndex': '6',
               'gChildren': [
@@ -23660,6 +23660,7 @@ const DEFS = {
       {
         'elementKey': 'wbcAverage',
         'calculationType': 'average',
+        'decimals': '1',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'label': 'WBC average',
@@ -23671,6 +23672,7 @@ const DEFS = {
       {
         'elementKey': 'wbcEstimate',
         'calculationType': 'product',
+        'decimals': '1',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'label': 'WBC estimate',
@@ -23681,6 +23683,7 @@ const DEFS = {
       {
         'elementKey': 'wbcAnalysis',
         'calculationType': 'embedValue(hematology,tableCbcAnalysis,wbc)',
+        'decimals': '1',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'label': 'WBC count',
@@ -23692,6 +23695,7 @@ const DEFS = {
       {
         'elementKey': 'wbcLowRange',
         'calculationType': 'multiplyBy(0.75, 1)',
+        'decimals': '1',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'label': 'WBC acceptable range (low)',
@@ -23702,6 +23706,7 @@ const DEFS = {
       {
         'elementKey': 'wbcHighRange',
         'calculationType': 'multiplyBy(1.25, 1)',
+        'decimals': '1',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'label': 'WBC acceptable range (high)',
@@ -23840,6 +23845,7 @@ const DEFS = {
       {
         'elementKey': 'pltAverage',
         'calculationType': 'average',
+        'decimals': '1',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'label': 'PLT average',
@@ -23851,6 +23857,7 @@ const DEFS = {
       {
         'elementKey': 'pltEstimate',
         'calculationType': 'product',
+        'decimals': '0',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'label': 'PLT estimate',
@@ -23861,6 +23868,7 @@ const DEFS = {
       {
         'elementKey': 'pltAnalysis',
         'calculationType': 'embedValue(hematology,tableCbcAnalysis,PLT)',
+        'decimals': '0',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'label': 'PLT count',
@@ -23872,6 +23880,7 @@ const DEFS = {
       {
         'elementKey': 'pltLowRange',
         'calculationType': 'multiplyBy(0.75, 0)',
+        'decimals': '0',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'label': 'PLT acceptable range (low)',
@@ -23882,6 +23891,7 @@ const DEFS = {
       {
         'elementKey': 'pltHighRange',
         'calculationType': 'multiplyBy(1.25, 0)',
+        'decimals': '0',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'label': 'PLT acceptable range (high)',
@@ -23987,6 +23997,7 @@ const DEFS = {
       {
         'elementKey': 'cellCntSegNeutrophilAbs',
         'calculationType': 'wbcAbs',
+        'decimals': '1',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'passToFunction': 'cellCntAbsTotal',
@@ -24016,6 +24027,7 @@ const DEFS = {
       {
         'elementKey': 'cellCntBandCellsAbs',
         'calculationType': 'wbcAbs',
+        'decimals': '1',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'passToFunction': 'cellCntAbsTotal',
@@ -24045,6 +24057,7 @@ const DEFS = {
       {
         'elementKey': 'cellCntLymphAbs',
         'calculationType': 'wbcAbs',
+        'decimals': '1',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'passToFunction': 'cellCntAbsTotal',
@@ -24074,6 +24087,7 @@ const DEFS = {
       {
         'elementKey': 'cellCntMonoAbs',
         'calculationType': 'wbcAbs',
+        'decimals': '1',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'passToFunction': 'cellCntAbsTotal',
@@ -24103,6 +24117,7 @@ const DEFS = {
       {
         'elementKey': 'cellCntEosinAbs',
         'calculationType': 'wbcAbs',
+        'decimals': '1',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'passToFunction': 'cellCntAbsTotal',
@@ -24132,6 +24147,7 @@ const DEFS = {
       {
         'elementKey': 'cellCntBasoAbs',
         'calculationType': 'wbcAbs',
+        'decimals': '1',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'passToFunction': 'cellCntAbsTotal',
@@ -24161,6 +24177,7 @@ const DEFS = {
       {
         'elementKey': 'cellCntMetaAbs',
         'calculationType': 'wbcAbs',
+        'decimals': '1',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'passToFunction': 'cellCntAbsTotal',
@@ -24190,6 +24207,7 @@ const DEFS = {
       {
         'elementKey': 'cellCntMyeloAbs',
         'calculationType': 'wbcAbs',
+        'decimals': '1',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'passToFunction': 'cellCntAbsTotal',
@@ -24219,6 +24237,7 @@ const DEFS = {
       {
         'elementKey': 'cellCntPromyeloAbs',
         'calculationType': 'wbcAbs',
+        'decimals': '1',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'passToFunction': 'cellCntAbsTotal',
@@ -24248,6 +24267,7 @@ const DEFS = {
       {
         'elementKey': 'cellCntBlastAbs',
         'calculationType': 'wbcAbs',
+        'decimals': '1',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'passToFunction': 'cellCntAbsTotal',
@@ -24277,6 +24297,7 @@ const DEFS = {
       {
         'elementKey': 'cellCntReactiveLymphsAbs',
         'calculationType': 'wbcAbs',
+        'decimals': '1',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'passToFunction': 'cellCntAbsTotal',
@@ -24306,6 +24327,7 @@ const DEFS = {
       {
         'elementKey': 'cellCntOtherAbs',
         'calculationType': 'wbcAbs',
+        'decimals': '1',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'passToFunction': 'cellCntAbsTotal',
@@ -24349,6 +24371,7 @@ const DEFS = {
       {
         'elementKey': 'cellCntAbsTotal',
         'calculationType': 'sum',
+        'decimals': '1',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'tableColumn': '68',

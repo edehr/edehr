@@ -88,7 +88,7 @@ cr:=Creatinine}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCe
 {inputType: checkset}	eCell	{Label: Blood Gas}	eCell	{elementKey: req_bloodGas}	{pN: 24}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: abg:=Arterial blood gas (ABG)
 fcbg:=Venous blood gas (VBG)
 vbg:=Fetal cord blood gas (FCBG)}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Urinanlysis}	eCell	eCell	{pN: 24}	{fN: 2}	{gN: 6}	{sgN: }	{formCss: grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Urinalysis}	eCell	eCell	{pN: 24}	{fN: 2}	{gN: 6}	{sgN: }	{formCss: grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkset}	eCell	{Label: Urine Analysis}	eCell	{elementKey: req_urineAnalysis}	{pN: 24}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	"{Options: acr:= Albumin/creatinine ratio (ACR)
 rm:=Routine and microscopic (R&M)
 preg:=Pregnancy

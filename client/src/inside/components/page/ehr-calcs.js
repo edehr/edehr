@@ -67,6 +67,14 @@ function getEmbeddedDataRow ( ref ) {
   return tbl[row]
 }
 
+/**
+ * Perform calculation.
+ * Return raw value with whatever decimal precision the system provides. The UI will round numbers if prescribed in the ehr definitions. See 'decimals'.
+ * @param pageDataKey
+ * @param targetKey
+ * @param srcValues
+ * @returns {undefined|*}
+ */
 export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
   let temp = EhrDefs.getChildElements(pageDataKey, 'elementKey', targetKey, 'calculationType')
   // console.log('pageDataKey, targetKey', pageDataKey, targetKey)
@@ -90,7 +98,6 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
     throw new Error(msg)
   }
   let values = []
-  let isNumberResult = true
   srcKeys.forEach(key => {
     let srcVal = srcValues[key]
     // console.log('srcKey, srcVal, calculationType', key, srcVal, calculationType)
@@ -101,7 +108,6 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
         } else if (isEmbeddedRef(srcVal)) {
           let rowData = getEmbeddedDataRow(srcVal)
           values.push(rowData)
-          isNumberResult = false
           // console.log('---------- cal type embedValue rowData:', rowData)
           // console.log('srcKey, srcVal, calculationType', key, srcVal, calculationType)
         } else {
@@ -130,14 +136,7 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
     if (factor.value) {
       values = mapToNums(values)
       result = values.reduce((a,b) => a + b * factor.value, 0)
-      isNumberResult = true
       // console.log('multiplyBy', result)
-    }
-    if (!isNaN(factor.round)) {
-      // the round parameter is present then do the requested rounding here.
-      isNumberResult = false
-      let f = Math.pow(10, factor.round)
-      result = Math.round(result * f) / f
     }
   } else if (calculationType.includes('embedValue')) {
     // pull a value from an embedded object. The calculationType specifies the page, table and field
@@ -156,7 +155,6 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
     // console.log('medOrderSummary', values[0])
     const mo = new MedOrder(values[0])
     result = mo.medOrderSummary()
-    isNumberResult = false
     // result = calculateMedicationConcentration(values)
   } else if (calculationType.includes('medMaxDosage')) {
     result = calculateMedicationMaxDosage(srcValues)
@@ -165,28 +163,22 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
   } else {
     switch (calculationType) {
     case 'sum':
-      isNumberResult = false
       result = undefined
       if (values.length > 0) {
         values = mapToNums(values)
         result = values.reduce((a, b) => a + b, 0)
         // console.log('calculationType sum',targetKey, result, values)
-        isNumberResult = true
       }
       break
     case 'average':
       values = mapToNums(values)
       result = values.length > 0 ? (values.reduce((a, b) => a + b, 0) / values.length) : 0
       // console.log('calculationType average',targetKey, result, values)
-      isNumberResult = true
       break
     case 'product':
       // product value is 0 until there are at least two values
       values = mapToNums(values)
       result = values.length >= 2 ? values.reduce((a, b) => a * b, 1) : 0
-      // the only two places that product is used they want a whole number result
-      result = Math.round(result)
-      isNumberResult = true
       break
     case 'wbcAbs':
       if ( values.length === 2) {
@@ -200,7 +192,6 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
           factor = values[0] /100
           wbc = values[1]['wbc']
         }
-        isNumberResult = true
         result = wbc * factor
         // console.log('wbc factor', wbc, factor, result)
       }
@@ -209,5 +200,5 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
       throw new Error('Unexpected calculation type ' + calculationType)
     }
   }
-  return isNumberResult ? Math.round(result * 10) / 10 : result
+  return result
 }

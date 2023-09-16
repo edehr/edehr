@@ -37,6 +37,12 @@ export default {
       if (db) console.log('EhrComputedValue ', elementKey, value)
       // put value into the inputs so the dialog save can preserve the result
       this.ehrHelp.stashActiveData(elementKey, value)
+      // round if decimals are specified in the ehr definitions
+      let decimals = Number.parseInt(this.element.decimals)
+      if (!isNaN(value) && !isNaN(decimals)) {
+        let f = Math.pow(10, decimals)
+        value = Math.round(value * f) / f
+      }
       // put into component data to be rendered
       this.value = value
     }
