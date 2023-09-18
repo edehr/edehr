@@ -2,18 +2,18 @@
 
 
 .app-tag {
-  background-color: $app-tag-colour;
-  border-radius: 1rem;
+  background-color: $grey20;
+  border-radius: 10px;
   display: inline-block;
-  padding: 0;
+  padding: 0 8px;
   margin: 2px;
-  color: $brand-primary-dark;
+  color: $black
   & span {
-    padding: 8px;
+    //padding: 8px;
   }
   & button {
-    color: $app-tag-button-colour;
-    border-radius: 1rem;
+    color: $black;
+    border-radius: 10px;
     border: none;
     //font-size: 1.5rem;
     padding: 0 10px;
