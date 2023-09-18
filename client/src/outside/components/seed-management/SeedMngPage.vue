@@ -129,7 +129,7 @@ export default {
       // Here is where the user starts editing a seed.
       return StoreHelper.loadSeed(sv._id)
         .then(() => {
-          _this.$router.push({ name: 'ehr', query: { seedEditId: this.seedId, appType: this.seed.appType } })
+          _this.$router.push({ name: 'ehr', query: { seedEditId: this.seedId } })
         })
     },
     showEditDialog (sv) {

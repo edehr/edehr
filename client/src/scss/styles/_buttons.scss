@@ -15,7 +15,21 @@ button,
   }
 }
 
-/* .is-primary is, by default, included in the following*/
+/*
+The ehr area has a context banner that represents the outer LMS side.
+When there is a button there we want it to match those on the outside
+ */
+.ehr_layout .zone-lms-button {
+  font-size: 1rem;
+  font-weight: bold !important;
+  padding: 0.2rem 0.4rem 0.2rem 0.4rem;
+  height: 2.2rem !important;
+  //min-width: 2.8rem;
+  background-color: $grey10 !important;
+  color: $brand-primary !important;
+  border: 1px solid $grey60 !important;
+}
+
 .outside-layout button,
 .outside-layout .button{
   font-size: 1rem;

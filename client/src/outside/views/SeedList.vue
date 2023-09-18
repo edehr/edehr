@@ -260,7 +260,7 @@ export default {
       this.$router.push({ name: 'seed-view-condensed', query: { seedId: seed._id } })
     },
     gotoEhrWithSeed (seed) {
-      this.$router.push({ name: 'ehr', query: { seedEditId: seed._id, appType: seed.appType } })
+      this.$router.push({ name: 'ehr', query: { seedEditId: seed._id } })
     },
 
   },
