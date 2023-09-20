@@ -43,7 +43,7 @@ async  function onPageChange (toRoute) {
     demo_lobjId, // see server side demo-controller _createDemoToolConsumer
     demoOnlyKey, // just the ehr demo mode
     seedEditId, // instructor user just started editing a seed in the ehr
-    seedId, // instructor user selected a seed (case study) in the LMS area
+    seedId, // instructor user going to seed view. Not used in page-controller. Can clean.
     evaluateStudentVisitId, // instructor selected to evaluate a student, possibly in the EHR
     token: refreshToken, // user has just arrived via a LTI request from an LMS
     visitId: optionalVisitId // user is coming from an LmsStudentActivity page
