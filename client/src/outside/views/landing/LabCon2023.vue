@@ -196,4 +196,14 @@ export default {
   }
 }
 
+@media screen and (max-width: $main-width-threshold2){
+
+  .labcon2023 {
+    & .lcInner {
+      width: 100%;
+      margin: auto
+    }
+
+  }
+}
 </style>
