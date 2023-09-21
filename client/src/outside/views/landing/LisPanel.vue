@@ -3,33 +3,24 @@
     h3 The EdEHR contains a fledgling yet proven Lab Information System
     p.
       The EdEHR is designed to support the education
-      of health care professionals in a wide range of professions and we are now working to
-      build out a Lab Information System layer.
+      of health care professionals in a wide range of professions, including medical laboratory technologists and administrators.
+      The application simulates a lab information system (LIS) in a way that supports educators and students.
+
     p.
-      Currently we have a Hematology module yet we are working on Chemistry and Urinalysis
-      and will then be considering other areas such as Histology and Microbiology.  Get involved
-      now and be part of the design team.
+      Currently we have a Hematology module and we will soon add the Urinalysis module. The chemistry forms
+      are under development as are the forms to support accessioning.
     p.
-      The EdEHR has a boring pedantic name
-      but that suits its nature because its a tool that is focused first on the students' experience and
-      then on the instructors' experience
-    p.
-      BCIT has funded and guided this work on the Med Lab.
-      In their Med Lab department they were using an aging application for hematology lab,
-      but it had lots of problems
-      with no easy way to resolve them.  We chose to implement the Hematology Med Lab module inside
-      the EdEHR so we could leverage the way the EdEHR helps both students and instructors.
-    p.
-      This past year, the hematology module was used during every lab class over
-      two semesters and the student
-      feedback has been very positive.
+      BCIT has funded and guided much of this work to support the med lab.
+      The BCIT Hematology department was using an aging application for hematology lab that had lots of problems.
+      They chose to help implement a Hematology Med Lab module inside
+      the EdEHR and since September 2022 this module has been used by all lab classes with approximately 96 students per session.
+      The student feedback has been very positive.
     p.
       Also during this past year the BCIT lab instructors provided guidance to the EdEHR developer
       and we made substantial improvements to enhance both the student and instructor experience.
-
+      We are currently preparing to deliver Urinalysis into the classroom in the fall of 2023.
     p.
-      Eventually, we will evolve the application to present a more typical LIS experience.
-      Plus, we're working towards adding more modules such as chemistry, histology, microbiology and more.
+      Eventually, we will evolve the application to add more modules such as chemistry, histology, microbiology and more.
 
 </template>
 

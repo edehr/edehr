@@ -77,6 +77,13 @@ export function outside () {
       meta: { layout: 'outside', label: 'LabCon 2023', zone: ZONE_PUBLIC }
     },
     {
+      path: '/lis',
+      name: 'LIS',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/landing/LabCon2023.vue'),
+      meta: { layout: 'outside', label: 'LIS FAQ', zone: ZONE_PUBLIC }
+    },
+    {
       path: '/error',
       name: 'error',
       component: () =>

@@ -2,14 +2,12 @@
   div(class='labcon2023')
     div(class='lcInner')
       div(class="welcome")
-        h2(class="wTitle") Welcome attendees of LabCon 2023 &nbsp;
-          a(href='https://csmls.org/')
-            img(src='/assets/landing/labcon2023/csmls-logo.png', alt='CSMLS Logo', width='200px')
+        h2(class="wTitle") Frequently ask questions about LIS in the EdEHR;
 
         div(class="wPanel")
           p.
-            Welcome to the EdEHR, an <strong>Educational</strong> Electronic Health Record system that
-            contains a Lab Information System.  This application is for anyone involved in
+            Welcome to the EdEHR, an <strong>Educational</strong> Electronic Health Record (EHR) system that
+            contains a Lab Information System (LIS).  This application is for anyone involved in
             the education of healthcare professionals, in any field of practice.
 
         lab-con-section(title="What Med Lab modules does the EdEHR support?")
