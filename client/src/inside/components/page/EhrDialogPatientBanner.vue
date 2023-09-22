@@ -2,6 +2,7 @@
   div
     div(class="patient-data")
       div(class='patient-name') {{ patientData.patientName }}
+      div MRN: {{ patientData.mrn }}
       div PHN: {{ patientData.phn }}
       div DoB: {{ patientData.dateOfBirth }} ({{ patientData.personAge }} yrs)
       div Gender: {{ patientData.gender }}
