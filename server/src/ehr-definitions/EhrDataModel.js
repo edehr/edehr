@@ -13,7 +13,7 @@ import { updateRespiratory } from './ehr-data-upgrade-utils'
 import { updateWoundCaseStudy } from './ehr-data-upgrade-woundCaseStudy'
 import { updateHematologyLymphocytes } from './ehr-data-upgrade-hematology'
 
-export const CURRENT_EHR_DATA_VERSION = 'ev2.3.5'
+export const CURRENT_EHR_DATA_VERSION = 'ev2.3.6'
 
 /**
  * WARNING Do not edit this code unless you are working in the ehr-workspace common
