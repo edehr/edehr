@@ -52,6 +52,33 @@ export default class EhrDataModel {
     return (new EhrDataModel(ehrData)).ehrData
   }
 
+  static ExtractMedicalRecordNumber (ehrData) {
+    const page = ehrData['demographics']
+    return page ? page['mrn'] : undefined
+  }
+  static InsertMedicalRecordNumber (ehrData, mrn) {
+    ehrData.demographics = ehrData['demographics'] || {}
+    ehrData.demographics.mrn = mrn
+    return ehrData
+  }
+
+  static ExtractKeyPatientData (ehrData) {
+    const keyData = {}
+    const dp = ehrData['demographics']
+    if (dp) {
+      // dateOfBirth: only useful part is the month and day
+      // must combine with personAge to get current DoB
+      keyData.dateOfBirth = dp.dateOfBirth
+      keyData.personAge = dp.personAge
+      keyData.gender = dp.gender
+      keyData.mrn = dp.mrn
+      keyData.phn = dp.phn
+      keyData.familyName = dp.familyName ? dp.familyName.toUpperCase() : ''
+      keyData.givenName = dp.givenName
+    }
+    return keyData
+  }
+
   constructor (ehrData) {
     this.loadEhrData(ehrData)
   }

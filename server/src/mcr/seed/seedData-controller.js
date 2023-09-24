@@ -114,6 +114,7 @@ export default class SeedDataController extends BaseController {
       description: 1,
       createDate: 1,
       lastUpdateDate: 1,
+      mrn: 1,
       tagList: 1,
       ehrData: 1, // need ehrData to compute the seed stats
       version: 1,

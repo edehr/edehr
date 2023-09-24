@@ -16,7 +16,8 @@ export const state = {
   // Initialize seedModel with the inner seed property so that components
   // can do their initial rendering while waiting for the seed data to load from API call
   seedModel : { seed: {} },
-  allTagList: []
+  allTagList: [],
+  ehrData: undefined
 }
 
 export const getters = {
@@ -25,10 +26,7 @@ export const getters = {
   listMetadata: state => { return state.listMetadata },
   seedModel: state => { return state.seedModel },
 
-  seedEhrData: state => {
-    const edm = state.seedModel.ehrDataModel
-    return edm && edm.ehrData ? edm.ehrData : undefined
-  },
+  seedEhrData: state => { return state.ehrData },
 
   list: state => { return state.seedDataList },
 
@@ -275,6 +273,8 @@ export const mutations = {
   _setSeedContent: (state, value) => {
     // state.sSeedContent = value
     state.seedModel = new SeedModel(value)
+    const edm = state.seedModel.ehrDataModel
+    state.ehrData = edm && edm.ehrData ? edm.ehrData : undefined
   },
   _setSeedDataList: (state, list) => {
     state.seedDataList = list
