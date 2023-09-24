@@ -1,5 +1,5 @@
 import InstoreHelper from './instoreHelper'
-import { decoupleObject, ehrMergeEhrData, ehrMarkSeed } from '@/helpers/ehr-utils'
+import { decoupleObject, ehrMergeEhrData } from '@/helpers/ehr-utils'
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import StoreHelper from '@/helpers/store-helper'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
@@ -37,12 +37,10 @@ const getters = {
       // base already set above
     } else if (getters.ehrOnly) {
       baseLevelData = decoupleObject(rootGetters['ehrOnlyDemoStore/ehrOnlyData'])
-      baseLevelData = ehrMarkSeed(baseLevelData)
     } else if (InstoreHelper.instoreIsInstructor(rootState)) {
       // base already set above
     } else {
       // type = 'Student merged data'
-      baseLevelData = ehrMarkSeed(baseLevelData)
     }
     // place data into a model update meta data and transform model to latest version if needed
     const model = new EhrDataModel(baseLevelData)

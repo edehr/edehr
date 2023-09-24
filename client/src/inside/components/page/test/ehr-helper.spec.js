@@ -196,11 +196,6 @@ describe('ehr-helper tests', () => {
       // should.doesNotThrow(async () => await ehrHelper.resetFormData())
     })
 
-    it.skip('savePageFormEdit', () => {
-      should.doesNotThrow(() => ehrHelper.savePageFormEdit())
-      ehrHelper.isEditing().should.equal(false)
-    })
-
     it('cancelEdit', () => {
       should.doesNotThrow(() => ehrHelper.cancelEdit(router))
       ehrHelper.isEditing().should.equal(false)

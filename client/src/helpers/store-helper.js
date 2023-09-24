@@ -1,5 +1,4 @@
 import store from '../store'
-import { removeEmptyProperties } from './ehr-utils'
 import sKeys from './session-keys'
 import { ZONE_ADMIN, ZONE_DEMO, ZONE_EHR, ZONE_LMS, ZONE_PUBLIC } from '@/router'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
@@ -38,6 +37,8 @@ class StoreHelperWorker {
   getMergedPageData (pageKey) { return store.getters['ehrDataStore/mergedDataForPageKey'](pageKey) }
 
   getMergedData () { return store.getters['ehrDataStore/mergedData']  }
+  getSecondLevel () { return store.getters['ehrDataStore/secondLevel']  }
+  getBaseLevel () { return store.getters['ehrDataStore/baseLevel']  }
 
   /**
    *
@@ -160,9 +161,6 @@ class StoreHelperWorker {
   getStudentScratchData () { return this._getActivityDataProperty('scratchData')}
   getEvaluationNotes () { return this._getActivityDataProperty('evaluationData')   }
   getActivityData () { return this._getActivityDataProperty('activityData')}
-
-  sendAssignmentDataUpdate (payload) {return this._dispatchActivityData('sendAssignmentDataUpdate', payload)}
-  sendAssignmentDataDraft (payload) {return this._dispatchActivityData('sendAssignmentDataDraft', payload)}
 
   isLoading () { return this._getSystemProperty('isLoading')}
 
@@ -417,26 +415,6 @@ class StoreHelperWorker {
     StoreHelper.postActionEvent(CREATOR_ACTION,'updateSeed')
     let dataIdPlusPayload = { id: seedId, payload: theData }
     return this._dispatchSeedListProperty('updateSeedItem', dataIdPlusPayload)
-  }
-
-  // importSeedEhrData (seedId, ehrData) {
-  //   let payload = {
-  //     id: seedId,
-  //     ehrData: ehrData
-  //   }
-  //   return this._dispatchSeedListProperty('importSeedEhrData', payload)
-  // }
-
-  sendSeedEhrDataDraft (payload ) {
-    return this._dispatchSeedListProperty('sendSeedEhrDataDraft', payload)
-  }
-  updateSeedEhrProperty (propertyName, value ) {
-    StoreHelper.postActionEvent(STUDENT_ACTION,'updateEhr-' + propertyName)
-    let payload = {
-      propertyName: propertyName,
-      value: removeEmptyProperties(value)
-    }
-    return this._dispatchSeedListProperty('updateSeedEhrProperty', payload)
   }
 
   createSeed (component, seedData) {

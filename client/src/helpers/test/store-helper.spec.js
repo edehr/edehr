@@ -336,19 +336,6 @@ describe('classList / instructor tests', () => {
     })
   })
 
-  it('sendAssignmentDataUpdate', async () => {
-    should.doesNotThrow(async () => {
-      const payload = {
-        propertyName: 'progressNotes',
-        value: true
-      }
-      await axiosMockHelper.prepareAxiosResponse('put', payload)
-      const result = await StoreHelper.sendAssignmentDataUpdate(payload)
-      should.exist(result)
-      result.should.equal(payload)
-    })
-  })
-
   it('getClassListForActivity', async () => {
     should.doesNotThrow(async () => {
       const activityId = mockData.activity._id

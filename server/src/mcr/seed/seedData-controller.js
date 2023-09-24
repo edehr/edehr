@@ -141,7 +141,7 @@ export default class SeedDataController extends BaseController {
       console.error('updateSeedEhrProperty throw no id', id )
       throw new Error(Text.INVALID_BASE_ID(id,'seed data'))
     }
-    let propertyName = payload.propertyName
+    let propertyName = payload.propertyName // pageKey
     let value = payload.value
     const model = await this.baseFindOneQuery(id)
     // debug('upsehrprop search ' + model ? 'ok' : 'fail')

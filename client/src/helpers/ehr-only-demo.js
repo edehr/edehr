@@ -12,11 +12,6 @@ class EhrOnlyDemoInner {
   ehrOnlySeed () {
     return store.getters['ehrOnlyDemoStore/ehrOnlySeed']
   }
-  saveEhrOnlyUserData (pageKey, newPageValue) {
-    const payload = {pageKey, value: newPageValue}
-    // console.log('saveEhrOnlyUserData:', JSON.stringify(newPageValue))
-    return store.dispatch('ehrOnlyDemoStore/ehrOnlyDataUpdate', payload)
-  }
 
   clearEhrOnly () {
     return store.dispatch('ehrOnlyDemoStore/selectCaseStudy', undefined)

@@ -80,14 +80,6 @@ describe.skip('mar-helper tests', () => {
       })
     })
 
-    it('clearAllData', () => {
-      should.doesNotThrow(() => {
-        marHelper.clearAllData()
-        const calls = mockedEhrHelper._saveData.mock.calls
-        calls.length.should.equal(1)
-      })
-    })
-
     it('getPageDef_Mar', () => {
       should.doesNotThrow(() => {
         const pageDef = EhrDefs.getPageDefinition(MAR_PAGE_KEY)
@@ -102,27 +94,6 @@ describe.skip('mar-helper tests', () => {
         const pageKey = mockedEhrHelper.getMergedPageData(MAR_PAGE_KEY).pageElements.table.tableKey
         const result = marHelper.getMarTableKey()
         result.should.equal(pageKey)
-      })
-    })
-
-    it('saveMarDialog', () => {
-      should.doesNotThrow(() => {
-        const newMarRecord = new MarEntity({
-          actualTime: '08:00',
-          comment: 'Test MAR',
-          day: 0,
-          medications: [
-            new MedOrder('acetylcysteine injection')
-          ]
-        })
-        marHelper.saveMarDialog(newMarRecord)
-        mockedEhrHelper._saveData.mock.calls.length.should.equal(2)
-      })
-    })
-
-    it('triggerActionByPageKey', () => {
-      should.doesNotThrow(() => {
-        marHelper.triggerActionByPageKey()
       })
     })
   })
@@ -172,14 +143,6 @@ describe.skip('mar-helper tests', () => {
       })
     })
 
-    it('clearAllData', () => {
-      should.doesNotThrow(() => {
-        marHelper.clearAllData()
-        const calls = mockedEhrHelper._saveData.mock.calls
-        calls.length.should.equal(2)
-      })
-    })
-
     it('getPageDef_Mar', () => {
       should.doesNotThrow(() => {
         const pageDef = EhrDefs.getPageDefinition(MAR_PAGE_KEY)
@@ -193,27 +156,6 @@ describe.skip('mar-helper tests', () => {
         const pageKey = mockedEhrHelper.getMergedPageData(MAR_PAGE_KEY).pageElements.table.tableKey
         const result = marHelper.getMarTableKey()
         result.should.equal(pageKey)
-      })
-    })
-
-    it('saveMarDialog', () => {
-      should.doesNotThrow(() => {
-        const newMarRecord = new MarEntity({
-          actualTime: '08:00',
-          comment: 'Test MAR',
-          day: 0,
-          medications: [
-            new MedOrder('acetylcysteine injection')
-          ]
-        })
-        marHelper.saveMarDialog(newMarRecord)
-        mockedEhrHelper._saveData.mock.calls.length.should.equal(2)
-      })
-    })
-
-    it('triggerActionByPageKey', () => {
-      should.doesNotThrow(() => {
-        marHelper.triggerActionByPageKey()
       })
     })
   })

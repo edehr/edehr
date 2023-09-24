@@ -3,6 +3,7 @@ import sKeys from '../../helpers/session-keys'
 import StoreHelper from '../../helpers/store-helper'
 import SeedModel from '@/outside/models/SeedModel'
 const API = 'seed-data'
+const urlForUpdate = 'updateSeedEhrProperty/'
 let debugSL = false
 
 // exporting elements so they can be accessed in unit tests.
@@ -220,9 +221,8 @@ const actions = {
     // push new EHR data into the seed, without progress bars,
     // receive the server response with the new seed
     // stash in the store
-    // emit event to refresh table data
     let id = context.state.sSeedId
-    let url = 'updateSeedEhrProperty/' + id +'/draft'
+    let url = urlForUpdate + id +'/draft'
     const sd = await InstoreHelper.putRequestSilent(context, API, url, payload)
     await context.commit('_setSeedContent', sd.data)
   },
@@ -231,14 +231,14 @@ const actions = {
    * @param context
    * @param payload with id and data eg:
    *    let data = {
-   *      property: 'progressNotes',
+   *      propertyName: 'progressNotes',  // page key
    *      value: model.ehrData.progressNotes || []
    *      }
    * @return {*}
    */
   updateSeedEhrProperty (context, payload) {
     let id = context.state.sSeedId
-    let url = 'updateSeedEhrProperty/' + id +'/save'
+    let url = urlForUpdate + id +'/save'
     if(debugSL) console.log('SeedList updateSeedEhrProperty url, payload', url, payload)
     return InstoreHelper.putRequest(context, API, url, payload)
       .then(() => {
@@ -252,29 +252,6 @@ const actions = {
         }
       })
   },
-
-  /**
-   * Replace the seed's ehrData
-   * @param context
-   * @param payload { ehrData, id }
-   * @return {*}
-   */
-  // importSeedEhrData (context, payload) {
-  //   let url = 'importSeedEhrData/' + payload.id
-  //   if(debugSL) console.log('SeedList importSeedEhrData', url, payload.ehrData)
-  //   return InstoreHelper.putRequest(context, API, url, payload.ehrData)
-  //     .then( () => {
-  //       if(debugSL) console.log('SeedList after seed replace ehr data reload seed list')
-  //       return context.dispatch('loadSeeds')
-  //     })
-  //     .then(() => {
-  //       if (context.state.sSeedId) {
-  //         if(debugSL) console.log('SeedList after seed replace ehr data reload current seed item')
-  //         return context.dispatch('loadSeedContent', context.state.sSeedId)
-  //       }
-  //     })
-  // }
-
 }
 
 export const mutations = {
