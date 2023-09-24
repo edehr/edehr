@@ -142,11 +142,7 @@ export function apiMiddle (app, config) {
       }
     })
     .then(() => {
-      if(config.dbUpdateOnStart) {
-        return updateAllEhrData()
-      } else {
-        debug('Skip EhrData updates because the env var DB_UPDATE_ON_START is not set to "true".')
-      }
+      return updateAllEhrData()
     })
     .then(lti.initializeApp(app))
     .then(cc.initializeApp(config.defaultConsumerKey))
