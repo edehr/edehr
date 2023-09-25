@@ -1,5 +1,4 @@
 import SeedData from '../mcr/seed/seed-data'
-import EhrDataModel from '../ehr-definitions/EhrDataModel'
 import { decoupleObject } from '../ehr-definitions/common-utils'
 const debug = require('debug')('server')
 
@@ -17,13 +16,15 @@ const debug = require('debug')('server')
 export default async function dbSeedMrnPhn () {
   const allSeeds = await SeedData.find({ ehrData: {$ne: null}}, {name: 1, ehrData: 1})
   for (const sd of allSeeds) {
-    let keyData = EhrDataModel.ExtractKeyPatientData(sd.ehrData)
-    if (!keyData.mrn && keyData.phn) {
-      let ehrData = decoupleObject(sd.ehrData)
-      keyData.mrn = keyData.phn
-      ehrData = EhrDataModel.InsertMedicalRecordNumber(ehrData, keyData.mrn)
+    let ehrData = decoupleObject(sd.ehrData)
+    ehrData.demographics = ehrData['demographics'] || {}
+    const mrn = ehrData.demographics.mrn
+    const phn = ehrData.demographics.phn
+    if (!mrn && phn) {
+      ehrData.demographics.mrn = ehrData.demographics.phn
+      delete ehrData.demographics.phn
       await SeedData.updateOne({_id: sd._id}, {ehrData: ehrData})
-      debug('updated dbSeedMrnPhn on seed', sd.name, keyData.mrn)
+      debug('updated dbSeedMrnPhn on seed', sd.name, mrn)
     }
   }
 }
