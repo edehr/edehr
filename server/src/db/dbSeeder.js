@@ -12,6 +12,7 @@ import { dbAnonymizeUsers, dbAnonymizeActivityData } from './dbAnonymize'
 import dbSeedDataAppType from './dbSeedDataAppTypes'
 import desire2learnActivitiesIntegtrations from './desire2learn-activities-integtrations'
 import Consumer from '../mcr/consumer/consumer'
+import dbSeedMrnPhn from './dbSeedMrnPhn'
 const activityDataController = new ActivityDataController()
 const seedController = new SeedDataController()
 
@@ -81,6 +82,7 @@ async function doIntegrations (commonControllers) {
   await doD2LIntegrations()
   await doSeedAppTypeIntegrations()
   await dbCleanOldDemos(commonControllers)
+  await doSeedMrnPhnIntegrations()
   // console.log('THIS NEXT LINE ANONYMIZES THE DATABASE. Good to do on a real db for use with development.')
   // await doAnonymize()
   const end = performance.now()
@@ -163,6 +165,17 @@ async function doSeedAppTypeIntegrations () {
   }
 }
 
+async function doSeedMrnPhnIntegrations () {
+  const doUpdate = await checkIntegration('seedMrnPhn', false)
+  if(doUpdate) {
+    debug('seedMrnPhn. BEGIN')
+    const start = performance.now()
+    await dbSeedMrnPhn()
+    const end = performance.now()
+    debug('seedMrnPhn. DONE.', Math.round(end - start), 'ms')
+  }
+}
+
 // eslint-disable-next-line no-unused-vars
 async function doAnonymize () {
   debug('doAnonymize. BEGIN')
@@ -194,12 +207,13 @@ async function _updateActivityData () {
   let cnt = 0
   const activityDataList = await activityDataController.list({assignmentData: { $exists: true} },{assignmentData: true})
   const list = activityDataList.activitydata
+  const tCnt = list.length
   for ( const ad of list) {
     if (!EhrDataModel.IsUpToDate(ad.assignmentData)) {
       cnt++
       await activityDataController.updateAndSaveAssignmentEhrData(ad._id, ad.assignmentData)
       if (cnt % 100 === 0) {
-        debug('updateAllEhrData. updated ', cnt)
+        debug('updateAllEhrData activity data updated ', cnt, 'of', tCnt)
       }
     }
   }

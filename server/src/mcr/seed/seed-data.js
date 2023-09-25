@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 import { EhrPages } from '../../ehr-definitions/ehr-models'
 import { WS_EVENT_BUS, WS_S2C_MESSAGE_EVENT } from '../../server/push-server'
 import EhrDataModel from '../../ehr-definitions/EhrDataModel'
+const debug = require('debug')('server')
 
 const ObjectId = mongoose.Schema.Types.ObjectId
 /*
@@ -68,12 +69,9 @@ async function generateNextUniqueMRN (toolConsumer) {
 Schema.pre('save', async function (next) {
   let keyData = EhrDataModel.ExtractKeyPatientData(this.ehrData)
   if (!keyData.mrn) {
-    if (keyData.phn) {
-      keyData.mrn = keyData.phn
-    } else {
-      keyData.mrn = await generateNextUniqueMRN(this.toolConsumer)
-    }
+    keyData.mrn = await generateNextUniqueMRN(this.toolConsumer)
     this.ehrData = EhrDataModel.InsertMedicalRecordNumber(this.ehrData, keyData.mrn)
+    debug('pre save seed generates new mrn', this.name, keyData.mrn)
   }
   this.dateOfBirth = keyData.dateOfBirth
   this.familyName = keyData.familyName
