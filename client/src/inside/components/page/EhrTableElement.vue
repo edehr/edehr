@@ -11,9 +11,11 @@
 import moment from 'moment'
 import EhrFileLink from '@/inside/components/EhrFileLink'
 import { formatDateStr } from '@/helpers/ehr-utils'
-
+import EhrTypes from '@/ehr-definitions/ehr-types'
+import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 export default {
   components: { EhrFileLink },
+  inject: [ 'pageDataKey'],
   props: {
     cell: { type: Object },
   },
@@ -24,6 +26,14 @@ export default {
       if (inputType === 'date') {
         let mom = moment(value, 'YYYY-MM-DDTHH:mm:ss ZZ')
         if (mom.isValid()) value = formatDateStr(value) //mom.format('DD MMM YYYY')
+      }
+      if (inputType === EhrTypes.dataInputTypes.calculatedValue) {
+        const element = EhrDefs.getPageChildElement(this.pageDataKey, cell.key)
+        let decimals = Number.parseInt(element.decimals)
+        if (!isNaN(value) && !isNaN(decimals)) {
+          let f = Math.pow(10, decimals)
+          value = Math.round(value * f) / f
+        }
       }
       return value
     }
