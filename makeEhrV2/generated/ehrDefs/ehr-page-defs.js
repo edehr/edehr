@@ -23868,7 +23868,6 @@ const DEFS = {
       {
         'elementKey': 'pltAnalysis',
         'calculationType': 'embedValue(hematology,tableCbcAnalysis,PLT)',
-        'decimals': '0',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'label': 'PLT count',
@@ -24362,6 +24361,7 @@ const DEFS = {
       {
         'elementKey': 'cellCntTotal',
         'calculationType': 'sum',
+        'decimals': '0',
         'formIndex': '2',
         'inputType': 'calculatedValue',
         'tableColumn': '67',

@@ -3,6 +3,7 @@
 import EhrTypes from './ehr-types'
 import EhrCheckset from './ehr-checkset'
 import { selectValueMakeHuman } from './ehr-select'
+import EhrDefs from './ehr-defs-grid'
 
 export function validateAgeValue (age) {
   const ageValue = Number.parseInt(age)
@@ -15,6 +16,14 @@ export function makeHumanTableCell ( pageKey, elementKey, inputType, dbVal) {
   }
   if (inputType === EhrTypes.dataInputTypes.select) {
     dbVal = selectValueMakeHuman(dbVal, pageKey, elementKey )
+  }
+  if (inputType === EhrTypes.dataInputTypes.calculatedValue) {
+    const element = EhrDefs.getPageChildElement(pageKey, elementKey)
+    let decimals = Number.parseInt(element.decimals)
+    if (!isNaN(dbVal) && !isNaN(decimals)) {
+      let f = Math.pow(10, decimals)
+      dbVal = Math.round(dbVal * f) / f
+    }
   }
   return dbVal
 }
