@@ -41,7 +41,6 @@ async  function onPageChange (toRoute) {
   const {
     isDemoLti, // lti request from the full demo
     demo_lobjId, // see server side demo-controller _createDemoToolConsumer
-    appType,
     demoOnlyKey, // just the ehr demo mode
     seedEditId, // instructor user just started editing a seed in the ehr
     seedId, // instructor user selected a seed (case study) in the LMS area
@@ -123,9 +122,6 @@ async  function onPageChange (toRoute) {
       const query = { visitId: visitId }
       if(demo_lobjId) {
         query.demo_lobjId = demo_lobjId
-      }
-      if(appType) {
-        query.appType = appType
       }
       await router.push({ path: path, query: query })
       return perfExit(perfStat)

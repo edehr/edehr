@@ -104,13 +104,7 @@ export default {
       // console.log('loaded ', activityRecord)
     },
     goToEhr () {
-      this.$router.push({
-        name: 'ehr',
-        query: {
-          appType: this.activityRecord.appType,
-          visitId: this.visitId
-        }
-      })
+      this.$router.push({ name: 'ehr', query: { visitId: this.visitId } })
     }
   },
 }
