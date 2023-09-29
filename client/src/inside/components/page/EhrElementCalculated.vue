@@ -41,7 +41,7 @@ export default {
       let decimals = Number.parseInt(this.element.decimals)
       if (!isNaN(value) && !isNaN(decimals)) {
         let f = Math.pow(10, decimals)
-        value = Math.round(value * f) / f
+        value = (Math.round(value * f) / f).toFixed(decimals)
       }
       // put into component data to be rendered
       this.value = value
