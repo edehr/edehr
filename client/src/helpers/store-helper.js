@@ -155,9 +155,6 @@ class StoreHelperWorker {
   getCourseTitle () { return this._getActivityProperty('courseTitle') }
 
   isSubmitted () { return this._getActivityDataProperty('submitted') }
-  // isSentBack () { return this._getActivityDataProperty('sentBack') }
-  getStudentAssignmentData () { return this._getActivityDataProperty('assignmentData')}
-  getStudentAssignmentDataHasDraftRows () { return this._getActivityDataProperty('hasDraftRows')}
   getStudentScratchData () { return this._getActivityDataProperty('scratchData')}
   getEvaluationNotes () { return this._getActivityDataProperty('evaluationData')   }
   getActivityData () { return this._getActivityDataProperty('activityData')}
@@ -326,8 +323,8 @@ class StoreHelperWorker {
     await this.loadAssignmentList()
   }
   // returns promise that resolves to assignment list
-  async updateAssignment (component, assignmentId, assignmentData) {
-    let dataIdPlusPayload = { id: assignmentId, payload: assignmentData }
+  async updateAssignment (component, assignmentId, lObjData) {
+    let dataIdPlusPayload = { id: assignmentId, payload: lObjData }
     await this._dispatchAssignmentList('updateAssignment', dataIdPlusPayload)
     const assignment = await this._dispatchAssignment('load', assignmentId)
     const seedId = assignment.seedDataId
@@ -336,8 +333,8 @@ class StoreHelperWorker {
     return assignment
   }
   // returns promise that resolves to assignment list
-  async createAssignment (assignmentData) {
-    const duped = await this._dispatchAssignmentList('createAssignment', assignmentData)
+  async createAssignment (lObjData) {
+    const duped = await this._dispatchAssignmentList('createAssignment', lObjData)
     await this._dispatchAssignment('load', duped._id)
     StoreHelper.postActionEvent(CREATOR_ACTION,'createAssignment')
     return duped
@@ -565,15 +562,18 @@ class StoreHelperWorker {
    */
 
   async loadInstructorWithStudent () {
+    // get the instructor user's visit record
     await store.dispatch('visit/loadVisitRecord')
     const theActivity = await store.dispatch('activityStore/loadActivityRecord')
-    const seedId = theActivity.caseStudyId
     const learningObjectId = theActivity.learningObjectId
-    if(debugSH) console.log('SH liws theActivity', theActivity)
     await store.dispatch('assignmentStore/load', learningObjectId)
     await store.dispatch('instructor/loadClassList')
-    await this.loadSeed(seedId)
-    return theActivity
+    const seedId = theActivity.caseStudyId
+    if (seedId) {
+      await this.loadSeed(seedId)
+    } else {
+      console.log('Here is an instance where we have allowed a learning object to NOT have a seed.')
+    }
   }
 
   /* **********

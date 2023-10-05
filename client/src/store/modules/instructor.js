@@ -56,9 +56,11 @@ const actions = {
   changeCurrentEvaluationStudentId: async (context, currentStudentVisitId) => {
     if (debug) console.log(NAME + 'change current evaluation student id to ', currentStudentVisitId)
     context.commit('setCurrentEvaluationStudentId', currentStudentVisitId)
+    // TODO -- review this getter --- it pulls from the classlist. Why doesn't it make an API call to get just the student's data? Why pull and keep the entire class list in memory, especially when other instructors may be marking the same class.
     let sv = context.getters.currentEvaluationStudent
     let adId = sv.activityData._id
     if (debug) console.log(NAME + 'currentEvaluationStudent activityData._id', adId)
+    // TODO - is the next line the best way to get the student's data?
     await context.dispatch('activityDataStore/loadActivityData', { id: adId }, { root: true })
   },
 

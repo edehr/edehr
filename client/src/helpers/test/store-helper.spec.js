@@ -191,15 +191,6 @@ describe('General testing', () => {
     })
   })
 
-  it('getStudentAssignmentData', done => {
-    should.doesNotThrow(() => {
-      const assignmentData = StoreHelper.getStudentAssignmentData()
-      should.exist(assignmentData)
-      assignmentData.should.equal(mockData.activityData.assignmentData)
-      done()
-    })
-  })
-
   it('getStudentScratchData', done => {
     should.doesNotThrow(() => {
       const scratchData = StoreHelper.getStudentScratchData()

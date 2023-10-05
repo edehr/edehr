@@ -25,7 +25,12 @@ function perfExit (perfStat) {
    * 2. Just EHR demo loading because this starts with the "inside EHR" pages.
    * 3. Transition to real connection from full demo.
    * 4. EHR page changes.
-   * #4 is
+   * #4 can now have 'patient' or 'seed' changes.
+   * If user is editing case studies then the 'seedEditId' is provided.
+   * If the user is a student then they arrive with the 'visitId' (becomes 'optionalVisitId' is provided but
+   * the student may be changing patients to the 'patientId' will be provided.
+   * Note that patientId may be a seed id or a patient id. Regardless, it will be an id of an object in the current patient list.
+   *
    * This complex function has several exit points marked with all caps EXIT.
    * The local readme file has a flow chart showing how the logic works.
    * @param toRoute - the 'to' route. We can get the 'from' if needed.
@@ -206,14 +211,12 @@ async  function onPageChange (toRoute) {
     const authVisitId = store.getters['authStore/visitId']
     let visitId = optionalVisitId || storedVisitId || authVisitId
     await StoreHelper.setVisitId(visitId) //note this stores the visit id to survive page changes and browser refresh
+    // dup-in loadInstructorWithStudent
     await store.dispatch('visit/loadVisitRecord')
-
+    // dup-in loadInstructorWithStudent
     let theActivity = await store.dispatch('activityStore/loadActivityRecord')
-    if (dbApp) console.log('loaded current activity', theActivity)
     await store.dispatch('courseStore/setCourseId', theActivity.courseId)
     await store.dispatch('courseStore/loadCurrentCourse')
-    if (dbApp) console.log('loadeded course')
-
 
     // **** If page is the one that handles unlinked activities then we are done ... EXIT
     if (routeName === UNLINKED_ACTIVITY_ROUTE_NAME) {
@@ -239,15 +242,17 @@ async  function onPageChange (toRoute) {
       if (seedEditId || seedId) {
         // All seed editing pages have the seedId in the querystring
         // the go to ehr seed edit url has the seedEditId in the querystring
-        const sdid = seedEditId || seedId
-        await StoreHelper.setSeedEditId(sdid)
+        const sdId = seedEditId || seedId
+        await StoreHelper.setSeedEditId(sdId)
       }
       if (evaluateStudentVisitId && StoreHelper.isSeedEditing()) {
         console.log('Switch to evaluation student id')
         await StoreHelper.setSeedEditId('')
       }
       if (StoreHelper.isSeedEditing()) {
-        await StoreHelper.loadSeedEditor()
+        const sid = StoreHelper.getSeedEditId()
+        await store.dispatch('seedListStore/loadSeedContent', sid)
+        const seed = store.getters['seedListStore/seedContent']
       }
       // **** Instructor evaluating student id management
       if (evaluateStudentVisitId) {
@@ -270,9 +275,10 @@ async  function onPageChange (toRoute) {
         StoreHelper.setIsDevelopingContent(false)
       }
       if (dbApp) console.log('student ehr page load')
-      await StoreHelper._dispatchActivityData('loadActivityData', { id: theActivity.activityDataId })
-      await StoreHelper.loadAssignment(theActivity.learningObjectId)
-      await StoreHelper.loadSeed(theActivity.caseStudyId)
+      // loadActivityData gets both the activityData and the student's assignment data with the patient list
+      await store.dispatch('activityDataStore/loadActivityData', { id: theActivity.activityDataId })
+      await store.dispatch('assignmentStore/load', theActivity.learningObjectId)
+      await store.dispatch('seedListStore/loadSeedContent', theActivity.caseStudyId)
     }
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   } catch (err) {

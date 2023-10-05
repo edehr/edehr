@@ -221,7 +221,7 @@ const actions = {
     // stash in the store
     let id = context.state.sSeedId
     let url = urlForUpdate + id +'/draft'
-    const sd = await InstoreHelper.putRequestSilent(context, API, url, payload)
+    const sd = await InstoreHelper.putRequest(context, API, url, payload, 'silent')
     await context.commit('_setSeedContent', sd.data)
   },
   /**

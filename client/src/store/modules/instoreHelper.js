@@ -38,23 +38,15 @@ class InstoreHelperWorker {
   //   return this.upsert(context, 'put', api, url, bodyData, config)
   // }
 
-  async putRequestSilent (context, api, url, bodyData) {
-    url = this.composeUrl(context, api, url)
-    // console.log('PUT silent to this url', url)
-    // console.log('with silent this data "', bodyData, '"')
-    return await axios.put(url, bodyData)
-  }
-
-  putRequest (context, api, url, bodyData) {
+  putRequest (context, api, url, bodyData, silent) {
     url = this.composeUrl(context, api, url)
     if(debug) console.log('PUT to this url', url)
     if(debug) console.log('with this data "', bodyData, '"')
-    StoreHelper.setLoading('putRequest', true)
+    if (!silent) StoreHelper.setLoading('putRequest', true)
     return new Promise((resolve, reject) => {
       axios
         .put(url, bodyData)
         .then(results => {
-          // console.log('success instoreHelper putRequest')
           resolve(results)
         })
         .catch(error => {
@@ -63,7 +55,7 @@ class InstoreHelperWorker {
           reject(msg)
         })
         .finally(() => {
-          StoreHelper.setLoading('putRequest', false)
+          if (!silent) StoreHelper.setLoading('putRequest', false)
         })
     })
   }

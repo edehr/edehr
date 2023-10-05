@@ -424,7 +424,9 @@ export default class EhrPageHelper {
         value: pageData
       }
       if (this._isStudent()) {
-        await store.dispatch('activityDataStore/sendAssignmentDataDraft', payload)
+        payload.action = 'draft'
+        payload.silent = true
+        await store.dispatch('activityDataStore/sendAssignmentDataUpdate', payload)
       } else if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
         await store.dispatch('ehrOnlyDemoStore/ehrOnlyDataUpdate', payload)
       } else if (StoreHelper.isSeedEditing()) {
@@ -438,6 +440,8 @@ export default class EhrPageHelper {
       value: pageData
     }
     if (this._isStudent()) {
+      payload.action = 'save'
+      // activityDataStore will select current patient from mPatientStore
       await store.dispatch('activityDataStore/sendAssignmentDataUpdate', payload)
     } else if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
       await store.dispatch('ehrOnlyDemoStore/ehrOnlyDataUpdate', payload)

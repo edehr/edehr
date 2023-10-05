@@ -23,6 +23,8 @@ import EhrPageFormControls from './EhrPageFormControls'
 import EhrGroup from './EhrGroup'
 import UiConfirm from '../../../app/ui/UiConfirm'
 import UiButton from '../../../app/ui/UiButton.vue'
+import StoreHelper from '@/helpers/store-helper'
+import UiSpinnerSmall from '@/app/ui/UiSpinnerSmall.vue'
 
 const TEXT = {
   TITLE:  'Reset Form Data',
@@ -33,6 +35,7 @@ const TEXT = {
 export default {
   name: 'EhrPageForm',
   components: {
+    UiSpinnerSmall,
     EhrPageFormControls,
     EhrGroup,
     UiConfirm,
@@ -57,6 +60,7 @@ export default {
     ehrHelp: { type: Object }
   },
   computed: {
+    isLoading () { return StoreHelper.isLoading() },
     canEdit () {
       return this.ehrHelp._canEdit()
     },
