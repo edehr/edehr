@@ -29587,7 +29587,7 @@ const DEFS = {
         'inputType': 'text',
         'suffix': 'mmol/L',
         'tableColumn': '7',
-        'tableLabel': 'Maunal Glucose',
+        'tableLabel': 'Manual Glucose',
         'fqn': 'medLabUrinalysis.uchemManGlucose',
         'suffixText': '<p>mmol/L</p>',
         'suffixHtml': 'mmol/L'
@@ -29622,7 +29622,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '9',
-        'tableLabel': 'Maunal Bilirubin',
+        'tableLabel': 'Manual Bilirubin',
         'fqn': 'medLabUrinalysis.uchemManBilirubin'
       },
       {
@@ -29653,7 +29653,7 @@ const DEFS = {
         'inputType': 'text',
         'suffix': 'mmol/L',
         'tableColumn': '11',
-        'tableLabel': 'Maunal Ketone',
+        'tableLabel': 'Manual Ketone',
         'fqn': 'medLabUrinalysis.uchemManKetone',
         'suffixText': '<p>mmol/L</p>',
         'suffixHtml': 'mmol/L'
@@ -29688,7 +29688,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '13',
-        'tableLabel': 'Maunal Specific Gravity',
+        'tableLabel': 'Manual Specific Gravity',
         'fqn': 'medLabUrinalysis.uchemManSpecificGravity'
       },
       {
@@ -29718,7 +29718,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '15',
-        'tableLabel': 'Maunal Blood',
+        'tableLabel': 'Manual Blood',
         'fqn': 'medLabUrinalysis.uchemManBlood'
       },
       {
@@ -29751,7 +29751,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '17',
-        'tableLabel': 'Maunal pH',
+        'tableLabel': 'Manual pH',
         'fqn': 'medLabUrinalysis.uchemManpH'
       },
       {
@@ -29782,7 +29782,7 @@ const DEFS = {
         'inputType': 'text',
         'suffix': 'g/L',
         'tableColumn': '19',
-        'tableLabel': 'Maunal Protein',
+        'tableLabel': 'Manual Protein',
         'fqn': 'medLabUrinalysis.uchemManProtein',
         'suffixText': '<p>g/L</p>',
         'suffixHtml': 'g/L'
@@ -29818,7 +29818,7 @@ const DEFS = {
         'inputType': 'text',
         'suffix': 'μmol/L',
         'tableColumn': '21',
-        'tableLabel': 'Maunal Urobilinogen',
+        'tableLabel': 'Manual Urobilinogen',
         'fqn': 'medLabUrinalysis.uchemManUrobilinogen',
         'suffixText': '<p>μmol/L</p>',
         'suffixHtml': 'μmol/L'
@@ -29853,7 +29853,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '23',
-        'tableLabel': 'Maunal Nitrite',
+        'tableLabel': 'Manual Nitrite',
         'fqn': 'medLabUrinalysis.uchemManNitrite'
       },
       {
@@ -29883,7 +29883,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'tableColumn': '25',
-        'tableLabel': 'Maunal Leukocytes',
+        'tableLabel': 'Manual Leukocytes',
         'fqn': 'medLabUrinalysis.uchemManLeukocytes'
       },
       {
@@ -29913,19 +29913,11 @@ const DEFS = {
         'fqn': 'medLabUrinalysis.uchemMicroIndicater'
       },
       {
-        'elementKey': 'uchemInternalComment',
-        'formIndex': '1',
-        'inputType': 'textarea',
-        'label': 'Internal comment',
-        'tableColumn': '28',
-        'fqn': 'medLabUrinalysis.uchemInternalComment'
-      },
-      {
         'elementKey': 'uchemInstructorlComment',
         'formIndex': '1',
         'inputType': 'textarea',
         'label': 'Instructors\' comment',
-        'tableColumn': '29',
+        'tableColumn': '28',
         'fqn': 'medLabUrinalysis.uchemInstructorlComment'
       },
       {
@@ -29934,7 +29926,7 @@ const DEFS = {
         'formCss': 'text-area-2-rows',
         'inputType': 'textarea',
         'label': 'Sulfosalicylic acid',
-        'tableColumn': '30',
+        'tableColumn': '29',
         'fqn': 'medLabUrinalysis.uchemSulfosalicylic'
       },
       {
@@ -29943,7 +29935,7 @@ const DEFS = {
         'formCss': 'text-area-2-rows',
         'inputType': 'textarea',
         'label': 'Ictotest',
-        'tableColumn': '31',
+        'tableColumn': '30',
         'fqn': 'medLabUrinalysis.uchemIcotest'
       },
       {
@@ -30010,15 +30002,19 @@ const DEFS = {
             'text': '50+'
           },
           {
+            'key': 'none',
+            'text': 'None seen'
+          },
+          {
             'key': 'present',
             'text': 'Present'
           },
           {
-            'key': 'obscures field',
-            'text': 'obscures field'
+            'key': 'field',
+            'text': 'Obscures field'
           }
         ],
-        'tableColumn': '32',
+        'tableColumn': '31',
         'tableLabel': 'WBC',
         'fqn': 'medLabUrinalysis.umicroWBC'
       },
@@ -30072,6 +30068,10 @@ const DEFS = {
             'text': '50+'
           },
           {
+            'key': 'none',
+            'text': 'None seen'
+          },
+          {
             'key': 'present',
             'text': 'Present'
           },
@@ -30080,7 +30080,7 @@ const DEFS = {
             'text': 'Obscures field'
           }
         ],
-        'tableColumn': '33',
+        'tableColumn': '32',
         'tableLabel': 'RBC',
         'fqn': 'medLabUrinalysis.umicroRBC'
       },
@@ -30126,6 +30126,10 @@ const DEFS = {
             'text': '10+'
           },
           {
+            'key': 'none',
+            'text': 'None seen'
+          },
+          {
             'key': 'present',
             'text': 'Present'
           },
@@ -30134,7 +30138,7 @@ const DEFS = {
             'text': 'Obscures field'
           }
         ],
-        'tableColumn': '34',
+        'tableColumn': '33',
         'tableLabel': 'Epithelial Cells',
         'fqn': 'medLabUrinalysis.umicroEpithelial'
       },
@@ -30156,7 +30160,7 @@ const DEFS = {
             'text': 'RTE'
           }
         ],
-        'tableColumn': '35',
+        'tableColumn': '34',
         'tableLabel': 'Types',
         'fqn': 'medLabUrinalysis.umicroTypesEpithelial Cells'
       },
@@ -30196,6 +30200,10 @@ const DEFS = {
             'text': '10+'
           },
           {
+            'key': 'none',
+            'text': 'None seen'
+          },
+          {
             'key': 'present',
             'text': 'Present'
           },
@@ -30204,7 +30212,7 @@ const DEFS = {
             'text': 'Obscures field'
           }
         ],
-        'tableColumn': '36',
+        'tableColumn': '35',
         'tableLabel': 'Casts',
         'fqn': 'medLabUrinalysis.umicroCasts'
       },
@@ -30242,7 +30250,7 @@ const DEFS = {
             'text': 'Epithelial'
           }
         ],
-        'tableColumn': '37',
+        'tableColumn': '36',
         'tableLabel': 'Types',
         'fqn': 'medLabUrinalysis.umicroTypesCasts'
       },
@@ -30278,7 +30286,7 @@ const DEFS = {
             'text': 'Obscures field'
           }
         ],
-        'tableColumn': '38',
+        'tableColumn': '37',
         'tableLabel': 'Crystals',
         'fqn': 'medLabUrinalysis.umicroCrystals'
       },
@@ -30292,12 +30300,8 @@ const DEFS = {
             'text': 'Calcium Oxalate'
           },
           {
-            'key': 'calcium',
-            'text': 'Calcium'
-          },
-          {
-            'key': 'carbonate',
-            'text': 'Carbonate'
+            'key': 'calciumCarbonate',
+            'text': 'Calcium carbonate'
           },
           {
             'key': 'uricAcid',
@@ -30352,7 +30356,7 @@ const DEFS = {
             'text': 'Sulfonamides'
           }
         ],
-        'tableColumn': '39',
+        'tableColumn': '38',
         'tableLabel': 'Types',
         'fqn': 'medLabUrinalysis.umicroTypesCrystals'
       },
@@ -30387,7 +30391,7 @@ const DEFS = {
             'text': 'Obscures field'
           }
         ],
-        'tableColumn': '40',
+        'tableColumn': '39',
         'tableLabel': 'Yeast',
         'fqn': 'medLabUrinalysis.umicroYeast'
       },
@@ -30428,7 +30432,7 @@ const DEFS = {
             'text': 'Obscures field'
           }
         ],
-        'tableColumn': '41',
+        'tableColumn': '40',
         'tableLabel': 'Bacteria',
         'fqn': 'medLabUrinalysis.umicroBacteria'
       },
@@ -30473,7 +30477,7 @@ const DEFS = {
             'text': 'Starch'
           }
         ],
-        'tableColumn': '42',
+        'tableColumn': '41',
         'tableLabel': 'Other',
         'fqn': 'medLabUrinalysis.umicroOther'
       },
@@ -30494,7 +30498,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'textarea',
         'label': 'Department comments\rand dilutions',
-        'tableColumn': '43',
+        'tableColumn': '42',
         'fqn': 'medLabUrinalysis.urnInternal'
       },
       {
@@ -30502,7 +30506,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'textarea',
         'label': 'Discrepancies manual vs auto',
-        'tableColumn': '44',
+        'tableColumn': '43',
         'fqn': 'medLabUrinalysis.urnDiscMA'
       },
       {
@@ -30510,7 +30514,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'textarea',
         'label': 'Discrepancies Chem vs\rMicro',
-        'tableColumn': '45',
+        'tableColumn': '44',
         'fqn': 'medLabUrinalysis.urnDiscCE'
       },
       {
@@ -31347,7 +31351,7 @@ const DEFS = {
             ]
           },
           {
-            'label': 'Maunal Glucose',
+            'label': 'Manual Glucose',
             'ehr_list_index': '7',
             'items': [
               'uchemManGlucose'
@@ -31361,7 +31365,7 @@ const DEFS = {
             ]
           },
           {
-            'label': 'Maunal Bilirubin',
+            'label': 'Manual Bilirubin',
             'ehr_list_index': '9',
             'items': [
               'uchemManBilirubin'
@@ -31375,7 +31379,7 @@ const DEFS = {
             ]
           },
           {
-            'label': 'Maunal Ketone',
+            'label': 'Manual Ketone',
             'ehr_list_index': '11',
             'items': [
               'uchemManKetone'
@@ -31389,7 +31393,7 @@ const DEFS = {
             ]
           },
           {
-            'label': 'Maunal Specific Gravity',
+            'label': 'Manual Specific Gravity',
             'ehr_list_index': '13',
             'items': [
               'uchemManSpecificGravity'
@@ -31403,7 +31407,7 @@ const DEFS = {
             ]
           },
           {
-            'label': 'Maunal Blood',
+            'label': 'Manual Blood',
             'ehr_list_index': '15',
             'items': [
               'uchemManBlood'
@@ -31417,7 +31421,7 @@ const DEFS = {
             ]
           },
           {
-            'label': 'Maunal pH',
+            'label': 'Manual pH',
             'ehr_list_index': '17',
             'items': [
               'uchemManpH'
@@ -31431,7 +31435,7 @@ const DEFS = {
             ]
           },
           {
-            'label': 'Maunal Protein',
+            'label': 'Manual Protein',
             'ehr_list_index': '19',
             'items': [
               'uchemManProtein'
@@ -31445,7 +31449,7 @@ const DEFS = {
             ]
           },
           {
-            'label': 'Maunal Urobilinogen',
+            'label': 'Manual Urobilinogen',
             'ehr_list_index': '21',
             'items': [
               'uchemManUrobilinogen'
@@ -31459,7 +31463,7 @@ const DEFS = {
             ]
           },
           {
-            'label': 'Maunal Nitrite',
+            'label': 'Manual Nitrite',
             'ehr_list_index': '23',
             'items': [
               'uchemManNitrite'
@@ -31473,7 +31477,7 @@ const DEFS = {
             ]
           },
           {
-            'label': 'Maunal Leukocytes',
+            'label': 'Manual Leukocytes',
             'ehr_list_index': '25',
             'items': [
               'uchemManLeukocytes'
@@ -31495,118 +31499,112 @@ const DEFS = {
           {
             'ehr_list_index': '28',
             'items': [
-              'uchemInternalComment'
+              'uchemInstructorlComment'
             ]
           },
           {
             'ehr_list_index': '29',
             'items': [
-              'uchemInstructorlComment'
-            ]
-          },
-          {
-            'ehr_list_index': '30',
-            'items': [
               'uchemSulfosalicylic'
             ]
           },
           {
-            'ehr_list_index': '31',
+            'ehr_list_index': '30',
             'items': [
               'uchemIcotest'
             ]
           },
           {
             'label': 'WBC',
-            'ehr_list_index': '32',
+            'ehr_list_index': '31',
             'items': [
               'umicroWBC'
             ]
           },
           {
             'label': 'RBC',
-            'ehr_list_index': '33',
+            'ehr_list_index': '32',
             'items': [
               'umicroRBC'
             ]
           },
           {
             'label': 'Epithelial Cells',
-            'ehr_list_index': '34',
+            'ehr_list_index': '33',
             'items': [
               'umicroEpithelial'
             ]
           },
           {
             'label': 'Types',
-            'ehr_list_index': '35',
+            'ehr_list_index': '34',
             'items': [
               'umicroTypesEpithelial Cells'
             ]
           },
           {
             'label': 'Casts',
-            'ehr_list_index': '36',
+            'ehr_list_index': '35',
             'items': [
               'umicroCasts'
             ]
           },
           {
             'label': 'Types',
-            'ehr_list_index': '37',
+            'ehr_list_index': '36',
             'items': [
               'umicroTypesCasts'
             ]
           },
           {
             'label': 'Crystals',
-            'ehr_list_index': '38',
+            'ehr_list_index': '37',
             'items': [
               'umicroCrystals'
             ]
           },
           {
             'label': 'Types',
-            'ehr_list_index': '39',
+            'ehr_list_index': '38',
             'items': [
               'umicroTypesCrystals'
             ]
           },
           {
             'label': 'Yeast',
-            'ehr_list_index': '40',
+            'ehr_list_index': '39',
             'items': [
               'umicroYeast'
             ]
           },
           {
             'label': 'Bacteria',
-            'ehr_list_index': '41',
+            'ehr_list_index': '40',
             'items': [
               'umicroBacteria'
             ]
           },
           {
             'label': 'Other',
-            'ehr_list_index': '42',
+            'ehr_list_index': '41',
             'items': [
               'umicroOther'
             ]
           },
           {
-            'ehr_list_index': '43',
+            'ehr_list_index': '42',
             'items': [
               'urnInternal'
             ]
           },
           {
-            'ehr_list_index': '44',
+            'ehr_list_index': '43',
             'items': [
               'urnDiscMA'
             ]
           },
           {
-            'ehr_list_index': '45',
+            'ehr_list_index': '44',
             'items': [
               'urnDiscCE'
             ]
@@ -31709,7 +31707,6 @@ const DEFS = {
               'gIndex': '5',
               'gChildren': [
                 'uchemMicroIndicater',
-                'uchemInternalComment',
                 'uchemInstructorlComment'
               ]
             },
@@ -31810,7 +31807,6 @@ const DEFS = {
             'uchemManLeukocytes': '',
             'uchemAutoLeukocytes': '',
             'uchemMicroIndicater': '',
-            'uchemInternalComment': '',
             'uchemInstructorlComment': '',
             'uchemSulfosalicylic': '',
             'uchemIcotest': '',
@@ -31862,7 +31858,6 @@ const DEFS = {
           'uchemManLeukocytes',
           'uchemAutoLeukocytes',
           'uchemMicroIndicater',
-          'uchemInternalComment',
           'uchemInstructorlComment',
           'uchemSulfosalicylic',
           'uchemIcotest',
