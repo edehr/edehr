@@ -11,6 +11,7 @@ import dbCreateMissingCourses from './courseIntegtrations'
 import { dbAnonymizeUsers, dbAnonymizeActivityData } from './dbAnonymize'
 import dbSeedDataAppType from './dbSeedDataAppTypes'
 import desire2learnActivitiesIntegtrations from './desire2learn-activities-integtrations'
+import Consumer from '../mcr/consumer/consumer'
 const activityDataController = new ActivityDataController()
 const seedController = new SeedDataController()
 
@@ -51,12 +52,12 @@ function checkIntegration (name, override) {
   })
 }
 
-
-export default async function (forceSeeding = false) {
+const forceSeeding = false
+export default async function (commonControllers) {
   if (forceSeeding) {
     await IntegrationModel.clearAll()
   }
-  return await doIntegrations()
+  return await doIntegrations(commonControllers)
 }
 
 
@@ -72,17 +73,44 @@ export default async function (forceSeeding = false) {
  *
  * @returns {Promise<void>}
  */
-async function doIntegrations () {
+async function doIntegrations (commonControllers) {
   debug('dbSeeder - doIntegrations. BEGIN')
   const start = performance.now()
   await doConsumerIntegrations()
   await doCourseIntegrations()
   await doD2LIntegrations()
   await doSeedAppTypeIntegrations()
+  await dbCleanOldDemos(commonControllers)
   // console.log('THIS NEXT LINE ANONYMIZES THE DATABASE. Good to do on a real db for use with development.')
   // await doAnonymize()
   const end = performance.now()
   debug('dbSeeder - doIntegrations. DONE.', Math.round(end - start), 'ms')
+}
+
+
+async function dbCleanOldDemos (commonControllers) {
+  // ,{tool_consumer_info_version: 'ehrdemo'}]}
+  debug('dbSeeder. dbCleanOldDemos. BEGIN')
+  const { demoController } = commonControllers
+  const start = performance.now()
+  const filterDate = new Date('2023-09-01')
+  // TO DO  let the filter date be one month before the current data
+  const querys =[
+    { $and: [ {lastUpdateDate: { $lte: filterDate}}, {tool_consumer_info_version: 'x'} ] },
+    { $and: [ {lastUpdateDate: { $lte: filterDate}}, {tool_consumer_info_version: 'ehrdemo'} ] },
+    { $and: [ {lastUpdateDate: { $lte: filterDate}}, { tool_consumer_info_product_family_code: 'EdEHR Demo LMS'} ] }
+  ]
+  for (const query of querys) {
+    console.log('Clear consumers with this query', query)
+    const oldDemos = await Consumer.find(query)
+    for (const tc of oldDemos) {
+      console.log('Clear this demo', tc._id)
+      await demoController.deleteDemoData(tc._id)
+    }
+  }
+  const end = performance.now()
+  debug('dbSeeder. dbCleanOldDemos. DONE.', Math.round(end - start), 'ms')
+
 }
 
 /**

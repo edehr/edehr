@@ -125,33 +125,27 @@ export default class DemoController {
     return Promise.resolve(response)
   }
 
-  deleteDemoData (toolConsumerId) {
-    const query = {_id: new ObjectID(toolConsumerId)}
-    debug('deleteDemoData query:          ', query)
-    return Consumer.find(query)
-      .then((tcList) => {
-        if (!tcList || tcList.length === 0) {
-          throw new Error('Attempt to clean up a demo consumer that does not exist ' + toolConsumerId)
-        }
-        const tc = tcList[0]
-        if (tc.is_primary) {
-          throw new Error('Attempt to clean a non-demo consumer ' + toolConsumerId)
-        }
-        debug('Ready to remove a demo consumer along with all of its data: ' + tc.tool_consumer_instance_name)
-        let toolConsumer = tc._id
-        let promises = []
-        promises.push(this.comCon.visitController.clearConsumer(toolConsumer))
-        promises.push(this.comCon.activityController.clearConsumer(toolConsumer))
-        promises.push(this.comCon.activityDataController.clearConsumer(toolConsumer))
-        promises.push(this.comCon.seedController.clearConsumer(toolConsumer))
-        promises.push(this.comCon.assignmentController.clearConsumer(toolConsumer))
-        promises.push(this.comCon.userController.clearConsumer(toolConsumer))
-        promises.push(this.comCon.filesController.clearConsumer(toolConsumer))
-        // remove the consumer record last in case it is needed to remove the dependants
-        // for example the files controller needs to look up the existing controller
-        promises.push(this.comCon.consumerController.delete(toolConsumer))
-        return Promise.all(promises)
-      })
+  async deleteDemoData (toolConsumerId) {
+    const tc = await Consumer.findById(toolConsumerId)
+    if (!tc) {
+      throw new Error('Attempt to clean up a demo consumer that does not exist ' + toolConsumerId)
+    }
+    if (tc.is_primary) {
+      console.error('No action taken. Attempt to clean a non-demo consumer ' + toolConsumerId)
+    }
+    debug('Ready to remove a demo consumer along with all of its data: ' + tc.tool_consumer_instance_name)
+    let toolConsumer = tc._id
+    await this.comCon.visitController.clearConsumer(toolConsumer)
+    await this.comCon.activityController.clearConsumer(toolConsumer)
+    await this.comCon.activityDataController.clearConsumer(toolConsumer)
+    await this.comCon.courseController.clearConsumer(toolConsumer)
+    await this.comCon.seedController.clearConsumer(toolConsumer)
+    await this.comCon.assignmentController.clearConsumer(toolConsumer)
+    await this.comCon.userController.clearConsumer(toolConsumer)
+    await this.comCon.filesController.clearConsumer(toolConsumer)
+    // remove the consumer record last in case it is needed to remove the dependants
+    // for example the files controller needs to look up the existing controller
+    await this.comCon.consumerController.delete(toolConsumer)
   }
 
   /**
