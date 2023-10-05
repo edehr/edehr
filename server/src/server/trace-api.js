@@ -70,7 +70,8 @@ function composeData (req, statusCode, time) {
   // The users are reporting strange events. To determine the cause after the fact we need this information.
   rec.visitId = req.authPayload ? req.authPayload.visitId : undefined
 
-  if (isNotEmpty(req.body)) {
+  const includeBody = false
+  if (includeBody && isNotEmpty(req.body)) {
     rec.body = Object.assign({}, req.body)
     // console.log('-=-=-=-=-=-=-=-=-')
     // console.log(JSON.stringify(rec.body,null,2))
@@ -90,10 +91,13 @@ function composeData (req, statusCode, time) {
     delete rec.body['ltiData[lis_person_name_full]']
     delete rec.body['ltiData[user_id']
   }
-  const ua = (new uaParser(req.headers['user-agent'])).getResult()
-  rec.os = ua.os
-  rec.device = ua.device
-  rec.browser = ua.browser
+  const includeOs = false
+  if (includeOs) {
+    const ua = (new uaParser(req.headers['user-agent'])).getResult()
+    rec.os = ua.os
+    rec.device = ua.device
+    rec.browser = ua.browser
+  }
   return rec
 }
 
