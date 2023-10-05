@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    div(class="ehr-page-form")
+    div(id='theEhrPageForm', class="ehr-page-form")
       h2(class="headerClass")
       div(style="display:inline") {{ form.label }}
       ehr-page-form-controls(class="headerControl", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :formKey="formKey")
@@ -8,6 +8,7 @@
         p Fix the following:
         ul
           li(v-for="error in errors") {{ error }}
+      ui-spinner-small(refId='theEhrPageForm', :loading="isLoading")
       ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp")
       div(v-if="canEdit", class="resetFormButton")
         ui-button(
