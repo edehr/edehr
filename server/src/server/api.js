@@ -98,6 +98,7 @@ export function apiMiddle (app, config) {
     authUtil,
     consumerController : cc,
     courseController: crs,
+    demoController: demo,
     filesController: fileC,
     seedController: sd,
     userController: uc,
@@ -137,7 +138,7 @@ export function apiMiddle (app, config) {
       if (config.seedDB) {
         console.log('Warning:  Database seeding is turned on')
         debug('seeding is enabled')
-        return dbSeeder()
+        return dbSeeder(lcc)
       }
     })
     .then(() => {
