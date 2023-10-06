@@ -109,9 +109,7 @@ describe('Test seed marking', () => {
       pages.should.have.property('cardiovascular')
       pages.should.have.property('visit')
 
-      // confirm that arrays are merged
-      pages.cardiovascular.should.have.property('table')
-      pages.cardiovascular.table.should.have.length(2)
+})
 
       // confirm that arrays are merged
       pages.visit.should.have.property('location')

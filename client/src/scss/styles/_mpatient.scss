@@ -1,0 +1,184 @@
+@import '../definitions';
+
+/*
+Multi patient selection bar
+ */
+
+// decoration
+.ehr-multi-patient-bar {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+// layout
+.multi-patient-bar {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-left: 10px;
+  z-index: 0;
+}
+
+.patient-tab {
+  flex-direction: column;
+  display: block;
+  //z-index: 10;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: inherit;
+  outline: none;
+  cursor: pointer;
+  padding: 3px 12px 0 12px;
+  margin: 0;
+  transition: 0.3s;
+  position: relative;
+  top: 1px;
+  height: 2rem; // matches ui-button's  2rem ht
+}
+
+.patientTabActive {
+  .name-part {
+    a {
+      font-weight: bold;
+      padding: 5px;
+    }
+
+    a:hover {
+      cursor: auto;
+    }
+  }
+}
+
+.name-part {
+  .close-button {
+    height: 22px;
+    margin-left: 5px;
+    padding: 0 10px 0 10px;
+  }
+
+  .close-button:hover {
+    cursor: pointer;
+    font-weight: bold;
+  }
+}
+
+.name-part a {
+  font-weight: bold;
+}
+
+.bottom-part {
+  height: 1px; /* Set the height of the bottom part (border) */
+  width: calc(100% + 48px);
+  position: relative;;
+  left: -24px;
+  top: 3px;
+}
+
+// ------------- colours -------
+$row-border-colour: $grey70;
+$tab-border-colour: $grey70;
+$tab-background-colour: $grey40;
+
+.ehr-multi-patient-bar {
+  background-color: $grey22;
+}
+
+.patient-tab {
+  background-color: $tab-background-colour;
+  color: white;
+}
+
+.name-part {
+  a {
+    color: white;
+  }
+
+  a:hover {
+    color: white;
+    background-color: inherit;
+  }
+}
+
+.name-part {
+  .close-button {
+    background-color: inherit;
+    color: inherit;
+  }
+
+  .close-button:hover {
+    color: $grey70;
+    background-color: white;
+  }
+}
+
+.patient-tab {
+  border: 2px solid $tab-border-colour;
+}
+
+
+.ehr-branding {
+  $main-tab-colour: $colour-brand-ehr;
+  $main-hover: $colour-brand-ehr-hover;
+
+  .ehr-multi-patient-bar {
+    border-top: 2px solid $main-tab-colour;
+    border-left: 2px solid $main-tab-colour;
+    border-right: 2px solid $main-tab-colour;
+    border-bottom: none; // 2px solid $main-tab-colour;
+  }
+
+  .patient-tab:hover {
+    background-color: $main-hover;
+  }
+
+  .patientTabActive {
+    background-color: $main-tab-colour;
+  }
+
+  .patient-tab:hover {
+    background-color: $main-hover;
+  }
+
+  // must be after .patient-tab:hover to override
+  .patientTabActive:hover {
+    background-color: $main-tab-colour;
+  }
+  .bottom-part {
+    background-color: $row-border-colour;
+  }
+}
+
+.lis-branding {
+  $main-tab-colour: $colour-brand-lis;
+  $main-hover: $colour-brand-lis-hover;
+
+  .ehr-multi-patient-bar {
+    border-top: 2px solid $main-tab-colour;
+    border-left: 2px solid $main-tab-colour;
+    border-right: 2px solid $main-tab-colour;
+    border-bottom: none; // 2px solid $main-tab-colour;
+  }
+
+  .patient-tab:hover {
+    background-color: $main-hover;
+  }
+
+  .patientTabActive {
+    background-color: $main-tab-colour;
+  }
+
+  .patient-tab:hover {
+    background-color: $main-hover;
+  }
+
+  // must be after .patient-tab:hover to override
+  .patientTabActive:hover {
+    background-color: $main-tab-colour;
+  }
+  .bottom-part {
+    background-color: $row-border-colour;
+  }
+}

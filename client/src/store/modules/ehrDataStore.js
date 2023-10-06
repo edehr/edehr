@@ -4,6 +4,8 @@ import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import StoreHelper from '@/helpers/store-helper'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
 import EhrDataModel from '@/ehr-definitions/EhrDataModel'
+import * as assert from 'assert'
+import MPatientHelper from '@/helpers/mPatientHelper'
 
 const debug = false
 
@@ -22,7 +24,8 @@ const getters = {
     } else if (InstoreHelper.instoreIsInstructor(rootState)) {
       secondLevelData = StoreHelper.getCurrentEvaluationStudentAssignmentData()
     } else {
-      secondLevelData = rootGetters['activityDataStore/assignmentData']
+      const mp = MPatientHelper.getCurrentPatient()
+      secondLevelData = mp ? mp.ehrData : {}
     }
     if ( secondLevelData ) {
       // place data into a model update meta data and transform model to latest version if needed
@@ -32,15 +35,13 @@ const getters = {
     return secondLevelData  || {}
   },
   baseLevel: (state, getters, rootState, rootGetters) => {
-    let baseLevelData = decoupleObject(rootGetters['seedListStore/seedEhrData'] || {})
+    let baseLevelData
     if (StoreHelper.isSeedEditing()) {
-      // base already set above
+      baseLevelData = rootGetters['seedListStore/seedEhrData'] || {}
     } else if (getters.ehrOnly) {
-      baseLevelData = decoupleObject(rootGetters['ehrOnlyDemoStore/ehrOnlyData'])
-    } else if (InstoreHelper.instoreIsInstructor(rootState)) {
-      // base already set above
-    } else {
-      // type = 'Student merged data'
+      baseLevelData = rootGetters['ehrOnlyDemoStore/ehrOnlyData']
+    } else { // student or instructor evaluating student
+      baseLevelData = rootGetters['seedListStore/seedEhrData'] || {}
     }
     // place data into a model update meta data and transform model to latest version if needed
     const model = new EhrDataModel(baseLevelData)
@@ -67,7 +68,7 @@ const getters = {
     // console.log('baseLevelData', baseLevelData)
     if (secondLevelData) {
       //EhrDataModel both updates the data as needed it also computes the sim time
-      mData = EhrDataModel.PrepareForDb(ehrMergeEhrData(baseLevelData, secondLevelData))
+      mData = EhrDataModel.MergeTwoLevels(baseLevelData, secondLevelData)
     }
     if (debug) {
       console.log('EhrData base  ', baseLevelData)

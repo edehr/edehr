@@ -17,6 +17,7 @@ const Schema = new mongoose.Schema(
     version: { type: String },
     contributors: { type: String },
     ehrData: { type: Object, default: {} },
+    // key data fields ...
     dateOfBirth: { type: String },
     familyName: { type: String },
     givenName: { type: String },
@@ -24,6 +25,7 @@ const Schema = new mongoose.Schema(
     mrn: { type: String }, // mrn
     personAge: { type: String },
     phn: { type: String }, // phn
+    // ... end key data fields -- for SeedData and PatientData
     createDate: { type: Date, default: Date.now },
     lastUpdateDate: { type: Date, default: Date.now },
     tagList: [{

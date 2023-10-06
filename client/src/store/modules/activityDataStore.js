@@ -2,6 +2,7 @@ import InstoreHelper from './instoreHelper'
 import StoreHelper from '../../helpers/store-helper'
 import { Text } from '@/helpers/ehr-text'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
+import MPatientHelper from '@/helpers/mPatientHelper'
 
 const API = 'activity-data'
 const NAME = 'ActivityDataStore'
@@ -9,6 +10,7 @@ const debug = false
 
 const state = {
   activityData: {},
+  assignmentData: {}
 }
 
 const getters = {
@@ -16,8 +18,16 @@ const getters = {
   hasDraftRows: state => {
     let assignmentData =  state.activityData.assignmentData || {}
     const ehrPages = new EhrPages()
-    const statsSeed = ehrPages.ehrPagesStats(assignmentData)
-    return statsSeed.meta.draftRows > 0
+    let dCnt = 0
+    const patients =  assignmentData.patients
+    if(patients) {
+      for(const patient of patients)  {
+        const ehrData = patient ? patient.ehrData : {}
+        const stats = ehrPages.ehrPagesStats(ehrData)
+        dCnt += stats.meta.draftRows
+      }
+    }
+    return dCnt > 0
   },
   lastUpdateDate: state => state.activityData.lastDate,
   scratchData: state => state.activityData.scratchData,
@@ -52,13 +62,16 @@ const actions = {
       console.error('Coding error. To put assignment data the payload object must specify action save or draft')
       return
     }
+    const API = 'activity-data'
     const adi = context.state.activityData._id
-    const url = `assignment-data/${adi}/${payload.action}`
+    const url = `assignment-data/${adi}`
     const silent = payload.silent
+    payload.patientObjectId = MPatientHelper.getCurrentPatientObjectId()
     return InstoreHelper.putRequest(context, API, url, payload, silent).then(response => {
       let results = response.data
-      context.commit('setActivityData', results)
-      return results
+      // console.log('after put this is returned for storing', JSON.stringify(results.assignmentData, null, 2))
+      context.commit('setAssignmentData', results.assignmentData)
+      return results.assignmentData
     })
   },
   sendActivityData (context, payload) {
@@ -72,25 +85,41 @@ const actions = {
       return response.data
     })
   },
+  /**
+   * Invoke this action to call the API to get an ActivityData record along with the
+   * student's assignmentData, which contains a patient object that is an array of patients.
+   * @param context
+   * @param payload must contain id of ActivityData record
+   * @returns {Promise<void>}
+   */
   async loadActivityData (context, payload) {
     if (!payload || !payload.id) throw new Error('Coding error. Must provide payload with id to loadActivityData')
     const { id, silent } = payload
-    let url = 'get/' + id
+    let url = 'activity-assignment-data/' + id
     const response = await InstoreHelper.getRequest(context, API, url, silent)
-    if (!(response.data && response.data.activitydata)) {
+    if (!(response.data && response.data.activityData)) {
       let msg = Text.GET_ACTIVITY_DATA_ERROR('activity data', id)
       StoreHelper.setApiError(msg)
       return
     }
-    let activityData = response.data.activitydata
-    await context.commit('setActivityData', activityData)
-  },
+    // assignmentData is the student's ehr data
+    if (!response.data.activityData.assignmentData) {
+      // this can happen for a brief interval, in the full demo, while the activity is linking.
+      return
+    }
+    await context.commit('setActivityData', response.data.activityData)
+    await context.commit('setAssignmentData', response.data.activityData.assignmentData)
+  }
 }
 
 const mutations = {
   setActivityData: (state, data) => {
     if(debug) console.log(NAME+ ' set data', data)
     state.activityData = data
+  },
+  setAssignmentData: (state, data) => {
+    // student data
+    state.assignmentData = data
   }
 }
 

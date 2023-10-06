@@ -34,8 +34,8 @@ export default {
       return
     }
     const offSets = refElem.getBoundingClientRect()
-    this.left = offSets.left
-    this.top = offSets.top
+    this.left = offSets.left - 20
+    this.top = offSets.top + 85
     this.width = offSets.width
     this.height = offSets.height
 
@@ -54,7 +54,7 @@ export default {
 .modal-mask {
   position: fixed;
   z-index: 999;
-  opacity: 0.4;
+  opacity: 0.8;
   background-color: white;
   display: table;
   transition: opacity 0.3s ease;

@@ -37,18 +37,20 @@ export class EhrPages {
 
   ehrPagesStats (ehrData) {
     let stats = {meta: { count: 0, draftRows: 0 }}
-    this.pageList.forEach( ehrPage => {
-      const pageKey = ehrPage.pageKey
-      const pageData = ehrData[pageKey]
-      const pgStats = ehrPage.ehrPageStats(pageData)
-      if (pgStats.hasData) {
-        stats[pageKey] = pgStats
-        stats.meta.count++
-        if (pgStats.hasDraft) {
-          stats.meta.draftRows++
+    if (ehrData) {
+      this.pageList.forEach(ehrPage => {
+        const pageKey = ehrPage.pageKey
+        const pageData = ehrData[pageKey]
+        const pgStats = ehrPage.ehrPageStats(pageData)
+        if (pgStats.hasData) {
+          stats[pageKey] = pgStats
+          stats.meta.count++
+          if (pgStats.hasDraft) {
+            stats.meta.draftRows++
+          }
         }
-      }
-    })
+      })
+    }
     return stats
   }
 

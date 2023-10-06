@@ -55,7 +55,8 @@ export default class ActivityController extends BaseController {
       userActivity.learningObjectDescription = assignment.description
 
       // convert ObjectId to string for searching
-      const sId = assignment.seedDataId.toString()
+      // note that learning objects (assignment) may not have seed
+      const sId = assignment.seedDataId ? assignment.seedDataId.toString() : undefined
       const caseStudy = await SeedData.findById(sId) || {}
       userActivity.caseStudyId = caseStudy._id
       userActivity.caseStudyName = caseStudy.name

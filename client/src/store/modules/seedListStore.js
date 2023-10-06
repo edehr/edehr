@@ -94,8 +94,12 @@ const actions = {
   },
 
   /**
-   * Get the list of seeds.  This API call mae suffer performance issues as he number of
-   * seeds grows. To address this could change the API to not return the ehrData.
+   * Get the list of seeds.
+   * This is only used for download all and edit learning object where it needs a list of all seeds.
+   *
+   * The LObj dialog ought to use a dedicated get API call that just returns the data needed (e.g. name, tags).
+   * In both cases do we need to have a store value or could this loadSeed be renamed getAllSeeds and return the list directly?
+   *
    * @param context
    * @return {*}
    */

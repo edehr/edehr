@@ -61,7 +61,6 @@ export default class LTIController {
     this.activityController = cc.activityController
     this.authUtil = cc.authUtil
     this.visitController = cc.visitController
-    this.activityController = cc.activityController
     this.userController = cc.userController
     this.consumerController = cc.consumerController
   }

@@ -358,7 +358,10 @@ export default class EhrPageHelper {
   }
 
   /**
-   * Clear the data for a EHR page form
+   * Clear the data for a EHR page form.
+   * Required to not touch data in data in another form or in any table.
+   * If there is no seed (e.g. student creates new patient) then set all children props to empty.
+   * "empty" means delete property just as if the page doesn't exist.
    * @param childrenKeys
    * @returns {Promise<undefined>}
    */

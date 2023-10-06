@@ -11,6 +11,7 @@ import {
 } from '@/router'
 import store from '@/store'
 import authHelper from '@/helpers/auth-helper'
+import MPatientHelper from '@/helpers/mPatientHelper'
 
 const dbApp = false
 
@@ -50,8 +51,9 @@ async  function onPageChange (toRoute) {
     seedEditId, // instructor user just started editing a seed in the ehr
     seedId, // instructor user going to seed view. Not used in page-controller. Can clean.
     evaluateStudentVisitId, // instructor selected to evaluate a student, possibly in the EHR
+    patientId,
     token: refreshToken, // user has just arrived via a LTI request from an LMS
-    visitId: optionalVisitId // user is coming from an LmsStudentActivity page
+    visitId: optionalVisitId, // user is coming from an LmsStudentActivity page OR from this page-controller after processing the refresh token
   } = toRoute.query
 
   {
@@ -215,8 +217,9 @@ async  function onPageChange (toRoute) {
     await store.dispatch('visit/loadVisitRecord')
     // dup-in loadInstructorWithStudent
     let theActivity = await store.dispatch('activityStore/loadActivityRecord')
-    await store.dispatch('courseStore/setCourseId', theActivity.courseId)
-    await store.dispatch('courseStore/loadCurrentCourse')
+    // we don't need to wait for these next two api calls. This speeds up page load by about 100ms
+    store.dispatch('courseStore/setCourseId', theActivity.courseId)
+    store.dispatch('courseStore/loadCurrentCourse')
 
     // **** If page is the one that handles unlinked activities then we are done ... EXIT
     if (routeName === UNLINKED_ACTIVITY_ROUTE_NAME) {
@@ -244,6 +247,7 @@ async  function onPageChange (toRoute) {
         // the go to ehr seed edit url has the seedEditId in the querystring
         const sdId = seedEditId || seedId
         await StoreHelper.setSeedEditId(sdId)
+        await store.dispatch('mPatientStore/openPatientById', sdId)
       }
       if (evaluateStudentVisitId && StoreHelper.isSeedEditing()) {
         console.log('Switch to evaluation student id')
@@ -253,6 +257,7 @@ async  function onPageChange (toRoute) {
         const sid = StoreHelper.getSeedEditId()
         await store.dispatch('seedListStore/loadSeedContent', sid)
         const seed = store.getters['seedListStore/seedContent']
+        await store.dispatch('mPatientStore/addSeedToActivePatientList', seed )
       }
       // **** Instructor evaluating student id management
       if (evaluateStudentVisitId) {
@@ -279,6 +284,29 @@ async  function onPageChange (toRoute) {
       await store.dispatch('activityDataStore/loadActivityData', { id: theActivity.activityDataId })
       await store.dispatch('assignmentStore/load', theActivity.learningObjectId)
       await store.dispatch('seedListStore/loadSeedContent', theActivity.caseStudyId)
+      await store.dispatch('mPatientStore/loadStudentPatientList')
+      const theLObj = store.getters['assignmentStore/learningObject']
+      let pId
+      if (optionalVisitId && theLObj.seedDataId) {
+        pId = theLObj.seedDataId
+      }
+      if (patientId) {
+        pId = patientId
+      }
+      if (dbApp) console.log('student pId', pId)
+      // change the list if pId is new
+      if (pId) {
+        await store.dispatch('mPatientStore/addStudentPatient', pId)
+        await store.dispatch('activityDataStore/loadActivityData', { id: theActivity.activityDataId })
+        // reload the list
+        await store.dispatch('mPatientStore/loadStudentPatientList')
+        // select the new patient
+        await store.dispatch('mPatientStore/setCurrentPatientObjectId', pId)
+        const patient = MPatientHelper.getCurrentPatient()
+        if (patient && patient.seedId) {
+          await store.dispatch('seedListStore/loadSeedContent', patient.seedId)
+        }
+      }
     }
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   } catch (err) {
