@@ -283,7 +283,6 @@ async  function onPageChange (toRoute) {
       // loadActivityData gets both the activityData and the student's assignment data with the patient list
       await store.dispatch('activityDataStore/loadActivityData', { id: theActivity.activityDataId })
       await store.dispatch('assignmentStore/load', theActivity.learningObjectId)
-      await store.dispatch('seedListStore/loadSeedContent', theActivity.caseStudyId)
       await store.dispatch('mPatientStore/loadStudentPatientList')
       const theLObj = store.getters['assignmentStore/learningObject']
       let pId
