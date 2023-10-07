@@ -4,7 +4,7 @@
       :style="{ top: top + 'px', left: left + 'px', width: width + 'px', height: height + 'px' }"
       )
       div(class="modal-wrapper")
-        div(class="modal-container is-centered")
+        div(class="modal-container")
           spinner(:speed="1.0", :depth="5", :size="100", :color="'$brand-primary'")
 </template>
 
@@ -34,8 +34,8 @@ export default {
       return
     }
     const offSets = refElem.getBoundingClientRect()
-    this.left = offSets.left - 20
-    this.top = offSets.top + 85
+    this.left = offSets.left
+    this.top = offSets.top
     this.width = offSets.width
     this.height = offSets.height
 
