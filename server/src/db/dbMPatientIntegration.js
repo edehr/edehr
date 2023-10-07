@@ -1,8 +1,6 @@
 import Visit from '../mcr/visit/visit'
 import Assignment from '../mcr/assignment/assignment'
-import SeedData from '../mcr/seed/seed-data'
 import ActivityData from '../mcr/activity-data/activity-data'
-import EhrDataModel from '../ehr-definitions/EhrDataModel'
 const debug = require('debug')('server')
 
 /**

@@ -1,5 +1,4 @@
 import InstoreHelper from '@/store/modules/instoreHelper'
-import { Text } from '@/helpers/ehr-text'
 import StoreHelper from '@/helpers/store-helper'
 const EMPTY_OBJECT_ID = ''
 const state = {
@@ -29,7 +28,7 @@ const actions = {
    * @param id
    */
   setCurrentPatientObjectId (context, id) {
-    context.commit('setCurrentPatientObjectId', id)
+    context.commit('_setCurrentPatientObjectId', id)
   },
   /**
    * User has searched for a "patient" with the multi-patient search dialog.
@@ -46,7 +45,7 @@ const actions = {
       const index = state.activePatientList.findIndex(sd => sd._id === patientId)
       if (index >= 0) {
         // console.log('mps Patient is already in the list so just make this patient the active one.', patientId)
-        context.commit('setCurrentPatientObjectId', patientId)
+        context.commit('_setCurrentPatientObjectId', patientId)
       } else {
         // console.log('mps Else the object is not in list', patientId)
         const API = 'activity-data'
@@ -56,7 +55,7 @@ const actions = {
         let url = 'add-patient-with-seed/' + activityDataId
         await InstoreHelper.putRequest(context, API, url, payload)
         await context.dispatch('loadStudentPatientList')
-        await context.commit('setCurrentPatientObjectId', patientId)
+        await context.commit('_setCurrentPatientObjectId', patientId)
       }
     }
   },
@@ -66,7 +65,7 @@ const actions = {
     } else {
       const index = state.activePatientList.findIndex(sd => sd._id === seed._id)
       if (index >= 0) {
-        context.commit('setCurrentPatientObjectId', seed._id)
+        context.commit('_setCurrentPatientObjectId', seed._id)
       } else {
         context.commit('addPatientToActivePatientList', seed)
       }
@@ -117,8 +116,10 @@ const actions = {
 
 }
 
+const STORED_ID = 'StoredPatientId'
 const mutations = {
   initialize: function (state) {
+    state.currentPatientObjectId = localStorage.getItem(STORED_ID)
   },
   addPatientToActivePatientList (context, object) {
     const list = JSON.parse(JSON.stringify(state.activePatientList))
@@ -138,7 +139,12 @@ const mutations = {
       }
     }
   },
-  setCurrentPatientObjectId: (state, id) => {
+  _setCurrentPatientObjectId: (state, id) => {
+    if (id) {
+      localStorage.setItem(STORED_ID, id)
+    } else {
+      localStorage.removeItem(STORED_ID)
+    }
     state.currentPatientObjectId = id
   },
   _setSearchMatches: (state, patientList) => {

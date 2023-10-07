@@ -1,5 +1,3 @@
-import { FOR_TEST_LAST_EVENT } from '../../server/trace-ehr'
-
 const should = require('should')
 const mongoose = require('mongoose')
 import Helper from '../common/test-helper'

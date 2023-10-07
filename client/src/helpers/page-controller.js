@@ -289,10 +289,12 @@ async  function onPageChange (toRoute) {
       let pId
       if (optionalVisitId && theLObj.seedDataId) {
         pId = theLObj.seedDataId
-      }
-      if (patientId) {
+      } else if (patientId) {
         pId = patientId
+      } else {
+        pId = store.getters['mPatientStore/currentPatientObjectId']
       }
+
       if (dbApp) console.log('student pId', pId)
       // change the list if pId is new
       if (pId) {
@@ -306,6 +308,8 @@ async  function onPageChange (toRoute) {
         if (patient && patient.seedId) {
           await store.dispatch('seedListStore/loadSeedContent', patient.seedId)
         }
+      } else {
+        await store.dispatch('mPatientStore/setCurrentPatientObjectId', '')
       }
     }
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)

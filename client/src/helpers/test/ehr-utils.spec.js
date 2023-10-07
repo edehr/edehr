@@ -109,197 +109,193 @@ describe('Test seed marking', () => {
       pages.should.have.property('cardiovascular')
       pages.should.have.property('visit')
 
+    })
+
+    // confirm that arrays are merged
+    pages.visit.should.have.property('location')
+    pages.visit.location.should.have.length(2)
+
+    // confirm we get properties from one or the other or both
+    pages.visit.should.have.property('propertyInOne')
+    pages.visit.should.have.property('propertyInTwo')
+
+    // confirm we get the properties of the second when it's the same as the first
+    pages.visit.should.have.property('diagnosis')
+    pages.visit.diagnosis.should.equal('two diagnosis')
+
+    // console.log('merged object', JSON.stringify(pages, null, 2))
+  })
 })
 
-      // confirm that arrays are merged
-      pages.visit.should.have.property('location')
-      pages.visit.location.should.have.length(2)
+describe('Test support for seed import', () => {
+  it('verify validateSeedFileContents accept valid properties', (done) => {
+    let ehrData = { demographics: { firstName: 'foo' } }
+    let data = composeData(ehrData)
+    let { invalidMsg, seedObj } = ehrUtils.validateSeedFileContents(data)
+    should.not.exist(invalidMsg)
+    should.exist(seedObj)
+    done()
+  })
+  it('verify validateSeedFileContents catches invalid properties', (done) => {
+    let ehrData = { invalid: { firstName: 'foo' } }
+    let data = composeData(ehrData)
+    let { invalidMsg, seedObj } = ehrUtils.validateSeedFileContents(data)
+    should.exist(invalidMsg)
+    should.not.exist(seedObj)
+    done()
+  })
+  it('verify validateSeedFileContents catches empty object', (done) => {
+    let ehrData = {}
+    let data = composeData(ehrData)
+    let { invalidMsg, seedObj } = ehrUtils.validateSeedFileContents(data)
+    should.exist(invalidMsg)
+    should.not.exist(seedObj)
+    done()
+  })
 
-      // confirm we get properties from one or the other or both
-      pages.visit.should.have.property('propertyInOne')
-      pages.visit.should.have.property('propertyInTwo')
+  // it('importSeedData', async () => {
+  //   should.doesNotThrow(async () => {
+  //     const seedId = 'new seed'
+  //     let ehrData = { demographics: { firstName: 'foo' } }
+  //     let data = composeData(ehrData)
+  //     const response = {
+  //       imported: true,
+  //       seeddata: mockData.seedData
+  //     }
+  //     await prepareAxiosResponse('get', response)
+  //     await prepareAxiosResponse('put', response)
+  //     const mRes = { status: 200, data: 'fake data' }
+  //     axios.mockResolvedValueOnce(mRes)
+  //     should.doesNotThrow(async () => await ehrUtils.importSeedData(null, seedId, data))
+  //     // done()
+  //   })
+  // })
 
-      // confirm we get the properties of the second when it's the same as the first
-      pages.visit.should.have.property('diagnosis')
-      pages.visit.diagnosis.should.equal('two diagnosis')
-
-      // console.log('merged object', JSON.stringify(pages, null, 2))
+  it('downloadSeedToFile', done => {
+    const seedId = 'new seed'
+    const sSeedContent = mockData.seedData
+    const ehrData = { demographics: { firstName: 'foo' } }
+    should.doesNotThrow(() => {
+      const result = ehrUtils.downloadSeedToFile(seedId, sSeedContent, ehrData, 'A tag list')
+      should.not.exist(result)
+      done()
     })
   })
 
-  describe('Test support for seed import', () => {
-    it('verify validateSeedFileContents accept valid properties', (done) => {
-      let ehrData = { demographics: { firstName: 'foo' } }
-      let data = composeData(ehrData)
-      let { invalidMsg, seedObj } = ehrUtils.validateSeedFileContents(data)
-      should.not.exist(invalidMsg)
-      should.exist(seedObj)
+  it('downObjectToFile', done => {
+    const fileName = 'new file'
+    const obj = mockData.seedData
+    should.doesNotThrow(() => {
+      const result = ehrUtils.downObjectToFile(fileName, obj)
+      should.not.exist(result)
       done()
-    })
-    it('verify validateSeedFileContents catches invalid properties', (done) => {
-      let ehrData = { invalid: { firstName: 'foo' } }
-      let data = composeData(ehrData)
-      let { invalidMsg, seedObj } = ehrUtils.validateSeedFileContents(data)
-      should.exist(invalidMsg)
-      should.not.exist(seedObj)
-      done()
-    })
-    it('verify validateSeedFileContents catches empty object', (done) => {
-      let ehrData = {}
-      let data = composeData(ehrData)
-      let { invalidMsg, seedObj } = ehrUtils.validateSeedFileContents(data)
-      should.exist(invalidMsg)
-      should.not.exist(seedObj)
-      done()
-    })
-
-    // it('importSeedData', async () => {
-    //   should.doesNotThrow(async () => {
-    //     const seedId = 'new seed'
-    //     let ehrData = { demographics: { firstName: 'foo' } }
-    //     let data = composeData(ehrData)
-    //     const response = {
-    //       imported: true,
-    //       seeddata: mockData.seedData
-    //     }
-    //     await prepareAxiosResponse('get', response)
-    //     await prepareAxiosResponse('put', response)
-    //     const mRes = { status: 200, data: 'fake data' }
-    //     axios.mockResolvedValueOnce(mRes)
-    //     should.doesNotThrow(async () => await ehrUtils.importSeedData(null, seedId, data))
-    //     // done()
-    //   })
-    // })
-
-    it('downloadSeedToFile', done => {
-      const seedId = 'new seed'
-      const sSeedContent = mockData.seedData
-      const ehrData = { demographics: { firstName: 'foo' } }
-      should.doesNotThrow(() => {
-        const result = ehrUtils.downloadSeedToFile(seedId, sSeedContent, ehrData, 'A tag list')
-        should.not.exist(result)
-        done()
-      })
-    })
-
-    it('downObjectToFile', done => {
-      const fileName = 'new file'
-      const obj = mockData.seedData
-      should.doesNotThrow(() => {
-        const result = ehrUtils.downObjectToFile(fileName, obj)
-        should.not.exist(result)
-        done()
-      })
-    })
-
-    it('arrayToCsv', done => {
-      should.doesNotThrow(() => {
-        const array = [['A'], ['New'], ['Array']]
-        const result = ehrUtils.arrayToCsv(array)
-        result.should.be.a.String()
-        result.length.should.be.greaterThan(0)
-        done()
-      })
-    })
-
-    it('downArrayToCsvFile', () => {
-      should.doesNotThrow(() => {
-        const array = [['A'], ['New'], ['Array']]
-        const result = ehrUtils.downArrayToCsvFile('new file', array)
-        should.not.exist(result)
-      })
     })
   })
 
-  describe('Test validators and formatters ', () => {
-    it('validTimeStr', done => {
-      // invalid tests
-      ehrUtils.validTimeStr('2400').should.equal(false)
-      ehrUtils.validTimeStr('24:00').should.equal(false)
-      ehrUtils.validTimeStr('33:00').should.equal(false)
-      ehrUtils.validTimeStr('23:60').should.equal(false)
-      ehrUtils.validTimeStr('00:00').should.equal(false)
-      ehrUtils.validTimeStr('01:00').should.equal(false)
-      ehrUtils.validTimeStr('22:00').should.equal(false)
-      ehrUtils.validTimeStr('23:59').should.equal(false)
-      // valid tests
-      ehrUtils.validTimeStr('2200').should.equal(true)
-      ehrUtils.validTimeStr('0100').should.equal(true)
-      ehrUtils.validTimeStr('2359').should.equal(true)
+  it('arrayToCsv', done => {
+    should.doesNotThrow(() => {
+      const array = [['A'], ['New'], ['Array']]
+      const result = ehrUtils.arrayToCsv(array)
+      result.should.be.a.String()
+      result.length.should.be.greaterThan(0)
       done()
-    })
-
-    it('validDayStr', done => {
-      // invalid tests
-      ehrUtils.validDayStr(-1).should.equal(false)
-      ehrUtils.validDayStr(10).should.equal(true)
-      ehrUtils.validDayStr(100).should.equal(false)
-      ehrUtils.validDayStr(1000).should.equal(false)
-
-      // valid tests
-      ehrUtils.validDayStr(0).should.equal(true)
-      ehrUtils.validDayStr(1).should.equal(true)
-      ehrUtils.validDayStr(5).should.equal(true)
-      ehrUtils.validDayStr(9).should.equal(true)
-      done()
-    })
-
-    it('validRangeStr', done => {
-      // invalid use cases
-      ehrUtils.validRangeStr(1000, 0, 100).should.equal(false)
-      ehrUtils.validRangeStr(-1000, -100, 100).should.equal(false)
-      ehrUtils.validRangeStr('a', 0, 100).should.equal(false)
-      // valid use cases
-      ehrUtils.validRangeStr(10, 0, 100).should.equal(true)
-      ehrUtils.validRangeStr(-10, -100, 100).should.equal(true)
-      ehrUtils.validRangeStr(100, 0, 1000).should.equal(true)
-      done()
-    })
-
-    it('formatDateStr', done => {
-      ehrUtils.formatDateStr('2011-10-11').should.equal('11 Oct 2011')
-      ehrUtils.formatDateStr('2012-04-01').should.equal('01 Apr 2012')
-      done()
-    })
-
-    it('formatTimeStr', done => {
-      ehrUtils.formatTimeStr('2011-10-11T12:00').should.equal('2011-10-11 12:00 PM')
-      ehrUtils.formatTimeStr('2011-10-11T15:00').should.equal('2011-10-11 3:00 PM')
-      ehrUtils.formatTimeStr('2011-10-11T00:00').should.equal('2011-10-11 12:00 AM')
-      done()
-    })
-
-    it('isValidFilename', done => {
-      ehrUtils.isValidFilename('new/file/name').should.equal(false)
-      ehrUtils.isValidFilename('new-file-name').should.equal(true)
-      done()
-
     })
   })
 
-  describe('Axios error and file upload', () => {
-    it('composeAxiosResponseError', done => {
-      const response = {
-        status: 400,
-        statusText: 'Bad Request',
-        data: 'Please, check your request and try again'
-      }
-      const result = ehrUtils.composeAxiosResponseError({ response }, '')
-      result.should.equal(` status: ${response.status} ${response.statusText} "${response.data}"`)
-      done()
+  it('downArrayToCsvFile', () => {
+    should.doesNotThrow(() => {
+      const array = [['A'], ['New'], ['Array']]
+      const result = ehrUtils.downArrayToCsvFile('new file', array)
+      should.not.exist(result)
     })
+  })
+})
 
-    it('readFile', async () => {
-      const fileContent = 'This is a mock file'
-      const file = createFile(fileContent)
-      should.exist(file)
-      const result = await ehrUtils.readFile(file)
-      result.should.equal(fileContent)
-    })
-
-
+describe('Test validators and formatters ', () => {
+  it('validTimeStr', done => {
+    // invalid tests
+    ehrUtils.validTimeStr('2400').should.equal(false)
+    ehrUtils.validTimeStr('24:00').should.equal(false)
+    ehrUtils.validTimeStr('33:00').should.equal(false)
+    ehrUtils.validTimeStr('23:60').should.equal(false)
+    ehrUtils.validTimeStr('00:00').should.equal(false)
+    ehrUtils.validTimeStr('01:00').should.equal(false)
+    ehrUtils.validTimeStr('22:00').should.equal(false)
+    ehrUtils.validTimeStr('23:59').should.equal(false)
+    // valid tests
+    ehrUtils.validTimeStr('2200').should.equal(true)
+    ehrUtils.validTimeStr('0100').should.equal(true)
+    ehrUtils.validTimeStr('2359').should.equal(true)
+    done()
   })
 
+  it('validDayStr', done => {
+    // invalid tests
+    ehrUtils.validDayStr(-1).should.equal(false)
+    ehrUtils.validDayStr(10).should.equal(true)
+    ehrUtils.validDayStr(100).should.equal(false)
+    ehrUtils.validDayStr(1000).should.equal(false)
+
+    // valid tests
+    ehrUtils.validDayStr(0).should.equal(true)
+    ehrUtils.validDayStr(1).should.equal(true)
+    ehrUtils.validDayStr(5).should.equal(true)
+    ehrUtils.validDayStr(9).should.equal(true)
+    done()
+  })
+
+  it('validRangeStr', done => {
+    // invalid use cases
+    ehrUtils.validRangeStr(1000, 0, 100).should.equal(false)
+    ehrUtils.validRangeStr(-1000, -100, 100).should.equal(false)
+    ehrUtils.validRangeStr('a', 0, 100).should.equal(false)
+    // valid use cases
+    ehrUtils.validRangeStr(10, 0, 100).should.equal(true)
+    ehrUtils.validRangeStr(-10, -100, 100).should.equal(true)
+    ehrUtils.validRangeStr(100, 0, 1000).should.equal(true)
+    done()
+  })
+
+  it('formatDateStr', done => {
+    ehrUtils.formatDateStr('2011-10-11').should.equal('11 Oct 2011')
+    ehrUtils.formatDateStr('2012-04-01').should.equal('01 Apr 2012')
+    done()
+  })
+
+  it('formatTimeStr', done => {
+    ehrUtils.formatTimeStr('2011-10-11T12:00').should.equal('2011-10-11 12:00 PM')
+    ehrUtils.formatTimeStr('2011-10-11T15:00').should.equal('2011-10-11 3:00 PM')
+    ehrUtils.formatTimeStr('2011-10-11T00:00').should.equal('2011-10-11 12:00 AM')
+    done()
+  })
+
+  it('isValidFilename', done => {
+    ehrUtils.isValidFilename('new/file/name').should.equal(false)
+    ehrUtils.isValidFilename('new-file-name').should.equal(true)
+    done()
+
+  })
+})
+
+describe('Axios error and file upload', () => {
+  it('composeAxiosResponseError', done => {
+    const response = {
+      status: 400,
+      statusText: 'Bad Request',
+      data: 'Please, check your request and try again'
+    }
+    const result = ehrUtils.composeAxiosResponseError({ response }, '')
+    result.should.equal(` status: ${response.status} ${response.statusText} "${response.data}"`)
+    done()
+  })
+
+  it('readFile', async () => {
+    const fileContent = 'This is a mock file'
+    const file = createFile(fileContent)
+    should.exist(file)
+    const result = await ehrUtils.readFile(file)
+    result.should.equal(fileContent)
+  })
 })
 function composeData (ehrData) {
   let data = {

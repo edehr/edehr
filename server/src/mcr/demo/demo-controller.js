@@ -6,7 +6,6 @@ import { demoLimiter, validatorMiddlewareWrapper } from '../../helpers/middlewar
 import { activity1, activity2, activity3, activity4, activity5 } from '../common/assignment-defs'
 import { fail, ok } from '../common/utils'
 import Consumer from '../consumer/consumer'
-const ObjectID = require('mongodb').ObjectId
 const {ltiVersions} = require('../../mcr/lti/lti-defs')
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
 const debugDC = true

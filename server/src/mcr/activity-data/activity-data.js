@@ -1,8 +1,6 @@
 import mongoose from 'mongoose'
 import { WS_EVENT_BUS, WS_S2C_MESSAGE_EVENT } from '../../server/push-server'
-import Assignment from '../assignment/assignment'
 import Visit from '../visit/visit'
-import EhrDataModel from '../../ehr-definitions/EhrDataModel'
 import { ObjectId } from 'mongodb'
 
 /*

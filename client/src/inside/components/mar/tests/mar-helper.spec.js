@@ -2,8 +2,6 @@ import should from 'should'
 import MarHelper, { MAR_PAGE_KEY, MED_ORDERS_PAGE_KEY } from '../mar-helper'
 import { getMedOrders, getMarRecords } from './mar-test-helper'
 import EhrDefs from '../../../../ehr-definitions/ehr-defs-grid'
-import MarEntity from '../mar-entity'
-import MedOrder from '../med-order'
 
 let marHelper
 const medOrders = getMedOrders()

@@ -5,7 +5,6 @@ import ActivityData from './activity-data'
 import EhrDataModel from './../../ehr-definitions/EhrDataModel'
 import { EHR_AD_EVENT, EHR_EVENT_BUS, EHR_PatientFromSeedEVENT } from '../../server/trace-ehr'
 import { decoupleObject } from '../../ehr-definitions/common-utils'
-import SeedData from '../seed/seed-data'
 
 const debug = require('debug')('server')
 
