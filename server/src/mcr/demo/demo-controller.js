@@ -257,7 +257,7 @@ export default class DemoController {
       this
         .listDemoActivities()
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     router.post('/logout', validatorMiddleware, (req, res) => {

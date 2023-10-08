@@ -182,7 +182,7 @@ export default class CourseController extends BaseController {
       const consumerId = authPayload.toolConsumerId
       this.listCoursesOnly(userId, consumerId, isInstructor)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
 
@@ -198,14 +198,14 @@ export default class CourseController extends BaseController {
       const consumerId = authPayload.toolConsumerId
       this.getCourseRecordWithActivities(courseId, userId, consumerId, isInstructor, sortKey, sortDir)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     router.put('/updateCourse/:key', (req, res) => {
       this
         .updateCourse(req.params.key, req.body)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     router.put('/enable-skills-assessment/:id', (req, res) => {
@@ -215,7 +215,7 @@ export default class CourseController extends BaseController {
       this
         .updateSkillsAssessment(req.params.key, req.body)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     return router
   }

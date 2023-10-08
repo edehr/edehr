@@ -138,7 +138,7 @@ export default class VisitController extends BaseController {
       this
         .findUserVisitList(req.params.key)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     router.post('/restoreAsInstructor', async (req, res, next) =>  {

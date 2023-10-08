@@ -241,7 +241,11 @@ export function apiError (app, config) {
     let errorData = err.errorData || {}
     // The Sentry error id is attached to `res.sentry` if sentry is active
     errorData.sentry = res.sentry
-    let json =  {message: err.message, status: status, errorData: JSON.stringify(errorData)}
+    let json =  {
+      url: req.url,
+      message: err.message,
+      status: status,
+      errorData: JSON.stringify(errorData)}
     debug('API errorHandler json', json)
     res.status(status).json(json)
   }

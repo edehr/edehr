@@ -40,7 +40,7 @@ describe('utils helper file', function () {
         return this
       }
     }
-    let r = fail(res)
+    let r = fail(req, res)
     let error
     error = { name: 'test error', message: 'test message' }
     r(error)

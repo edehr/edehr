@@ -170,14 +170,14 @@ export default class ActivityDataController extends BaseController {
       this
         .getActivityAssignmentData(req.params.key)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     router.put('/submitted/:key/', (req, res) => {
       const id = req.params.key
       const data = req.body
       this.assignmentSubmitted(id, data)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     router.put('/add-patient-with-seed/:key/', (req, res) => {
       const id = req.params.key
@@ -186,7 +186,7 @@ export default class ActivityDataController extends BaseController {
       const { consumerKey, visitId, userId } = authPayload
       this.addPatientWithSeedToAssignmentData(consumerKey, visitId, userId, id, dataPayload)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     router.put('/assignment-data/:key/', (req, res) => {
       const id = req.params.key
@@ -196,21 +196,21 @@ export default class ActivityDataController extends BaseController {
       this.putAssignmentData(consumerKey, visitId, userId, id, dataPayload)
         .then(doc => this.getActivityAssignmentData(doc._id))
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     router.put('/scratch-data/:key/', (req, res) => {
       const id = req.params.key
       const data = req.body
       this.updateScratchData(id, data)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     router.put('/evaluation-data/:key', (req, res) => {
       const id = req.params.key
       const data = req.body
       this.updateEvaluationData(id, data)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     return router
   }

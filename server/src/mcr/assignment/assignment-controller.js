@@ -244,13 +244,13 @@ export default class AssignmentController extends BaseController {
       this
         .assignmentsWithActivityUsageCount(req.params.tool)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     router.get('/getLObj/:id', (req, res) => {
       this
         .getLObj(req.params.id, req.authPayload.userId)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     router.delete('/unused/:key', async (req, res) => {
@@ -277,7 +277,7 @@ export default class AssignmentController extends BaseController {
         .catch(err => {
           logError('Assignment. Delete Error', err)
           return req.status(500).send(err)
-          // fail(res)
+          // fail(req, res)
         })
     })
     return router

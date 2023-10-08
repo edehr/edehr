@@ -72,13 +72,13 @@ export default class LookaheadController {
       this
         .lookupMeds(req.params.term)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     router.get('/medicationsv2/:term?', (req, res) => {
       this
         .lookupMedsv2(req.params.term)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     return router
   }

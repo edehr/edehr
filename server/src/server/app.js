@@ -11,6 +11,7 @@ import { logError } from '../helpers/log-error'
 import { setUpEhrTraceLogger } from './trace-ehr'
 import { setUpActionLogger } from './trace-actions'
 import AuthUtil from '../mcr/common/auth-util'
+import { getFullUrl } from '../mcr/common/utils'
 const debug = require('debug')('server')
 const helmet = require('helmet')
 
@@ -123,7 +124,7 @@ export default class EhrApp {
   static _fourOhFour (req, res) {
     let { url } = req
     let status = 404
-    var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
+    var fullUrl = getFullUrl(req)
     var env = process.env.NODE_ENV
     if (url.includes('favicon')) {
       debug('Another request for the favicon')
@@ -132,7 +133,7 @@ export default class EhrApp {
       var msg = 'Could not find "' + fullUrl + '". Environment: ' + env
       debug(msg)
       res.status(status)
-      res.json({message: msg, status: status})
+      res.json({message: msg, status: status, url: fullUrl})
     }
   }
 }

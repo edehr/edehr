@@ -243,19 +243,19 @@ export default class SeedDataController extends BaseController {
       let name = req.query.name
       this.searchForPatients(toolConsumerId, name, mrn)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     router.get('/allTags/:toolConsumerId', (req, res) => {
       let toolConsumerId = req.params.toolConsumerId
       this.collectAllTags(toolConsumerId)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     router.get('/seedSelectionList/:tool', (req, res) => {
       this
         .fetchSeedSelectionList(req.params.tool, req.query.appType, req.query.searchTerm)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     router.post('/createSeed', (req, res) => {
@@ -279,7 +279,7 @@ export default class SeedDataController extends BaseController {
           return res
         })
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     router.put('/updateSeed/:key', (req, res) => {
       const id = req.params.key
@@ -312,7 +312,7 @@ export default class SeedDataController extends BaseController {
           return res
         })
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     router.put('/updateSeedEhrProperty/:key/:action', (req, res) => {
       debug('SeedController API updateSeedEhrProperty')
@@ -323,7 +323,7 @@ export default class SeedDataController extends BaseController {
       const { visitId, userId } = authPayload
       this.updateSeedEhrProperty(visitId, userId, id, data, action)
         .then(ok(res))
-        .catch(fail(res))
+        .catch(fail(req, res))
     })
 
     router.delete('/:key', (req, res) => {
@@ -360,7 +360,7 @@ export default class SeedDataController extends BaseController {
           return res
         })
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     return router
   }
