@@ -13,7 +13,7 @@ import { updateRespiratory } from './ehr-data-upgrade-utils'
 import { updateWoundCaseStudy } from './ehr-data-upgrade-woundCaseStudy'
 import { updateHematologyLymphocytes } from './ehr-data-upgrade-hematology'
 
-export const CURRENT_EHR_DATA_VERSION = 'ev2.3.6'
+export const CURRENT_EHR_DATA_VERSION = 'ev2.4.0'
 
 function ehrMergeEhrData (one, two) {
   one = one || {}

@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 import { EhrPages } from '../../ehr-definitions/ehr-models'
 import { WS_EVENT_BUS, WS_S2C_MESSAGE_EVENT } from '../../server/push-server'
 import EhrDataModel from '../../ehr-definitions/EhrDataModel'
+import { APP_TYPE_EHR, APP_TYPES } from '../../helpers/appType'
 const debug = require('debug')('server')
 
 const ObjectId = mongoose.Schema.Types.ObjectId
@@ -33,8 +34,8 @@ const Schema = new mongoose.Schema(
     }],
     appType: {
       type: String,
-      enum : ['EHR','LIS'],
-      default: 'EHR'
+      enum : APP_TYPES,
+      default: APP_TYPE_EHR
     },
   }, {
     toObject: { virtuals: true },

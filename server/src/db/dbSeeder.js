@@ -106,10 +106,10 @@ async function dbCleanOldDemos (commonControllers) {
     { $and: [ {lastUpdateDate: { $lte: filterDate}}, { tool_consumer_info_product_family_code: 'EdEHR Demo LMS'} ] }
   ]
   for (const query of querys) {
-    console.log('Clear consumers with this query', query)
+    debug('Clear consumers with this query', JSON.stringify(query))
     const oldDemos = await Consumer.find(query)
     for (const tc of oldDemos) {
-      console.log('Clear this demo', tc._id)
+      debug('Clear this demo', tc._id)
       await demoController.deleteDemoData(tc._id)
     }
   }

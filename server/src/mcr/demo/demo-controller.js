@@ -3,7 +3,7 @@ import axios from 'axios'
 import qs from 'qs'
 import { demoPersonae } from '../../helpers/demo-personae'
 import { demoLimiter, validatorMiddlewareWrapper } from '../../helpers/middleware'
-import { activity1, activity2, activity3, activity4, activity5 } from '../common/assignment-defs'
+import { activity1, activity2, activity3, activity4, activity5, activityMP1 } from '../common/assignment-defs'
 import { fail, ok } from '../common/utils'
 import Consumer from '../consumer/consumer'
 const {ltiVersions} = require('../../mcr/lti/lti-defs')
@@ -11,6 +11,7 @@ const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
 const debugDC = true
 const debug = require('debug')('server')
 import { logError} from '../../helpers/log-error'
+import { APP_TYPE_LIS } from '../../helpers/appType'
 
 // match the same version as in the client side demo-store-helper.js
 export const   DEMO_CONSUMER_FAMILY_CODE = 'EdEHR Demo'
@@ -39,14 +40,20 @@ export default class DemoController {
     console.log('---- activityDef', activity)
     const lObjDef = activity.lObjDef // has title, description
     lObjDef.toolConsumer = toolC // just needs toolConsumer and seed to be ready to create db object
-    const seedDef = activity.seedDef
-    seedDef.toolConsumer = toolC._id
-    let seed = await this.comCon.seedController.create(seedDef)
-    const lBbj = await this.comCon.assignmentController.createAssignment(lObjDef, seed._id)
+    let seedId
+    let appType = APP_TYPE_LIS // default to medLab; the first profession that wanted this feature
+    if (!activity.multiPatient) {
+      const seedDef = activity.seedDef
+      seedDef.toolConsumer = toolC._id
+      let seed = await this.comCon.seedController.create(seedDef)
+      seedId = seed._id
+      appType = seed.appType
+    }
+    const lBbj = await this.comCon.assignmentController.createAssignment(lObjDef, seedId)
     return {
       title: lObjDef.title, // provide name and app type without need to query
-      appType: seed.appType,
-      demo_lobjId: lBbj._id // can get seed from lObj
+      appType: appType,
+      demo_lobjId: lBbj._id // can get seed or mPatient filters from lObj
     }
   }
 
@@ -71,7 +78,7 @@ export default class DemoController {
       lObjList: []
     }
     // see comment below about lObjList
-    const activities = [ activity1, activity2, activity3, activity4, activity5 ]
+    const activities = [ activity1, activity2, activity3, activity4, activity5, activityMP1 ]
     await Promise.all(
       activities.map(async (activity) => {
         demoData.lObjList.push(await this.createSampleSeedAndObj(activity, toolC))
@@ -117,7 +124,7 @@ export default class DemoController {
         },
         {
           courseTitle: 'Intro to MedLab',
-          activities: [activity4, activity5]
+          activities: [activity4, activity5, activityMP1]
         }
       ]
     }
