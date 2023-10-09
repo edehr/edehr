@@ -37,23 +37,32 @@ const getters = {
   activityData: state => state.activityData,
 }
 
-function _sendHelper (context, parameter, data) {
-  return context.dispatch('sendActivityData', { parameter: parameter, data: data })
+async function _commonPut (context, url, payload) {
+  const API = 'activity-data'
+  const silent = payload.silent
+  const response = await InstoreHelper.putRequest(context, API, url, payload, silent)
+  // console.log('_common put url ' + url + ' response data', response)
+  await _commonUpdate(context, response.data)
 }
+async function _commonUpdate (context, data) {
+  // console.log('common update', data)
+  context.commit('setActivityData', data)
+  const assignmentData = context.getters['activityDataStore/assignmentData'] || {}
+  const patientList = assignmentData.patients || []
+  await context.dispatch('mPatientStore/loadStudentPatientList', patientList, { root: true })
+}
+
 const actions = {
   sendScratchData (context, data) {
-    return _sendHelper(context, 'scratch-data', data)
+    return context.dispatch('_sendActivityData', { parameter: 'scratch-data', data: data })
   },
-
   sendEvaluationNotes (context, data) {
-    return _sendHelper(context, 'evaluation-data', data)
+    return context.dispatch('_sendActivityData', { parameter: 'evaluation-data', data: data })
   },
-
   sendSubmitted (context, data) {
-    return _sendHelper(context, 'submitted', data)
+    return context.dispatch('_sendActivityData', { parameter: 'submitted', data: data })
   },
-
-  sendAssignmentDataUpdate (context, payload) {
+  async sendAssignmentDataUpdate (context, payload) {
     if (!payload.propertyName || !payload.value) {
       console.error('Coding error. To put assignment data the payload object must have propertyName (e.g. pageKey) and value (ehrData).')
       return
@@ -62,28 +71,27 @@ const actions = {
       console.error('Coding error. To put assignment data the payload object must specify action save or draft')
       return
     }
-    const API = 'activity-data'
     const adi = context.state.activityData._id
     const url = `assignment-data/${adi}`
-    const silent = payload.silent
     payload.patientObjectId = MPatientHelper.getCurrentPatientObjectId()
-    return InstoreHelper.putRequest(context, API, url, payload, silent).then(response => {
-      let results = response.data
-      // console.log('after put this is returned for storing', JSON.stringify(results.assignmentData, null, 2))
-      context.commit('setAssignmentData', results.assignmentData)
-      return results.assignmentData
-    })
+    await _commonPut(context, url, payload)
   },
-  sendActivityData (context, payload) {
+  async sendAddPatientToAssignmentData (context, payload) {
+    if (!payload.seedId) {
+      // to do allow for a created patient without seed id
+      console.error('Coding error. To add a patient we need the case study (seed) id.')
+      return
+    }
+    const adi = context.state.activityData._id
+    let url = 'add-patient-with-seed/' + adi
+    await _commonPut(context, url, payload)
+  },
+  async _sendActivityData (context, payload) {
     let activityDataId = context.state.activityData._id
     let apiPayload = { value: payload.data }
     let parameter = payload.parameter
     let url = `${parameter}/${activityDataId}`
-    if (debug) console.log(NAME + ' ActivityData send ', url, data)
-    return InstoreHelper.putRequest(context, API, url, apiPayload).then(response => {
-      context.commit('setActivityData', response.data)
-      return response.data
-    })
+    await _commonPut(context, url, apiPayload)
   },
   /**
    * Invoke this action to call the API to get an ActivityData record along with the
@@ -102,13 +110,8 @@ const actions = {
       StoreHelper.setApiError(msg)
       return
     }
-    // assignmentData is the student's ehr data
-    if (!response.data.activityData.assignmentData) {
-      // this can happen for a brief interval, in the full demo, while the activity is linking.
-      return
-    }
-    await context.commit('setActivityData', response.data.activityData)
-    await context.commit('setAssignmentData', response.data.activityData.assignmentData)
+    console.log('response.data',response.data)
+    await _commonUpdate(context, response.data.activityData)
   }
 }
 
@@ -116,11 +119,8 @@ const mutations = {
   setActivityData: (state, data) => {
     if(debug) console.log(NAME+ ' set data', data)
     state.activityData = data
+    state.assignmentData = data.assignmentData
   },
-  setAssignmentData: (state, data) => {
-    // student data
-    state.assignmentData = data
-  }
 }
 
 export default {

@@ -28,7 +28,7 @@ export default class ActivityDataController extends BaseController {
       assignmentData.patients = assignmentData.patients || []
       if (assignmentData.patients.find(p => p.seedId === seedId)) {
         debug('Patient for this seed already is in the set.')
-        return
+        return ad
       }
       assignmentData.patients.push ({
         _id: seedId,
@@ -194,7 +194,6 @@ export default class ActivityDataController extends BaseController {
       const authPayload = req.authPayload
       const { consumerKey, visitId, userId } = authPayload
       this.putAssignmentData(consumerKey, visitId, userId, id, dataPayload)
-        .then(doc => this.getActivityAssignmentData(doc._id))
         .then(ok(res))
         .then(null, fail(req, res))
     })

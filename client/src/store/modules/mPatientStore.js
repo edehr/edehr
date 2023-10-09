@@ -9,7 +9,7 @@ const state = {
 
 const getters = {
   activeCaseStudyPatientList: state => { return state.activePatientList  },
-  // currentPatient: state => { return state.activePatientList.find(p => p._id === state.currentPatientObjectId) },
+  currentPatient: state => { return state.activePatientList.find(p => p._id === state.currentPatientObjectId) },
   currentPatientObjectId: state => state.currentPatientObjectId,
   searchMatches: state => state.searchMatches
 }
@@ -43,21 +43,18 @@ const actions = {
    */
   async addStudentPatient (context, patientId) {
     if (this.currentPatientObjectId && this.currentPatientObjectId === patientId) {
-      // console.log('mps Patient is already in the list and it is the currently selected object', patientId)
+      console.log('mps Patient is already in the list and it is the currently selected object', patientId)
     } else {
       const index = state.activePatientList.findIndex(sd => sd._id === patientId)
       if (index >= 0) {
-        console.log('mps Patient is already in the list so just make this patient the active one.', patientId)
+        // console.log('mps Patient is already in the list so just make this patient the active one.', patientId)
         context.commit('_setCurrentPatientObjectId', patientId)
       } else {
-        console.log('mps Else the object is not in list', patientId)
-        const API = 'activity-data'
-        let activityDataId = context.rootGetters['visit/activityDataId']
+        // console.log('mps Else the object is not in list', patientId)
         // TODO handle student created patient ...
         let payload = { seedId: patientId }
-        let url = 'add-patient-with-seed/' + activityDataId
-        await InstoreHelper.putRequest(context, API, url, payload)
-        await context.dispatch('loadStudentPatientList')
+        await context.dispatch('activityDataStore/sendAddPatientToAssignmentData', payload, {root:true})
+        // note that the above dispatch will have reloaded the assignment data and pushed the patient list into this store. So the patient list is ready to go
         await context.commit('_setCurrentPatientObjectId', patientId)
       }
     }
@@ -107,13 +104,12 @@ const actions = {
   },
 
   /**
-   * Before dispatching this mPatient load be sure to load the activity data.
-   *       await store.dispatch('activityDataStore/loadActivityData', { id: theActivity.activityDataId })
+   * loadStudentPatientList is invoked by activity data store whenever the activity data (which includes student assignment data) is retrieved
    * @param context
+   * @param patientList
    * @returns {Promise<void>}
    */
-  async loadStudentPatientList (context) {
-    const patientList = context.rootGetters['activityDataStore/patientList'] || []
+  async loadStudentPatientList (context, patientList) {
     await context.commit('_setPatientList', patientList)
   }
 

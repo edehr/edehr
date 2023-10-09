@@ -285,8 +285,8 @@ async  function onPageChange (toRoute) {
       if (dbApp) console.log('student ehr page load')
       // loadActivityData gets both the activityData and the student's assignment data with the patient list
       await store.dispatch('activityDataStore/loadActivityData', { id: theActivity.activityDataId })
+      // load the Learning Object .... (formerly called an 'assignment')
       await store.dispatch('assignmentStore/load', theActivity.learningObjectId)
-      await store.dispatch('mPatientStore/loadStudentPatientList')
       const theLObj = store.getters['assignmentStore/learningObject']
       let pId
       if (optionalVisitId && theLObj.seedDataId) {
@@ -296,20 +296,17 @@ async  function onPageChange (toRoute) {
       } else {
         pId = store.getters['mPatientStore/currentPatientObjectId']
         if (!pId) {
-          if (dbApp) console.log('student no stored pId so see if there is a list and select one of the patients')
+          if (dbApp) console.log('student has no stored pId so see if there is a list and select one of the patients')
           const list = MPatientHelper.getCurrentPatientList()
           const first = list && list.length > 0 ? list[0] : { }
           pId = first._id
         }
       }
-
-      if (dbApp) console.log('student pId', pId)
-      // change the list if pId is new
       if (pId) {
+        // change the list if pId is new. Calling addStudentPatient will only affect the list if needed.
         await store.dispatch('mPatientStore/addStudentPatient', pId)
-        // select the new patient
-        if (dbApp) console.log('select the new patient', pId)
-        await store.dispatch('mPatientStore/setCurrentPatientObjectId', pId)
+        // Note that addStudentPatient will load the activity data if needed
+        // It will also select the new patient
         const patient = MPatientHelper.getCurrentPatient()
         if (patient && patient.seedId) {
           await store.dispatch('seedListStore/loadSeedContent', patient.seedId)
@@ -318,6 +315,8 @@ async  function onPageChange (toRoute) {
     }
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   } catch (err) {
+    // IF DEVELOPMENT ON LOCALHOST .... show the stack trace for speedier location of error
+    if (window.location.origin.includes('localhost')) console.log(err.stack)
     // TODO check how we handle expired auth tokens
     let msg = err.message
     if (err.response) {

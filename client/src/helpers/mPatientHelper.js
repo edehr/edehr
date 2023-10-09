@@ -25,7 +25,7 @@ class MPatientHelperWorker {
   }
   getCurrentPatient () {
     const id = store.getters['mPatientStore/currentPatientObjectId']
-    return this.findPatientById(id)
+    return id ? this.findPatientById(id) : undefined
   }
 
   findPatientById (id) {
