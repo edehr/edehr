@@ -6,20 +6,23 @@
       ehr-context-banner
     main(:class="ehrOrLis")
       ehr-multi-patient-bar(class='ehr-multi-patient-bar')
-      div(class="ehr-context flow_across")
-        div(class="pageTitle left_side") {{pageTitle}}
-        // banner with patient information
-        ehr-patient-banner(class="patient-banner right_side")
-      div(class="ehr-main-content flow_across")
-        div(class="ehr_layout__nav left_side bigger-screens-900")
-          ehr-nav-panel
-        div(class="ehr_layout__content right_side")
-          div(class="smaller-than-900")
-            span(style="text-align: left; margin-left: 1em")
-              fas-icon(class="fa bars", icon="bars", @click="showingNavPanel = !showingNavPanel")
-              transition(name="hamburger-action")
-                ehr-nav-panel(v-if="showingNavPanel")
-          slot Main EHR content selected by the router
+      div(v-if="hasPatient")
+        div(class="ehr-context flow_across")
+          div(class="pageTitle left_side") {{pageTitle}}
+          // banner with patient information
+          ehr-patient-banner(class="patient-banner right_side")
+        div(class="ehr-main-content flow_across")
+          div(class="ehr_layout__nav left_side bigger-screens-900")
+            ehr-nav-panel
+          div(class="ehr_layout__content right_side")
+            div(class="smaller-than-900")
+              span(style="text-align: left; margin-left: 1em")
+                fas-icon(class="fa bars", icon="bars", @click="showingNavPanel = !showingNavPanel")
+                transition(name="hamburger-action")
+                  ehr-nav-panel(v-if="showingNavPanel")
+            slot Main EHR content selected by the router
+      div(v-else, class="ehr-no-content")
+        div Search and select a patient.
     app-footer
 </template>
 
@@ -51,7 +54,10 @@ export default {
   },
   computed: {
     pageTitle () { return StoreHelper.getPageTitle() },
-    ehrOrLis () { return StoreHelper.isEHR_Showing() ? 'ehr-branding' : StoreHelper.isLIS_Showing() ? 'lis-branding' : ''}
+    ehrOrLis () { return StoreHelper.isEHR_Showing() ? 'ehr-branding' : StoreHelper.isLIS_Showing() ? 'lis-branding' : ''},
+    pId () { return this.$store.getters['mPatientStore/currentPatientObjectId'] },
+    hasPatient () { return !! this.pId }
+
   },
   watch: {
     $route: function (curr, prev) {
@@ -99,7 +105,21 @@ $contentMinHeight: 700px;
     padding-top: 5px;
   }
 }
+.ehr-no-content {
+  height: 40rem;
+  display: flex;
+  position: relative;
+  //align-items: center;
 
+  align-content: center;
+  & div {
+    font-size: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10rem;
+    //width: 40rem;
+  }
+}
 
 @media(device-width: 768px) and (device-height: 1024px){
     ::-webkit-scrollbar {
