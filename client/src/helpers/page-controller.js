@@ -268,14 +268,25 @@ async  function onPageChange (toRoute) {
         await StoreHelper.changeStudentForInstructor(evaluateStudentVisitId)
       }
       if (StoreHelper.isInstructorEvalMode()) {
-        await StoreHelper.loadInstructorWithStudent()
+        await store.dispatch('visit/loadVisitRecord')
+        const theActivity = await store.dispatch('activityStore/loadActivityRecord')
+        const learningObjectId = theActivity.learningObjectId
+        await store.dispatch('assignmentStore/load', learningObjectId)
+        await store.dispatch('instructor/loadClassList')
+        const seedId = theActivity.caseStudyId
+        if (seedId) {
+          await this.loadSeed(seedId)
+        } else {
+          console.log('Here is an instance where we have allowed a learning object to NOT have a seed.')
+        }
       }
     }
     if (StoreHelper.isStudent()) {
-      // If a user is able to log into the LMS first as an instructor, and they set themselves as a content editor,
-      // and then they log into their LMS as a student the system will remember they are also a content editor
-      // which means certain menu items appear. Such as the content creators documentation link in the
-      // application banner.
+      /*
+        If a user is able to log into the LMS first as an instructor, and they set themselves as a content editor,
+        and then they log into their LMS as a student the system will remember they are also a content editor
+        which means certain menu items appear. Such as the content creators documentation link in the application banner.
+       */
       if (StoreHelper.isSeedEditing()) {
         await StoreHelper.setSeedEditId('')
       }

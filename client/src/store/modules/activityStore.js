@@ -25,12 +25,12 @@ const actions = {
     context.commit('setActivityId', undefined)
   },
   // open and close toggle the submit state of all visit records for this activity.
-  close ({dispatch, commit}, id) {
+  closeActivity ({dispatch, commit}, id) {
     let url = 'close-activity/' + id
     let payload = { url: url, data: {} }
     return dispatch('put', payload)
   },
-  open ({dispatch, commit}, id) {
+  openActivity ({dispatch, commit}, id) {
     let url = 'open-activity/' + id
     let payload = { url: url, data: {} }
     return dispatch('put', payload)

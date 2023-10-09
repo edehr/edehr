@@ -289,25 +289,6 @@ class StoreHelperWorker {
     return list
   }
 
-  async closeActivity (activityId) {
-    await this._toggleActivity(activityId, 'close')
-  }
-
-  async openActivity (activityId) {
-    await this._toggleActivity(activityId, 'open')
-  }
-
-  /**
-   * Sets the submitted state for all members of the class list
-   * @param activityId
-   * @returns {Promise<void>}
-   */
-  async _toggleActivity (activityId, direction) {
-    await this._dispatchActivity(direction, activityId)
-    await StoreHelper.loadInstructorWithStudent()
-    StoreHelper.postActionEvent(INSTRUCTOR_ACTION, direction === 'open' ? 'openActivity' : 'closeActivity')
-  }
-
   /* **********
    * **********   Assignments  / Learning Objects **************
    */
@@ -566,21 +547,6 @@ class StoreHelperWorker {
    * @param optionalVisitId
    * @returns {Promise<void>}
    */
-
-  async loadInstructorWithStudent () {
-    // get the instructor user's visit record
-    await store.dispatch('visit/loadVisitRecord')
-    const theActivity = await store.dispatch('activityStore/loadActivityRecord')
-    const learningObjectId = theActivity.learningObjectId
-    await store.dispatch('assignmentStore/load', learningObjectId)
-    await store.dispatch('instructor/loadClassList')
-    const seedId = theActivity.caseStudyId
-    if (seedId) {
-      await this.loadSeed(seedId)
-    } else {
-      console.log('Here is an instance where we have allowed a learning object to NOT have a seed.')
-    }
-  }
 
   /* **********
    * **********   Authorization related    **************
