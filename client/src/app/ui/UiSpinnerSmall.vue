@@ -36,8 +36,8 @@ export default {
     const offSets = refElem.getBoundingClientRect()
     this.left = offSets.left
     this.top = offSets.top
-    this.width = offSets.width
-    this.height = offSets.height
+    // this.width = offSets.width
+    // this.height = offSets.height
 
   }
 }

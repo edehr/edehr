@@ -546,6 +546,12 @@ class StoreHelperWorker {
       await StoreHelper.storeReplaceToken(newToken)
       StoreHelper.postActionEvent(USER_ACTION,'changeVisitId')
     }
+    const cVisit = store.getters['visit/visitId']
+    if (cVisit !== visitId) {
+      // console.log('changing visit id so clear out old data')
+      await store.dispatch('mPatientStore/setCurrentPatientObjectId', undefined)
+      await store.dispatch('visit/clearVisitData')
+    }
     if (debugSH) console.log('SH setVisitId dispatch the load visit id', visitId)
     await this._dispatchVisit('setVisitIdViaSh', visitId)
   }
@@ -620,6 +626,7 @@ class StoreHelperWorker {
     await this._dispatchSeedListProperty('clearSeedData')
     await this._dispatchActivity(('clearActivity'))
     await this._dispatchInstructor('clearInstructor')
+    await store.dispatch('mPatientStore/clearMPatientData')
     await this.clearConsumer()
   }
 

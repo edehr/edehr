@@ -18,6 +18,9 @@ const actions = {
   initialize: function ({ commit }) {
     commit('initialize')
   },
+  clearMPatientData (context) {
+    context.commit('_setCurrentPatientObjectId', undefined)
+  },
   clearSearchMatches (context) {
     context.commit('_setSearchMatches', [])
   },
@@ -44,10 +47,10 @@ const actions = {
     } else {
       const index = state.activePatientList.findIndex(sd => sd._id === patientId)
       if (index >= 0) {
-        // console.log('mps Patient is already in the list so just make this patient the active one.', patientId)
+        console.log('mps Patient is already in the list so just make this patient the active one.', patientId)
         context.commit('_setCurrentPatientObjectId', patientId)
       } else {
-        // console.log('mps Else the object is not in list', patientId)
+        console.log('mps Else the object is not in list', patientId)
         const API = 'activity-data'
         let activityDataId = context.rootGetters['visit/activityDataId']
         // TODO handle student created patient ...
@@ -144,6 +147,7 @@ const mutations = {
       localStorage.setItem(STORED_ID, id)
     } else {
       localStorage.removeItem(STORED_ID)
+      id = EMPTY_OBJECT_ID
     }
     state.currentPatientObjectId = id
   },

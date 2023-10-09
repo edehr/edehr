@@ -14,6 +14,7 @@ import { updateWoundCaseStudy } from './ehr-data-upgrade-woundCaseStudy'
 import { updateHematologyLymphocytes } from './ehr-data-upgrade-hematology'
 
 export const CURRENT_EHR_DATA_VERSION = 'ev2.4.0'
+// ev2.4.0 major change in how the student's ehrData is stored. It is now in an array of patients.
 
 function ehrMergeEhrData (one, two) {
   one = one || {}

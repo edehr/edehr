@@ -5,6 +5,7 @@
       ref="theDialog",
       @cancel="cancelDialog",
       @save="saveDialog",
+      saveButtonLabel="Open",
       :disableSave="disableSave",
       has-left-button
     )
@@ -121,15 +122,14 @@ export default {
     patientData (seed) {
       const newDob = computeDateOfBirth(seed.personAge, seed.dateOfBirth) || ''
       const text = []
-      text.push(seed.familyName ? seed.familyName + ', ' : '')
-      text.push(seed.givenName ? seed.givenName + ' ' : '')
-      text.push(seed.mrn ? 'MRN: ' + seed.mrn + ' ' : '')
-      text.push(seed.gender ? 'Gender ' + seed.gender + ' ' : '')
-      text.push(seed.gender ? 'DoB ' + newDob + ' ' : '')
+      text.push( ( seed.familyName ? seed.familyName : '') + (seed.givenName ? ', ' + seed.givenName : '') )
+      text.push(seed.mrn ? 'MRN: ' + seed.mrn : '')
+      text.push(seed.gender ? 'Gender ' + seed.gender : '')
+      text.push(seed.gender ? 'DoB ' + newDob  : '')
       if( StoreHelper.isSeedEditing() && this.searchMatches.length > 0 ) {
-        text.push('created: ' + seed.createDate + ' ' )
+        text.push('created: ' + seed.createDate )
       }
-      return text.join()
+      return text.join(' - ')
     },
     showPatientDialog () {
       this.clearInputs()

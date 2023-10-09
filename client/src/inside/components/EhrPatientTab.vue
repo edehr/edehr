@@ -1,7 +1,7 @@
 <template lang='pug'>
   div(class="patient-tab", :class='{ patientTabActive: selected }')
     div(class="name-part")
-      a(@click="selectPatient()", href='#') {{ familyName }} (MRN: {{mrn}})
+      a(@click="selectPatient()", href='#') {{ familyName }}
       button(v-if='isSeedEditing', class='close-button', @click="removePatient") x
     div(class="bottom-part")
 </template>

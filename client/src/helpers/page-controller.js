@@ -97,12 +97,17 @@ async  function onPageChange (toRoute) {
     StoreHelper.setLoading('page-controller', true)
     let haveDemoToken = !!StoreHelper.getDemoToken() // may change if user is forced out of full demo
 
+    if (optionalVisitId || refreshToken ) {
+      console.log('on new auth or visit change we need to clear out previous visit and mPatient')
+      // to do
+      await store.dispatch('visit/clearVisitData')
+      await store.dispatch('mPatientStore/clearMPatientData')
+    }
     // **** LTI login ... process and EXIT redirecting to the same page with visitId
     if (refreshToken) {
       if (dbApp) console.log('refresh token')
       // If user is arriving via LTI then any active ehr only demo is over ...
       await EhrOnlyDemo.clearEhrOnly()
-
       if (haveDemoToken && !isDemoLti) {
         // The absence of isDemoLti means this is a LTI request from a real LMS.
         // The existence of haveDemoToken means there is an active full demo session.
@@ -112,8 +117,6 @@ async  function onPageChange (toRoute) {
         await StoreHelper.exitFullDemo()
         haveDemoToken = !!StoreHelper.getDemoToken()
       }
-      if (dbApp) console.log('on new auth we need to clear out previous visit id')
-      await StoreHelper.setVisitId(undefined)
       // The LTI service provides a token in the query. We send this back to our preconfigured api
       // server to verify the incoming request and to get the actual token this
       // client will use. This two-step token verification process makes sure the incoming request
@@ -292,23 +295,25 @@ async  function onPageChange (toRoute) {
         pId = patientId
       } else {
         pId = store.getters['mPatientStore/currentPatientObjectId']
+        if (!pId) {
+          if (dbApp) console.log('student no stored pId so see if there is a list and select one of the patients')
+          const list = MPatientHelper.getCurrentPatientList()
+          const first = list && list.length > 0 ? list[0] : { }
+          pId = first._id
+        }
       }
 
       if (dbApp) console.log('student pId', pId)
       // change the list if pId is new
       if (pId) {
         await store.dispatch('mPatientStore/addStudentPatient', pId)
-        await store.dispatch('activityDataStore/loadActivityData', { id: theActivity.activityDataId })
-        // reload the list
-        await store.dispatch('mPatientStore/loadStudentPatientList')
         // select the new patient
+        if (dbApp) console.log('select the new patient', pId)
         await store.dispatch('mPatientStore/setCurrentPatientObjectId', pId)
         const patient = MPatientHelper.getCurrentPatient()
         if (patient && patient.seedId) {
           await store.dispatch('seedListStore/loadSeedContent', patient.seedId)
         }
-      } else {
-        await store.dispatch('mPatientStore/setCurrentPatientObjectId', '')
       }
     }
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)

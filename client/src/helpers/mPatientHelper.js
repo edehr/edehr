@@ -44,11 +44,10 @@ class MPatientHelperWorker {
     const patient = this.findPatientById(id)
     // console.log('patient.ehrData', patient.ehrData)
     const seedId = patient.seedId
-    // console.log('seedId', seedId)
+    if (!seedId) console.log('--------------- getPatientMergedData without seedId', seedId)
     const seedObject = await this.fetchSeed(seedId)
-    // console.log('seedObject', seedObject)
-    // console.log('seedObject ehrData', seedObject.ehrData)
-    return EhrDataModel.MergeTwoLevels(seedObject.ehrData, patient.ehrData)
+    const base = seedObject ? seedObject.ehrData : {}
+    return EhrDataModel.MergeTwoLevels(base, patient.ehrData)
   }
 }
 

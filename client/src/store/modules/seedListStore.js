@@ -9,13 +9,14 @@ let debugSL = false
 // exporting elements so they can be accessed in unit tests.
 // working code should only use the default exported module.
 
+const EMPTY_SEED_MODEL_DEF = { seed: { appType: 'BLANK'} }
 export const state = {
   seedDataList: [],
   listMetadata: {},
   sSeedId: '',
   // Initialize seedModel with the inner seed property so that components
   // can do their initial rendering while waiting for the seed data to load from API call
-  seedModel : { seed: {} },
+  seedModel : EMPTY_SEED_MODEL_DEF,
   allTagList: [],
   ehrData: undefined
 }
@@ -275,10 +276,15 @@ export const mutations = {
     }
   },
   _setSeedContent: (state, value) => {
-    // state.sSeedContent = value
-    state.seedModel = new SeedModel(value)
-    const edm = state.seedModel.ehrDataModel
-    state.ehrData = edm && edm.ehrData ? edm.ehrData : undefined
+    if(value) {
+      // state.sSeedContent = value
+      state.seedModel = new SeedModel(value)
+      const edm = state.seedModel.ehrDataModel
+      state.ehrData = edm && edm.ehrData ? edm.ehrData : undefined
+    } else {
+      state.seedModel = EMPTY_SEED_MODEL_DEF
+      state.ehrData = undefined
+    }
   },
   _setSeedDataList: (state, list) => {
     state.seedDataList = list
