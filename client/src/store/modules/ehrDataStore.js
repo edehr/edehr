@@ -20,8 +20,9 @@ const getters = {
     } else if (getters.ehrOnly) {
       // no second level
     } else if (InstoreHelper.instoreIsInstructor(rootState)) {
-      secondLevelData = StoreHelper.getCurrentEvaluationStudentAssignmentData()
-    } else {
+      const mp = MPatientHelper.getCurrentPatient()
+      secondLevelData = mp ? mp.ehrData : {}
+    } else { // student
       const mp = MPatientHelper.getCurrentPatient()
       secondLevelData = mp ? mp.ehrData : {}
     }

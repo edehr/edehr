@@ -98,11 +98,16 @@ async  function onPageChange (toRoute) {
     let haveDemoToken = !!StoreHelper.getDemoToken() // may change if user is forced out of full demo
 
     if (optionalVisitId || refreshToken ) {
-      console.log('on new auth or visit change we need to clear out previous visit and mPatient')
-      // to do
+      // console.log('on new auth or visit change we need to clear out previous visit and mPatient')
       await store.dispatch('visit/clearVisitData')
       await store.dispatch('mPatientStore/clearMPatientData')
     }
+
+    if (evaluateStudentVisitId) {
+      // console.log('on instructor change student so clear out previous visit and mPatient')
+      await store.dispatch('mPatientStore/clearMPatientData')
+    }
+
     // **** LTI login ... process and EXIT redirecting to the same page with visitId
     if (refreshToken) {
       if (dbApp) console.log('refresh token')
@@ -179,7 +184,6 @@ async  function onPageChange (toRoute) {
       return perfExit(perfStat)
       // EXIT
     }
-
 
     // *** If user is here and is not auth'd then something is wrong ... EXIT
     if (!authToken) {
@@ -264,20 +268,29 @@ async  function onPageChange (toRoute) {
       }
       // **** Instructor evaluating student id management
       if (evaluateStudentVisitId) {
-        // console.log('stash the evaluation student id')
-        await StoreHelper.changeStudentForInstructor(evaluateStudentVisitId)
+        await store.dispatch('instructor/changeCurrentEvaluationStudentId', evaluateStudentVisitId)
       }
       if (StoreHelper.isInstructorEvalMode()) {
-        await store.dispatch('visit/loadVisitRecord')
-        const theActivity = await store.dispatch('activityStore/loadActivityRecord')
-        const learningObjectId = theActivity.learningObjectId
-        await store.dispatch('assignmentStore/load', learningObjectId)
         await store.dispatch('instructor/loadClassList')
-        const seedId = theActivity.caseStudyId
-        if (seedId) {
-          await this.loadSeed(seedId)
+        await store.dispatch('instructor/loadCurrentEvaluationStudentId')
+        // Note that loadCurrentEvaluationStudentId also does activityDataStore/loadActivityData which sets the patient list
+        let pId
+        if (patientId) {
+          pId = patientId
         } else {
-          console.log('Here is an instance where we have allowed a learning object to NOT have a seed.')
+          pId = store.getters['mPatientStore/currentPatientObjectId']
+          if (!pId) {
+            const list = MPatientHelper.getCurrentPatientList()
+            const first = list && list.length > 0 ? list[0] : { }
+            pId = first._id
+          }
+        }
+        if (pId) {
+          await store.dispatch('mPatientStore/forInstructorSetPatient', pId)
+          const patient = store.getters['mPatientStore/currentPatient']
+          if (patient && patient.seedId) {
+            await store.dispatch('seedListStore/loadSeedContent', patient.seedId)
+          }
         }
       }
     }

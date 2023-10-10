@@ -71,6 +71,19 @@ const actions = {
       }
     }
   },
+  async forInstructorSetPatient (context, patientId) {
+    if (this.currentPatientObjectId && this.currentPatientObjectId === patientId) {
+      // console.log('mps Patient is already in the list and it is the currently selected object', patientId)
+    } else {
+      const index = state.activePatientList.findIndex(sd => sd._id === patientId)
+      if (index >= 0) {
+        // console.log('mps Patient is already in the list so just make this patient the active one.', patientId)
+        context.commit('_setCurrentPatientObjectId', patientId)
+      } else {
+        // console.log('mps Else the object is not in list', patientId)
+      }
+    }
+  },
 
   removePatient (context, id) {
     if (StoreHelper.isSeedEditing()) {

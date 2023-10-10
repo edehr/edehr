@@ -47,7 +47,7 @@ async function _commonPut (context, url, payload) {
 async function _commonUpdate (context, data) {
   // console.log('common update', data)
   context.commit('setActivityData', data)
-  const assignmentData = context.getters['activityDataStore/assignmentData'] || {}
+  const assignmentData = data.assignmentData || {}
   const patientList = assignmentData.patients || []
   await context.dispatch('mPatientStore/loadStudentPatientList', patientList, { root: true })
 }
@@ -110,7 +110,6 @@ const actions = {
       StoreHelper.setApiError(msg)
       return
     }
-    console.log('response.data',response.data)
     await _commonUpdate(context, response.data.activityData)
   }
 }
