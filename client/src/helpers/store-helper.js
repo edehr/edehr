@@ -258,9 +258,10 @@ class StoreHelperWorker {
   }
 
   // select which student's work is viewed for evaluation
-  changeStudentForInstructor (studentVisitId) {
-    StoreHelper.postActionEvent(INSTRUCTOR_ACTION,'changeStudent')
-    return this._dispatchInstructor('changeCurrentEvaluationStudentId', studentVisitId)
+  async changeStudentForInstructor (studentVisitId) {
+    StoreHelper.postActionEvent(INSTRUCTOR_ACTION, 'changeStudent')
+    await this._dispatchInstructor('changeCurrentEvaluationStudentId', studentVisitId)
+    await this._dispatchInstructor('loadCurrentEvaluationStudentId')
   }
 
   // When instructor saves their evaluation notes.
