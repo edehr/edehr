@@ -195,7 +195,7 @@ export default class EhrPageHelper {
     to use this.
     Otherwise, this is a student, and we want to use the asLoadedData
      */
-    if (!this._isDevelopingContent) {
+    if (!this._isDevelopingContent()) {
       this.pageFormData.value = asLoadedData
     } // else use what is already in this.pageFormData.value
   }
