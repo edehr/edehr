@@ -1,7 +1,11 @@
 <template lang='pug'>
   div
     div(class='multi-patient-bar')
-      ui-button(v-if='showSearchPatient', v-on:buttonClicked='searchPatient')
+      ui-button(
+        v-if='showSearchPatient',
+        :disabled='disableNavAction',
+        v-on:buttonClicked='searchPatient'
+        )
         fas-icon(class="fa", icon="search")
         span &nbsp; Search
       ehr-patient-tab(v-for='dbObject in activePatientList',
@@ -33,6 +37,7 @@ export default {
     currentPatientObjectId () {
       return MPatientHelper.getCurrentPatientObjectId()
     },
+    disableNavAction () { return this.$store.state.system.isEditing },
     showSearchPatient () {
       return StoreHelper.isStudent() || StoreHelper.isSeedEditing()
     }

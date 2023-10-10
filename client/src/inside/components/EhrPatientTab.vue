@@ -1,8 +1,12 @@
 <template lang='pug'>
   div(class="patient-tab", :class='{ patientTabActive: selected }')
     div(class="name-part")
-      a(@click="selectPatient()", href='#') {{ familyName }}
-      button(v-if='isSeedEditing', class='close-button', @click="removePatient") x
+      a(@click="selectPatient()", href='#', :class='disabledClass') {{ familyName }}
+      button(
+        v-if='isSeedEditing',
+        class='close-button',
+        :disabled='disableNavAction',
+        @click="removePatient") x
     div(class="bottom-part")
 </template>
 
@@ -26,7 +30,9 @@ export default {
     isSeedEditing () { return StoreHelper.isSeedEditing() },
     _id () { return this.dbObject._id },
     mrn () { return this.keyData.mrn },
-    familyName () { return this.keyData.familyName }
+    familyName () { return this.keyData.familyName },
+    disableNavAction () { return this.$store.state.system.isEditing },
+    disabledClass () { return this.$store.state.system.isEditing ? 'disabled' : '' }
   },
   methods: {
     removePatient () {
@@ -44,4 +50,10 @@ export default {
   }
 }
 </script>
+<style lang='scss' scoped>
+.disabled {
+  cursor: not-allowed;
+  color: lightgray;
+}
+</style>
 
