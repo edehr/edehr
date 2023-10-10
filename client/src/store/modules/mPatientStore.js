@@ -1,5 +1,6 @@
 import InstoreHelper from '@/store/modules/instoreHelper'
 import StoreHelper from '@/helpers/store-helper'
+import MPatientHelper from '@/helpers/mPatientHelper'
 const EMPTY_OBJECT_ID = ''
 const state = {
   activePatientList: [],
@@ -9,7 +10,6 @@ const state = {
 
 const getters = {
   activeCaseStudyPatientList: state => { return state.activePatientList  },
-  currentPatient: state => { return state.activePatientList.find(p => p._id === state.currentPatientObjectId) },
   currentPatientObjectId: state => state.currentPatientObjectId,
   searchMatches: state => state.searchMatches
 }
@@ -75,12 +75,15 @@ const actions = {
     if (this.currentPatientObjectId && this.currentPatientObjectId === patientId) {
       // console.log('mps Patient is already in the list and it is the currently selected object', patientId)
     } else {
-      const index = state.activePatientList.findIndex(sd => sd._id === patientId)
-      if (index >= 0) {
-        // console.log('mps Patient is already in the list so just make this patient the active one.', patientId)
-        context.commit('_setCurrentPatientObjectId', patientId)
-      } else {
-        // console.log('mps Else the object is not in list', patientId)
+      const patientList = MPatientHelper.getCurrentPatientList()
+      if (patientList) {
+        const index = patientList.findIndex(sd => sd._id === patientId)
+        if (index >= 0) {
+          // console.log('mps Patient is already in the list so just make this patient the active one.', patientId)
+          context.commit('_setCurrentPatientObjectId', patientId)
+        } else {
+          // console.log('mps Else the object is not in list', patientId)
+        }
       }
     }
   },

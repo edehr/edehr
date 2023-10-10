@@ -271,27 +271,7 @@ async  function onPageChange (toRoute) {
         await store.dispatch('instructor/changeCurrentEvaluationStudentId', evaluateStudentVisitId)
       }
       if (StoreHelper.isInstructorEvalMode()) {
-        await store.dispatch('instructor/loadClassList')
-        await store.dispatch('instructor/loadCurrentEvaluationStudentId')
-        // Note that loadCurrentEvaluationStudentId also does activityDataStore/loadActivityData which sets the patient list
-        let pId
-        if (patientId) {
-          pId = patientId
-        } else {
-          pId = store.getters['mPatientStore/currentPatientObjectId']
-          if (!pId) {
-            const list = MPatientHelper.getCurrentPatientList()
-            const first = list && list.length > 0 ? list[0] : { }
-            pId = first._id
-          }
-        }
-        if (pId) {
-          await store.dispatch('mPatientStore/forInstructorSetPatient', pId)
-          const patient = store.getters['mPatientStore/currentPatient']
-          if (patient && patient.seedId) {
-            await store.dispatch('seedListStore/loadSeedContent', patient.seedId)
-          }
-        }
+        await MPatientHelper.helpLoadInstructorPatient(patientId)
       }
     }
     if (StoreHelper.isStudent()) {

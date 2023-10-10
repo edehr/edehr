@@ -17,6 +17,9 @@ class MPatientHelperWorker {
     if (StoreHelper.isSeedEditing()) {
       console.log('------------------TO DO ------ check this works')
       list = store.getters['mPatientStore/activeCaseStudyPatientList']
+    } else if (StoreHelper.isInstructorEvalMode()) {
+      const student = store.getters['instructor/currentEvaluationStudent']
+      list = student.activityData.assignmentData.patients
     } else {
       const assignmentData = store.getters['activityDataStore/assignmentData']
       list = assignmentData.patients || []
@@ -49,6 +52,30 @@ class MPatientHelperWorker {
     const base = seedObject ? seedObject.ehrData : {}
     return EhrDataModel.MergeTwoLevels(base, patient.ehrData)
   }
+
+
+  async helpLoadInstructorPatient (patientId) {
+    await store.dispatch('instructor/loadCurrentEvaluationStudentId')
+    // Note that loadCurrentEvaluationStudentId also does activityDataStore/loadActivityData which sets the patient list
+    let pId = patientId
+    if (!pId) {
+      pId = MPatientHelper.getCurrentPatientObjectId()
+      if (!pId) {
+        // find first patient in list
+        const list = MPatientHelper.getCurrentPatientList()
+        const patient = list && list.length > 0 ? list[0] : {}
+        pId = patient._id
+      }
+    }
+    if (pId) {
+      await store.dispatch('mPatientStore/forInstructorSetPatient', pId)
+      const patient = MPatientHelper.getCurrentPatient()
+      if (patient && patient.seedId) {
+        await store.dispatch('seedListStore/loadSeedContent', patient.seedId)
+      }
+    }
+  }
+
 }
 
 

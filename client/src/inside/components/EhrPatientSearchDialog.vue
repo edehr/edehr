@@ -145,14 +145,16 @@ export default {
   },
   watch: {
     isLoading () {
-      console.log('is loading change state', this.isLoading)
+      // goal is to set the focus on the first search result
+      // To do Limit this action to when the dialog is open.
+      // console.log('is loading change state', this.isLoading)
       if (!this.isLoading ) {
         let matchList = this.searchMatches
         if (matchList.length > 0) {
-          console.log('is loading is off and there are matches')
+          // console.log('is loading is off and there are matches')
           let firstMrn = matchList[0]._id
           this.$nextTick(() => {
-            console.log('matchList first', this.$refs[firstMrn][0])
+            // console.log('matchList first', this.$refs[firstMrn][0])
             this.$refs[firstMrn][0].focus()
           })
         }
