@@ -17,7 +17,6 @@ import SeedStructural from '@/outside/components/seed-struct/SeedStructural'
 import StudentEvalControl from '@/outside/components/lms-activity/StudentEvalControl'
 import OutsideCommon from '@/outside/views/OutsideCommon'
 import EhrMultiPatientBar from '@/inside/components/EhrMultiPatientBar.vue'
-import store from '@/store'
 import MPatientHelper from '@/helpers/mPatientHelper'
 import StoreHelper from '@/helpers/store-helper'
 
@@ -30,8 +29,8 @@ export default {
     },
     patients () { return this.student.activityData.assignmentData.patients || []},
     patientData () {
-      const patient = this.patients.find( p => p._id === this.pId || {})
-      return patient.ehrData
+      const patient = this.patients.find( p => p._id === this.pId )
+      return patient ? patient.ehrData : {}
     },
     pId () { return MPatientHelper.getCurrentPatientObjectId() },
     hasPatient () { return !! this.pId },

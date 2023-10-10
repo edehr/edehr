@@ -33,7 +33,7 @@ class MPatientHelperWorker {
 
   findPatientById (id) {
     const list = this.getCurrentPatientList()
-    return list.find(p => p._id === id)
+    return list? list.find(p => p._id === id) : undefined
   }
 
   async fetchSeed (seedId) {
