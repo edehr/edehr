@@ -88,7 +88,7 @@ export default {
     titleText () {
       if (this.selectedPatientSeed) {
         let p = this.selectedPatientSeed
-        return 'Select patient: ' + p.familyName + ' (MRN: ' + p.mrn +')'
+        return 'Select patient: ' + p.keyData.familyName + ' (MRN: ' + p.mrn +')'
       }
       return 'Search for patient'
     }
@@ -120,14 +120,16 @@ export default {
       this.$refs.theDialog.focusOnSave()
     },
     patientData (seed) {
-      const newDob = computeDateOfBirth(seed.personAge, seed.dateOfBirth) || ''
+      // console.log('Patient data from seed keyData', seed.keyData)
+      const keyData = seed.keyData
+      const newDob = computeDateOfBirth(keyData.personAge, keyData.dateOfBirth) || ''
       const text = []
-      text.push( ( seed.familyName ? seed.familyName : '') + (seed.givenName ? ', ' + seed.givenName : '') )
-      text.push(seed.mrn ? 'MRN: ' + seed.mrn : '')
-      text.push(seed.gender ? 'Gender ' + seed.gender : '')
-      text.push(seed.gender ? 'DoB ' + newDob  : '')
+      text.push( ( keyData.familyName ? keyData.familyName : '') + (keyData.givenName ? ', ' + keyData.givenName : '') )
+      text.push(keyData.mrn ? 'MRN: ' + keyData.mrn : '')
+      text.push(keyData.gender ? 'Gender ' + keyData.gender : '')
+      text.push(keyData.gender ? 'DoB ' + newDob  : '')
       if( StoreHelper.isSeedEditing() && this.searchMatches.length > 0 ) {
-        text.push('created: ' + seed.createDate )
+        text.push('created: ' + keyData.createDate )
       }
       return text.join(' - ')
     },

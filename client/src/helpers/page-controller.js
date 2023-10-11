@@ -254,7 +254,6 @@ async  function onPageChange (toRoute) {
         // the go to ehr seed edit url has the seedEditId in the querystring
         const sdId = seedEditId || seedId
         await StoreHelper.setSeedEditId(sdId)
-        await store.dispatch('mPatientStore/openPatientById', sdId)
       }
       if (evaluateStudentVisitId && StoreHelper.isSeedEditing()) {
         console.log('Switch to evaluation student id')

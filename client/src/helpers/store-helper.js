@@ -403,11 +403,6 @@ class StoreHelperWorker {
 
   getSeedDataList () { return this._getSeedListProperty('list') }
 
-  async loadSeedEditor () {
-    if (debugSH) console.log('SH loadSeedEditor')
-    await this.loadSeed(this.getSeedEditId())
-  }
-
   /* **********
    * **********   LMS LTI Consumers    **************
    */

@@ -81,6 +81,10 @@ const actions = {
    */
   async loadSeedContent (context, seedId) {
     let oldVal = debugSL
+    if (!seedId) {
+      console.error('loadSeedContent FAILED. Must provide seed id')
+      return
+    }
     // debugSL = true
     if (debugSL) console.log('SeedList load seed content stash seed id', seedId)
     await context.commit('_setSeedId', seedId)

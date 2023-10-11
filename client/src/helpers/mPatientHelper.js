@@ -15,7 +15,6 @@ class MPatientHelperWorker {
   getCurrentPatientList () {
     let list
     if (StoreHelper.isSeedEditing()) {
-      console.log('------------------TO DO ------ check this works')
       list = store.getters['mPatientStore/activeCaseStudyPatientList']
     } else if (StoreHelper.isInstructorEvalMode()) {
       const student = store.getters['instructor/currentEvaluationStudent']
@@ -47,9 +46,13 @@ class MPatientHelperWorker {
     const patient = this.findPatientById(id)
     // console.log('patient.ehrData', patient.ehrData)
     const seedId = patient.seedId
-    if (!seedId) console.log('--------------- getPatientMergedData without seedId', seedId)
-    const seedObject = await this.fetchSeed(seedId)
-    const base = seedObject ? seedObject.ehrData : {}
+    let base = {}
+    if (!seedId) {
+      console.log('--------------- getPatientMergedData without seedId. patient:', patient)
+    } else {
+      const seedObject = await this.fetchSeed(seedId)
+      base = seedObject ? seedObject.ehrData : {}
+    }
     return EhrDataModel.MergeTwoLevels(base, patient.ehrData)
   }
 
