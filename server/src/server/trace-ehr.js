@@ -16,6 +16,7 @@ EHR_EVENT_BUS.emit(EHR_SEED_EVENT, sourceId, userId, action, previousEhrData, up
 export const EHR_EVENT_BUS = new EventEmitter()
 export const EHR_SEED_EVENT = 'EHR_SEED_EVENT'
 export const EHR_AD_EVENT = 'EHR_AD_EVENT'
+export const EHR_PatientFromSeedEVENT = 'EHR_PatientFromSeedEVENT'
 
 export const FOR_TEST_LAST_EVENT = { lastAction: '', lastType: '' }
 

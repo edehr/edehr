@@ -10,7 +10,11 @@ export function ok (res) {
   return (data) => {
     res.json(data)
   }
-};
+}
+
+export function getFullUrl (req) {
+  return req.protocol + '://' + req.get('host') + req.originalUrl
+}
 
 /**
   Depending on the error type, will perform the following:
@@ -22,7 +26,7 @@ export function ok (res) {
  TODO finish this error handler
  TODO incorporate all the errors in the ./errors.js file
 */
-export function fail (res) {
+export function fail (req, res) {
   return (error) => {
     let code, message
     switch (error.name) {
@@ -49,8 +53,9 @@ export function fail (res) {
       message = 'Unknown error:' + error.name + ' ' + error.message
       logError('Server utils fail unknown error return 500.', message)
     }
-    // TODO - return errors the way it's done in app.js
-    logError('Send fail status', code, 'message', message)
-    res.status(code).send(message) // .end(message)
+    let url = getFullUrl(req)
+    logError('Send fail status', code, 'message', message, 'url', url)
+    res.status(code)
+    res.json({message: message, status: code, url: url})
   }
 }

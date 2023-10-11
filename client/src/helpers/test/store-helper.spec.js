@@ -191,15 +191,6 @@ describe('General testing', () => {
     })
   })
 
-  it('getStudentAssignmentData', done => {
-    should.doesNotThrow(() => {
-      const assignmentData = StoreHelper.getStudentAssignmentData()
-      should.exist(assignmentData)
-      assignmentData.should.equal(mockData.activityData.assignmentData)
-      done()
-    })
-  })
-
   it('getStudentScratchData', done => {
     should.doesNotThrow(() => {
       const scratchData = StoreHelper.getStudentScratchData()
@@ -333,19 +324,6 @@ describe('classList / instructor tests', () => {
       should.exist(result[0])
       should.exist(result[0].submitted)
       result[0].submitted.should.equal(submit)
-    })
-  })
-
-  it('sendAssignmentDataUpdate', async () => {
-    should.doesNotThrow(async () => {
-      const payload = {
-        propertyName: 'progressNotes',
-        value: true
-      }
-      await axiosMockHelper.prepareAxiosResponse('put', payload)
-      const result = await StoreHelper.sendAssignmentDataUpdate(payload)
-      should.exist(result)
-      result.should.equal(payload)
     })
   })
 
@@ -851,60 +829,6 @@ describe.skip('Compound loading function tests', () => {
       should.exist(assignments)
       should.exist(seedData)
       assignments.should.equal(mockData.assignmentListing)
-      JSON.stringify(seedData).should.equal(JSON.stringify(mockData.seedDataList))
-    })
-  })
-
-  // it('loadStudent2', async () => {
-  //   await axiosMockHelper.createCompoundGetResponse()
-  //   should.doesNotThrow(async () => {
-  //     await StoreHelper.loadStudent2()
-  //     const activityId = StoreHelper.getActivityId()
-  //     const activityData = StoreHelper.getActivityData()
-  //     const assignment = await StoreHelper.getAssignment()
-  //     const assignments = StoreHelper.getAssignmentsList()
-  //     const consumer = StoreHelper._getConsumerProperty('consumer')
-  //     const user = StoreHelper._getUserProperty('user')
-  //     const seedData = StoreHelper.getSeedDataList()
-  //     should.exist(activityId,'a')
-  //     should.exist(activityData,'b')
-  //     should.exist(assignment,'c')
-  //     should.exist(assignments,'d')
-  //     should.exist(consumer,'e')
-  //     should.exist(user,'u')
-  //     activityId.should.equal(mockData.activity._id)
-  //     activityData.should.equal(mockData.activityData)
-  //     assignment.should.equal(mockData.assignment)
-  //     assignments.should.equal(mockData.assignmentListing)
-  //     consumer.should.equal(mockData.consumer)
-  //     user.should.equal(mockData.user)
-  //     JSON.stringify(seedData).should.equal(JSON.stringify(mockData.seedDataList))
-  //   })
-  // })
-
-  it.skip('loadInstructorWithStudent', async () => {
-    should.doesNotThrow(async () => {
-      await axiosMockHelper.createCompoundGetResponse()
-      await StoreHelper.loadInstructorWithStudent(true)
-      const activityId = StoreHelper.getActivityId()
-      const activityData = StoreHelper.getActivityData()
-      const assignment = await StoreHelper.getAssignment()
-      const assignments = StoreHelper.getAssignmentsList()
-      const consumer = StoreHelper._getConsumerProperty('consumer')
-      const user = StoreHelper._getUserProperty('user')
-      const seedData = StoreHelper.getSeedDataList()
-      should.exist(activityId)
-      should.exist(assignment)
-      should.exist(assignments)
-      should.exist(consumer)
-      should.exist(activityData)
-      should.exist(user)
-      activityId.should.equal(mockData.activity._id)
-      activityData.should.equal(mockData.activityData)
-      assignment.should.equal(mockData.assignment)
-      assignments.should.equal(mockData.assignmentListing)
-      consumer.should.equal(mockData.consumer)
-      user.should.equal(mockData.user)
       JSON.stringify(seedData).should.equal(JSON.stringify(mockData.seedDataList))
     })
   })

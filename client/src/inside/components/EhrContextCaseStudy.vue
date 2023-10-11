@@ -4,7 +4,7 @@
       div
         span Case Study:
         router-link(class="seed-name", :to="{ name: 'seed-view', query: { seedId: seedInfo._id } }") {{ truncate(seedInfo.name, 50)}}
-      div(class="seed-description") Description:  {{ truncate(seedInfo.description, 260)}}
+      div(class="seed-description") Description:  {{ truncate(seedInfo.description, 180)}}
       div
         zone-lms-button(class="shrink", @action="showEditDialog", :icon='appIcons.configure', :title='text.PROPERTIES_TP', :text='text.PROPERTIES')
     seed-data-dialog(ref="theDialog")
@@ -27,9 +27,10 @@ export default {
   },
   computed: {
     seedInfo () {
-      return StoreHelper.getSeedContent()
+      return this.$store.getters['seedListStore/seedContent']
     },
-    seedModel () { return this.$store.getters['seedListStore/seedModel'] },
+    seedModel () {
+      return this.$store.getters['seedListStore/seedModel'] },
   },
   methods: {
     showEditDialog: function () {

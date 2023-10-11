@@ -90,10 +90,13 @@ export default {
       this.$refs.confirmClose.showDialog('Confirm', 'Close the activity to any further edits by students.')
     },
     async closeAll () {
-      await StoreHelper.closeActivity(this.activityId)
+      await this.$store.dispatch('activityStore/closeActivity', this.activityId)
+      // reload class list because each student record will have been affected
+      await this.$store.dispatch('instructor/loadClassList')
     },
     async openAll () {
-      await StoreHelper.openActivity(this.activityId)
+      await this.$store.dispatch('activityStore/openActivity', this.activityId)
+      await this.$store.dispatch('instructor/loadClassList')
     },
     downloadEvaluations () {
       this.$refs.promptDialog.showDialog()

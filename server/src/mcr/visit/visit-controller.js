@@ -138,7 +138,7 @@ export default class VisitController extends BaseController {
       this
         .findUserVisitList(req.params.key)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     router.post('/restoreAsInstructor', async (req, res, next) =>  {
@@ -150,6 +150,7 @@ export default class VisitController extends BaseController {
     })
 
     router.post('/visitAsStudent', async (req, res, next) =>  {
+      // instructor user is working as a student user
       if (!req.body || !req.body.activityId) {
         logError('Visit as student requires activity id in body')
         return res.status(400).send('Visit as student requires activity id in body')

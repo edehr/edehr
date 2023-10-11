@@ -11,6 +11,7 @@ import {
 } from '@/router'
 import store from '@/store'
 import authHelper from '@/helpers/auth-helper'
+import MPatientHelper from '@/helpers/mPatientHelper'
 
 const dbApp = false
 
@@ -25,7 +26,12 @@ function perfExit (perfStat) {
    * 2. Just EHR demo loading because this starts with the "inside EHR" pages.
    * 3. Transition to real connection from full demo.
    * 4. EHR page changes.
-   * #4 is
+   * #4 can now have 'patient' or 'seed' changes.
+   * If user is editing case studies then the 'seedEditId' is provided.
+   * If the user is a student then they arrive with the 'visitId' (becomes 'optionalVisitId' is provided but
+   * the student may be changing patients to the 'patientId' will be provided.
+   * Note that patientId may be a seed id or a patient id. Regardless, it will be an id of an object in the current patient list.
+   *
    * This complex function has several exit points marked with all caps EXIT.
    * The local readme file has a flow chart showing how the logic works.
    * @param toRoute - the 'to' route. We can get the 'from' if needed.
@@ -43,10 +49,11 @@ async  function onPageChange (toRoute) {
     demo_lobjId, // see server side demo-controller _createDemoToolConsumer
     demoOnlyKey, // just the ehr demo mode
     seedEditId, // instructor user just started editing a seed in the ehr
-    seedId, // instructor user selected a seed (case study) in the LMS area
+    seedId, // instructor user going to seed view. Not used in page-controller. Can clean.
     evaluateStudentVisitId, // instructor selected to evaluate a student, possibly in the EHR
+    patientId,
     token: refreshToken, // user has just arrived via a LTI request from an LMS
-    visitId: optionalVisitId // user is coming from an LmsStudentActivity page
+    visitId: optionalVisitId, // user is coming from an LmsStudentActivity page OR from this page-controller after processing the refresh token
   } = toRoute.query
 
   {
@@ -90,12 +97,22 @@ async  function onPageChange (toRoute) {
     StoreHelper.setLoading('page-controller', true)
     let haveDemoToken = !!StoreHelper.getDemoToken() // may change if user is forced out of full demo
 
+    if (optionalVisitId || refreshToken ) {
+      // console.log('on new auth or visit change we need to clear out previous visit and mPatient')
+      await store.dispatch('visit/clearVisitData')
+      await store.dispatch('mPatientStore/clearMPatientData')
+    }
+
+    if (evaluateStudentVisitId) {
+      // console.log('on instructor change student so clear out previous visit and mPatient')
+      await store.dispatch('mPatientStore/clearMPatientData')
+    }
+
     // **** LTI login ... process and EXIT redirecting to the same page with visitId
     if (refreshToken) {
       if (dbApp) console.log('refresh token')
       // If user is arriving via LTI then any active ehr only demo is over ...
       await EhrOnlyDemo.clearEhrOnly()
-
       if (haveDemoToken && !isDemoLti) {
         // The absence of isDemoLti means this is a LTI request from a real LMS.
         // The existence of haveDemoToken means there is an active full demo session.
@@ -105,8 +122,6 @@ async  function onPageChange (toRoute) {
         await StoreHelper.exitFullDemo()
         haveDemoToken = !!StoreHelper.getDemoToken()
       }
-      if (dbApp) console.log('on new auth we need to clear out previous visit id')
-      await StoreHelper.setVisitId(undefined)
       // The LTI service provides a token in the query. We send this back to our preconfigured api
       // server to verify the incoming request and to get the actual token this
       // client will use. This two-step token verification process makes sure the incoming request
@@ -170,7 +185,6 @@ async  function onPageChange (toRoute) {
       // EXIT
     }
 
-
     // *** If user is here and is not auth'd then something is wrong ... EXIT
     if (!authToken) {
       console.error('Coding error. At this point the user must be auth\'d to be in the ehr zone')
@@ -206,14 +220,13 @@ async  function onPageChange (toRoute) {
     const authVisitId = store.getters['authStore/visitId']
     let visitId = optionalVisitId || storedVisitId || authVisitId
     await StoreHelper.setVisitId(visitId) //note this stores the visit id to survive page changes and browser refresh
+    // dup-in loadInstructorWithStudent
     await store.dispatch('visit/loadVisitRecord')
-
+    // dup-in loadInstructorWithStudent
     let theActivity = await store.dispatch('activityStore/loadActivityRecord')
-    if (dbApp) console.log('loaded current activity', theActivity)
-    await store.dispatch('courseStore/setCourseId', theActivity.courseId)
-    await store.dispatch('courseStore/loadCurrentCourse')
-    if (dbApp) console.log('loadeded course')
-
+    // we don't need to wait for these next two api calls. This speeds up page load by about 100ms
+    store.dispatch('courseStore/setCourseId', theActivity.courseId)
+    store.dispatch('courseStore/loadCurrentCourse')
 
     // **** If page is the one that handles unlinked activities then we are done ... EXIT
     if (routeName === UNLINKED_ACTIVITY_ROUTE_NAME) {
@@ -239,30 +252,33 @@ async  function onPageChange (toRoute) {
       if (seedEditId || seedId) {
         // All seed editing pages have the seedId in the querystring
         // the go to ehr seed edit url has the seedEditId in the querystring
-        const sdid = seedEditId || seedId
-        await StoreHelper.setSeedEditId(sdid)
+        const sdId = seedEditId || seedId
+        await StoreHelper.setSeedEditId(sdId)
       }
       if (evaluateStudentVisitId && StoreHelper.isSeedEditing()) {
         console.log('Switch to evaluation student id')
         await StoreHelper.setSeedEditId('')
       }
       if (StoreHelper.isSeedEditing()) {
-        await StoreHelper.loadSeedEditor()
+        const sid = StoreHelper.getSeedEditId()
+        await store.dispatch('seedListStore/loadSeedContent', sid)
+        const seed = store.getters['seedListStore/seedContent']
+        await store.dispatch('mPatientStore/addSeedToActivePatientList', seed )
       }
       // **** Instructor evaluating student id management
       if (evaluateStudentVisitId) {
-        // console.log('stash the evaluation student id')
-        await StoreHelper.changeStudentForInstructor(evaluateStudentVisitId)
+        await store.dispatch('instructor/changeCurrentEvaluationStudentId', evaluateStudentVisitId)
       }
       if (StoreHelper.isInstructorEvalMode()) {
-        await StoreHelper.loadInstructorWithStudent()
+        await MPatientHelper.helpLoadInstructorPatient(patientId)
       }
     }
     if (StoreHelper.isStudent()) {
-      // If a user is able to log into the LMS first as an instructor, and they set themselves as a content editor,
-      // and then they log into their LMS as a student the system will remember they are also a content editor
-      // which means certain menu items appear. Such as the content creators documentation link in the
-      // application banner.
+      /*
+        If a user is able to log into the LMS first as an instructor, and they set themselves as a content editor,
+        and then they log into their LMS as a student the system will remember they are also a content editor
+        which means certain menu items appear. Such as the content creators documentation link in the application banner.
+       */
       if (StoreHelper.isSeedEditing()) {
         await StoreHelper.setSeedEditId('')
       }
@@ -270,12 +286,40 @@ async  function onPageChange (toRoute) {
         StoreHelper.setIsDevelopingContent(false)
       }
       if (dbApp) console.log('student ehr page load')
-      await StoreHelper._dispatchActivityData('loadActivityData', { id: theActivity.activityDataId })
-      await StoreHelper.loadAssignment(theActivity.learningObjectId)
-      await StoreHelper.loadSeed(theActivity.caseStudyId)
+      // loadActivityData gets both the activityData and the student's assignment data with the patient list
+      await store.dispatch('activityDataStore/loadActivityData', { id: theActivity.activityDataId })
+      // load the Learning Object .... (formerly called an 'assignment')
+      await store.dispatch('assignmentStore/load', theActivity.learningObjectId)
+      const theLObj = store.getters['assignmentStore/learningObject']
+      let pId
+      if (optionalVisitId && theLObj.seedDataId) {
+        pId = theLObj.seedDataId
+      } else if (patientId) {
+        pId = patientId
+      } else {
+        pId = store.getters['mPatientStore/currentPatientObjectId']
+        if (!pId) {
+          if (dbApp) console.log('student has no stored pId so see if there is a list and select one of the patients')
+          const list = MPatientHelper.getCurrentPatientList()
+          const first = list && list.length > 0 ? list[0] : { }
+          pId = first._id
+        }
+      }
+      if (pId) {
+        // change the list if pId is new. Calling addStudentPatient will only affect the list if needed.
+        await store.dispatch('mPatientStore/addStudentPatient', pId)
+        // Note that addStudentPatient will load the activity data if needed
+        // It will also select the new patient
+        const patient = MPatientHelper.getCurrentPatient()
+        if (patient && patient.seedId) {
+          await store.dispatch('seedListStore/loadSeedContent', patient.seedId)
+        }
+      }
     }
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   } catch (err) {
+    // IF DEVELOPMENT ON LOCALHOST .... show the stack trace for speedier location of error
+    if (window.location.origin.includes('localhost')) console.log(err.stack)
     // TODO check how we handle expired auth tokens
     let msg = err.message
     if (err.response) {

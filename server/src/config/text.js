@@ -74,7 +74,8 @@ export const Text = {
   // For utility that cleans up consumers and other objects
   INVALID_MONTH: (m) => `Invalid month ${m}. Must be an integer >= 1 and <= 60`,
 
-  INVALID_PARAMETER_NOT_BOOLEAN: 'Expected to receive a boolean value'
+  INVALID_PARAMETER_NOT_BOOLEAN: 'Expected to receive a boolean value',
+  INVALID_PATIENT_SEARCH: 'Must provide either an MRN or family name to search for patient'
 
 }
 

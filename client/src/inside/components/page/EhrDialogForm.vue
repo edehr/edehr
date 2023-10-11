@@ -181,7 +181,6 @@ export default {
     saveDraft: async function () {
       this.clearDraftTimeout()
       await this.ehrHelp.saveDialogDraft()
-      // else draft is already saved. Just need to close the dialog
       this.closeDialog()
     },
   },

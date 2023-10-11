@@ -56,12 +56,16 @@ const actions = {
   changeCurrentEvaluationStudentId: async (context, currentStudentVisitId) => {
     if (debug) console.log(NAME + 'change current evaluation student id to ', currentStudentVisitId)
     context.commit('setCurrentEvaluationStudentId', currentStudentVisitId)
+  },
+  loadCurrentEvaluationStudentId: async (context) => {
     let sv = context.getters.currentEvaluationStudent
+    if (debug) console.log(NAME + 'loadCurrentEvaluationStudentId sv.activityData', sv.activityData)
     let adId = sv.activityData._id
     if (debug) console.log(NAME + 'currentEvaluationStudent activityData._id', adId)
-    await context.dispatch('activityDataStore/loadActivityData', { id: adId }, { root: true })
+    if (adId) {
+      await context.dispatch('activityDataStore/loadActivityData', { id: adId }, { root: true })
+    }
   },
-
   saveEvaluationNotes (context, payload) {
     let vid = payload.activityDataId
     let body = {

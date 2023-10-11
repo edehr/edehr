@@ -3,19 +3,22 @@ import sKeys from '../../helpers/session-keys'
 import StoreHelper from '../../helpers/store-helper'
 import SeedModel from '@/outside/models/SeedModel'
 const API = 'seed-data'
+const urlForUpdate = 'updateSeedEhrProperty/'
 let debugSL = false
 
 // exporting elements so they can be accessed in unit tests.
 // working code should only use the default exported module.
 
+const EMPTY_SEED_MODEL_DEF = { seed: { appType: 'BLANK'} }
 export const state = {
   seedDataList: [],
   listMetadata: {},
   sSeedId: '',
   // Initialize seedModel with the inner seed property so that components
   // can do their initial rendering while waiting for the seed data to load from API call
-  seedModel : { seed: {} },
-  allTagList: []
+  seedModel : EMPTY_SEED_MODEL_DEF,
+  allTagList: [],
+  ehrData: undefined
 }
 
 export const getters = {
@@ -24,10 +27,7 @@ export const getters = {
   listMetadata: state => { return state.listMetadata },
   seedModel: state => { return state.seedModel },
 
-  seedEhrData: state => {
-    const edm = state.seedModel.ehrDataModel
-    return edm && edm.ehrData ? edm.ehrData : undefined
-  },
+  seedEhrData: state => { return state.ehrData },
 
   list: state => { return state.seedDataList },
 
@@ -81,6 +81,10 @@ const actions = {
    */
   async loadSeedContent (context, seedId) {
     let oldVal = debugSL
+    if (!seedId) {
+      console.error('loadSeedContent FAILED. Must provide seed id')
+      return
+    }
     // debugSL = true
     if (debugSL) console.log('SeedList load seed content stash seed id', seedId)
     await context.commit('_setSeedId', seedId)
@@ -95,8 +99,12 @@ const actions = {
   },
 
   /**
-   * Get the list of seeds.  This API call mae suffer performance issues as he number of
-   * seeds grows. To address this could change the API to not return the ehrData.
+   * Get the list of seeds.
+   * This is only used for download all and edit learning object where it needs a list of all seeds.
+   *
+   * The LObj dialog ought to use a dedicated get API call that just returns the data needed (e.g. name, tags).
+   * In both cases do we need to have a store value or could this loadSeed be renamed getAllSeeds and return the list directly?
+   *
    * @param context
    * @return {*}
    */
@@ -220,10 +228,9 @@ const actions = {
     // push new EHR data into the seed, without progress bars,
     // receive the server response with the new seed
     // stash in the store
-    // emit event to refresh table data
     let id = context.state.sSeedId
-    let url = 'updateSeedEhrProperty/' + id +'/draft'
-    const sd = await InstoreHelper.putRequestSilent(context, API, url, payload)
+    let url = urlForUpdate + id +'/draft'
+    const sd = await InstoreHelper.putRequest(context, API, url, payload, 'silent')
     await context.commit('_setSeedContent', sd.data)
   },
   /**
@@ -231,14 +238,14 @@ const actions = {
    * @param context
    * @param payload with id and data eg:
    *    let data = {
-   *      property: 'progressNotes',
+   *      propertyName: 'progressNotes',  // page key
    *      value: model.ehrData.progressNotes || []
    *      }
    * @return {*}
    */
   updateSeedEhrProperty (context, payload) {
     let id = context.state.sSeedId
-    let url = 'updateSeedEhrProperty/' + id +'/save'
+    let url = urlForUpdate + id +'/save'
     if(debugSL) console.log('SeedList updateSeedEhrProperty url, payload', url, payload)
     return InstoreHelper.putRequest(context, API, url, payload)
       .then(() => {
@@ -252,29 +259,6 @@ const actions = {
         }
       })
   },
-
-  /**
-   * Replace the seed's ehrData
-   * @param context
-   * @param payload { ehrData, id }
-   * @return {*}
-   */
-  // importSeedEhrData (context, payload) {
-  //   let url = 'importSeedEhrData/' + payload.id
-  //   if(debugSL) console.log('SeedList importSeedEhrData', url, payload.ehrData)
-  //   return InstoreHelper.putRequest(context, API, url, payload.ehrData)
-  //     .then( () => {
-  //       if(debugSL) console.log('SeedList after seed replace ehr data reload seed list')
-  //       return context.dispatch('loadSeeds')
-  //     })
-  //     .then(() => {
-  //       if (context.state.sSeedId) {
-  //         if(debugSL) console.log('SeedList after seed replace ehr data reload current seed item')
-  //         return context.dispatch('loadSeedContent', context.state.sSeedId)
-  //       }
-  //     })
-  // }
-
 }
 
 export const mutations = {
@@ -296,8 +280,15 @@ export const mutations = {
     }
   },
   _setSeedContent: (state, value) => {
-    // state.sSeedContent = value
-    state.seedModel = new SeedModel(value)
+    if(value) {
+      // state.sSeedContent = value
+      state.seedModel = new SeedModel(value)
+      const edm = state.seedModel.ehrDataModel
+      state.ehrData = edm && edm.ehrData ? edm.ehrData : undefined
+    } else {
+      state.seedModel = EMPTY_SEED_MODEL_DEF
+      state.ehrData = undefined
+    }
   },
   _setSeedDataList: (state, list) => {
     state.seedDataList = list

@@ -40,7 +40,7 @@ export const Text = {
   CANNOT_GET_CONSUMER_STORE: (name, id) => `ERROR the could not get ${name} ${id}`,
 
   // activityData
-  GET_ACTIVITY_DATA_ERROR: (name, id) => `ERROR the could not get ${name} ${id}`,
+  GET_ACTIVITY_DATA_ERROR: (name, id) => `ERROR could not get ${name} ${id}`,
   CHANGE_ACTIVITY_ASSIGNMENT: 'Changing learning object for this activity.',
   GET_ACTIVITY_STORE_ERROR: (id) => `ERROR Api failed to get activity ${id}`,
   // userStore

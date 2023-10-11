@@ -33,7 +33,7 @@ export default {
   },
   computed: {
     givenName () { return StoreHelper.givenName() },
-    hasDraft () { return StoreHelper.getStudentAssignmentDataHasDraftRows() },
+    hasDraft () { return this.$store.getters['activityDataStore/hasDraftRows'] },
     showSubmit () {
       return !StoreHelper.isSubmitted()
     },

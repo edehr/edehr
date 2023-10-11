@@ -1,7 +1,6 @@
 import BaseController from '../common/base'
 import Assignment from '../assignment/assignment'
 import Activity from '../activity/activity'
-
 import Visit from '../visit/visit'
 import ActivityData from '../activity-data/activity-data'
 import SeedDataController from '../seed/seedData-controller'
@@ -14,6 +13,7 @@ import pluralize from 'pluralize'
 const debug = require('debug')('server')
 import { logError} from '../../helpers/log-error'
 import SeedData from '../seed/seed-data'
+import { APP_TYPE_LIS } from '../../helpers/appType'
 const debugAC = false
 
 const sd = new SeedDataController()
@@ -103,10 +103,14 @@ export default class AssignmentController extends BaseController {
     let modelInstance = await this.baseFindOneQuery(id)
     // decouple from the mongoose object so we can add properties
     const learningObject = JSON.parse(JSON.stringify(modelInstance))
-    // Add Seed (Case Study) information
-    let seed = await SeedData.findById(modelInstance.seedDataId)
-    learningObject.seedName = seed.name
-    learningObject.appType = seed.appType
+    if (modelInstance.seedDataId) {
+      // Add Seed (Case Study) information
+      let seed = await SeedData.findById(modelInstance.seedDataId)
+      learningObject.seedName = seed.name
+      learningObject.appType = seed.appType
+    } else {
+      learningObject.appType = learningObject.mPatientAppType
+    }
     // Add information about Activities related to this LObj
     let query = {
       toolConsumer: modelInstance.toolConsumer,
@@ -161,7 +165,7 @@ export default class AssignmentController extends BaseController {
    * @param seedId
    * @returns {Promise<*>}
    */
-  createAssignment (data, seedId=undefined) {
+  async createAssignment (data, seedId = undefined) {
     const {
       title,
       description,
@@ -174,24 +178,28 @@ export default class AssignmentController extends BaseController {
     if (!description) {
       logError('Creating an assignment with no description. This is not an error. It is just unusual', data)
     }
-    const query = {toolConsumer: toolConsumer._id}
+    const query = { toolConsumer: toolConsumer._id }
+    let seed
     if (seedId) {
       query._id = seedId
+      seed = await sd.findOne(query)
+      if (!seed) {
+        throw new SystemError(Text.ASSIGNMENT_MISSING_SEED(toolConsumer.oauth_consumer_key, toolConsumer._id))
+      }
     }
-    return sd.findOne(query)
-      .then((seed) => {
-        if (!seed) {
-          throw new SystemError(Text.ASSIGNMENT_MISSING_SEED(toolConsumer.oauth_consumer_key, toolConsumer._id))
-        }
-        const data = {
-          toolConsumer: toolConsumer._id,
-          name: title,
-          description: description || this.defaultAssignmentDescription,
-          seedDataId: seed._id
-        }
-        if (debugAC) debug('Assignment. create from def', data.name)
-        return this.create(data)
-      })
+    const lObjDef = {
+      toolConsumer: toolConsumer._id,
+      name: title,
+      description: description || this.defaultAssignmentDescription
+    }
+    if (seed) {
+      lObjDef.seedDataId = seed._id
+    } else {
+      lObjDef.mPatientAppType = APP_TYPE_LIS // limit students to see case studies with this app type
+      lObjDef.mPatientFilterTag = '' // all
+    }
+    if (debugAC) debug('Assignment. create from def', data.name)
+    return this.create(lObjDef)
   }
 
   paginateQuery (options) {
@@ -244,13 +252,13 @@ export default class AssignmentController extends BaseController {
       this
         .assignmentsWithActivityUsageCount(req.params.tool)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     router.get('/getLObj/:id', (req, res) => {
       this
         .getLObj(req.params.id, req.authPayload.userId)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     router.delete('/unused/:key', async (req, res) => {
@@ -277,7 +285,7 @@ export default class AssignmentController extends BaseController {
         .catch(err => {
           logError('Assignment. Delete Error', err)
           return req.status(500).send(err)
-          // fail(res)
+          // fail(req, res)
         })
     })
     return router

@@ -314,7 +314,7 @@ describe('BaseController api pagination testing', function () {
       .end(function (err, res) {
         should.exist(res)
         should.exist(res.text)
-        res.text.should.equal('ParameterError Invalid consumer id: foobar')
+        should.ok(res.text.includes('ParameterError Invalid consumer id: foobar'))
         done()
       })
   })

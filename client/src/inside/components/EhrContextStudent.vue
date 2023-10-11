@@ -6,7 +6,7 @@
         ui-info(title="Instructions", :html="instructions")
       div(v-if='feedbackViewable')
         div(v-if="hasEvaluationData") Instructor's comments:
-          span(class="content") {{ activityData.evaluationData }}
+          span(class="content") {{ evaluationData }}
         div(v-else) No instructor has provided feedback for this work.
       div(v-else) Feedback is blocked
     div(class="flow_across_last_item")
@@ -25,11 +25,10 @@ export default {
     }
   },
   computed: {
-    activityData () { return StoreHelper.getActivityData() },
     activityRecord () { return this.$store.getters['activityStore/activityRecord'] },
     assignmentName () { return this.activityRecord.title },
     instructions () { return this.activityRecord.description },
-    evaluationData () { return this.activityData.evaluationData },
+    evaluationData () { return this.$store.getters['activityDataStore/evaluationData'] },
     givenName () { return StoreHelper.givenName()},
     feedbackViewable () { return this.activityRecord.feedbackViewable },
     hasEvaluationData () { return this.evaluationData && this.evaluationData.length > 0 }

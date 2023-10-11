@@ -15,12 +15,6 @@ export default class EhrTableDraft {
     return table ? table.find(row => !!row.isDraft) : undefined
   }
 
-  static findRowIndexByIdInTable (draftRowId, tableData) {
-    const { tableKey } = EhrDataModel.IdToParts(draftRowId)
-    const rowElementKey = tableKey + '_id'
-    return tableData.findIndex(row => 0 === draftRowId.localeCompare(row[rowElementKey]))
-  }
-
   static findDraftRowDataById (draftRowId) {
     const { pageKey, tableKey } = EhrDataModel.IdToParts(draftRowId)
     const rowElementKey = tableKey + '_id'
@@ -34,16 +28,4 @@ export default class EhrTableDraft {
     let table = asLoadedPageData[tableKey] || [] // provide default empty table
     return EhrDataModel.GenerateRowId(pageKey, tableKey, table)
   }
-  static removeFirstDraftRow (pageKey, tableKey) {
-    const asLoadedPageData = EhrData.getMergedPageData(pageKey)
-    let table = asLoadedPageData[tableKey]
-    if (table ) {
-      const previousRow = table.findIndex(row => !!row.isDraft)
-      if (previousRow >= 0) {
-        table.splice(previousRow, 1)
-      }
-    }
-    return asLoadedPageData
-  }
-
 }

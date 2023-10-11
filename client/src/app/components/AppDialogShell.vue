@@ -17,7 +17,7 @@
                 slot(name="cancel-button") {{ cancelButtonLabel }}
               div(v-show="useSave")
                 span &nbsp;
-                ui-button(v-on:buttonClicked="$emit('save')", :disabled="disableSave")
+                ui-button(v-on:buttonClicked="$emit('save')", :disabled="disableSave", ref='saveButton')
                   slot(name="save-button") {{ saveButtonLabel }}
           // header important content from outter container
           div
@@ -85,6 +85,9 @@ export default {
     }
   },
   methods: {
+    focusOnSave () {
+      this.$refs.saveButton.$el.focus()
+    },
     onDragged ({ el, deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last }) {
       // Change top/left position based on drag
       // console.log('on drag', 'deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last' )

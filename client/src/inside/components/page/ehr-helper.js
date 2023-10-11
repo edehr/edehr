@@ -6,9 +6,9 @@ import EhrTypes from '@/ehr-definitions/ehr-types'
 import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import {
   decoupleObject,
-  ehrRemoveMarkedSeed,
-  formatTimeStr, mandatoryHasValue,
+  formatTimeStr,
   isString,
+  mandatoryHasValue,
   removeEmptyProperties
 } from '@/helpers/ehr-utils'
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
@@ -20,6 +20,7 @@ import EhrTableActions from '@/inside/components/page/ehr-table-actions'
 import EhrDataModel from '@/ehr-definitions/EhrDataModel'
 import { validDayStr, validTimeStr } from '@/ehr-definitions/common-utils'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
+import store from '@/store'
 
 export const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
@@ -151,32 +152,31 @@ export default class EhrPageHelper {
    */
   _injectDataIntoTable (dialog, committing) {
     const rowId = dialog.draftRowId
-    const { pageKey, tableKey } = EhrDataModel.IdToParts(rowId)
+    const { tableKey } = EhrDataModel.IdToParts(rowId)
     const rowElementKey = tableKey + '_id'
-    let asLoadedPageData = EhrData.getMergedPageData(pageKey)
-    let theTable = asLoadedPageData[tableKey]
+    const pageData = this._getPageData()
+    let theTable = pageData[tableKey]
     if (!theTable) {
       theTable = []
-      asLoadedPageData[tableKey] = theTable
+      pageData[tableKey] = theTable
     }
     const dialogValues = decoupleObject(dialog.inputs)
     dialogValues.createdDate = moment().format()
     if (committing) {
       delete dialogValues.isDraft
     } else {
-
       dialogValues.isDraft = 'isDraft' // mark the data as draft
     }
     if (!dialogValues[rowElementKey]) {
       dialogValues[rowElementKey] = rowId
     }
-    const insertIndex = EhrTableDraft.findRowIndexByIdInTable(rowId, theTable)
+    const insertIndex =  theTable.findIndex(row => 0 === rowId.localeCompare(row[rowElementKey]))
     if( insertIndex >= 0) {
       theTable.splice(insertIndex, 1, dialogValues)
     } else {
       theTable.push(dialogValues)
     }
-    return asLoadedPageData  // with the updated table
+    return pageData  // with the updated table
   }
 
   /**
@@ -195,27 +195,13 @@ export default class EhrPageHelper {
     to use this.
     Otherwise, this is a student, and we want to use the asLoadedData
      */
-    if (!this._isDevelopingContent) {
-      this.pageFormData.value = asLoadedData
+    if (!this._isDevelopingContent()) {
+      const studentData = store.getters['ehrDataStore/secondLevel']
+      const sPageData = studentData[this.pageKey]
+      this.pageFormData.value = sPageData
     } // else use what is already in this.pageFormData.value
   }
 
-  /**
-   * EHR data is composed of the seed data and, optionally, the activity data. If the latter
-   * then we need to separate the two parts.
-   * @param pageKey
-   * @param dataToSave
-   * @returns {*}
-   * @private
-   */
-  _prepareTableSaveData (pageKey, dataToSave) {
-    if (this._isStudent() || EhrOnlyDemo.isActiveEhrOnlyDemo()) {
-      dataToSave = decoupleObject(dataToSave)
-      dataToSave = removeEmptyProperties(dataToSave)
-      dataToSave = ehrRemoveMarkedSeed(dataToSave)
-    }
-    return dataToSave
-  }
   _resetPageFormData () {
     this.pageFormData.cacheData = undefined
     this.pageFormData.formKey = undefined
@@ -311,18 +297,14 @@ export default class EhrPageHelper {
   /**
    * Empty any data in the table specified, on the current page.
    *
-   * TODO consider removing the element rather than just emptying the array.
-   * To remove the element restores the data to the original condition.
-   * Whereas leaving the array makes it seem as if the table has data and "is empty?" checking is now more complicated.
    * @param tableKey
    * @returns {Promise<void>}
    */
   async clearTable (tableKey) {
     const pageKey = this.pageKey
-    let asLoadedPageData = EhrData.getMergedPageData(pageKey)
-    asLoadedPageData[tableKey] = [] // clears the data by loading an empty array
-    let dataToSave = this._prepareTableSaveData(pageKey, asLoadedPageData)
-    await this._saveData(pageKey, dataToSave)
+    const pageData = this._getPageData()
+    delete pageData[tableKey]
+    await this._saveData(pageKey, pageData)
   }
   closeDialog () {
     const dialog = this._getActiveTableDialog()
@@ -366,41 +348,56 @@ export default class EhrPageHelper {
     const pageKey = this.pageKey
     const activeDialog = this._getActiveTableDialog()
     const tableKey = activeDialog.tableKey
-    let revisedData = EhrTableDraft.removeFirstDraftRow(pageKey, tableKey)
-    let dataToSave = this._prepareTableSaveData(pageKey, revisedData)
-    await this._saveData(pageKey, dataToSave)
+    const pageData = this._getPageData()
+    let table = pageData[tableKey]
+    if (table) {
+      const previousRow = table.findIndex(row => !!row.isDraft)
+      if (previousRow >= 0) {
+        table.splice(previousRow, 1)
+      }
+    }
+    await this._saveData(pageKey, pageData)
   }
 
   /**
-   * Clear the data for a EHR page form
+   * Clear the data for a EHR page form.
+   * Required to not touch data in data in another form or in any table.
+   * If there is no seed (e.g. student creates new patient) then set all children props to empty.
+   * "empty" means delete property just as if the page doesn't exist.
    * @param childrenKeys
    * @returns {Promise<undefined>}
    */
   async resetFormData (childrenKeys) {
-    const { pageKey } = this
-    const ehrSeed = StoreHelper.getSeedEhrData()
-    const asLoadedPageData = EhrData.getMergedPageData(this.pageKey)
+    const pageData = this._getPageData()
     if (childrenKeys) {
       childrenKeys.map(ck => {
-        asLoadedPageData[ck] = ehrSeed[ck] ? ehrSeed[ck] : ''
+        delete pageData[ck]
       })
     }
-    let dataToSave = this._prepareTableSaveData(pageKey, asLoadedPageData)
-    await this._saveData(pageKey, dataToSave)
-    // tell everyone to reset based on current (no empty) data
+    await this._saveData(this.pageKey, pageData)
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
-    return undefined
   }
-  savePageFormEdit () {
+  async savePageFormEdit () {
     let payload = this.pageFormData
-    const asLoadedPageData = EhrData.getMergedPageData(this.pageKey)
-    const mergedValues = {
-      ...asLoadedPageData,
+    let pageData = this._getPageData()
+    pageData = {
+      ...pageData,
       ...payload.value
     }
+    pageData = removeEmptyProperties(pageData)
     StoreHelper.setEditingMode(false)
-    let dataToSave = this._prepareTableSaveData(this.pageKey, mergedValues)
-    this._saveData(this.pageKey, dataToSave)
+    await this._saveData(this.pageKey, pageData)
+  }
+
+  _getPageData () {
+    let initialData = {}
+    // TODO what about ehr only?
+    if (StoreHelper.isStudent()) {
+      initialData = StoreHelper.getSecondLevel()
+    } else {
+      initialData = StoreHelper.getBaseLevel()
+    }
+    return initialData[this.pageKey] || {}
   }
 
   async saveDialogData () {
@@ -420,38 +417,41 @@ export default class EhrPageHelper {
       console.error('Save dialog requires the dialog open to set up the draft row id')
       throw new Error('Can not save table data without an id')
     }
-    let asLoadedPageData = this._injectDataIntoTable(dialog, committingFlag )
     const { pageKey } = EhrDataModel.IdToParts(draftRowId)
-    let dataToSave = this._prepareTableSaveData(pageKey, asLoadedPageData)
-    await committingFlag ?
-      this._saveData(pageKey, dataToSave) :
-      this._saveDataDraft(pageKey, dataToSave)
-  }
-  _saveDataDraft (pageKey, dataToSave) {
-    // TODO I do not like how save draft is different from save data, for seeds. Explain or make the same.
-    let payload = {
-      propertyName: pageKey,
-      value: dataToSave
-    }
-    if (this._isStudent()) {
-      return StoreHelper.sendAssignmentDataDraft(payload)
-    } else if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
-      return EhrOnlyDemo.saveEhrOnlyUserData(pageKey, dataToSave)
-    } else if (StoreHelper.isSeedEditing()) {
-      return StoreHelper.sendSeedEhrDataDraft(payload)
-    }
-  }
-  _saveData (pageKey, dataToSave) {
-    if (this._isStudent()) {
+    let pageData = this._injectDataIntoTable(dialog, committingFlag )
+    pageData = removeEmptyProperties(pageData)
+    if (committingFlag) {
+      await this._saveData(pageKey, pageData)
+    } else {
+      // saving draft data
       let payload = {
         propertyName: pageKey,
-        value: dataToSave
+        value: pageData
       }
-      return StoreHelper.sendAssignmentDataUpdate(payload)
+      if (this._isStudent()) {
+        payload.action = 'draft'
+        payload.silent = true
+        await store.dispatch('activityDataStore/sendAssignmentDataUpdate', payload)
+      } else if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+        await store.dispatch('ehrOnlyDemoStore/ehrOnlyDataUpdate', payload)
+      } else if (StoreHelper.isSeedEditing()) {
+        await store.dispatch('seedListStore/sendSeedEhrDataDraft', payload)
+      }
+    }
+  }
+  async _saveData (pageKey, pageData) {
+    let payload = {
+      propertyName: pageKey,
+      value: pageData
+    }
+    if (this._isStudent()) {
+      payload.action = 'save'
+      // activityDataStore will select current patient from mPatientStore
+      await store.dispatch('activityDataStore/sendAssignmentDataUpdate', payload)
     } else if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
-      return EhrOnlyDemo.saveEhrOnlyUserData(pageKey, dataToSave)
+      await store.dispatch('ehrOnlyDemoStore/ehrOnlyDataUpdate', payload)
     } else if (StoreHelper.isSeedEditing()) {
-      return StoreHelper.updateSeedEhrProperty(pageKey, dataToSave)
+      await store.dispatch('seedListStore/updateSeedEhrProperty', payload)
     }
   }
   editDraftRow (rowId) {
@@ -523,14 +523,11 @@ export default class EhrPageHelper {
     this._dialogOpenEvent(tableKey, options)
   }
   showTableAddButton () {
-    return this._showControl('hasGridTable')
-  }
-  _showControl (prop) {
     let show = false
     if (this._canEdit()) {
       let pd = this.getPageDef()
       // console.log('decide to show or not this page def', prop, pd[prop], pd)
-      show = pd[prop]
+      show = pd['hasGridTable']
     }
     return show
   }
@@ -770,13 +767,6 @@ export default class EhrPageHelper {
     return dialog.errorList
   }
 
-  /*
-  This helper class is listening for PAGE_DATA_REFRESH_EVENT.
-  When this event is received this helper will compose data for the current page.
-
-  The page components (page form, page table, elements, etc.) will listen for this PAGE_DATA_READY_EVENT event,
-  and they will, in turn, pull fresh data for display.
-   */
   _setupEventHandlers () {
     const _this = this
     this.windowUnloadHandler = function (eData) {
@@ -785,33 +775,13 @@ export default class EhrPageHelper {
     this.inputChangeEventHandler = function (eData) {
       _this._handleInputChangeEvent(eData)
     }
-    // this.refreshEventHandler = async function () {
-    //   const dbPerf = false
-    //   // TODO might put page load information in the page footer, but this is only for ehr pages and will need to implement something for outside pages, perhaps look into the page controller load?
-    //   let startTime = performance.now()
-    //   if (dbPerf) console.log('EhrHelperV2 PAGE_DATA_REFRESH_EVENT refresh', _this.pageKey)
-    //   let visitInfo = store.getters['visit/visitData']
-    //   if (visitInfo.activityData) {
-    //     await store.dispatch('activityDataStore/loadActivityData', {id: visitInfo.activityData})
-    //   } // else is an EHR only demo situation and there is not visit data
-    //   let elapsedTime = performance.now() - startTime
-    //   if (dbPerf) console.log('ehr helper refreshEventHandler elapsed time ', elapsedTime)
-    //   if (dbPerf) console.log('to do --- refresh instructor and seed editor')
-    // }
     window.addEventListener('beforeunload', this.windowUnloadHandler)
     EventBus.$on(FORM_INPUT_EVENT, this.inputChangeEventHandler)
-    // EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
-  }
-
-  _takeDownEventHandlers () {
-    window.removeEventListener('beforeunload', this.windowUnloadHandler)
-    EventBus.$off(FORM_INPUT_EVENT, this.inputChangeEventHandler)
-    // EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
   }
 
   beforeDestroy (pageKey) {
-    // console.log('Before destroy', this.pageKey, pageKey)
-    this._takeDownEventHandlers(pageKey)
+    window.removeEventListener('beforeunload', this.windowUnloadHandler)
+    EventBus.$off(FORM_INPUT_EVENT, this.inputChangeEventHandler)
   }
 
   /**

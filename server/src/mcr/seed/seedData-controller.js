@@ -50,7 +50,6 @@ export default class SeedDataController extends BaseController {
         { description: { $regex: searchTerm, $options : 'i' } }
       ]
     }
-    console.log('search seed list', tool, searchTerm)
     return this.model
       .find(query, {name: 1, description: 1})
       .sort({name:1})
@@ -60,6 +59,21 @@ export default class SeedDataController extends BaseController {
         }
       })
   }
+
+  async searchForPatients (toolConsumerId, name, mrn) {
+    if (!mongoose.Types.ObjectId.isValid(toolConsumerId)) {
+      throw new ParameterError(Text.INVALID_CONSUMER_ID(toolConsumerId))
+    }
+    if (!(name || mrn)) {
+      throw new ParameterError(Text.INVALID_PATIENT_SEARCH)
+    }
+    let query = { toolConsumer: new ObjectId(toolConsumerId)}
+    name ? query.name = { $regex: name, $options : 'i' } : null
+    mrn ? query.mrn = mrn : null
+    const patientList = await this.model.find(query)
+    return { patientList: patientList }
+  }
+
   async collectAllTags (toolConsumerId) {
     // use set to get unique tags
     let tagSet = new Set()
@@ -114,6 +128,7 @@ export default class SeedDataController extends BaseController {
       description: 1,
       createDate: 1,
       lastUpdateDate: 1,
+      mrn: 1,
       tagList: 1,
       ehrData: 1, // need ehrData to compute the seed stats
       version: 1,
@@ -141,7 +156,7 @@ export default class SeedDataController extends BaseController {
       console.error('updateSeedEhrProperty throw no id', id )
       throw new Error(Text.INVALID_BASE_ID(id,'seed data'))
     }
-    let propertyName = payload.propertyName
+    let propertyName = payload.propertyName // pageKey
     let value = payload.value
     const model = await this.baseFindOneQuery(id)
     // debug('upsehrprop search ' + model ? 'ok' : 'fail')
@@ -182,7 +197,7 @@ export default class SeedDataController extends BaseController {
       throw new Error(Text.INVALID_BASE_ID(id,'seed data'))
     }
     const model = await this.baseFindOneQuery(id)
-    const previous = decoupleObject(model.seedData)
+    // const previous = decoupleObject(model.seedData)
     const doc = await this._saveSeedEhrData(model, ehrData)
     const payload = {
       toolConsumer: doc.toolConsumer,
@@ -190,7 +205,7 @@ export default class SeedDataController extends BaseController {
       userId: 'system',
       objId: id,
       action: 'update',
-      previous: previous,
+      // previous: previous,
       updated: doc.ehrData
     }
     EHR_EVENT_BUS.emit(EHR_SEED_EVENT, payload)
@@ -222,17 +237,25 @@ export default class SeedDataController extends BaseController {
   route () {
     const router = super.route()
 
+    router.get('/patientSearch', (req, res) => {
+      const { toolConsumerId } = req.authPayload
+      let mrn = req.query.mrn
+      let name = req.query.name
+      this.searchForPatients(toolConsumerId, name, mrn)
+        .then(ok(res))
+        .then(null, fail(req, res))
+    })
     router.get('/allTags/:toolConsumerId', (req, res) => {
       let toolConsumerId = req.params.toolConsumerId
       this.collectAllTags(toolConsumerId)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     router.get('/seedSelectionList/:tool', (req, res) => {
       this
         .fetchSeedSelectionList(req.params.tool, req.query.appType, req.query.searchTerm)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     router.post('/createSeed', (req, res) => {
@@ -256,7 +279,7 @@ export default class SeedDataController extends BaseController {
           return res
         })
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     router.put('/updateSeed/:key', (req, res) => {
       const id = req.params.key
@@ -289,7 +312,7 @@ export default class SeedDataController extends BaseController {
           return res
         })
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     router.put('/updateSeedEhrProperty/:key/:action', (req, res) => {
       debug('SeedController API updateSeedEhrProperty')
@@ -300,7 +323,7 @@ export default class SeedDataController extends BaseController {
       const { visitId, userId } = authPayload
       this.updateSeedEhrProperty(visitId, userId, id, data, action)
         .then(ok(res))
-        .catch(fail(res))
+        .catch(fail(req, res))
     })
 
     router.delete('/:key', (req, res) => {
@@ -337,7 +360,7 @@ export default class SeedDataController extends BaseController {
           return res
         })
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     return router
   }

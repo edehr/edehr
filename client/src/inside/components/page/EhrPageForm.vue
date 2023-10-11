@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    div(class="ehr-page-form")
+    div(id='theEhrPageForm', class="ehr-page-form")
       h2(class="headerClass")
       div(style="display:inline") {{ form.label }}
       ehr-page-form-controls(class="headerControl", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :formKey="formKey")
@@ -8,6 +8,7 @@
         p Fix the following:
         ul
           li(v-for="error in errors") {{ error }}
+      ui-spinner-small(refId='theEhrPageForm', :loading="isLoading")
       ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp")
       div(v-if="canEdit", class="resetFormButton")
         ui-button(
@@ -22,6 +23,8 @@ import EhrPageFormControls from './EhrPageFormControls'
 import EhrGroup from './EhrGroup'
 import UiConfirm from '../../../app/ui/UiConfirm'
 import UiButton from '../../../app/ui/UiButton.vue'
+import StoreHelper from '@/helpers/store-helper'
+import UiSpinnerSmall from '@/app/ui/UiSpinnerSmall.vue'
 
 const TEXT = {
   TITLE:  'Reset Form Data',
@@ -32,6 +35,7 @@ const TEXT = {
 export default {
   name: 'EhrPageForm',
   components: {
+    UiSpinnerSmall,
     EhrPageFormControls,
     EhrGroup,
     UiConfirm,
@@ -56,6 +60,7 @@ export default {
     ehrHelp: { type: Object }
   },
   computed: {
+    isLoading () { return StoreHelper.isLoading() },
     canEdit () {
       return this.ehrHelp._canEdit()
     },

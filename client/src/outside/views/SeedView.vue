@@ -14,6 +14,9 @@
         div(class="details-value")
           div(v-text-to-html="seed.description")
       div(class="details-row")
+        div(class="details-name") Patient
+        div(class="details-value") {{ patientData(seed) }}
+      div(class="details-row")
         div(class="details-name") Type
         div(class="details-value") {{ seed.appType }}
       div(class="details-row")
@@ -60,6 +63,7 @@ import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
 import AppTagList from '@/app/components/AppTagList.vue'
 import AppTagListEditor from '@/app/components/AppTagListEditor.vue'
+import { computeDateOfBirth } from '@/ehr-definitions/ehr-def-utils'
 
 export default {
   extends: OutsideCommon,
@@ -115,6 +119,10 @@ export default {
     },
     viewEhrCondensed () {
       this.$router.push({ name: 'seed-view-condensed', query: { seedId: this.seedId } })
+    },
+    patientData (seed) {
+      const newDob = computeDateOfBirth(seed.personAge, seed.dateOfBirth)
+      return `${seed.familyName}, ${seed.givenName}  MRN: ${seed.mrn}  Gender: ${seed.gender}  DoB: ${newDob}`
     },
     seedDuplicated () {
       // delete to prevent NavigationDuplication error from vue router.

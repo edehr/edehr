@@ -45,18 +45,6 @@ export default class MarHelper {
     return EhrData.getMergedPageData(MAR_PAGE_KEY)
   }
 
-  clearAllData () {
-    let marTableKey = this.getMarTableKey()
-    let asLoadedPageData = this.getEhrData_MarPageData()
-
-    asLoadedPageData[marTableKey] = []
-    let payload = {
-      pageKey: MAR_PAGE_KEY,
-      value: asLoadedPageData
-    }
-    return this.ehrHelp._saveData(payload)
-  }
-
   /**
    * Get the MAR records. This is an array of records inside the main MAR page data
    * @return {*|Array}
@@ -113,14 +101,5 @@ export default class MarHelper {
     asLoadedPageData[marTableKey] = table
     // console.log('saveMarDialog', asLoadedPageData)
     return this.ehrHelp._saveData(MAR_PAGE_KEY, asLoadedPageData)
-  }
-
-  triggerActionByPageKey () {
-    const marTableKey = this.getMarTableKey()
-    switch (marTableKey) {
-    case MED_ORDERS_PAGE_KEY:
-      this.clearAllData()
-      break
-    }
   }
 }

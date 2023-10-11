@@ -55,7 +55,8 @@ export default class ActivityController extends BaseController {
       userActivity.learningObjectDescription = assignment.description
 
       // convert ObjectId to string for searching
-      const sId = assignment.seedDataId.toString()
+      // note that learning objects (assignment) may not have seed
+      const sId = assignment.seedDataId ? assignment.seedDataId.toString() : undefined
       const caseStudy = await SeedData.findById(sId) || {}
       userActivity.caseStudyId = caseStudy._id
       userActivity.caseStudyName = caseStudy.name
@@ -244,7 +245,7 @@ export default class ActivityController extends BaseController {
       let consumerId = req.params.consumerId
       this.listAdminActivities(consumerId)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     router.get('/getActivityRecord/:visitId', (req, res) => {
@@ -257,20 +258,20 @@ export default class ActivityController extends BaseController {
           return { activityRecord: activityRecord }
         })
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     router.get('/class-list/:key', (req, res) => {
       this
         .listClassList(req.params.key)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     router.get('/flushed/:key', (req, res) => {
       this
         .findActivity(req.params.key)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     // PUT
@@ -279,13 +280,13 @@ export default class ActivityController extends BaseController {
       this
         .closeOpenActivity(req.params.key, 'close')
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     router.put('/open-activity/:key', (req, res) => {
       this
         .closeOpenActivity(req.params.key, 'open')
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     router.put('/link-assignment/:id/', (req, res) => {
       let id = req.params.id
@@ -293,7 +294,7 @@ export default class ActivityController extends BaseController {
       debug('router path link-assignment req.params:', req.params, 'req.body:', req.body)
       this.linkAssignment(id, assignmentId)
         .then(ok(res))
-        .catch(fail(res))
+        .catch(fail(req, res))
     })
 
     router.put('/update-text/:id/', (req, res) => {
@@ -302,7 +303,7 @@ export default class ActivityController extends BaseController {
       // console.log('activity-controller route update text body contains', req.body)
       this.updateText(id, custom_title, custom_description)
         .then(ok(res))
-        .catch(fail(res))
+        .catch(fail(req, res))
     })
 
     router.put('/update-viewable-feedback/:id', (req, res) => {
@@ -314,7 +315,7 @@ export default class ActivityController extends BaseController {
       // console.log('activity-controller update-viewable-feedback', req.body)
       this.updateViewableFeedback(id, isViewable)
         .then(ok(res))
-        .catch(fail(res))
+        .catch(fail(req, res))
     })
     return router
   }

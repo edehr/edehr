@@ -1,5 +1,3 @@
-import { FOR_TEST_LAST_EVENT } from '../../server/trace-ehr'
-
 const should = require('should')
 const mongoose = require('mongoose')
 import Helper from '../common/test-helper'
@@ -32,27 +30,6 @@ describe('SeedDataController controller testing', function () {
         doc.should.have.property('ehrData')
         doc.ehrData.should.have.property('foo')
         seedObj = doc
-      })
-  })
-
-  it('SeedDataController update a property in the ehr data', function () {
-    controller.should.have.property('updateSeedEhrProperty')
-    should.exist(seedObj)
-    seedObj.should.have.property('_id')
-    let id = seedObj._id
-    let payload = {
-      propertyName: 'aNewPage',
-      value: { someProperty: 'someValue' }
-    }
-    const dummyId = 'foo'
-    return controller.updateSeedEhrProperty(dummyId, dummyId, id, payload, 'action')
-      .then((resultDoc) => {
-        should.exist(resultDoc)
-        resultDoc.should.have.property('ehrData')
-        resultDoc.ehrData.should.have.property('aNewPage')
-        // should have pre-existing property
-        resultDoc.ehrData.should.have.property('foo')
-        'action'.should.equal(FOR_TEST_LAST_EVENT.lastAction)
       })
   })
 

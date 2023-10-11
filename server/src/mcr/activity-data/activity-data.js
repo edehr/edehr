@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 import { WS_EVENT_BUS, WS_S2C_MESSAGE_EVENT } from '../../server/push-server'
-const ObjectId = mongoose.Schema.Types.ObjectId
+import Visit from '../visit/visit'
+import { ObjectId } from 'mongodb'
 
 /*
 A ActivityData represents the student's work for a particular LMS activity (with EdEHR assignment)
@@ -25,6 +26,16 @@ const Schema = new mongoose.Schema({
 }, {
   toObject: { virtuals: true },
   toJSON: { virtuals: true }
+})
+
+Schema.pre('save', async function (next) {
+  // just make sure the assignment data (the student's ehr database) is ready for multiple patients
+  const visit = Visit.find({activityData: new ObjectId(this._id)})
+  if ( visit && visit.isStudent ) {
+    this.assignmentData = this.assignmentData || {}
+    this.assignmentData.patients = this.assignmentData.patients || []
+  }
+  next()
 })
 
 Schema.post('save', function (doc) {

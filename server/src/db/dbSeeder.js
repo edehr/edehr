@@ -12,6 +12,9 @@ import { dbAnonymizeUsers, dbAnonymizeActivityData } from './dbAnonymize'
 import dbSeedDataAppType from './dbSeedDataAppTypes'
 import desire2learnActivitiesIntegtrations from './desire2learn-activities-integtrations'
 import Consumer from '../mcr/consumer/consumer'
+import dbSeedMrnPhn from './dbSeedMrnPhn'
+import dbMPatientIntegration from './dbMPatientIntegration'
+import ActivityData from '../mcr/activity-data/activity-data'
 const activityDataController = new ActivityDataController()
 const seedController = new SeedDataController()
 
@@ -23,7 +26,7 @@ const seedController = new SeedDataController()
 // This will drop schemas first if set to true
 //
 // =========================================================================
-var DROP_SCHEMAS = false
+let DROP_SCHEMAS = false
 
 if (DROP_SCHEMAS) {
   dropSchemas(DROP_SCHEMAS)
@@ -81,6 +84,8 @@ async function doIntegrations (commonControllers) {
   await doD2LIntegrations()
   await doSeedAppTypeIntegrations()
   await dbCleanOldDemos(commonControllers)
+  await doSeedMrnPhnIntegrations()
+  await doActivityDataMPatientIntegration()
   // console.log('THIS NEXT LINE ANONYMIZES THE DATABASE. Good to do on a real db for use with development.')
   // await doAnonymize()
   const end = performance.now()
@@ -101,10 +106,10 @@ async function dbCleanOldDemos (commonControllers) {
     { $and: [ {lastUpdateDate: { $lte: filterDate}}, { tool_consumer_info_product_family_code: 'EdEHR Demo LMS'} ] }
   ]
   for (const query of querys) {
-    console.log('Clear consumers with this query', query)
+    debug('Clear consumers with this query', JSON.stringify(query))
     const oldDemos = await Consumer.find(query)
     for (const tc of oldDemos) {
-      console.log('Clear this demo', tc._id)
+      debug('Clear this demo', tc._id)
       await demoController.deleteDemoData(tc._id)
     }
   }
@@ -163,6 +168,34 @@ async function doSeedAppTypeIntegrations () {
   }
 }
 
+async function doSeedMrnPhnIntegrations () {
+  const doUpdate = await checkIntegration('seedMrnPhn', false)
+  if(doUpdate) {
+    debug('seedMrnPhn. BEGIN')
+    const start = performance.now()
+    await dbSeedMrnPhn()
+    const end = performance.now()
+    debug('seedMrnPhn. DONE.', Math.round(end - start), 'ms')
+  }
+}
+
+/**
+ * One time update of all (student) activity data to reformat the ehrData into a new multi-patient format.
+ * This is a Breaking API change and so the release of this update must come with changes to how ehrData is fetched and
+ * updated.
+ * @returns {Promise<void>}
+ */
+async function doActivityDataMPatientIntegration () {
+  const doUpdate = await checkIntegration('dbMPatientIntegration', false)
+  if(doUpdate) {
+    debug('dbMPatient. BEGIN')
+    const start = performance.now()
+    await dbMPatientIntegration()
+    const end = performance.now()
+    debug('dbMPatient. DONE.', Math.round(end - start), 'ms')
+  }
+}
+
 // eslint-disable-next-line no-unused-vars
 async function doAnonymize () {
   debug('doAnonymize. BEGIN')
@@ -179,7 +212,7 @@ export async function updateAllEhrData () {
   if(doUpdate) {
     debug('updateAllEhrData. BEGIN')
     const start = performance.now()
-    await _updateActivityData()
+    await _updateActivityDataPatients()
     await _updateSeeds()
     const end = performance.now()
     debug('updateAllEhrData. DONE.', Math.round(end - start), 'ms')
@@ -188,38 +221,51 @@ export async function updateAllEhrData () {
   }
 }
 
-async function _updateActivityData () {
-  debug('updateAllEhrData. activity data')
+/**
+ *   _updateActivityDataPatients is invoked when the ehr data version changes. The work below essentially takes the
+ *   ehrData, places it inside an EhrModel and then gets it back to be saved. The model performs any needed updates.
+ *   Just as it will for the code the updates the ehr data during run time.
+  * @returns {Promise<void>}
+ * @private
+ */
+async function _updateActivityDataPatients () {
+  debug('updateAllActivityData BEGIN')
   const start = performance.now()
   let cnt = 0
-  const activityDataList = await activityDataController.list({assignmentData: { $exists: true} },{assignmentData: true})
-  const list = activityDataList.activitydata
-  for ( const ad of list) {
-    if (!EhrDataModel.IsUpToDate(ad.assignmentData)) {
-      cnt++
-      await activityDataController.updateAndSaveAssignmentEhrData(ad._id, ad.assignmentData)
-      if (cnt % 100 === 0) {
-        debug('updateAllEhrData. updated ', cnt)
-      }
+  const activityDataList = await ActivityData.find({assignmentData: { $exists: true} },{assignmentData: true})
+  const tCnt = activityDataList.length
+  for ( const ad of activityDataList) {
+    await activityDataController.updateAndSaveAssignmentData(ad)
+    cnt++
+    if (cnt % 100 === 0) {
+      debug('updateAllActivityData activity data updated ', cnt, 'of', tCnt)
     }
   }
   const end = performance.now()
-  debug('dbSeeder. updated',   cnt, 'of', list.length, 'ActivityData records in', Math.round(end - start), 'ms')
+  debug('updateAllActivityData. DONE. Updated',   cnt, 'of', tCnt, 'ActivityData records in', Math.round(end - start), 'ms')
 }
 
 async function _updateSeeds () {
-  debug('updateAllEhrData. case studies')
+  debug('_updateSeeds. BEGIN')
   const start = performance.now()
   let cnt = 0
-  const seedDataList = await seedController.list({ isDefault: false }, { name: true, ehrData: true })
+  let updated = 0
+  const seedDataList = await seedController.list({ isDefault: false })
   const list = seedDataList.seeddata
+  const tCnt = list.length
   for (const seed of list) {
     if (!EhrDataModel.IsUpToDate(seed.ehrData)) {
-      cnt++
-      await seedController.updateAndSaveSeedEhrData(seed._id, seed.ehrData)
+      seed.lastUpdateDate = Date.now()
+      seed.ehrData = EhrDataModel.PrepareForDb(seed.ehrData)
+      await seed.save()
+      updated++
+    }
+    cnt++
+    if (cnt % 100 === 0) {
+      debug('_updateSeeds updated ', cnt, 'of', tCnt)
     }
   }
   const end = performance.now()
-  debug('dbSeeder. updated', cnt, 'of', list.length, 'Seed records in', Math.round(end - start), 'ms')
+  debug('_updateSeeds. DONE. Updated', updated, 'of', tCnt, 'Seed records in', Math.round(end - start), 'ms')
 }
 

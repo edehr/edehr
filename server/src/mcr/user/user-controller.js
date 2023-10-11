@@ -142,7 +142,7 @@ export default class UserController extends BaseController {
       const consumerId = authPayload.toolConsumerId
       this.listAsInstructorCourses(id, consumerId)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     router.get('/student/courses/:key', (req, res) => {
       const id = req.params.key
@@ -160,7 +160,7 @@ export default class UserController extends BaseController {
       const consumerId = authPayload.toolConsumerId
       this.listAsStudentCourses(id, consumerId)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     return router

@@ -1,5 +1,4 @@
 import store from '../store'
-import { removeEmptyProperties } from './ehr-utils'
 import sKeys from './session-keys'
 import { ZONE_ADMIN, ZONE_DEMO, ZONE_EHR, ZONE_LMS, ZONE_PUBLIC } from '@/router'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
@@ -38,6 +37,8 @@ class StoreHelperWorker {
   getMergedPageData (pageKey) { return store.getters['ehrDataStore/mergedDataForPageKey'](pageKey) }
 
   getMergedData () { return store.getters['ehrDataStore/mergedData']  }
+  getSecondLevel () { return store.getters['ehrDataStore/secondLevel']  }
+  getBaseLevel () { return store.getters['ehrDataStore/baseLevel']  }
 
   /**
    *
@@ -154,15 +155,9 @@ class StoreHelperWorker {
   getCourseTitle () { return this._getActivityProperty('courseTitle') }
 
   isSubmitted () { return this._getActivityDataProperty('submitted') }
-  // isSentBack () { return this._getActivityDataProperty('sentBack') }
-  getStudentAssignmentData () { return this._getActivityDataProperty('assignmentData')}
-  getStudentAssignmentDataHasDraftRows () { return this._getActivityDataProperty('hasDraftRows')}
   getStudentScratchData () { return this._getActivityDataProperty('scratchData')}
   getEvaluationNotes () { return this._getActivityDataProperty('evaluationData')   }
   getActivityData () { return this._getActivityDataProperty('activityData')}
-
-  sendAssignmentDataUpdate (payload) {return this._dispatchActivityData('sendAssignmentDataUpdate', payload)}
-  sendAssignmentDataDraft (payload) {return this._dispatchActivityData('sendAssignmentDataDraft', payload)}
 
   isLoading () { return this._getSystemProperty('isLoading')}
 
@@ -263,9 +258,10 @@ class StoreHelperWorker {
   }
 
   // select which student's work is viewed for evaluation
-  changeStudentForInstructor (studentVisitId) {
-    StoreHelper.postActionEvent(INSTRUCTOR_ACTION,'changeStudent')
-    return this._dispatchInstructor('changeCurrentEvaluationStudentId', studentVisitId)
+  async changeStudentForInstructor (studentVisitId) {
+    StoreHelper.postActionEvent(INSTRUCTOR_ACTION, 'changeStudent')
+    await this._dispatchInstructor('changeCurrentEvaluationStudentId', studentVisitId)
+    await this._dispatchInstructor('loadCurrentEvaluationStudentId')
   }
 
   // When instructor saves their evaluation notes.
@@ -294,25 +290,6 @@ class StoreHelperWorker {
     return list
   }
 
-  async closeActivity (activityId) {
-    await this._toggleActivity(activityId, 'close')
-  }
-
-  async openActivity (activityId) {
-    await this._toggleActivity(activityId, 'open')
-  }
-
-  /**
-   * Sets the submitted state for all members of the class list
-   * @param activityId
-   * @returns {Promise<void>}
-   */
-  async _toggleActivity (activityId, direction) {
-    await this._dispatchActivity(direction, activityId)
-    await StoreHelper.loadInstructorWithStudent()
-    StoreHelper.postActionEvent(INSTRUCTOR_ACTION, direction === 'open' ? 'openActivity' : 'closeActivity')
-  }
-
   /* **********
    * **********   Assignments  / Learning Objects **************
    */
@@ -328,8 +305,8 @@ class StoreHelperWorker {
     await this.loadAssignmentList()
   }
   // returns promise that resolves to assignment list
-  async updateAssignment (component, assignmentId, assignmentData) {
-    let dataIdPlusPayload = { id: assignmentId, payload: assignmentData }
+  async updateAssignment (component, assignmentId, lObjData) {
+    let dataIdPlusPayload = { id: assignmentId, payload: lObjData }
     await this._dispatchAssignmentList('updateAssignment', dataIdPlusPayload)
     const assignment = await this._dispatchAssignment('load', assignmentId)
     const seedId = assignment.seedDataId
@@ -338,8 +315,8 @@ class StoreHelperWorker {
     return assignment
   }
   // returns promise that resolves to assignment list
-  async createAssignment (assignmentData) {
-    const duped = await this._dispatchAssignmentList('createAssignment', assignmentData)
+  async createAssignment (lObjData) {
+    const duped = await this._dispatchAssignmentList('createAssignment', lObjData)
     await this._dispatchAssignment('load', duped._id)
     StoreHelper.postActionEvent(CREATOR_ACTION,'createAssignment')
     return duped
@@ -419,37 +396,12 @@ class StoreHelperWorker {
     return this._dispatchSeedListProperty('updateSeedItem', dataIdPlusPayload)
   }
 
-  // importSeedEhrData (seedId, ehrData) {
-  //   let payload = {
-  //     id: seedId,
-  //     ehrData: ehrData
-  //   }
-  //   return this._dispatchSeedListProperty('importSeedEhrData', payload)
-  // }
-
-  sendSeedEhrDataDraft (payload ) {
-    return this._dispatchSeedListProperty('sendSeedEhrDataDraft', payload)
-  }
-  updateSeedEhrProperty (propertyName, value ) {
-    StoreHelper.postActionEvent(STUDENT_ACTION,'updateEhr-' + propertyName)
-    let payload = {
-      propertyName: propertyName,
-      value: removeEmptyProperties(value)
-    }
-    return this._dispatchSeedListProperty('updateSeedEhrProperty', payload)
-  }
-
   createSeed (component, seedData) {
     StoreHelper.postActionEvent(CREATOR_ACTION,'createSeed')
     return this._dispatchSeedListProperty('createSeedItem', seedData)
   }
 
   getSeedDataList () { return this._getSeedListProperty('list') }
-
-  async loadSeedEditor () {
-    if (debugSH) console.log('SH loadSeedEditor')
-    await this.loadSeed(this.getSeedEditId())
-  }
 
   /* **********
    * **********   LMS LTI Consumers    **************
@@ -571,6 +523,12 @@ class StoreHelperWorker {
       await StoreHelper.storeReplaceToken(newToken)
       StoreHelper.postActionEvent(USER_ACTION,'changeVisitId')
     }
+    const cVisit = store.getters['visit/visitId']
+    if (cVisit !== visitId) {
+      // console.log('changing visit id so clear out old data')
+      await store.dispatch('mPatientStore/setCurrentPatientObjectId', undefined)
+      await store.dispatch('visit/clearVisitData')
+    }
     if (debugSH) console.log('SH setVisitId dispatch the load visit id', visitId)
     await this._dispatchVisit('setVisitIdViaSh', visitId)
   }
@@ -585,18 +543,6 @@ class StoreHelperWorker {
    * @param optionalVisitId
    * @returns {Promise<void>}
    */
-
-  async loadInstructorWithStudent () {
-    await store.dispatch('visit/loadVisitRecord')
-    const theActivity = await store.dispatch('activityStore/loadActivityRecord')
-    const seedId = theActivity.caseStudyId
-    const learningObjectId = theActivity.learningObjectId
-    if(debugSH) console.log('SH liws theActivity', theActivity)
-    await store.dispatch('assignmentStore/load', learningObjectId)
-    await store.dispatch('instructor/loadClassList')
-    await this.loadSeed(seedId)
-    return theActivity
-  }
 
   /* **********
    * **********   Authorization related    **************
@@ -642,6 +588,7 @@ class StoreHelperWorker {
     await this._dispatchSeedListProperty('clearSeedData')
     await this._dispatchActivity(('clearActivity'))
     await this._dispatchInstructor('clearInstructor')
+    await store.dispatch('mPatientStore/clearMPatientData')
     await this.clearConsumer()
   }
 

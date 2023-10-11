@@ -203,58 +203,6 @@ export function readFile (file) {
   })
 }
 
-/* ********************************************************************************* */
-export const SEED_MARK = 'isFromSeed'
-
-/**
- * Extract the data that has been entered by the student in preparation for sending this
- * to the server as an update.
- * @param page
- * @return {*}
- */
-export function ehrRemoveMarkedSeed (page) {
-  let propertyKeys = Object.keys(page)
-  propertyKeys.forEach(pKey => {
-    let childOne = page[pKey]
-    if (Array.isArray(childOne)) {
-      page[pKey] = childOne.filter(c => {
-        let isMarked = typeof c === 'object' && c[SEED_MARK] === true
-        return !isMarked
-      })
-    }
-  })
-  // })
-  return page
-}
-
-/**
- * Iterate through all the pages and then through all the children. If the child is an array
- * then iterate through this array and mark each object.  This way when a student adds new rows to
- * table data we can determine which rows came from the seed and which rows were added.
- * This is important when we want to send an update back to the server.
- * @param data
- * @return {*}
- */
-export function ehrMarkSeed (data) {
-  let pageKeys = Object.keys(data)
-  pageKeys.forEach(key => {
-    let page = data[key]
-    let propertyKeys = Object.keys(page)
-    propertyKeys.forEach(pKey => {
-      let childOne = page[pKey]
-      if (Array.isArray(childOne)) {
-        page[pKey] = childOne.map(c => {
-          if (typeof c === 'object') {
-            c[SEED_MARK] = true
-          }
-          return c
-        })
-      }
-    })
-  })
-  return data
-}
-
 /**
  * Exported for testing
  * @param dataAsString
@@ -410,21 +358,6 @@ export function arrayToCsv (array) {
 export function downArrayToCsvFile (filename, array) {
   let data = arrayToCsv(array)
   _saveAs(data, filename, mCSV)
-}
-
-/**
- * prepareAssignmentPageDataForSave does two things
- * 1. It removes empty properties
- * 2. It removes marked seed data (array elements)
- * @param aPage
- * @return {*}
- */
-export function prepareAssignmentPageDataForSave (aPage) {
-  if (debug) console.log('EhrUtil prepareAssignmentPageDataForSave', decoupleObject(aPage))
-  let cleanValue = removeEmptyProperties(aPage)
-  cleanValue = ehrRemoveMarkedSeed(cleanValue)
-  if (debug) console.log('EhrUtil cleanValue', decoupleObject(cleanValue))
-  return cleanValue
 }
 
 export function ehrMergeEhrData (one, two) {

@@ -209,7 +209,9 @@ describe ('EhrDataModel class methods', () => {
     EhrDataModel.IsUpToDate(e).should.equal(false, e.meta.ehrVersion)
     e.meta.ehrVersion = 'ev2.2.11'
     EhrDataModel.IsUpToDate(e).should.equal(false, e.meta.ehrVersion)
-    e.meta.ehrVersion = 'ev2.3.5'
+    e.meta.ehrVersion = 'ev2.3.6'
+    EhrDataModel.IsUpToDate(e).should.equal(false, e.meta.ehrVersion)
+    e.meta.ehrVersion = 'ev2.4.0'
     EhrDataModel.IsUpToDate(e).should.equal(true, e.meta.ehrVersion)
   })
 

@@ -15,6 +15,7 @@
 
 <script>
 import UiButton from '../../../app/ui/UiButton.vue'
+import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 
 export default {
   components: {
@@ -40,8 +41,9 @@ export default {
     cancelEdit: function () {
       this.ehrHelp.cancelEdit()
     },
-    saveEdit: function () {
-      this.ehrHelp.savePageFormEdit()
+    saveEdit: async function () {
+      await this.ehrHelp.savePageFormEdit()
+      EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
     }
   }
 }

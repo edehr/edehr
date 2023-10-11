@@ -49,7 +49,7 @@ const actions = {
   initialize: function ({ commit }) {
     commit('initialize')
   },
-  clearVisitData (context) {
+  async clearVisitData (context) {
     context.commit('setVisitData', {})
     context.commit('setVisitId', undefined)
     context.commit('setSeedEditId', undefined)

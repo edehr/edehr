@@ -213,14 +213,14 @@ export default class ConsumerController extends BaseController {
       const secret = req.body.oauth_consumer_secret
       this.createToolConsumerWithSeeds(key, secret)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     router.get('/get/:key/details', (req, res) => {
       this
         .getDetails(req.params.key, req)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     return router
   }

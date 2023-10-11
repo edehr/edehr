@@ -18,6 +18,12 @@
                 v-on:buttonClicked="sortColumnToggle(columnName)",
                 title="Sort by name")
                 fas-icon(class="fa", :icon="sortColumnIcon(columnName)")
+          div(class="thcell e-mrn") MRN
+            ui-table-header-button(
+              class="flow_across_last_item",
+              v-on:buttonClicked="sortColumnToggle(columnMrn)",
+              title="Sort by MRN")
+              fas-icon(class="fa", :icon="sortColumnIcon(columnMrn)")
           div(class="thcell e-tags")
             div(class="flow_across")
               div(class="") Tags
@@ -47,6 +53,7 @@
             div(class='cell e-name')
               ui-link(:name="'seed-view'", class="list-item-name", :query='{ seedId: seedModel._id }' )
                 span(class='clickable') {{truncate(seedModel.name, 40)}}
+            div(class="cell") {{ seedModel.mrn }}
             div(class='cell e-tags')
               app-tag-list(class="list-item-taglist", :tagList="seedModel.tagList")
             div(class="cell") {{ seedModel.appType }}
@@ -111,6 +118,7 @@ export default {
       offset: 0,
       selectedSeedId: '',
       selectedTags: [],
+      columnMrn: 'mrn',
       columnName: 'name',
       columnCreated: 'createDate',
       columnUpdated: 'lastUpdateDate',
@@ -273,6 +281,9 @@ export default {
 .e-name {
   min-width: 14rem;
   width: 14rem;
+}
+.e-mrn {
+  min-width: 5rem;
 }
 .e-tags {
   min-width: 8rem;

@@ -241,14 +241,14 @@ export default class BaseController {
       this
         .list()
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     router.get('/consumer/:tool', (req, res) => {
       this
         .listForTool(req.params.tool)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     router.get('/paginate', (req, res) => {
@@ -257,28 +257,28 @@ export default class BaseController {
       this
         .paginate (req.query)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     router.post('/', (req, res) => {
       this
         .create(req.body)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     router.get('/get/:key', (req, res) => {
       this
         .read(req.params.key)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     router.put('/:key', (req, res) => {
       this
         .update(req.params.key, req.body)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     return router

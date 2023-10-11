@@ -81,79 +81,35 @@ describe('Test seed marking', () => {
     done()
   })
 
-  it('Mark seed', () => {
-    let one = getOne()
-    one = ehrUtils.ehrMarkSeed(one)
-    should.exist(one.visit.location)
-    one.visit.location.should.have.length(1)
-    let v = one.visit.location[0]
-    v.should.have.property(ehrUtils.SEED_MARK)
-    let two = getTwo()
-    let pages = ehrUtils.ehrMergeEhrData(one, two)
-    // verify we get pages from one or the other or both
-    pages.should.have.property('aPage1')
-    pages.should.have.property('cardiovascular')
-    pages.should.have.property('visit')
+  describe('Test merging two EHR data object', () => {
+    it('Object assign does not concat arrays', () => {
+      let one = getOne()
+      let two = getTwo()
+      let mstr = Object.assign({}, one, two)
+      // let mstr = JSON.stringify(m, null, 2)
+      should.exist(mstr.visit)
+      should.exist(mstr.visit.location)
+      mstr.visit.location.should.have.length(1)
+    })
 
-    // confirm that arrays are merged
-    pages.visit.should.have.property('location')
-    pages.visit.location.should.have.length(2)
-  })
+    it('Merge seed with empty object', () => {
+      let one = getOne()
+      let two = undefined
+      let pages = ehrUtils.ehrMergeEhrData(one, two)
+      should.exist(pages)
+    })
 
-  it('Remove Marked Properties', () => {
-    let one = ehrUtils.ehrMarkSeed(getOne())
-    let two = getTwo()
-    let pages = ehrUtils.ehrMergeEhrData(one, two)
-    pages.visit.should.have.property('location')
-    pages.visit.location.should.have.length(2)
-    let visit = ehrUtils.ehrRemoveMarkedSeed(pages.visit)
-    visit.should.have.property('location')
-    visit.location.should.have.length(1)
-  })
+    it('Merge seed and assignment data', () => {
+      let one = getOne()
+      let two = getTwo()
+      let pages = ehrUtils.ehrMergeEhrData(one, two)
+      // verify we get pages from one or the other or both
+      pages.should.have.property('aPage1')
+      pages.should.have.property('aPage2')
+      pages.should.have.property('cardiovascular')
+      pages.should.have.property('visit')
 
-  it('Prepare Assignment Data For Save', () => {
-    let one = ehrUtils.ehrMarkSeed(getOne())
-    let two = getTwo()
-    let pages = ehrUtils.ehrMergeEhrData(one, two)
-    pages.visit.should.have.property('location')
-    pages.visit.location.should.have.length(2)
-    let page = ehrUtils.prepareAssignmentPageDataForSave(pages.visit)
-    page.should.have.property('location')
-    page.location.should.have.length(1)
-  })
-})
-
-describe('Test merging two EHR data object', () => {
-  it('Object assign does not concat arrays', () => {
-    let one = getOne()
-    let two = getTwo()
-    let mstr = Object.assign({}, one, two)
-    // let mstr = JSON.stringify(m, null, 2)
-    should.exist(mstr.visit)
-    should.exist(mstr.visit.location)
-    mstr.visit.location.should.have.length(1)
-  })
-
-  it('Merge seed with empty object', () => {
-    let one = getOne()
-    let two = undefined
-    let pages = ehrUtils.ehrMergeEhrData(one, two)
-    should.exist(pages)
-  })
-
-  it('Merge seed and assignment data', () => {
-    let one = getOne()
-    let two = getTwo()
-    let pages = ehrUtils.ehrMergeEhrData(one, two)
-    // verify we get pages from one or the other or both
-    pages.should.have.property('aPage1')
-    pages.should.have.property('aPage2')
-    pages.should.have.property('cardiovascular')
-    pages.should.have.property('visit')
-
-    // confirm that arrays are merged
-    pages.cardiovascular.should.have.property('table')
-    pages.cardiovascular.table.should.have.length(2)
+    })
 
     // confirm that arrays are merged
     pages.visit.should.have.property('location')
@@ -173,17 +129,17 @@ describe('Test merging two EHR data object', () => {
 
 describe('Test support for seed import', () => {
   it('verify validateSeedFileContents accept valid properties', (done) => {
-    let ehrData = {demographics: {firstName: 'foo'}}
+    let ehrData = { demographics: { firstName: 'foo' } }
     let data = composeData(ehrData)
-    let {invalidMsg,seedObj } = ehrUtils.validateSeedFileContents(data)
+    let { invalidMsg, seedObj } = ehrUtils.validateSeedFileContents(data)
     should.not.exist(invalidMsg)
     should.exist(seedObj)
     done()
   })
   it('verify validateSeedFileContents catches invalid properties', (done) => {
-    let ehrData = {invalid: {firstName: 'foo'}}
+    let ehrData = { invalid: { firstName: 'foo' } }
     let data = composeData(ehrData)
-    let {invalidMsg,seedObj } = ehrUtils.validateSeedFileContents(data)
+    let { invalidMsg, seedObj } = ehrUtils.validateSeedFileContents(data)
     should.exist(invalidMsg)
     should.not.exist(seedObj)
     done()
@@ -191,7 +147,7 @@ describe('Test support for seed import', () => {
   it('verify validateSeedFileContents catches empty object', (done) => {
     let ehrData = {}
     let data = composeData(ehrData)
-    let {invalidMsg,seedObj } = ehrUtils.validateSeedFileContents(data)
+    let { invalidMsg, seedObj } = ehrUtils.validateSeedFileContents(data)
     should.exist(invalidMsg)
     should.not.exist(seedObj)
     done()
@@ -220,7 +176,7 @@ describe('Test support for seed import', () => {
     const sSeedContent = mockData.seedData
     const ehrData = { demographics: { firstName: 'foo' } }
     should.doesNotThrow(() => {
-      const result = ehrUtils.downloadSeedToFile(seedId, sSeedContent, ehrData,'A tag list')
+      const result = ehrUtils.downloadSeedToFile(seedId, sSeedContent, ehrData, 'A tag list')
       should.not.exist(result)
       done()
     })
@@ -290,11 +246,11 @@ describe('Test validators and formatters ', () => {
 
   it('validRangeStr', done => {
     // invalid use cases
-    ehrUtils.validRangeStr(1000, 0,100).should.equal(false)
-    ehrUtils.validRangeStr(-1000, -100,100).should.equal(false)
+    ehrUtils.validRangeStr(1000, 0, 100).should.equal(false)
+    ehrUtils.validRangeStr(-1000, -100, 100).should.equal(false)
     ehrUtils.validRangeStr('a', 0, 100).should.equal(false)
     // valid use cases
-    ehrUtils.validRangeStr(10, 0,100).should.equal(true)
+    ehrUtils.validRangeStr(10, 0, 100).should.equal(true)
     ehrUtils.validRangeStr(-10, -100, 100).should.equal(true)
     ehrUtils.validRangeStr(100, 0, 1000).should.equal(true)
     done()
@@ -328,7 +284,7 @@ describe('Axios error and file upload', () => {
       statusText: 'Bad Request',
       data: 'Please, check your request and try again'
     }
-    const result = ehrUtils.composeAxiosResponseError({response}, '')
+    const result = ehrUtils.composeAxiosResponseError({ response }, '')
     result.should.equal(` status: ${response.status} ${response.statusText} "${response.data}"`)
     done()
   })
@@ -340,11 +296,7 @@ describe('Axios error and file upload', () => {
     const result = await ehrUtils.readFile(file)
     result.should.equal(fileContent)
   })
-
-
 })
-
-
 function composeData (ehrData) {
   let data = {
     license: Text.LICENSE_FULL_TEXT,

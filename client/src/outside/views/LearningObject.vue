@@ -104,8 +104,8 @@ export default {
     },
     showEditDialog: async function (event, assignmentId) {
       await this.$store.dispatch('seedListStore/loadSeeds')
-      let assignmentData = Object.assign({}, this.findAssignment(assignmentId))
-      this.$refs.theDialog.showDialog(assignmentData)
+      let lObjData = Object.assign({}, this.findAssignment(assignmentId))
+      this.$refs.theDialog.showDialog(lObjData)
     },
     showCreateDialog: function () {
       this.$refs.theDialog.showDialog()

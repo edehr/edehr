@@ -89,6 +89,9 @@ export default {
       this.$store.dispatch('system/setCondensedTableVertical', !value)
     }
   },
+  mounted () {
+    this.setInitialPage()
+  },
   watch: {
     ehrData: function () {
       this.setInitialPage()

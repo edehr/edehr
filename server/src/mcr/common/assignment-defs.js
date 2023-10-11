@@ -94,6 +94,12 @@ const assignment5 = {
     'the instructor to provide guidance.',
   title: 'BONLANLE Akosua - Hematology - After'
 }
+
+const assignmentMP1 = {
+  description: 'This is a work in progress to experiment with a activity that lets the student choose their first patient',
+  title: 'Multi patient test'
+}
+
 const seedDef5 = {
   toolConsumer: '',
   name: 'BONLANLE Akosua - Hematology - After',
@@ -143,4 +149,11 @@ export const activity5 = {
   seedDef: seedDef5,
   resource_link_title: `${assignment5.title}`,
   resource_link_description: 'This activity complements the previous one by showing the completed PBF in the Med Lab Hematology module',
+}
+
+export const activityMP1 = {
+  lObjDef: assignmentMP1,
+  multiPatient: true,
+  resource_link_title: `${assignmentMP1.title}`,
+  resource_link_description: 'Experiment',
 }

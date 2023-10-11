@@ -47,12 +47,12 @@ const mutations = {
     state.ehrOnlyScratch = text
   },
   setEhrData: (state, payload) => {
-    const { pageKey, value } = payload
+    const { propertyName, value } = payload
     // To trigger Vue's reactivity on complex object we replace the existing with a new object
     // Place data into a model update meta data and transform model to latest version if needed
     const ehrDataModel = new EhrDataModel(state.ehrData)
     let asIs = ehrDataModel.ehrData
-    asIs[pageKey] = value
+    asIs[propertyName] = value
     state.ehrData = asIs
   },
   setCaseStudy: (state, seedObj) => {

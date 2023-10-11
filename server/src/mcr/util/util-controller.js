@@ -251,7 +251,7 @@ export default class UtilController {
       this
         .cleanOldDemoConsumers(months, showDetails, doDelete)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
 
@@ -278,7 +278,7 @@ export default class UtilController {
       this
         .cleanUpAllOrphanedDocs(showDetails, doDelete)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     /**
@@ -292,7 +292,7 @@ export default class UtilController {
       this
         .listConsumers(REAL_ONLY)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
 
@@ -307,7 +307,7 @@ export default class UtilController {
       this
         .listSeeds(REAL_ONLY)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     /**
@@ -321,7 +321,7 @@ export default class UtilController {
       this
         .listConsumers(DEMO_ONLY)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
 
     /**
@@ -335,7 +335,7 @@ export default class UtilController {
       this
         .listSeeds(DEMO_ONLY)
         .then(ok(res))
-        .then(null, fail(res))
+        .then(null, fail(req, res))
     })
     return router
   }
