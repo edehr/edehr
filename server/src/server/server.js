@@ -29,7 +29,7 @@ if (!validateNode()) {
  */
 async function afterStartUp () {
   console.log('afterStartup BEGIN')
-  const folderPath = './seedDefsToImport'
+  const folderPath = './src/seedDefsToImport'
   const consumers = await Consumer.find({is_primary: true},
     {
       oauth_consumer_key: 1,
@@ -62,6 +62,8 @@ async function afterStartUp () {
             console.log('Seed exists already', obj.name)
           }
         }
+      } else {
+        console.log('Can not find directory ', folderPath)
       }
       console.log('Done work for consumer', consumer.oauth_consumer_key)
     }

@@ -37,7 +37,7 @@ server/bin/sessions/**
 server/files-ehr
 server/deleted/**
 server/src/config/admin-password\.txt
-server/seedDefsToImport/**
+server/src/seedDefsToImport/**
 temp/**
 server/lib/**
 **/build/**
