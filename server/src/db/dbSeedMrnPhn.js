@@ -24,7 +24,7 @@ export default async function dbSeedMrnPhn () {
       ehrData.demographics.mrn = ehrData.demographics.phn
       delete ehrData.demographics.phn
       await SeedData.updateOne({_id: sd._id}, {ehrData: ehrData})
-      debug('updated dbSeedMrnPhn on seed', sd.name, mrn)
+      debug('updated dbSeedMrnPhn on seed', sd.name, ehrData.demographics.mrn)
     }
   }
 }

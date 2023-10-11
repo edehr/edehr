@@ -197,7 +197,7 @@ export default class SeedDataController extends BaseController {
       throw new Error(Text.INVALID_BASE_ID(id,'seed data'))
     }
     const model = await this.baseFindOneQuery(id)
-    const previous = decoupleObject(model.seedData)
+    // const previous = decoupleObject(model.seedData)
     const doc = await this._saveSeedEhrData(model, ehrData)
     const payload = {
       toolConsumer: doc.toolConsumer,
@@ -205,7 +205,7 @@ export default class SeedDataController extends BaseController {
       userId: 'system',
       objId: id,
       action: 'update',
-      previous: previous,
+      // previous: previous,
       updated: doc.ehrData
     }
     EHR_EVENT_BUS.emit(EHR_SEED_EVENT, payload)

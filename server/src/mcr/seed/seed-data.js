@@ -18,15 +18,8 @@ const Schema = new mongoose.Schema(
     version: { type: String },
     contributors: { type: String },
     ehrData: { type: Object, default: {} },
-    // key data fields ...
-    dateOfBirth: { type: String },
-    familyName: { type: String },
-    givenName: { type: String },
-    gender: { type: String },
-    mrn: { type: String }, // mrn
-    personAge: { type: String },
-    phn: { type: String }, // phn
-    // ... end key data fields -- for SeedData and PatientData
+    keyData: { type: Object, default: {} },
+    mrn: { type: String },
     createDate: { type: Date, default: Date.now },
     lastUpdateDate: { type: Date, default: Date.now },
     tagList: [{
@@ -76,13 +69,8 @@ Schema.pre('save', async function (next) {
     this.ehrData = EhrDataModel.InsertMedicalRecordNumber(this.ehrData, keyData.mrn)
     debug('pre save seed generates new mrn', this.name, keyData.mrn)
   }
-  this.dateOfBirth = keyData.dateOfBirth
-  this.familyName = keyData.familyName
-  this.gender = keyData.gender
-  this.givenName = keyData.givenName
+  this.keyData = keyData
   this.mrn = keyData.mrn
-  this.phn = keyData.phn
-  this.personAge = keyData.personAge
   next()
 })
 

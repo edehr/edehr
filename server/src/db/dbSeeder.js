@@ -212,9 +212,7 @@ export async function updateAllEhrData () {
   if(doUpdate) {
     debug('updateAllEhrData. BEGIN')
     const start = performance.now()
-    debug('updateAllEhrData. _updateActivityDataPatients')
     await _updateActivityDataPatients()
-    debug('updateAllEhrData. _updateSeeds')
     await _updateSeeds()
     const end = performance.now()
     debug('updateAllEhrData. DONE.', Math.round(end - start), 'ms')
@@ -231,7 +229,7 @@ export async function updateAllEhrData () {
  * @private
  */
 async function _updateActivityDataPatients () {
-  debug('updateAllEhrData. activity data')
+  debug('updateAllActivityData BEGIN')
   const start = performance.now()
   let cnt = 0
   const activityDataList = await ActivityData.find({assignmentData: { $exists: true} },{assignmentData: true})
@@ -240,26 +238,34 @@ async function _updateActivityDataPatients () {
     await activityDataController.updateAndSaveAssignmentData(ad)
     cnt++
     if (cnt % 100 === 0) {
-      debug('updateAllEhrData activity data updated ', cnt, 'of', tCnt)
+      debug('updateAllActivityData activity data updated ', cnt, 'of', tCnt)
     }
   }
   const end = performance.now()
-  debug('dbSeeder. updated',   cnt, 'of', tCnt, 'ActivityData records in', Math.round(end - start), 'ms')
+  debug('updateAllActivityData. DONE. Updated',   cnt, 'of', tCnt, 'ActivityData records in', Math.round(end - start), 'ms')
 }
 
 async function _updateSeeds () {
-  debug('updateAllEhrData. case studies')
+  debug('_updateSeeds. BEGIN')
   const start = performance.now()
   let cnt = 0
-  const seedDataList = await seedController.list({ isDefault: false }, { name: true, ehrData: true })
+  let updated = 0
+  const seedDataList = await seedController.list({ isDefault: false })
   const list = seedDataList.seeddata
+  const tCnt = list.length
   for (const seed of list) {
     if (!EhrDataModel.IsUpToDate(seed.ehrData)) {
-      cnt++
-      await seedController.updateAndSaveSeedEhrData(seed._id, seed.ehrData)
+      seed.lastUpdateDate = Date.now()
+      seed.ehrData = EhrDataModel.PrepareForDb(seed.ehrData)
+      await seed.save()
+      updated++
+    }
+    cnt++
+    if (cnt % 100 === 0) {
+      debug('_updateSeeds updated ', cnt, 'of', tCnt)
     }
   }
   const end = performance.now()
-  debug('dbSeeder. updated', cnt, 'of', list.length, 'Seed records in', Math.round(end - start), 'ms')
+  debug('_updateSeeds. DONE. Updated', updated, 'of', tCnt, 'Seed records in', Math.round(end - start), 'ms')
 }
 
