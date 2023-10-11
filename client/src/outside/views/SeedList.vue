@@ -210,6 +210,7 @@ export default {
       query.limit = this.paginateLimit
       query.sortKey = this.sortKey
       query.sortDir = this.sortDir
+      query.ts = Date.now() // to prevent DupNav errors from Vue
       this.selectedTags.length > 0 ? query.tagList = this.selectedTags.join(',') : undefined
       // only add appType to query if there are some selections
       let ats = this.checkAppTypes.join(',')
