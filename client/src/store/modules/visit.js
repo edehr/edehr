@@ -1,5 +1,4 @@
 import InstoreHelper from './instoreHelper'
-import store from '@/store'
 const API = 'visits'
 const debug = false
 const IS_CONTENT_EDITING = 'isContentEditor'
