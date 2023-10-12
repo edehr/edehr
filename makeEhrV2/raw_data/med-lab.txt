@@ -679,7 +679,7 @@ Waxy
 Fatty}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	{Label: 0-2/LPF}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	{Label: Crystals}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	{formCss: form-table-span-2-rows}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: None prest}	eCell	{elementKey: umicroCrystalsNonePresent}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	{formCss: form-table-span-3}	eCell	eCell	{tableColumn: 43}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: None seen}	eCell	{elementKey: umicroCrystalsNonePresent}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	{formCss: form-table-span-3}	eCell	eCell	{tableColumn: 43}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: boxcheckset}	eCell	{Label: Present}	eCell	{elementKey: umicroCrystalsPresent}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	{tableColumn: 44}	eCell	eCell	eCell	eCell	"{Options: calciumOxalate:=Calcium Oxalate
 calciumCarbonate:=Calcium carbonate
 uricAcid:=Uric Acid

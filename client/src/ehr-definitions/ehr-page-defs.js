@@ -30561,7 +30561,7 @@ const DEFS = {
         'formIndex': '2',
         'formCss': 'form-table-span-3',
         'inputType': 'checkbox',
-        'label': 'None prest',
+        'label': 'None seen',
         'tableColumn': '43',
         'fqn': 'medLabUrinalysis.umicroCrystalsNonePresent'
       },
