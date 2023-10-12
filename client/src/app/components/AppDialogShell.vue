@@ -3,7 +3,7 @@
     div(v-show="showingDialog")
       div(:class="modalClass", :style="{ zIndex: modalZ }")
       div(class="dialog-wrapper",
-        :class="{ dragActive: moused }",
+        :class="{ dragActive: moused, fullScreen: fullScreen }",
         ref="theDialog",
         :style="{ top: top + 'px', left: left + 'px', zIndex: modalD }")
         // header
@@ -44,6 +44,7 @@ export default {
     UiButton
   },
   props: {
+    fullScreen: { type: Boolean, default: false },
     isModal: { type: Boolean, default: false },
     useSave: { type: Boolean, default: true },
     disableSave: { type: Boolean, default: false },
@@ -143,7 +144,7 @@ export default {
       my = Math.max(my, 5) // don't let top disappear
       // console.log('The Dialog w', ww, ew, mx, d)
       // console.log('The Dialog h', wh, eh, my, d)
-      this.left = mx
+      this.left = this.fullScreen ? 5 : mx
       this.top = my
       // let db = this.$refs.theDialogBody
       // let dbh = db.clientHeight
@@ -191,7 +192,10 @@ export default {
   box-sizing: border-box;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
-
+.fullScreen {
+  font-size: 1.25rem;
+  max-width: 98%; // 70rem;
+}
 .dialog-body {
   padding: 1rem;
   margin-bottom: 0;
