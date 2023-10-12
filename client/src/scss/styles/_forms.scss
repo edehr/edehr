@@ -628,6 +628,15 @@ select, .select {
   .form-table-span-2 {
     grid-column: span 2;
   }
+  .form-table-span-2-rows {
+    grid-row: span 2;
+  }
+  .form-table-span-3-rows {
+    grid-row: span 4;
+  }
+  .form-table-span-4-rows {
+    grid-row: span 4;
+  }
 }
 
 /* Hematology */
