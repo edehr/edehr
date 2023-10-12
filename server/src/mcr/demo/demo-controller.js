@@ -8,7 +8,7 @@ import { fail, ok } from '../common/utils'
 import Consumer from '../consumer/consumer'
 const {ltiVersions} = require('../../mcr/lti/lti-defs')
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
-const debugDC = true
+const debugDC = false
 const debug = require('debug')('server')
 import { logError} from '../../helpers/log-error'
 import { APP_TYPE_LIS } from '../../helpers/appType'
