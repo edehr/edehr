@@ -3,7 +3,7 @@
     div(v-show="showingDialog")
       div(:class="modalClass", :style="{ zIndex: modalZ }")
       div(class="dialog-wrapper",
-        :class="{ dragActive: moused, fullScreen: fullScreen }",
+        :class="{ dragActive: moused, draggable: !fullScreen, fullScreen: fullScreen }",
         ref="theDialog",
         :style="{ top: top + 'px', left: left + 'px', zIndex: modalD }")
         // header
@@ -90,6 +90,7 @@ export default {
       this.$refs.saveButton.$el.focus()
     },
     onDragged ({ el, deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last }) {
+      if (this.fullScreen) return
       // Change top/left position based on drag
       // console.log('on drag', 'deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last' )
       // console.log('on drag first, last', first, last )
@@ -192,10 +193,7 @@ export default {
   box-sizing: border-box;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
-.fullScreen {
-  font-size: 1.25rem;
-  max-width: 98%; // 70rem;
-}
+
 .dialog-body {
   padding: 1rem;
   margin-bottom: 0;
@@ -219,7 +217,17 @@ export default {
   padding: 0.5rem 1rem 0.5rem 1rem;
   //margin-bottom: 1rem;
   touch-action: none;
+}
+.draggable {
   cursor: move;
+}
+.fullScreen { // over rides .dialog-wrapper
+  font-size: 1.25rem;
+  max-width: 98%;
+  max-height: 96%;
+  .dialog-body {
+    max-height: calc(86vh - 6rem);
+  }
 }
 
 ::v-deep(.dialog-header h2),
