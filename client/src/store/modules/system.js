@@ -25,6 +25,7 @@ const state = {
   // disable this ability to toggle labels. Force all to be hidden to be icon only.
   // TODO IF this doesn't cause problems for users then come back and remove the code that manages this state
   outsideShowButtonLabels: false,
+  seedTableCollapse: {},
   smallWindow: false,
   sysMessage: '',
   showingEHR: true,
@@ -46,6 +47,7 @@ const getters = {
   pageTitle: state => state.pageTitle,
   pageZone: state => state.pageZone,
   paginateLimit: state => state.paginateLimit,
+  seedTableCollapse: state => (tableKey) => state.seedTableCollapse[tableKey],
   sysMessage: state => state.sysMessage,
   showingEHR: state => state.showingEHR,
   showingLIS: state => state.showingLIS
@@ -96,6 +98,11 @@ const actions = {
   setCondensedTableVertical ( {commit}, value) {
     commit('setCondensedTableVertical', value)
   },
+  flipTableCollapsed ( context, tableKey) {
+    const newState = JSON.parse(JSON.stringify(context.state.seedTableCollapse))
+    newState[tableKey] = !newState[tableKey]
+    context.commit('setSeedTableCollapse', newState)
+  },
   setShowEHR ( {commit} ) {
     commit('setShowLIS', false)
     commit('setShowEHR', true)
@@ -110,6 +117,7 @@ const mutations = {
   initialize: function (state) {
     state.caseContextFeature = localStorage.getItem('CaseContextFeature') === 'true'
     state.condensedTableVertical = localStorage.getItem('CondensedTableVertical') === 'true'
+    state.seedTableCollapse = JSON.parse(localStorage.getItem('SeedTableCollapse'))
     state.lmsNavCollapsed = localStorage.getItem('LmsNavCollapsed') === 'true'
     const asStored = localStorage.getItem('appTypes')
     if (asStored) {
@@ -142,6 +150,10 @@ const mutations = {
   setCondensedTableVertical: (state, value) => {
     localStorage.setItem('CondensedTableVertical', value)
     state.condensedTableVertical = value
+  },
+  setSeedTableCollapse: (state, value) => {
+    localStorage.setItem('SeedTableCollapse', JSON.stringify(value))
+    state.seedTableCollapse = value
   },
   setLoading: (state, isLoading) => {
     if(state.loadingEnabled) {

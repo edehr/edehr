@@ -110,16 +110,11 @@ describe('DB seeding updating tests....', function () {
   })
 
   it('updateAllEhrData', async function () {
-
     const newActivityData = new ActivityData(sampleAD)
-    const newAD = await newActivityData.save()
-
     const newSeed = new SeedData(sampleData)
     // eslint-disable-next-line no-unused-vars
     const newS =  await newSeed.save()
-
     await updateAllEhrData()
-
     const seedDoc = await SeedData.findOne({name: '1234'})
     // console.log('============== found seed', seedDoc)
     should.exist(seedDoc)

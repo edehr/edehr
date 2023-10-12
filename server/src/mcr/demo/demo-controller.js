@@ -8,7 +8,7 @@ import { fail, ok } from '../common/utils'
 import Consumer from '../consumer/consumer'
 const {ltiVersions} = require('../../mcr/lti/lti-defs')
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
-const debugDC = true
+const debugDC = false
 const debug = require('debug')('server')
 import { logError} from '../../helpers/log-error'
 import { APP_TYPE_LIS } from '../../helpers/appType'
@@ -37,7 +37,7 @@ export default class DemoController {
   }
 
   async createSampleSeedAndObj (activity, toolC) {
-    console.log('---- activityDef', activity)
+    // console.log('---- activityDef', activity)
     const lObjDef = activity.lObjDef // has title, description
     lObjDef.toolConsumer = toolC // just needs toolConsumer and seed to be ready to create db object
     let seedId
@@ -70,7 +70,8 @@ export default class DemoController {
     const consumerDef = Object.assign({}, consumerBaseDef, { oauth_consumer_key: theId, oauth_consumer_secret: theId })
     consumerDef.is_primary = false
     let toolC = await this.comCon.consumerController.createToolConsumer(consumerDef)
-    if (debugDC) debug('DemoController tool consumer ready', toolC)
+    // record the creation of a new demo consumer in the logs
+    debug('DemoController. Created a new demo tool consumer. Id:', toolC._id, ' Consumer key: ', toolC.oauth_consumer_key)
     const demoData = {
       toolConsumerKey: theId,
       toolConsumerId: toolC._id,
@@ -84,7 +85,7 @@ export default class DemoController {
         demoData.lObjList.push(await this.createSampleSeedAndObj(activity, toolC))
       })
     )
-    console.log('Demo data is ready', demoData)
+    // console.log('Demo data is ready', demoData)
     if (debugDC) debug('DemoController generate token')
     try {
       // the demo token contains information about the demo system.  It doesn't need

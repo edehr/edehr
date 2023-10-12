@@ -2,8 +2,8 @@
   div(class="seed-page")
     div(v-if='pageElement.isTable')
       div(class="flow_across")
-        div {{ pageElement.label }}
-        zone-lms-button(@action="tableCollapsed = !tableCollapsed"
+        h3 {{ pageElement.label }}
+        zone-lms-button(@action="flipTableCollapsed"
           class="flow_across_last_item mr5"
           title="Collapse the table",
           :icon='tableCollapsed ? "chevron-down" : "chevron-up"',
@@ -39,8 +39,7 @@ export default {
   components: { SeedTableHoriz, ZoneLmsButton, SeedFormElement, SeedTableVert },
   data () {
     return {
-      appIcons: APP_ICONS,
-      tableCollapsed: false
+      appIcons: APP_ICONS
     }
   },
   props: {
@@ -50,9 +49,14 @@ export default {
     pageSeedData: { type: Object }
   },
   computed: {
+    tableKey () {return this.pageElement.tableKey},
     tableOrientation () { return this.$store.getters['system/condensedTableVertical']},
+    tableCollapsed () { return this.$store.getters['system/seedTableCollapse'](this.tableKey)},
   },
   methods: {
+    flipTableCollapsed () {
+      this.$store.dispatch('system/flipTableCollapsed', this.tableKey)
+    },
     getElement (eKey) {
       return EhrDefs.getPageChildElement(this.pageKey, eKey)
     },

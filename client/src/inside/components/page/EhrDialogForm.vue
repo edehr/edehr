@@ -2,6 +2,7 @@
   div
     app-dialog(
       :isModal="!isViewOnly",
+      fullScreen=true,
       ref="theDialog",
       @cancel="cancelDialog",
       @save="saveDialog",

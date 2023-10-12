@@ -230,7 +230,10 @@ export default class AssignmentController extends BaseController {
     return { _id: 1, name:1, seedDataId: 1 }
   }
   paginateInitialFilter (resultSet, options) {
-    return resultSet.filter( item => options.appTypes.includes(item.seedDataId.appType))
+    return resultSet.filter( item => {
+      // now some LObjs may not have a seed.
+      return item.seedDataId ? options.appTypes.includes(item.seedDataId.appType) : true
+    })
   }
 
   paginateFinalPopulate () {
