@@ -117,9 +117,10 @@ const mutations = {
   initialize: function (state) {
     state.caseContextFeature = localStorage.getItem('CaseContextFeature') === 'true'
     state.condensedTableVertical = localStorage.getItem('CondensedTableVertical') === 'true'
-    state.seedTableCollapse = JSON.parse(localStorage.getItem('SeedTableCollapse'))
+    let asStored = localStorage.getItem('SeedTableCollapse')
+    state.seedTableCollapse = asStored ? JSON.parse(asStored) : {}
     state.lmsNavCollapsed = localStorage.getItem('LmsNavCollapsed') === 'true'
-    const asStored = localStorage.getItem('appTypes')
+    asStored = localStorage.getItem('appTypes')
     if (asStored) {
       state.checkAppTypes = asStored.split(',')
     } else {
@@ -153,7 +154,7 @@ const mutations = {
   },
   setSeedTableCollapse: (state, value) => {
     localStorage.setItem('SeedTableCollapse', JSON.stringify(value))
-    state.seedTableCollapse = value
+    state.seedTableCollapse = value || {}
   },
   setLoading: (state, isLoading) => {
     if(state.loadingEnabled) {
