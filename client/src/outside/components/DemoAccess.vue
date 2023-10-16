@@ -19,7 +19,7 @@
             ui-button(@buttonClicked="gotoEhrOnly", :title='tip1') EHR only demonstration
             //div &nbsp;
           div(v-if="demoFeatureFlag && !isDemo")
-            ui-button(@buttonClicked="demoLoginConfirm", :title='tip2') Full EdEHR demonstration
+            ui-button(@buttonClicked="demoLoginConfirm", :title='tip2') Full demonstration
           div(v-else).
             There is a full demonstration mode that shows how the EdEHR works with learning management systems.
             Contact <a href="mailto:info@edehr.org">info@edehr.org</a> for more information.
@@ -99,7 +99,7 @@ export default {
     },
     async logoutUser () {
       // do a complete reset but keep the full demo feature flag
-      await StoreHelper.logUserOutOfEdEHR()
+      await StoreHelper.exitFullDemo()
       // const df = this.$store.getters['demoStore/getDemoFeatureFlag']
       // localStorage.clear()
       // await this.$store.dispatch('demoStore/setDemoFeatureFlag', df)

@@ -121,8 +121,9 @@ export default {
       this.$router.push({ name: 'seed-view-condensed', query: { seedId: this.seedId } })
     },
     patientData (seed) {
-      const newDob = computeDateOfBirth(seed.personAge, seed.dateOfBirth)
-      return `${seed.familyName}, ${seed.givenName}  MRN: ${seed.mrn}  Gender: ${seed.gender}  DoB: ${newDob}`
+      const { personAge, dateOfBirth, familyName, givenName, mrn, gender } = seed.keyData
+      const newDob = computeDateOfBirth(personAge, dateOfBirth)
+      return `${familyName}, ${givenName}  MRN: ${mrn}  Gender: ${gender}  DoB: ${newDob}`
     },
     seedDuplicated () {
       // delete to prevent NavigationDuplication error from vue router.

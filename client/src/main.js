@@ -10,6 +10,7 @@ import homeLayout from './app/layout/LayoutHome.vue'
 import outsideLayout from './outside/layout/LayoutOutside.vue'
 import lmsLayout from './outside/layout/LayoutLms.vue'
 import insideLayout from './inside/layout/LayoutEhr.vue'
+import printLayout from './inside/layout/PrintLayout.vue'
 import directivesFilters from './helpers/directives-filters'
 import VueAutosuggest from 'vue-autosuggest'
 import onPageChange from './helpers/page-controller'
@@ -32,6 +33,7 @@ Vue.component('home-layout', homeLayout)
 Vue.component('outside-layout', outsideLayout)
 Vue.component('lms-layout', lmsLayout)
 Vue.component('inside-layout', insideLayout)
+Vue.component('print-layout', printLayout)
 
 const LOCALHOST = window.location.origin.includes('localhost')
 /**

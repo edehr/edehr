@@ -3,8 +3,10 @@
     section(class="hero is-info is-medium is-bold")
       div(class="hero-body")
         div(class="container has-text-centered")
-          h1(class="title", style='font-size:3rem') EdEHR
+          //h1(class="title", style='font-size:3rem') EdEHR
           h1(class="title") {{ appText.heroText.title }}
+          div &nbsp;
+          h2(class="subtitle", style='font-size:1.7rem') {{ appText.heroText.yesItIs }}
           h2(class="subtitle", style='font-size:1.7rem') {{ appText.heroText.subTitle }}
           demo-access(class="demo-access")
 

@@ -5,7 +5,7 @@
         app-search-box(:searchTerm="searchTerm", @updateSearchTerm='updateSearchTerm')
         app-type-selector(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
         app-paginate-controls(:offset='offset', :limit='paginateLimit', :listMetadata="listMetadata" @repage='repage')
-        seed-list-actions(@create="refreshAfterUpdateCreate")
+        seed-list-actions(@create="refreshAfterUpdateCreate", @patientLabels='patientLabels')
         //zone-lms-button(@action="downloadAll", :icon='appIcons.download', :title='text.DOWNLOAD_TP', :text='text.DOWNLOAD')
     div(class="e-table-container")
       div(class="details-container e-table")
@@ -200,11 +200,15 @@ export default {
       await this.$store.dispatch('seedListStore/loadPage', queryPayload)
       await this.$store.dispatch('seedListStore/loadAllTags')
     },
+    patientLabels () {
+      const query = this.query()
+      this.$router.push({ name: 'patient-labels', query: query})
+    },
     repage (offset) {
       this.offset = offset
       this.route()
     },
-    route () {
+    query () {
       let query = {}
       query.offset = this.offset
       query.limit = this.paginateLimit
@@ -216,6 +220,10 @@ export default {
       let ats = this.checkAppTypes.join(',')
       ats ? query.appTypes = ats : undefined
       this.searchTerm ? query.searchTerm = this.searchTerm : undefined
+      return query
+    },
+    route () {
+      const query = this.query()
       this.$router.push({ query: query })
       const qs = JSON.stringify(query).replace(/"/g,'\'')
       StoreHelper.postActionEvent(CREATOR_ACTION,'seedlist-'+qs)
