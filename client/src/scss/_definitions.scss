@@ -62,10 +62,24 @@ $table-header-colour: $grey20;
 $table-border-colour: $grey40;
 
 /* ****************** TYPOGRAPHY ****************** */
-$bodyFontFamily: 'Source Sans Pro', sans-serif;
+$bodyFontFamily: 'Source Sans 3', sans-serif;
 $bodyFontSize: 16px;
 
-/* ****************** NAVIGATION ****************** */
+// Code 39 is a simple barcode font. Start and end with an '*'
+@font-face {
+	font-family: 'code39';
+	src: url('~/public/assets/fonts/Libre_Barcode_39/LibreBarcode39-Regular.ttf');
+}
+$fontFamilyCode39: 'code39';
+.code39 {
+  font-family: $fontFamilyCode39;
+  font-size: 46px;
+}
+/*
+ TO DO implement code128 font because it is more compact. code 128 requires a checksum.
+ */
+
+  /* ****************** NAVIGATION ****************** */
 
 $toolbar-background-color: $brand-primary-dark;
 $toolbar-color: $grey10;
