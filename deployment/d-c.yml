@@ -55,6 +55,7 @@ services:
     volumes:
       - "../server/src/:/usr/src/app/src/"
       - "../server/resources/:/usr/src/app/resources/"
+      - "../server/action-logs/:/usr/src/app/action-logs/"
       - "../server/api-logs/:/usr/src/app/api-logs/"
       - "../server/ehr-logs/:/usr/src/app/ehr-logs/"
       - "../server/files-common/:/usr/src/app/files-common/"
