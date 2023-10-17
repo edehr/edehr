@@ -126,6 +126,7 @@ const actions = {
    * @returns {Promise<void>}
    */
   async loadStudentPatientList (context, patientList) {
+    patientList = await MPatientHelper.fillOutPatientList(patientList)
     await context.commit('_setPatientList', patientList)
   }
 
@@ -139,11 +140,7 @@ const mutations = {
   addPatientToActivePatientList (context, object) {
     const list = JSON.parse(JSON.stringify(state.activePatientList))
     list.push(object)
-    list.sort((a,b) => {
-      let am = a.mrn || ''
-      let bm = b.mrn || ''
-      return am.localeCompare(bm)
-    })
+    MPatientHelper.sortPatientList(list)
     state.activePatientList = list
     state.currentPatientObjectId = object._id
   },

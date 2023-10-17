@@ -17,17 +17,39 @@ class MPatientHelperWorker {
     if (StoreHelper.isSeedEditing()) {
       list = store.getters['mPatientStore/activeCaseStudyPatientList']
     } else if (StoreHelper.isInstructorEvalMode()) {
-      const student = store.getters['instructor/currentEvaluationStudent']
-      list = student.activityData.assignmentData.patients
+      list = store.getters['mPatientStore/activeCaseStudyPatientList']
     } else {
-      const assignmentData = store.getters['activityDataStore/assignmentData']
-      list = assignmentData.patients || []
+      list = store.getters['mPatientStore/activeCaseStudyPatientList']
     }
     return list
   }
   getCurrentPatient () {
     const id = store.getters['mPatientStore/currentPatientObjectId']
     return id ? this.findPatientById(id) : undefined
+  }
+
+  async fillOutPatientList (list) {
+    list = await Array.fromAsync(list, async (patient) => {
+      let base = {}
+      if (patient.seedId) {
+        let seed = await this.fetchSeed(patient.seedId)
+        base = seed ? seed.ehrData : {}
+      }
+      patient.mergedData = EhrDataModel.MergeTwoLevels(base, patient.ehrData)
+      patient.keyData = EhrDataModel.ExtractKeyPatientData(patient.mergedData)
+      return patient
+    })
+    this.sortPatientList(list)
+    return list
+  }
+
+  sortPatientList (list) {
+    const getName = (p) => {
+      return p.keyData ? p.keyData.familyName || {} : ''
+    }
+    list.sort((a, b) => {
+      return getName(a).localeCompare(getName(b))
+    })
   }
 
   findPatientById (id) {
