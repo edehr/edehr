@@ -3,7 +3,7 @@
     div(v-show="showingDialog")
       div(:class="modalClass", :style="{ zIndex: modalZ }")
       div(class="dialog-wrapper",
-        :class="{ dragActive: moused, draggable: !fullScreen, fullScreen: fullScreen }",
+        :class="{ dragActive: moused, draggable: true, fullScreen: fullScreen }",
         ref="theDialog",
         :style="{ top: top + 'px', left: left + 'px', zIndex: modalD }")
         // header
@@ -90,7 +90,7 @@ export default {
       this.$refs.saveButton.$el.focus()
     },
     onDragged ({ el, deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last }) {
-      if (this.fullScreen) return
+      // if (this.fullScreen) return
       // Change top/left position based on drag
       // console.log('on drag', 'deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last' )
       // console.log('on drag first, last', first, last )
