@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     app-dialog(:isModal="false", ref="theDialog", @cancel="cancelDialog", @save="saveDialog")
-      h2(slot="header") These private notes are for you {{userName}}
+      h4(slot="header") These private notes are for you {{userName}}
       div(slot="body")
         textarea(v-model="theNotes")
 </template>
@@ -42,10 +42,12 @@ export default {
       this.$refs.theDialog.onOpen()
     },
     cancelDialog: function () {
+      this.$store.dispatch('system/setScratchPadVisible', false )
       this.resetNotes()
       this.$refs.theDialog.onClose()
     },
     saveDialog: function () {
+      this.$store.dispatch('system/setScratchPadVisible', false )
       this.$refs.theDialog.onClose()
       // console.log('EhrScratchPad saving ', this.theNotes)
       if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
@@ -65,4 +67,7 @@ textarea {
   height: 15rem;
 }
 
+.dialog-wrapper{
+  z-index: 1111 !important;
+}
 </style>

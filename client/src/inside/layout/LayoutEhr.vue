@@ -21,6 +21,7 @@
                 transition(name="hamburger-action")
                   ehr-nav-panel(v-if="showingNavPanel")
             slot Main EHR content selected by the router
+          ehr-scratch-pad-dialog(ref='scratchPad')
       div(v-else, class="ehr-no-content")
         div Search and select a patient.
     app-footer
@@ -35,10 +36,12 @@ import EhrContextBanner from '../components/EhrContextBanner'
 import UiSpinner from '../../app/ui/UiSpinner'
 import StoreHelper from '../../helpers/store-helper'
 import EhrMultiPatientBar from '@/inside/components/EhrMultiPatientBar.vue'
+import EhrScratchPadDialog from '@/inside/components/EhrScratchPadDialog.vue'
 
 export default {
   name: 'LayoutEhr',
   components: {
+    EhrScratchPadDialog,
     EhrMultiPatientBar,
     AppHeader,
     AppFooter,
@@ -56,7 +59,8 @@ export default {
     pageTitle () { return StoreHelper.getPageTitle() },
     ehrOrLis () { return StoreHelper.isEHR_Showing() ? 'ehr-branding' : StoreHelper.isLIS_Showing() ? 'lis-branding' : ''},
     pId () { return this.$store.getters['mPatientStore/currentPatientObjectId'] },
-    hasPatient () { return !! this.pId }
+    hasPatient () { return !! this.pId },
+    scratchPadVisible () { return this.$store.getters['system/scratchPadVisible']}
 
   },
   watch: {
@@ -71,6 +75,9 @@ export default {
         if (currArray[2] === prevArray[2])
           this.showingNavPanel = false
       }
+    },
+    scratchPadVisible (val) {
+      if (val) this.$refs.scratchPad.showDialog()
     }
   }
 }
