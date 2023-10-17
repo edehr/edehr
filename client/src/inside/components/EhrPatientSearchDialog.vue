@@ -11,33 +11,44 @@
     )
       h2(slot="header") {{ titleText }}
       div(slot="body")
-        div Search by MRN or patient's family name
-        div(class="flow_across table_space_across search-box")
+        div(class="intro-container") Enter a patient MRN or part of a patient's family and press Enter or press the Search button to lookup patient records.
+        div(class="search-input-container search-box")
+          label(for="searchNameBox") Patient MRN
           input(
+            id='searchMrnBox',
             ref='searchMrnBox',
             type="text",
-            placeholder='MRN',
             v-model='mrnValue',
-            @keyup.enter="doSearch"
+            @keyup.enter="doSearch",
+            @keyup='clearNameValue'
           )
+        div(class="search-input-container search-box")
+          label(for="searchNameBox") Family name
           input(
+            id='searchNameBox',
             ref='searchNameBox',
             type="text",
             v-model='nameValue',
-            placeholder='Family name',
-            @keyup.enter="doSearch"
+            @keyup.enter="doSearch",
+            @keyup='clearMrnValue'
           )
+        div(class="search-input-container search-box")
+          label(for="searchButton") Search
           button(
+            id="searchButton"
             v-on:click="doSearch",
-            :disabled="!mrnValue || !nameValue",
+            :disabled="!(mrnValue || nameValue)",
             class='search-button'
           )
+            span &nbsp;
             fas-icon(icon="search", class='fa')
+            span &nbsp;
+        hr
         transition(name="fade")
           div
             ui-spinner-small(refId='searchMatchArea', :loading="isLoading")
             div(id='searchMatchArea')
-              div(v-if="searchMatches.length>0") Select patient
+              div(v-if="searchMatches.length>0") Select a patient from the list below
                 div(v-for='p in searchMatches', :key="p._id")
                   input(
                     type='radio',
@@ -70,7 +81,7 @@ export default {
   },
   components: { UiSpinnerSmall, AppDialog },
   computed: {
-    disableSave () { return false },
+    disableSave () { return !this.selectedSeedId },
     isLoading () { return StoreHelper.isLoading() },
     activePatientList () {
       return MPatientHelper.getCurrentPatientList()
@@ -100,8 +111,19 @@ export default {
     },
     clearInputs: function () {
       this.mrnValue = ''
+      this.nameValue = ''
       this.selectedSeedId = undefined
       this.$store.dispatch('mPatientStore/clearSearchMatches')
+    },
+    clearMrnValue () {
+      if (this.nameValue) {
+        this.mrnValue = ''
+      }
+    },
+    clearNameValue () {
+      if (this.mrnValue) {
+        this.nameValue = ''
+      }
     },
     async doSearch () {
       let options
@@ -128,10 +150,11 @@ export default {
       text.push(keyData.mrn ? 'MRN: ' + keyData.mrn : '')
       text.push(keyData.gender ? 'Gender ' + keyData.gender : '')
       text.push(keyData.gender ? 'DoB ' + newDob  : '')
+      let fullText =  text.join(' - ')
       if( StoreHelper.isSeedEditing() && this.searchMatches.length > 0 ) {
-        text.push('created: ' + keyData.createDate )
+        fullText += '. This case study was created on ' + seed.createDate
       }
-      return text.join(' - ')
+      return fullText
     },
     showPatientDialog () {
       this.clearInputs()
@@ -165,3 +188,24 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '../../scss/definitions';
+
+.intro-container {
+  margin-bottom: 1rem;
+}
+#searchButton {
+  min-width: 14rem;
+}
+.search-input-container {
+    display: flex;
+    flex-direction: row;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  & label {
+    min-width: 7rem;
+    text-align: right;
+  }
+}
+</style>
