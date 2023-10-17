@@ -333,6 +333,7 @@ export default class LTIController {
     try {
       const tokenData = {
         consumerKey: visit.consumerKey,
+        isPrimary: toolConsumer.is_primary,
         isInstructor: visit.isInstructor,
         isStudent: visit.isStudent,
         returnUrl: visit.returnUrl,
