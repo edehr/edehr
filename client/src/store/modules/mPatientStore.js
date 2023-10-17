@@ -139,7 +139,11 @@ const mutations = {
   addPatientToActivePatientList (context, object) {
     const list = JSON.parse(JSON.stringify(state.activePatientList))
     list.push(object)
-    list.sort((a,b) => a.mrn.localeCompare(b.mrn))
+    list.sort((a,b) => {
+      let am = a.mrn || ''
+      let bm = b.mrn || ''
+      return am.localeCompare(bm)
+    })
     state.activePatientList = list
     state.currentPatientObjectId = object._id
   },
