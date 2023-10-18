@@ -100,6 +100,10 @@ textarea {
   width: 100%;
 }
 
+.header-3 {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
 input, textarea, select, input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:disabled, .input:disabled, .textarea:disabled, .select:disabled, .select select:disabled {
   color: $black;
   font-weight: bold;
@@ -625,6 +629,7 @@ select, .select {
     padding-top: 5px;
   }
   .form-table-center-content {
+    justify-content: center;
     .form_label_wrapper {
       text-align: center;
       display: block;

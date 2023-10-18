@@ -224,7 +224,9 @@ export default class EhrPageHelper {
       // remove any elements that are calculated
       otherKeys = otherKeys.filter( oKey => {
         const child = ehrPages.getPageChild(pageKey, oKey)
-        return child && child.inputType !== EhrTypes.dataInputTypes.calculatedValue
+        return child
+          && child.inputType !== EhrTypes.dataInputTypes.calculatedValue
+          && child.inputType !== EhrTypes.dataInputTypes.calculatedText
       })
       // console.log('has data keys 2', otherKeys)
       return otherKeys.length > 0
