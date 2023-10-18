@@ -60,6 +60,11 @@ const actions = {
   },
   loadActivityRecord (context) {
     const visitId = context.rootGetters['visit/visitId']
+    if (!visitId ) {
+      console.error('Attempt to make API call to getActivityRecord without a visit available in the visit store')
+      // this error is likely just a temporary initialization problem when a user newly logs on. It happened once.
+      return
+    }
     let url = 'getActivityRecord/' + visitId
     return InstoreHelper.getRequest(context, API, url).then(async response => {
       let results = response.data['activityRecord']
