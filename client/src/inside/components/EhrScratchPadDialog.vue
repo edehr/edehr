@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    app-dialog(:isModal="false", ref="theDialog", @cancel="cancelDialog", @save="saveDialog")
+    app-dialog(:isModal="false", ref="theDialog", @cancel="cancelDialog", @save="saveDialog", :zIndexBase=10000)
       h4(slot="header") These private notes are for you {{userName}}
       div(slot="body")
         textarea(v-model="theNotes")
