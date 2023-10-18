@@ -25,13 +25,20 @@ export const validatorMiddlewareWrapper = (commonControllers) => {
       try {
         const tokenData = authUtil.authenticate(req.headers.authorization)
         // logAuth('validatorMiddlewareWrapper authenticate result ', authUtil.hashToken(tokenData))
-        const { visitId, demoData } = tokenData
+        const { visitId, demoData, isPrimary, userId } = tokenData
         // don't just verify the token.  Also verify the token contains a visitId that still exists.
         const visit = visitId ? await visitController.findOneById(visitId) : undefined
         if (debugMW && visitId) debug('validatorMiddlewareWrapper has visit', visitId, visit)
         if (debugMW && demoData) debug('validatorMiddlewareWrapper has demoData.', demoData)
         if (visit || demoData) {
           req.authPayload = tokenData
+          if (visit) {
+            // loading key data into the req for use downstream. See tracing for an example.
+            req.visitId = visitId
+            req.consumerKey = visit.consumerKey
+            req.isPrimary = isPrimary
+            req.userId = userId
+          }
           next()
         } else {
           debug('validatorMiddleware', Text.INVALID_TOKEN)

@@ -68,7 +68,10 @@ function composeData (req, statusCode, time) {
   // yes stash the visit id in the trace log.
   // Need it to follow the actions on a student's work to ensure the student's work is preserved in the db as they entered it.
   // The users are reporting strange events. To determine the cause after the fact we need this information.
-  rec.visitId = req.authPayload ? req.authPayload.visitId : undefined
+  rec.visitId = req.visitId // req.authPayload ? req.authPayload.visitId : undefined
+  rec.consumerKey = req.consumerKey
+  rec.isPrimary = req.isPrimary
+  rec.userId = req.userId
 
   const includeBody = false
   if (includeBody && isNotEmpty(req.body)) {
@@ -91,12 +94,12 @@ function composeData (req, statusCode, time) {
     delete rec.body['ltiData[lis_person_name_full]']
     delete rec.body['ltiData[user_id']
   }
-  const includeOs = false
+  const includeOs = true
   if (includeOs) {
     const ua = (new uaParser(req.headers['user-agent'])).getResult()
-    rec.os = ua.os
-    rec.device = ua.device
-    rec.browser = ua.browser
+    rec.os = ua.os ? ua.os.name : undefined
+    rec.device = ua.device ? ua.device.model : undefined
+    rec.browser = ua.browser ? ua.browser.name : undefined
   }
   return rec
 }
