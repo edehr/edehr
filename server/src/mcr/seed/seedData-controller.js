@@ -69,7 +69,7 @@ export default class SeedDataController extends BaseController {
     }
     let query = { toolConsumer: new ObjectId(toolConsumerId)}
     name ? query.name = { $regex: name, $options : 'i' } : null
-    mrn ? query.mrn = mrn : null
+    mrn ? query.mrn = { $regex: mrn, $options : 'i' } : null
     const patientList = await this.model.find(query)
     return { patientList: patientList }
   }
