@@ -23,6 +23,7 @@ const EhrTypes = {
     checkbox: 'checkbox',
     boxcheckset: 'boxcheckset',
     select: 'select',
+    calculatedText: 'calculatedText',
     calculatedValue: 'calculatedValue',
     checkset: 'checkset',
     custom_form: 'custom_form',

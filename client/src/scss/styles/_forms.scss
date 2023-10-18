@@ -100,6 +100,10 @@ textarea {
   width: 100%;
 }
 
+.header-3 {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
 input, textarea, select, input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:disabled, .input:disabled, .textarea:disabled, .select:disabled, .select select:disabled {
   color: $black;
   font-weight: bold;
@@ -384,10 +388,24 @@ select, .select {
 
 .grid-left-to-right-1 {
   grid-template-columns: 1fr;
+  .form_label_wrapper {
+    width: 20rem;
+    .form_label {
+      min-width: inherit;
+      max-width: inherit;
+    }
+  }
 }
 
 .grid-left-to-right-2 {
   grid-template-columns: repeat(2, 1fr);
+  .form_label_wrapper {
+    width: 20rem;
+    .form_label {
+      min-width: inherit;
+      max-width: inherit;
+    }
+  }
 }
 
 .grid-left-to-right-3 {
@@ -422,6 +440,12 @@ select, .select {
 .grid-span-3-columns {
   .computed_wrapper {
     .input {
+      max-width: inherit;
+    }
+  }
+
+  .checkbox_wrapper {
+    .form_label {
       max-width: inherit;
     }
   }
@@ -605,6 +629,7 @@ select, .select {
     padding-top: 5px;
   }
   .form-table-center-content {
+    justify-content: center;
     .form_label_wrapper {
       text-align: center;
       display: block;
@@ -655,6 +680,28 @@ select, .select {
 
 .med-lab-urin-qc-table {
   grid-template-columns: repeat(7, 1fr);
+}
+
+.med-lab-urin-qc-pending-table {
+  grid-template-columns: repeat(3, 1fr);
+  .chem-results-lhclch .radio_set  {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 1rem;
+  }
+}
+
+#uqcManOrClinitek {
+  margin-bottom: 1rem;
+  .radio_set {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+#uqcPerformedBy {
+  .form_label {
+    min-width: 12rem;
+  }
 }
 
 .urin-macro-exam {
