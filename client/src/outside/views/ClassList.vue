@@ -89,10 +89,8 @@ export default {
         const visitId = vFromRoute ? vFromRoute : vFomStore
         await StoreHelper.setVisitId(visitId)
         const activityRecord = await this.$store.dispatch('activityStore/loadActivityRecord')
-        await this.$store.dispatch('courseStore/setCourseId', activityRecord.courseId)
-        await this.$store.dispatch('courseStore/loadCurrentCourse')
+        await this.$store.dispatch('courseStore/loadCurrentCourse', { courseId: activityRecord.courseId })
         await this.$store.dispatch('instructor/loadClassList')
-
       } catch(error){
         console.error('CL loadComponent failed', error)
       }

@@ -113,8 +113,7 @@ export default {
     saveDialog: async function () {
       this.$refs.theDialog.onClose()
       if (this.actionType === EDIT_ACTION) {
-        await StoreHelper.updateCourse(this.course, this.courseTitle, this.description)
-        this.$emit('updateCourseProperties')
+        this.$emit('updateCourseProperties', { courseId: this.course._id , title: this.courseTitle, description: this.description})
       }
     }
   }

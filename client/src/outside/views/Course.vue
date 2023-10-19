@@ -14,6 +14,17 @@
       div(v-if='isInstructor', class="instructions") {{ text.ACTIVITY_INSTRUCTOR_SELECT_NAV }}
         span &nbsp; This course has {{countActivities}} activities.
       div(v-else, class="instructions") {{ text.ACTIVITY_STUDENT_SELECT_NAV }}
+      div(v-if="skillsIsActivityActive")
+        h3 Skills assessment mode is active. &nbsp;
+          ui-info(title="Skills assessment", :html="skillsText")
+        zone-lms-button(
+          v-if='isInstructor',
+          :icon='appIcons.stopCircle',
+          title='Stop the skills assessment',
+          class='stop-assessment',
+          @action='skillsClear'
+          )
+        span &nbsp; END Skils Assessment
     div(class="e-table")
       div(class="thead")
         div(class="thcell")
@@ -43,18 +54,20 @@
               title="Sort by created date")
               fas-icon(class="fa", :icon="sortColumnIcon(columnCreated)")
         div(v-if="isStudent", class="thcell") Status
-        div(v-if="isStudent", class="thcell e-actions") &nbsp;
+        div(class="thcell e-actions") &nbsp;
       div(class="tbody")
         div(class="row",
           v-for="(activityItem, index) in linkedCourseActivities",
-          :key="activityItem._id",
+          :key="activityItem.id",
           :class="rowClass(activityItem)")
           div(class='cell e-name')
             router-link(
+              v-if="canAccessActivity(activityItem)",
               :to="activityRouting(activityItem)",
               class='router-item')
               fas-icon(class="fa", :icon="appIcons.course")
               span {{ activityItem.title }}
+            div(v-else) {{ activityItem.title }}
           div(class='cell e-description')
             span {{truncate(activityItem.description, 100)}}
           div(class='cell')
@@ -65,9 +78,18 @@
             span {{ activityItem.createDate | formatDateTime }}
           div(v-if="isStudent", class='cell e-status')
             div {{ activityItem.submitted ? 'Submitted' : 'Open to edit' }}
-          div(v-if="isStudent", class="cell e-actions")
-            ui-button(@buttonClicked="goToEhr(activityItem)") {{ appTypeGoToText(activityItem) }}
-    course-dialog(ref="theDialog", @updateCourseProperties="updateCourseProperties")
+          div(class="cell e-actions")
+            zone-lms-button(
+              v-if="isInstructor",
+              :icon='appIcons.stopwatch',
+              title='Skills assessment',
+              @action="skillsToggle(activityItem)"
+              )
+            ui-button(
+              v-if="isStudent && canAccessActivity(activityItem)",
+              @buttonClicked="goToEhr(activityItem)"
+              ) {{ appTypeGoToText(activityItem) }}
+    course-dialog(ref="theCourseDialog", @updateCourseProperties="updateCourseProperties")
 </template>
 
 <script>
@@ -83,6 +105,7 @@ import CourseDialog from '@/outside/components/lms-course/CourseDialog.vue'
 import UiButton from '@/app/ui/UiButton.vue'
 import UiTableHeaderButton from '@/app/ui/UiTableHeaderButton.vue'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner.vue'
+import UiInfo from '@/app/ui/UiInfo.vue'
 
 const ASC = 'asc'
 const DESC = 'desc'
@@ -90,6 +113,7 @@ const DESC = 'desc'
 export default {
   extends: OutsideCommon,
   components: {
+    UiInfo,
     ZoneLmsPageBanner,
     UiTableHeaderButton,
     UiButton,
@@ -103,7 +127,6 @@ export default {
     return {
       appIcons: APP_ICONS,
       text: Text.COURSE_PAGE,
-      courseId: '',
       columnName: 'title',
       columnCreated: 'createDate',
       columnUpdated: 'lastUpdate',
@@ -112,12 +135,14 @@ export default {
     }
   },
   computed: {
+    skillsText () { return this.isStudent ?
+      'For this course, you can only see activities selected by your instructor.' :
+      'Students are limited to the activities that you have selected.</br>Use the STOP button to reset all activities to normal.' },
     canDo () { return StoreHelper.isDevelopingContent() },
     buttonText () { return this.canDo ? Text.COURSE_DIALOG.BUTTON_TEXT.EDIT: Text.COURSE_DIALOG.BUTTON_TEXT.VIEW},
     toolTip () { return this.canDo ? Text.COURSE_DIALOG.TITLES.EDIT: Text.COURSE_DIALOG.TITLES.VIEW },
-    course () {
-      return this.$store.getters['courseStore/course']
-    },
+    course () { return this.$store.getters['courseStore/course'] },
+    skillsIsActivityActive () { return this.$store.getters['courseStore/skillsAssessmentIsActive'] },
     courseActivities () {
       return this.$store.getters['courseStore/courseActivities'] || []
     },
@@ -132,6 +157,18 @@ export default {
     appTypeGoToText (activityItem) {
       return 'Go to ' + (activityItem.appType === APP_TYPE_LIS ? 'LIS' :
         activityItem.appType === APP_TYPE_EHR ? 'EHR' : 'EHR')
+    },
+    canAccessActivity (activityItem) {
+      if (this.isInstructor) {
+        return true
+      }
+      if (this.isStudent) {
+        let canAccess = true
+        if (this.course.skillsAssessmentIsActive) {
+          canAccess = this.skillsIsActiveFor(activityItem)
+        }
+        return canAccess
+      }
     },
     activityRouting (activityItem) {
       const name = this.isInstructor ? 'lms-instructor-activity' : 'lms-student-activity'
@@ -148,8 +185,10 @@ export default {
     },
     rowClass: function (item) {
       const activityId = this.$store.getters['activityStore/activityId']
-      let selected = item.id === activityId
+      let selected = item._id === activityId
       let classString = selected ? 'selected ' : ''
+      let isSkills = this.skillsIsActiveFor(item)
+      classString += isSkills ? 'skills-active' : ''
       return `${classString}`
     },
     async loadCurrentActivity () {
@@ -164,36 +203,46 @@ export default {
       const query = this.$route.query
       const fromRoute = query.courseId
       const fromStore = this.$store.getters['courseStore/courseId']
-      this.courseId = fromRoute || fromStore
-      if (!this.courseId) {
+      let courseId = fromRoute || fromStore
+      if (!courseId) {
         console.error('Course page load did not receive course id. This is a coding error')
         return
       }
       const fromRouteSort = query.sortKey || this.columnName
       const fromRouteDirection = query.sortDir || ASC
       let queryPayload = {
+        courseId: courseId,
         sortKey: fromRouteSort,
         sortDir: fromRouteDirection,
       }
-      await this.$store.dispatch('courseStore/setCourseId', this.courseId)
       await this.$store.dispatch('courseStore/loadCurrentCourse', queryPayload)
       if(fromRoute !== fromStore) {
         console.log('Changing course ', fromRoute, fromStore, '. Clear current activity')
         await this.$store.dispatch('activityStore/clearCurrentActivity')
       }
     },
-
     route () {
       let query = {}
-      query.courseId = this.courseId
+      query.courseId = this.course._id
       query.sortKey = this.sortKey
       query.sortDir = this.sortDir
       this.$router.push({ query: query })
       const qs = JSON.stringify(query).replace(/"/g,'\'')
       StoreHelper.postActionEvent(CREATOR_ACTION,'courseList-'+qs)
     },
+    skillsIsActiveFor (activityItem) {
+      return this.$store.getters['courseStore/skillsIsActivityActive'](activityItem.id)
+    },
+    async skillsToggle (activityItem) {
+      await this.$store.dispatch('courseStore/skillsAssessmentToggle', activityItem.id)
+      await this.loadComponent()
+    },
+    async skillsClear () {
+      await this.$store.dispatch('courseStore/skillsAssessmentClear')
+      await this.loadComponent()
+    },
     showEditDialog: function (course) {
-      this.$refs.theDialog.showDialog(course, this.canDo)
+      this.$refs.theCourseDialog.showDialog(course, this.canDo)
     },
     sortColumnIcon (columnName) {
       let icon = APP_ICONS.sortNone
@@ -216,8 +265,14 @@ export default {
     truncate (input, lim) {
       return input && input.length > lim ? `${input.substring(0, lim)}...` : input
     },
-    async updateCourseProperties () {
-      await this.$store.dispatch('courseStore/loadCurrentCourse')
+    /**
+     *
+     * @param payload to contain title and description
+     * @returns {Promise<void>}
+     */
+    async updateCourseProperties (payload) {
+      await this.$store.dispatch('courseStore/updateCourse',payload)
+      await this.loadComponent()
     }
   }
 }
@@ -237,4 +292,11 @@ export default {
   margin-bottom: 1rem;
 }
 
+.skills-active {
+  background-color: $green !important;
+}
+.stop-assessment {
+  background-color: $red;
+  color: $white;
+}
 </style>
