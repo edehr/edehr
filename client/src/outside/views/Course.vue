@@ -11,20 +11,25 @@
         )
     div(class="details-container card")
       div(class="course-description") {{ course.description }}
-      div(v-if='isInstructor', class="instructions") {{ text.ACTIVITY_INSTRUCTOR_SELECT_NAV }}
-        span &nbsp; This course has {{countActivities}} activities.
-      div(v-else, class="instructions") {{ text.ACTIVITY_STUDENT_SELECT_NAV }}
-      div(v-if="skillsIsActivityActive")
-        h3 Skills assessment mode is active. &nbsp;
-          ui-info(title="Skills assessment", :html="skillsText")
-        zone-lms-button(
-          v-if='isInstructor',
-          :icon='appIcons.stopCircle',
-          title='Stop the skills assessment',
-          class='stop-assessment',
-          @action='skillsClear'
-          )
-        span &nbsp; END Skils Assessment
+      div(class='flow_across menu_space_across')
+        h3(v-if='isInstructor', class="instructions")
+          span This course has {{countActivities}} activities.
+          span &nbsp;  {{ text.ACTIVITY_INSTRUCTOR_SELECT_NAV }}
+        div(v-else, class="instructions") {{ text.ACTIVITY_STUDENT_SELECT_NAV }}
+        // SKILLS ASSESSMENT
+        div(v-if="skillsIsActivityActive", class='flow_across menu_space_across')
+          h3 Note that the skills assessment mode is active. &nbsp;
+            ui-info(title="Skills assessment", :html="skillsText")
+          div(v-if='isInstructor')
+            ui-button(
+              title='Stop the skills assessment',
+              class='zone-lms-button stop-assessment',
+              v-on:buttonClicked="skillsClear"
+              )
+              fas-icon(class="fa", icon="appIcons.stopCircle", :title="Stop")
+              span &nbsp; END Skills Assessment
+        // END SKILLS ASSESSMENT
+
     div(class="e-table")
       div(class="thead")
         div(class="thcell")
@@ -79,17 +84,21 @@
           div(v-if="isStudent", class='cell e-status')
             div {{ activityItem.submitted ? 'Submitted' : 'Open to edit' }}
           div(class="cell e-actions")
+            // SKILLS ASSESSMENT
             zone-lms-button(
               v-if="isInstructor",
               :icon='appIcons.stopwatch',
               title='Skills assessment',
               @action="skillsToggle(activityItem)"
               )
+            // END SKILLS ASSESSMENT
             ui-button(
               v-if="isStudent && canAccessActivity(activityItem)",
               @buttonClicked="goToEhr(activityItem)"
               ) {{ appTypeGoToText(activityItem) }}
     course-dialog(ref="theCourseDialog", @updateCourseProperties="updateCourseProperties")
+    ui-confirm(ref="confirmSkillsDialog", v-on:confirm="proceedSkills", saveLabel='Continue')
+    ui-agree(ref="confirmStudentSkillsIsOnDialog")
 </template>
 
 <script>
@@ -106,6 +115,8 @@ import UiButton from '@/app/ui/UiButton.vue'
 import UiTableHeaderButton from '@/app/ui/UiTableHeaderButton.vue'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner.vue'
 import UiInfo from '@/app/ui/UiInfo.vue'
+import UiConfirm from '@/app/ui/UiConfirm.vue'
+import UiAgree from '@/app/ui/UiAgree.vue'
 
 const ASC = 'asc'
 const DESC = 'desc'
@@ -113,6 +124,8 @@ const DESC = 'desc'
 export default {
   extends: OutsideCommon,
   components: {
+    UiAgree,
+    UiConfirm,
     UiInfo,
     ZoneLmsPageBanner,
     UiTableHeaderButton,
@@ -137,7 +150,9 @@ export default {
   computed: {
     skillsText () { return this.isStudent ?
       'For this course, you can only see activities selected by your instructor.' :
-      'Students are limited to the activities that you have selected.</br>Use the STOP button to reset all activities to normal.' },
+      '<p>Students are limited to the activities that you have selected.</p>' +
+      '<p>You can select more than one activity. Reselect the activity to remove an activity from the list.</p>' +
+      '<p>Use the END button to reset all activities to normal.</p>' },
     canDo () { return StoreHelper.isDevelopingContent() },
     buttonText () { return this.canDo ? Text.COURSE_DIALOG.BUTTON_TEXT.EDIT: Text.COURSE_DIALOG.BUTTON_TEXT.VIEW},
     toolTip () { return this.canDo ? Text.COURSE_DIALOG.TITLES.EDIT: Text.COURSE_DIALOG.TITLES.VIEW },
@@ -201,6 +216,7 @@ export default {
     },
     async loadComponent () {
       const query = this.$route.query
+      const redirect = query.redirect
       const fromRoute = query.courseId
       const fromStore = this.$store.getters['courseStore/courseId']
       let courseId = fromRoute || fromStore
@@ -220,6 +236,11 @@ export default {
         console.log('Changing course ', fromRoute, fromStore, '. Clear current activity')
         await this.$store.dispatch('activityStore/clearCurrentActivity')
       }
+      if(redirect) {
+        this.$refs.confirmStudentSkillsIsOnDialog.showDialog('Skills Assessment',
+          'You have been bumped to your course listing because your instructor has blocked ' +
+          'the activity you tried to reach until skills assessment is completed.')
+      }
     },
     route () {
       let query = {}
@@ -233,10 +254,20 @@ export default {
     skillsIsActiveFor (activityItem) {
       return this.$store.getters['courseStore/skillsIsActivityActive'](activityItem.id)
     },
-    async skillsToggle (activityItem) {
+    skillsToggle (activityItem) {
+      if (!this.skillsIsActivityActive) {
+        this.$refs.confirmSkillsDialog.showDialog('Enabled Skills Assessment?',
+          'When you enable skills assessment your students will be restricted to working this this activity and any others that you select, until you stop the skills assessment', activityItem
+        )
+      } else {
+        this.proceedSkills(activityItem)
+      }
+    },
+    async proceedSkills (activityItem) {
       await this.$store.dispatch('courseStore/skillsAssessmentToggle', activityItem.id)
       await this.loadComponent()
     },
+
     async skillsClear () {
       await this.$store.dispatch('courseStore/skillsAssessmentClear')
       await this.loadComponent()

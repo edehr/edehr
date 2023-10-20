@@ -42,7 +42,8 @@ export default {
   },
 
   methods: {
-    showDialog: function (title, msg) {
+    showDialog: function (title, msg, data) {
+      this.data = data
       this.title = title  || this.title
       this.text = msg || this.text
       this.$refs.theDialog.onOpen()
@@ -58,7 +59,7 @@ export default {
     },
     confirmDialog: function () {
       this.closeIt()
-      this.$emit(CONFIRM_EVENT)
+      this.$emit(CONFIRM_EVENT, this.data)
     }
   }
 }

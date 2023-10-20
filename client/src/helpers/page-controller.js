@@ -291,7 +291,7 @@ async  function onPageChange (toRoute) {
           const courseId = theActivity.courseId
           // console.log('Student is not allowed to see the activity.', aId, ' Send them to course ', courseId)
           await store.dispatch('activityStore/clearCurrentActivity')
-          await router.push({ name: COURSE_ROUTE_NAME, query: { courseId: courseId }})
+          await router.push({ name: COURSE_ROUTE_NAME, query: { courseId: courseId, redirect: 'true' }})
         }
       }
       /*
