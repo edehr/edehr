@@ -1,7 +1,7 @@
 import EventBus from '@/helpers/event-bus'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import StoreHelper, { ENABLE_FULL_DEMO_AUTO_LINK } from '@/helpers/store-helper'
-import router from '@/router'
+import router, { COURSE_ROUTE_NAME } from '@/router'
 import { setAuthHeader } from '@/helpers/axios-helper'
 import { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import {
@@ -38,7 +38,7 @@ function perfExit (perfStat) {
    * @return {Promise<unknown>}
    */
 async  function onPageChange (toRoute) {
-  console.log('toRoute', toRoute.path)
+  console.log('onPageChange toRoute', toRoute.path)
   // console.log('toRoute', toRoute.fullPath)
   // console.log('page change to: ', toRoute.name, JSON.stringify(toRoute.meta), JSON.stringify(toRoute.query))
   const perfStat = { start: {}, elapsed: {} }
@@ -215,7 +215,10 @@ async  function onPageChange (toRoute) {
       // EXIT
     }
 
-    // Proceed to manage page load for EHR pages.
+    /*
+      FROM HERE ON THE USER IS LOADING AN EHR PAGE
+     */
+
     const storedVisitId = store.getters['visit/visitId']
     const authVisitId = store.getters['authStore/visitId']
     let visitId = optionalVisitId || storedVisitId || authVisitId
@@ -224,10 +227,8 @@ async  function onPageChange (toRoute) {
     await store.dispatch('visit/loadVisitRecord')
     // dup-in loadInstructorWithStudent
     let theActivity = await store.dispatch('activityStore/loadActivityRecord')
-    // we don't need to wait for these next two api calls. This speeds up page load by about 100ms
-    store.dispatch('courseStore/setCourseId', theActivity.courseId)
-    store.dispatch('courseStore/loadCurrentCourse')
-
+    // need to load course to obtain skills assessment details
+    await store.dispatch('courseStore/loadCurrentCourse', { courseId: theActivity.courseId })
     // **** If page is the one that handles unlinked activities then we are done ... EXIT
     if (routeName === UNLINKED_ACTIVITY_ROUTE_NAME) {
       console.log('UNLINKED_ACTIVITY_ROUTE_NAME --- OKAY? ---finish page change for unlinked activity')
@@ -275,6 +276,26 @@ async  function onPageChange (toRoute) {
     }
     if (StoreHelper.isStudent()) {
       /*
+      SKILLS ASSESSMENT  --
+
+      If instructor has enabled this mode, for a particular course, then students can only see the
+      activities allowed by the instructor.  If a student tries to access one of the inactive
+      activities then send them to their course dashboard.  The dashboard will have signage for
+      the student to see what is happening.
+       */
+      const aId = theActivity.id
+      const isSkillsAssessmentActive = store.getters['courseStore/skillsAssessmentIsActive']
+      if (isSkillsAssessmentActive) {
+        const isThisActivityOpen = store.getters['courseStore/skillsIsActivityActive'](aId)
+        if (!isThisActivityOpen) {
+          const courseId = theActivity.courseId
+          // console.log('Student is not allowed to see the activity.', aId, ' Send them to course ', courseId)
+          await store.dispatch('activityStore/clearCurrentActivity')
+          await router.push({ name: COURSE_ROUTE_NAME, query: { courseId: courseId, redirect: 'true' }})
+        }
+      }
+      /*
+        Special case clean up ----
         If a user is able to log into the LMS first as an instructor, and they set themselves as a content editor,
         and then they log into their LMS as a student the system will remember they are also a content editor
         which means certain menu items appear. Such as the content creators documentation link in the application banner.
@@ -285,6 +306,9 @@ async  function onPageChange (toRoute) {
       if (StoreHelper.isDevelopingContent()) {
         StoreHelper.setIsDevelopingContent(false)
       }
+      /*
+      STUDENT PAGE LOAD FOR EHR PAGES
+       */
       if (dbApp) console.log('student ehr page load')
       // loadActivityData gets both the activityData and the student's assignment data with the patient list
       await store.dispatch('activityDataStore/loadActivityData', { id: theActivity.activityDataId })
@@ -293,11 +317,11 @@ async  function onPageChange (toRoute) {
       const theLObj = store.getters['assignmentStore/learningObject']
       let pId
       if (optionalVisitId && theLObj.seedDataId) {
-        pId = theLObj.seedDataId
+        pId = theLObj.seedDataId // patient id from learning object
       } else if (patientId) {
-        pId = patientId
+        pId = patientId // patient id from query string
       } else {
-        pId = store.getters['mPatientStore/currentPatientObjectId']
+        pId = store.getters['mPatientStore/currentPatientObjectId'] // stashed from previous page visit
         if (!pId) {
           if (dbApp) console.log('student has no stored pId so see if there is a list and select one of the patients')
           const list = MPatientHelper.getCurrentPatientList()

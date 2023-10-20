@@ -324,15 +324,6 @@ class StoreHelperWorker {
   getAssignmentsList () { return this._getAssignmentListProperty('list') }
   getInstructorCourses () { return this._getInstructorProperty('courseList') }
   dispatchLoadCourses ( ) { return this._dispatchInstructor('loadCourses' )  }
-  async updateCourse (course, title, description) {
-    let courseData = {
-      custom_title: title,
-      custom_description: description
-    }
-    let dataIdPlusPayload = { id: course.id, payload: courseData }
-    await this._dispatchCourse('updateCourse', dataIdPlusPayload)
-    StoreHelper.postActionEvent(CREATOR_ACTION, 'updateCourse')
-  }
 
   async restoreAsInstructor (router) {
     const newToken = await this._dispatchVisit('restoreAsInstructor')

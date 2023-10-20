@@ -7,7 +7,12 @@ import Visit from '../visit/visit'
 import Activity from '../activity/activity'
 import { ParameterError } from '../common/errors'
 import { Text } from '../../config/text'
+import mongoose from 'mongoose'
 const debug = require('debug')('server')
+
+const SKILLS_ADD = 'add'
+const SKILLS_REMOVE = 'remove'
+const SKILLS_CLEAR = 'clear'
 
 export default class CourseController extends BaseController {
   constructor () {
@@ -50,8 +55,7 @@ export default class CourseController extends BaseController {
       title: full.custom_title || full.context_title || 'Unknown',
       description: d === undefined ? full.context_label : d,
       id: full._id,
-      skillsAssessmentMode: full.skillsAssessmentMode,
-      skillsAssessmentActivity: full.skillsAssessmentActivity
+      skillsAssessmentActivities: full.skillsAssessmentActivities
     }
   }
 
@@ -115,24 +119,41 @@ export default class CourseController extends BaseController {
     return courseActivities
   }
 
-  updateSkillsAssessment (id, data) {
-    debug(`enableSkillsAssessment course ${id} data: [${JSON.stringify(data)}]`)
-    return this.baseFindOneQuery(id).then(course => {
+  updateSkillsAssessment (courseId, action, activityId) {
+    debug(`updateSkillsAssessment. Course id ${courseId}. Action: ${action}. Activity id: ${activityId}`)
+    return this.baseFindOneQuery(courseId).then(course => {
       if (course) {
-        course.skillsAssessmentMode = data.skillsAssessmentMode
-        course.skillsAssessmentActivity = data.skillsAssessmentActivity
+        if (SKILLS_CLEAR === action) {
+          course.skillsAssessmentActivities = []
+        } else {
+          const index = course.skillsAssessmentActivities.indexOf(activityId)
+          if (SKILLS_REMOVE === action && index > -1) { // only splice array when item is found
+            course.skillsAssessmentActivities.splice(index, 1) // 2nd parameter means remove one item only
+          }
+          if (SKILLS_ADD === action && index === -1) {
+            course.skillsAssessmentActivities.push(activityId)
+          }
+        }
+        course.markModified('skillsAssessmentActivities')
         return course.save()
       } else {
-        logError('Coding error, possibility. Could not find course by id ' + id + ' to perform update')
+        logError('Coding error, possibility. Could not find course by id ' + courseId + ' to perform update')
       }
     })
   }
+
+  /**
+   *
+   * @param id ObjectId of course
+   * @param data to contain title and description
+   * @returns {*} updated Course
+   */
   updateCourse (id, data) {
     debug(`Update course ${id} data: [${JSON.stringify(data)}]`)
     return this.baseFindOneQuery(id).then(course => {
       if (course) {
-        course.custom_title = data.custom_title
-        course.custom_description = data.custom_description
+        if ( data.title ) course.custom_title = data.title
+        if ( data.description ) course.custom_description = data.description
         return course.save()
       } else {
         logError('Coding error, possibility. Could not find course by id ' + id + ' to perform update')
@@ -185,7 +206,6 @@ export default class CourseController extends BaseController {
         .then(null, fail(req, res))
     })
 
-
     router.get('/course/:key', (req, res) => {
       const courseId = req.params.key
       if (!courseId || courseId === 'undefined') {
@@ -201,19 +221,36 @@ export default class CourseController extends BaseController {
         .then(null, fail(req, res))
     })
 
-    router.put('/updateCourse/:key', (req, res) => {
+    router.put('/update-course/:key', (req, res) => {
       this
         .updateCourse(req.params.key, req.body)
         .then(ok(res))
         .then(null, fail(req, res))
     })
 
-    router.put('/enable-skills-assessment/:id', (req, res) => {
+    router.put('/skills-assessment/:course/:action/:activity?', (req, res) => {
+      debug('updateSkillsAssessment', req.params)
       if (!req.authPayload.isInstructor) {
         return res.status(401).send(Text.MUST_BE_INSTRUCTOR)
       }
+      const course = req.params.course
+      const action = req.params.action
+      const activityId = req.params.activity
+      const ACTIONS_ALL = [ SKILLS_CLEAR, SKILLS_ADD, SKILLS_REMOVE ]
+      const ACTIONS_WITH_ACTIVITY = [ SKILLS_ADD, SKILLS_REMOVE ]
+      const needsActivity = ACTIONS_WITH_ACTIVITY.includes(action)
+      if (!ACTIONS_ALL.includes(action) ) {
+        return res.status(400).send(Text.COURSE_INVALID_SKILLS_ACTION)
+      }
+      if (needsActivity) {
+        if (!activityId) {
+          return res.status(400).send(Text.COURSE_INVALID_SKILLS_AID)
+        } else if (!mongoose.Types.ObjectId.isValid(activityId)) {
+          return res.status(400).send(Text.REQUIRES_ACTIVITY_ID)
+        }
+      }
       this
-        .updateSkillsAssessment(req.params.key, req.body)
+        .updateSkillsAssessment(course, action, activityId)
         .then(ok(res))
         .then(null, fail(req, res))
     })

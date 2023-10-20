@@ -27,6 +27,23 @@ The main parts of your student's view of the EdEHR include
 - The ```Tools``` menu provides quick access to the student's tools (see below)
 ![2]
 
+## Skills Assessment Mode
+
+If you see the ```Skills Assessment ``` warning then you have tried to access an activity that your instructor doesn't want students to see during a skills assessment period.
+Click OK and then pick one of the activities with a green background.
+![14]
+
+
+## Patient selection
+
+If you arrive in the charting area and there is no patient then use the ```Search``` button to locate your patient. You can repeat the search to view more than one patient. Just as you will do in the real-life clinic.
+![15]
+
+Searching. Even parts of a name or MRN can lead you to patients.  Of course, your instructor will most likely told you what your patient MRN and/or family name is.
+![16]
+
+Here is a sample showing two patients.  Just click the patient tab to switch views.
+![17]
 
 # Student tools menu
 The ```Tools``` menu lets the student access their courses, the current activity, the student's scratch pad, and to return back to your learning management system (LMS). The tools menu is always available in the application banner.
@@ -76,9 +93,6 @@ Once the instructor has evaluated the work and released these evaluation notes, 
 ![6]
 
 ## Dashboard
-
-
-
 
 This is your dashboard where you can access all your activities in one place.  This is also where you can read what your instructor has said about your work.
 
@@ -139,3 +153,7 @@ The Activity page displays the activity name, description, the current status (o
 [11]: ./student-courses-page.png "Student courses page"
 [12]: ./student-course-page.png "Student course page"
 [13]: ./student-activity-page.png "Student activity page"
+[14]: ./student-redirect-skills-assessment.png "Student skills assessment redirect"
+[15]: ./student-no-patient.png "Student initially without a patient"
+[16]: ./student-patient-dearch-dialog.png "Student patient search dialog"
+[17]: ./student-mPatient.png "Student view with two patients"

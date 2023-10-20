@@ -99,8 +99,7 @@ export default {
       // console.log('load component for LMS student activity', vFromRoute, vFomStore)
       await StoreHelper.setVisitId(visitId) //note this stores the visit id to survive page changes and browser refresh
       const activityRecord = await this.$store.dispatch('activityStore/loadActivityRecord')
-      await this.$store.dispatch('courseStore/setCourseId', activityRecord.courseId)
-      await this.$store.dispatch('courseStore/loadCurrentCourse')
+      await this.$store.dispatch('courseStore/loadCurrentCourse', { courseId: activityRecord.courseId })
       // console.log('loaded ', activityRecord)
     },
     goToEhr () {

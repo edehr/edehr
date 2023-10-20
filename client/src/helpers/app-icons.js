@@ -28,6 +28,8 @@ export const APP_ICONS = {
   sortAsc: 'sort-down',
   sortDesc: 'sort-up',
   sortNone: 'sort',
+  stopwatch: 'stopwatch',
+  stopCircle: 'stop-circle',
   student: 'user-graduate',
   table: 'table',
   tags: 'tag', // for filtering by tag applied to an object

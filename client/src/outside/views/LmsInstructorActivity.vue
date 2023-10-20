@@ -158,9 +158,7 @@ export default {
         await router.push({ name: UNLINKED_ACTIVITY_ROUTE_NAME, query: { activityId: activityRecord.id } })
         return
       }
-
-      await this.$store.dispatch('courseStore/setCourseId', activityRecord.courseId)
-      await this.$store.dispatch('courseStore/loadCurrentCourse')
+      await this.$store.dispatch('courseStore/loadCurrentCourse', { courseId: activityRecord.courseId })
       await this.$store.dispatch('instructor/loadClassList')
     },
     showEditDialog: function () {

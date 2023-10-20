@@ -45,6 +45,10 @@ export const Text = {
   TOKEN_REQUIRED: 'A token is required',
   SERVER_TOKEN_REQUIRED: 'Server must be provided with an api token for access to this resource.',
 
+  // COURSES and ACTIVITIES
+  COURSE_INVALID_SKILLS_ACTION: 'Request to change course skills requires correct action parameter',
+  COURSE_INVALID_SKILLS_AID: 'Request to change course skills requires activity id',
+
   // Lookahead
   SEARCH_TERM_REQUIRED: 'Need to provide a search term for the medication lookup',
   SEARCH_TERM_TYPE_ERROR: 'Search term for the medication lookup need to be given a string',

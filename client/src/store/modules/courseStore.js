@@ -1,36 +1,66 @@
 import InstoreHelper from '@/store/modules/instoreHelper'
-import StoreHelper from '@/helpers/store-helper'
+import StoreHelper, { CREATOR_ACTION, INSTRUCTOR_ACTION } from '@/helpers/store-helper'
 import { Text } from '@/helpers/ehr-text'
 const API = 'courses'
+const COURSE_LOCAL_STORE ='courseId'
 
 const state = {
   course: {},
-  courseId: '',
   courseList: []
 }
 
 const getters = {
   course: state => state.course,
-  hasCourse: state => JSON.stringify(state.course).length > 2,
+  hasCourse: state => !!state.course._id,
   courseList: state => state.courseList,
   courseActivities: state => state.course.courseActivities,
-  courseId: state => state.courseId,
   courseTitle: state => state.course.title,
   courseDescription: state => state.course.description,
+  skillsAssessmentIsActive: state => state.course.skillsAssessmentIsActive,
+  skillsIsActivityActive: state => (activityId) => {
+    const activities = state.course.skillsAssessmentActivities || []
+    return activities.indexOf(activityId) >-1
+  }
 }
 
+function skillsHelper (context, action, activityId) {
+  if (context.state.course._id) {
+    const courseId = context.state.course._id
+    const API = 'courses'
+    let url = 'skills-assessment/' + courseId + '/' + action
+    let eventTag = 'skillsAssessment_' + action
+    if (activityId) {
+      url += '/' + activityId
+      eventTag += '_' + activityId
+    }
+    return InstoreHelper
+      .putRequest(context, API, url)
+      .then(async results => {
+        await context.commit('setCourse', results.data)
+      })
+      .catch(err => {
+        let msg = Text.UPDATE_COURSE_ERROR(err)
+        console.error(msg)
+        StoreHelper.setApiError(msg)
+      })
+      .finally(() => {
+        StoreHelper.postActionEvent(INSTRUCTOR_ACTION, eventTag)
+      })
+  } else {
+    console.error('Why is someone calling the skillsHelper without a course?')
+  }
+}
 const actions = {
-  initialize: function ({ commit }) {
-    commit('initialize')
+  initialize: async function (context) {
+    const courseId = localStorage.getItem(COURSE_LOCAL_STORE)
+    if (courseId) {
+      await context.dispatch('loadCurrentCourse', { courseId: courseId })
+    }
   },
   clearCourse: async function (context) {
-    context.commit('setCourseId', undefined)
+    context.commit('_clearCourse')
     await context.dispatch('activityStore/clearCurrentActivity', undefined, { root: true })
   },
-  setCourseId (context, id) {
-    context.commit('setCourseId', id)
-  },
-
   loadCourses (context) {
     let url = 'courseList'
     return InstoreHelper.getRequest(context, API, url)
@@ -40,9 +70,8 @@ const actions = {
         return courseList
       })
   },
-
   loadCurrentCourse (context, payload) {
-    const id = state.courseId
+    const id = payload.courseId
     if(!id || id.length===0) {
       throw new Error('System failure. Can not load the current course because no course id has been set')
     }
@@ -61,14 +90,29 @@ const actions = {
       return results
     })
   },
-
-
-  updateCourse (context, dataIdPlusPayload) {
-    let id = dataIdPlusPayload.id
-    let payload = dataIdPlusPayload.payload
+  async skillsAssessmentToggle (context, activityId) {
+    const isActive = context.getters.skillsIsActivityActive(activityId)
+    const action = isActive ? 'remove' : 'add'
+    await skillsHelper(context, action, activityId)
+  },
+  async skillsAssessmentClear (context) {
+    await skillsHelper(context, 'clear')
+  },
+  /**
+   *
+   * @param context
+   * @param payload to contain title and description
+   * @returns {Promise<unknown>}
+   */
+  updateCourse (context, payload) {
+    const courseId = context.state.course._id
+    const API = 'courses'
+    let url = 'update-course/' + courseId
     return InstoreHelper
-      .putRequest(context, 'courses/updateCourse', id, payload)
-      .then(results => {
+      .putRequest(context, API, url, payload)
+      .then(async results => {
+        const course = results.data
+        await context.commit('setCourse', course)
         return context.dispatch('loadCourses')
       })
       .catch(err => {
@@ -76,36 +120,26 @@ const actions = {
         console.error(msg)
         StoreHelper.setApiError(msg)
       })
+      .finally( () => {
+        StoreHelper.postActionEvent(INSTRUCTOR_ACTION, 'updateCourse')
+      })
   }
 }
 
-const COURSE_LOCAL_STORE ='courseId'
 const mutations = {
-  initialize: function (state) {
-    // if stored get the courseId. Once it is in place a page load can request the course data
-    const courseId = localStorage.getItem(COURSE_LOCAL_STORE)
-    if (courseId) {
-      state.courseId = courseId
-    }
-  },
-  setCourseId: (state, id) => {
-    if (id) {
-      state.courseId = id
-      // This id needs to survive a browser refresh
-      localStorage.setItem(COURSE_LOCAL_STORE, state.courseId)
-    } else {
-      state.courseId = ''
-      // This id needs to survive a browser refresh
-      localStorage.removeItem(COURSE_LOCAL_STORE)
-    }
-  },
   setCourse: (state, course) => {
     const cId = course && course._id ? course._id.toString() : undefined
-    if(state.courseId !== cId) {
-      console.error('Course storage expected course id', state.courseId, 'incoming course id', cId,'given course', course)
-      throw new Error('System failure. The given course has a different id then expected.')
+    if(!cId) {
+      const msg = 'Course storage can not set course. Parameter is empty or lacks id.'
+      console.error(msg)
+      throw new Error(msg)
     }
     state.course = course
+    localStorage.setItem(COURSE_LOCAL_STORE, course._id)
+  },
+  _clearCourse: (state) => {
+    state.course = {}
+    localStorage.removeItem(COURSE_LOCAL_STORE)
   },
   setCourseList: (state, courseList) => {
     state.courseList = courseList

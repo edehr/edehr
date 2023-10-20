@@ -1,27 +1,51 @@
-# The EHR system
+# The EHR / LIS system
+
+The EdEHR supports both ```Electronic Health Record ``` or ```EHR``` systems and ```Laboratory Information Systems``` or ```LIS```.
+And someday soon you will see support for ```Electronic Medical Record  ``` or ```EMR``` systems. 
+
+- EHR is most often used in hospitals for short term encounters.  Admission day is referred to as "Day 0".
+- LIS is used for both in-patient and out-patient medical laboratories
+- EMR is often used in community settings and supports long term patient care
+
+You will see ```EHR``` throughout these help pages and the application because the EdEHR project evolved from the need to build an EHR.
+But in nearly all cases you could insert LIS or EMR.
 
 ## The main EHR sections
 
 ![1]
 
-The EHR has four main sections:
-- the EHR page title
-- the EHR navigation
-- the EHR patient information banner, and
-- the main EHR content
+The EHR has five main sections:
+- Patient search and tab bar
+- Page title
+- Navigation
+- Patient information banner, and
+- the main patient content
 
+The Navigation section and page content depends on whether the case study requires EHR, LIS, or EMR.  Content pages like Demographics will appear in all three modes, while other pages only appear in the appropriate mode.
 
-## EHR patient information banner
+## Patient search and tab bar
+
+Use the ```Search``` button to locate your patient. You can repeat the search to view more than one patient. 
+Just as you will do in the real-life clinic.
+![15]
+
+Searching. Even parts of a name or MRN can lead you to patients.  
+Of course, the instructor will most likely provide instructions as to which patient to search for.
+![16]
+
+## Patient information banner
 The patient information banner contains key pieces of information about the current patient.  
 ![2]
 
+The ```Current time and day``` is calculated based on the EHR records.  See below.
+
 From the ```Patient profile - Demographics``` page.
 - Patient name. Last, First, Middle. 
-- PHN. The patient health number is a simulated patient identifier.
+- MRN. The medical record number which is the patient identifier within the simulated application.
+- PHN. The patient health number may be used for a simulated billing identifier.
 - DoB.  Date of birth. See below
 - Gender.
 - Weight.
-- MRN. The medical record number, if present, is a simulated record id.
 - MRP and MRP Phone. The most responsible person may be next of kin.
 
 From the ```Current Visit - Visit details and location``` page.
@@ -29,9 +53,7 @@ From the ```Current Visit - Visit details and location``` page.
 - Diagnosis.  From the ```Physician admitting diagnosis``` field.
 
 From the ```Patient Profile - Allergies``` page.
-- Allergies. 
-
-The ```Current time and day``` is calculated based on the EHR records.  See below. 
+- Allergies.
 
 ## Date of birth
 
@@ -51,9 +73,9 @@ the patient stays in the hospital or clinic the day increases.  Day 1 is the sec
 The value shown in the patient banner is the maximal day and time found in all the EHR records.  For example, see records for any of the many assessments.  As we enter records into the EHR we set the record day and time. If we add a record with a
 day and/or time that is greater than a previous record then we advance the simulation time.
 
-## EHR page forms
+## Page forms
 
-Many of the EHR pages collect information via a form directly on the page. Examples include the ```Demographics, Allergies, Medical history``` pages and many more. If you are allowed to edit the form then you will see a ````Edit form```` button
+Many of the content pages collect information via a form directly on the page. Examples include the ```Demographics, Allergies, Medical history``` pages and many more. If you are allowed to edit the form then you will see a ````Edit form```` button
 near the top of the page. Press this and start to edit.
 ```Cancel``` to abort your edits or ````Save```` when you are ready.
 
@@ -62,23 +84,6 @@ near the top of the page. Press this and start to edit.
 At the bottom right side of the page there is a ````Reset form data```` button.  This resets the form to either
 1. The base case data if you are a student working on an activity or
 2. The default values for the form (mostly empty) if you are a lead instructor and are working on the case study.
-
-
-
-## Care team and creating reports.
-
-The ```Care Team``` page is where we list the team of health care workers who look after a given patient. In a real EHR this team is managed automatically by the application.  In this simulated environment we need
-to manually manage the team. Before doing much with a case study it is good to add one or two representative
-professionals to the care team. These names will be present to users who complete assessments.  
-
-![3]
-For example, here is the top section of a neurological assessment.  When you place the focus in the ```Name``` field
-the dropdown lists all the care team members.  Selecting a member will push their profession 
-into the ```Profession``` field.
-
-![4]
-
-
 
 ## Draft reports and verifying correctness
 
@@ -99,10 +104,10 @@ page the draft row will be displayed with an amber background colour.
 To continue editing the draft you can either (1) press the ```Edit``` button on the draft row or (2) select the main
 table ```Add ...``` button at the top of the page.
 
-[1]: ../images/ehr-content-blocks.png "Main EHR content sections"
-[2]: ../images/ehr-patient-banner.png "EHR patient banner"
-[3]: ../images/ehr-record-select-worker.png "Select health care professional"
-[4]: ../images/ehr-record-selected-worker.png "Selected health care professional"
+[1]: ./ehr-content-blocks.png "Main EHR content sections"
+[2]: ./ehr-patient-banner.png "EHR patient banner"
 [5]: ../images/ehr-page-form.png "Sample page with form"
 [6]: ../images/ehr-save-draft-or-verify.png "Save draft or verify correctness"
 [7]: ../images/ehr-draft-indicators.png "Draft report indicators"
+[15]: ../student/student-no-patient.png "Student initially without a patient"
+[16]: ../student/student-patient-dearch-dialog.png "Student patient search dialog"

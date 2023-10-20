@@ -5,6 +5,7 @@ import store from './store'
 Vue.use(Router)
 
 export const UNLINKED_ACTIVITY_ROUTE_NAME = 'unlinked-activity'
+export const COURSE_ROUTE_NAME = 'course'
 export const ADMIN_LOGIN_ROUTE_NAME = 'admin-login'
 export const ERROR_ROUTE_NAME = 'error'
 export const ZONE_ADMIN = 'admin'

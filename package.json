@@ -68,7 +68,8 @@
     "shell:*": "open a sh shell on the choosen running container. Good to see the inside",
     "*:full:*": "Ditto but first build the static client side."
   },
-  "devDependencies": {
-    "vuepress": "^1.0.0-beta.2"
+  "devDependencies": {},
+  "dependencies": {
+    "vuepress": "^1.9.10"
   }
 }
