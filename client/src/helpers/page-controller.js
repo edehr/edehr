@@ -81,6 +81,8 @@ async  function onPageChange (toRoute) {
     // See the last sections of this page change handler for the case a user has
     // entered the ehr demo and has paged to another ehr page
     await EhrOnlyDemo.selectCaseStudy(demoOnlyKey)
+    await store.dispatch('mPatientStore/ehrOnlyDemo', demoOnlyKey)
+
     if (dbApp) console.log('loaded demo only ', demoOnlyKey)
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
     return perfExit(perfStat)

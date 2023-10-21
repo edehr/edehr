@@ -59,6 +59,9 @@ const actions = {
       }
     }
   },
+  async ehrOnlyDemo ( context, seedId) {
+    await context.commit('_setCurrentPatientObjectId', seedId)
+  },
   async addSeedToActivePatientList (context, seed) {
     if (this.currentPatientObjectId && this.currentPatientObjectId === seed._id) {
       // console.log('mps Patient is already in the list and it is the currently selected object', seed)
