@@ -1,5 +1,5 @@
 import InstoreHelper from '@/store/modules/instoreHelper'
-import StoreHelper, { CREATOR_ACTION, INSTRUCTOR_ACTION } from '@/helpers/store-helper'
+import StoreHelper, { INSTRUCTOR_ACTION } from '@/helpers/store-helper'
 import { Text } from '@/helpers/ehr-text'
 const API = 'courses'
 const COURSE_LOCAL_STORE ='courseId'

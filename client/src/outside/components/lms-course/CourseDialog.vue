@@ -48,7 +48,6 @@
 
 <script>
 import AppDialog from '@/app/components/AppDialogShell'
-import StoreHelper from '@/helpers/store-helper'
 import { Text } from '@/helpers/ehr-text'
 import UiInfo from '@/app/ui/UiInfo.vue'
 

@@ -29,7 +29,8 @@ class MPatientHelperWorker {
   }
 
   async fillOutPatientList (list) {
-    list = await Array.fromAsync(list, async (patient) => {
+    for (let i = 0; i< list.length; i++) {
+      let patient = list[i]
       let base = {}
       if (patient.seedId) {
         let seed = await this.fetchSeed(patient.seedId)
@@ -37,8 +38,7 @@ class MPatientHelperWorker {
       }
       patient.mergedData = EhrDataModel.MergeTwoLevels(base, patient.ehrData)
       patient.keyData = EhrDataModel.ExtractKeyPatientData(patient.mergedData)
-      return patient
-    })
+    }
     this.sortPatientList(list)
     return list
   }
