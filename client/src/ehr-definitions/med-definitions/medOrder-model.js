@@ -65,7 +65,6 @@ export class MedOrder {
    * @returns {string}
    */
   medOrderSummary () {
-    console.log('mmos', this._e)
     const list = []
     list.push(this.medName)
     list.push(this.dose)
