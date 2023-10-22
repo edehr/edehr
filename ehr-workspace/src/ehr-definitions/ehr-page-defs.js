@@ -12723,12 +12723,12 @@ const DEFS = {
         'fqn': 'medicationOrders.med_dose'
       },
       {
-        'elementKey': 'med_second_signature',
+        'elementKey': 'med_secondSig',
         'formIndex': '2',
         'inputType': 'checkbox',
-        'label': 'Second signature require',
+        'label': 'Second signature required',
         'tableColumn': '8',
-        'fqn': 'medicationOrders.med_second_signature'
+        'fqn': 'medicationOrders.med_secondSig'
       },
       {
         'elementKey': 'med_scheduled',
@@ -13214,7 +13214,7 @@ const DEFS = {
           {
             'ehr_list_index': '8',
             'items': [
-              'med_second_signature'
+              'med_secondSig'
             ]
           },
           {
@@ -13322,7 +13322,7 @@ const DEFS = {
               'gChildren': [
                 'med_medication',
                 'med_dose',
-                'med_second_signature'
+                'med_secondSig'
               ]
             },
             {
@@ -13386,7 +13386,7 @@ const DEFS = {
             'med_injectionLocation': '',
             'med_medication': '',
             'med_dose': '',
-            'med_second_signature': '',
+            'med_secondSig': '',
             'med_scheduled': '',
             'med_prnMaxDosage': '',
             'med_time1': '',
@@ -13416,7 +13416,7 @@ const DEFS = {
           'med_injectionLocation',
           'med_medication',
           'med_dose',
-          'med_second_signature',
+          'med_secondSig',
           'med_scheduled',
           'med_prnMaxDosage',
           'med_time1',
@@ -13629,7 +13629,7 @@ const DEFS = {
         'formIndex': '2',
         'embedRef': 'medicationOrders.medicationOrdersTable',
         'inputType': 'ehr_embedded',
-        'passToFunction': '[mo_medOrder mo_timing mo_medInstructions mo_id]',
+        'passToFunction': '[mo_medOrder mo_timing mo_medInstructions mo_id mo_secondSig]',
         'fqn': 'medAdminRec.med_order_embedded'
       },
       {
@@ -13689,6 +13689,16 @@ const DEFS = {
         'fqn': 'medAdminRec.mo_id'
       },
       {
+        'elementKey': 'mo_secondSig',
+        'calculationType': 'embedValue(medicationOrders, medicationOrdersTable, med_secondSig)',
+        'formIndex': '2',
+        'formCss': 'grid-span-3-columns',
+        'inputType': 'calculatedBool',
+        'label': 'Second signature required',
+        'tableColumn': '6',
+        'fqn': 'medAdminRec.mo_secondSig'
+      },
+      {
         'elementKey': 'mar_status',
         'formIndex': '2',
         'inputType': 'select',
@@ -13711,7 +13721,7 @@ const DEFS = {
             'text': 'Skipped'
           }
         ],
-        'tableColumn': '6',
+        'tableColumn': '7',
         'fqn': 'medAdminRec.mar_status'
       },
       {
@@ -13719,7 +13729,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'text',
         'label': 'Dose given',
-        'tableColumn': '7',
+        'tableColumn': '8',
         'fqn': 'medAdminRec.mar_dose'
       },
       {
@@ -13789,7 +13799,7 @@ const DEFS = {
             'text': 'Vaginal'
           }
         ],
-        'tableColumn': '8',
+        'tableColumn': '9',
         'fqn': 'medAdminRec.mar_route'
       },
       {
@@ -13831,7 +13841,7 @@ const DEFS = {
             'text': 'Subcutaneous'
           }
         ],
-        'tableColumn': '9',
+        'tableColumn': '10',
         'fqn': 'medAdminRec.mar_injectionLocation'
       },
       {
@@ -13839,8 +13849,16 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'textarea',
         'label': 'Comments',
-        'tableColumn': '10',
+        'tableColumn': '11',
         'fqn': 'medAdminRec.mar_comments'
+      },
+      {
+        'elementKey': 'mar_secSigName',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Second Signature',
+        'tableColumn': '12',
+        'fqn': 'medAdminRec.mar_secSigName'
       }
     ],
     'pageElements': {
@@ -14028,31 +14046,43 @@ const DEFS = {
           {
             'ehr_list_index': '6',
             'items': [
-              'mar_status'
+              'mo_secondSig'
             ]
           },
           {
             'ehr_list_index': '7',
             'items': [
-              'mar_dose'
+              'mar_status'
             ]
           },
           {
             'ehr_list_index': '8',
             'items': [
-              'mar_route'
+              'mar_dose'
             ]
           },
           {
             'ehr_list_index': '9',
             'items': [
-              'mar_injectionLocation'
+              'mar_route'
             ]
           },
           {
             'ehr_list_index': '10',
             'items': [
+              'mar_injectionLocation'
+            ]
+          },
+          {
+            'ehr_list_index': '11',
+            'items': [
               'mar_comments'
+            ]
+          },
+          {
+            'ehr_list_index': '12',
+            'items': [
+              'mar_secSigName'
             ]
           }
         ],
@@ -14094,7 +14124,8 @@ const DEFS = {
                 'mo_timing',
                 'mo_schedDay',
                 'mo_schedTime',
-                'mo_id'
+                'mo_id',
+                'mo_secondSig'
               ]
             },
             {
@@ -14124,6 +14155,15 @@ const DEFS = {
               'gChildren': [
                 'mar_comments'
               ]
+            },
+            {
+              'elementKey': 'mar_group_sec',
+              'dependentOn': 'visble:mo_secondSig',
+              'formCss': 'grid-left-to-right-3',
+              'gIndex': '7',
+              'gChildren': [
+                'mar_secSigName'
+              ]
             }
           ],
           'ehr_data': {
@@ -14138,11 +14178,13 @@ const DEFS = {
             'mo_schedDay': '',
             'mo_schedTime': '',
             'mo_id': '',
+            'mo_secondSig': '',
             'mar_status': '',
             'mar_dose': '',
             'mar_route': '',
             'mar_injectionLocation': '',
-            'mar_comments': ''
+            'mar_comments': '',
+            'mar_secSigName': ''
           }
         },
         'tableChildren': [
@@ -14155,11 +14197,13 @@ const DEFS = {
           'mo_timing',
           'mo_schedDay',
           'mo_schedTime',
+          'mo_secondSig',
           'mar_status',
           'mar_dose',
           'mar_route',
           'mar_injectionLocation',
-          'mar_comments'
+          'mar_comments',
+          'mar_secSigName'
         ],
         'hasRecHeader': true
       }
