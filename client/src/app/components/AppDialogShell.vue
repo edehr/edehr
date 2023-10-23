@@ -45,6 +45,7 @@ export default {
   },
   props: {
     fullScreen: { type: Boolean, default: false },
+    zIndexBase: { type: Number, default: 900 },
     isModal: { type: Boolean, default: false },
     useSave: { type: Boolean, default: true },
     disableSave: { type: Boolean, default: false },
@@ -81,8 +82,8 @@ export default {
       showTopButtons: false,
       top: 0,
       left: 0,
-      modalD: 901,
-      modalZ: 900,
+      modalD: this.zIndexBase + 1,
+      modalZ: this.zIndexBase,
     }
   },
   methods: {
@@ -155,8 +156,8 @@ export default {
   mounted () {
     this.$store.dispatch('system/appDialogCountIncrement')
     const cnt = this.$store.getters['system/appDialogCount']
-    this.modalD = cnt + 901
-    this.modalZ = cnt + 900
+    this.modalD = cnt + 1 + this.zIndexBase
+    this.modalZ = cnt + this.zIndexBase
   }
 }
 </script>
