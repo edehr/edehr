@@ -685,12 +685,7 @@ select, .select {
 }
 
 .med-lab-urin-qc-pending-table {
-  grid-template-columns: repeat(3, 1fr);
-  .chem-results-lhclch .radio_set  {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 1rem;
-  }
+  grid-template-columns: repeat(2, 1fr);
 }
 
 #uqcManOrClinitek {

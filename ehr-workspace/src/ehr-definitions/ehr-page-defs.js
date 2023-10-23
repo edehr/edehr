@@ -31953,7 +31953,7 @@ const DEFS = {
       {
         'elementKey': 'form_label360',
         'formIndex': '1',
-        'formCss': 'grid-span-3-columns',
+        'formCss': 'grid-span-2-columns',
         'inputType': 'form_label',
         'label': 'Reporting “pending” to patient care staff indicates that results are unavailable and awaiting validation by the technologist before results are released.',
         'fqn': 'medLabUrinalysis.form_label360'
