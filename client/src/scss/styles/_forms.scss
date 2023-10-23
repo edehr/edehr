@@ -275,6 +275,7 @@ input[type="checkbox"]{
   margin-right: 5px;
   max-width: 1rem;
   vertical-align: middle;
+  box-shadow: none;
 }
 
 /* A radio set is a group of radio inputs with labels. */
@@ -340,6 +341,7 @@ select, .select {
 .ehr-group-wrapper {
   .ehr-group-for {
     margin-bottom: 2px;
+    margin-right: 5px; // space between elements
     //border: 1px solid blue;
   }
 }

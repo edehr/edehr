@@ -11,6 +11,9 @@
         fas-icon(class="linkIcon", icon="file-pdf")
         span {{assetName()}}
 
+
+    ehr-element-calculated-bool(v-else-if="isType('calculatedBool')", :elementKey="elementKey", :ehrHelp="ehrHelp" )
+
     ehr-element-calculated(v-else-if="isType('calculatedValue')", :elementKey="elementKey", :ehrHelp="ehrHelp" )
 
     ehr-element-calculated-text(v-else-if="isType('calculatedText')", :elementKey="elementKey", :ehrHelp="ehrHelp" )
@@ -176,11 +179,13 @@ import EhrElementSelect from '@/inside/components/page/EhrElementSelect.vue'
 import EhrElementRadioset from '@/inside/components/page/EhrElementRadioset.vue'
 import EhrElementBoxCheckset from '@/inside/components/page/EhrElementBoxCheckset.vue'
 import EhrElementCalculatedText from '@/inside/components/page/EhrElementCalculatedText.vue'
+import EhrElementCalculatedBool from '@/inside/components/page/EhrElementCalculatedBool.vue'
 
 export default {
   name: 'EhrElementForm',
   extends: EhrElementCommon,
   components: {
+    EhrElementCalculatedBool,
     EhrElementCalculatedText,
     EhrElementBoxCheckset,
     EhrElementRadioset,

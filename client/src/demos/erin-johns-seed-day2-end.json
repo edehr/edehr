@@ -1,5 +1,5 @@
 {
-  "id": "5d6786b88d19fb14c0994a5f",
+  "id": "65340e6cf5066d61bb6f065b",
   "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
   "appType": "EHR",
   "ehrData": {
@@ -7,7 +7,7 @@
       "familyName": "Johns",
       "givenName": "Erin",
       "preferredName": "Erin",
-      "dateOfBirth": "09-SEP-1948",
+      "dateOfBirth": "09-SEP-1945",
       "personAge": "74",
       "gender": "Female",
       "martialStatus": "Widowed",
@@ -20,7 +20,8 @@
       "noAddress": false,
       "phoneNumber": "(778) 555-2947",
       "occupationStudent": "Retired",
-      "phn": "94561234",
+      "phn": "12345678",
+      "mrn": "0003",
       "nextOfKinName": "Thomas Johns",
       "nextOfKinRelationship": "Son",
       "nextOfKinPhone": "604-555-9865",
@@ -48,45 +49,27 @@
     "genitourinary": {
       "table": [
         {
-          "name": "Jason",
-          "day": "0",
-          "time": "19:30",
           "none": true,
           "lastVoidedDay": "0",
-          "lastVoidedTime": "16:00",
+          "lastVoidedTime": "1600",
           "colour": "Pale yellow",
           "consistency": "Clear",
           "diaper": "No",
           "foley": "No",
-          "profession": "RN",
           "pelvicPain": "No",
           "pregnant": "No",
           "gravida": "5",
           "para": "4",
           "livingChildren": "4",
-          "createdDate": "2019-05-30T22:40:29-07:00"
+          "createdDate": "2019-05-30T22:40:29-07:00",
+          "table_name": "Jason",
+          "table_profession": "RN",
+          "table_day": "0",
+          "table_time": "1930",
+          "table_id": "genitourinary.table.0"
         }
       ]
     },
-    "medicationOrders": {
-      "table": [
-        {
-          "name": "Dr. Singh",
-          "profession": "Physician",
-          "day": 0,
-          "time": "1015",
-          "medication": "spiriva respimat",
-          "dose": "5 mcg",
-          "route": "Inhalation",
-          "administration": "once",
-          "instructions": "5 mcg (2 actuations; 2.5 mcg/actuation) inhaled PO qDay",
-          "reason": "PO",
-          "notes": "reduction of COPD exacerbations",
-          "createdDate": "2022-12-06T11:45:34-08:00"
-        }
-      ]
-    },
-
     "allergies": {
       "checkbox": "TRUE"
     },
@@ -96,7 +79,8 @@
           "physician": "Dr. Henley",
           "procedure": "Cesarean section",
           "timeSince": "48 years",
-          "createdDate": "2019-05-30T09:36:55-07:00"
+          "createdDate": "2019-05-30T09:36:55-07:00",
+          "pastSurgery_id": "surgical.pastSurgery.0"
         }
       ],
       "previous": []
@@ -106,67 +90,80 @@
         {
           "name": "Dr. Singh",
           "profession": "Physician",
-          "createdDate": "2019-05-30T09:39:52-07:00"
+          "createdDate": "2019-05-30T09:39:52-07:00",
+          "teams_id": "careTeam.teams.0"
         },
         {
           "name": "Jackie",
           "profession": "RN",
-          "createdDate": "2019-05-30T09:40:00-07:00"
+          "createdDate": "2019-05-30T09:40:00-07:00",
+          "teams_id": "careTeam.teams.1"
         },
         {
           "name": "Jason",
           "profession": "RN",
-          "createdDate": "2019-05-30T09:40:07-07:00"
+          "createdDate": "2019-05-30T09:40:07-07:00",
+          "teams_id": "careTeam.teams.2"
         },
         {
           "name": "Alexa",
           "profession": "Med lab technician",
-          "createdDate": "2019-05-30T09:40:19-07:00"
+          "createdDate": "2019-05-30T09:40:19-07:00",
+          "teams_id": "careTeam.teams.3"
         },
         {
           "name": "Gurpreet",
           "profession": "Med radiographer",
-          "createdDate": "2019-05-30T09:40:39-07:00"
+          "createdDate": "2019-05-30T09:40:39-07:00",
+          "teams_id": "careTeam.teams.4"
         },
         {
           "name": "Matt",
           "profession": "Respiratory therapist",
-          "createdDate": "2019-05-30T09:40:54-07:00"
+          "createdDate": "2019-05-30T09:40:54-07:00",
+          "teams_id": "careTeam.teams.5"
         },
         {
           "name": "Dr. Notley",
           "profession": "Physician",
-          "createdDate": "2019-05-30T09:41:09-07:00"
+          "createdDate": "2019-05-30T09:41:09-07:00",
+          "teams_id": "careTeam.teams.6"
         },
         {
           "name": "Serge",
           "profession": "Med radiographer",
-          "createdDate": "2019-05-30T09:41:23-07:00"
+          "createdDate": "2019-05-30T09:41:23-07:00",
+          "teams_id": "careTeam.teams.7"
         },
         {
           "name": "Trache",
           "profession": "RN",
-          "createdDate": "2019-05-30T09:41:37-07:00"
+          "createdDate": "2019-05-30T09:41:37-07:00",
+          "teams_id": "careTeam.teams.8"
         },
         {
           "name": "Dr. Hunicutt",
           "profession": "Physician",
-          "createdDate": "2019-05-30T09:41:50-07:00"
+          "createdDate": "2019-05-30T09:41:50-07:00",
+          "teams_id": "careTeam.teams.9"
         },
         {
           "name": "Jim",
           "profession": "RN",
-          "createdDate": "2019-05-30T09:41:59-07:00"
+          "createdDate": "2019-05-30T09:41:59-07:00",
+          "teams_id": "careTeam.teams.10"
         },
         {
           "name": "Gladys",
           "profession": "physiotherapy student",
-          "createdDate": "2019-05-30T09:42:14-07:00"
+          "createdDate": "2019-05-30T09:42:14-07:00",
+          "teams_id": "careTeam.teams.11"
         },
         {
           "name": "Herman",
           "profession": "Respiratory therapist",
-          "createdDate": "2019-05-30T09:42:39-07:00"
+          "createdDate": "2019-05-30T09:42:39-07:00",
+          "teams_id": "careTeam.teams.12"
         }
       ]
     },
@@ -178,19 +175,16 @@
           "site": "Clinic",
           "reasonForVisit": "Shortness of breath x 24 hours",
           "diagnosis": "COPD",
-          "createdDate": "2019-05-30T09:43:19-07:00"
+          "createdDate": "2019-05-30T09:43:19-07:00",
+          "outpatientAppointments_id": "pastAppointments.outpatientAppointments.0"
         }
       ]
     },
     "vitals": {
       "table": [
         {
-          "name": "Jason",
-          "profession": "RN",
           "entryDay": "1",
           "entryTime": "18:00",
-          "day": "1",
-          "time": "18:00",
           "temperature": "36.5",
           "source": "Axilla",
           "strength": "Peripheral",
@@ -202,15 +196,16 @@
           "respirationRate": "28",
           "oxygenSaturation": "85%",
           "oxygenMode": "Optiflow",
-          "createdDate": "2019-05-30T10:18:43-07:00"
+          "createdDate": "2019-05-30T10:18:43-07:00",
+          "table_name": "Jason",
+          "table_profession": "RN",
+          "table_day": "1",
+          "table_time": "1800",
+          "table_id": "vitals.table.0"
         },
         {
-          "name": "Jason",
-          "profession": "RN",
           "entryDay": "1",
           "entryTime": "07:00",
-          "day": "1",
-          "time": "07:00",
           "temperature": "36.5",
           "source": "Axilla",
           "strength": "Peripheral",
@@ -223,15 +218,16 @@
           "oxygenSaturation": "90%",
           "oxygenMode": "Nasal prongs",
           "flowRate": "5",
-          "createdDate": "2019-05-30T10:04:20-07:00"
+          "createdDate": "2019-05-30T10:04:20-07:00",
+          "table_name": "Jason",
+          "table_profession": "RN",
+          "table_day": "1",
+          "table_time": "0700",
+          "table_id": "vitals.table.1"
         },
         {
-          "name": "Jason",
-          "profession": "RN",
           "entryDay": "1",
           "entryTime": "02:00",
-          "day": "1",
-          "time": "02:00",
           "temperature": "36.5",
           "source": "Axilla",
           "strength": "Peripheral",
@@ -244,15 +240,16 @@
           "oxygenSaturation": "90%",
           "oxygenMode": "Nasal prongs",
           "createdDate": "2019-05-30T09:57:51-07:00",
-          "flowRate": "2L"
+          "flowRate": "2L",
+          "table_name": "Jason",
+          "table_profession": "RN",
+          "table_day": "1",
+          "table_time": "0200",
+          "table_id": "vitals.table.2"
         },
         {
-          "name": "Jason",
-          "profession": "RN",
           "entryDay": "0",
           "entryTime": "20:00",
-          "day": "0",
-          "time": "20:00",
           "temperature": "36.4",
           "source": "Axilla",
           "strength": "Peripheral",
@@ -264,15 +261,16 @@
           "respirationRate": "26",
           "oxygenSaturation": "84%",
           "oxygenMode": "Room air",
-          "createdDate": "2019-05-30T09:56:14-07:00"
+          "createdDate": "2019-05-30T09:56:14-07:00",
+          "table_name": "Jason",
+          "table_profession": "RN",
+          "table_day": "0",
+          "table_time": "2000",
+          "table_id": "vitals.table.3"
         },
         {
-          "name": "Jason",
-          "profession": "RN",
           "entryDay": "0",
           "entryTime": "18:00",
-          "day": "0",
-          "time": "18:00",
           "temperature": "36.5",
           "source": "Axilla",
           "strength": "Peripheral",
@@ -284,17 +282,18 @@
           "respirationRate": "28",
           "oxygenSaturation": "85%",
           "oxygenMode": "Room air",
-          "createdDate": "2019-05-30T09:53:32-07:00"
+          "createdDate": "2019-05-30T09:53:32-07:00",
+          "table_name": "Jason",
+          "table_profession": "RN",
+          "table_day": "0",
+          "table_time": "1800",
+          "table_id": "vitals.table.4"
         }
       ]
     },
     "neurological": {
       "table": [
         {
-          "name": "Jason",
-          "profession": "RN",
-          "day": "0",
-          "time": "19:30",
           "alert": true,
           "oriented": true,
           "eyeOpening": "4 = Spontaneous",
@@ -323,7 +322,12 @@
           "dysarthria": "0 = Normal",
           "extinctionAndInattention": "0 = No abnormality",
           "strokeAssessmentCalculation": 0,
-          "createdDate": "2019-05-30T21:50:42-07:00"
+          "createdDate": "2019-05-30T21:50:42-07:00",
+          "table_name": "Jason",
+          "table_profession": "RN",
+          "table_day": "0",
+          "table_time": "1930",
+          "table_id": "neurological.table.0"
         }
       ]
     },
@@ -331,11 +335,12 @@
       "table": [
         {
           "location": "Emergency room",
-          "createdDate": "2019-05-30T23:21:10-07:00"
+          "createdDate": "2019-05-30T23:21:10-07:00",
+          "table_id": "visit.table.0"
         }
       ],
-      "admissionDay": "0",
-      "admissionTime": "06:00",
+      "admissionDay": "Day 0",
+      "admissionTime": "0600",
       "consentForTreatment": "TRUE",
       "consentForBlood": "TRUE",
       "diagnosis": "COPD\nShortness of breath\nDizzy",
@@ -344,10 +349,6 @@
     "respiratory": {
       "table": [
         {
-          "name": "Jason",
-          "profession": "RN",
-          "day": "0",
-          "time": "19:30",
           "patent": true,
           "lul": "Normal",
           "rul": "Normal",
@@ -357,17 +358,18 @@
           "respiratoryRhythm": "Regular",
           "respiratoryDepth": "Shallow",
           "cough": "No",
-          "createdDate": "2019-05-30T22:32:42-07:00"
+          "createdDate": "2019-05-30T22:32:42-07:00",
+          "table_name": "Jason",
+          "table_profession": "RN",
+          "table_day": "0",
+          "table_time": "1930",
+          "table_id": "respiratory.table.0"
         }
       ]
     },
     "cardiovascular": {
       "table": [
         {
-          "name": "Jason",
-          "profession": "RN",
-          "day": "0",
-          "time": "19:30",
           "pulse": "Regular",
           "skinAppearance": "Normal",
           "capRefillRightHand": "Normal < 3 seconds",
@@ -386,17 +388,18 @@
           "nailBedColourLeftHand": "Pink",
           "nailBedColourRightFoot": "Pink",
           "nailBedColourLeftFoot": "Pink",
-          "createdDate": "2019-05-30T22:37:16-07:00"
+          "createdDate": "2019-05-30T22:37:16-07:00",
+          "table_name": "Jason",
+          "table_profession": "RN",
+          "table_day": "0",
+          "table_time": "1930",
+          "table_id": "cardiovascular.table.0"
         }
       ]
     },
     "gastrointestinal": {
       "table": [
         {
-          "name": "Jason",
-          "profession": "RN",
-          "day": "0",
-          "time": "19:30",
           "soft": true,
           "pain": "No",
           "eating": "Regular",
@@ -407,17 +410,18 @@
           "bsRUQ": true,
           "bsLLQ": true,
           "bsRLQ": true,
-          "createdDate": "2019-05-30T22:38:55-07:00"
+          "createdDate": "2019-05-30T22:38:55-07:00",
+          "table_name": "Jason",
+          "table_profession": "RN",
+          "table_day": "0",
+          "table_time": "1930",
+          "table_id": "gastrointestinal.table.0"
         }
       ]
     },
     "musculoskeletal": {
       "table": [
         {
-          "name": "Jason",
-          "profession": "RN",
-          "day": "0",
-          "time": "19:30",
           "swelling": "Absent",
           "pain": "Absent",
           "deformity": "Absent",
@@ -427,30 +431,32 @@
           "colour": "Flesh",
           "temp": "Warm",
           "useOfAmbulatoryAid": "No",
-          "createdDate": "2019-05-30T22:41:28-07:00"
+          "createdDate": "2019-05-30T22:41:28-07:00",
+          "table_name": "Jason",
+          "table_profession": "RN",
+          "table_day": "0",
+          "table_time": "1930",
+          "table_id": "musculoskeletal.table.0"
         }
       ]
     },
     "pain": {
       "table": [
         {
-          "name": "Jason",
-          "day": "0",
-          "time": "19:30",
           "painScale": "0",
           "respiratoryRate": "28",
-          "profession": "RN",
-          "createdDate": "2019-05-30T22:42:51-07:00"
+          "createdDate": "2019-05-30T22:42:51-07:00",
+          "table_name": "Jason",
+          "table_profession": "RN",
+          "table_day": "0",
+          "table_time": "1930",
+          "table_id": "pain.table.0"
         }
       ]
     },
     "biopsychosocial": {
       "table": [
         {
-          "name": "Jason",
-          "profession": "RN",
-          "day": "0",
-          "time": "19:30",
           "domesticViolence": "No",
           "requestContact": "No",
           "hygieneGrooming": "Good",
@@ -461,144 +467,305 @@
           "speech": "Clear and coherent",
           "supportPerson": "Thomas (Son)",
           "securityPolicePresent": "No",
-          "createdDate": "2019-05-30T22:48:02-07:00"
+          "createdDate": "2019-05-30T22:48:02-07:00",
+          "table_name": "Jason",
+          "table_profession": "RN",
+          "table_day": "0",
+          "table_time": "1930",
+          "table_id": "biopsychosocial.table.0"
         }
       ]
     },
     "nonmedOrders": {
       "table": [
         {
-          "name": "Dr. Singh",
-          "profession": "Physician",
-          "day": "0",
-          "time": "20:00",
           "order": "Chest xray",
           "orderedBy": "Dr. Singh",
           "dayOfReferral": "0",
           "startDay": "0",
           "startTime": "20:00",
           "status": "Ordered",
-          "createdDate": "2019-05-30T22:50:10-07:00"
+          "createdDate": "2019-05-30T22:50:10-07:00",
+          "table_name": "Dr. Singh",
+          "table_profession": "Physician",
+          "table_day": "0",
+          "table_time": "2000",
+          "table_id": "nonmedOrders.table.0"
         },
         {
-          "name": "Dr. Singh",
-          "profession": "Physician",
-          "day": "0",
-          "time": "20:00",
           "order": "ABG",
           "orderedBy": "Dr. Singh",
           "dayOfReferral": "0",
           "startDay": "0",
           "startTime": "20:00",
           "status": "Ordered",
-          "createdDate": "2019-05-30T22:50:45-07:00"
+          "createdDate": "2019-05-30T22:50:45-07:00",
+          "table_name": "Dr. Singh",
+          "table_profession": "Physician",
+          "table_day": "0",
+          "table_time": "2000",
+          "table_id": "nonmedOrders.table.1"
         },
         {
-          "name": "Dr. Singh",
-          "profession": "Physician",
-          "day": "0",
-          "time": "20:00",
-          "order": "CBC, electrolytes, BUN, creatine",
+          "order": "CBC, electrolytes, BUN, creatinine",
           "orderedBy": "Dr. Singh",
           "dayOfReferral": "0",
           "startDay": "0",
           "startTime": "20:00",
           "status": "Ordered",
-          "createdDate": "2019-05-30T22:51:21-07:00"
+          "createdDate": "2019-05-30T22:51:21-07:00",
+          "table_name": "Dr. Singh",
+          "table_profession": "Physician",
+          "table_day": "0",
+          "table_time": "2000",
+          "table_id": "nonmedOrders.table.2"
         },
         {
-          "name": "Dr. Singh",
-          "profession": "Physician",
-          "day": "0",
-          "time": "20:00",
           "order": "Spirometry",
           "orderedBy": "Dr. Singh",
           "dayOfReferral": "0",
           "startDay": "0",
           "startTime": "20:00",
           "status": "Ordered",
-          "createdDate": "2019-05-30T22:51:50-07:00"
+          "createdDate": "2019-05-30T22:51:50-07:00",
+          "table_name": "Dr. Singh",
+          "table_profession": "Physician",
+          "table_day": "0",
+          "table_time": "2000",
+          "table_id": "nonmedOrders.table.3"
         }
       ]
     },
     "referrals": {
       "table": [
         {
-          "name": "Dr. Singh",
-          "profession": "Physician",
-          "day": "0",
-          "time": "19:30",
           "referralName": "Matt",
           "referralProfession": "Resp therapy",
           "appointmentDate": "One week",
-          "appointmentTime": "20:00",
+          "appointmentTime": "2000",
           "status": "Active",
-          "createdDate": "2019-05-30T22:52:30-07:00"
+          "createdDate": "2019-05-30T22:52:30-07:00",
+          "table_name": "Dr. Singh",
+          "table_profession": "Physician",
+          "table_day": "0",
+          "table_time": "1930",
+          "table_id": "referrals.table.0"
         }
       ]
-    },
-    "dischargeSummary": {
-      "clinicalSummary": "Patient arrived with chronic COPD in acute form\nPreviously diagnosed with hypertension\nDeveloped bilateral gram positive cocci pneumonia\nTreated with intravenous antibiotics and responded well",
-      "dischargeDay": "Day 6",
-      "dischargeTime": "08:00",
-      "dischargedTo": "Home"
     },
     "billing": {
       "msp": "MSP",
       "thirdParty": false,
       "federal": false
     },
-    "diagnosticCodes": {
-      "table": [
+    "medicationOrders": {
+      "lastUpdate": "2023-05-21T22:07:22-07:00",
+      "medicationOrdersTable": [
         {
-          "name": "Pat",
-          "day": "6",
-          "time": "10:15",
-          "condition": "COPD",
-          "code": "J44.9",
-          "type": "M",
-          "createdDate": "2019-05-30T23:11:12-07:00"
+          "medicationOrdersTable_name": "Dr Notley",
+          "medicationOrdersTable_profession": "Physician",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "1400",
+          "med_timing": "od",
+          "med_route": "inha",
+          "med_reason": "to alleviate bronchospasm and improve airflow",
+          "med_medication": "Tiotropium bromide (Spiriva) inhalation capsules, 18 mcg",
+          "med_dose": "1",
+          "createdDate": "2023-05-21T21:52:33-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.0"
         },
         {
-          "name": "Pat",
-          "day": "6",
-          "time": "10:15",
-          "condition": "COPD",
-          "code": "Z86.42",
-          "type": "3",
-          "createdDate": "2019-05-30T23:11:44-07:00"
+          "medicationOrdersTable_name": "Dr Notley",
+          "medicationOrdersTable_profession": "Physician",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "1400",
+          "med_timing": "prn",
+          "med_route": "inha",
+          "med_medication": "Salbutamol (Ventolin) inhaler, 100 mcg:",
+          "med_dose": "2 puffs",
+          "med_scheduled": "Q6H",
+          "med_time1": "0200",
+          "med_time2": "0600",
+          "med_time3": "1200",
+          "med_time4": "1800",
+          "med_time5": "2200",
+          "med_instructions": "2 puffs as needed every 4-6 hours for rescue relief of acute symptoms.",
+          "createdDate": "2023-05-21T21:54:12-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.1"
         },
         {
-          "name": "Pat",
-          "day": "6",
-          "time": "10:15",
-          "condition": "COPD",
-          "code": "I10",
-          "type": "3",
-          "createdDate": "2019-05-30T23:12:04-07:00"
+          "medicationOrdersTable_name": "Dr Notley",
+          "medicationOrdersTable_profession": "Physician",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "1400",
+          "med_timing": "od",
+          "med_route": "oral",
+          "med_medication": "Amlodipine besylate",
+          "med_dose": "5 mg",
+          "med_instructions": "Take one tablet orally with or without food.\nIt is important to take the medication at the same time each day to maintain consistent blood pressure control.\nMonitor blood pressure regularly to assess the response to treatment and ensure blood pressure remains within target ranges.\nAdvise the patient to adhere to a healthy lifestyle, including a balanced diet, regular exercise, weight management, and reduction in sodium intake.\nEducate the patient about potential side effects of the medication and the importance of reporting any adverse effects or concerns promptly.",
+          "createdDate": "2023-05-21T22:07:21-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.2"
         }
       ]
     },
-    "interventionCodes": {
-      "table": [
+    "medAdminRec": {
+      "lastUpdate": "2023-05-21T22:28:30-07:00",
+      "marTable": [
         {
-          "name": "Pat",
-          "day": "6",
-          "time": "10:15",
-          "intervention": "3.GY.10.VA",
-          "createdDate": "2019-05-30T23:12:40-07:00"
+          "marTable_name": "Dorothea",
+          "marTable_profession": "RN",
+          "marTable_day": "0",
+          "marTable_time": "1800",
+          "med_order_embedded": "medicationOrders.medicationOrdersTable.1",
+          "mo_medOrder": "Salbutamol (Ventolin) inhaler, 100 mcg: 2 puffs inha Q6H",
+          "mo_medInstructions": "2 puffs as needed every 4-6 hours for rescue relief of acute symptoms.",
+          "mo_schedDay": 0,
+          "mo_schedTime": "1800",
+          "mo_id": "medicationOrders.medicationOrdersTable.1",
+          "mar_status": "Administered",
+          "mar_dose": "2 puffs",
+          "medicationOrdersTable_name": "Dr Notley",
+          "medicationOrdersTable_profession": "Physician",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "1400",
+          "med_timing": "prn",
+          "med_route": "inha",
+          "med_medication": "Salbutamol (Ventolin) inhaler, 100 mcg:",
+          "med_dose": "2 puffs",
+          "med_scheduled": "Q6H",
+          "med_time1": "0200",
+          "med_time2": "0600",
+          "med_time3": "1200",
+          "med_time4": "1800",
+          "med_time5": "2200",
+          "med_instructions": "2 puffs as needed every 4-6 hours for rescue relief of acute symptoms.",
+          "createdDate": "2023-05-21T22:14:38-07:00",
+          "marTable_id": "medAdminRec.marTable.0"
         },
         {
-          "name": "Pat",
-          "day": "6",
-          "time": "10:15",
-          "intervention": "2.GZ.21.EA",
-          "createdDate": "2019-05-30T23:12:59-07:00"
+          "marTable_name": "Dorothea",
+          "marTable_profession": "RN",
+          "marTable_day": "0",
+          "marTable_time": "2200",
+          "med_order_embedded": "medicationOrders.medicationOrdersTable.1",
+          "mo_medOrder": "Salbutamol (Ventolin) inhaler, 100 mcg: 2 puffs inha Q6H",
+          "mo_medInstructions": "2 puffs as needed every 4-6 hours for rescue relief of acute symptoms.",
+          "mo_schedDay": 0,
+          "mo_schedTime": "2200",
+          "mo_id": "medicationOrders.medicationOrdersTable.1",
+          "mar_status": "Administered",
+          "mar_dose": "2 puffs",
+          "medicationOrdersTable_name": "Dr Notley",
+          "medicationOrdersTable_profession": "Physician",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "1400",
+          "med_timing": "prn",
+          "med_route": "inha",
+          "med_medication": "Salbutamol (Ventolin) inhaler, 100 mcg:",
+          "med_dose": "2 puffs",
+          "med_scheduled": "Q6H",
+          "med_time1": "0200",
+          "med_time2": "0600",
+          "med_time3": "1200",
+          "med_time4": "1800",
+          "med_time5": "2200",
+          "med_instructions": "2 puffs as needed every 4-6 hours for rescue relief of acute symptoms.",
+          "createdDate": "2023-05-21T22:26:20-07:00",
+          "marTable_id": "medAdminRec.marTable.1"
+        },
+        {
+          "marTable_name": "Dorothea",
+          "marTable_profession": "RN",
+          "marTable_day": "0",
+          "marTable_time": "1800",
+          "med_order_embedded": "medicationOrders.medicationOrdersTable.0",
+          "mo_medOrder": "Tiotropium bromide (Spiriva) inhalation capsules, 18 mcg 1 inha ",
+          "mo_id": "medicationOrders.medicationOrdersTable.0",
+          "mar_status": "Administered",
+          "mar_dose": "1 puff",
+          "med_timing": "od",
+          "med_reason": "to alleviate bronchospasm and improve airflow",
+          "med_medication": "Tiotropium bromide (Spiriva) inhalation capsules, 18 mcg",
+          "med_dose": "1",
+          "createdDate": "2023-05-21T22:26:51-07:00",
+          "marTable_id": "medAdminRec.marTable.2"
+        },
+        {
+          "marTable_name": "Dorothea",
+          "marTable_profession": "RN",
+          "marTable_day": 1,
+          "marTable_time": "0800",
+          "med_order_embedded": "medicationOrders.medicationOrdersTable.2",
+          "mo_medOrder": "Amlodipine besylate 5 mg oral ",
+          "mo_medInstructions": "Take one tablet orally with or without food.\nIt is important to take the medication at the same time each day to maintain consistent blood pressure control.\nMonitor blood pressure regularly to assess the response to treatment and ensure blood pressure remains within target ranges.\nAdvise the patient to adhere to a healthy lifestyle, including a balanced diet, regular exercise, weight management, and reduction in sodium intake.\nEducate the patient about potential side effects of the medication and the importance of reporting any adverse effects or concerns promptly.",
+          "mo_id": "medicationOrders.medicationOrdersTable.2",
+          "mar_status": "Administered",
+          "mar_dose": "5 mg",
+          "med_route": "oral",
+          "med_medication": "Amlodipine besylate",
+          "med_dose": "5 mg",
+          "med_instructions": "Take one tablet orally with or without food.\nIt is important to take the medication at the same time each day to maintain consistent blood pressure control.\nMonitor blood pressure regularly to assess the response to treatment and ensure blood pressure remains within target ranges.\nAdvise the patient to adhere to a healthy lifestyle, including a balanced diet, regular exercise, weight management, and reduction in sodium intake.\nEducate the patient about potential side effects of the medication and the importance of reporting any adverse effects or concerns promptly.",
+          "createdDate": "2023-05-21T22:27:26-07:00",
+          "marTable_id": "medAdminRec.marTable.3"
+        },
+        {
+          "marTable_name": "Dorothea",
+          "marTable_profession": "rN",
+          "marTable_day": "1",
+          "marTable_time": "0200",
+          "med_order_embedded": "medicationOrders.medicationOrdersTable.1",
+          "mo_medOrder": "Salbutamol (Ventolin) inhaler, 100 mcg: 2 puffs inha Q6H",
+          "mo_medInstructions": "2 puffs as needed every 4-6 hours for rescue relief of acute symptoms.",
+          "mo_schedDay": 1,
+          "mo_schedTime": "0200",
+          "mo_id": "medicationOrders.medicationOrdersTable.1",
+          "mar_status": "Administered",
+          "mar_dose": "2 puffs",
+          "med_timing": "prn",
+          "med_route": "inha",
+          "med_medication": "Salbutamol (Ventolin) inhaler, 100 mcg:",
+          "med_dose": "2 puffs",
+          "med_scheduled": "Q6H",
+          "med_time1": "0200",
+          "med_time2": "0600",
+          "med_time3": "1200",
+          "med_time4": "1800",
+          "med_time5": "2200",
+          "med_instructions": "2 puffs as needed every 4-6 hours for rescue relief of acute symptoms.",
+          "createdDate": "2023-05-21T22:28:09-07:00",
+          "marTable_id": "medAdminRec.marTable.4"
+        },
+        {
+          "marTable_name": "Dorothea",
+          "marTable_profession": "RN",
+          "marTable_day": 1,
+          "marTable_time": "0600",
+          "med_order_embedded": "medicationOrders.medicationOrdersTable.1",
+          "mo_medOrder": "Salbutamol (Ventolin) inhaler, 100 mcg: 2 puffs inha Q6H",
+          "mo_medInstructions": "2 puffs as needed every 4-6 hours for rescue relief of acute symptoms.",
+          "mo_schedDay": 1,
+          "mo_schedTime": "0600",
+          "mo_id": "medicationOrders.medicationOrdersTable.1",
+          "mar_status": "Administered",
+          "mar_dose": "2 puffs",
+          "createdDate": "2023-05-21T22:28:30-07:00",
+          "marTable_id": "medAdminRec.marTable.5"
         }
       ]
+    },
+    "meta": {
+      "simTime": {
+        "visitDay": 1,
+        "visitTime": "1800"
+      },
+      "ehrVersion": "ev2.4.0"
     }
   },
-  "description": "This EHR Seed is based on a case from 'Health Case Studies - Toward Closing the Healthcare Communication Gap'. This EHR seed reflects a point during a patient's Day 2 stay in the hospital ",
-  "name": "Erin Johns Day 2",
-  "version": "1.0"
+  "description": "\"Health Case Studies - Toward Closing the Healthcare Communication Gap\" by:  Glynda Rees, Rob Kruger, Janet Morrison.  See: pages 31 up to 62 in Case Study #2 in https://pressbooks.bccampus.ca/healthcasestudies/ \n In this case the patient has chronic obstructive pulmonary disease (COPD) that is exacerbated due to community acquired pneumonia.  The patient in this case study has a complicated health history. This simulation follows the case study up to 18:00 of Day 1.  The case study continues through to discharge on Day 4. ",
+  "name": "Erin Johns - CS#2",
+  "tagList": [
+    "COPD"
+  ],
+  "version": "1",
+  "fileName": "erinJohnsCs#2_1_21 Oct 2023.json"
 }

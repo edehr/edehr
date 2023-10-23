@@ -1,5 +1,6 @@
 import { MED_ORDERS_PAGE_KEY, MED_ORDERS_TABLE_KEY } from '../ehr-defs-grid'
 import { hourStringToHour } from './mar-model'
+import { makeHumanTableCell } from '../ehr-def-utils'
 
 export class MedOrders {
   constructor (ehrDataModel) {
@@ -26,12 +27,15 @@ export class MedOrders {
 export class MedOrder {
   constructor (eData) {
     this._e = {}
-    const {med_dose, medicationOrdersTable_id, med_instructions, med_injectionLocation,
+    let {med_dose, medicationOrdersTable_id, med_instructions, med_injectionLocation,
       med_scheduled,
       med_prnMaxDosage, med_medication,
       med_reason, med_route, med_timing,
       med_time1, med_time2, med_time3, med_time4, med_time5, med_time6
     } = eData
+    // translate the key data into human readable
+    med_route = makeHumanTableCell( 'medicationOrders', 'med_route', 'select', med_route)
+    med_injectionLocation = makeHumanTableCell( 'medicationOrders', 'med_injectionLocation', 'select', med_injectionLocation)
     this._e.day = eData['medicationOrdersTable_day']
     this._e.time = eData['medicationOrdersTable_time']
     this._e.name = eData['medicationOrdersTable_name']
@@ -64,9 +68,10 @@ export class MedOrder {
     const list = []
     list.push(this.medName)
     list.push(this.dose)
-    list.push(this.route)
     list.push(this.schedule)
-    return list.join(' ')
+    list.push(this.route)
+    list.push(this.location)
+    return list.join(', ')
   }
 
   /**

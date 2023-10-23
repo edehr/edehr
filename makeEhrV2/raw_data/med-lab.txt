@@ -855,31 +855,14 @@ clinitek:= >= 70 Leu//μL}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{calculati
 {inputType: form_label}	eCell	{Label: Reporting “pending” to patient care staff indicates that results are unavailable and awaiting validation by the technologist before results are released.}	eCell	eCell	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: grid-span-3-columns}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: Pending analyte}	eCell	eCell	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: Pending result (include units)}	eCell	eCell	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: form_label}	eCell	{Label: L, H, CH, Cl}	eCell	eCell	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	eCell	eCell	{elementKey: uqcPendAnal_1}	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 52}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	eCell	eCell	{elementKey: uqcPendResult_1}	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 53}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: radioset}	eCell	eCell	eCell	{elementKey: uqcPendFlag_1}	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: chem-results-lhclch}	eCell	eCell	{tableColumn: 54}	eCell	eCell	eCell	eCell	"{Options: L
-H
-CL
-CH}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	eCell	eCell	{elementKey: uqcPendAnal_2}	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 55}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	eCell	eCell	{elementKey: uqcPendResult_2}	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 56}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: radioset}	eCell	eCell	eCell	{elementKey: uqcPendFlag_2}	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: chem-results-lhclch}	eCell	eCell	{tableColumn: 57}	eCell	eCell	eCell	eCell	"{Options: L
-H
-CL
-CH}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	eCell	eCell	{elementKey: uqcPendAnal_3}	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 58}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	eCell	eCell	{elementKey: uqcPendResult_3}	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 59}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: radioset}	eCell	eCell	eCell	{elementKey: uqcPendFlag_3}	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: chem-results-lhclch}	eCell	eCell	{tableColumn: 60}	eCell	eCell	eCell	eCell	"{Options: L
-H
-CL
-CH}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	eCell	eCell	{elementKey: uqcPendAnal_4}	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 61}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	eCell	eCell	{elementKey: uqcPendResult_4}	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 62}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: radioset}	eCell	eCell	eCell	{elementKey: uqcPendFlag_4}	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: chem-results-lhclch}	eCell	eCell	{tableColumn: 63}	eCell	eCell	eCell	eCell	"{Options: L
-H
-CL
-CH}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	eCell	eCell	{elementKey: uqcPendAnal_2}	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 54}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	eCell	eCell	{elementKey: uqcPendResult_2}	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 55}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	eCell	eCell	{elementKey: uqcPendAnal_3}	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 56}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	eCell	eCell	{elementKey: uqcPendResult_3}	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 57}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	eCell	eCell	{elementKey: uqcPendAnal_4}	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 58}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	eCell	eCell	{elementKey: uqcPendResult_4}	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 59}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 58}	{Label: Med Lab Accessioning}	eCell	{elementKey: medLabAccession}	{pN: 50}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: Accessioning}	eCell	{elementKey: mlAccessioning}	{pN: 50}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Create an accessioning record}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 50}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
