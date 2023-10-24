@@ -129,6 +129,8 @@ const actions = {
    * @returns {Promise<void>}
    */
   async loadStudentPatientList (context, patientList) {
+    // decouple the list because the data is coming from the activity store, and we can't modify vuex data outside a store mutation
+    patientList = JSON.parse(JSON.stringify(patientList))
     patientList = await MPatientHelper.fillOutPatientList(patientList)
     await context.commit('_setPatientList', patientList)
   }
