@@ -47,8 +47,8 @@ export default {
     validDay () {
       let isValid = false
       if (this.validMonth) {
-        let mVal = this.monthVal
-        let mxDays = (mVal === '2') ? 28 : ['9', '4', '6', '10'].includes(mVal) ? 30 : 31
+        let mVal = Number.parseInt(this.monthVal)
+        let mxDays = (mVal === 2) ? 28 : [9, 4, 6, 10].includes(mVal) ? 30 : 31
         let dVal = this.dayVal
         isValid = 1 <= dVal && dVal <= mxDays
       }
@@ -74,8 +74,10 @@ export default {
       this.validate()
       this.dateStr = ''
       if (this.validInput) {
-        let d = (this.dayVal < 10 ? '0' : '') + this.dayVal
-        let m = (this.monthVal < 10 ? '0' : '') + this.monthVal
+        let dVal = Number.parseInt(this.dayVal)
+        let d = (dVal < 10 ? '0' : '') + dVal
+        let mVal = Number.parseInt(this.monthVal)
+        let m = (mVal < 10 ? '0' : '') + mVal
         // any year will do.  Be sure to add time or else compute uses local time.
         let dStr = `2000-${m}-${d}T00:00`
         this.dateStr = computeDateOfBirth(this.personAge, dStr)
