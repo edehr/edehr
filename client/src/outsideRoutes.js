@@ -3,6 +3,7 @@ import { Text } from '@/helpers/ehr-text'
 const NAMES = Text.ROUTE_NAMES
 
 import {
+  ERROR_ROUTE_NAME,
   UNLINKED_ACTIVITY_ROUTE_NAME,
   ZONE_ADMIN,
   ZONE_DEMO,
@@ -85,7 +86,7 @@ export function outside () {
     },
     {
       path: '/error',
-      name: 'error',
+      name: ERROR_ROUTE_NAME,
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/ErrorPage.vue'),
       meta: { layout: 'outside', label: 'Error', zone: ZONE_PUBLIC }

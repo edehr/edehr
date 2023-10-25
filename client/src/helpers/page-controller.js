@@ -38,12 +38,17 @@ function perfExit (perfStat) {
    * @return {Promise<unknown>}
    */
 async  function onPageChange (toRoute) {
-  console.log('onPageChange toRoute', toRoute.path)
-  // console.log('toRoute', toRoute.fullPath)
-  // console.log('page change to: ', toRoute.name, JSON.stringify(toRoute.meta), JSON.stringify(toRoute.query))
+  const routeName = toRoute.name
   const perfStat = { start: {}, elapsed: {} }
   perfStat.start.loading = performance.now()
-  const routeName = toRoute.name
+  console.log('onPageChange toRoute', toRoute.path, routeName)
+  if (routeName === ERROR_ROUTE_NAME) {
+    console.log('Skip page change for error page')
+    return perfExit(perfStat)
+  }
+
+  // console.log('toRoute', toRoute.fullPath)
+  // console.log('page change to: ', toRoute.name, JSON.stringify(toRoute.meta), JSON.stringify(toRoute.query))
   const {
     isDemoLti, // lti request from the full demo
     demo_lobjId, // see server side demo-controller _createDemoToolConsumer
@@ -56,7 +61,13 @@ async  function onPageChange (toRoute) {
     visitId: optionalVisitId, // user is coming from an LmsStudentActivity page OR from this page-controller after processing the refresh token
   } = toRoute.query
 
-  {
+  // To force a sample exception that is not caught just
+  // 1. Get into the EHR pages ...
+  // 2. uncomment the following and
+  // 3. stop the server
+  // await StoreHelper.loadApiData()
+
+  try {
     const { label, icon, zone } = toRoute.meta
     StoreHelper.setPageTitle(label)
     StoreHelper.setPageIcon(icon)
@@ -66,35 +77,33 @@ async  function onPageChange (toRoute) {
     await StoreHelper.loadApiData()
     perfStat.elapsed.loadApi = performance.now() - perfStat.start.loadApi
     document.title = StoreHelper.getAppTitle()
-  }
-  // **** If public page ... prep and EXIT
-  if (StoreHelper.inZonePublic()) {
+    // **** If public page ... prep and EXIT
+    if (StoreHelper.inZonePublic()) {
     // console.log('on a public page', routeName)
-    return perfExit(perfStat)
+      return perfExit(perfStat)
     // EXIT
-  }
+    }
 
-  // **** If demo only then ... prep and EXIT
-  if (demoOnlyKey) {
+    // **** If demo only then ... prep and EXIT
+    if (demoOnlyKey) {
     // user has selected something that is loading the ehr only demo.
     // The url query demoOnlyKey says which case study to display.
     // See the last sections of this page change handler for the case a user has
     // entered the ehr demo and has paged to another ehr page
-    await EhrOnlyDemo.selectCaseStudy(demoOnlyKey)
-    await store.dispatch('mPatientStore/ehrOnlyDemo', demoOnlyKey)
+      await EhrOnlyDemo.selectCaseStudy(demoOnlyKey)
+      await store.dispatch('mPatientStore/ehrOnlyDemo', demoOnlyKey)
 
-    if (dbApp) console.log('loaded demo only ', demoOnlyKey)
-    EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
-    return perfExit(perfStat)
+      if (dbApp) console.log('loaded demo only ', demoOnlyKey)
+      EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
+      return perfExit(perfStat)
     // EXIT
-  }
-  if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
-    console.log('ehr only demo is active')
-    EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
-    return perfExit(perfStat)
+    }
+    if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+      console.log('ehr only demo is active')
+      EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
+      return perfExit(perfStat)
     // EXIT
-  }
-  try {
+    }
     // Start the progress indicator
     StoreHelper.setLoading('page-controller', true)
     let haveDemoToken = !!StoreHelper.getDemoToken() // may change if user is forced out of full demo
@@ -345,9 +354,9 @@ async  function onPageChange (toRoute) {
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   } catch (err) {
     // IF DEVELOPMENT ON LOCALHOST .... show the stack trace for speedier location of error
-    if (window.location.origin.includes('localhost')) console.log(err.stack)
+    if (window.location.origin.includes('localhost')) console.log('stack:', err.stack)
     // TODO check how we handle expired auth tokens
-    let msg = err.message
+    let msg = err.message || err
     if (err.response) {
       console.log('PageController err.response', err.response)
       const { data, statusText } = err.response
@@ -355,9 +364,9 @@ async  function onPageChange (toRoute) {
       msg += '. ' + data
     }
     StoreHelper.setApiError(msg)
-    if (StoreHelper.inZonePublic() && routeName !== ERROR_ROUTE_NAME) {
+    if (routeName !== ERROR_ROUTE_NAME) {
       console.log('going to error page')
-      await router.push({ name: ERROR_ROUTE_NAME })
+      await router.push({ name: ERROR_ROUTE_NAME, query: { ts: Date.now() }})
     }
   } finally {
     StoreHelper.setLoading('page-controller', false)

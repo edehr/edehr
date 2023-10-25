@@ -409,6 +409,7 @@ class StoreHelperWorker {
     return store.dispatch('consumerStore/createConsumer', consumerData)
   }
   getConsumer () { return store.getters['consumerStore/consumer'] }
+  hasConsumer ()  { return store.getters['consumerStore/hasConsumer'] }
   async loadConsumer (id) {  return await store.dispatch('consumerStore/loadConsumer', id) }
   getConsumersList () { return store.getters['consumerStore/consumerList'] }
   loadConsumerList () {  return store.dispatch('consumerStore/loadConsumers') }

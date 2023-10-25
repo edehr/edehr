@@ -10,6 +10,7 @@
       div You are logged in as an administrator. Exit the EdEHR to remove your admin role.
     div
       button(@click="throwError") Throw error to test Sentry
+      button(@click="consoleErr") Send message to console error to test Sentry
 
 </template>
 
@@ -35,6 +36,9 @@ export default {
     },
     throwError () {
       throw new Error('Throw an error to verify Sentry receives an event')
+    },
+    consoleErr () {
+      console.error('A message from here to test sentry')
     },
     adminLogin () {
       StoreHelper.adminLogin(this.password)

@@ -18,6 +18,7 @@ const getters = {
   consumerId: state => {
     return state.consumer._id
   },
+  hasConsumer: state => { return !!state.consumer._id },
   lastUpdateDate: state => {
     let prop =  state.consumer.lastUpdateDate
     if (debug) console.log(NAME + ' get lastUpdateDate', prop)

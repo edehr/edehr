@@ -4,34 +4,34 @@ import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 export function ehrCalculateTextProperty (pageDataKey, targetKey, srcValues) {
   const ectp = false
   let opts = EhrDefs.getChildElements(pageDataKey, 'elementKey', targetKey, 'options')
-  if ( exbp ) console.log('ectp', 'pageDataKey, targetKey', pageDataKey, targetKey)
-  if ( exbp ) console.log('ectp', 'opts', targetKey, opts)
+  if ( ectp ) console.log('ectp', 'pageDataKey, targetKey', pageDataKey, targetKey)
+  if ( ectp ) console.log('ectp', 'opts', targetKey, opts)
   if (!opts) {
     let msg = `Ehr calc text unexpected missing options for key ${targetKey}`
     console.log('ectp', msg)
     throw new Error(msg)
   }
   opts = opts[0]
-  if ( exbp ) console.log('ectp', 'opts', targetKey, opts)
+  if ( ectp ) console.log('ectp', 'opts', targetKey, opts)
   let sourceFieldToMatchOn = 'passToFunction'
   let desiredSourceProperty = 'elementKey'
   let srcKeys = EhrDefs.getChildElements(pageDataKey, sourceFieldToMatchOn, targetKey, desiredSourceProperty)
-  if ( exbp ) console.log('ectp', 'srcKeys', srcKeys)
+  if ( ectp ) console.log('ectp', 'srcKeys', srcKeys)
   if (srcKeys.length === 0) {
     let msg = `Ehr calc unexpected empty set of source keys for key ${targetKey} and calc type ${calculationType}`
-    if ( exbp ) console.log('ectp', msg)
-    if ( exbp ) console.log('ectp', 'pageDataKey, sourceFieldToMatchOn, targetKey',pageDataKey, sourceFieldToMatchOn, targetKey)
+    if ( ectp ) console.log('ectp', msg)
+    if ( ectp ) console.log('ectp', 'pageDataKey, sourceFieldToMatchOn, targetKey',pageDataKey, sourceFieldToMatchOn, targetKey)
     throw new Error(msg)
   }
   let values = []
   srcKeys.forEach(key => {
     let srcVal = srcValues[key]
-    if ( exbp ) console.log('ectp', 'srcKey, srcVal', key, srcVal)
+    if ( ectp ) console.log('ectp', 'srcKey, srcVal', key, srcVal)
     if(srcVal) {
       srcVal = srcVal.toLowerCase()
-      if ( exbp ) console.log('ectp', 'srcKey, srcVal', key, srcVal)
+      if ( ectp ) console.log('ectp', 'srcKey, srcVal', key, srcVal)
       const mappedValue = opts.find( opt => opt.key === srcVal)
-      if ( exbp ) console.log('ectp', 'mappedValue', mappedValue)
+      if ( ectp ) console.log('ectp', 'mappedValue', mappedValue)
       let text = mappedValue.text
       values.push(text)
     } else {
@@ -39,7 +39,7 @@ export function ehrCalculateTextProperty (pageDataKey, targetKey, srcValues) {
     }
   })
   let result = values.join(' ')
-  if ( exbp ) console.log('ectp', 'results "' + result +'"')
+  if ( ectp ) console.log('ectp', 'results "' + result +'"')
   return result
 }
 
