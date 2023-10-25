@@ -312,7 +312,7 @@ export function downloadEhrOnlyToFile ( ehrData, fName) {
   if (debug) console.log('EhrUtil Download EHR only to ', fName, ehrData)
   _saveAs(data, fName, mJSON)
 }
-export function downloadLearningObjectToFile (learningObject) {
+export function downloadLearningObjectToFile (learningObject, seedObject) {
   let lastUpdate = formatDateStr(learningObject.lastUpdateDate)
   let name = learningObject.name
   let ver = learningObject.version
@@ -322,11 +322,13 @@ export function downloadLearningObjectToFile (learningObject) {
     + '.json'
   let data = {
     id: learningObject._id,
+    appType: learningObject.appType,
     license: Text.LICENSE_FULL_TEXT,
     description: learningObject.description,
     name: name,
     version: ver,
-    fileName: fName
+    fileName: fName,
+    caseStudy: seedObject
   }
   data = JSON.stringify(data, null, 2)
   if (debug) console.log('EhrUtil Download learning object to ', fName)

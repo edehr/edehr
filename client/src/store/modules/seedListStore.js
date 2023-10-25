@@ -73,6 +73,14 @@ const actions = {
     })
   },
 
+  async fetchSeed (context, seedId) {
+    if (debugSL) console.log('SeedList fetchSeed', seedId)
+    let url = 'get/' + seedId
+    return InstoreHelper.getRequest(context, API, url).then(response => {
+      return response.data.seeddata
+    })
+  },
+
   /**
    * Load a seed record and set seed id as current seed
    * @param context

@@ -45,10 +45,11 @@ class MPatientHelperWorker {
 
   sortPatientList (list) {
     const getName = (p) => {
-      return p.keyData ? p.keyData.familyName || {} : ''
+      return p.keyData ? p.keyData.familyName : undefined
     }
     list.sort((a, b) => {
-      return getName(a).localeCompare(getName(b))
+      let aName = getName(a) || ''
+      return aName.localeCompare(getName(b))
     })
   }
 
