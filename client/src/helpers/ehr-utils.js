@@ -149,7 +149,7 @@ export function formatTimeStr (dateStrFromDb) {
 export function composeAxiosResponseError (error, msg = '') {
   if (!error.response) {
     if(error.message === 'Network Error') {
-      return 'EdEHR API server is not available. Either you have network issues or the server is down.'
+      return 'EdEHR API server is not available. Either you have network issues or the server is down. \n' + msg
     }
     msg += ' Error: "' + error.message + '"'
     return msg

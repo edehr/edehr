@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import * as Sentry from '@sentry/vue'
-import { BrowserTracing } from '@sentry/tracing'
-import router from './router'
+import { CaptureConsole } from '@sentry/integrations'
+import router, { ERROR_ROUTE_NAME } from './router'
 import store from './store'
 import { initializeStore } from './store'
 import icons from './icons'
@@ -74,14 +74,19 @@ if (LOCALHOST) {
     // use listener like this in the main window to advance to the next student when local storage changes.
   })
 }
-if (!LOCALHOST) {
+
+let enableSentry = !LOCALHOST
+// uncomment to enable on development box ....
+// enableSentry = true
+if (enableSentry) {
   //only install Sentry on non-localhost
   Sentry.init({
     Vue,
     dsn: 'https://c2ed6617d7bd4518ae5e0cea8827cb9d@o1411884.ingest.sentry.io/6750589',
     environment: StoreHelper.sentryEnvironment(),
     integrations: [
-      new BrowserTracing({
+      new CaptureConsole({ levels: ['error', 'assert'] }),
+      new Sentry.BrowserTracing({
         routingInstrumentation: Sentry.vueRouterInstrumentation(router),
         // default value of tracingOrigins is ['localhost', /^\//].
         tracingOrigins: ['localhost', 'edehr.org', /^\//],
@@ -92,6 +97,20 @@ if (!LOCALHOST) {
     // We recommend adjusting this value in production
     tracesSampleRate: 0.05,
   })
+}
+
+/*
+Add a general catcher for unhandled rejections.
+ */
+onunhandledrejection = async (event) => {
+  if (StoreHelper.hasConsumer()) {
+    // if logged in the clear everything. Some store modules make initialization calls via API, if they have saved ids (e.g. see Course store).  By clearing out all the storage we give the user a clean place to start again.
+    await StoreHelper.logUserOutOfEdEHR()
+  }
+  // During development that involves error handling it is useful to stop the error here to explore the conditions.
+  // alert('Error page')
+  // GO TO the ERROR page. Add a timestamp in case there are two or more attempts to go to the same page.
+  await router.push({ name: ERROR_ROUTE_NAME, query: { ts: Date.now() }})
 }
 /*
 Create the root Vue component.

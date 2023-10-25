@@ -50,9 +50,8 @@ class InstoreHelperWorker {
           resolve(results)
         })
         .catch(error => {
-          let msg = composeAxiosResponseError(error, 'Update failed: ')
-          StoreHelper.setApiError(msg)
-          reject(msg)
+          let msg = `Put for ${url} failed`
+          catchHandler(msg, error, reject)
         })
         .finally(() => {
           if (!silent) StoreHelper.setLoading('putRequest', false)
@@ -72,9 +71,9 @@ class InstoreHelperWorker {
           resolve(results)
         })
         .catch(error => {
-          let msg = composeAxiosResponseError(error, 'Create failed: ')
-          StoreHelper.setApiError(msg)
-          reject(msg)
+          let msg = `Post for ${url} failed`
+          msg += ' ' + JSON.stringify(bodyData)
+          catchHandler(msg, error, reject)
         })
         .finally(() => StoreHelper.setLoading('postRequest', false))
     })
@@ -96,10 +95,8 @@ class InstoreHelperWorker {
           resolve(results)
         })
         .catch(error => {
-          console.log('success instoreHelper catch', error)
-          let msg = composeAxiosResponseError(error, 'Create failed: ')
-          StoreHelper.setApiError(msg)
-          reject(msg)
+          let msg = `Upsert for ${url} failed`
+          catchHandler(msg, error, reject)
         })
         .finally(() => StoreHelper.setLoading('upsert', false))
     })
@@ -117,11 +114,8 @@ class InstoreHelperWorker {
           resolve(results)
         })
         .catch(error => {
-          if(debug) console.log('Error ', api, '>> ', error)
-          // let msg = `Failed GET to ${url} with error: ${error.message}`
-          let msg = composeAxiosResponseError(error, 'Get failed: ')
-          StoreHelper.setApiError(msg)
-          reject(msg)
+          let msg = `Get for ${url} failed`
+          catchHandler(msg, error, reject)
         })
         .finally( () => {
           if(debug) console.log('GOT ', api, '>> finally')
@@ -137,14 +131,20 @@ class InstoreHelperWorker {
       axios.delete(url)
         .then(result => {
           resolve(result)
-        }).catch(err => {
-          const msg = composeAxiosResponseError(err, 'Delete failed: ')
-          StoreHelper.setApiError(msg)
-          reject(msg)
+        }).catch(error => {
+          let msg = `Delete for ${url} failed`
+          catchHandler(msg, error, reject)
         })
         .finally(() => StoreHelper.setLoading('deleteRequest', false))
     })
   }
 }
+
+function catchHandler (message, error, reject) {
+  let msg = composeAxiosResponseError(error, message )
+  StoreHelper.setApiError(msg)
+  reject(msg)
+}
+
 const InstoreHelper = new InstoreHelperWorker()
 export default InstoreHelper
