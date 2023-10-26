@@ -11,6 +11,7 @@
       ui-button(
         data-test-id="ClassList.button.download",
         v-on:buttonClicked="downloadEvaluations",
+        :disabled='!classList',
         :title='text.downloadTip'
       )
         fas-icon(class="icon-right", :icon="appIcons.download")

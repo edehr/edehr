@@ -69,7 +69,7 @@ export default {
       return this.activity.learningObjectName
     },
     classList () {
-      return StoreHelper.getClassList()
+      return this.$store.getters['instructor/classList'] || []
     },
     hasLinkedLearningObject () { return this.activity.hasLinkedLearningObject },
     showLabels () { return StoreHelper.isOutsideShowButtonLabels() },
