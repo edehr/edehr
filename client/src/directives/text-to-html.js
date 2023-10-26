@@ -18,6 +18,8 @@ function worker (el, binding, source) {
     if (debug) console.log('T2H directive binding', binding.value)
     el.innerHTML = textToHtml(binding.value, binding.modifiers.noAutoLink)
     if (debug) console.log('T2H el.innerHTML', el.innerHTML)
+  } else {
+    el.innerHTML = ''
   }
 }
 

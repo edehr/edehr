@@ -50,8 +50,9 @@ export default {
     learningObjectId () { return this.learningObject._id}
   },
   methods: {
-    downloadLearningObject () {
-      downloadLearningObjectToFile(this.learningObject)
+    async downloadLearningObject () {
+      const seed = await this.$store.dispatch('seedListStore/fetchSeed', this.learningObject.seedDataId)
+      downloadLearningObjectToFile(this.learningObject, seed)
     },
     gotoLearningObjectView () {
       this.$router.push({ name: 'learning-object', query: { learningObjectId: this.learningObjectId } })

@@ -55,24 +55,19 @@ function composeData (req, statusCode, time) {
     .replace(/[:.]/g, '')
     .replace(/\//g, '_')
   const elapsedMs = Math.round(time)
-  const rec = {
-    key: key,
-    ts: ts,
-    tsStr: (new Date(ts)).toISOString(),
-    elapsedMs: elapsedMs,
-    status: statusCode,
-  }
+  const rec = { }
+  rec.consumerKey = req.consumerKey
+  rec.userId = req.userId
+  rec.visitId = req.visitId // req.authPayload ? req.authPayload.visitId : undefined
+  rec.key = key
+  rec.elapsedMs = elapsedMs
+  rec.isPrimary = req.isPrimary
+  rec.status = statusCode
   rec.origin = req.headers['origin'] || req.url
   rec.params = isNotEmpty(req.params) ? req.params : undefined
   rec.query = isNotEmpty(req.query) ? req.query : undefined
-  // yes stash the visit id in the trace log.
-  // Need it to follow the actions on a student's work to ensure the student's work is preserved in the db as they entered it.
-  // The users are reporting strange events. To determine the cause after the fact we need this information.
-  rec.visitId = req.visitId // req.authPayload ? req.authPayload.visitId : undefined
-  rec.consumerKey = req.consumerKey
-  rec.isPrimary = req.isPrimary
-  rec.userId = req.userId
-
+  rec.tsStr = (new Date(ts)).toISOString()
+  rec.ts = ts
   const includeBody = false
   if (includeBody && isNotEmpty(req.body)) {
     rec.body = Object.assign({}, req.body)
