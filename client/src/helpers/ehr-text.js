@@ -2,20 +2,22 @@ import { formatTimeStr } from '@/helpers/ehr-utils'
 
 export const Text = {
   // STUDENT_INTRO: 'Click the edit icon to fill in the form.'
-  EHRDATA_CAN_NOT_BE_EMPTY: 'Seed data can not be empty',
+  EHRDATA_CAN_NOT_BE_EMPTY: 'Case study can not be empty',
   EHRDATA_HAS_INVALID_PAGES: (extras) => `Data contains invalid keys: ${extras}`,
   LICENSE_FULL_TEXT: 'This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/',
   LICENSE_TEXT: 'Creative Commons Attribution',
-  LICENSE_MUST_BE: 'Seed licence must be Creative Commons Attribution',
+  LICENSE_MUST_BE: 'Licence must be Creative Commons Attribution',
   FUNCTION_OUT_OF_CONTEXT: (f) => `Coding error using ${f} out of context`,
   // API load errors
   IS_INVALID_CHECKSET: (key) => `The checkset ${key} definition is missing the options property`,
+  LOBJ_MUST_HAVE_LICENSE: 'Learning object data must have a valid licence',
+  LOBJ_FILE_MISSING_SEED: 'Learning object file did not contain a case study',
   MISSING_VISIT_ID: 'No visit id available',
   MISSING_API_URL: 'This system requires the URL to the API',
   MISSING_AUTH_TOKEN: 'You need to be authenticated to view this',
   PARAMETERS_ERROR: 'Parameters Error',
-  SEED_MUST_HAVE_LICENSE: 'Seed data must have a valid licence',
-  SEED_MUST_HAVE_EHRDATA: 'Seed data must have EHR data (the ehrData property)',
+  SEED_MUST_HAVE_LICENSE: 'Case study must have a valid licence',
+  SEED_MUST_HAVE_EHRDATA: 'Case study must have EHR data (the ehrData property)',
   SEND_FOR_EVAL: 'Send for evaluation',
   SEND_FOR_EVAL_TITLE: 'Send your work to your instructor for evaluation',
   SEND_FOR_EVAL_BODY: 'Please confirm that you want to submit your work for your instructor to review?  Once you press submit you will not be able to make any further changes to this activity.',
@@ -203,27 +205,49 @@ export const Text = {
       TITLE: (name) => `Confirm duplication of ${name}`,
       DESCRIPTION: (name) => `Are you sure you want to duplicate ${name}?`,
     }
-
   },
   LOBJ_DIALOG: {
     TITLES: {
       edit: 'Edit learning object properties',
-      create: 'Create a new learning object'
+      create: 'Create a new learning object',
+      import: 'Import learning object',
+      import_sub: 'Import a learning object, perhaps with a case study, from a file that someone made by exporting a learning object from the EdEHR.'
     },
     ERRORS: {
-      ID_IN_USE: (id) => `The learning object id ${id} is already in use. The id is case insensitive so upper and lower case letters are consider the same.`,
       NAME_REQUIRED: 'Learning object name is required',
       SEED_REQUIRED: 'Must select a case study for this learning object.',
-      INVALID_TIME: 'Please, enter a valid 24hrs time',
       CASE_STUDY_NAME: 'To create a case study you must provide a name.'
     },
     LABELS: {
+      FILE_INPUT: 'Browse for a learning object file. It will have a file extension of .json.',
+      LOBJ: 'Learning object',
+      LOBJ_NAME: 'Name (required)',
       DESCRIPTION: 'Description',
       SEED_OBJ: 'Case study',
-      SEED_OBJ_TP: '',
-      LOBJ_ID: 'Learning object id',
-      LOBJ_ID_TP: 'The id that links the LMS activity to the learning object'
+      SEED_NAME: 'Name  (required)',
+      SEED_DESCRIPTION: 'Description',
+      APP_TYPE: 'Application type',
+      SEED_TAGS: 'Tags',
+      SEED_CONTRIB: 'Contributors (optional)',
+      SEED_VERSION: 'Version (optional)',
     }
+  },
+  LOBJ_SHARED: {
+    APP_TYPE: {
+      EHR: 'This case study is for the electronic health record (EHR) application.',
+      LIS: 'This case study is for the lab information system (LIS) application.',
+      NONE: 'No application type is active'
+    },
+    APP_TYPE_TP: 'The application type sets which system is used. Current choices are EHR (typically for health care professions in a hospital setting), LIS (lab information system of medical laboratories), and someday soon EMR (typically for health care professions in the community setting). ',
+    LOBJ_EXPLAINED: 'A learning object is the content that can be reused semester after semester.  Each semester you can reconnect the same learning object to the activity for the new semester.  (Note the activity is what holds the class list.) A learning object\'s description is a good place to put your lesson plan written as instructions for students. The learning object\'s case study provides the patient data. Although, you can make a learning object without a case study and then make your students search for the correct patient.',
+    DESCRIPTION_EXPLAINED: 'Compose the instructions for students here. Students only see the instructions in the Activity but having the instructions here makes it easy for you to prepare the activity that will be connected to this learning object. When you set up the activity you can press a button to transfer the name and description into the activity, where the description will go into the Activity\'s instructions ready for your students to see them when they are do their work.',
+    SEED_DESCRIPTION_TP: 'The case study description is important for people like you so you can know what it contains and what it can be good for.',
+    SEED_TAGS_TP: 'Tags let you categorize case studies.',
+    SEED_CONTRIB_TP: 'A list of people who contributed to the case study.',
+    SEED_VERSION_TP: 'You can indicate a versions of content.',
+  },
+  LOBJ_IMPORT_DIALOG: {
+
   },
   LOBJ_PAGE: {
     ACTIVITIES: 'Activities',
@@ -233,6 +257,8 @@ export const Text = {
     SEED: 'Case study',
     USED: 'Used by',
     USED_VAL: (cnt) => `${cnt} activities`,
+    UPLOAD: 'Upload',
+    UPLOAD_TP: 'Import a learning object from your computer',
   },
   ROUTE_NAMES: {
     ADMIN: 'Admin login',

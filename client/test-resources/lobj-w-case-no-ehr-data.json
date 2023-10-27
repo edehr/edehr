@@ -1,0 +1,16 @@
+{
+  "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "description": "Test learning object",
+  "name": "Test learning object",
+  "caseStudy": {
+    "isDefault": false,
+    "tagList": [
+      "Hematology"
+    ],
+    "appType": "LIS",
+    "toolConsumer": "65387cfb6ad49393bb80e580",
+    "name": "BONLANLE Akosua - Hematology - After",
+    "description": "Slide Number 18-212. Patient recently immigrated from Cameroon for work in Vancouver and requires bloodwork as part of her medical examination. ",
+    "version": "1"
+	}
+}

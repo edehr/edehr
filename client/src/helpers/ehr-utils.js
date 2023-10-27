@@ -203,47 +203,84 @@ export function readFile (file) {
   })
 }
 
+export function validateLObjFileContents (dataAsString) {
+  const licenseOptional = true
+  let parsedData
+  let errors = []
+  let warnings = []
+  let results = {}
+  try {
+    parsedData = JSON.parse(dataAsString)
+    if (!parsedData.license) {
+      errors.push(Text.LOBJ_MUST_HAVE_LICENSE)
+    } else {
+      !parsedData.license.includes(Text.LICENSE_TEXT) ? errors.push(Text.LICENSE_MUST_BE) : null
+    }
+    if (!parsedData.caseStudy) {
+      warnings.push(Text.LOBJ_FILE_MISSING_SEED)
+    } else {
+      let caseStudy = JSON.stringify(parsedData.caseStudy)
+      let {warnMsg, invalidMsg} = validateSeedFileContents(caseStudy, licenseOptional)
+      invalidMsg ? errors.push(invalidMsg) : null
+      warnMsg ? warnings.push(warnMsg) : null
+    }
+  } catch (err) {
+    console.error('EhrUtil validateLObjFileContents: failed to parse file data', err)
+    errors.push(err.message)
+  }
+  errors.length > 0 ? results.invalidMsg = errors.join('\n') : null
+  warnings.length > 0 ? results.warnMsg = warnings.join('\n') : null
+  results.lObj = parsedData
+  return results
+}
 /**
  * Exported for testing
  * @param dataAsString
+ * @param licenseOptional
  * @return {*}
  * @private
  */
-export function validateSeedFileContents (dataAsString) {
+export function validateSeedFileContents (dataAsString, licenseOptional) {
+  let errors = []
+  let warnings = []
+  let results = {}
   let pageKeys = EhrDefs.getAllPageKeys()
   let parsedData
   try {
     parsedData = JSON.parse(dataAsString)
-  } catch (err) {
-    console.log('EhrUtil validateSeedFileContents: failed to parse seed data', err)
-    return { invalidMsg: err.message }
-  }
-  if (!parsedData.license) {
-    return { invalidMsg: Text.SEED_MUST_HAVE_LICENSE }
-  }
-  if (!parsedData.license.includes(Text.LICENSE_TEXT)) {
-    return { invalidMsg: Text.LICENSE_MUST_BE }
-  }
-  if (!parsedData.ehrData) {
-    return { invalidMsg: Text.SEED_MUST_HAVE_EHRDATA }
-  }
-  let keys = Object.keys(parsedData.ehrData)
-  // console.log('keys', keys)
-  if (!keys || keys.length === 0) {
-    return { invalidMsg: Text.EHRDATA_CAN_NOT_BE_EMPTY }
-  }
-  let badKeys = []
-  keys.forEach(key => {
-    let found = pageKeys.find(pKey => pKey === key)
-    if (!found && key !== 'meta') {
-      badKeys.push(key)
+    if (!licenseOptional ) {
+      if (!parsedData.license) {
+        errors.push(Text.SEED_MUST_HAVE_LICENSE)
+      } else {
+        !parsedData.license.includes(Text.LICENSE_TEXT) ? errors.push(Text.LICENSE_MUST_BE) : null
+      }
     }
-  })
-  if (badKeys.length > 0) {
-    let extras = badKeys.join(', ')
-    return { invalidMsg: Text.EHRDATA_HAS_INVALID_PAGES(extras) }
+    if (!parsedData.ehrData) {
+      errors.push(Text.SEED_MUST_HAVE_EHRDATA)
+    } else {
+      let keys = Object.keys(parsedData.ehrData)
+      // console.log('keys', keys)
+      !keys || keys.length === 0 ? errors.push(Text.EHRDATA_CAN_NOT_BE_EMPTY) : null
+      let badKeys = []
+      keys.forEach(key => {
+        let found = pageKeys.find(pKey => pKey === key)
+        if (!found && key !== 'meta') {
+          badKeys.push(key)
+        }
+      })
+      if (badKeys.length > 0) {
+        let extras = badKeys.join(', ')
+        warnings.push(Text.EHRDATA_HAS_INVALID_PAGES(extras))
+      }
+    }
+  } catch (err) {
+    console.error('EhrUtil validateSeedFileContents: failed to parse or validate seed data', err, dataAsString)
+    errors.push(err.message)
   }
-  return { seedObj: parsedData }
+  errors.length > 0 ? results.invalidMsg = errors.join('\n') : null
+  warnings.length > 0 ? results.warnMsg = warnings.join('\n') : null
+  results.seedObj = parsedData
+  return results
 }
 
 /**
