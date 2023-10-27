@@ -676,7 +676,8 @@ select, .select {
 .med-lab-urin-micro {
   grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
   .select {
-    width: $select_width;
+    width: 16rem;
+    max-width: 16rem;
   }
 }
 
@@ -687,7 +688,16 @@ select, .select {
 .med-lab-urin-qc-pending-table {
   grid-template-columns: repeat(2, 1fr);
 }
-
+.uqcSomeQcUnacceptable {
+  .form_label_wrapper {
+    width: 25rem;
+  }
+  .radio_set {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+  }
+}
 #uqcManOrClinitek {
   margin-bottom: 1rem;
   .radio_set {
