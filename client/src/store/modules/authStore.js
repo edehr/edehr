@@ -21,6 +21,7 @@ visitId: "638a1e50dbdd588b73d48bb2"
 }
 
 const getters = {
+  isAuthd: state => { return !!state.authData.toolConsumerId },
   token: state => {
     return state.token
   },

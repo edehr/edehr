@@ -53,7 +53,7 @@ function skillsHelper (context, action, activityId) {
 const actions = {
   initialize: async function (context) {
     const courseId = localStorage.getItem(COURSE_LOCAL_STORE)
-    if (courseId) {
+    if (courseId && StoreHelper.isAuthd()) {
       await context.dispatch('loadCurrentCourse', { courseId: courseId })
     }
   },
