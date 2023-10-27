@@ -5,8 +5,11 @@
         app-search-box(:searchTerm="searchTerm", @updateSearchTerm='updateSearchTerm')
         app-type-selector(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
         app-paginate-controls(:offset='offset', :limit='paginateLimit', :listMetadata="listMetadata", @repage='repage')
-        //div(class="flow_across table_space_across")
-        //  learning-objects-actions(class="flow_across_last_item")
+        div(class="flow_across table_space_across")
+          zone-lms-button(@action="showUploadDialog",
+            :title="text.UPLOAD_TP",
+            :icon='appIcons.upload',
+            :text='text.UPLOAD')
     div(class="details-container card intro")
       div(class="instructions").
         Learning objects encapsulate a case study with expected learning outcomes.
@@ -57,7 +60,7 @@
           div(class="cell date") {{ lObj.lastUpdateDate | formatDateTime }}
           div(class="cell description").
              {{truncate(lObj.description, 200)}}
-
+    learning-object-import-dialog(ref='theLObjImportDialog')
 </template>
 
 <script>
@@ -72,6 +75,8 @@ import UiButton from '@/app/ui/UiButton.vue'
 import AppSearchBox from '@/app/components/AppSearchBox.vue'
 import AppTypeSelector from '@/app/components/AppTypeSelector.vue'
 import AppPaginateControls from '@/app/components/AppPaginateControls.vue'
+import ZoneLmsButton from '@/outside/components/ZoneLmsButton.vue'
+import LearningObjectImportDialog from '@/outside/components/learning-object/LearningObjectImportDialog.vue'
 const ASC = 'asc'
 const DESC = 'desc'
 export default {
@@ -91,7 +96,7 @@ export default {
       checkAppTypes: ['EHR']
     }
   },
-  components: { AppPaginateControls, AppTypeSelector, AppSearchBox, UiButton, UiTableHeaderButton, ZoneLmsPageBanner, LearningObjectListItem },
+  components: { ZoneLmsButton, AppPaginateControls, AppTypeSelector, AppSearchBox, UiButton, UiTableHeaderButton, ZoneLmsPageBanner, LearningObjectListItem, LearningObjectImportDialog },
   computed: {
     canDo () {
       return StoreHelper.isDevelopingContent()
@@ -162,6 +167,9 @@ export default {
       let selected = item._id === this.$route.query.learningObjectId
       let classString = selected ? 'selected ' : ''
       return `${classString}`
+    },
+    showUploadDialog: function () {
+      this.$refs.theLObjImportDialog.showLObjImportDialog()
     },
     sortColumnIcon (columnName) {
       let icon = APP_ICONS.sortNone

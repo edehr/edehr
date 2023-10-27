@@ -1,0 +1,32 @@
+{
+  "id": "65387cfb6ad49393bb80e597",
+  "appType": "LIS",
+  "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "description": "This is the same case study as the BONLANLE Akosua - Hematology - Before but now this case studycontains the completed peripheral blood film (PBF) review. This is the detailed report completedby the technologist.  Note how this PBF contains many fields that are not normally seen in the actual lab. These fields are present to help the student explore what they are learning and forthe instructor to provide guidance.",
+  "name": "BONLANLE Akosua - Hematology - After",
+  "fileName": "bonlanleAkosuaHematologyAfter_24 Oct 2023.json",
+  "caseStudy": {
+    "isDefault": false,
+    "tagList": [
+      "Hematology"
+    ],
+    "appType": "LIS",
+    "_id": "65387cfb6ad49393bb80e58b",
+    "toolConsumer": "65387cfb6ad49393bb80e580",
+    "name": "BONLANLE Akosua - Hematology - After",
+    "description": "Slide Number 18-212. Patient recently immigrated from Cameroon for work in Vancouver and requires bloodwork as part of her medical examination. ",
+    "version": "1",
+    "ehrData": {
+    	"demographics": {
+    	},
+    	"nonpage": {
+    	}
+    },
+    "createDate": "2023-10-25T02:27:07.316Z",
+    "lastUpdateDate": "2023-10-25T02:27:07.316Z",
+    "mrn": "0008",
+    "__v": 0,
+    "draftRowCount": 0,
+    "id": "65387cfb6ad49393bb80e58b"
+  }
+}

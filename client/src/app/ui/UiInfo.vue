@@ -10,8 +10,8 @@
       @cancel="cancelDialog",
       cancelButtonLabel='Close'
       )
-      h2(slot="header") {{ title }}
-      div(slot="body")
+      h2(slot="header", class='ui-info-title') {{ title }}
+      div(slot="body", class='ui-info-body')
         p(v-html="content")
 
 </template>
@@ -69,11 +69,14 @@ export default {
   }
   .info-icon {
     vertical-align: -2px;
-
     &:hover {
       color: $black;
       cursor: pointer;
     }
+  }
+  .ui-info-body,
+  .ui-info-title {
+    text-align: left;
   }
 }
 </style>
