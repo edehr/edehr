@@ -353,7 +353,7 @@ export function downloadLearningObjectToFile (learningObject, seedObject) {
   let lastUpdate = formatDateStr(learningObject.lastUpdateDate)
   let name = learningObject.name
   let ver = learningObject.version
-  let fName = camelcase(name)
+  let fName = 'lobj_' + camelcase(name)
     + (ver ? '_' + ver : '')
     + '_' + lastUpdate
     + '.json'
