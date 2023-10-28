@@ -30121,11 +30121,19 @@ const DEFS = {
         'fqn': 'medLabUrinalysis.uchemMicroIndicater'
       },
       {
+        'elementKey': 'urnDiscMA',
+        'formIndex': '2',
+        'inputType': 'textarea',
+        'label': 'Discrepancies manual vs auto',
+        'tableColumn': '28',
+        'fqn': 'medLabUrinalysis.urnDiscMA'
+      },
+      {
         'elementKey': 'uchemInstructorlComment',
         'formIndex': '2',
         'inputType': 'textarea',
         'label': 'Instructors\' comment',
-        'tableColumn': '28',
+        'tableColumn': '29',
         'fqn': 'medLabUrinalysis.uchemInstructorlComment'
       },
       {
@@ -30160,7 +30168,7 @@ const DEFS = {
             'text': '+4'
           }
         ],
-        'tableColumn': '29',
+        'tableColumn': '30',
         'fqn': 'medLabUrinalysis.uchemSulfosalicylic',
         'helperHtml': '<p>Sulfosalicylic acid</p>'
       },
@@ -30179,7 +30187,7 @@ const DEFS = {
             'text': 'positive'
           }
         ],
-        'tableColumn': '30',
+        'tableColumn': '31',
         'fqn': 'medLabUrinalysis.uchemIcotest'
       },
       {
@@ -30258,7 +30266,7 @@ const DEFS = {
             'text': 'Obscures field'
           }
         ],
-        'tableColumn': '31',
+        'tableColumn': '32',
         'tableLabel': 'WBC',
         'fqn': 'medLabUrinalysis.umicroWBC'
       },
@@ -30324,7 +30332,7 @@ const DEFS = {
             'text': 'Obscures field'
           }
         ],
-        'tableColumn': '32',
+        'tableColumn': '33',
         'tableLabel': 'RBC',
         'fqn': 'medLabUrinalysis.umicroRBC'
       },
@@ -30382,7 +30390,7 @@ const DEFS = {
             'text': 'Obscures field'
           }
         ],
-        'tableColumn': '33',
+        'tableColumn': '34',
         'tableLabel': 'Epithelial Cells',
         'fqn': 'medLabUrinalysis.umicroEpithelial'
       },
@@ -30404,7 +30412,7 @@ const DEFS = {
             'text': 'RTE'
           }
         ],
-        'tableColumn': '34',
+        'tableColumn': '35',
         'tableLabel': 'Types',
         'fqn': 'medLabUrinalysis.umicroTypesEpithelial Cells'
       },
@@ -30457,7 +30465,7 @@ const DEFS = {
             'text': 'Obscures field'
           }
         ],
-        'tableColumn': '35',
+        'tableColumn': '36',
         'tableLabel': 'Cast results 1',
         'fqn': 'medLabUrinalysis.umicrocCastsResults1'
       },
@@ -30495,7 +30503,7 @@ const DEFS = {
             'text': 'Fatty'
           }
         ],
-        'tableColumn': '36',
+        'tableColumn': '37',
         'tableLabel': 'Cast type 1',
         'fqn': 'medLabUrinalysis.umicrocCastsType1'
       },
@@ -30540,7 +30548,7 @@ const DEFS = {
             'text': 'Obscures field'
           }
         ],
-        'tableColumn': '37',
+        'tableColumn': '38',
         'tableLabel': 'Cast results 2',
         'fqn': 'medLabUrinalysis.umicrocCastsResults2'
       },
@@ -30578,7 +30586,7 @@ const DEFS = {
             'text': 'Fatty'
           }
         ],
-        'tableColumn': '38',
+        'tableColumn': '39',
         'tableLabel': 'Cast type 2',
         'fqn': 'medLabUrinalysis.umicrocCastsType2'
       },
@@ -30623,7 +30631,7 @@ const DEFS = {
             'text': 'Obscures field'
           }
         ],
-        'tableColumn': '39',
+        'tableColumn': '40',
         'tableLabel': 'Cast results 3',
         'fqn': 'medLabUrinalysis.umicrocCastsResults3'
       },
@@ -30661,7 +30669,7 @@ const DEFS = {
             'text': 'Fatty'
           }
         ],
-        'tableColumn': '40',
+        'tableColumn': '41',
         'tableLabel': 'Cast type 3',
         'fqn': 'medLabUrinalysis.umicrocCastsType3'
       },
@@ -30706,7 +30714,7 @@ const DEFS = {
             'text': 'Obscures field'
           }
         ],
-        'tableColumn': '41',
+        'tableColumn': '42',
         'tableLabel': 'Cast results 4',
         'fqn': 'medLabUrinalysis.umicrocCastsResults4'
       },
@@ -30744,7 +30752,7 @@ const DEFS = {
             'text': 'Fatty'
           }
         ],
-        'tableColumn': '42',
+        'tableColumn': '43',
         'tableLabel': 'Cast type 4',
         'fqn': 'medLabUrinalysis.umicrocCastsType4'
       },
@@ -30769,7 +30777,7 @@ const DEFS = {
         'formCss': 'form-table-span-3',
         'inputType': 'checkbox',
         'label': 'None seen',
-        'tableColumn': '43',
+        'tableColumn': '44',
         'fqn': 'medLabUrinalysis.umicroCrystalsNonePresent'
       },
       {
@@ -30840,7 +30848,7 @@ const DEFS = {
             'text': 'Sulfonamides'
           }
         ],
-        'tableColumn': '44',
+        'tableColumn': '45',
         'fqn': 'medLabUrinalysis.umicroCrystalsPresent',
         'helperHtml': '<p>none:=None seen</p>\n<p>present:=Present</p>\n<p>field:=Obscures field</p>'
       },
@@ -30911,7 +30919,7 @@ const DEFS = {
             'text': 'Sulfonamides'
           }
         ],
-        'tableColumn': '45',
+        'tableColumn': '46',
         'fqn': 'medLabUrinalysis.umicroCrystalsObscures'
       },
       {
@@ -30945,7 +30953,7 @@ const DEFS = {
             'text': 'Obscures field'
           }
         ],
-        'tableColumn': '46',
+        'tableColumn': '47',
         'tableLabel': 'Yeast',
         'fqn': 'medLabUrinalysis.umicroYeast'
       },
@@ -30986,7 +30994,7 @@ const DEFS = {
             'text': 'Obscures field'
           }
         ],
-        'tableColumn': '47',
+        'tableColumn': '48',
         'tableLabel': 'Bacteria',
         'fqn': 'medLabUrinalysis.umicroBacteria'
       },
@@ -31031,7 +31039,7 @@ const DEFS = {
             'text': 'Starch'
           }
         ],
-        'tableColumn': '48',
+        'tableColumn': '49',
         'tableLabel': 'Other',
         'fqn': 'medLabUrinalysis.umicroOther'
       },
@@ -31051,23 +31059,15 @@ const DEFS = {
         'elementKey': 'urnInternal',
         'formIndex': '2',
         'inputType': 'textarea',
-        'label': 'Department comments\rand dilutions',
-        'tableColumn': '49',
-        'fqn': 'medLabUrinalysis.urnInternal'
-      },
-      {
-        'elementKey': 'urnDiscMA',
-        'formIndex': '2',
-        'inputType': 'textarea',
-        'label': 'Discrepancies manual vs auto',
+        'label': 'Department comments and dilutions',
         'tableColumn': '50',
-        'fqn': 'medLabUrinalysis.urnDiscMA'
+        'fqn': 'medLabUrinalysis.urnInternal'
       },
       {
         'elementKey': 'urnDiscCE',
         'formIndex': '2',
         'inputType': 'textarea',
-        'label': 'Discrepancies chem vs-NL-micro',
+        'label': 'Discrepancies chem vs micro',
         'tableColumn': '51',
         'fqn': 'medLabUrinalysis.urnDiscCE'
       },
@@ -31075,7 +31075,7 @@ const DEFS = {
         'elementKey': 'urnInstructor2',
         'formIndex': '2',
         'inputType': 'textarea',
-        'label': 'Instructor comments and notes',
+        'label': 'Instructors\' comment',
         'tableColumn': '52',
         'fqn': 'medLabUrinalysis.urnInstructor2'
       },
@@ -31521,7 +31521,7 @@ const DEFS = {
           },
           {
             'key': 'clinitek',
-            'text': '>= 1.5 mmol/L'
+            'text': '>= trace'
           }
         ],
         'fqn': 'medLabUrinalysis.uqcAbnormalRefRangeKetone'
@@ -31944,8 +31944,19 @@ const DEFS = {
       {
         'elementKey': 'uqcSomeQcUnacceptable',
         'formIndex': '1',
-        'inputType': 'checkbox',
+        'formCss': 'uqcSomeQcUnacceptable',
+        'inputType': 'radioset',
         'label': 'Are any QC outside of acceptable limits?',
+        'options': [
+          {
+            'key': 'Yes',
+            'text': 'Yes'
+          },
+          {
+            'key': 'No',
+            'text': 'No'
+          }
+        ],
         'tableColumn': '51',
         'tableLabel': 'Some QC pending',
         'fqn': 'medLabUrinalysis.uqcSomeQcUnacceptable'
@@ -32951,154 +32962,154 @@ const DEFS = {
           {
             'ehr_list_index': '28',
             'items': [
-              'uchemInstructorlComment'
+              'urnDiscMA'
             ]
           },
           {
             'ehr_list_index': '29',
             'items': [
-              'uchemSulfosalicylic'
+              'uchemInstructorlComment'
             ]
           },
           {
             'ehr_list_index': '30',
+            'items': [
+              'uchemSulfosalicylic'
+            ]
+          },
+          {
+            'ehr_list_index': '31',
             'items': [
               'uchemIcotest'
             ]
           },
           {
             'label': 'WBC',
-            'ehr_list_index': '31',
+            'ehr_list_index': '32',
             'items': [
               'umicroWBC'
             ]
           },
           {
             'label': 'RBC',
-            'ehr_list_index': '32',
+            'ehr_list_index': '33',
             'items': [
               'umicroRBC'
             ]
           },
           {
             'label': 'Epithelial Cells',
-            'ehr_list_index': '33',
+            'ehr_list_index': '34',
             'items': [
               'umicroEpithelial'
             ]
           },
           {
             'label': 'Types',
-            'ehr_list_index': '34',
+            'ehr_list_index': '35',
             'items': [
               'umicroTypesEpithelial Cells'
             ]
           },
           {
             'label': 'Cast results 1',
-            'ehr_list_index': '35',
+            'ehr_list_index': '36',
             'items': [
               'umicrocCastsResults1'
             ]
           },
           {
             'label': 'Cast type 1',
-            'ehr_list_index': '36',
+            'ehr_list_index': '37',
             'items': [
               'umicrocCastsType1'
             ]
           },
           {
             'label': 'Cast results 2',
-            'ehr_list_index': '37',
+            'ehr_list_index': '38',
             'items': [
               'umicrocCastsResults2'
             ]
           },
           {
             'label': 'Cast type 2',
-            'ehr_list_index': '38',
+            'ehr_list_index': '39',
             'items': [
               'umicrocCastsType2'
             ]
           },
           {
             'label': 'Cast results 3',
-            'ehr_list_index': '39',
+            'ehr_list_index': '40',
             'items': [
               'umicrocCastsResults3'
             ]
           },
           {
             'label': 'Cast type 3',
-            'ehr_list_index': '40',
+            'ehr_list_index': '41',
             'items': [
               'umicrocCastsType3'
             ]
           },
           {
             'label': 'Cast results 4',
-            'ehr_list_index': '41',
+            'ehr_list_index': '42',
             'items': [
               'umicrocCastsResults4'
             ]
           },
           {
             'label': 'Cast type 4',
-            'ehr_list_index': '42',
+            'ehr_list_index': '43',
             'items': [
               'umicrocCastsType4'
             ]
           },
           {
-            'ehr_list_index': '43',
+            'ehr_list_index': '44',
             'items': [
               'umicroCrystalsNonePresent'
             ]
           },
           {
-            'ehr_list_index': '44',
+            'ehr_list_index': '45',
             'items': [
               'umicroCrystalsPresent'
             ]
           },
           {
-            'ehr_list_index': '45',
+            'ehr_list_index': '46',
             'items': [
               'umicroCrystalsObscures'
             ]
           },
           {
             'label': 'Yeast',
-            'ehr_list_index': '46',
+            'ehr_list_index': '47',
             'items': [
               'umicroYeast'
             ]
           },
           {
             'label': 'Bacteria',
-            'ehr_list_index': '47',
+            'ehr_list_index': '48',
             'items': [
               'umicroBacteria'
             ]
           },
           {
             'label': 'Other',
-            'ehr_list_index': '48',
+            'ehr_list_index': '49',
             'items': [
               'umicroOther'
             ]
           },
           {
-            'ehr_list_index': '49',
-            'items': [
-              'urnInternal'
-            ]
-          },
-          {
             'ehr_list_index': '50',
             'items': [
-              'urnDiscMA'
+              'urnInternal'
             ]
           },
           {
@@ -33212,6 +33223,7 @@ const DEFS = {
               'gIndex': '5',
               'gChildren': [
                 'uchemMicroIndicater',
+                'urnDiscMA',
                 'uchemInstructorlComment'
               ]
             },
@@ -33281,12 +33293,10 @@ const DEFS = {
             },
             {
               'elementKey': 'ehr_group312',
-              'label': 'Discrepencies',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '8',
               'gChildren': [
                 'urnInternal',
-                'urnDiscMA',
                 'urnDiscCE',
                 'urnInstructor2'
               ]
@@ -33324,6 +33334,7 @@ const DEFS = {
             'uchemManLeukocytes': '',
             'uchemAutoLeukocytes': '',
             'uchemMicroIndicater': true,
+            'urnDiscMA': '',
             'uchemInstructorlComment': '',
             'uchemSulfosalicylic': '',
             'uchemIcotest': '',
@@ -33346,7 +33357,6 @@ const DEFS = {
             'umicroBacteria': '',
             'umicroOther': '',
             'urnInternal': '',
-            'urnDiscMA': '',
             'urnDiscCE': '',
             'urnInstructor2': ''
           }
@@ -33384,6 +33394,7 @@ const DEFS = {
           'uchemManLeukocytes',
           'uchemAutoLeukocytes',
           'uchemMicroIndicater',
+          'urnDiscMA',
           'uchemInstructorlComment',
           'uchemSulfosalicylic',
           'uchemIcotest',
@@ -33406,7 +33417,6 @@ const DEFS = {
           'umicroBacteria',
           'umicroOther',
           'urnInternal',
-          'urnDiscMA',
           'urnDiscCE',
           'urnInstructor2'
         ],

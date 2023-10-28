@@ -567,15 +567,16 @@ Green}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	{Label: Negative (Leu/μL)}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Lab Use}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 5}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkbox}	eCell	{Label: Microscopic indicated}	eCell	{elementKey: uchemMicroIndicater}	{pN: 46}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 27}	eCell	eCell	eCell	{Default_value: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Instructors' comment}	eCell	{elementKey: uchemInstructorlComment}	{pN: 46}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 28}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Discrepancies manual vs auto}	eCell	{elementKey: urnDiscMA}	{pN: 46}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 28}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Instructors' comment}	eCell	{elementKey: uchemInstructorlComment}	{pN: 46}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 29}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Confirmatory Tests}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 6}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: SSA Test}	eCell	{elementKey: uchemSulfosalicylic}	{pN: 46}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 29}	eCell	eCell	eCell	eCell	"{Options: negative
+{inputType: select}	eCell	{Label: SSA Test}	eCell	{elementKey: uchemSulfosalicylic}	{pN: 46}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 30}	eCell	eCell	eCell	eCell	"{Options: negative
 trace
 +1
 +2
 +3
 +4}"	eCell	eCell	eCell	eCell	eCell	{helperText: Sulfosalicylic acid}	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Ictotest}	eCell	{elementKey: uchemIcotest}	{pN: 46}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 30}	eCell	eCell	eCell	eCell	"{Options: negative
+{inputType: select}	eCell	{Label: Ictotest}	eCell	{elementKey: uchemIcotest}	{pN: 46}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 31}	eCell	eCell	eCell	eCell	"{Options: negative
 positive}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Microscopic Examination}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	{formCss: med-lab-urin-micro form-table-group}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableHeader}	eCell	eCell	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -583,7 +584,7 @@ positive}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCe
 {inputType: formTableHeader}	eCell	{Label: Type}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableHeader}	eCell	{Label: Reference Interval}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	{Label: WBC}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: umicroWBC}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: WBC}	{tableColumn: 31}	eCell	eCell	eCell	eCell	"{Options: 0-1
+{inputType: select}	eCell	eCell	eCell	{elementKey: umicroWBC}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: WBC}	{tableColumn: 32}	eCell	eCell	eCell	eCell	"{Options: 0-1
 2-5
 6-10
 11-20
@@ -595,7 +596,7 @@ field:=Obscures field}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eC
 {inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	{Label: 0-5/ HPF}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	{Label: RBC}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: umicroRBC}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: RBC}	{tableColumn: 32}	eCell	eCell	eCell	eCell	"{Options: 1:=0-1
+{inputType: select}	eCell	eCell	eCell	{elementKey: umicroRBC}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: RBC}	{tableColumn: 33}	eCell	eCell	eCell	eCell	"{Options: 1:=0-1
 5:=2-5
 10:=6-10
 20:=11-20
@@ -607,26 +608,26 @@ field:=Obscures field}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eC
 {inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	{Label: 0-5/ HPF}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	{Label: Epithelial Cells}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: umicroEpithelial}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Epithelial Cells}	{tableColumn: 33}	eCell	eCell	eCell	eCell	"{Options: 2:=0-2
+{inputType: select}	eCell	eCell	eCell	{elementKey: umicroEpithelial}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Epithelial Cells}	{tableColumn: 34}	eCell	eCell	eCell	eCell	"{Options: 2:=0-2
 5:=3-5
 10:=6-10
 plus:=10+
 none:=None seen
 present:=Present
 field:=Obscures field}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	eCell	eCell	{elementKey: umicroTypesEpithelial Cells}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Types}	{tableColumn: 34}	eCell	eCell	eCell	eCell	"{Options: Squamous
+{inputType: checkset}	eCell	eCell	eCell	{elementKey: umicroTypesEpithelial Cells}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Types}	{tableColumn: 35}	eCell	eCell	eCell	eCell	"{Options: Squamous
 Transitional
 RTE}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	{Label: 0-2/ HPF}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	{Label: Casts}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	{formCss: form-table-span-4-rows}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: umicrocCastsResults1}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Cast results 1}	{tableColumn: 35}	eCell	eCell	eCell	eCell	"{Options: 2:=0-2
+{inputType: select}	eCell	eCell	eCell	{elementKey: umicrocCastsResults1}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Cast results 1}	{tableColumn: 36}	eCell	eCell	eCell	eCell	"{Options: 2:=0-2
 5:=3-5
 10:=6-10
 plus:=10+
 none:=None seen
 present:=Present
 field:=Obscures field}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: umicrocCastsType1}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Cast type 1}	{tableColumn: 36}	eCell	eCell	eCell	eCell	"{Options: Hyaline
+{inputType: select}	eCell	eCell	eCell	{elementKey: umicrocCastsType1}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Cast type 1}	{tableColumn: 37}	eCell	eCell	eCell	eCell	"{Options: Hyaline
 Granular
 Epithelial
 RBC
@@ -634,14 +635,14 @@ WBC
 Waxy
 Fatty}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	{Label: 0-2/LPF}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: umicrocCastsResults2}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Cast results 2}	{tableColumn: 37}	eCell	eCell	eCell	eCell	"{Options: 2:=0-2
+{inputType: select}	eCell	eCell	eCell	{elementKey: umicrocCastsResults2}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Cast results 2}	{tableColumn: 38}	eCell	eCell	eCell	eCell	"{Options: 2:=0-2
 5:=3-5
 10:=6-10
 plus:=10+
 none:=None seen
 present:=Present
 field:=Obscures field}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: umicrocCastsType2}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Cast type 2}	{tableColumn: 38}	eCell	eCell	eCell	eCell	"{Options: Hyaline
+{inputType: select}	eCell	eCell	eCell	{elementKey: umicrocCastsType2}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Cast type 2}	{tableColumn: 39}	eCell	eCell	eCell	eCell	"{Options: Hyaline
 Granular
 Epithelial
 RBC
@@ -649,14 +650,14 @@ WBC
 Waxy
 Fatty}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	{Label: 0-2/LPF}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: umicrocCastsResults3}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Cast results 3}	{tableColumn: 39}	eCell	eCell	eCell	eCell	"{Options: 2:=0-2
+{inputType: select}	eCell	eCell	eCell	{elementKey: umicrocCastsResults3}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Cast results 3}	{tableColumn: 40}	eCell	eCell	eCell	eCell	"{Options: 2:=0-2
 5:=3-5
 10:=6-10
 plus:=10+
 none:=None seen
 present:=Present
 field:=Obscures field}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: umicrocCastsType3}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Cast type 3}	{tableColumn: 40}	eCell	eCell	eCell	eCell	"{Options: Hyaline
+{inputType: select}	eCell	eCell	eCell	{elementKey: umicrocCastsType3}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Cast type 3}	{tableColumn: 41}	eCell	eCell	eCell	eCell	"{Options: Hyaline
 Granular
 Epithelial
 RBC
@@ -664,14 +665,14 @@ WBC
 Waxy
 Fatty}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	{Label: 0-2/LPF}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: umicrocCastsResults4}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Cast results 4}	{tableColumn: 41}	eCell	eCell	eCell	eCell	"{Options: 2:=0-2
+{inputType: select}	eCell	eCell	eCell	{elementKey: umicrocCastsResults4}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Cast results 4}	{tableColumn: 42}	eCell	eCell	eCell	eCell	"{Options: 2:=0-2
 5:=3-5
 10:=6-10
 plus:=10+
 none:=None seen
 present:=Present
 field:=Obscures field}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: umicrocCastsType4}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Cast type 4}	{tableColumn: 42}	eCell	eCell	eCell	eCell	"{Options: Hyaline
+{inputType: select}	eCell	eCell	eCell	{elementKey: umicrocCastsType4}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Cast type 4}	{tableColumn: 43}	eCell	eCell	eCell	eCell	"{Options: Hyaline
 Granular
 Epithelial
 RBC
@@ -680,8 +681,8 @@ Waxy
 Fatty}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	{Label: 0-2/LPF}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	{Label: Crystals}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	{formCss: form-table-span-2-rows}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: None seen}	eCell	{elementKey: umicroCrystalsNonePresent}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	{formCss: form-table-span-3}	eCell	eCell	{tableColumn: 43}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: boxcheckset}	eCell	{Label: Present}	eCell	{elementKey: umicroCrystalsPresent}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	{tableColumn: 44}	eCell	eCell	eCell	eCell	"{Options: calciumOxalate:=Calcium Oxalate
+{inputType: checkbox}	eCell	{Label: None seen}	eCell	{elementKey: umicroCrystalsNonePresent}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	{formCss: form-table-span-3}	eCell	eCell	{tableColumn: 44}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: boxcheckset}	eCell	{Label: Present}	eCell	{elementKey: umicroCrystalsPresent}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	{tableColumn: 45}	eCell	eCell	eCell	eCell	"{Options: calciumOxalate:=Calcium Oxalate
 calciumCarbonate:=Calcium carbonate
 uricAcid:=Uric Acid
 calciumPhosphate:=Calcium Phosphate
@@ -698,7 +699,7 @@ leucine:=Leucine
 sulfonamides:=Sulfonamides}"	eCell	eCell	eCell	eCell	eCell	"{helperText: none:=None seen
 present:=Present
 field:=Obscures field}"	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: boxcheckset}	eCell	{Label: Obscures field}	eCell	{elementKey: umicroCrystalsObscures}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	{tableColumn: 45}	eCell	eCell	eCell	eCell	"{Options: calciumOxalate:=Calcium Oxalate
+{inputType: boxcheckset}	eCell	{Label: Obscures field}	eCell	{elementKey: umicroCrystalsObscures}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	{tableColumn: 46}	eCell	eCell	eCell	eCell	"{Options: calciumOxalate:=Calcium Oxalate
 calciumCarbonate:=Calcium carbonate
 uricAcid:=Uric Acid
 calciumPhosphate:=Calcium Phosphate
@@ -715,30 +716,28 @@ leucine:=Leucine
 sulfonamides:=Sulfonamides}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	eCell	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	{Label: Yeast}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: umicroYeast}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Yeast}	{tableColumn: 46}	eCell	eCell	eCell	eCell	"{Options: none:=None seen
+{inputType: select}	eCell	eCell	eCell	{elementKey: umicroYeast}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Yeast}	{tableColumn: 47}	eCell	eCell	eCell	eCell	"{Options: none:=None seen
 present:=Present
 field:=Obscures field}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	eCell	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	eCell	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	{Label: Bacteria}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	eCell	eCell	{elementKey: umicroBacteria}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Bacteria}	{tableColumn: 47}	eCell	eCell	eCell	eCell	"{Options: none:=None seen
+{inputType: select}	eCell	eCell	eCell	{elementKey: umicroBacteria}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Bacteria}	{tableColumn: 48}	eCell	eCell	eCell	eCell	"{Options: none:=None seen
 present:=Present
 field:=Obscures field}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	eCell	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	eCell	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	{Label: Other}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	eCell	eCell	{elementKey: umicroOther}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Other}	{tableColumn: 48}	eCell	eCell	eCell	eCell	"{Options: Mucous
+{inputType: checkset}	eCell	eCell	eCell	{elementKey: umicroOther}	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Other}	{tableColumn: 49}	eCell	eCell	eCell	eCell	"{Options: Mucous
 Sperm
 Fibers
 Starch}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: formTableText}	eCell	eCell	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Discrepencies}	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 8}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Department commentsand dilutions}	eCell	{elementKey: urnInternal}	{pN: 46}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 49}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Discrepancies manual vs auto}	eCell	{elementKey: urnDiscMA}	{pN: 46}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 50}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	"{Label: Discrepancies chem vs
-micro}"	eCell	{elementKey: urnDiscCE}	{pN: 46}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 51}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Instructor comments and notes}	eCell	{elementKey: urnInstructor2}	{pN: 46}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 52}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 46}	{fN: 2}	{gN: 8}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Department comments and dilutions}	eCell	{elementKey: urnInternal}	{pN: 46}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 50}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Discrepancies chem vs micro}	eCell	{elementKey: urnDiscCE}	{pN: 46}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 51}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Instructors' comment}	eCell	{elementKey: urnInstructor2}	{pN: 46}	{fN: 2}	{gN: 8}	{sgN: }	eCell	eCell	eCell	{tableColumn: 52}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: Urinalysis QC}	eCell	{elementKey: tableQcUrinalysis}	{pN: 46}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Create a urinalysis QC report}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 46}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 46}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -794,7 +793,7 @@ clinitek:= >= Small}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{calculationType
 {inputType: text}	eCell	eCell	eCell	{elementKey: uqcAbnormalRunKetone}	{pN: 46}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Abnormal Ketone}	{tableColumn: 20}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	eCell	eCell	{elementKey: uqcAbnormalRepeatKetone}	{pN: 46}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Repeat}	{tableColumn: 21}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: calculatedText}	eCell	eCell	eCell	{elementKey: uqcAbnormalRefRangeKetone}	{pN: 46}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: manual:= >= 0.5 mmol/L
-clinitek:= >= 1.5 mmol/L}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{calculationType: text}	eCell	eCell	eCell	eCell
+clinitek:= >= trace}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{calculationType: text}	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: Specific Gravity}	eCell	eCell	{pN: 46}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	eCell	eCell	{elementKey: uqcNormalRunSpecific Gravity}	{pN: 46}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Normal Specific Gravity}	{tableColumn: 22}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	eCell	eCell	{elementKey: uqcNormalRepeatSpecific Gravity}	{pN: 46}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Repeat}	{tableColumn: 23}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -850,7 +849,8 @@ clinitek:= >= 70 Leu//μL}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{calculati
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 46}	{fN: 1}	{gN: 4}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Performed by}	eCell	{elementKey: uqcPerformedBy}	{pN: 46}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 50}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	eCell	{Comments: blank}	eCell	{pN: 46}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Are any QC outside of acceptable limits?}	eCell	{elementKey: uqcSomeQcUnacceptable}	{pN: 46}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Some QC pending}	{tableColumn: 51}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: radioset}	eCell	{Label: Are any QC outside of acceptable limits?}	eCell	{elementKey: uqcSomeQcUnacceptable}	{pN: 46}	{fN: 1}	{gN: 4}	{sgN: }	{formCss: uqcSomeQcUnacceptable}	eCell	{tableLabel: Some QC pending}	{tableColumn: 51}	eCell	eCell	eCell	eCell	"{Options: Yes
+No}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: med-lab-urin-qc-pending-table form-table-group}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: Reporting “pending” to patient care staff indicates that results are unavailable and awaiting validation by the technologist before results are released.}	eCell	eCell	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: grid-span-2-columns}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: Pending analyte}	eCell	eCell	{pN: 46}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

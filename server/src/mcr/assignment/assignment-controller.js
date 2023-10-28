@@ -198,7 +198,7 @@ export default class AssignmentController extends BaseController {
       lObjDef.mPatientAppType = APP_TYPE_LIS // limit students to see case studies with this app type
       lObjDef.mPatientFilterTag = '' // all
     }
-    if (debugAC) debug('Assignment. create from def', data.name)
+    if (debugAC) debug('Assignment. create from def', lObjDef)
     return this.create(lObjDef)
   }
 

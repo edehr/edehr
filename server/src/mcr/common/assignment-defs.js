@@ -157,3 +157,37 @@ export const activityMP1 = {
   resource_link_title: `${assignmentMP1.title}`,
   resource_link_description: 'Experiment',
 }
+
+const medComplexLObj = require('../../resources/lobj_medicalClientWithComplexNeeds.json')
+export const activityMedComplex = {
+  lObjDef: {
+    title: medComplexLObj.name,
+    description: medComplexLObj.description
+  },
+  seedDef: medComplexLObj.caseStudy,
+  resource_link_title: `${medComplexLObj.name}`,
+  resource_link_description: medComplexLObj.description,
+}
+
+const mentalHealthLObj = require('../../resources/lobj_MentalHealthSim.json')
+export const activityMentalHealth = {
+  lObjDef: {
+    title: mentalHealthLObj.name,
+    description: mentalHealthLObj.description
+  },
+  seedDef: mentalHealthLObj.caseStudy,
+  resource_link_title: `${mentalHealthLObj.name}`,
+  resource_link_description: mentalHealthLObj.description,
+}
+
+
+const ehrOrientation = require('../../resources/lobj_pggnEhrOrientation.json')
+export const activityEhrOrientation = {
+  lObjDef: {
+    title: ehrOrientation.name,
+    description: ehrOrientation.description
+  },
+  seedDef: ehrOrientation.caseStudy,
+  resource_link_title: `${ehrOrientation.name}`,
+  resource_link_description: ehrOrientation.description,
+}

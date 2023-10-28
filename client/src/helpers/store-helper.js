@@ -107,6 +107,8 @@ class StoreHelperWorker {
   inZoneEHR () { return store.getters['system/pageZone'] === ZONE_EHR}
   inZoneLMS () { return store.getters['system/pageZone'] === ZONE_LMS}
   inZonePublic () { return store.getters['system/pageZone'] === ZONE_PUBLIC}
+
+  isAuthd () { return store.getters['authStore/isAuthd']}
   // isDemo see demo section
 
   wsUrlGet () {

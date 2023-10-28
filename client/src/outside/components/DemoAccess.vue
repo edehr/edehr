@@ -120,6 +120,18 @@ export default {
         .then( () => {
           this.$router.push('demo')
         })
+        .catch(err => {
+          let msg = err
+          if (err && err.response && err.response.status === 429) {
+            let msg = 'Too many attempts to create a demo.'
+            StoreHelper.setApiError(msg)
+            msg += ' For security reasons you will now need to wait a long time. See the page footer to find out how to contact help.'
+            console.error(msg)
+          } else {
+            console.error('Demo consumer creation error: ', msg)
+            StoreHelper.setApiError(msg)
+          }
+        })
     }
   },
 
