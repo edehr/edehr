@@ -68,9 +68,9 @@ export class MedOrder {
     const list = []
     list.push(this.medName)
     list.push(this.dose)
-    list.push(this.schedule)
-    list.push(this.route)
-    list.push(this.location)
+    this.schedule ? list.push(this.schedule) : null
+    this.route ? list.push(this.route) : null
+    this.location ? list.push(this.location) : null
     return list.join(', ')
   }
 

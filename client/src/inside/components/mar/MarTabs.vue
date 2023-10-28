@@ -7,7 +7,13 @@
       tab(name="V1 Summary", v-if='showV1')
         mar-summary(:ehrHelp="ehrHelp")
       tab(name="MAR")
-        //p {{v2Message}}
+        div(class='day-selector-bar flow_across')
+          div(class="day-selector", v-for='aDay in dayList', :key='aDay.dayId')
+            ui-button(
+              :class='{daySelectorSelected: aDay.dayNum === selectedDay}'
+              v-on:buttonClicked="setSelectedDay(aDay.dayNum)",
+            )
+              span {{dayWords(aDay)}}
         mar-med-grid(
           v-for="prefix in groups",
           :ehrHelp="ehrHelp"
@@ -42,6 +48,7 @@ import EhrPageElement from '@/inside/components/page/EhrPageElement.vue'
 import StoreHelper from '@/helpers/store-helper'
 import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import EhrData from '@/inside/components/page/ehr-data'
+import UiButton from '@/app/ui/UiButton.vue'
 
 export default {
   data () {
@@ -56,6 +63,7 @@ export default {
     }
   },
   components: {
+    UiButton,
     EhrPageElement,
     EhrDialogForm,
     MarMedGrid,
@@ -80,6 +88,8 @@ export default {
   },
   computed: {
     activeTab () { return this.$store.getters['ehrPageTab/activeTab'](this.pageDataKey) },
+    timeLineDays () { return this.timeLineModel.timeLineDays || [] },
+    dayList () { return this.timeLineDays.slice().sort( (a,b) => b.dayNum - a.dayNum ) },
     todayTabName () {
       return 'Day ' + this.marToday.getCurrentDay()
     },
@@ -104,6 +114,9 @@ export default {
     // timeLineModel () { return new MarTimelineModel(this.ehrDataModel)}
   },
   methods: {
+    dayWords (aDay) {
+      return aDay.label
+    },
     // v2
     setSelectedDay (dN) {
       this.selectedDay = dN
@@ -123,9 +136,10 @@ export default {
     },
   },
   // v2
-  mounted () { this.setupTimeline() },
+  mounted () {  },
   created: function () {
     this.marToday = new MarToday()
+    this.setupTimeline()
     const _this = this
     this.refreshEventHandler = function () { _this.setupTimeline() }
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
@@ -138,3 +152,16 @@ export default {
 
 }
 </script>
+
+<style lang="scss" scoped>
+@import '../../../scss/definitions';
+
+.day-selector {
+  //border: 1px solid black;
+  padding: 5px;
+  .daySelectorSelected {
+    background-color: $grey20;
+    cursor: inherit;
+  }
+}
+</style>

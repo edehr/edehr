@@ -17,6 +17,7 @@ export class MedMarEvent {
     this.marIsDraft = undefined
     this.marRecord = undefined
     this.marRecordId = undefined
+    this.marStatus = undefined
   }
   setMar (mar) {
     this.adminDay = mar.day
@@ -24,11 +25,12 @@ export class MedMarEvent {
     this.marIsDraft = !!mar.isDraft
     this.marRecord = mar
     this.marRecordId = mar.id
+    this.marStatus = mar.status
   }
   // TODO rewrite the toolTip to be more user friendly and not, as it is now, written for a developer.
   get toolTip () { return this.toString() }
   toString () {
-    return `${this.adminDay} ${this.adminTime} ${this.marRecordId} ${this.medOrderId} ${this.schedDay} ${this.schedTime}.`
+    return `${this.adminDay} ${this.adminTime} ${this.marStatus} ${this.marRecordId} ${this.medOrderId} ${this.schedDay} ${this.schedTime}.`
   }
 
   get schedDay () { return this._schedDay}
@@ -36,6 +38,7 @@ export class MedMarEvent {
   get medOrderId () { return this._medOrderId}
   // get marRecordId () { return this.marRecord}
   hasMar () { return !!this.marRecord }
+  marStatus () { return this.marStatus }
   hasMarEvent () { return this.hasMar() && !this.marIsDraft }
   hasScheduledEvent () { return this.marIsDraft || this.marRecordId === undefined }
   hasDraftMar () { return this.marIsDraft}
