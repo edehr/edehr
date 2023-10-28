@@ -17,6 +17,7 @@
 import StoreHelper from '@/helpers/store-helper'
 import EhrStudentSubmit from '@/inside/components/EhrStudentSubmit.vue'
 import UiInfo from '@/app/ui/UiInfo.vue'
+import { textToHtml } from '@/directives/text-to-html'
 
 export default {
   components: { UiInfo, EhrStudentSubmit },
@@ -27,7 +28,7 @@ export default {
   computed: {
     activityRecord () { return this.$store.getters['activityStore/activityRecord'] },
     assignmentName () { return this.activityRecord.title },
-    instructions () { return this.activityRecord.description },
+    instructions () { return textToHtml(this.activityRecord.description || '') },
     evaluationData () { return this.$store.getters['activityDataStore/evaluationData'] },
     givenName () { return StoreHelper.givenName()},
     feedbackViewable () { return this.activityRecord.feedbackViewable },

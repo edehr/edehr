@@ -4,7 +4,7 @@
       div(class="flow_across")
         a(tabindex="0", class="is-link", v-on:keyup.enter="gotoEhr" @click="gotoEhr()") {{submitData.resource_link_title}}
         div
-          ui-info(:title="submitData.resource_link_title", :html="submitData.resource_link_description")
+          ui-info(:title="submitData.resource_link_title", :html="instructions")
           //ui-info(title='Description', text='The description is composed on the LMS side by faculty to provide context and instructions for the students. Because students see this text in both the LMS and in the EdEHR this text needs to be written for both contexts. These words are to provide context around a particular simulation. Faculty can include links to resources related to the task.\n Each activity is linked to an EdEHR learning/object or assignment via the custom parameter.')
         //div(v-text-to-html="submitData.resource_link_description", class="assignment-description")
 
@@ -40,6 +40,7 @@ import UiButton from '@/app/ui/UiButton'
 import DemoCourseActivityDialog from '@/outside/components/DemoCourseActivityDialog'
 import { demoGoToEhr } from '@/helpers/demo-helper'
 import UiInfo from '@/app/ui/UiInfo'
+import { textToHtml } from '@/directives/text-to-html'
 
 export default {
   components: {
@@ -60,6 +61,7 @@ export default {
     switchRole: { type: Boolean, default: false}
   },
   computed: {
+    instructions () { return textToHtml(this.submitData.resource_link_description || '')},
     resource_link_title () { return this.activity.resource_link_title},
     resource_link_description () { return this.activity.resource_link_description },
     toolConsumerKey () {
