@@ -3,7 +3,15 @@ import axios from 'axios'
 import qs from 'qs'
 import { demoPersonae } from '../../helpers/demo-personae'
 import { demoLimiter, validatorMiddlewareWrapper } from '../../helpers/middleware'
-import { activity1, activity2, activity3, activity4, activity5, activityMP1 } from '../common/assignment-defs'
+import {
+  activity1,
+  activity2,
+  activity3,
+  activity4,
+  activity5,
+  activityMP1,
+  activityMedComplex, activityMentalHealth, activityEhrOrientation
+} from '../common/assignment-defs'
 import { fail, ok } from '../common/utils'
 import Consumer from '../consumer/consumer'
 const {ltiVersions} = require('../../mcr/lti/lti-defs')
@@ -58,44 +66,42 @@ export default class DemoController {
   }
 
   async _createDemoToolConsumer (req, res, next) {
-    let theId = req.body.id
-    if (debugDC) debug('DemoController create tool. Call provided this id:', theId)
-    if (!theId) {
-      let error = new Error('Caller must provide a new id for the demonstration to work.')
-      error.status = 400
-      return next(error)
-    }
-    theId = 'Demo-' + Date.now() + '-' + theId
-    if (debugDC) debug('DemoController create tool. Create tool with this id:', theId)
-    const consumerDef = Object.assign({}, consumerBaseDef, { oauth_consumer_key: theId, oauth_consumer_secret: theId })
-    consumerDef.is_primary = false
-    let toolC = await this.comCon.consumerController.createToolConsumer(consumerDef)
-    // record the creation of a new demo consumer in the logs
-    debug('DemoController. Created a new demo tool consumer. Id:', toolC._id, ' Consumer key: ', toolC.oauth_consumer_key)
-    const demoData = {
-      toolConsumerKey: theId,
-      toolConsumerId: toolC._id,
-      personaList: demoPersonae,
-      lObjList: []
-    }
-    // see comment below about lObjList
-    const activities = [ activity1, activity2, activity3, activity4, activity5, activityMP1 ]
-    await Promise.all(
-      activities.map(async (activity) => {
-        demoData.lObjList.push(await this.createSampleSeedAndObj(activity, toolC))
-      })
-    )
-    // console.log('Demo data is ready', demoData)
-    if (debugDC) debug('DemoController generate token')
     try {
+      let theId = req.body.id
+      if (debugDC) debug('DemoController create tool. Call provided this id:', theId)
+      if (!theId) {
+        let error = new Error('Caller must provide a new id for the demonstration to work.')
+        error.status = 400
+        return next(error)
+      }
+      theId = 'Demo-' + Date.now() + '-' + theId
+      if (debugDC) debug('DemoController create tool. Create tool with this id:', theId)
+      const consumerDef = Object.assign({}, consumerBaseDef, { oauth_consumer_key: theId, oauth_consumer_secret: theId })
+      consumerDef.is_primary = false
+      let toolC = await this.comCon.consumerController.createToolConsumer(consumerDef)
+      // record the creation of a new demo consumer in the logs
+      debug('DemoController. Created a new demo tool consumer. Id:', toolC._id, ' Consumer key: ', toolC.oauth_consumer_key)
+      const demoData = {
+        toolConsumerKey: theId,
+        toolConsumerId: toolC._id,
+        personaList: demoPersonae,
+        lObjList: []
+      }
+      // see comment below about lObjList
+      const activities = [ activity1, activity2, activity3, activity4, activity5, activityMP1, activityMedComplex, activityMentalHealth, activityEhrOrientation ]
+      for (let i = 0; i< activities.length; i++ ) {
+        demoData.lObjList.push(await this.createSampleSeedAndObj(activities[i], toolC))
+      }
+      if (debugDC) debug('DemoController generate token')
       // the demo token contains information about the demo system.  It doesn't need
       // any expiry since it's not a user log in control, it's just information.
       const demoToken = this.comCon.authUtil.createToken({ demoData: demoData }, undefined /* no expiry */)
       if (debugDC) debug('DemoController _createDemoToolConsumer generated token')
       res.status(200).json({ demoToken })
     } catch (err) {
-      logError('DemoController _createDemoToolConsumer ERROR ', err)
-      res.status(500).send(err)
+      let msg = err.toString()
+      logError('DemoController _createDemoToolConsumer ERROR "' + msg + '"')
+      res.status(500).send(msg)
     }
   }
 
@@ -121,7 +127,7 @@ export default class DemoController {
       courses: [
         {
           courseTitle: 'Intro to EHR',
-          activities: [activity1, activity2, activity3]
+          activities: [activity1, activity2, activity3, activityMedComplex, activityMentalHealth, activityEhrOrientation]
         },
         {
           courseTitle: 'Intro to MedLab',

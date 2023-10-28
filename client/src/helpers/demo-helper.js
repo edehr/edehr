@@ -42,15 +42,7 @@ export default class DemoHelper {
           throw Error('Setup of demonstration space failed')
         }
         return StoreHelper.loadDemoData()
-      })
-      .catch(err => {
-        if (debugDC) console.log('createDemoToolConsumer Error', err)
-        let msg = err
-        if (err.response) {
-          msg = err.response.data.message
-        }
-        StoreHelper.setApiError(msg)
-      })
+      })// let the caller handle any errors
       .finally(() => {
         StoreHelper.setLoading('proceedDemoToolConsumerCreation', false)
       })

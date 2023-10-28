@@ -69,10 +69,7 @@ const actions = {
         _setDemoToken(demoToken)
         return Promise.resolve(demoToken)
       })
-      .catch(err => {
-        console.log('Create tool consumer failed ', err.response)
-        return Promise.reject(err)
-      })
+      // let the caller do the catching, so it can handle the error for the user
   },
   demoLogout: async function ({ commit, getters }) {
     const tid = getters.toolConsumerId

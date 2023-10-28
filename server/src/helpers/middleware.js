@@ -7,10 +7,14 @@ import { logError} from './log-error'
 
 const debugMW = false
 
-const ADMIN_MAX_REQUEST_LIMIT = 5
-const DEMO_MAX_REQUEST_LIMIT = 5
+const LIMIT_MINUTES = process.env.NODE_ENV === 'production' ? 120 : 2
+const LIMIT_TRIES = process.env.NODE_ENV === 'production' ? 5 : 3
+const ADMIN_MAX_REQUEST_LIMIT = LIMIT_TRIES
+const DEMO_MAX_REQUEST_LIMIT = LIMIT_TRIES
 logAuth('validatorMiddlewareWrapper ADMIN_MAX_REQUEST_LIMIT', ADMIN_MAX_REQUEST_LIMIT)
 logAuth('validatorMiddlewareWrapper DEMO_MAX_REQUEST_LIMIT', DEMO_MAX_REQUEST_LIMIT)
+logAuth('LIMIT_MINUTES', LIMIT_MINUTES)
+logAuth('process.env.NODE_ENV', process.env.NODE_ENV)
 
 /**
  *
@@ -87,19 +91,25 @@ export const localhostOnly = (req, res, next) => {
 }
 
 export const adminLimiter = rateLimit({
-  windowMs: 10 * 60 * 1000,
-  max: ADMIN_MAX_REQUEST_LIMIT,
+  windowMs: LIMIT_MINUTES * 60 * 1000,
+  limit: ADMIN_MAX_REQUEST_LIMIT,
+  standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
   message: Text.TOO_MANY_REQUESTS_ERROR
 })
 
 export const demoLimiter = rateLimit({
-  windowMs: 10 * 60 * 1000,
-  max: DEMO_MAX_REQUEST_LIMIT,
+  windowMs: LIMIT_MINUTES * 60 * 1000,
+  limit: DEMO_MAX_REQUEST_LIMIT,
+  standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
   message: Text.TOO_MANY_REQUESTS_ERROR
 })
 
 export const sentryDebugLimiter = rateLimit({
-  windowMs: 10 * 60 * 1000,
-  max: 5,
+  windowMs: LIMIT_MINUTES * 60 * 1000,
+  limit: ADMIN_MAX_REQUEST_LIMIT,
+  standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
   message: Text.TOO_MANY_REQUESTS_ERROR
 })
