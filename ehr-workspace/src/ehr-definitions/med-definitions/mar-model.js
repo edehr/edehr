@@ -9,6 +9,11 @@ export const MED_GROUP_PRN = 'prn'
 export const MED_GROUP_STAT = 'stat'
 export const MED_GROUP_CONT = 'cont'
 
+export const MAR_STATUS_ADMINISTERED = 'Administered'
+export const MAR_STATUS_REFUSED = 'Refused'
+export const MAR_STATUS_SKIPPED = 'Skipped'
+export const MAR_STATUS_MISSED = 'Missed'
+
 // for use by UI
 export const MED_GROUPS = [MED_GROUP_SCHED, MED_GROUP_STAT, MED_GROUP_PRN, MED_GROUP_OD, MED_GROUP_ONCE, MED_GROUP_CONT]
 // for use by UI
@@ -34,7 +39,7 @@ export class MarTimelineModel {
     this._numberOfDays = simTime.visitDay === 0 ? 2 : simTime.visitDay + 1
     const dayNumbersArray = [...Array(this._numberOfDays).keys()]
     this._timeline.days = dayNumbersArray.map(d => {
-      return new TimeLineDay(d, this.medOrders, this.marRecords)
+      return new TimeLineDay(d, this.medOrders, this._numberOfDays)
     })
     this.setupMedMarEvents()
   }
@@ -143,10 +148,26 @@ export class MarTimelineModel {
  * Provide the desired group (idPrefix) to get the set of medications rows for that group.
  */
 export class TimeLineDay {
-  constructor (dayNumber, medOrders) {
+  constructor (dayNumber, medOrders, maxDays) {
+    // console.log('constructing time line day', dayNumber, maxDays)
+    const todayNum = maxDays - 1
     this.dayId = 'day-' + dayNumber
     this.dayNum = dayNumber
-    this.label= 'day ' + dayNumber
+    let dv = new Date()
+    let df = todayNum-dayNumber
+    dv.setDate(dv.getDate() - df)
+    this.dateStr = dv.toISOString().split('T')[0]
+    let lbl
+    if ( dayNumber === todayNum) {
+      lbl = 'Today'
+      df = 0
+    } else if ( dayNumber === todayNum - 1) {
+      lbl = 'Yesterday'
+      df = 1
+    } else if ( dayNumber < todayNum - 1) {
+      lbl = (todayNum-dayNumber) + ' days ago'
+    }
+    this.label= lbl
     this.medOrders = medOrders
     this.timeElementLabels = DAY_TEMPLATE.map(ts => {
       return {
