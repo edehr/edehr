@@ -14,7 +14,7 @@
     )
       ehr-dialog-patient-banner(slot="header-extra-content")
       h3(slot="header") {{ formLabel }}
-      div(slot="body")
+      div(slot="body", class='ehr-dialog-form')
         ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp", :viewOnly='isViewOnly')
       span(slot="save-button") Save
     ui-confirm(ref="confirmCancelDialog", @confirm="cancelConfirmed", :saveLabel='ehrText.cancelDialogExitDialogLabel', :cancel-label='ehrText.cancelDialogReturnToEditLabel' )

@@ -12,7 +12,7 @@
       div(class="sample-lms-header")
         h2 {{demoText.lmsTitle}}
           ui-info(:title="demoText.lmsTitle", :text="demoText.lmsHint")
-        div(class="margin-match-h2")
+        div(v-if="showAdvancedEdit") class="margin-match-h2")
           ui-button(v-on:buttonClicked="editMode = !editMode", :class="editButtonClass",
             title='Edit activity configuration'
             )
@@ -20,10 +20,11 @@
             //fas-icon(:icon="appIcons.edit")
       div
         div(v-for="course in courses", :key="course.courseTitle")
-          h3 {{course.courseTitle}}
-          section(v-for="activity in course.activities", :key="`des-${activity.resource_link_title}`")
-            demo-course-activity(:activity="activity", :course="course", :switch-role="asStudent", :edit-mode='editMode')
-            hr
+          h3 COURSE: {{course.courseTitle}}
+          div(class="activitiesSection")
+            h4 ACTIVITIES
+            section(v-for="activity in course.activities", :key="`des-${activity.resource_link_title}`")
+              demo-course-activity(:activity="activity", :course="course", :switch-role="asStudent", :edit-mode='editMode')
 </template>
 
 <script>
@@ -47,6 +48,7 @@ export default {
     return {
       appIcons: APP_ICONS,
       asStudent: false,
+      showAdvancedEdit: false,
       courses: [],
       demoText: demoText,
       editMode: false
@@ -109,7 +111,9 @@ export default {
   display: grid;
   grid-template-columns: 1fr 3fr;
 }
-
+.activitiesSection{
+  margin-left: 2rem;
+}
 .sample-lms {
   border: 1px solid blue;
   border-radius: 10px;

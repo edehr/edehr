@@ -74,11 +74,11 @@ const assignment4 = {
     'you will see a CBC analysis report. This is an automated report produced by an analyzer on a blood smear.' +
     '(A blood smear is made by taking a drop of the patient\'s blood and placing it on a glass slide and then' +
     'smearing it evening and thinly so you can see the individual blood cells under a microscope.)',
-  title: 'BONLANLE Akosua - Hematology - Before'
+  title: 'Hematology - Before'
 }
 const seedDef4 = {
   toolConsumer: '',
-  name: 'BONLANLE Akosua - Hematology - Before',
+  name: 'Hematology - Before',
   description: 'Slide Number 18-212. Patient recently immigrated from Cameroon for work in Vancouver and requires bloodwork as part of her medical examination. ',
   version: '1',
   ehrData: seed4.ehrData,
@@ -92,7 +92,7 @@ const assignment5 = {
     'by the technologist.  Note how this PBF contains many fields that are not normally seen in the ' +
     'actual lab. These fields are present to help the student explore what they are learning and for' +
     'the instructor to provide guidance.',
-  title: 'BONLANLE Akosua - Hematology - After'
+  title: 'Hematology - After'
 }
 
 const assignmentMP1 = {
@@ -102,7 +102,7 @@ const assignmentMP1 = {
 
 const seedDef5 = {
   toolConsumer: '',
-  name: 'BONLANLE Akosua - Hematology - After',
+  name: 'Hematology - After',
   description: 'Slide Number 18-212. Patient recently immigrated from Cameroon for work in Vancouver and requires bloodwork as part of her medical examination. ',
   version: '1',
   ehrData: seed5.ehrData,

@@ -3,11 +3,11 @@
     div(v-show="showingDialog")
       div(:class="modalClass", :style="{ zIndex: modalZ }")
       div(class="dialog-wrapper",
-        :class="{ dragActive: moused, draggable: true, fullScreen: fullScreen }",
+        :class="{ dragActive: moused, fullScreen: fullScreen }",
         ref="theDialog",
         :style="{ top: top + 'px', left: left + 'px', zIndex: modalD }")
         // header
-        div(class="dialog-header", v-dragged="onDragged")
+        div(class="dialog-header draggable", v-dragged="onDragged")
           // header title with buttons
           div(class="dialog-header-title")
             div

@@ -461,8 +461,7 @@ Indurated (2cm or less)
 Indurated (greater than 2cm)
 Erythema (greater than 2cm)
 Increased Warmth
-Other
-}"	eCell	eCell	eCell	eCell	eCell	"{helperText: Intact: Unbroken skin
+Other}"	eCell	eCell	eCell	eCell	eCell	"{helperText: Intact: Unbroken skin
 Fragile: Skin that is at risk for breakdown
 Macerated: Wet, white looking skin
 Excoriated/denuded: loss of tissue

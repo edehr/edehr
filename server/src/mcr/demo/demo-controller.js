@@ -127,7 +127,14 @@ export default class DemoController {
       courses: [
         {
           courseTitle: 'Intro to EHR',
-          activities: [activity1, activity2, activity3, activityMedComplex, activityMentalHealth, activityEhrOrientation]
+          activities: [
+            activityEhrOrientation,
+            activity3,
+            activityMedComplex,
+            activityMentalHealth,
+            activity1,
+            activity2
+          ]
         },
         {
           courseTitle: 'Intro to MedLab',

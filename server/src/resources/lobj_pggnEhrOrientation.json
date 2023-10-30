@@ -1,11 +1,11 @@
 {
   "appType": "EHR",
   "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
-  "description": "This activity is used as the introduction to EHR for students.\nWith your partner, please access Mary Rutherford's EHR to do the following:\n1) Find out why she was admitted (access the diagnosis and the admission dictation)\n2) What was Mary's most recent hemoglobin result?\n3) What was the highest blood glucose recorded for Mary?\n4) Mary tells you she has an allergy to penicillin, with a reaction of hives. Please update the record to reflect this.\n5) Input your recent vital signs: BP 146/75 HR 72 RR 18 SpO2 95% 2 litres of oxygen by nasal prongs and T 36.6\n6) Add a baseline respiratory assessment to reflect that Mary has bi-basilar crackles on inspiration\n7) You administer 650 mg of acetaminophen at 1030 hours for pain. Create the medication administration record for this.\n8) Input a narrative progress note to show that Mary was having pain to her wound at 7/10, onset 1 hour ago, non-radiating, dull aching. You treated it with acetaminophen 650 mg po at 1030 and 40 minutes later her pain is 3/10.",
+  "description": "This activity is suitable as an introduction to EHR for students.\nAccess Mary Rutherford's patient data in the EHR and do the following:\n1) Find out why she was admitted (access the diagnosis and the admission dictation)\n2) What was Mary's most recent hemoglobin result?\n3) What was the highest blood glucose recorded for Mary?\n4) Mary tells you she has an allergy to penicillin, with a reaction of hives. Please update the record to reflect this.\n5) The simulation time is 1630. Input your recent vital signs: BP 146/75 HR 72 RR 18 SpO2 95% 2 litres of oxygen by nasal prongs T 36.6 and Glu 11.2\n6) Add a baseline respiratory assessment to reflect that Mary has bi-basilar crackles on inspiration\n7) You administer 650 mg of acetaminophen at 1630 hours for pain. Create the medication administration record for this.\n8) Input a narrative progress note to show that Mary was having pain to her wound at 7/10, onset 1 hour ago, non-radiating, dull aching. You treated it with acetaminophen 650 mg po at 1630.",
   "name": "EHR Orientation",
   "caseStudy": {
     "isDefault": false,
-    "tagList": ["Selkirk"],
+    "tagList": [],
     "appType": "EHR",
     "name": "Mary Rutherford",
     "version": "2.0",
@@ -17,9 +17,10 @@
         "personAge": "82",
         "gender": "Female",
         "weight": "65",
-        "lastUpdate": "2021-12-06T22:57:57+00:00",
+        "lastUpdate": "2023-10-28T15:40:57-07:00",
         "familyName": "Rutherford",
-        "mrn": "S:650001"
+        "dateOfBirth": "1940-11-03",
+        "mrn": "65004"
       },
       "medical": {
         "history": "Type II diabetes\nRenal insufficiency\nImpaired vision",
@@ -43,13 +44,41 @@
       "meta": {
         "simTime": {
           "visitDay": 0,
-          "visitTime": "0700"
+          "visitTime": "1630"
         },
         "ehrVersion": "ev2.4.0"
       },
       "medicationOrders": {
-        "lastUpdate": "2023-10-17T08:11:34-07:00",
+        "lastUpdate": "2023-10-28T16:15:20-07:00",
         "medicationOrdersTable": [
+          {
+            "medicationOrdersTable_name": "Emily Anderson",
+            "medicationOrdersTable_profession": "MD",
+            "medicationOrdersTable_day": 0,
+            "medicationOrdersTable_time": "0700",
+            "med_timing": "sched",
+            "med_route": "oral",
+            "med_medication": "metformin",
+            "med_dose": "500mg",
+            "med_scheduled": "BID",
+            "med_time1": "0900",
+            "med_time2": "1700",
+            "med_instructions": "BID with meals",
+            "createdDate": "2023-10-28T16:13:28-07:00",
+            "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.1"
+          },
+          {
+            "medicationOrdersTable_name": "Emily Anderson",
+            "medicationOrdersTable_profession": "MD",
+            "medicationOrdersTable_day": 0,
+            "medicationOrdersTable_time": "0700",
+            "med_timing": "od",
+            "med_route": "oral",
+            "med_medication": "ramipril",
+            "med_dose": "2.5 mg",
+            "createdDate": "2023-10-28T16:15:20-07:00",
+            "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.2"
+          },
           {
             "medicationOrdersTable_name": "Dr Johns",
             "medicationOrdersTable_profession": "MD",
@@ -72,79 +101,45 @@
         ]
       },
       "labResults": {
-        "table": [
+        "lastUpdate": "2023-10-29T08:20:16-07:00",
+        "labResultHematology": [
           {
-            "day": 0,
-            "laboratoryReport": {
-              "fName": "Laboratory_Report-_Mary_Rutherford.pdf"
-            },
-            "createdDate": "2022-11-03T11:08:40-07:00",
-            "table_time": "0700",
-            "table_id": "labResults.table.0"
-          }
-        ],
-        "lastUpdate": "2022-11-03T18:08:42+00:00"
-      },
-      "hematology": {
-        "tableCbcAnalysis": [
+            "labResultHematology_name": "Jane",
+            "labResultHematology_profession": "MedLab",
+            "labResultHematology_day": 0,
+            "labResultHematology_time": "0900",
+            "lrh_Hgb": "103",
+            "lrh_hct": "0.30",
+            "lrh_platelets": "140",
+            "lrh_rbc": "3.89",
+            "lrh_wbc": "8.8",
+            "lrh_basophils": "0",
+            "lrh_eosinophils": "0.1",
+            "lrh_lymphocytes": "2.6",
+            "lrh_monocytes": "0.7",
+            "lrh_neutrophils": "5.0",
+            "createdDate": "2023-10-28T15:46:43-07:00",
+            "labResultHematology_id": "labResults.labResultHematology.0"
+          },
           {
-            "day": 0,
-            "dateOfTest": 0,
-            "timeOfTest": "0700",
-            "wbc": "8.8",
-            "wbc-interp": "normal",
-            "rbc": "3.89",
-            "rbc-interp": "normal",
-            "hgb": "103",
-            "hgb-interp": "low",
-            "HCT": "0.30",
-            "HCT-interp": "low",
-            "PLT": "140",
-            "wbcAverage": 0,
-            "wbcEstimate": 0,
-            "wbcAnalysis": null,
-            "wbcLowRange": 0,
-            "wbcHighRange": 0,
-            "pltAverage": 0,
-            "pltEstimate": 0,
-            "pltAnalysis": null,
-            "pltLowRange": 0,
-            "pltHighRange": 0,
-            "cellCntSegNeutrophilAbs": 0,
-            "cellCntBandCellsAbs": 0,
-            "cellCntLymphAbs": 0,
-            "cellCntMonoAbs": 0,
-            "cellCntEosinAbs": 0,
-            "cellCntBasoAbs": 0,
-            "cellCntMetaAbs": 0,
-            "cellCntMyeloAbs": 0,
-            "cellCntPromyeloAbs": 0,
-            "cellCntBlastAbs": 0,
-            "cellCntReactiveLymphsAbs": 0,
-            "cellCntOtherAbs": 0,
-            "cellCntTotal": 0,
-            "createdDate": "2022-11-03T11:10:02-07:00",
-            "tableCbcAnalysis_time": "0700",
-            "tableCbcAnalysis_id": "hematology.tableCbcAnalysis.0"
+            "labResultHematology_name": "Jane",
+            "labResultHematology_profession": "MedLab",
+            "labResultHematology_day": 0,
+            "labResultHematology_time": "1630",
+            "lrh_Hgb": "105",
+            "lrh_hct": "0.31",
+            "lrh_platelets": "138",
+            "lrh_rbc": "3.88",
+            "lrh_wbc": "8.2",
+            "lrh_basophils": "0.2",
+            "lrh_eosinophils": "0.1",
+            "lrh_lymphocytes": "2.5",
+            "lrh_monocytes": "0.8",
+            "lrh_neutrophils": "4.6",
+            "createdDate": "2023-10-29T08:20:16-07:00",
+            "labResultHematology_id": "labResults.labResultHematology.1"
           }
-        ],
-        "lastUpdate": "2022-11-03T18:10:06+00:00"
-      },
-      "consults": {
-        "table": [
-          {
-            "day": 0,
-            "consultReport": {
-              "fName": "Mary_Rutherford_Admission_Report.pdf"
-            },
-            "createdDate": "2022-11-03T11:21:42-07:00",
-            "table_name": "Dr. Johns",
-            "table_profession": "MD",
-            "table_time": "0700",
-            "table_id": "consults.table.0"
-          }
-        ],
-        "lastUpdate": "2022-11-03T18:21:44+00:00"
+        ]
       },
       "vitals": {
         "table": [
@@ -164,11 +159,11 @@
             "createdDate": "2022-11-08T12:03:18-08:00",
             "table_name": "Jelica",
             "table_profession": "RN",
-            "table_time": "0230",
+            "table_day": 0,
+            "table_time": "0710",
             "table_id": "vitals.table.0"
           },
           {
-            "day": 0,
             "systolic": "145",
             "diastolic": "78",
             "patientPosition": "Supine",
@@ -184,7 +179,8 @@
             "createdDate": "2022-11-08T12:02:18-08:00",
             "table_name": "Manjinder",
             "table_profession": "SN",
-            "table_time": "0700",
+            "table_day": 0,
+            "table_time": "0915",
             "table_id": "vitals.table.1"
           },
           {
@@ -203,27 +199,90 @@
             "createdDate": "2022-11-08T12:04:24-08:00",
             "table_name": "Steve",
             "table_profession": "LPN",
-            "table_time": "0900",
+            "table_day": 0,
+            "table_time": "1230",
             "table_id": "vitals.table.2"
           }
         ],
-        "lastUpdate": "2022-11-08T20:04:25+00:00"
+        "lastUpdate": "2023-10-28T16:26:38-07:00"
+      },
+      "visit": {
+        "notes": "Mary was referred for admission following a home care visit where the nurse noted that Mary’s chronic right diabetic foot seemed to be getting worse. Despite ongoing wound care, the wound size is increasing with concern for infection. Mary also had decreased sensation to the rest of her foot, which is a change from last assessment.\nMary will be admitted to the medical ward for wound management, pending culture and sensitivity of the wound and possible antibiotic treatment.",
+        "diagnosis": "Necrotic right foot and vascular compromise",
+        "consentForTreatment": true,
+        "consentForBlood": true,
+        "status": "Admitted",
+        "admissionTime": "0700",
+        "lastUpdate": "2023-10-28T15:39:19-07:00"
+      },
+      "careTeam": {
+        "teams": [
+          {
+            "name": "Dr Johns",
+            "profession": "MD",
+            "createdDate": "2023-10-28T15:42:05-07:00",
+            "teams_id": "careTeam.teams.0"
+          },
+          {
+            "name": "Steve",
+            "profession": "LPN",
+            "createdDate": "2023-10-28T15:42:41-07:00",
+            "teams_id": "careTeam.teams.1"
+          },
+          {
+            "name": "Manjinder",
+            "profession": "SN",
+            "createdDate": "2023-10-28T15:42:55-07:00",
+            "teams_id": "careTeam.teams.2"
+          },
+          {
+            "name": "Jelica",
+            "profession": "RN",
+            "createdDate": "2023-10-28T15:43:05-07:00",
+            "teams_id": "careTeam.teams.3"
+          }
+        ],
+        "lastUpdate": "2023-10-28T15:43:05-07:00"
+      },
+      "medAdminRec": {
+        "marTable": [
+          {
+            "marTable_name": "Jelica",
+            "marTable_profession": "RN",
+            "marTable_day": 0,
+            "marTable_time": "0900",
+            "med_order_embedded": "medicationOrders.medicationOrdersTable.1",
+            "mo_medOrder": "metformin, 500mg, BID, Oral",
+            "mo_medInstructions": "BID with meals",
+            "mo_timing": "sched",
+            "mo_schedDay": 0,
+            "mo_schedTime": "0900",
+            "mo_id": "medicationOrders.medicationOrdersTable.1",
+            "mo_secondSig": "medicationOrders.medicationOrdersTable.1",
+            "mar_status": "Administered",
+            "mar_dose": "500 mg",
+            "mar_route": "oral",
+            "undefined": "medicationOrders.medicationOrdersTable.1",
+            "medicationOrdersTable_name": "Emily Anderson",
+            "medicationOrdersTable_profession": "MD",
+            "medicationOrdersTable_day": 0,
+            "medicationOrdersTable_time": "0700",
+            "med_timing": "sched",
+            "med_route": "oral",
+            "med_medication": "metformin",
+            "med_dose": "500mg",
+            "med_scheduled": "BID",
+            "med_time1": "0900",
+            "med_time2": "1700",
+            "med_instructions": "BID with meals",
+            "createdDate": "2023-10-28T16:17:03-07:00",
+            "marTable_id": "medAdminRec.marTable.0"
+          }
+        ],
+        "lastUpdate": "2023-10-28T16:21:30-07:00"
       }
     },
-    "toolConsumer": "6196e30ec44cab001389be60",
-    "createDate": "2021-12-06T22:54:33.932Z",
-    "lastUpdateDate": "2023-10-25T18:52:43.075Z",
-    "__v": 1,
-    "keyData": {
-      "dateOfBirth": null,
-      "personAge": "82",
-      "gender": "Female",
-      "mrn": "S:650001",
-      "phn": null,
-      "familyName": "RUTHERFORD",
-      "givenName": "Mary"
-    },
-    "mrn": "S:650001",
+    "mrn": "65004",
     "draftRowCount": 0,
     "id": "61ae94a9f48d610019f8b540"
   }

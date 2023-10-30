@@ -240,7 +240,7 @@ $time-element-height: 4rem;
 $time-element-width: 3rem;
 $medication-element-width: 14rem;
 $medication-button-area-width: 3rem;
-$med-row-element-height: 4rem;
+$med-row-element-height: 5rem;
 $day-label-dose-count-width: 2rem;
 $border-colour: $blue;
 $unselected-label-colour: rgba(77, 144, 254, .5);
