@@ -36,7 +36,7 @@ export class MarTimelineModel {
     this._medOrders = new MedOrders(ehrDataModel)
     this._marRecords = new MarRecords(ehrDataModel)
     const simTime = ehrDataModel.simTime
-    this._numberOfDays = simTime.visitDay === 0 ? 2 : simTime.visitDay + 1
+    this._numberOfDays = simTime.visitDay + 1
     const dayNumbersArray = [...Array(this._numberOfDays).keys()]
     this._timeline.days = dayNumbersArray.map(d => {
       return new TimeLineDay(d, this.medOrders, this._numberOfDays)

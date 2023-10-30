@@ -8,7 +8,7 @@ const vitalRanges = {
   respiratory: { min: 6, max: 42 },
   temperature: { min: 35, max: 40 },
   bloodSugar: { min: 1, max: 11, normal: [4.1, 5.9] },
-  cvp: { min: 0, max: 20 }
+  cvp: { min: 0, max: 21 }
 }
 
 let lastDay = 0
@@ -65,9 +65,10 @@ export default class VitalModel {
   }
 
   getDates (table) {
+    console.log('-------------- getDates', table)
     let values = table.map(element => {
-      let day = element.table_day || 'x'
-      let time = element.table_time || 'xx'
+      let day = element.table_day === undefined ? 'x' : element.table_day
+      let time = element.table_time === undefined ? 'xx' : element.table_time
       return `Day ${day}\n${time}`
     })
     let chartData = {
@@ -345,7 +346,7 @@ export default class VitalModel {
     let scalePoints = []
     steps.map(item => {
       // Potential enhancement: only get item if item % 3 === 0
-      if(item >= min)
+      if(item >= min && item % 3 === 0)
         scalePoints.push({ spv: item })
     })
     const chartData = {

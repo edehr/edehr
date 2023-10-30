@@ -160,7 +160,6 @@ input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:dis
 }
 
 .computed_wrapper,
-.checkset_wrapper,
 .checkbox_wrapper,
 .file_wrapper,
 .form_label_wrapper,
@@ -176,7 +175,7 @@ input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:dis
   align-content: space-between
 }
 
-$select_width: 12rem;
+$select_width: 14rem;
 
 .computed_wrapper {
   .input {
@@ -215,6 +214,9 @@ $select_width: 12rem;
     display: flex;
     flex-direction: column;
     margin-bottom: 5px;
+    label {
+      min-width: 15rem;
+    }
   }
 }
 
@@ -391,7 +393,7 @@ select, .select {
 .grid-left-to-right-1 {
   grid-template-columns: 1fr;
   .form_label_wrapper {
-    width: 20rem;
+    //width: 20rem;
     .form_label {
       min-width: inherit;
       max-width: inherit;
@@ -412,6 +414,32 @@ select, .select {
 
 .grid-left-to-right-3 {
   grid-template-columns: repeat(3, 1fr);
+}
+
+.ehr-page-form {
+  .grid-left-to-right-3 {
+    .form_label {
+      min-width: 10rem;
+      max-width: 10rem;
+    }
+  }
+}
+
+.ehr-dialog-form {
+  .grid-left-to-right-3 {
+    .form_label {
+      min-width: 12rem;
+      max-width: 12rem;
+    }
+    .checkset_wrapper {
+      .form_label {
+        text-align: left;
+        min-width: 10rem;
+        max-width: 10rem;
+      }
+    }
+
+  }
 }
 
 .grid-left-to-right-4 {
@@ -581,7 +609,7 @@ select, .select {
   max-width: 8rem;
 }
 .check-label label {
-  min-width: 18rem;
+  min-width: 18rem !important;
   max-width: 18rem;
 }
 @media all and (max-width: $form-threshold) {

@@ -184,6 +184,7 @@ export default class VitalChart {
       } else if (value > max) {
         let y = originY + height - (max - min) * vScale
         context.fillStyle = options.invalidMaxFontColour
+        context.font = options.yAxisLabelFont
         context.fillText(value, x, y)
         px = py = undefined
       } else {

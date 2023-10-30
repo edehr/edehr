@@ -8,7 +8,11 @@
         mar-summary(:ehrHelp="ehrHelp")
       tab(name="MAR")
         div(class='day-selector-bar flow_across')
-          div(class="day-selector", v-for='aDay in dayList', :key='aDay.dayId')
+          div(
+            v-if="dayList.length > 1",
+            class="day-selector",
+            v-for='aDay in dayList',
+            :key='aDay.dayId')
             ui-button(
               :class='{daySelectorSelected: aDay.dayNum === selectedDay}'
               v-on:buttonClicked="setSelectedDay(aDay.dayNum)",
