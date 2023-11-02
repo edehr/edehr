@@ -39,6 +39,12 @@ const actions = {
   clearAssignment: function (context) {
     context.commit('set', undefined)
   },
+  clearSeed ( context, id ) {
+    let url = 'clearSeed/' + id
+    // console.log('Lobj store clear the seed from the lobj', url)
+    // just clear and then let the caller handle any reloads that may be needed
+    return InstoreHelper.putRequest(context, API, url)
+  },
   load (context, id) {
     let url = 'getLObj/' + id
     if(debug) console.log(NAME + ' load learning object url ', url)

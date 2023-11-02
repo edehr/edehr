@@ -50,7 +50,7 @@ export function apiTrace (app, config) {
 
 function composeData (req, statusCode, time) {
   const ts = Date.now()
-  const url = req.baseUrl || req.url
+  const url = req.baseUrl + req.url
   const key = (req.method + url).toLowerCase()
     .replace(/[:.]/g, '')
     .replace(/\//g, '_')
@@ -68,7 +68,7 @@ function composeData (req, statusCode, time) {
   rec.query = isNotEmpty(req.query) ? req.query : undefined
   rec.tsStr = (new Date(ts)).toISOString()
   rec.ts = ts
-  const includeBody = false
+  const includeBody = true
   if (includeBody && isNotEmpty(req.body)) {
     rec.body = Object.assign({}, req.body)
     // console.log('-=-=-=-=-=-=-=-=-')
@@ -88,6 +88,7 @@ function composeData (req, statusCode, time) {
     delete rec.body['ltiData[lis_person_name_given]']
     delete rec.body['ltiData[lis_person_name_full]']
     delete rec.body['ltiData[user_id']
+    rec.body = JSON.stringify(rec.body).substring(0, 50)
   }
   const includeOs = true
   if (includeOs) {

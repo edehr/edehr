@@ -312,7 +312,9 @@ class StoreHelperWorker {
     await this._dispatchAssignmentList('updateAssignment', dataIdPlusPayload)
     const assignment = await this._dispatchAssignment('load', assignmentId)
     const seedId = assignment.seedDataId
-    await this._dispatchSeedListProperty('loadSeedContent', seedId)
+    if (seedId) {
+      await this._dispatchSeedListProperty('loadSeedContent', seedId)
+    }
     StoreHelper.postActionEvent(CREATOR_ACTION, 'updateAssignment')
     return assignment
   }

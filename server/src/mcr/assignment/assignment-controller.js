@@ -263,6 +263,21 @@ export default class AssignmentController extends BaseController {
         .then(ok(res))
         .then(null, fail(req, res))
     })
+    router.put('/clearSeed/:key', (req, res) => {
+      const id = req.params.key
+      return this.baseFindOneQuery(id)
+        .then((lobj) => {
+          lobj.seedDataId = undefined
+          return lobj.save()
+        })
+        .then((modelInstance) => {
+          const response = {}
+          response[this.modelName] = modelInstance
+          return response
+        })
+        .then(ok(res))
+        .then(null, fail(req, res))
+    })
 
     router.delete('/unused/:key', async (req, res) => {
       const { key } = req.params
