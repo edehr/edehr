@@ -7,7 +7,7 @@
         ui-button(v-on:buttonClicked="gotoChangeCharacter()",
           :title='demoText.switchRoleLabel') {{ demoText.switchRoleLabel }}
       div(class="aside-intro", v-text-to-html.noAutoLink="demoText.lmsAside")
-      div(class="aside-intro", v-text-to-html.noAutoLink="demoText.lmsAside2")
+      //div(class="aside-intro", v-text-to-html.noAutoLink="demoText.lmsAside2")
     div(class="sample-lms")
       div(class="sample-lms-header")
         h2 {{demoText.lmsTitle}}
@@ -136,6 +136,9 @@ export default {
 }
 
 @media screen and (max-width: $main-width-threshold1){
+  .demo-course-content {
+    grid-template-columns: 1fr;
+  }
   .aside-section {
     margin-bottom: 0.5rem;
   }
