@@ -11,7 +11,15 @@ the date picker may be chopped and much of it might not be visible.
 .vdp-datepicker__calendar {
   position: relative;
 }
-
+.smaller-than-900 {
+  .ehr-nav-menu {
+    text-align: left;
+    margin-left: 1em;
+    .ehr-nav-hamburger {
+      font-size: 2rem;
+    }
+  }
+}
 .ehrdfe {
   width: 100%;
   margin-left: 1%;
@@ -483,25 +491,14 @@ select, .select {
 
 /* Small screens */
 @media all and (max-width: $form-threshold) {
-  .grid-left-to-right-2 {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  .grid-left-to-right-3 {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  .grid-left-to-right-4 {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
+  .grid-left-to-right-custom,
+  .grid-left-to-right-2,
+  .grid-left-to-right-3,
+  .grid-left-to-right-4,
   .cardio-assessment,
-  .grid-left-to-right-5 {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
+  .grid-left-to-right-5,
   .grid-up-to-down {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr;
   }
 
   .grid-span-2-columns {
@@ -795,10 +792,10 @@ select, .select {
   }
 }
 .chem-qc-assay {
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 2fr 1fr;
   .chem-qc-assay-into {
     grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column-end: 2;
   }
   .radio_set {
     display: flex;
