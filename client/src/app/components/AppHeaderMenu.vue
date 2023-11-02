@@ -1,11 +1,12 @@
 <template lang="pug">
   div
     div(class="app-header flow_across")
-      router-link(:to="{ name: 'home' }", class="navLink")
-        img(src="/edehr-Logo.png", class='brand-image', alt='EdEHR')
+      div(class="app-header-brand")
+        router-link(:to="{ name: 'home' }", class="navLink")
+          img(src="/edehr-Logo.png", class='brand-image', alt='EdEHR')
       div(class="flow_across menu_space_across flow_across_last_item side-menu")
         app-header-documentation-menu
-        router-link(v-if="isDemo", :to="{ name: `demo` }", class="navLink") Demonstration
+        router-link(v-if="isDemo", :to="{ name: `demo` }", class="navLink") {{demoText}}
         app-header-public-menu(v-if="!isStudent && !isInstructor && isPublic")
         app-header-student-menu(v-if="isStudent")
         app-header-instructor-menu(v-if="isInstructor")
@@ -20,6 +21,7 @@ import AppHeaderPublicMenu from '@/app/components/AppHeaderPublicMenu'
 import AppHeaderStudentMenu from '@/app/components/AppHeaderStudentMenu'
 import AppHeaderInstructorMenu from '@/app/components/AppHeaderInstructorMenu'
 import AppHeaderDocumentationMenu from '@/app/components/AppHeaderDocumentationMenu'
+import { smallScreenActive } from '@/helpers/responsive'
 export default {
   components: { AppHeaderDocumentationMenu, AppHeaderInstructorMenu, AppHeaderStudentMenu, AppHeaderPublicMenu },
   computed: {
@@ -27,6 +29,9 @@ export default {
     isDemo () { return StoreHelper.isDemoMode() },
     isStudent () { return StoreHelper.isStudent()  },
     isInstructor () { return StoreHelper.isInstructor() },
+    demoText () {
+      return smallScreenActive() ? 'Demo' : 'Demonstration'
+    }
   },
   methods: { }
 }
@@ -44,6 +49,9 @@ export default {
     border-bottom: 2px solid $brand-highlight-red;
   }
 }
+.app-header-brand {
+  min-width: 10rem;
+}
 .side-menu {
   margin-top: 10px;
   margin-right: 10px;
@@ -59,7 +67,7 @@ export default {
 /* Small screens */
 @media screen and (max-width: $main-width-threshold3){
   .brand-image {
-    height: 1.5rem;
+    height: 2rem;
     margin-top: 6px;
     margin-left: 1rem;
     margin-bottom: 0;

@@ -7,6 +7,7 @@
 <script>
 import StoreHelper from '@/helpers/store-helper'
 import { APP_ICONS } from '@/helpers/app-icons'
+import { smallScreenActive } from '@/helpers/responsive'
 export default {
   data: function () {
     return {
@@ -19,13 +20,17 @@ export default {
     isDevelopingContent () { return StoreHelper.isDevelopingContent() },
     linkText () {
       let text = 'Documentation'
-      if (this.isStudent) {
-        text = 'Students guide'
-      }
-      if (this.isDevelopingContent) {
-        text = 'Creators guide'
-      } else if (this.isInstructor) {
-        text = 'Instructors guide'
+      if (smallScreenActive()) {
+        text = 'Docs'
+      } else {
+        if (this.isStudent) {
+          text = 'Students guide'
+        }
+        if (this.isDevelopingContent) {
+          text = 'Creators guide'
+        } else if (this.isInstructor) {
+          text = 'Instructors guide'
+        }
       }
       return text
     },
