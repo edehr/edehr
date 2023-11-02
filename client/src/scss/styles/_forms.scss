@@ -540,15 +540,6 @@ select, .select {
   grid-column-start: 1;
   grid-column-end: 4;
 }
-.wbcmAbnormalTypeMorphology {
-  grid-column-start: 2;
-  grid-column-end: 4;
-}
-
-.wbcmToxicTypeMorphology {
-  grid-column-start: 1;
-  grid-column-end: 4;
-}
 
 .rcm-morphology-group {
   display: grid;
@@ -701,6 +692,52 @@ select, .select {
 /*
  Table specific styling
  */
+
+.wbcMorphologyGroup {
+  // this group also has the class grid-left-to-right-custom
+  grid-template-columns: repeat(3, 1fr);
+}
+.wbcmNormalMorphology {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+.wbcmAbnormalMorphology {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+.wbcmAbnormalTypeMorphology {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+
+.wbcmToxicTypeMorphology {
+  grid-column-start: 3;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+@media all and (max-width: $form-threshold) {
+  .wbcMorphologyGroup {
+    grid-template-columns: 1fr;
+  }
+  .wbcmNormalMorphology,
+  .wbcmAbnormalMorphology,
+  .wbcmAbnormalTypeMorphology,
+  .wbcmToxicTypeMorphology {
+    grid-column-start: initial;
+    grid-column-end: initial;
+    grid-row-start: initial;
+    grid-row-end: initial;
+  }
+}
+
 .med-lab-urin-micro {
   grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
   .select {

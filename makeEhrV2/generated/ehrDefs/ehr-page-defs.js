@@ -24611,16 +24611,27 @@ const DEFS = {
       {
         'elementKey': 'wbcmNormalMorphology',
         'formIndex': '2',
+        'formCss': 'wbcmNormalMorphology',
         'inputType': 'checkbox',
         'label': 'Normal',
         'tableColumn': '71',
         'fqn': 'hematology.wbcmNormalMorphology'
       },
       {
+        'elementKey': 'wbcmAbnormalMorphology',
+        'formIndex': '2',
+        'formCss': 'wbcmAbnormalMorphology',
+        'inputType': 'checkbox',
+        'label': 'Abnormal',
+        'tableColumn': '72',
+        'fqn': 'hematology.wbcmAbnormalMorphology'
+      },
+      {
         'elementKey': 'wbcmAbnormalTypeMorphology',
         'formIndex': '2',
+        'formCss': 'wbcmAbnormalTypeMorphology',
         'inputType': 'boxcheckset',
-        'label': 'Abnormal',
+        'label': 'Abnormal Type',
         'options': [
           {
             'key': 'Immature Cells',
@@ -24659,12 +24670,13 @@ const DEFS = {
             'text': 'Necrobiotic Cells'
           }
         ],
-        'tableColumn': '72',
+        'tableColumn': '73',
         'fqn': 'hematology.wbcmAbnormalTypeMorphology'
       },
       {
         'elementKey': 'wbcmToxicTypeMorphology',
         'formIndex': '2',
+        'formCss': 'wbcmToxicTypeMorphology',
         'inputType': 'boxcheckset',
         'label': 'Toxic Signs',
         'options': [
@@ -24681,7 +24693,7 @@ const DEFS = {
             'text': 'Toxic Vacuolation'
           }
         ],
-        'tableColumn': '73',
+        'tableColumn': '74',
         'fqn': 'hematology.wbcmToxicTypeMorphology'
       },
       {
@@ -24690,7 +24702,7 @@ const DEFS = {
         'formCss': 'rcm-one-part',
         'inputType': 'checkbox',
         'label': 'Normal',
-        'tableColumn': '74',
+        'tableColumn': '75',
         'fqn': 'hematology.rcmNormal'
       },
       {
@@ -24699,7 +24711,7 @@ const DEFS = {
         'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Consistent with indices',
-        'tableColumn': '75',
+        'tableColumn': '76',
         'fqn': 'hematology.rcmConsistent'
       },
       {
@@ -24708,7 +24720,7 @@ const DEFS = {
         'formCss': 'rcm-two-part-2 rcmMcvMchc',
         'inputType': 'text',
         'label': 'MCV/MCHC Interpretation',
-        'tableColumn': '76',
+        'tableColumn': '77',
         'fqn': 'hematology.rcmMcvMchc'
       },
       {
@@ -24717,7 +24729,7 @@ const DEFS = {
         'formCss': 'rcm-one-part-indented',
         'inputType': 'checkbox',
         'label': 'Anisocytosis',
-        'tableColumn': '77',
+        'tableColumn': '78',
         'fqn': 'hematology.rcmAnisocytosis'
       },
       {
@@ -24726,7 +24738,7 @@ const DEFS = {
         'formCss': 'rcm-one-part-indented',
         'inputType': 'checkbox',
         'label': 'Polychromasia',
-        'tableColumn': '78',
+        'tableColumn': '79',
         'fqn': 'hematology.rcmPolychromasia'
       },
       {
@@ -24735,7 +24747,7 @@ const DEFS = {
         'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Acanthocytes',
-        'tableColumn': '79',
+        'tableColumn': '80',
         'fqn': 'hematology.rcmAcanthocytes'
       },
       {
@@ -24762,7 +24774,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
-        'tableColumn': '80',
+        'tableColumn': '81',
         'fqn': 'hematology.rcmAcanthocytesGrading'
       },
       {
@@ -24771,7 +24783,7 @@ const DEFS = {
         'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Codocytes (Target Cells)',
-        'tableColumn': '81',
+        'tableColumn': '82',
         'fqn': 'hematology.rcmCodocytes'
       },
       {
@@ -24798,7 +24810,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
-        'tableColumn': '82',
+        'tableColumn': '83',
         'fqn': 'hematology.rcmCodocytesGrading'
       },
       {
@@ -24807,7 +24819,7 @@ const DEFS = {
         'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Dacryocytes (Tear Drop Cells)',
-        'tableColumn': '83',
+        'tableColumn': '84',
         'fqn': 'hematology.rcmDacryocytes'
       },
       {
@@ -24834,7 +24846,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
-        'tableColumn': '84',
+        'tableColumn': '85',
         'fqn': 'hematology.rcmDacryocytesGrading'
       },
       {
@@ -24843,7 +24855,7 @@ const DEFS = {
         'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Drepanocytes (Sickle Cells)',
-        'tableColumn': '85',
+        'tableColumn': '86',
         'fqn': 'hematology.rcmDrepanocytes'
       },
       {
@@ -24870,7 +24882,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
-        'tableColumn': '86',
+        'tableColumn': '87',
         'fqn': 'hematology.rcmDrepanocytesGrading'
       },
       {
@@ -24879,7 +24891,7 @@ const DEFS = {
         'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Echinocytes (Burr Cells)',
-        'tableColumn': '87',
+        'tableColumn': '88',
         'fqn': 'hematology.rcmEchinocytes'
       },
       {
@@ -24906,7 +24918,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
-        'tableColumn': '88',
+        'tableColumn': '89',
         'fqn': 'hematology.rcmEchinocytesGrading'
       },
       {
@@ -24915,7 +24927,7 @@ const DEFS = {
         'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Elliptocytes/Ovalocytes',
-        'tableColumn': '89',
+        'tableColumn': '90',
         'fqn': 'hematology.rcmOvalocytes'
       },
       {
@@ -24942,7 +24954,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
-        'tableColumn': '90',
+        'tableColumn': '91',
         'fqn': 'hematology.rcmOvalocytesGrading'
       },
       {
@@ -24951,7 +24963,7 @@ const DEFS = {
         'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Macro-ovalocytes',
-        'tableColumn': '91',
+        'tableColumn': '92',
         'fqn': 'hematology.rcmMacroOvalocytes'
       },
       {
@@ -24978,7 +24990,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
-        'tableColumn': '92',
+        'tableColumn': '93',
         'fqn': 'hematology.rcmMacroOvalocytesGrading'
       },
       {
@@ -24987,7 +24999,7 @@ const DEFS = {
         'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Stomatocytes',
-        'tableColumn': '93',
+        'tableColumn': '94',
         'fqn': 'hematology.rcmStomatocytes'
       },
       {
@@ -25014,7 +25026,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
-        'tableColumn': '94',
+        'tableColumn': '95',
         'fqn': 'hematology.rcmStomatocytesGrading'
       },
       {
@@ -25023,7 +25035,7 @@ const DEFS = {
         'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Spherocytes',
-        'tableColumn': '95',
+        'tableColumn': '96',
         'fqn': 'hematology.rcmSpherocytes'
       },
       {
@@ -25050,7 +25062,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
-        'tableColumn': '96',
+        'tableColumn': '97',
         'fqn': 'hematology.rcmSpherocytesGrading'
       },
       {
@@ -25059,7 +25071,7 @@ const DEFS = {
         'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Irregularly Contracted Cells (ICC)',
-        'tableColumn': '97',
+        'tableColumn': '98',
         'fqn': 'hematology.rcmICC'
       },
       {
@@ -25086,7 +25098,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
-        'tableColumn': '98',
+        'tableColumn': '99',
         'fqn': 'hematology.rcmICCGrading'
       },
       {
@@ -25095,7 +25107,7 @@ const DEFS = {
         'formCss': 'rcm-two-part-1',
         'inputType': 'checkbox',
         'label': 'Schistocytes',
-        'tableColumn': '99',
+        'tableColumn': '100',
         'fqn': 'hematology.rcmICCSchistocytes'
       },
       {
@@ -25122,7 +25134,7 @@ const DEFS = {
             'text': '4+'
           }
         ],
-        'tableColumn': '100',
+        'tableColumn': '101',
         'fqn': 'hematology.rcmICCSchistocytesGrading'
       },
       {
@@ -25130,7 +25142,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Basophilic Stippling',
-        'tableColumn': '101',
+        'tableColumn': '102',
         'fqn': 'hematology.rcmBasophilicStippling'
       },
       {
@@ -25138,7 +25150,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Howell-Jolly Bodies',
-        'tableColumn': '102',
+        'tableColumn': '103',
         'fqn': 'hematology.rcmHowellJollyBodies'
       },
       {
@@ -25146,7 +25158,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Pappenheimer Bodies',
-        'tableColumn': '103',
+        'tableColumn': '104',
         'fqn': 'hematology.rcmPappenheimerBodies'
       },
       {
@@ -25169,7 +25181,7 @@ const DEFS = {
             'text': 'Schizont'
           }
         ],
-        'tableColumn': '104',
+        'tableColumn': '105',
         'fqn': 'hematology.rcmMalariaType'
       },
       {
@@ -25177,7 +25189,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'textarea',
         'label': 'Internal RBC comments',
-        'tableColumn': '105',
+        'tableColumn': '106',
         'fqn': 'hematology.rbcComments'
       },
       {
@@ -25185,7 +25197,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Referral to hematopathologist',
-        'tableColumn': '106',
+        'tableColumn': '107',
         'fqn': 'hematology.referralToHema'
       },
       {
@@ -25193,7 +25205,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'textarea',
         'label': 'Reason for referral',
-        'tableColumn': '107',
+        'tableColumn': '108',
         'fqn': 'hematology.explain'
       }
     ],
@@ -25969,215 +25981,221 @@ const DEFS = {
           {
             'ehr_list_index': '72',
             'items': [
-              'wbcmAbnormalTypeMorphology'
+              'wbcmAbnormalMorphology'
             ]
           },
           {
             'ehr_list_index': '73',
             'items': [
-              'wbcmToxicTypeMorphology'
+              'wbcmAbnormalTypeMorphology'
             ]
           },
           {
             'ehr_list_index': '74',
             'items': [
-              'rcmNormal'
+              'wbcmToxicTypeMorphology'
             ]
           },
           {
             'ehr_list_index': '75',
             'items': [
-              'rcmConsistent'
+              'rcmNormal'
             ]
           },
           {
             'ehr_list_index': '76',
             'items': [
-              'rcmMcvMchc'
+              'rcmConsistent'
             ]
           },
           {
             'ehr_list_index': '77',
             'items': [
-              'rcmAnisocytosis'
+              'rcmMcvMchc'
             ]
           },
           {
             'ehr_list_index': '78',
             'items': [
-              'rcmPolychromasia'
+              'rcmAnisocytosis'
             ]
           },
           {
             'ehr_list_index': '79',
             'items': [
-              'rcmAcanthocytes'
+              'rcmPolychromasia'
             ]
           },
           {
             'ehr_list_index': '80',
             'items': [
-              'rcmAcanthocytesGrading'
+              'rcmAcanthocytes'
             ]
           },
           {
             'ehr_list_index': '81',
             'items': [
-              'rcmCodocytes'
+              'rcmAcanthocytesGrading'
             ]
           },
           {
             'ehr_list_index': '82',
             'items': [
-              'rcmCodocytesGrading'
+              'rcmCodocytes'
             ]
           },
           {
             'ehr_list_index': '83',
             'items': [
-              'rcmDacryocytes'
+              'rcmCodocytesGrading'
             ]
           },
           {
             'ehr_list_index': '84',
             'items': [
-              'rcmDacryocytesGrading'
+              'rcmDacryocytes'
             ]
           },
           {
             'ehr_list_index': '85',
             'items': [
-              'rcmDrepanocytes'
+              'rcmDacryocytesGrading'
             ]
           },
           {
             'ehr_list_index': '86',
             'items': [
-              'rcmDrepanocytesGrading'
+              'rcmDrepanocytes'
             ]
           },
           {
             'ehr_list_index': '87',
             'items': [
-              'rcmEchinocytes'
+              'rcmDrepanocytesGrading'
             ]
           },
           {
             'ehr_list_index': '88',
             'items': [
-              'rcmEchinocytesGrading'
+              'rcmEchinocytes'
             ]
           },
           {
             'ehr_list_index': '89',
             'items': [
-              'rcmOvalocytes'
+              'rcmEchinocytesGrading'
             ]
           },
           {
             'ehr_list_index': '90',
             'items': [
-              'rcmOvalocytesGrading'
+              'rcmOvalocytes'
             ]
           },
           {
             'ehr_list_index': '91',
             'items': [
-              'rcmMacroOvalocytes'
+              'rcmOvalocytesGrading'
             ]
           },
           {
             'ehr_list_index': '92',
             'items': [
-              'rcmMacroOvalocytesGrading'
+              'rcmMacroOvalocytes'
             ]
           },
           {
             'ehr_list_index': '93',
             'items': [
-              'rcmStomatocytes'
+              'rcmMacroOvalocytesGrading'
             ]
           },
           {
             'ehr_list_index': '94',
             'items': [
-              'rcmStomatocytesGrading'
+              'rcmStomatocytes'
             ]
           },
           {
             'ehr_list_index': '95',
             'items': [
-              'rcmSpherocytes'
+              'rcmStomatocytesGrading'
             ]
           },
           {
             'ehr_list_index': '96',
             'items': [
-              'rcmSpherocytesGrading'
+              'rcmSpherocytes'
             ]
           },
           {
             'ehr_list_index': '97',
             'items': [
-              'rcmICC'
+              'rcmSpherocytesGrading'
             ]
           },
           {
             'ehr_list_index': '98',
             'items': [
-              'rcmICCGrading'
+              'rcmICC'
             ]
           },
           {
             'ehr_list_index': '99',
             'items': [
-              'rcmICCSchistocytes'
+              'rcmICCGrading'
             ]
           },
           {
             'ehr_list_index': '100',
             'items': [
-              'rcmICCSchistocytesGrading'
+              'rcmICCSchistocytes'
             ]
           },
           {
             'ehr_list_index': '101',
             'items': [
-              'rcmBasophilicStippling'
+              'rcmICCSchistocytesGrading'
             ]
           },
           {
             'ehr_list_index': '102',
             'items': [
-              'rcmHowellJollyBodies'
+              'rcmBasophilicStippling'
             ]
           },
           {
             'ehr_list_index': '103',
             'items': [
-              'rcmPappenheimerBodies'
+              'rcmHowellJollyBodies'
             ]
           },
           {
             'ehr_list_index': '104',
             'items': [
-              'rcmMalariaType'
+              'rcmPappenheimerBodies'
             ]
           },
           {
             'ehr_list_index': '105',
             'items': [
-              'rbcComments'
+              'rcmMalariaType'
             ]
           },
           {
             'ehr_list_index': '106',
             'items': [
-              'referralToHema'
+              'rbcComments'
             ]
           },
           {
             'ehr_list_index': '107',
+            'items': [
+              'referralToHema'
+            ]
+          },
+          {
+            'ehr_list_index': '108',
             'items': [
               'explain'
             ]
@@ -26345,10 +26363,11 @@ const DEFS = {
             {
               'elementKey': 'ehr_group192',
               'label': 'White Cell Morphology',
-              'formCss': 'grid-left-to-right-3',
+              'formCss': 'grid-left-to-right-custom wbcMorphologyGroup',
               'gIndex': '9',
               'gChildren': [
                 'wbcmNormalMorphology',
+                'wbcmAbnormalMorphology',
                 'wbcmAbnormalTypeMorphology',
                 'wbcmToxicTypeMorphology'
               ]
@@ -26496,6 +26515,7 @@ const DEFS = {
             'cellCntNRBCs': '',
             'cellCntComment': '',
             'wbcmNormalMorphology': '',
+            'wbcmAbnormalMorphology': '',
             'wbcmAbnormalTypeMorphology': '',
             'wbcmToxicTypeMorphology': '',
             'rcmNormal': '',
@@ -26611,6 +26631,7 @@ const DEFS = {
           'cellCntNRBCs',
           'cellCntComment',
           'wbcmNormalMorphology',
+          'wbcmAbnormalMorphology',
           'wbcmAbnormalTypeMorphology',
           'wbcmToxicTypeMorphology',
           'rcmNormal',
