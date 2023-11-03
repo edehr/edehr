@@ -56,8 +56,8 @@ const DEFS = {
         'label': 'Height',
         'suffix': 'cm',
         'fqn': 'demographics.height',
-        'suffixText': '<p>cm</p>',
-        'suffixHtml': 'cm'
+        'suffixHtml': '<p>cm</p>',
+        'suffixText': 'cm'
       },
       {
         'elementKey': 'weight',
@@ -66,8 +66,8 @@ const DEFS = {
         'label': 'Weight',
         'suffix': 'kg',
         'fqn': 'demographics.weight',
-        'suffixText': '<p>kg</p>',
-        'suffixHtml': 'kg'
+        'suffixHtml': '<p>kg</p>',
+        'suffixText': 'kg'
       },
       {
         'elementKey': 'gender',
@@ -2249,8 +2249,8 @@ const DEFS = {
         'tableLabel': 'Temperature',
         'validation': 'numeric',
         'fqn': 'vitals.temperature',
-        'suffixText': '<p>C</p>',
-        'suffixHtml': 'C'
+        'suffixHtml': '<p>C</p>',
+        'suffixText': 'C'
       },
       {
         'elementKey': 'source',
@@ -2365,8 +2365,8 @@ const DEFS = {
         'tableLabel': 'Oxygen saturation',
         'validation': 'numeric',
         'fqn': 'vitals.oxygenSaturation',
-        'suffixText': '<p>%</p>',
-        'suffixHtml': '%'
+        'suffixHtml': '<p>%</p>',
+        'suffixText': '%'
       },
       {
         'elementKey': 'oxygenMode',
@@ -2409,8 +2409,8 @@ const DEFS = {
         'tableLabel': 'Flow rate',
         'validation': 'numeric',
         'fqn': 'vitals.flowRate',
-        'suffixText': '<p>/lpm</p>',
-        'suffixHtml': '/lpm'
+        'suffixHtml': '<p>/lpm</p>',
+        'suffixText': '/lpm'
       },
       {
         'elementKey': 'bloodSugar',
@@ -2422,8 +2422,8 @@ const DEFS = {
         'tableLabel': 'Blood sugar',
         'validation': 'numeric',
         'fqn': 'vitals.bloodSugar',
-        'suffixText': '<p>mmol/L</p>',
-        'suffixHtml': 'mmol/L'
+        'suffixHtml': '<p>mmol/L</p>',
+        'suffixText': 'mmol/L'
       },
       {
         'elementKey': 'cvp',
@@ -4717,8 +4717,8 @@ const DEFS = {
         'tableColumn': '4',
         'tableLabel': 'Flow rate',
         'fqn': 'respiratory.flowRate',
-        'suffixText': '<p>/lpm</p>',
-        'suffixHtml': '/lpm'
+        'suffixHtml': '<p>/lpm</p>',
+        'suffixText': '/lpm'
       },
       {
         'elementKey': 'lul',
@@ -8272,8 +8272,8 @@ const DEFS = {
         'tableColumn': '3',
         'tableLabel': 'Pain intensity (0-10)',
         'fqn': 'pain.painScale',
-        'suffixText': '<p>/10</p>',
-        'suffixHtml': '/10'
+        'suffixHtml': '<p>/10</p>',
+        'suffixText': '/10'
       },
       {
         'elementKey': 'respiratoryRate',
@@ -8284,8 +8284,8 @@ const DEFS = {
         'tableColumn': '4',
         'tableLabel': 'Respiratory rate',
         'fqn': 'pain.respiratoryRate',
-        'suffixText': '<p>br/min</p>',
-        'suffixHtml': 'br/min'
+        'suffixHtml': '<p>br/min</p>',
+        'suffixText': 'br/min'
       },
       {
         'elementKey': 'onset',
@@ -8360,8 +8360,8 @@ const DEFS = {
         'tableColumn': '12',
         'tableLabel': 'Pain intensity (0-10)',
         'fqn': 'pain.painScale2',
-        'suffixText': '<p>/10</p>',
-        'suffixHtml': '/10'
+        'suffixHtml': '<p>/10</p>',
+        'suffixText': '/10'
       },
       {
         'elementKey': 'respiratoryRate2',
@@ -8372,8 +8372,8 @@ const DEFS = {
         'tableColumn': '13',
         'tableLabel': 'Respiratory rate',
         'fqn': 'pain.respiratoryRate2',
-        'suffixText': '<p>br/min</p>',
-        'suffixHtml': 'br/min'
+        'suffixHtml': '<p>br/min</p>',
+        'suffixText': 'br/min'
       },
       {
         'elementKey': 'onset2',
@@ -9539,8 +9539,8 @@ const DEFS = {
         'tableColumn': '7',
         'tableLabel': 'Restrict to',
         'fqn': 'nonmedOrders.diet_fluid_amount',
-        'suffixText': '<p>mL/24h</p>',
-        'suffixHtml': 'mL/24h'
+        'suffixHtml': '<p>mL/24h</p>',
+        'suffixText': 'mL/24h'
       },
       {
         'elementKey': 'diet_other',
@@ -12873,8 +12873,8 @@ const DEFS = {
         'tableColumn': '18',
         'tableLabel': 'Instructions',
         'fqn': 'medicationOrders.med_instructions',
-        'suffixText': '<p>medAdminRec</p>',
-        'suffixHtml': 'medAdminRec'
+        'suffixHtml': '<p>medAdminRec</p>',
+        'suffixText': 'medAdminRec'
       }
     ],
     'pageElements': {
@@ -15138,8 +15138,8 @@ const DEFS = {
         'tableColumn': '2',
         'tableLabel': 'Hemoglobin A1-C',
         'fqn': 'labResults.lrh_HbA1C',
-        'suffixText': '<p>4.8%–6.0%</p>',
-        'suffixHtml': '4.8%–6.0%'
+        'suffixHtml': '<p>4.8%–6.0%</p>',
+        'suffixText': '4.8%–6.0%'
       },
       {
         'elementKey': 'lrh_Hgb',
@@ -15150,8 +15150,8 @@ const DEFS = {
         'tableColumn': '3',
         'tableLabel': 'Hemoglobin',
         'fqn': 'labResults.lrh_Hgb',
-        'suffixText': '<p>115-155 g/L</p>',
-        'suffixHtml': '115-155 g/L'
+        'suffixHtml': '<p>115-155 g/L</p>',
+        'suffixText': '115-155 g/L'
       },
       {
         'elementKey': 'lrh_hct',
@@ -15161,8 +15161,8 @@ const DEFS = {
         'suffix': '0.42 – 0.52 L/L',
         'tableColumn': '4',
         'fqn': 'labResults.lrh_hct',
-        'suffixText': '<p>0.42 – 0.52 L/L</p>',
-        'suffixHtml': '0.42 – 0.52 L/L'
+        'suffixHtml': '<p>0.42 – 0.52 L/L</p>',
+        'suffixText': '0.42 – 0.52 L/L'
       },
       {
         'elementKey': 'lrh_platelets',
@@ -15172,8 +15172,8 @@ const DEFS = {
         'suffix': '130-380 x 10^9 /L',
         'tableColumn': '5',
         'fqn': 'labResults.lrh_platelets',
-        'suffixText': '<p>130-380 x 10^9 /L</p>',
-        'suffixHtml': '130-380 x 10^9 /L'
+        'suffixHtml': '<p>130-380 x 10^9 /L</p>',
+        'suffixText': '130-380 x 10^9 /L'
       },
       {
         'elementKey': 'lrh_rbc',
@@ -15183,8 +15183,8 @@ const DEFS = {
         'suffix': '3.50-5.00 x 10^12 /L',
         'tableColumn': '6',
         'fqn': 'labResults.lrh_rbc',
-        'suffixText': '<p>3.50-5.00 x 10^12 /L</p>',
-        'suffixHtml': '3.50-5.00 x 10^12 /L'
+        'suffixHtml': '<p>3.50-5.00 x 10^12 /L</p>',
+        'suffixText': '3.50-5.00 x 10^12 /L'
       },
       {
         'elementKey': 'lrh_wbc',
@@ -15194,8 +15194,8 @@ const DEFS = {
         'suffix': '3.5–10.5 × 10^9/L',
         'tableColumn': '7',
         'fqn': 'labResults.lrh_wbc',
-        'suffixText': '<p>3.5–10.5 × 10^9/L</p>',
-        'suffixHtml': '3.5–10.5 × 10^9/L'
+        'suffixHtml': '<p>3.5–10.5 × 10^9/L</p>',
+        'suffixText': '3.5–10.5 × 10^9/L'
       },
       {
         'elementKey': 'lrh_basophils',
@@ -15205,8 +15205,8 @@ const DEFS = {
         'suffix': '0-0.1 x 10^9 /L',
         'tableColumn': '8',
         'fqn': 'labResults.lrh_basophils',
-        'suffixText': '<p>0-0.1 x 10^9 /L</p>',
-        'suffixHtml': '0-0.1 x 10^9 /L'
+        'suffixHtml': '<p>0-0.1 x 10^9 /L</p>',
+        'suffixText': '0-0.1 x 10^9 /L'
       },
       {
         'elementKey': 'lrh_eosinophils',
@@ -15216,8 +15216,8 @@ const DEFS = {
         'suffix': '0-0.5 x 10^9 /L',
         'tableColumn': '9',
         'fqn': 'labResults.lrh_eosinophils',
-        'suffixText': '<p>0-0.5 x 10^9 /L</p>',
-        'suffixHtml': '0-0.5 x 10^9 /L'
+        'suffixHtml': '<p>0-0.5 x 10^9 /L</p>',
+        'suffixText': '0-0.5 x 10^9 /L'
       },
       {
         'elementKey': 'lrh_lymphocytes',
@@ -15227,8 +15227,8 @@ const DEFS = {
         'suffix': 'F: 0.8-3.3 x 10^9 /L-NL-M: 0.8–3.5 × 10^9/L',
         'tableColumn': '10',
         'fqn': 'labResults.lrh_lymphocytes',
-        'suffixText': '<p>F: 0.8-3.3 x 10^9 /L</p>\n<p>M: 0.8–3.5 × 10^9/L</p>',
-        'suffixHtml': 'F: 0.8-3.3 x 10^9 /L\nM: 0.8–3.5 × 10^9/L'
+        'suffixHtml': '<p>F: 0.8-3.3 x 10^9 /L</p>\n<p>M: 0.8–3.5 × 10^9/L</p>',
+        'suffixText': 'F: 0.8-3.3 x 10^9 /L\nM: 0.8–3.5 × 10^9/L'
       },
       {
         'elementKey': 'lrh_monocytes',
@@ -15238,8 +15238,8 @@ const DEFS = {
         'suffix': '0.1-1.0 x 10^9 /L',
         'tableColumn': '11',
         'fqn': 'labResults.lrh_monocytes',
-        'suffixText': '<p>0.1-1.0 x 10^9 /L</p>',
-        'suffixHtml': '0.1-1.0 x 10^9 /L'
+        'suffixHtml': '<p>0.1-1.0 x 10^9 /L</p>',
+        'suffixText': '0.1-1.0 x 10^9 /L'
       },
       {
         'elementKey': 'lrh_neutrophils',
@@ -15249,8 +15249,8 @@ const DEFS = {
         'suffix': '2.0-7.5 x 10^9 /L',
         'tableColumn': '12',
         'fqn': 'labResults.lrh_neutrophils',
-        'suffixText': '<p>2.0-7.5 x 10^9 /L</p>',
-        'suffixHtml': '2.0-7.5 x 10^9 /L'
+        'suffixHtml': '<p>2.0-7.5 x 10^9 /L</p>',
+        'suffixText': '2.0-7.5 x 10^9 /L'
       },
       {
         'elementKey': 'labResultCoagulation_name',
@@ -15308,8 +15308,8 @@ const DEFS = {
         'suffix': '2-4 g/L',
         'tableColumn': '2',
         'fqn': 'labResults.coag_fib',
-        'suffixText': '<p>2-4 g/L</p>',
-        'suffixHtml': '2-4 g/L'
+        'suffixHtml': '<p>2-4 g/L</p>',
+        'suffixText': '2-4 g/L'
       },
       {
         'elementKey': 'coag_ddimer',
@@ -15327,8 +15327,8 @@ const DEFS = {
         'suffix': '0.9-1.2',
         'tableColumn': '4',
         'fqn': 'labResults.coag_inr',
-        'suffixText': '<p>0.9-1.2</p>',
-        'suffixHtml': '0.9-1.2'
+        'suffixHtml': '<p>0.9-1.2</p>',
+        'suffixText': '0.9-1.2'
       },
       {
         'elementKey': 'coag_ptt',
@@ -15346,8 +15346,8 @@ const DEFS = {
         'suffix': '22-30 s',
         'tableColumn': '6',
         'fqn': 'labResults.coag_appt',
-        'suffixText': '<p>22-30 s</p>',
-        'suffixHtml': '22-30 s'
+        'suffixHtml': '<p>22-30 s</p>',
+        'suffixText': '22-30 s'
       },
       {
         'elementKey': 'labResultGeneral_name',
@@ -15405,8 +15405,8 @@ const DEFS = {
         'suffix': '21–32 mmol/L',
         'tableColumn': '2',
         'fqn': 'labResults.lrh_HCO3',
-        'suffixText': '<p>21–32 mmol/L</p>',
-        'suffixHtml': '21–32 mmol/L'
+        'suffixHtml': '<p>21–32 mmol/L</p>',
+        'suffixText': '21–32 mmol/L'
       },
       {
         'elementKey': 'lrh_Ca',
@@ -15416,8 +15416,8 @@ const DEFS = {
         'suffix': '2.12–2.52 mmol/L',
         'tableColumn': '3',
         'fqn': 'labResults.lrh_Ca',
-        'suffixText': '<p>2.12–2.52 mmol/L</p>',
-        'suffixHtml': '2.12–2.52 mmol/L'
+        'suffixHtml': '<p>2.12–2.52 mmol/L</p>',
+        'suffixText': '2.12–2.52 mmol/L'
       },
       {
         'elementKey': 'lrh_Ca_Ion',
@@ -15427,8 +15427,8 @@ const DEFS = {
         'suffix': '1.14–1.28 mmol/L',
         'tableColumn': '4',
         'fqn': 'labResults.lrh_Ca_Ion',
-        'suffixText': '<p>1.14–1.28 mmol/L</p>',
-        'suffixHtml': '1.14–1.28 mmol/L'
+        'suffixHtml': '<p>1.14–1.28 mmol/L</p>',
+        'suffixText': '1.14–1.28 mmol/L'
       },
       {
         'elementKey': 'lrh_CO2',
@@ -15438,8 +15438,8 @@ const DEFS = {
         'suffix': '23–28 mmol/L',
         'tableColumn': '5',
         'fqn': 'labResults.lrh_CO2',
-        'suffixText': '<p>23–28 mmol/L</p>',
-        'suffixHtml': '23–28 mmol/L'
+        'suffixHtml': '<p>23–28 mmol/L</p>',
+        'suffixText': '23–28 mmol/L'
       },
       {
         'elementKey': 'lrh_chloride',
@@ -15449,8 +15449,8 @@ const DEFS = {
         'suffix': '98 - 107 mmol/L',
         'tableColumn': '6',
         'fqn': 'labResults.lrh_chloride',
-        'suffixText': '<p>98 - 107 mmol/L</p>',
-        'suffixHtml': '98 - 107 mmol/L'
+        'suffixHtml': '<p>98 - 107 mmol/L</p>',
+        'suffixText': '98 - 107 mmol/L'
       },
       {
         'elementKey': 'lrh_ck',
@@ -15460,8 +15460,8 @@ const DEFS = {
         'suffix': 'F: 30 - 190 IU/L-NL-M: 30 - 250 IU/L',
         'tableColumn': '7',
         'fqn': 'labResults.lrh_ck',
-        'suffixText': '<p>F: 30 - 190 IU/L</p>\n<p>M: 30 - 250 IU/L</p>',
-        'suffixHtml': 'F: 30 - 190 IU/L\nM: 30 - 250 IU/L'
+        'suffixHtml': '<p>F: 30 - 190 IU/L</p>\n<p>M: 30 - 250 IU/L</p>',
+        'suffixText': 'F: 30 - 190 IU/L\nM: 30 - 250 IU/L'
       },
       {
         'elementKey': 'lrh_glucose',
@@ -15471,8 +15471,8 @@ const DEFS = {
         'suffix': '3.9 - 5.6 mmol/L (fasting)',
         'tableColumn': '8',
         'fqn': 'labResults.lrh_glucose',
-        'suffixText': '<p>3.9 - 5.6 mmol/L (fasting)</p>',
-        'suffixHtml': '3.9 - 5.6 mmol/L (fasting)'
+        'suffixHtml': '<p>3.9 - 5.6 mmol/L (fasting)</p>',
+        'suffixText': '3.9 - 5.6 mmol/L (fasting)'
       },
       {
         'elementKey': 'lrh_Mg',
@@ -15482,8 +15482,8 @@ const DEFS = {
         'suffix': '0.74–1.03 mmol/L',
         'tableColumn': '9',
         'fqn': 'labResults.lrh_Mg',
-        'suffixText': '<p>0.74–1.03 mmol/L</p>',
-        'suffixHtml': '0.74–1.03 mmol/L'
+        'suffixHtml': '<p>0.74–1.03 mmol/L</p>',
+        'suffixText': '0.74–1.03 mmol/L'
       },
       {
         'elementKey': 'lrh_PO4',
@@ -15493,8 +15493,8 @@ const DEFS = {
         'suffix': '0.81–1.58 mmol/L',
         'tableColumn': '10',
         'fqn': 'labResults.lrh_PO4',
-        'suffixText': '<p>0.81–1.58 mmol/L</p>',
-        'suffixHtml': '0.81–1.58 mmol/L'
+        'suffixHtml': '<p>0.81–1.58 mmol/L</p>',
+        'suffixText': '0.81–1.58 mmol/L'
       },
       {
         'elementKey': 'lrh_K',
@@ -15504,8 +15504,8 @@ const DEFS = {
         'suffix': '3.5–5.1 mmol/L',
         'tableColumn': '11',
         'fqn': 'labResults.lrh_K',
-        'suffixText': '<p>3.5–5.1 mmol/L</p>',
-        'suffixHtml': '3.5–5.1 mmol/L'
+        'suffixHtml': '<p>3.5–5.1 mmol/L</p>',
+        'suffixText': '3.5–5.1 mmol/L'
       },
       {
         'elementKey': 'lrh_Na',
@@ -15515,8 +15515,8 @@ const DEFS = {
         'suffix': '136–146 mmol/L',
         'tableColumn': '12',
         'fqn': 'labResults.lrh_Na',
-        'suffixText': '<p>136–146 mmol/L</p>',
-        'suffixHtml': '136–146 mmol/L'
+        'suffixHtml': '<p>136–146 mmol/L</p>',
+        'suffixText': '136–146 mmol/L'
       },
       {
         'elementKey': 'lrh_bun',
@@ -15526,8 +15526,8 @@ const DEFS = {
         'suffix': 'F: 22–75 µmol/L-NL-M: 49–93 µmol/L',
         'tableColumn': '13',
         'fqn': 'labResults.lrh_bun',
-        'suffixText': '<p>F: 22–75 µmol/L</p>\n<p>M: 49–93 µmol/L</p>',
-        'suffixHtml': 'F: 22–75 µmol/L\nM: 49–93 µmol/L'
+        'suffixHtml': '<p>F: 22–75 µmol/L</p>\n<p>M: 49–93 µmol/L</p>',
+        'suffixText': 'F: 22–75 µmol/L\nM: 49–93 µmol/L'
       },
       {
         'elementKey': 'lrh_cr',
@@ -15537,8 +15537,8 @@ const DEFS = {
         'suffix': 'F: 22–75 µmol/L-NL-M: 49–93 µmol/L',
         'tableColumn': '14',
         'fqn': 'labResults.lrh_cr',
-        'suffixText': '<p>F: 22–75 µmol/L</p>\n<p>M: 49–93 µmol/L</p>',
-        'suffixHtml': 'F: 22–75 µmol/L\nM: 49–93 µmol/L'
+        'suffixHtml': '<p>F: 22–75 µmol/L</p>\n<p>M: 49–93 µmol/L</p>',
+        'suffixText': 'F: 22–75 µmol/L\nM: 49–93 µmol/L'
       },
       {
         'elementKey': 'lrh_egfr',
@@ -15548,8 +15548,8 @@ const DEFS = {
         'suffix': '> 60 mL/min',
         'tableColumn': '15',
         'fqn': 'labResults.lrh_egfr',
-        'suffixText': '<p>> 60 mL/min</p>',
-        'suffixHtml': '> 60 mL/min'
+        'suffixHtml': '<p>> 60 mL/min</p>',
+        'suffixText': '> 60 mL/min'
       },
       {
         'elementKey': 'lrh_alt',
@@ -15559,8 +15559,8 @@ const DEFS = {
         'suffix': '17–63 IU/L',
         'tableColumn': '16',
         'fqn': 'labResults.lrh_alt',
-        'suffixText': '<p>17–63 IU/L</p>',
-        'suffixHtml': '17–63 IU/L'
+        'suffixHtml': '<p>17–63 IU/L</p>',
+        'suffixText': '17–63 IU/L'
       },
       {
         'elementKey': 'lrh_ast',
@@ -15570,8 +15570,8 @@ const DEFS = {
         'suffix': '15–37 IU/L',
         'tableColumn': '17',
         'fqn': 'labResults.lrh_ast',
-        'suffixText': '<p>15–37 IU/L</p>',
-        'suffixHtml': '15–37 IU/L'
+        'suffixHtml': '<p>15–37 IU/L</p>',
+        'suffixText': '15–37 IU/L'
       },
       {
         'elementKey': 'lrh_alp',
@@ -15581,8 +15581,8 @@ const DEFS = {
         'suffix': '50–136 IU/L',
         'tableColumn': '18',
         'fqn': 'labResults.lrh_alp',
-        'suffixText': '<p>50–136 IU/L</p>',
-        'suffixHtml': '50–136 IU/L'
+        'suffixHtml': '<p>50–136 IU/L</p>',
+        'suffixText': '50–136 IU/L'
       },
       {
         'elementKey': 'lrh_bilirubinD',
@@ -15592,8 +15592,8 @@ const DEFS = {
         'suffix': '2–9 µmol/L',
         'tableColumn': '19',
         'fqn': 'labResults.lrh_bilirubinD',
-        'suffixText': '<p>2–9 µmol/L</p>',
-        'suffixHtml': '2–9 µmol/L'
+        'suffixHtml': '<p>2–9 µmol/L</p>',
+        'suffixText': '2–9 µmol/L'
       },
       {
         'elementKey': 'lrh_bilirubinT',
@@ -15603,8 +15603,8 @@ const DEFS = {
         'suffix': '3–17 µmol/L',
         'tableColumn': '20',
         'fqn': 'labResults.lrh_bilirubinT',
-        'suffixText': '<p>3–17 µmol/L</p>',
-        'suffixHtml': '3–17 µmol/L'
+        'suffixHtml': '<p>3–17 µmol/L</p>',
+        'suffixText': '3–17 µmol/L'
       },
       {
         'elementKey': 'lrh_ggt',
@@ -15614,8 +15614,8 @@ const DEFS = {
         'suffix': 'F: 5.0–55.0 IU/L-NL-M: 15.0–85.0 IU/L',
         'tableColumn': '21',
         'fqn': 'labResults.lrh_ggt',
-        'suffixText': '<p>F: 5.0–55.0 IU/L</p>\n<p>M: 15.0–85.0 IU/L</p>',
-        'suffixHtml': 'F: 5.0–55.0 IU/L\nM: 15.0–85.0 IU/L'
+        'suffixHtml': '<p>F: 5.0–55.0 IU/L</p>\n<p>M: 15.0–85.0 IU/L</p>',
+        'suffixText': 'F: 5.0–55.0 IU/L\nM: 15.0–85.0 IU/L'
       },
       {
         'elementKey': 'lrh_ldh',
@@ -15625,8 +15625,8 @@ const DEFS = {
         'suffix': '100–205 IU/L',
         'tableColumn': '22',
         'fqn': 'labResults.lrh_ldh',
-        'suffixText': '<p>100–205 IU/L</p>',
-        'suffixHtml': '100–205 IU/L'
+        'suffixHtml': '<p>100–205 IU/L</p>',
+        'suffixText': '100–205 IU/L'
       },
       {
         'elementKey': 'lrh_lipase',
@@ -15636,8 +15636,8 @@ const DEFS = {
         'suffix': '73–393 IU/L',
         'tableColumn': '23',
         'fqn': 'labResults.lrh_lipase',
-        'suffixText': '<p>73–393 IU/L</p>',
-        'suffixHtml': '73–393 IU/L'
+        'suffixHtml': '<p>73–393 IU/L</p>',
+        'suffixText': '73–393 IU/L'
       },
       {
         'elementKey': 'lrh_abg_hco3',
@@ -15647,8 +15647,8 @@ const DEFS = {
         'suffix': '22–27 mmol/L',
         'tableColumn': '24',
         'fqn': 'labResults.lrh_abg_hco3',
-        'suffixText': '<p>22–27 mmol/L</p>',
-        'suffixHtml': '22–27 mmol/L'
+        'suffixHtml': '<p>22–27 mmol/L</p>',
+        'suffixText': '22–27 mmol/L'
       },
       {
         'elementKey': 'lrh_abg_o2sat',
@@ -15658,8 +15658,8 @@ const DEFS = {
         'suffix': '96-100%',
         'tableColumn': '25',
         'fqn': 'labResults.lrh_abg_o2sat',
-        'suffixText': '<p>96-100%</p>',
-        'suffixHtml': '96-100%'
+        'suffixHtml': '<p>96-100%</p>',
+        'suffixText': '96-100%'
       },
       {
         'elementKey': 'lrh_abg_pco2',
@@ -15669,8 +15669,8 @@ const DEFS = {
         'suffix': '32–45 mm Hg',
         'tableColumn': '26',
         'fqn': 'labResults.lrh_abg_pco2',
-        'suffixText': '<p>32–45 mm Hg</p>',
-        'suffixHtml': '32–45 mm Hg'
+        'suffixHtml': '<p>32–45 mm Hg</p>',
+        'suffixText': '32–45 mm Hg'
       },
       {
         'elementKey': 'lrh_po2',
@@ -15680,8 +15680,8 @@ const DEFS = {
         'suffix': '83–116 mm Hg',
         'tableColumn': '27',
         'fqn': 'labResults.lrh_po2',
-        'suffixText': '<p>83–116 mm Hg</p>',
-        'suffixHtml': '83–116 mm Hg'
+        'suffixHtml': '<p>83–116 mm Hg</p>',
+        'suffixText': '83–116 mm Hg'
       },
       {
         'elementKey': 'lrh_abg_ph',
@@ -15691,8 +15691,8 @@ const DEFS = {
         'suffix': '7.38–7.46',
         'tableColumn': '28',
         'fqn': 'labResults.lrh_abg_ph',
-        'suffixText': '<p>7.38–7.46</p>',
-        'suffixHtml': '7.38–7.46'
+        'suffixHtml': '<p>7.38–7.46</p>',
+        'suffixText': '7.38–7.46'
       },
       {
         'elementKey': 'lrh_bloodGroup',
@@ -15800,8 +15800,8 @@ const DEFS = {
         'suffix': '< 0.03 ng/mL',
         'tableColumn': '2',
         'fqn': 'labResults.lrtrop_I',
-        'suffixText': '<p>< 0.03 ng/mL</p>',
-        'suffixHtml': '< 0.03 ng/mL'
+        'suffixHtml': '<p>< 0.03 ng/mL</p>',
+        'suffixText': '< 0.03 ng/mL'
       },
       {
         'elementKey': 'lrtrop_T',
@@ -15811,8 +15811,8 @@ const DEFS = {
         'suffix': '< 0.1 ng/mL',
         'tableColumn': '3',
         'fqn': 'labResults.lrtrop_T',
-        'suffixText': '<p>< 0.1 ng/mL</p>',
-        'suffixHtml': '< 0.1 ng/mL'
+        'suffixHtml': '<p>< 0.1 ng/mL</p>',
+        'suffixText': '< 0.1 ng/mL'
       },
       {
         'elementKey': 'lrtrop_H',
@@ -15822,8 +15822,8 @@ const DEFS = {
         'suffix': 'F: < 14 ng/L-NL-M: < 22 ng/L',
         'tableColumn': '4',
         'fqn': 'labResults.lrtrop_H',
-        'suffixText': '<p>F: < 14 ng/L</p>\n<p>M: < 22 ng/L</p>',
-        'suffixHtml': 'F: < 14 ng/L\nM: < 22 ng/L'
+        'suffixHtml': '<p>F: < 14 ng/L</p>\n<p>M: < 22 ng/L</p>',
+        'suffixText': 'F: < 14 ng/L\nM: < 22 ng/L'
       },
       {
         'elementKey': 'labResultUrine_name',
@@ -15881,8 +15881,8 @@ const DEFS = {
         'suffix': 'Normal: Clear',
         'tableColumn': '2',
         'fqn': 'labResults.lru_calrity',
-        'suffixText': '<p>Normal: Clear</p>',
-        'suffixHtml': 'Normal: Clear'
+        'suffixHtml': '<p>Normal: Clear</p>',
+        'suffixText': 'Normal: Clear'
       },
       {
         'elementKey': 'lru_colour',
@@ -15892,8 +15892,8 @@ const DEFS = {
         'suffix': 'Normal: Pale to dark yellow',
         'tableColumn': '3',
         'fqn': 'labResults.lru_colour',
-        'suffixText': '<p>Normal: Pale to dark yellow</p>',
-        'suffixHtml': 'Normal: Pale to dark yellow'
+        'suffixHtml': '<p>Normal: Pale to dark yellow</p>',
+        'suffixText': 'Normal: Pale to dark yellow'
       },
       {
         'elementKey': 'lru_ordour',
@@ -15903,8 +15903,8 @@ const DEFS = {
         'suffix': 'Slightly \'nutty\' odour',
         'tableColumn': '4',
         'fqn': 'labResults.lru_ordour',
-        'suffixText': '<p>Slightly \'nutty\' odour</p>',
-        'suffixHtml': 'Slightly \'nutty\' odour'
+        'suffixHtml': '<p>Slightly \'nutty\' odour</p>',
+        'suffixText': 'Slightly \'nutty\' odour'
       },
       {
         'elementKey': 'lru_gravity',
@@ -15914,8 +15914,8 @@ const DEFS = {
         'suffix': '1.005–1.030',
         'tableColumn': '5',
         'fqn': 'labResults.lru_gravity',
-        'suffixText': '<p>1.005–1.030</p>',
-        'suffixHtml': '1.005–1.030'
+        'suffixHtml': '<p>1.005–1.030</p>',
+        'suffixText': '1.005–1.030'
       },
       {
         'elementKey': 'lru_albumin',
@@ -15925,8 +15925,8 @@ const DEFS = {
         'suffix': '< 30mg',
         'tableColumn': '5',
         'fqn': 'labResults.lru_albumin',
-        'suffixText': '<p>< 30mg</p>',
-        'suffixHtml': '< 30mg'
+        'suffixHtml': '<p>< 30mg</p>',
+        'suffixText': '< 30mg'
       },
       {
         'elementKey': 'lru_acr',
@@ -15936,8 +15936,8 @@ const DEFS = {
         'suffix': '≤ 2.0 g/mol Cr',
         'tableColumn': '6',
         'fqn': 'labResults.lru_acr',
-        'suffixText': '<p>≤ 2.0 g/mol Cr</p>',
-        'suffixHtml': '≤ 2.0 g/mol Cr'
+        'suffixHtml': '<p>≤ 2.0 g/mol Cr</p>',
+        'suffixText': '≤ 2.0 g/mol Cr'
       },
       {
         'elementKey': 'lru_aldosterone',
@@ -15947,8 +15947,8 @@ const DEFS = {
         'suffix': '13.9–52.6 nmol/24 hour',
         'tableColumn': '7',
         'fqn': 'labResults.lru_aldosterone',
-        'suffixText': '<p>13.9–52.6 nmol/24 hour</p>',
-        'suffixHtml': '13.9–52.6 nmol/24 hour'
+        'suffixHtml': '<p>13.9–52.6 nmol/24 hour</p>',
+        'suffixText': '13.9–52.6 nmol/24 hour'
       },
       {
         'elementKey': 'lru_calcium',
@@ -15958,8 +15958,8 @@ const DEFS = {
         'suffix': '< 6.2 mmol/d',
         'tableColumn': '8',
         'fqn': 'labResults.lru_calcium',
-        'suffixText': '<p>< 6.2 mmol/d</p>',
-        'suffixHtml': '< 6.2 mmol/d'
+        'suffixHtml': '<p>< 6.2 mmol/d</p>',
+        'suffixText': '< 6.2 mmol/d'
       },
       {
         'elementKey': 'lru_catecholamines',
@@ -15969,8 +15969,8 @@ const DEFS = {
         'suffix': '< 591 nmol/m2/24 hours',
         'tableColumn': '9',
         'fqn': 'labResults.lru_catecholamines',
-        'suffixText': '<p>< 591 nmol/m2/24 hours</p>',
-        'suffixHtml': '< 591 nmol/m2/24 hours'
+        'suffixHtml': '<p>< 591 nmol/m2/24 hours</p>',
+        'suffixText': '< 591 nmol/m2/24 hours'
       },
       {
         'elementKey': 'lru_cortisol',
@@ -15980,8 +15980,8 @@ const DEFS = {
         'suffix': '< 248 nmol/24 hours',
         'tableColumn': '10',
         'fqn': 'labResults.lru_cortisol',
-        'suffixText': '<p>< 248 nmol/24 hours</p>',
-        'suffixHtml': '< 248 nmol/24 hours'
+        'suffixHtml': '<p>< 248 nmol/24 hours</p>',
+        'suffixText': '< 248 nmol/24 hours'
       },
       {
         'elementKey': 'lru_glucose',
@@ -15991,8 +15991,8 @@ const DEFS = {
         'suffix': '60–830 mcmol/L',
         'tableColumn': '11',
         'fqn': 'labResults.lru_glucose',
-        'suffixText': '<p>60–830 mcmol/L</p>',
-        'suffixHtml': '60–830 mcmol/L'
+        'suffixHtml': '<p>60–830 mcmol/L</p>',
+        'suffixText': '60–830 mcmol/L'
       },
       {
         'elementKey': 'lru_ketones',
@@ -16002,8 +16002,8 @@ const DEFS = {
         'suffix': 'none',
         'tableColumn': '12',
         'fqn': 'labResults.lru_ketones',
-        'suffixText': '<p>none</p>',
-        'suffixHtml': 'none'
+        'suffixHtml': '<p>none</p>',
+        'suffixText': 'none'
       },
       {
         'elementKey': 'lru_leukocyte',
@@ -16029,8 +16029,8 @@ const DEFS = {
         'suffix': '38–1400 mOsm/kg H2O',
         'tableColumn': '15',
         'fqn': 'labResults.lru_osmolality',
-        'suffixText': '<p>38–1400 mOsm/kg H2O</p>',
-        'suffixHtml': '38–1400 mOsm/kg H2O'
+        'suffixHtml': '<p>38–1400 mOsm/kg H2O</p>',
+        'suffixText': '38–1400 mOsm/kg H2O'
       },
       {
         'elementKey': 'lru_ph',
@@ -16040,8 +16040,8 @@ const DEFS = {
         'suffix': '5.0–8.5',
         'tableColumn': '16',
         'fqn': 'labResults.lru_ph',
-        'suffixText': '<p>5.0–8.5</p>',
-        'suffixHtml': '5.0–8.5'
+        'suffixHtml': '<p>5.0–8.5</p>',
+        'suffixText': '5.0–8.5'
       },
       {
         'elementKey': 'lru_phosphate',
@@ -16051,8 +16051,8 @@ const DEFS = {
         'suffix': 'Adult: 1.0-1.5 mmol/L-NL-Child: 1.3-2.3 mmol/L',
         'tableColumn': '17',
         'fqn': 'labResults.lru_phosphate',
-        'suffixText': '<p>Adult: 1.0-1.5 mmol/L</p>\n<p>Child: 1.3-2.3 mmol/L</p>',
-        'suffixHtml': 'Adult: 1.0-1.5 mmol/L\nChild: 1.3-2.3 mmol/L'
+        'suffixHtml': '<p>Adult: 1.0-1.5 mmol/L</p>\n<p>Child: 1.3-2.3 mmol/L</p>',
+        'suffixText': 'Adult: 1.0-1.5 mmol/L\nChild: 1.3-2.3 mmol/L'
       },
       {
         'elementKey': 'lru_protein',
@@ -16062,8 +16062,8 @@ const DEFS = {
         'suffix': 'None',
         'tableColumn': '18',
         'fqn': 'labResults.lru_protein',
-        'suffixText': '<p>None</p>',
-        'suffixHtml': 'None'
+        'suffixHtml': '<p>None</p>',
+        'suffixText': 'None'
       },
       {
         'elementKey': 'lru_sodium',
@@ -16073,8 +16073,8 @@ const DEFS = {
         'suffix': '40-220 mmol/d',
         'tableColumn': '19',
         'fqn': 'labResults.lru_sodium',
-        'suffixText': '<p>40-220 mmol/d</p>',
-        'suffixHtml': '40-220 mmol/d'
+        'suffixHtml': '<p>40-220 mmol/d</p>',
+        'suffixText': '40-220 mmol/d'
       },
       {
         'elementKey': 'lru_speccificGravity',
@@ -16084,8 +16084,8 @@ const DEFS = {
         'suffix': '1.005–1.030',
         'tableColumn': '20',
         'fqn': 'labResults.lru_speccificGravity',
-        'suffixText': '<p>1.005–1.030</p>',
-        'suffixHtml': '1.005–1.030'
+        'suffixHtml': '<p>1.005–1.030</p>',
+        'suffixText': '1.005–1.030'
       },
       {
         'elementKey': 'lru_uricAcid',
@@ -16095,8 +16095,8 @@ const DEFS = {
         'suffix': '1.48–4.43 mmol/24 hours',
         'tableColumn': '21',
         'fqn': 'labResults.lru_uricAcid',
-        'suffixText': '<p>1.48–4.43 mmol/24 hours</p>',
-        'suffixHtml': '1.48–4.43 mmol/24 hours'
+        'suffixHtml': '<p>1.48–4.43 mmol/24 hours</p>',
+        'suffixText': '1.48–4.43 mmol/24 hours'
       },
       {
         'elementKey': 'lru_urobilinogen',
@@ -16106,8 +16106,8 @@ const DEFS = {
         'suffix': '≤ 16.0 µmol/L',
         'tableColumn': '22',
         'fqn': 'labResults.lru_urobilinogen',
-        'suffixText': '<p>≤ 16.0 µmol/L</p>',
-        'suffixHtml': '≤ 16.0 µmol/L'
+        'suffixHtml': '<p>≤ 16.0 µmol/L</p>',
+        'suffixText': '≤ 16.0 µmol/L'
       },
       {
         'elementKey': 'lru_casts',
@@ -18654,8 +18654,8 @@ const DEFS = {
         'mandatory': true,
         'suffix': 'lb',
         'fqn': 'testPage.name',
-        'suffixText': '<p>lb</p>',
-        'suffixHtml': 'lb'
+        'suffixHtml': '<p>lb</p>',
+        'suffixText': 'lb'
       },
       {
         'elementKey': 'pcheckbox',
@@ -19164,8 +19164,8 @@ const DEFS = {
         'tableColumn': '2',
         'tableLabel': 'Wieght',
         'fqn': 'testTable.weight',
-        'suffixText': '<p>lb</p>',
-        'suffixHtml': 'lb'
+        'suffixHtml': '<p>lb</p>',
+        'suffixText': 'lb'
       },
       {
         'elementKey': 'table1_id',
@@ -22163,8 +22163,8 @@ const DEFS = {
         'validation': 'range(0,10)',
         'fqn': 'integumentaryAssessment.woundPain',
         'helperHtml': '<p>Scored from 10 point analogue Pain Scale</p>\n<p>See Pain Assessment for details</p>',
-        'suffixText': '<p>/10</p>',
-        'suffixHtml': '/10'
+        'suffixHtml': '<p>/10</p>',
+        'suffixText': '/10'
       },
       {
         'elementKey': 'packingOut',
@@ -23236,8 +23236,8 @@ const DEFS = {
         'validation': 'numeric',
         'fqn': 'hematology.wbc',
         'helperHtml': '<p>White blood cell count</p>',
-        'suffixText': '<p>10^9/L</p>',
-        'suffixHtml': '10^9/L'
+        'suffixHtml': '<p>10^9/L</p>',
+        'suffixText': '10^9/L'
       },
       {
         'elementKey': 'wbc-interp',
@@ -23278,8 +23278,8 @@ const DEFS = {
         'validation': 'numeric',
         'fqn': 'hematology.rbc',
         'helperHtml': '<p>Red blood cell count</p>',
-        'suffixText': '<p>10^12/L</p>',
-        'suffixHtml': '10^12/L'
+        'suffixHtml': '<p>10^12/L</p>',
+        'suffixText': '10^12/L'
       },
       {
         'elementKey': 'rbc-interp',
@@ -23320,8 +23320,8 @@ const DEFS = {
         'validation': 'numeric',
         'fqn': 'hematology.hgb',
         'helperHtml': '<p>Hemoglobin</p>',
-        'suffixText': '<p>g/L</p>',
-        'suffixHtml': 'g/L'
+        'suffixHtml': '<p>g/L</p>',
+        'suffixText': 'g/L'
       },
       {
         'elementKey': 'hgb-interp',
@@ -23362,8 +23362,8 @@ const DEFS = {
         'validation': 'numeric',
         'fqn': 'hematology.HCT',
         'helperHtml': '<p>Hematocrit</p>',
-        'suffixText': '<p>L/L</p>',
-        'suffixHtml': 'L/L'
+        'suffixHtml': '<p>L/L</p>',
+        'suffixText': 'L/L'
       },
       {
         'elementKey': 'HCT-interp',
@@ -23404,8 +23404,8 @@ const DEFS = {
         'validation': 'numeric',
         'fqn': 'hematology.MCV',
         'helperHtml': '<p>Mean Cell Volume</p>',
-        'suffixText': '<p>fL</p>',
-        'suffixHtml': 'fL'
+        'suffixHtml': '<p>fL</p>',
+        'suffixText': 'fL'
       },
       {
         'elementKey': 'MCV-interp',
@@ -23446,8 +23446,8 @@ const DEFS = {
         'validation': 'numeric',
         'fqn': 'hematology.MCH',
         'helperHtml': '<p>Mean Cell Hemoglobin</p>',
-        'suffixText': '<p>pg</p>',
-        'suffixHtml': 'pg'
+        'suffixHtml': '<p>pg</p>',
+        'suffixText': 'pg'
       },
       {
         'elementKey': 'MCH-interp',
@@ -23488,8 +23488,8 @@ const DEFS = {
         'validation': 'numeric',
         'fqn': 'hematology.MCHC',
         'helperHtml': '<p>Mean Cell Hemoglobin Concentration</p>',
-        'suffixText': '<p>g/L</p>',
-        'suffixHtml': 'g/L'
+        'suffixHtml': '<p>g/L</p>',
+        'suffixText': 'g/L'
       },
       {
         'elementKey': 'MCHC-interp',
@@ -23530,8 +23530,8 @@ const DEFS = {
         'validation': 'numeric',
         'fqn': 'hematology.RDW',
         'helperHtml': '<p>Red Cell Distribution Width CV</p>',
-        'suffixText': '<p>%</p>',
-        'suffixHtml': '%'
+        'suffixHtml': '<p>%</p>',
+        'suffixText': '%'
       },
       {
         'elementKey': 'RDW-interp',
@@ -23573,8 +23573,8 @@ const DEFS = {
         'validation': 'numeric',
         'fqn': 'hematology.PLT',
         'helperHtml': '<p>Platelet Count</p>',
-        'suffixText': '<p>10^9/L</p>',
-        'suffixHtml': '10^9/L'
+        'suffixHtml': '<p>10^9/L</p>',
+        'suffixText': '10^9/L'
       },
       {
         'elementKey': 'PLT-interp',
@@ -23615,8 +23615,8 @@ const DEFS = {
         'validation': 'numeric',
         'fqn': 'hematology.MPV',
         'helperHtml': '<p>Mean Platelet Volume</p>',
-        'suffixText': '<p>fL</p>',
-        'suffixHtml': 'fL'
+        'suffixHtml': '<p>fL</p>',
+        'suffixText': 'fL'
       },
       {
         'elementKey': 'MPV-interp',
@@ -23730,8 +23730,8 @@ const DEFS = {
         'suffix': '10^9/L',
         'tableColumn': '3',
         'fqn': 'hematology.actionsRequired',
-        'suffixText': '<p>10^9/L</p>',
-        'suffixHtml': '10^9/L'
+        'suffixHtml': '<p>10^9/L</p>',
+        'suffixText': '10^9/L'
       },
       {
         'elementKey': 'actionsTaken',
@@ -23742,8 +23742,8 @@ const DEFS = {
         'suffix': '10^12/L',
         'tableColumn': '4',
         'fqn': 'hematology.actionsTaken',
-        'suffixText': '<p>10^12/L</p>',
-        'suffixHtml': '10^12/L'
+        'suffixHtml': '<p>10^12/L</p>',
+        'suffixText': '10^12/L'
       },
       {
         'elementKey': 'scanComments',
@@ -23754,8 +23754,8 @@ const DEFS = {
         'suffix': '10^12/L',
         'tableColumn': '5',
         'fqn': 'hematology.scanComments',
-        'suffixText': '<p>10^12/L</p>',
-        'suffixHtml': '10^12/L'
+        'suffixHtml': '<p>10^12/L</p>',
+        'suffixText': '10^12/L'
       },
       {
         'elementKey': 'wbc-1',
@@ -27058,8 +27058,8 @@ const DEFS = {
         'label': 'Sodium',
         'suffix': 'mmol/L',
         'fqn': 'medLabChemistry.formTableText204',
-        'suffixText': '<p>mmol/L</p>',
-        'suffixHtml': 'mmol/L'
+        'suffixHtml': '<p>mmol/L</p>',
+        'suffixText': 'mmol/L'
       },
       {
         'elementKey': 'chemSodium',
@@ -29825,8 +29825,8 @@ const DEFS = {
         'tableColumn': '7',
         'tableLabel': 'Manual Glucose',
         'fqn': 'medLabUrinalysis.uchemManGlucose',
-        'suffixText': '<p>mmol/L</p>',
-        'suffixHtml': 'mmol/L'
+        'suffixHtml': '<p>mmol/L</p>',
+        'suffixText': 'mmol/L'
       },
       {
         'elementKey': 'uchemAutoGlucose',
@@ -29836,8 +29836,8 @@ const DEFS = {
         'tableColumn': '8',
         'tableLabel': 'Auto Glucose',
         'fqn': 'medLabUrinalysis.uchemAutoGlucose',
-        'suffixText': '<p>mmol/L</p>',
-        'suffixHtml': 'mmol/L'
+        'suffixHtml': '<p>mmol/L</p>',
+        'suffixText': 'mmol/L'
       },
       {
         'elementKey': 'formTableText264',
@@ -29891,8 +29891,8 @@ const DEFS = {
         'tableColumn': '11',
         'tableLabel': 'Manual Ketone',
         'fqn': 'medLabUrinalysis.uchemManKetone',
-        'suffixText': '<p>mmol/L</p>',
-        'suffixHtml': 'mmol/L'
+        'suffixHtml': '<p>mmol/L</p>',
+        'suffixText': 'mmol/L'
       },
       {
         'elementKey': 'uchemAutoKetone',
@@ -29902,8 +29902,8 @@ const DEFS = {
         'tableColumn': '12',
         'tableLabel': 'Auto Ketone',
         'fqn': 'medLabUrinalysis.uchemAutoKetone',
-        'suffixText': '<p>mmol/L</p>',
-        'suffixHtml': 'mmol/L'
+        'suffixHtml': '<p>mmol/L</p>',
+        'suffixText': 'mmol/L'
       },
       {
         'elementKey': 'formTableText268',
@@ -29965,8 +29965,8 @@ const DEFS = {
         'tableColumn': '16',
         'tableLabel': 'Auto Blood',
         'fqn': 'medLabUrinalysis.uchemAutoBlood',
-        'suffixText': '<p>Ery/μL</p>',
-        'suffixHtml': 'Ery/μL'
+        'suffixHtml': '<p>Ery/μL</p>',
+        'suffixText': 'Ery/μL'
       },
       {
         'elementKey': 'formTableText272',
@@ -30020,8 +30020,8 @@ const DEFS = {
         'tableColumn': '19',
         'tableLabel': 'Manual Protein',
         'fqn': 'medLabUrinalysis.uchemManProtein',
-        'suffixText': '<p>g/L</p>',
-        'suffixHtml': 'g/L'
+        'suffixHtml': '<p>g/L</p>',
+        'suffixText': 'g/L'
       },
       {
         'elementKey': 'uchemAutoProtein',
@@ -30031,8 +30031,8 @@ const DEFS = {
         'tableColumn': '20',
         'tableLabel': 'Auto Protein',
         'fqn': 'medLabUrinalysis.uchemAutoProtein',
-        'suffixText': '<p>g/L</p>',
-        'suffixHtml': 'g/L'
+        'suffixHtml': '<p>g/L</p>',
+        'suffixText': 'g/L'
       },
       {
         'elementKey': 'formTableText276',
@@ -30056,8 +30056,8 @@ const DEFS = {
         'tableColumn': '21',
         'tableLabel': 'Manual Urobilinogen',
         'fqn': 'medLabUrinalysis.uchemManUrobilinogen',
-        'suffixText': '<p>μmol/L</p>',
-        'suffixHtml': 'μmol/L'
+        'suffixHtml': '<p>μmol/L</p>',
+        'suffixText': 'μmol/L'
       },
       {
         'elementKey': 'uchemAutoUrobilinogen',
@@ -30067,8 +30067,8 @@ const DEFS = {
         'tableColumn': '22',
         'tableLabel': 'Auto Urobilinogen',
         'fqn': 'medLabUrinalysis.uchemAutoUrobilinogen',
-        'suffixText': '<p>μmol/L</p>',
-        'suffixHtml': 'μmol/L'
+        'suffixHtml': '<p>μmol/L</p>',
+        'suffixText': 'μmol/L'
       },
       {
         'elementKey': 'formTableText278',
@@ -30130,8 +30130,8 @@ const DEFS = {
         'tableColumn': '26',
         'tableLabel': 'Auto Leukocytes',
         'fqn': 'medLabUrinalysis.uchemAutoLeukocytes',
-        'suffixText': '<p>Leu/μL</p>',
-        'suffixHtml': 'Leu/μL'
+        'suffixHtml': '<p>Leu/μL</p>',
+        'suffixText': 'Leu/μL'
       },
       {
         'elementKey': 'formTableText282',

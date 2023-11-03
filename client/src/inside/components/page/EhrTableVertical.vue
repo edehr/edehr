@@ -7,7 +7,8 @@
           tr(v-for="(column, colIndex) in transposed",
             :class='{tableLabelElement: colIndex === 0, hideTableElement: column[0].tableCss === "hide-table-element"}')
             td(class="tableLabelElement")
-              span(:class="transposeLabelCss(column)", v-html="transposeLabel(column)")
+              div(:class="transposeLabelCss(column)", v-html="transposeLabel(column)")
+              div(v-html="transposeSuffix(column)", class='transpose-suffix')
             td(v-for="(cell, index) in transposeData(column)", :class="tdCss(cell, index)")
               div(v-if="!cell.isDraft && colIndex === 0", class='cell-action')
                   ui-button(v-on:buttonClicked="viewReport(getIdFromStack(cell))")
@@ -47,21 +48,20 @@ export default {
       return this.ehrHelp._canEdit()
     },
     draftColumnIndex () {
-      let inx = -1
-      this.cTableData.forEach ( (row, index) => {
+      return this.cTableData.reduce((accumulator, row, currentIndex) => {
         row.forEach(e => {
           if (e.isDraft === 'isDraft') {
-            inx = index
+            accumulator.push(currentIndex)
           }
         })
-      })
-      return inx
+        return accumulator
+      }, [])
     },
     transposed () {
       let combined = []
       let headerRow = []
       this.rowTemplate.forEach( (rt) => {
-        let hdr = { label: rt.tableLabel, tableCss: rt.tableCss}
+        let hdr = { label: rt.tableLabel, suffix: rt.tableSuffix, tableCss: rt.tableCss}
         headerRow.push(hdr)
       })
       combined.push(headerRow)
@@ -88,17 +88,21 @@ export default {
       let cell = column[0] || {}
       return cell.label
     },
+    transposeSuffix (column) {
+      let cell = column[0] || {}
+      return cell.suffix ? cell.suffix : ''
+    },
     transposeLabelCss (column) {
       let cell = column[0] || {}
       return cell.tableCss
     },
     tdCss (cell, index ) {
-      return this.draftColumnIndex === index ? ' draftTableElem' : ''
+      return this.draftColumnIndex.includes(index) ? ' draftTableElem' : ''
     },
     transposeValueCss (cell, index) {
       let hdrCss = 'column_value' + (cell.tableCss ? ' ' + cell.tableCss : '')
       hdrCss += index % 2 ? ' tableValueElementOdd' : ''
-      hdrCss += this.draftColumnIndex === index ? ' draftTableElem' : ''
+      hdrCss += this.draftColumnIndex.includes(index) ? ' draftTableElem' : ''
       return hdrCss
     },
     transposeData (column) {

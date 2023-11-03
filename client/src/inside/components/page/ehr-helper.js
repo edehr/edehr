@@ -478,13 +478,6 @@ export default class EhrPageHelper {
     let draftRowData
     let { draftRowId }  = options
     const rowElementKey = tableKey + '_id'
-
-    if (options.tableAction) {
-      console.error('TODO or not TODO for options.tableAction', options.tableAction)
-      // TODO table action show
-      // 1. is new report
-      // 2. is reopen previous draft
-    }
     if( draftRowId ) {
       draftRowData = EhrTableDraft.findDraftRowDataById(draftRowId)
     } else {

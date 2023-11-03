@@ -131,8 +131,8 @@ class RawHelper {
   }
   _prepareSuffixText (src, dest) {
     if (src.suffix) {
-      dest.suffixText = this._prepareMultilineHypertext(src.suffix)
-      dest.suffixHtml = this._prepareMultilineText(src.suffix)
+      dest.suffixHtml = this._prepareMultilineHypertext(src.suffix)
+      dest.suffixText = this._prepareMultilineText(src.suffix)
     }
   }
   _transferProperties (src, propertyList) {

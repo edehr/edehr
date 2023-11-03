@@ -245,11 +245,15 @@ $select_width: 14rem;
     display: flex;
     flex-flow: row;
   }
-
+  .lab_result_value {
+    min-width: 10rem !important;
+    text-align: right;
+    margin-right: 1rem;
+  }
   .lab_result_label {
     display: inline-block;
     label {
-      min-width: 20rem;
+      min-width: 20rem !important;
       /* Drop the label a little to line up with text in the input. There is a better way to do this.*/
       padding-top: 5px;
     }

@@ -70,7 +70,7 @@ export default {
     }
   },
   computed: {
-    buttonLabel () { return this.hasDraft ? 'Resume editing' : this.tableDef.addButtonText},
+    buttonLabel () { return this.tableDef.addButtonText},
     canResetTableData () { return this.hasData &&  this.ehrHelp.canResetTableData() },
     hasData () { return this.cTableData.length > 0},
     hasDraft () { return !!EhrTableDraft.getTableDraftRow(this.pageDataKey, this.tableKey)},
@@ -89,6 +89,7 @@ export default {
           })
           // column header .. use previous label if set else use special tableLabel value from Inputs else use element label
           templateCell.tableLabel = templateCell.tableLabel || cellDef.tableLabel || cellDef.label
+          templateCell.tableSuffix = cellDef.suffixHtml
           templateCell.tableCss = templateCell.tableCss || cellDef.tableCss
         })
         rowTemplate.push(templateCell)
@@ -152,7 +153,9 @@ export default {
 
     showDialog: function () {
       // console.log('EhrPageTable showDialog ', this.tableDef)
-      this.ehrHelp.showDialogForTable(this.pageDataKey, this.tableKey, {})
+      const options = {}
+      options.explicitDraftRowOnly = true
+      this.ehrHelp.showDialogForTable(this.pageDataKey, this.tableKey, options)
     },
     clearAllData () {
       const TEXT = {

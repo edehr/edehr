@@ -75,7 +75,6 @@ export default class EhrTableActions {
    */
   static getTableActionRequestOptions (sendersTableDef, sourceRowId) {
     const options = {
-      tableAction: true,
       sendersTableDef: sendersTableDef,
       sourceRowId: sourceRowId
     }
