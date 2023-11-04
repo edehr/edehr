@@ -71,7 +71,7 @@
       div(class="lab_result_element")
         ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="lab_result_label")
         input(v-if="!viewOnly", class="input text-input", :disabled="disabled", :name="elementKey", v-model="inputVal")
-        div(v-if="viewOnly") {{ inputVal }}
+        input(v-if="viewOnly", disabled, class='lab_result_value', :value="inputVal")
         div(class="lab_result_suffix", v-text-to-html="element.suffixHtml")
 
     ehr-element-birth-date(

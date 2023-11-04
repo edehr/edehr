@@ -11,7 +11,15 @@ the date picker may be chopped and much of it might not be visible.
 .vdp-datepicker__calendar {
   position: relative;
 }
-
+.smaller-than-900 {
+  .ehr-nav-menu {
+    text-align: left;
+    margin-left: 1em;
+    .ehr-nav-hamburger {
+      font-size: 2rem;
+    }
+  }
+}
 .ehrdfe {
   width: 100%;
   margin-left: 1%;
@@ -237,11 +245,15 @@ $select_width: 14rem;
     display: flex;
     flex-flow: row;
   }
-
+  .lab_result_value {
+    min-width: 10rem !important;
+    text-align: right;
+    margin-right: 1rem;
+  }
   .lab_result_label {
     display: inline-block;
     label {
-      min-width: 20rem;
+      min-width: 20rem !important;
       /* Drop the label a little to line up with text in the input. There is a better way to do this.*/
       padding-top: 5px;
     }
@@ -483,25 +495,14 @@ select, .select {
 
 /* Small screens */
 @media all and (max-width: $form-threshold) {
-  .grid-left-to-right-2 {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  .grid-left-to-right-3 {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  .grid-left-to-right-4 {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
+  .grid-left-to-right-custom,
+  .grid-left-to-right-2,
+  .grid-left-to-right-3,
+  .grid-left-to-right-4,
   .cardio-assessment,
-  .grid-left-to-right-5 {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
+  .grid-left-to-right-5,
   .grid-up-to-down {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr;
   }
 
   .grid-span-2-columns {
@@ -537,15 +538,6 @@ select, .select {
 }
 
 .field_full_line {
-  grid-column-start: 1;
-  grid-column-end: 4;
-}
-.wbcmAbnormalTypeMorphology {
-  grid-column-start: 2;
-  grid-column-end: 4;
-}
-
-.wbcmToxicTypeMorphology {
   grid-column-start: 1;
   grid-column-end: 4;
 }
@@ -701,6 +693,52 @@ select, .select {
 /*
  Table specific styling
  */
+
+.wbcMorphologyGroup {
+  // this group also has the class grid-left-to-right-custom
+  grid-template-columns: repeat(3, 1fr);
+}
+.wbcmNormalMorphology {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+.wbcmAbnormalMorphology {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+.wbcmAbnormalTypeMorphology {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+
+.wbcmToxicTypeMorphology {
+  grid-column-start: 3;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+@media all and (max-width: $form-threshold) {
+  .wbcMorphologyGroup {
+    grid-template-columns: 1fr;
+  }
+  .wbcmNormalMorphology,
+  .wbcmAbnormalMorphology,
+  .wbcmAbnormalTypeMorphology,
+  .wbcmToxicTypeMorphology {
+    grid-column-start: initial;
+    grid-column-end: initial;
+    grid-row-start: initial;
+    grid-row-end: initial;
+  }
+}
+
 .med-lab-urin-micro {
   grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
   .select {
@@ -758,10 +796,10 @@ select, .select {
   }
 }
 .chem-qc-assay {
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 2fr 1fr;
   .chem-qc-assay-into {
     grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column-end: 2;
   }
   .radio_set {
     display: flex;

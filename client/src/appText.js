@@ -161,7 +161,7 @@ export const demoText = {
   personaLabel: 'Your demo persona is',
   roleLabel: 'With role',
   selectUserLabel: 'Select a user',
-  lmsTitle: 'Demonstration learning management system (LMS)',
+  lmsTitle: 'Sample LMS',
   lmsHint: 'Typical learning management systems are: Moodle, Canvas, Brightspace, D2L and etc.',
   switchRoleExplain: 'When you click on an activity this \'instructor\' will become a \'student\' same as how Moodle allows users to switch roles.',
   switchRoleLabel: 'Logout and change to another persona',
@@ -226,7 +226,7 @@ export const demoText = {
         ' Reach out to mailto:info@edehr.org if you have questions.',
     }
   ],
-  lmsAside: 'To the right is a simple one-page learning management system with sample courses and activities that are connected to EdEHR content.',
+  lmsAside: 'The region inside the blue box is a very simplified learning management system (LMS). It contains sample courses and activities that are connected to EdEHR content.',
   lmsAside2: 'Some of those learning objects are ' +
     ' based on the open text-book <a href="https://pressbooks.bccampus.ca/healthcasestudies/">Health Case Studies - Toward Closing the Healthcare Communication Gap</a> by:  Glynda Rees, Rob Kruger, Janet Morrison.',
   login: {

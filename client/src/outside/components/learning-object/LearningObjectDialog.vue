@@ -17,81 +17,96 @@
           h2 Step 2
           label  Describe the learning objectives.
             ui-info(title="Why is the description important?", :html="cText.step2")
-
         div(class="dialog-item")
           label Learning object description
           textarea(v-model="description", class='learning-object-description')
         div(class="dialog-step")
           h2 Step 3
-          p Link this learning object to a case study to provide the simulated health records.
-          p Do you want to select an existing case study or create a new one that is empty?
+          p Determine if you want the student to work with a case study or if you want them to start with a blank charting system and make them locate the patient (case study).
         div(class="dialog-item")
-          label Create new or select
+          label Use cast study?
           app-type-toggle-button(
             v-bind:useColour="false",
-            :modelValue='createNewCaseStudy',
-            @change='toggleCreateOrSelect',
-            labelOn='Create new'
-            labelOff='Select'
+            :modelValue='useCaseStudy',
+            @change='toggleUseCaseStudy',
+            labelOn='Provide case study'
+            labelOff='No case study'
           )
+        div {{ useCaseStudy ? 'Students will see the case study you select or create in the next step': 'Students will need to search for the correct patient (case study)' }}
+
         transition(name="fade",  mode="out-in")
-          div(v-if='createNewCaseStudy', key="createSeed", class='select-seed-section card')
-            // ---------------------------- Create a case study
-            h3 Create new case study
-            div(class="dialog-item app-type-section")
-              label Set type
+          div(v-if='useCaseStudy')
+            div(class="dialog-step")
+              h2 Step 4
+              p Link this learning object to a case study to provide the simulated health records.
+              p Do you want to select an existing case study or create a new one that is empty?
+            div(class="dialog-item")
+              label Create new or select
               app-type-toggle-button(
-                :modelValue='isEHR_Showing',
-                @change='changeApp',
-                labelOn='EHR'
-                labelOff='LIS'
+                v-bind:useColour="false",
+                :modelValue='createNewCaseStudy',
+                @change='toggleCreateOrSelect',
+                labelOn='Create new'
+                labelOff='Select'
               )
-              label {{ appTypeCreateText }}
-            div(class="dialog-item")
-              label Case study name
-              input(type="text", class="object-name", v-model="caseStudyName", v-validate="caseStudyNameValidate")
-            div(class="dialog-item")
-              label Description
-              textarea(v-model="caseStudyDescription", class='learning-object-description')
+            transition(name="fade",  mode="out-in")
+              div(v-if='createNewCaseStudy', key="createSeed", class='select-seed-section card')
+                // ---------------------------- Create a case study
+                h3 Create new case study
+                div(class="dialog-item app-type-section")
+                  label Set type
+                  app-type-toggle-button(
+                    :modelValue='isEHR_Showing',
+                    @change='changeApp',
+                    labelOn='EHR'
+                    labelOff='LIS'
+                  )
+                  label {{ appTypeCreateText }}
+                div(class="dialog-item")
+                  label Case study name
+                  input(type="text", class="object-name", v-model="caseStudyName", v-validate="caseStudyNameValidate")
+                div(class="dialog-item")
+                  label Description
+                  textarea(v-model="caseStudyDescription", class='learning-object-description')
 
-          div(v-else, key="selectSeed", class='select-seed-section card')
-            // ---------------------------- Choose a case study
-            h3 Select case study
-            div(class="dialog-item app-type-section")
-              label Select by type
-              app-type-toggle-button(
-                :modelValue='isEHR_Showing',
-                @change='changeAppSelect',
-                labelOn='EHR'
-                labelOff='LIS'
-              )
-              label {{ appTypeSelectText }}
+              div(v-else, key="selectSeed", class='select-seed-section card')
+                // ---------------------------- Choose a case study
+                h3 Select case study
+                div(class="dialog-item app-type-section")
+                  label Select by type
+                  app-type-toggle-button(
+                    :modelValue='isEHR_Showing',
+                    @change='changeAppSelect',
+                    labelOn='EHR'
+                    labelOff='LIS'
+                  )
+                  label {{ appTypeSelectText }}
 
-            div(class="dialog-item")
-              label Search text
-              div(class="flow_across table_space_across search-box")
-                input(
-                  class="object-name",
-                  type="text",
-                  v-model='searchTerm',
-                  placeholder='Filter list by key word',
-                  v-on:keyup.enter="fetchSeedSelectionList",
-                  v-on:keyup.esc="searchTerm = ''",
-                )
-                button(
-                  v-on:buttonClicked="fetchSeedSelectionList",
-                  :disabled="!searchTerm",
-                  class='search-button'
-                )
-                  fas-icon(icon="search", class='fa')
-            div(class="dialog-item")
-              label Select a case study
-              select(v-model="selectedSeedId", v-validate="seedValidate", class="object-name select-case-study",)
-                option(value="")
-                option(v-for="seed in seedList", :value="seed._id") {{ seed.name}}
-            div(class="dialog-item")
-              label Selected case study description
-              textarea(disabled) {{seedDescription }}
+                div(class="dialog-item")
+                  label Search text
+                  div(class="flow_across table_space_across search-box")
+                    input(
+                      class="object-name",
+                      type="text",
+                      v-model='searchTerm',
+                      placeholder='Filter list by key word',
+                      v-on:keyup.enter="fetchSeedSelectionList",
+                      v-on:keyup.esc="searchTerm = ''",
+                    )
+                    button(
+                      v-on:buttonClicked="fetchSeedSelectionList",
+                      :disabled="!searchTerm",
+                      class='search-button'
+                    )
+                      fas-icon(icon="search", class='fa')
+                div(class="dialog-item")
+                  label Select a case study
+                  select(v-model="selectedSeedId", v-validate="seedValidate", class="object-name select-case-study",)
+                    option(value="")
+                    option(v-for="seed in seedList", :value="seed._id") {{ seed.name}}
+                div(class="dialog-item")
+                  label Selected case study description
+                  textarea(disabled) {{seedDescription }}
 </template>
 
 <script>
@@ -120,7 +135,8 @@ export default {
       searchTerm: '',
       selectedSeedId: '',
       seedList: [],
-      seedModel: undefined
+      seedModel: undefined,
+      useCaseStudy: true
     }
   },
   components: { UiInfo, AppTypeToggleButton, AppDialog },
@@ -139,7 +155,7 @@ export default {
     isCreate () { return this.actionType === CREATE_ACTION },
     isEdit () { return this.actionType === EDIT_ACTION },
     caseStudyNameValidate () {
-      if(this.createNewCaseStudy) {
+      if(this.useCaseStudy && this.createNewCaseStudy) {
         return this.caseStudyName.trim() ? /* OK */ undefined :  ERRORS.CASE_STUDY_NAME
       }
       return undefined
@@ -151,13 +167,16 @@ export default {
       return this.selectedSeed ? this.selectedSeed.description : ''
     },
     seedValidate () {
-      if(!this.createNewCaseStudy) {
+      if(this.useCaseStudy && !this.createNewCaseStudy) {
         return this.selectedSeedId.trim() ? /* OK */ undefined : ERRORS.SEED_REQUIRED
       }
       return undefined
     },
     errors () {
-      const errMsg = this.nameValidate || this.seedValidate || this.caseStudyNameValidate
+      let errMsg = this.nameValidate || this.seedValidate
+      if (this.useCaseStudy) {
+        errMsg = errMsg || this.caseStudyNameValidate
+      }
       return errMsg ? [errMsg] : []
     },
     disableSave () {
@@ -197,9 +216,15 @@ export default {
     toggleCreateOrSelect (val) {
       this.createNewCaseStudy = !this.createNewCaseStudy
     },
+    toggleUseCaseStudy (val) {
+      this.useCaseStudy = !this.useCaseStudy
+      if (this.useCaseStudy) {
+        this.fetchSeedSelectionList()
+      }
+    },
     async fetchSeedSelectionList () {
       const options = {
-        appType: this.appType,
+        appType: this.appType || APP_TYPE_EHR,
         searchTerm: this.searchTerm
       }
       this.seedList = await this.$store.dispatch('seedListStore/fetchSeedSelectionList', options)
@@ -220,8 +245,10 @@ export default {
         this.appType = learningObject.appType
         await this.fetchSeedSelectionList()
         this.selectedSeedId = learningObject.seedDataId || ''
+        this.useCaseStudy = !!learningObject.seedDataId
       } else if (options.action === 'create') {
         this.actionType = CREATE_ACTION
+        this.useCaseStudy = true
         // seedModel is optional. If given then load the correct list of seeds and per-select the given seed
         if (options.seed) {
           this.appType = options.seed.appType
@@ -253,28 +280,30 @@ export default {
       return await StoreHelper.createSeed(undefined, seedData)
     },
     saveDialog: async function () {
-      let sId
-      if (this.createNewCaseStudy) {
-        let seedModel = await this.saveSeed()
-        console.log('just created seed', seedModel)
-        sId = seedModel.id
-        console.log('save learning object with newly created seed', sId)
-      } else {
-        if (this.seedModel) {
-          sId = this.seedModel.id
-        } else {
-          sId = this.selectedSeedId && this.selectedSeedId.length > 0 ? this.selectedSeedId : null
-        }
-      }
       let aAssignment = {
         name: this.learningObjectName,
         description: this.description,
-        seedDataId: sId,
         toolConsumer: StoreHelper.getAuthdConsumerId(),
       }
-      // console.log('save learning object', aAssignment)
+      if (this.useCaseStudy) {
+        let sId
+        if (this.createNewCaseStudy) {
+          let seedModel = await this.saveSeed()
+          sId = seedModel.id
+        } else {
+          if (this.seedModel) {
+            sId = this.seedModel.id
+          } else {
+            sId = this.selectedSeedId && this.selectedSeedId.length > 0 ? this.selectedSeedId : null
+          }
+        }
+        aAssignment.seedDataId = sId
+      }
       this.$refs.theDialog.onClose()
       if (this.actionType === EDIT_ACTION) {
+        if (!this.useCaseStudy) {
+          await this.$store.dispatch('assignmentStore/clearSeed', this.learningObjectId)
+        }
         await StoreHelper.updateAssignment(this, this.learningObjectId, aAssignment)
       } else if (this.isCreate) {
         await StoreHelper.createAssignment(aAssignment)

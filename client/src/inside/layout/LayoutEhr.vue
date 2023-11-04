@@ -16,8 +16,9 @@
             ehr-nav-panel
           div(class="ehr_layout__content right_side")
             div(class="smaller-than-900")
-              span(style="text-align: left; margin-left: 1em")
-                fas-icon(class="fa bars", icon="bars", @click="showingNavPanel = !showingNavPanel")
+              span(class="ehr-nav-menu")
+                span(class="ehr-nav-hamburger")
+                  fas-icon(class="fa bars", icon="bars", @click="showingNavPanel = !showingNavPanel")
                 transition(name="hamburger-action")
                   ehr-nav-panel(v-if="showingNavPanel")
             slot Main EHR content selected by the router

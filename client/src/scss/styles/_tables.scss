@@ -152,3 +152,11 @@ table,
 .table-cell-textarea {
   min-width: 20rem;
 }
+
+/*
+inputs of type lab_result have suffix data containing the reference ranges. These are provided as html to account for more than one line.
+Be sure to remove the usual paragraoh bottom margin to keep the tables compact.
+ */
+td.tableLabelElement div p {
+  margin: 0;
+}
