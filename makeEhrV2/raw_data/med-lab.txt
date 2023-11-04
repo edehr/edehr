@@ -161,7 +161,7 @@ Dysplastic}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	e
 {inputType: ehr_group}	eCell	{Label: White Cell Morphology}	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: grid-left-to-right-custom wbcMorphologyGroup}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkbox}	eCell	{Label: Normal}	eCell	{elementKey: wbcmNormalMorphology}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: wbcmNormalMorphology}	eCell	eCell	{tableColumn: 71}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkbox}	eCell	{Label: Abnormal}	eCell	{elementKey: wbcmAbnormalMorphology}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: wbcmAbnormalMorphology}	eCell	eCell	{tableColumn: 72}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: boxcheckset}	eCell	{Label: Abnormal Type}	eCell	{elementKey: wbcmAbnormalTypeMorphology}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: wbcmAbnormalTypeMorphology}	eCell	eCell	{tableColumn: 73}	eCell	eCell	eCell	eCell	"{Options: Immature Cells
+{inputType: boxcheckset}	eCell	{Label: WBC Morph Comment}	eCell	{elementKey: wbcmAbnormalTypeMorphology}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	{formCss: wbcmAbnormalTypeMorphology}	eCell	eCell	{tableColumn: 73}	eCell	eCell	eCell	eCell	"{Options: Immature Cells
 Hypersegmented Neutrophils
 Dysplastic Cells
 Pelger-Huët Cells

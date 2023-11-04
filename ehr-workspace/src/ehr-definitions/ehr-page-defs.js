@@ -24631,7 +24631,7 @@ const DEFS = {
         'formIndex': '2',
         'formCss': 'wbcmAbnormalTypeMorphology',
         'inputType': 'boxcheckset',
-        'label': 'Abnormal Type',
+        'label': 'WBC Morph Comment',
         'options': [
           {
             'key': 'Immature Cells',
