@@ -43,7 +43,7 @@ const actions = {
    */
   async addStudentPatient (context, patientId) {
     if (this.currentPatientObjectId && this.currentPatientObjectId === patientId) {
-      console.log('mps Patient is already in the list and it is the currently selected object', patientId)
+      // console.log('mps Patient is already in the list and it is the currently selected object', patientId)
     } else {
       const index = state.activePatientList.findIndex(sd => sd._id === patientId)
       if (index >= 0) {
@@ -73,6 +73,9 @@ const actions = {
         context.commit('addPatientToActivePatientList', seed)
       }
     }
+  },
+  async updateSeedInActivePatientList (context, seed) {
+    context.commit('_updatePatientObjectId', seed)
   },
   async forInstructorSetPatient (context, patientId) {
     if (this.currentPatientObjectId && this.currentPatientObjectId === patientId) {
@@ -158,6 +161,17 @@ const mutations = {
       if (id === state.currentPatientObjectId) {
         state.currentPatientObjectId = EMPTY_OBJECT_ID
       }
+    }
+  },
+  _updatePatientObjectId: (context, seed) => {
+    const index = state.activePatientList.findIndex(sd => sd._id === seed._id)
+    if (index >= 0) {
+      // let list = state.activePatientList.slice() // decouple original list
+      const list = JSON.parse(JSON.stringify(state.activePatientList))
+      list.splice(index, 1)
+      list.push(seed)
+      MPatientHelper.sortPatientList(list)
+      state.activePatientList = list
     }
   },
   _setCurrentPatientObjectId: (state, id) => {

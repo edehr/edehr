@@ -182,3 +182,13 @@ $tab-background-colour: $grey40;
     background-color: $row-border-colour;
   }
 }
+
+.patientTabDisable {
+  background-color: $grey10;
+  border-color: $grey60;
+  color: $grey60;
+  cursor: not-allowed;
+  .fa {
+    color: $grey60;
+  }
+}

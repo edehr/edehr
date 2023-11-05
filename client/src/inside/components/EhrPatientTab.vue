@@ -1,7 +1,9 @@
 <template lang='pug'>
-  div(class="patient-tab", :class='{ patientTabActive: selected }')
+  div(class="patient-tab",
+    :class='{ patientTabActive: selected, patientTabDisable: disableNavAction }')
     div(class="name-part")
-      a(@click="selectPatient()", href='#', :class='disabledClass') {{ familyName }}
+      span(v-if="disableNavAction") {{ familyName }}
+      a(v-else, @click="selectPatient()", href='#', :class='disabledClass') {{ familyName }}
       button(
         v-if='isSeedEditing',
         class='close-button',
@@ -16,19 +18,14 @@ import MPatientHelper from '@/helpers/mPatientHelper'
 import EhrDataModel from '@/ehr-definitions/EhrDataModel'
 
 export default {
-  name: 'EhrPatientTab',
   props: {
     selected: { type: Boolean, default: false},
     dbObject: { type: Object }
   },
-  data () {
-    return {
-      keyData: {}
-    }
-  },
   computed: {
     isSeedEditing () { return StoreHelper.isSeedEditing() },
     _id () { return this.dbObject._id },
+    keyData () { return this.dbObject ? this.dbObject.keyData : {}},
     mrn () { return this.keyData.mrn },
     familyName () { return this.keyData.familyName },
     disableNavAction () { return this.$store.state.system.isEditing },
@@ -43,10 +40,6 @@ export default {
         this.$emit('select', this.dbObject._id)
       }
     }
-  },
-  async mounted () {
-    const mData = await MPatientHelper.getPatientMergedData(this.dbObject._id)
-    this.keyData = EhrDataModel.ExtractKeyPatientData(mData)
   }
 }
 </script>

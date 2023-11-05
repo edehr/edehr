@@ -61,7 +61,7 @@ const actions = {
     let url = 'seedSelectionList/' + consumerId
     url += '?appType=' + options.appType
     options.searchTerm ? url += '&searchTerm=' + options.searchTerm : null
-    console.log('fetchSeedSelectionList url: ', url)
+    // console.log('fetchSeedSelectionList url: ', url)
     return InstoreHelper.getRequest(context, API, url).then(response => {
       let list = response.data.seedList
       if (!list) {
@@ -120,7 +120,7 @@ const actions = {
     let consumerId = StoreHelper.getAuthdConsumerId()
     if (!consumerId) {
       // this can happen if you visit the Seed Lists page and then refresh the page. No worries. Load will happen later.
-      console.log('seedListStore. Will not load seeds at this time because the consumer id is not yet set up.')
+      // console.log('seedListStore. Will not load seeds at this time because the consumer id is not yet set up.')
       return
     }
     // console.log('seedListStore. Fetch seed list')
@@ -250,22 +250,22 @@ const actions = {
    *      value: model.ehrData.progressNotes || []
    *      }
    * @return {*}
-   */
-  updateSeedEhrProperty (context, payload) {
+   */ async updateSeedEhrProperty (context, payload) {
     let id = context.state.sSeedId
-    let url = urlForUpdate + id +'/save'
-    if(debugSL) console.log('SeedList updateSeedEhrProperty url, payload', url, payload)
-    return InstoreHelper.putRequest(context, API, url, payload)
-      .then(() => {
-        if(debugSL) console.log('SeedList after ehrData update loadSeeds')
-        return context.dispatch('loadSeeds')
-      })
-      .then(() => {
-        if (context.state.sSeedId) {
-          if(debugSL) console.log('SeedList after ehrData update load seed content context.state.sSeedId', context.state.sSeedId)
-          return context.dispatch('loadSeedContent', context.state.sSeedId)
-        }
-      })
+    let url = urlForUpdate + id + '/save'
+    if (debugSL) console.log('SeedList updateSeedEhrProperty url, payload', url, payload)
+    await InstoreHelper.putRequest(context, API, url, payload)
+    // if (debugSL) console.log('SeedList after ehrData update loadSeeds')
+    // await context.dispatch('loadSeeds')
+    if (context.state.sSeedId) {
+      if (debugSL) console.log('SeedList after ehrData update load seed content context.state.sSeedId', context.state.sSeedId)
+      await context.dispatch('loadSeedContent', context.state.sSeedId)
+    }
+    // console.log('context.state.seedContent', context.state.seedModel)
+    // lateral push data over to patient list which needs to react to changes to family name
+    // This could be achived with some event notice and receive but this direct push is, well, direct.
+    const seed = context.state.seedModel.seed
+    await context.dispatch('mPatientStore/updateSeedInActivePatientList', seed, { root: true })
   },
 }
 
