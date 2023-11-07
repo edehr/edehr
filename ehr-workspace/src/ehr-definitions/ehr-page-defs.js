@@ -10485,16 +10485,6 @@ const DEFS = {
         'fqn': 'labRequisitions.time'
       },
       {
-        'elementKey': 'req_noticeLabel',
-        'formIndex': '2',
-        'formCss': 'grid-span-3-columns',
-        'helperText': 'This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.',
-        'inputType': 'form_label',
-        'label': 'This lab requisition form is a prototype.',
-        'fqn': 'labRequisitions.req_noticeLabel',
-        'helperHtml': '<p>This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.</p>'
-      },
-      {
         'elementKey': 'req_dateRequired',
         'formIndex': '2',
         'inputType': 'visitDay',
@@ -10796,16 +10786,6 @@ const DEFS = {
         'fqn': 'labRequisitions.time'
       },
       {
-        'elementKey': 'reqH_noticeLabel',
-        'formIndex': '3',
-        'formCss': 'grid-span-3-columns',
-        'helperText': 'This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.',
-        'inputType': 'form_label',
-        'label': 'This lab requisition form is a prototype.',
-        'fqn': 'labRequisitions.reqH_noticeLabel',
-        'helperHtml': '<p>This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.</p>'
-      },
-      {
         'elementKey': 'reqH_dateRequired',
         'formIndex': '3',
         'inputType': 'visitDay',
@@ -10907,16 +10887,6 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'labRequisitions.time'
-      },
-      {
-        'elementKey': 'reqMi_noticeLabel',
-        'formIndex': '4',
-        'formCss': 'grid-span-3-columns',
-        'helperText': 'This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.',
-        'inputType': 'form_label',
-        'label': 'This lab requisition form is a prototype.',
-        'fqn': 'labRequisitions.reqMi_noticeLabel',
-        'helperHtml': '<p>This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.</p>'
       },
       {
         'elementKey': 'reqMi_type',
@@ -11088,16 +11058,6 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'labRequisitions.time'
-      },
-      {
-        'elementKey': 'reqMicro_noticeLabel',
-        'formIndex': '5',
-        'formCss': 'grid-span-3-columns',
-        'helperText': 'This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.',
-        'inputType': 'form_label',
-        'label': 'This lab requisition form is a prototype.',
-        'fqn': 'labRequisitions.reqMicro_noticeLabel',
-        'helperHtml': '<p>This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.</p>'
       },
       {
         'elementKey': 'reqMicro_dateRequired',
@@ -11613,7 +11573,6 @@ const DEFS = {
               'formCss': 'grid-left-to-right-3',
               'gIndex': '2',
               'gChildren': [
-                'req_noticeLabel',
                 'req_dateRequired',
                 'req_reason'
               ]
@@ -11784,7 +11743,6 @@ const DEFS = {
               'formCss': 'section-divider grid-left-to-right-3',
               'gIndex': '2',
               'gChildren': [
-                'reqH_noticeLabel',
                 'reqH_dateRequired',
                 'reqH_reason'
               ]
@@ -11915,7 +11873,6 @@ const DEFS = {
               'formCss': 'grid-left-to-right-3',
               'gIndex': '2',
               'gChildren': [
-                'reqMi_noticeLabel',
                 'reqMi_type',
                 'reqMi_dateRequired'
               ]
@@ -12043,7 +12000,6 @@ const DEFS = {
               'formCss': 'grid-left-to-right-3',
               'gIndex': '2',
               'gChildren': [
-                'reqMicro_noticeLabel',
                 'reqMicro_dateRequired',
                 'reqMicro_reason'
               ]
@@ -31550,7 +31506,7 @@ const DEFS = {
           },
           {
             'key': 'clinitek',
-            'text': '>= trace'
+            'text': '>= trace mmol/L'
           }
         ],
         'fqn': 'medLabUrinalysis.uqcAbnormalRefRangeKetone'
@@ -31975,7 +31931,7 @@ const DEFS = {
         'formIndex': '1',
         'formCss': 'uqcSomeQcUnacceptable',
         'inputType': 'radioset',
-        'label': 'Are any QC outside of acceptable limits?',
+        'label': 'Are all QC within acceptable limits?',
         'options': [
           {
             'key': 'Yes',

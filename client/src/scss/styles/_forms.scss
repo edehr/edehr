@@ -103,6 +103,10 @@ textarea {
   padding: 5px;
 }
 
+.ui-info-placeholder {
+  display: inline-block;
+  width: 1.5rem;
+}
 textarea {
   height: 7rem;
   width: 100%;
@@ -407,7 +411,7 @@ select, .select {
   .form_label_wrapper {
     //width: 20rem;
     .form_label {
-      min-width: inherit;
+      min-width: 20rem;
       max-width: inherit;
     }
   }
