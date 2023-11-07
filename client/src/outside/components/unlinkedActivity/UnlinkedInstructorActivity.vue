@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import StoreHelper, { CREATOR_ACTION } from '@/helpers/store-helper'
+import StoreHelper, { APP_TYPE_EHR, CREATOR_ACTION } from '@/helpers/store-helper'
 import LearningObjectDialog from '@/outside/components/learning-object/LearningObjectDialog'
 import UiButton from '@/app/ui/UiButton'
 import LearningObjectDelete from '@/outside/components/learning-object/LearningObjectDelete'
@@ -96,7 +96,7 @@ export default {
     returnToLmsText () { return 'Return to ' + this.lmsName}
   },
   methods: {
-    appType (lobj) { return lobj.seedDataId.appType },
+    appType (lobj) { return lobj.seedDataId ? lobj.seedDataId.appType : APP_TYPE_EHR},
     async changeAppTypes (checkAppTypes) {
       this.checkAppTypes = checkAppTypes
       this.offset = 0
