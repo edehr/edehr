@@ -78,6 +78,13 @@ export function outside () {
       meta: { layout: 'outside', label: 'LabCon 2023', zone: ZONE_PUBLIC }
     },
     {
+      path: '/SimExpo2023',
+      name: 'simexpo2023',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/landingse/SimExpo2023.vue'),
+      meta: { layout: 'outside', label: 'SimExpo 2023', zone: ZONE_PUBLIC }
+    },
+    {
       path: '/lis',
       name: 'LIS',
       component: () =>
