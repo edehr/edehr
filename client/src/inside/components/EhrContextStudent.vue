@@ -3,11 +3,11 @@
     div
       div {{givenName}}.  You are working on:
         span(class='content') {{ truncate(assignmentName, 50) }}
-        ui-info(title="Instructions", :html="instructions")
+        ui-info(title="Instructions", :html="instructions", linkText='Instructions')
       div(v-if='feedbackViewable')
         div(v-if="hasEvaluationData") Instructor's comments:
           span(class="content") {{ evaluationData }}
-        div(v-else) Submit your work so your instructor can provide feedback.
+        div(v-else, class="bigger-screens-900") Submit your work so your instructor can provide feedback.
       div(v-else) Feedback is blocked
     div(class="flow_across_last_item")
       ehr-student-submit

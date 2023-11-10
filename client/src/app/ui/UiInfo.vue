@@ -3,6 +3,7 @@
     span(:title="text")
       button(class="info-button", v-on:click="buttonClicked")
         fas-icon(class="info-icon", icon="info-circle")
+        span(v-if="linkText") &nbsp; {{linkText}}
     app-dialog(
       :isModal="false",
       ref="theDialog",
@@ -31,7 +32,8 @@ export default {
   props: {
     html: { type: String },
     title: { type: String },
-    text: { type: String }
+    text: { type: String },
+    linkText: { type: String }
   },
   computed: {
     content () {
@@ -66,6 +68,10 @@ export default {
     border: none;
     border-radius: 50%; /* to encircle the circle icon*/
     height: .85em; /* to match height of fas icon*/
+
+    span {
+      color: $blue;
+    }
   }
   .info-icon {
     vertical-align: -2px;

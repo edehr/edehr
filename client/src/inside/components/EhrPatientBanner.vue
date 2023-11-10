@@ -3,7 +3,7 @@
     div
       div(class="patient-data")
         div(class='patient-name') {{ patientData.patientName }}
-        div
+        div(class="bigger-screens-900")
           span PHN
           span {{ patientData.phn }}
         div
@@ -20,20 +20,22 @@
           span {{ patientData.codeStatus ? patientData.codeStatus : 'N/A' }}
         div
           span Allergies
-          span {{ patientData.allergies }}
+          span(class="bigger-screens-900") {{ patientData.allergies }}
+          span(class="smaller-than-900") {{ truncate(patientData.allergies, 50) }}
         div
           span Diagnosis
-          span {{ patientData.diagnosis }}
-        div
+          span(class="bigger-screens-900") {{ patientData.diagnosis }}
+          span(class="smaller-than-900") {{ truncate(patientData.diagnosis, 50) }}
+        div(class="bigger-screens-900")
           span Weight
           span {{ patientData.weight }}
-        div
+        div(class="bigger-screens-900")
           span Location
           span {{ patientData.location }}
-        div
+        div(class="bigger-screens-900")
           span MRP
           span {{ patientData.mrp }}
-        div
+        div(class="bigger-screens-900")
           span MRP phone
           span {{ patientData.mrpPhone}}
         ehr-sim-time(:ehr-data="md")
@@ -56,6 +58,11 @@ export default {
   computed: {
     md () { return StoreHelper.getMergedData() },
     patientData () { return EhrPatient.patientData() },
+  },
+  methods: {
+    truncate (input, lim) {
+      return input && input.length > lim ? `${input.substring(0, lim)}...` : input
+    }
   }
 }
 </script>
