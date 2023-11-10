@@ -257,7 +257,7 @@ export default {
     skillsToggle (activityItem) {
       if (!this.skillsIsActivityActive) {
         this.$refs.confirmSkillsDialog.showDialog('Enabled Skills Assessment?',
-          'When you enable skills assessment your students will be restricted to working this this activity and any others that you select, until you stop the skills assessment', activityItem
+          'When you enable skills assessment your students will be restricted to working with this activity and any others that you select, until you stop the skills assessment', activityItem
         )
       } else {
         this.proceedSkills(activityItem)

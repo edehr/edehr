@@ -17,13 +17,17 @@
               ui-button(v-else, v-on:buttonClicked="tableAction(getIdFromRow(dRow))")
                 span {{ tableActionLabel(getIdFromRow(dRow)) }} &nbsp;
                 fas-icon(icon="notes-medical")
-            td
+            td(class="table-actions")
               ui-button(v-if="!isDraft(dRow)", v-on:buttonClicked="viewReport(getIdFromRow(dRow))")
                 span View &nbsp;
                 fas-icon(icon="file-pdf")
               ui-button(v-if="isDraft(dRow) && canEdit", v-on:buttonClicked="editDraft(getIdFromRow(dRow))")
+                span Resume &nbsp;
+                fas-icon(icon="edit")
+              ui-button(v-else-if="canEditSeed(dRow)", v-on:buttonClicked="editSeedRow(getIdFromRow(dRow))")
                 span Edit &nbsp;
                 fas-icon(icon="edit")
+
             td(v-for="(cell, cIndex) in dRow", :key="cIndex", :class="tableCellCss(cell)",  v-if="!!cell.stack")
                 ehr-table-element(v-for="(cPart, pIndex) in cell.stack", v-if="!!cPart.value", :key='pIndex', :cell="cPart")
 </template>
@@ -34,6 +38,7 @@ import EhrTableElement from './EhrTableElement'
 import UiButton from '@/app/ui/UiButton'
 import EhrTableActions from '@/inside/components/page/ehr-table-actions'
 import EhrTypes from '@/ehr-definitions/ehr-types'
+import StoreHelper from '@/helpers/store-helper'
 
 export default {
   extends: EhrTableCommon,
@@ -47,6 +52,9 @@ export default {
   methods: {
     tableActionLabel (sourceRowId) {
       return EhrTableActions.getTableActionLabel(this.tableDef, sourceRowId)
+    },
+    canEditSeed (row) {
+      return StoreHelper.isSeedEditing() && ! this.isDraft(row)
     },
     isDraft (row) {
       let isDraft = false
@@ -79,6 +87,9 @@ export default {
 /* the ehr content has overflow hidden yet tables may be big ...*/
 .ehr-table-stacked {
   overflow-x: auto;
+}
+.table-actions > button {
+  margin-right: 5px;
 }
 </style>
 

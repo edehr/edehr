@@ -59,6 +59,9 @@ export default {
     editDraft (rowId) {
       this.$emit('editDraft', rowId)
     },
+    editSeedRow (rowId) {
+      this.$emit('editSeedRow', rowId)
+    },
     viewReport (rowId) {
       this.$emit('viewReport', rowId)
     }
