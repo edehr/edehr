@@ -22,7 +22,10 @@
                   span {{ tableDef.tableActionLabel }} &nbsp;
                   fas-icon(icon="notes-medical")
               div(class="cell-action")
-                ui-button(v-if="cell.isDraft && colIndex === 0 && canEdit", v-on:buttonClicked="editDraft(getIdFromStack(cell))")
+                ui-button(v-if="canEditDraft(cell,colIndex)", v-on:buttonClicked="editDraft(getIdFromStack(cell))")
+                  span Resume &nbsp;
+                  fas-icon(icon="edit")
+                ui-button(v-else-if="canEditSeed(cell,colIndex)", v-on:buttonClicked="editSeedRow(getIdFromStack(cell))")
                   span Edit &nbsp;
                   fas-icon(icon="edit")
               div(v-for="cPart in cell.stack")
@@ -33,6 +36,7 @@
 import EhrTableCommon from './EhrTableCommon'
 import EhrTableElement from './EhrTableElement'
 import UiButton from '@/app/ui/UiButton'
+import StoreHelper from '@/helpers/store-helper'
 
 export default {
   extends: EhrTableCommon,
@@ -84,6 +88,12 @@ export default {
     },
   },
   methods: {
+    canEditSeed (cell,colIndex) {
+      return StoreHelper.isSeedEditing() && !cell.isDraft && colIndex === 0
+    },
+    canEditDraft (cell,colIndex) {
+      return cell.isDraft && colIndex === 0 && this.canEdit
+    },
     transposeLabel (column) {
       let cell = column[0] || {}
       return cell.label

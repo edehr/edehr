@@ -12,6 +12,7 @@
         :cTableData='cTableData',
         :rowTemplate='rowTemplate',
         @editDraft='editDraft',
+        @editSeedRow='editSeedRow',
         @viewReport='showReport'
       )
       ehr-table-stacked(
@@ -22,6 +23,7 @@
         :cTableData='cTableData',
         :rowTemplate='rowTemplate',
         @editDraft='editDraft',
+        @editSeedRow='editSeedRow',
         @viewReport='showReport'
       )
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
@@ -146,6 +148,9 @@ export default {
   methods: {
     editDraft (rowId) {
       this.ehrHelp.editDraftRow(rowId)
+    },
+    editSeedRow (rowId) {
+      this.ehrHelp.editSeedRow(rowId)
     },
     showReport (rowId) {
       this.ehrHelp.showReport(rowId)

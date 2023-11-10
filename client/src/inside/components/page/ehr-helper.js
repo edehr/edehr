@@ -461,6 +461,11 @@ export default class EhrPageHelper {
     const { pageKey, tableKey } = EhrDataModel.IdToParts(rowId)
     this.showDialogForTable(pageKey, tableKey, options)
   }
+  editSeedRow (rowId) {
+    const options = { seedEditRowId: rowId }
+    const { pageKey, tableKey } = EhrDataModel.IdToParts(rowId)
+    this.showDialogForTable(pageKey, tableKey, options)
+  }
   /**
    * Entry point to open the form dialog for a page table element. This is invoked when the user presses
    * the top page add report button.  We may be creating a new report, or we may need to reopen a
@@ -475,34 +480,38 @@ export default class EhrPageHelper {
    * @param options
    */
   showDialogForTable (pageKey, tableKey, options) {
-    let draftRowData
-    let { draftRowId }  = options
+    let editRowData, editRowId
+    let { draftRowId, seedEditRowId }  = options
     const rowElementKey = tableKey + '_id'
     if( draftRowId ) {
-      draftRowData = EhrTableDraft.findDraftRowDataById(draftRowId)
+      editRowData = EhrTableDraft.findDraftRowDataById(draftRowId)
+      editRowId = draftRowId
+    } else if( seedEditRowId ) {
+      editRowData = EhrTableDraft.findSeedEditRowDataById(seedEditRowId)
+      editRowId = seedEditRowId
     } else {
       // explicitDraftRowOnly is set true by the Med Mar tables because they don't use the main page button for opening dialogs.
       if (!options.explicitDraftRowOnly) {
         // User invoked main add report button
         // does the table data already contain a draft row ... ?
-        draftRowData = EhrTableDraft.getTableDraftRow(pageKey, tableKey)
-        if (draftRowData) {
+        editRowData = EhrTableDraft.getTableDraftRow(pageKey, tableKey)
+        if (editRowData) {
           // table has a draft row so this action is now an edit row action
-          draftRowId = draftRowData[rowElementKey]
+          editRowId = editRowData[rowElementKey]
         }
       }
       // else proceed and create a new row
     }
-    if( !draftRowId ) {
+    if( !editRowId ) {
       // just generate the new id. the first call to save either data or draft will insert a new row with this id.
-      draftRowId = EhrTableDraft.generateId(pageKey, tableKey)
+      editRowId = EhrTableDraft.generateId(pageKey, tableKey)
     }
-    if (!draftRowId) {
-      console.error('Coding error. Must have draftRowId by now to open dialog')
-      throw new Error('Can not open table dialog without an id')
+    if (!editRowId) {
+      console.error('Coding error. Must have row to edit by now to open dialog')
+      throw new Error('Can not open table dialog without a row to edit id')
     }
-    options.draftRowData = draftRowData // maybe empty
-    options.draftRowId = draftRowId // exists
+    options.draftRowData = editRowData // maybe empty
+    options.draftRowId = editRowId // exists
     this._dialogOpenEvent(tableKey, options)
   }
 

@@ -23,6 +23,13 @@ export default class EhrTableDraft {
     return table ? table.find(row => 0 === draftRowId.localeCompare(row[rowElementKey]) && !!row.isDraft) : undefined
   }
 
+  static findSeedEditRowDataById (seedEditRowId) {
+    const { pageKey, tableKey } = EhrDataModel.IdToParts(seedEditRowId)
+    const rowElementKey = tableKey + '_id'
+    const asLoadedPageData = EhrData.getMergedPageData(pageKey)
+    let table = asLoadedPageData[tableKey]
+    return table ? table.find(row => 0 === seedEditRowId.localeCompare(row[rowElementKey]) ) : undefined
+  }
   static generateId (pageKey, tableKey) {
     const asLoadedPageData = EhrData.getMergedPageData(pageKey)
     let table = asLoadedPageData[tableKey] || [] // provide default empty table
