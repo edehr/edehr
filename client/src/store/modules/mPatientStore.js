@@ -107,11 +107,17 @@ const actions = {
    */
   searchForPatientsBy ( context, options ) {
     let url = 'patientSearch?' //mrn=' + mrn
+    let hasPart = false
     if (options.mrn) {
       url += 'mrn=' + options.mrn
+      hasPart = true
     }
     if (options.name) {
       url += 'name=' + options.name
+      hasPart = true
+    }
+    if (options.appType) {
+      url += (hasPart ? '&' : '') + 'appType=' + options.appType
     }
     const API = 'seed-data'
     return InstoreHelper.getRequest(context, API, url).then(response => {
