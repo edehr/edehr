@@ -84,6 +84,10 @@ const actions = {
 
   loadClassList (context) {
     let activityId = context.rootGetters['activityStore/activityId']
+    if (!activityId ) {
+      console.error('Missing activity id for loadClassList. This is probably not serious. But keep and eye on this. ')
+      // no need to return anything because callers don't use anything returned by this method.
+    }
     if(debug) console.log(NAME + 'load classList for activityId', activityId)
     let api = 'activities'
     let url = `class-list/${activityId}`

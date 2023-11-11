@@ -5,12 +5,12 @@ import { calculateMedicationConcentration, calculateMedicationMaxDosage } from '
 import { MedOrder } from '@/ehr-definitions/med-definitions/medOrder-model'
 
 // export for testing
-export function extractComboValue (src)  {
+export function extractComboValue (src, pKey, eKey)  {
   let parts = src.split('=')
   let val = parts[0]
   let result = parseInt(val)
   if (!Number.isFinite(result)) {
-    let msg = `Source value must have format "number=text". Given "${src}"`
+    let msg = `Source value must have format "number=text". Given "${src}" for page key ${pKey} and element ${eKey}`
     // console.error(msg)
     throw new Error(msg)
   }
@@ -104,7 +104,7 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
     if(srcVal) {
       if (isString(srcVal)) {
         if(srcVal.includes('=')) {
-          values.push(extractComboValue(srcVal))
+          values.push(extractComboValue(srcVal, pageDataKey, key))
         } else if (isEmbeddedRef(srcVal)) {
           let rowData = getEmbeddedDataRow(srcVal)
           values.push(rowData)
