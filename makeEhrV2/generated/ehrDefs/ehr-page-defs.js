@@ -13836,7 +13836,7 @@ const DEFS = {
         'pageKey': 'medAdminRec',
         'tableKey': 'table',
         'isTable': true,
-        'label': 'Medication administration records',
+        'label': 'Medication administration records v1',
         'addButtonText': 'Administered',
         'tableLabel': 'This data is for an older version and it needs to be updated. Contact EdEHR for assistance.',
         'ehr_list': [
@@ -13914,7 +13914,7 @@ const DEFS = {
         ],
         'form': {
           'elementKey': 'table',
-          'label': 'Medication administration records',
+          'label': 'Medication administration records v1',
           'addButtonText': 'Administered',
           'formKey': 'table',
           'ehr_groups': [

@@ -134,6 +134,10 @@ export default {
       } else if (nameValue) {
         options = { name: nameValue }
       }
+      let lobj = this.$store.getters['assignmentStore/learningObject']
+      // is student then lobj will be defined. If case editing then no lobj will be defined
+      // limit search to app type when needed.
+      options.appType = lobj.appType
       if (options) {
         await this.$store.dispatch('mPatientStore/searchForPatientsBy', options)
       }

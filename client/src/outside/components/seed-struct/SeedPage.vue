@@ -1,15 +1,16 @@
 <template lang='pug'>
   div(class="seed-page")
     div(v-if='pageElement.isTable')
-      div(class="flow_across")
-        h3 {{ pageElement.label }}
+      div(class="flow_across seed-table-intro-row")
+        h4 {{ pageElement.label }}
+        h4 Table contains {{ tableData.length }} rows.
         zone-lms-button(@action="flipTableCollapsed"
           class="flow_across_last_item mr5"
-          title="Collapse the table",
+          :title='tableCollapsed ? "Expand the table" : "Collapse the table"',
           :icon='tableCollapsed ? "chevron-down" : "chevron-up"',
           text="")
       transition(name="fade" mode="out-in")
-        div(v-show="!tableCollapsed")
+        div(v-if="!tableCollapsed")
           seed-table-horiz(v-show='tableOrientation',
             :pageKey="pageKey",
             :pageChildren="pageChildren",
@@ -35,6 +36,7 @@ import SeedFormElement from '@/outside/components/seed-struct/SeedFormElement'
 import SeedTableVert from '@/outside/components/seed-struct/SeedTableVert'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton'
 import SeedTableHoriz from '@/outside/components/seed-struct/SeedTableHoriz'
+import EhrData from '@/inside/components/page/ehr-data'
 export default {
   components: { SeedTableHoriz, ZoneLmsButton, SeedFormElement, SeedTableVert },
   data () {
@@ -52,6 +54,14 @@ export default {
     tableKey () {return this.pageElement.tableKey},
     tableOrientation () { return this.$store.getters['system/condensedTableVertical']},
     tableCollapsed () { return this.$store.getters['system/seedTableCollapse'](this.tableKey)},
+    tableData () {
+      return EhrData.getMergedTableData(this.pageKey, this.pageElement.tableKey) || []
+    },
+    tableRowCount () { return this.tableData.length },
+    hasData () {
+      return this.tableData.length > 0
+    },
+
   },
   methods: {
     flipTableCollapsed () {
@@ -71,13 +81,16 @@ export default {
 .rotatedIcon {
   transform: rotate(270deg);
 }
-</style>
 
-<style lang="scss" scoped>
 .seed-page{
   margin-bottom: 3rem;
 }
+.seed-table-intro-row {
+  h3, h4 {
+    margin: 0 1rem 0 0;
+  }
 
+}
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity .3s

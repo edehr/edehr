@@ -60,7 +60,7 @@ export default class SeedDataController extends BaseController {
       })
   }
 
-  async searchForPatients (toolConsumerId, name, mrn) {
+  async searchForPatients (toolConsumerId, name, mrn, appType) {
     if (!mongoose.Types.ObjectId.isValid(toolConsumerId)) {
       throw new ParameterError(Text.INVALID_CONSUMER_ID(toolConsumerId))
     }
@@ -70,6 +70,7 @@ export default class SeedDataController extends BaseController {
     let query = { toolConsumer: new ObjectId(toolConsumerId)}
     name ? query.name = { $regex: name, $options : 'i' } : null
     mrn ? query.mrn = { $regex: mrn, $options : 'i' } : null
+    appType ? query.appType = { $eq: appType } : null
     const patientList = await this.model.find(query)
     return { patientList: patientList }
   }
@@ -241,7 +242,8 @@ export default class SeedDataController extends BaseController {
       const { toolConsumerId } = req.authPayload
       let mrn = req.query.mrn
       let name = req.query.name
-      this.searchForPatients(toolConsumerId, name, mrn)
+      let appType = req.query.appType
+      this.searchForPatients(toolConsumerId, name, mrn, appType)
         .then(ok(res))
         .then(null, fail(req, res))
     })
