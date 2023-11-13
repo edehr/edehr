@@ -212,7 +212,8 @@ export default {
 .dialog-header{
   width: 100%;
   //max-height: 6rem;
-  overflow-y: hidden;
+  overflow-y: auto;
+  max-height: 8rem;
   background-color: $grey03;
   border-bottom: 1px solid $grey30;
   padding: 0.5rem 1rem 0.5rem 1rem;
@@ -244,9 +245,6 @@ export default {
   .dialog-header-title {
     display: flex;
     flex-direction: column;
-  }
-  .dialog-header {
-    max-height: 12rem;
   }
 }
 

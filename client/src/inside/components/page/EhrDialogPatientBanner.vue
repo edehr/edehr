@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  div(class='patient-banner')
     div(class="patient-data")
       div(class='patient-name') {{ patientData.patientName }}
       div MRN: {{ patientData.mrn }}
@@ -40,5 +40,14 @@ export default {
   flex-direction: row;
   gap: 2rem;
 }
+@media screen and (max-width: $dialog-width-threshold) {
+  .patient-banner {
+    display: block;
+    overflow: auto;
+  }
+  .patient-data {
+    display: block;
+  }
 
+}
 </style>
