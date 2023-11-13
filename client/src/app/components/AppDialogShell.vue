@@ -260,7 +260,8 @@ export default {
     max-width: inherit;
   }
   .dialog-header {
-    max-height: inherit; /* let the patient banner height fit the content */
+    //max-height: inherit; /* let the patient banner height fit the content */
+    overflow: auto;
   }
 }
 
