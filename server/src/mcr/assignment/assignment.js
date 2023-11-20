@@ -32,7 +32,7 @@ const Schema = new mongoose.Schema({
 
 Schema.pre('save', async function (next) {
   if (! this.idForLTI) {
-    let tt = await getNextSequence('LP')
+    let tt = await getNextSequence(this.toolConsumer, 'LP', 5)
     this.idForLTI = 'LP' + tt
   }
   next()

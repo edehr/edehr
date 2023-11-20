@@ -1,0 +1,65 @@
+{
+  "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "ehrData": {
+    "meta": {
+      "simTime": {
+        "visitDay": 0,
+        "visitTime": "0900"
+      },
+      "ehrVersion": "ev2.4.0"
+    },
+    "demographics": {
+      "mrn": "3140007",
+      "givenName": "Paul",
+      "familyName": "Williams",
+      "personAge": "63",
+      "gender": "Male",
+      "dateOfBirth": "1960-03-26"
+    },
+    "hematology": {
+      "tableCbcAnalysis": [
+        {
+          "tableCbcAnalysis_name": "Jane",
+          "tableCbcAnalysis_day": 0,
+          "tableCbcAnalysis_time": "0000",
+          "wbc": "141.8",
+          "wbc-interp": "high",
+          "rbc": "2.90",
+          "rbc-interp": "low",
+          "hgb": "88",
+          "hgb-interp": "low",
+          "HCT": "0.260",
+          "HCT-interp": "low",
+          "MCV": "89.7",
+          "MCV-interp": "normal",
+          "MCH": "30.3",
+          "MCH-interp": "normal",
+          "MCHC": "338",
+          "MCHC-interp": "normal",
+          "RDW": "16.2",
+          "RDW-interp": "normal",
+          "PLT": "39",
+          "PLT-interp": "low",
+          "MPV": "7.8",
+          "MPV-interp": "normal",
+          "wbcAverage": 0,
+          "wbcEstimate": 0,
+          "wbcLowRange": 0,
+          "wbcHighRange": 0,
+          "pltAverage": 0,
+          "pltEstimate": 0,
+          "pltLowRange": 0,
+          "pltHighRange": 0,
+          "tableCbcAnalysis_id": "hematology.tableCbcAnalysis.0"
+        }
+      ]
+    }
+  },
+  "appType": "LIS",
+  "description": "Patient was feeling a sense of malaise for the past few weeks. His neighbour noticed some weight loss and encouraged him to see his family doctor after he mentioned discomfort in his throat.",
+  "name": "Williams - 3140007",
+  "tagList": [
+    "Hematology"
+  ],
+  "version": "1.0"
+}

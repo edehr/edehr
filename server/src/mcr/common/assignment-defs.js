@@ -4,7 +4,7 @@ const ej2Seed = require('../../resources/erin-johns-seed-day2-end.json')
 const wound1Seed = require('../../resources/wound-case-1.json')
 const seed4 = require('../../resources/BonlanleAkosua_before.json')
 const seed5 = require('../../resources/BonlanleAkosua_after.json')
-
+const lobj_tooth = require('../../resources/lobj_erToothPainManagement.json')
 const _common =     '"Health Case Studies - Toward Closing the Healthcare Communication Gap" ' +
   'by:  Glynda Rees, Rob Kruger, Janet Morrison. '
 
@@ -96,7 +96,7 @@ const assignment5 = {
 }
 
 const assignmentMP1 = {
-  description: 'Search for "bon" to find your patient. Then explore the hematology and urinalysis pages. ',
+  description: 'Search for any MRN between 3140001 and 3140009 to find your patient. Then explore the hematology and urinalysis pages. ',
   title: 'Multi patient test'
 }
 
@@ -149,6 +149,16 @@ export const activity5 = {
   seedDef: seedDef5,
   resource_link_title: `${assignment5.title}`,
   resource_link_description: 'This activity complements the previous one by showing the completed PBF in the Med Lab Hematology module',
+}
+
+export const activity6 = {
+  lObjDef: {
+    title: lobj_tooth.name,
+    description: lobj_tooth.description
+  },
+  seedDef: lobj_tooth.caseStudy,
+  resource_link_title: lobj_tooth.name,
+  resource_link_description: 'Explores pain management',
 }
 
 export const activityMP1 = {

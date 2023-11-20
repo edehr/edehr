@@ -1,0 +1,64 @@
+{
+  "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "ehrData": {
+    "meta": {
+      "simTime": {
+        "visitDay": 0,
+        "visitTime": "0900"
+      },
+      "ehrVersion": "ev2.4.0"
+    },
+    "demographics": {
+      "mrn": "3140004",
+      "givenName": "Wayne",
+      "familyName": "Hyett",
+      "personAge": "64",
+      "gender": "Male",
+      "dateOfBirth": "1959-01-16"
+    },
+    "hematology": {
+      "tableCbcAnalysis": [
+        {
+          "tableCbcAnalysis_name": "Jane",
+          "tableCbcAnalysis_day": 0,
+          "tableCbcAnalysis_time": "0000",
+          "wbc": "23.2",
+          "wbc-interp": "high",
+          "rbc": "4.93",
+          "rbc-interp": "normal",
+          "hgb": "140",
+          "hgb-interp": "normal",
+          "HCT": "0.420",
+          "HCT-interp": "normal",
+          "MCV": "85.2",
+          "MCV-interp": "normal",
+          "MCH": "28.4",
+          "MCH-interp": "normal",
+          "MCHC": "333",
+          "MCHC-interp": "normal",
+          "RDW": "14.3",
+          "RDW-interp": "normal",
+          "PLT": "191",
+          "PLT-interp": "normal",
+          "MPV": "11.3",
+          "MPV-interp": "normal",
+          "wbcAverage": 0,
+          "wbcEstimate": 0,
+          "wbcLowRange": 0,
+          "wbcHighRange": 0,
+          "pltAverage": 0,
+          "pltEstimate": 0,
+          "pltLowRange": 0,
+          "pltHighRange": 0,
+          "tableCbcAnalysis_id": "hematology.tableCbcAnalysis.0"
+        }
+      ]
+    }
+  },
+  "appType": "LIS",
+  "description": "Patient went to the walk in clinic complaining he had been feeling tired for about a month. The doctor ordered a CBC.",
+  "name": "Hyett - 3140004",
+  "tagList": [
+    "Hematology"
+  ]
+}

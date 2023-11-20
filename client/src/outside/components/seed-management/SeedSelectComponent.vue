@@ -135,11 +135,12 @@ export default {
         limit: this.paginateLimit,
         sortKey: this.sortKey,
         sortDir: this.sortDir,
-        tagList: this.tagList
+        tagList: this.selectedTags
       }
       query.searchTerm = this.searchTerm
       query.appTypes  = this.checkAppTypes
       await this.$store.dispatch('seedListStore/loadPage', query)
+      await this.$store.dispatch('seedListStore/loadAllTags')
     },
     async changeAppTypes (checkAppTypes) {
       this.checkAppTypes = checkAppTypes

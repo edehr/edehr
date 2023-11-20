@@ -1,0 +1,27 @@
+{
+  "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "ehrData": {
+    "meta": {
+      "simTime": {
+        "visitDay": 0,
+        "visitTime": "0900"
+      },
+      "ehrVersion": "ev2.4.0"
+    },
+    "demographics": {
+      "mrn": "3140006",
+      "givenName": "Anna",
+      "familyName": "McGahan",
+      "personAge": "51",
+      "dateOfBirth": "1972-02-08",
+      "gender": "Female"
+    }
+  },
+  "appType": "LIS",
+  "description": "",
+  "name": "McGahan - 3140006",
+  "tagList": [
+    "Urinalysis"
+  ],
+  "version": "1.0"
+}
