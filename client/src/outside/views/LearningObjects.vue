@@ -4,7 +4,7 @@
       zone-lms-button(v-if="canDo", @action="showLobjCreateDialog",
         :title="text.createLearningObjectTip",
         :icon='appIcons.new')
-      zone-lms-button(@action="showUploadDialog",
+      zone-lms-button(v-if="canDo", @action="showUploadDialog",
         :title="text.UPLOAD_TP",
         :icon='appIcons.upload',
         :text='text.UPLOAD')
