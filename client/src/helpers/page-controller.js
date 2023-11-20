@@ -1,6 +1,6 @@
 import EventBus from '@/helpers/event-bus'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
-import StoreHelper, { ENABLE_FULL_DEMO_AUTO_LINK } from '@/helpers/store-helper'
+import StoreHelper from '@/helpers/store-helper'
 import router, { COURSE_ROUTE_NAME } from '@/router'
 import { setAuthHeader } from '@/helpers/axios-helper'
 import { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
@@ -257,7 +257,9 @@ async  function onPageChange (toRoute) {
 
     // **** If activity does not have linked LObj then ... push new route EXIT via new route
     if (!theActivity.hasLinkedLearningObject) {
-      if(ENABLE_FULL_DEMO_AUTO_LINK && demo_lobjId) {
+      const autoLink = store.getters['demoStore/autoLinkLobj']
+      // console.log('autoLink --------------- autoLink', autoLink)
+      if(autoLink && demo_lobjId) {
         theActivity = await StoreHelper.autoLinkDemoLobj(theActivity, demo_lobjId)
       } else {
         if (dbApp) console.log('No assignment for activity', theActivity.id)

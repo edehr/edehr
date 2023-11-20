@@ -17,11 +17,6 @@ export const APP_TYPE_EHR = 'EHR'
 export const APP_TYPE_LIS = 'LIS'
 
 /*
- For in dev only! Devs can set ENABLE_FULL_DEMO_AUTO_LINK to false to disable the autolink when developing the actions around the unlinked page. It's useful to be able to use the full demo and get to the unlinked page even though we don't want to inflict this on our users.
- */
-const LOCALHOST = window.location.origin.includes('localhost')
-export const ENABLE_FULL_DEMO_AUTO_LINK = LOCALHOST ? false : true
-/*
 https://softwareengineering.stackexchange.com/a/247277/346750
 "A Helper class is a lesser known code smell where a coder has identified some miscellaneous,
 commonly used operations and attempted to make them reusable by lumping them together in an unnatural grouping."
@@ -656,7 +651,9 @@ class StoreHelperWorker {
   }
 
   async autoLinkDemoLobj (theActivity, demo_lobjId) {
-    if(ENABLE_FULL_DEMO_AUTO_LINK) {
+    const autoLink = store.getters['demoStore/autoLinkLobj']
+    // console.log('In autoLinkDemoLobj state of autoLink is', autoLink)
+    if(autoLink) {
       // console.log('HERE is where we set up the demo to auto link the activity and lObj', theActivity, demo_lobjId)
       const payload = { activity: theActivity.id, assignment: demo_lobjId }
       await store.dispatch('activityStore/linkAssignment', payload)
