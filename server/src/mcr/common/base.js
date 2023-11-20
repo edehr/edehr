@@ -199,6 +199,9 @@ export default class BaseController {
       })
   }
 
+  _updatePreSave ( modelInstance, data) {
+    return modelInstance
+  }
   /**
    */
   update (id, data) {
@@ -218,7 +221,7 @@ export default class BaseController {
         if (modelInstance.lastDate) {
           modelInstance.lastDate = Date.now()
         }
-
+        modelInstance = this._updatePreSave(modelInstance, data)
         return modelInstance.save()
       })
       .then((modelInstance) => {

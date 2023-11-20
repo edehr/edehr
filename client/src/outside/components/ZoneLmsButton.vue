@@ -19,6 +19,7 @@ export default {
     }
   },
   props: {
+    showText: { type: Boolean },
     disabled: { type: Boolean },
     icon: {type: String},
     iconClass: {type: Object, default: undefined},
@@ -27,7 +28,7 @@ export default {
     title: {type: String}
   },
   computed: {
-    showLabels () { return StoreHelper.isOutsideShowButtonLabels() },
+    showLabels () { return this.showText ||  StoreHelper.isOutsideShowButtonLabels() },
     iconList () { return this.icon ? [ this.icon ] : this.icons}
   },
 }

@@ -4,6 +4,37 @@
   margin: 1rem;
 }
 
+@media screen and (max-width: $main-width-threshold3){
+  .outside-view {
+    margin: 0 1rem;
+  }
+}
+
+.explain-container.explain-page-intro {
+  margin-top: 1rem;
+  padding:10px
+}
+.explain-page-element {
+  margin-bottom: 1rem;
+}
+.explain-button {
+  padding: 0 0 0 5px;
+  font-weight: normal;
+  height: 1.8rem;
+}
+.explain-container {
+  font-style: italic;
+  padding: 5px;
+  background-color: $grey10;
+  border-radius: 0.25rem;
+  max-width: 60rem;
+  p {
+    margin: 0 0 5px 0;
+    font-size: inherit;
+    text-indent: 20px;
+  }
+}
+
 .list-card {
   border: 1.5px solid #051F54;
   border-radius: 10px;
@@ -50,11 +81,9 @@
 .details-row {
   grid-template-columns: 1fr 3fr;
 }
-// if larger than threshold ...
-@media screen and (min-width: $main-width-threshold4){
-  .details-row {
-    grid-template-columns: 1fr 4fr;
-  }
+.details-row-dates .details-name,
+.details-row-dates .details-value {
+  font-size: 14px;
 }
 
 .details-name {
@@ -71,6 +100,23 @@
 .details-action-bar {
   margin-bottom: 1rem;
 }
+.details-important-text {
+  font-size: 16px;
+  font-weight: 550;
+}
+
+// if smaller than threshold ...
+@media screen and (max-width: $main-width-threshold4){
+  .details-row {
+    display: flex;
+    flex-direction: column;
+  }
+  .details-name {
+    text-align: left;
+    margin: 0;
+  }
+}
+
 .with-title {
   grid-template-columns: 1fr 2fr 1fr;
 }

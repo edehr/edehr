@@ -19,7 +19,8 @@ export const APP_TYPE_LIS = 'LIS'
 /*
  For in dev only! Devs can set ENABLE_FULL_DEMO_AUTO_LINK to false to disable the autolink when developing the actions around the unlinked page. It's useful to be able to use the full demo and get to the unlinked page even though we don't want to inflict this on our users.
  */
-export const ENABLE_FULL_DEMO_AUTO_LINK = true
+const LOCALHOST = window.location.origin.includes('localhost')
+export const ENABLE_FULL_DEMO_AUTO_LINK = LOCALHOST ? false : true
 /*
 https://softwareengineering.stackexchange.com/a/247277/346750
 "A Helper class is a lesser known code smell where a coder has identified some miscellaneous,
@@ -307,7 +308,8 @@ class StoreHelperWorker {
     await this.loadAssignmentList()
   }
   // returns promise that resolves to assignment list
-  async updateAssignment (component, assignmentId, lObjData) {
+  async updateAssignment (prevLobj, lObjData) {
+    const assignmentId = prevLobj._id
     let dataIdPlusPayload = { id: assignmentId, payload: lObjData }
     await this._dispatchAssignmentList('updateAssignment', dataIdPlusPayload)
     const assignment = await this._dispatchAssignment('load', assignmentId)

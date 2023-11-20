@@ -1,9 +1,8 @@
 <template lang="pug">
   div
     zone-lms-page-banner
-      div(class="flow_across menu_space_across flow_across_right")
-        zone-lms-button(v-if="isDevelopingContent", @action="openDialog", :icon='appIcons.file', :text='text.ADD_LABEL')
-    div(class="details-container card intro")
+      zone-lms-button(v-if="isDevelopingContent", @action="openDialog", :icon='appIcons.file', :text='text.ADD_LABEL')
+    zone-lms-instructions-header
       p {{ text.P1 }}
       p {{ text.P2 }}
     file-list
@@ -31,9 +30,11 @@ import StoreHelper from '@/helpers/store-helper'
 import ZoneLmsPageName from '@/outside/components/ZoneLmsPageName'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton'
+import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
 
 export default {
   components: {
+    ZoneLmsInstructionsHeader,
     ZoneLmsButton,
     ZoneLmsPageBanner,
     ZoneLmsPageName,

@@ -88,6 +88,8 @@ export default {
   },
   methods: {
     focusOnSave () {
+      console.log('focus on save button', this.$refs.saveButton.$el)
+      // this.$refs.saveButton.$el.focus({ focusVisible: true})
       this.$refs.saveButton.$el.focus()
     },
     onDragged ({ el, deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last }) {

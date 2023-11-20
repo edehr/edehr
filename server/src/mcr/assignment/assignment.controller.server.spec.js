@@ -40,4 +40,17 @@ describe(`${typeName} controller testing`, function () {
       })
   })
 
+  it('Assignment (LOBJ) check idForLTI', async () => {
+    let m = makeAssignmentController()
+    let data = Helper.sampleAssignmentSpec(undefined, key)
+    let doc = await m.create(data)
+    should.exist(doc)
+    should.exist(doc.idForLTI, 'l objs now have property idForLTI')
+    doc.idForLTI.should.equal('LP0002')
+    // lobj2 because of the create in the previous test
+
+    doc = await m.create(data)
+    doc.idForLTI.should.equal('LP0003')
+  })
+
 })

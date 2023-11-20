@@ -1,14 +1,16 @@
 @import '../definitions';
 
 
-.app-tag {
-  background-color: $grey20;
+.app-tagv1 {
+  background-color: $ehr-brand-option1;
   border-radius: 10px;
   display: inline-block;
   padding: 0 8px;
   margin: 2px;
-  color: $black
+  //color: $white
   & span {
+    color: $white;
+    font-weight: 800;
     //padding: 8px;
   }
   & button {
@@ -25,5 +27,27 @@
     color: $app-tag-button-hover-colour;
     background-color: $grey10;
     //background-color: $grey10;
+  }
+}
+
+.app-tag {
+  display: inline-block;
+  padding: 0;
+  margin: 2px;
+  & span {
+    font-weight: 800;
+  }
+  & button {
+    color: red;
+    font-style: oblique;
+    border: none;
+    padding: 0 5px 0 3px;
+    margin: 2px;
+    //height: 2rem;
+    background-color: transparent;
+  }
+  & button:hover {
+    color: $app-tag-button-hover-colour;
+    background-color: $grey10;
   }
 }

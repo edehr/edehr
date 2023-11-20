@@ -19,6 +19,21 @@
 .e-table-container {
   overflow-x: auto;
 }
+
+/*
+https://www.w3.org/Style/css2-updates/css2/tables.html
+The default style sheet for HTML4
+table    { display: table }
+tr       { display: table-row }
+thead    { display: table-header-group }
+tbody    { display: table-row-group }
+tfoot    { display: table-footer-group }
+col      { display: table-column }
+colgroup { display: table-column-group }
+td, th   { display: table-cell }
+caption  { display: table-caption }
+
+ */
 .e-table {
   display: table;
   border-collapse: collapse;
@@ -49,7 +64,8 @@
 
   .thcell {
     display: table-cell;
-    background-color: $table-header-row-colour;
+    font-size: 1.1rem;
+    background-color: $grey15;
     text-align: center;
     font-weight: bold;
     padding: 5px;
@@ -61,7 +77,17 @@
     transition: background-color 0.5s ease;
     background-color: $brand-primary-hover;
   }
+}
 
+.seed-theme {
+  .thcell {
+    background-color: $brand-red60;
+  }
+}
+.lobj-theme {
+  .thcell {
+    background-color: $brand-blue60;
+  }
 }
 
 

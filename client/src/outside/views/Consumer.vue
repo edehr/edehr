@@ -33,6 +33,14 @@
         div(class="details-name") {{text.GUID}}
         div(class="details-value") {{consumer.tool_consumer_instance_guid}}
       div(class="details-row")
+        div(class="details-name") Feature Flags
+        div(class="details-value")
+          div
+            label(for="fFlagSignOn") Unleash Activities. {{ featureFlagUnleashActivity ? 'enabled' : 'disabled'}}
+            span &nbsp;
+            button(@click='featureFlagUnleashActivityToggle') {{ featureFlagUnleashActivity ? 'disable' : 'enable '}} unleash activity
+
+      div(class="details-row")
         div(class="details-name") {{text.DATES}}
         div(class="details-value").
           Created on {{ consumer.createDate | formatDateTime }}.
@@ -87,18 +95,25 @@ import { downObjectToFile } from '@/helpers/ehr-utils'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
 import StoreHelper from '@/helpers/store-helper'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton'
+import FeatureHelper, { FF_UNLEASH_ACTIVITY } from '@/helpers/feature-helper'
+import DischargeV2 from '@/inside/components/discharge/DischargeV2.vue'
 
 export default {
   extends: OutsideCommon,
-  components: { ZoneLmsButton, ZoneLmsPageBanner, UiButton, UiInfo  },
+  components: { DischargeV2, ZoneLmsButton, ZoneLmsPageBanner, UiButton, UiInfo  },
   data () {
     return {
       text: Text.CONSUMER_PAGE,
       appIcons: APP_ICONS,
+      consumerId: undefined,
+      featureFlagUnleashActivity: false
     }
   },
   computed: {
     consumer () { return this.$store.getters['consumerStore/consumer']},
+    featureFlags () {
+      return this.$store.getters['consumerStore/featureFlags']
+    },
     showLabels () { return StoreHelper.isOutsideShowButtonLabels() },
     users () { return this.consumer.users || [] },
   },
@@ -114,12 +129,27 @@ export default {
       })
       downObjectToFile(fName, sorted)
     },
+    async featureFlagUnleashActivityToggle () {
+      if(!this.featureFlagUnleashActivity) {
+        await FeatureHelper.enableFeatureFlag(this.consumerId, FF_UNLEASH_ACTIVITY)
+      } else {
+        await FeatureHelper.disableFeatureFlag(this.consumerId, FF_UNLEASH_ACTIVITY)
+      }
+    },
+
     async loadComponent () {
       const fromRoute = this.$route.query.consumerId
       if (fromRoute) {
-        await this.$store.dispatch('consumerStore/loadDetails', fromRoute)
+        this.consumerId = fromRoute
+        await this.$store.dispatch('consumerStore/loadDetails', this.consumerId)
+        await FeatureHelper.loadFlags(this.consumerId)
       }
     }
   },
+  watch: {
+    featureFlags () {
+      this.featureFlagUnleashActivity = FeatureHelper.isFeatureFlagEnabled(this.consumerId, FF_UNLEASH_ACTIVITY)
+    }
+  }
 }
 </script>

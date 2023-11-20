@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 import { WS_EVENT_BUS, WS_S2C_MESSAGE_EVENT } from '../../server/push-server'
-import { APP_TYPES } from '../../helpers/appType'
+import { APP_TYPE_EHR, APP_TYPE_LIS } from '../../helpers/appType'
+import { getNextSequence } from '../common/counter-controller'
 const ObjectId = mongoose.Schema.Types.ObjectId
 
 /*
@@ -12,12 +13,13 @@ Students will start with a blank system. They will select the patient from the s
  */
 const Schema = new mongoose.Schema({
   toolConsumer: {type: ObjectId, ref: 'Consumer', required: true },
+  idForLTI: { type: String },
   name: { type: String, required: true},  // resource_link_title
   description: { type: String }, // resource_link_description
   seedDataId: {type: mongoose.Schema.Types.ObjectId, ref: 'SeedData'},
   mPatientAppType: {
     type: String,
-    enum : APP_TYPES
+    enum : ['', APP_TYPE_EHR, APP_TYPE_LIS] // allow empty for when the seed provides the apptype. UI to make sure one or the other has content.
   },
   mPatientFilterTag: { type: String},
   createDate: { type: Date, default: Date.now },
@@ -28,6 +30,13 @@ const Schema = new mongoose.Schema({
   minimize: false  // need this to get default empty object
 })
 
+Schema.pre('save', async function (next) {
+  if (! this.idForLTI) {
+    let tt = await getNextSequence('LP')
+    this.idForLTI = 'LP' + tt
+  }
+  next()
+})
 Schema.post('save', function (doc) {
   WS_EVENT_BUS.emit(WS_S2C_MESSAGE_EVENT, JSON.stringify({channel: 'LEARNING_OBJECT', id: doc._id}))
 })

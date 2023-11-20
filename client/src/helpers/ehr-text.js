@@ -114,10 +114,11 @@ export const Text = {
   },
 
   COURSE_PAGE: {
+    COURSE_PAGE_INTRO: 'This page lists all the activities you have worked with for the selected course. Click on an activity name to view its details.',
+    COURSES_PAGE_INTRO: 'This page lists all the courses with EdEHR content that you have worked with. Click on a course name to view its activities.',
     DESCRIPTION: 'Description',
-    ACTIVITY_STUDENT_SELECT_NAV: 'Click on an activity name to see details about the activity or click on the \'Go to EHR\' button to enter the health record application.',
-    ACTIVITY_INSTRUCTOR_SELECT_NAV: 'Click on an activity name to see its details.',
-    COURSE_SELECT_NAV: 'Click on a course name to see all of its activities and details.',
+    ACTIVITY_STUDENT_SELECT_NAV: 'Click on an activity name to see details about the activity or click on the \'Go to EHR\' button to enter the charting application.',
+    ACTIVITY_INSTRUCTOR_SELECT_NAV: 'Click on an activity name to see its details.'
   },
   UPDATE_COURSE_ERROR: (err) => `error in update course ${err}`,
   COURSE_DIALOG: {
@@ -215,8 +216,7 @@ export const Text = {
     },
     ERRORS: {
       NAME_REQUIRED: 'Learning object name is required',
-      SEED_REQUIRED: 'Must select a case study for this learning object.',
-      CASE_STUDY_NAME: 'To create a case study you must provide a name.'
+      APP_TYPE_REQUIRED: 'Either need a case study or set the application type'
     },
     LABELS: {
       FILE_INPUT: 'Browse for a learning object file. It will have a file extension of .json.',
@@ -290,9 +290,11 @@ export const Text = {
     DETAILS:'Details',
     DETAILS_TP: 'See the details and modify the case study.',
     DOWNLOAD: 'Download',
-    DOWNLOAD_TP: 'Save a copy on your computer',
+    DOWNLOAD_TP: 'Download to your computer',
     EDIT: 'Edit in EHR',
     EDIT_TP: 'Edit the EHR data in the EHR',
+    CREATE_LOBJ: 'Create learning object',
+    CREATE_LOBJ_TP: 'Create a learning object for this case study',
     PROPERTIES: 'Properties',
     PROPERTIES_TP: 'Edit properties or upload new EHR content',
     createLearningObjectTip:'Create a new learning object',

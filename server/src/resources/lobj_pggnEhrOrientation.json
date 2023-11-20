@@ -1,7 +1,7 @@
 {
   "appType": "EHR",
   "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
-  "description": "This activity is suitable as an introduction to EHR for students.\nAccess Mary Rutherford's patient data in the EHR and do the following:\n1) Find out why she was admitted (access the diagnosis and the admission dictation)\n2) What was Mary's most recent hemoglobin result?\n3) What was the highest blood glucose recorded for Mary?\n4) Mary tells you she has an allergy to penicillin, with a reaction of hives. Please update the record to reflect this.\n5) The simulation time is 1630. Input your recent vital signs: BP 146/75 HR 72 RR 18 SpO2 95% 2 litres of oxygen by nasal prongs T 36.6 and Glu 11.2\n6) Add a baseline respiratory assessment to reflect that Mary has bi-basilar crackles on inspiration\n7) You administer 650 mg of acetaminophen at 1630 hours for pain. Create the medication administration record for this.\n8) Input a narrative progress note to show that Mary was having pain to her wound at 7/10, onset 1 hour ago, non-radiating, dull aching. You treated it with acetaminophen 650 mg po at 1630.",
+  "description": "This activity is suitable as an introduction to EHR for students.",
   "name": "EHR Orientation",
   "caseStudy": {
     "isDefault": false,

@@ -15,11 +15,11 @@
           zone-lms-nav(v-else, :icons-only='lgScreenNavCollapsed')
       div(class="right_side", :class='{right_side_large: lgScreenNavCollapsed}')
         div(class="smaller-than-900")
-          span(style="text-align: left; margin-left: 1em")
+          span(style="text-align: left; font-size: 1.7rem;")
             fas-icon(class="fa bars", icon="bars", @click="smScrnShowNav = !smScrnShowNav")
-            div(:class="{smScrnShowNav: smScrnShowNav}", class="lmsNavPanel lmsNavPanelSmallScreen smScrnHideNav")
-              zone-lms-student-nav(v-if="isStudent")
-              zone-lms-nav(v-else)
+          div(:class="{smScrnShowNav: smScrnShowNav}", class="lmsNavPanel lmsNavPanelSmallScreen smScrnHideNav")
+            zone-lms-student-nav(v-if="isStudent")
+            zone-lms-nav(v-else)
         slot
     app-footer
 </template>

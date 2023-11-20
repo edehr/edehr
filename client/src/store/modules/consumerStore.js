@@ -8,6 +8,7 @@ const debug = false
 
 const state = {
   consumer: {},
+  featureFlags: [],
   consumersListing: [],
 }
 
@@ -19,6 +20,10 @@ const getters = {
     return state.consumer._id
   },
   hasConsumer: state => { return !!state.consumer._id },
+  featureFlags: state => { return state.featureFlags  },
+  isFeatureEnabled: state => (flag) => {
+    return !state.featureFlags.includes(flag)
+  },
   lastUpdateDate: state => {
     let prop =  state.consumer.lastUpdateDate
     if (debug) console.log(NAME + ' get lastUpdateDate', prop)
@@ -70,6 +75,42 @@ const actions = {
         return {}
       }
       return results
+    })
+  },
+  featureFlagsLoad (context, id) {
+    let url = 'feature-flags/' + id
+    return InstoreHelper.getRequest(context, API, url).then(response => {
+      context.commit('setFeatureFlags', response.data.featureFlags)
+    })
+  },
+  // adding flag disables the feature
+  featureFlagsAdd (context, payload) {
+    let url = 'feature-flags-add'
+    return InstoreHelper.postRequest(context, API, url, payload).then(response => {
+      // console.log('after add', response.data.featureFlags)
+      context.commit('setFeatureFlags', response.data.featureFlags)
+    })
+  },
+  // removing the flag enables the feature
+  featureFlagsRemove (context, payload) {
+    let url = 'feature-flags-remove'
+    return InstoreHelper.postRequest(context, API, url, payload).then(response => {
+      context.commit('setFeatureFlags', response.data.featureFlags)
+    })
+  },
+
+  /**
+   * Enabled all features (by clearing out all flags)
+   * This action is not used and may never be needed. Reconsider given some time using the flags.
+   * @param context
+   * @param payload { toolConsumerId : id }
+   * @returns {Promise<unknown>}
+   */
+  featureFlagsEnableAll (context, consumerId) {
+    let payload = { toolConsumerId: consumerId}
+    let url = 'feature-flags-all-enable'
+    return InstoreHelper.postRequest(context, API, url, payload).then(response => {
+      context.commit('setFeatureFlags', response.data.featureFlags)
     })
   },
   loadConsumers (context) {
@@ -125,6 +166,9 @@ const mutations = {
   setDataStore: (state, consumer) => {
     if(debug) console.log('setDataStore', consumer)
     state.consumer = consumer
+  },
+  setFeatureFlags: (state, featureFlags) => {
+    state.featureFlags = featureFlags
   },
   setConsumersListing: (state, cData) => {
     if(debug) console.log('setConsumersListing ', cData)

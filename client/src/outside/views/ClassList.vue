@@ -4,22 +4,25 @@
       div(class="flow_across menu_space_across flow_across_right")
         activity-actions(class="flow_across_last_item")
 
+    zone-lms-instructions-header
+      p This page shows you the class list for this activity. Here you can ....
+
     div(class="details-container card")
       div(class="details-row")
-        div(class="details-name") Return to activity
+        div(class="details-name") Return to the activity
         div(class="details-value")
           ui-link(:name="'lms-instructor-activity'")
             // no visit id because we are not changing visit
             fas-icon(class="fa", :icon="appIcons.activity")
             span &nbsp; {{activity.title}}
-      div(class="details-row")
-        div(class="details-name") {{text.GOTOLOBJ}}
-        div(class="details-value")
-          div(v-if='hasLinkedLearningObject')
-            ui-link(:name="'learning-object'", :query="{learningObjectId: activity.learningObjectId}")
-              fas-icon(class='fa', :icon='appIcons.lobj')
-              span &nbsp; {{ activity.learningObjectName }}
-          div(v-else) {{ text.ACTIVITY_MISSING}}
+      //div(class="details-row")
+      //  div(class="details-name") {{text.GOTOLOBJ}}
+      //  div(class="details-value")
+      //    div(v-if='hasLinkedLearningObject')
+      //      ui-link(:name="'learning-object'", :query="{learningObjectId: activity.learningObjectId}")
+      //        fas-icon(class='fa', :icon='appIcons.lobj')
+      //        span &nbsp; {{ activity.learningObjectName }}
+      //    div(v-else) {{ text.ACTIVITY_MISSING}}
     div(class="classlist-body")
       div(v-if="classList.length===0", class='empty-message') {{ text.EMPTY_CLASSLIST }}
       div(v-else, class="e-table")
@@ -48,11 +51,12 @@ import { Text } from '@/helpers/ehr-text'
 import ClassListActions from '@/outside/components/lms-activity/ClassListActions.vue'
 import ActivityActions from '@/outside/components/lms-activity/ActivityActions.vue'
 import UiLink from '@/app/ui/UiLink.vue'
+import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
 
 const debug = false
 export default {
   extends: OutsideCommon,
-  components: { UiLink, ActivityActions, ClassListActions, ZoneLmsPageBanner  },
+  components: { ZoneLmsInstructionsHeader, UiLink, ActivityActions, ClassListActions, ZoneLmsPageBanner  },
   data () {
     return {
       text: Text.ACTIVITY_PAGE,

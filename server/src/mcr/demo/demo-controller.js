@@ -50,12 +50,14 @@ export default class DemoController {
     lObjDef.toolConsumer = toolC // just needs toolConsumer and seed to be ready to create db object
     let seedId
     let appType = APP_TYPE_LIS // default to medLab; the first profession that wanted this feature
-    if (!activity.multiPatient) {
+    if (activity.seedDef) {
       const seedDef = activity.seedDef
       seedDef.toolConsumer = toolC._id
       let seed = await this.comCon.seedController.create(seedDef)
       seedId = seed._id
       appType = seed.appType
+    } else {
+      lObjDef.mPatientAppType = activity.mPatientAppType
     }
     const lBbj = await this.comCon.assignmentController.createAssignment(lObjDef, seedId)
     return {

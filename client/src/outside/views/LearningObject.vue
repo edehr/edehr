@@ -1,28 +1,60 @@
 <template lang="pug">
   div
     div
-      zone-lms-page-banner(:title="learningObject.name")
+      zone-lms-page-banner(:title="learningObject.name", theme='lobj-theme')
         learning-object-actions(class="flow_across_last_item", :learningObject="learningObject", :showDetails='false')
-    div(class="details-container card")
+    zone-lms-instructions-header
+      p.
+        A "Learning Object" is another name for "the content", or a "lesson plan", or "simulation plan". It defines what the student sees and does.
+        A Learning Object may have a Case Study which provides the simulated health records for a patient.
+        You may design a Learning Object to not have any case study which will require the student to search for the correct patient.
+      p.
+        Many activities might be using the same learning object so consider this when making changes to a learning object.
+
+    div(class="details-container")
+
+      div(class="details-row")
+        div(class="details-name") {{text.LOBJ}}
+        div(class="details-value")
+          div(class="details-important-text") {{ learningObject.name }}
+      zone-lms-instructions-element  The name above is seen by the student.
+
       div(class="details-row")
         div(class="details-name") {{ text.DESCRIPTION }}
         div(class="details-value")
-          div(v-text-to-html="learningObject.description")
+          div(class="details-important-text", v-text-to-html="learningObject.description")
+      zone-lms-instructions-element  The above description is visible to students using any activity that uses this learning object.
+
       div(class="details-row")
         div(class="details-name") {{ text.SEED }}
         div(class="details-value")
-          ui-link(:name="'seed-view'", :query="{seedId: learningObject.seedDataId}") {{ learningObject.seedName }}
+          ui-link(v-if="learningObject.seedDataId", :name="'seed-view'", :query="{seedId: learningObject.seedDataId}") {{ learningObject.seedName }}
+          div(v-else) (This learning object does not provide a case study.)
+      zone-lms-instructions-element  Every Learning Object has a Case Study which provides the simulated health records for a patient. Click on the link above to see, and perhaps edit, the details about this case study.
+
       div(class="details-row")
         div(class="details-name") Application type
-        div(class="details-value") {{ learningObject.appType }}
+        div(class="details-value")
+          app-type-details-page-element(:appType="learningObject.appType", :showEx='showEx')
+      app-type-details-page-element-explain
+
       div(class="details-row")
         div(class="details-name") {{text.USED}}
         div(class="details-value")
-          div(v-for="act in accessibleActivities", :key="act.visitId")
-            ui-link(:name="'lms-instructor-activity'", :query="{visitId: act.visitId}")
-              fas-icon(class="fa", :icon="appIcons.activity")
-              span &nbsp; {{act.courseTitle}} / {{act.activityTitle}}
-          div(v-if="unreachableActivityCount > 0 ") {{unreachableActivityText}}
+          div(v-if="actCount>0")
+            div(v-for="act in accessibleActivities", :key="act.visitId")
+              ui-link(:name="'lms-instructor-activity'", :query="{visitId: act.visitId}")
+                fas-icon(class="fa", :icon="appIcons.activity")
+                span &nbsp; {{act.courseTitle}} / {{act.activityTitle}}
+            div(v-if="unreachableActivityCount > 0 ") {{unreachableActivityText}}
+          div(v-else) (This learning object is not used by any activity.)
+      zone-lms-instructions-element The above tells you how many activities are using this learning object. If you have every accessed the activity from your LMS then it will appear in the list. Otherwise, you will see a count of the activities you can not access that are using this learning object.
+
+      div(class="details-row")
+        div(class="details-name") LMS Id
+        div(class="details-value") {{ learningObject.idForLTI }}
+      zone-lms-instructions-element The LMS ID can be used in your LMS connections to pre-link new activities to the same learning object.
+
       div(class="details-row")
         div(class="details-name") {{ text.DATES }}
         div(class="details-value").
@@ -39,10 +71,14 @@ import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
 import { downObjectToFile } from '@/helpers/ehr-utils'
 import { TextLearningObjects } from '@/helpers/ehr-text'
 import { Text } from '@/helpers/ehr-text'
+import AppTypeDetailsPageElement from '@/outside/components/AppTypeDetailsPageElement.vue'
+import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
+import ZoneLmsInstructionsElement from '@/outside/components/ZoneLmsInstructionsElement.vue'
+import AppTypeDetailsPageElementExplain from '@/outside/components/AppTypeDetailsPageElementExplain.vue'
 
 export default {
   extends: OutsideCommon,
-  components: { ZoneLmsPageBanner, LearningObjectActions, UiLink },
+  components: { AppTypeDetailsPageElementExplain, ZoneLmsInstructionsElement, ZoneLmsInstructionsHeader, AppTypeDetailsPageElement, ZoneLmsPageBanner, LearningObjectActions, UiLink },
   data () {
     return {
       text: Text.LOBJ_PAGE,

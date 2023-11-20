@@ -71,9 +71,9 @@ const wound1SeedDef = {
 
 const assignment4 = {
   description: 'This is a sample hematology lab ready for a student to begin. On the Med Lab Hematology page' +
-    'you will see a CBC analysis report. This is an automated report produced by an analyzer on a blood smear.' +
-    '(A blood smear is made by taking a drop of the patient\'s blood and placing it on a glass slide and then' +
-    'smearing it evening and thinly so you can see the individual blood cells under a microscope.)',
+    ' you will see a CBC analysis report. This is an automated report produced by an analyzer on a blood smear.' +
+    ' (A blood smear is made by taking a drop of the patient\'s blood and placing it on a glass slide and then' +
+    ' smearing it evenly and thinly so you can see the individual blood cells under a microscope.)',
   title: 'Hematology - Before'
 }
 const seedDef4 = {
@@ -88,15 +88,15 @@ const seedDef4 = {
 
 const assignment5 = {
   description: 'This is the same case study as the ' + assignment4.title + ' but now this case study' +
-    'contains the completed peripheral blood film (PBF) review. This is the detailed report completed' +
-    'by the technologist.  Note how this PBF contains many fields that are not normally seen in the ' +
-    'actual lab. These fields are present to help the student explore what they are learning and for' +
-    'the instructor to provide guidance.',
+    ' contains the completed peripheral blood film (PBF) review. This is the detailed report completed' +
+    ' by the technologist.  Note how this PBF contains many fields that are not normally seen in the ' +
+    ' actual lab. These fields are present to help the student explore what they are learning and for' +
+    ' the instructor to provide guidance.',
   title: 'Hematology - After'
 }
 
 const assignmentMP1 = {
-  description: 'This is a work in progress to experiment with a activity that lets the student choose their first patient',
+  description: 'Search for "bon" to find your patient. Then explore the hematology and urinalysis pages. ',
   title: 'Multi patient test'
 }
 
@@ -139,9 +139,9 @@ export const activity4 = {
   seedDef: seedDef4,
   resource_link_title: `${assignment4.title}`,
   resource_link_description: 'This demonstration activity illustrates the Hematology module in the EdEHR and shows a' +
-    'case study ready for the student to begin their lab exercise.  The student will exam a blood sample under' +
-    'a microscope and complete what is called a peripheral blood film (PBF) review.  The next activity shows the ' +
-    'completed PBF.',
+    ' case study ready for the student to begin their lab exercise.  The student will exam a blood sample under' +
+    ' a microscope and complete what is called a peripheral blood film (PBF) review.  The next activity shows the ' +
+    ' completed PBF.',
 }
 
 export const activity5 = {
@@ -153,7 +153,7 @@ export const activity5 = {
 
 export const activityMP1 = {
   lObjDef: assignmentMP1,
-  multiPatient: true,
+  mPatientAppType: 'LIS',
   resource_link_title: `${assignmentMP1.title}`,
   resource_link_description: 'Experiment',
 }
@@ -166,7 +166,7 @@ export const activityMedComplex = {
   },
   seedDef: medComplexLObj.caseStudy,
   resource_link_title: `${medComplexLObj.name}`,
-  resource_link_description: medComplexLObj.description,
+  resource_link_description: 'Medical Client with Complex Needs',
 }
 
 const mentalHealthLObj = require('../../resources/lobj_MentalHealthSim.json')
@@ -177,7 +177,7 @@ export const activityMentalHealth = {
   },
   seedDef: mentalHealthLObj.caseStudy,
   resource_link_title: `${mentalHealthLObj.name}`,
-  resource_link_description: mentalHealthLObj.description,
+  resource_link_description: 'Students will access the EdEHR to review the chart for Melissa Ashmann.',
 }
 
 
@@ -189,5 +189,5 @@ export const activityEhrOrientation = {
   },
   seedDef: ehrOrientation.caseStudy,
   resource_link_title: `${ehrOrientation.name}`,
-  resource_link_description: ehrOrientation.description,
+  resource_link_description: 'This activity is suitable as an introduction to EHR for students.',
 }

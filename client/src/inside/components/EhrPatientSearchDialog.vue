@@ -139,7 +139,13 @@ export default {
       // limit search to app type when needed.
       options.appType = lobj.appType
       if (options) {
+        /*
+        Searches the name, description, keyData.familyName and MRN fields.
+         */
         await this.$store.dispatch('mPatientStore/searchForPatientsBy', options)
+          .catch((err) => {
+            alert('Your search did not succeed. Try again with a short search term.')
+          })
       }
     },
     patientSelected () {

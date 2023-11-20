@@ -19,6 +19,8 @@ export default {
   },
   computed: {
     showLabels () { return StoreHelper.isOutsideShowButtonLabels() },
+    isDevelopingContent () { return StoreHelper.isDevelopingContent() },
+    showEx () { return this.$store.getters['system/showExplanationTextOutside']},
   },
   methods: {
     async loadBase () {

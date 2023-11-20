@@ -50,6 +50,7 @@ export default class ActivityController extends BaseController {
     const assignment = assignmentId ? await Assignment.findById(assignmentId) : undefined
     userActivity.hasLinkedLearningObject = !!assignment
     if (assignment) {
+      userActivity.idForLTI = assignment.idForLTI
       userActivity.learningObjectId = assignment._id
       userActivity.learningObjectName = assignment.name
       userActivity.learningObjectDescription = assignment.description
@@ -185,7 +186,7 @@ export default class ActivityController extends BaseController {
       }
       cs.activities.push(activity)
     })
-    console.log('----------------',results)
+    // console.log('----------------',results)
     return { activities: results }
   }
 

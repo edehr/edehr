@@ -1,7 +1,7 @@
 {
   "appType": "EHR",
   "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
-  "description": "Students will access the EdEHR to review the chart for Melissa Ashmann.\nAfter completing the simulation, students will be asked to enter a DAR format nurse's note, as part of their reflection on the case.",
+  "description": "Students will access the EdEHR to review the chart for Melissa Ashmann.",
   "name": "Mental Health sim",
   "caseStudy": {
     "isDefault": false,

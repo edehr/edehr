@@ -24,7 +24,7 @@
           h2 Step 3
           p Determine if you want the student to work with a case study or if you want them to start with a blank charting system and make them locate the patient (case study).
         div(class="dialog-item")
-          label Use cast study?
+          label Use case study?
           app-type-toggle-button(
             v-bind:useColour="false",
             :modelValue='useCaseStudy',
@@ -246,9 +246,10 @@ export default {
         await this.fetchSeedSelectionList()
         this.selectedSeedId = learningObject.seedDataId || ''
         this.useCaseStudy = !!learningObject.seedDataId
-      } else if (options.action === 'create') {
+      }
+      else if (options.action === 'create') {
         this.actionType = CREATE_ACTION
-        this.useCaseStudy = true
+        this.useCaseStudy = !!options.seed
         // seedModel is optional. If given then load the correct list of seeds and per-select the given seed
         if (options.seed) {
           this.appType = options.seed.appType
@@ -257,7 +258,8 @@ export default {
         } else {
           await this.fetchSeedSelectionList()
         }
-      } else {
+      }
+      else {
         console.error('Coding error. Must provide edit or create option for this dialog open')
         return
       }

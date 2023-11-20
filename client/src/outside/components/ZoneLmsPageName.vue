@@ -27,11 +27,13 @@ export default {
 <style lang='scss' scoped >
 @import '../../scss/definitions';
 .zone_lms_page_name {
+  padding-top: 5px;
+
   font-size: 1.3rem;
 }
-@media screen and (max-width: $main-width-threshold3) {
+@media screen and (max-width: $main-width-threshold4) {
   .zone_lms_page_name {
-    margin-left: $ehr-layout-padding-left;
+    margin-left: 0; // $ehr-layout-padding-left;
   }
 }
 </style>

@@ -571,7 +571,7 @@ describe('assignment tests', () => {
     should.doesNotThrow(async () => {
       await axiosMockHelper.prepareAxiosResponse('put', updatedAssignment)
       await axiosMockHelper.prepareAxiosResponse('get', { assignments })
-      const result = await StoreHelper.updateAssignment(this, updatedAssignment._id, updatedAssignment)
+      const result = await StoreHelper.updateAssignment(updatedAssignment, updatedAssignment)
       should.exist(result)
       result.includes(updatedAssignment).should.equal(true)
     })

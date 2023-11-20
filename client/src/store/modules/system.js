@@ -25,6 +25,7 @@ const state = {
   // disable this ability to toggle labels. Force all to be hidden to be icon only.
   // TODO IF this doesn't cause problems for users then come back and remove the code that manages this state
   outsideShowButtonLabels: false,
+  showExplanationTextOutside: false,
   scratchPadVisible: false,
   seedTableCollapse: {},
   smallWindow: false,
@@ -50,6 +51,7 @@ const getters = {
   paginateLimit: state => state.paginateLimit,
   scratchPadVisible: state => state.scratchPadVisible,
   seedTableCollapse: state => (tableKey) => state.seedTableCollapse[tableKey],
+  showExplanationTextOutside: state => state.showExplanationTextOutside,
   sysMessage: state => state.sysMessage,
   showingEHR: state => state.showingEHR,
   showingLIS: state => state.showingLIS
@@ -83,8 +85,8 @@ const actions = {
     })
   },
   setAppTypes ( {commit}, value) {
-    if(!value || ! Array.isArray(value)) {
-      console.error('Coding error setting app types with providing an array')
+    if(!value || Array.isArray(value)) {
+      console.error('Coding error setting app types. Only one type is allowed. No arrays')
       return
     }
     commit('setAppTypes', value)
@@ -99,6 +101,9 @@ const actions = {
   },
   setCondensedTableVertical ( {commit}, value) {
     commit('setCondensedTableVertical', value)
+  },
+  setShowExplanationTextOutside ( {commit}, value) {
+    commit('setShowExplanationTextOutside', value)
   },
   setScratchPadVisible ( context, trueFalse ) {
     context.commit('_setScratchPadVisible', trueFalse)
@@ -123,6 +128,7 @@ const actions = {
 
 const mutations = {
   initialize: function (state) {
+    state.showExplanationTextOutside = localStorage.getItem('showExplanationTextOutside') === 'true'
     state.caseContextFeature = localStorage.getItem('CaseContextFeature') === 'true'
     state.condensedTableVertical = localStorage.getItem('CondensedTableVertical') === 'true'
     let asStored = localStorage.getItem('SeedTableCollapse')
@@ -130,9 +136,9 @@ const mutations = {
     state.lmsNavCollapsed = localStorage.getItem('LmsNavCollapsed') === 'true'
     asStored = localStorage.getItem('appTypes')
     if (asStored) {
-      state.checkAppTypes = asStored.split(',')
+      state.checkAppTypes = asStored
     } else {
-      state.checkAppTypes = []
+      state.checkAppTypes = ''
     }
     // disable this ability to toggle labels. Force all to be hidden to be icon only.
     // TODO IF this doesn't cause problems for users then come back and remove the code that manages this state
@@ -145,9 +151,9 @@ const mutations = {
     // console.log('System store set ApiData: ', apiData)
     state.apiData = apiData
   },
-  setAppTypes: (state, appTypesArray) => {
-    state.checkAppTypes = appTypesArray
-    localStorage.setItem('appTypes', appTypesArray.join(','))
+  setAppTypes: (state, appType) => {
+    state.checkAppTypes = appType
+    localStorage.setItem('appTypes', appType)
   },
   incrAppDialogCount: (state) => {
     state.appDialogCount++
@@ -191,6 +197,10 @@ const mutations = {
   },
   setSeeding: (state, isSeeding) => {
     state.isSeeding = isSeeding
+  },
+  setShowExplanationTextOutside: (state, value)=> {
+    localStorage.setItem('showExplanationTextOutside', value)
+    state.showExplanationTextOutside = value
   },
   setCurrentPageKey: (state, pageKey) => {
     state.currentPageKey = pageKey

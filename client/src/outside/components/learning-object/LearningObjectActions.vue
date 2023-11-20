@@ -1,6 +1,6 @@
 <template lang='pug'>
   div
-    div(class="flow_across flow_across_right flow_wrap menu_space_across")
+    div(class="flow_across")
       zone-lms-button(v-if="canDo", @action="showEditDialog",
           :title="text.PROPERTIES_TP",
           :icon='appIcons.configure',
@@ -14,7 +14,7 @@
         :disabled="activityCount > 0",
         :learningObject='learningObject',
         @learningObjectDeleted='learningObjectDeleted')
-    learning-object-dialog(ref="theDialog")
+    learning-object-dialog-no-case-create(ref="theDialog", @update="updateTheLobj")
 </template>
 
 <script>
@@ -23,7 +23,7 @@ import UiLink from '@/app/ui/UiLink'
 import StoreHelper from '@/helpers/store-helper'
 import LearningObjectDuplicate from '@/outside/components/learning-object/LearningObjectDuplicate'
 import LearningObjectDelete from '@/outside/components/learning-object/LearningObjectDelete'
-import LearningObjectDialog from '@/outside/components/learning-object/LearningObjectDialog'
+import LearningObjectDialogNoCaseCreate from '@/outside/components/learning-object/LearningObjectDialogNoCaseCreate.vue'
 import { downloadLearningObjectToFile } from '@/helpers/ehr-utils'
 import { Text } from '@/helpers/ehr-text'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton'
@@ -33,7 +33,7 @@ import ZoneLmsButton from '@/outside/components/ZoneLmsButton'
 // }
 
 export default {
-  components: { ZoneLmsButton, LearningObjectDialog, LearningObjectDelete, LearningObjectDuplicate, UiLink },
+  components: { ZoneLmsButton, LearningObjectDelete, LearningObjectDuplicate, UiLink, LearningObjectDialogNoCaseCreate },
   data () {
     return {
       appIcons: APP_ICONS,
@@ -72,6 +72,9 @@ export default {
     learningObjectDeleted () {
       // send a timestamp in query to prevent NavigationDuplication error from vue router.
       this.$router.push({ name: 'learning-objects', query: { ts: Date.now() } })
+    },
+    async updateTheLobj (lObj) {
+      await StoreHelper.updateAssignment(this.learningObject, lObj)
     },
   },
 }

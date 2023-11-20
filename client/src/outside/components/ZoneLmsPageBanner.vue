@@ -1,7 +1,7 @@
 <template lang="pug">
-  div(class="flow_across page_banner")
+  div(class="page_banner", :class='theme')
     zone-lms-page-name(class='left_side', :title='title')
-    div(class='flow_across_last_item')
+    div(class='right_side')
       slot
 </template>
 <script>
@@ -10,6 +10,7 @@ export default {
   components: { ZoneLmsPageName },
   props: {
     title: { type: String, default: undefined },
+    theme: { type: String }
   },
   computed: {
   }
@@ -23,27 +24,29 @@ export default {
 }
 @media screen and (max-width: $main-width-threshold3) {
   .zone_lms_page_name {
-    margin-left: $ehr-layout-padding-left;
+    margin-left: 0;
   }
 }
 .page_banner {
-  background-color: $grey03;
+  display: flex;
+  flex-direction: row;
+  background-color: $activity-header-colour;
   padding: 5px;
 }
 
 .left_side {
-  min-width: 30%;
+  padding-left: 5px;
+  min-width: 60%;
 }
 .right_side {
-  width: 75%;
+  align-self: end;
+  margin-left: auto;
+  padding-right: 5px;
 }
-@media screen and (max-width: $main-width-threshold3) {
-  .flow_across {
-    flex-direction: column;
-  }
-  .left_side,
-  .right_side {
-    width: 100%;
-  }
+.page_banner.lobj-theme {
+  background-color: $lobj-header-colour;
+}
+.page_banner.seed-theme {
+  background-color: $seed-header-colour;
 }
 </style>

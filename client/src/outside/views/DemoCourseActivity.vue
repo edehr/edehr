@@ -99,7 +99,7 @@ export default {
 
         //consumer
         tool_consumer_instance_guid: 'de-'+this.toolConsumerKey,
-        tool_consumer_instance_name:'EdEHR Demo LMS',
+        tool_consumer_instance_name:'Demo EdEHR LMS',
         tool_consumer_info_product_family_code: 'EdEHR Demo LMS',
         tool_consumer_instance_description:'Simulation LMS for demonstration of the EdEHR',
 

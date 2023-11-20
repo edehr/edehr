@@ -16,6 +16,17 @@ button,
 }
 
 /*
+Take a little control here to make sure buttons, with focus, don't become passive grey blobs.
+To see this effect, be an instructor, go to an activity, select the gear button, select a learning object in the list. The save button should now be focused.
+ */
+.button.is-primary:focus,
+{
+  background-color: $brand-primary-hover;
+  border-color: $brand-primary;
+  color: inherit;
+}
+
+/*
 The ehr area has a context banner that represents the outer LMS side.
 When there is a button there we want it to match those on the outside
  */
