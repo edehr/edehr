@@ -6,7 +6,7 @@
           :icon='appIcons.configure',
           :text='text.PROPERTIES')
       learningObject-duplicate(v-if="canDo", :learningObject='learningObject', @newLearningObject='learningObjectDuplicated')
-      zone-lms-button(@action="downloadLearningObject",
+      zone-lms-button(v-if="canDo", @action="downloadLearningObject",
         :title="text.DOWNLOAD_TP",
         :icon='appIcons.download',
         :text='text.DOWNLOAD')
