@@ -1,0 +1,28 @@
+{
+  "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "ehrData": {
+    "meta": {
+      "simTime": {
+        "visitDay": 0,
+        "visitTime": "0900"
+      },
+      "ehrVersion": "ev2.4.0"
+    },
+    "demographics": {
+      "mrn": "3140003",
+      "givenName": "Lou",
+      "middleName": "P",
+      "familyName": "Mitchell",
+      "personAge": "28",
+      "dateOfBirth": "1995-11-20",
+      "gender": "Female"
+    }
+  },
+  "appType": "LIS",
+  "description": "",
+  "name": "Mitchell - 3140003",
+  "tagList": [
+    "Urinalysis"
+  ],
+  "version": "1.0"
+}

@@ -227,6 +227,7 @@ export default class AssignmentController extends BaseController {
       seedDataId: 1,
       createDate: 1,
       idForLTI: 1,
+      mPatientAppType: 1,
       lastUpdateDate: 1,
     }
   }
@@ -234,12 +235,14 @@ export default class AssignmentController extends BaseController {
     return 'seedDataId'
   }
   paginateInitialFieldSet () {
-    return { _id: 1, name:1, seedDataId: 1 }
+    return { _id: 1, name:1, seedDataId: 1, mPatientAppType: 1 }
   }
   paginateInitialFilter (resultSet, options) {
     return resultSet.filter( item => {
       // now some LObjs may not have a seed.
-      return item.seedDataId ? options.appTypes.includes(item.seedDataId.appType) : true
+      let appType = item.seedDataId ? item.seedDataId.appType : item.mPatientAppType
+      if(!appType) console.log('paginateInitialFilter', item)
+      return options.appTypes.includes(appType)
     })
   }
 

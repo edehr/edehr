@@ -16,10 +16,11 @@ describe('Counters testing', function () {
   })
 
   it('do counter', async function () {
-    let tt = await getNextSequence('LOBJ')
-    tt = await getNextSequence('LOBJ')
+    let tc = 'abcdefgh'
+    let tt = await getNextSequence(tc,'LOBJ', 4)
+    tt = await getNextSequence(tc,'LOBJ', 4)
     tt.should.equal('0002')
-    tt = await getNextSequence('LOBJ')
+    tt = await getNextSequence(tc, 'LOBJ', 4)
     tt.should.equal('0003')
   })
 

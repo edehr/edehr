@@ -1,0 +1,145 @@
+{
+  "appType": "EHR",
+  "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "description": "Please note that these instructions have not yet been reviewed by a professional. Please send your suggestions to info@edehr.org\n\nThe teenage patient arrives at ER at 2am, accompanied by her parents, complaining of severe pain in her upper left back molar, which she states has worsened over the past 5 hours. Although the patient has an appointment to see her dentist later in the day, she presents with a request for urgent pain relief.  See the chart for further details, including medical history.\n\nThe attending physician is prescribing 8 doses of 1 mg hydromorphone. What questions do you have about the physician’s order? What further communication, and with whom, is warranted? What information will you give to the patient and her family?\n\nThis is an oral health issue so you may do some research and find the following resources.\n\nA paper called \"Prescribing and Dispensing Drugs\" https://portal.oralhealthbc.ca/CDSBCPublicLibrary/Prescribing-and-Dispensing-Drugs-Standard-and-Guideline.pdf on the website of the B.C. College of Oral Health Professionals says on page 5 that “over-prescribing of opioid pharmaceuticals by health care professionals is a problem.” Their guidelines suggest dentists question if there is a reasonable non-narcotic alternative to opioids. If they do prescribe opioids, they’re asked to consider the minimum dose and number for pain control in the immediate post-operative period. \n\nThe paper \"Trends in national opioid prescribing for dental procedures among patients enrolled in Medicaid\" (https://jada.ada.org/article/S0002-8177(21)00244-0/fulltext) says \"Although the trends revealed in the analysis show declining opioid prescription patterns, these results suggest that the overall rate is still too high and prescriptions are being written unnecessarily.\"\n\nAnother paper \"Pain Management: Part 1: Managing Acute and Postoperative Dental Pain\" (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2886920/) says \"for decades studies have repeatedly found that NSAIDs are generally superior to opioids at conventional dosages\"\n\nThe pamphlet \"How to Manage Pain After a Dental Procedure Without Opioids\" (https://health.ri.gov/publications/instructions/ManagingPainAfterDentalSurgery.pdf) offers some suggestions.\n",
+  "name": "ER tooth pain management",
+  "caseStudy": {
+    "isDefault": false,
+    "tagList": [],
+    "appType": "EHR",
+    "description": "A teen visits the ER at 2 in the morning with severe tooth pain.",
+    "contributors": "Bryan Gilbert, Joan Humphries",
+    "ehrData": {
+      "meta": {
+        "simTime": {
+          "visitDay": 0,
+          "visitTime": "0200"
+        },
+        "ehrVersion": "ev2.4.0"
+      },
+      "demographics": {
+        "mrn": "3213456",
+        "givenName": "Maureen",
+        "familyName": "Stoppard",
+        "personAge": "17",
+        "dateOfBirth": "2006-03-15",
+        "gender": "Female",
+        "languagePrimary": "English",
+        "martialStatus": "Single",
+        "streetAddress": "123 SomeStreet",
+        "city": "Medium",
+        "lastUpdate": "2023-11-04T16:39:58+00:00",
+        "height": "167",
+        "weight": "59"
+      },
+      "allergies": {
+        "checkbox": true,
+        "lastUpdate": "2023-11-04T15:59:53+00:00"
+      },
+      "psychosocial": {
+        "livingSituation": "Lives at home with her mother and father. ",
+        "lastUpdate": "2023-11-05T23:01:45+00:00",
+        "history": "Two years ago experienced suicidal ideation the patient attributes to fluoxetine"
+      },
+      "familyHistory": {
+        "history": "Maureen reports that her parents are very supportive. She reports that her mother has a history of prescription drug addiction as a youth,  following a prescription for Percocet from her family doctor for endometriosis-related pain.\nThe patient's father also has a history of addiction.\nBoth Maureen’s mother and father have lived drug-free for 13 and 12 years, respectively.\n ",
+        "lastUpdate": "2023-11-05T23:00:31+00:00"
+      },
+      "medical": {
+        "history": "Maureen reports that two years ago fluoxetine was prescribed for anxiety and depression.  Maureen also reports that her symptoms worsened as a result of the medication, and she experienced suicidal ideation. An overdose of fluoxetine followed. She was successfully treated for the overdose, and received counselling. Subsequently, ADHD was diagnosed, but she is currently managing her symptoms without medication.",
+        "lastUpdate": "2023-11-05T22:59:11+00:00"
+      },
+      "visit": {
+        "admissionTime": "0200",
+        "status": "Outpatient",
+        "diagnosis": "Severe tooth pain upper right molar.",
+        "notes": "Patient has had tooth pain since yesterday morning and has taken four 500 mg Tylenol over the course of the day. The tooth pain is very severe and she plans on visiting her dentist tomorrow.\n\nPatient reports she is here at ER with her mother's consent.",
+        "lastUpdate": "2023-11-04T16:29:28+00:00"
+      },
+      "pain": {
+        "table": [
+          {
+            "table_name": "Admin",
+            "table_day": 0,
+            "table_time": "0200",
+            "location": "Mouth",
+            "painScale": "9",
+            "onset": "yesterday morning",
+            "type": "aching and throbbing",
+            "alleviationAssociatedSymptoms": "heat alleviates the pain but only a little",
+            "radiation": "jaw",
+            "comments": "Appears the patient's tooth is abscess. Patient will see her dentist tomorrow for further investigation and treatment. ",
+            "createdDate": "2023-11-04T09:35:00-07:00",
+            "table_id": "pain.table.0"
+          }
+        ],
+        "lastUpdate": "2023-11-04T16:35:00+00:00"
+      },
+      "medicationOrders": {
+        "medicationOrdersTable": [
+          {
+            "medicationOrdersTable_name": "Howard",
+            "medicationOrdersTable_profession": "MD",
+            "medicationOrdersTable_day": 0,
+            "medicationOrdersTable_time": "0200",
+            "med_timing": "once",
+            "med_route": "inje",
+            "med_reason": "severe tooth pain",
+            "med_medication": "Lidocaine 2% with 1:100,000 epinephrine",
+            "med_dose": "1.8 mL",
+            "createdDate": "2023-11-04T09:48:09-07:00",
+            "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.0"
+          }
+        ],
+        "lastUpdate": "2023-11-04T16:48:10+00:00"
+      },
+      "medAdminRec": {
+        "marTable": [
+          {
+            "marTable_name": "Howard",
+            "marTable_profession": "MD",
+            "marTable_day": 0,
+            "marTable_time": "0200",
+            "med_order_embedded": "medicationOrders.medicationOrdersTable.0",
+            "mo_medOrder": "Lidocaine 2% with 1:100,000 epinephrine, 1.8 mL, Injection",
+            "mo_timing": "once",
+            "mo_id": "medicationOrders.medicationOrdersTable.0",
+            "mo_secondSig": "medicationOrders.medicationOrdersTable.0",
+            "mar_status": "Administered",
+            "mar_dose": "1.8 mL",
+            "mar_route": "inje",
+            "undefined": "medicationOrders.medicationOrdersTable.0",
+            "medicationOrdersTable_name": "Howard",
+            "medicationOrdersTable_profession": "MD",
+            "medicationOrdersTable_day": 0,
+            "medicationOrdersTable_time": "0200",
+            "med_timing": "once",
+            "med_route": "inje",
+            "med_reason": "severe tooth pain",
+            "med_medication": "Lidocaine 2% with 1:100,000 epinephrine",
+            "med_dose": "1.8 mL",
+            "createdDate": "2023-11-04T09:48:43-07:00",
+            "marTable_id": "medAdminRec.marTable.0"
+          }
+        ],
+        "lastUpdate": "2023-11-04T16:48:43+00:00"
+      }
+    },
+    "name": "Maureen STOPPARD",
+    "mrn": "3213456",
+    "version": "1.0",
+    "keyData": {
+      "dateOfBirth": "2006-03-15",
+      "personAge": "17",
+      "gender": "Female",
+      "mrn": "3213456",
+      "phn": null,
+      "familyName": "STOPPARD",
+      "givenName": "Maureen"
+    },
+    "createDate": "2023-11-05T03:50:56.538Z",
+    "lastUpdateDate": "2023-11-05T23:01:45.545Z",
+    "__v": 0,
+    "draftRowCount": 0
+  }
+}

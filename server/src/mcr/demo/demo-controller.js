@@ -10,7 +10,7 @@ import {
   activity4,
   activity5,
   activityMP1,
-  activityMedComplex, activityMentalHealth, activityEhrOrientation
+  activityMedComplex, activityMentalHealth, activityEhrOrientation, activity6
 } from '../common/assignment-defs'
 import { fail, ok } from '../common/utils'
 import Consumer from '../consumer/consumer'
@@ -67,6 +67,23 @@ export default class DemoController {
     }
   }
 
+  async _createExtraSeeds (toolConsumerKey) {
+    let seeds = []
+    async function importSeed (seedDef) {
+      seedDef.toolConsumer = toolConsumerKey
+      let seed = await this.comCon.seedController.create(seedDef)
+      seeds.push(seed)
+    }
+    await importSeed.call(this, require('../../resources/seeds/CorserRodger3140005.json'))
+    await importSeed.call(this, require('../../resources/seeds/HarveyRosalie3140002.json'))
+    await importSeed.call(this, require('../../resources/seeds/HyettWayne3140004.json'))
+    await importSeed.call(this, require('../../resources/seeds/McGahanAnna3140006.json'))
+    await importSeed.call(this, require('../../resources/seeds/MitchelLou-3140003.json'))
+    await importSeed.call(this, require('../../resources/seeds/PowerHarry3140001.json'))
+    await importSeed.call(this, require('../../resources/seeds/WilliamsPaul3140007.json'))
+    return seeds
+  }
+
   async _createDemoToolConsumer (req, res, next) {
     try {
       let theId = req.body.id
@@ -90,10 +107,11 @@ export default class DemoController {
         lObjList: []
       }
       // see comment below about lObjList
-      const activities = [ activity1, activity2, activity3, activity4, activity5, activityMP1, activityMedComplex, activityMentalHealth, activityEhrOrientation ]
+      const activities = [ activity1, activity2, activity3, activity4, activity5, activity6, activityMP1, activityMedComplex, activityMentalHealth, activityEhrOrientation ]
       for (let i = 0; i< activities.length; i++ ) {
         demoData.lObjList.push(await this.createSampleSeedAndObj(activities[i], toolC))
       }
+      await this._createExtraSeeds(toolC._id)
       if (debugDC) debug('DemoController generate token')
       // the demo token contains information about the demo system.  It doesn't need
       // any expiry since it's not a user log in control, it's just information.
@@ -132,6 +150,7 @@ export default class DemoController {
           activities: [
             activityEhrOrientation,
             activity3,
+            activity6,
             activityMedComplex,
             activityMentalHealth,
             activity1,

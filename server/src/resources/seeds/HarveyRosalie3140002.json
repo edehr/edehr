@@ -1,0 +1,26 @@
+{
+  "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "ehrData": {
+    "meta": {
+      "simTime": {
+        "visitDay": 0,
+        "visitTime": "0900"
+      },
+      "ehrVersion": "ev2.4.0"
+    },
+    "demographics": {
+      "mrn": "3140002",
+      "givenName": "Rosalie",
+      "familyName": "Harvey",
+      "personAge": "27",
+      "dateOfBirth": "1996-02-16",
+      "gender": "Female"
+    }
+  },
+  "appType": "LIS",
+  "description": "",
+  "name": "Harvey - 3140002",
+  "tagList": [
+    "Urinalysis"
+  ]
+}

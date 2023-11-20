@@ -4,7 +4,7 @@
     "checkVer": "node checkNodeVersion.js",
     "build": "npm run checkVer && npm run clean && npm run build:babel && npm run build:resources",
     "build:babel": "mkdir -p build && babel src --out-dir ./build",
-    "build:resources": "mkdir -p build/resources && cp src/resources/* build/resources",
+    "build:resources": "mkdir -p build/resources/seeds && cp src/resources/*.json build/resources && cp src/resources/seeds/*.json build/resources/seeds",
     "clean": "rm -rf build",
     "db-clean": "NODE_ENV=development DEBUG='server, error' npx babel-node src/util/db-clean.js",
     "db-clean-nodemon": "NODE_ENV=development DEBUG='server, error' nodemon --ignore 'deleted/*' --exec babel-node src/util/db-clean.js",

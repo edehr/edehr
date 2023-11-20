@@ -1,0 +1,27 @@
+{
+  "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "ehrData": {
+    "meta": {
+      "simTime": {
+        "visitDay": 0,
+        "visitTime": "0900"
+      },
+      "ehrVersion": "ev2.4.0"
+    },
+    "demographics": {
+      "mrn": "3140001",
+      "givenName": "Harry",
+      "familyName": "Power",
+      "personAge": "67",
+      "dateOfBirth": "1956-07-01",
+      "gender": "Male"
+    }
+  },
+  "appType": "LIS",
+  "description": "",
+  "name": "Power - 3140001",
+  "tagList": [
+    "Urinalysis"
+  ],
+  "version": "1.0"
+}
