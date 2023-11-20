@@ -6,7 +6,6 @@ import { updateAllEhrData } from './dbSeeder'
 require('../mcr/seed/seed-data')
 import SeedData from '../mcr/seed/seed-data'
 import Helper from '../mcr/common/test-helper'
-import ActivityData from '../mcr/activity-data/activity-data'
 import EhrDataModel from '../ehr-definitions/EhrDataModel'
 const helper = new Helper()
 
@@ -83,14 +82,6 @@ let sampleData = {
   version: '1.0',
   ehrData: ehrData
 }
-const theVisitId = Helper.sampleObjectId()
-const theConsumerId = Helper.sampleObjectId()
-
-const sampleAD = {
-  assignmentData: ehrData,
-  toolConsumer: theConsumerId,
-  visit: theVisitId
-}
 
 function verifyVersion (ehrData) {
   const version = EhrDataModel.MetaEhrVersion(ehrData)
@@ -110,7 +101,6 @@ describe('DB seeding updating tests....', function () {
   })
 
   it('updateAllEhrData', async function () {
-    const newActivityData = new ActivityData(sampleAD)
     const newSeed = new SeedData(sampleData)
     // eslint-disable-next-line no-unused-vars
     const newS =  await newSeed.save()

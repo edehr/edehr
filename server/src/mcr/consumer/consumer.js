@@ -6,6 +6,7 @@ const Schema = new mongoose.Schema({
   oauth_consumer_secret: { type: String, required: [true, 'Require consumer secret'] },
   lti_version: {type: String},
   is_primary: { type: Boolean, required: [ true, 'Must specify if consumer is primary or not']},
+  featureFlags: {type: String}, // space separated list of camelCase flag ids. If a feature flag id is persent then disable the feature. If not present then proceed.
   tool_consumer_info_product_family_code: {type: String},
   tool_consumer_info_version: {type: String},
   tool_consumer_instance_description: {type: String},

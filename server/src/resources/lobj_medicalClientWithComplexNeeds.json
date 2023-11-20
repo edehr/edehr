@@ -1,7 +1,7 @@
 {
   "appType": "EHR",
   "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
-  "description": "Before Sim, access the EHR to answer the following questions:\n1) Locate the physician's admission dictation. Why has George been admitted to hospital? What events led up to him being brought in?\n2) What ELSE is going on for George?\n3) What medical history contributed to this admission?\n4) What medications is George taking? Which ones are likely new since the admission?\n5) Are there any diagnostics that are concerning? What are they and what do they indicate?\n6) What are your priorities?\n\nAfter Sim, complete the following documentation:\n1) Enter the vital signs that you have recorded from ONE of the scenes you participated in.\n2) Enter the focused systems assessment that you completed as your baseline in the same scene as above\n3) Complete a DAR narrative entry in the progress notes that details the second scene that you participated in as it occurred",
+  "description": "Students will access the EdEHR to review the chart for George Hart.",
   "name": "Medical Client with Complex Needs",
   "caseStudy": {
     "isDefault": false,

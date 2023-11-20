@@ -36,7 +36,6 @@ import UiButton from '@/app/ui/UiButton'
 import UiInfo from '@/app/ui/UiInfo'
 import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import { demoText } from '@/appText'
-import { textToHtml } from '@/directives/text-to-html'
 
 const debugDC = false
 

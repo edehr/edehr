@@ -1,24 +1,31 @@
 <template lang="pug">
   div
     zone-lms-page-banner(:title="course.title")
-      div(class="flow_across menu_space_across flow_across_right")
-        zone-lms-button(
-          v-if="isInstructor",
-          @action="showEditDialog(course)",
-          :title="toolTip",
-          :icon='appIcons.configure',
-          :text='buttonText'
-        )
-    div(class="details-container card")
-      div(class="course-description") {{ course.description }}
+      zone-lms-button(
+        v-if="isInstructor",
+        @action="showEditDialog(course)",
+        :title="toolTip",
+        :icon='appIcons.configure',
+        :text='buttonText'
+      )
+    zone-lms-instructions-header
+      p {{ text.COURSE_PAGE_INTRO }}
+      p(v-if='isInstructor')
+        | Click on the gears button &nbsp;
+        fas-icon( class="fa", :icon="appIcons.configure")
+        | &nbsp; to view the course configuration. Enable 'Course designer mode' to edit the configuration.
+      p(v-if='isInstructor')
+        | Click on the stopwatch button &nbsp;
+        fas-icon( class="fa", :icon="appIcons.stopwatch")
+        | &nbsp; to enable the "Skills Assessment Mode".  This is where students are only permitted to view the activities you select.
+      p(v-else) {{ text.ACTIVITY_STUDENT_SELECT_NAV }}
+
+    div(class="details-container")
+      div(class="course-description") Course description: {{ course.description ? course.description : '(empty)' }}
       div(class='flow_across menu_space_across')
-        h3(v-if='isInstructor', class="instructions")
-          span This course has {{countActivities}} activities.
-          span &nbsp;  {{ text.ACTIVITY_INSTRUCTOR_SELECT_NAV }}
-        div(v-else, class="instructions") {{ text.ACTIVITY_STUDENT_SELECT_NAV }}
         // SKILLS ASSESSMENT
         div(v-if="skillsIsActivityActive", class='flow_across menu_space_across')
-          h3 Note that the skills assessment mode is active. &nbsp;
+          div Note that the skills assessment mode is active. &nbsp;
             ui-info(title="Skills assessment", :html="skillsText")
           div(v-if='isInstructor')
             ui-button(
@@ -32,32 +39,20 @@
 
     div(class="e-table")
       div(class="thead")
-        div(class="thcell")
-          div(class="flow_across")
-            div Activity Name
-            ui-table-header-button(
-              class="flow_across_last_item",
-              v-on:buttonClicked="sortColumnToggle(columnName)",
-              title="Sort by name")
-              fas-icon(class="fa", :icon="sortColumnIcon(columnName)")
-        div(class="thcell") Activity Instructions
+        div(class="thcell") Name
+          ui-table-header-button(
+            class="flow_across_last_item",
+            v-on:buttonClicked="sortColumnToggle(columnName)",
+            title="Sort by name")
+            fas-icon(class="fa", :icon="sortColumnIcon(columnName)")
+        div(class="thcell") Instructions
         div(class="thcell") Feedback Viewable
-        div(class="thcell")
-          div(class="flow_across")
-            div Last update
-            ui-table-header-button(
-              class="flow_across_last_item",
-              v-on:buttonClicked="sortColumnToggle(columnUpdated)",
-              title="Sort by updated date")
-              fas-icon(class="fa", :icon="sortColumnIcon(columnUpdated)")
-        div(class="thcell")
-          div(class="flow_across")
-            div Created date
-            ui-table-header-button(
-              class="flow_across_last_item",
-              v-on:buttonClicked="sortColumnToggle(columnCreated)",
-              title="Sort by created date")
-              fas-icon(class="fa", :icon="sortColumnIcon(columnCreated)")
+        div(class="thcell") Updated
+          ui-table-header-button(
+            class="flow_across_last_item",
+            v-on:buttonClicked="sortColumnToggle(columnUpdated)",
+            title="Sort by updated date")
+            fas-icon(class="fa", :icon="sortColumnIcon(columnUpdated)")
         div(v-if="isStudent", class="thcell") Status
         div(class="thcell e-actions") &nbsp;
       div(class="tbody")
@@ -79,8 +74,6 @@
             span {{ activityItem.feedbackViewable ? 'Yes' : 'No'}}
           div(class='cell e-date')
             span {{ activityItem.lastUpdate | formatDateTime }}
-          div(class='cell e-date')
-            span {{ activityItem.createDate | formatDateTime }}
           div(v-if="isStudent", class='cell e-status')
             div {{ activityItem.submitted ? 'Submitted' : 'Open to edit' }}
           div(class="cell e-actions")
@@ -117,6 +110,7 @@ import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner.vue'
 import UiInfo from '@/app/ui/UiInfo.vue'
 import UiConfirm from '@/app/ui/UiConfirm.vue'
 import UiAgree from '@/app/ui/UiAgree.vue'
+import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
 
 const ASC = 'asc'
 const DESC = 'desc'
@@ -124,6 +118,7 @@ const DESC = 'desc'
 export default {
   extends: OutsideCommon,
   components: {
+    ZoneLmsInstructionsHeader,
     UiAgree,
     UiConfirm,
     UiInfo,

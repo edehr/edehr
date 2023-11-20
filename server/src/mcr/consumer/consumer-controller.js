@@ -149,6 +149,8 @@ export default class ConsumerController extends BaseController {
       consumer.seedCount = seeds.length
       let users = await User.find({ toolConsumer: consumerId }, {fullName: 1})
       consumer.userCount = users.length
+      let flags = consumer.featureFlags || ''
+      consumer.featureFlags = flags.split(' ')
       if (isAdmin) {
         users.sort((a, b) => a.fullName.localeCompare(b.fullName))
         consumer.users = users
@@ -198,6 +200,42 @@ export default class ConsumerController extends BaseController {
     await this.addLearningObject(activity3,  tcId)
   }
 
+  async getFeatureFlags (consumerId) {
+    const consumer = await this.baseFindOneQuery(consumerId)
+    let flags = consumer.featureFlags || ''
+    flags = flags.split(' ')
+    return {featureFlags: flags}
+  }
+  async featureFlagsAdd (consumerId, flag) {
+    const consumer = await this.baseFindOneQuery(consumerId)
+    let flags = consumer.featureFlags || ''
+    flags = flags.split(' ')
+    if (!flags.includes(flag)) {
+      flags.push(flag)
+      consumer.featureFlags = flags.join(' ')
+      await consumer.save()
+    }
+    return {featureFlags: flags}
+  }
+  async featureFlagsRemove (consumerId, flag) {
+    const consumer = await this.baseFindOneQuery(consumerId)
+    let flags = consumer.featureFlags || ''
+    flags = flags.split(' ')
+    const index = flags.indexOf(flag)
+    if (index !== -1) {
+      flags.splice(index, 1)
+      consumer.featureFlags = flags.join(' ')
+      await consumer.save()
+    }
+    return {featureFlags: flags}
+  }
+  async featureFlagsEnableAll (consumerId) {
+    let consumer = await this.baseFindOneQuery(consumerId)
+    consumer.featureFlags = ''
+    consumer = await consumer.save()
+    return {featureFlags: []}
+  }
+
   route () {
     const adminMiddleware = [
       isAdmin
@@ -222,6 +260,50 @@ export default class ConsumerController extends BaseController {
         .then(ok(res))
         .then(null, fail(req, res))
     })
+
+    router.get('/feature-flags/:toolConsumerId', (req, res) => {
+      const toolConsumerId = req.params.toolConsumerId
+      this
+        .getFeatureFlags(toolConsumerId)
+        .then(ok(res))
+        .then(null, fail(req, res))
+    })
+
+    // adding a flag disabled the feature
+    router.post('/feature-flags-add', (req, res) => {
+      if (!(req.body && req.body.flag && req.body.toolConsumerId)) {
+        const msg = 'Must provide the flag and tool consumer to modify feature flags.'
+        logError(msg)
+        return res.status(400).send(msg)
+      }
+      this.featureFlagsAdd(req.body.toolConsumerId, req.body.flag)
+        .then(ok(res))
+        .then(null, fail(req, res))
+    })
+
+    /// removing a flag enables the feature
+    router.post('/feature-flags-remove', (req, res) => {
+      if (!req.body || !req.body.flag || !req.body.toolConsumerId) {
+        const msg = 'Must provide the flag and tool consumer to modify feature flags.'
+        logError(msg)
+        return res.status(400).send(msg)
+      }
+      this.featureFlagsRemove(req.body.toolConsumerId, req.body.flag)
+        .then(ok(res))
+        .then(null, fail(req, res))
+    })
+
+    router.post('/feature-flags-all-enable', (req, res) => {
+      if (!req.body || !req.body.toolConsumerId) {
+        const msg = 'Must provide tool consumer to modify feature flags.'
+        logError(msg)
+        return res.status(400).send(msg)
+      }
+      this.featureFlagsEnableAll(req.body.toolConsumerId)
+        .then(ok(res))
+        .then(null, fail(req, res))
+    })
+
     return router
   }
 

@@ -1,216 +1,121 @@
 <template lang="pug">
   div
-    h1 Activity needs to be linked with content
+    div.intro
+      p.italics.
+        The activity you selected is not yet connected to EdEHR content.
+        As an instructor you can select the content for this activity, which is important to do before your students try this activity.
+        Select the content you want below. You can change this later.
+      p.italics.
+        At the bottom of this page you can see everything this application knows about you and this activity.
+
+    learning-object-select-component(ref="lobjSelector", @selected='selectLobj')
+    div Selected content: {{hasSelection ? selectedObj.name : ''}}
+    button(ref='selectAndGoButton', v-on:click="goWithSelection",  :disabled='!hasSelection')
+      span {{ hasSelection ? 'Use ' + selectedObj.name : 'Select content' }}
+
+    hr
+    h4 Activity details
     p.
-      The activity you selected is not yet linked to any EdEHR content.
-      Please see below and select a learning object (content) for this activity.
-      You must establish this link before any student can use this activity.
-
+      The following is the information your learning management system provided about you and this activity.
     div(class='lms-activity card selected')
-      p Activity: {{ activity.title }}
-      p Description: {{ activity.description }}
+      h4 About the activity
+      p Activity: {{ activity.resource_link_title }}
+      p Description: {{ activity.resource_link_description }}
       p Course: {{ activity.courseTitle }}
-
-    div(class='row-flow')
-      h3 Select the content you want to use, from the list below,  or
-      ui-button(v-on:buttonClicked="showCreateDialog",
-          :title='text.createLearningObjectTip')
-        fas-icon(class="fa", :icon="appIcons.new")
-        span &nbsp; {{text.createLearningObjectBL}}
-    div(class="flow_across menu_space_across flow_across_right")
-      app-search-box(:searchTerm="searchTerm", @updateSearchTerm='updateSearchTerm')
-      app-type-selector(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
-      app-paginate-controls(:offset='offset', :listMetadata="listMetadata" @repage='repage')
-
-    div(class="details-container")
-      div(class="e-table")
-        div(class="thead")
-          div(class="thcell") Select content for activity
-          // div(class="thcell") Learning Object
-          div(class="thcell") Type
-          div(class="thcell") Last update
-          div(class="thcell") Description
-        div(class="tbody")
-          div(class="row", v-for="lObj in assignmentsListing")
-            div(class="cell")
-              ui-button(v-on:buttonClicked="selectLearningObject(lObj)", class='link-button') Connect to: {{ lObj.name }}
-            // div(class='cell') {{ lObj.name }}
-            div(class="cell") {{ appType(lObj) }}
-            div(class="cell date") {{ lObj.lastUpdateDate | formatDateTime }}
-            div(class='cell') {{ lObj.description }}
+      h4 About you
+      p Your given name: {{ user.givenName }}
+      p Your family name: {{ user.familyName }}
+      p Your role: {{ role }}
+      p.italics Note that the EdEHR does not need your email address or anything else, so your privacy is respected.
+      h4 About the learning management system (LMS)
+      p Product family: {{ consumer.tool_consumer_info_product_family_code }}
+      p Instance name: {{ consumer.tool_consumer_instance_name }}
+      p Instance description: {{ consumer.tool_consumer_instance_description }}
 
 
-    ui-confirm(ref="confirmDialog", saveLabel="Connect", v-on:confirm="selectConnect", html-body=true)
-    learning-object-dialog(ref="theDialog",@update='loadPage')
 
 </template>
 
 <script>
-import StoreHelper, { APP_TYPE_EHR, CREATOR_ACTION } from '@/helpers/store-helper'
-import LearningObjectDialog from '@/outside/components/learning-object/LearningObjectDialog'
-import UiButton from '@/app/ui/UiButton'
-import LearningObjectDelete from '@/outside/components/learning-object/LearningObjectDelete'
-import UiConfirm from '@/app/ui/UiConfirm.vue'
-import { textToHtml } from '@/directives/text-to-html'
 import { APP_ICONS } from '@/helpers/app-icons'
-import AppSearchBox from '@/app/components/AppSearchBox.vue'
-import AppPaginateControls from '@/app/components/AppPaginateControls.vue'
-import AppTypeSelector from '@/app/components/AppTypeSelector.vue'
-const TEXT = {
-  createLearningObjectTip:'Create a new learning object',
-  createLearningObjectBL: 'Create and use new content',
-}
-// eslint-disable-next-line no-unused-vars
-const ASC = 'asc'
-const DESC = 'desc'
-
+import LearningObjectSelectComponent from '@/outside/components/learning-object/LearningObjectSelectComponent.vue'
 export default {
   data () {
     return {
-      showDetails: false,
       appIcons: APP_ICONS,
-      text: TEXT,
-      selectedLObj: undefined,
-      offset: 0,
-      sortKey: 'lastUpdateDate',
-      sortDir: DESC,
-      searchTerm: '',
-      appTypes: [
-        {key: 'EHR'},
-        {key: 'LIS'}
-      ],
-      checkAppTypes: []
+      selectedObj: {},
     }
   },
-  components: { AppPaginateControls, AppTypeSelector, AppSearchBox, UiConfirm, LearningObjectDelete, LearningObjectDialog,  UiButton  },
+  components: { LearningObjectSelectComponent },
   computed: {
+    hasSelection () { return !! this.selectedObj.name},
     activity () { return this.$store.getters['activityStore/activityRecord']},
     consumer () { return this.$store.getters['consumerStore/consumer']},
-    lmsName () { return this.consumer.tool_consumer_instance_name},
-    givenName () { return StoreHelper.givenName()},
-    assignmentsListing () {
-      return this.$store.getters['assignmentListStore/list']
-    },
-    listMetadata () { return this.$store.getters['assignmentListStore/listMetadata']},
-    paginateLimit () { return this.$store.getters['system/paginateLimit']},
-    returnToLmsText () { return 'Return to ' + this.lmsName}
+    user () { return this.$store.getters['userStore/user']},
+    role () { return this.$store.getters['visit/role']}
   },
   methods: {
-    appType (lobj) { return lobj.seedDataId ? lobj.seedDataId.appType : APP_TYPE_EHR},
-    async changeAppTypes (checkAppTypes) {
-      this.checkAppTypes = checkAppTypes
-      this.offset = 0
-      await this.$store.dispatch('system/setAppTypes', this.checkAppTypes)
-      this.route()
+    selectLobj (lobj) {
+      this.selectedObj = lobj
+      // wait for reaction to enable the button
+      this.$nextTick(() => {
+        const selectAndGoButton = this.$refs.selectAndGoButton
+        selectAndGoButton.focus({ focusVisible: true})
+      })
     },
-    exit () { StoreHelper.exitToLms() },
-    showCreateDialog: function () {
-      this.$refs.theDialog.showLObjDialog({action: 'create'})
+    showEditDialog: function () {
+      this.$refs.theActivityDialog.showDialog(this.activity)
     },
-    async loadPage () {
-      const query = this.$route.query
-      const fromRouteOffset = query.offset || 0
-      const fromRouteSort = query.sortKey || 'lastUpdateDate'
-      const fromRouteDirection = query.sortDir || DESC
-      // from the query the tag list is a CSV string
-      const fromRouteTagList = query.tagList || ''
-      this.offset = parseInt(fromRouteOffset)
-      let queryPayload = {
-        offset: fromRouteOffset,
-        limit: this.paginateLimit,
-        sortKey: fromRouteSort,
-        sortDir: fromRouteDirection,
-        tagList: fromRouteTagList
-      }
-      // appType
-      const fromRouteAppTypes = query.appTypes
-      if(fromRouteAppTypes) {
-        this.checkAppTypes = fromRouteAppTypes.split(',')
-        await this.$store.dispatch('system/setAppTypes', this.checkAppTypes)
-      } else {
-        this.checkAppTypes = this.$store.getters['system/checkAppTypes']
-      }
-      let ats = this.checkAppTypes.join(',')
-      ats ? queryPayload.appTypes = ats : undefined
-      // search term
-      if (query.searchTerm ) {
-        this.searchTerm = query.searchTerm
-      }
-      this.searchTerm ? queryPayload.searchTerm = this.searchTerm : undefined
-      console.log('loading unlinked dispatch load page', queryPayload)
-      await this.$store.dispatch('assignmentListStore/loadPage', queryPayload)
+    goWithSelection () {
+      this.changeLearningObjectForActivity(this.selectedObj)
     },
-
-    selectLearningObject (lObj) {
-      this.selectedLObj = lObj
-      const body = textToHtml('Confirm connecting your activity to the content: "' + lObj.name
-        + '"\nThis can not be undone. If you make a mistake then create a new activity in your LMS as try again.')
-      const title ='Confirm connection'
-      this.$refs.confirmDialog.showDialog(title, body)
-    },
-    async selectConnect () {
-      const lObj = this.selectedLObj
+    async changeLearningObjectForActivity (selectedLObj) {
+      const lObj = selectedLObj
       const activityId = this.activity.id
       const payload = { activity: activityId, assignment: lObj._id }
       await this.$store.dispatch('activityStore/linkAssignment', payload)
       // take the instructor to activity page for the activity they just made a link to.
-      await this.$router.push({ name: 'lms-instructor-activity', query: { activityId: activityId } })
+      await this.$router.push({
+        name: 'lms-instructor-activity',
+        query: { activityId: activityId, ts: (new Date()).getTime() }
+      })
     },
-    repage (offset) {
-      this.offset = offset
-      this.route()
-    },
-    route () {
-      let query = {}
-      query.activityId = this.activity.id
-      query.offset = this.offset
-      query.limit = this.paginateLimit
-      query.sortKey = this.sortKey
-      query.sortDir = this.sortDir
-      query.ts = Date.now()
-      // only add appType to query if there are some selections
-      let ats = this.checkAppTypes.join(',')
-      ats ? query.appTypes = ats : undefined
-      this.searchTerm ? query.searchTerm = this.searchTerm : undefined
-      this.$router.push({ query: query })
-      const qs = JSON.stringify(query).replace(/"/g,'\'')
-      StoreHelper.postActionEvent(CREATOR_ACTION,'unlinked-'+qs)
-    },
-    updateSearchTerm (searchTerm) {
-      this.offset = 0
-      this.searchTerm = searchTerm
-      this.route()
-    }
-
   },
+  mounted () {
+    this.$refs.lobjSelector.loadPage()
+  }
 
 }
 </script>
 
 <style lang="scss" scoped>
 @import '../../../scss/definitions';
-
-button, .button {
-  font-size: 1rem;
-}
-.activity-details {
-  padding-left: 1rem;
-  margin-bottom: 1rem;
+.intro {
   p {
-    margin-bottom: 5px;
+    line-height: 25px; /* within paragraph */
+    margin-bottom: 5px; /* between paragraphs */
   }
 }
-.details-container {
-  padding: 0;
+.italics {
+  font-style: italic;
 }
-.row-flow {
-  display: flex;
-  flex-flow: row;
-  gap: 1rem;
+.bold {
+  font-weight: bold;
 }
+
 .lms-activity {
   margin-left: 1rem;
   margin-bottom: 1rem;
   padding: 1rem;
+  line-height: 25px;
+  p {
+    line-height: 22px; /* within paragraph */
+    margin-bottom: 3px; /* between paragraphs */
+  }
+  h4 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
 }
+
 </style>

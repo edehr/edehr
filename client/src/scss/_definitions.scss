@@ -3,16 +3,15 @@
 $brand-color: #273890;
 $brand-highlight: #1CA7E1;
 $brand-highlight-light: #AED1FF;
+// THIS IS THE CURRENT BRAND RED
 $brand-highlight-red: #EC1C24;
+// EC1C24 ==  rgba(236, 28, 36, 1)
 $brand-primary: $brand-color;
 $brand-primary-dark: #051F54;
 $brand-primary-light: #e8f2fd;
 /* use opaque color because the style may be applied both to a table cell and to the content */
 $table-draft-colour: rgba(255, 210, 0, 1);
 $nav-draft-colour: rgba(255, 22, 0, 1);
-
-$table-cell-border-colour: rgba(39,56,144,0.25);
-$table-header-row-colour: rgba(28,167,225, 0.05);
 
 $app-tag-colour: #8DD3F0;
 $app-tag-button-colour: $brand-primary-dark;
@@ -25,6 +24,7 @@ $button-border-radius: 3px;
 
 $ehr-brand-option1: #4d74ff;
 $ehr-brand-option1: rgb(77,116,255);
+// THIS IS THE ACTIVE BRAND COLOUR
 $ehr-brand-option2: #1CA7E1;
 $ehr-hover-brand-option1: #859FFF;
 $ehr-hover-brand-option2: #49B9E9;
@@ -50,6 +50,10 @@ $grey60: hsl(0, 0%, 40%);
 $grey70: hsl(0, 0%, 30%);
 $grey80: hsl(0, 0%, 20%);
 $grey90: hsl(0, 0%, 10%);
+$brand-red60: rgba(236, 28, 36, 0.2);
+$brand-red80: hsl(358, 85%, 90%);
+$brand-red90: hsl(358, 85%, 95%);
+$brand-blue60: rgba(28, 167, 225, .3);
 $black: black;
 $greyWarn: $grey10;
 $red: $brand-highlight-red;
@@ -61,6 +65,12 @@ $table-row-even: rgb(235,235,235);
 $table-row-odd: rgb(250,250,250);
 $table-header-colour: $grey20;
 $table-border-colour: $grey40;
+$table-cell-border-colour: rgba(39,56,144,0.25);
+$table-header-row-colour: rgba(28,167,225, 0.05);
+
+$activity-header-colour: $grey15;
+$lobj-header-colour: $brand-blue60;
+$seed-header-colour: $brand-red60;
 
 /* ****************** TYPOGRAPHY ****************** */
 $bodyFontFamily: 'Source Sans 3', sans-serif;

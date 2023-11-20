@@ -84,6 +84,7 @@ export default class UserController extends BaseController {
         }
         userActivity.caseStudyId = caseStudy._id
         userActivity.caseStudyName = caseStudy.name
+        userActivity.appType = caseStudy.appType
       }
       // push userActivity into the correct course's activity list
       const cId = activity.course

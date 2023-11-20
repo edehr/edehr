@@ -28,6 +28,7 @@ export const Text = {
   EdEHR_MISSING_VISIT: (key, id) => `Missing visit while preparing to redirect for tool consumer ${key} - ${id}`,
 
   ASSIGNMENT_MISSING_SEED: (key, id) => `Could not find any EHR seed data object for tool consumer ${key} - ${id}`,
+  ASSIGNMENT_MISSING_SEED_OR_APPTYPE: 'To create a learning object you need either a case study or to provide the application type',
   ASSIGNMENT_REQUIRE_EXTERNAL_ID: (key, id) => `To create an learning object we need the learning object id for tool consumer ${key} - ${id}`,
   ASSIGNMENT_REQUIRE_RESOURCE: (key, id) => `To create an learning object we need a title for tool consumer ${key} - ${id}`,
 

@@ -1,5 +1,4 @@
 import store from '../store'
-import StoreHelper from '@/helpers/store-helper'
 import EhrDataModel from '@/ehr-definitions/EhrDataModel'
 import InstoreHelper from '@/store/modules/instoreHelper'
 class MPatientHelperWorker {

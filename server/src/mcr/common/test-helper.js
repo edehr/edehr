@@ -82,6 +82,25 @@ export default class Helper {
     this.clear = bool
   }
 
+  /**
+   * A version of the helper that uses async await instead of done
+   * @param mongoose
+   * @returns {Promise<void>}
+   */
+  async beforeTestDbDropNoDone (mongoose) {
+    await mongoose.disconnect()
+      .catch(err => {
+        console.error('disconnect failed:', err)
+        process.exit(1)
+      })
+    await mongoose.connect(dburi, dbConfig.options)
+      .catch(err => {
+        console.error('connection failed:', err)
+        process.exit(1)
+      })
+    await mongoose.connection.dropDatabase()
+  }
+
   async beforeTestDbDrop (done, mongoose) {
     // const uri = 'mongodb://localhost:27018/unittest'
     // const uri = 'mongodb://localhost:27017/unittest'

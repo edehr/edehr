@@ -2,15 +2,16 @@ import moment from 'moment'
 import BaseController from '../common/base'
 import Assignment from '../assignment/assignment'
 import SeedData from './seed-data'
-import { Text }  from '../../config/text'
+import { Text } from '../../config/text'
 import { NotAllowedError, ParameterError } from '../common/errors'
-import {ok, fail} from '../common/utils'
-import { logError} from '../../helpers/log-error'
+import { fail, ok } from '../common/utils'
+import { logError } from '../../helpers/log-error'
 import EhrDataModel from '../../ehr-definitions/EhrDataModel'
 import { EHR_EVENT_BUS, EHR_SEED_EVENT } from '../../server/trace-ehr'
 import { decoupleObject } from '../../ehr-definitions/common-utils'
 import mongoose from 'mongoose'
 import { ObjectId } from 'mongodb'
+
 const debug = require('debug')('server')
 
 export default class SeedDataController extends BaseController {
@@ -60,18 +61,37 @@ export default class SeedDataController extends BaseController {
       })
   }
 
-  async searchForPatients (toolConsumerId, name, mrn, appType) {
+  async searchForPatients (toolConsumerId, qname, qmrn, qappType) {
     if (!mongoose.Types.ObjectId.isValid(toolConsumerId)) {
       throw new ParameterError(Text.INVALID_CONSUMER_ID(toolConsumerId))
     }
-    if (!(name || mrn)) {
+    if (!(qname || qmrn)) {
       throw new ParameterError(Text.INVALID_PATIENT_SEARCH)
     }
-    let query = { toolConsumer: new ObjectId(toolConsumerId)}
-    name ? query.name = { $regex: name, $options : 'i' } : null
-    mrn ? query.mrn = { $regex: mrn, $options : 'i' } : null
-    appType ? query.appType = { $eq: appType } : null
+    let andParts = []
+    andParts.push({ toolConsumer: new ObjectId(toolConsumerId)})
+    // Search both the name, description and the kedata family name
+    if (qname) {
+      // search in name, description and keydata family name.
+      let namePart = { $or : [
+        { name: { $regex: qname, $options: 'i' } },
+        { description: { $regex: qname, $options: 'i' } },
+        { 'keyData.familyName': { $regex: qname, $options: 'i' } }
+      ]}
+      andParts.push(namePart)
+    }
+    if (qmrn) {
+      let mrnPart = {mrn:  { $regex: qmrn, $options : 'i' }}
+      andParts.push(mrnPart)
+    }
+    if (qappType) {
+      let appTypePart = {appType: { $eq: qappType }}
+      andParts.push(appTypePart)
+    }
+    let query = { $and: andParts}
     const patientList = await this.model.find(query)
+    console.log('patient search query', JSON.stringify(query))
+    console.log('search results', patientList.length)
     return { patientList: patientList }
   }
 
@@ -243,6 +263,12 @@ export default class SeedDataController extends BaseController {
       let mrn = req.query.mrn
       let name = req.query.name
       let appType = req.query.appType
+      let mx = mrn ? mrn.length : 0
+      mx = Math.max(mx, name ? name.length : 0)
+      mx = Math.max(mx, appType ? appType.length : 0)
+      if (mx > 100) {
+        return res.status(400).send('Search parameters must be less than 100 characters in length')
+      }
       this.searchForPatients(toolConsumerId, name, mrn, appType)
         .then(ok(res))
         .then(null, fail(req, res))

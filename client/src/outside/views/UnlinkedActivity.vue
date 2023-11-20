@@ -1,5 +1,7 @@
 <template lang="pug">
   div
+    h1 Welcome to the EdEHR
+
     div(v-if="isInstructor")
       unlinked-instructor-activity(ref='instructorActivity')
     div(v-else)
@@ -28,9 +30,6 @@ export default {
       const activityId = this.$route.query.activityId
       await this.$store.dispatch('activityStore/setActivityId', activityId)
       await this.$store.dispatch('activityStore/loadActivityRecord')
-      if(this.isInstructor) {
-        this.$refs.instructorActivity.loadPage()
-      }
     },
   },
 }

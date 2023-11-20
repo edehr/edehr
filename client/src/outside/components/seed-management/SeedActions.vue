@@ -1,22 +1,22 @@
 <template lang='pug'>
   div
-    div(class="flow_across flow_across_right flow_wrap menu_space_across")
+    div(class="flow_across")
       zone-lms-button(v-if="!hideCondensed", @action="viewEhrCondensed", :icon='appIcons.view', :title='text.VIEW_TP', :text='text.VIEW')
       zone-lms-button(v-show="canDo", @action="gotoEhrWithSeed", :icon='appIcons.edit', :title='text.EDIT_TP', :text='text.EDIT')
       zone-lms-button(v-show="canDo", @action="showEditDialog", :icon='appIcons.configure', :title='text.PROPERTIES_TP', :text='text.PROPERTIES')
-      zone-lms-button(v-if="canDo", @action="showLobjCreateDialog",
-        :title="text.createLearningObjectTip",
-        :icon='appIcons.lobj',
-        :text='text.createLearningObjectBL')
-
-      seed-duplicate(v-show="canDo", :seed='seed', @newSeed='seedDuplicated()')
       zone-lms-button(@action="downloadSeed", :icon='appIcons.download', :title='text.DOWNLOAD_TP', :text='text.DOWNLOAD')
+      seed-duplicate(v-show="canDo", :seed='seed', @newSeed='seedDuplicated()')
+      zone-lms-button(v-if="canDo", @action="showLobjEditDialog",
+        :title="text.CREATE_LOBJ_TP",
+        :icon='appIcons.lobj',
+        :text='text.CREATE_LOBJ')
+
       seed-delete(v-show="canDo"
         :disabled="assignmentList.length > 0",
         :seed='seed',
         @seedDeleted='seedDeleted')
     seed-data-dialog(ref="theDialog")
-    learning-object-dialog(ref="theLObjDialog")
+    learning-object-dialog-no-case-create(ref="theLobjDialog", @create='createNewLobj')
 </template>
 
 <script>
@@ -28,10 +28,10 @@ import SeedDelete from '@/outside/components/seed-management/SeedDelete'
 import SeedDataDialog from '@/outside/components/seed-management/SeedDataDialog'
 import { downloadSeedToFile } from '@/helpers/ehr-utils'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton'
-import LearningObjectDialog from '@/outside/components/learning-object/LearningObjectDialog'
+import LearningObjectDialogNoCaseCreate from '@/outside/components/learning-object/LearningObjectDialogNoCaseCreate.vue'
 
 export default {
-  components: { LearningObjectDialog, ZoneLmsButton, SeedDataDialog, SeedDelete, SeedDuplicate },
+  components: { LearningObjectDialogNoCaseCreate, ZoneLmsButton, SeedDataDialog, SeedDelete, SeedDuplicate },
   data () {
     return {
       appIcons: APP_ICONS,
@@ -54,6 +54,10 @@ export default {
     seedId () { return this.seedModel.id}
   },
   methods: {
+    async createNewLobj (data) {
+      const newLobj = await StoreHelper.createAssignment(data)
+      await this.$router.push({ name: 'learning-object', query: { learningObjectId: newLobj._id } })
+    },
     downloadSeed () {
       const seedId = this.seedId
       // console.log('download seed for ', seedId)
@@ -68,10 +72,10 @@ export default {
     showEditDialog: function () {
       this.$refs.theDialog.showSeedDataDialog(this.seedModel)
     },
-    showLobjCreateDialog: function () {
-      // pas undefined for first parameter to set up for the 'create' action. Give the new LObj the case study
-      this.$refs.theLObjDialog.showLObjDialog({ action:'create', seed: this.seed})
+    showLobjEditDialog: function () {
+      this.$refs.theLobjDialog.showLObjDialog({ action:'createWithSeed', seed: this.seed})
     },
+
     viewEhrCondensed () {
       this.$router.push({ name: 'seed-view-condensed', query: { seedId: this.seedId } })
     },

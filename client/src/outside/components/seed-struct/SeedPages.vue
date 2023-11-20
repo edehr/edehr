@@ -11,7 +11,6 @@
 <script>
 import SeedPage from '@/outside/components/seed-struct/SeedPage'
 import EhrData from '@/inside/components/page/ehr-data'
-import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 
 export default {
   components: { SeedPage },

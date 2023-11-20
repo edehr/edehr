@@ -14,8 +14,6 @@
 
 <script>
 import StoreHelper from '@/helpers/store-helper'
-import MPatientHelper from '@/helpers/mPatientHelper'
-import EhrDataModel from '@/ehr-definitions/EhrDataModel'
 
 export default {
   props: {

@@ -1,9 +1,9 @@
 <template lang="pug">
   div
-    div(class="flow_across flow_across_right flow_wrap menu_space_across")
+    div(class="flow_across")
       zone-lms-button(v-show="canDo", @action="showCreateDialog", :icon='appIcons.new', :title='text.CREATE_TP', :text='text.CREATE')
       zone-lms-button(@action="downloadAll", :icon='appIcons.download', :title='text.DOWNLOAD_TP', :text='text.DOWNLOAD')
-      zone-lms-button(@action="patientLabels", :icon='appIcons.consumer', title='Labels', text='Labels')
+      zone-lms-button(@action="patientLabels", :icon='appIcons.barcode', title='Labels', text='Labels')
     seed-data-dialog(ref="theDialog", @create="$emit('create')", @update="$emit('update')")
 </template>
 

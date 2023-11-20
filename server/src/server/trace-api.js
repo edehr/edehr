@@ -88,7 +88,7 @@ function composeData (req, statusCode, time) {
     delete rec.body['ltiData[lis_person_name_given]']
     delete rec.body['ltiData[lis_person_name_full]']
     delete rec.body['ltiData[user_id']
-    rec.body = JSON.stringify(rec.body).substring(0, 50)
+    rec.body = JSON.stringify(rec.body).substring(0, 100)
   }
   const includeOs = true
   if (includeOs) {

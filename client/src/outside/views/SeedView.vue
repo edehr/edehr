@@ -1,44 +1,67 @@
 <template lang='pug'>
   div
-    zone-lms-page-banner(:title="seed.name")
-      seed-actions(class="flow_across_last_item", :seedModel='seedModel')
-    div(class="details-container card", :class='{ draftStyle: hasDraftReports }')
+    zone-lms-page-banner(:title="seed.name", theme='seed-theme')
+      seed-actions(:seedModel='seedModel')
+    zone-lms-instructions-header
+      p Each Case Study contains the simulated health records for a single patient. Each Case Study contains the simulated health records for a single patient.Each Case Study contains the simulated health records for a single patient. Each Case Study contains the simulated health records for a single patient.
+
+    div(class="details-container ", :class='{ draftStyle: hasDraftReports }')
       div(v-if="hasDraftReports", class="details-row")
         div(class="details-name") WARNING
         div(class="details-value").
           This case study contains draft EHR reports. These must be saved as verified reports
           before using this case study with a student assignment.
           Edit this case study in the EHR and complete the reports (or remove them)
+
       div(class="details-row")
         div(class="details-name") {{text.DESCRIPTION}}
         div(class="details-value")
           div(v-text-to-html="seed.description")
+      zone-lms-instructions-element The description is used by instructors to help put this case study to use. It is not visible to students.
+
       div(class="details-row")
         div(class="details-name") Patient
         div(class="details-value") {{ patientData(seed) }}
+      zone-lms-instructions-element The above information has been extracted from the case study to help you identify the contents.
+
       div(class="details-row")
         div(class="details-name") Type
-        div(class="details-value") {{ seed.appType }}
+        div(class="details-value")
+          app-type-details-page-element(:appType="seed.appType", :showEx='showEx')
+      app-type-details-page-element-explain
+
       div(class="details-row")
         div(class="details-name") Tags
         div(class="details-value")
-          app-tag-list(:tagList="tagList")
+          app-tag-list(v-if="tagList.length> 0", :tagList="tagList")
+          span(v-else) (there are no tags for this case study)
+      zone-lms-instructions-element Content creators (e.g. your faculty) use tags to create categories of case studies.
+
       div(class="details-row")
         div(class="details-name") {{text.CONTRIBUTORS}}
         div(class="details-value") {{ seed.contributors }}
+      zone-lms-instructions-element The above lists the content creators who have contributed to this case study.
+
       div(class="details-row")
         div(class="details-name") {{text.VERSION}}
         div(class="details-value") {{seed.version}}
+      zone-lms-instructions-element Content creators may use this version number to indicate significant changes from a previous version.
+
       div(class="details-row")
         div(class="details-name") {{ text.STATS }}
         div(class="details-value")
           span {{text.STATS_VALUE(pageCount)}}:
           span(v-for='pgn in pageNamesWithContent', :key='pgn') &nbsp; {{ pgn }}
+      zone-lms-instructions-element The above is meant to help you identify the case studies contents.
+
       div(class="details-row")
         div(class="details-name") {{text.LOBJ_LABEL}}
         div(class="details-value")
-          div(v-for="lobj in assignmentList")
+          div(v-if="assignmentList.length > 0", v-for="lobj in assignmentList")
             router-link(:to="{ name:'learning-object', query: { learningObjectId: lobj._id }}") {{lobj.name}}
+          span(v-else="") No learning objects are using this case study.
+      zone-lms-instructions-element The list above provides links to all the learning objects that are using this case study.
+
       div(class="details-row")
         div(class="details-name") {{text.DATES}}
         div(class="details-value") Created on {{ seed.createDate | formatDateTime }}. Last modified on {{ seed.lastUpdateDate | formatDateTime }}
@@ -64,10 +87,14 @@ import { EhrPages } from '@/ehr-definitions/ehr-models'
 import AppTagList from '@/app/components/AppTagList.vue'
 import AppTagListEditor from '@/app/components/AppTagListEditor.vue'
 import { computeDateOfBirth } from '@/ehr-definitions/ehr-def-utils'
+import AppTypeDetailsPageElement from '@/outside/components/AppTypeDetailsPageElement.vue'
+import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
+import ZoneLmsInstructionsElement from '@/outside/components/ZoneLmsInstructionsElement.vue'
+import AppTypeDetailsPageElementExplain from '@/outside/components/AppTypeDetailsPageElementExplain.vue'
 
 export default {
   extends: OutsideCommon,
-  components: { AppTagListEditor, AppTagList, ZoneLmsPageBanner, SeedActions, SeedListLink, UiButton, SeedDuplicate, SeedStructural, UiLink },
+  components: { AppTypeDetailsPageElementExplain, ZoneLmsInstructionsElement, ZoneLmsInstructionsHeader, AppTypeDetailsPageElement, AppTagListEditor, AppTagList, ZoneLmsPageBanner, SeedActions, SeedListLink, UiButton, SeedDuplicate, SeedStructural, UiLink },
   data () {
     return {
       appIcons: APP_ICONS,

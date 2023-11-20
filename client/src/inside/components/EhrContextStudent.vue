@@ -18,6 +18,7 @@ import StoreHelper from '@/helpers/store-helper'
 import EhrStudentSubmit from '@/inside/components/EhrStudentSubmit.vue'
 import UiInfo from '@/app/ui/UiInfo.vue'
 import { textToHtml } from '@/directives/text-to-html'
+import FeatureHelper, { FF_UNLEASH_ACTIVITY } from '@/helpers/feature-helper'
 
 export default {
   components: { UiInfo, EhrStudentSubmit },
@@ -26,9 +27,15 @@ export default {
     }
   },
   computed: {
+    isUnleashedActivityEnabled () {
+      const cid = this.$store.getters['consumerStore/consumerId']
+      return FeatureHelper.isFeatureFlagEnabled(cid, FF_UNLEASH_ACTIVITY)
+    },
     activityRecord () { return this.$store.getters['activityStore/activityRecord'] },
     assignmentName () { return this.activityRecord.title },
-    instructions () { return textToHtml(this.activityRecord.description || '') },
+    instructions () { return textToHtml(this.studentInstructions || '') },
+    studentInstructions () { return this.isUnleashedActivityEnabled ? this.activityRecord.learningObjectDescription : this.activityRecord.description },
+
     evaluationData () { return this.$store.getters['activityDataStore/evaluationData'] },
     givenName () { return StoreHelper.givenName()},
     feedbackViewable () { return this.activityRecord.feedbackViewable },

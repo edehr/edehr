@@ -1,6 +1,6 @@
 <template lang='pug'>
   div
-    div(class="flow_across flow_across_right flow_wrap menu_space_across")
+    div(class="")
       ui-button(v-on:buttonClicked="confirmOpen", title="Allow all students to work on the assignment.")
         fas-icon(class="icon-right", :icon="appIcons.retractSubmit")
         span(v-if="showLabels") &nbsp; Allow all

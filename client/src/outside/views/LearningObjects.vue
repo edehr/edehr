@@ -1,50 +1,61 @@
 <template lang="pug">
   div
-    zone-lms-page-banner
-      div(class="flow_across menu_space_across flow_across_right")
-        app-search-box(:searchTerm="searchTerm", @updateSearchTerm='updateSearchTerm')
-        app-type-selector(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
-        app-paginate-controls(:offset='offset', :limit='paginateLimit', :listMetadata="listMetadata", @repage='repage')
-        div(class="flow_across table_space_across")
-          zone-lms-button(@action="showUploadDialog",
-            :title="text.UPLOAD_TP",
-            :icon='appIcons.upload',
-            :text='text.UPLOAD')
-    div(class="details-container card intro")
-      div(class="instructions").
-        Learning objects encapsulate a case study with expected learning outcomes.
-      div(class="instructions").
-        Click on the learning object name to see its details.
-      div(v-if="canDo", class="instructions").
-        To create a new learning object go to the case studies page, select the case study you wish to use and create the learning object from there.
-    div(class="details-container e-table")
+    zone-lms-page-banner(theme='lobj-theme')
+      zone-lms-button(v-if="canDo", @action="showLobjCreateDialog",
+        :title="text.createLearningObjectTip",
+        :icon='appIcons.new')
+      zone-lms-button(@action="showUploadDialog",
+        :title="text.UPLOAD_TP",
+        :icon='appIcons.upload',
+        :text='text.UPLOAD')
+    zone-lms-instructions-header
+      p.
+        Learning objects provide the content and instructions for activities. Each learning object has a name and
+        description which becomes the activity name and the instructions that the students will see.  A learning object also links in a
+        case study to provide the simulated patient data. But this is optional. If a learning object has no case study
+        then the student will need to search for their patient. Be sure to give the student some hints in your instructions
+        or during class so they can find the correct patient.
+      p.
+        The list below lets you browse all the available learning objects. To see the details about a learning object just click on its name.
+      p
+        | As an instructor, you can create new learning objects here with the &nbsp;
+        fas-icon(class="fa", :icon='appIcons.new')
+        | &nbsp; button.
+        | Or import a learning object you saved or obtained from a friend by using the &nbsp;
+        fas-icon(class="fa", :icon='appIcons.upload')
+        | &nbsp; button above.
+      p
+        | To filter the list below enter something into the search box. This searches the name or description properties.
+        | You can also filter the items to case studies for EHR or LIS (think clinical vs laboratory settings).
+      p
+        | Go to see the details of a learning object to learn more.
+
+    div(class="flow_across menu_space_across flow_across_right")
+      app-type-selector(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
+      app-search-box(:searchTerm="searchTerm", @updateSearchTerm='updateSearchTerm')
+      app-paginate-controls(:offset='offset', :limit='paginateLimit', :listMetadata="listMetadata", @repage='repage')
+    div(class="details-container e-table lobj-theme")
       div(class="thead")
-        div(class="thcell e-name")
-          div(class="flow_across")
-            div(class="") Name
-            ui-table-header-button(
-              class="flow_across_last_item",
-              v-on:buttonClicked="sortColumnToggle(columnName)",
-              title="Sort by name")
-              fas-icon(class="fa", :icon="sortColumnIcon(columnName)")
+        div(class="thcell e-name") Name
+          ui-table-header-button(
+            class="flow_across_last_item",
+            v-on:buttonClicked="sortColumnToggle(columnName)",
+            title="Sort by name")
+            fas-icon(class="fa", :icon="sortColumnIcon(columnName)")
         div(class="thcell") Type
         div(class="thcell") Usage
-        div(class="thcell date")
-          div(class="flow_across")
-            div(class="") Created
-            ui-table-header-button(
-              class="flow_across_last_item",
-              v-on:buttonClicked="sortColumnToggle(columnCreated)",
-              title="Sort by created date")
-              fas-icon(class="fa", :icon="sortColumnIcon(columnCreated)")
-        div(class="thcell date")
-          div(class="flow_across")
-            div(class="") Updated
-            ui-table-header-button(
-              class="flow_across_last_item",
-              v-on:buttonClicked="sortColumnToggle(columnUpdated)",
-              title="Sort by updated date")
-              fas-icon(class="fa", :icon="sortColumnIcon(columnUpdated)")
+        div(class="thcell") Id
+          ui-table-header-button(
+            class="flow_across_last_item",
+            v-on:buttonClicked="sortColumnToggle(columnLti)",
+            title="Sort by LTI id")
+            fas-icon(class="fa", :icon="sortColumnIcon(columnLti)")
+        div(class="thcell date") Updated
+          ui-table-header-button(
+            class="flow_across_last_item",
+            v-on:buttonClicked="sortColumnToggle(columnUpdated)",
+            title="Sort by updated date")
+            fas-icon(class="fa", :icon="sortColumnIcon(columnUpdated)")
         div(class="thcell description") Description
       div(class="tbody")
         div(class="row", v-for="lObj in assignmentsListing", :class="rowClass(lObj)")
@@ -56,11 +67,13 @@
               span {{truncate(lObj.name, 40)}}
           div(class="cell date") {{ lObj.seedDataId ? lObj.seedDataId.appType : '' }}
           div(class="cell date") {{ lObj.activityCount }}
-          div(class="cell date") {{ lObj.createDate | formatDateTime }}
+          div(class="cell") {{ lObj.idForLTI }}
+          //div(class="cell date") {{ lObj.createDate | formatDateTime }}
           div(class="cell date") {{ lObj.lastUpdateDate | formatDateTime }}
           div(class="cell description").
              {{truncate(lObj.description, 200)}}
     learning-object-import-dialog(ref='theLObjImportDialog')
+    learning-object-dialog-no-case-create(ref='theLObjDialog', @create="createNewLobj")
 </template>
 
 <script>
@@ -77,6 +90,8 @@ import AppTypeSelector from '@/app/components/AppTypeSelector.vue'
 import AppPaginateControls from '@/app/components/AppPaginateControls.vue'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton.vue'
 import LearningObjectImportDialog from '@/outside/components/learning-object/LearningObjectImportDialog.vue'
+import LearningObjectDialogNoCaseCreate from '@/outside/components/learning-object/LearningObjectDialogNoCaseCreate.vue'
+import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
 const ASC = 'asc'
 const DESC = 'desc'
 export default {
@@ -90,13 +105,14 @@ export default {
       columnName: 'name',
       columnCreated: 'createDate',
       columnUpdated: 'lastUpdateDate',
+      columnLti: 'idForLTI',
       sortKey: 'name',
       sortDir: ASC,
       searchTerm: '',
       checkAppTypes: ['EHR']
     }
   },
-  components: { ZoneLmsButton, AppPaginateControls, AppTypeSelector, AppSearchBox, UiButton, UiTableHeaderButton, ZoneLmsPageBanner, LearningObjectListItem, LearningObjectImportDialog },
+  components: { ZoneLmsInstructionsHeader, ZoneLmsButton, AppPaginateControls, AppTypeSelector, AppSearchBox, UiButton, UiTableHeaderButton, ZoneLmsPageBanner, LearningObjectListItem, LearningObjectImportDialog, LearningObjectDialogNoCaseCreate },
   computed: {
     canDo () {
       return StoreHelper.isDevelopingContent()
@@ -114,6 +130,14 @@ export default {
       await this.$store.dispatch('system/setAppTypes', this.checkAppTypes)
       console.log('got', this.checkAppTypes)
       this.route()
+    },
+    showLobjCreateDialog: function () {
+      // pas undefined for first parameter to set up for the 'create' action. Give the new LObj the case study
+      this.$refs.theLObjDialog.showLObjDialog({ action:'create', seed: this.seed})
+    },
+    async createNewLobj (data) {
+      const newLobj = await StoreHelper.createAssignment(data)
+      await this.$router.push({ name: 'learning-object', query: { learningObjectId: newLobj._id } })
     },
     async loadComponent () {
       const query = this.$route.query

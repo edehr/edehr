@@ -12,6 +12,7 @@ import {
 import store from '@/store'
 import authHelper from '@/helpers/auth-helper'
 import MPatientHelper from '@/helpers/mPatientHelper'
+import FeatureHelper from '@/helpers/feature-helper'
 
 const dbApp = false
 
@@ -46,6 +47,12 @@ async  function onPageChange (toRoute) {
     console.log('Skip page change for error page')
     return perfExit(perfStat)
   }
+
+  /*
+  Note that the browser settings can override the OS setting
+   */
+  const isDark = window.matchMedia('(prefers-color-scheme:dark)').matches
+  console.log('isDark', isDark)
 
   // console.log('toRoute', toRoute.fullPath)
   // console.log('page change to: ', toRoute.name, JSON.stringify(toRoute.meta), JSON.stringify(toRoute.query))
@@ -209,27 +216,11 @@ async  function onPageChange (toRoute) {
 
     const toolConsumerId = store.getters['authStore/consumerId']
     await store.dispatch('consumerStore/loadConsumer', toolConsumerId)
+    await FeatureHelper.loadFlags(toolConsumerId)
 
     // Load the user based on auth message
     const userId = store.getters['authStore/userId']
     await store.dispatch('userStore/load', userId)
-
-    // **** if not in zone EHR (e.g. in LMS area or other) .... prep and EXIT
-    if (!StoreHelper.inZoneEHR()) {
-      if (dbApp) console.log('Page change to non-EHR page.')
-      // If user has left the ehr zone then ehr only demo is over
-      // TODO consider that this means the browser history and back button will not work
-      await EhrOnlyDemo.clearEhrOnly()
-      // Exit. All pages beyond the EHR zone perform their own loading as needed.
-      EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
-      return perfExit(perfStat)
-      // EXIT
-    }
-
-    /*
-      FROM HERE ON THE USER IS LOADING AN EHR PAGE
-     */
-
     const storedVisitId = store.getters['visit/visitId']
     const authVisitId = store.getters['authStore/visitId']
     let visitId = optionalVisitId || storedVisitId || authVisitId
@@ -242,7 +233,23 @@ async  function onPageChange (toRoute) {
     await store.dispatch('courseStore/loadCurrentCourse', { courseId: theActivity.courseId })
     // **** If page is the one that handles unlinked activities then we are done ... EXIT
     if (routeName === UNLINKED_ACTIVITY_ROUTE_NAME) {
-      console.log('UNLINKED_ACTIVITY_ROUTE_NAME --- OKAY? ---finish page change for unlinked activity')
+      // console.log('UNLINKED_ACTIVITY_ROUTE_NAME --- OKAY? ---finish page change for unlinked activity')
+      EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
+      return perfExit(perfStat)
+      // EXIT
+    }
+
+    /*
+      FROM HERE ON THE USER IS LOADING AN EHR PAGE
+     */
+
+    // **** if not in zone EHR (e.g. in LMS area or other) .... prep and EXIT
+    if (!StoreHelper.inZoneEHR()) {
+      if (dbApp) console.log('Page change to non-EHR page.')
+      // If user has left the ehr zone then ehr only demo is over
+      // TODO consider that this means the browser history and back button will not work
+      await EhrOnlyDemo.clearEhrOnly()
+      // Exit. All pages beyond the EHR zone perform their own loading as needed.
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
       return perfExit(perfStat)
       // EXIT

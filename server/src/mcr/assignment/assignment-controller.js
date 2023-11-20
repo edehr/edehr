@@ -4,7 +4,7 @@ import Activity from '../activity/activity'
 import Visit from '../visit/visit'
 import ActivityData from '../activity-data/activity-data'
 import SeedDataController from '../seed/seedData-controller'
-import { SystemError } from '../common/errors'
+import { ParameterError, SystemError } from '../common/errors'
 import { Text } from '../../config/text'
 import {ok, fail} from '../common/utils'
 import { isAdmin } from '../../helpers/middleware'
@@ -13,7 +13,6 @@ import pluralize from 'pluralize'
 const debug = require('debug')('server')
 import { logError} from '../../helpers/log-error'
 import SeedData from '../seed/seed-data'
-import { APP_TYPE_LIS } from '../../helpers/appType'
 const debugAC = false
 
 const sd = new SeedDataController()
@@ -97,7 +96,14 @@ export default class AssignmentController extends BaseController {
     response[pluralize(this.modelName)] = results
     return response
   }
-
+  async assignmentsUsingSeed (tool, seedId) {
+    const query = {toolConsumer: tool, seedDataId: seedId}
+    const results = await this.model.find(query)
+    const response = {}
+    response[pluralize(this.modelName)] = results
+    // console.log('------- ', results)
+    return response
+  }
   async getLObj (id, userId) {
     if (debugAC) debug('Assignment. getLObj id: ', id)
     let modelInstance = await this.baseFindOneQuery(id)
@@ -173,10 +179,10 @@ export default class AssignmentController extends BaseController {
     } = data
     if (!title) {
       logError(Text.ASSIGNMENT_REQUIRE_RESOURCE(toolConsumer.oauth_consumer_key, toolConsumer._id), data)
-      throw new SystemError(Text.ASSIGNMENT_REQUIRE_RESOURCE(toolConsumer.oauth_consumer_key, toolConsumer._id))
+      throw new ParameterError(Text.ASSIGNMENT_REQUIRE_RESOURCE(toolConsumer.oauth_consumer_key, toolConsumer._id))
     }
-    if (!description) {
-      logError('Creating an assignment with no description. This is not an error. It is just unusual', data)
+    if (!seedId && ! data.mPatientAppType) {
+      throw new ParameterError(Text.ASSIGNMENT_MISSING_SEED_OR_APPTYPE)
     }
     const query = { toolConsumer: toolConsumer._id }
     let seed
@@ -195,7 +201,7 @@ export default class AssignmentController extends BaseController {
     if (seed) {
       lObjDef.seedDataId = seed._id
     } else {
-      lObjDef.mPatientAppType = APP_TYPE_LIS // limit students to see case studies with this app type
+      lObjDef.mPatientAppType = data.mPatientAppType // limit students this app type
       lObjDef.mPatientFilterTag = '' // all
     }
     if (debugAC) debug('Assignment. create from def', lObjDef)
@@ -220,6 +226,7 @@ export default class AssignmentController extends BaseController {
       description: 1,
       seedDataId: 1,
       createDate: 1,
+      idForLTI: 1,
       lastUpdateDate: 1,
     }
   }
@@ -248,6 +255,14 @@ export default class AssignmentController extends BaseController {
     ]
   }
 
+  _updatePreSave ( assignmentDoc, data) {
+    // If the incoming data does not have a seed, and this lobj previously
+    // did have a seed then clear it. Note the regular update does remove empty properties.
+    if (assignmentDoc.seedDataId && !data.seedDataId && assignmentDoc.mPatientAppType) {
+      assignmentDoc.seedDataId = undefined
+    }
+    return assignmentDoc
+  }
 
   route () {
     const router = super.route()
@@ -263,22 +278,6 @@ export default class AssignmentController extends BaseController {
         .then(ok(res))
         .then(null, fail(req, res))
     })
-    router.put('/clearSeed/:key', (req, res) => {
-      const id = req.params.key
-      return this.baseFindOneQuery(id)
-        .then((lobj) => {
-          lobj.seedDataId = undefined
-          return lobj.save()
-        })
-        .then((modelInstance) => {
-          const response = {}
-          response[this.modelName] = modelInstance
-          return response
-        })
-        .then(ok(res))
-        .then(null, fail(req, res))
-    })
-
     router.delete('/unused/:key', async (req, res) => {
       const { key } = req.params
       if (debugAC) debug('Assignment delete unused query ', key)

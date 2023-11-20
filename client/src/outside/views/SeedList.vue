@@ -1,71 +1,40 @@
 <template lang="pug">
   div
-    zone-lms-page-banner
-      div(class="flow_across menu_space_across flow_across_right")
-        app-search-box(:searchTerm="searchTerm", @updateSearchTerm='updateSearchTerm')
-        app-type-selector(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
-        app-paginate-controls(:offset='offset', :limit='paginateLimit', :listMetadata="listMetadata" @repage='repage')
-        seed-list-actions(@create="refreshAfterUpdateCreate", @patientLabels='patientLabels')
-        //zone-lms-button(@action="downloadAll", :icon='appIcons.download', :title='text.DOWNLOAD_TP', :text='text.DOWNLOAD')
-    div(class="e-table-container")
-      div(class="details-container e-table")
-        div(class="thead")
-          div(class="thcell e-name")
-            div(class="flow_across")
-              div(class="") Name
-              ui-table-header-button(
-                class="flow_across_last_item",
-                v-on:buttonClicked="sortColumnToggle(columnName)",
-                title="Sort by name")
-                fas-icon(class="fa", :icon="sortColumnIcon(columnName)")
-          div(class="thcell e-mrn") MRN
-            ui-table-header-button(
-              class="flow_across_last_item",
-              v-on:buttonClicked="sortColumnToggle(columnMrn)",
-              title="Sort by MRN")
-              fas-icon(class="fa", :icon="sortColumnIcon(columnMrn)")
-          div(class="thcell e-tags")
-            div(class="flow_across")
-              div(class="") Tags
-              app-tag-filter(class="flow_across_last_item", :selectedTags="selectedTags", @update:tags="updateSelectedTags")
-          div(class="thcell") Type
-          div(class="thcell") Usage
-          div(class="thcell e-date")
-            div(class="flow_across")
-              div(class="") Created
-              ui-table-header-button(
-                class="flow_across_last_item",
-                v-on:buttonClicked="sortColumnToggle(columnCreated)",
-                title="Sort by created date")
-                fas-icon(class="fa", :icon="sortColumnIcon(columnCreated)")
-          div(class="thcell e-date")
-            div(class="flow_across")
-              div(class="") Updated
-              ui-table-header-button(
-                class="flow_across_last_item",
-                v-on:buttonClicked="sortColumnToggle(columnUpdated)",
-                title="Sort by updated date")
-                fas-icon(class="fa", :icon="sortColumnIcon(columnUpdated)")
-          div(class="thcell") Description
-          div(class="thcell") Actions
-        div(class="tbody")
-          div(class="row", v-for="seedModel in seedDataListFiltered", :class="rowClass(seedModel)")
-            div(class='cell e-name')
-              ui-link(:name="'seed-view'", class="list-item-name", :query='{ seedId: seedModel._id }' )
-                span(class='clickable') {{truncate(seedModel.name, 40)}}
-            div(class="cell") {{ seedModel.mrn }}
-            div(class='cell e-tags')
-              app-tag-list(class="list-item-taglist", :tagList="seedModel.tagList")
-            div(class="cell") {{ seedModel.appType }}
-            div(class="cell") {{ seedModel.assignmentCount }}
-            div(class="cell e-date") {{ seedModel.createDate | formatDateTime }}.
-            div(class="cell e-date") {{ seedModel.lastUpdateDate | formatDateTime }}
-            div(class="cell").
-              {{truncate(seedModel.description, 200)}}
-            div(class="cell")
-              zone-lms-button(@action="viewEhrCondensed(seedModel)", :icon='appIcons.view', :title='actionText.VIEW_TP', :actionText='text.VIEW')
-              zone-lms-button(v-show="canDo", @action="gotoEhrWithSeed(seedModel)", :icon='appIcons.edit', :title='actionText.EDIT_TP', :actionText='text.EDIT')
-              zone-lms-button(@action="downloadSeed(seedModel)", :icon='appIcons.download', :actionText='text.DOWNLOAD_TP', :text='actionText.DOWNLOAD')
+    zone-lms-page-banner(theme='seed-theme')
+      seed-list-actions(@create="refreshAfterUpdateCreate", @patientLabels='patientLabels')
+    zone-lms-instructions-header
+      p.
+        Case studies contain the simulation data for a single patient. Each row of this table present a case study.
+      p.
+        To find a case study be sure to select the appropriate application type, EHR or LIS, (think clinical vs laboratory) and then try placing some text into the search box to select those case studies that have that text in either the their name or description properties.
+        You can also try sorting the list in different ways, and be sure to use the Tags to filter the list to a category of case studies.
+      p
+        | You can jump to the case study's details page by clicking its name. Or you can
+        | view the case study data with the &nbsp;
+        fas-icon(class="fa", :icon='appIcons.view')
+        | &nbsp; button.
+        | The  &nbsp;
+        fas-icon(class="fa", :icon='appIcons.download')
+        | &nbsp; button lets you save a case study to your computer to use later, or better yet, to share with others.
+      p
+        | If you are in the course designer mode, use the &nbsp;
+        fas-icon(class="fa", :icon='appIcons.new')
+        | &nbsp; button to create a new case study. You will be able to import a previously saved case study from within that create dialog.
+        | You can also edit the case study in the EHR or LIS application by using the &nbsp;
+        fas-icon(class="fa", :icon='appIcons.edit')
+        | &nbsp; button on one of the rows below.  If you are not a course designer you will not see these buttons.
+      p
+        | Use the &nbsp;
+        fas-icon(class="fa", :icon='appIcons.barcode')
+        | &nbsp; button to see a page of barcode labels for the patients (case studies) listed below.
+
+
+
+    seed-select-component(:for-page='true', ref="seedSelectComponent",
+      @viewEhrCondensed="viewEhrCondensed",
+      @gotoEhrWithSeed="gotoEhrWithSeed",
+      @downloadSeed='downloadSeed'
+    )
 </template>
 
 <script>
@@ -76,7 +45,6 @@ import { Text } from '@/helpers/ehr-text'
 import AppTagFilter from '@/app/components/AppTagFilter.vue'
 import AppTagList from '@/app/components/AppTagList.vue'
 import OutsideCommon from '@/outside/views/OutsideCommon'
-import SeedActions from '@/outside/components/seed-management/SeedActions.vue'
 import SeedListActions from '@/outside/components/seed-management/SeedListActions'
 import UiButton from '@/app/ui/UiButton.vue'
 import UiLink from '@/app/ui/UiLink.vue'
@@ -88,6 +56,8 @@ import AppSearchBox from '@/app/components/AppSearchBox.vue'
 import AppTypeSelector from '@/app/components/AppTypeSelector.vue'
 import AppPaginateControls from '@/app/components/AppPaginateControls.vue'
 import { downloadSeedToFile } from '@/helpers/ehr-utils'
+import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
+import SeedSelectComponent from '@/outside/components/seed-management/SeedSelectComponent.vue'
 
 const ASC = 'asc'
 const DESC = 'desc'
@@ -95,12 +65,13 @@ const DESC = 'desc'
 export default {
   extends: OutsideCommon,
   components: {
+    SeedSelectComponent,
+    ZoneLmsInstructionsHeader,
     AppPaginateControls,
     AppSearchBox,
     AppTagFilter,
     AppTagList,
     AppTypeSelector,
-    SeedActions,
     SeedListActions,
     SeedListItem,
     UiButton,
@@ -197,8 +168,14 @@ export default {
         this.searchTerm = query.searchTerm
       }
       this.searchTerm ? queryPayload.searchTerm = this.searchTerm : undefined
-      await this.$store.dispatch('seedListStore/loadPage', queryPayload)
-      await this.$store.dispatch('seedListStore/loadAllTags')
+      // await this.$store.dispatch('seedListStore/loadPage', queryPayload)
+      // await this.$store.dispatch('seedListStore/loadAllTags')
+      await this.fetchSeedSelectionList()
+    },
+    async fetchSeedSelectionList () {
+      if (this.$refs.seedSelectComponent ) {
+        await this.$refs.seedSelectComponent.fetchSeedList()
+      }
     },
     patientLabels () {
       const query = this.query()

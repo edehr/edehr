@@ -1,8 +1,13 @@
 <template lang="pug">
   div
     zone-lms-page-banner
-    div(class="details-container card intro")
-      div(class="instructions") {{ text.COURSE_SELECT_NAV }}
+    zone-lms-instructions-header
+      p {{text.COURSES_PAGE_INTRO}}
+      p(v-if='isInstructor')
+        span Click on the gears button &nbsp;
+        fas-icon( class="fa", :icon="appIcons.configure")
+        span &nbsp; to view the course configuration. Enable 'Course designer mode' to edit the configuration.
+
     div(class="e-table details-container")
       div(class="thead")
         div(class="thcell") Name
@@ -41,9 +46,11 @@ import { APP_ICONS } from '@/helpers/app-icons'
 import { Text } from '@/helpers/ehr-text'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton.vue'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner.vue'
+import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
 export default {
   extends: OutsideCommon,
   components: {
+    ZoneLmsInstructionsHeader,
     ZoneLmsPageBanner,
     CourseDialog,
     ZoneLmsButton,

@@ -235,8 +235,7 @@ export default class LTIController {
       debug('updateToolConsumer toolConsumer ')
       if (debugFine) debug('updateToolConsumer starting with ' + toolConsumer)
       toolConsumer.lti_version = ltiData.lti_version
-      toolConsumer.tool_consumer_info_product_family_code =
-        ltiData.tool_consumer_info_product_family_code
+      toolConsumer.tool_consumer_info_product_family_code = ltiData.tool_consumer_info_product_family_code
       toolConsumer.tool_consumer_info_version = ltiData.tool_consumer_info_version
       toolConsumer.tool_consumer_instance_guid = ltiData.tool_consumer_instance_guid
       toolConsumer.tool_consumer_instance_name = ltiData.tool_consumer_instance_name

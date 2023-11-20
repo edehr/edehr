@@ -23,12 +23,7 @@
             div
               div(class="flow_across table_space_across app-type-section")
                 label Application type
-                app-type-toggle-button(
-                  :modelValue='isEHR_Showing',
-                  @change='changeApp',
-                  labelOn='EHR'
-                  labelOff='LIS'
-                )
+                app-type-radio(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
               div {{ appTypeDescriptionText }}
             div(class="flow_across table_space_across tags-section")
               label(class="tags-label") Tags
@@ -67,13 +62,12 @@
 
 <script>
 import AppDialog from '@/app/components/AppDialogShell'
-import StoreHelper, { APP_TYPE_EHR, APP_TYPE_LIS } from '@/helpers/store-helper'
+import StoreHelper, { APP_TYPE_EHR } from '@/helpers/store-helper'
 import UiButton from '@/app/ui/UiButton.vue'
 import UiInfo from '@/app/ui/UiInfo'
 import { readFile, validateSeedFileContents } from '@/helpers/ehr-utils'
 import AppTagListEditor from '@/app/components/AppTagListEditor.vue'
-import AppTypeToggleButton from '@/outside/components/seed-management/AppTypeToggleButton.vue'
-
+import AppTypeRadio from '@/app/components/AppTypeRadio.vue'
 
 const TITLES = {
   edit: 'Edit seed data properties',
@@ -88,10 +82,12 @@ const EDIT_ACTION= 'edit'
 const CREATE_ACTION = 'create'
 
 export default {
-  components: { AppTypeToggleButton,  AppTagListEditor, AppDialog, UiButton, UiInfo },
+  components: { AppTypeRadio,  AppTagListEditor, AppDialog, UiButton, UiInfo },
   data () {
     return {
       appType: 'EHR',
+      checkAppTypes: 'EHR',
+
       name: '',
       version: '',
       contributors: '',
@@ -122,7 +118,7 @@ export default {
       return !!(this.nameValidate || this.uploadError)
     },
     isEHR_Showing () {
-      return APP_TYPE_EHR === this.appType
+      return APP_TYPE_EHR === this.checkAppTypes
     },
     nameValidate () {
       let v = this.name.length > 0
@@ -144,25 +140,21 @@ export default {
     }
   },
   methods: {
+    changeAppTypes (checkAppTypes) {
+      this.checkAppTypes = checkAppTypes
+    },
     clearInputs: function () {
       this.ehrData = {}
       this.seedFile = null
       this.uploadSeed = {}
       this.uploadError = ''
     },
-    changeApp (event) {
-      if (this.isEHR_Showing) {
-        this.appType = APP_TYPE_LIS
-      } else {
-        this.appType = APP_TYPE_EHR
-      }
-    },
     showSeedDataDialog (seedModel) {
       this.clearInputs()
       if (seedModel) {
         const seedData = seedModel.seed
         this.actionType = EDIT_ACTION
-        this.appType = seedData.appType
+        this.checkAppTypes = seedData.appType
         this.name = seedData.name
         this.version = seedData.version
         this.contributors = seedData.contributors || ''
@@ -192,7 +184,7 @@ export default {
     saveDialog: async function () {
       let seedData = {
         name: this.name,
-        appType: this.appType,
+        appType: this.checkAppTypes,
         version: this.version,
         description: this.description,
         contributors: this.contributors,
