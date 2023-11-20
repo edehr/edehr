@@ -7,6 +7,10 @@
         ui-button(v-on:buttonClicked="gotoChangeCharacter()",
           :title='demoText.switchRoleLabel') {{ demoText.switchRoleLabel }}
       div(class="aside-intro", v-text-to-html.noAutoLink="demoText.lmsAside")
+      div(class='autoLinkToggle')
+        input(type="checkbox", id="creator", @input="changeAutoLink", :checked="autoLinkLobj")
+        label(for='creator') &nbsp; autoLinkLobj {{ autoLinkLobj }}
+
       //div(class="aside-intro", v-text-to-html.noAutoLink="demoText.lmsAside2")
     div(class="sample-lms")
       div(class="sample-lms-header")
@@ -54,6 +58,7 @@ export default {
     }
   },
   computed: {
+    autoLinkLobj ()  { return this.$store.getters['demoStore/autoLinkLobj']},
     editButtonClass: function () {
       return {
         'is-light': this.editMode
@@ -66,6 +71,9 @@ export default {
   methods: {
     gotoChangeCharacter: function () {
       this.$router.push('/demo')
+    },
+    changeAutoLink () {
+      this.$store.dispatch('demoStore/setAutoLinkLobj', !this.autoLinkLobj)
     },
     loadActivities: function () {
       const demoHelper = new DemoHelper()

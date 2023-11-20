@@ -46,11 +46,11 @@ describe(`${typeName} controller testing`, function () {
     let doc = await m.create(data)
     should.exist(doc)
     should.exist(doc.idForLTI, 'l objs now have property idForLTI')
-    doc.idForLTI.should.equal('LP0002')
+    doc.idForLTI.should.equal('LP00002')
     // lobj2 because of the create in the previous test
 
     doc = await m.create(data)
-    doc.idForLTI.should.equal('LP0003')
+    doc.idForLTI.should.equal('LP00003')
   })
 
 })

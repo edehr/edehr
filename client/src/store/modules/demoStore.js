@@ -30,6 +30,7 @@ function clearStorage () {
 }
 
 const getters = {
+  autoLinkLobj: (state) => { return state.autoLinkLobj },
   demoToken: function () {
     return _getStoredDemoToken()
   },
@@ -56,12 +57,16 @@ const getters = {
 }
 
 const state = {
+  autoLinkLobj: true,
   demoData: undefined, // load from a fetch token
   persona: undefined, // selected by user on the Demo page
   demoFeature: true // ToDo remove this flag soon. and ui code. We shouldn't need it if full demo is easy enough to use.
 }
 
 const actions = {
+  setAutoLinkLobj: (context, mode) => {
+    context.commit('_setAutoLinkLobj', mode)
+  },
   createToolConsumer: function () {
     return _getHelper().createToolConsumer()
       .then(res => {
@@ -125,6 +130,9 @@ const actions = {
 
 const mutations = {
   initialize: function (state) {
+    // default the autoLinkLobj to true if storage has no value
+    state.autoLinkLobj = !(localStorage.getItem('autoLinkDemoLobj') === 'false')
+    // console.log( 'AUTO LINK ININITIALIZE', state.autoLinkLobj)
     state.demoFeature = true // _getStoredDemoFeature() === 'true'
     if (debugDS) console.log('DemoStore initialize: demo feature state',  state.demoFeature)
     const stashedDemoData = _getStoredDemoData()
@@ -141,6 +149,11 @@ const mutations = {
       clearStorage()
     }
   },
+  _setAutoLinkLobj: (state, mode) => {
+    localStorage.setItem('autoLinkDemoLobj', mode)
+    state.autoLinkLobj = mode
+  },
+
   setDemoData: function (state, data) {
     if (debugDS) console.log('DemoStore set demo data', data)
     state.demoData = data

@@ -32,6 +32,14 @@
       p Instance name: {{ consumer.tool_consumer_instance_name }}
       p Instance description: {{ consumer.tool_consumer_instance_description }}
 
+      p(v-if="lmsUrl")
+        ui-button(v-on:buttonClicked="exit()",
+          :title="returnToLmsText")
+          fas-icon(class="fa", :icon="appIcons.exitToLms")
+          span &nbsp; {{returnToLmsText}}
+      p(v-else).
+        Your LMS does not provide return url addresses, so you will need to close this window,
+        and return to your LMS some other way.
 
 
 </template>
@@ -39,6 +47,8 @@
 <script>
 import { APP_ICONS } from '@/helpers/app-icons'
 import LearningObjectSelectComponent from '@/outside/components/learning-object/LearningObjectSelectComponent.vue'
+import UiButton from '@/app/ui/UiButton.vue'
+import StoreHelper from '@/helpers/store-helper'
 export default {
   data () {
     return {
@@ -46,15 +56,18 @@ export default {
       selectedObj: {},
     }
   },
-  components: { LearningObjectSelectComponent },
+  components: { UiButton, LearningObjectSelectComponent },
   computed: {
     hasSelection () { return !! this.selectedObj.name},
     activity () { return this.$store.getters['activityStore/activityRecord']},
     consumer () { return this.$store.getters['consumerStore/consumer']},
+    lmsUrl () { return StoreHelper.lmsUrl() },
+    returnToLmsText () { return 'Return to ' + this.consumer.tool_consumer_instance_name},
     user () { return this.$store.getters['userStore/user']},
     role () { return this.$store.getters['visit/role']}
   },
   methods: {
+    exit () { StoreHelper.exitToLms() },
     selectLobj (lobj) {
       this.selectedObj = lobj
       // wait for reaction to enable the button
