@@ -156,12 +156,12 @@ export default {
       // appType
       const fromRouteAppTypes = query.appTypes
       if(fromRouteAppTypes) {
-        this.checkAppTypes = fromRouteAppTypes.split(',')
+        this.checkAppTypes = fromRouteAppTypes
         await this.$store.dispatch('system/setAppTypes', this.checkAppTypes)
       } else {
         this.checkAppTypes = this.$store.getters['system/checkAppTypes']
       }
-      let ats = this.checkAppTypes.join(',')
+      let ats = this.checkAppTypes
       ats ? queryPayload.appTypes = ats : undefined
       // search term
       if (query.searchTerm ) {
@@ -194,7 +194,7 @@ export default {
       query.ts = Date.now() // to prevent DupNav errors from Vue
       this.selectedTags.length > 0 ? query.tagList = this.selectedTags.join(',') : undefined
       // only add appType to query if there are some selections
-      let ats = this.checkAppTypes.join(',')
+      let ats = this.checkAppTypes
       ats ? query.appTypes = ats : undefined
       this.searchTerm ? query.searchTerm = this.searchTerm : undefined
       return query

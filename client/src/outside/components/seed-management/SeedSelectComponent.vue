@@ -1,8 +1,8 @@
 <template lang="pug">
 div
   div(class="flow_across menu_space_across flow_across_right")
-    app-search-box(:searchTerm="searchTerm", @updateSearchTerm='changeSearchTerm')
     app-type-radio(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
+    app-search-box(:searchTerm="searchTerm", @updateSearchTerm='changeSearchTerm')
     app-paginate-controls(:offset='offset', :limit='paginateLimit', :listMetadata="listMetadata" @repage='changePage')
 
   div(class="e-table-container seed-theme")

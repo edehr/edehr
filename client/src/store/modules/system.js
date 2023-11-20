@@ -85,8 +85,8 @@ const actions = {
     })
   },
   setAppTypes ( {commit}, value) {
-    if(!value || ! Array.isArray(value)) {
-      console.error('Coding error setting app types with providing an array')
+    if(!value || Array.isArray(value)) {
+      console.error('Coding error setting app types. Only one type is allowed. No arrays')
       return
     }
     commit('setAppTypes', value)
@@ -136,9 +136,9 @@ const mutations = {
     state.lmsNavCollapsed = localStorage.getItem('LmsNavCollapsed') === 'true'
     asStored = localStorage.getItem('appTypes')
     if (asStored) {
-      state.checkAppTypes = asStored.split(',')
+      state.checkAppTypes = asStored
     } else {
-      state.checkAppTypes = []
+      state.checkAppTypes = ''
     }
     // disable this ability to toggle labels. Force all to be hidden to be icon only.
     // TODO IF this doesn't cause problems for users then come back and remove the code that manages this state
@@ -151,9 +151,9 @@ const mutations = {
     // console.log('System store set ApiData: ', apiData)
     state.apiData = apiData
   },
-  setAppTypes: (state, appTypesArray) => {
-    state.checkAppTypes = appTypesArray
-    localStorage.setItem('appTypes', appTypesArray.join(','))
+  setAppTypes: (state, appType) => {
+    state.checkAppTypes = appType
+    localStorage.setItem('appTypes', appType)
   },
   incrAppDialogCount: (state) => {
     state.appDialogCount++

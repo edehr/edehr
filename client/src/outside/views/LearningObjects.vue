@@ -31,7 +31,7 @@
         | Go to see the details of a learning object to learn more.
 
     div(class="flow_across menu_space_across flow_across_right")
-      app-type-selector(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
+      app-type-radio(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
       app-search-box(:searchTerm="searchTerm", @updateSearchTerm='updateSearchTerm')
       app-paginate-controls(:offset='offset', :limit='paginateLimit', :listMetadata="listMetadata", @repage='repage')
     div(class="details-container e-table lobj-theme")
@@ -86,7 +86,7 @@ import { APP_ICONS } from '@/helpers/app-icons'
 import { Text } from '@/helpers/ehr-text'
 import UiButton from '@/app/ui/UiButton.vue'
 import AppSearchBox from '@/app/components/AppSearchBox.vue'
-import AppTypeSelector from '@/app/components/AppTypeSelector.vue'
+import AppTypeRadio from '@/app/components/AppTypeRadio.vue'
 import AppPaginateControls from '@/app/components/AppPaginateControls.vue'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton.vue'
 import LearningObjectImportDialog from '@/outside/components/learning-object/LearningObjectImportDialog.vue'
@@ -109,10 +109,10 @@ export default {
       sortKey: 'name',
       sortDir: ASC,
       searchTerm: '',
-      checkAppTypes: ['EHR']
+      checkAppTypes: 'EHR'
     }
   },
-  components: { ZoneLmsInstructionsHeader, ZoneLmsButton, AppPaginateControls, AppTypeSelector, AppSearchBox, UiButton, UiTableHeaderButton, ZoneLmsPageBanner, LearningObjectListItem, LearningObjectImportDialog, LearningObjectDialogNoCaseCreate },
+  components: { ZoneLmsInstructionsHeader, ZoneLmsButton, AppPaginateControls, AppTypeRadio, AppSearchBox, UiButton, UiTableHeaderButton, ZoneLmsPageBanner, LearningObjectListItem, LearningObjectImportDialog, LearningObjectDialogNoCaseCreate },
   computed: {
     canDo () {
       return StoreHelper.isDevelopingContent()
@@ -128,7 +128,7 @@ export default {
       this.checkAppTypes = checkAppTypes
       this.offset = 0
       await this.$store.dispatch('system/setAppTypes', this.checkAppTypes)
-      console.log('got', this.checkAppTypes)
+      // console.log('got', this.checkAppTypes)
       this.route()
     },
     showLobjCreateDialog: function () {
@@ -154,12 +154,12 @@ export default {
       // appType
       const fromRouteAppTypes = query.appTypes
       if(fromRouteAppTypes) {
-        this.checkAppTypes = fromRouteAppTypes.split(',')
+        this.checkAppTypes = fromRouteAppTypes
         await this.$store.dispatch('system/setAppTypes', this.checkAppTypes)
       } else {
         this.checkAppTypes = this.$store.getters['system/checkAppTypes']
       }
-      let ats = this.checkAppTypes.join(',')
+      let ats = this.checkAppTypes
       ats ? queryPayload.appTypes = ats : undefined
       // Search term
       if (query.searchTerm ) {
@@ -175,7 +175,7 @@ export default {
       query.sortKey = this.sortKey
       query.sortDir = this.sortDir
       // only add appType to query if there are some selections
-      let ats = this.checkAppTypes.join(',')
+      let ats = this.checkAppTypes
       ats ? query.appTypes = ats : undefined
       // without name the router stays on the same page. Just change query string.
       this.searchTerm ? query.searchTerm = this.searchTerm : undefined
