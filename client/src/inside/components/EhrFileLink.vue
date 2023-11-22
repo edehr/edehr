@@ -6,13 +6,22 @@
     div(v-else)
       img(v-if="isImage", :src="url", class="thumbnail")
       div {{ name }}
+    // TODO Add delete button but need to provide a usage count first.
+    //button
+    //  fas-icon(class='fa', :icon='appIcons.trash')
 </template>
 
 <script>
 import { isImageFile } from '@/helpers/ehr-utils'
 import StoreHelper from '@/helpers/store-helper'
+// import { APP_ICONS } from '@/helpers/app-icons'
 
 export default {
+  data () {
+    return {
+      // appIcons: APP_ICONS,
+    }
+  },
   props: {
     ehrFile: { type: Object },
     alink: { type: Boolean, default: true}
