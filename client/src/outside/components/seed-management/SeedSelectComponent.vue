@@ -1,7 +1,7 @@
 <template lang="pug">
 div
   div(class="flow_across menu_space_across flow_across_right")
-    app-type-radio(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
+    app-type-radio(:value="appTypeMode", @changeAppTypes='changeAppTypes')
     app-search-box(:searchTerm="searchTerm", @updateSearchTerm='changeSearchTerm')
     app-paginate-controls(:offset='offset', :limit='paginateLimit', :listMetadata="listMetadata" @repage='changePage')
 
@@ -94,12 +94,7 @@ export default {
       columnUpdated: 'lastUpdateDate',
       sortKey: 'name',
       sortDir: ASC,
-      searchTerm: '',
-      appTypes: [
-        {key: EHR},
-        {key: LIS}
-      ],
-      checkAppTypes: EHR
+      searchTerm: ''
     }
   },
   props: {
@@ -107,6 +102,7 @@ export default {
     forPage: {type: Boolean},
   },
   computed: {
+    appTypeMode () { return this.$store.getters['system/appTypeMode']},
     allTagList () { return this.$store.getters['seedListStore/allTagList'] },
     canDo () { return StoreHelper.isDevelopingContent() },
     listMetadata () { return this.$store.getters['seedListStore/listMetadata']},
@@ -138,12 +134,12 @@ export default {
         tagList: this.selectedTags
       }
       query.searchTerm = this.searchTerm
-      query.appTypes  = this.checkAppTypes
+      query.appTypes  = this.appTypeMode
       await this.$store.dispatch('seedListStore/loadPage', query)
       await this.$store.dispatch('seedListStore/loadAllTags')
     },
-    async changeAppTypes (checkAppTypes) {
-      this.checkAppTypes = checkAppTypes
+    async changeAppTypes (appTypeMode) {
+      await this.$store.dispatch('system/setAppTypeMode', appTypeMode)
       this.offset = 0
       await this.fetchSeedList()
     },

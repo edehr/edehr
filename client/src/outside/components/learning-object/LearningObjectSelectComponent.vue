@@ -5,7 +5,7 @@
       First select whether you want clinical (EHR) or laboratory (LIS) content.
       Then search the list for text in the title or description.
     div(class="flow_across menu_space_across flow_across_right")
-      app-type-radio(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
+      app-type-radio(:value="appTypeMode", @changeAppTypes='changeAppTypes')
       app-search-box(:searchTerm="searchTerm", @updateSearchTerm='updateSearchTerm')
       app-paginate-controls(:list-metadata='listMetadata', :offset='listMetadata.offset', @repage='pageChange')
     div(class='e-table lobj-theme')
@@ -34,7 +34,6 @@ const ASC = 'asc'
 // eslint-disable-next-line no-unused-vars
 const DESC = 'desc'
 
-const EHR_APP_TYPE = 'EHR'
 export default {
   components: { AppPaginateControls, AppSearchBox, AppTypeRadio, UiButton, UiInfo },
   data () {
@@ -42,20 +41,20 @@ export default {
       selected: {},
       currentLobjId: undefined,
       offset: 0,
-      searchTerm: '',
-      checkAppTypes: EHR_APP_TYPE
+      searchTerm: ''
     }
   },
   props: {},
   computed: {
+    appTypeMode () { return this.$store.getters['system/appTypeMode']},
     assignmentsListing () { return this.$store.getters['assignmentListStore/list'].filter( lobj => lobj._id !== this.currentLobjId) },
     listMetadata () { return this.$store.getters['assignmentListStore/listMetadata']},
     disableSave () { return JSON.stringify(this.selected).length === 2  },
     limit () { return this.$store.getters['system/paginateLimit']},
   },
   methods: {
-    changeAppTypes (checkAppTypes) {
-      this.checkAppTypes = checkAppTypes
+    changeAppTypes (appTypeMode) {
+      this.$store.dispatch('system/setAppTypeMode', appTypeMode)
       this.offset = 0
       this.loadPage()
     },
@@ -83,7 +82,7 @@ export default {
       query.tagList = ''
       query.limit = this.limit
       query.searchTerm = this.searchTerm
-      query.appTypes  = this.checkAppTypes
+      query.appTypes  = this.appTypeMode
       await this.$store.dispatch('assignmentListStore/loadPage', query)
     },
   }

@@ -53,7 +53,6 @@ import UiTableSortButton from '@/app/ui/UiTableHeaderButton.vue'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton.vue'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
 import AppSearchBox from '@/app/components/AppSearchBox.vue'
-import AppTypeSelector from '@/app/components/AppTypeSelector.vue'
 import AppPaginateControls from '@/app/components/AppPaginateControls.vue'
 import { downloadSeedToFile } from '@/helpers/ehr-utils'
 import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
@@ -71,7 +70,6 @@ export default {
     AppSearchBox,
     AppTagFilter,
     AppTagList,
-    AppTypeSelector,
     SeedListActions,
     SeedListItem,
     UiButton,
@@ -105,6 +103,7 @@ export default {
   },
   props: {},
   computed: {
+    appTypeMode () { return this.$store.getters['system/appTypeMode']},
     allTagList () {
       return this.$store.getters['seedListStore/allTagList']
     },
@@ -121,12 +120,6 @@ export default {
     },
   },
   methods: {
-    async changeAppTypes (checkAppTypes) {
-      this.checkAppTypes = checkAppTypes
-      this.offset = 0
-      await this.$store.dispatch('system/setAppTypes', this.checkAppTypes)
-      this.route()
-    },
     downloadSeed (seed) {
       downloadSeedToFile(seed._id, seed, seed.ehrData, seed.tagList)
     },
@@ -157,9 +150,7 @@ export default {
       const fromRouteAppTypes = query.appTypes
       if(fromRouteAppTypes) {
         this.checkAppTypes = fromRouteAppTypes
-        await this.$store.dispatch('system/setAppTypes', this.checkAppTypes)
-      } else {
-        this.checkAppTypes = this.$store.getters['system/checkAppTypes']
+        await this.$store.dispatch('system/setAppTypeMode', this.checkAppTypes)
       }
       let ats = this.checkAppTypes
       ats ? queryPayload.appTypes = ats : undefined

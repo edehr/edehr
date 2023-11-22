@@ -24,29 +24,28 @@
 
         div(class="dialog-step")
           div(class="dialog-item")
-            label(for="name") Description: &nbsp;
+            label(for="name") Instructions for student: &nbsp;
             textarea(v-model="description")
           dialog-instructions-element(:show-ex="showEx") Step 2. Describe what the student needs to do with the content and what learning objectives they ought to accomplish.
 
         div(v-if='allowSeedSelect', class="dialog-step")
           div(class="dialog-item", id='setEnabler')
-            label() Shall this learning object provide a case study?
+            label Case study?
             input(id='enablerYes', type="radio", name="enabler", value="yes", v-model="enableSeedSelector",  @change="changeEnabler($event)")
             label(for="enablerYes") Yes
             input(id='enablerNo', type="radio", name="enabler", value="no", v-model="enableSeedSelector",  @change="changeEnabler($event)")
             label(for="enablerNo") No
-            div {{ enableSeedSelector === 'yes' ? '(Students will see the case study you select in the next step)': '(Students will search for the correct patient (case study))' }}
-          dialog-instructions-element(:show-ex="allowSeedSelect && showEx") Step 3. Determine if you want the student to work with a case study or to start with a blank charting system and find their patient?
+          dialog-instructions-element(:show-ex="allowSeedSelect && showEx") Step 3. If you select "yes" then students will work with the case study you select below. Otherwise, students start with an empty application and they must search for the correct patient (case study)).
 
         div(v-if='allowSeedSelect && "no" === enableSeedSelector', class="dialog-step")
           label Application type:
           app-type-radio(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
         dialog-instructions-element(:show-ex="allowSeedSelect && 'no' === enableSeedSelector && showEx") Step 4. Select the application type for the lesson. When the student searches for patients they will only be searching case studies with the chosen application type.
 
-        div The selected seedModel name is: {{ seedModel ? seedModel.name : '' }}
+        div(v-if='enableSeedSelector ==="yes"') The selected seedModel name is: {{ seedModel ? seedModel.name : '(Please select a case study from below.)' }}
         dialog-instructions-element(:show-ex="showEx && enableSeedSelector ==='yes'")
           p Step 4. Select a case study to provide the simulated patient health records.
-          p If you need to create a new case study then save your work. Create the new case study and then return to set up this learning object.
+          p If you need to create a new case study then just select any case study, and then go make your new one, and then return here to finish setting up this learning object.
 
         transition(name="fade",  mode="out-in")
           div(v-if='enableSeedSelector ==="yes"')
@@ -91,7 +90,6 @@ export default {
       showEx: false, // default to not show help text.
       actionType: '', // edit or create the learning object
       cText: TextLearningObjects,
-      checkAppTypes: APP_TYPE_LIS,
       learningObjectName: '',
       learningObject: {},
       description: '',
@@ -105,6 +103,7 @@ export default {
   },
   components: { UiButton, DialogInstructionsElement, AppTypeRadio, SeedSelectComponent, UiInfo, AppDialog },
   computed: {
+    appTypeMode () { return this.$store.getters['system/appTypeMode']},
     nameValidate () {
       return this.learningObjectName.trim() ? /* OK */ undefined :  ERRORS.NAME_REQUIRED
     },
@@ -114,7 +113,7 @@ export default {
       if (nv) {
         em.push(nv)
       }
-      if (!this.seedModel && !this.checkAppTypes) {
+      if (!this.seedModel) {
         // If this error happens its probably a coding error
         em.push(ERRORS.APP_TYPE_REQUIRED)
       }
@@ -128,12 +127,11 @@ export default {
     },
   },
   methods: {
-    changeAppTypes (checkAppTypes) {
-      this.checkAppTypes = checkAppTypes
+    changeAppTypes (appTypeMode) {
+      this.$store.dispatch('system/setAppTypeMode', appTypeMode)
     },
     clearInputs: function () {
       this.selectedSeedId
-        = this.checkAppTypes
         = this.actionType
         = this.learningObjectName
         = this.description
@@ -241,41 +239,6 @@ export default {
   display: inline;
 }
 
-$labelWidth: 10rem;
-.dialog-step {
-  margin-bottom: 10px;
-  label {
-    max-width: 50rem;
-  }
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity .4s
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0
-}
-.dialog-item {
-  display: flex;
-  margin-bottom: 1rem;
-  textarea {
-    padding: 10px;
-    max-width: 80%;
-    line-height: 1.5;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-shadow: 1px 1px 1px #999;
-  }
-  //label:nth-child(1) {
-  //  border: 1px;
-  //  font-weight: bold;
-  //  padding-right: 5px;
-  //  min-width: $labelWidth;
-  //  max-width: $labelWidth;
-  //  width: $labelWidth;
-  //}
-}
 #setEnabler label {
   padding-left: 5px;
   padding-right: 8px;

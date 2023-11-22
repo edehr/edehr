@@ -31,7 +31,7 @@
         | Go to see the details of a learning object to learn more.
 
     div(class="flow_across menu_space_across flow_across_right")
-      app-type-radio(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
+      app-type-radio(:value="appTypeMode", @changeAppTypes='changeAppTypes')
       app-search-box(:searchTerm="searchTerm", @updateSearchTerm='updateSearchTerm')
       app-paginate-controls(:offset='offset', :limit='paginateLimit', :listMetadata="listMetadata", @repage='repage')
     div(class="details-container e-table lobj-theme")
@@ -108,12 +108,12 @@ export default {
       columnLti: 'idForLTI',
       sortKey: 'name',
       sortDir: ASC,
-      searchTerm: '',
-      checkAppTypes: 'EHR'
+      searchTerm: ''
     }
   },
   components: { ZoneLmsInstructionsHeader, ZoneLmsButton, AppPaginateControls, AppTypeRadio, AppSearchBox, UiButton, UiTableHeaderButton, ZoneLmsPageBanner, LearningObjectListItem, LearningObjectImportDialog, LearningObjectDialogNoCaseCreate },
   computed: {
+    appTypeMode () { return this.$store.getters['system/appTypeMode']},
     canDo () {
       return StoreHelper.isDevelopingContent()
     },
@@ -124,11 +124,9 @@ export default {
     paginateLimit () { return this.$store.getters['system/paginateLimit']}
   },
   methods: {
-    async changeAppTypes (checkAppTypes) {
-      this.checkAppTypes = checkAppTypes
+    async changeAppTypes (appTypeMode) {
       this.offset = 0
-      await this.$store.dispatch('system/setAppTypes', this.checkAppTypes)
-      // console.log('got', this.checkAppTypes)
+      await this.$store.dispatch('system/setAppTypeMode', appTypeMode)
       this.route()
     },
     showLobjCreateDialog: function () {
@@ -154,13 +152,9 @@ export default {
       // appType
       const fromRouteAppTypes = query.appTypes
       if(fromRouteAppTypes) {
-        this.checkAppTypes = fromRouteAppTypes
-        await this.$store.dispatch('system/setAppTypes', this.checkAppTypes)
-      } else {
-        this.checkAppTypes = this.$store.getters['system/checkAppTypes']
+        await this.$store.dispatch('system/setAppTypeMode', fromRouteAppTypes)
       }
-      let ats = this.checkAppTypes
-      ats ? queryPayload.appTypes = ats : undefined
+      queryPayload.appTypes = this.appTypeMode
       // Search term
       if (query.searchTerm ) {
         this.searchTerm = query.searchTerm
@@ -174,9 +168,7 @@ export default {
       query.limit = this.paginateLimit
       query.sortKey = this.sortKey
       query.sortDir = this.sortDir
-      // only add appType to query if there are some selections
-      let ats = this.checkAppTypes
-      ats ? query.appTypes = ats : undefined
+      query.appTypes = this.appTypeMode
       // without name the router stays on the same page. Just change query string.
       this.searchTerm ? query.searchTerm = this.searchTerm : undefined
       this.$router.push({ query: query })

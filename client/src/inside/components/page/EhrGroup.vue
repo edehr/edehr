@@ -1,5 +1,7 @@
 <template lang="pug">
   div(v-show="groupIsVisible", :class='{hiddenGroup: hideGroup}')
+    hr
+    // div {{ group.elementKey }}
     h3(v-if="group.label") {{ group.label }}
     div(class="ehr-group-wrapper", :class="groupClass")
       div(v-for="child in group.gChildren", :key="forIndex(child)", class="ehr-group-for", :class="childClass(child)")

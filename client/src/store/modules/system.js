@@ -1,4 +1,5 @@
 import InstoreHelper from '@/store/modules/instoreHelper'
+import { APP_TYPE_EHR, APP_TYPE_LIS } from '@/helpers/store-helper'
 // import { Text } from '@/helpers/ehr-text'
 // import StoreHelper from '@/helpers/store-helper'
 const appTypeEHR = 'EHR'
@@ -10,7 +11,7 @@ const state = {
   apiError: '',
   appDialogCount: 0,
   caseContextFeature: false,
-  checkAppTypes: [appTypeEHR, appTypeLIS],
+  appTypeMode: appTypeEHR,
   currentPageKey: '',
   lmsNavCollapsed: false,
   condensedTableVertical: false, // false = horizontal, See SeedPage.
@@ -37,7 +38,7 @@ const state = {
 const getters = {
   apiData: state => state.apiData,
   apiError: state => state.apiError,
-  checkAppTypes: state => state.checkAppTypes,
+  appTypeMode: state => state.appTypeMode,
   appDialogCount: state => state.appDialogCount,
   caseContextFeature: state => state.caseContextFeature,
   condensedTableVertical: state => state.condensedTableVertical,
@@ -84,12 +85,16 @@ const actions = {
       return response.data
     })
   },
-  setAppTypes ( {commit}, value) {
-    if(!value || Array.isArray(value)) {
+  setAppTypeMode ( {commit}, value) {
+    if(!value) {
       console.error('Coding error setting app types. Only one type is allowed. No arrays')
       return
     }
-    commit('setAppTypes', value)
+    if(value === APP_TYPE_EHR || value === APP_TYPE_LIS) {
+      commit('setAppTypeMode', value)
+    } else {
+      console.error('Coding error setting app types. Only ' + APP_TYPE_EHR + ' or ' + APP_TYPE_LIS + ' is allowed. "' + value +'"')
+    }
   },
   setOutsideShowButtonLabels ({ commit }, value) {
     if (trace) console.log('set show', value)
@@ -134,11 +139,11 @@ const mutations = {
     let asStored = localStorage.getItem('SeedTableCollapse')
     state.seedTableCollapse = asStored ? JSON.parse(asStored) : {}
     state.lmsNavCollapsed = localStorage.getItem('LmsNavCollapsed') === 'true'
-    asStored = localStorage.getItem('appTypes')
+    asStored = localStorage.getItem('appTypeMode')
     if (asStored) {
-      state.checkAppTypes = asStored
+      state.appTypeMode = asStored
     } else {
-      state.checkAppTypes = ''
+      state.appTypeMode = APP_TYPE_EHR
     }
     // disable this ability to toggle labels. Force all to be hidden to be icon only.
     // TODO IF this doesn't cause problems for users then come back and remove the code that manages this state
@@ -151,9 +156,9 @@ const mutations = {
     // console.log('System store set ApiData: ', apiData)
     state.apiData = apiData
   },
-  setAppTypes: (state, appType) => {
-    state.checkAppTypes = appType
-    localStorage.setItem('appTypes', appType)
+  setAppTypeMode: (state, appType) => {
+    state.appTypeMode = appType
+    localStorage.setItem('appTypeMode', appType)
   },
   incrAppDialogCount: (state) => {
     state.appDialogCount++
