@@ -91,7 +91,6 @@ export default {
       showEx: false, // default to not show help text.
       actionType: '', // edit or create the learning object
       cText: TextLearningObjects,
-      checkAppTypes: APP_TYPE_LIS,
       learningObjectName: '',
       learningObject: {},
       description: '',
@@ -105,6 +104,7 @@ export default {
   },
   components: { UiButton, DialogInstructionsElement, AppTypeRadio, SeedSelectComponent, UiInfo, AppDialog },
   computed: {
+    appTypeMode () { return this.$store.getters['system/appTypeMode']},
     nameValidate () {
       return this.learningObjectName.trim() ? /* OK */ undefined :  ERRORS.NAME_REQUIRED
     },
@@ -114,7 +114,7 @@ export default {
       if (nv) {
         em.push(nv)
       }
-      if (!this.seedModel && !this.checkAppTypes) {
+      if (!this.seedModel) {
         // If this error happens its probably a coding error
         em.push(ERRORS.APP_TYPE_REQUIRED)
       }
@@ -128,12 +128,11 @@ export default {
     },
   },
   methods: {
-    changeAppTypes (checkAppTypes) {
-      this.checkAppTypes = checkAppTypes
+    changeAppTypes (appTypeMode) {
+      this.$store.dispatch('system/setAppTypeMode', appTypeMode)
     },
     clearInputs: function () {
       this.selectedSeedId
-        = this.checkAppTypes
         = this.actionType
         = this.learningObjectName
         = this.description
