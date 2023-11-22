@@ -256,43 +256,4 @@ export default {
   text-align: right;
   width: 20rem;
 }
-$labelWidth: 10rem;
-.dialog-step {
-  margin-bottom: 10px;
-  label {
-    max-width: 50rem;
-  }
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity .4s
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0
-}
-.app-type-section {
-  label {
-    position: relative;
-    top: 5px; // to align with the toggle button
-  }
-  label:nth-child(3) {
-    margin-left: 2rem;
-  }
-  }
-.dialog-item {
-  display: flex;
-  margin-bottom: 1rem;
-  label:nth-child(1) {
-    border: 1px;
-    font-weight: bold;
-    padding-right: 5px;
-    min-width: $labelWidth;
-    max-width: $labelWidth;
-    width: $labelWidth;
-  }
-}
-.select-seed-section {
-  padding: 5px;
-}
 </style>

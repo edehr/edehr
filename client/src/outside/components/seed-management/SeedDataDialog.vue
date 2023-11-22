@@ -10,35 +10,51 @@
     )
       h2(slot="header") {{dialogHeader}}
       div(slot="body")
-        div
-          div(class="grid-left-to-right-2")
-            div(class="flow_across table_space_across")
+        ui-button(
+          class="explain-button",
+          secondary=true,
+          @buttonClicked="showEx = !showEx")
+          span {{showEx ? 'Hide the explanation ' : 'Tell me about this dialog'}} &nbsp;
+        div  &nbsp;
+          div(class="dialog-step")
+            div(class="dialog-item")
               label(class="name-label") Name
               input(class="input", type="text", v-model="name", v-validate="nameValidate")
-            div(class="flow_across table_space_across")
+          dialog-instructions-element(:show-ex="showEx") Recommend using the simulated patient name as part of the case study name.
+
+          div(class="dialog-step")
+            div(class="dialog-item")
               label(class="version-label") Version
-              ui-info(title="Optional versioning", text="You can update the version number to indicate a change in content.")
               input(class="input version-input", type="text", v-model="version")
-          div(class="grid-left-to-right-2")
-            div
-              div(class="flow_across table_space_across app-type-section")
-                label Application type
-                app-type-radio(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
-              div {{ appTypeDescriptionText }}
-            div(class="flow_across table_space_across tags-section")
+          dialog-instructions-element(:show-ex="showEx") Use the version to indicate if this case study has evolved from an earlier version.  E.g. v 2.0 would say this case study has changed a lot since the orginal was created.
+
+
+          div(class="dialog-step")
+            div(class="dialog-item")
+              label Application type &nbsp;
+              app-type-radio(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
+          dialog-instructions-element(:show-ex="showEx")  Does this case study apply to clinical setting (EHR) or the laboratory (LIS)?
+
+          div(class="dialog-step")
+            div(class="dialog-item")
               label(class="tags-label") Tags
-              ui-info(title="Tags", :html="tagHelperText")
               app-tag-list-editor(:tagList="tagList", @update='updateTagList')
-          div(class="grid-left-to-right-1")
-            div
+          dialog-instructions-element(:show-ex="showEx")  Use tags to categorize case studies.
+
+          div(class="dialog-step")
+            div(class="dialog-item")
               label Description
-              textarea(class="textarea", v-model="description")
-          div(class="grid-left-to-right-1")
-            div
+              textarea(v-model="description")
+          dialog-instructions-element(:show-ex="showEx") This description is for you and other content creators to know what the case study is for.
+
+          div(class="dialog-step")
+            div(class="dialog-item")
               label Contributors
-                ui-info(title="Contributors", text="A list of people who contributed to the EHR content.")
               input(class="input", type="text", v-model="contributors")
-          div
+          dialog-instructions-element(:show-ex="showEx") A list of people who contributed to the EHR content.
+
+          div(class="dialog-step")
+            div(class="dialog-item")
             div(v-if="seedFile")
               div Selected EHR seed file: {{seedFile.name}}
               div(v-if="uploadError", class="errorMessage") {{uploadError}}
@@ -58,6 +74,8 @@
                 @change="setFile"
               )
               span(class="file-label button is-primary")  {{ hasUploadSeed ? 'Change File' : 'Optional: Import case study json file.' }}
+          dialog-instructions-element(:show-ex="showEx") If you have a Case Study file that you or someone else saved then you can import the contents here.  It is a great idea to periodically save your case study work in case you need to go back to an earlier version.
+
 </template>
 
 <script>
@@ -68,6 +86,7 @@ import UiInfo from '@/app/ui/UiInfo'
 import { readFile, validateSeedFileContents } from '@/helpers/ehr-utils'
 import AppTagListEditor from '@/app/components/AppTagListEditor.vue'
 import AppTypeRadio from '@/app/components/AppTypeRadio.vue'
+import DialogInstructionsElement from '@/outside/components/DialogInstructionsElement.vue'
 
 const TITLES = {
   edit: 'Edit seed data properties',
@@ -82,12 +101,11 @@ const EDIT_ACTION= 'edit'
 const CREATE_ACTION = 'create'
 
 export default {
-  components: { AppTypeRadio,  AppTagListEditor, AppDialog, UiButton, UiInfo },
+  components: { DialogInstructionsElement, AppTypeRadio,  AppTagListEditor, AppDialog, UiButton, UiInfo },
   data () {
     return {
-      appType: 'EHR',
       checkAppTypes: 'EHR',
-
+      showEx: false, // default to not show help text.
       name: '',
       version: '',
       contributors: '',
@@ -97,7 +115,6 @@ export default {
       actionType: '',
       seedId: '',
       seedFile: null,
-      tagHelperText: 'Tags let you categorize case studies.',
       tagList: [],
       upload: false,
       uploadSeed: {},
