@@ -37,7 +37,7 @@ describe ('Ehr data model update to new element keys for rec hdr.', () => {
   // new <tableKey>.name, etc.
   it ('Update all table rows new record header key names using updateRecHeaderElementKeys ', () => {
     const eData = require('../resources/allRecHdrOldKeyTables.json')
-    const updatedData = updateRecHeaderElementKeys(eData)
+    const updatedData = updateRecHeaderElementKeys(eData, {})
     should.exist(updatedData)
     // console.log('--------------------', JSON.stringify(updatedData, null,1))
     let row, newKey, oldKey, tableKey, pageKey, pageData, tableData, expected

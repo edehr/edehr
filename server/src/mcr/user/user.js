@@ -1,6 +1,5 @@
 import mongoose from 'mongoose'
 import { WS_EVENT_BUS, WS_S2C_MESSAGE_EVENT } from '../../server/push-server'
-// import uniqueValidator from 'mongoose-unique-validator'
 
 const Schema = new mongoose.Schema({
   toolConsumer: {type: mongoose.Schema.Types.ObjectId, ref: 'Consumer', required: true},
@@ -10,7 +9,6 @@ const Schema = new mongoose.Schema({
   givenName: { type: String },
   familyName: { type: String },
   fullName: { type: String },
-  // emailPrimary: {type: String},
   createDate: {type: Date, default: Date.now},
   lastUpdateDate: { type: Date, default: Date.now }
 })

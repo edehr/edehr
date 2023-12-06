@@ -33,8 +33,8 @@ export class MedOrder {
       med_reason, med_route, med_timing,
       med_time1, med_time2, med_time3, med_time4, med_time5, med_time6
     } = eData
-    // translate the key data into human readable
-    med_route = makeHumanTableCell( 'medicationOrders', 'med_route', 'select', med_route)
+    // translate the key data into human-readable
+    med_route = makeHumanTableCell( 'medicationOrders', 'med_route', 'checkset', med_route)
     med_injectionLocation = makeHumanTableCell( 'medicationOrders', 'med_injectionLocation', 'select', med_injectionLocation)
     this._e.day = eData['medicationOrdersTable_day']
     this._e.time = eData['medicationOrdersTable_time']

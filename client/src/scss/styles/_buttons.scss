@@ -162,8 +162,8 @@ button,
 .button.is-light {
   &:disabled {
     background-color: $grey10;
-    border-color: $grey60;
-    color: $grey60;
+    border-color: $grey30;
+    color: $grey30;
     cursor: not-allowed;
     .fa {
       color: $grey60;

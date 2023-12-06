@@ -1,4 +1,5 @@
-export function updateRespiratory (ehrDataModel) {
+export function updateRespiratory (ehrDataModel, touchCounts) {
+  touchCounts.respiratory = 0
   const pageKey= 'respiratory'
   const tableKey= 'table'
   /*
@@ -19,6 +20,7 @@ export function updateRespiratory (ehrDataModel) {
           let elemData = row[elementKey]
           if (elemData === oldVal) {
             ehrDataModel._updateRowElem(pageKey, tableKey, rowIndex, elementKey, newVal)
+            touchCounts.respiratory++
           }
         })
       })

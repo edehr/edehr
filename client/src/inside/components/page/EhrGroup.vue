@@ -1,6 +1,5 @@
 <template lang="pug">
-  div(v-show="groupIsVisible", :class='{hiddenGroup: hideGroup}')
-    hr
+  div(v-show="groupIsVisible", :class='groupOuterClass')
     // div {{ group.elementKey }}
     h3(v-if="group.label") {{ group.label }}
     div(class="ehr-group-wrapper", :class="groupClass")
@@ -8,6 +7,7 @@
         ehr-sub-group(v-if="isSubgroup(child)", :subgroup="child", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
         ehr-element-form(v-else-if="child", :elementKey="child", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
         div(v-else) This group has an undefined element
+    hr
 </template>
 
 <script>
@@ -49,6 +49,13 @@ export default {
     },
     groupClass () {
       return this.group.formCss
+    },
+    groupOuterClass () {
+      let css = {hiddenGroup: this.hideGroup}
+      this.group.formCss.split(' ').map( fCss => {
+        css[fCss + '--outer'] = true
+      })
+      return css
     },
   },
   methods: {

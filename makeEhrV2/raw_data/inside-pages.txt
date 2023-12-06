@@ -1,6 +1,6 @@
 {path: /ehr}	{routeName: patient}	eCell	{label: Patient profile}	{redirectEhr: demographics}	{redirectLis: demographics}	eCell	{menuIndex: 1}	{LIS: yes}	{EHR: yes}
 {path: /ehr/patient}	{routeName: demographics}	{pageDataKey: demographics}	{label: Demographics}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 2}	{LIS: yes}	{EHR: yes}
-{path: /ehr/patient}	{routeName: allergies}	{pageDataKey: allergies}	{label: Allergies}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 3}	{LIS: yes}	{EHR: yes}
+{path: /ehr/patient}	{routeName: allergies}	{pageDataKey: allergies}	{label: Allergies}	{redirectEhr: }	{redirectLis: }	{generateComponent: custom}	{menuIndex: 3}	{LIS: yes}	{EHR: yes}
 {path: /ehr/patient}	{routeName: history}	eCell	{label: History}	{redirectEhr: medical}	{redirectLis: medical}	{generateComponent: yes}	{menuIndex: 4}	{LIS: yes}	{EHR: yes}
 {path: /ehr/patient/history}	{routeName: medical}	{pageDataKey: medical}	{label: Medical history}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 5}	{LIS: yes}	{EHR: yes}
 {path: /ehr/patient/history}	{routeName: psychosocial}	{pageDataKey: psychosocial}	{label: Psychosocial history}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 6}	eCell	{EHR: yes}
@@ -8,20 +8,20 @@
 {path: /ehr/patient/history}	{routeName: immunization}	{pageDataKey: immunization}	{label: Immunization history}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 8}	eCell	{EHR: yes}
 {path: /ehr/patient/history}	{routeName: family-history}	{pageDataKey: familyHistory}	{label: Family history}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 9}	eCell	{EHR: yes}
 {path: /ehr/patient}	{routeName: care-team}	{pageDataKey: careTeam}	{label: Care team}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 10}	eCell	{EHR: yes}
-{path: /ehr/patient}	{routeName: past-appointments}	{pageDataKey: pastAppointments}	{label: Past appointments}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 11}	eCell	{EHR: yes}
-{path: /ehr}	{routeName: current}	eCell	{label: Current visit}	{redirectEhr: visit-details}	{redirectLis: lab-requisitions}	eCell	{menuIndex: 12}	{LIS: yes}	{EHR: yes}
-{path: /ehr/current}	{routeName: visit-details}	{pageDataKey: visit}	{label: Admission, diagnosis, location}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 13}	eCell	{EHR: yes}
-{path: /ehr/current}	{routeName: vital-signs}	{pageDataKey: vitals}	{label: Vital signs}	{redirectEhr: }	{redirectLis: }	{generateComponent: custom}	{menuIndex: 14}	eCell	{EHR: yes}
-{path: /ehr/current}	{routeName: fluid-balance}	{pageDataKey: fluidBalance}	{label: Fluid balance}	eCell	eCell	{generateComponent: yes}	{menuIndex: 15}	eCell	{EHR: yes}
-{path: /ehr/current}	{routeName: assessments}	eCell	{label: Assessments}	{redirectEhr: neurological}	eCell	eCell	{menuIndex: 16}	eCell	{EHR: yes}
-{path: /ehr/current/assessments}	{routeName: neurological}	{pageDataKey: neurological}	{label: Neurological assessments}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 17}	eCell	{EHR: yes}
-{path: /ehr/current/assessments}	{routeName: respiratory}	{pageDataKey: respiratory}	{label: Respiratory assessment}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 18}	eCell	{EHR: yes}
-{path: /ehr/current/assessments}	{routeName: cardiovascular}	{pageDataKey: cardiovascular}	{label: Cardiovascular assessment}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 19}	eCell	{EHR: yes}
-{path: /ehr/current/assessments}	{routeName: gastrointestinal}	{pageDataKey: gastrointestinal}	{label: Gastrointestinal assessment}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 20}	eCell	{EHR: yes}
-{path: /ehr/current/assessments}	{routeName: genitourinary}	{pageDataKey: genitourinary}	{label: Genitourinary assessment}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 21}	eCell	{EHR: yes}
-{path: /ehr/current/assessments}	{routeName: musculoskeletal}	{pageDataKey: musculoskeletal}	{label: Musculoskeletal assessment}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 22}	eCell	{EHR: yes}
-{path: /ehr/current/assessments}	{routeName: pain}	{pageDataKey: pain}	{label: Pain assessment}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 23}	eCell	{EHR: yes}
-{path: /ehr/current/assessments}	{routeName: biopsychosocial}	{pageDataKey: biopsychosocial}	{label: Biopsychosocial assessment}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 24}	eCell	{EHR: yes}
+{path: /ehr/patient}	{routeName: past-appointments}	{pageDataKey: pastAppointments}	{label: Past appointments}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 12}	eCell	{EHR: yes}
+{path: /ehr}	{routeName: current}	eCell	{label: Current visit}	{redirectEhr: visit-details}	{redirectLis: lab-requisitions}	eCell	{menuIndex: 13}	{LIS: yes}	{EHR: yes}
+{path: /ehr/current}	{routeName: visit-details}	{pageDataKey: visit}	{label: Admission, diagnosis, location}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 14}	eCell	{EHR: yes}
+{path: /ehr/current}	{routeName: vital-signs}	{pageDataKey: vitals}	{label: Vital signs}	{redirectEhr: }	{redirectLis: }	{generateComponent: custom}	{menuIndex: 15}	eCell	{EHR: yes}
+{path: /ehr/current}	{routeName: fluid-balance}	{pageDataKey: fluidBalance}	{label: Fluid balance}	eCell	eCell	{generateComponent: custom}	{menuIndex: 16}	eCell	{EHR: yes}
+{path: /ehr/current}	{routeName: assessments}	eCell	{label: Assessments}	{redirectEhr: neurological}	eCell	eCell	{menuIndex: 17}	eCell	{EHR: yes}
+{path: /ehr/current/assessments}	{routeName: neurological}	{pageDataKey: neurological}	{label: Neurological assessments}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 18}	eCell	{EHR: yes}
+{path: /ehr/current/assessments}	{routeName: respiratory}	{pageDataKey: respiratory}	{label: Respiratory assessment}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 19}	eCell	{EHR: yes}
+{path: /ehr/current/assessments}	{routeName: cardiovascular}	{pageDataKey: cardiovascular}	{label: Cardiovascular assessment}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 20}	eCell	{EHR: yes}
+{path: /ehr/current/assessments}	{routeName: gastrointestinal}	{pageDataKey: gastrointestinal}	{label: Gastrointestinal assessment}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 21}	eCell	{EHR: yes}
+{path: /ehr/current/assessments}	{routeName: genitourinary}	{pageDataKey: genitourinary}	{label: Genitourinary assessment}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 22}	eCell	{EHR: yes}
+{path: /ehr/current/assessments}	{routeName: musculoskeletal}	{pageDataKey: musculoskeletal}	{label: Musculoskeletal assessment}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 23}	eCell	{EHR: yes}
+{path: /ehr/current/assessments}	{routeName: pain}	{pageDataKey: pain}	{label: Pain assessment}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 24}	eCell	{EHR: yes}
+{path: /ehr/current/assessments}	{routeName: biopsychosocial}	{pageDataKey: biopsychosocial}	{label: Biopsychosocial assessment}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 25}	eCell	{EHR: yes}
 {path: /ehr/current}	{routeName: orders}	eCell	{label: Orders}	{redirectEhr: no-med-orders}	{redirectLis: no-med-orders}	eCell	{menuIndex: 26}	{LIS: yes}	{EHR: yes}
 {path: /ehr/current/orders}	{routeName: no-med-orders}	{pageDataKey: nonmedOrders}	{label: Non-medication orders}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 27}	eCell	{EHR: yes}
 {path: /ehr/current/orders}	{routeName: referrals}	{pageDataKey: referrals}	{label: Referrals to other disciplines}	{redirectEhr: }	{redirectLis: }	{generateComponent: yes}	{menuIndex: 28}	eCell	{EHR: yes}
@@ -55,3 +55,4 @@ eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {path: /ehr/med-lab}	{routeName: med-lab-urinalysis}	{pageDataKey: medLabUrinalysis}	{label: Med Lab Urinalysis}	eCell	eCell	{generateComponent: yes}	{menuIndex: 58}	{LIS: yes}	eCell
 {path: /ehr/current/orders}	{routeName: order-sets}	{pageDataKey: orderSets}	{label: Clinical Order Sets}	eCell	eCell	{generateComponent: yes}	{menuIndex: 25}	eCell	{EHR: yes}
 {path: /ehr/med-lab}	{routeName: med-lab-accession}	{pageDataKey: medLabAccession}	{label: Med Lab Accessioning}	eCell	eCell	{generateComponent: yes}	{menuIndex: 55}	{LIS: yes}	eCell
+{path: /ehr/patient}	{routeName: special-indicators}	{pageDataKey: specialIndicators}	{label: Special Indicators (Risk)}	eCell	eCell	{generateComponent: yes}	{menuIndex: 11}	{LIS: yes}	{EHR: yes}

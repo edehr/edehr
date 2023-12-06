@@ -75,7 +75,7 @@ describe( 'EhrData updates integumentaryAssessment page', () => {
   }
 
   it('test updateSanguineous ', () => {
-    const updatedData = updateWoundCaseStudy(ehrData)
+    const updatedData = updateWoundCaseStudy(ehrData, {})
     validate(updatedData)
   })
 

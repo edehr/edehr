@@ -108,7 +108,7 @@ export default {
       return pgElems
     },
     useTabs () {
-      return this.pageElements.length > 1
+      return this.pageElements.length > 1 && this.pageDef.formOption !== 'no-tabs'
     }
   }
 }

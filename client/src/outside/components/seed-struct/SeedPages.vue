@@ -2,6 +2,7 @@
   div
     div(v-for='peKey in pageElementKeys')
       seed-page(
+        :ehrData="ehrData",
         :pageKey="pageKey",
         :pageChildren="pageChildren",
         :pageElement='pageElements[peKey]',
@@ -15,6 +16,7 @@ import EhrData from '@/inside/components/page/ehr-data'
 export default {
   components: { SeedPage },
   props: {
+    ehrData: { type: Object },
     pageKey: { type: String },
     pageDef: { type: Object },
     pageSeedData: { type: Object }

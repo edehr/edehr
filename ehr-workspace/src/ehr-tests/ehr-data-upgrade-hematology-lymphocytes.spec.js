@@ -83,7 +83,7 @@ describe( 'EhrData updates hematology page', () => {
   }
 
   it('test wbcmAbnormalTypeMorphology ', () => {
-    const updatedData = updateHematologyLymphocytes(ehrData)
+    const updatedData = updateHematologyLymphocytes(ehrData, {})
     validate(updatedData)
   })
 

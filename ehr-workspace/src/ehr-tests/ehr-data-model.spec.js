@@ -1,5 +1,5 @@
 import EhrDataModel from '../ehr-definitions/EhrDataModel'
-import { updateAllVisitTime } from '../ehr-definitions/ehr-data-model-utils'
+import { convertToEventSequence, updateAllVisitTime } from '../ehr-definitions/ehr-data-model-utils'
 
 const should = require('should')
 const ehrData = {
@@ -73,7 +73,7 @@ describe( 'ehr-def-utils work', () => {
   it('updateAllVisitTime', () => {
     let eData = ehrData
     const model = new EhrDataModel(eData)
-    eData = updateAllVisitTime(model)
+    eData = updateAllVisitTime(model, {})
     let tData = model.getPageTableData('visit', 'table')
     tData[0].transferInTime.should.equal('0030')
     tData = model.getPageTableData('neurological', 'table')

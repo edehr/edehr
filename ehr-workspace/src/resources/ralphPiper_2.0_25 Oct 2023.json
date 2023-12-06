@@ -1,0 +1,561 @@
+{
+  "id": "653948e39c717123d65819df",
+  "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "contributors": "Dorothea Dix",
+  "ehrData": {
+    "demographics": {
+      "dateOfBirth": "1971-01-24",
+      "lastUpdate": "2023-10-25T12:40:40-07:00",
+      "mrn": "223456",
+      "givenName": "Ralph",
+      "familyName": "PIPER",
+      "personAge": "52",
+      "height": "5' 10\"",
+      "weight": "91",
+      "gender": "Male",
+      "languagePrimary": "English"
+    },
+    "medicationOrders": {
+      "lastUpdate": "2023-10-25T12:53:33-07:00",
+      "medicationOrdersTable": [
+        {
+          "medicationOrdersTable_name": "Howard",
+          "medicationOrdersTable_profession": "Physcian",
+          "medicationOrdersTable_day": 1,
+          "medicationOrdersTable_time": "2000",
+          "med_timing": "sched",
+          "med_route": "oral",
+          "med_medication": "apo-ramipril",
+          "med_dose": "10 mg",
+          "med_scheduled": "Q12H",
+          "med_time1": "0800",
+          "med_time2": "2000",
+          "med_instructions": "Hold if SBP less than 90 mmHg",
+          "createdDate": "2023-10-25T12:43:36-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.0"
+        },
+        {
+          "medicationOrdersTable_name": "Howard",
+          "medicationOrdersTable_profession": "MD",
+          "medicationOrdersTable_day": 1,
+          "medicationOrdersTable_time": "2000",
+          "med_timing": "od",
+          "med_route": "oral",
+          "med_medication": "asa",
+          "med_dose": "81 mg",
+          "createdDate": "2023-10-25T12:44:23-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.1"
+        },
+        {
+          "medicationOrdersTable_name": "Howard",
+          "medicationOrdersTable_profession": "MD",
+          "medicationOrdersTable_day": 1,
+          "medicationOrdersTable_time": "2000",
+          "med_timing": "od",
+          "med_route": "oral",
+          "med_medication": "clopidogrel",
+          "med_dose": "75 mg",
+          "createdDate": "2023-10-25T12:44:55-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.2"
+        },
+        {
+          "medicationOrdersTable_name": "Howard",
+          "medicationOrdersTable_profession": "MD",
+          "medicationOrdersTable_day": 1,
+          "medicationOrdersTable_time": "2000",
+          "med_timing": "od",
+          "med_route": "oral",
+          "med_medication": "atenolol",
+          "med_dose": "100 mg",
+          "med_instructions": "Hold if SBP less than 90 mmHg or \nHR less than 50 bpm",
+          "createdDate": "2023-10-25T12:46:39-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.3"
+        },
+        {
+          "medicationOrdersTable_name": "Howard",
+          "medicationOrdersTable_profession": "MD",
+          "medicationOrdersTable_day": 1,
+          "medicationOrdersTable_time": "2000",
+          "med_timing": "od",
+          "med_route": "oral",
+          "med_medication": "atorvastatin",
+          "med_dose": "80 mg",
+          "createdDate": "2023-10-25T12:47:28-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.4"
+        },
+        {
+          "medicationOrdersTable_name": "Howard",
+          "medicationOrdersTable_profession": "MD",
+          "medicationOrdersTable_day": 1,
+          "medicationOrdersTable_time": "2000",
+          "med_timing": "sched",
+          "med_route": "oral",
+          "med_medication": "diltiazem tz",
+          "med_dose": "60 mg",
+          "med_scheduled": "Q12H",
+          "med_time1": "0800",
+          "med_time2": "2000",
+          "createdDate": "2023-10-25T12:48:22-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.5"
+        },
+        {
+          "medicationOrdersTable_name": "Howard",
+          "medicationOrdersTable_profession": "MD",
+          "medicationOrdersTable_day": 1,
+          "medicationOrdersTable_time": "2000",
+          "med_timing": "sched",
+          "med_route": "inje",
+          "med_injectionLocation": "subcutaneous",
+          "med_medication": "enoxaparin",
+          "med_dose": "100 mg",
+          "med_scheduled": "Q12H",
+          "med_time1": "0800",
+          "med_time2": "2000",
+          "createdDate": "2023-10-25T12:49:53-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.6"
+        },
+        {
+          "medicationOrdersTable_name": "Howard",
+          "medicationOrdersTable_profession": "MD",
+          "medicationOrdersTable_day": 1,
+          "medicationOrdersTable_time": "2000",
+          "med_timing": "prn",
+          "med_route": "oral",
+          "med_reason": "Constipation",
+          "med_medication": "docusate sodium",
+          "med_scheduled": "BID",
+          "med_time1": "0900",
+          "med_time2": "1700",
+          "createdDate": "2023-10-25T12:50:49-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.7"
+        },
+        {
+          "medicationOrdersTable_name": "Howard",
+          "medicationOrdersTable_profession": "MD",
+          "medicationOrdersTable_day": 1,
+          "medicationOrdersTable_time": "2000",
+          "med_timing": "prn",
+          "med_route": "oral",
+          "med_reason": "Constipation",
+          "med_medication": "senna s. tablets",
+          "med_scheduled": "BID",
+          "med_time1": "0900",
+          "med_time2": "1700",
+          "createdDate": "2023-10-25T12:51:31-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.8"
+        },
+        {
+          "medicationOrdersTable_name": "Howard",
+          "medicationOrdersTable_profession": "MD",
+          "medicationOrdersTable_day": 1,
+          "medicationOrdersTable_time": "2000",
+          "med_timing": "od",
+          "med_route": "tran",
+          "med_medication": "nicotine transdermal patch",
+          "createdDate": "2023-10-25T12:52:20-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.9"
+        },
+        {
+          "medicationOrdersTable_name": "Howard",
+          "medicationOrdersTable_profession": "MD",
+          "medicationOrdersTable_day": 1,
+          "medicationOrdersTable_time": "2000",
+          "med_timing": "prn",
+          "med_reason": "Chest pain",
+          "med_medication": "nitrolingual pumpspray",
+          "med_dose": "0.4 mg",
+          "med_instructions": "up to 3 sprays Q5min for chest pain; call physician if unresolved",
+          "createdDate": "2023-10-25T12:53:33-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.10"
+        }
+      ]
+    },
+    "allergies": {
+      "checkbox": true,
+      "lastUpdate": "2022-01-25T21:25:44+00:00"
+    },
+    "medical": {
+      "history": "Hypertension\nCAD-Stable angina\nGout",
+      "lastUpdate": "2022-01-25T21:26:07+00:00"
+    },
+    "surgical": {
+      "pastSurgery": [
+        {
+          "procedure": "Appendectomy",
+          "timeSince": "35 years",
+          "createdDate": "2022-01-25T13:26:24-08:00",
+          "pastSurgery_id": "surgical.pastSurgery.0"
+        },
+        {
+          "pastSurgeryDate": "Dr. Merg",
+          "procedure": "Cholecystectomy",
+          "timeSince": "2 years",
+          "createdDate": "2022-01-25T13:26:44-08:00",
+          "pastSurgery_id": "surgical.pastSurgery.1"
+        }
+      ],
+      "lastUpdate": "2022-01-25T21:26:44+00:00"
+    },
+    "neurological": {
+      "table": [
+        {
+          "alert": "alert,oriented",
+          "eyeOpening": "4 = Spontaneous",
+          "verbalResponse": "5 = Oriented",
+          "bestMotorResponse": "6 = Obeys commands",
+          "glasgowCalculation": 15,
+          "loss": "No",
+          "leftPupilSize": "3",
+          "leftPupilResponseToLight": "Brisk",
+          "rightPupilSize": "3",
+          "rightPupilResponseToLight": "Brisk",
+          "bothPupils": "Equal",
+          "strokeAssessmentCalculation": 0,
+          "createdDate": "2022-01-25T13:28:54-08:00",
+          "table_name": "Geoff Smith",
+          "table_profession": "RN",
+          "table_day": "1",
+          "table_time": "2000",
+          "table_id": "neurological.table.0"
+        }
+      ],
+      "lastUpdate": "2022-01-25T21:28:54+00:00"
+    },
+    "respiratory": {
+      "table": [
+        {
+          "lul": "Wheeze",
+          "rul": "Wheeze",
+          "rml": "Wheeze",
+          "lll": "Crackles",
+          "rll": "Crackles",
+          "respiratoryRhythm": "Regular",
+          "respiratoryDepth": "Deep",
+          "cough": "Nonproductive",
+          "generalComments": "Decreased air entry to bases b/l. Wheezes throughout on inspiration and fine crackles on expiration",
+          "createdDate": "2022-01-25T13:30:12-08:00",
+          "table_id": "respiratory.table.0"
+        }
+      ],
+      "lastUpdate": "2022-01-25T21:30:13+00:00"
+    },
+    "cardiovascular": {
+      "table": [
+        {
+          "pulse": "Regular",
+          "skinAppearance": "Normal",
+          "capRefillLeftHand": "Normal < 3 seconds",
+          "temperatureRightHand": "Warm",
+          "peripheralEdemaRightHand": "No",
+          "nailBedColourRightHand": "Pink",
+          "capRefillRightHand": "Normal < 3 seconds",
+          "temperatureLeftHand": "Warm",
+          "peripheralEdemaLeftHand": "No",
+          "nailBedColourLeftHand": "Pink",
+          "capRefillRightFoot": "Delayed > 3 seconds",
+          "temperatureRightFoot": "Warm",
+          "peripheralEdemaRightFoot": "Pedal",
+          "nailBedColourRightFoot": "Pink",
+          "capRefillLeftFoot": "Delayed > 3 seconds",
+          "temperatureLeftFoot": "Warm",
+          "peripheralEdemaLeftFoot": "Pedal",
+          "nailBedColourLeftFoot": "Pink",
+          "comments": "No reports of chest pain.\nPulses regular and strong in all four limbs.\nIV saline lock insitu and patent.",
+          "createdDate": "2022-01-25T13:31:54-08:00",
+          "table_name": "Geoff Smith",
+          "table_profession": "RN",
+          "table_day": "1",
+          "table_time": "2000",
+          "table_id": "cardiovascular.table.0"
+        }
+      ],
+      "lastUpdate": "2022-01-25T21:31:54+00:00"
+    },
+    "gastrointestinal": {
+      "table": [
+        {
+          "bowel": "normal",
+          "bSounds": "luq,ruq,llq,rlq",
+          "condition": "soft",
+          "pain": "No",
+          "emesisPresent": "None",
+          "eating": "Regular",
+          "lastBm": "Yesterday",
+          "comments": "Obese abdomen, soft and non tender. Tolerating cardiac diet well.",
+          "createdDate": "2022-01-25T13:33:14-08:00",
+          "table_name": "Geoff Smith",
+          "table_profession": "RN",
+          "table_day": "1",
+          "table_time": "2000",
+          "table_id": "gastrointestinal.table.0"
+        }
+      ],
+      "lastUpdate": "2022-01-25T21:33:14+00:00"
+    },
+    "genitourinary": {
+      "table": [
+        {
+          "urinaryGroup1": "none",
+          "toilettingMethod": "urinal",
+          "createdDate": "2022-01-25T13:33:40-08:00",
+          "table_name": "Geoff Smith",
+          "table_profession": "RN",
+          "table_day": "1",
+          "table_time": "2000",
+          "table_id": "genitourinary.table.0"
+        }
+      ],
+      "lastUpdate": "2022-01-25T21:33:40+00:00"
+    },
+    "vitals": {
+      "lastUpdate": "2023-02-14T21:06:01+00:00",
+      "table": [
+        {
+          "systolic": "167",
+          "diastolic": "84",
+          "patientPosition": "Sitting",
+          "temperature": "36.39",
+          "source": "Oral",
+          "strength": "Peripheral",
+          "rate": "64",
+          "rhythm": "Regular",
+          "respirationRate": "18",
+          "oxygenSaturation": "95",
+          "oxygenMode": "Room air",
+          "createdDate": "2023-02-14T13:01:41-08:00",
+          "table_name": "Geoff Smith",
+          "table_profession": "RN",
+          "table_day": "0",
+          "table_time": "2200",
+          "table_id": "vitals.table.0"
+        },
+        {
+          "systolic": "167",
+          "diastolic": "82",
+          "patientPosition": "Sitting",
+          "temperature": "36.9",
+          "source": "Oral",
+          "strength": "Peripheral",
+          "rate": "60",
+          "rhythm": "Regular",
+          "respirationRate": "18",
+          "oxygenSaturation": "95",
+          "oxygenMode": "Room air",
+          "createdDate": "2023-02-14T13:02:49-08:00",
+          "table_name": "Geoff",
+          "table_profession": "RN",
+          "table_day": "0",
+          "table_time": "1800",
+          "table_id": "vitals.table.1"
+        },
+        {
+          "systolic": "148",
+          "diastolic": "76",
+          "patientPosition": "Supine",
+          "temperature": "36.3",
+          "source": "Oral",
+          "strength": "Peripheral",
+          "rate": "54",
+          "rhythm": "Regular",
+          "respirationRate": "16",
+          "oxygenSaturation": "92",
+          "oxygenMode": "Room air",
+          "createdDate": "2023-02-14T13:03:32-08:00",
+          "table_name": "Geoff Smith",
+          "table_profession": "RN",
+          "table_day": "1",
+          "table_time": "0200",
+          "table_id": "vitals.table.2"
+        },
+        {
+          "systolic": "152",
+          "diastolic": "79",
+          "patientPosition": "Supine",
+          "temperature": "36.7",
+          "source": "Oral",
+          "strength": "Peripheral",
+          "rate": "58",
+          "rhythm": "Regular",
+          "respirationRate": "16",
+          "oxygenSaturation": "94",
+          "oxygenMode": "Room air",
+          "createdDate": "2023-02-14T13:04:49-08:00",
+          "table_name": "Geoff Smith",
+          "table_profession": "RN",
+          "table_day": "1",
+          "table_time": "0600",
+          "table_id": "vitals.table.3"
+        },
+        {
+          "systolic": "161",
+          "diastolic": "81",
+          "patientPosition": "Supine",
+          "temperature": "37.2",
+          "source": "Oral",
+          "strength": "Peripheral",
+          "rate": "61",
+          "rhythm": "Regular",
+          "respirationRate": "18",
+          "oxygenSaturation": "96",
+          "oxygenMode": "Room air",
+          "createdDate": "2023-02-14T13:05:46-08:00",
+          "table_name": "T. Hall",
+          "table_profession": "RN",
+          "table_day": "1",
+          "table_time": "1000",
+          "table_id": "vitals.table.4"
+        }
+      ]
+    },
+    "progressNotes": {
+      "table": [
+        {
+          "note": "Telemetry applied. ICU reporting good waveform with no concerns at present",
+          "createdDate": "2022-01-25T13:36:07-08:00",
+          "table_name": "Geoff Smith",
+          "table_profession": "RN",
+          "table_day": "1",
+          "table_time": "2000",
+          "table_id": "progressNotes.table.0"
+        }
+      ],
+      "lastUpdate": "2022-01-25T21:36:07+00:00"
+    },
+    "consults": {
+      "lastUpdate": "2023-01-25T23:02:12+00:00",
+      "table": [
+        {
+          "consultReport": {
+            "fName": "Ralph_Piper_Admission.pdf"
+          },
+          "createdDate": "2022-01-25T13:39:24-08:00",
+          "table_name": "Dr. J. Marshall",
+          "table_profession": "MD",
+          "table_day": "1",
+          "table_time": "1945",
+          "table_id": "consults.table.0"
+        }
+      ]
+    },
+    "labResults": {
+      "table": [
+        {
+          "laboratoryReport": {
+            "fName": "Ralph_Piper_CBC.pdf"
+          },
+          "createdDate": "2022-01-25T14:08:11-08:00",
+          "table_day": "1",
+          "table_time": "1800",
+          "table_id": "labResults.table.0"
+        },
+        {
+          "laboratoryReport": {
+            "fName": "Ralph_Piper_Electrolytes.pdf"
+          },
+          "createdDate": "2022-01-25T14:08:23-08:00",
+          "table_day": "1",
+          "table_time": "1800",
+          "table_id": "labResults.table.1"
+        },
+        {
+          "laboratoryReport": {
+            "fName": "Ralph_Piper_Troponin_I.pdf"
+          },
+          "createdDate": "2022-01-25T14:08:34-08:00",
+          "table_day": "1",
+          "table_time": "1800",
+          "table_id": "labResults.table.2"
+        }
+      ],
+      "lastUpdate": "2022-01-25T22:08:34+00:00"
+    },
+    "medicalImaging": {
+      "table": [
+        {
+          "laboratoryReport": {
+            "fName": "Ralph_Piper_ECG.png"
+          },
+          "comments": "No acute ischemic changes noted",
+          "createdDate": "2022-01-25T14:10:01-08:00",
+          "table_name": "Dr. C. Ardio",
+          "table_profession": "Internal Medicine",
+          "table_day": "1",
+          "table_time": "1745",
+          "table_id": "medicalImaging.table.0"
+        }
+      ],
+      "lastUpdate": "2022-01-25T22:10:01+00:00"
+    },
+    "meta": {
+      "simTime": {
+        "visitDay": 1,
+        "visitTime": "2000"
+      },
+      "ehrVersion": "ev2.4.0"
+    },
+    "nonmedOrders": {
+      "lastUpdate": "2023-02-07T17:21:16+00:00",
+      "table": [
+        {
+          "order": "Telemetry",
+          "status": "Ordered",
+          "createdDate": "2023-02-07T09:19:40-08:00",
+          "table_name": "J. Marshall",
+          "table_profession": "MD",
+          "table_day": "0",
+          "table_time": "1600",
+          "table_id": "nonmedOrders.table.0"
+        },
+        {
+          "order": "Oxygen up to 5 L/min by nasal cannula or up to 10 L/min by simple mask to maintain SpO2 above 90%",
+          "createdDate": "2023-02-07T09:20:43-08:00",
+          "table_name": "J. Marshall",
+          "table_profession": "MD",
+          "table_day": "0",
+          "table_time": "1600",
+          "table_id": "nonmedOrders.table.1"
+        },
+        {
+          "order": "Electrolytes, urea, creatinine, CBC daily x3 days then Q2D thereafter",
+          "status": "Ordered",
+          "createdDate": "2023-02-07T09:21:16-08:00",
+          "table_name": "J. Marshall",
+          "table_profession": "MD",
+          "table_day": "1",
+          "table_time": "2000",
+          "table_id": "nonmedOrders.table.2"
+        }
+      ]
+    },
+    "careTeam": {
+      "teams": [
+        {
+          "name": "J. Marshall",
+          "profession": "MD",
+          "createdDate": "2023-02-07T09:19:00-08:00",
+          "teams_id": "careTeam.teams.0"
+        }
+      ],
+      "lastUpdate": "2023-02-07T17:19:00+00:00"
+    },
+    "visit": {
+      "admissionDay": "0",
+      "admissionTime": "1750",
+      "codeStatus": "C2",
+      "diagnosis": "NSTEMI",
+      "lastUpdate": "2023-02-14T20:58:17+00:00",
+      "status": "Inpatient",
+      "table": []
+    },
+    "labRequisitions": {
+      "lastUpdate": "2023-02-17T18:45:14+00:00",
+      "requisitions": [],
+      "table": []
+    }
+  },
+  "description": "",
+  "name": "Ralph Piper",
+  "tagList": [],
+  "version": "2.0",
+  "fileName": "ralphPiper_2.0_25 Oct 2023.json"
+}

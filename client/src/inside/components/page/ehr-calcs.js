@@ -1,8 +1,10 @@
-import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
+import EhrDefs, { MED_ORDERS_PAGE_KEY, MED_ORDERS_ALERT_ELEMENT }  from '@/ehr-definitions/ehr-defs-grid'
 import { isObject, isString, validNumberStr } from '@/helpers/ehr-utils'
 import StoreHelper from '@/helpers/store-helper'
 import { calculateMedicationConcentration, calculateMedicationMaxDosage } from '@/ehr-definitions/ehr-def-utils'
 import { MedOrder } from '@/ehr-definitions/med-definitions/medOrder-model'
+import { makeHumanTableCell } from '@/ehr-definitions/ehr-def-utils'
+import EhrTypes from '@/ehr-definitions/ehr-types'
 
 // export for testing
 export function extractComboValue (src, pKey, eKey)  {
@@ -64,7 +66,10 @@ function getEmbeddedDataRow ( ref ) {
   const [pageKey, tableKey, row] = ref.split('.')
   const pg = mData[pageKey]
   const tbl = pg[tableKey]
-  return tbl[row]
+  const idKey = tableKey + '_id'
+  let found = tbl.find( tElem => tElem[idKey] === ref)
+  if (!found) console.error(`Important change. Using id search to get embedded table row FAILED. Ref: ${ref}. Will default to use row index ${row}`)
+  return found || tbl[row]
 }
 
 /**
@@ -94,21 +99,20 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
   if (srcKeys.length === 0 && !zeroParamTypes.includes(calculationType)) {
     let msg = `Ehr calc unexpected empty set of source keys for key ${targetKey} and calc type ${calculationType}`
     console.log('ecp', msg)
-    console.log('pageDataKey, sourceFieldToMatchOn, targetKey',pageDataKey, sourceFieldToMatchOn, targetKey)
+    console.log('pageDataKey, sourceFieldToMatchOn, targetKey', pageDataKey, sourceFieldToMatchOn, targetKey)
     throw new Error(msg)
   }
   let values = []
   srcKeys.forEach(key => {
     let srcVal = srcValues[key]
     // console.log('srcKey, srcVal, calculationType', key, srcVal, calculationType)
-    if(srcVal) {
+    if (srcVal) {
       if (isString(srcVal)) {
-        if(srcVal.includes('=')) {
+        if (srcVal.includes('=')) {
           values.push(extractComboValue(srcVal, pageDataKey, key))
         } else if (isEmbeddedRef(srcVal)) {
           let rowData = getEmbeddedDataRow(srcVal)
           values.push(rowData)
-          // console.log('---------- cal type embedValue rowData:', rowData)
           // console.log('srcKey, srcVal, calculationType', key, srcVal, calculationType)
         } else {
           values.push(srcVal)
@@ -135,7 +139,7 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
     // console.log('multiplyBy', factor, values)
     if (factor.value) {
       values = mapToNums(values)
-      result = values.reduce((a,b) => a + b * factor.value, 0)
+      result = values.reduce((a, b) => a + b * factor.value, 0)
       // console.log('multiplyBy', result)
     }
   } else if (calculationType.includes('embedValue')) {
@@ -150,11 +154,31 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
   } else if (calculationType.includes('medConcentration')) {
     result = calculateMedicationConcentration(values)
 
+  } else if (calculationType.includes('fluidBalance')) {
+    const inputs = values[0] || 0
+    const outputs = values[1] || 0
+    result = inputs - outputs
+  } else  if (calculationType.includes('medAdminAlert')) {
+    let type = EhrTypes.dataInputTypes.checkset
+    if (values[0]) {
+      let val = values[0].med_alert
+      val = val ? makeHumanTableCell(MED_ORDERS_PAGE_KEY, MED_ORDERS_ALERT_ELEMENT, type, val) : undefined
+      result = val
+    } else {
+      console.log('medAdminAlert no value!', values, 'srcKeys', srcKeys)
+      // console.log('srcValues', srcValues)
+    }
   } else if (calculationType.includes('medOrderSummary')) {
     // values is array with one element; the medication order
     // console.log('medOrderSummary', values[0])
-    const mo = new MedOrder(values[0])
-    result = mo.medOrderSummary()
+    // console.log('medOrderSummary values', values)
+    if (values[0]) {
+      const mo = new MedOrder(values[0])
+      result = mo.medOrderSummary()
+    } else {
+      console.log('medOrderSummary no value!', values, 'srcKeys', srcKeys)
+      // console.log('srcValues', srcValues)
+    }
     // result = calculateMedicationConcentration(values)
   } else if (calculationType.includes('medMaxDosage')) {
     result = calculateMedicationMaxDosage(srcValues)

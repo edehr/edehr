@@ -14,18 +14,20 @@
 
 <script>
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
-import EhrData from '@/inside/components/page/ehr-data'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 import { makeHumanTableCell } from '@/ehr-definitions/ehr-def-utils'
+
 export default {
   props: {
+    ehrData: { type: Object },
     pageKey: { type: String },
     pageChildren: { type: Array },
     pageElement: { type: Object },
   },
   computed: {
     tableData () {
-      return EhrData.getMergedTableData(this.pageKey, this.pageElement.tableKey) || []
+      const pData = this.ehrData[this.pageKey] || []
+      return pData[this.pageElement.tableKey] || []
     },
     tableRowCount () { return this.tableData.length },
     hasData () {

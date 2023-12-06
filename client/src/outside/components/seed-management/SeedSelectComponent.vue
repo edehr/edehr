@@ -74,8 +74,8 @@ import { Text } from '@/helpers/ehr-text'
 import StoreHelper from '@/helpers/store-helper'
 const ASC = 'asc'
 const DESC = 'desc'
-const EHR = 'EHR'
-const LIS = 'LIS'
+// const EHR = 'EHR'
+// const LIS = 'LIS'
 
 export default {
   components: { AppSearchBox, AppTypeRadio, ZoneLmsButton, AppTagList, UiLink, AppTagFilter, UiTableHeaderButton, AppPaginateControls },

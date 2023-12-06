@@ -2,6 +2,17 @@ import mongoose from 'mongoose'
 import { WS_EVENT_BUS, WS_S2C_MESSAGE_EVENT } from '../../server/push-server'
 const ObjectId = mongoose.Schema.Types.ObjectId
 
+const SignOn = new mongoose.Schema({
+  personaName: { type: String },
+  personaProfession: { type: String }
+})
+
+const SimDayTime = new mongoose.Schema({
+  cDate: { type: String },
+  cTime: { type: String }
+})
+
+
 /*
 A Visit represents an interaction between a user and the EdEHR. A visit can span
 multiple actual visits. Say, for example, a user clicks on an activity in their
@@ -19,6 +30,8 @@ const VisitSchema = new mongoose.Schema({
   isStudent: {type: Boolean, default: false},
   isInstructor: {type: Boolean, default: false},
   returnUrl: {type: String},
+  simulationSignOn: { type: SignOn, default: {} },
+  simulationDateTime: { type: SimDayTime, default: {} },
   createDate: {type: Date, default: Date.now},
   lastVisitDate: {type: Date, default: Date.now}
 })

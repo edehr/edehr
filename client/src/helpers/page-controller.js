@@ -227,6 +227,11 @@ async  function onPageChange (toRoute) {
     await StoreHelper.setVisitId(visitId) //note this stores the visit id to survive page changes and browser refresh
     // dup-in loadInstructorWithStudent
     await store.dispatch('visit/loadVisitRecord')
+    // The above load visit record gets visit data including the sim date time.
+    // But we also need to initialize sim DT from the merged metaData if needed
+    // ... and set this into the visit record.
+    // See StoreHelper.initializeSimDateTime which is invoked below once the ehr data is ready
+
     // dup-in loadInstructorWithStudent
     let theActivity = await store.dispatch('activityStore/loadActivityRecord')
     // need to load course to obtain skills assessment details
@@ -360,6 +365,10 @@ async  function onPageChange (toRoute) {
         }
       }
     }
+
+    // set up the visit record with the DT from the ehr data, if needed.  Do this here because the ehrDate is now ready.
+    await StoreHelper.initializeSimDateTime()
+
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   } catch (err) {
     // IF DEVELOPMENT ON LOCALHOST .... show the stack trace for speedier location of error

@@ -10,7 +10,7 @@ import {
   activity4,
   activity5,
   activityMP1,
-  activityMedComplex, activityMentalHealth, activityEhrOrientation, activity6
+  activityMedComplex, activityMentalHealth, activityEhrOrientation, activity6, activitySimExpo2023
 } from '../common/assignment-defs'
 import { fail, ok } from '../common/utils'
 import Consumer from '../consumer/consumer'
@@ -107,7 +107,7 @@ export default class DemoController {
         lObjList: []
       }
       // see comment below about lObjList
-      const activities = [ activity1, activity2, activity3, activity4, activity5, activity6, activityMP1, activityMedComplex, activityMentalHealth, activityEhrOrientation ]
+      const activities = [ activity1, activity2, activity3, activity4, activity5, activity6, activityMP1, activityMedComplex, activityMentalHealth, activityEhrOrientation, activitySimExpo2023]
       for (let i = 0; i< activities.length; i++ ) {
         demoData.lObjList.push(await this.createSampleSeedAndObj(activities[i], toolC))
       }
@@ -149,6 +149,7 @@ export default class DemoController {
           courseTitle: 'Intro to EHR',
           activities: [
             activityEhrOrientation,
+            activitySimExpo2023,
             activity3,
             activity6,
             activityMedComplex,

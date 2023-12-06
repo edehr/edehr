@@ -5,7 +5,8 @@ On page hematology
 For each row in tablePbfReview
 change the element wbcmAbnormalTypeMorphology and replace “Abnormal Lymphocytes” with “Lymphoma Cells”
 */
-export function updateHematologyLymphocytes (ehrData) {
+export function updateHematologyLymphocytes (ehrData, touchCounts) {
+  touchCounts.hemaLymph = 0
   const pageKey= 'hematology'
   const tableKey = 'tablePbfReview'
   const elementKey = 'wbcmAbnormalTypeMorphology'
@@ -20,6 +21,7 @@ export function updateHematologyLymphocytes (ehrData) {
         if (elemData && elemData.includes(oldVal)) {
           const replace = elemData.replace(oldVal, newVal)
           ehrData = updateRowElem(ehrData, pageKey, tableKey, rowIndex, elementKey, replace)
+          touchCounts.hemaLymph++
         }
       })
     }

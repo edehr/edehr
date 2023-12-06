@@ -54,7 +54,10 @@
     "test:util": "NODE_ENV=test DEBUG='server, error' node_modules/.bin/mocha --exit --bail --require @babel/register --require @babel/runtime/regenerator --require @babel/polyfill src/mcr/util/utilController.spec.js",
     "test:verbose": "npm run build && NODE_ENV=test DEBUG='server, error' node_modules/.bin/mocha dotenv/config --recursive --sort --bail 'build/**/*.spec.js'",
     "test:verbose.comment": "make test.versbose the same as test but add in DEBUG",
-    "test:visit": "NODE_ENV=test DEBUG='testing, server, error' node_modules/.bin/mocha --bail --require @babel/register --require @babel/runtime/regenerator --require @babel/polyfill src/mcr/visit/visit-controller.server.spec.js"
+    "test:user": "NODE_ENV=test DEBUG='testing, server, error' node_modules/.bin/mocha --bail --require @babel/register --require @babel/runtime/regenerator --require @babel/polyfill src/mcr/user/user.server.spec.js",
+    "test:user-con": "NODE_ENV=test DEBUG='testing, server, error' node_modules/.bin/mocha --bail --require @babel/register --require @babel/runtime/regenerator --require @babel/polyfill src/mcr/user/userController.server.spec.js",
+    "test:visit-con": "NODE_ENV=test DEBUG='testing, server, error' node_modules/.bin/mocha --bail --require @babel/register --require @babel/runtime/regenerator --require @babel/polyfill src/mcr/visit/visit-controller.server.spec.js",
+    "test:visit": "NODE_ENV=test DEBUG='testing, server, error' node_modules/.bin/mocha --bail --require @babel/register --require @babel/runtime/regenerator --require @babel/polyfill src/mcr/visit/visit.server.spec.js"
   },
   "comments": {},
   "dependencies": {

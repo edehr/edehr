@@ -3,9 +3,6 @@
     div
       div(class="patient-data")
         div(class='patient-name') {{ patientData.patientName }}
-        div(class="bigger-screens-900")
-          span PHN
-          span {{ patientData.phn }}
         div
           span MRN
           span {{ patientData.mrn }}
@@ -20,24 +17,29 @@
           span {{ patientData.codeStatus ? patientData.codeStatus : 'N/A' }}
         div
           span Allergies
-          span(class="bigger-screens-900") {{ patientData.allergies }}
-          span(class="smaller-than-900") {{ truncate(patientData.allergies, 50) }}
+          span {{ truncate(patientData.allergies, 40) }}
         div
           span Diagnosis
-          span(class="bigger-screens-900") {{ patientData.diagnosis }}
-          span(class="smaller-than-900") {{ truncate(patientData.diagnosis, 50) }}
-        div(class="bigger-screens-900")
-          span Weight
-          span {{ patientData.weight }}
-        div(class="bigger-screens-900")
-          span Location
-          span {{ patientData.location }}
-        div(class="bigger-screens-900")
-          span MRP
-          span {{ patientData.mrp }}
-        div(class="bigger-screens-900")
-          span MRP phone
-          span {{ patientData.mrpPhone}}
+          span {{ truncate(patientData.diagnosis, 40) }}
+        div
+          span Risks
+          span {{ truncate(patientData.risks, 40) }}
+        div(class="patient-data bigger-screens-900")
+          div
+            span Weight
+            span {{ patientData.weight }}
+          div
+            span PHN
+            span {{ patientData.phn }}
+          div
+            span Location
+            span {{ patientData.location }}
+          //div
+          //  span Advocate
+          //  span {{ patientData.mrp }}
+          //div
+          //  span Advocate phone
+          //  span {{ patientData.mrpPhone}}
         ehr-sim-time(:ehr-data="md")
 
     //li Isolation precautions:

@@ -201,3 +201,14 @@ export const activityEhrOrientation = {
   resource_link_title: `${ehrOrientation.name}`,
   resource_link_description: 'This activity is suitable as an introduction to EHR for students.',
 }
+
+const simExpo2023 = require('../../resources/lobj_simExpo2023.json')
+export const activitySimExpo2023 = {
+  lObjDef: {
+    title: simExpo2023.name,
+    description: simExpo2023.description
+  },
+  seedDef: simExpo2023.caseStudy,
+  resource_link_title: `${simExpo2023.name}`,
+  resource_link_description: 'This activity is suitable as an introduction to EHR for students.',
+}

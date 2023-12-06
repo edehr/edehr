@@ -1,20 +1,24 @@
 <template lang='pug'>
   div  Encounter day {{visitDay}} time {{visitTime}}
-    ui-info(title="Simulation time", text="This is simulated visit day and time.")
+    ui-info(title="Simulation time", :text="text.simulationDayTime")
 </template>
 
 <script>
 import UiInfo from '@/app/ui/UiInfo'
+import { ehrInfoText } from '@/appText'
 export default {
   components: { UiInfo },
+  data () {
+    return {
+      text: ehrInfoText
+    }
+  },
   props: {
-    ehrData: { type: Object, default () { return {} } }
+    ehrData: { type: Object, default () { return {} } },
   },
   computed: {
-    meta () { return this.ehrData.meta || {} },
-    simTime () { return this.meta.simTime || {}},
-    visitDay () { return this.simTime.visitDay},
-    visitTime () { return this.simTime.visitTime}
+    visitDay () { return this.$store.getters['visit/simDate']},
+    visitTime () { return this.$store.getters['visit/simTime']}
   }
 }
 </script>

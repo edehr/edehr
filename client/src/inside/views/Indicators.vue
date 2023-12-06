@@ -3,13 +3,13 @@
   div(class="ehr-page")
     ehr-page(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
     div(style="display:none")
-      p This Fluid Balance page is generated.
-      p Label: Fluid balance
-      p Data Key: fluidBalance
-      p Component name: FluidBalance
+      p This Indicators page is generated.
+      p Label: Special Indicators (Risk)
+      p Data Key: riskIndicators
+      p Component name: Indicators
       p Redirect: 
-      p Route name: fluid-balance
-      p Full path: /ehr/current/fluid-balance
+      p Route name: indicators
+      p Full path: /ehr/patient/indicators
 </template>
 
 <script>
@@ -17,11 +17,11 @@ import EhrPage from '../components/page/EhrPage'
 import EhrPageHelper from '../components/page/ehr-helper'
 
 export default {
-  name: 'FluidBalance',
+  name: 'Indicators',
   components: { EhrPage },
   data: function () {
     return {
-      pageDataKey: 'fluidBalance',
+      pageDataKey: 'riskIndicators',
       ehrHelp: undefined
     }
   },

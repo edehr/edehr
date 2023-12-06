@@ -55,7 +55,6 @@ describe('VisitController controller testing', function () {
     }
     theStudentUser = await Helper.createUserFromSpec(studentUserSpec)
     should.exist(theStudentUser)
-
   })
 
   it('VisitController controller create instructor visits', async () => {
@@ -136,6 +135,30 @@ describe('VisitController controller testing', function () {
         should.not.exist(err)
         done()
       })
+  })
+
+  it('Visit/User testing simulationSignOn and favouriteSignOns', async () => {
+    let visitController = new VisitController()
+    let user
+    await visitController.visitSignOn( visit1._id, 'Heather', 'RN')
+    await visitController.visitSignOn( visit1._id, 'Joy', 'RN')
+    await visitController.visitSignOn( visit1._id, 'Jane', 'RN')
+    await visitController.visitSignOn( visit1._id, 'Heather', 'RN')
+    await visitController.visitSignOn( visit1._id, 'Joy', 'RN')
+    await visitController.visitSignOn( visit1._id, 'Jane', 'RN')
+    user = await userController.findOneById(theUser._id)
+    user.favouriteSignOns.length.should.equal(3) // 3 unique sign ons
+  })
+
+  it('Visit controller set sim day time', async () => {
+    let visitController = new VisitController()
+    await visitController.setSimDateTime( visit1._id, '3', '1930')
+  })
+  it('Visit controller get sim day time', async () => {
+    let visitController = new VisitController()
+    const sdt = await visitController.getSimDateTime( visit1._id)
+    sdt.cDate.should.equal('3')
+    sdt.cTime.should.equal('1930')
   })
 
 })

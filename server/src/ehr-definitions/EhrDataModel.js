@@ -5,15 +5,16 @@ import {
   updateRecHeaderElementKeys,
   visitTimeInEhrDataV2
 } from './ehr-data-model-utils'
-import { decoupleObject } from './common-utils'
+import { decoupleObject, isEmptyObject } from './common-utils'
 import {
   updateMedicationRoute
 } from './med-definitions/med-ehrData-upgrade-utils'
 import { updateRespiratory } from './ehr-data-upgrade-utils'
 import { updateWoundCaseStudy } from './ehr-data-upgrade-woundCaseStudy'
 import { updateHematologyLymphocytes } from './ehr-data-upgrade-hematology'
+import { updateV2_4_1 } from './ehr-data-upgrade-v2.4.1'
 
-export const CURRENT_EHR_DATA_VERSION = 'ev2.4.0'
+export const CURRENT_EHR_DATA_VERSION = 'ev2.4.1'
 // ev2.4.0 major change in how the student's ehrData is stored. It is now in an array of patients.
 
 function ehrMergeEhrData (one, two) {
@@ -228,35 +229,55 @@ export default class EhrDataModel {
   }
 
   loadEhrData (ehrData) {
+    const consoleLogTrace = false
+    const start = performance.now()
     // decouple so this constructor can be used inside a Vuex store (can't modify any of its data)
     this._ehrData = decoupleObject(ehrData)
     this._ehrData.meta = this._ehrData.meta || {}
-    // update recorder headers changes element keys from name, profession, day, time to tableKey_name, etc
-    // must update the record heard key names before updating visit times
-    this._ehrData = updateRecHeaderElementKeys(this._ehrData)
-    // update visit time convert 00:00 to 0000
-    this._ehrData = updateAllVisitTime(this)
+    if (!isEmptyObject(ehrData)) {
+      const touchCounts = {}
+      let keyData = EhrDataModel.ExtractKeyPatientData(this._ehrData)
+      // update recorder headers changes element keys from name, profession, day, time to tableKey_name, etc
+      // must update the record heard key names before updating visit times
+      this._ehrData = updateRecHeaderElementKeys(this._ehrData, touchCounts)
+      // update visit time convert 00:00 to 0000
+      this._ehrData = updateAllVisitTime(this, touchCounts)
 
-    // TODO change updateMedicationRoute to be like updateWoundCaseStudy
-    // med route just updates inhaler to inhalation in med orders
-    this._ehrData = updateMedicationRoute(this)
+      // TODO change updateMedicationRoute to be like updateWoundCaseStudy
+      // med route just updates inhaler to inhalation in med orders
+      this._ehrData = updateMedicationRoute(this, touchCounts)
 
-    // TODO change updateRespiratory to be like updateWoundCaseStudy
-    this._ehrData = updateRespiratory(this)
+      // TODO change updateRespiratory to be like updateWoundCaseStudy
+      this._ehrData = updateRespiratory(this, touchCounts)
 
-    // fix a problem in the wound assessment sample case study.
-    this._ehrData = updateWoundCaseStudy(this._ehrData)
+      // fix a problem in the wound assessment sample case study.
+      this._ehrData = updateWoundCaseStudy(this._ehrData, touchCounts)
 
-    this._ehrData = updateHematologyLymphocytes(this._ehrData)
+      this._ehrData = updateHematologyLymphocytes(this._ehrData, touchCounts)
 
-    // updateAllRowIds inserts a row id into any row that doesn't yet have one.
-    // This is the preferred way to generate row ids. Insert new row and reload the whole ehr object into this model.
-    // It's fast enough for the size of data sets we see.
-    // Think, max 40ish pages, average 1.5 tables/pg, average 1.5 rows/table ... 90 rows to look at
-    this._ehrData = updateAllRowIds(this._ehrData)
+      this._ehrData = updateV2_4_1(this, touchCounts)
+
+      // updateAllRowIds inserts a row id into any row that doesn't yet have one.
+      // This is the preferred way to generate row ids. Insert new row and reload the whole ehr object into this model.
+      // It's fast enough for the size of data sets we see.
+      // Think, max 40ish pages, average 1.5 tables/pg, average 1.5 rows/table ... 90 rows to look at
+      this._ehrData = updateAllRowIds(this._ehrData, touchCounts)
+
+      if (consoleLogTrace) {
+        // remove empty counts ...
+        let tKeys = Object.keys(touchCounts)
+        for (let key of tKeys) {
+          if (touchCounts[key] === 0)
+            delete touchCounts[key]
+        }
+        console.log('loadEhrData', keyData.familyName, keyData.mrn, 'touchCounts', touchCounts)
+      }
+    }
     this._ehrData.meta.simTime = visitTimeInEhrDataV2(this._ehrData)
     this._ehrData.meta.ehrVersion = CURRENT_EHR_DATA_VERSION
     // console.log('Loaded EhrDataModel', this._ehrData.meta)
+    const elapsed = performance.now() - start
+    if(consoleLogTrace) console.log('loadEhrData elapsed', elapsed)
   }
 
   get ehrData () {
@@ -310,7 +331,7 @@ export default class EhrDataModel {
   }
 
   getPageTableData (pageKey, tableKey) {
-    return this._ehrData[pageKey][tableKey]
+    return this._ehrData[pageKey] ? this._ehrData[pageKey][tableKey] : undefined
   }
   _updatePageTableData (pageKey, tableKey, tableData) {
     this._ehrData[pageKey][tableKey] = tableData

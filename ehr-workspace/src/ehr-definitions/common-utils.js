@@ -72,6 +72,14 @@ export function isObject ( possibleObj ) {
   // return possibleObj && possibleObj.constructor.name === 'Object'
 }
 
+export function isEmptyObject (obj) {
+  // it is ok the for loop does not loop. It only is catching the first element
+  // see https://stackoverflow.com/a/59787784/908570
+  for(const i in obj) {
+    return false
+  }
+  return true
+}
 export function isString (possibleStr) {
   return Object.prototype.toString.call(possibleStr) === '[object String]'
 }

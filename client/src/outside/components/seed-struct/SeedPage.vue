@@ -12,11 +12,13 @@
       transition(name="fade" mode="out-in")
         div(v-if="!tableCollapsed")
           seed-table-horiz(v-show='tableOrientation',
+            :ehrData="ehrData",
             :pageKey="pageKey",
             :pageChildren="pageChildren",
             :pageElement='pageElement'
           )
           seed-table-vert(v-show='!tableOrientation',
+            :ehrData="ehrData",
             :pageKey="pageKey",
             :pageChildren="pageChildren",
             :pageElement='pageElement'
@@ -45,6 +47,7 @@ export default {
     }
   },
   props: {
+    ehrData: { type: Object },
     pageKey: { type: String },
     pageChildren: { type: Array },
     pageElement: { type: Object },

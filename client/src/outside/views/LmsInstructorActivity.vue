@@ -14,17 +14,17 @@
         class='flow_across_last_item'
       )
     zone-lms-instructions-header
-      p Each link in your learning management system (LMS) is your connection to an EdEHR Activity.
+      p You probably just clicked a link in your learning management system (LMS) and it has brought you here to this EdEHR Activity.
       p(v-if='isUnleashedActivityEnabled')
         span.
-          As an instructor you can control what content the student sees, when they activate an EdEHR link in your LMS.
-          But if students have already started work on the activity then be careful about changing the content because you are changing the
-          instructions and the base case study data.  To change this activity's content use the gear icon &nbsp;
+          If you were the first person to use that LMS link then you have also just selected a "Learning Object" for this activity. Otherwise you are returning or another instructor has made the connection. A "Learning Object" defines the learning activity and it usually provides a base case study with charting data.  When students click the same link, in the LMS, they will be taken directly to the charting application and they will see the case study.
+            As an instructor you can change this content by using the gear icon &nbsp;
         fas-icon( class="fa", :icon="appIcons.configure")
-        span &nbsp; button
+        span &nbsp; button.
+      p           But be careful if students have already started work on the activity because you are changing the content they are working with.
       p
         span.
-          As an instructor you may wish to know what the student will experience. That's easy. Just use the button with the student icon &nbsp;
+          TIP.  As an instructor you may wish to know what the student will experience. That's easy. Just use the button with the student icon &nbsp;
         fas-icon( class="fa", :icon="appIcons.student")
         span.
           &nbsp; But before you go remember that the &nbsp;
@@ -41,13 +41,20 @@
       zone-lms-instructions-element.
         Students see the instructions above. To change the instructions click on the {{text.LOBJ}} link below and edit the learning object properties. But remember you are also affecting all activities that share this content.
 
+      div(v-if="isSimControlEnabled", class="details-row")
+        div(class="details-name") Simulation controls
+        div(class="details-value")
+          ui-link(:name="'simController'", :query="{visitId: visitId}")
+            fas-icon(class='fa', :icon='appIcons.stopwatch')
+            span &nbsp; Real time control of simulation data for students.
+
       div(class="details-row")
         div(class="details-name") {{text.LOBJ}}
         div(class="details-value")
           ui-link(:name="'learning-object'", :query="{learningObjectId: activity.learningObjectId}")
             fas-icon(class='fa', :icon='appIcons.lobj')
             span &nbsp; {{ activity.learningObjectName }}
-      zone-lms-instructions-element  A "learning object" is also a lesson plan, a simulation plan, or the activity content. It defines what the student sees and does. Click this link to see and access the learning object details page.
+      zone-lms-instructions-element  A "learning object" is also a lesson plan, a simulation plan, or the activity content. It defines what the student sees and does. Click this link to access the learning object details page.
 
       div(class="details-row")
         div(class="details-name") {{text.CLASS_LIST}}
@@ -84,7 +91,7 @@
             labelOff='Locked'
           )
       zone-lms-instructions-element.
-        Use this toggle to change the viewing state.
+        Use this toggle to change the viewing state, for the students. When enabled your students can view your feedback. They can see this feedback at the top just above the patient banner in the charting area.
 
 
       div(class="details-row")
@@ -96,12 +103,12 @@
       div(v-if="isUnleashedActivityEnabled", class="details-row")
         div(class="details-name") Activity name on LMS
         div(class="details-value") {{ lmsTitle }}
-      zone-lms-instructions-element.
-        This is the activity title from your learning management system (LMS).
 
       div(v-if="isUnleashedActivityEnabled", class="details-row")
         div(class="details-name") Activity description LMS
         div(class="details-value") {{ lmsDescription }}
+      zone-lms-instructions-element.
+        Above are the activity title and description provided by your LMS. These may or may not be useful.
 
       div(class="details-row")
         div(class="details-name") {{text.DATES}}
@@ -128,7 +135,7 @@ import StoreHelper from '@/helpers/store-helper'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner.vue'
 import router, { UNLINKED_ACTIVITY_ROUTE_NAME } from '@/router'
 import AppTypeToggleButton from '@/outside/components/seed-management/AppTypeToggleButton.vue'
-import FeatureHelper, { FF_UNLEASH_ACTIVITY } from '@/helpers/feature-helper'
+import FeatureHelper, { FF_SIM_CONTROL, FF_UNLEASH_ACTIVITY } from '@/helpers/feature-helper'
 import ActivityDialogV2 from '@/outside/components/lms-activity/ActivityDialogV2.vue'
 import UiConfirm from '@/app/ui/UiConfirm.vue'
 import UiInfo from '@/app/ui/UiInfo.vue'
@@ -164,6 +171,10 @@ export default {
     }
   },
   computed: {
+    isSimControlEnabled () {
+      const cid = this.$store.getters['consumerStore/consumerId']
+      return FeatureHelper.isFeatureFlagEnabled(cid, FF_SIM_CONTROL)
+    },
     isUnleashedActivityEnabled () { return FeatureHelper.isFeatureFlagEnabled(this.consumerId, FF_UNLEASH_ACTIVITY) },
     activity () {
       return this.$store.getters['activityStore/activityRecord']

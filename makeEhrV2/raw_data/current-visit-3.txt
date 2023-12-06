@@ -2,7 +2,7 @@
 {inputType: table_form}	eCell	{Label: Lab requisitions v1}	eCell	{elementKey: table}	{pN: 24}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	{tableLabel: This table data needs to be updated. Contact EdEHR for assistance.}	eCell	eCell	{addButtonText: Add a lab requisition assessment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Demographic}	eCell	{elementKey: demographics}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: section-divider grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Demographic}	eCell	{elementKey: demographics}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehrPatientName}	eCell	{Label: Patient Name}	{Comments: get this from demographics}	{elementKey: patientName}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehrPHN}	eCell	{Label: PHN}	{Comments: get this from demographics}	{elementKey: patientHealthNumber}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehrDOB}	eCell	{Label: DOB}	{Comments: get this from demographics}	{elementKey: dateOfBirth}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -32,7 +32,7 @@ Direct Birilubin}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	e
 {inputType: checkset}	eCell	{Label: Urine Analysis}	eCell	{elementKey: urineAnalysis}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 13}	eCell	eCell	eCell	eCell	"{Options: R&M
 Urine electrolytes
 Urine creatinine}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Microbiology}	eCell	{elementKey: microbiology}	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	{formCss: section-divider grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Microbiology}	eCell	{elementKey: microbiology}	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	{formCss: grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Type of Culture}	eCell	{elementKey: microbiologyCulture}	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 14}	eCell	eCell	eCell	eCell	"{Options: culture
 senstitivity}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Location}	{Comments: `}	{elementKey: microbiologyLocation}	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 15}	eCell	eCell	eCell	eCell	"{Options: Wound
@@ -40,7 +40,7 @@ Sputum
 Blood
 Urine
 Stool}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Histology}	eCell	{elementKey: histology}	{pN: 24}	{fN: 1}	{gN: 4}	{sgN: }	{formCss: section-divider grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Histology}	eCell	{elementKey: histology}	{pN: 24}	{fN: 1}	{gN: 4}	{sgN: }	{formCss: grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Tissue Type}	eCell	{elementKey: histologyTissueType}	{pN: 24}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 16}	eCell	eCell	eCell	eCell	"{Options: Skin
 Blood
 Organ}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -59,8 +59,11 @@ ddim:=D-Dimer
 inr:=International normalised ratio (INR)
 aptt:=Activated partial thromboplastin time (PTT)
 ptt:=Partial thromboplastin time (PTT)}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkset}	eCell	{Label: Troponin}	eCell	{elementKey: reqt_tropinin}	{pN: 24}	{fN: 2}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	"{Options: tropI:=Troponin I
+tropT:=Troponin T (TnT)
+tropH:=High-sensitivity troponin T}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Chemistry}	eCell	eCell	{pN: 24}	{fN: 2}	{gN: 4}	{sgN: }	{formCss: grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Electrolytes}	eCell	{elementKey: req_electrolytes}	{pN: 24}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	"{Options: hco3:=Bicarbonate (HCO3)
+{inputType: checkset}	eCell	{Label: Electrolytes}	eCell	{elementKey: req_electrolytes}	{pN: 24}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	"{Options: hco3:=Bicarbonate (HCO3)
 CA:=Calcium (Ca)
 Ca_Ion:=Calcium ionized
 chloride:=Chloride (Cl)
@@ -73,7 +76,7 @@ mg:=Magnesium (Mg)
 po4:=Phosphate (PO4)
 k:=Potassium (K)
 na:=Sodium (Na)}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Liver Function}	eCell	{elementKey: req_liverFunction}	{pN: 24}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	"{Options: alt:=Alanine transaminase (ALT)
+{inputType: checkset}	eCell	{Label: Liver Function}	eCell	{elementKey: req_liverFunction}	{pN: 24}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: alt:=Alanine transaminase (ALT)
 alp:=Alkaline phosphatase (ALP)
 ast:=Aspartate transferase (AST)
 bilirubinD:=Bilirubin direct
@@ -81,27 +84,27 @@ bilirubinT:=Bilirubin total
 ggt:=Gamma glutamyl transferase (GGT)
 ldh:=Lactate dehydrogenase (LDH)
 lipase:=Lipase}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Renal Profile}	eCell	{elementKey: req_renalProfile}	{pN: 24}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: bun:=Blood urea nitrogen (BUN)
+{inputType: checkset}	eCell	{Label: Renal Profile}	eCell	{elementKey: req_renalProfile}	{pN: 24}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: bun:=Blood urea nitrogen (BUN)
 cr:=Creatinine}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Blood Gas}	eCell	eCell	{pN: 24}	{fN: 2}	{gN: 5}	{sgN: }	{formCss: grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Blood Gas}	eCell	{elementKey: req_bloodGas}	{pN: 24}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: abg:=Arterial blood gas (ABG)
+{inputType: checkset}	eCell	{Label: Blood Gas}	eCell	{elementKey: req_bloodGas}	{pN: 24}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	"{Options: abg:=Arterial blood gas (ABG)
 fcbg:=Venous blood gas (VBG)
 vbg:=Fetal cord blood gas (FCBG)}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Urinalysis}	eCell	eCell	{pN: 24}	{fN: 2}	{gN: 6}	{sgN: }	{formCss: grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Urine Analysis}	eCell	{elementKey: req_urineAnalysis}	{pN: 24}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	"{Options: acr:= Albumin/creatinine ratio (ACR)
+{inputType: checkset}	eCell	{Label: Urine Analysis}	eCell	{elementKey: req_urineAnalysis}	{pN: 24}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 11}	eCell	eCell	eCell	eCell	"{Options: acr:= Albumin/creatinine ratio (ACR)
 rm:=Routine and microscopic (R&M)
 preg:=Pregnancy
 u_el:=Urine electrolytes
 u_cr:=Urine creatinine}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 2}	{gN: 7}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: req_comments}	{pN: 24}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Comments}	{tableColumn: 11}	eCell	eCell	eCell	eCell	{Options: ferritin:=Ferritin glucoseF:=Glucose fasting glucoseR:=Glucose random}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: req_comments}	{pN: 24}	{fN: 2}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Comments}	{tableColumn: 12}	eCell	eCell	eCell	eCell	{Options: ferritin:=Ferritin glucoseF:=Glucose fasting glucoseR:=Glucose random}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: Histology}	eCell	{elementKey: histologyRequisitions}	{pN: 24}	{fN: 3}	{gN: }	{sgN: }	eCell	{formOption: transpose}	eCell	eCell	eCell	{addButtonText: Add a histology requisition}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 3}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 3}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Requisition}	eCell	eCell	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	{formCss: section-divider grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Requisition}	eCell	eCell	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	{formCss: grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: visitDay}	eCell	{Label: Date required}	eCell	{elementKey: reqH_dateRequired}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Reason test is required}	eCell	{elementKey: reqH_reason}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Test}	eCell	eCell	{pN: 24}	{fN: 3}	{gN: 3}	{sgN: }	{formCss: section-divider grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Test}	eCell	eCell	{pN: 24}	{fN: 3}	{gN: 3}	{sgN: }	{formCss: grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Tissue Type}	eCell	{elementKey: reqH_type}	{pN: 24}	{fN: 3}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 4}	eCell	eCell	eCell	eCell	"{Options: blood:=Blood
 organ:=Organ
 skin:=Skin}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -148,14 +151,3 @@ stool:=Stool
 urine:=Urine
 wound:=Wound}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: reqMicro_comments}	{pN: 24}	{fN: 5}	{gN: 3}	{sgN: }	{formCss: grid-span-3-columns}	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: table_form}	eCell	{Label: Troponin}	eCell	{elementKey: reqTroponinTable}	{pN: 24}	{fN: 6}	{gN: }	{sgN: }	eCell	{formOption: transpose}	eCell	eCell	eCell	{addButtonText: Add a troponin lab requisition}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 6}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 6}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Requisition}	eCell	eCell	{pN: 24}	{fN: 6}	{gN: 2}	{sgN: }	{formCss: grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: visitDay}	eCell	{Label: Date required}	eCell	{elementKey: reqT_dateRequired}	{pN: 24}	{fN: 6}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Reason test is required}	eCell	{elementKey: reqT_reason}	{pN: 24}	{fN: 6}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Test}	eCell	eCell	{pN: 24}	{fN: 6}	{gN: 3}	{sgN: }	{formCss: grid-left-to-right-3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Troponin}	eCell	{elementKey: reqt_tropinin}	{pN: 24}	{fN: 6}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	"{Options: tropI:=Troponin I
-tropT:=Troponin T (TnT)
-tropH:=High-sensitivity troponin T}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: reqt_comments}	{pN: 24}	{fN: 6}	{gN: 3}	{sgN: }	{formCss: grid-span-3-columns}	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

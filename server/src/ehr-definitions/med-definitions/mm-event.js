@@ -10,6 +10,7 @@
 export class MedMarEvent {
   constructor (dayNum, ts, medOrder ) {
     this._medOrderId = medOrder.id
+    this._medSummary = medOrder.medOrderSummary()
     this._schedDay = dayNum
     this._schedTime = ts
     this.adminDay = undefined
@@ -30,7 +31,14 @@ export class MedMarEvent {
   // TODO rewrite the toolTip to be more user friendly and not, as it is now, written for a developer.
   get toolTip () { return this.toString() }
   toString () {
-    return `${this.adminDay} ${this.adminTime} ${this.marStatus} ${this.marRecordId} ${this.medOrderId} ${this.schedDay} ${this.schedTime}.`
+    const parts = []
+    parts.push(this._medSummary)
+    if (this.marStatus) {
+      parts.push(this.adminDay)
+      parts.push(this.adminTime)
+      parts.push(this.marStatus)
+    }
+    return parts.join(', ')
   }
 
   get schedDay () { return this._schedDay}

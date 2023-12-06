@@ -71,13 +71,14 @@ const formProperties  = [
 ]
 
 
-const pageProperties = [ 'elementKey', 'label', 'pN', 'tableLabel' ]
+const pageProperties = [ 'elementKey', 'label', 'pN', 'tableLabel', 'formCss', 'formOption' ]
 
 const pageProperties2 = [
   { sKey: 'elementKey', dKey: 'pageDataKey'},
   { sKey: 'label', dKey: 'pageTitle'},
   { sKey: 'pN', dKey: 'pIndex'},
   'isV2',
+  'formCss', 'formOption',
   'hasGridTable',
   'hasGridForm',
   'medSchedule',

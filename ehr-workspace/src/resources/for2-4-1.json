@@ -1,0 +1,210 @@
+{
+  "ehrData": {
+    "meta": {
+      "simTime": {
+        "visitDay": 0,
+        "visitTime": "0000"
+      },
+      "ehrVersion": "ev2.4.0"
+    },
+    "demographics": {
+      "mrn": "S:650004"
+    },
+    "neurological": {
+      "table": [
+        {
+          "table_name": "Dorothea",
+          "table_day": 0,
+          "table_time": "0000",
+          "alert": "oriented",
+          "eyeOpening": "0 = Non testable",
+          "glasgowCalculation": 0,
+          "loss": "No",
+          "levelOfConciousness": "0 = Alert; keenly responsive",
+          "levelOfConciousnessQuestions": "1 = Answers one question correctly",
+          "levelOfConciousnessCommands": "0 = Performs both tasks correctly",
+          "motorLeftArm": "0 = No drift",
+          "motorRightArm": "1 = Drift",
+          "motorLeftLeg": "0 = No drift",
+          "motorRightLeg": "1 = Drift",
+          "limbAtaxia": "1 = Present in one limb",
+          "bestGaze": "1 = Partial gaze palsy",
+          "visual": "1 = Partial hemianopia",
+          "facialPalsy": "1 = Minor paralysis",
+          "sensory": "1 = Mild-to-moderate sensory loss",
+          "bestLanguage": "2 = Severe aphasia",
+          "dysarthria": "0 = Normal",
+          "extinctionAndInattention": "2 = Profound hemi-inattention or extinction",
+          "strokeAssessmentCalculation": 12,
+          "createdDate": "2023-12-01T20:43:47-08:00",
+          "table_id": "neurological.table.0",
+          "table_profession": "RN",
+          "verbalResponse": "0 = Non testable",
+          "bestMotorResponse": "0 = Non testable",
+          "leftPupilSize": "2",
+          "leftPupilResponseToLight": "Brisk",
+          "rightPupilSize": "3",
+          "rightPupilResponseToLight": "Brisk",
+          "bothPupils": "Equal"
+        }
+      ],
+      "lastUpdate": "2023-12-02T04:43:47+00:00"
+    },
+    "cardiovascular": {
+      "table": [
+        {
+          "table_name": "Dorothea",
+          "table_profession": "RN",
+          "table_day": 0,
+          "table_time": "0000",
+          "skinAppearance": "Normal",
+          "nailBedColourRightHand": "Pink",
+          "nailBedColourLeftHand": "Pink",
+          "nailBedColourRightFoot": "Pink",
+          "nailBedColourLeftFoot": "Pink",
+          "createdDate": "2023-12-01T20:56:43-08:00",
+          "table_id": "cardiovascular.table.0",
+          "capRefillLeftHand": "Normal < 3 seconds",
+          "temperatureRightHand": "Warm",
+          "peripheralEdemaRightHand": "No",
+          "capRefillRightHand": "Normal < 3 seconds",
+          "temperatureLeftHand": "Warm",
+          "peripheralEdemaLeftHand": "Ankle",
+          "capRefillRightFoot": "Normal < 3 seconds",
+          "temperatureRightFoot": "Warm",
+          "peripheralEdemaRightFoot": "Pedal",
+          "capRefillLeftFoot": "Normal < 3 seconds",
+          "temperatureLeftFoot": "Warm",
+          "peripheralEdemaLeftFoot": "Sacral"
+        }
+      ],
+      "lastUpdate": "2023-12-02T04:56:43+00:00"
+    },
+    "respiratory": {
+      "table": [
+        {
+          "table_name": "Dorothea",
+          "table_day": 0,
+          "table_time": "0000",
+          "airway": "patent",
+          "lul": "Normal",
+          "rul": "Normal",
+          "rml": "Normal",
+          "lll": "Normal",
+          "rll": "Normal",
+          "respiratoryRhythm": "Regular",
+          "respiratoryDepth": "Normal",
+          "cough": "No",
+          "sputumColour": "Mucoid",
+          "createdDate": "2023-12-01T20:44:16-08:00",
+          "table_id": "respiratory.table.0"
+        }
+      ],
+      "lastUpdate": "2023-12-02T04:44:16+00:00"
+    },
+    "gastrointestinal": {
+      "table": [
+        {
+          "table_name": "Dorothea",
+          "table_day": 0,
+          "table_time": "0000",
+          "bowel": "normal,constipation,melena,diarrhea,incontinent",
+          "bSounds": "luq,ruq,none,llq,rlq,hypoactive,hyperactive",
+          "condition": "soft,tender,rigid,guarding,distended,scars",
+          "pain": "Yes",
+          "emesisPresent": "None",
+          "colour": "Greenish-yellow",
+          "amount": "Small",
+          "eating": "Regular",
+          "stoolColour": "Green",
+          "stoolDescription": "Runny",
+          "stoolSource": "Observed",
+          "createdDate": "2023-12-01T20:45:05-08:00",
+          "table_id": "gastrointestinal.table.0"
+        }
+      ],
+      "lastUpdate": "2023-12-02T04:45:05+00:00"
+    },
+    "musculoskeletal": {
+      "table": [
+        {
+          "table_name": "Dorothea",
+          "table_day": 0,
+          "table_time": "0000",
+          "colour": "Flesh",
+          "createdDate": "2023-12-01T20:45:32-08:00",
+          "table_id": "musculoskeletal.table.0"
+        }
+      ]
+    },
+    "medicationOrders": {
+      "medicationOrdersTable": [
+        {
+          "medicationOrdersTable_name": "Dorothea",
+          "medicationOrdersTable_day": 0,
+          "medicationOrdersTable_time": "0000",
+          "med_timing": "od",
+          "med_route": "oral",
+          "med_reason": "Test OD",
+          "med_medication": "odMed",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.0"
+        },
+        {
+          "medicationOrdersTable_name": "Dorothea",
+          "medicationOrdersTable_day": 0,
+          "medicationOrdersTable_time": "0000",
+          "med_timing": "od",
+          "med_route": "bucc",
+          "med_reason": "OD test 2",
+          "med_medication": "odMed2",
+          "med_dose": "22",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.1"
+        }
+      ]
+    },
+    "medAdminRec": {
+      "marTable": [
+        {
+          "marTable_name": "Dorothea",
+          "marTable_day": 0,
+          "marTable_time": "0000",
+          "med_order_embedded": "medicationOrders.medicationOrdersTable.0",
+          "mo_medOrder": "odMed, , Oral",
+          "mo_timing": "od",
+          "mo_id": "medicationOrders.medicationOrdersTable.0",
+          "mo_secondSig": "medicationOrders.medicationOrdersTable.0",
+          "mar_status": "Administered",
+          "mar_dose": "11",
+          "mar_route": "oral",
+          "undefined": "medicationOrders.medicationOrdersTable.0",
+          "medicationOrdersTable_name": "Dorothea",
+          "medicationOrdersTable_day": 0,
+          "medicationOrdersTable_time": "0000",
+          "med_timing": "od",
+          "med_route": "oral",
+          "med_reason": "Test OD",
+          "med_medication": "odMed",
+          "marTable_id": "medAdminRec.marTable.0"
+        },
+        {
+          "marTable_name": "Dorothea",
+          "marTable_day": 0,
+          "marTable_time": "0000",
+          "med_order_embedded": "medicationOrders.medicationOrdersTable.1",
+          "mo_medOrder": "odMed2, 22, Buccal",
+          "mo_timing": "od",
+          "mo_id": "medicationOrders.medicationOrdersTable.1",
+          "mo_secondSig": "medicationOrders.medicationOrdersTable.1",
+          "mar_status": "Missed",
+          "mar_dose": "22",
+          "undefined": "medicationOrders.medicationOrdersTable.1",
+          "med_route": "bucc",
+          "med_reason": "OD test 2",
+          "med_medication": "odMed2",
+          "med_dose": "22",
+          "marTable_id": "medAdminRec.marTable.1"
+        }
+      ]
+    }
+  }
+}

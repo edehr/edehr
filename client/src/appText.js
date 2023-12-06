@@ -338,3 +338,7 @@ export const edEhrValues = [
     body: 'EdEHR is an open-source educational resource that provides post-secondary health care programs with the potential to access and customize the case studies and the application at minimal cost.'
   }
 ]
+
+export const ehrInfoText = {
+  simulationDayTime: 'This is simulated visit day and time, and day is the "encounter" day where day 0 is the first day your patient arrived at the hospital. These simulation values reflect a visit to the hospital. In the community setting this date could reflect the day of the first contact.'
+}

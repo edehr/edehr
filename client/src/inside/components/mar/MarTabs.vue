@@ -164,7 +164,7 @@ export default {
   //border: 1px solid black;
   padding: 5px;
   .daySelectorSelected {
-    background-color: $grey20;
+    background-color: $button-active-color;
     cursor: inherit;
   }
 }
