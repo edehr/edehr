@@ -1,5 +1,7 @@
 import StoreHelper from '@/helpers/store-helper'
+import EhrTypes from '@/ehr-definitions/ehr-types'
 import { computeDateOfBirth } from '@/ehr-definitions/ehr-def-utils'
+import { makeHumanTableCell } from '@/ehr-definitions/ehr-def-utils'
 
 class EhrPatientC {
   patientData () {
@@ -19,17 +21,30 @@ class EhrPatientC {
     result.mrpPhone = demographics.decisionMakerPhone
     result.personAge = demographics.personAge
     result.phn = demographics.phn
+    result.risks = this._riskIndicators(data)
     result.location = this._location(visitDetails)
     result.patientName = this._lastFirstMiddle(demographics)
     result.weight = demographics.weight? (demographics.weight + 'kg') : ''
     return result
   }
   _allergies (data) {
+    let results = ''
     let asStored = data.allergies || {}
     let pageData = JSON.parse(JSON.stringify(asStored))
-    const hasNoKnown = pageData['checkbox']
+    const tableData = pageData['allergyList'] || []
+    const allergens = tableData.map( (row) => row.allergen)
+    if (allergens.length===0) {
+      const hasNoKnown = pageData['checkbox']
+      results = hasNoKnown ? 'NKA' : ''
+    } else {
+      results = allergens.join(', ')
+    }
+    // old field that will be removed
     const content = pageData['text']
-    return hasNoKnown ? 'NKA' : content
+    if (content) {
+      console.error('Coding error. The old allergy page content field has not yet been merged into the new table. ' + content)
+    }
+    return results
   }
   _demographics (data) {
     let asStored = data.demographics || {}
@@ -47,6 +62,41 @@ class EhrPatientC {
       place = latest.location
     }
     return place
+  }
+  _riskIndicators (data) {
+    /*
+    Precautions
+    "Airborne:=Airborne Precautions
+    Contact:=Contact Precautions
+    Droplet:=Droplet Precautions
+    DC:=Droplet/Contact Precautions
+    Routine:=Routine Precautions"
+
+    Risks
+    "AVB:=AVB (Aggressive Violent Behaviour
+    ARO:=ARO (Antibiotic Resistant Organism)
+    DNA:=DNA (Do Not Acknowledge)"
+
+    we want the first word from the right hand side. That is why, below,  we use split on spaces and take first word.
+     */
+    function getRisks (pageData, pKey, tKey, elemKey) {
+      const tableData = pageData[tKey] || []
+      return tableData.map((row) => {
+        let val = row[elemKey] || ''
+        val = makeHumanTableCell(pKey, elemKey, EhrTypes.dataInputTypes.select, val)
+        return val.split(' ')[0]
+      })
+    }
+    const pKey = 'specialIndicators'
+    const tKey1 = 'riskList'
+    const elem1 = 'riskIndicator'
+    const tKey2 = 'precautionList'
+    const elem2 = 'precautionIndicator'
+    let asStored = data[pKey] || {}
+    let pageData = JSON.parse(JSON.stringify(asStored))
+    const risks = getRisks(pageData, pKey, tKey1, elem1)
+    const precautions = getRisks(pageData, pKey, tKey2, elem2)
+    return [...risks, ...precautions].join(', ')
   }
   _diagnosis (visitDetails) {
     let diagnosis = visitDetails.diagnosis

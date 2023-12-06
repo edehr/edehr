@@ -1,0 +1,377 @@
+{
+  "appType": "EHR",
+  "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "description": "This case study was created to demonstrate the use of Escape Rooms as a means to orientate students to an EHR system. ",
+  "name": "SimExpo 2023 Escape Room Workshop",
+  "caseStudy": {
+    "isDefault": false,
+    "tagList": [],
+    "appType": "EHR",
+    "name": "Sim Expo Escape Room",
+    "version": "1.0",
+    "description": "",
+    "contributors": "Joyce Law",
+    "ehrData": {
+      "meta": {
+        "simTime": {
+          "visitDay": 0,
+          "visitTime": "1430"
+        },
+        "ehrVersion": "ev2.4.0"
+      },
+      "demographics": {
+        "mrn": "S:650011",
+        "givenName": "Josiah",
+        "familyName": "Davis",
+        "preferredName": "Joey",
+        "personAge": "4",
+        "dateOfBirth": "2019-02-10",
+        "height": "120",
+        "weight": "15",
+        "gender": "Male",
+        "languagePrimary": "English",
+        "religion": "Christian",
+        "indigenousIdentifyAs": "No",
+        "streetAddress": "1234 Winter Dr",
+        "city": "Vancouver",
+        "phoneNumber": "604-555-1234",
+        "occupationStudent": "Student",
+        "phn": "55512345",
+        "nextOfKinName": "Samantha Davis",
+        "nextOfKinRelationship": "Mother",
+        "nextOfKinPhone": "604-555-1234",
+        "decisionMakerName": "Samantha Davis",
+        "decisionMakerRelationship": "Parent",
+        "decisionMakerPhone": "604-555-1234",
+        "lastUpdate": "2023-12-04T23:20:40+00:00"
+      },
+      "allergies": {
+        "text": "Codeine (Rash), Shrimp, Kiwi",
+        "lastUpdate": "2023-12-04T23:21:59+00:00"
+      },
+      "medical": {
+        "history": "Admitted to ER for anaphylaxis\nHistory of asthma. Admitted to ER for asthma exacerbation \n\nMedications:\nAlvesco 100mcg daily\nVentolin PRN",
+        "lastUpdate": "2023-12-05T00:18:35+00:00"
+      },
+      "psychosocial": {
+        "diet": "Food Allergies",
+        "lastUpdate": "2023-12-04T23:29:41+00:00",
+        "livingSituation": "Lives with parents and 4 siblings on an acreage. ",
+        "employmentSchool": "Attends Jr Kindergarden",
+        "hobbies": "T-ball\nHockey\nToy cars\nWatches Paw Patrol\nPlay Minecraft\n",
+        "history": "Mother is a NICU nurse.\nFather works as a physiotherapist and runs his own clinic. "
+      },
+      "surgical": {
+        "lastUpdate": "2023-12-04T23:30:08+00:00"
+      },
+      "familyHistory": {
+        "history": "Father had a history of childhood asthma and allergies. No asthma and allergy in adulthood.",
+        "lastUpdate": "2023-12-04T23:30:55+00:00"
+      },
+      "pastAppointments": {
+        "encounters": [
+          {
+            "encounterDate": "1 week ago",
+            "site": "ER",
+            "diagnosis": "Asthma Exacerbation ",
+            "createdDate": "2023-12-04T15:31:17-08:00",
+            "encounters_id": "pastAppointments.encounters.0"
+          },
+          {
+            "encounterDate": "3 months ago",
+            "site": "ER",
+            "diagnosis": "Asthma Exacerbation ",
+            "createdDate": "2023-12-04T15:41:00-08:00",
+            "encounters_id": "pastAppointments.encounters.1"
+          },
+          {
+            "encounterDate": "6 months ago",
+            "site": "ER",
+            "diagnosis": "Anaphylaxis (Kiwi)",
+            "createdDate": "2023-12-04T15:43:12-08:00",
+            "encounters_id": "pastAppointments.encounters.2"
+          }
+        ],
+        "lastUpdate": "2023-12-04T23:43:15+00:00"
+      },
+      "visit": {
+        "admissionTime": "1300",
+        "status": "Admitted",
+        "codeStatus": "CPR C2",
+        "consentForTreatment": true,
+        "consentForBlood": true,
+        "diagnosis": "Foreign object in nasal cavity",
+        "notes": "4 year old push object into nose at a birthday party. Does not recall what object is. Parents unable to remove. ",
+        "lastUpdate": "2023-12-04T23:44:46+00:00",
+        "table": [
+          {
+            "location": "ER ",
+            "createdDate": "2023-12-04T15:44:43-08:00",
+            "table_id": "visit.table.0"
+          }
+        ]
+      },
+      "vitals": {
+        "table": [
+          {
+            "table_name": "Nick ",
+            "table_profession": "RN",
+            "table_day": 0,
+            "table_time": "1300",
+            "systolic": "110",
+            "diastolic": "80",
+            "patientPosition": "Sitting",
+            "temperature": "36.5",
+            "source": "Oral",
+            "strength": "Peripheral",
+            "rate": "78",
+            "rhythm": "Regular",
+            "respirationRate": "16",
+            "oxygenSaturation": "98",
+            "oxygenMode": "Room air",
+            "createdDate": "2023-12-04T15:53:37-08:00",
+            "table_id": "vitals.table.0"
+          }
+        ],
+        "lastUpdate": "2023-12-04T23:53:40+00:00"
+      },
+      "neurological": {
+        "table": [
+          {
+            "table_name": "Nick",
+            "table_profession": "RN",
+            "table_day": 0,
+            "table_time": "1300",
+            "alert": "alert,oriented",
+            "createdDate": "2023-12-04T15:54:12-08:00",
+            "table_id": "neurological.table.0"
+          }
+        ],
+        "lastUpdate": "2023-12-04T23:54:15+00:00"
+      },
+      "respiratory": {
+        "table": [
+          {
+            "table_name": "Nick",
+            "table_profession": "RN",
+            "table_day": 0,
+            "table_time": "1300",
+            "airway": "patent",
+            "lul": "Wheeze",
+            "rul": "Wheeze",
+            "rml": "Wheeze",
+            "lll": "Wheeze",
+            "rll": "Wheeze",
+            "respiratoryRhythm": "Regular",
+            "respiratoryDepth": "Normal",
+            "cough": "Nonproductive",
+            "generalComments": "Patient has wheezes associated with asthma. Mom states he was running outside at the party.\nPatient has object in nose but is not obstructing airway.",
+            "createdDate": "2023-12-04T15:56:05-08:00",
+            "table_id": "respiratory.table.0"
+          }
+        ],
+        "lastUpdate": "2023-12-04T23:56:08+00:00"
+      },
+      "cardiovascular": {
+        "table": [
+          {
+            "table_name": "Nick",
+            "table_profession": "RN",
+            "table_day": 0,
+            "table_time": "1300",
+            "pulse": "Regular",
+            "skinAppearance": "Normal",
+            "capRefillLeftHand": "Normal < 3 seconds",
+            "temperatureRightHand": "Warm",
+            "peripheralEdemaRightHand": "No",
+            "nailBedColourRightHand": "Pink",
+            "capRefillRightHand": "Normal < 3 seconds",
+            "temperatureLeftHand": "Warm",
+            "peripheralEdemaLeftHand": "No",
+            "nailBedColourLeftHand": "Pink",
+            "capRefillRightFoot": "Normal < 3 seconds",
+            "temperatureRightFoot": "Warm",
+            "peripheralEdemaRightFoot": "No",
+            "nailBedColourRightFoot": "Pink",
+            "capRefillLeftFoot": "Normal < 3 seconds",
+            "temperatureLeftFoot": "Warm",
+            "peripheralEdemaLeftFoot": "No",
+            "nailBedColourLeftFoot": "Pink",
+            "createdDate": "2023-12-04T15:56:57-08:00",
+            "table_id": "cardiovascular.table.0"
+          }
+        ],
+        "lastUpdate": "2023-12-04T23:57:00+00:00"
+      },
+      "gastrointestinal": {
+        "table": [
+          {
+            "table_name": "Nick",
+            "table_profession": "RN",
+            "table_day": 0,
+            "table_time": "1300",
+            "bowel": "normal",
+            "bSounds": "luq,ruq,llq,rlq",
+            "condition": "soft",
+            "pain": "No",
+            "eating": "Regular",
+            "lastBm": "Last night",
+            "createdDate": "2023-12-04T16:00:12-08:00",
+            "table_id": "gastrointestinal.table.0"
+          }
+        ],
+        "lastUpdate": "2023-12-05T00:00:15+00:00"
+      },
+      "genitourinary": {
+        "table": [
+          {
+            "table_name": "Nick",
+            "table_profession": "RN",
+            "table_day": 0,
+            "table_time": "1300",
+            "urinaryGroup1": "none",
+            "lastVoidedDay": "Today",
+            "createdDate": "2023-12-04T16:00:38-08:00",
+            "table_id": "genitourinary.table.0"
+          }
+        ],
+        "lastUpdate": "2023-12-05T00:00:41+00:00"
+      },
+      "musculoskeletal": {
+        "table": [],
+        "lastUpdate": "2023-12-05T00:01:08+00:00"
+      },
+      "pain": {
+        "table": [
+          {
+            "table_name": "Nick",
+            "table_profession": "RN",
+            "table_day": 0,
+            "table_time": "1300",
+            "location": "Head",
+            "painScale": "5",
+            "respiratoryRate": "16",
+            "onset": "20 minutes",
+            "type": "Dull",
+            "alleviationAssociatedSymptoms": "NA",
+            "radiation": "NA",
+            "precipitatingEvents": "NA",
+            "comments": "Patient complains of headache. Parent indicates it is likely from noise and activity at party.",
+            "createdDate": "2023-12-04T16:03:38-08:00",
+            "table_id": "pain.table.0"
+          }
+        ],
+        "lastUpdate": "2023-12-05T00:03:41+00:00"
+      },
+      "nonmedOrders": {
+        "table": [
+          {
+            "table_name": "Dr Gabriel",
+            "table_profession": "MD",
+            "table_day": 0,
+            "table_time": "1330",
+            "order": "Routine vitals and assessment",
+            "orderedBy": "Dr Gabriel",
+            "status": "Ordered",
+            "createdDate": "2023-12-04T16:04:45-08:00",
+            "table_id": "nonmedOrders.table.0"
+          },
+          {
+            "table_name": "Dr Gabriel",
+            "table_profession": "MD",
+            "table_day": 0,
+            "table_time": "1330",
+            "order": "Remove foreign object in nose",
+            "orderedBy": "Dr Gabriel",
+            "status": "Ordered",
+            "createdDate": "2023-12-04T16:05:16-08:00",
+            "table_id": "nonmedOrders.table.1"
+          }
+        ],
+        "lastUpdate": "2023-12-05T00:05:19+00:00"
+      },
+      "medicationOrders": {
+        "medicationOrdersTable": [
+          {
+            "medicationOrdersTable_name": "Dr Gabriel",
+            "medicationOrdersTable_profession": "MD",
+            "medicationOrdersTable_day": 0,
+            "medicationOrdersTable_time": "1330",
+            "med_timing": "prn",
+            "med_route": "oral",
+            "med_reason": "Acetaminophen 15mg/kg",
+            "med_medication": "acetaminophen oral sol for children usp",
+            "med_dose": "225mg",
+            "med_scheduled": "Q4H",
+            "createdDate": "2023-12-04T16:13:26-08:00",
+            "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.0"
+          },
+          {
+            "medicationOrdersTable_name": "Dr Gabriel",
+            "medicationOrdersTable_profession": "MD",
+            "medicationOrdersTable_day": 0,
+            "medicationOrdersTable_time": "1330",
+            "med_timing": "prn",
+            "med_route": "inha",
+            "med_medication": "Salbutamol (Ventolin) 100mcg/PUFF inhaler",
+            "med_dose": "5 x 100 mcg per course; may repeat up to 3 times",
+            "createdDate": "2023-12-04T16:19:22-08:00",
+            "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.1"
+          }
+        ],
+        "lastUpdate": "2023-12-05T00:19:24+00:00"
+      },
+      "dishargeplan": {
+        "table": [],
+        "lastUpdate": "2023-12-05T00:26:43+00:00"
+      },
+      "dischargeSummary": {
+        "clinicalSummary": "Object Removed from nose by MD.\nPatient treated for headache and asthma. ",
+        "dischargingPhysician/np": "Dr. Notley",
+        "lastUpdate": "2023-12-05T01:44:58+00:00",
+        "dischargeDiagnosis": "Foreign object in nose. ",
+        "dischargeEducation": "Education about playing objects in nose.\nMonitor for nosebleeds",
+        "dischargeDay": "0",
+        "dischargeTime": "1530",
+        "dischargedTo": "Home",
+        "leavingBy": "Family"
+      },
+      "progressNotes": {
+        "table": [
+          {
+            "table_name": "Sally",
+            "table_profession": "Child Life Specialist",
+            "table_day": 0,
+            "table_time": "1400",
+            "note": "Played games with Josiah to help him recall what had happened at the party and the object in his nose.\n\nJosiah was at a birthday party with his mom. He was running outside and playing tag with his friends. Josiah says they ate too many cupcakes and he also had a bowl of chips. After eating, Josiah was playing with marble run with his friends. It was during this activity that Josiah put the marble up his nose to hid it from his friends.\n\nEducation was provided. Josiah was reminded that marbles to not go into our noses. He expressed understanding and engaged with write in further play based activities. Mom was engaged and supportive throughout interaction. ",
+            "createdDate": "2023-12-04T17:35:00-08:00",
+            "table_id": "progressNotes.table.0"
+          },
+          {
+            "table_name": "Nick ",
+            "table_profession": "RN",
+            "table_day": 0,
+            "table_time": "1405",
+            "note": "Josiah states he hid a marble in his nose. Dr informed and will be removing object. ",
+            "createdDate": "2023-12-04T17:39:08-08:00",
+            "table_id": "progressNotes.table.1"
+          },
+          {
+            "table_name": "Dr Samuels",
+            "table_profession": "ENT",
+            "table_day": 0,
+            "table_time": "1430",
+            "note": "Thank you for involving me in the care of this patient. Patient presented to ER with unknown foreign object in nose. Determined by care tem to be marble. Marble removed from patient's nose. No bleeding noted. Parents informed to monitor for bleeding. Patient may be discharged from ER. ",
+            "createdDate": "2023-12-04T17:41:47-08:00",
+            "table_id": "progressNotes.table.2"
+          }
+        ],
+        "lastUpdate": "2023-12-05T01:41:50+00:00"
+      },
+      "labResults": {
+        "labResultHematology": [],
+        "lastUpdate": "2023-12-05T01:44:01+00:00"
+      }
+    }
+  }
+}

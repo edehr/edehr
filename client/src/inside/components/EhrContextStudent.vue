@@ -9,19 +9,23 @@
           span(class="content") {{ evaluationData }}
         div(v-else, class="bigger-screens-900") Submit your work so your instructor can provide feedback.
       div(v-else) Feedback is blocked
-    div(class="flow_across_last_item")
+    div(class="flow_across menu_space_across flow_across_last_item")
+      ehr-simulation-time-control
+      ehr-simulation-sign-on
       ehr-student-submit
 </template>
 
 <script>
 import StoreHelper from '@/helpers/store-helper'
 import EhrStudentSubmit from '@/inside/components/EhrStudentSubmit.vue'
+import EhrSimulationSignOn from '@/inside/components/EhrSimulationSignOn.vue'
 import UiInfo from '@/app/ui/UiInfo.vue'
 import { textToHtml } from '@/directives/text-to-html'
 import FeatureHelper, { FF_UNLEASH_ACTIVITY } from '@/helpers/feature-helper'
+import EhrSimulationTimeControl from '@/inside/components/EhrSimulationTimeControl.vue'
 
 export default {
-  components: { UiInfo, EhrStudentSubmit },
+  components: { EhrSimulationTimeControl, EhrSimulationSignOn, UiInfo, EhrStudentSubmit },
   data () {
     return {
     }

@@ -20,7 +20,7 @@ export default {
   // for props, etc see EhrCommonElement
   data () {
     return {
-      checkValues: [],
+      checkValues: []
     }
   },
   computed : {

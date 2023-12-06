@@ -69,7 +69,8 @@ Here is the complete record from the sample case study
       ]
 
 */
-export function updateWoundCaseStudy (ehrData) {
+export function updateWoundCaseStudy (ehrData, touchCounts) {
+  touchCounts.woundCases = 0
   const pageKey= 'integumentaryAssessment'
   const tableKey = 'tableWoundAssessment'
   const elementKey1 = 'exudateType'
@@ -92,11 +93,13 @@ notAttached
         if (elemData && elemData.includes(oldVal1)) {
           const replace = elemData.replace(oldVal1, newVal1)
           ehrData = updateRowElem(ehrData, pageKey, tableKey, rowIndex, elementKey1, replace)
+          touchCounts.woundCases++
         }
         elemData = row[elementKey2]
         if (elemData && elemData.includes(oldVal2)) {
           const replace = elemData.replace(oldVal2, newVal2)
           ehrData = updateRowElem(ehrData, pageKey, tableKey, rowIndex, elementKey2, replace)
+          touchCounts.woundCases++
         }
       })
     }

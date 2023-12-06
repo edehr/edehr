@@ -307,6 +307,7 @@ export default class EhrPageHelper {
     const pageData = this._getPageData()
     delete pageData[tableKey]
     await this._saveData(pageKey, pageData)
+    EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   }
   closeDialog () {
     const dialog = this._getActiveTableDialog()
@@ -640,16 +641,16 @@ export default class EhrPageHelper {
       dialog.inputs[srcElemKey] = options.embedRefValue
     }
     if (hasRecHeader) {
-      const mData = StoreHelper.getMergedData()
-      const { visitDay, visitTime } = mData.meta.simTime
+      const cDate = StoreHelper.getSimDate()
+      const cTime = StoreHelper.getSimTime()
       key = tableKey + '_day'
       if (!validDayStr(dialog.inputs[key])) {
-        dialog.inputs[key] = parseInt(visitDay)
+        dialog.inputs[key] = parseInt(cDate)
         // console.log('dialog opening set sim day', key, dialog.inputs[key])
       }
       key = tableKey + '_time'
       if (!validTimeStr(dialog.inputs[key])) {
-        dialog.inputs[key] = visitTime
+        dialog.inputs[key] = cTime
         // console.log('dialog opening set sim time', key, dialog.inputs[key])
       }
 
@@ -658,7 +659,12 @@ export default class EhrPageHelper {
       }
       key = tableKey + '_name'
       if (!_nonEmptyString(dialog.inputs[key])) {
-        dialog.inputs[key] = StoreHelper.givenName()
+        dialog.inputs[key] = StoreHelper.getSimSignOnName()
+        // console.log('dialog opening set rec hdr name', key, dialog.inputs[key])
+      }
+      key = tableKey + '_profession'
+      if (!_nonEmptyString(dialog.inputs[key])) {
+        dialog.inputs[key] = StoreHelper.getSimSignOnProfession()
         // console.log('dialog opening set rec hdr name', key, dialog.inputs[key])
       }
     }

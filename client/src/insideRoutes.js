@@ -19,7 +19,7 @@ export function inside () {
       path: '/ehr/patient/allergies',
       name: 'allergies',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Allergies.vue'),
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/Allergies.vue'),
       meta: { layout: 'inside', label: 'Allergies', topLevel: 'patient', zone: 'ehr' }
     },
     {
@@ -103,7 +103,7 @@ export function inside () {
       path: '/ehr/current/fluid-balance',
       name: 'fluid-balance',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/FluidBalance.vue'),
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/FluidBalance.vue'),
       meta: { layout: 'inside', label: 'Fluid balance', topLevel: 'current', zone: 'ehr' }
     },
     {
@@ -392,6 +392,13 @@ export function inside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/MedLabAccession.vue'),
       meta: { layout: 'inside', label: 'Med Lab Accessioning', topLevel: 'med-lab', zone: 'ehr' }
+    },
+    {
+      path: '/ehr/patient/special-indicators',
+      name: 'special-indicators',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/SpecialIndicators.vue'),
+      meta: { layout: 'inside', label: 'Special Indicators (Risk)', topLevel: 'patient', zone: 'ehr' }
     }
   ]
 }

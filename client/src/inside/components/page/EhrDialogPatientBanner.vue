@@ -9,8 +9,13 @@
       div Weight: {{ patientData.weight }}
     div(class="patient-data")
       div Code Status: {{ patientData.codeStatus ? patientData.codeStatus : 'N/A' }}
-      div Allergies: {{ patientData.allergies }}
-      div Diagnosis: {{ patientData.diagnosis }}
+      div Allergies: &nbsp;
+        span {{ truncate(patientData.allergies, 30) }}
+      div Diagnosis: &nbsp;
+        span {{ truncate(patientData.diagnosis, 30) }}
+      div Risks:  &nbsp;
+        span {{ truncate(patientData.risks, 30) }}
+
       ehr-sim-time(:ehr-data="md")
 </template>
 
@@ -25,6 +30,11 @@ export default {
     md () { return StoreHelper.getMergedData() },
     patientData () { return EhrPatient.patientData() },
   },
+  methods: {
+    truncate (input, lim) {
+      return input && input.length > lim ? `${input.substring(0, lim)}...` : input
+    }
+  }
 }
 </script>
 

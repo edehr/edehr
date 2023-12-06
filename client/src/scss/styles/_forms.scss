@@ -1,6 +1,6 @@
 @import '../definitions';
 
-$form-threshold: $main-width-threshold1;
+$form-threshold: $main-width-threshold3;
 /*
 The datepicker plugin has styling that needs adjustments.
 1. Need to over ride the border to display one.
@@ -114,7 +114,7 @@ textarea {
 
 .header-3 {
   font-weight: bold;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
 }
 input, textarea, select, input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:disabled, .input:disabled, .textarea:disabled, .select:disabled, .select select:disabled {
   color: $black;
@@ -178,8 +178,9 @@ input[type=radio] {
   width: 100%
 }
 
-.computed_wrapper,
 .checkbox_wrapper,
+.checkset_wrapper,
+.computed_wrapper,
 .file_wrapper,
 .form_label_wrapper,
 .radio_wrapper,
@@ -187,6 +188,7 @@ input[type=radio] {
 .sim_day_wrapper,
 .sim_time_wrapper,
 .textarea_wrapper,
+.care_provider_wrapper,
 .text_input_wrapper
 {
   position: relative;
@@ -195,6 +197,7 @@ input[type=radio] {
 }
 
 $select_width: 14rem;
+$select_width_2col: 20rem;
 
 .computed_wrapper {
   .input {
@@ -222,6 +225,15 @@ $select_width: 14rem;
   }
 }
 
+.care_provider_wrapper {
+  .form_label {
+    min-width: 15rem;
+  }
+}
+.number-short .numb-input,
+.number-short .computed_wrapper .input{
+  width: 4rem;
+}
 .textarea_wrapper {
   textarea {
     margin-bottom: 5px;
@@ -229,9 +241,13 @@ $select_width: 14rem;
 }
 
 .checkset_wrapper {
+  flex-flow: column;
   .checkset_list {
     display: flex;
-    flex-direction: column;
+    flex-flow: column wrap;
+    max-height: 17rem;
+    //border: 1px solid $grey20;
+    padding: 5px;
     margin-bottom: 5px;
     label {
       min-width: 15rem;
@@ -365,7 +381,7 @@ select, .select {
 // for dialog and page forms ...
 .ehr-group-wrapper {
   .ehr-group-for {
-    margin-bottom: 2px;
+    margin-bottom: 5px;
     margin-right: 5px; // space between elements
     //border: 1px solid blue;
   }
@@ -390,9 +406,11 @@ select, .select {
 }
 
 .record-header {
-  border-bottom: 1px solid $grey20;
-  margin-bottom: 2.5em;
-  padding-bottom: .75em;
+  //border-bottom: 1px solid $grey20;
+  //margin-bottom: 2.5em;
+  //padding-bottom: .75em;
+  padding: 0;
+  margin: 0;
   display: flex;
 }
 @media all and (max-width: $form-threshold) {
@@ -418,7 +436,7 @@ select, .select {
   .form_label_wrapper {
     //width: 20rem;
     .form_label {
-      min-width: 20rem;
+      //min-width: 20rem;
       max-width: inherit;
     }
   }
@@ -427,11 +445,11 @@ select, .select {
 .grid-left-to-right-2 {
   grid-template-columns: repeat(2, 1fr);
   .form_label_wrapper {
-    width: 20rem;
-    .form_label {
-      min-width: inherit;
-      max-width: inherit;
-    }
+    //width: 20rem;
+    //.form_label {
+    //  min-width: inherit;
+    //  max-width: inherit;
+    //}
   }
 }
 
@@ -632,7 +650,7 @@ select, .select {
 }
 
 .grid-left-to-right-2 select {
-  min-width: $select_width;
+  min-width: $select_width_2col;
 }
 
 .form-table-group {
@@ -823,4 +841,8 @@ select, .select {
 }
 .chem-qc-trouble {
   grid-template-columns: repeat(5, 1fr);
+}
+
+#medicationOrders\.med_medication {
+  width: 60rem;
 }

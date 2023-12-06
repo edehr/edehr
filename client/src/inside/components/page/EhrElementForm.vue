@@ -89,30 +89,12 @@
       div(v-if="viewOnly") {{ inputVal }}
       span(class="suffix") {{suffix }}
 
-    // new to version v2.1 is practitionerName and practitionerProfession for record headers
-    div(v-else-if="isType('practitionerName')", class="text_input_wrapper")
-      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_input_wrapper")
-      div(v-if="viewOnly") {{ inputVal }}
-      div(v-if="!viewOnly")
-        input(v-if="!viewOnly", class="input text-input", :disabled="disabled", :name="elementKey",v-model="inputVal")
-        //ehr-element-practitioner(
-        //  :domId="_id",
-        //  :disabled="disabled",
-        //  @selected="(selected) => inputVal = selected",
-        //  :inputVal="inputVal"
-        //)
+    div(v-else-if="isType('practitionerName')", class="care_provider_wrapper")
+      label(class="form_label") Care provider
+      input(class="input numb-input", type="text", disabled, :name="elementKey", :value='userName')
 
     div(v-else-if="isType('practitionerProfession')", class="text_input_wrapper")
-      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_input_wrapper")
-      div(v-if="viewOnly") {{ inputVal }}
-      div(v-if="!viewOnly")
-        input(v-if="!viewOnly", class="input text-input", :disabled="disabled", :name="elementKey",v-model="inputVal")
-        //ehr-element-profession(
-        //  :domId="_id",
-        //  :disabled="disabled",
-        //  @selected="(selected) => inputVal = selected",
-        //  :inputVal="inputVal"
-        //)
+      // nothing needed
 
     ehr-element-select(v-else-if="isType('select')", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
@@ -130,26 +112,11 @@
       textarea(class="ehr-page-form-textarea", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
 
     div(v-else-if="isType(dataTypes.visitDay)", class="sim_day_wrapper", :class='formCss')
-      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
-      input(v-if="!viewOnly", class="input numb-input", type="text", :disabled="disabled", :name="elementKey", v-model="inputVal")
-      div(v-if="viewOnly") {{ inputVal }}
+      label(v-html="label", class="form_label")
+      input(class="input numb-input", type="text", disabled, :name="elementKey", :value='cDate')
     div(v-else-if="isType(dataTypes.visitTime)", class="sim_time_wrapper", :class='formCss')
-      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
-      input(v-if="!viewOnly", class="input", type="text", :disabled="disabled", :name="elementKey", v-model="inputVal")
-      div(v-if="viewOnly") {{ inputVal }}
-
-    //div(v-else-if="isType(dataTypes.visitDay) || isType(dataTypes.visitTime)", class="select_wrapper")
-    //  ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="select_label")
-    //  div(v-if="viewOnly") {{ inputVal }}
-    //  div(v-if="!viewOnly")
-    //    ehr-element-sim-time(
-    //      :disabled="disabled",
-    //      :domId="_id",
-    //      :element="element",
-    //      :initalVal="initialVal"
-    //      :inputVal="inputVal",
-    //      @update="(value) => inputVal = value",
-    //    )
+      label(v-html="label", class="form_label")
+      input(class="input numb-input", type="text", disabled, :name="elementKey", :value='cTime')
 
     div(v-else) ELSE: {{inputType}} {{label}}
 
@@ -207,6 +174,12 @@ export default {
   props: {},
   computed: {
     dataTypes () { return EhrTypes.dataInputTypes },
+    cDate () { return this.$store.getters['visit/simDate']},
+    cTime () { return this.$store.getters['visit/simTime']},
+    signOnDetails () { return this.$store.getters['visit/simSignOnData'] },
+    userName () {
+      return this.signOnDetails.personaName +', ' +  this.signOnDetails.personaProfession
+    },
     isPatientData () {
       const dataTypes = this.dataTypes
       return this.isType(dataTypes.ehrDOB) ||

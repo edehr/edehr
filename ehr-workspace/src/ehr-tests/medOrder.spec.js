@@ -89,7 +89,7 @@ describe('medOrders', () => {
   })
   it ('getScheduledMedOrders', () => {
     const mos = medOrders.getOrdersByGroup(MED_GROUP_SCHED)
-    mos.should.have.length(3)
+    mos.should.have.length(4) // change to 4 when introduce 2.4.1 update which moves OD to scheduled
   })
   it ('getStatMedOrders', () => {
     const mos = medOrders.getOrdersByGroup(MED_GROUP_STAT)

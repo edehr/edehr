@@ -3,24 +3,10 @@ const fs = require('fs')
 const readline = require('readline')
 const { google } = require('googleapis')
 
-// Previous version
-// https://docs.google.com/spreadsheets/d/1CkEc1dmeV4tqck_at1ERaW25zspMt1n7q0lFPRCnP1I/edit#gid=1524198205
-// const INPUT_SPREADSHEET_ID = '1CkEc1dmeV4tqck_at1ERaW25zspMt1n7q0lFPRCnP1I'
-
-// New file created 2022-09-07
-// https://docs.google.com/spreadsheets/d/1U84ij1SNHCZgR0kSGJcFNQT4uIsVIJkZU4WDNM2QC_g/edit#gid=0
-// const INPUT_SPREADSHEET_ID = '1U84ij1SNHCZgR0kSGJcFNQT4uIsVIJkZU4WDNM2QC_g'
-
-// New file for V2.1
-// https://docs.google.com/spreadsheets/d/1TSCiTCGOokSfecPD1XGkMdDLktbQ4GRSIvcLiHeQCR4/edit#gid=2133408929
-// const INPUT_SPREADSHEET_ID = '1TSCiTCGOokSfecPD1XGkMdDLktbQ4GRSIvcLiHeQCR4'
-
-
-// https://docs.google.com/spreadsheets/d/1k69B3Tw7m25yvetRIM0X7ck1InJlcFtVU2fABKQNFvs/edit#gid=0
-// const INPUT_SPREADSHEET_ID = '1k69B3Tw7m25yvetRIM0X7ck1InJlcFtVU2fABKQNFvs'
-
-// V2.3.6
-const INPUT_SPREADSHEET_ID = '1rmzLnZ9CVCN6zZoeRrZsVhNevwbujVrZAOqX27pVlWo'
+// V2.3.8
+// const INPUT_SPREADSHEET_ID = '1rmzLnZ9CVCN6zZoeRrZsVhNevwbujVrZAOqX27pVlWo'
+// V2.3.8
+const INPUT_SPREADSHEET_ID = '1ly3i5oLq7Y-Z7MdszlKoaH-2lJj8i3oLaAqrt6F74J4'
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']

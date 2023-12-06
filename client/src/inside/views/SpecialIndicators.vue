@@ -3,13 +3,13 @@
   div(class="ehr-page")
     ehr-page(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
     div(style="display:none")
-      p This Allergies page is generated.
-      p Label: Allergies
-      p Data Key: allergies
-      p Component name: Allergies
+      p This Special Indicators page is generated.
+      p Label: Special Indicators (Risk)
+      p Data Key: specialIndicators
+      p Component name: SpecialIndicators
       p Redirect: 
-      p Route name: allergies
-      p Full path: /ehr/patient/allergies
+      p Route name: special-indicators
+      p Full path: /ehr/patient/special-indicators
 </template>
 
 <script>
@@ -17,11 +17,11 @@ import EhrPage from '../components/page/EhrPage'
 import EhrPageHelper from '../components/page/ehr-helper'
 
 export default {
-  name: 'Allergies',
+  name: 'SpecialIndicators',
   components: { EhrPage },
   data: function () {
     return {
-      pageDataKey: 'allergies',
+      pageDataKey: 'specialIndicators',
       ehrHelp: undefined
     }
   },

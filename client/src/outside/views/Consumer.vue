@@ -39,6 +39,14 @@
             label(for="fFlagSignOn") Unleash Activities. {{ featureFlagUnleashActivity ? 'enabled' : 'disabled'}}
             span &nbsp;
             button(@click='featureFlagUnleashActivityToggle') {{ featureFlagUnleashActivity ? 'disable' : 'enable '}} unleash activity
+          div
+            label(for="fFlagSignOn") Simulated sign on is {{ featureFlagSimSignOn ? 'enabled' : 'disabled'}}
+            span &nbsp;
+            button(@click='featureFlagSimSignToggle') {{ featureFlagSimSignOn ? 'disable' : 'enable '}} simulation sign on
+          div
+            label(for="fFlagSignOn") Simulated time control is {{ featureFlagSimTimeOn ? 'enabled' : 'disabled'}}
+            span &nbsp;
+            button(@click='featureFlagSimTimeToggle') {{ featureFlagSimTimeOn ? 'disable' : 'enable '}} simulation time controls
 
       div(class="details-row")
         div(class="details-name") {{text.DATES}}
@@ -95,18 +103,19 @@ import { downObjectToFile } from '@/helpers/ehr-utils'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
 import StoreHelper from '@/helpers/store-helper'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton'
-import FeatureHelper, { FF_UNLEASH_ACTIVITY } from '@/helpers/feature-helper'
-import DischargeV2 from '@/inside/components/discharge/DischargeV2.vue'
+import FeatureHelper, { FF_SIGN_ON, FF_SIM_CONTROL, FF_UNLEASH_ACTIVITY } from '@/helpers/feature-helper'
 
 export default {
   extends: OutsideCommon,
-  components: { DischargeV2, ZoneLmsButton, ZoneLmsPageBanner, UiButton, UiInfo  },
+  components: { ZoneLmsButton, ZoneLmsPageBanner, UiButton, UiInfo  },
   data () {
     return {
       text: Text.CONSUMER_PAGE,
       appIcons: APP_ICONS,
       consumerId: undefined,
-      featureFlagUnleashActivity: false
+      featureFlagUnleashActivity: false,
+      featureFlagSimTimeOn: false,
+      featureFlagSimSignOn: false
     }
   },
   computed: {
@@ -136,7 +145,20 @@ export default {
         await FeatureHelper.disableFeatureFlag(this.consumerId, FF_UNLEASH_ACTIVITY)
       }
     },
-
+    async featureFlagSimSignToggle () {
+      if(!this.featureFlagSimSignOn) {
+        await FeatureHelper.enableFeatureFlag(this.consumerId, FF_SIGN_ON)
+      } else {
+        await FeatureHelper.disableFeatureFlag(this.consumerId, FF_SIGN_ON)
+      }
+    },
+    async featureFlagSimTimeToggle () {
+      if(!this.featureFlagSimTimeOn) {
+        await FeatureHelper.enableFeatureFlag(this.consumerId, FF_SIM_CONTROL)
+      } else {
+        await FeatureHelper.disableFeatureFlag(this.consumerId, FF_SIM_CONTROL)
+      }
+    },
     async loadComponent () {
       const fromRoute = this.$route.query.consumerId
       if (fromRoute) {
@@ -148,7 +170,10 @@ export default {
   },
   watch: {
     featureFlags () {
-      this.featureFlagUnleashActivity = FeatureHelper.isFeatureFlagEnabled(this.consumerId, FF_UNLEASH_ACTIVITY)
+      const cid = this.$store.getters['consumerStore/consumerId']
+      this.featureFlagSimSignOn = FeatureHelper.isFeatureFlagEnabled(cid, FF_SIGN_ON)
+      this.featureFlagSimTimeOn = FeatureHelper.isFeatureFlagEnabled(cid, FF_SIM_CONTROL)
+      this.featureFlagUnleashActivity = FeatureHelper.isFeatureFlagEnabled(cid, FF_UNLEASH_ACTIVITY)
     }
   }
 }

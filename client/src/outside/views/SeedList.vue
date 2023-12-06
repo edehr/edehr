@@ -6,7 +6,7 @@
       p.
         Case studies contain the simulation data for a single patient. Each row of this table present a case study.
       p.
-        To find a case study be sure to select the appropriate application type, EHR or LIS, (think clinical vs laboratory) and then try placing some text into the search box to select those case studies that have that text in either the their name or description properties.
+        To find a case study be sure to select the appropriate application type, EHR or LIS, (think clinical vs laboratory) and then try placing some text into the search box to select those case studies that have that text in either their name or description properties.
         You can also try sorting the list in different ways, and be sure to use the Tags to filter the list to a category of case studies.
       p
         | You can jump to the case study's details page by clicking its name. Or you can
@@ -19,7 +19,7 @@
       p
         | If you are in the course designer mode, use the &nbsp;
         fas-icon(class="fa", :icon='appIcons.new')
-        | &nbsp; button to create a new case study. You will be able to import a previously saved case study from within that create dialog.
+        | &nbsp; button to create a new case study. You can import a previously saved case study if you open the create dialog.
         | You can also edit the case study in the EHR or LIS application by using the &nbsp;
         fas-icon(class="fa", :icon='appIcons.edit')
         | &nbsp; button on one of the rows below.  If you are not a course designer you will not see these buttons.

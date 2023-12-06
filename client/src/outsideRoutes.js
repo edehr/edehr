@@ -197,6 +197,13 @@ export function outside () {
       meta: { layout: 'lms', label: NAMES.SEED_CONDENSED, icon: APP_ICONS.seed, zone: ZONE_LMS }
     },
     {
+      path: '/sim-controller',
+      name: 'simController',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/SimController.vue'),
+      meta: { layout: 'lms', label: NAMES.SIM_CONTROLLER, icon: APP_ICONS.stopwatch, zone: ZONE_LMS }
+    },
+    {
       path: '/admin-login',
       name: 'admin-login',
       component: () =>

@@ -31,7 +31,7 @@ describe( 'EhrData updates to ev2.1.1', () => {
 
   it('updateMedicationRoute', () => {
     const model = new EhrDataModel(ehrInput)
-    const updatedData = updateMedicationRoute(model)
+    const updatedData = updateMedicationRoute(model, {})
     should.exists(updatedData)
     validate(updatedData)
   })

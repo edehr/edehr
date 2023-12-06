@@ -4,9 +4,16 @@ const debug = false
 const IS_CONTENT_EDITING = 'isContentEditor'
 const SEED_EDIT_ID = 'seedEditId'
 const VISIT_ID = 'visitId'
-
+/*
+const SignOn = new mongoose.Schema({
+  personaName: { type: String },
+  personaProfession: { type: String }
+})
+ */
 const state = {
   sVisitData: {},
+  simSignOnData: {},
+  simDateTime: {  },
   _visitId: undefined,
   topLevelMenu: '',
   _seedEditId: '',
@@ -41,6 +48,11 @@ const getters = {
     // unlike other models this one's update field is called lastVisitDate
     return state.sVisitData.lastVisitDate
   },
+  simSignOnData: state => state.simSignOnData,
+  isSimSignedOn: state => state.simSignOnData && state.simSignOnData.personaName,
+  simDateTime: state => state.simDateTime,
+  simDate: state => state.simDateTime.cDate,
+  simTime: state => state.simDateTime.cTime,
   visitData: state => state.sVisitData,
   visitId: state => state._visitId
 }
@@ -83,7 +95,7 @@ const actions = {
     const visitId = context.getters.visitId
     if (!visitId) {
       console.error('Visit error loading record. Must set visitId first!')
-      return
+      return Promise.reject('Missing visitId')
     }
     let url = 'get/' + visitId
     if (debug) console.log('loadVisit api call ', url)
@@ -94,12 +106,54 @@ const actions = {
       }
       if (debug) console.log('loadVisit what is the visitInfo? ', visit)
       context.commit('setVisitData', visit)
+      context.commit('setSimDateTime', visit.simulationDateTime)
+      context.commit('setSimSignOn', visit.simulationSignOn)
     })
   },
   restoreAsInstructor (context) {
     return InstoreHelper.postRequest(context, API, 'restoreAsInstructor').then(results => {
       return results.data.token
     })
+  },
+  async simulationSignOn (context, postBody) {
+    const results = await InstoreHelper.postRequest(context, API, 'sim-sign-on', postBody)
+    const visit = results.data
+    context.commit('setSimSignOn', visit.simulationSignOn)
+  },
+  async simulationSignOut (context, visitId ) {
+    const postBody = { visitId: visitId }
+    const results = await InstoreHelper.postRequest(context, API, 'sim-sign-out', postBody)
+    // almost could assert that results.simulationSignOn === {} except mongoose creates an object with its own _id
+    context.commit('setSimSignOn', results.simulationSignOn)
+  },
+  async loadSimulationSignIn (context, visitId ) {
+    let url = 'get/' + visitId
+    const response = await InstoreHelper.getRequest(context, API, url)
+    const visit = response.data.visit
+    context.commit('setSimSignOn', visit.simulationSignOn)
+  },
+  /**
+   * Ideally let the loadVisitRecord set up the sim date time. Use this action to specifically update the sim date time
+   * @param context
+   * @param visitId
+   * @returns {Promise<void>}
+   */
+  async loadSimulationDateTime (context, visitId ) {
+    let url = 'sim-date-time/' + visitId
+    const response = await InstoreHelper.getRequest(context, API, url)
+    const simulationDateTime = response.data
+    context.commit('setSimDateTime', simulationDateTime)
+  },
+  /**
+   *
+   * @param context
+   * @param postBody { visitId: id, cDate: dateStr, cTime: timeStr }
+   * @returns {Promise<void>}
+   */
+  async setSimulationDateTime (context, postBody) {
+    const results = await InstoreHelper.postRequest(context, API, 'sim-date-time', postBody)
+    const visit = results.data
+    context.commit('setSimDateTime', visit.simulationDateTime)
   },
   visitAsStudent (context, currentActivityId) {
     const postBody = { activityId: currentActivityId }
@@ -144,6 +198,12 @@ const mutations = {
       localStorage.removeItem(VISIT_ID)
     }
     state._visitId = id
+  },
+  setSimSignOn: (state, signOn) => {
+    state.simSignOnData = signOn // {personaName: { type: String }, personaProfession: { type: String } }
+  },
+  setSimDateTime: (state, simDateTime) => {
+    state.simDateTime = simDateTime // {cDate: { type: String }, cTime: { type: String } }
   },
   topLevelMenu: (state, top) => {
     if(debug) console.log('visit store top level menu ' + (top ? top : 'empty'))

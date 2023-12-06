@@ -280,6 +280,7 @@ export const Text = {
     SEEDS: 'Case studies',
     SEED_VIEW: 'Case study',
     SEED_CONDENSED: 'Case study',
+    SIM_CONTROLLER: 'Simulation controls'
   },
   SEED_ACTIONS: {
     SEED_DEVELOPERS_MENU: 'Content developer tools',

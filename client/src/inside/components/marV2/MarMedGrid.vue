@@ -216,9 +216,10 @@ export default {
         }
         options.simDay = timeElement.dayNum
         options.simTime = timeElement.ts
+        const mme = timeElement.getMedMarEvent()
         options.presetValues = [
-          { key: 'mo_schedDay', value: options.simDay},
-          { key: 'mo_schedTime', value: options.simTime}
+          { key: 'mo_schedDay', value: mme.schedDay },
+          { key: 'mo_schedTime', value: mme.schedTime }
         ]
         // console.log('Open mar for timeElement', JSON.stringify(options,null,2))
       }

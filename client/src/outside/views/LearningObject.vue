@@ -17,20 +17,19 @@
         div(class="details-name") {{text.LOBJ}}
         div(class="details-value")
           div(class="details-important-text") {{ learningObject.name }}
-      zone-lms-instructions-element  The name above is seen by the student.
 
       div(class="details-row")
         div(class="details-name") {{ text.DESCRIPTION }}
         div(class="details-value")
           div(class="details-important-text", v-text-to-html="learningObject.description")
-      zone-lms-instructions-element  The above description is visible to students using any activity that uses this learning object.
+      zone-lms-instructions-element  The name and description above are seen by the student.
 
       div(class="details-row")
         div(class="details-name") {{ text.SEED }}
         div(class="details-value")
           ui-link(v-if="learningObject.seedDataId", :name="'seed-view'", :query="{seedId: learningObject.seedDataId}") {{ learningObject.seedName }}
           div(v-else) (This learning object does not provide a case study.)
-      zone-lms-instructions-element  Every Learning Object has a Case Study which provides the simulated health records for a patient. Click on the link above to see, and perhaps edit, the details about this case study.
+      zone-lms-instructions-element  Usually, each Learning Object has a Case Study which provides the simulated health records for a patient. Click on the link above to see, and perhaps edit, the details about this case study.
 
       div(class="details-row")
         div(class="details-name") Application type
@@ -48,7 +47,7 @@
                 span &nbsp; {{act.courseTitle}} / {{act.activityTitle}}
             div(v-if="unreachableActivityCount > 0 ") {{unreachableActivityText}}
           div(v-else) (This learning object is not used by any activity.)
-      zone-lms-instructions-element The above tells you how many activities are using this learning object. If you have every accessed the activity from your LMS then it will appear in the list. Otherwise, you will see a count of the activities you can not access that are using this learning object.
+      zone-lms-instructions-element The above tells you how many activities are using this learning object. The above lists all the activities you have permission to see (because you have used the link in your LMS).  Otherwise, the list is reduced to a a count of the activities you can not access that are using this learning object.
 
       div(class="details-row")
         div(class="details-name") LMS Id

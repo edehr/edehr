@@ -25,10 +25,8 @@
         fas-icon(class="fa", :icon='appIcons.upload')
         | &nbsp; button above.
       p
-        | To filter the list below enter something into the search box. This searches the name or description properties.
+        | To filter the list below enter something into the search box. This searches the name and description properties.
         | You can also filter the items to case studies for EHR or LIS (think clinical vs laboratory settings).
-      p
-        | Go to see the details of a learning object to learn more.
 
     div(class="flow_across menu_space_across flow_across_right")
       app-type-radio(:value="appTypeMode", @changeAppTypes='changeAppTypes')

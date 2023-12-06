@@ -11,17 +11,20 @@
       h3(slot="header") Set patient's month and day of birth
       div(slot="body")
         div
-          label(for="monthVal", class='dobLabel') Month:
-          input(class="input text-input dobInput", name="monthVal", v-model="monthVal")
-
-          label(for="dayVal", class='dobLabel') Day:
-          input(class="input text-input dobInput", name="dayVal", v-model="dayVal")
-        div
-          label(for="personAge", class='dobLabel') Patient's age:
+          label(for="personAge", class='dobLabel') The patient's age is
           span(class="dobInput") {{ personAge }}
+        div
+          .input-wrap
+            label(for="monthVal", class='dobLabel') Month (1 to 12):
+            input(class="input text-input dobInput", name="monthVal", v-model="monthVal")
+
+        div
+          .input-wrap
+            label(for="dayVal", class='dobLabel') Day:
+            input(class="input text-input dobInput", name="dayVal", v-model="dayVal")
         div(class='results', v-show='validInput')
-          h3 Birthdate: {{ dateStr }}
-          p The calculated birthdate above is based on given month, day and patient age.
+          h3 Calculated birthdate: {{ dateStr }}
+          p The birthdate above is based on patient age (to get the year) and the month and day you have entered.
 </template>
 
 <script>
@@ -113,12 +116,18 @@ export default {
 </script>
 
 <style scoped>
-
+.input-wrap {
+  margin-top: 5px;
+  display: flex;
+  flex-flow: row;
+}
 .dobInput {
   width: 4rem;
   margin-right: 5px;
 }
 .dobLabel {
+  text-align: right;
   margin-right: 5px;
+  width: 14rem;
 }
 </style>

@@ -33,6 +33,7 @@
           :icon-class='{rotatedIcon: tableOrientation}',
           text="")
       seed-pages(
+        :ehrData="ehrData",
         :pageKey="activePageKey",
         :pageDef="pageDef",
         :pageSeedData='pageSeedData')

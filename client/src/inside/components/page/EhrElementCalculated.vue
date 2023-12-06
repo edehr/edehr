@@ -2,6 +2,7 @@
   div(class="computed_wrapper", :class='formCss')
     ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
     input(class="input text-input", disabled, :name="elementKey", v-model="value")
+    span(class="suffix") {{suffix }}
 </template>
 
 <script>
@@ -29,22 +30,39 @@ export default {
   },
   methods: {
     receiveEvent (eData) {
-      let pageDataKey = this.pageDataKey
-      let elementKey = this.element.elementKey
-      if (db) console.log('EhrCalculated rcv FORM_INPUT_EVENT', eData, pageDataKey, elementKey)
-      let srcValues = this.ehrHelp.getActiveData()
-      let value = ehrCalculateProperty(pageDataKey, elementKey, srcValues)
-      if (db) console.log('EhrComputedValue ', elementKey, value)
-      // put value into the inputs so the dialog save can preserve the result
-      this.ehrHelp.stashActiveData(elementKey, value)
-      // round if decimals are specified in the ehr definitions
-      let decimals = Number.parseInt(this.element.decimals)
-      if (!isNaN(value) && !isNaN(decimals)) {
-        let f = Math.pow(10, decimals)
-        value = (Math.round(value * f) / f).toFixed(decimals)
+      const worker = () => {
+        let pageDataKey = this.pageDataKey
+        let elementKey = this.element.elementKey
+        if (db) console.log('EhrCalculated rcv FORM_INPUT_EVENT', eData, pageDataKey, elementKey)
+        console.log('EhrCalculated rcv FORM_INPUT_EVENT')
+        let srcValues = this.ehrHelp.getActiveData()
+        let value = ehrCalculateProperty(pageDataKey, elementKey, srcValues)
+        if (db) console.log('EhrComputedValue ', elementKey, value)
+        // console.log('EhrComputedValue ', pageDataKey, elementKey, '\n', Object.keys(srcValues))
+        // console.log('EhrComputedValue ', pageDataKey, elementKey, '\n', JSON.stringify(srcValues))
+        // put value into the inputs so the dialog save can preserve the result
+        this.ehrHelp.stashActiveData(elementKey, value)
+        // round if decimals are specified in the ehr definitions
+        let decimals = Number.parseInt(this.element.decimals)
+        if (!isNaN(value) && !isNaN(decimals)) {
+          let f = Math.pow(10, decimals)
+          value = (Math.round(value * f) / f).toFixed(decimals)
+        }
+        // put into component data to be rendered
+        this.value = value
       }
-      // put into component data to be rendered
-      this.value = value
+      let de = true
+      if (de) {
+        const DELAY_TIMEOUT = 5
+        if (this.eventTimeoutId) {
+          clearTimeout(this.eventTimeoutId)
+        }
+        this.eventTimeoutId = setTimeout(() => {
+          worker()
+        }, DELAY_TIMEOUT)
+      } else {
+        worker()
+      }
     }
   },
   mounted: function () {

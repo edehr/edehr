@@ -29,7 +29,7 @@ module.exports = function () {
     'label': 'Allergies',
     'redirectEhr': '',
     'redirectLis': '',
-    'generateComponent': 'yes',
+    'generateComponent': 'custom',
     'menuIndex': '3',
     'lis': 'yes',
     'ehr': 'yes'
@@ -120,7 +120,7 @@ module.exports = function () {
     'redirectEhr': '',
     'redirectLis': '',
     'generateComponent': 'yes',
-    'menuIndex': '11',
+    'menuIndex': '12',
     'ehr': 'yes'
   },
   {
@@ -129,7 +129,7 @@ module.exports = function () {
     'label': 'Current visit',
     'redirectEhr': 'visit-details',
     'redirectLis': 'lab-requisitions',
-    'menuIndex': '12',
+    'menuIndex': '13',
     'lis': 'yes',
     'ehr': 'yes'
   },
@@ -141,7 +141,7 @@ module.exports = function () {
     'redirectEhr': '',
     'redirectLis': '',
     'generateComponent': 'yes',
-    'menuIndex': '13',
+    'menuIndex': '14',
     'ehr': 'yes'
   },
   {
@@ -152,7 +152,7 @@ module.exports = function () {
     'redirectEhr': '',
     'redirectLis': '',
     'generateComponent': 'custom',
-    'menuIndex': '14',
+    'menuIndex': '15',
     'ehr': 'yes'
   },
   {
@@ -160,8 +160,8 @@ module.exports = function () {
     'routeName': 'fluid-balance',
     'pageDataKey': 'fluidBalance',
     'label': 'Fluid balance',
-    'generateComponent': 'yes',
-    'menuIndex': '15',
+    'generateComponent': 'custom',
+    'menuIndex': '16',
     'ehr': 'yes'
   },
   {
@@ -169,7 +169,7 @@ module.exports = function () {
     'routeName': 'assessments',
     'label': 'Assessments',
     'redirectEhr': 'neurological',
-    'menuIndex': '16',
+    'menuIndex': '17',
     'ehr': 'yes'
   },
   {
@@ -180,7 +180,7 @@ module.exports = function () {
     'redirectEhr': '',
     'redirectLis': '',
     'generateComponent': 'yes',
-    'menuIndex': '17',
+    'menuIndex': '18',
     'ehr': 'yes'
   },
   {
@@ -191,7 +191,7 @@ module.exports = function () {
     'redirectEhr': '',
     'redirectLis': '',
     'generateComponent': 'yes',
-    'menuIndex': '18',
+    'menuIndex': '19',
     'ehr': 'yes'
   },
   {
@@ -202,7 +202,7 @@ module.exports = function () {
     'redirectEhr': '',
     'redirectLis': '',
     'generateComponent': 'yes',
-    'menuIndex': '19',
+    'menuIndex': '20',
     'ehr': 'yes'
   },
   {
@@ -213,7 +213,7 @@ module.exports = function () {
     'redirectEhr': '',
     'redirectLis': '',
     'generateComponent': 'yes',
-    'menuIndex': '20',
+    'menuIndex': '21',
     'ehr': 'yes'
   },
   {
@@ -224,7 +224,7 @@ module.exports = function () {
     'redirectEhr': '',
     'redirectLis': '',
     'generateComponent': 'yes',
-    'menuIndex': '21',
+    'menuIndex': '22',
     'ehr': 'yes'
   },
   {
@@ -235,7 +235,7 @@ module.exports = function () {
     'redirectEhr': '',
     'redirectLis': '',
     'generateComponent': 'yes',
-    'menuIndex': '22',
+    'menuIndex': '23',
     'ehr': 'yes'
   },
   {
@@ -246,7 +246,7 @@ module.exports = function () {
     'redirectEhr': '',
     'redirectLis': '',
     'generateComponent': 'yes',
-    'menuIndex': '23',
+    'menuIndex': '24',
     'ehr': 'yes'
   },
   {
@@ -257,7 +257,7 @@ module.exports = function () {
     'redirectEhr': '',
     'redirectLis': '',
     'generateComponent': 'yes',
-    'menuIndex': '24',
+    'menuIndex': '25',
     'ehr': 'yes'
   },
   {
@@ -595,6 +595,16 @@ module.exports = function () {
     'generateComponent': 'yes',
     'menuIndex': '55',
     'lis': 'yes'
+  },
+  {
+    'path': '/ehr/patient',
+    'routeName': 'special-indicators',
+    'pageDataKey': 'specialIndicators',
+    'label': 'Special Indicators (Risk)',
+    'generateComponent': 'yes',
+    'menuIndex': '11',
+    'lis': 'yes',
+    'ehr': 'yes'
   }
 ]
 }

@@ -36,16 +36,6 @@ class StoreHelperWorker {
   getSecondLevel () { return store.getters['ehrDataStore/secondLevel']  }
   getBaseLevel () { return store.getters['ehrDataStore/baseLevel']  }
 
-  /**
-   *
-   * @returns {visitDay:num|visitTime:milTime|(function(): *)|*}
-   */
-  getSimTime () {
-    const mData = StoreHelper.getMergedData()
-    // { visitDay, visitTime }
-    return mData.meta.simTime
-  }
-
   getHasDataForPagesList () { return store.getters['ehrDataStore/hasDataForPagesList'] }
   hasDataOnPage (pageKey) {
     const pageList = this.getHasDataForPagesList()
@@ -78,7 +68,9 @@ class StoreHelperWorker {
   async _dispatchSystem (key, payload) { return await store.dispatch('system/' + key, payload)}
   async _dispatchUser (key, payload) { return await store.dispatch('userStore/' + key, payload)}
 
-  /* **********   General  ************** */
+  /* **********
+   * **********   General  **************
+   */
   getAuthdConsumerId () { return this._getAuthStore('consumerId') }
   toolConsumerId () { return store.getters['consumerStore/consumerId']}
   isInstructor () { return store.getters['authStore/isInstructor'] }
@@ -180,6 +172,33 @@ class StoreHelperWorker {
   setOutsideShowButtonLabels (value) {
     StoreHelper.postActionEvent(INSTRUCTOR_ACTION, value ? 'showButtonLabels' : 'hideButtonLabels')
     return this._dispatchSystem('setOutsideShowButtonLabels', value)
+  }
+
+  getSimSignOnData () { return store.getters['visit/simSignOnData'] || {}}
+  getSimSignOnName () { return this.getSimSignOnData().personaName}
+  getSimSignOnProfession () { return this.getSimSignOnData().personaProfession}
+
+  /* **********
+ * **********   Simulation Date and Time  **************
+ */
+
+  getSimSDateTimeData () { return store.getters['visit/simDateTime'] || {}}
+  getSimDate () { return this.getSimSDateTimeData().cDate}
+  getSimTime () { return this.getSimSDateTimeData().cTime}
+
+  /**
+   * initializeSimDateTime assumes this is invoked AFTER loadVisitRecord or loadSimulationDateTime
+   * Looks at the current stored date and time. If in the initial state then get the date time
+   * from the ehr merged data metaData. Set this into the visit record.
+   */
+  async initializeSimDateTime () {
+    const sdt = await this.getSimSDateTimeData()
+    if (!sdt.cDate || !sdt.cTime) {
+      const mData = StoreHelper.getMergedData()
+      const { visitDay, visitTime } = mData.meta.simTime
+      const payload = { visitId: this.getVisitId(), cDate: ''+ visitDay, cTime: visitTime}
+      await store.dispatch('visit/setSimulationDateTime', payload)
+    }
   }
 
   /* **********
@@ -496,12 +515,6 @@ class StoreHelperWorker {
   /* **********
    * **********   Loading data  **************
    */
-
-  async loadVisitRecord () {
-    if (debugSH) console.log('SH loadVisitRecord dispatch the load visit information')
-    await this._dispatchVisit('loadVisitRecord')
-  }
-
   /**
    * Always use this StoreHelper.setVisitid to establish the current visit record. We do this, so that we can keep the auth token in sync.
    * @param visitId

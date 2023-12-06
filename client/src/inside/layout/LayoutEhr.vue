@@ -7,6 +7,7 @@
     main(:class="ehrOrLis")
       ehr-multi-patient-bar(class='ehr-multi-patient-bar')
       div(v-if="hasPatient")
+        ui-not-signed-on
         div(class="ehr-context flow_across")
           div(class="pageTitle left_side") {{pageTitle}}
           // banner with patient information
@@ -38,10 +39,12 @@ import UiSpinner from '../../app/ui/UiSpinner'
 import StoreHelper from '../../helpers/store-helper'
 import EhrMultiPatientBar from '@/inside/components/EhrMultiPatientBar.vue'
 import EhrScratchPadDialog from '@/inside/components/EhrScratchPadDialog.vue'
+import UiNotSignedOn from '@/app/ui/UiNotSignedOn.vue'
 
 export default {
   name: 'LayoutEhr',
   components: {
+    UiNotSignedOn,
     EhrScratchPadDialog,
     EhrMultiPatientBar,
     AppHeader,

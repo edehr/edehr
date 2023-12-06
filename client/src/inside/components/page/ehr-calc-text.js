@@ -3,6 +3,7 @@ import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 
 export function ehrCalculateTextProperty (pageDataKey, targetKey, srcValues) {
   const ectp = false
+  const calculationType = 'text'
   let opts = EhrDefs.getChildElements(pageDataKey, 'elementKey', targetKey, 'options')
   if ( ectp ) console.log('ectp', 'pageDataKey, targetKey', pageDataKey, targetKey)
   if ( ectp ) console.log('ectp', 'opts', targetKey, opts)
@@ -48,6 +49,7 @@ export function ehrCalculateTextProperty (pageDataKey, targetKey, srcValues) {
 // export for testing
 export function ehrCalculateBoolProperty (pageDataKey, targetKey, srcValues) {
   const exbp = false
+  const calculationType = 'bool'
   if ( exbp ) console.log('exbp', 'pageDataKey, targetKey', pageDataKey, targetKey)
   let sourceFieldToMatchOn = 'passToFunction'
   let desiredSourceProperty = 'elementKey'

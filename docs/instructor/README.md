@@ -34,7 +34,7 @@ They will set up the Learning Object to contain a description of the learning ob
 
 All users access the EdEHR via their learning management system (LMS).  The LMS provides the authentication and authorization, which means, the LMS says whether a user is a student or instructor.  When student users access the EdEHR they are added into the class list for the EdEHR Activity.  Instructor users can see this class list as well as they can view the EdEHR Learning Object and Case Study.  
 
-Please review the [Student guide](/student) to understand what a user with the rule of student can do in the EdEHR.
+Please review the [Student guide](/student) to understand what a user with the role of student can do in the EdEHR.
 
 Please review the [Electronic health records](/ehr) pages to understand more about the EHR side of this application.
 
@@ -44,8 +44,6 @@ Please review the [Electronic health records](/ehr) pages to understand more abo
 When instructors access the EdEHR they start on the EdEHR Activity page, in the instructor's dashboard.
 
 ![3]
-
-TODO ....
 
 These dashboard pages have three main sections: the application banner, the navigation section on the left and the main content. 
 
@@ -60,8 +58,7 @@ The ```Content area``` displays the page content. E.g. the Activity, Course, Cou
 
 ## Activity 
 
-An ```Activity``` is automatically created when a user clicks an LMS Activity.  After this first click all the users who click that LMS Activity will be able to access the EdEHR Activity.
-An EdEHR Course is also created, automatically, when needed.
+An ```Activity``` is automatically created when a user clicks an LMS Activity.  After this connecting click all following users who click that LMS Activity link will access the same EdEHR Activity.  An EdEHR Course is also created, automatically, when needed.
 
 When a student user clicks an LMS Activity they will be automatically added to the EdEHR Activity's class list, and they will be taken to the charting area to complete their work.
 Students can view the Activity's title and instructions, so these are good places to guide the student.
@@ -77,9 +74,9 @@ The Activity page displays
 - the application type: EHR or LIS (derived from the Learning Object's Case Study)
 - the dates when the activity was created and last accessed or modified
 
-Instructors can and should edit the title and instruction. They can also go to the Course page and change the Course name and description.
+If instructors need to edit the Activity title and instruction (which are shown to the students) then they will need to edit the Learning Object.  
 
-> Every EdEHR Activity must be linked to an EdEHR Learning Object to provide the case study.
+Instructors can also go to the Course page and change the Course name and description.
 
 Every semester instructors will recreate their course in their LMS. They will need to try each activity and link it to the desired Learning Object.
 See [Step 3 in the content creation section](../course-designer/#step-3-connecting-the-edehr-activity-to-an-edehr-learning-object)
@@ -92,7 +89,7 @@ See [Step 3 in the content creation section](../course-designer/#step-3-connecti
 Instructors can assess the class list via the Activity page.  
 ![4]
 
-Only when a student's work is "submitted" can an instructor review and comment on the student's work. Students normally submit their work but instructors can toggle the submission status on a per student or whole class list basis. The status of all students can be set with the "All students can edit" and "Force all submissions" buttons.  Instructors can toggle the status for a particular student with the "Force submission" and "Send back" buttons.
+Only when a student's work is "submitted" can an instructor review and comment on the student's work. Students normally submit their work but instructors can force the submission status on a per student or whole class list basis. The status of all students can be set with the "All students can edit" and "Force all submissions" buttons.  Instructors can toggle the status for a particular student with the "Force submission" and "Send back" buttons.
 ![5]
 
 A student's work can be evaluated by selecting either of the ![2] buttons. The 'Evaluate' button will show the student's work in the condensed view, without any base case data. The 'Eval in EHR' button will show the student's work in the EHR with base case data.
@@ -103,8 +100,8 @@ This panel also lets the instructor force the submission state with ```Force sub
 
 
 ### Evaluation in the EHR
-While evaluating the student work in the EHR the instructor sees both the student's work and the base case study.  Look at the navigation panel. You will see a solid green dot on a page that has student data. 
-If the green circle is empty then that page has data from the Case Study. 
+While evaluating the student work in the EHR the instructor sees both the student's work and the base case study.  Look at the navigation panel. You will see a solid dot on a page that has student data. 
+If the circle is empty then that page has data from the Case Study. 
 If the dot is red then the page has a [draft](/ehr/#draft-reports-and-verifying-correctness) record. 
 This normally means the student started to document some assessment and did not verify the report was complete and correct.  
 ![6]
@@ -112,7 +109,7 @@ This normally means the student started to document some assessment and did not 
 
 ### Evaluation in condensed view
 
-The condensed view shows just the work submitted by the student.  The pages with tables also shows a button that you can use to toggle the table orientation to/from horizontal/vertical.
+The condensed view shows just the student's work that they submitted.  The pages with tables also shows a button that you can use to toggle the table orientation to/from horizontal/vertical.
 Again if the student started an assessment and did not verify it then the [draft](/ehr/#draft-reports-and-verifying-correctness) record will appear with an amber colour.
 The condensed view also displays tabs for each patient involved in the student's work.
 ![8]
@@ -131,7 +128,7 @@ From the Activity page select the link to the class list. Then select the ```Dow
 > Someday the EdEHR will support LTI 1.3 and will be able to push evaluation information into the LMS without the following.
 
 Schools place the students' grading information in the learning management system.  It is possible to import the CSV download file and map the data into the LMS.
-Check you LMS manual for instructions on importing this CSV file into the grade book.
+Check your LMS manual for instructions on importing this CSV file into the grade book.
 
 
 ## Skills Assessment

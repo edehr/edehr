@@ -40,7 +40,7 @@ describe ('Ehr data model update all rows of tables with rec header to insert id
     eData.visit.diagnosisTable[0].should.have.property('diagnosisTable_id')
     eData.visit.diagnosisTable[1].should.not.have.property('diagnosisTable_id')
     eData.visit.diagnosisTable[0].diagnosisTable_id.should.equal('pre existing id')
-    const updatedData = updateAllRowIds(eData)
+    const updatedData = updateAllRowIds(eData, {} /* touchCounts */)
     // console.log('--------------------', JSON.stringify(updatedData, null,1))
     updatedData.visit.diagnosisTable[0].diagnosisTable_id.should.equal('pre existing id')
     // note that the first row has a nonstandard id (intentional test) so it does not

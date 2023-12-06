@@ -1,0 +1,277 @@
+{
+  "id": "653bcd469e666d06c6b75cd3",
+  "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "contributors": "Dorothea Dix",
+  "ehrData": {
+    "meta": {
+      "simTime": {
+        "visitDay": 0,
+        "visitTime": "0000"
+      },
+      "ehrVersion": "ev2.4.0"
+    },
+    "demographics": {
+      "mrn": "S:650003",
+      "givenName": "Discharge",
+      "familyName": "Summary",
+      "lastUpdate": "2023-10-27T07:48:05-07:00"
+    },
+    "allergies": {
+      "checkbox": true,
+      "lastUpdate": "2022-01-25T21:25:44+00:00"
+    },
+    "medical": {
+      "history": "Hypertension\nCAD-Stable angina\nGout",
+      "lastUpdate": "2022-01-25T21:26:07+00:00"
+    },
+    "surgical": {
+      "pastSurgery": [
+        {
+          "procedure": "Appendectomy",
+          "timeSince": "35 years",
+          "createdDate": "2022-01-25T13:26:24-08:00",
+          "pastSurgery_id": "surgical.pastSurgery.0"
+        },
+        {
+          "pastSurgeryDate": "Dr. Merg",
+          "procedure": "Cholecystectomy",
+          "timeSince": "2 years",
+          "createdDate": "2022-01-25T13:26:44-08:00",
+          "pastSurgery_id": "surgical.pastSurgery.1"
+        }
+      ],
+      "lastUpdate": "2022-01-25T21:26:44+00:00"
+    },
+    "visit": {
+      "admissionTime": "1300",
+      "status": "Admission in progress",
+      "consentForBlood": true,
+      "consentForTreatment": true,
+      "codeStatus": "CR",
+      "diagnosis": "asd",
+      "notes": "qwe",
+      "lastUpdate": "2023-11-06T13:46:44-08:00",
+      "diagnosisTable": [
+        {
+          "diagnosisTable_name": "Dorothea",
+          "diagnosisTable_day": 0,
+          "diagnosisTable_time": "1030",
+          "diagnosisRecord": "asdsa",
+          "diagnosisDetails": "qewqw",
+          "createdDate": "2023-11-06T13:46:00-08:00",
+          "diagnosisTable_id": "visit.diagnosisTable.0"
+        }
+      ],
+      "table": [
+        {
+          "location": "here",
+          "transferInDay": "0",
+          "transferInTime": "1030",
+          "createdDate": "2023-11-06T13:46:44-08:00",
+          "table_id": "visit.table.0"
+        }
+      ]
+    },
+    "vitals": {
+      "lastUpdate": "2023-02-14T21:06:01+00:00",
+      "table": [
+        {
+          "systolic": "167",
+          "diastolic": "84",
+          "patientPosition": "Sitting",
+          "temperature": "36.39",
+          "source": "Oral",
+          "strength": "Peripheral",
+          "rate": "64",
+          "rhythm": "Regular",
+          "respirationRate": "18",
+          "oxygenSaturation": "95",
+          "oxygenMode": "Room air",
+          "createdDate": "2023-02-14T13:01:41-08:00",
+          "table_name": "Geoff Smith",
+          "table_profession": "RN",
+          "table_day": "0",
+          "table_time": "2200",
+          "table_id": "vitals.table.0"
+        },
+        {
+          "systolic": "167",
+          "diastolic": "82",
+          "patientPosition": "Sitting",
+          "temperature": "36.9",
+          "source": "Oral",
+          "strength": "Peripheral",
+          "rate": "60",
+          "rhythm": "Regular",
+          "respirationRate": "18",
+          "oxygenSaturation": "95",
+          "oxygenMode": "Room air",
+          "createdDate": "2023-02-14T13:02:49-08:00",
+          "table_name": "Geoff",
+          "table_profession": "RN",
+          "table_day": "0",
+          "table_time": "1800",
+          "table_id": "vitals.table.1"
+        },
+        {
+          "systolic": "148",
+          "diastolic": "76",
+          "patientPosition": "Supine",
+          "temperature": "36.3",
+          "source": "Oral",
+          "strength": "Peripheral",
+          "rate": "54",
+          "rhythm": "Regular",
+          "respirationRate": "16",
+          "oxygenSaturation": "92",
+          "oxygenMode": "Room air",
+          "createdDate": "2023-02-14T13:03:32-08:00",
+          "table_name": "Geoff Smith",
+          "table_profession": "RN",
+          "table_day": "1",
+          "table_time": "0200",
+          "table_id": "vitals.table.2"
+        },
+        {
+          "systolic": "152",
+          "diastolic": "79",
+          "patientPosition": "Supine",
+          "temperature": "36.7",
+          "source": "Oral",
+          "strength": "Peripheral",
+          "rate": "58",
+          "rhythm": "Regular",
+          "respirationRate": "16",
+          "oxygenSaturation": "94",
+          "oxygenMode": "Room air",
+          "createdDate": "2023-02-14T13:04:49-08:00",
+          "table_name": "Geoff Smith",
+          "table_profession": "RN",
+          "table_day": "1",
+          "table_time": "0600",
+          "table_id": "vitals.table.3"
+        },
+        {
+          "systolic": "161",
+          "diastolic": "81",
+          "patientPosition": "Supine",
+          "temperature": "37.2",
+          "source": "Oral",
+          "strength": "Peripheral",
+          "rate": "61",
+          "rhythm": "Regular",
+          "respirationRate": "18",
+          "oxygenSaturation": "96",
+          "oxygenMode": "Room air",
+          "createdDate": "2023-02-14T13:05:46-08:00",
+          "table_name": "T. Hall",
+          "table_profession": "RN",
+          "table_day": "1",
+          "table_time": "1000",
+          "table_id": "vitals.table.4"
+        }
+      ]
+    },
+    "dischargeSummary": {
+      "admissionDay": "1",
+      "dischargingPhysician/np": "Dr. Notley",
+      "clinicalSummary": "clinical summary for discharge goes here",
+      "lastUpdate": "2023-11-05T21:31:07-08:00",
+      "dischargeDiagnosis": "leaving with no sickness",
+      "dischargeEducation": "ready",
+      "dischargeDay": "4",
+      "dischargeTime": "0834",
+      "dischargedTo": "Home",
+      "transferedTo": "transferred to what?",
+      "leavingBy": "Taxi"
+    },
+    "orderSets": {
+      "insulinOrderSets": [
+        {
+          "insulinOrderSets_name": "Dorothea",
+          "insulinOrderSets_day": 0,
+          "insulinOrderSets_time": "0000",
+          "insulinOrderSetForm": "{\"basal_nph\":\"on\",\"basal_nph_tid\":\"3\",\"nut_reg\":\"on\",\"nut_breakfast\":\"4\",\"nut_lunch\":\"3\",\"nut_dinner\":\"2\",\"slide_lispo\":\"on\"}",
+          "insulinOrderSets_id": "orderSets.insulinOrderSets.0"
+        }
+      ]
+    },
+    "nonmedOrders": {
+      "table": [
+        {
+          "table_name": "Dorothea",
+          "table_day": 0,
+          "table_time": "0000",
+          "order": "does this",
+          "orderedBy": "Dr Notley",
+          "status": "Completed",
+          "comment": "non medication order",
+          "createdDate": "2023-11-05T21:30:12-08:00",
+          "table_id": "nonmedOrders.table.0"
+        },
+        {
+          "table_name": "Howard",
+          "table_day": 0,
+          "table_time": "0000",
+          "order": "does that",
+          "orderedBy": "Dr Jekyll",
+          "status": "Completed",
+          "comment": "non medication order",
+          "createdDate": "2023-11-05T21:30:12-08:00",
+          "table_id": "nonmedOrders.table.0"
+        }
+
+      ],
+      "lastUpdate": "2023-11-05T21:30:12-08:00"
+    },
+    "neurological": {
+      "table": [
+        {
+          "alert": "alert,oriented",
+          "eyeOpening": "4 = Spontaneous",
+          "verbalResponse": "5 = Oriented",
+          "bestMotorResponse": "6 = Obeys commands",
+          "glasgowCalculation": 15,
+          "loss": "No",
+          "leftPupilSize": "3",
+          "leftPupilResponseToLight": "Brisk",
+          "rightPupilSize": "3",
+          "rightPupilResponseToLight": "Brisk",
+          "bothPupils": "Equal",
+          "strokeAssessmentCalculation": 0,
+          "createdDate": "2022-01-25T13:28:54-08:00",
+          "table_name": "Geoff Smith",
+          "table_profession": "RN",
+          "table_day": "1",
+          "table_time": "0600",
+          "table_id": "neurological.table.0"
+        },
+        {
+          "alert": "alert,oriented",
+          "eyeOpening": "4 = Spontaneous",
+          "verbalResponse": "5 = Oriented",
+          "bestMotorResponse": "6 = Obeys commands",
+          "glasgowCalculation": 15,
+          "loss": "No",
+          "leftPupilSize": "3",
+          "leftPupilResponseToLight": "Brisk",
+          "rightPupilSize": "3",
+          "rightPupilResponseToLight": "Brisk",
+          "bothPupils": "Equal",
+          "strokeAssessmentCalculation": 0,
+          "createdDate": "2022-01-25T13:28:54-08:00",
+          "table_name": "Geoff Smith",
+          "table_profession": "RN",
+          "table_day": "0",
+          "table_time": "1500",
+          "table_id": "neurological.table.0"
+        }
+      ]
+    }
+  },
+  "description": "",
+  "name": "discharge summary",
+  "tagList": [],
+  "version": "1.0",
+  "fileName": "dischargeSummary_1.0_27 Oct 2023.json"
+}

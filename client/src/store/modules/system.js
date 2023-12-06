@@ -3,7 +3,7 @@ import { APP_TYPE_EHR, APP_TYPE_LIS } from '@/helpers/store-helper'
 // import { Text } from '@/helpers/ehr-text'
 // import StoreHelper from '@/helpers/store-helper'
 const appTypeEHR = 'EHR'
-const appTypeLIS = 'LIS'
+// const appTypeLIS = 'LIS'
 const trace = false
 const state = {
   _isLoading: false,
