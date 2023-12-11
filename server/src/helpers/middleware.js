@@ -8,7 +8,7 @@ import { logError} from './log-error'
 const debugMW = false
 
 const LIMIT_MINUTES = process.env.NODE_ENV === 'production' ? 120 : 2
-const LIMIT_TRIES = process.env.NODE_ENV === 'production' ? 5 : 3
+const LIMIT_TRIES = process.env.NODE_ENV === 'production' ? 15 : 3
 const ADMIN_MAX_REQUEST_LIMIT = LIMIT_TRIES
 const DEMO_MAX_REQUEST_LIMIT = LIMIT_TRIES
 logAuth('validatorMiddlewareWrapper ADMIN_MAX_REQUEST_LIMIT', ADMIN_MAX_REQUEST_LIMIT)
