@@ -46,8 +46,38 @@
         "lastUpdate": "2023-12-04T23:20:40+00:00"
       },
       "allergies": {
-        "text": "Codeine (Rash), Shrimp, Kiwi",
-        "lastUpdate": "2023-12-04T23:21:59+00:00"
+        "allergyList": [
+          {
+            "allergyList_name": "Nick",
+            "allergyList_profession": "RN",
+            "allergyList_day": 0,
+            "allergyList_time": "1300",
+            "allergen": "Codeine",
+            "reaction": "rash",
+            "createdDate": "2023-12-11T08:42:03-05:00",
+            "allergyList_id": "allergies.allergyList.0"
+          },
+          {
+            "allergyList_name": "Nick",
+            "allergyList_profession": "RN",
+            "allergyList_day": 0,
+            "allergyList_time": "1300",
+            "allergen": "Shrimp",
+            "reaction": "rash",
+            "createdDate": "2023-12-11T08:42:03-05:00",
+            "allergyList_id": "allergies.allergyList.1"
+          },
+          {
+            "allergyList_name": "Nick",
+            "allergyList_profession": "RN",
+            "allergyList_day": 0,
+            "allergyList_time": "1300",
+            "allergen": "Kiwi",
+            "reaction": "rash",
+            "createdDate": "2023-12-11T08:42:03-05:00",
+            "allergyList_id": "allergies.allergyList.2"
+          }
+        ]
       },
       "medical": {
         "history": "Admitted to ER for anaphylaxis\nHistory of asthma. Admitted to ER for asthma exacerbation \n\nMedications:\nAlvesco 100mcg daily\nVentolin PRN",
