@@ -16,7 +16,7 @@ describe('Counters testing', function () {
   })
 
   it('do counter', async function () {
-    let tc = 'abcdefgh'
+    let tc = '56955ca46063c5600627f393'
     let tt = await getNextSequence(tc,'LOBJ', 4)
     tt = await getNextSequence(tc,'LOBJ', 4)
     tt.should.equal('0002')

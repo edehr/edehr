@@ -48,7 +48,7 @@ const getters = {
     // unlike other models this one's update field is called lastVisitDate
     return state.sVisitData.lastVisitDate
   },
-  simSignOnData: state => state.simSignOnData,
+  simSignOnData: state => state.simSignOnData || {},
   isSimSignedOn: state => state.simSignOnData && state.simSignOnData.personaName,
   simDateTime: state => state.simDateTime,
   simDate: state => state.simDateTime.cDate,

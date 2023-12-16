@@ -90,11 +90,14 @@
       span(class="suffix") {{suffix }}
 
     div(v-else-if="isType('practitionerName')", class="care_provider_wrapper")
-      label(class="form_label") Care provider
-      input(class="input numb-input", type="text", disabled, :name="elementKey", :value='userName')
+      // name and profession are read only even if editing. See EhrElementCommon.setInitialValue
+      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="textarea_label")
+      //label(class="form_label") Care provider
+      input(class="input text-input", disabled, :name="elementKey",v-model="inputVal")
 
     div(v-else-if="isType('practitionerProfession')", class="text_input_wrapper")
-      // nothing needed
+      // name and profession are read only even if editing. See EhrElementCommon.setInitialValue
+      input(class="input text-input", disabled, :name="elementKey",v-model="inputVal")
 
     ehr-element-select(v-else-if="isType('select')", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
@@ -112,11 +115,13 @@
       textarea(class="ehr-page-form-textarea", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
 
     div(v-else-if="isType(dataTypes.visitDay)", class="sim_day_wrapper", :class='formCss')
+      // day and time are read only even if editing. See EhrElementCommon.setInitialValue
       label(v-html="label", class="form_label")
-      input(class="input numb-input", type="text", disabled, :name="elementKey", :value='cDate')
+      input(class="input numb-input", type="text", disabled, :name="elementKey", :value='inputVal')
     div(v-else-if="isType(dataTypes.visitTime)", class="sim_time_wrapper", :class='formCss')
+      // day and time are read only even if editing. See EhrElementCommon.setInitialValue
       label(v-html="label", class="form_label")
-      input(class="input numb-input", type="text", disabled, :name="elementKey", :value='cTime')
+      input(class="input numb-input", type="text", disabled, :name="elementKey", :value='inputVal')
 
     div(v-else) ELSE: {{inputType}} {{label}}
 
@@ -174,12 +179,6 @@ export default {
   props: {},
   computed: {
     dataTypes () { return EhrTypes.dataInputTypes },
-    cDate () { return this.$store.getters['visit/simDate']},
-    cTime () { return this.$store.getters['visit/simTime']},
-    signOnDetails () { return this.$store.getters['visit/simSignOnData'] },
-    userName () {
-      return this.signOnDetails.personaName +', ' +  this.signOnDetails.personaProfession
-    },
     isPatientData () {
       const dataTypes = this.dataTypes
       return this.isType(dataTypes.ehrDOB) ||

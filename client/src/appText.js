@@ -150,9 +150,10 @@ export const ehrText = {
   practitionerPlaceholder: 'Care team member',
   professionPlaceholder: 'Profession',
   saveDialogAsDraftButtonLabel: 'Save as draft',
-  saveDialogButtonLabel:'Verify this assessment is correct',
-  saveDialogVerifyMessage: (name, profession, day, time) => `${name} (${profession}) verifies this record is correct and complete. Encounter day ${day} and time ${time}.  Or save as draft`,
-  saveDialogVerifyTitle: 'Verify',
+  saveDialogButtonLabel:'Verify this record is correct',
+  saveDialogVerifyMessage: (name, profession, day, time) =>
+    `${name} (${profession}) verifies this record is correct and complete. Encounter day ${day} and time ${time}.`,
+  saveDialogVerifyTitle: 'Verify or save as draft record.',
   ERROR_IN_TABLE_ACTION_DEF: (tableDef) => `Error in the TableAction EHR definitions. Missing source for table ${tableDef} `
 }
 export const demoText = {

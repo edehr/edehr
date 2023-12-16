@@ -114,6 +114,23 @@ export default {
      */
     setInitialValue (value) {
       if (dbInputs) console.log('EhrCommon set initial value ', value, this.elementKey)
+      if (this.element.recHeader && !this.viewOnly) {
+        // the dialog is open for edit. Push the current sign in and sim time into the recorder header
+        if (this.inputType === EhrTypes.dataInputTypes.visitDay) {
+          value = this.$store.getters['visit/simDate']
+        }
+        if (this.inputType === EhrTypes.dataInputTypes.visitTime) {
+          value = this.$store.getters['visit/simTime']
+        }
+        if (this.inputType === EhrTypes.dataInputTypes.practitionerName) {
+          let signOnDetails = this.$store.getters['visit/simSignOnData'] || {}
+          value = signOnDetails.personaName
+        }
+        if (this.inputType === EhrTypes.dataInputTypes.practitionerProfession) {
+          let signOnDetails = this.$store.getters['visit/simSignOnData'] || {}
+          value = signOnDetails.personaProfession
+        }
+      }
       this.initialVal = value
       this.inputVal = value
       if (this.setInitialValueExtended) {

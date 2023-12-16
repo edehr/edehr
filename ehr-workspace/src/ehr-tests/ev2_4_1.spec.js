@@ -79,6 +79,24 @@ const expectedNeuro = {
   ]
 }
 
+const expectedAllergies = {
+  checkbox: false,
+  // text: 'Penicillin',
+  allergyList: [
+    {
+      allergyList_name: 'Lori',
+      allergyList_profession: 'RN',
+      allergyList_day: 0,
+      allergyList_time: '1200',
+      allergen: 'something else',
+      allergyList_id: 'allergies.allergyList.0'
+    },
+    {
+      allergen: 'Penicillin',
+      allergyList_id: 'allergies.allergyList.1'
+    }
+  ]
+}
 describe( 'EhrData updates to ev2.4.1', () => {
 
   it('updateV2_4_1', () => {
@@ -103,5 +121,42 @@ describe( 'EhrData updates to ev2.4.1', () => {
     should.ok(s1 === s2, 'neurological')
     // console.log('ehrData', Object.keys(ehrData))
     // console.log('neurological', ehrData['neurological'])
+
+    updated = ehrData['allergies']
+    updated.allergyList[0].createdDate = undefined
+    s1 = JSON.stringify(expectedAllergies)
+    s2 = JSON.stringify(updated)
+    s1 !== s2 ? console.log('allergies expected \n', s1, '\n vs Actual:\n', s2 ) : null
+    should.ok(s1 === s2, 'allergies')
   })
+
+  it('test just allergies', () => {
+    const otherData = {
+      allergies: {
+        checkbox: false,
+        text: 'Penicillin, Fish, Nuts',
+      }
+    }
+    const expectedAllergies = {
+      checkbox: false,
+      allergyList: [
+        {
+          allergen: 'Penicillin, Fish, Nuts',
+          allergyList_id: 'allergies.allergyList.0'
+        }
+      ]
+    }
+
+    let updated, s1, s2
+    const model = new EhrDataModel(otherData)
+    const ehrData = model.ehrData
+    updated = ehrData['allergies']
+    updated.allergyList[0].createdDate = undefined
+    s1 = JSON.stringify(expectedAllergies)
+    s2 = JSON.stringify(updated)
+    s1 !== s2 ? console.log('allergies expected \n', s1, '\n vs Actual:\n', s2 ) : null
+    should.ok(s1 === s2, 'allergies')
+  })
+
 })
+

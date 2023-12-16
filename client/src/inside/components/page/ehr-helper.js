@@ -537,7 +537,6 @@ export default class EhrPageHelper {
     return show
   }
 
-
   stashActiveData (elementKey, value) {
     // TODO why do we need the try catch block here?
     try {
