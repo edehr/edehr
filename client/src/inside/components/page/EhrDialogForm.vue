@@ -91,7 +91,9 @@ export default {
         this.closeDialog()
       } else {
         if (this.hasRecHeader) {
-          this.$refs.confirmCancelDialog.showDialog('Confirm cancel', 'Do you want to close and not save a draft?')
+          this.$refs.confirmCancelDialog.showDialog(
+            'Confirm cancel.',
+            'This action will delete the current record. If you are not sure press the "Return to Edit" button and then save a draft record.')
         } else {
           this.closeDialog()
         }

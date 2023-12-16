@@ -10,6 +10,21 @@
     "demographics": {
       "mrn": "S:650004"
     },
+    "allergies": {
+      "checkbox": false,
+      "text": "Penicillin",
+      "allergyList": [
+        {
+          "allergyList_name": "Lori",
+          "allergyList_profession": "RN",
+          "allergyList_day": 0,
+          "allergyList_time": "1200",
+          "allergen": "something else",
+          "createdDate": "2023-12-15T21:54:40-08:00",
+          "allergyList_id": "allergies.allergyList.0"
+        }
+      ]
+    },
     "neurological": {
       "table": [
         {

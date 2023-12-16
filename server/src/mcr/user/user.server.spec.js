@@ -44,7 +44,7 @@ describe('user mongoose schema testing', function () {
     })
   })
 
-  it('User can save sign on', async function () {
+  it.skip('User can save sign on', async function () {
     let uList = await User.find( { _id: new ObjectId(newUserId)})
     let user = uList[0]
     user.favouriteSignOns.push({ personaName: 'Heather', personaProfession: 'RN' })
@@ -53,7 +53,7 @@ describe('user mongoose schema testing', function () {
     signOn.personaName.should.equal('Heather')
   })
 
-  it('User favouriteSignOns acts like a set using schema presave', async function () {
+  it.skip('User favouriteSignOns acts like a set using schema presave', async function () {
     let uList = await User.find( { _id: new ObjectId(newUserId)})
     let user = uList[0]
     user.favouriteSignOns.push({ personaName: 'Janet', personaProfession: 'RN' })

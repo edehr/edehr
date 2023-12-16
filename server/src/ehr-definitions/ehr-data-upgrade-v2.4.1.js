@@ -1,6 +1,7 @@
 
 export function updateV2_4_1 (ehrDataModel, touchCounts) {
   // console.log('updateV2_4_1')
+  updateAllergies(ehrDataModel, touchCounts)
   updateCardioCapRefill(ehrDataModel, touchCounts)
   updateMrnWithColon(ehrDataModel, touchCounts)
   updateMedInjections(ehrDataModel, touchCounts)
@@ -298,5 +299,24 @@ function updateMrnWithColon (ehrDataModel, touchCounts) {
       ehrDataModel._updatePageFormData(pageKey, 'mrn', pageData.mrn.replace(':', '-'))
       touchCounts.mrnColon++
     }
+  }
+}
+
+function updateAllergies (ehrDataModel, touchCounts) {
+  /*
+  Convert the original approach that had one text field for allergens and place that original value into a row in the new allergyList table. Also remove the old value
+   */
+  const PAGE_KEY = 'allergies'
+  const TABLE_KEY = 'allergyList'
+  const oldKey = 'text'
+  touchCounts.allergies = 0
+  let pageData = ehrDataModel.getPageData(PAGE_KEY) || {}
+  let v1Allergy = pageData[oldKey]
+  if (v1Allergy) {
+    const tableData = ehrDataModel.getPageTableData(PAGE_KEY, TABLE_KEY) || []
+    tableData.push({ allergen: v1Allergy })
+    ehrDataModel._updatePageTableData(PAGE_KEY, TABLE_KEY, tableData)
+    ehrDataModel._deleteElementPageFormData(PAGE_KEY, oldKey)
+    touchCounts.allergies++
   }
 }

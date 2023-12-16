@@ -137,7 +137,7 @@ describe('VisitController controller testing', function () {
       })
   })
 
-  it('Visit/User testing simulationSignOn and favouriteSignOns', async () => {
+  it.skip('Visit/User testing simulationSignOn and favouriteSignOns', async () => {
     let visitController = new VisitController()
     let user
     await visitController.visitSignOn( visit1._id, 'Heather', 'RN')

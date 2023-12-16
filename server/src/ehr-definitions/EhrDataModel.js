@@ -352,6 +352,13 @@ export default class EhrDataModel {
     pg[elementKey] = value
   }
 
+  _deleteElementPageFormData (pageKey, elementKey) {
+    const pg = this._ehrData[pageKey]
+    if (pg && pg[elementKey]) {
+      delete pg[elementKey]
+    }
+  }
+
   /**
    * Used by EhrDataModel supporting utils to perform updates
    * @param pageKey
