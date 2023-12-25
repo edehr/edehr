@@ -32,7 +32,8 @@ const state = {
   smallWindow: false,
   sysMessage: '',
   showingEHR: true,
-  showingLIS: true
+  showingLIS: true,
+  userPrefNoShowTranslationWarning: false
 }
 
 const getters = {
@@ -55,7 +56,8 @@ const getters = {
   showExplanationTextOutside: state => state.showExplanationTextOutside,
   sysMessage: state => state.sysMessage,
   showingEHR: state => state.showingEHR,
-  showingLIS: state => state.showingLIS
+  showingLIS: state => state.showingLIS,
+  userPrefNoShowTranslationWarning: state => state.userPrefNoShowTranslationWarning
 }
 
 const actions = {
@@ -128,6 +130,9 @@ const actions = {
   setShowLIS ( {commit} ) {
     commit('setShowLIS', true)
     commit('setShowEHR', false)
+  },
+  setUserPrefNoShowTranslationWarning ( {commit}, trueFalse) {
+    commit('setUserPrefNoShowTranslationWarning', trueFalse)
   }
 }
 
@@ -139,6 +144,7 @@ const mutations = {
     let asStored = localStorage.getItem('SeedTableCollapse')
     state.seedTableCollapse = asStored ? JSON.parse(asStored) : {}
     state.lmsNavCollapsed = localStorage.getItem('LmsNavCollapsed') === 'true'
+    state.userPrefNoShowTranslationWarning = localStorage.getItem('userPrefNoShowTranslationWarning') === 'true'
     asStored = localStorage.getItem('appTypeMode')
     if (asStored) {
       state.appTypeMode = asStored
@@ -235,6 +241,10 @@ const mutations = {
   },
   setShowLIS: (state, show) => {
     state.showingLIS = show
+  },
+  setUserPrefNoShowTranslationWarning: (state, value)=> {
+    localStorage.setItem('userPrefNoShowTranslationWarning', value)
+    state.userPrefNoShowTranslationWarning = value
   }
 }
 

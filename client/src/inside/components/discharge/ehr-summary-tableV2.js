@@ -1,6 +1,7 @@
 
 import EhrDefs, { MED_ORDERS_PAGE_KEY } from '../../../ehr-definitions/ehr-defs-grid'
 import StoreHelper from  '../../../helpers/store-helper'
+import { t18EhrText } from '@/helpers/ehr-t18'
 
 export const ESK_Medications = 'Discharge Rx'
 export const ESK_Referrals = 'Referrals'
@@ -96,10 +97,12 @@ export default class EhrSummaryHelpV2 {
   }
 
   _getDefs () {
+    let et = t18EhrText().customPages.discharge
     let defs = {}
     defs[ESK_Referrals] = {
       pageKey: 'referrals',
-      description: 'Referrals to other professions',
+      summaryTitle: et.referral.title,
+      description: et.referral.desc,
       tableKey: 'table',
       columnKeys: ['referralName', 'referralProfession', 'appointmentDate', 'appointmentTime'],
       customGetters: {},
@@ -108,7 +111,8 @@ export default class EhrSummaryHelpV2 {
 
     defs[ESK_Medications] = {
       pageKey: MED_ORDERS_PAGE_KEY,
-      description: 'Medication orders',
+      summaryTitle: et.meds.title,
+      description: et.meds.desc,
       tableKey: 'table',
       columnKeys: ['medication', 'route', 'administration', 'schedule', 'dose', 'reason', 'name', 'profession', 'instructions'],
       customGetters: {
@@ -134,7 +138,8 @@ export default class EhrSummaryHelpV2 {
 
     defs[ESK_LabReqs] = {
       pageKey: 'labRequisitions',
-      description: 'Lab requisitions that are not yet completed',
+      summaryTitle: et.lab.title,
+      description: et.lab.desc,
       tableKey: 'table',
       columnKeys: ['requisition'],
       customGetters: {},
@@ -143,7 +148,8 @@ export default class EhrSummaryHelpV2 {
     const NonMedCols = ['order', 'orderedBy', 'details', 'startDay', 'startTime', 'endDay', 'endTime', 'comment', 'status']
     defs[ESK_Procedures] = {
       pageKey: 'nonmedOrders',
-      description: 'Non-medication orders that are completed',
+      summaryTitle: et.procedures.title,
+      description: et.procedures.desc,
       tableKey: 'table',
       columnKeys: NonMedCols,
       customGetters: {},
@@ -152,7 +158,8 @@ export default class EhrSummaryHelpV2 {
 
     defs[ESK_DischargeProcedures] = {
       pageKey: 'nonmedOrders',
-      description: 'Non-medication orders that are not completed',
+      summaryTitle: et.orders.title,
+      description: et.orders.desc,
       tableKey: 'table',
       columnKeys: NonMedCols,
       customGetters: {},
@@ -161,7 +168,8 @@ export default class EhrSummaryHelpV2 {
 
     defs[ESK_MARS] = {
       pageKey: 'medAdminRec',
-      description: 'Medication administration records',
+      summaryTitle: et.mar.title,
+      description: et.mar.desc,
       tableKey: 'table',
       columnKeys: ['medication', 'day', 'route', 'actualTime'],
       customGetters: {

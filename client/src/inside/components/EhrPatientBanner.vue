@@ -4,42 +4,36 @@
       div(class="patient-data")
         div(class='patient-name') {{ patientData.patientName }}
         div
-          span MRN
+          span {{ ehrText.patientBannerMrn }}
           span {{ patientData.mrn }}
         div
-          span DoB
+          span {{ ehrText.patientBannerDob }}
           span {{ patientData.dateOfBirth }} ({{ patientData.personAge }} yrs)
         div
-          span Gender
+          span {{ ehrText.patientBannerGender }}
           span {{ patientData.gender }}
         div
-          span Code Status
+          span {{ ehrText.patientBannerCodeStatus }}
           span {{ patientData.codeStatus ? patientData.codeStatus : 'N/A' }}
         div
-          span Allergies
+          span {{ ehrText.patientBannerAllergies }}
           span {{ truncate(patientData.allergies, 40) }}
         div
-          span Diagnosis
+          span {{ ehrText.patientBannerDiagnosis }}
           span {{ truncate(patientData.diagnosis, 40) }}
         div
-          span Risks
+          span {{ ehrText.patientBannerRisks }}
           span {{ truncate(patientData.risks, 40) }}
         div(class="patient-data bigger-screens-900")
           div
-            span Weight
+            span {{ ehrText.patientBannerWeight }}
             span {{ patientData.weight }}
           div
-            span PHN
+            span {{ ehrText.patientBannerPHN }}
             span {{ patientData.phn }}
           div
-            span Location
+            span {{ ehrText.patientBannerLocation }}
             span {{ patientData.location }}
-          //div
-          //  span Advocate
-          //  span {{ patientData.mrp }}
-          //div
-          //  span Advocate phone
-          //  span {{ patientData.mrpPhone}}
         ehr-sim-time(:ehr-data="md")
 
     //li Isolation precautions:
@@ -50,6 +44,7 @@
 import EhrPatient from '@/inside/components/page/ehr-patient'
 import EhrSimTime from '@/inside/components/EhrSimTime'
 import StoreHelper from '@/helpers/store-helper'
+import { t18EhrText } from '@/helpers/ehr-t18'
 export default {
   components: { EhrSimTime },
   data () {
@@ -58,6 +53,7 @@ export default {
     }
   },
   computed: {
+    ehrText () { return t18EhrText() },
     md () { return StoreHelper.getMergedData() },
     patientData () { return EhrPatient.patientData() },
   },

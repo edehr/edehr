@@ -2,7 +2,7 @@
   div(class="ehr-summary-table")
     h2 {{summaryTitle}}
     div {{ description}}
-    div(v-show="!hasData") No records
+    div(v-show="!hasData") {{ ehrText.noOrders }}
     table(v-show="hasData")
       thead
         tr
@@ -17,9 +17,10 @@
 <script>
 import moment from 'moment'
 import EhrSummaryHelpV2 from './ehr-summary-tableV2'
-import { formatDateStr } from '../../../helpers/ehr-utils'
+import { formatDateStr } from '@/helpers/ehr-utils'
 import EventBus from '../../../helpers/event-bus'
-import { PAGE_DATA_REFRESH_EVENT } from '../../../helpers/event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
+import { t18EhrText } from '@/helpers/ehr-t18'
 
 export default {
   components: {
@@ -38,6 +39,7 @@ export default {
     ehrHelp: { type: Object },
   },
   computed: {
+    ehrText () { return t18EhrText().customPages.discharge},
     hasData () {
       return this.tableData.length > 0
     },
@@ -57,6 +59,7 @@ export default {
     load () {
       let helper = new EhrSummaryHelpV2(this.summaryKey, this.ehrHelp)
       this.summary = helper.getSummary()
+      this.summaryTitle = this.summary.summaryTitle
       this.description = this.summary.description
       this.tableColumns = this.summary.tableColumns
       this.tableData = this.summary.tableData
@@ -64,7 +67,6 @@ export default {
   },
   mounted: function () {
     const _this = this
-    this.summaryTitle = this.summaryKey
     this.refreshEventHandler = function () {
       _this.load()
     }

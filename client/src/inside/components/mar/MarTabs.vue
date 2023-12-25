@@ -6,7 +6,7 @@
         mar-today-content(:ehrHelp="ehrHelp", :marToday="marToday")
       tab(name="V1 Summary", v-if='showV1')
         mar-summary(:ehrHelp="ehrHelp")
-      tab(name="MAR")
+      tab(:name="ehrText.tabNameMar")
         div(class='day-selector-bar flow_across')
           div(
             v-if="dayList.length > 1",
@@ -29,7 +29,7 @@
           @viewReport='showReport'
         )
         //mar-today-content-v2(:ehrHelp="ehrHelp")
-      tab(name="MAR table")
+      tab(:name="ehrText.tabNameTable")
         //p {{v2Message}}
         ehr-page-element(:element="tableDefV2", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 
@@ -53,6 +53,7 @@ import StoreHelper from '@/helpers/store-helper'
 import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import EhrData from '@/inside/components/page/ehr-data'
 import UiButton from '@/app/ui/UiButton.vue'
+import { t18EhrText } from '@/helpers/ehr-t18'
 
 export default {
   data () {
@@ -91,6 +92,7 @@ export default {
     }
   },
   computed: {
+    ehrText () { return t18EhrText().customPages.mar },
     activeTab () { return this.$store.getters['ehrPageTab/activeTab'](this.pageDataKey) },
     timeLineDays () { return this.timeLineModel.timeLineDays || [] },
     dayList () { return this.timeLineDays.slice().sort( (a,b) => b.dayNum - a.dayNum ) },

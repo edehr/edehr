@@ -1,12 +1,13 @@
 <template lang="pug">
   div(class="ehr-subgroup-wrapper")
-    h4(v-if="subgroup.label") {{ subgroup.label }}
+    h4(v-if="subgroup.label") {{ elementLabel(subgroup) }}
     div(v-for="child in subgroup.sgChildren")
       ehr-element-form(:elementKey="child", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 </template>
 
 <script>
 import EhrElementForm from './EhrElementForm'
+import { t18ElementLabel } from '@/helpers/ehr-t18'
 export default {
   components: {
     EhrElementForm
@@ -17,6 +18,10 @@ export default {
     viewOnly: { type: Boolean, default: false}
   },
   methods: {
+    elementLabel (element) {
+      console.log('sub group label for element ', element)
+      return t18ElementLabel(element)
+    }
   },
 }
 </script>

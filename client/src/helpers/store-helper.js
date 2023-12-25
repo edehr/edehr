@@ -16,6 +16,9 @@ export const USER_ACTION = 'user'
 export const APP_TYPE_EHR = 'EHR'
 export const APP_TYPE_LIS = 'LIS'
 
+export const APP_LANGUAGE_EN = 'en'
+export const APP_LANGUAGE_FR = 'fr'
+
 /*
 https://softwareengineering.stackexchange.com/a/247277/346750
 "A Helper class is a lesser known code smell where a coder has identified some miscellaneous,

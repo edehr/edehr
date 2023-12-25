@@ -1,14 +1,21 @@
 <template lang="pug">
   div(class='ehr-context-student flow_across')
     div
-      div {{givenName}}.  You are working on:
+      div {{givenName}}.
+        span {{ ehrText.studentBannerActivityLabel }}
         span(class='content') {{ truncate(assignmentName, 50) }}
-        ui-info(title="Instructions", :html="instructions", linkText='Instructions')
+        ui-info(
+          :title="ehrText.studentBannerActivityInstructionsTitle",
+          :html="instructions",
+          :linkText="ehrText.studentBannerActivityInstructionsTitle")
       div(v-if='feedbackViewable')
-        div(v-if="hasEvaluationData") Instructor's comments:
+        div(v-if="hasEvaluationData")
+          span {{ ehrText.studentBannerInstructorsFeedback }}
           span(class="content") {{ evaluationData }}
-        div(v-else, class="bigger-screens-900") Submit your work so your instructor can provide feedback.
-      div(v-else) Feedback is blocked
+        div(v-else, class="bigger-screens-900")
+          span {{ ehrText.studentBannerSubmitText }}
+      div(v-else)
+        span {{ ehrText.studentBannerFeedbackBlocked }}
     div(class="flow_across menu_space_across flow_across_last_item")
       ehr-simulation-time-control
       ehr-simulation-sign-on
@@ -23,6 +30,7 @@ import UiInfo from '@/app/ui/UiInfo.vue'
 import { textToHtml } from '@/directives/text-to-html'
 import FeatureHelper, { FF_UNLEASH_ACTIVITY } from '@/helpers/feature-helper'
 import EhrSimulationTimeControl from '@/inside/components/EhrSimulationTimeControl.vue'
+import { t18EhrText } from '@/helpers/ehr-t18'
 
 export default {
   components: { EhrSimulationTimeControl, EhrSimulationSignOn, UiInfo, EhrStudentSubmit },
@@ -31,6 +39,7 @@ export default {
     }
   },
   computed: {
+    ehrText () { return t18EhrText() },
     isUnleashedActivityEnabled () {
       const cid = this.$store.getters['consumerStore/consumerId']
       return FeatureHelper.isFeatureFlagEnabled(cid, FF_UNLEASH_ACTIVITY)

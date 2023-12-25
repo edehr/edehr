@@ -12,7 +12,7 @@
       :useSave="!isViewOnly"
       :disableSave="disableSave"
     )
-      ehr-dialog-patient-banner(slot="header-extra-content")
+      ehr-patient-banner(slot="header-extra-content")
       h3(slot="header") {{ formLabel }}
       div(slot="body", class='ehr-dialog-form')
         ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp", :viewOnly='isViewOnly')
@@ -23,16 +23,16 @@
 
 <script>
 import AppDialog from '@/app/components/AppDialogShell'
+import EhrPatientBanner from '@/inside/components/EhrPatientBanner.vue'
 import EhrGroup from '@/inside/components/page/EhrGroup'
 import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import UiConfirm from '@/app/ui/UiConfirm'
-import EhrDialogPatientBanner from '@/inside/components/page/EhrDialogPatientBanner'
-import { ehrText } from '@/appText'
+import { t18EhrFunctions, t18EhrText, t18ElementLabel, t18TableAddButtonLabel } from '@/helpers/ehr-t18'
 
 export default {
   components: {
-    EhrDialogPatientBanner,
+    EhrPatientBanner,
     UiConfirm,
     EhrGroup,
     AppDialog
@@ -40,7 +40,6 @@ export default {
   inject: ['pageDataKey', 'isEmbedded'],
   data: function () {
     return {
-      ehrText,
       errorList: [],
     }
   },
@@ -49,9 +48,11 @@ export default {
     tableDef: { type: Object },
   },
   computed: {
-    cancelButtonText () { return this.isViewOnly ? ehrText.ehrDialogCancelButtonViewOnly : ehrText.ehrDialogCancelButtonVEdit },
+    ehrText () { return t18EhrText() },
+    ehrTextFn () { return t18EhrFunctions() },
+    cancelButtonText () { return this.isViewOnly ? this.ehrText.ehrDialogCancelButtonViewOnly : this.ehrText.ehrDialogCancelButtonVEdit },
     formLabel () {
-      return this.tableDef.label || this.tableDef.addButtonText
+      return (t18ElementLabel(this.tableDef) || t18TableAddButtonLabel(this.tableDef))
     },
     ehrOnlyDemo () {
       return EhrOnlyDemo.isActiveEhrOnlyDemo()
@@ -175,8 +176,8 @@ export default {
     saveDialog: function () {
       if (this.hasRecHeader) {
         const { name, profession, day, time } = this.ehrHelp.prepareAndGetActiveDialogRecordHeader()
-        const msg = ehrText.saveDialogVerifyMessage(name, profession, day, time)
-        this.$refs.confirmSaveDialog.showDialog(ehrText.saveDialogVerifyTitle, msg)
+        const msg = this.ehrTextFn.saveDialogVerifyMessage(name, profession, day, time)
+        this.$refs.confirmSaveDialog.showDialog(this.ehrText.saveDialogVerifyTitle, msg)
       } else {
         this.saveConfirmed()
       }

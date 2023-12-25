@@ -2,8 +2,7 @@
   div(class='patient-banner')
     div(class="patient-data")
       div(class='patient-name') {{ patientData.patientName }}
-      div MRN: {{ patientData.mrn }}
-      div PHN: {{ patientData.phn }}
+      div {{ ehrText.patientBannerMrn }} {{ patientData.mrn }}
       div DoB: {{ patientData.dateOfBirth }} ({{ patientData.personAge }} yrs)
       div Gender: {{ patientData.gender }}
       div Weight: {{ patientData.weight }}
@@ -23,10 +22,12 @@
 import StoreHelper from '@/helpers/store-helper'
 import EhrPatient from '@/inside/components/page/ehr-patient'
 import EhrSimTime from '@/inside/components/EhrSimTime'
+import { t18EhrText } from '@/helpers/ehr-t18'
 
 export default {
   components: { EhrSimTime },
   computed: {
+    ehrText () { return t18EhrText() },
     md () { return StoreHelper.getMergedData() },
     patientData () { return EhrPatient.patientData() },
   },

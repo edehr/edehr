@@ -2,19 +2,19 @@
   div(class='student-sign-on', v-if='isSimSignOnEnabled')
     div(v-if='isSimSignedOn', class='flow_across')
       div(class="signed-in-user")  {{ userName }}
-      ui-button(v-on:buttonClicked="actionSignOut", secondary=true ) Sign out
+      ui-button(v-on:buttonClicked="actionSignOut", secondary=true ) {{ ehrText.signOutButtonLabel }}
     div(v-else, class='flow_across')
-      ui-button(v-on:buttonClicked="showSignIn") Sign in
+      ui-button(v-on:buttonClicked="showSignIn") {{ ehrText.signInButtonLabel }}
     app-dialog( ref="theDialog", :isModal="true", @save='actionSignOn', @cancel='cancelSignIn', :disable-save='isReady')
-      h3(slot="header") Sign in
+      h3(slot="header") {{ ehrText.signInButtonLabel }}
       div(slot="body")
         div(class='so-group')
           div(class="so-element")
-            label(for="nInput") Name
-            input(class="input sso-input", id="nInput", type="text", v-model="pName", placeholder='Name')
+            label(for="nInput")  {{ ehrText.signInNameLabel }}
+            input(class="input sso-input", id="nInput", type="text", v-model="pName", :placeholder='ehrText.signInNameLabel')
           div(class="so-element")
-            label(for="pInput") Profession
-            input(class="input sso-input", id="pInput", type="text", v-model="pProfession", placeholder='Profession')
+            label(for="pInput")  {{ ehrText.signInProfessionLabel }}
+            input(class="input sso-input", id="pInput", type="text", v-model="pProfession", :placeholder='ehrText.signInProfessionLabel')
 
 </template>
 <script>
@@ -23,6 +23,7 @@ import UiInfo from '@/app/ui/UiInfo.vue'
 import FeatureHelper, { FF_SIGN_ON } from '@/helpers/feature-helper'
 import AppDialog from '@/app/components/AppDialogShell.vue'
 import StoreHelper from '@/helpers/store-helper'
+import { t18EhrText } from '@/helpers/ehr-t18'
 
 export default {
   components: {
@@ -41,6 +42,7 @@ export default {
     }
   },
   computed: {
+    ehrText () { return t18EhrText() },
     isSimSignOnEnabled () {
       const cid = this.$store.getters['consumerStore/consumerId']
       return FeatureHelper.isFeatureFlagEnabled(cid, FF_SIGN_ON)

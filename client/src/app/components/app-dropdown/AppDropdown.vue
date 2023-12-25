@@ -4,7 +4,7 @@
       @click="toggle", class='titleBar'
       @keydown.esc="close",
       tabindex=0 )
-      fas-icon(class="fa bars", icon="bars")
+      fas-icon(class="fa bars", :icon="icon")
     div(v-show="showDropdown", class='dropdownWindow', ref='dropdownMenu')
       div(v-for="item in items", :key='item.label')
         hr(v-if="item.horizontal")
@@ -19,6 +19,7 @@ export default {
   name: 'AppDropdown',
   components: { AppShowHideIcon, AppDropdownItem },
   props: {
+    icon: {type: String, default: 'bars'},
     items: {type: Array},
   },
   data () {

@@ -7,7 +7,7 @@
         v-on:buttonClicked='searchPatient'
         )
         fas-icon(class="fa", icon="search")
-        span &nbsp; Search
+        span &nbsp; {{ ehrText.searchButtonLabel }}
       ehr-patient-tab(v-for='dbObject in activePatientList',
         :key='dbObject._id',
         :dbObject='dbObject',
@@ -26,10 +26,12 @@ import EhrPatientSearchDialog from '@/inside/components/EhrPatientSearchDialog.v
 import UiButton from '@/app/ui/UiButton.vue'
 import StoreHelper from '@/helpers/store-helper'
 import MPatientHelper from '@/helpers/mPatientHelper'
+import { t18EhrText } from '@/helpers/ehr-t18'
 
 export default {
   components: { UiButton, EhrPatientSearchDialog, EhrPatientTab },
   computed: {
+    ehrText () { return t18EhrText() },
     activePatientList () {
       // array of db objects (seed or patient) where each has an _id property
       return MPatientHelper.getCurrentPatientList()

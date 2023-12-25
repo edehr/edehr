@@ -1,7 +1,7 @@
 import EhrTypes from '@/ehr-definitions/ehr-types'
 import StoreHelper from '@/helpers/store-helper'
-import { ehrText } from '@/appText'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
+import { t18EhrText } from '@/helpers/ehr-t18'
 // import * as assert from 'assert'
 
 const ehrPages = new EhrPages()
@@ -9,6 +9,7 @@ const ehrPages = new EhrPages()
 export default class EhrTableActions {
 
   static getTableActionGetDraftRowIndex (tableDef, sourceRowId) {
+    const ehrText = t18EhrText()
     const { taTargetPageKey, taTargetTableKey} = tableDef
     let targetDraftRowIndex = -1
     const desiredRowValue = sourceRowId

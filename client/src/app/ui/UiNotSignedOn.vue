@@ -3,16 +3,18 @@
     div(class="modal-mask", v-show="blockUser")
       div(class="modal-wrapper")
         div(class="modal-container is-centered")
-          span You must simulate signing in before you can access patient records.  Enter a name and profession above and press the 'Sign on' button. (This is just a simulation so you don't need a password.)
+          span {{ehrText.mustSignIn}}
 </template>
 
 <script>
 
 import StoreHelper from '@/helpers/store-helper'
 import FeatureHelper, { FF_SIGN_ON } from '@/helpers/feature-helper'
+import { t18EhrText } from '@/helpers/ehr-t18'
 
 export default {
   computed: {
+    ehrText () { return t18EhrText() },
     blockUser () {
       let block = false
       const cid = this.$store.getters['consumerStore/consumerId']

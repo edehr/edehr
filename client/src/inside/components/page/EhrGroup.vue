@@ -1,7 +1,6 @@
 <template lang="pug">
   div(v-show="groupIsVisible", :class='groupOuterClass')
-    // div {{ group.elementKey }}
-    h3(v-if="group.label") {{ group.label }}
+    h3(v-if="group.label") {{ elementLabel(group) }}
     div(class="ehr-group-wrapper", :class="groupClass")
       div(v-for="child in group.gChildren", :key="forIndex(child)", class="ehr-group-for", :class="childClass(child)")
         ehr-sub-group(v-if="isSubgroup(child)", :subgroup="child", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
@@ -16,6 +15,7 @@ import EhrElementForm from './EhrElementForm'
 import EhrDefs from '../../../ehr-definitions/ehr-defs-grid'
 import EhrDependent from './EhrDependent.vue'
 import EhrTypes from '@/ehr-definitions/ehr-types'
+import { t18ElementLabel } from '@/helpers/ehr-t18'
 
 export default {
   name: 'EhrGroup',
@@ -59,6 +59,9 @@ export default {
     },
   },
   methods: {
+    elementLabel (element) {
+      return t18ElementLabel(element)
+    },
     childClass (elementKey) {
       if (typeof elementKey === 'string') {
         let element = EhrDefs.getPageChildElement(this.pageDataKey, elementKey)

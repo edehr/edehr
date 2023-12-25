@@ -1,21 +1,24 @@
 <template lang="pug">
   div(class='simulation-time-control', v-if='isSimSignOnEnabled')
     div(v-if='editOn', class='flow_across')
-      label(for="sDate") Date:
+      label(for="sDate") {{ehrText.simulationDayTimeDay}}
       input(class="input sdt-date", id="sDate", type="text", v-model="sDate")
-      label(for="sTime") Time
+      label(for="sTime") {{ehrText.simulationDayTimeTime}}
       input(class="input sdt-time", id="sTime", type="text", v-model='sTime')
-      ui-button(v-on:buttonClicked="saveChange", :disabled='!isReady', title='Save the simulation time' )
+      ui-button(v-on:buttonClicked="saveChange", :disabled='!isReady', :text="ehrText.simulationDayTime" )
         fas-icon(class='fa', :icon='appIcons.save')
-      ui-info(title="Simulation time", :text="text.simulationDayTime")
+      ui-info(title="Simulation time", :text="ehrText.simulationDayTime")
     div(v-else, class='flow_across')
-      label(for="sDated") Date:
+      label(for="sDated") {{ehrText.simulationDayTimeDay}}
       input(class="input sdt-date", id="sDated", type="text", :value="cDate", disabled)
-      label(for="sTimed") Time
+      label(for="sTimed") {{ehrText.simulationDayTimeTime}}
       input(class="input sdt-time", id="sTimed", type="text", :value='cTime', disabled)
       ui-button(v-on:buttonClicked="enableEdit" )
-        fas-icon(class='fa', :icon='appIcons.edit', title='Change the simulation time')
-      ui-info(title="Simulation time", :text="text.simulationDayTime")
+        fas-icon(class='fa', :icon='appIcons.edit',
+          :title='ehrText.simulationDayTimeToolTip')
+      ui-info(
+        :title="ehrText.simulationDayTimeTitle",
+        :text="ehrText.simulationDayTime")
 
 </template>
 <script>
@@ -25,7 +28,7 @@ import { validDayStr, validTimeStr } from '@/helpers/ehr-utils'
 import UiButton from '@/app/ui/UiButton.vue'
 import { APP_ICONS } from '@/helpers/app-icons'
 import UiInfo from '@/app/ui/UiInfo.vue'
-import { ehrInfoText } from '@/appText'
+import { t18EhrText } from '@/helpers/ehr-t18'
 
 export default {
   components: {
@@ -38,11 +41,10 @@ export default {
       editOn: false,
       sDate: '',
       sTime: '',
-      explainText: 'this needs to be described',
-      text: ehrInfoText
     }
   },
   computed: {
+    ehrText () { return t18EhrText()},
     isStudent () { return StoreHelper.isStudent() },
     cDate () { return this.$store.getters['visit/simDate']},
     cTime () { return this.$store.getters['visit/simTime']},

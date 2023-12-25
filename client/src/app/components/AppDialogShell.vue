@@ -14,11 +14,11 @@
               slot(name="header") default header
             div(class="dialog-header-buttons")
               ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
-                slot(name="cancel-button") {{ cancelButtonLabel }}
+                slot(name="cancel-button") {{ t18CancelButtonLabel }}
               div(v-show="useSave")
                 span &nbsp;
                 ui-button(v-on:buttonClicked="$emit('save')", :disabled="disableSave", ref='saveButton')
-                  slot(name="save-button") {{ saveButtonLabel }}
+                  slot(name="save-button") {{ t18SaveButtonLabel }}
           // header important content from outter container
           div
             slot(name="header-extra-content")
@@ -28,7 +28,7 @@
         div(class='dialog-footer')
           // header error list
           div(v-show="errors.length", class="error-color")
-            span Correct the following:
+            span {{ehrText.correctFollowingErrors }}
             span(v-for="err in errors", :key="err") &nbsp;&nbsp;&nbsp; {{err}},
 
 </template>
@@ -36,6 +36,7 @@
 <script>
 import UiClose from '../ui/UiClose'
 import UiButton from '../ui/UiButton'
+import { t18EhrText } from '@/helpers/ehr-t18'
 
 export default {
   name: 'AppDialog',
@@ -49,14 +50,8 @@ export default {
     isModal: { type: Boolean, default: false },
     useSave: { type: Boolean, default: true },
     disableSave: { type: Boolean, default: false },
-    saveButtonLabel: {
-      type: String,
-      default: 'Save'
-    },
-    cancelButtonLabel: {
-      type: String,
-      default: 'Cancel'
-    },
+    saveButtonLabel: { type: String, default: 'def'  },
+    cancelButtonLabel: {type: String, default: 'def' },
     errors: {
       type: Array,
       default: function () {
@@ -69,6 +64,12 @@ export default {
     }
   },
   computed: {
+    ehrText () { return t18EhrText() },
+    t18SaveButtonLabel () {
+      // console.log('this.saveButtonLabel', this.saveButtonLabel)
+      return this.saveButtonLabel === 'def' ? this.ehrText.saveButtonLabel : this.saveButtonLabel
+    },
+    t18CancelButtonLabel () { return this.cancelButtonLabel === 'def' ? this.ehrText.cancelButtonLabel : this.cancelButtonLabel},
     modalClass: function () {
       return {
         'modal-mask': this.isModal

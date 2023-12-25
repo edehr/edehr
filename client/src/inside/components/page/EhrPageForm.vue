@@ -2,10 +2,10 @@
   div
     div(id='theEhrPageForm', class="ehr-page-form")
       h2(class="headerClass")
-      div(style="display:inline") {{ form.label }}
+      div(style="display:inline") {{ label }}
       ehr-page-form-controls(class="headerControl", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :formKey="formKey")
       div(v-show="errors.length")
-        p Fix the following:
+        p {{ehrText.instructionsFixErrors}}
         ul
           li(v-for="error in errors") {{ error }}
       ui-spinner-small(refId='theEhrPageForm', :loading="isLoading")
@@ -14,7 +14,7 @@
         ui-button(
           v-on:buttonClicked="promptConfirmDialog",
           :disabled="ehrHelp.isEditingForm(formKey)"
-        ) Reset form data
+        ) {{ ehrText.buttonLabelResetForm }}
     ui-confirm(ref="confirmDialog", @confirm="resetFormData")
 </template>
 
@@ -25,13 +25,7 @@ import UiConfirm from '../../../app/ui/UiConfirm'
 import UiButton from '../../../app/ui/UiButton.vue'
 import StoreHelper from '@/helpers/store-helper'
 import UiSpinnerSmall from '@/app/ui/UiSpinnerSmall.vue'
-
-const TEXT = {
-  TITLE:  'Reset Form Data',
-  MSG: 'Are you sure you want to reset the data? This will reset everything as seed data.'
-}
-
-
+import { t18EhrText, t18ElementLabel } from '@/helpers/ehr-t18'
 export default {
   name: 'EhrPageForm',
   components: {
@@ -60,6 +54,10 @@ export default {
     ehrHelp: { type: Object }
   },
   computed: {
+    ehrText () { return t18EhrText()},
+    label () {
+      return t18ElementLabel(this.form)
+    },
     isLoading () { return StoreHelper.isLoading() },
     canEdit () {
       return this.ehrHelp._canEdit()
@@ -76,7 +74,10 @@ export default {
   },
   methods: {
     promptConfirmDialog : function () {
-      this.$refs.confirmDialog.showDialog(TEXT.TITLE, TEXT.MSG)
+      this.$refs.confirmDialog.showDialog(
+        this.ehrText.confirmDialogResetFormDataTitle,
+        this.ehrText.confirmDialogResetFormDataBody
+      )
     },
 
     resetFormData: function () {

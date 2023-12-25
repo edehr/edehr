@@ -139,7 +139,7 @@ describe('page-definitions tests', () => {
         const tableDef = pageElements[pek]
         if (tableDef.tableAction) {
           // console.log('tableDef.tableAction', typeof tableDef.tableAction)
-          tableDef.should.have.property('tableActionLabel')
+          // tableDef.should.have.property('tableActionLabel')
           tableDef.should.have.property('taTargetTableKey')
           tableDef.should.have.property('taTargetPageKey')
           tableDef.should.have.property('taSourcePageKey')

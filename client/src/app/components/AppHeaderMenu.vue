@@ -10,6 +10,7 @@
         app-header-public-menu(v-if="!isStudent && !isInstructor && isPublic")
         app-header-student-menu(v-if="isStudent")
         app-header-instructor-menu(v-if="isInstructor")
+        app-header-language-menu
     // app styling -- coloured line under header
     div(class="app-header-bottom")
       div(class="app-header-bottom-left")
@@ -22,8 +23,9 @@ import AppHeaderStudentMenu from '@/app/components/AppHeaderStudentMenu'
 import AppHeaderInstructorMenu from '@/app/components/AppHeaderInstructorMenu'
 import AppHeaderDocumentationMenu from '@/app/components/AppHeaderDocumentationMenu'
 import { smallScreenActive } from '@/helpers/responsive'
+import AppHeaderLanguageMenu from '@/app/components/AppHeaderLanguageMenu.vue'
 export default {
-  components: { AppHeaderDocumentationMenu, AppHeaderInstructorMenu, AppHeaderStudentMenu, AppHeaderPublicMenu },
+  components: { AppHeaderLanguageMenu, AppHeaderDocumentationMenu, AppHeaderInstructorMenu, AppHeaderStudentMenu, AppHeaderPublicMenu },
   computed: {
     isPublic () { return StoreHelper.inZonePublic() },
     isDemo () { return StoreHelper.isDemoMode() },

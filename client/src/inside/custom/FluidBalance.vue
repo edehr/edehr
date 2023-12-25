@@ -10,18 +10,18 @@
               th(v-for='aDay in timeline', :key='aDay.dayId') {{ aDay.label}}
           tbody
             tr
-              td Daily Inputs
+              td {{ ehrText.inputs }}
               td(v-for='aDay in timeline', :key='aDay.dayId') {{ aDay.dayInputs}}
             tr
-              td Daily Outputs
+              td {{ ehrText.outputs }}
               td(v-for='aDay in timeline', :key='aDay.dayId') {{ aDay.dayOutputs}}
             tr
-              td Daily Cumulative
+              td {{ ehrText.cumulative }}
               td(v-for='aDay in timeline', :key='aDay.dayId') {{ aDay.dayCumulative}}
         table.table_horizontal
           tbody
             tr
-              td.bold-text Cumulative over all: {{ summaries.totalInputs - summaries.totalOutputs }}
+              td.bold-text {{ ehrText.overall(summaries.totalInputs - summaries.totalOutputs) }}
 
       ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp")
 
@@ -38,10 +38,10 @@ import EhrDataModel from '@/ehr-definitions/EhrDataModel'
 import EhrDefs from '../../ehr-definitions/ehr-defs-grid'
 import EhrPageHelper from '../components/page/ehr-helper'
 import StoreHelper from '@/helpers/store-helper'
+import { t18EhrText } from '@/helpers/ehr-t18'
 
 const FLUID_TABLE_KEY = 'fluidInOutTable'
 const TABLE_DAY_KEY = 'fluidInOutTable_day'
-
 const PAGE_KEY = 'fluidBalance'
 export default {
   components: {
@@ -69,6 +69,7 @@ export default {
     }
   },
   computed: {
+    ehrText () { return t18EhrText().customPages.fluidBalance },
     pageDef () {
       return EhrDefs.getPageDefinition(PAGE_KEY)
     },
@@ -106,10 +107,10 @@ export default {
         dv.setDate(dv.getDate() - df)
         let lbl
         if ( dayNumber === todayNum) {
-          lbl = 'Today'
+          lbl = this.ehrText.today
           df = 0
         } else if ( dayNumber === todayNum - 1) {
-          lbl = 'Yesterday'
+          lbl = this.ehrText.yesterday
           df = 1
         } else if ( dayNumber < todayNum - 1) {
           lbl = dv.toISOString().split('T')[0]

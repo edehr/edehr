@@ -9,6 +9,7 @@ import AppDropdown from '@/app/components/app-dropdown/AppDropdown'
 import { APP_ICONS } from '@/helpers/app-icons'
 import StoreHelper from '@/helpers/store-helper'
 import UiAgree from '@/app/ui/UiAgree'
+import { t18EhrText } from '@/helpers/ehr-t18'
 export default {
   components: {
     UiAgree,
@@ -20,6 +21,7 @@ export default {
     }
   },
   computed: {
+    navText () { return t18EhrText().zoneLmsNav},
     activity () { return this.$store.getters['activityStore/activityRecord'] || {} },
     isInstructorAsStudent () { return StoreHelper.isInstructorAsStudent() },
     activityTooltip () { return this.activity.learningObjectName },
@@ -28,10 +30,11 @@ export default {
     hasCourse () { return this.$store.getters['courseStore/hasCourse'] },
 
     items () {
+      const nt = this.navText
       const menu = []
       menu.push({
-        label: 'Courses',
-        toolTip: 'See list of all my EdEHR courses.',
+        label: nt.COURSES_LABEL,
+        toolTip: nt.COURSES_TOOLTIP,
         callback: () => {
           const path = '/courses'
           if (this.$route.path !== path) {
@@ -42,7 +45,7 @@ export default {
       })
       if(this.hasCourse && this.hasActivity) {
         menu.push({
-          label: 'Activity',
+          label: nt.ACTIVITY,
           toolTip: this.activityTooltip,
           icon: this.appIcons.activity,
           callback: () => {
@@ -54,14 +57,14 @@ export default {
         })
       }
       menu.push({
-        label: 'Scratch pad',
-        toolTip: 'A place for you to place notes. This is visible only to you.',
+        label: nt.SCRATCH_PAD ,
+        toolTip: nt.SCRATCH_PAD_TOOLTIP,
         callback: () => this.$store.dispatch('system/toggleScratchPadVisible' ),
         icon: 'pen'
       })
       menu.push({
-        label: 'Exit to LMS',
-        toolTip: 'Return to your school\'s learning management system. ' + StoreHelper.lmsName() + ' ' + StoreHelper.lmsUrl(),
+        label: nt.EXIT_LABEL,
+        toolTip: nt.EXIT_TOOLTIP,
         callback: () => {
           StoreHelper.exitToLms()
         },
@@ -73,8 +76,8 @@ export default {
           horizontal: true
         })
         menu.push({
-          label: 'Return to my normal role',
-          toolTip: 'Exit the view as student role.',
+          label: nt.NORMAL_ROLE,
+          toolTip: nr.NORMAL_ROLE_TOOLTIP,
           callback: () => StoreHelper.restoreAsInstructor(this.$router),
           icon: this.appIcons.course
         })

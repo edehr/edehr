@@ -1,14 +1,14 @@
 <template lang="pug">
   div(class='student-submit')
-    div(v-if="showSubmit", title='End your work and send to your instructor to evaluate.')
+    div(v-if="showSubmit", :title='ehrText.submitToolTip')
       ui-button(
         v-on:buttonClicked="npButtonClicked",
         :class='{draft : hasDraft}',
         :title='submitButtonTip',
         :disabled="disableNavAction"
-        ) Submit Activity
+        ) {{ ehrText.submitActivityButtonLabel }}
     div(v-else, class='status-message') {{ statusMessage }}
-    ui-confirm(ref="confirmDialog", v-on:confirm="proceed", saveLabel='Submit')
+    ui-confirm(ref="confirmDialog", v-on:confirm="proceed", :saveLabel='ehrText.submitButtonLabel')
 </template>
 <script>
 import AppDialog from '@/app/components/AppDialogShell.vue'
@@ -16,9 +16,7 @@ import UiAgree from '@/app/ui/UiAgree.vue'
 import UiButton from '@/app/ui/UiButton.vue'
 import UiConfirm from '@/app/ui/UiConfirm.vue'
 import StoreHelper from '@/helpers/store-helper'
-import { Text } from '@/helpers/ehr-text'
-
-const BUTTON_WARN = 'Warning. Your work contains draft reports'
+import { t18EhrText } from '@/helpers/ehr-t18'
 
 export default {
   components: {
@@ -32,14 +30,15 @@ export default {
     }
   },
   computed: {
+    ehrText () { return t18EhrText()},
     givenName () { return StoreHelper.givenName() },
     hasDraft () { return this.$store.getters['activityDataStore/hasDraftRows'] },
     showSubmit () {
       return !StoreHelper.isSubmitted()
     },
-    submitButtonTip () { return this.hasDraft ? BUTTON_WARN : ''},
+    submitButtonTip () { return this.hasDraft ? this.ehrText.submitWarnHasDraft : ''},
     statusMessage () {
-      return StoreHelper.isSubmitted() ? Text.IS_SUBMITTED : ''
+      return StoreHelper.isSubmitted() ? this.ehrText.IS_SUBMITTED : ''
     },
     disableNavAction () {
       return this.$store.state.system.isEditing
@@ -47,7 +46,9 @@ export default {
   },
   methods: {
     npButtonClicked () {
-      this.$refs.confirmDialog.showDialog(Text.SEND_FOR_EVAL_TITLE, Text.SEND_FOR_EVAL_BODY)
+      this.$refs.confirmDialog.showDialog(
+        this.ehrText.SEND_FOR_EVAL_TITLE,
+        this.ehrText.SEND_FOR_EVAL_BODY)
     },
     async proceed () {
       await StoreHelper.studentSubmitsAssignment(true)

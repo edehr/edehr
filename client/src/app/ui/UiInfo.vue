@@ -9,7 +9,7 @@
       ref="theDialog",
       :useSave="false",
       @cancel="cancelDialog",
-      cancelButtonLabel='Close'
+      :cancelButtonLabel='ehrText.closeButtonLabel'
       )
       h2(slot="header", class='ui-info-title') {{ title }}
       div(slot="body", class='ui-info-body')
@@ -19,6 +19,7 @@
 
 <script>
 import AppDialog from '../components/AppDialogShell'
+import { t18EhrText } from '@/helpers/ehr-t18'
 
 export default {
   name: 'UiInfo',
@@ -36,6 +37,7 @@ export default {
     linkText: { type: String }
   },
   computed: {
+    ehrText () { return t18EhrText()},
     content () {
       return this.html ? this.html : this.text
     }
