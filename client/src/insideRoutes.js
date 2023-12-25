@@ -324,20 +324,6 @@ export function inside () {
       meta: { layout: 'inside', label: 'Case mix group', topLevel: 'external', zone: 'ehr' }
     },
     {
-      path: '/ehr/external/test-page',
-      name: 'test-page',
-      component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/TestPage.vue'),
-      meta: { layout: 'inside', label: 'Test Page', topLevel: 'external', zone: 'ehr' }
-    },
-    {
-      path: '/ehr/external/test-table',
-      name: 'test-table',
-      component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/TestTable.vue'),
-      meta: { layout: 'inside', label: 'Test Table', topLevel: 'external', zone: 'ehr' }
-    },
-    {
       path: '/ehr/current/assessments/integumentary-assessment',
       name: 'integumentary-assessment',
       component: () =>

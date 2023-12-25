@@ -7,17 +7,13 @@
 
 <script>
 import UiInfo from '../../../app/ui/UiInfo'
+import { t18ElementLabel, t18HelperHtmlText, t18HelperText } from '@/helpers/ehr-t18'
 
 export default {
   name: 'EhrPageFormLabel',
   components: { UiInfo},
   data: function () {
     return {
-      label: '',
-      hasLabel: false,
-      helperHtml: '',
-      helperText: '',
-      showLabel: true,
     }
   },
   props: {
@@ -28,26 +24,16 @@ export default {
   },
   inject: ['isEmbedded'],
   computed: {
+    label () { return t18ElementLabel(this.element)},
+    hasLabel () { return !! this.label},
+    helperText () { return t18HelperText(this.element)},
+    helperHtml () { return t18HelperHtmlText(this.element)},
+    showLabel () { return !(this.element.formOption === 'hideLabel')},
     useMandatoryCss () {
       return !!this.element.mandatory &&
         !this.isEmbedded &&
         this.ehrHelp.isAnythingHappening()
     }
-  },
-  methods: {
-    setupCommon () {
-      const element = this.element
-      // only show the label if there is label content and the configuration permits it
-      // this.showLabel = !(element.formOption === 'hideLabel') && element.label
-      this.showLabel = !(element.formOption === 'hideLabel')
-      this.label = element.label
-      this.hasLabel = !!this.label
-      this.helperText = element.helperText
-      this.helperHtml = element.helperHtml
-    }
-  },
-  mounted: function () {
-    this.setupCommon()
   }
 }
 </script>

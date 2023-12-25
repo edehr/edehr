@@ -1,39 +1,40 @@
 <template lang="pug">
   div
     zone-lms-page-banner(:title="activityTitle")
-      span {{ submitted ? 'Submitted' : 'Open to edit' }} &nbsp;
+      span {{ submitted ? pageText.submitted : pageText.openToEdit }} &nbsp;
       ui-button(@buttonClicked="goToEhr") {{ appTypeGoToText }}
     zone-lms-instructions-header
-      p Your instructors have created a link in your learning management system (LMS) that is configured to connect to this EdEHR Activity. You have already seen the charting area and perhaps you have submitted your work already. You can return to the charting application with the button above.
+      p {{ pageText.instructions }}
 
     div(class="details-container")
       div(class="details-row")
-        div(class="details-name") {{ text.COURSE_LABEL}}
+        div(class="details-name") {{ pageText.course}}
         div(class="details-value") {{ courseTitle }}
       div(class="details-row")
-        div(class="details-name") {{text.DESCRIPTION}}
+        div(class="details-name") {{pageText.instructionsLabel}}
         div(class="details-value")
           div(v-text-to-html="studentInstructions")
-      zone-lms-instructions-element.
-        The above are the instructions your instructor provided to you regarding this activity. Contact your instructor if you have any questions about the instructions.
+      zone-lms-instructions-element {{ pageText.instructionsExplained }}
       div(class="details-row")
-        div(class="details-name") {{text.EVALUATION}}
+        div(class="details-name") {{pageText.feedbackLabel}}
         div(class="details-value")
           div(v-if='feedbackViewable')
             div(v-if="hasEvaluationData") {{ evaluationData }}
-            div(v-else) (No instructor has yet provided feedback.)
-          div(v-else) Feedback viewing is blocked
+            div(v-else) {{pageText.noFeedbackYet }}
+          div(v-else) {{pageText.feedbackViewingBlocked}}
       zone-lms-instructions-element.
-        After you submit your work, your instructor may review your work and offer feedback (which may include grading).
+        {{ pageText.feedbackExplained }}
       div(class="details-row")
-        div(class="details-name") {{text.SCRATCH}}
+        div(class="details-name") {{pageText.scratchPad}}
         div(class="details-value") {{ scratchData }}
       zone-lms-instructions-element.
-        While you work in the charting area you can keep private notes in the "scratch pad". Only you can view these.
+        {{ pageText.scratchPadExplained}}
       div(class="details-row details-row-dates")
-        div(class="details-name") {{text.DATES}}
+        div(class="details-name") {{pageText.datesLabel}}
         //div activityRecord.createDate {{ activityRecord.createDate }}
-        div(class="details-value") {{text.DATES_VAL(activityRecord.createDate, activityRecord.lastUpdate) }}
+        div(class="details-value").
+          {{ pageText.dateLabelCreated}} {{createDate}} &nbsp;
+          {{ pageText.dateLabelUpdated}} {{lastUpdate}}
 
 </template>
 
@@ -50,6 +51,8 @@ import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner.vue'
 import FeatureHelper, { FF_UNLEASH_ACTIVITY } from '@/helpers/feature-helper'
 import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
 import ZoneLmsInstructionsElement from '@/outside/components/ZoneLmsInstructionsElement.vue'
+import { t18EhrText } from '@/helpers/ehr-t18'
+import { formatTimeStr } from '@/helpers/ehr-utils'
 export default {
   extends: OutsideCommon,
   components: {
@@ -63,11 +66,15 @@ export default {
   },
   data () {
     return {
-      text: Text.ACTIVITY_PAGE,
+      // text: Text.ACTIVITY_PAGE,
       textRoutes: Text.ROUTE_NAMES,
     }
   },
   computed: {
+    ehrText () { return t18EhrText()},
+    createDate () { return formatTimeStr(this.activityRecord.createDate) },
+    lastUpdate () { return formatTimeStr(this.activityRecord.lastUpdate) },
+    pageText () { return this.ehrText.activityPage},
     appTypeGoToText () {
       return 'Go to ' + (this.activityRecord.appType === APP_TYPE_LIS ? 'LIS' :
         this.activityRecord.appType === APP_TYPE_EHR ? 'EHR' : 'EHR')

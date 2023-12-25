@@ -9,7 +9,7 @@
       v-if="hasCourse",
       :class="routeClass('/course')",
       :to="{ name: 'course', query: { courseId: course._id }}",
-      :title='navText.GOTO_COURSE(courseTitle)',
+      :title='ehrTextFn.GOTO_COURSE(courseTitle)',
       class='router-item level2')
       fas-icon(class="fa", :icon="appIcons.course")
       span(v-show='!iconsOnly') &nbsp; {{truncate(courseTitle)}}
@@ -17,7 +17,7 @@
       :class="routeClass('/lms-instructor-activity')",
       v-if="hasCourse && hasActivity",
       to="/lms-instructor-activity",
-      :title='navText.GOTO_ACTIVITY(activityName)',
+      :title='ehrTextFn.GOTO_ACTIVITY(activityName)',
       class='router-item level3')
       fas-icon(class="fa", :icon="appIcons.activity")
       span(v-show='!iconsOnly') &nbsp; {{truncate(activityName)}}
@@ -40,7 +40,7 @@
       input(type="checkbox", id="creator", @input="setDevContent", :checked="isDevelopingContent")
       label(for='creator') &nbsp; {{navText.DESIGNER_MODE_LABEL}}
     transition(name="fade")
-      span(v-if="showEx", class="explain-text") &nbsp; As an instructor you are able self promote yourself to the role of Content Creator if you wish to manage content.
+      span(v-if="showEx", class="explain-text") &nbsp; {{navText.DESIGNER_MODE_EXPLAIN}}
 
       // hiding show button labels.
       // TODO consider removal of unused code
@@ -64,7 +64,7 @@
 <script>
 import { APP_ICONS } from '@/helpers/app-icons'
 import StoreHelper from '../../helpers/store-helper'
-import { Text } from '@/helpers/ehr-text'
+import { t18EhrFunctions, t18EhrText } from '@/helpers/ehr-t18'
 export default {
   components: {},
   props: {
@@ -72,11 +72,12 @@ export default {
   },
   data: function () {
     return {
-      navText: Text.INSTRUCTOR_TOOLS,
       appIcons: APP_ICONS
     }
   },
   computed: {
+    navText () { return t18EhrText().zoneLmsNav},
+    ehrTextFn () { return t18EhrFunctions()},
     activity () { return this.$store.getters['activityStore/activityRecord'] },
     activityName () { return this.activity.title },
     consumerId () { return StoreHelper.consumerId() },

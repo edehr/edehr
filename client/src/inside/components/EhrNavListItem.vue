@@ -15,6 +15,7 @@
 import ENList from './EhrNavList'
 import UiLink from '../../app/ui/UiLink.vue'
 import StoreHelper from '../../helpers/store-helper'
+import { t18EhrText, t18ElementLabel } from '@/helpers/ehr-t18'
 
 export default {
   name: 'EhrNavListItem',
@@ -65,7 +66,9 @@ export default {
       return lvClass + aClass
     },
     linkLabel () {
-      return this.path.label
+      let key = this.path.fqn
+      let val = key ? t18ElementLabel({fqn: key}) : undefined
+      return val || t18EhrText()[this.path.label] || this.path.label
     },
     linkClass () {
       let lv = this.level || 1

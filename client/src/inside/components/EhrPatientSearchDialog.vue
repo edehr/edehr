@@ -5,50 +5,50 @@
       ref="theDialog",
       @cancel="cancelDialog",
       @save="saveDialog",
-      saveButtonLabel="Open",
+      :saveButtonLabel="ehrText.buttonLabelOpen",
       :disableSave="disableSave",
       has-left-button
     )
       h2(slot="header") {{ titleText }}
       div(slot="body")
-        div(class="intro-container") Enter a patient MRN or part of a patient's family and press Enter or press the Search button to lookup patient records.
+        div(class="intro-container") {{ ehrText.patientSearchIntro }}
+        div.search-inputs
+          div(class="search-input-container search-box")
+            label(for="searchNameBox") {{ ehrText.patientSearchLabelMrn }}
+            input(
+              id='searchMrnBox',
+              ref='searchMrnBox',
+              type="text",
+              v-model='mrnValue',
+              @keyup.enter="doSearch",
+              @keyup='clearNameValue'
+            )
+          div(class="search-input-container search-box")
+            label(for="searchNameBox") {{ ehrText.patientSearchLabelName }}
+            input(
+              id='searchNameBox',
+              ref='searchNameBox',
+              type="text",
+              v-model='nameValue',
+              @keyup.enter="doSearch",
+              @keyup='clearMrnValue'
+            )
         div(class="search-input-container search-box")
-          label(for="searchNameBox") Patient MRN
-          input(
-            id='searchMrnBox',
-            ref='searchMrnBox',
-            type="text",
-            v-model='mrnValue',
-            @keyup.enter="doSearch",
-            @keyup='clearNameValue'
-          )
-        div(class="search-input-container search-box")
-          label(for="searchNameBox") Family name
-          input(
-            id='searchNameBox',
-            ref='searchNameBox',
-            type="text",
-            v-model='nameValue',
-            @keyup.enter="doSearch",
-            @keyup='clearMrnValue'
-          )
-        div(class="search-input-container search-box")
-          label(for="searchButton") Search
           button(
             id="searchButton"
             v-on:click="doSearch",
             :disabled="!(mrnValue || nameValue)",
             class='search-button'
           )
-            span &nbsp;
+            span {{ ehrText.patientSearchButtonLabel }} &nbsp;
             fas-icon(icon="search", class='fa')
-            span &nbsp;
         hr
         transition(name="fade")
           div
             ui-spinner-small(refId='searchMatchArea', :loading="isLoading")
             div(id='searchMatchArea')
-              div(v-if="searchMatches.length>0") Select a patient from the list below
+              div(v-if="searchMatches.length>0")
+                span {{ ehrText.patientSearchResultsInstructions }}
                 div(v-for='p in searchMatches', :key="p._id")
                   input(
                     type='radio',
@@ -59,7 +59,8 @@
                     :ref='p._id'
                   )
                   label(:for='p._id', class='selectable') &nbsp; {{patientData(p)}}
-              div(v-else) No matches
+              div(v-else)
+                span {{ehrText.patientSearchNoMatches}}
 </template>
 
 <script>
@@ -70,6 +71,8 @@ import UiSpinnerSmall from '@/app/ui/UiSpinnerSmall.vue'
 import StoreHelper from '@/helpers/store-helper'
 import { computeDateOfBirth } from '@/ehr-definitions/ehr-def-utils'
 import MPatientHelper from '@/helpers/mPatientHelper'
+import { t18EhrText } from '@/helpers/ehr-t18'
+// import { ehrTextEn } from '../../store/modules/ehrText'
 
 export default {
   data () {
@@ -81,6 +84,10 @@ export default {
   },
   components: { UiSpinnerSmall, AppDialog },
   computed: {
+    ehrTextEn () {
+      return ehrTextEn
+    },
+    ehrText () { return t18EhrText()},
     disableSave () { return !this.selectedSeedId },
     isLoading () { return StoreHelper.isLoading() },
     activePatientList () {
@@ -99,9 +106,10 @@ export default {
     titleText () {
       if (this.selectedPatientSeed) {
         let p = this.selectedPatientSeed
+        console.log('TODO -- translate search title when we have a seed')
         return 'Select patient: ' + p.keyData.familyName + ' (MRN: ' + p.mrn +')'
       }
-      return 'Search for patient'
+      return this.ehrText.patientSearchTitle
     }
   },
   methods: {
@@ -156,11 +164,14 @@ export default {
       const keyData = seed.keyData
       const newDob = computeDateOfBirth(keyData.personAge, keyData.dateOfBirth) || ''
       const text = []
+      const labelMrn = this.ehrText.patientBannerMrn
+      const labelGen = this.ehrText.patientBannerGender
+      const labelDob = this.ehrText.patientBannerDob
       text.push( ( keyData.familyName ? keyData.familyName : '') + (keyData.givenName ? ', ' + keyData.givenName : '') )
-      text.push(keyData.mrn ? 'MRN: ' + keyData.mrn : '')
-      text.push(keyData.gender ? 'Gender ' + keyData.gender : '')
-      text.push(keyData.gender ? 'DoB ' + newDob  : '')
-      let fullText =  text.join(' - ')
+      text.push(keyData.mrn ? labelMrn + ' ' + keyData.mrn : '')
+      text.push(keyData.gender ? labelGen + ' ' + keyData.gender : '')
+      text.push(keyData.gender ? labelDob + ' ' + newDob  : '')
+      let fullText =  text.join('. ')
       if( StoreHelper.isSeedEditing() && this.searchMatches.length > 0 ) {
         fullText += '. This case study was created on ' + seed.createDate
       }
@@ -208,11 +219,17 @@ export default {
 #searchButton {
   min-width: 14rem;
 }
+.search-inputs {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
 .search-input-container {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
   gap: 1.5rem;
   margin-bottom: 1rem;
+
   & label {
     min-width: 7rem;
     text-align: right;

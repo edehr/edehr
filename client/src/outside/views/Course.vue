@@ -9,16 +9,16 @@
         :text='buttonText'
       )
     zone-lms-instructions-header
-      p {{ text.COURSE_PAGE_INTRO }}
+      p {{ coursePageText.COURSE_PAGE_INTRO }}
       p(v-if='isInstructor')
-        | Click on the gears button &nbsp;
+        | {{ coursePageText.instruction1 }} &nbsp;
         fas-icon( class="fa", :icon="appIcons.configure")
-        | &nbsp; to view the course configuration. Enable 'Course designer mode' to edit the configuration.
+        | &nbsp; {{ coursePageText.instruction2 }}  &nbsp; {{ coursePageText.instruction3 }}
       p(v-if='isInstructor')
         | Click on the stopwatch button &nbsp;
         fas-icon( class="fa", :icon="appIcons.stopwatch")
         | &nbsp; to enable the "Skills Assessment Mode".  This is where students are only permitted to view the activities you select.
-      p(v-else) {{ text.ACTIVITY_STUDENT_SELECT_NAV }}
+      p(v-else) {{ coursePageText.ACTIVITY_STUDENT_SELECT_NAV }}
 
     div(class="details-container")
       div(class="course-description") Course description: {{ course.description ? course.description : '(empty)' }}
@@ -100,7 +100,6 @@ import OutsideCommon from '@/outside/views/OutsideCommon'
 import ZoneLmsPageName from '@/outside/components/ZoneLmsPageName'
 import InstructorCourseListItem from '@/outside/components/lms-course/InstructorCourseListItem.vue'
 import { APP_ICONS } from '@/helpers/app-icons'
-import { Text } from '@/helpers/ehr-text'
 import StoreHelper, { APP_TYPE_EHR, APP_TYPE_LIS, CREATOR_ACTION } from '@/helpers/store-helper'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton.vue'
 import CourseDialog from '@/outside/components/lms-course/CourseDialog.vue'
@@ -111,6 +110,7 @@ import UiInfo from '@/app/ui/UiInfo.vue'
 import UiConfirm from '@/app/ui/UiConfirm.vue'
 import UiAgree from '@/app/ui/UiAgree.vue'
 import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
+import { t18EhrText } from '@/helpers/ehr-t18'
 
 const ASC = 'asc'
 const DESC = 'desc'
@@ -134,7 +134,6 @@ export default {
   data () {
     return {
       appIcons: APP_ICONS,
-      text: Text.COURSE_PAGE,
       columnName: 'title',
       columnCreated: 'createDate',
       columnUpdated: 'lastUpdate',
@@ -143,14 +142,16 @@ export default {
     }
   },
   computed: {
+    coursePageText () { return t18EhrText().COURSE_PAGE },
+    dialogText () { return t18EhrText().COURSE_DIALOG },
     skillsText () { return this.isStudent ?
       'For this course, you can only see activities selected by your instructor.' :
       '<p>Students are limited to the activities that you have selected.</p>' +
       '<p>You can select more than one activity. Reselect the activity to remove an activity from the list.</p>' +
       '<p>Use the END button to reset all activities to normal.</p>' },
     canDo () { return StoreHelper.isDevelopingContent() },
-    buttonText () { return this.canDo ? Text.COURSE_DIALOG.BUTTON_TEXT.EDIT: Text.COURSE_DIALOG.BUTTON_TEXT.VIEW},
-    toolTip () { return this.canDo ? Text.COURSE_DIALOG.TITLES.EDIT: Text.COURSE_DIALOG.TITLES.VIEW },
+    buttonText () { return this.canDo ? this.dialogText.BUTTON_TEXT.EDIT: this.dialogText.BUTTON_TEXT.VIEW},
+    toolTip () { return this.canDo ? this.dialogText.TITLES.EDIT: this.dialogText.TITLES.VIEW },
     course () { return this.$store.getters['courseStore/course'] },
     skillsIsActivityActive () { return this.$store.getters['courseStore/skillsAssessmentIsActive'] },
     courseActivities () {

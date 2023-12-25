@@ -12,7 +12,7 @@
             td(v-for="(cell, index) in transposeData(column)", :class="tdCss(cell, index)")
               div(v-if="!cell.isDraft && colIndex === 0", class='cell-action')
                   ui-button(v-on:buttonClicked="viewReport(getIdFromStack(cell))")
-                    span View &nbsp;
+                    span {{ehrText.viewButtonLabel}} &nbsp;
                     fas-icon(icon="file-pdf")
               div(class="cell-action")
                 ui-button(
@@ -23,10 +23,10 @@
                   fas-icon(icon="notes-medical")
               div(class="cell-action")
                 ui-button(v-if="canEditDraft(cell,colIndex)", v-on:buttonClicked="editDraft(getIdFromStack(cell))")
-                  span Resume &nbsp;
+                  span {{ehrText.resumeButtonLabel}} &nbsp;
                   fas-icon(icon="edit")
                 ui-button(v-else-if="canEditSeed(cell,colIndex)", v-on:buttonClicked="editSeedRow(getIdFromStack(cell))")
-                  span Edit &nbsp;
+                  span {{ehrText.editButtonLabel}} &nbsp;
                   fas-icon(icon="edit")
               div(v-for="cPart in cell.stack")
                 ehr-table-element(v-if="!!cPart.value", :cell="cPart", :class="transposeValueCss(cell, index)")
@@ -37,6 +37,7 @@ import EhrTableCommon from './EhrTableCommon'
 import EhrTableElement from './EhrTableElement'
 import UiButton from '@/app/ui/UiButton'
 import StoreHelper from '@/helpers/store-helper'
+import { t18EhrText } from '@/helpers/ehr-t18'
 
 export default {
   extends: EhrTableCommon,
@@ -51,6 +52,7 @@ export default {
     canEdit () {
       return this.ehrHelp._canEdit()
     },
+    ehrText () { return t18EhrText() },
     draftColumnIndex () {
       return this.cTableData.reduce((accumulator, row, currentIndex) => {
         row.forEach(e => {

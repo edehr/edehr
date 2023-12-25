@@ -3,19 +3,20 @@
     <!--div isEditing {{ isEditing}} canEdit {{canEdit}}-->
     ui-button(v-on:buttonClicked="beginEdit", v-show="canEdit")
       fas-icon(icon="edit", class="icon-left")
-      span Edit form
+      span {{ ehrText.buttonLabelEditForm }}
     ui-button(v-on:buttonClicked="saveEdit", v-show="isEditing")
       fas-icon(icon="check-circle", class="icon-left")
-      span Save
+      span {{ ehrText.saveButtonLabel}}
     span(v-show="isEditing") &nbsp;
     ui-button(v-on:buttonClicked="cancelEdit", v-show="isEditing")
       fas-icon(icon="times-circle", class="icon-left")
-      span Cancel
+      span {{ ehrText.cancelButtonLabel }}
 </template>
 
 <script>
 import UiButton from '../../../app/ui/UiButton.vue'
 import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
+import { t18EhrText } from '@/helpers/ehr-t18'
 
 export default {
   components: {
@@ -27,6 +28,7 @@ export default {
     formKey: { type: String }
   },
   computed: {
+    ehrText () { return t18EhrText()},
     canEdit () {
       return this.ehrHelp.canEditForm(this.formKey)
     },

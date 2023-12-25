@@ -6,6 +6,7 @@
     "redirectEhr": "demographics",
     "redirectLis": "demographics",
     "label": "Patient profile",
+    "fqn": "Patient profile",
     "routeName": "patient",
     "topLevel": "patient",
     "def": {
@@ -14,7 +15,6 @@
       "label": "Patient profile",
       "redirectEhr": "demographics",
       "redirectLis": "demographics",
-      "menuIndex": "1",
       "lis": "yes",
       "ehr": "yes",
       "componentName": "Patient",
@@ -32,6 +32,7 @@
         "isEHR": true,
         "label": "Demographics",
         "pageDataKey": "demographics",
+        "fqn": "demographics",
         "routeName": "demographics",
         "topLevel": "patient",
         "def": {
@@ -61,6 +62,7 @@
         "isEHR": true,
         "label": "Allergies",
         "pageDataKey": "allergies",
+        "fqn": "allergies",
         "routeName": "allergies",
         "topLevel": "patient",
         "def": {
@@ -91,6 +93,7 @@
         "redirectEhr": "medical",
         "redirectLis": "medical",
         "label": "History",
+        "fqn": "History",
         "routeName": "history",
         "topLevel": "patient",
         "def": {
@@ -118,6 +121,7 @@
             "isEHR": true,
             "label": "Medical history",
             "pageDataKey": "medical",
+            "fqn": "medical",
             "routeName": "medical",
             "topLevel": "patient",
             "def": {
@@ -147,6 +151,7 @@
             "isEHR": true,
             "label": "Psychosocial history",
             "pageDataKey": "psychosocial",
+            "fqn": "psychosocial",
             "routeName": "psychosocial",
             "topLevel": "patient",
             "def": {
@@ -175,6 +180,7 @@
             "isEHR": true,
             "label": "Surgical history",
             "pageDataKey": "surgical",
+            "fqn": "surgical",
             "routeName": "surgical",
             "topLevel": "patient",
             "def": {
@@ -203,6 +209,7 @@
             "isEHR": true,
             "label": "Immunization history",
             "pageDataKey": "immunization",
+            "fqn": "immunization",
             "routeName": "immunization",
             "topLevel": "patient",
             "def": {
@@ -231,6 +238,7 @@
             "isEHR": true,
             "label": "Family history",
             "pageDataKey": "familyHistory",
+            "fqn": "familyHistory",
             "routeName": "family-history",
             "topLevel": "patient",
             "def": {
@@ -261,6 +269,7 @@
         "isEHR": true,
         "label": "Care team",
         "pageDataKey": "careTeam",
+        "fqn": "careTeam",
         "routeName": "care-team",
         "topLevel": "patient",
         "def": {
@@ -289,6 +298,7 @@
         "isEHR": true,
         "label": "Special Indicators (Risk)",
         "pageDataKey": "specialIndicators",
+        "fqn": "specialIndicators",
         "routeName": "special-indicators",
         "topLevel": "patient",
         "def": {
@@ -318,6 +328,7 @@
         "isEHR": true,
         "label": "Past appointments",
         "pageDataKey": "pastAppointments",
+        "fqn": "pastAppointments",
         "routeName": "past-appointments",
         "topLevel": "patient",
         "def": {
@@ -349,6 +360,7 @@
     "redirectEhr": "visit-details",
     "redirectLis": "lab-requisitions",
     "label": "Current visit",
+    "fqn": "Current visit",
     "routeName": "current",
     "topLevel": "current",
     "def": {
@@ -375,6 +387,7 @@
         "isEHR": true,
         "label": "Admission, diagnosis, location",
         "pageDataKey": "visit",
+        "fqn": "visit",
         "routeName": "visit-details",
         "topLevel": "current",
         "def": {
@@ -403,6 +416,7 @@
         "isEHR": true,
         "label": "Vital signs",
         "pageDataKey": "vitals",
+        "fqn": "vitals",
         "routeName": "vital-signs",
         "topLevel": "current",
         "def": {
@@ -431,6 +445,7 @@
         "isEHR": true,
         "label": "Fluid balance",
         "pageDataKey": "fluidBalance",
+        "fqn": "fluidBalance",
         "routeName": "fluid-balance",
         "topLevel": "current",
         "def": {
@@ -459,6 +474,7 @@
         "isEHR": true,
         "redirectEhr": "neurological",
         "label": "Assessments",
+        "fqn": "Assessments",
         "routeName": "assessments",
         "topLevel": "current",
         "def": {
@@ -484,6 +500,7 @@
             "isEHR": true,
             "label": "Neurological assessments",
             "pageDataKey": "neurological",
+            "fqn": "neurological",
             "routeName": "neurological",
             "topLevel": "current",
             "def": {
@@ -512,6 +529,7 @@
             "isEHR": true,
             "label": "Respiratory assessment",
             "pageDataKey": "respiratory",
+            "fqn": "respiratory",
             "routeName": "respiratory",
             "topLevel": "current",
             "def": {
@@ -540,6 +558,7 @@
             "isEHR": true,
             "label": "Cardiovascular assessment",
             "pageDataKey": "cardiovascular",
+            "fqn": "cardiovascular",
             "routeName": "cardiovascular",
             "topLevel": "current",
             "def": {
@@ -568,6 +587,7 @@
             "isEHR": true,
             "label": "Gastrointestinal assessment",
             "pageDataKey": "gastrointestinal",
+            "fqn": "gastrointestinal",
             "routeName": "gastrointestinal",
             "topLevel": "current",
             "def": {
@@ -596,6 +616,7 @@
             "isEHR": true,
             "label": "Genitourinary assessment",
             "pageDataKey": "genitourinary",
+            "fqn": "genitourinary",
             "routeName": "genitourinary",
             "topLevel": "current",
             "def": {
@@ -624,6 +645,7 @@
             "isEHR": true,
             "label": "Musculoskeletal assessment",
             "pageDataKey": "musculoskeletal",
+            "fqn": "musculoskeletal",
             "routeName": "musculoskeletal",
             "topLevel": "current",
             "def": {
@@ -652,6 +674,7 @@
             "isEHR": true,
             "label": "Pain assessment",
             "pageDataKey": "pain",
+            "fqn": "pain",
             "routeName": "pain",
             "topLevel": "current",
             "def": {
@@ -680,6 +703,7 @@
             "isEHR": true,
             "label": "Biopsychosocial assessment",
             "pageDataKey": "biopsychosocial",
+            "fqn": "biopsychosocial",
             "routeName": "biopsychosocial",
             "topLevel": "current",
             "def": {
@@ -708,6 +732,7 @@
             "isEHR": true,
             "label": "Integumentary assessment",
             "pageDataKey": "integumentaryAssessment",
+            "fqn": "integumentaryAssessment",
             "routeName": "integumentary-assessment",
             "topLevel": "current",
             "def": {
@@ -739,6 +764,7 @@
         "redirectEhr": "no-med-orders",
         "redirectLis": "no-med-orders",
         "label": "Orders",
+        "fqn": "Orders",
         "routeName": "orders",
         "topLevel": "current",
         "def": {
@@ -765,6 +791,7 @@
             "isEHR": true,
             "label": "Clinical Order Sets",
             "pageDataKey": "orderSets",
+            "fqn": "orderSets",
             "routeName": "order-sets",
             "topLevel": "current",
             "def": {
@@ -793,6 +820,7 @@
             "isEHR": true,
             "label": "Non-medication orders",
             "pageDataKey": "nonmedOrders",
+            "fqn": "nonmedOrders",
             "routeName": "no-med-orders",
             "topLevel": "current",
             "def": {
@@ -821,6 +849,7 @@
             "isEHR": true,
             "label": "Referrals to other disciplines",
             "pageDataKey": "referrals",
+            "fqn": "referrals",
             "routeName": "referrals",
             "topLevel": "current",
             "def": {
@@ -849,6 +878,7 @@
             "isEHR": true,
             "label": "Lab requisitions",
             "pageDataKey": "labRequisitions",
+            "fqn": "labRequisitions",
             "routeName": "lab-requisitions",
             "topLevel": "current",
             "def": {
@@ -878,6 +908,7 @@
             "isEHR": true,
             "label": "Medication orders",
             "pageDataKey": "medicationOrders",
+            "fqn": "medicationOrders",
             "routeName": "meds",
             "topLevel": "current",
             "def": {
@@ -908,6 +939,7 @@
         "isEHR": true,
         "label": "Medication administration records",
         "pageDataKey": "medAdminRec",
+        "fqn": "medAdminRec",
         "routeName": "mar",
         "topLevel": "current",
         "def": {
@@ -936,6 +968,7 @@
         "isEHR": true,
         "label": "Discharge plan",
         "pageDataKey": "dishargeplan",
+        "fqn": "dishargeplan",
         "routeName": "discharge-plan",
         "topLevel": "current",
         "def": {
@@ -964,6 +997,7 @@
         "isEHR": true,
         "label": "Discharge summary",
         "pageDataKey": "dischargeSummary",
+        "fqn": "dischargeSummary",
         "routeName": "discharge",
         "topLevel": "current",
         "def": {
@@ -992,6 +1026,7 @@
         "isEHR": true,
         "label": "Billing",
         "pageDataKey": "billing",
+        "fqn": "billing",
         "routeName": "billing",
         "topLevel": "current",
         "def": {
@@ -1023,6 +1058,7 @@
     "redirectEhr": "progress-notes",
     "redirectLis": "lab-reports",
     "label": "Patient chart",
+    "fqn": "Patient chart",
     "routeName": "chart",
     "topLevel": "chart",
     "def": {
@@ -1048,6 +1084,7 @@
         "isEHR": true,
         "label": "Progress notes",
         "pageDataKey": "progressNotes",
+        "fqn": "progressNotes",
         "routeName": "progress-notes",
         "topLevel": "chart",
         "def": {
@@ -1076,6 +1113,7 @@
         "isEHR": true,
         "label": "Interprofessional plan of care",
         "pageDataKey": "carePlan",
+        "fqn": "carePlan",
         "routeName": "care-plan",
         "topLevel": "chart",
         "def": {
@@ -1105,6 +1143,7 @@
         "redirectEhr": "consults",
         "redirectLis": "lab-reports",
         "label": "Reports and documents",
+        "fqn": "Reports and documents",
         "routeName": "reports",
         "topLevel": "chart",
         "def": {
@@ -1130,6 +1169,7 @@
             "isEHR": true,
             "label": "Consults",
             "pageDataKey": "consults",
+            "fqn": "consults",
             "routeName": "consults",
             "topLevel": "chart",
             "def": {
@@ -1158,6 +1198,7 @@
             "isEHR": true,
             "label": "Laboratory reports",
             "pageDataKey": "labResults",
+            "fqn": "labResults",
             "routeName": "lab-reports",
             "topLevel": "chart",
             "def": {
@@ -1186,6 +1227,7 @@
             "isEHR": true,
             "label": "Medical imaging",
             "pageDataKey": "medicalImaging",
+            "fqn": "medicalImaging",
             "routeName": "diagnostic-reports",
             "topLevel": "chart",
             "def": {
@@ -1214,6 +1256,7 @@
             "isEHR": true,
             "label": "Operative and anaesthesia records",
             "pageDataKey": "operationReports",
+            "fqn": "operationReports",
             "routeName": "operative-anaesthesia",
             "topLevel": "chart",
             "def": {
@@ -1247,6 +1290,7 @@
     "redirectEhr": "assessment-tools",
     "redirectLis": "assessment-tools",
     "label": "External resources",
+    "fqn": "External resources",
     "routeName": "external",
     "topLevel": "external",
     "def": {
@@ -1272,6 +1316,7 @@
         "isEHR": true,
         "label": "Standardized assessment tools",
         "pageDataKey": "assessmentTools",
+        "fqn": "assessmentTools",
         "routeName": "assessment-tools",
         "topLevel": "external",
         "def": {
@@ -1300,6 +1345,7 @@
         "isEHR": true,
         "label": "Code lookup",
         "pageDataKey": "codeLookup",
+        "fqn": "codeLookup",
         "routeName": "code-lookup",
         "topLevel": "external",
         "def": {
@@ -1328,6 +1374,7 @@
         "isEHR": true,
         "label": "Diagnostic codes (ICD-10)",
         "pageDataKey": "diagnosticCodes",
+        "fqn": "diagnosticCodes",
         "routeName": "diagnostic-codes",
         "topLevel": "external",
         "def": {
@@ -1356,6 +1403,7 @@
         "isEHR": true,
         "label": "Intervention codes",
         "pageDataKey": "interventionCodes",
+        "fqn": "interventionCodes",
         "routeName": "intervention-codes",
         "topLevel": "external",
         "def": {
@@ -1384,6 +1432,7 @@
         "isEHR": true,
         "label": "Case mix group",
         "pageDataKey": "caseMixGroup",
+        "fqn": "caseMixGroup",
         "routeName": "case-mix-group",
         "topLevel": "external",
         "def": {
@@ -1405,60 +1454,6 @@
           "zone": "ehr"
         },
         "children": []
-      },
-      {
-        "name": "test-page",
-        "isLIS": false,
-        "isEHR": false,
-        "label": "Test Page",
-        "pageDataKey": "testPage",
-        "routeName": "test-page",
-        "topLevel": "external",
-        "def": {
-          "path": "/ehr/external",
-          "routeName": "test-page",
-          "pageDataKey": "testPage",
-          "label": "Test Page",
-          "redirectEhr": "",
-          "redirectLis": "",
-          "generateComponent": "yes",
-          "menuIndex": "49",
-          "componentName": "TestPage",
-          "dataName": "testPage",
-          "fullPath": "/ehr/external/test-page",
-          "title": "Test Page",
-          "topLevel": "external",
-          "componentPath": "./inside/views",
-          "zone": "ehr"
-        },
-        "children": []
-      },
-      {
-        "name": "test-table",
-        "isLIS": false,
-        "isEHR": false,
-        "label": "Test Table",
-        "pageDataKey": "testTable",
-        "routeName": "test-table",
-        "topLevel": "external",
-        "def": {
-          "path": "/ehr/external",
-          "routeName": "test-table",
-          "pageDataKey": "testTable",
-          "label": "Test Table",
-          "redirectEhr": "",
-          "redirectLis": "",
-          "generateComponent": "yes",
-          "menuIndex": "50",
-          "componentName": "TestTable",
-          "dataName": "testTable",
-          "fullPath": "/ehr/external/test-table",
-          "title": "Test Table",
-          "topLevel": "external",
-          "componentPath": "./inside/views",
-          "zone": "ehr"
-        },
-        "children": []
       }
     ]
   },
@@ -1469,6 +1464,7 @@
     "redirectEhr": "med-lab-accession",
     "redirectLis": "med-lab-accession",
     "label": "Med Lab",
+    "fqn": "Med Lab",
     "routeName": "med-lab",
     "topLevel": "med-lab",
     "def": {
@@ -1494,6 +1490,7 @@
         "isEHR": false,
         "label": "Med Lab Accessioning",
         "pageDataKey": "medLabAccession",
+        "fqn": "medLabAccession",
         "routeName": "med-lab-accession",
         "topLevel": "med-lab",
         "def": {
@@ -1522,6 +1519,7 @@
         "isEHR": false,
         "label": "Med Lab Hematology",
         "pageDataKey": "hematology",
+        "fqn": "hematology",
         "routeName": "hematology",
         "topLevel": "med-lab",
         "def": {
@@ -1550,6 +1548,7 @@
         "isEHR": false,
         "label": "Med Lab Chemistry",
         "pageDataKey": "medLabChemistry",
+        "fqn": "medLabChemistry",
         "routeName": "med-lab-chemistry",
         "topLevel": "med-lab",
         "def": {
@@ -1578,6 +1577,7 @@
         "isEHR": false,
         "label": "Med Lab Urinalysis",
         "pageDataKey": "medLabUrinalysis",
+        "fqn": "medLabUrinalysis",
         "routeName": "med-lab-urinalysis",
         "topLevel": "med-lab",
         "def": {

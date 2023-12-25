@@ -9,7 +9,7 @@
       :disableSave="disableSave")
 
       h3(slot="header") Add a record of medication administration
-      ehr-dialog-patient-banner(slot="header-extra-content")
+      ehr-patient-banner(slot="header-extra-content")
       div(slot="body")
         div
           h3 Day {{currentDay}}
@@ -62,12 +62,12 @@ import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import UiButton from '@/app/ui/UiButton'
 import MarEntity from './mar-entity'
 import MedOrder from '@/inside/components/mar/MedOrder'
-import EhrDialogPatientBanner from '@/inside/components/page/EhrDialogPatientBanner'
+import EhrPatientBanner from '@/inside/components/page/EhrDialogPatientBanner'
 
 export default {
   name: 'MarDialog',
   components: {
-    EhrDialogPatientBanner,
+    EhrPatientBanner,
     MedOrder,
     UiButton,
     AppDialog,

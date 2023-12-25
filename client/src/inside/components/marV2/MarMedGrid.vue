@@ -112,10 +112,7 @@ import { MarTimelineModel, MAR_STATUS_REFUSED,
   MED_GROUP_LABELS, MED_GROUPS } from '@/ehr-definitions/med-definitions/mar-model'
 import UiInfo from '@/app/ui/UiInfo.vue'
 import { textToHtml } from '@/directives/text-to-html'
-const TEXT = {
-  MED_REASON: 'Reason: ',
-  MED_INSTRUCTIONS: 'Instructions: '
-}
+import { t18EhrText } from '@/helpers/ehr-t18'
 export default {
   components: { UiInfo, UiButton },
   props: {
@@ -125,6 +122,7 @@ export default {
     ehrHelp: { type: Object }
   },
   computed: {
+    ehrText () { return t18EhrText().customPages.mar },
     dayList () { return this.timeLineModel.timeLineDays || [] },
     aDay () { return this.dayList[this.selectedDay] },
     medList () {
@@ -164,10 +162,11 @@ export default {
       return med.medName + ' ' + med.dose
     },
     medInfoContent (med) {
+      let et = this.ehrText
       let text = []
       text.push( med.medOrderSummary() )
-      med.reason ? text.push (TEXT.MED_REASON + med.reason) : null
-      med.instructions ? text.push (TEXT.MED_INSTRUCTIONS + med.instructions) : null
+      med.reason ? text.push (et.medReason + med.reason) : null
+      med.instructions ? text.push (et.medInstructions + med.instructions) : null
       text = text.join('\n')
       return textToHtml(text)
     },

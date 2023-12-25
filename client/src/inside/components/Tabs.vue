@@ -23,17 +23,27 @@ export default {
     this.tabs = this.$children
   },
   computed: {
+    ehrLanguage () { return this.$store.getters['ehrText/ehrLanguage']},
     tabNames () { return this.tabs.map( t => t.name)}
   },
-  mounted () {
-    this.$store.dispatch('ehrPageTab/pageActivated', {pageKey: this.pageDataKey, tabNames: this.tabNames})
-  },
+  mounted () { this.init() },
   methods: {
+    init () {
+      this.$store.dispatch('ehrPageTab/pageActivated', {pageKey: this.pageDataKey, tabNames: this.tabNames})
+    },
     selectTab (selectedTab) {
       this.$store.dispatch('ehrPageTab/tabSelected', {pageKey: this.pageDataKey, tabName: selectedTab.name})
       // emit the page refresh event so the newly selected tab can process a refresh event and load its content
       // console.log('Tab change emit PAGE_DATA_REFRESH_EVENT')
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
+    }
+  },
+  watch: {
+    ehrLanguage () {
+      this.$nextTick( () => {
+        // console.log('on language change reset the page tabs', this.tabNames)
+        this.init()
+      })
     }
   }
 }

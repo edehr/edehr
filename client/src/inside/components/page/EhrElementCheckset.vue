@@ -5,13 +5,14 @@
       div(v-for="option in checkOptions")
         label
           input(class="checkbox", type="checkbox", :disabled="disabled || viewOnly", :value="option.prop", v-model="checkValues")
-          span {{ option.text}}
+          span {{ optionText(option) }}
     //div(style="display:none") computedInitialValue {{computedInitialValue}}
 </template>
 
 <script>
 import EhrElementCommon from './EhrElementCommon'
 import EhrCheckset from '@/ehr-definitions/ehr-checkset'
+import { t18ChecksetOption } from '@/helpers/ehr-t18'
 
 const debug = false
 
@@ -40,6 +41,7 @@ export default {
     }
   },
   methods: {
+    optionText ( option ) { return t18ChecksetOption(this.element, option)},
     setInitialValue (value) {
       // Take the db stored value (csv string) and convert to array of strings
       this.checkValues = EhrCheckset.dbValueToCheckSet(value)

@@ -3,7 +3,7 @@
     div(v-if="showTableAddButton")
       ui-button(v-on:buttonClicked="showDialog") {{ buttonLabel }}
     div
-      h2(v-show="tableDef.label") {{tableDef.label}}
+      h2(v-show="tableDef.label") {{tableLabel}}
       ehr-table-vertical(
         v-if="isVertical",
         :ehrHelp="ehrHelp",
@@ -45,6 +45,7 @@ import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import EhrData from '@/inside/components/page/ehr-data'
 import EhrTableDraft from '@/inside/components/page/ehr-table-draft'
 import { makeHumanTableCell } from '@/ehr-definitions/ehr-def-utils'
+import { t18ElementLabel, t18TableAddButtonLabel, t18TableLabel } from '@/helpers/ehr-t18'
 export default {
   components: {
     EhrTableStacked,
@@ -72,7 +73,8 @@ export default {
     }
   },
   computed: {
-    buttonLabel () { return this.tableDef.addButtonText},
+    tableLabel () { return t18ElementLabel(this.tableDef)},
+    buttonLabel () { return t18TableAddButtonLabel(this.tableDef)},
     canResetTableData () { return this.hasData &&  this.ehrHelp.canResetTableData() },
     hasData () { return this.cTableData.length > 0},
     hasDraft () { return !!EhrTableDraft.getTableDraftRow(this.pageDataKey, this.tableKey)},
@@ -90,7 +92,7 @@ export default {
             inputType: cellDef.inputType
           })
           // column header .. use previous label if set else use special tableLabel value from Inputs else use element label
-          templateCell.tableLabel = templateCell.tableLabel || cellDef.tableLabel || cellDef.label
+          templateCell.tableLabel = t18TableLabel(cellDef) || t18ElementLabel(cellDef)
           templateCell.tableSuffix = cellDef.suffixHtml
           templateCell.tableCss = templateCell.tableCss || cellDef.tableCss
         })

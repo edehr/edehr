@@ -39,16 +39,16 @@ const actions = {
 const mutations = {
   setPageActivated: (state, payload) => {
     const {pageKey, tabNames} = payload
-    if (! state.pageTabs[pageKey] ) {
-      const pTab = {}
-      tabNames.forEach( (tn, index) => {
-        pTab[tn] = index === 0 // first tab is set active when page loads
-      })
-      // replace whole object to trigger reactivity
-      const clone = decoupleObject(state.pageTabs)
-      clone[pageKey] = pTab
-      state.pageTabs = clone
-    }
+    // if (! state.pageTabs[pageKey] ) {
+    const pTab = {}
+    tabNames.forEach( (tn, index) => {
+      pTab[tn] = index === 0 // first tab is set active when page loads
+    })
+    // replace whole object to trigger reactivity
+    const clone = decoupleObject(state.pageTabs)
+    clone[pageKey] = pTab
+    state.pageTabs = clone
+    // }
   },
   setPageTabActive: (state, payload) => {
     const { pageKey, tabName } = payload

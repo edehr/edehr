@@ -11,7 +11,6 @@
         fas-icon(class="linkIcon", icon="file-pdf")
         span {{assetName()}}
 
-
     ehr-element-calculated-bool(v-else-if="isType('calculatedBool')", :elementKey="elementKey", :ehrHelp="ehrHelp" )
 
     ehr-element-calculated(v-else-if="isType('calculatedValue')", :elementKey="elementKey", :ehrHelp="ehrHelp" )
@@ -38,7 +37,7 @@
       ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
       input(v-if="!viewOnly", class="input text-input", :disabled="disabled", :name="elementKey", v-model="inputVal")
       div(v-if="viewOnly") {{ inputVal }}
-      ui-info(title="When", text="Describe when this happened relative to the current visit. e.g. '4 years ago', 'tomorrow', etc.")
+      ui-info(:title="ehrText.simulationDayUserTipTitle", :text="ehrText.simulationDayUserTipBody")
 
     div(v-else-if="isPatientData" )
       ehr-element-patient(:element="element", :elementKey="elementKey", :ehrHelp="ehrHelp")

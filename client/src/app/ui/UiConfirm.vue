@@ -3,8 +3,8 @@
     app-dialog(
       ref="theDialog",
       :isModal="true",
-      :saveButtonLabel="saveLabel",
-      :cancelButtonLabel="cancelLabel",
+      :saveButtonLabel="saveText",
+      :cancelButtonLabel="cancelText",
       @save="confirmDialog",
       @cancel="cancelDialog"
       )
@@ -17,13 +17,10 @@
 
 <script>
 import AppDialog from '../components/AppDialogShell'
+import { t18EhrText } from '@/helpers/ehr-t18'
 const CONFIRM_EVENT = 'confirm' // event emitted when user confirms
 const ABORT_EVENT = 'abort' // event emitted when user aborts
 
-const DEFAULT_TITLE = 'Confirm or cancel'
-const DEFAULT_TEXT =''
-const SAVE_BUTTON_LABEL = 'Save'
-const CANCEL_BUTTON_LABEL = 'Cancel'
 export default {
   name: 'UiConfirm',
   components: {
@@ -31,26 +28,29 @@ export default {
   },
   data: function () {
     return {
-      title: DEFAULT_TITLE,
-      text: DEFAULT_TEXT,
+      title: '',
+      text: ''
     }
   },
   props: {
     htmlBody: { type: Boolean, default: false },
-    saveLabel: { type: String, default: SAVE_BUTTON_LABEL },
-    cancelLabel: { type: String, default: CANCEL_BUTTON_LABEL }
+    saveLabel: { type: String, default: undefined },
+    cancelLabel: { type: String, default: undefined }
   },
-
+  computed: {
+    ehrText () { return t18EhrText()},
+    cancelText () { return this.cancelLabel || this.ehrText.cancelButtonLabel },
+    saveText () { return this.saveLabel || this.ehrText.saveButtonLabel }
+  },
   methods: {
     showDialog: function (title, msg, data) {
       this.data = data
-      this.title = title  || this.title
-      this.text = msg || this.text
+      this.title = title  || this.ehrText.submitConfirmTitle
+      this.text = msg || this.ehrText.submitConfirmBody
       this.$refs.theDialog.onOpen()
     },
     closeIt: function () {
-      this.title = DEFAULT_TITLE
-      this.msg = DEFAULT_TEXT
+      this.text = this.title = ''
       this.$refs.theDialog.onClose()
     },
     cancelDialog: function () {

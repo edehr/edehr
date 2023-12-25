@@ -12,6 +12,7 @@ import demoStore from './modules/demoStore'
 import ehrDataStore from './modules/ehrDataStore'
 import ehrOnlyDemoStore from '@/store/modules/ehrOnlyDemoStore'
 import ehrPageTab from '@/store/modules/ehrPageTab'
+import ehrText from '@/store/modules/ehrText'
 import fileListStore from './modules/fileListStore'
 import instructor from './modules/instructor'
 import mPatientStore from '@/store/modules/mPatientStore'
@@ -40,6 +41,7 @@ export default new Vuex.Store({
     ehrDataStore,
     ehrOnlyDemoStore,
     ehrPageTab,
+    ehrText,
     fileListStore,
     instructor,
     mPatientStore,
@@ -61,6 +63,7 @@ export function initializeStore (store) {
   store.dispatch('authStore/initialize')
   store.dispatch('courseStore/initialize')
   store.dispatch('demoStore/initialize')
+  store.dispatch('ehrText/initialize')
   store.dispatch('instructor/initialize')
   store.dispatch('mPatientStore/initialize')
   store.dispatch('system/initialize')

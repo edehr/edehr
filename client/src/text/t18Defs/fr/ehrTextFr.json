@@ -1,0 +1,208 @@
+{
+  "Current visit": "Visite actuelle",
+  "Patient chart": "Graphique des patients",
+  "External resources": "Ressources externes",
+  "History": "Histoire",
+  "Patient profile": "Profil de patient",
+  "customPages": {
+    "allergies": {
+      "title": "Allergies"
+    },
+    "discharge": {
+      "noOrders": "Pas de commandes",
+      "referral": {
+        "title": "Références",
+        "desc": "Références à d'autres professions"
+      },
+      "lab": {
+        "title": "Réquisition de décharge",
+        "desc": "Réquisitions de laboratoire qui ne sont pas encore remplies"
+      },
+      "meds": {
+        "title": "Décharge rx",
+        "desc": "Commandes de médicaments"
+      },
+      "mar": {
+        "title": "Médicaments administrés pendant les soins",
+        "desc": "Dossiers d'administration des médicaments"
+      },
+      "orders": {
+        "title": "Ordres de décharge",
+        "desc": "Commandes de non-médance qui ne sont pas terminées"
+      },
+      "procedures": {
+        "title": "Procédures et traitements",
+        "desc": "Commandes de non-médance terminées"
+      }
+    },
+    "fluidBalance": {
+      "inputs": "Entrées quotidiennes",
+      "outputs": "Sormes quotidiennes",
+      "cumulative": "Cumulatif quotidien",
+      "overall": "Cumulatif dans tout:",
+      "today": "Aujourd'hui",
+      "yesterday": "Hier"
+    },
+    "mar": {
+      "tabNameMar": "MAR",
+      "tabNameTable": "Table de mars",
+      "medReason": "Raison:",
+      "medInstructions": "Instructions:"
+    },
+    "vitals": {
+      "bloodPressure": "Tension artérielle / pouls",
+      "bloodGlugose": "Glycémie mmol / L",
+      "cvp": "CVP (pression veineuse centrale)",
+      "diastolic": "Diastolique",
+      "lpm": "LPM",
+      "mode": "Mode",
+      "pulseRate": "Rythme cardiaque",
+      "oxygen": "Saturation d'oxygène",
+      "respiratory": "Fréquence respiratoire",
+      "spo": "SP0",
+      "systolic": "Systolique",
+      "tabGraph": "Graphique des vitals",
+      "tabChart": "Tableau des vitaux",
+      "temperature": "Température"
+    }
+  },
+  "buttonLabelEditForm": "Modifier",
+  "buttonLabelOpen": "Ouvrir",
+  "buttonLabelResetForm": "Réinitialisez vos données de formulaire",
+  "cancelButtonLabel": "Annuler",
+  "cancelDialogExitDialogLabel": "Confirmer l'annulation",
+  "cancelDialogReturnToEditLabel": "Retour à l'édition",
+  "confirmDialogResetFormDataBody": "Êtes-vous sûr de souhaiter réinitialiser les données? Cela supprimera vos données dans ce formulaire ou ce tableau et vous ne pouvez pas annuler cette action.",
+  "confirmDialogResetFormDataTitle": "Réinitialiser les données de formulaire",
+  "correctFollowingErrors": "Corrigez les erreurs suivantes:",
+  "editButtonLabel": "Modifier",
+  "ehrDialogCancelButtonVEdit": "Annuler",
+  "ehrDialogCancelButtonViewOnly": "Fermer",
+  "English": "Anglais",
+  "French": "Français",
+  "instructionsFixErrors": "Corrigez les erreurs suivantes.",
+  "medicationPlaceholder": "Médicament",
+  "mustSignIn": "Vous devez simuler la connexion avant de pouvoir accéder aux dossiers des patients. Entrez un nom et une profession ci-dessus et appuyez sur le bouton «Signer». (Ce n'est qu'une simulation pour que vous n'ayez pas besoin d'un mot de passe.)",
+  "patientBannerAllergies": "Allergies",
+  "patientBannerCodeStatus": "État du code",
+  "patientBannerDiagnosis": "Diagnostic",
+  "patientBannerDob": "Nœud",
+  "patientBannerGender": "Genre",
+  "patientBannerLocation": "Emplacement",
+  "patientBannerMrn": "MRN",
+  "patientBannerPHN": "Phn",
+  "patientBannerRisks": "Des risques",
+  "patientBannerWeight": "Poids",
+  "patientSearchButtonLabel": "Recherche",
+  "patientSearchIntro": "Pour trouver un patient, vous devez soit fournir une MRN patient ou une partie du nom d'un patient. Ensuite, appuyez sur Entrée ou appuyez sur le bouton de recherche.",
+  "patientSearchLabelMrn": "Entrez un patient MRN",
+  "patientSearchLabelName": "Ou entrez une partie du nom d'un patient",
+  "patientSearchNoMatches": "Aucun résultat",
+  "patientSearchTitle": "Recherche de patient",
+  "practitionerPlaceholder": "Membre de l'équipe de soins",
+  "professionPlaceholder": "Profession",
+  "resumeButtonLabel": "CV",
+  "saveButtonLabel": "Sauvegarder",
+  "saveDialogAsDraftButtonLabel": "Enregistrer comme brouillon",
+  "saveDialogButtonLabel": "Vérifiez que cette évaluation est correcte",
+  "saveDialogVerifyTitle": "Vérifier",
+  "searchButtonLabel": "Recherche",
+  "signInButtonLabel": "Se connecter",
+  "signInNameLabel": "Nom",
+  "signInProfessionLabel": "Profession",
+  "signOutButtonLabel": "se déconnecter",
+  "simDayAndTimeHelperText": "Un véritable DSE fournit automatiquement le DSI et l'heure, mais dans une simulation, vous devez les fournir pour réfléchir lorsque «l'utilisateur» fait l'enregistrement.",
+  "simulationDayTime": "Ceci est simulé la visite du jour et de l'heure, et le jour est le jour de la rencontre \\ \"où le jour 0 est le premier jour où votre patient est arrivé à l'hôpital. Ces valeurs de simulation reflètent une visite à l'hôpital. Dans la communauté, cette date pourrait refléter le jour du premier contact. \"",
+  "simulationDayTimeDay": "Date",
+  "simulationDayTimeTime": "Temps",
+  "simulationDayTimeTitle": "Temps de simulation",
+  "simulationDayTimeToolTip": "Changer le temps de simulation",
+  "studentBannerActivityInstructionsTitle": "Instructions:",
+  "studentBannerActivityLabel": "Nom de l'activité:",
+  "studentBannerFeedbackBlocked": "Les commentaires sont bloqués",
+  "studentBannerInstructorsFeedback": "Commentaires de l'instructeur:",
+  "studentBannerSubmitText": "Soumettez votre travail afin que votre instructeur puisse fournir des commentaires.",
+  "submitActivityButtonLabel": "Soumettre une activité",
+  "submitButtonLabel": "Soumettre",
+  "submitConfirmBody": "Procédez pour envoyer votre travail à votre instructeur ou annuler.",
+  "submitConfirmTitle": "Confirmer ou annuler",
+  "submitToolTip": "Terminez votre travail et envoyez à votre instructeur pour évaluer.",
+  "submitWarnHasDraft": "Avertissement. Votre travail contient des projets de rapports",
+  "viewButtonLabel": "Voir",
+  "zoneLmsNav": {
+    "ACTIVITY": "Activité",
+    "COURSES_LABEL": "Cours",
+    "COURSES_NAV_LABEL": "Tous les cours",
+    "COURSES_TOOLTIP": "Voir tous vos cours et leurs activités",
+    "GOTO_COURSE": "Allez au cours:",
+    "GOTO_ACTIVITY": "Allez à l'activité:",
+    "DESIGNER_MODE_LABEL": "Mode concepteur de cours",
+    "DESIGNER_MODE_EXPLAIN": "En tant qu'instructeur, vous êtes en mesure de vous promouvoir au rôle du créateur de contenu si vous souhaitez gérer le contenu.",
+    "EXIT_LABEL": "Sortir de LMS",
+    "EXIT_TOOLTIP": "Retour au système de gestion de l'apprentissage de votre école",
+    "LMS_LABEL": "LMS",
+    "LMS_TOOLTIP": "Des détails sur le système de gestion de l'apprentissage (LMS) ont également appelé le consommateur LTI",
+    "LOBJ_LABEL": "Apprentissage des objets",
+    "LOBJ_TOOLTIP": "Les objets d'apprentissage fournissent le contenu DSE et configurent la simulation",
+    "FILE_LABEL": "Dossiers pour des études de cas",
+    "FILE_TOOLTIP": "Fichiers qui peuvent être utilisés dans les études de cas DSE.",
+    "SEED_LIST_LABEL": "Études de cas",
+    "SEED_LIST_TOOLTIP": "Graines du DSE (données d'étude de cas de simulation)",
+    "NORMAL_ROLE": "Retour à mon rôle normal",
+    "NORMAL_ROLE_TOOLTIP": "Quittez le point de vue comme un rôle étudiant."
+  },
+  "activityPage": {
+    "course": "Cours",
+    "feedbackLabel": "Retour",
+    "feedbackExplained": "Après avoir soumis votre travail, votre instructeur peut consulter votre travail et offrir des commentaires (qui peuvent inclure la notation).",
+    "instructionsLabel": "Instructions de l'étudiant",
+    "feedbackViewingBlocked": "La visualisation des commentaires est bloquée",
+    "noFeedbackYet": "(Aucun instructeur n'a encore fourni des commentaires.)",
+    "instructionsExplained": "Ce qui précède sont les instructions que votre instructeur vous a fournies concernant cette activité. Contactez votre instructeur si vous avez des questions sur les instructions.",
+    "submitted": "Soumis",
+    "openToEdit": "Ouvert à l'édition",
+    "instructions": "Vos instructeurs ont créé un lien dans votre système de gestion d'apprentissage (LMS) qui est configuré pour se connecter à cette activité EDEHR. Vous avez déjà vu la zone de cartographie et peut-être avez-vous déjà soumis votre travail. Vous pouvez revenir à l'application de cartographie avec le bouton ci-dessus.",
+    "scratchPad": "Mémoire",
+    "scratchPadExplained": "Pendant que vous travaillez dans la zone de cartographie, vous pouvez conserver des notes privées dans le \\ scratch pad \\ \". Vous seul pouvez les afficher.\"",
+    "datesLabel": "Rendez-vous",
+    "dateLabelCreated": "Date créée",
+    "dateLabelUpdated": "Date mise à jour"
+  },
+  "COURSE_PAGE": {
+    "COURSE_PAGE_INTRO": "Cette page répertorie toutes les activités avec lesquelles vous avez travaillé pour le cours sélectionné. Cliquez sur un nom d'activité pour afficher ses détails.",
+    "COURSES_PAGE_INTRO": "Cette page répertorie tous les cours avec le contenu EDEHR avec lequel vous avez travaillé. Cliquez sur un nom de cours pour afficher ses activités.",
+    "DESCRIPTION": "Description",
+    "ACTIVITY_STUDENT_SELECT_NAV": "Cliquez sur un nom d'activité pour voir les détails sur l'activité ou cliquez sur le bouton «Allez vers DSE» pour saisir l'application de cartographie.",
+    "ACTIVITY_INSTRUCTOR_SELECT_NAV": "Cliquez sur un nom d'activité pour voir ses détails."
+  },
+  "COURSE_DIALOG": {
+    "TITLES": {
+      "edit": "Modifier les propriétés du cours",
+      "view": "Afficher les propriétés du cours"
+    },
+    "BUTTON_TEXT": {
+      "EDIT": "Modifier le cours",
+      "VIEW": "Voir les propriétés"
+    },
+    "ERRORS": {
+      "NAME_REQUIRED": "Le nom du cours est requis"
+    },
+    "LABELS": {
+      "NAME": "Nom du cours",
+      "ID": "ID de cours LMS",
+      "TITLE": "Nom du cours LMS",
+      "DESCRIPTION": "Description du cours",
+      "LMS_DESCRIPTION": "Description du cours LMS",
+      "TYPE": "Type LMS",
+      "CANCEL_BUTTON_VIEW_MODE": "Fermer",
+      "CANCEL_BUTTON_EDIT_MODE": "Annuler"
+    },
+    "DESCRIPTIONS": {
+      "ID": "ID interne du cours dans le système de gestion de l'apprentissage",
+      "TITLE": "C'est le nom de cours que votre système de gestion de l'apprentissage a fourni.",
+      "DESCRIPTION": "Description du cours.",
+      "LMS_DESCRIPTION": "Description du cours telle que fournie par le système de gestion de l'apprentissage.",
+      "TYPE": "Type de cours tel que fourni par le système de gestion de l'apprentissage."
+    }
+  }
+}

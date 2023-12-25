@@ -4,7 +4,7 @@
     ehr-panel-content
       div(v-if="useTabs")
         tabs
-          tab(class='tabContainer', :name="element.label", v-for="(element, index) in pageElements", :key="element.elementKey",  :selected="index===0")
+          tab(class='tabContainer', :name="elementLabel(element)", v-for="(element, index) in pageElements", :key="element.elementKey",  :selected="index===0")
             ehr-page-element(:element="element", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
       div(v-else)
         ehr-page-element(v-for="element in pageElements", :key="element.pageDataKey", :element="element", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
@@ -19,6 +19,7 @@ import EhrDefs from '../../../ehr-definitions/ehr-defs-grid'
 import Tabs from '../Tabs'
 import Tab from '../Tab'
 import EhrData from '@/inside/components/page/ehr-data'
+import { t18ElementLabel } from '@/helpers/ehr-t18'
 
 /*
 # EhrPage
@@ -94,13 +95,15 @@ export default {
       const pageData = EhrData.getMergedPageData(this.pageDataKey)
       pgElems = pgElems.filter( element => {
         let show = true
-        if (element.label && element.label.toLowerCase().includes('v1')) {
+        // TODO develop a better way to indicated a v1 table. Preferably in the ehr defs. Maybe use the formOption property?
+        let label = t18ElementLabel(element)
+        if (label && label.toLowerCase().includes('v1')) {
           let data = pageData[element.tableKey]
           show = data && Array.isArray(data) && data.length > 0
           if (show) {
-            // TODO after September 2023 add a popup dialog to notify the user that the v1 tables will be deprecated.
+            // TODO add a popup dialog to notify the user that the v1 tables will be deprecated.
             // TODO after x months deprecate. Add a popup dialog to tell user they can get their v1 tables via contacting the edehr team.
-            console.log('Found a V1 table with data. Will be deprecated sometime in 2023.', element.label)
+            console.error('Found a V1 table with data. Will be deprecated sometime in 2023.', element.label)
           }
         }
         return show
@@ -109,6 +112,11 @@ export default {
     },
     useTabs () {
       return this.pageElements.length > 1 && this.pageDef.formOption !== 'no-tabs'
+    }
+  },
+  methods: {
+    elementLabel (element) {
+      return t18ElementLabel(element)
     }
   }
 }

@@ -7,6 +7,7 @@ import UiInfo from '@/app/ui/UiInfo'
 import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import EhrData from '@/inside/components/page/ehr-data'
 import { validateAgeValue } from '@/ehr-definitions/ehr-def-utils'
+import { t18EhrText, t18ElementLabel, t18HelperText } from '@/helpers/ehr-t18'
 
 const DEPENDENT_PROPS = EhrTypes.dependentOn
 
@@ -36,13 +37,14 @@ export default {
     viewOnly: { type: Boolean, default: false }
   },
   computed: {
+    ehrText () { return t18EhrText()},
     devEnv () { return process.env.NODE_ENV === 'development' },
     elementIsId () { return this.element.inputType === EhrTypes.dataInputTypes.generatedId },
     element () {
       return EhrDefs.getPageChildElement(this.pageDataKey, this.elementKey)
     },
     formCss () { return this.element.formCss || ''},
-    helperText () { return this.element.helperText },
+    helperText () { return t18HelperText(this.element) },
     helperHtml () { return this.element.helperHtml },
     hideElement () { return (this.element.formOption === 'hideElement' && this.hideIfId)},
     hideIfId () { return this.elementIsId ? !this.devEnv : true },
@@ -55,7 +57,7 @@ export default {
       return this.element.inputType
     },
     label () {
-      return this.element.label
+      return t18ElementLabel(this.element)
     },
     key () {
       return this.element.elementKey

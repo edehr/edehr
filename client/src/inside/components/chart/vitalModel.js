@@ -1,5 +1,6 @@
 import { options } from './vitalChart'
 import { POINT_TYPES } from './vitalChart'
+import { t18EhrText } from '@/helpers/ehr-t18'
 
 const vitalRanges = {
   bloodPressure: { min: 25, max: 225, normal: { systolic: [90, 130, 140], diastolic: [60, 85, 90] } },
@@ -16,6 +17,10 @@ let lastTime = 8
 let cnt = 0
 
 export default class VitalModel {
+  constructor () {
+    this.ehrText = t18EhrText().customPages.vitals
+  }
+
   addData (table) {
     cnt++
     lastTime += 4
@@ -96,7 +101,7 @@ export default class VitalModel {
     let min = vitalRanges.temperature.min
     let max = vitalRanges.temperature.max
     let chartData = {
-      label: 'Temperature',
+      label: this.ehrText.temperature,
       labelOffsetFromBottom: 20, // vertical adjust label relative to chart bottom
       dMin: min,
       dMax: max,
@@ -130,6 +135,7 @@ export default class VitalModel {
   }
 
   getBloodPressure (table) {
+    let et = this.ehrText
     let v1 = [],
       v2 = [],
       v3 = []
@@ -181,7 +187,7 @@ export default class VitalModel {
     let min = bloodPressure.min
     let max = bloodPressure.max
     let chartData = {
-      label: 'Blood pressure/pulse',
+      label: et.bloodPressure,
       labelOffsetFromBottom: 18, // vertical adjust label relative to chart bottom
       dMin: min,
       dMax: max,
@@ -203,17 +209,17 @@ export default class VitalModel {
       },
       dataSet: [
         {
-          label: 'Systolic',
+          label: et.systolic,
           pointStyle: POINT_TYPES.DOWN_CHEVRON,
           values: v1
         },
         {
-          label: 'Diastolic',
+          label: et.diastolic,
           pointStyle: POINT_TYPES.UP_CHEVRON,
           values: v2
         },
         {
-          label: 'Pulse rate',
+          label: et.pulseRate,
           pointStyle: POINT_TYPES.POINT,
           labelOffsetX: -30,
           values: v3
@@ -239,7 +245,7 @@ export default class VitalModel {
         scalePoints.push({ spv: item })
     })
     return {
-      label: 'Blood glucose mmol/L',
+      label: this.ehrText.bloodGlugose,
       dMin: min,
       dMax: max,
       gridY: {
@@ -277,7 +283,7 @@ export default class VitalModel {
       return element.respirationRate
     })
     let chartData = {
-      label: 'Respiratory rate',
+      label: this.ehrText.respiratory,
       labelOffsetFromBottom: 15, // vertical adjust label relative to chart bottom
       dMin: min,
       dMax: max,
@@ -309,6 +315,7 @@ export default class VitalModel {
   }
 
   getOxygen (table) {
+    let et = this.ehrText
     let values = table.map(element => {
       let flow = element.flowRate
       let sat = element.oxygenSaturation
@@ -318,12 +325,12 @@ export default class VitalModel {
       return txt
     })
     let chartData = {
-      label: 'Oxygen saturation',
+      label: et.oxygen,
       chartType: POINT_TYPES.TEXT,
       noYAxisGrid: true,
       noYAxisLabel: false,
       gridY: {
-        textMultiLineLabel: 'SP0\nMode\nLPM'
+        textMultiLineLabel: [et.spo, et.mode, et.lpm].join('\n')
       },
       gridX: {
         steps: values.length
@@ -350,7 +357,7 @@ export default class VitalModel {
         scalePoints.push({ spv: item })
     })
     const chartData = {
-      label: 'CVP (Central Venous Pressure)',
+      label: this.ehrText.cvp,
       dMin: min,
       dMax: max,
       gridY: {

@@ -4,19 +4,19 @@
     ehr-panel-content
       div(v-if="canEdit || isEditing", id='allergyPageForm', class="ehr-page-form")
         h2(class="headerClass")
-        div(style="display:inline") Allergies
+        div(style="display:inline") {{ehrText.customPages.allergies.title }}
         div
           <!--div isEditing {{ isEditing}} canEdit {{canEdit}}-->
           ui-button(v-on:buttonClicked="beginEdit", v-show="canEdit")
             fas-icon(icon="edit", class="icon-left")
-            span Edit form
+            span {{ ehrText.buttonLabelEditForm }}
           ui-button(v-on:buttonClicked="saveEdit", v-show="isEditing")
             fas-icon(icon="check-circle", class="icon-left")
-            span Save
+            span {{ ehrText.saveButtonLabel }}
           span(v-show="isEditing") &nbsp;
           ui-button(v-on:buttonClicked="cancelEdit", v-show="isEditing")
             fas-icon(icon="times-circle", class="icon-left")
-            span Cancel
+            span {{ ehrText.cancelButtonLabel }}
         allergies-n-k-a(:elementKey="nkaElemKey", :ehrHelp="ehrHelp", :viewOnly='!isEditing')
 
       ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp")
@@ -36,6 +36,7 @@ import EhrPageHelper from '../components/page/ehr-helper'
 import AllergiesNKA from '@/inside/custom/allergies/AllergiesNKA.vue'
 import StoreHelper from '@/helpers/store-helper'
 import EhrDataModel from '@/ehr-definitions/EhrDataModel'
+import { t18EhrText } from '@/helpers/ehr-t18'
 
 const PAGE_KEY = 'allergies'
 const TABLE_KEY = 'allergyList'
@@ -72,6 +73,7 @@ export default {
     }
   },
   computed: {
+    ehrText () { return t18EhrText()},
     nkaElem () {
       return EhrDefs.getPageChildElement(PAGE_KEY, NKA_KEY)
     },

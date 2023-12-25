@@ -2,7 +2,7 @@
   div
     zone-lms-page-banner
     zone-lms-instructions-header
-      p {{text.COURSES_PAGE_INTRO}}
+      p {{ehrText.COURSES_PAGE_INTRO}}
       p(v-if='isInstructor')
         span Click on the gears button &nbsp;
         fas-icon( class="fa", :icon="appIcons.configure")
@@ -21,7 +21,7 @@
           div(class='cell e-name')
             router-link(
               :to="{ name: 'course', query: { courseId: course._id }}",
-              :title='navText.GOTO_COURSE(course.title)',
+              :title='ehrTextFn.GOTO_COURSE(course.title)',
               class='router-item')
               fas-icon(class="fa", :icon="appIcons.course")
               span {{truncate(course.title, 40)}}
@@ -43,10 +43,10 @@ import ZoneLmsPageName from '@/outside/components/ZoneLmsPageName'
 import StoreHelper from '@/helpers/store-helper'
 import UiLink from '@/app/ui/UiLink.vue'
 import { APP_ICONS } from '@/helpers/app-icons'
-import { Text } from '@/helpers/ehr-text'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton.vue'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner.vue'
 import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
+import { t18EhrFunctions, t18EhrText } from '@/helpers/ehr-t18'
 export default {
   extends: OutsideCommon,
   components: {
@@ -59,15 +59,15 @@ export default {
   },
   data () {
     return {
-      appIcons: APP_ICONS,
-      text: Text.COURSE_PAGE,
-      navText: Text.INSTRUCTOR_TOOLS,
+      appIcons: APP_ICONS
     }
   },
   computed: {
+    ehrText () { return t18EhrText()},
+    ehrTextFn () { return t18EhrFunctions()} ,
     canDo () { return StoreHelper.isDevelopingContent() },
-    buttonText () { return this.canDo ? Text.COURSE_DIALOG.BUTTON_TEXT.EDIT: Text.COURSE_DIALOG.BUTTON_TEXT.VIEW},
-    toolTip () { return this.canDo ? Text.COURSE_DIALOG.TITLES.EDIT: Text.COURSE_DIALOG.TITLES.VIEW },
+    buttonText () { return this.canDo ? this.ehrText.COURSE_DIALOG.BUTTON_TEXT.EDIT: this.ehrText.COURSE_DIALOG.BUTTON_TEXT.VIEW},
+    toolTip () { return this.canDo ? this.ehrText.COURSE_DIALOG.TITLES.EDIT: this.ehrText.COURSE_DIALOG.TITLES.VIEW },
 
     currentCourseId () { return this.$store.getters['courseStore/courseId']},
     course () { return this.$store.getters['courseStore/course']},

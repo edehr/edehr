@@ -9,7 +9,7 @@
             th(v-if="showTableAction") &nbsp;
             th &nbsp;
             th(v-for="(tCell, cIndex) in rowTemplate", :key='cIndex', :class="tableColumnCss(tCell)")
-              span(v-html="tCell.tableLabel")
+              span(v-html="tableLabel(tCell)")
         tbody
           tr(v-for="(dRow, rIndex) in cTableData", :key='rIndex', :class='{draftRow : isDraft(dRow) }')
             td(v-if="showTableAction")
@@ -19,18 +19,19 @@
                 fas-icon(icon="notes-medical")
             td(class="table-actions")
               ui-button(v-if="!isDraft(dRow)", v-on:buttonClicked="viewReport(getIdFromRow(dRow))")
-                span View &nbsp;
+                span {{ehrText.viewButtonLabel}} &nbsp;
                 fas-icon(icon="file-pdf")
               ui-button(v-if="isDraft(dRow) && canEdit", v-on:buttonClicked="editDraft(getIdFromRow(dRow))")
-                span Resume &nbsp;
+                span {{ehrText.resumeButtonLabel}} &nbsp;
                 fas-icon(icon="edit")
               ui-button(v-else-if="canEditSeed(dRow)", v-on:buttonClicked="editSeedRow(getIdFromRow(dRow))")
-                span Edit &nbsp;
+                span {{ehrText.editButtonLabel}} &nbsp;
                 fas-icon(icon="edit")
 
             td(v-for="(cell, cIndex) in dRow", :key="cIndex", :class="tableCellCss(cell)",  v-if="!!cell.stack")
                 ehr-table-element(v-for="(cPart, pIndex) in cell.stack", v-if="!!cPart.value", :key='pIndex', :cell="cPart")
 </template>
+
 
 <script>
 import EhrTableCommon from './EhrTableCommon'
@@ -39,6 +40,7 @@ import UiButton from '@/app/ui/UiButton'
 import EhrTableActions from '@/inside/components/page/ehr-table-actions'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 import StoreHelper from '@/helpers/store-helper'
+import { t18EhrText, t18TableLabel } from '@/helpers/ehr-t18'
 
 export default {
   extends: EhrTableCommon,
@@ -48,8 +50,12 @@ export default {
     canEdit () {
       return this.ehrHelp._canEdit()
     },
+    ehrText () { return t18EhrText() }
   },
   methods: {
+    tableLabel (cell) {
+      return t18TableLabel(cell)
+    },
     tableActionLabel (sourceRowId) {
       return EhrTableActions.getTableActionLabel(this.tableDef, sourceRowId)
     },

@@ -1,12 +1,12 @@
 <template lang="pug">
   div
     tabs
-      tab(name="Vitals Graph", :selected="true")
+      tab(:name="ehrText.tabGraph", :selected="true")
         div(v-show="showTableAddButton")
-          ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
+          ui-button(v-on:buttonClicked="showDialog") {{ buttonLabel }}
         vitals-chart(v-bind:vitals="tableData", v-bind:vitalsModel="vitalsModel")
         ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
-      tab(name="Vitals Chart")
+      tab(:name="ehrText.tabChart")
         ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp")
 
 </template>
@@ -22,6 +22,7 @@ import EventBus, { PAGE_DATA_REFRESH_EVENT } from '../../../helpers/event-bus'
 import EhrDialogForm from '../page/EhrDialogForm.vue'
 import EhrPageTable from '../page/EhrPageTable'
 import EhrData from '@/inside/components/page/ehr-data'
+import { t18EhrText, t18TableAddButtonLabel } from '@/helpers/ehr-t18'
 
 export default {
   components: {
@@ -57,6 +58,8 @@ export default {
     }
   },
   computed: {
+    ehrText () { return t18EhrText().customPages.vitals },
+    buttonLabel () { return t18TableAddButtonLabel(this.tableDef)},
     errorList () { return this.ehrHelp.getErrorList(this.tableKey)  },
     pageData () { return EhrData.getMergedPageData(this.pageKey) },
     pageKey () { return this.ehrHelp.getPageKey() },
