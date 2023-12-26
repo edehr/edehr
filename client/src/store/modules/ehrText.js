@@ -1,4 +1,3 @@
-import { APP_LANGUAGE_EN, APP_LANGUAGE_FR } from '@/helpers/store-helper'
 
 // TODO translate the text in this file which are all function calls
 import { ehrTextFnEn } from '@/text/ehrTextFnEn'
@@ -19,6 +18,11 @@ import ehrOptionsSelectFr  from '@/text/fr/ehrOptionsSelectFr.json'
 
 import ehrTextEn from '@/text/en/ehrTextEn.json'
 import ehrTextFr from '@/text/fr/ehrTextFr.json'
+
+// import { APP_LANGUAGE_EN, APP_LANGUAGE_FR } from '@/helpers/store-helper'
+const APP_LANGUAGE_EN = 'en'
+const APP_LANGUAGE_FR = 'fr'
+
 /*
  */
 const state = {

@@ -77,7 +77,7 @@ export default {
         })
         menu.push({
           label: nt.NORMAL_ROLE,
-          toolTip: nr.NORMAL_ROLE_TOOLTIP,
+          toolTip: nt.NORMAL_ROLE_TOOLTIP,
           callback: () => StoreHelper.restoreAsInstructor(this.$router),
           icon: this.appIcons.course
         })
