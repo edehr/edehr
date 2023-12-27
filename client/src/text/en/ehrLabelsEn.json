@@ -1,6 +1,6 @@
 {
   "demographics": "Demographics",
-  "demographics.givenName": "First (preferred) name",
+  "demographics.givenName": "First name",
   "demographics.middleName": "Middle name(s)",
   "demographics.familyName": "Last name",
   "demographics.preferredName": "Preferred name",
