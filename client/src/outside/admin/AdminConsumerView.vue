@@ -30,7 +30,8 @@ export default {
   methods: {
     loadComponent: async function () {
       if (this.isAdmin) {
-        await StoreHelper.loadConsumer(this.consumerId)
+        await this.$store.dispatch('consumerStore/loadDetails', this.consumerId)
+        // await StoreHelper.loadConsumer(this.consumerId)
         // await StoreHelper.loadAssignmentAndSeedLists()
         await StoreHelper.loadUsersList(this.consumerId)
       }

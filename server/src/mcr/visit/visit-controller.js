@@ -81,7 +81,7 @@ export default class VisitController extends BaseController {
    * @param ltiReturnUrl - if LMS provides a return URL
    * @return {*}
    */
-  updateCreateVisit (user, toolConsumer, activityId, ltiRole, ltiReturnUrl) {
+  updateCreateVisit (user, toolConsumer, activityId, ltiRole, ltiReturnUrl, instructorAsStudent = false) {
     let role = new Role(ltiRole)
     let filter = {
       $and: [
@@ -112,6 +112,7 @@ export default class VisitController extends BaseController {
             role: role.asText(),
             isStudent: role.isStudent,
             isInstructor: role.isInstructor,
+            instructorAsStudent: instructorAsStudent,
             returnUrl: ltiReturnUrl
           }
           return Visit.create(data)
@@ -146,7 +147,8 @@ export default class VisitController extends BaseController {
     const returnUrl = visit.returnUrl
     const user = visit.user
     // debug('visitAsStudent user record', user)
-    const asStudentVisit = await this.updateCreateVisit(user, toolConsumer, activityId, 'student', returnUrl)
+    const instructorAsStudent = true
+    const asStudentVisit = await this.updateCreateVisit(user, toolConsumer, activityId, 'student', returnUrl, instructorAsStudent)
     // debug('visitAsStudent data', asStudentVisit)
     const instructorAsStudentPayload = Object.assign({}, instructorTokenData)
     instructorAsStudentPayload.isStudent = true

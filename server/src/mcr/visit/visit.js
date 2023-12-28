@@ -29,6 +29,7 @@ const VisitSchema = new mongoose.Schema({
   activityData: {type: ObjectId, ref: 'ActivityData'},
   isStudent: {type: Boolean, default: false},
   isInstructor: {type: Boolean, default: false},
+  instructorAsStudent: {type: Boolean, default: false},
   returnUrl: {type: String},
   simulationSignOn: { type: SignOn, default: {} },
   simulationDateTime: { type: SimDayTime, default: {} },

@@ -3,6 +3,9 @@ import { API_EVENT_BUS, API_CALL_EVENT } from '../../server/trace-api'
 import { logError} from '../../helpers/log-error'
 import Monitor from './monitor'
 import System from './system'
+import { cronRegisterHourTask } from '../../server/cronTask'
+import ConsumerController from '../consumer/consumer-controller'
+import Consumer from '../consumer/consumer'
 
 const metricData = {
 }
@@ -23,6 +26,7 @@ export default class MetricController {
     metricData.maxApi = ''
     metricData.points = {}
     metricData.monitor = {}
+    metricData.visitCounts = []
     API_EVENT_BUS.on(API_CALL_EVENT, (rec) => {
       try {
         this.monitor.apiEvent(rec)
@@ -31,6 +35,22 @@ export default class MetricController {
         logError(err)
       }
     })
+    cronRegisterHourTask(async () => {
+      await this.getVisitCounts()
+      console.log('Metric data updated visit counts', metricData.visitCounts)
+    })
+  }
+  async getVisitCounts () {
+    let consumers = await Consumer.find({})
+    let cc = new ConsumerController()
+    let counts = []
+    for (const consumer of consumers) {
+      let stats = await cc.recentVisitCounts(consumer._id)
+      stats.consumerKey = consumer.oauth_consumer_key
+      consumer.featureFlags ? stats.featureFlags = consumer.featureFlags : null
+      counts.push(stats)
+    }
+    metricData.visitCounts = counts
   }
 
   async getMetrics () {

@@ -8,6 +8,12 @@ import fs from 'fs'
 import { ObjectId } from 'mongodb'
 import SeedData from '../mcr/seed/seed-data'
 import Consumer from '../mcr/consumer/consumer'
+import { cronTaskInitialize } from './cronTask'
+
+// Initialize the singleton instance of the cron task manager.
+cronTaskInitialize()
+
+// cronRegisterMinuteTask(() => { console.log('test every minute cron task')})
 
 const debug = require('debug')('server')
 

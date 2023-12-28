@@ -14,6 +14,11 @@
       div(class="details-row")
         div(class="details-name") {{text.KEY}}
         div(class="details-value") {{consumer.oauth_consumer_key}}
+      div(class="details-row")
+        div(class="details-name") Recent visit counts
+        div(class="details-value") {{recentVisitCounts}}
+
+
       //div(class="details-row")
       //  div(class="details-name") {{text.SECRET}}
       //  div(class="details-value") {{consumer.oauth_consumer_secret}}
@@ -124,6 +129,7 @@ export default {
       return this.$store.getters['consumerStore/featureFlags']
     },
     showLabels () { return StoreHelper.isOutsideShowButtonLabels() },
+    recentVisitCounts () { return this.consumer.recentVisitCounts },
     users () { return this.consumer.users || [] },
   },
   methods: {
