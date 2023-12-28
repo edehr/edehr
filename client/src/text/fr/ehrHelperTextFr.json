@@ -39,12 +39,5 @@
   "hematology.PLT": "La numération plaquettaire",
   "hematology.MPV": "Volume de plaquette moyen",
   "hematology.cellCntNRBCs": "globules rouges nucléés",
-  "medLabUrinalysis.uchemSulfosalicylic": "Acide sulfosalicylique",
-  "testPage.pcheckbox": "une case à cocher iinput",
-  "testPage.defaultText": "une entrée de texte",
-  "testPage.p-cValue1": "une valeur calculée basée sur le sélectionnement «pselect1» sur cette page",
-  "testPage.t2": "une entrée de texte",
-  "testTable.pcheckbox": "une case à cocher iinput",
-  "testTable.defaultText": "une entrée de texte",
-  "testTable.p-cValue1": "une valeur calculée basée sur le sélectionnement «pselect1» sur cette page"
+  "medLabUrinalysis.uchemSulfosalicylic": "Acide sulfosalicylique"
 }

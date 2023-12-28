@@ -602,7 +602,7 @@
   "medicationOrders.profession": "Profession",
   "medicationOrders.day": "Day",
   "medicationOrders.time": "Time",
-  "medicationOrders.medication": "<a href=\\/assets/static-databases/drug.txt\\ target=\\_blank\\>Medication</a>",
+  "medicationOrders.medication": "Medication",
   "medicationOrders.dose": "Dose",
   "medicationOrders.route": "Route",
   "medicationOrders.startMeds": "Start day",
