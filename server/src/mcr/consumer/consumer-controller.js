@@ -113,7 +113,8 @@ export default class ConsumerController extends BaseController {
     const week = await this.recentVisitsStats(consumerId, (DAYS * 24 * 60 * 60 * 1000))
     DAYS = 1
     const day = await  this.recentVisitsStats(consumerId, (DAYS * 24 * 60 * 60 * 1000))
-    return { month, week, day}
+    const hour = await  this.recentVisitsStats(consumerId, (60 * 60 * 1000))
+    return { month, week, day, hour}
     // return { month: month, week: week, day: day}
   }
   async recentVisitsStats (consumerId, threshold) {
