@@ -79,6 +79,12 @@ export default class MetricController {
   recordApi (rec) {
     const N = 10
     const key = rec.key
+    if(key.includes('auth')) {
+      return
+    }
+    if(key.includes('admin')) {
+      return
+    }
     if (! metricData.points[key] ) {
       metricData.points[key] = {
         lastN: [],
@@ -93,7 +99,13 @@ export default class MetricController {
         slowInf: [],
       }
     }
-    this._recordApiCall(key, rec, N)
+    const elidedRec = {
+      key: rec.key,
+      elapsed: rec.elapsed,
+      status: rec.status,
+      tsStr: rec.tsStr,
+    }
+    this._recordApiCall(key, elidedRec, N)
     metricData.maxApi = this.findMax(metricData.points)
     metricData.last= Date.now()
     metricData.lastDate= (new Date()).toISOString()

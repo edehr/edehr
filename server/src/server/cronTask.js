@@ -14,10 +14,10 @@ var cron = require('node-cron')
 */
 
 const byMinuteTasks = [
-  () => { console.log('running EVERY MINUTE TASKS') }
+  // () => { console.log('running EVERY MINUTE TASKS') }
 ]
 const byHourTasks = [
-  () => { console.log('running EVERY HOUR TASKS') }
+  // () => { console.log('running EVERY HOUR TASKS') }
 ]
 
 function everyMinuteTasks () {
