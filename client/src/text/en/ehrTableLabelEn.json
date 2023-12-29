@@ -289,6 +289,8 @@
   "hematology.cellCntPromyeloAbs": "Absolute",
   "hematology.cellCntBlast": "Blast",
   "hematology.cellCntBlastAbs": "Absolute",
+  "hematology.cellCntReactiveLymphs": "Reactive Lymphocyte",
+  "hematology.cellCntReactiveLymphsAbs": "Absolute",
   "hematology.cellCntOther": "Other",
   "hematology.cellCntOtherAbs": "Absolute",
   "hematology.cellCntOtherSpecify": "Specify",

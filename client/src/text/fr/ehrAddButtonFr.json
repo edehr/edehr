@@ -14,7 +14,7 @@
   "fluidBalance.fluidInOutTable": "Ajouter un enregistrement fluide",
   "fluidBalance.table": "Ajouter un enregistrement de liquide dans / out",
   "neurological.table": "Ajouter une évaluation neurologique",
-  "neurological.strokeAssessmentTable": "Ajouter une évaluation des AVC",
+  "neurological.strokeAssessmentTable": "Ajouter une évaluation de l'AVC",
   "neurological.del_table": "Ajouter une évaluation des risques",
   "neurological.cam_table": "Ajouter une évaluation de confusion",
   "respiratory.table": "Ajouter une évaluation respiratoire",
@@ -64,8 +64,5 @@
   "labResults.labResultUrine": "Créer un rapport de laboratoire urinaire",
   "diagnosticCodes.table": "Ajouter un code de diagnostic",
   "interventionCodes.table": "Ajouter un code d'intervention",
-  "caseMixGroup.table": "Ajouter un groupe de mixage de cas",
-  "testPage.table1": "Ajouter une ligne à la table de test",
-  "testTable.table1": "Ajouter une ligne à la table de test",
-  "testTable.stacked": "Ajouter une ligne empilée"
+  "caseMixGroup.table": "Ajouter un groupe de mixage de cas"
 }

@@ -16,6 +16,9 @@
       div(class='kvpair')
         div(class='key') Secret
         div(class='value') {{ consumer.oauth_consumer_secret }} To Do add getter for this
+      div(class="kvpair")
+        div(class="key") Recent visit counts
+        div(class="value") {{consumer.recentVisitCounts}}
       div(class='kvpair')
         div(class='key') Created / Updated
         div(class='value') {{ consumer.createDate }} / {{ consumer.lastUpdateDate }}

@@ -116,7 +116,7 @@ $indicator-color: $grey10;
 }
 .linkLabel:hover {
   //transform-origin: top left;
-  transform:  translate(35px, 0px)  scale(1.25);
+  transform:  translate(30px, 2px)  scale(1.25);
 }
 
 a:hover {
@@ -164,7 +164,7 @@ a:hover {
     &__level1 {
       color: $nav-color-level1;
       background-color: $nav-level1;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
 
       & a {
         color: $nav-color-level1;

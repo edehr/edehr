@@ -104,8 +104,8 @@
   "resumeButtonLabel": "Resume",
   "saveButtonLabel": "Save",
   "saveDialogAsDraftButtonLabel": "Save as draft",
-  "saveDialogButtonLabel": "Verify this assessment is correct",
-  "saveDialogVerifyTitle": "Verify",
+  "saveDialogButtonLabel": "Verify",
+  "saveDialogVerifyTitle": "Verify this record is correct",
   "searchButtonLabel": "Search",
   "signInButtonLabel": "Sign in",
   "signInNameLabel": "Name",
@@ -178,7 +178,34 @@
     "instruction2": "to view the course configuration.",
     "instruction3": "Enable 'Course designer mode' to edit the configuration."
   },
-  "COURSE_DIALOG": {"TITLES":{"edit":"Edit course properties","view":"View course properties"},"BUTTON_TEXT":{"EDIT":"Edit course","VIEW":"View properties"},"ERRORS":{"NAME_REQUIRED":"Course name is required"},"LABELS":{"NAME":"Course name","ID":"LMS course id","TITLE":"LMS course name","DESCRIPTION":"Course description","LMS_DESCRIPTION":"LMS course description","TYPE":"LMS Type","CANCEL_BUTTON_VIEW_MODE":"Close","CANCEL_BUTTON_EDIT_MODE":"Cancel"},"DESCRIPTIONS":{"ID":"Internal id of the course within the learning management system","TITLE":"This is the course name that your learning management system provided.","DESCRIPTION":"Course description.","LMS_DESCRIPTION":"Course description as provided by the learning management system.","TYPE":"Course type as provided by the learning management system."}}
-
-
+  "COURSE_DIALOG": {
+    "TITLES": {
+      "edit": "Edit course properties",
+      "view": "View course properties"
+    },
+    "BUTTON_TEXT": {
+      "EDIT": "Edit course",
+      "VIEW": "View properties"
+    },
+    "ERRORS": {
+      "NAME_REQUIRED": "Course name is required"
+    },
+    "LABELS": {
+      "NAME": "Course name",
+      "ID": "LMS course id",
+      "TITLE": "LMS course name",
+      "DESCRIPTION": "Course description",
+      "LMS_DESCRIPTION": "LMS course description",
+      "TYPE": "LMS Type",
+      "CANCEL_BUTTON_VIEW_MODE": "Close",
+      "CANCEL_BUTTON_EDIT_MODE": "Cancel"
+    },
+    "DESCRIPTIONS": {
+      "ID": "Internal id of the course within the learning management system",
+      "TITLE": "This is the course name that your learning management system provided.",
+      "DESCRIPTION": "Course description.",
+      "LMS_DESCRIPTION": "Course description as provided by the learning management system.",
+      "TYPE": "Course type as provided by the learning management system."
+    }
+  }
 }

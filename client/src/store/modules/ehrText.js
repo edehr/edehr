@@ -16,9 +16,11 @@ import ehrHelperTextFr from '@/text/fr/ehrHelperTextFr.json'
 import ehrOptionsChecksetFr  from '@/text/fr/ehrOptionsChecksetFr.json'
 import ehrOptionsSelectFr  from '@/text/fr/ehrOptionsSelectFr.json'
 
-import ehrTextEn from '@/text/en/ehrTextEn.json'
+// ehrTextEn-Master.json is the primary source for en text not associated with EHR content
+import ehrTextEn from '@/text/ehrTextEn-Master.json'
 import ehrTextFr from '@/text/fr/ehrTextFr.json'
 
+// directly define these constants here to avoid something strange when app is built
 // import { APP_LANGUAGE_EN, APP_LANGUAGE_FR } from '@/helpers/store-helper'
 const APP_LANGUAGE_EN = 'en'
 const APP_LANGUAGE_FR = 'fr'

@@ -105,19 +105,53 @@ export default class ConsumerController extends BaseController {
         return response
       })
   }
+
+  async recentVisitCounts (consumerId) {
+    let DAYS = 30
+    const month = await this.recentVisitsStats(consumerId, (DAYS * 24 * 60 * 60 * 1000))
+    DAYS = 7
+    const week = await this.recentVisitsStats(consumerId, (DAYS * 24 * 60 * 60 * 1000))
+    DAYS = 1
+    const day = await  this.recentVisitsStats(consumerId, (DAYS * 24 * 60 * 60 * 1000))
+    return { month, week, day}
+    // return { month: month, week: week, day: day}
+  }
+  async recentVisitsStats (consumerId, threshold) {
+    // req.consumerKey
+    const dThreshold = new Date((new Date().getTime() - threshold))
+    let recentVisits = await Visit.find(
+      {
+        $and: [
+          { lastVisitDate: { $gte: dThreshold } },
+          { toolConsumer: { $eq: consumerId }}
+        ]
+      },
+      {lastVisitDate: 1, consumerKey: 1, isStudent: 1, user: 1, instructorAsStudent : 1}
+    )
+      .populate('activityData', 'submitted evaluationData lastDate')
+    const studentVisits = recentVisits.filter( v => v.isStudent && !v.instructorAsStudent)
+    const total = recentVisits.length
+    const student = studentVisits.length
+    return  {
+      total: total,
+      student: student,
+      instructor: total - student
+    }
+  }
+
   async getDetails (id, req) {
     if (!id || id === 'undefined') {
       throw new ParameterError(Text.REQUIRES_CONSUMER_ID)
     }
+    const isAdmin = isAdminRequest(req)
     const authPayload = req.authPayload
-    if (authPayload.toolConsumerId !== id) {
+    if (!isAdmin && authPayload.toolConsumerId !== id) {
       logError('Attempt to get details about a consumer the user is not authorized to see. User can access', authPayload.toolConsumerId,'. Requested to see', id)
       throw new NotAllowedError(Text.NOT_AUTH_TO_SEE_CONSUMER)
     }
     if (!authPayload.isInstructor) {
       throw new NotAllowedError(Text.MUST_BE_INSTRUCTOR)
     }
-    const isAdmin = isAdminRequest(req)
     // use the .lean() option to get a plain object we can add properties to
     let consumer = await this.baseFindOneQuery(id).lean()
     try {
@@ -129,6 +163,8 @@ export default class ConsumerController extends BaseController {
       consumer.visitStudentCount = visitStudents.length
       consumer.lastStudentVisit = ''
       consumer.lastStudentReturnUrl = ''
+      consumer.recentVisitCounts = await this.recentVisitCounts(consumerId)
+      // console.log('----- consumer.recentVisitCounts', consumer.recentVisitCounts)
       // console.log('visitStudents',JSON.stringify(visitStudents, null ,2))
       if (visitStudents.length > 0) {
         let mostRecent = visitStudents.sort((a, b) => b.lastVisitDate - a.lastVisitDate)[0]
