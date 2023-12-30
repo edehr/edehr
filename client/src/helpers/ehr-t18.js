@@ -7,6 +7,9 @@ export async function t18SetFrench () {
 export async function t18SetEnglish () {
   await store.dispatch('ehrText/setEhrLanguageEnglish')
 }
+export async function t18SetSpanish () {
+  await store.dispatch('ehrText/setEhrLanguageSpanish')
+}
 
 export function t18EhrText () {
   return store.getters['ehrText/ehrText']
