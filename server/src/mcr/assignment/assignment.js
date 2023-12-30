@@ -23,7 +23,8 @@ const Schema = new mongoose.Schema({
   },
   mPatientFilterTag: { type: String},
   createDate: { type: Date, default: Date.now },
-  lastUpdateDate: { type: Date, default: Date.now }
+  lastUpdateDate: { type: Date, default: Date.now },
+  oId: {type: String}
 }, {
   toObject: { virtuals: true },
   toJSON: { virtuals: true },

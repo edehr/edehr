@@ -30,6 +30,7 @@ const Schema = new mongoose.Schema(
       enum : APP_TYPES,
       default: APP_TYPE_EHR
     },
+    oId: {type: String},
   }, {
     toObject: { virtuals: true },
     toJSON: { virtuals: true },

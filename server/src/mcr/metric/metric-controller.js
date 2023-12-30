@@ -37,7 +37,7 @@ export default class MetricController {
     })
     cronRegisterHourTask(async () => {
       await this.getVisitCounts()
-      console.log('Metric data updated visit counts', metricData.visitCounts)
+      // console.log('Metric data updated visit counts', metricData.visitCounts)
     })
   }
   async getVisitCounts () {

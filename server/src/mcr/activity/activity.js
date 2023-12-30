@@ -33,6 +33,7 @@ const Schema = new mongoose.Schema({
   assignment: { type: ObjectId, ref: 'Assignment' }, // empty until instructor links assignment to activity
   createDate: { type: Date, default: Date.now },
   lastDate: { type: Date, default: Date.now },
+  oId: {type: String},
   visitors: [ {
     visitId: { type: ObjectId, ref: 'Visit' },
     visitDate: { type: Date, default: Date.now },

@@ -34,7 +34,8 @@ const VisitSchema = new mongoose.Schema({
   simulationSignOn: { type: SignOn, default: {} },
   simulationDateTime: { type: SimDayTime, default: {} },
   createDate: {type: Date, default: Date.now},
-  lastVisitDate: {type: Date, default: Date.now}
+  lastVisitDate: {type: Date, default: Date.now},
+  oId: {type: String}
 })
 
 VisitSchema.post('save', function (doc) {
