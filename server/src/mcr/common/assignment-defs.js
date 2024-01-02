@@ -210,5 +210,5 @@ export const activitySimExpo2023 = {
   },
   seedDef: simExpo2023.caseStudy,
   resource_link_title: `${simExpo2023.name}`,
-  resource_link_description: 'This activity is suitable as an introduction to EHR for students.',
+  resource_link_description: 'This activity demonstrates the use of Escape Rooms as a means to orientate students to an EHR system.',
 }

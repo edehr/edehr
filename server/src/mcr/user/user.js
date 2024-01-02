@@ -10,7 +10,8 @@ const Schema = new mongoose.Schema({
   familyName: { type: String },
   fullName: { type: String },
   createDate: {type: Date, default: Date.now},
-  lastUpdateDate: { type: Date, default: Date.now }
+  lastUpdateDate: { type: Date, default: Date.now },
+  oId: {type: String}
 })
 
 Schema.post('save', function (doc) {

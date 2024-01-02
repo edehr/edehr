@@ -16,14 +16,23 @@ import ehrHelperTextFr from '@/text/fr/ehrHelperTextFr.json'
 import ehrOptionsChecksetFr  from '@/text/fr/ehrOptionsChecksetFr.json'
 import ehrOptionsSelectFr  from '@/text/fr/ehrOptionsSelectFr.json'
 
+import ehrLabelsEs from '@/text/es/ehrLabelsEs.json'
+import ehrAddButtonEs from '@/text/es/ehrAddButtonEs.json'
+import ehrTableLabelEs from '@/text/es/ehrTableLabelEs.json'
+import ehrHelperTextEs from '@/text/es/ehrHelperTextEs.json'
+import ehrOptionsChecksetEs  from '@/text/es/ehrOptionsChecksetEs.json'
+import ehrOptionsSelectEs  from '@/text/es/ehrOptionsSelectEs.json'
+
 // ehrTextEn-Master.json is the primary source for en text not associated with EHR content
 import ehrTextEn from '@/text/ehrTextEn-Master.json'
+import ehrTextEs from '@/text/es/ehrTextEs.json'
 import ehrTextFr from '@/text/fr/ehrTextFr.json'
 
 // directly define these constants here to avoid something strange when app is built
 // import { APP_LANGUAGE_EN, APP_LANGUAGE_FR } from '@/helpers/store-helper'
 const APP_LANGUAGE_EN = 'en'
 const APP_LANGUAGE_FR = 'fr'
+const APP_LANGUAGE_ES = 'es'
 
 /*
  */
@@ -61,10 +70,22 @@ const actions = {
   setEhrLanguageFrench ( context ) {
     context.commit('_setEhrLanguage', APP_LANGUAGE_FR)
   },
+  setEhrLanguageSpanish ( context ) {
+    context.commit('_setEhrLanguage', APP_LANGUAGE_ES)
+  },
 }
 
 function setText (state) {
   switch (state.ehrLanguage) {
+  case APP_LANGUAGE_ES:
+    state.ehrText = ehrTextEs
+    state.ehrLabels = ehrLabelsEs
+    state.ehrAddButton = ehrAddButtonEs
+    state.ehrOptionsCheckset = ehrOptionsChecksetEs
+    state.ehrOptionsSelect = ehrOptionsSelectEs
+    state.ehrTableLabel = ehrTableLabelEs
+    state.ehrHelperText = ehrHelperTextEs
+    break
   case APP_LANGUAGE_FR:
     state.ehrText = ehrTextFr
     state.ehrLabels = ehrLabelsFr

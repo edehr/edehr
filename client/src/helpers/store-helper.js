@@ -18,6 +18,7 @@ export const APP_TYPE_LIS = 'LIS'
 
 export const APP_LANGUAGE_EN = 'en'
 export const APP_LANGUAGE_FR = 'fr'
+export const APP_LANGUAGE_ES = 'es'
 
 /*
 https://softwareengineering.stackexchange.com/a/247277/346750

@@ -23,6 +23,7 @@ const Schema = new mongoose.Schema({
   submitted: { type: Boolean, default: false},
   createDate: {type: Date, default: Date.now},
   lastDate: {type: Date, default: Date.now},
+  oId: {type: String}
 }, {
   toObject: { virtuals: true },
   toJSON: { virtuals: true }

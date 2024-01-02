@@ -1,0 +1,209 @@
+{
+  "Current visit": "Visita actual",
+  "Patient chart": "Tabla de paciente",
+  "External resources": "Recursos externos",
+  "History": "Historia",
+  "Patient profile": "Perfil de paciente",
+  "customPages": {
+    "allergies": {
+      "title": "Alergias"
+    },
+    "discharge": {
+      "noOrders": "Sin pedidos",
+      "referral": {
+        "title": "Referencias",
+        "desc": "Referencias a otras profesiones"
+      },
+      "lab": {
+        "title": "Solicitudes de alta",
+        "desc": "Solicitudes de laboratorio que aún no se han completado"
+      },
+      "meds": {
+        "title": "Descarga rx",
+        "desc": "Órdenes de medicación"
+      },
+      "mar": {
+        "title": "Medicamentos administrados mientras están en cuidado",
+        "desc": "Registros de administración de medicamentos"
+      },
+      "orders": {
+        "title": "Órdenes de descarga",
+        "desc": "Órdenes de no medicación que no se completan"
+      },
+      "procedures": {
+        "title": "Procedimientos y tratamiento",
+        "desc": "Órdenes de no medicación que se completan"
+      }
+    },
+    "fluidBalance": {
+      "inputs": "Insumos diarios",
+      "outputs": "Salidas diarias",
+      "cumulative": "Acumulativo diario",
+      "overall": "Acumulativo sobre todo:",
+      "today": "Hoy",
+      "yesterday": "Ayer"
+    },
+    "mar": {
+      "tabNameMar": "MAR",
+      "tabNameTable": "Mesa de mar",
+      "medReason": "Razón:",
+      "medInstructions": "Instrucciones:"
+    },
+    "vitals": {
+      "bloodPressure": "Presión arterial/pulso",
+      "bloodGlugose": "Glucosa en sangre MMOL/L",
+      "cvp": "CVP (presión venosa central)",
+      "diastolic": "Diastólico",
+      "lpm": "LPM",
+      "mode": "Modo",
+      "pulseRate": "La frecuencia del pulso",
+      "oxygen": "Saturación de oxígeno",
+      "respiratory": "La frecuencia respiratoria",
+      "spo": "SP0",
+      "systolic": "Sistólico",
+      "tabGraph": "Gráfico vital",
+      "tabChart": "Gráfico vital",
+      "temperature": "Temperatura"
+    }
+  },
+  "buttonLabelEditForm": "Formulario de edición",
+  "buttonLabelOpen": "Abierto",
+  "buttonLabelResetForm": "Restablecer sus datos de formulario",
+  "cancelButtonLabel": "Cancelar",
+  "cancelDialogExitDialogLabel": "Confirmar cancelar",
+  "cancelDialogReturnToEditLabel": "Volver a editar",
+  "confirmDialogResetFormDataBody": "¿Estás seguro de que quieres restablecer los datos? Esto eliminará sus datos en este formulario o tabla y no puede deshacer esta acción.",
+  "confirmDialogResetFormDataTitle": "Restablecer datos de formulario",
+  "correctFollowingErrors": "Corrija los siguientes errores:",
+  "editButtonLabel": "Editar",
+  "ehrDialogCancelButtonVEdit": "Cancelar",
+  "ehrDialogCancelButtonViewOnly": "Cerca",
+  "English": "Inglés",
+  "French": "Francés",
+  "Spanish": "Español",
+  "instructionsFixErrors": "Corrige los siguientes errores.",
+  "medicationPlaceholder": "Medicamento",
+  "mustSignIn": "Debe simular la sesión antes de poder acceder a los registros de pacientes. Ingrese un nombre y profesión arriba y presione el botón 'Iniciar sesión'. (Esto es solo una simulación, por lo que no necesita una contraseña).",
+  "patientBannerAllergies": "Alergias",
+  "patientBannerCodeStatus": "Estado del código",
+  "patientBannerDiagnosis": "Diagnóstico",
+  "patientBannerDob": "DoB",
+  "patientBannerGender": "Género",
+  "patientBannerLocation": "Ubicación",
+  "patientBannerMrn": "MRN",
+  "patientBannerPHN": "PHN",
+  "patientBannerRisks": "Riesgos",
+  "patientBannerWeight": "Peso",
+  "patientSearchButtonLabel": "Buscar",
+  "patientSearchIntro": "Para encontrar un paciente, debe proporcionar un MRN de paciente o parte del nombre de un paciente. Luego presione Entrar o presione el botón de búsqueda.",
+  "patientSearchLabelMrn": "Ingrese un MRN de paciente",
+  "patientSearchLabelName": "O ingrese parte del nombre de un paciente",
+  "patientSearchNoMatches": "No hay resultados",
+  "patientSearchTitle": "Buscar al paciente",
+  "practitionerPlaceholder": "Miembro del equipo de atención",
+  "professionPlaceholder": "Profesión",
+  "resumeButtonLabel": "Reanudar",
+  "saveButtonLabel": "Ahorrar",
+  "saveDialogAsDraftButtonLabel": "Guardar como borrador",
+  "saveDialogButtonLabel": "Verificar esta evaluación es correcta",
+  "saveDialogVerifyTitle": "Verificar",
+  "searchButtonLabel": "Buscar",
+  "signInButtonLabel": "Iniciar sesión",
+  "signInNameLabel": "Nombre",
+  "signInProfessionLabel": "Profesión",
+  "signOutButtonLabel": "desconectar",
+  "simDayAndTimeHelperText": "Un EHR real proporciona el día y la hora del registro automáticamente, pero en una simulación debe proporcionarlos para reflejar cuándo el \"usuario\" está haciendo el registro.",
+  "simulationDayTime": "Esta es la visita simulada día y hora, y el día es el día \\ \"Día donde el día 0 es el primer día que su paciente llegó al hospital. Estos valores de simulación reflejan una visita al hospital. En la configuración de la comunidad, esta fecha podría reflejar el día del primer contacto \".",
+  "simulationDayTimeDay": "Fecha",
+  "simulationDayTimeTime": "Tiempo",
+  "simulationDayTimeTitle": "Tiempo de simulación",
+  "simulationDayTimeToolTip": "Cambiar el tiempo de simulación",
+  "studentBannerActivityInstructionsTitle": "Instrucciones:",
+  "studentBannerActivityLabel": "Nombre de la actividad:",
+  "studentBannerFeedbackBlocked": "La retroalimentación está bloqueada",
+  "studentBannerInstructorsFeedback": "Comentarios del instructor:",
+  "studentBannerSubmitText": "Envíe su trabajo para que su instructor pueda proporcionar comentarios.",
+  "submitActivityButtonLabel": "Enviar actividad",
+  "submitButtonLabel": "Entregar",
+  "submitConfirmBody": "Proceda a enviar su trabajo a su instructor o cancelar.",
+  "submitConfirmTitle": "Confirmar o cancelar",
+  "submitToolTip": "Termine su trabajo y envíe a su instructor para evaluar.",
+  "submitWarnHasDraft": "Advertencia. Su trabajo contiene borradores de informes",
+  "viewButtonLabel": "Vista",
+  "zoneLmsNav": {
+    "ACTIVITY": "Actividad",
+    "COURSES_LABEL": "Cursos",
+    "COURSES_NAV_LABEL": "Todos los cursos",
+    "COURSES_TOOLTIP": "Vea todos sus cursos y sus actividades",
+    "GOTO_COURSE": "Ir al curso:",
+    "GOTO_ACTIVITY": "Ir a la actividad:",
+    "DESIGNER_MODE_LABEL": "Modo de diseñador de cursos",
+    "DESIGNER_MODE_EXPLAIN": "Como instructor, puede promocionarse para el papel de Content Creator si desea administrar el contenido.",
+    "EXIT_LABEL": "Salir a LMS",
+    "EXIT_TOOLTIP": "Regrese al sistema de gestión de aprendizaje de su escuela",
+    "LMS_LABEL": "LMS",
+    "LMS_TOOLTIP": "Detalles sobre el Sistema de Gestión de Aprendizaje (LMS) también llamado LTI Consumer",
+    "LOBJ_LABEL": "Objetos de aprendizaje",
+    "LOBJ_TOOLTIP": "Los objetos de aprendizaje proporcionan el contenido de EHR y configure la simulación",
+    "FILE_LABEL": "Archivos para estudios de casos",
+    "FILE_TOOLTIP": "Archivos que se pueden usar en estudios de casos de EHR.",
+    "SEED_LIST_LABEL": "Estudios de caso",
+    "SEED_LIST_TOOLTIP": "Ehr Seeds (datos de estudio de caso de simulación)",
+    "NORMAL_ROLE": "Volver a mi papel normal",
+    "NORMAL_ROLE_TOOLTIP": "Salga de la vista como papel estudiantil."
+  },
+  "activityPage": {
+    "course": "Curso",
+    "feedbackLabel": "Comentario",
+    "feedbackExplained": "Después de enviar su trabajo, su instructor puede revisar su trabajo y ofrecer comentarios (que pueden incluir la calificación).",
+    "instructionsLabel": "Instrucciones de los estudiantes",
+    "feedbackViewingBlocked": "La visualización de retroalimentación está bloqueada",
+    "noFeedbackYet": "(Ningún instructor ha proporcionado retroalimentación).",
+    "instructionsExplained": "Las anteriores son las instrucciones que su instructor le proporcionó con respecto a esta actividad. Póngase en contacto con su instructor si tiene alguna pregunta sobre las instrucciones.",
+    "submitted": "Enviado",
+    "openToEdit": "Abierto para editar",
+    "instructions": "Sus instructores han creado un enlace en su sistema de gestión de aprendizaje (LMS) que está configurado para conectarse a esta actividad de Edehr. Ya ha visto el área de gráficos y tal vez ya haya enviado su trabajo. Puede volver a la aplicación de gráficos con el botón de arriba.",
+    "scratchPad": "Almohadilla",
+    "scratchPadExplained": "Mientras trabaja en el área de los gráficos, puede mantener notas privadas en el \\ scratch Pad \\ \". Solo usted puede verlas\".",
+    "datesLabel": "fechas",
+    "dateLabelCreated": "Fecha de creacion",
+    "dateLabelUpdated": "Fecha actualizada"
+  },
+  "COURSE_PAGE": {
+    "COURSE_PAGE_INTRO": "Esta página enumera todas las actividades con las que ha trabajado para el curso seleccionado. Haga clic en un nombre de actividad para ver sus detalles.",
+    "COURSES_PAGE_INTRO": "Esta página enumera todos los cursos con contenido de Edehr con el que ha trabajado. Haga clic en un nombre de curso para ver sus actividades.",
+    "DESCRIPTION": "Descripción",
+    "ACTIVITY_STUDENT_SELECT_NAV": "Haga clic en un nombre de actividad para ver detalles sobre la actividad o haga clic en el botón 'Ir a EHR' para ingresar la aplicación de gráficos.",
+    "ACTIVITY_INSTRUCTOR_SELECT_NAV": "Haga clic en un nombre de actividad para ver sus detalles."
+  },
+  "COURSE_DIALOG": {
+    "TITLES": {
+      "edit": "Editar propiedades del curso",
+      "view": "Ver propiedades del curso"
+    },
+    "BUTTON_TEXT": {
+      "EDIT": "Curso de edición",
+      "VIEW": "Ver propiedades"
+    },
+    "ERRORS": {
+      "NAME_REQUIRED": "Se requiere el nombre del curso"
+    },
+    "LABELS": {
+      "NAME": "Nombre del curso",
+      "ID": "ID de curso LMS",
+      "TITLE": "Nombre del curso LMS",
+      "DESCRIPTION": "Descripción del curso",
+      "LMS_DESCRIPTION": "Descripción del curso LMS",
+      "TYPE": "Tipo de LMS",
+      "CANCEL_BUTTON_VIEW_MODE": "Cerca",
+      "CANCEL_BUTTON_EDIT_MODE": "Cancelar"
+    },
+    "DESCRIPTIONS": {
+      "ID": "ID interna del curso dentro del sistema de gestión de aprendizaje",
+      "TITLE": "Este es el nombre del curso que proporcionó su sistema de gestión de aprendizaje.",
+      "DESCRIPTION": "Descripción del curso.",
+      "LMS_DESCRIPTION": "Descripción del curso Proporcionada por el sistema de gestión de aprendizaje.",
+      "TYPE": "Tipo de curso proporcionado por el sistema de gestión de aprendizaje."
+    }
+  }
+}

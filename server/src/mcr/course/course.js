@@ -15,7 +15,8 @@ const Schema = new mongoose.Schema({
   custom_description: { type: String }, // user supplied override to context_label
   skillsAssessmentActivities: [{ type : ObjectId, ref: 'Activity' }],
   createDate: {type: Date, default: Date.now},
-  lastDate: {type: Date, default: Date.now}
+  lastDate: {type: Date, default: Date.now},
+  oId: {type: String}
 }, {
   toObject: { virtuals: true },
   toJSON: { virtuals: true }

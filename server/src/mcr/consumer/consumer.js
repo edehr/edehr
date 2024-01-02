@@ -13,7 +13,8 @@ const Schema = new mongoose.Schema({
   tool_consumer_instance_guid: {type: String},
   tool_consumer_instance_name: {type: String},
   createDate: {type: Date, default: Date.now},
-  lastUpdateDate: {type: Date, default: Date.now}
+  lastUpdateDate: {type: Date, default: Date.now},
+  oId: {type: String},
 })
 
 Schema.plugin(uniqueValidator)
