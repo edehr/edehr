@@ -1,7 +1,7 @@
 import EhrTypes from '@/ehr-definitions/ehr-types'
 import StoreHelper from '@/helpers/store-helper'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
-import { t18EhrText } from '@/helpers/ehr-t18'
+import { t18EhrText, t18TableActionLabel } from '@/helpers/ehr-t18'
 // import * as assert from 'assert'
 
 const ehrPages = new EhrPages()
@@ -30,7 +30,7 @@ export default class EhrTableActions {
   static getTableActionLabel (tableDef, sourceRowId) {
     // console.log('getTableActionLabel', tableDef)
     const draftRowIndex = this.getTableActionGetDraftRowIndex(tableDef, sourceRowId)
-    return draftRowIndex >= 0 ? 'Resume' : tableDef.tableActionLabel
+    return draftRowIndex >= 0 ? 'Resume' : t18TableActionLabel(tableDef)
   }
 
   static getTableActionTargetElementKey (tableDef) {

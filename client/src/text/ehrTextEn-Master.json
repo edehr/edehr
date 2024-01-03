@@ -147,6 +147,8 @@
     "LOBJ_TOOLTIP": "Learning objects provide the EHR content and set up the simulation",
     "FILE_LABEL": "Files for case studies",
     "FILE_TOOLTIP": "Files that can be used in EHR case studies.",
+    "SCRATCH_PAD": "Notepad",
+    "SCRATCH_PAD_TOOLTIP": "Your private area for taking notes.",
     "SEED_LIST_LABEL": "Case studies",
     "SEED_LIST_TOOLTIP": "EHR seeds (simulation case study data)",
     "NORMAL_ROLE": "Return to my normal role",

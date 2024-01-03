@@ -3,7 +3,7 @@
     div(v-if="showTableAddButton")
       ui-button(v-on:buttonClicked="showDialog") {{ buttonLabel }}
     div
-      h2(v-show="tableDef.label") {{tableLabel}}
+      h2(v-show="tableLabel") {{tableLabel}}
       ehr-table-vertical(
         v-if="isVertical",
         :ehrHelp="ehrHelp",
@@ -45,7 +45,7 @@ import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import EhrData from '@/inside/components/page/ehr-data'
 import EhrTableDraft from '@/inside/components/page/ehr-table-draft'
 import { makeHumanTableCell } from '@/ehr-definitions/ehr-def-utils'
-import { t18ElementLabel, t18TableAddButtonLabel, t18TableLabel } from '@/helpers/ehr-t18'
+import { t18ElementLabel, t18TableActionLabel, t18TableAddButtonLabel, t18TableLabel } from '@/helpers/ehr-t18'
 export default {
   components: {
     EhrTableStacked,
@@ -130,7 +130,7 @@ export default {
       return this.tableDef.tableKey
     },
     resetToolTip () {
-      return `Reset your ${this.tableDef.label} data`
+      return `Reset your ${this.tableLabel} data`
     },
     isVertical () {
       let isVert = this.tableDef.form.formOption === 'transpose'
@@ -141,7 +141,7 @@ export default {
       return ! this.isVertical
     },
     showTableAddButton () {
-      return this.ehrHelp.showTableAddButton() && this.tableDef.addButtonText !== 'NONE'
+      return this.ehrHelp.showTableAddButton() && t18TableAddButtonLabel(this.tableDef) !== 'NONE'
     },
     errorList () {
       return this.ehrHelp.getErrorList(this.tableKey)
@@ -166,7 +166,7 @@ export default {
     },
     clearAllData () {
       const TEXT = {
-        TITLE:  'Clear ' + this.tableDef.label + ' data',
+        TITLE:  'Clear ' + this.tableLabel + ' data',
         MSG: 'This action will clear the data you have added to this table. Are you sure you want to delete your data in the table? This can not be undone.'
       }
       this.$refs.confirmDialog.showDialog(TEXT.TITLE, TEXT.MSG)

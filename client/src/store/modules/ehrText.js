@@ -5,6 +5,7 @@ import { ehrTextFnEn } from '@/text/ehrTextFnEn'
 import ehrLabelsEn  from '@/text/en/ehrLabelsEn.json'
 import ehrAddButtonEn from '@/text/en/ehrAddButtonEn.json'
 import ehrTableLabelEn from '@/text/en/ehrTableLabelEn.json'
+import ehrTableActionLabelEn from '@/text/en/ehrTableActionLabelEn.json'
 import ehrHelperTextEn from '@/text/en/ehrHelperTextEn.json'
 import ehrOptionsChecksetEn  from '@/text/en/ehrOptionsChecksetEn.json'
 import ehrOptionsSelectEn  from '@/text/en/ehrOptionsSelectEn.json'
@@ -45,6 +46,7 @@ const state = {
   ehrAddButton: ehrAddButtonEn,
   ehrHelperText: ehrHelperTextEn,
   ehrTableLabel: ehrTableLabelEn,
+  ehrTableActionLabel: ehrTableActionLabelEn,
   ehrLanguage: APP_LANGUAGE_EN,
 }
 
@@ -56,6 +58,7 @@ const getters = {
   ehrHelperText: state => state.ehrHelperText,
   ehrOptionsCheckset: state => state.ehrOptionsCheckset,
   ehrOptionsSelect: state => state.ehrOptionsSelect,
+  ehrTableActionLabel: state => state.ehrTableActionLabel,
   ehrTableLabel: state => state.ehrTableLabel,
   ehrLanguage: state => state.ehrLanguage,
 }

@@ -84,4 +84,13 @@ export function t18TableAddButtonLabel ( elementDef ) {
   return val
 }
 
+export function t18TableActionLabel ( elementDef ) {
+  let val
+  const key = elementDef.fqn
+  let def = store.getters['ehrText/ehrTableActionLabel']
+  val = def[key]
+  return val
+}
+
+
 
