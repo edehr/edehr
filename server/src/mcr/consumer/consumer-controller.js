@@ -107,14 +107,19 @@ export default class ConsumerController extends BaseController {
   }
 
   async recentVisitCounts (consumerId) {
-    let DAYS = 30
+    let DAYS
+    DAYS = 365
+    const year = await this.recentVisitsStats(consumerId, (DAYS * 24 * 60 * 60 * 1000))
+    DAYS = 180
+    const half = await this.recentVisitsStats(consumerId, (DAYS * 24 * 60 * 60 * 1000))
+    DAYS = 30
     const month = await this.recentVisitsStats(consumerId, (DAYS * 24 * 60 * 60 * 1000))
     DAYS = 7
     const week = await this.recentVisitsStats(consumerId, (DAYS * 24 * 60 * 60 * 1000))
     DAYS = 1
     const day = await  this.recentVisitsStats(consumerId, (DAYS * 24 * 60 * 60 * 1000))
     const hour = await  this.recentVisitsStats(consumerId, (60 * 60 * 1000))
-    return { month, week, day, hour}
+    return { year, half, month, week, day, hour}
     // return { month: month, week: week, day: day}
   }
   async recentVisitsStats (consumerId, threshold) {
@@ -134,9 +139,9 @@ export default class ConsumerController extends BaseController {
     const total = recentVisits.length
     const student = studentVisits.length
     return  {
-      total: total,
-      student: student,
-      instructor: total - student
+      t: total,
+      s: student,
+      i: total - student
     }
   }
 
