@@ -15,6 +15,7 @@
 <script>
 import EhrElementCommon from './EhrElementCommon'
 import EhrCheckset from '@/ehr-definitions/ehr-checkset'
+import { t18ElementLabel } from '@/helpers/ehr-t18'
 
 export default {
   extends: EhrElementCommon,
@@ -27,7 +28,7 @@ export default {
   },
   computed : {
     disableSubset () { return !this.mainCheck },
-    label () { return this.element.label },
+    label () { return t18ElementLabel(this.element) },
     mainLabel () { return this.label.split(';')[0] },
     subLabel () { return this.label.split(';')[1] },
     options () { return this.element.options },
