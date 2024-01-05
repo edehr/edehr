@@ -39,5 +39,7 @@
   "hematology.PLT": "Platelet Count",
   "hematology.MPV": "Mean Platelet Volume",
   "hematology.cellCntNRBCs": "nucleated red blood cells",
-  "medLabUrinalysis.uchemSulfosalicylic": "Sulfosalicylic acid"
+  "medLabUrinalysis.uchemSulfosalicylic": "Sulfosalicylic acid",
+  "labResults.lru_bnp": "Brain natriuretic peptide (BNP) test is a blood test that measures levels of a protein called BNP that is made by your heart and blood vessels. BNP levels are higher than normal when you have heart failure.",
+  "labResults.lru_aldosterone": "Aldosterone (ALD) is a hormone that helps regulate your blood pressure by managing the levels of sodium (salt) and potassium in your blood and impacting blood volume."
 }

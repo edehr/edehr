@@ -21,7 +21,7 @@
         table.table_horizontal
           tbody
             tr
-              td.bold-text {{ ehrText.overall(summaries.totalInputs - summaries.totalOutputs) }}
+              td.bold-text {{ ehrText.overall }} {{ (summaries.totalInputs - summaries.totalOutputs) }}
 
       ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp")
 
