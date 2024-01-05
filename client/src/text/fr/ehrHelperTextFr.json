@@ -39,5 +39,7 @@
   "hematology.PLT": "La numération plaquettaire",
   "hematology.MPV": "Volume de plaquette moyen",
   "hematology.cellCntNRBCs": "globules rouges nucléés",
-  "medLabUrinalysis.uchemSulfosalicylic": "Acide sulfosalicylique"
+  "medLabUrinalysis.uchemSulfosalicylic": "Acide sulfosalicylique",
+  "labResults.lru_bnp": "Acide sulfosalicylique",
+  "labResults.lru_aldosterone": "Acide sulfosalicylique"
 }

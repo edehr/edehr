@@ -21,6 +21,7 @@ import EhrDataModel from '@/ehr-definitions/EhrDataModel'
 import { validDayStr, validTimeStr } from '@/ehr-definitions/common-utils'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
 import store from '@/store'
+import { t18ElementLabel, t18TableLabel } from '@/helpers/ehr-t18'
 
 export const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
@@ -748,7 +749,9 @@ export default class EhrPageHelper {
     dialog.errorList = []
     Object.keys(ehr_data).forEach( (eKey) => {
       const eDef = EhrDefs.getPageChildElement(pageKey, eKey)
-      const label = eDef[PROPS.label] || eDef[PROPS.tableLabel]
+      const fLabel = t18ElementLabel(eDef)
+      const tLabel = t18TableLabel(eDef)
+      const label = fLabel || tLabel
       const validator = this._validator(eDef)
       const mandatory = eDef[PROPS.mandatory]
       let value = inputs[eKey]

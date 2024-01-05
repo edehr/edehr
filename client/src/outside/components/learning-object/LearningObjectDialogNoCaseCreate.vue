@@ -113,7 +113,7 @@ export default {
       if (nv) {
         em.push(nv)
       }
-      if (!this.seedModel) {
+      if (!this.seedModel && !this.checkAppTypes) {
         // If this error happens its probably a coding error
         em.push(ERRORS.APP_TYPE_REQUIRED)
       }

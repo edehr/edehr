@@ -98,11 +98,14 @@ export default {
       let url = '/assets/' + e.assetBase + '/' + e.assetName
       return url
     },
+    externalUrl () {
+      return this.element.assetName
+    },
     assetName () {
       let e = this.element
       let name = e.label
       if (e.assetBase && e.assetName) {
-        name = e.label
+        name = t18ElementLabel(e)
       }
       return name
     },

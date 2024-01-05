@@ -75,6 +75,7 @@ const EhrTypes = {
     formTableHeader: 'formTableHeader',
     formTableText: 'formTableText',
     assetLink: 'assetLink',
+    externalLink: 'externalLink',
     spacer: 'spacer',
     horizontal: 'horizontal'
   },

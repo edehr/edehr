@@ -39,5 +39,7 @@
   "hematology.PLT": "Recuento de plaquetas",
   "hematology.MPV": "Volumen medio de plaquetas",
   "hematology.cellCntNRBCs": "glóbulos rojos nucleados",
-  "medLabUrinalysis.uchemSulfosalicylic": "Ácido sulfosalílico"
+  "medLabUrinalysis.uchemSulfosalicylic": "Ácido sulfosalílico",
+  "labResults.lru_bnp": "Ácido sulfosalílico",
+  "labResults.lru_aldosterone": "Ácido sulfosalílico"
 }
