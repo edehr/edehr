@@ -2,7 +2,7 @@
   div(class="seed-page")
     div(v-if='pageElement.isTable')
       div(class="flow_across seed-table-intro-row")
-        h4 {{ pageElement.label }}
+        h4 {{ label }}
         h4 Table contains {{ tableData.length }} rows.
         zone-lms-button(@action="flipTableCollapsed"
           class="flow_across_last_item mr5"
@@ -39,6 +39,7 @@ import SeedTableVert from '@/outside/components/seed-struct/SeedTableVert'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton'
 import SeedTableHoriz from '@/outside/components/seed-struct/SeedTableHoriz'
 import EhrData from '@/inside/components/page/ehr-data'
+import { t18ElementLabel } from '@/helpers/ehr-t18'
 export default {
   components: { SeedTableHoriz, ZoneLmsButton, SeedFormElement, SeedTableVert },
   data () {
@@ -54,6 +55,7 @@ export default {
     pageSeedData: { type: Object }
   },
   computed: {
+    label () { return t18ElementLabel(this.pageElement)},
     tableKey () {return this.pageElement.tableKey},
     tableOrientation () { return this.$store.getters['system/condensedTableVertical']},
     tableCollapsed () { return this.$store.getters['system/seedTableCollapse'](this.tableKey)},

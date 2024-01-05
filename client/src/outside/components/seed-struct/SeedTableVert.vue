@@ -16,6 +16,7 @@
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 import { makeHumanTableCell } from '@/ehr-definitions/ehr-def-utils'
+import { t18ElementLabel, t18TableLabel } from '@/helpers/ehr-t18'
 
 export default {
   props: {
@@ -52,7 +53,9 @@ export default {
     },
   },
   methods: {
-    label ( fieldDef ) { return fieldDef.label || fieldDef.tableLabel },
+    fLabel (fieldDef) { return t18ElementLabel(fieldDef)},
+    tLabel (fieldDef) { return t18TableLabel(fieldDef) },
+    label ( fieldDef ) { return this.fLabel(fieldDef) || this.tLabel(fieldDef) },
     fieldData (fieldDef, index) {
       const row = this.tableData[index-1]
       const elementKey = fieldDef.elementKey
