@@ -54,7 +54,8 @@ export default {
   },
   methods: {
     tableLabel (cell) {
-      return t18TableLabel(cell)
+      // the cell contains translation
+      return cell.tableLabel
     },
     tableActionLabel (sourceRowId) {
       return EhrTableActions.getTableActionLabel(this.tableDef, sourceRowId)
