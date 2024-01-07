@@ -57,34 +57,11 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
+// see styles.scss for more
 
 .UiInfo {
   display: inline;
   margin-left: 4px;
   margin-right: 5px;
-  .info-button {
-    background: none;
-    color: $grey40;
-    line-height: 0;
-    padding: 0;
-    border: none;
-    border-radius: 50%; /* to encircle the circle icon*/
-    height: .85em; /* to match height of fas icon*/
-
-    span {
-      color: $blue;
-    }
-  }
-  .info-icon {
-    vertical-align: -2px;
-    &:hover {
-      color: $black;
-      cursor: pointer;
-    }
-  }
-  .ui-info-body,
-  .ui-info-title {
-    text-align: left;
-  }
 }
 </style>

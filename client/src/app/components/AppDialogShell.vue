@@ -3,7 +3,7 @@
     div(v-show="showingDialog")
       div(:class="modalClass", :style="{ zIndex: modalZ }")
       div(class="dialog-wrapper",
-        :class="{ dragActive: moused, fullScreen: fullScreen }",
+        :class="{ dragActive: moused, fullScreen: fullScreen, small: small }",
         ref="theDialog",
         :style="{ top: top + 'px', left: left + 'px', zIndex: modalD }")
         // header
@@ -45,6 +45,7 @@ export default {
     UiButton
   },
   props: {
+    small: { type: Boolean, default: false },
     fullScreen: { type: Boolean, default: false },
     zIndexBase: { type: Number, default: 900 },
     isModal: { type: Boolean, default: false },
@@ -198,6 +199,12 @@ export default {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
+.small.dialog-wrapper {
+    max-width: 40rem;
+  .dialog-body {
+    max-height: 200px;
+  }
+}
 .dialog-body {
   padding: 1rem;
   margin-bottom: 0;
