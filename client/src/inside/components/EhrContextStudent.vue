@@ -11,7 +11,11 @@
       div(v-if='feedbackViewable')
         div(v-if="hasEvaluationData")
           span {{ ehrText.studentBannerInstructorsFeedback }}
-          span(class="content") {{ evaluationData }}
+          span(class='content') {{ truncate(evaluationData, 50) }}
+          span(class="UiInfo")
+            button(class="info-button", v-on:click="buttonClicked")
+              fas-icon(class="info-icon", icon="info-circle")
+              span  &nbsp; Read more
         div(v-else, class="bigger-screens-900")
           span {{ ehrText.studentBannerSubmitText }}
       div(v-else)
@@ -20,10 +24,24 @@
       ehr-simulation-time-control
       ehr-simulation-sign-on
       ehr-student-submit
+
+    app-dialog(
+      :isModal="false",
+      small=true,
+      ref="theDialog",
+      :useSave="false",
+      @cancel="cancelDialog",
+      :cancelButtonLabel='ehrText.closeButtonLabel'
+    )
+      h2(slot="header", class='ui-info-title') {{ ehrText.studentBannerInstructorsFeedback  }}
+      div(slot="body", class='ui-info-body')
+        p(v-text-to-html="evaluationData")
+
 </template>
 
 <script>
 import StoreHelper from '@/helpers/store-helper'
+import AppDialog from '@/app/components/AppDialogShell.vue'
 import EhrStudentSubmit from '@/inside/components/EhrStudentSubmit.vue'
 import EhrSimulationSignOn from '@/inside/components/EhrSimulationSignOn.vue'
 import UiInfo from '@/app/ui/UiInfo.vue'
@@ -33,7 +51,7 @@ import EhrSimulationTimeControl from '@/inside/components/EhrSimulationTimeContr
 import { t18EhrText } from '@/helpers/ehr-t18'
 
 export default {
-  components: { EhrSimulationTimeControl, EhrSimulationSignOn, UiInfo, EhrStudentSubmit },
+  components: { EhrSimulationTimeControl, EhrSimulationSignOn, UiInfo, EhrStudentSubmit, AppDialog },
   data () {
     return {
     }
@@ -57,6 +75,14 @@ export default {
   methods: {
     truncate (input, lim) {
       return input && input.length > lim ? `${input.substring(0, lim)}...` : input
+    },
+    buttonClicked: function () {
+      this.showingDialog = true
+      this.$refs.theDialog.onOpen()
+    },
+    cancelDialog: function () {
+      this.showingDialog = false
+      this.$refs.theDialog.onClose()
     }
   }
 }
