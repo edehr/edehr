@@ -120,19 +120,17 @@
     div(v-else-if="isType(dataTypes.visitDay)", class="sim_day_wrapper", :class='formCss')
       div(v-if='isRecHdr') {{ dateVal(inputVal) }}
       div(v-else)
-        span {{label}}  &nbsp;
-        span(v-if="viewOnly", class='bold') {{ dateVal(inputVal) }}
-        app-dp(v-else, @dateSelected='(d) => inputVal = d')
-        div {{ dateVal(inputVal) }}
+        label(v-html="label", class="form_label")
+          span {{label}}  &nbsp;
+        input(class="input numb-input", type="text", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
 
     div(v-else-if="isType(dataTypes.visitTime)", class="sim_time_wrapper", :class='formCss')
       div(v-if='isRecHdr') {{ inputVal }}
       div(v-else)
-        span {{label}}  &nbsp;
-        span(v-if="viewOnly", class='bold') {{ inputVal }}
-        input(v-else, class="input numb-input",
-          pattern="^([01][0-9]|2[0-3])([0-5][0-9])$"
-          type="text", :name="elementKey", v-model="inputVal")
+        label(v-html="label", class="form_label")
+          span {{label}}  &nbsp;
+        input(class="input numb-input", type="text", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
+
 
     div(v-else) ELSE: {{inputType}} {{label}}
 
