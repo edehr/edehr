@@ -24,6 +24,7 @@
                   ehr-nav-panel(v-if="showingNavPanel")
             slot Main EHR content selected by the router
           ehr-scratch-pad-dialog(ref='scratchPad')
+          ehr-eval-feedback-dialog(ref='feedbackDialog')
       div(v-else, class="ehr-no-content")
         div Search and select a patient.
     app-footer
@@ -40,10 +41,14 @@ import StoreHelper from '../../helpers/store-helper'
 import EhrMultiPatientBar from '@/inside/components/EhrMultiPatientBar.vue'
 import EhrScratchPadDialog from '@/inside/components/EhrScratchPadDialog.vue'
 import UiNotSignedOn from '@/app/ui/UiNotSignedOn.vue'
+import AppDialog from '@/app/components/AppDialogShell.vue'
+import EhrEvalFeedbackDialog from '@/inside/components/EhrEvalFeedbackDialog.vue'
 
 export default {
   name: 'LayoutEhr',
   components: {
+    EhrEvalFeedbackDialog,
+    AppDialog,
     UiNotSignedOn,
     EhrScratchPadDialog,
     EhrMultiPatientBar,
@@ -64,6 +69,7 @@ export default {
     ehrOrLis () { return StoreHelper.isEHR_Showing() ? 'ehr-branding' : StoreHelper.isLIS_Showing() ? 'lis-branding' : ''},
     pId () { return this.$store.getters['mPatientStore/currentPatientObjectId'] },
     hasPatient () { return !! this.pId },
+    evalDialogVisible () { return this.$store.getters['system/evalDialogVisible']},
     scratchPadVisible () { return this.$store.getters['system/scratchPadVisible']}
 
   },
@@ -79,6 +85,9 @@ export default {
         if (currArray[2] === prevArray[2])
           this.showingNavPanel = false
       }
+    },
+    evalDialogVisible (val) {
+      if (val) this.$refs.feedbackDialog.showDialog()
     },
     scratchPadVisible (val) {
       if (val) this.$refs.scratchPad.showDialog()

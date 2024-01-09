@@ -68,7 +68,11 @@ export class MedOrder {
     const list = []
     list.push(this.medName)
     list.push(this.dose)
-    this.schedule ? list.push(this.schedule) : null
+    if (this.schedule) {
+      let med_scheduled = this.schedule
+      med_scheduled = makeHumanTableCell('medicationOrders', 'med_scheduled', 'select', med_scheduled)
+      list.push(med_scheduled)
+    }
     this.route ? list.push(this.route) : null
     this.location ? list.push(this.location) : null
     return list.join(', ')

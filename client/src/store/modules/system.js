@@ -28,6 +28,7 @@ const state = {
   outsideShowButtonLabels: false,
   showExplanationTextOutside: false,
   scratchPadVisible: false,
+  evalDialogVisible: false,
   seedTableCollapse: {},
   smallWindow: false,
   sysMessage: '',
@@ -52,6 +53,7 @@ const getters = {
   pageZone: state => state.pageZone,
   paginateLimit: state => state.paginateLimit,
   scratchPadVisible: state => state.scratchPadVisible,
+  evalDialogVisible: state => state.evalDialogVisible,
   seedTableCollapse: state => (tableKey) => state.seedTableCollapse[tableKey],
   showExplanationTextOutside: state => state.showExplanationTextOutside,
   sysMessage: state => state.sysMessage,
@@ -111,6 +113,13 @@ const actions = {
   },
   setShowExplanationTextOutside ( {commit}, value) {
     commit('setShowExplanationTextOutside', value)
+  },
+
+  setEvalDialogVisible ( context, trueFalse ) {
+    context.commit('_setEvalDialogVisible', trueFalse)
+  },
+  toggleEvalDialogVisible ( context ) {
+    context.commit('_setEvalDialogVisible', !context.state.evalDialogVisible)
   },
   setScratchPadVisible ( context, trueFalse ) {
     context.commit('_setScratchPadVisible', trueFalse)
@@ -202,6 +211,9 @@ const mutations = {
   },
   setPageZone: ( state, pageZone) => {
     state.pageZone = pageZone
+  },
+  _setEvalDialogVisible: (state, trueFalse) => {
+    state.evalDialogVisible = trueFalse
   },
   _setScratchPadVisible: (state, trueFalse) => {
     state.scratchPadVisible = trueFalse
