@@ -25,18 +25,6 @@
       ehr-simulation-sign-on
       ehr-student-submit
 
-    app-dialog(
-      :isModal="false",
-      small=true,
-      ref="theDialog",
-      :useSave="false",
-      @cancel="cancelDialog",
-      :cancelButtonLabel='ehrText.closeButtonLabel'
-    )
-      h2(slot="header", class='ui-info-title') {{ ehrText.studentBannerInstructorsFeedback  }}
-      div(slot="body", class='ui-info-body')
-        p(v-text-to-html="evaluationData")
-
 </template>
 
 <script>
@@ -77,13 +65,8 @@ export default {
       return input && input.length > lim ? `${input.substring(0, lim)}...` : input
     },
     buttonClicked: function () {
-      this.showingDialog = true
-      this.$refs.theDialog.onOpen()
+      this.$store.dispatch('system/setEvalDialogVisible', true)
     },
-    cancelDialog: function () {
-      this.showingDialog = false
-      this.$refs.theDialog.onClose()
-    }
   }
 }
 </script>
