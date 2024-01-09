@@ -87,6 +87,7 @@ export default {
       }
       return disable
     },
+    isRecHdr () { return this.element.recHeader },
     suffix () { return this.element.suffix }
   },
   methods: {
