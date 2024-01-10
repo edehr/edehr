@@ -118,14 +118,14 @@
       textarea(class="ehr-page-form-textarea", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
 
     div(v-else-if="isType(dataTypes.visitDay)", class="sim_day_wrapper", :class='formCss')
-      div(v-if='isRecHdr') {{ dateVal(inputVal) }}
+      div(v-if='isRecHdr') Encounter day {{ inputVal }}
       div(v-else)
         label(v-html="label", class="form_label")
           span {{label}}  &nbsp;
         input(class="input numb-input", type="text", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
 
     div(v-else-if="isType(dataTypes.visitTime)", class="sim_time_wrapper", :class='formCss')
-      div(v-if='isRecHdr') {{ inputVal }}
+      div(v-if='isRecHdr') time {{ inputVal }}
       div(v-else)
         label(v-html="label", class="form_label")
           span {{label}}  &nbsp;
