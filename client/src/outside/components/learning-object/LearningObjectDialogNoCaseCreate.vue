@@ -39,7 +39,7 @@
 
         div(v-if='allowSeedSelect && "no" === enableSeedSelector', class="dialog-step")
           label Application type:
-          app-type-radio(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
+          app-type-radio(:value="appTypeMode", @changeAppTypes='changeAppTypes')
         dialog-instructions-element(:show-ex="allowSeedSelect && 'no' === enableSeedSelector && showEx") Step 4. Select the application type for the lesson. When the student searches for patients they will only be searching case studies with the chosen application type.
 
         div(v-if='enableSeedSelector ==="yes"') The selected seedModel name is: {{ seedModel ? seedModel.name : '(Please select a case study from below.)' }}
@@ -113,7 +113,7 @@ export default {
       if (nv) {
         em.push(nv)
       }
-      if (!this.seedModel && !this.checkAppTypes) {
+      if (!this.seedModel && !this.appTypeMode) {
         // If this error happens its probably a coding error
         em.push(ERRORS.APP_TYPE_REQUIRED)
       }
@@ -141,16 +141,14 @@ export default {
       this.useGivenSeed = false
     },
     selectSeed ( selectedSeed ) {
-      console.log('selectSeed', selectedSeed)
       this.seedModel = selectedSeed
     },
     changeEnabler (event) {
       this.enableSeedSelector = event.target.value
       if (this.enableSeedSelector ==='yes') {
-        console.log('changeEnabler', this.enableSeedSelector)
         this.fetchSeedSelectionList()
       } else {
-        this.checkAppTypes = this.checkAppTypes || APP_TYPE_LIS
+        this.changeAppTypes(this.appTypeMode || APP_TYPE_LIS)
         this.seedModel = undefined
       }
     },
@@ -191,10 +189,9 @@ export default {
         this.allowSeedSelect = false
         this.useGivenSeed = true
         this.seedModel = options.seed
-        console.log('asdadsa------', this.seedModel)
       }
       if (this.seedModel) {
-        this.checkAppTypes = this.seedModel.appType
+        this.changeAppTypes(this.seedModel.appType)
       }
       if (this.allowSeedSelect) {
         this.enableSeedSelector ='yes'
@@ -212,7 +209,7 @@ export default {
         toolConsumer: StoreHelper.getAuthdConsumerId(),
         name: this.learningObjectName,
         description: this.description,
-        mPatientAppType: this.checkAppTypes,
+        mPatientAppType: this.appTypeMode,
         seedDataId: this.seedModel ? this.seedModel._id : undefined
       }
       this.$refs.theLobjDialog.onClose()
