@@ -66,10 +66,10 @@
               :to="activityRouting(activityItem)",
               class='router-item')
               fas-icon(class="fa", :icon="appIcons.course")
-              span {{ activityItem.title }}
-            div(v-else) {{ activityItem.title }}
+              span {{ activityTitle(activityItem) }}
+            div(v-else) {{ activityTitle(activityItem) }}
           div(class='cell e-description')
-            span {{truncate(activityItem.description, 100)}}
+            span {{truncate(activityDescription(activityItem), 100)}}
           div(class='cell')
             span {{ activityItem.feedbackViewable ? 'Yes' : 'No'}}
           div(class='cell e-date')
@@ -165,6 +165,12 @@ export default {
     isStudent () { return StoreHelper.isStudent() }
   },
   methods: {
+    activityDescription ( activityItem ) {
+      return activityItem.learningObjectDescription || activityItem.description
+    },
+    activityTitle ( activityItem ) {
+      return activityItem.learningObjectName || activityItem.title
+    },
     appTypeGoToText (activityItem) {
       return 'Go to ' + (activityItem.appType === APP_TYPE_LIS ? 'LIS' :
         activityItem.appType === APP_TYPE_EHR ? 'EHR' : 'EHR')

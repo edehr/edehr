@@ -79,7 +79,7 @@ export default {
     navText () { return t18EhrText().zoneLmsNav},
     ehrTextFn () { return t18EhrFunctions()},
     activity () { return this.$store.getters['activityStore/activityRecord'] },
-    activityName () { return this.activity.title },
+    activityName () { return this.activity.learningObjectName || this.activity.title },
     consumerId () { return StoreHelper.consumerId() },
     hasActivity () { return this.$store.getters['activityStore/hasActivity'] },
     hasCourse () { return this.$store.getters['courseStore/hasCourse'] },
