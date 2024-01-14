@@ -93,7 +93,7 @@ export default {
           })
           // column header .. use previous label if set else use special tableLabel value from Inputs else use element label
           templateCell.tableLabel = t18TableLabel(cellDef) || t18ElementLabel(cellDef)
-          templateCell.tableSuffix = cellDef.suffixHtml
+          templateCell.tableSuffix = cellDef.suffixText
           templateCell.tableCss = templateCell.tableCss || cellDef.tableCss
         })
         rowTemplate.push(templateCell)

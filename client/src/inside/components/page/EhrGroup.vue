@@ -1,6 +1,6 @@
 <template lang="pug">
   div(v-show="groupIsVisible", :class='groupOuterClass')
-    h3(v-if="group.label") {{ elementLabel(group) }}
+    h3(v-if="elementLabel(group)") {{ elementLabel(group) }}
     div(class="ehr-group-wrapper", :class="groupClass")
       div(v-for="child in group.gChildren", :key="forIndex(child)", class="ehr-group-for", :class="childClass(child)")
         ehr-sub-group(v-if="isSubgroup(child)", :subgroup="child", :ehrHelp="ehrHelp", :viewOnly='viewOnly')

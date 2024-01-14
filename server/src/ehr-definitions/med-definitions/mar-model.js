@@ -123,6 +123,15 @@ export class MarTimelineModel {
         te.mme = new MedMarEvent(dayNum, te.ts, medOrder)
         te.mme.setMar(mar)
       }
+      const fmars = mars.filter(m => m.isMarAdministered(dayNum, te.ts))
+      if (fmars.length > 0) {
+        te.manyMars = []
+        fmars.forEach (mar => {
+          let mme = new MedMarEvent(dayNum, te.ts, medOrder)
+          mme.setMar(mar)
+          te.manyMars.push(mme)
+        })
+      }
     }
   }
 
