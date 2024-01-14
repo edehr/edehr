@@ -241,7 +241,10 @@ export default class AssignmentController extends BaseController {
     return resultSet.filter( item => {
       // now some LObjs may not have a seed.
       let appType = item.seedDataId ? item.seedDataId.appType : item.mPatientAppType
-      if(!appType) console.log('paginateInitialFilter', item)
+      if(!appType) {
+        // console.log('------------------------------paginateInitialFilter', item)
+        return true /// accept any lobjs without an apptype so they can appear in lists and be fixed
+      }
       return options.appTypes.includes(appType)
     })
   }

@@ -75,7 +75,7 @@
         ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="lab_result_label")
         input(v-if="!viewOnly", class="input text-input", :disabled="disabled", :name="elementKey", v-model="inputVal")
         input(v-if="viewOnly", disabled, class='lab_result_value', :value="inputVal")
-        div(class="lab_result_suffix", v-text-to-html="element.suffixHtml")
+        div(class="lab_result_suffix", v-text-to-html="element.suffixText")
 
     ehr-element-birth-date(
       v-else-if="isType('mainDOB')"

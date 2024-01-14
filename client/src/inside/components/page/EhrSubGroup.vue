@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="ehr-subgroup-wrapper")
-    h4(v-if="subgroup.label") {{ elementLabel(subgroup) }}
+    h4(v-if="elementLabel(subgroup)") {{ elementLabel(subgroup) }}
     div(v-for="child in subgroup.sgChildren")
       ehr-element-form(:elementKey="child", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 </template>

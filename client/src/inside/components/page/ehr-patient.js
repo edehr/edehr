@@ -51,7 +51,10 @@ class EhrPatientC {
     return JSON.parse(JSON.stringify(asStored))
   }
   _careTeam (data) {
-    let asStored = data.careTeam ? data.careTeam.teams : []
+    let asStored = []
+    if (data.careTeam && data.careTeam.teams) {
+      asStored = data.careTeam.teams
+    }
     return JSON.parse(JSON.stringify(asStored))
   }
   _location (visitDetails) {

@@ -85,15 +85,14 @@
                     :title='timeElement.toolTip'
                   )
                     fas-icon(icon="file-prescription")
-
-                  ui-button(
-                    v-else-if='timeElement.hasMarEvent()',
-                    class='mar-button',
-                    :class="marDoneClass(timeElement)",
-                    v-on:buttonClicked="$emit('viewReport', timeElement.marRecordId)",
-                    :title='timeElement.toolTip'
-                    )
-                      fas-icon(icon="file-prescription")
+                  div(v-else-if="timeElement.manyMars")
+                    ui-button(v-for='(mar, px) in timeElement.manyMars',
+                      class='mar-button',
+                      :class="marDoneClass(timeElement)",
+                      v-on:buttonClicked="$emit('viewReport', mar.marRecordId)",
+                      :title='timeElement.toolTip'
+                      )
+                        fas-icon(icon="file-prescription")
                   div(v-else) {{ timeElement.mme }} &nbsp;
 
 
@@ -185,7 +184,8 @@ export default {
         const dc = this.getDraftMarsForMed(med).length
         show = dc === 0
       } else {
-        show = !med.isSchedulable()
+        // OD meds can appear on both the title area and the day's schedule
+        show = 'OD' === med.schedule || !med.isSchedulable()
       }
       return show
     },
