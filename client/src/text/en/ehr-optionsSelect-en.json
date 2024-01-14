@@ -1170,5 +1170,18 @@
   "respiratory.lul.CracklesFine": "Crackles fine",
   "respiratory.rll.CracklesFine": "Crackles fine",
   "respiratory.rml.CracklesFine": "Crackles fine",
-  "respiratory.rul.CracklesFine": "Crackles fine"
+  "respiratory.rul.CracklesFine": "Crackles fine",
+  "demographics.pronouns.she": "She/Her/Hers",
+  "demographics.pronouns.he": "He/Him/His",
+  "demographics.pronouns.they": "They/Them/Theirs",
+  "demographics.pronouns.ze": "Ze/Hir/Hirs",
+  "demographics.pronouns.none": "I do not use a pronoun",
+  "demographics.pronouns.other": "Other, please ask",
+  "demographics.pronouns.all": "I use all gender pronouns",
+  "demographics.birthSex.male": "Male",
+  "demographics.birthSex.fem": "Female",
+  "demographics.birthSex.inter:Intersex": "inter:Intersex",
+  "demographics.legalGender.M": "M",
+  "demographics.legalGender.F": "F",
+  "demographics.legalGender.X": "X"
 }

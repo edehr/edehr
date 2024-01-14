@@ -1170,5 +1170,18 @@
   "respiratory.lul.CracklesFine": "Crepitaciones bien",
   "respiratory.rll.CracklesFine": "Crepitaciones bien",
   "respiratory.rml.CracklesFine": "Crepitaciones bien",
-  "respiratory.rul.CracklesFine": "Crepitaciones bien"
+  "respiratory.rul.CracklesFine": "Crepitaciones bien",
+  "demographics.pronouns.she": "Ella/ella",
+  "demographics.pronouns.he": "Él/ella",
+  "demographics.pronouns.they": "Ellos/ellos",
+  "demographics.pronouns.ze": "Ze/hir/hirs",
+  "demographics.pronouns.none": "No uso un pronombre",
+  "demographics.pronouns.other": "Otro, por favor pregunte",
+  "demographics.pronouns.all": "Yo uso todos los pronombres de género",
+  "demographics.birthSex.male": "Masculino",
+  "demographics.birthSex.fem": "Femenino",
+  "demographics.birthSex.inter:Intersex": "Inter: intersexual",
+  "demographics.legalGender.M": "M",
+  "demographics.legalGender.F": "F",
+  "demographics.legalGender.X": "X"
 }

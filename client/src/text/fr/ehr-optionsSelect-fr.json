@@ -1170,5 +1170,18 @@
   "respiratory.lul.CracklesFine": "Craquement",
   "respiratory.rll.CracklesFine": "Craquement",
   "respiratory.rml.CracklesFine": "Craquement",
-  "respiratory.rul.CracklesFine": "Craquement"
+  "respiratory.rul.CracklesFine": "Craquement",
+  "demographics.pronouns.she": "Elle / elle",
+  "demographics.pronouns.he": "Il / lui",
+  "demographics.pronouns.they": "Ils / eux / le leur",
+  "demographics.pronouns.ze": "Ze/hir/hirs",
+  "demographics.pronouns.none": "Je n'utilise pas de pronom",
+  "demographics.pronouns.other": "Autre, veuillez demander",
+  "demographics.pronouns.all": "J'utilise tous les pronoms de genre",
+  "demographics.birthSex.male": "Mâle",
+  "demographics.birthSex.fem": "Femelle",
+  "demographics.birthSex.inter:Intersex": "inter: intersexes",
+  "demographics.legalGender.M": "M",
+  "demographics.legalGender.F": "F",
+  "demographics.legalGender.X": "X"
 }

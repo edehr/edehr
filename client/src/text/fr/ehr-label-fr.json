@@ -45,7 +45,7 @@
   "biopsychosocial.homicidal": "Homicide",
   "biopsychosocial.hygieneComments": "Commentaires d'hygiène",
   "biopsychosocial.hygieneGrooming": "Hygiène",
-  "biopsychosocial.label21-4": "D'après notre expérience à l'hôpital, nous savons que la violence domestique peut être un problème. Est-ce un facteur dans votre vie?",
+  "biopsychosocial.label21-4": "Nous comprenons que la violence domestique peut être un problème. Est-ce un facteur dans votre vie?",
   "biopsychosocial.label21-5": "Souhaitez-vous parler à un travailleur social?",
   "biopsychosocial.name": "Nom",
   "biopsychosocial.patientRestrained": "Patient retenu",
@@ -241,7 +241,7 @@
   "gastrointestinal.time": "Temps",
   "gastrointestinal.weightLoss": "Perte de poids",
   "genitourinary": "Évaluation génito-urinaire",
-  "genitourinary.aLabel": "Si vous répondez oui veuillez terminer l'évaluation de la douleur",
+  "genitourinary.aLabel": "Veuillez terminer l'évaluation de la douleur si nécessaire.",
   "genitourinary.colour": "Couleur d'urine",
   "genitourinary.comments": "commentaires",
   "genitourinary.consistency": "Cohérence de l'urine",
@@ -1286,5 +1286,8 @@
   "labResults.cChemGroup": "Chimie",
   "labResults.cRenalGroup": "Profil rénal",
   "labResults.cLiverGroup": "La fonction hépatique",
-  "labResults.cBloodGasGroup": "Tests de gaz sanguin"
+  "labResults.cBloodGasGroup": "Tests de gaz sanguin",
+  "demographics.pronouns": "Pronoms",
+  "demographics.birthSex": "Sexe à la naissance",
+  "demographics.legalGender": "Marqueur de genre légal"
 }
