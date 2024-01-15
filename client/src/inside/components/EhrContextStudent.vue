@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class='ehr-context-student flow_across')
     div
-      div {{givenName}}.
+      div {{givenName}} - &nbsp;
         span {{ ehrText.studentBannerActivityLabel }}
         span(class='content') {{ truncate(assignmentName, 50) }}
         ui-info(
@@ -51,7 +51,7 @@ export default {
       return FeatureHelper.isFeatureFlagEnabled(cid, FF_UNLEASH_ACTIVITY)
     },
     activityRecord () { return this.$store.getters['activityStore/activityRecord'] },
-    assignmentName () { return this.activityRecord.title },
+    assignmentName () { return this.activityRecord.learningObjectName },
     instructions () { return textToHtml(this.studentInstructions || '') },
     studentInstructions () { return this.isUnleashedActivityEnabled ? this.activityRecord.learningObjectDescription : this.activityRecord.description },
 
