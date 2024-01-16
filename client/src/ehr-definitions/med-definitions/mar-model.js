@@ -106,6 +106,7 @@ export class MarTimelineModel {
         const otherTe = this.findTimeElement(medId, mme.adminDay, mr)
         if (otherTe) {
           otherTe.mme = mme
+          otherTe.manyMars.push(mme)
         } else {
           // This situation should not happen. Send message to error.
           console.error('Failed to find expected time element for medMarEvent', medId, mar.adminDay, mr)
@@ -114,6 +115,7 @@ export class MarTimelineModel {
         // If there is no MAR then link the event to this time element
         // console.log('mos is scheduled', medOrder.id, dayNum, te.ts)
         te.mme = mme
+        te.manyMars.push(mme)
       }
     } else {
       // For all the other, non-scheduled, medications ....
@@ -123,9 +125,11 @@ export class MarTimelineModel {
         te.mme = new MedMarEvent(dayNum, te.ts, medOrder)
         te.mme.setMar(mar)
       }
+      /*
+      Collect ALL the MARs for a give time.  The code above can be phased out
+       */
       const fmars = mars.filter(m => m.isMarAdministered(dayNum, te.ts))
       if (fmars.length > 0) {
-        te.manyMars = []
         fmars.forEach (mar => {
           let mme = new MedMarEvent(dayNum, te.ts, medOrder)
           mme.setMar(mar)
@@ -231,6 +235,7 @@ export class TimeElement {
     // each time element needs its mo to let the ui do some height calculations
     this.medOrder = mo
     this.mme = undefined
+    this.manyMars = []
   }
 
   hasDraftMar () { return this.mme && this.mme.hasDraftMar() }
