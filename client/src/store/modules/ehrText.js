@@ -28,6 +28,7 @@ import ehrOptionsSelectEs  from '@/text/es/ehr-optionsSelect-es.json'
 import ehrTextEn from '@/text/ehrTextEn-Master.json'
 import ehrTextEs from '@/text/es/ehrTextEs.json'
 import ehrTextFr from '@/text/fr/ehrTextFr.json'
+import EventBus, { CHANGE_LANGUAGE_EVENT } from '@/helpers/event-bus'
 
 // directly define these constants here to avoid something strange when app is built
 // import { APP_LANGUAGE_EN, APP_LANGUAGE_FR } from '@/helpers/store-helper'
@@ -118,6 +119,7 @@ const mutations = {
     localStorage.setItem('ehrLanguage', value)
     state.ehrLanguage = value
     setText(state)
+    EventBus.$emit(CHANGE_LANGUAGE_EVENT, value)
   }
 }
 

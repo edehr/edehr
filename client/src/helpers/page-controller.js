@@ -13,6 +13,7 @@ import store from '@/store'
 import authHelper from '@/helpers/auth-helper'
 import MPatientHelper from '@/helpers/mPatientHelper'
 import FeatureHelper from '@/helpers/feature-helper'
+import { t18SetEnglish, t18SetFrench, t18SetSpanish } from '@/helpers/ehr-t18'
 
 const dbApp = false
 
@@ -67,6 +68,20 @@ async  function onPageChange (toRoute) {
     token: refreshToken, // user has just arrived via a LTI request from an LMS
     visitId: optionalVisitId, // user is coming from an LmsStudentActivity page OR from this page-controller after processing the refresh token
   } = toRoute.query
+
+  const lang = toRoute.query.lang
+  switch (lang) {
+  case 'es':
+    await t18SetSpanish()
+    break
+  case 'fr':
+    await t18SetFrench()
+    break
+  case 'en':
+    await t18SetEnglish()
+    break
+    // no default. we do not want to override what the user may have selected before.
+  }
 
   // To force a sample exception that is not caught just
   // 1. Get into the EHR pages ...

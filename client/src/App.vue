@@ -3,20 +3,26 @@
     component(:is="layout")
       router-view
     ui-spinner(:loading="isLoading")
+    language-translation-warn-dialog(ref="theLanguageWarningDialog")
 </template>
 
 <script>
-import StoreHelper from './helpers/store-helper'
+import StoreHelper  from './helpers/store-helper'
 import UiSpinner from '@/app/ui/UiSpinner'
+import EventBus, {  CHANGE_LANGUAGE_EVENT } from '@/helpers/event-bus'
+import LanguageTranslationWarnDialog from '@/app/components/LanguageTranslationWarnDialog.vue'
 const DefaultLayout = 'outside'
 
 
 export default {
   name: 'App',
-  components: { UiSpinner },
+  components: { LanguageTranslationWarnDialog, UiSpinner },
   methods: {
     handleResize () {
       this.$store.commit('system/setSmallWindow', window.innerWidth <= 500 )
+    },
+    showLanguageWarning () {
+      this.$refs.theLanguageWarningDialog.showWarningDialog()
     }
   },
   computed: {
@@ -45,9 +51,14 @@ export default {
   created () {
     window.addEventListener('resize', this.handleResize)
     this.handleResize()
+    this.languageChangeHandler = this.showLanguageWarning
+    EventBus.$on(CHANGE_LANGUAGE_EVENT, this.languageChangeHandler)
   },
   destroyed () {
     window.removeEventListener('resize', this.handleResize)
+    if (this.languageChangeHandler) {
+      EventBus.$off(CHANGE_LANGUAGE_EVENT, this.languageChangeHandler)
+    }
   },
 }
 </script>

@@ -9,6 +9,8 @@ export const MESSAGE_FROM_SERVER = 'WEB_SOCKET_MESSAGE'
 export const USER_LOGOUT_EVENT = 'USER_LOGOUT_EVENT'
 export const USER_LOGIN_EVENT = 'USER_LOGIN_EVENT'
 
+export const CHANGE_LANGUAGE_EVENT = 'CHANGE_LANGUAGE_EVENT'
+
 const showEmits = false
 
 export class EventBus extends Vue {
