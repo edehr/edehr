@@ -88,7 +88,7 @@
 
     div(v-else-if="isType('number') || isType('personAge')", class="text_input_wrapper", :class='formCss')
       ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
-      input(v-if="!viewOnly", class="input numb-input", type="text", :disabled="disabled", :name="elementKey", v-model="inputVal")
+      input(v-if="!viewOnly", class="input numb-input", type="number", :disabled="disabled", :name="elementKey", v-model="inputVal")
       div(v-if="viewOnly") {{ inputVal }}
       span(class="suffix") {{suffix }}
 
