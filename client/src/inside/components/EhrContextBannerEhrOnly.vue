@@ -10,14 +10,15 @@
       div(class="bigger-than-threshold4", v-if="seedLicense") License:
         ui-info(title="License", :text='seedLicense')
       div(class="flow_across_last_item")
-        div(class="flow_across menu_space_across")
-          ui-button(v-on:buttonClicked="promptUpload")
-            fas-icon(class="fa", :icon="appIcons.upload")
-            span &nbsp; {{ehrOnlyDemoText.ehrContextBannerButtonLabelUpload}}
-          ui-button(v-on:buttonClicked="promptDownload")
-            fas-icon(class="fa", :icon="appIcons.download")
-            span &nbsp; {{ehrOnlyDemoText.ehrContextBannerButtonLabelDownload}}
-      ui-button(@buttonClicked="gotoEhrOnly") Other case studies
+        app-dropdown(:items="items")
+        //div(class="flow_across menu_space_across")
+        //  ui-button(v-on:buttonClicked="promptUpload")
+        //    fas-icon(class="fa", :icon="appIcons.upload")
+        //    span &nbsp; {{ehrOnlyDemoText.ehrContextBannerButtonLabelUpload}}
+          //ui-button(v-on:buttonClicked="promptDownload")
+          //  fas-icon(class="fa", :icon="appIcons.download")
+          //  span &nbsp; {{ehrOnlyDemoText.ehrContextBannerButtonLabelDownload}}
+      //ui-button(@buttonClicked="gotoEhrOnly") Other case studies
 
     ui-confirm(ref="confirmDownload", v-on:confirm="downloadFile", :saveLabel='ehrOnlyDemoText.ehrContextBannerSaveLabelDownload')
     ui-upload-file-dialog(ref="uploadDialog", @upload='uploadSeedObj')
@@ -36,9 +37,10 @@ import { downloadEhrOnlyToFile, getDownloadEhrOnlyFileName } from '@/helpers/ehr
 import UiUploadFileDialog from '@/app/ui/UiUploadFileDialog.vue'
 import UiInfo from '@/app/ui/UiInfo.vue'
 import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
+import AppDropdown from '@/app/components/app-dropdown/AppDropdown.vue'
 
 export default {
-  components: { UiInfo, UiUploadFileDialog, UiConfirm, UiButton, EhrSimTime, UiLink },
+  components: { AppDropdown, UiInfo, UiUploadFileDialog, UiConfirm, UiButton, EhrSimTime, UiLink },
   data: function () {
     return {
       appIcons: APP_ICONS,
@@ -46,6 +48,26 @@ export default {
     }
   },
   computed: {
+    items () {
+      const menu = []
+      menu.push({
+        label: 'Other case studies',
+        callback: () => { this.$router.push({name: 'ehrOnlyDemo'} ) },
+        icon: this.appIcons.seed
+
+      })
+      menu.push({
+        label: ehrOnlyDemoText.ehrContextBannerButtonLabelUpload ,
+        callback: () => this.promptUpload(),
+        icon: this.appIcons.upload
+      })
+      menu.push({
+        label: ehrOnlyDemoText.ehrContextBannerButtonLabelDownload ,
+        callback: () => this.promptDownload(),
+        icon: this.appIcons.download
+      })
+      return menu
+    },
     seedObj () {
       return this.$store.getters['ehrOnlyDemoStore/ehrOnlySeed'] || {}
     },

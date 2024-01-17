@@ -703,7 +703,7 @@ class StoreHelperWorker {
     // return APP_TYPE_EHR === activityRecord.appType
     if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
       const seed = EhrOnlyDemo.ehrOnlySeed()
-      console.log('EHR only demo', seed.appType, seed)
+      // console.log('EHR only demo', seed.appType, seed)
       return APP_TYPE_EHR === seed.appType
     }
     // console.log('SH this.getSeedAppType()',this.getSeedAppType())
@@ -712,7 +712,7 @@ class StoreHelperWorker {
   isLIS_Showing () {
     if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
       const seed = EhrOnlyDemo.ehrOnlySeed()
-      console.log('EHR only demo', seed.appType, seed)
+      // console.log('EHR only demo', seed.appType, seed)
       return APP_TYPE_LIS === seed.appType
     }
     return APP_TYPE_LIS === this.getSeedAppType()

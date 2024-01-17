@@ -254,6 +254,10 @@ $select_width_2col: 20rem;
     label {
       min-width: 15rem;
     }
+    @media screen and (max-width: $main-width-threshold1) {
+      max-height: inherit;
+    }
+
   }
 }
 
@@ -475,6 +479,10 @@ select, .select {
     .form_label {
       min-width: 12rem;
       max-width: 12rem;
+      @media screen and (max-width: $main-width-threshold1) {
+        min-width: 8rem;
+        max-width: 12rem;
+      }
     }
     .checkset_wrapper {
       .form_label {
@@ -640,7 +648,7 @@ select, .select {
 @media all and (max-width: $form-threshold) {
   .form_label {
     min-width: inherit;
-    max-width: inherit;
+    //max-width: inherit;
   }
   .check-label label {
     min-width: inherit;

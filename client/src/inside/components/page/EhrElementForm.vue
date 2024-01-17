@@ -13,7 +13,7 @@
     div(v-else-if="isType('externalLink')", class="assetLink", :class='formCss')
       a(:href="externalUrl()", target="_blank")
         fas-icon(class="linkIcon", icon="file-pdf")
-        span {{ element }}
+        span {{ label }}
 
     ehr-element-calculated-bool(v-else-if="isType('calculatedBool')", :elementKey="elementKey", :ehrHelp="ehrHelp" )
 
