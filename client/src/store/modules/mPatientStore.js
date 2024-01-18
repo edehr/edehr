@@ -14,14 +14,18 @@ const getters = {
   searchMatches: state => state.searchMatches
 }
 
+let trace = false
+
 const actions = {
   initialize: function ({ commit }) {
     commit('initialize')
   },
   clearMPatientData (context) {
+    if (trace) console.log('multi patient clearMPatientData')
     context.commit('_setCurrentPatientObjectId', undefined)
   },
   clearSearchMatches (context) {
+    if (trace) console.log('multi patient clearSearchMatches')
     context.commit('_setSearchMatches', [])
   },
   /**
@@ -31,6 +35,7 @@ const actions = {
    * @param id
    */
   setCurrentPatientObjectId (context, id) {
+    if (trace) console.log('multi patient setCurrentPatientObjectId', id)
     context.commit('_setCurrentPatientObjectId', id)
   },
   /**
@@ -42,6 +47,7 @@ const actions = {
    * @param patientId: SeedData or PatientData
    */
   async addStudentPatient (context, patientId) {
+    if (trace) console.log('multi patient addStudentPatient', patientId)
     if (this.currentPatientObjectId && this.currentPatientObjectId === patientId) {
       // console.log('mps Patient is already in the list and it is the currently selected object', patientId)
     } else {
@@ -60,9 +66,11 @@ const actions = {
     }
   },
   async ehrOnlyDemo ( context, seedId) {
+    if (trace) console.log('multi patient ehrOnlyDemo', seedId)
     await context.commit('_setCurrentPatientObjectId', seedId)
   },
   async addSeedToActivePatientList (context, seed) {
+    if (trace) console.log('multi patient addSeedToActivePatientList', seed)
     if (this.currentPatientObjectId && this.currentPatientObjectId === seed._id) {
       // console.log('mps Patient is already in the list and it is the currently selected object', seed)
     } else {
@@ -75,9 +83,11 @@ const actions = {
     }
   },
   async updateSeedInActivePatientList (context, seed) {
+    if (trace) console.log('multi patient updateSeedInActivePatientList', seed)
     context.commit('_updatePatientObjectId', seed)
   },
   async forInstructorSetPatient (context, patientId) {
+    if (trace) console.log('multi patient forInstructorSetPatient', patientId)
     if (this.currentPatientObjectId && this.currentPatientObjectId === patientId) {
       // console.log('mps Patient is already in the list and it is the currently selected object', patientId)
     } else {
@@ -95,6 +105,7 @@ const actions = {
   },
 
   removePatient (context, id) {
+    if (trace) console.log('multi patient removePatient', id)
     if (StoreHelper.isSeedEditing()) {
       context.commit('removePatient', id)
     }
@@ -106,6 +117,7 @@ const actions = {
    * @returns {Promise<unknown>}
    */
   searchForPatientsBy ( context, options ) {
+    if (trace) console.log('multi patient searchForPatientsBy', options)
     let url = 'patientSearch?' //mrn=' + mrn
     let hasPart = false
     if (options.mrn) {
@@ -138,6 +150,7 @@ const actions = {
    * @returns {Promise<void>}
    */
   async loadStudentPatientList (context, patientList) {
+    if (trace) console.log('multi patient loadStudentPatientList', patientList)
     // decouple the list because the data is coming from the activity store, and we can't modify vuex data outside a store mutation
     patientList = JSON.parse(JSON.stringify(patientList))
     patientList = await MPatientHelper.fillOutPatientList(patientList)

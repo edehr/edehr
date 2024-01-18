@@ -21,6 +21,26 @@ function perfExit (perfStat) {
   perfStat.elapsed.loading = performance.now() - perfStat.start.loading
   return perfStat
 }
+
+function determineCurrentPatientId (optionalVisitId, patientId) {
+  const theLObj = store.getters['assignmentStore/learningObject']
+  let pId
+  if (optionalVisitId && theLObj.seedDataId) {
+    pId = theLObj.seedDataId // patient id from learning object
+  } else if (patientId) {
+    pId = patientId // patient id from query string
+  } else {
+    pId = store.getters['mPatientStore/currentPatientObjectId'] // stashed from previous page visit
+    if (!pId) {
+      if (dbApp) console.log('student has no stored pId so see if there is a list and select one of the patients')
+      const list = MPatientHelper.getCurrentPatientList()
+      const first = list && list.length > 0 ? list[0] : {}
+      pId = first._id
+    }
+  }
+  return pId
+}
+
 /**
    * onPageChange is invoked from main.js whenever a route has changed.
    * This complex page change handler is responsible for these transitions:
@@ -64,7 +84,7 @@ async  function onPageChange (toRoute) {
     seedEditId, // instructor user just started editing a seed in the ehr
     seedId, // instructor user going to seed view. Not used in page-controller. Can clean.
     evaluateStudentVisitId, // instructor selected to evaluate a student, possibly in the EHR
-    patientId,
+    patientId, // patientId is when student searches for and selects patient
     token: refreshToken, // user has just arrived via a LTI request from an LMS
     visitId: optionalVisitId, // user is coming from an LmsStudentActivity page OR from this page-controller after processing the refresh token
   } = toRoute.query
@@ -354,22 +374,9 @@ async  function onPageChange (toRoute) {
       await store.dispatch('activityDataStore/loadActivityData', { id: theActivity.activityDataId })
       // load the Learning Object .... (formerly called an 'assignment')
       await store.dispatch('assignmentStore/load', theActivity.learningObjectId)
-      const theLObj = store.getters['assignmentStore/learningObject']
-      let pId
-      if (optionalVisitId && theLObj.seedDataId) {
-        pId = theLObj.seedDataId // patient id from learning object
-      } else if (patientId) {
-        pId = patientId // patient id from query string
-      } else {
-        pId = store.getters['mPatientStore/currentPatientObjectId'] // stashed from previous page visit
-        if (!pId) {
-          if (dbApp) console.log('student has no stored pId so see if there is a list and select one of the patients')
-          const list = MPatientHelper.getCurrentPatientList()
-          const first = list && list.length > 0 ? list[0] : { }
-          pId = first._id
-        }
-      }
+      let pId = determineCurrentPatientId(optionalVisitId, patientId)
       if (pId) {
+        // console.log('PageContr found patient id', pId)
         // change the list if pId is new. Calling addStudentPatient will only affect the list if needed.
         await store.dispatch('mPatientStore/addStudentPatient', pId)
         // Note that addStudentPatient will load the activity data if needed

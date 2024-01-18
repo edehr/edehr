@@ -668,16 +668,6 @@ export default class EhrPageHelper {
         // console.log('dialog opening set rec hdr name', key, dialog.inputs[key])
       }
     }
-    if (options.simDay) {
-      key = tableKey + '_day'
-      dialog.inputs[key] = options.simDay
-      // console.log('dialog opening set sim day from options', key, dialog.inputs[key])
-    }
-    if (options.simTime) {
-      key = tableKey + '_time'
-      dialog.inputs[key] = options.simTime
-      // console.log('dialog opening set sim time from options', key, dialog.inputs[key])
-    }
 
     if (options.presetValues) {
       options.presetValues.forEach( pv => {

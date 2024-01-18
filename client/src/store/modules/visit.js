@@ -57,6 +57,8 @@ const getters = {
   visitId: state => state._visitId
 }
 
+let trace = false
+
 const actions = {
   initialize: function ({ commit }) {
     commit('initialize')
@@ -68,13 +70,14 @@ const actions = {
     localStorage.removeItem(IS_CONTENT_EDITING)
   },
   async changeVisitId (context, visitId) {
+    if (trace) console.log('Visit store changeVisitId', vId)
     const postBody = { visitId: visitId }
     return InstoreHelper.postRequest(context, API, 'change-visit', postBody).then(results => {
       return results.data.token
     })
   },
   setVisitIdViaSh (context, visitId) {
-    // console.log('Set visit id', vId)
+    if (trace) console.log('Visit store setVisitIdViaSh', visitId)
     context.commit('setVisitId', visitId)
   },
   /**
@@ -93,6 +96,7 @@ const actions = {
   // },
   loadVisitRecord (context) {
     const visitId = context.getters.visitId
+    if (trace) console.log('Visit store loadVisitRecord', visitId)
     if (!visitId) {
       console.error('Visit error loading record. Must set visitId first!')
       return Promise.reject('Missing visitId')
@@ -111,22 +115,26 @@ const actions = {
     })
   },
   restoreAsInstructor (context) {
+    if (trace) console.log('Visit store restore as instructor')
     return InstoreHelper.postRequest(context, API, 'restoreAsInstructor').then(results => {
       return results.data.token
     })
   },
   async simulationSignOn (context, postBody) {
+    if (trace) console.log('Visit store simulationSignOn', postBody)
     const results = await InstoreHelper.postRequest(context, API, 'sim-sign-on', postBody)
     const visit = results.data
     context.commit('setSimSignOn', visit.simulationSignOn)
   },
   async simulationSignOut (context, visitId ) {
+    if (trace) console.log('Visit store simulationSignOut', visitId)
     const postBody = { visitId: visitId }
     const results = await InstoreHelper.postRequest(context, API, 'sim-sign-out', postBody)
     // almost could assert that results.simulationSignOn === {} except mongoose creates an object with its own _id
     context.commit('setSimSignOn', results.simulationSignOn)
   },
   async loadSimulationSignIn (context, visitId ) {
+    if (trace) console.log('Visit store loadSimulationSignIn', visitId)
     let url = 'get/' + visitId
     const response = await InstoreHelper.getRequest(context, API, url)
     const visit = response.data.visit
@@ -138,12 +146,14 @@ const actions = {
    * @param visitId
    * @returns {Promise<void>}
    */
-  async loadSimulationDateTime (context, visitId ) {
-    let url = 'sim-date-time/' + visitId
-    const response = await InstoreHelper.getRequest(context, API, url)
-    const simulationDateTime = response.data
-    context.commit('setSimDateTime', simulationDateTime)
-  },
+  // Seems the following is no longer needed
+  // async loadSimulationDateTime (context, visitId ) {
+  //   if (trace) console.log('Visit store loadSimulationDateTime', visitId)
+  //   let url = 'sim-date-time/' + visitId
+  //   const response = await InstoreHelper.getRequest(context, API, url)
+  //   const simulationDateTime = response.data
+  //   context.commit('setSimDateTime', simulationDateTime)
+  // },
   /**
    *
    * @param context
@@ -151,11 +161,13 @@ const actions = {
    * @returns {Promise<void>}
    */
   async setSimulationDateTime (context, postBody) {
+    if (trace) console.log('Visit store setSimulationDateTime', postBody)
     const results = await InstoreHelper.postRequest(context, API, 'sim-date-time', postBody)
     const visit = results.data
     context.commit('setSimDateTime', visit.simulationDateTime)
   },
   visitAsStudent (context, currentActivityId) {
+    if (trace) console.log('Visit store visitAsStudent', currentActivityId)
     const postBody = { activityId: currentActivityId }
     return InstoreHelper.postRequest(context, API, 'visitAsStudent', postBody).then(results => {
       return results.data.token

@@ -213,8 +213,9 @@ export default {
         if(timeElement.hasDraftMar()) {
           options.draftRowId = timeElement.marRecordId
         }
-        options.simDay = timeElement.dayNum
-        options.simTime = timeElement.ts
+        // // change the option to use current sim time not the time element's information.
+        // options.simDay = timeElement.dayNum
+        // options.simTime = timeElement.ts
         const mme = timeElement.getMedMarEvent()
         options.presetValues = [
           { key: 'mo_schedDay', value: mme.schedDay },
