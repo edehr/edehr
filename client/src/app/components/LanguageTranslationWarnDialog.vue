@@ -31,12 +31,12 @@ export default {
     warnMsg () {
       let msg
       let common = ' Only the student experience is fully translated. The text seen by faculty may be translated later.'
-      msg = 'The French translation has been produced by machines not people. ' +
-          ' Please do not depend on these translations until they have been reviewed. ' +
-          ' The EdEHR Academic Advisor group will soon be working with competent translators.\n' +
-          'The Spanish translation is currently being reviewed by a translator ' +
-          ' who has both medical and educational experience.  Your comments and help are welcome.\n' +
-          common
+      msg = ' Only the student experience is fully translated. The text seen by faculty may be translated later. \n' +
+        ' The French translation is a machine translation with many expected mistakes. ' +
+        ' Do not depend on this translation until it is professionally reviewed. \n' +
+        ' The Spanish translation is currently being reviewed by a translator ' +
+        ' who has both medical and educational experience.  \n' +
+        ' If you see something that needs attention please contact https://edehr.org.\n'
       return msg
     }
   },
