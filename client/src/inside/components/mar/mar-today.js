@@ -48,8 +48,7 @@ export default class MarToday {
       console.log('getTodaysSchedule marRecords', marRecords)
       console.log('getTodaysSchedule medOrders', medOrders)
     }
-    let data = StoreHelper.getMergedData()
-    let simTime = data.meta.simTime
+    let simTime = StoreHelper.getMetaSimTime()
     this._cDay = simTime.visitDay
     // console.log('construct MarToday with cDay', simTime)
     let aDaySchedule = getSchedule(medOrders)

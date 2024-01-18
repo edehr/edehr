@@ -11,15 +11,6 @@
         ui-info(title="License", :text='seedLicense')
       div(class="flow_across_last_item")
         app-dropdown(:items="items")
-        //div(class="flow_across menu_space_across")
-        //  ui-button(v-on:buttonClicked="promptUpload")
-        //    fas-icon(class="fa", :icon="appIcons.upload")
-        //    span &nbsp; {{ehrOnlyDemoText.ehrContextBannerButtonLabelUpload}}
-          //ui-button(v-on:buttonClicked="promptDownload")
-          //  fas-icon(class="fa", :icon="appIcons.download")
-          //  span &nbsp; {{ehrOnlyDemoText.ehrContextBannerButtonLabelDownload}}
-      //ui-button(@buttonClicked="gotoEhrOnly") Other case studies
-
     ui-confirm(ref="confirmDownload", v-on:confirm="downloadFile", :saveLabel='ehrOnlyDemoText.ehrContextBannerSaveLabelDownload')
     ui-upload-file-dialog(ref="uploadDialog", @upload='uploadSeedObj')
 </template>

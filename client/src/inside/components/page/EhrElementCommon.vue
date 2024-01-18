@@ -8,6 +8,8 @@ import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_REFRESH_EVENT } from '@/helpers/e
 import EhrData from '@/inside/components/page/ehr-data'
 import { validateAgeValue } from '@/ehr-definitions/ehr-def-utils'
 import { t18EhrText, t18ElementLabel, t18HelperText } from '@/helpers/ehr-t18'
+import EhrOnlyDemo from '@/helpers/ehr-only-demo'
+import StoreHelper from '@/helpers/store-helper'
 
 const DEPENDENT_PROPS = EhrTypes.dependentOn
 
@@ -121,12 +123,23 @@ export default {
     setInitialValue (value) {
       if (dbInputs) console.log('EhrCommon set initial value ', value, this.elementKey)
       if (this.element.recHeader && !this.viewOnly) {
+        let metaSimTime = StoreHelper.getMetaSimTime()
         // the dialog is open for edit. Push the current sign in and sim time into the recorder header
         if (this.inputType === EhrTypes.dataInputTypes.visitDay) {
-          value = this.$store.getters['visit/simDate']
+          if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+            value = metaSimTime.visitDay
+          } else {
+            value = this.$store.getters['visit/simDate']
+          }
+          // console.log('EhrCommon set initial rec hdr date ', value)
         }
         if (this.inputType === EhrTypes.dataInputTypes.visitTime) {
-          value = this.$store.getters['visit/simTime']
+          if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+            value = metaSimTime.visitTime
+          } else {
+            value = this.$store.getters['visit/simTime']
+          }
+          // console.log('EhrCommon set initial rec hdr time ', value)
         }
         if (this.inputType === EhrTypes.dataInputTypes.practitionerName) {
           let signOnDetails = this.$store.getters['visit/simSignOnData'] || {}

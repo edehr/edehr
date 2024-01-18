@@ -244,8 +244,7 @@ export default class EhrPageHelper {
     if (dialog.tableDef.hasRecHeader) {
       const tableKey = dialog.tableDef.tableKey
       const inputs = dialog.inputs
-      const mData = StoreHelper.getMergedData()
-      const { visitDay, visitTime } = mData.meta.simTime
+      const { visitDay, visitTime } = StoreHelper.getMetaSimTime()
       let key
       key = tableKey + '_day'
       if (!validDayStr(inputs[key])) {
@@ -641,15 +640,26 @@ export default class EhrPageHelper {
       dialog.inputs[srcElemKey] = options.embedRefValue
     }
     if (hasRecHeader) {
-      const cDate = StoreHelper.getSimDate()
-      const cTime = StoreHelper.getSimTime()
+      let metaSimTime = StoreHelper.getMetaSimTime()
       key = tableKey + '_day'
       if (!validDayStr(dialog.inputs[key])) {
+        let cDate
+        if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+          cDate = metaSimTime.visitDay
+        } else {
+          cDate = StoreHelper.getSimDate()
+        }
         dialog.inputs[key] = parseInt(cDate)
         // console.log('dialog opening set sim day', key, dialog.inputs[key])
       }
       key = tableKey + '_time'
       if (!validTimeStr(dialog.inputs[key])) {
+        let cTime
+        if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+          cTime = metaSimTime.visitTime
+        } else {
+          cTime = StoreHelper.getSimTime()
+        }
         dialog.inputs[key] = cTime
         // console.log('dialog opening set sim time', key, dialog.inputs[key])
       }

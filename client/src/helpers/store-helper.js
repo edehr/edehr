@@ -190,14 +190,17 @@ class StoreHelperWorker {
   getSimDate () { return this.getSimSDateTimeData().cDate}
   getSimTime () { return this.getSimSDateTimeData().cTime}
 
+  getMetaSimTime () {
+    let data = StoreHelper.getMergedData()
+    return data.meta.simTime || {}
+  }
   /**
    * initializeSimDateTime assumes this is invoked AFTER loadVisitRecord or loadSimulationDateTime
-   * Looks at the current stored date and time. 
+   * Looks at the current stored date and time.
    */
   async initializeSimDateTime () {
     const sdt = await this.getSimSDateTimeData()
-    const mData = StoreHelper.getMergedData()
-    const { visitDay, visitTime } = mData.meta.simTime
+    const { visitDay, visitTime } = StoreHelper.getMetaSimTime()
     // console.log('SH initializeSimDateTime ', JSON.stringify(sdt))
     // console.log('SH initializeSimDateTime visitDay, visitTime', visitDay, visitTime)
     if ( (sdt.cDate !== visitDay) || (sdt.cTime !== visitTime) ) {
