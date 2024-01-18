@@ -192,14 +192,16 @@ class StoreHelperWorker {
 
   /**
    * initializeSimDateTime assumes this is invoked AFTER loadVisitRecord or loadSimulationDateTime
-   * Looks at the current stored date and time. If in the initial state then get the date time
-   * from the ehr merged data metaData. Set this into the visit record.
+   * Looks at the current stored date and time. 
    */
   async initializeSimDateTime () {
     const sdt = await this.getSimSDateTimeData()
-    if (!sdt.cDate || !sdt.cTime) {
-      const mData = StoreHelper.getMergedData()
-      const { visitDay, visitTime } = mData.meta.simTime
+    const mData = StoreHelper.getMergedData()
+    const { visitDay, visitTime } = mData.meta.simTime
+    // console.log('SH initializeSimDateTime ', JSON.stringify(sdt))
+    // console.log('SH initializeSimDateTime visitDay, visitTime', visitDay, visitTime)
+    if ( (sdt.cDate !== visitDay) || (sdt.cTime !== visitTime) ) {
+      // console.log('SH initializeSimDateTime setSimulationDateTime', visitDay, visitTime)
       const payload = { visitId: this.getVisitId(), cDate: ''+ visitDay, cTime: visitTime}
       await store.dispatch('visit/setSimulationDateTime', payload)
     }
@@ -703,7 +705,7 @@ class StoreHelperWorker {
     // return APP_TYPE_EHR === activityRecord.appType
     if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
       const seed = EhrOnlyDemo.ehrOnlySeed()
-      console.log('EHR only demo', seed.appType, seed)
+      // console.log('EHR only demo', seed.appType, seed)
       return APP_TYPE_EHR === seed.appType
     }
     // console.log('SH this.getSeedAppType()',this.getSeedAppType())
@@ -712,7 +714,7 @@ class StoreHelperWorker {
   isLIS_Showing () {
     if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
       const seed = EhrOnlyDemo.ehrOnlySeed()
-      console.log('EHR only demo', seed.appType, seed)
+      // console.log('EHR only demo', seed.appType, seed)
       return APP_TYPE_LIS === seed.appType
     }
     return APP_TYPE_LIS === this.getSeedAppType()

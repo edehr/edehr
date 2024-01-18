@@ -265,11 +265,11 @@ export const ehrOnlyDemoText = {
     'These files can include PDF and image files.  The workflow starts with the content creator who ' +
     'finds or creates a file to support a scenario. They upload this file into an area on the server ' +
     'reserved for the learning institution. Then students or course content creators can select a file for inclusion here.',
-  submitDialogMessage: 'In the full EdEHR students complete their work and submit it for review by their ' +
-    'instructor. The instructor can view the student\'s work in the EHR context and leave ' +
-    'evaluation comments for the student to consider. These ' +
-    'evaluation comments can also be transferred to the institution\'s learning ' +
-    'management system for course grading.',
+  // submitDialogMessage: 'In the full EdEHR students complete their work and submit it for review by their ' +
+  //   'instructor. The instructor can view the student\'s work in the EHR context and leave ' +
+  //   'evaluation comments for the student to consider. These ' +
+  //   'evaluation comments can also be transferred to the institution\'s learning ' +
+  //   'management system for course grading.',
   submitDialogTitle: 'Student Submit',
   enterEHRButtonLabel: 'Enter the EHR',
   noAccess: 'You are already logged in and using the EdEHR either from your learning management system ' +
@@ -277,10 +277,10 @@ export const ehrOnlyDemoText = {
   ehrContextBannerTitle: 'EHR Demonstration View',
   ehrContextBannerButtonLabelDownload: 'Export',
   ehrContextBannerButtonLabelUpload: 'Import',
-  ehrContextBannerSaveLabelDownload: 'Save',
-  ehrContextBannerSaveLabelUpload: 'Import',
-  navPanelSubmitButton: 'Submit',
-  navPanelActivityButton: 'Activity Details'
+  // ehrContextBannerSaveLabelDownload: 'Save',
+  // ehrContextBannerSaveLabelUpload: 'Import',
+  // navPanelSubmitButton: 'Submit',
+  // navPanelActivityButton: 'Activity Details'
 }
 
 const _common =     '"Health Case Studies - Toward Closing the Healthcare Communication Gap" ' +

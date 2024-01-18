@@ -210,5 +210,10 @@
       "LMS_DESCRIPTION": "Course description as provided by the learning management system.",
       "TYPE": "Course type as provided by the learning management system."
     }
-  }
+  },
+  "fileDialogTitle": "File Selection",
+  "fileDialogMessage": "This EHR only demo version does not support files. In the full EdEHR the EHR user will not see this message and will instead see a dialog that allows them to select from a set of files previously uploaded to the system by the course content creator. These files can include PDF and image files.  The workflow starts with the content creator who finds or creates a file to support a scenario. They upload this file into an area on the server reserved for the learning institution. Then students or course content creators can select a file for inclusion here.",
+  "ehrContextBannerTitle": "EHR Demonstration View",
+  "ehrContextBannerButtonLabelDownload": "Export this case study",
+  "ehrContextBannerButtonLabelUpload": "Import a case study"
 }

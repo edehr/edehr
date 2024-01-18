@@ -229,6 +229,9 @@ footer {
 .flow_across {
   display: flex;
   flex-direction: row;
+  @media screen and (max-width: $main-width-threshold1) {
+    flex-wrap: wrap;
+  }
 }
 .flow_wrap{
   flex-wrap: wrap;
