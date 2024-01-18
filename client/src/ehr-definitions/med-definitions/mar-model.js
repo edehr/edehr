@@ -106,7 +106,8 @@ export class MarTimelineModel {
         const otherTe = this.findTimeElement(medId, mme.adminDay, mr)
         if (otherTe) {
           otherTe.mme = mme
-          otherTe.manyMars.push(mme)
+          // otherTe.manyMars.push(mme)
+          // console.log(' push onto otherTe', otherTe, otherTe.manyMars)
         } else {
           // This situation should not happen. Send message to error.
           console.error('Failed to find expected time element for medMarEvent', medId, mar.adminDay, mr)
@@ -116,6 +117,7 @@ export class MarTimelineModel {
         // console.log('mos is scheduled', medOrder.id, dayNum, te.ts)
         te.mme = mme
         te.manyMars.push(mme)
+        // console.log(' push onto te without mar ', te,  te.manyMars)
       }
     } else {
       // For all the other, non-scheduled, medications ....
@@ -134,6 +136,7 @@ export class MarTimelineModel {
           let mme = new MedMarEvent(dayNum, te.ts, medOrder)
           mme.setMar(mar)
           te.manyMars.push(mme)
+          // console.log(' push onto te from fmars ', te, te.manyMars)
         })
       }
     }
