@@ -5,8 +5,9 @@
       div(slot="body")
         p(v-text-to-html="warnMsg")
         p.
-          Please contact us if you can help with these translations. Visit the contact page at
+          Please contact us via the contact page at
           <a href="https://edehr.org"> edehr.org </a>
+          if you can help with these translations.
 
         div
           input(type='checkbox', v-model='noShowPref')
@@ -30,13 +31,11 @@ export default {
     userPrefNoShowTranslationWarning () { return this.$store.getters['system/userPrefNoShowTranslationWarning']},
     warnMsg () {
       let msg
-      let common = ' Only the student experience is fully translated. The text seen by faculty may be translated later.'
       msg = ' Only the student experience is fully translated. The text seen by faculty may be translated later. \n' +
         ' The French translation is a machine translation with many expected mistakes. ' +
         ' Do not depend on this translation until it is professionally reviewed. \n' +
         ' The Spanish translation is currently being reviewed by a translator ' +
-        ' who has both medical and educational experience.  \n' +
-        ' If you see something that needs attention please contact https://edehr.org.\n'
+        ' who has both medical and educational experience.  \n'
       return msg
     }
   },
