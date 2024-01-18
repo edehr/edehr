@@ -176,17 +176,17 @@ export default {
       return this.getDraftMarsForMed(med).length > 0
     },
     showMainMedAdminButton (med) {
-      let show = false
-      if (med.isStatOrOnce()) {
-        const mc = this.getMarsForMed(med).length
-        show = mc === 0
-      } else if (med.isPrn()) {
-        const dc = this.getDraftMarsForMed(med).length
-        show = dc === 0
-      } else {
-        // OD meds can appear on both the title area and the day's schedule
-        show = 'OD' === med.schedule || !med.isSchedulable()
-      }
+      let show = true
+      // if (med.isStatOrOnce()) {
+      //   const mc = this.getMarsForMed(med).length
+      //   show = mc === 0
+      // } else if (med.isPrn()) {
+      //   const dc = this.getDraftMarsForMed(med).length
+      //   show = dc === 0
+      // } else {
+      //   // OD meds can appear on both the title area and the day's schedule
+      //   show = 'OD' === med.schedule || !med.isSchedulable()
+      // }
       return show
     },
 
