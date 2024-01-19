@@ -141,13 +141,22 @@ export default {
           }
           // console.log('EhrCommon set initial rec hdr time ', value)
         }
+        let signOnDetails = this.$store.getters['visit/simSignOnData'] || {}
         if (this.inputType === EhrTypes.dataInputTypes.practitionerName) {
-          let signOnDetails = this.$store.getters['visit/simSignOnData'] || {}
-          value = signOnDetails.personaName
+          if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+            value = 'Jason'
+            console.log('TO DO for EHR ONLY --- devise a better persona ')
+          } else {
+            value = signOnDetails.personaName
+          }
         }
         if (this.inputType === EhrTypes.dataInputTypes.practitionerProfession) {
-          let signOnDetails = this.$store.getters['visit/simSignOnData'] || {}
-          value = signOnDetails.personaProfession
+          if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+            value = 'RN'
+            // console.log('TO DO for EHR ONLY --- devise a better persona ')
+          } else {
+            value = signOnDetails.personaProfession
+          }
         }
       }
       this.initialVal = value
