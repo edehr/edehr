@@ -6,7 +6,7 @@ const woundSeed = require('@/demos/wound-case-1.json')
 const pbfCase = require('@/demos/pbf-jackson.json')
 const bonlanleBefore = require('@/demos/BonlanleAkosua_before.json')
 const bonlanleAfter = require('@/demos/BonlanleAkosua_after.json')
-
+const melissaAshman = require('@/demos/melissaAshman.json')
 const state = {
   ehrData: undefined,
   seedObject: undefined,
@@ -72,6 +72,8 @@ const mutations = {
       seed = bonlanleBefore
     }  else  if (key === 'bonlanleAfter') {
       seed = bonlanleAfter
+    } else if (key = 'Ashmann') {
+      seed = melissaAshman
     }
     setSeed(state, seed)
   }

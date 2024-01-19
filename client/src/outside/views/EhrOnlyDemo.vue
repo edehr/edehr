@@ -13,6 +13,15 @@
 
       div(class="list-card list-element")
         p
+          router-link(:to="{path: 'ehr', query: {demoOnlyKey: 'Ashmann'}}") Mental health
+        p  Melissa Ashmann is a 32-year old who was involved in a motor vehicle crash, near Kaslo. She sustained a left tib-fib fracture and underwent an ORIF.
+
+        p Melissa has a history of depression, anxiety and previous knee surgery.
+
+        p Useful for 2nd year nursing.
+
+      div(class="list-card list-element")
+        p
           router-link(:to="{path: 'ehr/current/assessments/integumentary-assessment', query: {demoOnlyKey: 'wound'}}") Wound care
           span &nbsp; (be sure to select the Wound tab)
         p.

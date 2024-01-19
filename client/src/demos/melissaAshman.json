@@ -1,0 +1,627 @@
+{
+  "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "contributors": "Christopher Hillary, Bryan",
+  "ehrData": {
+    "demographics": {
+      "givenName": "Melissa",
+      "familyName": "Ashmann",
+      "personAge": "32",
+      "preferredName": "Mel",
+      "martialStatus": "Separated",
+      "languagePrimary": "English",
+      "indigenousIdentifyAs": "No",
+      "lastUpdate": "2023-10-15T12:39:11-07:00",
+      "weight": "68",
+      "gender": "Female",
+      "occupationStudent": "Unemployed",
+      "nextOfKinName": "None",
+      "middleName": "Susan",
+      "dateOfBirth": "1991-01-13",
+      "noAddress": true,
+      "mrn": "1234567890"
+    },
+    "psychosocial": {
+      "history": "Anxiety\nDepression",
+      "livingSituation": "Moving",
+      "lastUpdate": "2021-11-24T20:30:07+00:00"
+    },
+    "visit": {
+      "consentForTreatment": true,
+      "consentForBlood": true,
+      "diagnosis": "MVI- multi-trauma\nRight tib-fib fracture\nRight arm abrasion",
+      "lastUpdate": "2023-01-20T17:22:28+00:00",
+      "table": [
+        {
+          "location": "Surgical",
+          "transferInDay": "1",
+          "transferInTime": "0130",
+          "createdDate": "2023-01-11T15:31:24-08:00",
+          "table_id": "visit.table.0"
+        }
+      ],
+      "admissionDay": "1",
+      "admissionTime": "0130",
+      "status": "Inpatient",
+      "codeStatus": "C2",
+      "notes": "MVI rollover while en route to Kaslo. Extricated by first responders.\nCompound fracture of right tib-fib. Surgical ORIF at 2315 on Admission Day 0.\nAdmit to surgical post op"
+    },
+    "surgical": {
+      "pastSurgery": [
+        {
+          "procedure": "Knee arthroscopy",
+          "createdDate": "2021-11-24T19:56:52-08:00",
+          "pastSurgery_id": "surgical.pastSurgery.0"
+        }
+      ],
+      "lastUpdate": "2021-11-25T03:56:53+00:00"
+    },
+    "vitals": {
+      "table": [
+        {
+          "systolic": "121",
+          "diastolic": "64",
+          "patientPosition": "Supine",
+          "temperature": "36.7",
+          "source": "Oral",
+          "strength": "Peripheral",
+          "rate": "68",
+          "rhythm": "Regular",
+          "respirationRate": "16",
+          "oxygenSaturation": "96",
+          "oxygenMode": "Room air",
+          "createdDate": "2023-01-11T15:13:32-08:00",
+          "table_name": "Rupinder",
+          "table_profession": "RN",
+          "table_day": 1,
+          "table_time": "0130",
+          "table_id": "vitals.table.0"
+        },
+        {
+          "systolic": "116",
+          "diastolic": "72",
+          "patientPosition": "Supine",
+          "temperature": "36.5",
+          "source": "Oral",
+          "strength": "Peripheral",
+          "rate": "62",
+          "rhythm": "Regular",
+          "respirationRate": "14",
+          "oxygenSaturation": "97",
+          "oxygenMode": "Room air",
+          "createdDate": "2023-01-20T09:24:22-08:00",
+          "table_name": "Rupinder",
+          "table_profession": "RN",
+          "table_day": 1,
+          "table_time": "0530",
+          "table_id": "vitals.table.1"
+        }
+      ],
+      "lastUpdate": "2023-01-20T17:24:22+00:00"
+    },
+    "medicationOrders": {
+      "lastUpdate": "2023-10-15T12:09:52-07:00",
+      "medicationOrdersTable": [
+        {
+          "medicationOrdersTable_name": "C. Howard",
+          "medicationOrdersTable_profession": "Physician",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "0700",
+          "med_timing": "sched",
+          "med_route": "intra",
+          "med_medication": "cefazolin for injection",
+          "med_dose": "1 gram",
+          "med_scheduled": "Q8H",
+          "med_time1": "0600",
+          "med_time2": "1400",
+          "med_time3": "2200",
+          "createdDate": "2023-10-15T11:57:57-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.0"
+        },
+        {
+          "medicationOrdersTable_name": "C. Howard",
+          "medicationOrdersTable_profession": "MD",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "0700",
+          "med_timing": "sched",
+          "med_route": "intra",
+          "med_injectionLocation": "subcutaneous",
+          "med_medication": "dalteparin",
+          "med_dose": "2500 units",
+          "createdDate": "2023-10-15T12:00:45-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.1",
+          "med_scheduled": "OD"
+        },
+        {
+          "medicationOrdersTable_name": "C. Howard",
+          "medicationOrdersTable_profession": "MD",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "0700",
+          "med_timing": "prn",
+          "med_route": "oral",
+          "med_reason": "post operative pain",
+          "med_medication": "apo-hydromorphone",
+          "med_dose": "1-2 mg",
+          "med_scheduled": "Q4H",
+          "med_time1": "0200",
+          "med_time2": "0600",
+          "med_time3": "1000",
+          "med_time4": "1400",
+          "med_time5": "1800",
+          "med_time6": "2200",
+          "createdDate": "2023-10-15T12:01:55-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.2"
+        },
+        {
+          "medicationOrdersTable_name": "C. Howard",
+          "medicationOrdersTable_profession": "MD",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "0700",
+          "med_timing": "prn",
+          "med_route": "subl",
+          "med_reason": "Agitation",
+          "med_medication": "apo-lorazepam tab 1mg",
+          "med_dose": "1 mg",
+          "med_scheduled": "Q8H",
+          "med_time1": "0600",
+          "med_time2": "1400",
+          "med_time3": "2200",
+          "createdDate": "2023-10-15T12:03:10-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.3"
+        },
+        {
+          "medicationOrdersTable_name": "C. Howard",
+          "medicationOrdersTable_profession": "MD",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "0700",
+          "med_timing": "sched",
+          "med_route": "oral",
+          "med_medication": "apo-sertraline",
+          "med_dose": "50 mg",
+          "createdDate": "2023-10-15T12:04:00-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.4",
+          "med_scheduled": "OD"
+        },
+        {
+          "medicationOrdersTable_name": "C. Howard",
+          "medicationOrdersTable_profession": "MD",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "0700",
+          "med_timing": "prn",
+          "med_route": "oral",
+          "med_reason": "post operative pain",
+          "med_medication": "acetaminophen 500 mg",
+          "med_dose": "500 - 1000 mg",
+          "med_scheduled": "Q6H",
+          "med_time1": "0200",
+          "med_time2": "0600",
+          "med_time3": "1200",
+          "med_time4": "1800",
+          "med_time5": "2200",
+          "createdDate": "2023-10-15T12:05:06-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.5"
+        },
+        {
+          "medicationOrdersTable_name": "C Howrd",
+          "medicationOrdersTable_profession": "MD",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "0700",
+          "med_timing": "prn",
+          "med_route": "oral",
+          "med_reason": "Nausea and vomiting",
+          "med_medication": "apo dimenhydrinate tab 50mg",
+          "med_dose": "50 mg",
+          "med_scheduled": "Q8H",
+          "med_time1": "0600",
+          "med_time2": "1400",
+          "med_time3": "2200",
+          "createdDate": "2023-10-15T12:06:02-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.6"
+        },
+        {
+          "medicationOrdersTable_name": "C. Howard",
+          "medicationOrdersTable_profession": "MD",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "0700",
+          "med_timing": "cont",
+          "med_route": "intra",
+          "med_reason": "opioid induced respiratory depression",
+          "med_injectionLocation": "intramuscular",
+          "med_medication": "naloxone hcl injection - 0.4mg/ml usp",
+          "med_dose": "0.02-0.04 mg",
+          "med_instructions": "Repeat Q10min up to 3 doses if required",
+          "createdDate": "2023-10-15T12:07:24-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.7"
+        },
+        {
+          "medicationOrdersTable_name": "C. Howard",
+          "medicationOrdersTable_profession": "MD",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "0700",
+          "med_timing": "sched",
+          "med_medication": "polysporin antibiotic ointment",
+          "med_instructions": "Apply topically to affected area",
+          "createdDate": "2023-10-15T12:08:44-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.8",
+          "med_scheduled": "OD"
+        },
+        {
+          "medicationOrdersTable_name": "C. Howard",
+          "medicationOrdersTable_profession": "MD",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "0700",
+          "med_timing": "prn",
+          "med_reason": "Constipation",
+          "med_medication": "sennosides",
+          "med_dose": "25-50 mg",
+          "med_instructions": "1-2 times daily",
+          "createdDate": "2023-10-15T12:09:52-07:00",
+          "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.9"
+        }
+      ]
+    },
+    "medAdminRec": {
+      "lastUpdate": "2023-10-15T12:37:57-07:00",
+      "marTable": [
+        {
+          "marTable_name": "Jane",
+          "marTable_profession": "RN",
+          "marTable_day": "0",
+          "marTable_time": "1400",
+          "med_order_embedded": "medicationOrders.medicationOrdersTable.0",
+          "mo_medOrder": "cefazolin for injection 1 gram intra Q8H",
+          "mo_timing": "sched",
+          "mo_schedDay": 0,
+          "mo_schedTime": "1400",
+          "mo_id": "medicationOrders.medicationOrdersTable.0",
+          "mar_status": "Administered",
+          "mar_dose": "1 gm",
+          "undefined": "medicationOrders.medicationOrdersTable.0",
+          "medicationOrdersTable_name": "C. Howard",
+          "medicationOrdersTable_profession": "Physician",
+          "medicationOrdersTable_day": "0",
+          "medicationOrdersTable_time": "0700",
+          "med_timing": "sched",
+          "med_route": "intra",
+          "med_medication": "cefazolin for injection",
+          "med_dose": "1 gram",
+          "med_scheduled": "Q8H",
+          "med_time1": "0600",
+          "med_time2": "1400",
+          "med_time3": "2200",
+          "createdDate": "2023-10-15T12:36:29-07:00",
+          "marTable_id": "medAdminRec.marTable.0"
+        },
+        {
+          "marTable_name": "Dorothea",
+          "marTable_profession": "RN",
+          "marTable_day": "0",
+          "marTable_time": "2200",
+          "med_order_embedded": "medicationOrders.medicationOrdersTable.0",
+          "mo_medOrder": "cefazolin for injection 1 gram intra Q8H",
+          "mo_timing": "sched",
+          "mo_schedDay": 0,
+          "mo_schedTime": "2200",
+          "mo_id": "medicationOrders.medicationOrdersTable.0",
+          "mar_status": "Administered",
+          "mar_dose": "1 gram",
+          "undefined": "medicationOrders.medicationOrdersTable.0",
+          "createdDate": "2023-10-15T12:37:03-07:00",
+          "marTable_id": "medAdminRec.marTable.1"
+        },
+        {
+          "marTable_name": "Chris",
+          "marTable_profession": "RN",
+          "marTable_day": "0",
+          "marTable_time": "1330",
+          "med_order_embedded": "medicationOrders.medicationOrdersTable.5",
+          "mo_medOrder": "acetaminophen 500 mg 500 - 1000 mg oral Q6H",
+          "mo_timing": "prn",
+          "mo_id": "medicationOrders.medicationOrdersTable.5",
+          "mar_status": "Administered",
+          "mar_dose": "500 mg",
+          "undefined": "medicationOrders.medicationOrdersTable.5",
+          "medicationOrdersTable_profession": "MD",
+          "med_timing": "prn",
+          "med_route": "oral",
+          "med_reason": "post operative pain",
+          "med_medication": "acetaminophen 500 mg",
+          "med_dose": "500 - 1000 mg",
+          "med_scheduled": "Q6H",
+          "med_time1": "0200",
+          "med_time2": "0600",
+          "med_time3": "1200",
+          "med_time4": "1800",
+          "med_time5": "2200",
+          "createdDate": "2023-10-15T12:37:57-07:00",
+          "marTable_id": "medAdminRec.marTable.2"
+        }
+      ]
+    },
+    "medicalImaging": {
+      "table": [
+        {
+          "laboratoryReport": {
+            "fName": "Melissa_Ashmann_xrays.jpg"
+          },
+          "comments": "Compound fracture of right tibia and fibula involvement post motor vehicle crash.\nORIF with surgical hardware.",
+          "createdDate": "2022-01-17T14:02:27-08:00",
+          "table_name": "Dr. Bones",
+          "table_profession": "Orthopedics",
+          "table_day": "1",
+          "table_time": "1938",
+          "table_id": "medicalImaging.table.0"
+        }
+      ],
+      "lastUpdate": "2022-01-17T22:02:27+00:00"
+    },
+    "meta": {
+      "simTime": {
+        "visitDay": 1,
+        "visitTime": "1938"
+      },
+      "ehrVersion": "ev2.4.1"
+    },
+    "billing": {
+      "paymentType": "msp",
+      "lastUpdate": "2023-01-11T23:05:08+00:00"
+    },
+    "neurological": {
+      "table": [
+        {
+          "alert": "alert,oriented,drowsy",
+          "eyeOpening": "4 = Spontaneous",
+          "verbalResponse": "5 = Oriented",
+          "bestMotorResponse": "6 = Obeys commands",
+          "glasgowCalculation": 15,
+          "leftPupilSize": "3",
+          "leftPupilResponseToLight": "Brisk",
+          "rightPupilSize": "3",
+          "rightPupilResponseToLight": "Brisk",
+          "bothPupils": "Equal",
+          "comments": "Drowsy on admission from PAR.",
+          "strokeAssessmentCalculation": 0,
+          "createdDate": "2023-01-11T15:10:19-08:00",
+          "table_name": "Rupinder",
+          "table_profession": "RN",
+          "table_day": "1",
+          "table_time": "0130",
+          "table_id": "neurological.table.0"
+        }
+      ],
+      "lastUpdate": "2023-01-11T23:10:19+00:00"
+    },
+    "respiratory": {
+      "table": [
+        {
+          "airway": "patent",
+          "lul": "Normal",
+          "rul": "Normal",
+          "rml": "Normal",
+          "lll": "Normal",
+          "rll": "Normal",
+          "respiratoryRhythm": "Regular",
+          "respiratoryDepth": "Normal",
+          "cough": "No",
+          "generalComments": "Denies SOB; no increased work of breathing",
+          "createdDate": "2023-01-11T15:11:16-08:00",
+          "table_name": "Rupinder",
+          "table_profession": "RN",
+          "table_day": 1,
+          "table_time": "0130",
+          "table_id": "respiratory.table.0"
+        }
+      ],
+      "lastUpdate": "2023-01-11T23:11:16+00:00"
+    },
+    "cardiovascular": {
+      "table": [
+        {
+          "pulse": "Regular",
+          "skinAppearance": "Normal",
+          "capRefillLeftHand": "normal",
+          "temperatureRightHand": "Warm",
+          "peripheralEdemaRightHand": "No",
+          "nailBedColourRightHand": "Pink",
+          "capRefillRightFoot": "normal",
+          "temperatureRightFoot": "Warm",
+          "peripheralEdemaRightFoot": "No",
+          "nailBedColourRightFoot": "Pink",
+          "capRefillLeftFoot": "normal",
+          "temperatureLeftFoot": "Warm",
+          "peripheralEdemaLeftFoot": "No",
+          "nailBedColourLeftFoot": "Pink",
+          "createdDate": "2023-01-11T15:14:12-08:00",
+          "table_name": "Rupinder",
+          "table_profession": "RN",
+          "table_day": 1,
+          "table_time": "0130",
+          "table_id": "cardiovascular.table.0"
+        }
+      ],
+      "lastUpdate": "2023-01-11T23:14:12+00:00"
+    },
+    "gastrointestinal": {
+      "table": [
+        {
+          "bowel": "normal",
+          "bSounds": "luq,ruq,llq,rlq",
+          "condition": "soft",
+          "pain": "No",
+          "emesisPresent": "None",
+          "lastBm": "Yesterday",
+          "createdDate": "2023-01-11T15:14:52-08:00",
+          "table_name": "Runpinder",
+          "table_profession": "RN",
+          "table_day": 1,
+          "table_time": "0130",
+          "table_id": "gastrointestinal.table.0"
+        }
+      ],
+      "lastUpdate": "2023-01-11T23:14:52+00:00"
+    },
+    "genitourinary": {
+      "table": [
+        {
+          "urinaryGroup1": "none",
+          "colour": "Pale yellow",
+          "consistency": "Clear",
+          "createdDate": "2023-01-11T15:15:29-08:00",
+          "table_name": "Rupinder",
+          "table_profession": "RN",
+          "table_day": 1,
+          "table_time": "0130",
+          "table_id": "genitourinary.table.0"
+        }
+      ],
+      "lastUpdate": "2023-01-11T23:15:29+00:00"
+    },
+    "musculoskeletal": {
+      "table": [
+        {
+          "swelling": "Present",
+          "pain": "Present",
+          "deformity": "Present",
+          "movement": "Normal",
+          "sensation": "Present",
+          "pulse": "Strong",
+          "colour": "Flesh",
+          "temp": "Warm",
+          "useOfAmbulatoryAid": "Yes",
+          "type": "Two crutches",
+          "comments": "CWMS intact distal to surgical site.",
+          "createdDate": "2023-01-11T15:16:23-08:00",
+          "table_name": "Rupinder",
+          "table_profession": "RN",
+          "table_day": 1,
+          "table_time": "0130",
+          "table_id": "musculoskeletal.table.0"
+        }
+      ],
+      "lastUpdate": "2023-01-11T23:16:23+00:00"
+    },
+    "pain": {
+      "table": [
+        {
+          "location": "Right lower leg- surgical site",
+          "painScale": "3",
+          "respiratoryRate": "16",
+          "onset": "Injury",
+          "type": "Surgical site over fracture",
+          "alleviationAssociatedSymptoms": "Rest, analgesic",
+          "radiation": "Non-radiating",
+          "createdDate": "2023-01-11T15:17:13-08:00",
+          "table_name": "Rupinder",
+          "table_profession": "RN",
+          "table_day": 1,
+          "table_time": "0130",
+          "table_id": "pain.table.0"
+        }
+      ],
+      "lastUpdate": "2023-01-11T23:17:13+00:00"
+    },
+    "biopsychosocial": {
+      "table": [
+        {
+          "domesticViolence": "Didn't ask",
+          "hygieneGrooming": "Good",
+          "behaviour": "flatAffect",
+          "hallucinations": "none",
+          "suicidal": "None",
+          "supportPerson": "Unkown",
+          "patientRestrained": "No",
+          "createdDate": "2023-01-11T15:17:52-08:00",
+          "table_name": "Rupinder",
+          "table_profession": "RN",
+          "table_day": 1,
+          "table_time": "0130",
+          "table_id": "biopsychosocial.table.0"
+        }
+      ],
+      "lastUpdate": "2023-01-11T23:17:52+00:00"
+    },
+    "integumentaryAssessment": {
+      "tableIncision": [
+        {
+          "incisionLabel": "Incision 1",
+          "incisionLocation": "Leg (Right)",
+          "postOpDay": "1",
+          "opProcedure": "ORIF",
+          "closureMethod": "staples",
+          "woundBedCalculation": 0,
+          "createdDate": "2023-01-11T15:19:04-08:00",
+          "tableIncision_name": "Rupinder",
+          "tableIncision_profession": "RN",
+          "tableIncision_day": 1,
+          "tableIncision_time": "0130",
+          "tableIncision_id": "integumentaryAssessment.tableIncision.0"
+        }
+      ],
+      "lastUpdate": "2023-01-11T23:19:47+00:00",
+      "tableIncisionAssessment": [
+        {
+          "incisionLabel": "Incision 1",
+          "incisionStatus": "Approximated",
+          "exudateAmount": "small",
+          "exudateType": "sanguineous",
+          "periIncisionSkin": "other",
+          "periIncisionSkinOther": "Compound fracture with bone protrusion",
+          "woundBedCalculation": 0,
+          "createdDate": "2023-01-11T15:19:47-08:00",
+          "tableIncisionAssessment_name": "Rupinder",
+          "tableIncisionAssessment_profession": "RN",
+          "tableIncisionAssessment_day": 1,
+          "tableIncisionAssessment_time": "0130",
+          "tableIncisionAssessment_id": "integumentaryAssessment.tableIncisionAssessment.0"
+        }
+      ]
+    },
+    "progressNotes": {
+      "table": [
+        {
+          "note": "Patient received from PAR via stretcher and slide transferred to hospital bed. Assessment and vitals completed as documented. Call bell in reach.",
+          "createdDate": "2023-01-11T15:22:26-08:00",
+          "table_name": "Rupinder",
+          "table_profession": "RN",
+          "table_day": 1,
+          "table_time": "0130",
+          "table_id": "progressNotes.table.0"
+        }
+      ],
+      "lastUpdate": "2023-01-11T23:22:26+00:00"
+    },
+    "carePlan": {
+      "table": [
+        {
+          "clinical": "Mobilization",
+          "goal": "Client will mobilize with x2 crutches in anticipation of discharge.",
+          "interventions": "Physiotherapy to work with client on crutch walking\nEnsure pain management",
+          "status": "In progress",
+          "createdDate": "2023-01-11T15:25:08-08:00",
+          "table_name": "Rupinder",
+          "table_profession": "RN",
+          "table_day": 1,
+          "table_time": "1938",
+          "table_id": "carePlan.table.0"
+        }
+      ],
+      "lastUpdate": "2023-01-11T23:25:08+00:00"
+    },
+    "consults": {
+      "table": [
+        {
+          "comments": "Pt arrived to ED via ambulance. Was driver in a single vehicle rollover while in transit from Ft. St. John to Kaslo. Patient extricated by paramedics and transported with spinal motion restriction. Trauma assessment and workup completed. \nCT head and neck reveals no head injury or vertebral fractures.\nFAST ultrasound showed no internal hemorrhage.\nX-rays show isolated compound right tib-fib fracture. \nSurgical consult for ORIF pending. ",
+          "createdDate": "2023-01-19T20:35:52-08:00",
+          "table_name": "Dr Krampl",
+          "table_profession": "Emergency physician",
+          "table_day": "0",
+          "table_time": "1300",
+          "table_id": "consults.table.0"
+        }
+      ],
+      "lastUpdate": "2023-01-20T04:35:55+00:00"
+    }
+  },
+  "description": "Melissa Ashmann is a 32-year old who was involved in a motor vehicle crash, near Kaslo. She sustained a left tib-fib fracture and underwent an ORIF.\nMelissa has a history of depression, anxiety and previous knee surgery.\nUseful for 2nd year nursing.",
+  "name": "Melissa Ashmann",
+  "version": "2.0"
+}
