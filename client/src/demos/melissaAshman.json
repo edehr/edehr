@@ -1,6 +1,7 @@
 {
   "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
   "contributors": "Christopher Hillary, Bryan",
+  "appType": "EHR",
   "ehrData": {
     "demographics": {
       "givenName": "Melissa",
@@ -622,6 +623,5 @@
     }
   },
   "description": "Melissa Ashmann is a 32-year old who was involved in a motor vehicle crash, near Kaslo. She sustained a left tib-fib fracture and underwent an ORIF.\nMelissa has a history of depression, anxiety and previous knee surgery.\nUseful for 2nd year nursing.",
-  "name": "Melissa Ashmann",
-  "version": "2.0"
+  "name": "Melissa Ashmann"
 }
