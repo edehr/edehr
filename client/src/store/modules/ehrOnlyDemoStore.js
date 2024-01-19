@@ -72,7 +72,7 @@ const mutations = {
       seed = bonlanleBefore
     }  else  if (key === 'bonlanleAfter') {
       seed = bonlanleAfter
-    } else if (key = 'Ashmann') {
+    } else if (key === 'Ashmann') {
       seed = melissaAshman
     }
     setSeed(state, seed)

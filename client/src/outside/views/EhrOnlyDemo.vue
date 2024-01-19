@@ -6,13 +6,6 @@
         div(v-text-to-html="ehrOnlyDemoText.intro")
       div(class="list-card list-element")
         p
-          router-link(:to="{path: 'ehr', query: {demoOnlyKey: 'erin2Seed'}}") Erin JOHNS case study
-        p Select this scenario to view the EHR chart for a fictitious patient named Erin Johns. The content is based on case study #2 in "Health Case Studies" (see reference below).
-        p.
-          Erin Johns is 74 years old with a complicated health history and is experiencing COPD exacerbation due to community acquired pneumonia. This scenario exemplifies the interprofessional collaboration between nursing, medical radiology, medical laboratory, and health care professionals in the emergency department.
-
-      div(class="list-card list-element")
-        p
           router-link(:to="{path: 'ehr', query: {demoOnlyKey: 'Ashmann'}}") Mental health
         p  Melissa Ashmann is a 32-year old who was involved in a motor vehicle crash, near Kaslo. She sustained a left tib-fib fracture and underwent an ORIF.
 
@@ -27,6 +20,13 @@
         p.
           In 2020, the EdEHR team worked with members from the BC Provincial Nursing Skin and Wound Committee, on the development and evaluation of a standardized skin and wound assessment module. The completed module mirrors the nursing documentation requirements used across all BC Provincial Health Authorities.
         p The project included the development of a sample case study and sample assignment that illustrates best practices and encourages documentation that considers what other healthcare professionals need to know.
+
+      div(class="list-card list-element")
+        p
+          router-link(:to="{path: 'ehr', query: {demoOnlyKey: 'erin2Seed'}}") Erin JOHNS case study
+        p Select this scenario to view the EHR chart for a fictitious patient named Erin Johns. The content is based on case study #2 in "Health Case Studies" (see reference below).
+        p.
+          Erin Johns is 74 years old with a complicated health history and is experiencing COPD exacerbation due to community acquired pneumonia. This scenario exemplifies the interprofessional collaboration between nursing, medical radiology, medical laboratory, and health care professionals in the emergency department.
 
       div(class="list-card list-element")
         p
