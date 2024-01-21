@@ -36,6 +36,13 @@ let routes = [
     meta: { layout: 'print', label: 'Patient labels', zone: ZONE_LMS }
   },
   {
+    path: '/patient-summary',
+    name: 'patient-summary',
+    component: () =>
+      import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/PatientSummary.vue'),
+    meta: { layout: 'print', label: 'Patient summary', zone: ZONE_EHR }
+  },
+  {
     // Redirect from LTI entry to appropriate part of application based on current appType (from seed)
     path: '/ehr', name: 'ehr', redirect: (to) => {
       // Now that the ehr patient page is visible in both EHR and LIS we don't need the following. And we can remove the appType query parameter in all callers.gener

@@ -7,6 +7,8 @@
       tab(name="V1 Summary", v-if='showV1')
         mar-summary(:ehrHelp="ehrHelp")
       tab(:name="ehrText.tabNameMar")
+
+        // day selection buttons
         div(class='day-selector-bar flow_across')
           div(
             v-if="dayList.length > 1",
@@ -18,10 +20,18 @@
               v-on:buttonClicked="setSelectedDay(aDay.dayNum)",
             )
               span {{dayWords(aDay)}}
+
+        // bar code buttons
+        div(class='day-selector-bar flow_across')
+          ui-button(v-on:buttonClicked="resetSelectedMeds", v-bind:secondary="true") Reset
+          ui-button(v-on:buttonClicked="openBarCodeDialog") BarCode
+
+        // daily med admin tables
         mar-med-grid(
           v-for="prefix in groups",
           :ehrHelp="ehrHelp"
           :key="prefix",
+          :barCodedMeds="barCodedMeds",
           :timeLineModel='timeLineModel',
           :selectedDay='selectedDay',
           :idPrefix='prefix',
@@ -34,6 +44,8 @@
         ehr-page-element(:element="tableDefV2", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDefV2", :errorList="errorList" )
+
+    mar-barcode-dialog(ref="refBarCodeDialog", @barcodedMed='barcodedMed')
 
 </template>
 
@@ -54,6 +66,7 @@ import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import EhrData from '@/inside/components/page/ehr-data'
 import UiButton from '@/app/ui/UiButton.vue'
 import { t18EhrText } from '@/helpers/ehr-t18'
+import MarBarcodeDialog from '@/inside/components/marV2/MarBarcodeDialog.vue'
 
 export default {
   data () {
@@ -63,11 +76,13 @@ export default {
       groups: MED_GROUPS,
       tableKey: MAR_V2_TABLE_KEY,
       selectedDay: -1,
+      barCodedMeds: [],
       timeLineModel: undefined,
       v2Message: 'V2 MAR.  This is a new approach, for the EdEHR, to medication administration records (MARs). This second version is under construction so if you create records here they may not work once this page is completed.'
     }
   },
   components: {
+    MarBarcodeDialog,
     UiButton,
     EhrPageElement,
     EhrDialogForm,
@@ -123,6 +138,16 @@ export default {
     dayWords (aDay) {
       return aDay.label
     },
+    barcodedMed ( med ) {
+      // the med contains a med order name.
+      this.barCodedMeds.push(med)
+    },
+    openBarCodeDialog (period) {
+      this.$refs.refBarCodeDialog.openBarCodeDialog()
+    },
+    resetSelectedMeds () {
+      this.barCodedMeds = []
+    },
     // v2
     setSelectedDay (dN) {
       this.selectedDay = dN
@@ -162,9 +187,13 @@ export default {
 <style lang="scss" scoped>
 @import '../../../scss/definitions';
 
+.day-selector-bar {
+  gap: 5px;
+  margin-bottom: 5px;
+}
 .day-selector {
   //border: 1px solid black;
-  padding: 5px;
+  //padding: 5px;
   .daySelectorSelected {
     background-color: $button-active-color;
     cursor: inherit;
