@@ -93,14 +93,11 @@
       span(class="suffix") {{suffix }}
 
     div(v-else-if="isType('practitionerName')", class="care_provider_wrapper")
-      // name and profession are read only even if editing. See EhrElementCommon.setInitialValue
-      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="textarea_label")
-      //label(class="form_label") Care provider
-      input(class="input text-input", disabled, :name="elementKey",v-model="inputVal")
+      // name and profession are read only even if editing because they are part of the record header
+      div {{ inputVal }}
 
     div(v-else-if="isType('practitionerProfession')", class="text_input_wrapper")
-      // name and profession are read only even if editing. See EhrElementCommon.setInitialValue
-      input(class="input text-input", disabled, :name="elementKey",v-model="inputVal")
+      div {{ inputVal }} &nbsp; &sol; &nbsp;
 
     ehr-element-select(v-else-if="isType('select')", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
@@ -118,19 +115,20 @@
       textarea(class="ehr-page-form-textarea", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
 
     div(v-else-if="isType(dataTypes.visitDay)", class="sim_day_wrapper", :class='formCss')
-      div(v-if='isRecHdr') Encounter day {{ inputVal }}
+      div(v-if='isRecHdr') {{ dateVal(inputVal) }}
       div(v-else)
-        label(v-html="label", class="form_label")
-          span {{label}}  &nbsp;
-        input(class="input numb-input", type="text", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
+        span {{label}}  &nbsp;
+        span(v-if="viewOnly", class='bold') {{ dateVal(inputVal) }}
+        input(v-else, class="input numb-input", type="text", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
 
     div(v-else-if="isType(dataTypes.visitTime)", class="sim_time_wrapper", :class='formCss')
-      div(v-if='isRecHdr') time {{ inputVal }}
+      div(v-if='isRecHdr') {{ inputVal }}
       div(v-else)
-        label(v-html="label", class="form_label")
-          span {{label}}  &nbsp;
-        input(class="input numb-input", type="text", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
-
+        span {{label}}  &nbsp;
+        span(v-if="viewOnly", class='bold') {{ inputVal }}
+        input(v-else, class="input numb-input",
+          pattern="^([01][0-9]|2[0-3])([0-5][0-9])$"
+          type="text", :name="elementKey", v-model="inputVal")
 
     div(v-else) ELSE: {{inputType}} {{label}}
 
@@ -161,6 +159,7 @@ import EhrElementRadioset from '@/inside/components/page/EhrElementRadioset.vue'
 import EhrElementBoxCheckset from '@/inside/components/page/EhrElementBoxCheckset.vue'
 import EhrElementCalculatedText from '@/inside/components/page/EhrElementCalculatedText.vue'
 import EhrElementCalculatedBool from '@/inside/components/page/EhrElementCalculatedBool.vue'
+import { simDateCalc } from '@/helpers/date-helper'
 
 export default {
   name: 'EhrElementForm',
@@ -196,6 +195,9 @@ export default {
         this.isType(dataTypes.ehrLocation) }
   },
   methods: {
+    dateVal (visitDate) {
+      return simDateCalc(visitDate)
+    },
     childUpdate (update) {
       this.internalSetInputValue(update)
     }
@@ -208,5 +210,8 @@ export default {
 
 .invalidElement {
   border: 1px $error solid
+}
+input:invalid {
+  color: $error;
 }
 </style>

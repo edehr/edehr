@@ -13,6 +13,7 @@ import EhrFileLink from '@/inside/components/EhrFileLink'
 import { formatDateStr } from '@/helpers/ehr-utils'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
+import { simDateCalc } from '@/helpers/date-helper'
 export default {
   components: { EhrFileLink },
   inject: [ 'pageDataKey'],
@@ -26,6 +27,9 @@ export default {
       if (inputType === 'date') {
         let mom = moment(value, 'YYYY-MM-DDTHH:mm:ss ZZ')
         if (mom.isValid()) value = formatDateStr(value) //mom.format('DD MMM YYYY')
+      }
+      if (inputType === EhrTypes.dataInputTypes.visitDay) {
+        value = simDateCalc(value)
       }
       if (inputType === EhrTypes.dataInputTypes.calculatedValue) {
         const element = EhrDefs.getPageChildElement(this.pageDataKey, cell.key)

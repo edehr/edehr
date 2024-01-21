@@ -2,9 +2,13 @@
   div(class='student-sign-on', v-if='isSimSignOnEnabled')
     div(v-if='isSimSignedOn', class='flow_across')
       div(class="signed-in-user")  {{ userName }}
-      ui-button(v-on:buttonClicked="actionSignOut", secondary=true ) {{ ehrText.signOutButtonLabel }}
+      ui-button(v-on:buttonClicked="actionSignOut", secondary=true )
+        fas-icon(class="fa", :icon="appIcons.signOut")
+        // {{ ehrText.signOutButtonLabel }}
     div(v-else, class='flow_across')
-      ui-button(v-on:buttonClicked="showSignIn") {{ ehrText.signInButtonLabel }}
+      ui-button(v-on:buttonClicked="showSignIn")
+        fas-icon(class="fa", :icon="appIcons.signIn")
+        span &nbsp; {{ ehrText.signInButtonLabel }}
     app-dialog( ref="theDialog", :isModal="true", @save='actionSignOn', @cancel='cancelSignIn', :disable-save='isReady')
       h3(slot="header") {{ ehrText.signInButtonLabel }}
       div(slot="body")
@@ -24,6 +28,7 @@ import FeatureHelper, { FF_SIGN_ON } from '@/helpers/feature-helper'
 import AppDialog from '@/app/components/AppDialogShell.vue'
 import StoreHelper from '@/helpers/store-helper'
 import { t18EhrText } from '@/helpers/ehr-t18'
+import { APP_ICONS } from '@/helpers/app-icons'
 
 export default {
   components: {
@@ -33,6 +38,7 @@ export default {
   },
   data () {
     return {
+      appIcons: APP_ICONS,
       pName: '',
       pProfession: '',
       explainText: 'This is a simulation of the process of signing into an EHR or LIS.' +

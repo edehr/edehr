@@ -467,3 +467,8 @@ export function ehrMergeEhrData (one, two) {
     return self.indexOf(value) === index
   }
 }
+
+
+export function isValidDate (date) {
+  return date && Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date)
+}
