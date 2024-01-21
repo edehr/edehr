@@ -29,6 +29,7 @@ import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_REFRESH_EVENT } from '@/helpers/e
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import UiConfirm from '@/app/ui/UiConfirm'
 import { t18EhrFunctions, t18EhrText, t18ElementLabel, t18TableAddButtonLabel } from '@/helpers/ehr-t18'
+import { formatYmdDateInLocalZone } from '@/helpers/date-helper'
 
 export default {
   components: {
@@ -175,8 +176,9 @@ export default {
     },
     saveDialog: function () {
       if (this.hasRecHeader) {
-        const { name, profession, day, time } = this.ehrHelp.prepareAndGetActiveDialogRecordHeader()
-        const msg = this.ehrTextFn.saveDialogVerifyMessage(name, profession, day, time)
+        const { name, profession, time } = this.ehrHelp.prepareAndGetActiveDialogRecordHeader()
+        const today = formatYmdDateInLocalZone(new Date())
+        const msg = this.ehrTextFn.saveDialogVerifyMessageV2(name, profession, today, time)
         this.$refs.confirmSaveDialog.showDialog(this.ehrText.saveDialogVerifyTitle, msg)
       } else {
         this.saveConfirmed()

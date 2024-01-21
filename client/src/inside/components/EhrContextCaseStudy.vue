@@ -82,6 +82,8 @@ export default {
   display: grid;
   grid-template-columns: 1fr 3fr 0.25fr;
   gap: 1rem;
+  max-height: 3rem;
+  overflow-y: auto;
 
   .seed-name {
     //color: $black;

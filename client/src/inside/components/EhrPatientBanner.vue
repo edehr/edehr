@@ -1,43 +1,40 @@
 <template lang="pug">
-  div
+div(class="patient-banner")
+  div(class="patient-data")
+    div(class='patient-name') {{ patientData.patientName }}
     div
-      div(class="patient-data")
-        div(class='patient-name') {{ patientData.patientName }}
-        div
-          span {{ ehrText.patientBannerMrn }}
-          span {{ patientData.mrn }}
-        div
-          span {{ ehrText.patientBannerDob }}
-          span {{ patientData.dateOfBirth }} ({{ patientData.personAge }} yrs)
-        div
-          span {{ ehrText.patientBannerGender }}
-          span {{ patientData.gender }}
-        div
-          span {{ ehrText.patientBannerCodeStatus }}
-          span {{ patientData.codeStatus ? patientData.codeStatus : 'N/A' }}
-        div
-          span {{ ehrText.patientBannerAllergies }}
-          span {{ truncate(patientData.allergies, 40) }}
-        div
-          span {{ ehrText.patientBannerDiagnosis }}
-          span {{ truncate(patientData.diagnosis, 40) }}
-        div
-          span {{ ehrText.patientBannerRisks }}
-          span {{ truncate(patientData.risks, 40) }}
-        div(class="patient-data bigger-screens-900")
-          div
-            span {{ ehrText.patientBannerWeight }}
-            span {{ patientData.weight }}
-          div
-            span {{ ehrText.patientBannerPHN }}
-            span {{ patientData.phn }}
-          div
-            span {{ ehrText.patientBannerLocation }}
-            span {{ patientData.location }}
-        ehr-sim-time(:ehr-data="md")
+      span {{ ehrText.patientBannerMrn }}
+      span {{ patientData.mrn }}
+    div
+      span {{ ehrText.patientBannerDob }}
+      span {{ patientData.dateOfBirth }} ({{ patientData.personAge }} yrs)
+    div
+      span {{ ehrText.patientBannerGender }}
+      span {{ patientData.gender }}
+    div
+      span {{ ehrText.patientBannerCodeStatus }}
+      span {{ patientData.codeStatus ? patientData.codeStatus : 'N/A' }}
+    div
+      span {{ ehrText.patientBannerAllergies }}
+      span {{ truncate(patientData.allergies, 40) }}
+    div
+      span {{ ehrText.patientBannerDiagnosis }}
+      span {{ truncate(patientData.diagnosis, 40) }}
+    div
+      span {{ ehrText.patientBannerRisks }}
+      span {{ truncate(patientData.risks, 40) }}
+    div(class="patient-data bigger-screens-900")
+      div
+        span {{ ehrText.patientBannerWeight }}
+        span {{ patientData.weight }}
+      div
+        span {{ ehrText.patientBannerPHN }}
+        span {{ patientData.phn }}
+      div
+        span {{ ehrText.patientBannerLocation }}
+        span {{ patientData.location }}
+    ehr-sim-time(:ehr-data="md")
 
-    //li Isolation precautions:
-    //  b none
 </template>
 
 <script>
@@ -45,10 +42,12 @@ import EhrPatient from '@/inside/components/page/ehr-patient'
 import EhrSimTime from '@/inside/components/EhrSimTime'
 import StoreHelper from '@/helpers/store-helper'
 import { t18EhrText } from '@/helpers/ehr-t18'
+import { APP_ICONS } from '@/helpers/app-icons'
 export default {
   components: { EhrSimTime },
   data () {
     return {
+      appIcons: APP_ICONS,
       showDetails: false
     }
   },
@@ -67,7 +66,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-
+.patient-banner {
+  display: flex;
+  flex-direction: row;
+}
 .patient-data {
   display: flex;
   flex-direction: row;

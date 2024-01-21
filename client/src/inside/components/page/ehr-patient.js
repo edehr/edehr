@@ -16,6 +16,7 @@ class EhrPatientC {
     result.dateOfBirth = dateStr
     result.diagnosis = this._diagnosis(visitDetails)
     result.gender = demographics.gender
+    result.medorders = this._medicalOrders(data)
     result.mrn = demographics.mrn
     result.mrp = demographics.decisionMakerName? (demographics.decisionMakerName + ' (' + demographics.decisionMakerRelationship + ')') : ''
     result.mrpPhone = demographics.decisionMakerPhone
@@ -128,6 +129,17 @@ class EhrPatientC {
   _visitDetails (data) {
     let asStored = data.visit || {}
     return JSON.parse(JSON.stringify(asStored))
+  }
+  _medicalOrders (data) {
+    let asStored = data.medicationOrders || {}
+    asStored = asStored.medicationOrdersTable || []
+    let medOrders = JSON.parse(JSON.stringify(asStored))
+    medOrders.sort( (a,b) => {
+      const m1 = a.med_medication || ''
+      const m2 = b.med_medication || ''
+      return m1.localeCompare(m2)
+    })
+    return medOrders
   }
 }
 const EhrPatient = new EhrPatientC()

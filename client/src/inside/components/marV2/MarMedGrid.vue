@@ -1,9 +1,10 @@
 <template lang='pug'>
   div
+    div
+
     // medList contains entries for a group of medications. E.g. all 'stat' or all 'prn'
     // Only show if the list contains entries.
     div(v-if='medList.length>0')
-
       // Grid for the given medication type (sched, prn, cont, stat, etc.)
       div(class='time-line row-container')
         div(class='col-container')
@@ -39,9 +40,11 @@
             )
             ui-info(:title="medInfoTitle(med)", :text="medInfoContent(med)")
             div(class="medication-element-button")
+              // this is the MAR button within the first column block
               ui-button(
                 v-if="showMainMedAdminButton(med)",
                 class='mar-button',
+                :disabled='!med.selected'
                 :class='{draftRow : medHasDraftMar(med) }'
                 v-on:buttonClicked='showMarDialog(undefined, med)',
                 )
@@ -77,15 +80,19 @@
                   :key="`${timeElement.key}-${tx}`",
                   class='med-row-element time-element'
                   )
+                  // this is the MAR button within the time block
                   ui-button(
                     v-if='timeElement.hasScheduledEvent()',
                     v-on:buttonClicked='showMarDialog(timeElement, undefined)',
+                    :disabled='!timeElement.medOrder.selected'
                     class='mar-button',
                     :class='{draftRow : timeElement.hasDraftMar() }'
                     :title='timeElement.toolTip'
                   )
                     fas-icon(icon="file-prescription")
                   div(v-else-if="timeElement.manyMars")
+                    // A medication order may have many administrations within a given hour.
+                    // See MarTimelineModel.medMarEventLink
                     ui-button(v-for='(mar, px) in timeElement.manyMars',
                       class='mar-button',
                       :class="marDoneClass(timeElement)",
@@ -112,13 +119,16 @@ import { MarTimelineModel, MAR_STATUS_REFUSED,
 import UiInfo from '@/app/ui/UiInfo.vue'
 import { textToHtml } from '@/directives/text-to-html'
 import { t18EhrText } from '@/helpers/ehr-t18'
+import MarBarcodeDialog from '@/inside/components/marV2/MarBarcodeDialog.vue'
+import Vue from 'vue'
 export default {
-  components: { UiInfo, UiButton },
+  components: { MarBarcodeDialog, UiInfo, UiButton },
   props: {
     idPrefix: { type: String, require: true },
     selectedDay: { type: Number},
     timeLineModel : { type: MarTimelineModel },
-    ehrHelp: { type: Object }
+    ehrHelp: { type: Object },
+    barCodedMeds: { type: Array }
   },
   computed: {
     ehrText () { return t18EhrText().customPages.mar },
@@ -136,6 +146,11 @@ export default {
   },
   methods: {
     forElementKeyFromMed (containerKey, med, index) { return `${containerKey}-${med.id}-${index}` },
+    resetAll () {
+      this.medList.forEach( m => {
+        Vue.set(m, 'selected', false)
+      })
+    },
     dayIsActive (dN) {
       return this.selectedDay === dN
     },
@@ -230,6 +245,22 @@ export default {
       this.ehrHelp.showReport(mo.id)
     }
   },
+  watch: {
+    barCodedMeds () {
+      if (this.barCodedMeds.length === 0 ) {
+        this.resetAll()
+      } else {
+        this.medList.forEach( medOrder => {
+          if (this.barCodedMeds.includes(medOrder.medName)) {
+            Vue.set(medOrder, 'selected', true)
+          }
+        })
+      }
+    },
+    medList () {
+      this.resetAll()
+    }
+  }
 }
 </script>
 

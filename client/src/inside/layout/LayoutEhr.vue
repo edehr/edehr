@@ -12,6 +12,9 @@
           div(class="pageTitle left_side") {{pageTitle}}
           // banner with patient information
           ehr-patient-banner(class="patient-banner right_side")
+          ui-button(class="banner-button", v-on:buttonClicked="openPatientSummary" )
+            fas-icon(class='fa', icon='user-injured', title='patient summary')
+
         div(class="ehr-main-content flow_across")
           div(class="ehr_layout__nav left_side bigger-screens-900")
             ehr-nav-panel
@@ -43,10 +46,12 @@ import EhrScratchPadDialog from '@/inside/components/EhrScratchPadDialog.vue'
 import UiNotSignedOn from '@/app/ui/UiNotSignedOn.vue'
 import AppDialog from '@/app/components/AppDialogShell.vue'
 import EhrEvalFeedbackDialog from '@/inside/components/EhrEvalFeedbackDialog.vue'
+import UiButton from '@/app/ui/UiButton.vue'
 
 export default {
   name: 'LayoutEhr',
   components: {
+    UiButton,
     EhrEvalFeedbackDialog,
     AppDialog,
     UiNotSignedOn,
@@ -72,6 +77,14 @@ export default {
     evalDialogVisible () { return this.$store.getters['system/evalDialogVisible']},
     scratchPadVisible () { return this.$store.getters['system/scratchPadVisible']}
 
+  },
+  methods: {
+    openPatientSummary () {
+      // $router.push({ name: 'patient-summary'})
+      // const routeData = this.$router.resolve({name: 'patient-summary', query: {data: "someData"}});
+      const routeData = this.$router.resolve({name: 'patient-summary'})
+      window.open(routeData.href, '_blank')
+    }
   },
   watch: {
     $route: function (curr, prev) {
@@ -117,7 +130,6 @@ $contentMinHeight: 700px;
     margin: 0;
   }
   .pageTitle {
-    padding-left: $ehr-layout-padding-left;
   }
   .pageTitle,
   .patient-banner {
@@ -139,6 +151,10 @@ $contentMinHeight: 700px;
     margin-top: 10rem;
     //width: 40rem;
   }
+}
+.ehr-context {
+  padding-left: $ehr-layout-padding-left;
+  padding-bottom: 5px;
 }
 
 @media(device-width: 768px) and (device-height: 1024px){
@@ -168,11 +184,6 @@ $contentMinHeight: 700px;
   }
 }
 
-@media screen and (max-width: $main-width-threshold3) {
-  .patient-banner {
-    padding-left: $ehr-layout-padding-left;
-  }
-}
 .hamburger-action-enter-active, .hamburger-action-leave-active  {
   transition: opacity .15s;
 }
@@ -180,10 +191,8 @@ $contentMinHeight: 700px;
   opacity: 0;
 }
 
-.fa {
-  height: 1.5em;
-  color: $brand-primary;
-  padding-top: 10px;
+.banner-button {
+  width: 1.5rem;
 }
 
 /* FONTS TEXT */

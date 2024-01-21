@@ -9,16 +9,15 @@
         fas-icon(class='fa', :icon='appIcons.save')
       ui-info(title="Simulation time", :text="ehrText.simulationDayTime")
     div(v-else, class='flow_across')
-      label(for="sDated") {{ehrText.simulationDayTimeDay}}
-      input(class="input sdt-date", id="sDated", type="text", :value="cDate", disabled)
-      label(for="sTimed") {{ehrText.simulationDayTimeTime}}
-      input(class="input sdt-time", id="sTimed", type="text", :value='cTime', disabled)
+      div(v-if="isActualDateEnabled()", class="sdt-display") {{ dateVal  }}T{{ cTime }}
+      div(v-else)
+        label(for="sDated") {{ehrText.simulationDayTimeDay}}
+        input(class="input sdt-date", id="sDated", type="text", :value="cDate", disabled)
+        label(for="sTimed") {{ehrText.simulationDayTimeTime}}
+        input(class="input sdt-time", id="sTimed", type="text", :value='cTime', disabled)
       ui-button(v-on:buttonClicked="enableEdit" )
         fas-icon(class='fa', :icon='appIcons.edit',
           :title='ehrText.simulationDayTimeToolTip')
-      ui-info(
-        :title="ehrText.simulationDayTimeTitle",
-        :text="ehrText.simulationDayTime")
 
 </template>
 <script>
@@ -29,6 +28,7 @@ import UiButton from '@/app/ui/UiButton.vue'
 import { APP_ICONS } from '@/helpers/app-icons'
 import UiInfo from '@/app/ui/UiInfo.vue'
 import { t18EhrText } from '@/helpers/ehr-t18'
+import { simDateCalc } from '@/helpers/date-helper'
 
 export default {
   components: {
@@ -50,9 +50,16 @@ export default {
     cTime () { return this.$store.getters['visit/simTime']},
     mergedData () { return StoreHelper.getMergedData() },
     isReady () { return validTimeStr(this.sTime) && validDayStr(this.sDate) },
-    visitId () { return this.$store.getters['visit/visitId']}
+    visitId () { return this.$store.getters['visit/visitId']},
+    dateVal () {
+      return simDateCalc(this.cDate)
+    }
   },
   methods: {
+    isActualDateEnabled () {
+      // const cid = this.$store.getters['consumerStore/consumerId']
+      return true //FeatureHelper.isFeatureFlagEnabled(cid, FF_ACTUAL_DATE)
+    },
     isSimSignOnEnabled () {
       const cid = this.$store.getters['consumerStore/consumerId']
       return FeatureHelper.isFeatureFlagEnabled(cid, FF_SIGN_ON)
@@ -72,6 +79,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "../../scss/definitions";
+.sdt-display {
+  font-weight: 600;
+  padding: 5px 5px 5px 7px;
+}
 .sdt-date {
   max-width: 2rem;
 }
