@@ -31,7 +31,7 @@ import AppHeaderLanguageMenu from '@/app/components/AppHeaderLanguageMenu.vue'
 export default {
   components: { AppHeaderLanguageMenu, AppHeaderDocumentationMenu, AppHeaderInstructorMenu, AppHeaderStudentMenu, AppHeaderPublicMenu },
   computed: {
-    isDemoServer () { return window.location.href.includes('demo')},
+    isDemoServer () { return window.location.href.includes('demo.edehr')},
     isPublic () { return StoreHelper.inZonePublic() },
     isDemo () { return StoreHelper.isDemoMode() },
     isStudent () { return StoreHelper.isStudent()  },
