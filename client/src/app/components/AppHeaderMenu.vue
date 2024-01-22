@@ -2,8 +2,12 @@
   div
     div(class="app-header flow_across")
       div(class="app-header-brand")
-        router-link(:to="{ name: 'home' }", class="navLink")
-          img(src="/edehr-Logo.png", class='brand-image', alt='EdEHR')
+        div(v-if="isDemoServer")
+          a(href="https://edehr.org")
+            img(src="/edehr-Logo.png", class='brand-image', alt='EdEHR')
+        div(v-else)
+          router-link(:to="{ name: 'home' }", class="navLink")
+            img(src="/edehr-Logo.png", class='brand-image', alt='EdEHR')
       div(class="flow_across menu_space_across flow_across_last_item side-menu")
         app-header-documentation-menu
         router-link(v-if="isDemo", :to="{ name: `demo` }", class="navLink") {{demoText}}
@@ -27,6 +31,7 @@ import AppHeaderLanguageMenu from '@/app/components/AppHeaderLanguageMenu.vue'
 export default {
   components: { AppHeaderLanguageMenu, AppHeaderDocumentationMenu, AppHeaderInstructorMenu, AppHeaderStudentMenu, AppHeaderPublicMenu },
   computed: {
+    isDemoServer () { return window.location.href.includes('demo')},
     isPublic () { return StoreHelper.inZonePublic() },
     isDemo () { return StoreHelper.isDemoMode() },
     isStudent () { return StoreHelper.isStudent()  },

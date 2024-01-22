@@ -107,7 +107,17 @@ export default {
   },
   methods: {
     showTime (key) {
-      this.sliceData = this.seq[key]
+      const keys = Object.keys(this.seq)
+      let combined = {}
+      for(let i = 0; i< keys.length; i++) {
+        let cKey = keys[i]
+        let data = this.seq[cKey]
+        combined = Object.assign(combined, data)
+        if (cKey === key) { // up to and include key
+          break
+        }
+      }
+      this.sliceData = combined
     },
     async refresh () {
       this.seq = convertToEventSequence(this.ehrData)
