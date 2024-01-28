@@ -59,31 +59,45 @@ export default {
         this.dependentUIEvent()
       }
     },
-    setDependentValue (value) {
+    setDependentValue (value, because) {
       if (dbug) console.log('eDep setDependentValue', this.elementKey, value, this.dependentDef)
       if (this.dependentDef.type === 'onChange') {
+        if (because !== 'selectChange') {
+          return
+        }
         value = processDependentOnChange(this.dependentDef, value, this.pageDataKey, this.elementKey)
         // bad form to use a subclass' method but need to do it
         this.setInitialValue(value)
       }
       this.dependentOnValue = value
     },
-    dependentUIEvent () {
+    /**
+     * Pass in a "because" value if you need to take special actions. For example, the onChange dependent value
+     * should only be updated on actual user input and not the usual value initialization process because the
+     * semantics of "onChange" imply doing it only when the user changes the source value.
+     * @param because
+     */
+    dependentUIEvent (because) {
       const channel = this.eventChannelBroadcast
       if(channel) {
-        const eData = {key: this.elementKey, value: this.inputVal}
+        const eData = {key: this.elementKey, value: this.inputVal, because: because}
         this.$nextTick(function () {
           if (dbug) console.log('eDep Send an event on our transmission channel '+channel+' with a payload containing this component\'s value', eData, channel)
           EventBus.$emit(channel, eData)
         })
       }
     },
+    /**
+     * _dReceiveEvent is the flip side of the emit in dependentUIEvent
+     * @param eData { value | because (optional string)}
+     * @private
+     */
     _dReceiveEvent (eData) {
       if (dbug) console.log('eDep _dReceiveEvent', eData)
       // we're receiving an event transmitted by another instance of this component
       // it has sent a message on the channel this component listens on.
       // if (dbug) console.log(`On channel ${this.dChannel} from key ${eData.key} got hit? ${eData.value}`)
-      this.setDependentValue(eData.value)
+      this.setDependentValue(eData.value, eData.because)
     },
     _dReceiveSetup () {
       this.dChannel = PROPS.prefix + this.dependentDef.key

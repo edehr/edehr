@@ -92,6 +92,9 @@ textarea {
   display: inline-block;
 }
 
+hr {
+  margin: 5px 0; // remove default 1.5rem above and below
+}
 input,
 .input,
 textarea {
@@ -173,6 +176,10 @@ input[type=radio] {
   border: 1px dashed;
   padding-left: 5px;
   padding-right: 5px;
+  font-size: 1rem;
+}
+.embedded-data > input {
+  font-size: 0.8rem;
 }
 .vdp-datepicker * {
   width: 100%
@@ -241,7 +248,7 @@ $select_width_2col: 20rem;
 }
 
 .checkset_wrapper {
-  flex-flow: column;
+  flex-flow: row;
   .checkset_list {
     display: flex;
     flex-flow: column wrap;

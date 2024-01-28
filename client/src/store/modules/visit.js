@@ -70,7 +70,7 @@ const actions = {
     localStorage.removeItem(IS_CONTENT_EDITING)
   },
   async changeVisitId (context, visitId) {
-    if (trace) console.log('Visit store changeVisitId', vId)
+    if (trace) console.log('Visit store changeVisitId', visitId)
     const postBody = { visitId: visitId }
     return InstoreHelper.postRequest(context, API, 'change-visit', postBody).then(results => {
       return results.data.token

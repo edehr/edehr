@@ -115,7 +115,7 @@
       textarea(class="ehr-page-form-textarea", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
 
     div(v-else-if="isType(dataTypes.visitDay)", class="sim_day_wrapper", :class='formCss')
-      div(v-if='isRecHdr') {{ dateVal(inputVal) }}
+      div(v-if='isRecHdr') {{ dateVal(inputVal) }} (Day {{inputVal}})
       div(v-else)
         span {{label}}  &nbsp;
         span(v-if="viewOnly", class='bold') {{ dateVal(inputVal) }}

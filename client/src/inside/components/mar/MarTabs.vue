@@ -121,7 +121,7 @@ export default {
     showV1 () {
       const pageData = EhrData.getMergedPageData(MED_ORDERS_PAGE_KEY) || {}
       const v1TableData = pageData[MAR_V1_TABLE_KEY]
-      console.log('v1TableData',v1TableData)
+      if(v1TableData) console.log('v1TableData',v1TableData)
       return v1TableData && Array.isArray(v1TableData) && v1TableData.length > 0
     },
     tableDefs () {

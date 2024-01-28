@@ -4,7 +4,7 @@
     table(cellspacing="0" cellpadding="0")
       tr
         td
-          qrcode-vue(:value="patientData.mrn",:size="100",level="H",margin="5")
+          qrcode-vue(:value="patientData.mrn",:size="150",level="H",margin="5")
         td
           div {{ patientData.patientName }}
           div {{ patientData.mrn }}
@@ -21,7 +21,7 @@
     table(cellspacing="0" cellpadding="0")
       tr(v-for='med in patientData.medorders', :key='med. medicationOrdersTable_id')
         td
-          qrcode-vue(:value="med.med_medication",:size="100",level="H",margin="5")
+          qrcode-vue(:value="med.med_medication",:size="150",level="H",margin="5")
         td  {{ med.med_medication }}
         td  {{ med.med_dose }}
         td  {{ med.med_timing }}

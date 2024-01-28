@@ -11,6 +11,7 @@ export class MedMarEvent {
   constructor (dayNum, ts, medOrder ) {
     this._medOrderId = medOrder.id
     this._medSummary = medOrder.medOrderSummary()
+    this.medOrder = medOrder
     this._schedDay = dayNum
     this._schedTime = ts
     this.adminDay = undefined
@@ -37,8 +38,13 @@ export class MedMarEvent {
       parts.push(this.adminDay)
       parts.push(this.adminTime)
       parts.push(this.marStatus)
+      if (this.marIsDraft) parts.push('DRAFT')
     }
     return parts.join(', ')
+  }
+
+  canEdit () {
+    return this.marIsDraft || !this.marRecordId
   }
 
   get schedDay () { return this._schedDay}

@@ -1,7 +1,7 @@
 <template lang="pug">
   transition(name="fade")
     div(class="modal-mask", v-show="loading",
-      :style="{ top: top + 'px', left: left + 'px', width: width + 'px', height: height + 'px' }"
+      :style="{ top: top + 'px', left: left + 'px', width: width + '%', height: height + '%' }"
       )
       div(class="modal-wrapper")
         div(class="modal-container")

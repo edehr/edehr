@@ -8,6 +8,7 @@ const DEFS = {
       {
         "elementKey": "givenName",
         "formIndex": "1",
+        "formCss": "grid-span-2-columns",
         "inputType": "text",
         "fqn": "demographics.givenName"
       },
@@ -18,15 +19,9 @@ const DEFS = {
         "fqn": "demographics.middleName"
       },
       {
-        "elementKey": "familyName",
-        "formIndex": "1",
-        "formCss": "grid-span-3-columns",
-        "inputType": "text",
-        "fqn": "demographics.familyName"
-      },
-      {
         "elementKey": "preferredName",
         "formIndex": "1",
+        "formCss": "grid-span-2-columns",
         "inputType": "text",
         "fqn": "demographics.preferredName"
       },
@@ -67,6 +62,19 @@ const DEFS = {
         "fqn": "demographics.pronouns"
       },
       {
+        "elementKey": "familyName",
+        "formIndex": "1",
+        "formCss": "grid-span-2-columns",
+        "inputType": "text",
+        "fqn": "demographics.familyName"
+      },
+      {
+        "elementKey": "mrn",
+        "formIndex": "1",
+        "inputType": "text",
+        "fqn": "demographics.mrn"
+      },
+      {
         "elementKey": "personAge",
         "formIndex": "1",
         "inputType": "personAge",
@@ -80,20 +88,36 @@ const DEFS = {
         "fqn": "demographics.dateOfBirth"
       },
       {
-        "elementKey": "height",
+        "elementKey": "languagePrimary",
         "formIndex": "1",
-        "inputType": "text",
-        "suffix": "cm",
-        "fqn": "demographics.height",
-        "suffixText": "cm"
-      },
-      {
-        "elementKey": "weight",
-        "formIndex": "1",
-        "inputType": "text",
-        "suffix": "kg",
-        "fqn": "demographics.weight",
-        "suffixText": "kg"
+        "inputType": "select",
+        "options": [
+          {
+            "key": "English",
+            "text": "English"
+          },
+          {
+            "key": "French",
+            "text": "French"
+          },
+          {
+            "key": "Spanish",
+            "text": "Spanish"
+          },
+          {
+            "key": "German",
+            "text": "German"
+          },
+          {
+            "key": "Chinese",
+            "text": "Chinese"
+          },
+          {
+            "key": "Other",
+            "text": "Other"
+          }
+        ],
+        "fqn": "demographics.languagePrimary"
       },
       {
         "elementKey": "birthSex",
@@ -172,6 +196,28 @@ const DEFS = {
         "fqn": "demographics.legalGender"
       },
       {
+        "elementKey": "height",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "cm",
+        "fqn": "demographics.height",
+        "suffixText": "cm"
+      },
+      {
+        "elementKey": "weight",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "kg",
+        "fqn": "demographics.weight",
+        "suffixText": "kg"
+      },
+      {
+        "elementKey": "religion",
+        "formIndex": "1",
+        "inputType": "text",
+        "fqn": "demographics.religion"
+      },
+      {
         "elementKey": "martialStatus",
         "formIndex": "1",
         "inputType": "select",
@@ -202,40 +248,6 @@ const DEFS = {
           }
         ],
         "fqn": "demographics.martialStatus"
-      },
-      {
-        "elementKey": "languagePrimary",
-        "formIndex": "1",
-        "inputType": "select",
-        "options": [
-          {
-            "key": "English",
-            "text": "English"
-          },
-          {
-            "key": "French",
-            "text": "French"
-          },
-          {
-            "key": "Spanish",
-            "text": "Spanish"
-          },
-          {
-            "key": "German",
-            "text": "German"
-          },
-          {
-            "key": "Chinese",
-            "text": "Chinese"
-          }
-        ],
-        "fqn": "demographics.languagePrimary"
-      },
-      {
-        "elementKey": "religion",
-        "formIndex": "1",
-        "inputType": "text",
-        "fqn": "demographics.religion"
       },
       {
         "elementKey": "indigenousIdentifyAs",
@@ -309,12 +321,6 @@ const DEFS = {
         "formIndex": "1",
         "inputType": "text",
         "fqn": "demographics.phn"
-      },
-      {
-        "elementKey": "mrn",
-        "formIndex": "1",
-        "inputType": "text",
-        "fqn": "demographics.mrn"
       },
       {
         "elementKey": "patientService",
@@ -479,19 +485,20 @@ const DEFS = {
             "gChildren": [
               "givenName",
               "middleName",
-              "familyName",
               "preferredName",
               "pronouns",
+              "familyName",
+              "mrn",
               "personAge",
               "dateOfBirth",
-              "height",
-              "weight",
+              "languagePrimary",
               "birthSex",
               "gender",
               "legalGender",
-              "martialStatus",
-              "languagePrimary",
+              "height",
+              "weight",
               "religion",
+              "martialStatus",
               "indigenousIdentifyAs"
             ]
           },
@@ -510,7 +517,6 @@ const DEFS = {
               "emailAddress",
               "occupationStudent",
               "phn",
-              "mrn",
               "patientService"
             ]
           },
@@ -14469,7 +14475,7 @@ const DEFS = {
             },
             {
               "elementKey": "medGroup2",
-              "formCss": "grid-left-to-right-3",
+              "formCss": "embedded-data grid-left-to-right-3",
               "fqn": "medAdminRec.medGroup2",
               "gIndex": "3",
               "gChildren": [

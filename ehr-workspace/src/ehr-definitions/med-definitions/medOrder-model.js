@@ -36,9 +36,9 @@ export class MedOrder {
     // translate the key data into human-readable
     med_route = makeHumanTableCell( 'medicationOrders', 'med_route', 'checkset', med_route)
     med_injectionLocation = makeHumanTableCell( 'medicationOrders', 'med_injectionLocation', 'select', med_injectionLocation)
-    this._e.day = eData['medicationOrdersTable_day']
-    this._e.time = eData['medicationOrdersTable_time']
-    this._e.name = eData['medicationOrdersTable_name']
+    this._e.orderedDay = eData['medicationOrdersTable_day']
+    this._e.orderedTime = eData['medicationOrdersTable_time']
+    this._e.orderedBy = eData['medicationOrdersTable_name']
     this._e.profession = eData['medicationOrdersTable_profession']
     this._e.dose = med_dose
     this._e.id = medicationOrdersTable_id
@@ -57,7 +57,9 @@ export class MedOrder {
       this.time1, this.time2,
       this.time3, this.time4,
       this.time5, this.time6].filter( ts => ts && ts.length > 0)
-    this.scheduledHours = list.map(ts => hourStringToHour(ts))
+    this.scheduledHours = list.map(ts =>  {
+      return { orderScheduleTime: ts, hour: hourStringToHour(ts) }
+    })
   }
 
   /**
@@ -79,10 +81,10 @@ export class MedOrder {
   }
 
   /**
-   * Compose a string of the day and time. This is handy to sort the medOrders.
+   * Compose a string of the orderedDay and orderedTime. This is handy to sort the medOrders.
    * @returns {string}
    */
-  get sTime () { return this.day + '-' + this.time }
+  get sTime () { return this.orderedDay + '-' + this.orderedTime }
 
   /**
    * Determine if this medication order CAN BE scheduled for the given day and time.
@@ -91,15 +93,22 @@ export class MedOrder {
    * @returns {boolean}
    */
   isScheduled (dayNum, ts) {
-    const tshr = hourStringToHour(ts)
-    const mohr = hourStringToHour(this.time)
-    const d = Number(this.day) // ordered on day
-    // is the requested day/time equal to or greater than the ordered day/time?
-    let can = dayNum === d ? tshr >= mohr : dayNum > d
-    // then is the time argument in the list of scheduled times.
-    // Need to only consider the hour part of the time because the mar timeline
-    // model only has hour time blocks.
-    return can && undefined !== this.scheduledHours.find( sh => sh === tshr)
+    return !! this.getScheduledTimeForDayTimeBlock (dayNum, ts)
+  }
+  // is the requested day/time equal to or greater than the ordered day/time?
+  canOrderForDayTimeBlock (dayNum, ts) {
+    const timeBlockHour = hourStringToHour(ts)
+    const orderHr = hourStringToHour(this.orderedTime)
+    const orderedDay = this.orderedDay
+    return dayNum === orderedDay ? timeBlockHour >= orderHr : dayNum > orderedDay
+  }
+  getScheduledTimeForDayTimeBlock (dayNum, ts) {
+    const timeBlockHour = hourStringToHour(ts)
+    let schedule
+    if (this.canOrderForDayTimeBlock(dayNum, ts)) {
+      schedule = this.scheduledHours.find( sh => sh.hour === timeBlockHour)
+    }
+    return schedule // is object like { orderScheduleTime: ts, hour: hourStringToHour(ts) }
   }
 
   /**
@@ -122,26 +131,29 @@ export class MedOrder {
    * Does this medication order have scheduled times?
    * @returns {boolean}
    */
-  isSchedulable () {
+  hasScheduledTimes () {
     // If scheduledHours list contains any entry then this medication is scheduled. This is more reliable than checking the timing field.
     return this.scheduledHours.length > 0
     // return ['sched', 'set'].includes(this.timing)
   }
   isTimingGroup (timingCode) { return this.timing === timingCode }
 
-  get day () { return  Number(this._e.day) }
+  // todo replace day with orderedDay and time with orderedTime
+  get day () { return  Number(this._e.orderedDay) }
+  get orderedDay () { return  Number(this._e.orderedDay) }
   get dose () { return this._e.dose }
   get id () { return this._e.id }
   get instructions () { return this._e.instructions }
   get location () { return this._e.location }
   get maxDose () { return this._e.maxDose }
   get medName () { return this._e.medName }
-  get name () { return this._e.name }
+  get name () { return this._e.orderedBy }
   get profession () { return this._e.profession }
   get reason () { return this._e.reason }
   get route () { return this._e.route }
   get schedule () { return this._e.schedule}
-  get time () { return this._e.time }
+  get time () { return this._e.orderedTime }
+  get orderedTime () { return this._e.orderedTime }
   get timing () { return this._e.timing }
   get time1 () { return this._e.time1 }
   get time2 () { return this._e.time2 }

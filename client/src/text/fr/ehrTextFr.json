@@ -123,6 +123,7 @@
   "studentBannerFeedbackBlocked": "Les commentaires sont bloqués",
   "studentBannerInstructorsFeedback": "Commentaires de l'instructeur:",
   "studentBannerSubmitText": "Soumettez votre travail afin que votre instructeur puisse fournir des commentaires.",
+  "studentBannerAwaitEvalText": "Your work has been submitted to your instructor.",
   "submitActivityButtonLabel": "Soumettre une activité",
   "submitButtonLabel": "Soumettre",
   "submitConfirmBody": "Procédez pour envoyer votre travail à votre instructeur ou annuler.",

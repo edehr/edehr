@@ -72,7 +72,7 @@ export class MarTimelineModel {
   getDraftMarsForMed (medOrder) {
     return this.marRecords.getDraftMarsForMedById(medOrder.id)
   }
-  setupMedMarEvents () {
+  _setupMedMarEvents (worker) {
     const marRecords = this._marRecords
     this.timeLineDays.forEach ( tlDay => {
       const dayNum = tlDay.dayNum
@@ -81,65 +81,42 @@ export class MarTimelineModel {
         const mars = marRecords.getMarsForMedById(medOrder.id)
         medDayBlock.timeElements.forEach( te => {
           const medId = medOrder.id
-          this.medMarEventLink(medOrder, dayNum, te, mars, medId)
+          worker(medOrder, dayNum, te, mars, medId)
         })
       })
     })
   }
-
+  setupMedMarEvents () {
+    this._setupMedMarEvents( (medOrder, dayNum, te, mars, medId) => {
+      this.medMarEventLink(medOrder, dayNum, te, mars, medId)
+    })
+    this._setupMedMarEvents( (medOrder, dayNum, te, mars, medId) => {
+      this.medSchedule(medOrder, dayNum, te, mars, medId)
+    })
+  }
   medMarEventLink (medOrder, dayNum, te, mars, medId) {
-    if (medOrder.isScheduled(dayNum, te.ts)) {
+    const fmars = mars.filter(m => m.isMarAdministered(dayNum, te.ts))
+    if (fmars.length > 0) {
+      fmars.forEach (mar => {
+        let mme = new MedMarEvent(dayNum, te.ts, medOrder)
+        mme.setMar(mar)
+        te.addMedMarEvent(mme)
+        // console.log(' push view mar button data ', te, te.manyMars)
+      })
+    }
+  }
+  medSchedule (medOrder, dayNum, te, mars, medId) {
+    if (!te.hasMedMarEvents() && medOrder.isScheduled(dayNum, te.ts)) {
+      let stb = medOrder.getScheduledTimeForDayTimeBlock(dayNum, te.ts)
+      // stb is like this { orderScheduleTime: ts, hour: hourStringToHour(ts) }
       // If we are here then the medication order is a scheduled for this time element.
       // Create a MedMarEvent to manage the linkage between the medication order's scheduled
       // time and the possible MAR.
-      const mme = new MedMarEvent(dayNum, te.ts, medOrder)
-      // Look for a MAR for this time and this medication order. The find may return undefined.
-      const mar = mars.find(m => m.isMoScheduled(dayNum, te.ts))
-      if (mar) {
-        // Set the found mar into the event. Do this before working further with the event object.
-        mme.setMar(mar)
-        // If there is a MAR do not link anything to this time element. Instead,
-        // search for the time element that matches the MAR's administered day and time.
-        // Note that this could be for a different day.
-        // console.log('mos has mar', medId, dayNum, te.ts, JSON.stringify(mar))
-        const mr = hourStringToHour(mme.adminTime)
-        const otherTe = this.findTimeElement(medId, mme.adminDay, mr)
-        if (otherTe) {
-          otherTe.mme = mme
-          // otherTe.manyMars.push(mme)
-          // console.log(' push onto otherTe', otherTe, otherTe.manyMars)
-        } else {
-          // This situation should not happen. Send message to error.
-          console.error('Failed to find expected time element for medMarEvent', medId, mar.adminDay, mr)
-        }
-      } else {
-        // If there is no MAR then link the event to this time element
-        // console.log('mos is scheduled', medOrder.id, dayNum, te.ts)
-        te.mme = mme
-        te.manyMars.push(mme)
-        // console.log(' push onto te without mar ', te,  te.manyMars)
-      }
-    } else {
-      // For all the other, non-scheduled, medications ....
-      // is there a MAR for this medOrder for this timeElement?
-      const mar = mars.find(m => m.isMarAdministered(dayNum, te.ts))
-      if (mar) {
-        te.mme = new MedMarEvent(dayNum, te.ts, medOrder)
-        te.mme.setMar(mar)
-      }
-      /*
-      Collect ALL the MARs for a give time.  The code above can be phased out
-       */
-      const fmars = mars.filter(m => m.isMarAdministered(dayNum, te.ts))
-      if (fmars.length > 0) {
-        fmars.forEach (mar => {
-          let mme = new MedMarEvent(dayNum, te.ts, medOrder)
-          mme.setMar(mar)
-          te.manyMars.push(mme)
-          // console.log(' push onto te from fmars ', te, te.manyMars)
-        })
-      }
+      const mme = new MedMarEvent(dayNum, stb.orderScheduleTime, medOrder)
+      te.addMedMarEvent(mme)
+      // console.log(' make a mar button data ', te,  te.manyMars)
     }
+
   }
 
   findTimeElement (moId, dayNum, hr) {
@@ -237,14 +214,29 @@ export class TimeElement {
     this.hr = hourStringToHour(ts)
     // each time element needs its mo to let the ui do some height calculations
     this.medOrder = mo
-    this.mme = undefined
-    this.manyMars = []
+    // this.mme = undefined
+    this._manyMars = []
   }
+  addMedMarEvent (mme) { this._manyMars.push(mme)}
+  hasMedMarEvents () { return this._manyMars.length > 0 }
+  getMedMarEvents () { return this._manyMars }
 
-  hasDraftMar () { return this.mme && this.mme.hasDraftMar() }
-  hasScheduledEvent () { return this.mme && this.mme.hasScheduledEvent() }
-  hasMarEvent () { return this.mme && this.mme.hasMarEvent() }
-  getMedMarEvent () { return this.mme }
-  get marRecordId () { return this.mme ? this.mme.marRecordId : undefined }
-  get toolTip () { return this.mme ? this.mme.toolTip : ''}
+  getScheduledMme () {
+    return this._manyMars.find( m => !m.marRecord )
+  }
+  toolTip () { return 'toolTiptoolTiptoolTiptoolTip' }
+  hasDraftMar () {
+    let result = false
+    result = !! this._manyMars.find( mme => mme.hasDraftMar())
+    return result
+  }
+  hasScheduledEvent () {
+    let result = false
+    result = !! this._manyMars.find( mme => mme.hasScheduledEvent())
+    return result
+  }
+  // hasMarEvent () { return this.mme && this.mme.hasMarEvent() }
+  // getMedMarEvent () { return this.mme }
+  // get marRecordId () { return this.mme ? this.mme.marRecordId : undefined }
+  // get toolTip () { return this.mme ? this.mme.toolTip : ''}
 }

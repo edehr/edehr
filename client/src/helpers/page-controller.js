@@ -63,7 +63,7 @@ async  function onPageChange (toRoute) {
   const routeName = toRoute.name
   const perfStat = { start: {}, elapsed: {} }
   perfStat.start.loading = performance.now()
-  console.log('onPageChange toRoute', toRoute.path, routeName)
+  if (dbApp) console.log('onPageChange toRoute', toRoute.path, routeName)
   if (routeName === ERROR_ROUTE_NAME) {
     console.log('Skip page change for error page')
     return perfExit(perfStat)
@@ -151,13 +151,19 @@ async  function onPageChange (toRoute) {
     let haveDemoToken = !!StoreHelper.getDemoToken() // may change if user is forced out of full demo
 
     if (optionalVisitId || refreshToken ) {
-      // console.log('on new auth or visit change we need to clear out previous visit and mPatient')
+      if (dbApp) console.log('PC - New auth or visit change --- clear visitData, seedEditId, mPatient, AND is content creator mode')
+      /*
+      This next line removes the visitStore's visit data, visit id, seed edit id,
+      ****** and it clears local storage IS_CONTENT_EDITING ******
+      which will then mean _isDevelopingContent is false.
+      Is this really what is wanted? To disable content creation mode?
+       */
       await store.dispatch('visit/clearVisitData')
       await store.dispatch('mPatientStore/clearMPatientData')
     }
 
     if (evaluateStudentVisitId) {
-      // console.log('on instructor change student so clear out previous visit and mPatient')
+      if (dbApp) console.log('PC - on instructor change student ---- clear mPatient')
       await store.dispatch('mPatientStore/clearMPatientData')
     }
 
@@ -302,7 +308,7 @@ async  function onPageChange (toRoute) {
       if(autoLink && demo_lobjId) {
         theActivity = await StoreHelper.autoLinkDemoLobj(theActivity, demo_lobjId)
       } else {
-        if (dbApp) console.log('No assignment for activity', theActivity.id)
+        if (dbApp) console.log('PC - No assignment for activity', theActivity.id)
         await router.push({ name: UNLINKED_ACTIVITY_ROUTE_NAME, query: { activityId: theActivity.id } })
         return perfExit(perfStat)
         // EXIT
@@ -317,7 +323,7 @@ async  function onPageChange (toRoute) {
         await StoreHelper.setSeedEditId(sdId)
       }
       if (evaluateStudentVisitId && StoreHelper.isSeedEditing()) {
-        console.log('Switch to evaluation student id')
+        if (dbApp) console.log('PC - switch to evaluation student id')
         await StoreHelper.setSeedEditId('')
       }
       if (StoreHelper.isSeedEditing()) {
@@ -328,9 +334,13 @@ async  function onPageChange (toRoute) {
       }
       // **** Instructor evaluating student id management
       if (evaluateStudentVisitId) {
+        if (dbApp) console.log('PC - dispatch evaluateStudentVisitId to instructor store.')
         await store.dispatch('instructor/changeCurrentEvaluationStudentId', evaluateStudentVisitId)
       }
       if (StoreHelper.isInstructorEvalMode()) {
+        // eval mode means user is faculty but is not seed editing.
+        // Note that having a patientId is optional.
+        if (dbApp) console.log('PC - instructor is evaluation student - set patient id', patientId)
         await MPatientHelper.helpLoadInstructorPatient(patientId)
       }
     }
@@ -389,7 +399,11 @@ async  function onPageChange (toRoute) {
     }
 
     // set up the visit record with the DT from the ehr data, if needed.  Do this here because the ehrDate is now ready.
-    await StoreHelper.initializeSimDateTime()
+    const newPatient = !!patientId || !!seedEditId || !!evaluateStudentVisitId
+    if (newPatient) {
+      if (dbApp) console.log('PC - newPatient so initialize simDateTime')
+      await StoreHelper.initializeSimDateTime()
+    }
 
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   } catch (err) {
