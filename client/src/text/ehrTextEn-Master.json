@@ -122,6 +122,7 @@
   "studentBannerActivityLabel": "Activity name:",
   "studentBannerFeedbackBlocked": "Feedback is blocked",
   "studentBannerInstructorsFeedback": "Instructor's comments:",
+  "studentBannerAwaitEvalText": "Your work has been submitted to your instructor.",
   "studentBannerSubmitText": "Submit your work so your instructor can provide feedback.",
   "submitActivityButtonLabel": "Submit Activity",
   "submitButtonLabel": "Submit",

@@ -1,18 +1,31 @@
 <template lang='pug'>
   div
-    div
+    div(v-if='medList.length === 0')
+      div {{ title }} - No medication orders
+    // a block for development. Change v-if to true to see the structure of the key data
+    div(class="flow_across", style='color: white;')
+      div(@click="showStructure = !showStructure", class='flow_across_last_item') showStructure
+    div(v-if='showStructure', style='overflow: auto;')
+      div(class="row-container",
+        v-for='(medRow, mrx) in dayMedSchedule(aDay, idPrefix)',
+        :key="`t-${idPrefix}-${medRow.medName}-${mrx}`") {{ medRow.medName }}
+        div(v-for='(timeElement, tx) in medRow.timeElements',
+          :key="`t-${timeElement.key}-${tx}`", style='border: 1px solid red; padding: 5px') tx:{{ tx }}
+          div(v-for="(te, inx) in timeElement.getMedMarEvents()") {{inx}}: {{ te }}
 
+    // MAIN BLOCK for a schedule type (e.g. Scheduled, PRN, etc
     // medList contains entries for a group of medications. E.g. all 'stat' or all 'prn'
-    // Only show if the list contains entries.
+    // Only shows if the list contains entries.
     div(v-if='medList.length>0')
       // Grid for the given medication type (sched, prn, cont, stat, etc.)
       div(class='time-line row-container')
+        // Column for medication name
         div(class='col-container')
-          // Column for medication name
+          // Section title and date
           div(class="medication-element title-row-element")
-            // Section title and date
             h4 {{ title }}
             h4 {{ aDay.dateStr }}
+          // Section for medication order summary and checkbox to enable row
           // be sure to get each :key to be unique or else you can get errors when medications appear two or more time
           div(class="med-row-element medication-element",
             v-for='(med, mx) in medList',
@@ -20,16 +33,17 @@
             :id='med.id',
             :key="forElementKeyFromMed('med', med, mx)",
             :title='med.medName')
-            // medication name and summary
+            // 1. checkbox, 2. medication summary
             div(class="medication-container")
               input(type='checkbox', v-model="med.selected", :id="forElementKeyFromMed('med', med, mx)")
               label(:for="forElementKeyFromMed('med', med, mx)")
                 span {{ medicationSummary(med) }}
+        // Column for mar admin buttons and medication order info button
         div(class='col-container')
-          //  Possible mar admin buttons and medication order info button
+          // spacer for the title row
           div(class="medication-button-area title-row-element")
-            // spacer for the title row
             h4 &nbsp;
+          // Section for mar admin buttons and medication order info button
           div(
             v-for='(med, px) in medList',
             :class='{ medRowSelected: med.selected }'
@@ -38,9 +52,10 @@
             :key="`${med.id}-${px}`",
             :title='med.medName'
             )
-            ui-info(:title="medInfoTitle(med)", :text="medInfoContent(med)")
+            // Medication order info button
+            ui-info(v-if="hasMedInfoContent(med)", :title="medInfoTitle(med)", :text="medInfoContent(med)")
+            // MAR button within the first column block
             div(class="medication-element-button")
-              // this is the MAR button within the first column block
               ui-button(
                 v-if="showMainMedAdminButton(med)",
                 class='mar-button',
@@ -48,10 +63,11 @@
                 :class='{draftRow : medHasDraftMar(med) }'
                 v-on:buttonClicked='showMarDialog(undefined, med)',
                 )
-                fas-icon(icon="file-prescription")
+                fas-icon(icon="pen")
 
         // Day blocks with a time grid
-        div(class="row-container")
+        div(class="row-container main-time-block")
+          // Column for medication information. total given today, max allowed for day
           div(class='day-label-dose-count')
             // Title block
             div(class="day-bar-element day-bar-element-title title-row-element")
@@ -66,43 +82,38 @@
           // day content has time grid
           div(class="day-content")
             div(class="col-container")
-              // title row
+              // Row of time element titles  0000, 0100, 0200, ...
               div(class="row-container")
                 div(v-for='time in aDay.timeElementLabels', :key='time.key', class='time-element title-row-element')
                   div {{ time.label }}
-              // mar rows
+              // Row of time elements for a medication row
               div(class="row-container",
                 v-for='(medRow, mrx) in dayMedSchedule(aDay, idPrefix)',
                 :key="`${idPrefix}-${medRow.medName}-${mrx}`",
                 :class='{ medRowSelected: medRow.medOrder.selected }'
                 )
+                // Time elements
                 div(v-for='(timeElement, tx) in medRow.timeElements',
                   :key="`${timeElement.key}-${tx}`",
                   class='med-row-element time-element'
                   )
-                  // this is the MAR button within the time block
-                  ui-button(
-                    v-if='timeElement.hasScheduledEvent()',
-                    v-on:buttonClicked='showMarDialog(timeElement, undefined)',
-                    :disabled='!timeElement.medOrder.selected'
-                    class='mar-button',
-                    :class='{draftRow : timeElement.hasDraftMar() }'
-                    :title='timeElement.toolTip'
-                  )
-                    fas-icon(icon="file-prescription")
-                  div(v-else-if="timeElement.manyMars")
-                    // A medication order may have many administrations within a given hour.
-                    // See MarTimelineModel.medMarEventLink
-                    ui-button(v-for='(mar, px) in timeElement.manyMars',
-                      class='mar-button',
-                      :class="marDoneClass(timeElement)",
-                      v-on:buttonClicked="$emit('viewReport', mar.marRecordId)",
-                      :title='timeElement.toolTip'
+                    //div {{ timeElement.key }}
+                    div(v-for='(mme, px) in timeElement.getMedMarEvents()')
+                      ui-button(v-if='!mme.canEdit()',
+                        class='mar-button',
+                        :class="marDoneClass(mme)",
+                        v-on:buttonClicked="$emit('viewReport', mme.marRecordId)",
+                        :title='mme.toolTip'
+                        )
+                          fas-icon(icon="file-prescription")
+                      ui-button(v-if='mme.canEdit()',
+                        class='mar-button',
+                        v-on:buttonClicked='showMarDialog(mme, timeElement.medOrder)',
+                        :disabled='!timeElement.medOrder.selected'
+                        :class='{draftRow : mme.hasDraftMar() }'
+                        :title='mme.toolTip'
                       )
-                        fas-icon(icon="file-prescription")
-                  div(v-else) {{ timeElement.mme }} &nbsp;
-
-
+                        fas-icon(icon="pen")
       // place a gap between rows
       div &nbsp;
 </template>
@@ -123,6 +134,11 @@ import MarBarcodeDialog from '@/inside/components/marV2/MarBarcodeDialog.vue'
 import Vue from 'vue'
 export default {
   components: { MarBarcodeDialog, UiInfo, UiButton },
+  data () {
+    return {
+      showStructure: false
+    }
+  },
   props: {
     idPrefix: { type: String, require: true },
     selectedDay: { type: Number},
@@ -163,10 +179,11 @@ export default {
     getDraftMarsForMed (medOrder) {
       return this.timeLineModel.getDraftMarsForMed(medOrder)
     },
-    marDoneClass (timeElement) {
-      const mar = timeElement.getMedMarEvent()
-      console.log('marDoneClass', mar.marStatus)
-      const missed = mar.marStatus === MAR_STATUS_REFUSED || mar.marStatus === MAR_STATUS_MISSED || mar.marStatus === MAR_STATUS_SKIPPED
+    marDoneClass (mar) {
+      // const mar = timeElement.getMedMarEvent()
+      // const missed = mar.marStatus === MAR_STATUS_REFUSED || mar.marStatus === MAR_STATUS_MISSED || mar.marStatus === MAR_STATUS_SKIPPED
+      const missed = [ MAR_STATUS_REFUSED, MAR_STATUS_MISSED, MAR_STATUS_SKIPPED].includes(mar.marStatus)
+      // console.log('marDoneClass missed vs status', missed, mar.marStatus)
       return missed ? 'mar-missed-button' : 'mar-done-button'
     },
     medicationSummary ( med ) {
@@ -174,6 +191,9 @@ export default {
     },
     medInfoTitle (med) {
       return med.medName + ' ' + med.dose
+    },
+    hasMedInfoContent (med) {
+      return !!med.reason || !!med.instructions
     },
     medInfoContent (med) {
       let et = this.ehrText
@@ -210,8 +230,7 @@ export default {
      * @param timeElement {obj | null}
      * @param mo {obj}
      */
-    showMarDialog ( timeElement, mo) {
-      const medOrder = timeElement ? timeElement.medOrder : mo
+    showMarDialog ( mme, medOrder) {
       const sourceRowId = medOrder.id
       const sourcePageKey = MED_ORDERS_PAGE_KEY
       const sourceTableKey = MED_ORDERS_TABLE_KEY
@@ -224,19 +243,23 @@ export default {
         that is draft and then to use that row. For med mars we required explicit draft rows only.
        */
       options.explicitDraftRowOnly = true
-      if (timeElement) {
-        if(timeElement.hasDraftMar()) {
-          options.draftRowId = timeElement.marRecordId
+      if (mme) {
+        if(mme.hasDraftMar()) {
+          options.draftRowId = mme.marRecordId
         }
-        // // change the option to use current sim time not the time element's information.
-        // options.simDay = timeElement.dayNum
-        // options.simTime = timeElement.ts
-        const mme = timeElement.getMedMarEvent()
         options.presetValues = [
           { key: 'mo_schedDay', value: mme.schedDay },
           { key: 'mo_schedTime', value: mme.schedTime }
         ]
         // console.log('Open mar for timeElement', JSON.stringify(options,null,2))
+      }
+      if (!mme) {
+        const drafts = this.getDraftMarsForMed(medOrder)
+        if(drafts.length > 0) {
+          const mme = drafts[0]
+          console.log('find draft marRecordId',  mme.id)
+          options.draftRowId = mme.id
+        }
       }
       const { taTargetPageKey, taTargetTableKey} = sendersTableDef
       this.ehrHelp.showDialogForTable(taTargetPageKey, taTargetTableKey, options)
@@ -282,16 +305,14 @@ $selected-label-colour: $label-colour-start;
 $space-between-day-blocks: 5px;
 
 .time-line {
+  position: relative;
+  width: 100%;
   border-radius: 3px;
   border: solid 1px $border-colour;
   box-shadow: 0 1px 1px rgba(0,0,0,.65);
-  overflow-x: auto;
-  width: auto;
 }
 
 .day-content {
-  min-width: $day-width;
-  overflow: auto;
   min-height: 8rem; /* big enough for one medication to not need a vert scroll */
   border: 1px solid $selected-label-colour;
   -webkit-transition: width .25s linear, opacity .5s linear;
@@ -301,6 +322,9 @@ $space-between-day-blocks: 5px;
   padding: 0;
 }
 
+.main-time-block {
+  overflow-x: auto;
+}
 /*
 time-element are the boxes containing either a time value or
  */
@@ -364,6 +388,7 @@ time-element are the boxes containing either a time value or
 .day-bar-element {
   border-bottom: solid 1px $border-colour;
   //height: is calculated to match height of first cell
+  width: $day-label-dose-count-width;
   text-align: left;
   font-size: 1rem; // override 1.1 rem set onto input:checked
   & div {
@@ -381,7 +406,6 @@ time-element are the boxes containing either a time value or
 
 
 .day-label-dose-count {
-  width: $day-label-dose-count-width;
   font-size: 1.1rem;
   border-left: 1px solid black;
   border-right: 1px solid black;

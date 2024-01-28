@@ -34,7 +34,6 @@ export default {
         let pageDataKey = this.pageDataKey
         let elementKey = this.element.elementKey
         if (db) console.log('EhrCalculated rcv FORM_INPUT_EVENT', eData, pageDataKey, elementKey)
-        console.log('EhrCalculated rcv FORM_INPUT_EVENT')
         let srcValues = this.ehrHelp.getActiveData()
         let value = ehrCalculateProperty(pageDataKey, elementKey, srcValues)
         if (db) console.log('EhrComputedValue ', elementKey, value)
@@ -48,12 +47,13 @@ export default {
           let f = Math.pow(10, decimals)
           value = (Math.round(value * f) / f).toFixed(decimals)
         }
+        // console.log('EhrCalculated rcv FORM_INPUT_EVENT', pageDataKey, elementKey, value)
         // put into component data to be rendered
         this.value = value
       }
       let de = true
       if (de) {
-        const DELAY_TIMEOUT = 5
+        const DELAY_TIMEOUT = 1000
         if (this.eventTimeoutId) {
           clearTimeout(this.eventTimeoutId)
         }

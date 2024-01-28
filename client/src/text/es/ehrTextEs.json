@@ -122,6 +122,7 @@
   "studentBannerFeedbackBlocked": "La retroalimentación está bloqueada",
   "studentBannerInstructorsFeedback": "Comentarios del instructor:",
   "studentBannerSubmitText": "Envíe su trabajo para que su instructor pueda proporcionar comentarios.",
+  "studentBannerAwaitEvalText": "Your work has been submitted to your instructor.",
   "submitActivityButtonLabel": "Enviar actividad",
   "submitButtonLabel": "Entregar",
   "submitConfirmBody": "Proceda a enviar su trabajo a su instructor o cancelar.",

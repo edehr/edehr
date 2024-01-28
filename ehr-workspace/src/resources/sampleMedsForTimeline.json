@@ -10,7 +10,7 @@
         "med_dose": "500mg",
         "med_scheduled": "BID / Q12H",
         "med_prnMaxDosage": "1000 mg",
-        "med_time1": "0800",
+        "med_time1": "0811",
         "med_time2": "2000",
         "createdDate": "2023-03-15T16:38:56-07:00",
         "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.0",

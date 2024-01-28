@@ -17,7 +17,8 @@
               fas-icon(class="info-icon", icon="info-circle")
               span  &nbsp; Read more
         div(v-else, class="bigger-screens-900")
-          span {{ ehrText.studentBannerSubmitText }}
+          span(v-if="submitted") {{ ehrText.studentBannerAwaitEvalText }}
+          span(v-else) {{ ehrText.studentBannerSubmitText }}
       div(v-else)
         span {{ ehrText.studentBannerFeedbackBlocked }}
     div(class="flow_across menu_space_across flow_across_last_item")
@@ -58,7 +59,8 @@ export default {
     evaluationData () { return this.$store.getters['activityDataStore/evaluationData'] },
     givenName () { return StoreHelper.givenName()},
     feedbackViewable () { return this.activityRecord.feedbackViewable },
-    hasEvaluationData () { return this.evaluationData && this.evaluationData.length > 0 }
+    hasEvaluationData () { return this.evaluationData && this.evaluationData.length > 0 },
+    submitted () { return StoreHelper.isSubmitted() }
   },
   methods: {
     truncate (input, lim) {

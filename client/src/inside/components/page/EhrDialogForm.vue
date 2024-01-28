@@ -15,8 +15,11 @@
       ehr-patient-banner(slot="header-extra-content")
       h3(slot="header") {{ formLabel }}
       div(slot="body", class='ehr-dialog-form')
-        ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp", :viewOnly='isViewOnly')
+        div(id="ehrDialogForm")
+          ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp", :viewOnly='isViewOnly')
+        ui-spinner-small(refId='ehrDialogForm', :loading="isClosing")
       span(slot="save-button") Save
+
     ui-confirm(ref="confirmCancelDialog", @confirm="cancelConfirmed", :saveLabel='ehrText.cancelDialogExitDialogLabel', :cancel-label='ehrText.cancelDialogReturnToEditLabel' )
     ui-confirm(ref="confirmSaveDialog", @confirm="saveConfirmed", @abort="saveDraft", :saveLabel='ehrText.saveDialogButtonLabel', :cancel-label='ehrText.saveDialogAsDraftButtonLabel' )
 </template>
@@ -27,12 +30,14 @@ import EhrPatientBanner from '@/inside/components/EhrPatientBanner.vue'
 import EhrGroup from '@/inside/components/page/EhrGroup'
 import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
+import UiSpinnerSmall from '@/app/ui/UiSpinnerSmall.vue'
 import UiConfirm from '@/app/ui/UiConfirm'
 import { t18EhrFunctions, t18EhrText, t18ElementLabel, t18TableAddButtonLabel } from '@/helpers/ehr-t18'
 import { formatYmdDateInLocalZone } from '@/helpers/date-helper'
 
 export default {
   components: {
+    UiSpinnerSmall,
     EhrPatientBanner,
     UiConfirm,
     EhrGroup,
@@ -42,6 +47,7 @@ export default {
   data: function () {
     return {
       errorList: [],
+      isClosing: false
     }
   },
   props: {
@@ -85,6 +91,7 @@ export default {
   },
   methods: {
     closeDialog () {
+      this.isClosing = true
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
       this.ehrHelp.closeDialog()
     },
@@ -102,6 +109,7 @@ export default {
       }
     },
     cancelConfirmed: async function () {
+      this.isClosing = true
       // TODO fix this future defect. Remove the row the dialog was opened on and not just the first draft row.
       await this.ehrHelp.removeDraftRow()
       this.closeDialog()
@@ -120,6 +128,7 @@ export default {
         this.ehrHelp.setViewOnly(this.tableKey)
         return
       }
+      this.isClosing = false
       if(eData.open) {
         this.$refs.theDialog.onOpen()
       } else {
@@ -168,6 +177,7 @@ export default {
       }
     },
     saveConfirmed: async function () {
+      this.isClosing = true
       // note that save is disabled if there are errors or there is no data
       // If there is a pending draft save then just cancel it.
       this.clearDraftTimeout()
@@ -185,6 +195,7 @@ export default {
       }
     },
     saveDraft: async function () {
+      this.isClosing = true
       this.clearDraftTimeout()
       await this.ehrHelp.saveDialogDraft()
       this.closeDialog()
