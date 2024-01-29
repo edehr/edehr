@@ -97,7 +97,6 @@
                   :key="`${timeElement.key}-${tx}`",
                   class='med-row-element time-element'
                   )
-                    //div {{ timeElement.key }}
                     div(v-for='(mme, px) in timeElement.getMedMarEvents()')
                       ui-button(v-if='!mme.canEdit()',
                         class='mar-button',

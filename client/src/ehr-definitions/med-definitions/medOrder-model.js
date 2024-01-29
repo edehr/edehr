@@ -29,6 +29,7 @@ export class MedOrder {
     this._e = {}
     let {med_dose, medicationOrdersTable_id, med_instructions, med_injectionLocation,
       med_scheduled,
+      med_alert,
       med_prnMaxDosage, med_medication,
       med_reason, med_route, med_timing,
       med_time1, med_time2, med_time3, med_time4, med_time5, med_time6
@@ -41,6 +42,7 @@ export class MedOrder {
     this._e.orderedBy = eData['medicationOrdersTable_name']
     this._e.profession = eData['medicationOrdersTable_profession']
     this._e.dose = med_dose
+    this._e.alerts = med_alert
     this._e.id = medicationOrdersTable_id
     this._e.instructions = med_instructions
     this._e.location = med_injectionLocation
@@ -140,6 +142,7 @@ export class MedOrder {
 
   // todo replace day with orderedDay and time with orderedTime
   get day () { return  Number(this._e.orderedDay) }
+  get alerts () { return this._e.alerts }
   get orderedDay () { return  Number(this._e.orderedDay) }
   get dose () { return this._e.dose }
   get id () { return this._e.id }

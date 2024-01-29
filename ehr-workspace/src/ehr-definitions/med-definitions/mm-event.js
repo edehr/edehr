@@ -1,3 +1,4 @@
+import { simDateCalc } from '@/helpers/date-helper'
 
 /**
  * Each MedOrder will have one or more MedMarEvents.
@@ -33,11 +34,13 @@ export class MedMarEvent {
   get toolTip () { return this.toString() }
   toString () {
     const parts = []
+    parts.push('Ordered: '+ simDateCalc(this.medOrder.orderedDay) + 'T'  + this.medOrder.orderedTime)
     parts.push(this._medSummary)
+    parts.push(this.medOrder.alerts)
     if (this.marStatus) {
-      parts.push(this.adminDay)
-      parts.push(this.adminTime)
+      parts.push('\nMAR: ' + simDateCalc(this.adminDay) + 'T'  + this.adminTime)
       parts.push(this.marStatus)
+      parts.push('Dose: ' + this.marRecord.dose)
       if (this.marIsDraft) parts.push('DRAFT')
     }
     return parts.join(', ')
