@@ -400,7 +400,10 @@ async  function onPageChange (toRoute) {
 
     // set up the visit record with the DT from the ehr data, if needed.  Do this here because the ehrDate is now ready.
     const newPatient = !!patientId || !!seedEditId || !!evaluateStudentVisitId
-    if (newPatient) {
+    // also check that the user's visit record has a simulation time...
+    let cd = store.getters['visit/simDate']
+    let ct = store.getters['visit/simTime']
+    if (!ct || !cd || newPatient) {
       if (dbApp) console.log('PC - newPatient so initialize simDateTime')
       await StoreHelper.initializeSimDateTime()
     }
