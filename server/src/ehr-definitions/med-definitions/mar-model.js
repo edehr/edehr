@@ -4,10 +4,10 @@ import { MedMarEvent } from './mm-event'
 
 export const MED_GROUP_SCHED = 'sched'
 export const MED_GROUP_ONCE = 'once'
-// export const MED_GROUP_OD = 'od'
 export const MED_GROUP_PRN = 'prn'
 export const MED_GROUP_STAT = 'stat'
 export const MED_GROUP_CONT = 'cont'
+export const MED_GROUP_SET = 'set'
 
 export const MAR_STATUS_ADMINISTERED = 'Administered'
 export const MAR_STATUS_REFUSED = 'Refused'
@@ -15,9 +15,9 @@ export const MAR_STATUS_SKIPPED = 'Skipped'
 export const MAR_STATUS_MISSED = 'Missed'
 
 // for use by UI
-export const MED_GROUPS = [MED_GROUP_SCHED, MED_GROUP_STAT, MED_GROUP_PRN, /*MED_GROUP_OD,*/ MED_GROUP_ONCE, MED_GROUP_CONT]
+export const MED_GROUPS = [MED_GROUP_SCHED, MED_GROUP_STAT, MED_GROUP_PRN, MED_GROUP_ONCE, MED_GROUP_CONT, MED_GROUP_SET]
 // for use by UI
-export const MED_GROUP_LABELS = ['Scheduled','STAT', 'PRN', /*'Once a day',*/ 'Once only', 'Continuous']
+export const MED_GROUP_LABELS = ['Scheduled','STAT', 'PRN', /*'Once a day',*/ 'Once only', 'Continuous', 'Set times']
 export function hourString (hr) {
   return (hr < 10 ? '0' : '') + hr + '00'
 }

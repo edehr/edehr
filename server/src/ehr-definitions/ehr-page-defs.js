@@ -19466,6 +19466,7 @@ const DEFS = {
       {
         "elementKey": "stageType",
         "formIndex": "3",
+        "formCss": "grid-span-3-columns",
         "inputType": "checkset",
         "options": [
           {
