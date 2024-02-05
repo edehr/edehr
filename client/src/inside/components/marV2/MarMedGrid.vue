@@ -53,7 +53,7 @@
             :title='med.medName'
             )
             // Medication order info button
-            ui-info(v-if="hasMedInfoContent(med)", :title="medInfoTitle(med)", :text="medInfoContent(med)")
+            ui-info(v-if="hasMedInfoContent(med)", :title="medInfoTitle(med)", :text="medInfoContent(med)", :html="medInfoContentHtml(med)")
             // MAR button within the first column block
             div(class="medication-element-button")
               ui-button(
@@ -84,7 +84,9 @@
             div(class="col-container")
               // Row of time element titles  0000, 0100, 0200, ...
               div(class="row-container")
-                div(v-for='time in aDay.timeElementLabels', :key='time.key', class='time-element title-row-element')
+                div(v-for='time in aDay.timeElementLabels', :key='time.key', class='time-element title-row-element',
+                  :class='isTimeCurrentSimTimeClass(time.label)'
+                )
                   div {{ time.label }}
               // Row of time elements for a medication row
               div(class="row-container",
@@ -95,14 +97,16 @@
                 // Time elements
                 div(v-for='(timeElement, tx) in medRow.timeElements',
                   :key="`${timeElement.key}-${tx}`",
-                  class='med-row-element time-element'
+                  class='med-row-element time-element',
+                  :class='isTimeCurrentSimTimeClass(timeElement.ts)'
                   )
                     div(v-for='(mme, px) in timeElement.getMedMarEvents()')
+                      div {{ mme.marRecord && truncate(mme.marRecord.dose, 6) }}
                       ui-button(v-if='!mme.canEdit()',
                         class='mar-button',
                         :class="marDoneClass(mme)",
                         v-on:buttonClicked="$emit('viewReport', mme.marRecordId)",
-                        :title='mme.toolTip'
+                        :title='mmeToolTip(mme)'
                         )
                           fas-icon(icon="file-prescription")
                       ui-button(v-if='mme.canEdit()',
@@ -110,7 +114,7 @@
                         v-on:buttonClicked='showMarDialog(mme, timeElement.medOrder)',
                         :disabled='!timeElement.medOrder.selected'
                         :class='{draftRow : mme.hasDraftMar() }'
-                        :title='mme.toolTip'
+                        :title='mmeToolTip(mme)'
                       )
                         fas-icon(icon="pen")
       // place a gap between rows
@@ -131,6 +135,7 @@ import { textToHtml } from '@/directives/text-to-html'
 import { t18EhrText } from '@/helpers/ehr-t18'
 import MarBarcodeDialog from '@/inside/components/marV2/MarBarcodeDialog.vue'
 import Vue from 'vue'
+import { currentSimDayNumber, currentSimTime, hourStringToHour, simDateCalc } from '@/helpers/date-helper'
 export default {
   components: { MarBarcodeDialog, UiInfo, UiButton },
   data () {
@@ -160,6 +165,15 @@ export default {
     },
   },
   methods: {
+    isTimeCurrentSimTimeClass (ts) {
+      let result = this.aDay.dayNum === currentSimDayNumber()
+      if (result) {
+        const ct = hourStringToHour(currentSimTime())
+        const tt = hourStringToHour(ts)
+        result = ct === tt
+      }
+      return result ? 'current-time-element' : undefined
+    },
     forElementKeyFromMed (containerKey, med, index) { return `${containerKey}-${med.id}-${index}` },
     resetAll () {
       this.medList.forEach( m => {
@@ -181,6 +195,7 @@ export default {
     marDoneClass (mar) {
       // const mar = timeElement.getMedMarEvent()
       // const missed = mar.marStatus === MAR_STATUS_REFUSED || mar.marStatus === MAR_STATUS_MISSED || mar.marStatus === MAR_STATUS_SKIPPED
+      // this seems to work even if the user saved the mar using a language other than English
       const missed = [ MAR_STATUS_REFUSED, MAR_STATUS_MISSED, MAR_STATUS_SKIPPED].includes(mar.marStatus)
       // console.log('marDoneClass missed vs status', missed, mar.marStatus)
       return missed ? 'mar-missed-button' : 'mar-done-button'
@@ -201,7 +216,42 @@ export default {
       med.reason ? text.push (et.medReason + med.reason) : null
       med.instructions ? text.push (et.medInstructions + med.instructions) : null
       text = text.join('\n')
-      return textToHtml(text)
+      return text
+    },
+    medInfoContentHtml (med) {
+      return textToHtml(this.medInfoContent(med))
+    },
+    mmeToolTip (mme) {
+      const medOrder = mme.medOrder
+      const marRecord = mme.marRecord
+      const df = (d, t) => simDateCalc(d) + 'T' + t
+      const td = (d) => Number(d) >= 0
+      const parts = []
+      parts.push(medOrder.medOrderSummary())
+      if (mme.marStatus) {
+        parts.push('Status: ' + marRecord.status)
+        if (marRecord.dose) {
+          parts.push('Dose: ' + marRecord.dose)
+        }
+      }
+      parts.push('Ordered: '+ df(medOrder.orderedDay, medOrder.orderedTime))
+      parts.push('Time block: ' + mme.schedTime)
+      if (mme.marStatus) {
+        if (td(marRecord.schedDay)) { // if scheduled... e.g. not a PRN
+          parts.push('Scheduled: '+ df(marRecord.schedDay, marRecord.schedTime))
+        }
+        if (td(marRecord.eventDay)) {
+          // older MARs may lack an event time (means they default to recorded time)
+          parts.push('Event: ' + df(marRecord.eventDay, marRecord.eventTime))
+        }
+        parts.push('Recorded: ' + df(marRecord.recordDate, marRecord.recordTime))
+        if (marRecord.isDraft) {
+          parts.push('DRAFT')
+        }
+        if (medOrder.alerts) parts.push(medOrder.alerts)
+      }
+      return parts.join(', ')
+
     },
     setSelectedDay (n) {
       this.$emit('selectedDayChange', Number.parseInt(n.target.value))
@@ -248,7 +298,9 @@ export default {
         }
         options.presetValues = [
           { key: 'mo_schedDay', value: mme.schedDay },
-          { key: 'mo_schedTime', value: mme.schedTime }
+          { key: 'mo_schedTime', value: mme.schedTime },
+          { key: 'mar_event_day', value: mme.schedDay },
+          { key: 'mar_event_time', value: mme.schedTime },
         ]
         // console.log('Open mar for timeElement', JSON.stringify(options,null,2))
       }
@@ -258,10 +310,18 @@ export default {
           const mme = drafts[0]
           console.log('find draft marRecordId',  mme.id)
           options.draftRowId = mme.id
+        } else {
+          options.presetValues = [
+            { key: 'mar_event_day', value: currentSimDayNumber() },
+            { key: 'mar_event_time', value: currentSimTime() },
+          ]
         }
       }
       const { taTargetPageKey, taTargetTableKey} = sendersTableDef
       this.ehrHelp.showDialogForTable(taTargetPageKey, taTargetTableKey, options)
+    },
+    truncate (input, lim) {
+      return input && input.length > lim ? `${input.substring(0, lim)}...` : input
     },
     viewMarDialog ( mo) {
       this.ehrHelp.showReport(mo.id)
@@ -291,7 +351,7 @@ export default {
 $element-padding: 5px;
 $day-width: 40rem;
 $time-element-height: 4rem;
-$time-element-width: 3rem;
+$time-element-width: 4rem;
 $medication-element-width: 14rem;
 $medication-button-area-width: 3rem;
 $med-row-element-height: 5rem;
@@ -333,6 +393,9 @@ time-element are the boxes containing either a time value or
   min-width: $time-element-width;
   height: $time-element-height;
   padding: $element-padding;
+}
+.current-time-element {
+  background-color: #8DD3F0;
 }
 .title-row-element {
   height: $time-element-height;

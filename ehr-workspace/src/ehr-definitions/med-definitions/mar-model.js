@@ -4,10 +4,10 @@ import { MedMarEvent } from './mm-event'
 
 export const MED_GROUP_SCHED = 'sched'
 export const MED_GROUP_ONCE = 'once'
-// export const MED_GROUP_OD = 'od'
 export const MED_GROUP_PRN = 'prn'
 export const MED_GROUP_STAT = 'stat'
 export const MED_GROUP_CONT = 'cont'
+export const MED_GROUP_SET = 'set'
 
 export const MAR_STATUS_ADMINISTERED = 'Administered'
 export const MAR_STATUS_REFUSED = 'Refused'
@@ -15,9 +15,9 @@ export const MAR_STATUS_SKIPPED = 'Skipped'
 export const MAR_STATUS_MISSED = 'Missed'
 
 // for use by UI
-export const MED_GROUPS = [MED_GROUP_SCHED, MED_GROUP_STAT, MED_GROUP_PRN, /*MED_GROUP_OD,*/ MED_GROUP_ONCE, MED_GROUP_CONT]
+export const MED_GROUPS = [MED_GROUP_SCHED, MED_GROUP_STAT, MED_GROUP_PRN, MED_GROUP_ONCE, MED_GROUP_CONT, MED_GROUP_SET]
 // for use by UI
-export const MED_GROUP_LABELS = ['Scheduled','STAT', 'PRN', /*'Once a day',*/ 'Once only', 'Continuous']
+export const MED_GROUP_LABELS = ['Scheduled','STAT', 'PRN', /*'Once a day',*/ 'Once only', 'Continuous', 'Set times']
 export function hourString (hr) {
   return (hr < 10 ? '0' : '') + hr + '00'
 }
@@ -106,8 +106,10 @@ export class MarTimelineModel {
     }
   }
   medSchedule (medOrder, dayNum, te, mars, medId) {
-    if (!te.hasMedMarEvents() && medOrder.isScheduled(dayNum, te.ts)) {
-      let stb = medOrder.getScheduledTimeForDayTimeBlock(dayNum, te.ts)
+    let ts = te.ts
+    let alreadyAdministered = mars.find( m => m.isMarMedScheduled(dayNum, ts))
+    if (!alreadyAdministered && medOrder.isScheduled(dayNum, ts)) {
+      let stb = medOrder.getScheduledTimeForDayTimeBlock(dayNum, ts)
       // stb is like this { orderScheduleTime: ts, hour: hourStringToHour(ts) }
       // If we are here then the medication order is a scheduled for this time element.
       // Create a MedMarEvent to manage the linkage between the medication order's scheduled
@@ -224,7 +226,6 @@ export class TimeElement {
   getScheduledMme () {
     return this._manyMars.find( m => !m.marRecord )
   }
-  toolTip () { return 'toolTiptoolTiptoolTiptoolTip' }
   hasDraftMar () {
     let result = false
     result = !! this._manyMars.find( mme => mme.hasDraftMar())
@@ -235,8 +236,4 @@ export class TimeElement {
     result = !! this._manyMars.find( mme => mme.hasScheduledEvent())
     return result
   }
-  // hasMarEvent () { return this.mme && this.mme.hasMarEvent() }
-  // getMedMarEvent () { return this.mme }
-  // get marRecordId () { return this.mme ? this.mme.marRecordId : undefined }
-  // get toolTip () { return this.mme ? this.mme.toolTip : ''}
 }

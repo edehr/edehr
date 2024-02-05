@@ -1,5 +1,3 @@
-import { simDateCalc } from '@/helpers/date-helper'
-
 /**
  * Each MedOrder will have one or more MedMarEvents.
  * Combine the medOrderId with schedDay and schedTime to get a unique key. That can be decomposed to obtain the MedOrder.
@@ -15,16 +13,20 @@ export class MedMarEvent {
     this.medOrder = medOrder
     this._schedDay = dayNum
     this._schedTime = ts
-    this.adminDay = undefined
-    this.adminTime = undefined
+    this.recordDate = undefined
+    this.recordTime = undefined
+    this.eventDay = undefined
+    this.eventTime = undefined
     this.marIsDraft = undefined
     this.marRecord = undefined
     this.marRecordId = undefined
     this.marStatus = undefined
   }
   setMar (mar) {
-    this.adminDay = mar.day
-    this.adminTime = mar.time
+    this.recordDate = mar.recordDate
+    this.recordTime = mar.recordTime
+    this.eventDay = mar.eventDay
+    this.eventTime = mar.eventTime
     this.marIsDraft = !!mar.isDraft
     this.marRecord = mar
     this.marRecordId = mar.id
@@ -34,11 +36,12 @@ export class MedMarEvent {
   get toolTip () { return this.toString() }
   toString () {
     const parts = []
-    parts.push('Ordered: '+ simDateCalc(this.medOrder.orderedDay) + 'T'  + this.medOrder.orderedTime)
+    parts.push('Ordered: '+ this.medOrder.orderedDay + ' T '  + this.medOrder.orderedTime)
     parts.push(this._medSummary)
     parts.push(this.medOrder.alerts)
     if (this.marStatus) {
-      parts.push('\nMAR: ' + simDateCalc(this.adminDay) + 'T'  + this.adminTime)
+      parts.push('Event: ' + this.eventDay + ' T '  + this.eventTime)
+      parts.push('Recorded: ' + this.recordDate + ' T '  + this.recordTime)
       parts.push(this.marStatus)
       parts.push('Dose: ' + this.marRecord.dose)
       if (this.marIsDraft) parts.push('DRAFT')
