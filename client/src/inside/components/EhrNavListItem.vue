@@ -115,8 +115,9 @@ $indicator-color: $grey10;
   }
 }
 .linkLabel:hover {
-  //transform-origin: top left;
-  transform:  translate(30px, 2px)  scale(1.25);
+  transform-origin: left;
+  transform:  scale(1.25);
+  //transform:  translate(30px, 2px)  scale(1.25);
 }
 
 a:hover {

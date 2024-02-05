@@ -621,6 +621,7 @@ export default class EhrPageHelper {
       dialog.draftRowId = options.draftRowId
     }
     // TODO what about default values?  From a code review it seems these are not set into table dialogs.
+    // Defaulting comes from the form.ehr_data that is composed by the maker of the ehr page defs.  This is set into the form in _clearDialogInputs
     //  Furthermore, the assignment below is too blunt and would overwrite the defaults, like it overwrites
     //  the simTime. The assignment below should be rewritten to use a property by property copy.
     if (options.draftRowData) {
@@ -664,16 +665,16 @@ export default class EhrPageHelper {
         // console.log('dialog opening set sim time', key, dialog.inputs[key])
       }
 
-      function _nonEmptyString (text) {
-        return text && text.trim().length > 0
+      function _isEmptyString (text) {
+        return !(text && text.trim().length > 0)
       }
       key = tableKey + '_name'
-      if (!_nonEmptyString(dialog.inputs[key])) {
+      if (_isEmptyString(dialog.inputs[key])) {
         dialog.inputs[key] = StoreHelper.getSimSignOnName()
         // console.log('dialog opening set rec hdr name', key, dialog.inputs[key])
       }
       key = tableKey + '_profession'
-      if (!_nonEmptyString(dialog.inputs[key])) {
+      if (_isEmptyString(dialog.inputs[key])) {
         dialog.inputs[key] = StoreHelper.getSimSignOnProfession()
         // console.log('dialog opening set rec hdr name', key, dialog.inputs[key])
       }

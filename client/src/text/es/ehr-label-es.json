@@ -452,7 +452,7 @@
   "integumentaryAssessment.closureMethod": "Método de cierre",
   "integumentaryAssessment.day": "Día",
   "integumentaryAssessment.depth": "Profundidad cm.mm",
-  "integumentaryAssessment.escharBoggy": "% Escara (blanda, húmeda)",
+  "integumentaryAssessment.escharBoggy": "% Escara (blanda, esponjosa)",
   "integumentaryAssessment.escharStable": "% Escara (seca, estable)",
   "integumentaryAssessment.exudateAmount": "Cantidad de exudado",
   "integumentaryAssessment.exudateGroup": "Características del exudado",
@@ -1193,7 +1193,7 @@
   "respiratory.airway": "Vías respiratorias",
   "respiratory.cough": "Tos",
   "respiratory.day": "Día",
-  "respiratory.flowRate": "Tasa de flujo",
+  "respiratory.flowRate": "Flujo respiratorio",
   "respiratory.generalComments": "Comentarios",
   "respiratory.lll": "Pulmón inferior izquierdo",
   "respiratory.lul": "Pulmón superior izquierdo",
@@ -1265,7 +1265,7 @@
   "vitals.cvp": "Presión Venosa Central (PVC)",
   "vitals.day": "Día",
   "vitals.diastolic": "Presión arterial diastólica",
-  "vitals.flowRate": "Tasa de flujo",
+  "vitals.flowRate": "Flujo respiratorio",
   "vitals.name": "Nombre",
   "vitals.oxygenMode": "Modo de oxigenoterapia",
   "vitals.oxygenSaturation": "Saturación de oxígeno",
@@ -1289,5 +1289,7 @@
   "labResults.cBloodGasGroup": "Pruebas de gases en sangre",
   "demographics.pronouns": "Pronombres",
   "demographics.birthSex": "Sexo al nacer",
-  "demographics.legalGender": "Indicador legal de género"
+  "demographics.legalGender": "Indicador legal de género",
+  "medAdminRec.mar_event_day": "Día de evento",
+  "medAdminRec.mar_event_time": "Tiempo de evento"
 }

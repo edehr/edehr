@@ -1180,8 +1180,9 @@
   "demographics.pronouns.all": "J'utilise tous les pronoms de genre",
   "demographics.birthSex.male": "Mâle",
   "demographics.birthSex.fem": "Femelle",
-  "demographics.birthSex.inter:Intersex": "inter: intersexes",
   "demographics.legalGender.M": "M",
   "demographics.legalGender.F": "F",
-  "demographics.legalGender.X": "X"
+  "demographics.legalGender.X": "X",
+  "demographics.languagePrimary.Other": "Autre",
+  "demographics.birthSex.inter": "Intersexe"
 }

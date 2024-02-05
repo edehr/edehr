@@ -7,9 +7,7 @@ div
 <script>
 import UiInfo from '@/app/ui/UiInfo'
 import { t18EhrFunctions } from '@/helpers/ehr-t18'
-import StoreHelper from '@/helpers/store-helper'
-import EhrOnlyDemo from '@/helpers/ehr-only-demo'
-import { simDateCalc, currentSimDayNumber } from '@/helpers/date-helper'
+import { currentSimDayNumber, currentSimTime, currentSimDayDate } from '@/helpers/date-helper'
 export default {
   components: { UiInfo },
   data () {
@@ -21,16 +19,9 @@ export default {
   },
   computed: {
     ehrText () { return t18EhrFunctions()},
-    metaSimTime () { return StoreHelper.getMetaSimTime() },
-    visitDay () {
-      return simDateCalc(this.visitDayNum)
-    },
+    visitDay () { return currentSimDayDate() },
     visitDayNum () { return currentSimDayNumber() },
-    visitTime () {
-      if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
-        return this.metaSimTime.visitTime
-      }
-      return this.$store.getters['visit/simTime']}
+    visitTime () { return currentSimTime() }
   }
 }
 </script>

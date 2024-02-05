@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class="ehr-page-footer ehr-footer-content")
     div {{ contentDate }} ({{ evVersion }})
-    div Page design last saved: {{ ehrHelp.getPageGeneratedDate() }}
+    // div Page design last saved: {{ ehrHelp.getPageGeneratedDate() }}
 </template>
 
 <script>

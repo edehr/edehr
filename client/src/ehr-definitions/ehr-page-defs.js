@@ -133,8 +133,8 @@ const DEFS = {
             "text": "Female"
           },
           {
-            "key": "inter:Intersex",
-            "text": "inter:Intersex"
+            "key": "inter",
+            "text": "Intersex"
           }
         ],
         "fqn": "demographics.birthSex"
@@ -280,7 +280,6 @@ const DEFS = {
       },
       {
         "elementKey": "country",
-        "defaultValue": "Canada",
         "formIndex": "1",
         "inputType": "text",
         "fqn": "demographics.country"
@@ -14023,8 +14022,8 @@ const DEFS = {
         "formIndex": "2",
         "formCss": "visit-day",
         "formOption": "elementViewOnly",
-        "inputType": "text",
-        "tableColumn": "4",
+        "inputType": "visitDay",
+        "tableColumn": "7",
         "fqn": "medAdminRec.mo_schedDay"
       },
       {
@@ -14033,7 +14032,7 @@ const DEFS = {
         "formCss": "visit-time",
         "formOption": "elementViewOnly",
         "inputType": "text",
-        "tableColumn": "5",
+        "tableColumn": "8",
         "fqn": "medAdminRec.mo_schedTime"
       },
       {
@@ -14050,7 +14049,7 @@ const DEFS = {
         "formIndex": "2",
         "formCss": "grid-span-3-columns",
         "inputType": "calculatedValue",
-        "tableColumn": "6",
+        "tableColumn": "11",
         "fqn": "medAdminRec.mo_alert"
       },
       {
@@ -14075,14 +14074,14 @@ const DEFS = {
             "text": "Skipped"
           }
         ],
-        "tableColumn": "7",
+        "tableColumn": "4",
         "fqn": "medAdminRec.mar_status"
       },
       {
         "elementKey": "mar_dose",
         "formIndex": "2",
         "inputType": "text",
-        "tableColumn": "8",
+        "tableColumn": "5",
         "fqn": "medAdminRec.mar_dose"
       },
       {
@@ -14094,7 +14093,6 @@ const DEFS = {
       {
         "elementKey": "mar_route",
         "formIndex": "2",
-        "formCss": "grid-new-subsection",
         "inputType": "select",
         "options": [
           {
@@ -14186,34 +14184,44 @@ const DEFS = {
             "text": "Vaginal"
           }
         ],
-        "tableColumn": "9",
+        "tableColumn": "6",
         "fqn": "medAdminRec.mar_route"
+      },
+      {
+        "elementKey": "mar_event_day",
+        "formIndex": "2",
+        "formCss": "visit-day",
+        "inputType": "visitDay",
+        "tableColumn": "9",
+        "fqn": "medAdminRec.mar_event_day"
+      },
+      {
+        "elementKey": "mar_event_time",
+        "formIndex": "2",
+        "formCss": "visit-time",
+        "inputType": "visitTime",
+        "tableColumn": "10",
+        "fqn": "medAdminRec.mar_event_time"
       },
       {
         "elementKey": "mar_location",
         "formIndex": "2",
         "inputType": "text",
-        "tableColumn": "10",
+        "tableColumn": "12",
         "fqn": "medAdminRec.mar_location"
-      },
-      {
-        "elementKey": "mar_spacer5",
-        "formIndex": "2",
-        "inputType": "spacer",
-        "fqn": "medAdminRec.mar_spacer5"
       },
       {
         "elementKey": "mar_secSigName",
         "formIndex": "2",
         "inputType": "text",
-        "tableColumn": "11",
+        "tableColumn": "13",
         "fqn": "medAdminRec.mar_secSigName"
       },
       {
         "elementKey": "mar_comments",
         "formIndex": "2",
         "inputType": "textarea",
-        "tableColumn": "12",
+        "tableColumn": "14",
         "fqn": "medAdminRec.mar_comments"
       }
     ],
@@ -14387,61 +14395,68 @@ const DEFS = {
           {
             "ehr_list_index": "4",
             "items": [
-              "mo_schedDay"
+              "mar_status"
             ]
           },
           {
             "ehr_list_index": "5",
             "items": [
-              "mo_schedTime"
+              "mar_dose"
             ]
           },
           {
             "ehr_list_index": "6",
             "items": [
-              "mo_alert"
+              "mar_route"
             ]
           },
           {
             "ehr_list_index": "7",
             "items": [
-              "mar_status"
+              "mo_schedDay"
             ]
           },
           {
             "ehr_list_index": "8",
             "items": [
-              "mar_dose"
+              "mo_schedTime"
             ]
           },
           {
             "ehr_list_index": "9",
             "items": [
-              "mar_route"
+              "mar_event_day"
             ]
           },
           {
             "ehr_list_index": "10",
             "items": [
-              "mar_location"
+              "mar_event_time"
             ]
           },
           {
             "ehr_list_index": "11",
             "items": [
-              "mar_secSigName"
+              "mo_alert"
             ]
           },
           {
             "ehr_list_index": "12",
             "items": [
-              "mar_comments"
+              "mar_location"
             ]
           },
           {
             "ehr_list_index": "13",
             "items": [
-              "med_order_embedded"
+              "med_order_embedded",
+              "mar_secSigName"
+            ]
+          },
+          {
+            "ehr_list_index": "14",
+            "items": [
+              "mar_comments"
             ]
           }
         ],
@@ -14499,8 +14514,9 @@ const DEFS = {
                 "mar_dose",
                 "mar_spacer4",
                 "mar_route",
+                "mar_event_day",
+                "mar_event_time",
                 "mar_location",
-                "mar_spacer5",
                 "mar_secSigName"
               ]
             },
@@ -14531,6 +14547,8 @@ const DEFS = {
             "mar_status": "",
             "mar_dose": "",
             "mar_route": "",
+            "mar_event_day": "",
+            "mar_event_time": "",
             "mar_location": "",
             "mar_secSigName": "",
             "mar_comments": ""
@@ -14552,6 +14570,8 @@ const DEFS = {
           "mar_status",
           "mar_dose",
           "mar_route",
+          "mar_event_day",
+          "mar_event_time",
           "mar_location",
           "mar_secSigName",
           "mar_comments"

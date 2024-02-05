@@ -106,8 +106,10 @@ export class MarTimelineModel {
     }
   }
   medSchedule (medOrder, dayNum, te, mars, medId) {
-    if (!te.hasMedMarEvents() && medOrder.isScheduled(dayNum, te.ts)) {
-      let stb = medOrder.getScheduledTimeForDayTimeBlock(dayNum, te.ts)
+    let ts = te.ts
+    let alreadyAdministered = mars.find( m => m.isMarMedScheduled(dayNum, ts))
+    if (!alreadyAdministered && medOrder.isScheduled(dayNum, ts)) {
+      let stb = medOrder.getScheduledTimeForDayTimeBlock(dayNum, ts)
       // stb is like this { orderScheduleTime: ts, hour: hourStringToHour(ts) }
       // If we are here then the medication order is a scheduled for this time element.
       // Create a MedMarEvent to manage the linkage between the medication order's scheduled
@@ -224,7 +226,6 @@ export class TimeElement {
   getScheduledMme () {
     return this._manyMars.find( m => !m.marRecord )
   }
-  toolTip () { return 'toolTiptoolTiptoolTiptoolTip' }
   hasDraftMar () {
     let result = false
     result = !! this._manyMars.find( mme => mme.hasDraftMar())
@@ -235,8 +236,4 @@ export class TimeElement {
     result = !! this._manyMars.find( mme => mme.hasScheduledEvent())
     return result
   }
-  // hasMarEvent () { return this.mme && this.mme.hasMarEvent() }
-  // getMedMarEvent () { return this.mme }
-  // get marRecordId () { return this.mme ? this.mme.marRecordId : undefined }
-  // get toolTip () { return this.mme ? this.mme.toolTip : ''}
 }

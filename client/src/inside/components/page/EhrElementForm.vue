@@ -118,6 +118,7 @@
       div(v-if='isRecHdr') {{ dateVal(inputVal) }} (Day {{inputVal}})
       div(v-else)
         span {{label}}  &nbsp;
+        ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
         span(v-if="viewOnly", class='bold') {{ dateVal(inputVal) }}
         input(v-else, class="input numb-input", type="text", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
 

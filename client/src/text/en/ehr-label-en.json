@@ -1289,5 +1289,7 @@
   "labResults.cBloodGasGroup": "Blood gas tests",
   "demographics.pronouns": "Pronouns",
   "demographics.birthSex": "Sex at birth",
-  "demographics.legalGender": "Legal gender marker"
+  "demographics.legalGender": "Legal gender marker",
+  "medAdminRec.mar_event_day": "Day of event",
+  "medAdminRec.mar_event_time": "Time of event"
 }

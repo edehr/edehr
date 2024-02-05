@@ -4,6 +4,13 @@ import { isValidDate } from '@/helpers/ehr-utils'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import store from '../store'
 
+export function hourStringToHour (ts) {
+  return ts ? parseInt(ts.slice(0,2)) : ''
+}
+
+export function currentSimDayDate () {
+  return simDateCalc(currentSimDayNumber())
+}
 export function currentSimDayNumber () {
   let metaSimTime = StoreHelper.getMetaSimTime()
   let dayVal
@@ -12,9 +19,18 @@ export function currentSimDayNumber () {
   } else {
     dayVal = store.getters['visit/simDate']
   }
-  return dayVal
+  return Number(dayVal)
 }
-
+export function currentSimTime () {
+  let metaSimTime = StoreHelper.getMetaSimTime()
+  let timeVal
+  if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+    timeVal = metaSimTime.visitTime
+  } else {
+    timeVal = store.getters['visit/simTime']
+  }
+  return timeVal
+}
 export function diffSimulationDays (datePickerDate) {
   let admissionDate = new Date()
   let df = numberOfDaysInSim()
@@ -37,17 +53,8 @@ function todayNumber () {
 
 export function simDateCalc (simDateValue) {
   try {
-    // if (!isValidDate(simDateValue)) {
-    //   throw new Error('simDateCalc requires a value date input. ' + simDateValue)
-    // }
-
     if ((Number.isInteger(simDateValue) || Number.parseInt(simDateValue) >= 0)) {
       let dayNumber = simDateValue
-      // const mergedData = StoreHelper.getMergedData()
-      // const ehrDataModel = new EhrDataModel(mergedData)
-      // const simTime = ehrDataModel.simTime
-      // let numberOfDays = simTime.visitDay + 1
-      // const todayNum = numberOfDays - 1
       const todayNum = todayNumber()
       let df = todayNum - dayNumber
       let dv = new Date()
