@@ -3,7 +3,7 @@
     div PRN Medications
       div(v-for="(prn, index) in prnMedications", :key="index", class='prn-med')
         div
-          ui-button(v-on:buttonClicked="openPRNMarDialog(prn)", v-bind:secondary="true") PRN MAR
+          ui-button(value="mtc-prn-open", v-on:buttonClicked="openPRNMarDialog(prn)", v-bind:secondary="true") PRN MAR
         med-order(:medOrder='prn')
     hr
     div(v-if="todaysSchedule.length === 0")
@@ -19,7 +19,7 @@
           span(v-if="period.isOverDue && !period.hasMar", class='overdue') &nbsp; Overdue
         div
           div(v-show="showButton(period)")
-            ui-button(v-on:buttonClicked="openMarDialog(period)", v-bind:secondary="true") Add MAR
+            ui-button(value="mtc-mar-open", v-on:buttonClicked="openMarDialog(period)", v-bind:secondary="true") Add MAR
           div(v-show="period.hasMar")
             mar-record(:record="period.marRecord")
         med-order(:medOrder='period.medList[0]')

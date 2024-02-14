@@ -12,7 +12,7 @@
           div(class="pageTitle left_side") {{pageTitle}}
           // banner with patient information
           ehr-patient-banner(class="patient-banner right_side")
-          ui-button(class="banner-button", v-on:buttonClicked="openPatientSummary" )
+          ui-button(value="lay-summary", class="banner-button", v-on:buttonClicked="openPatientSummary" )
             fas-icon(class='fa', icon='user-injured', title='patient summary')
 
         div(class="ehr-main-content flow_across")

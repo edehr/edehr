@@ -24,7 +24,7 @@
           div(class="flow_across")
             div.
               {{ !contentMatchesLms ? 'Press the "Use LMS Content" button to copy the text below into the activity\'s title and description.' : `The activity is currently using the content as provided by ${lmsName}.` }}
-            ui-button(
+            ui-button(value="ad-uselms",
               v-show="!contentMatchesLms",
               @buttonClicked='useLMS',
               class='flow_across_last_item')
@@ -41,7 +41,7 @@
           div(class="flow_across")
             div.
               {{ !contentMatchesLObj ? 'Press the "Use Learning Object" button to copy the text below into the activity\'s title and description.' : 'The activity is currently using the content as provided from the Learning Object.' }}
-            ui-button(
+            ui-button(value="ad-uselobj",
               v-show="!contentMatchesLObj",
               @buttonClicked='useLObj',
               class='flow_across_last_item')

@@ -12,13 +12,13 @@
         @hasNewDataChanged='evaluationNotesChanged')
       div
         div(class="eval-controls")
-          ui-button(v-on:buttonClicked="previousStudent()", :disabled="!enablePrev", title='Previous student')
+          ui-button(value="sec-prev", v-on:buttonClicked="previousStudent()", :disabled="!enablePrev", title='Previous student')
             fas-icon(icon="angle-left", class='fa')
-          ui-button(v-on:buttonClicked="resetNotes", :disabled="!canSave", title='Reset note')
+          ui-button(value="sec-reset", v-on:buttonClicked="resetNotes", :disabled="!canSave", title='Reset note')
             fas-icon(icon="undo", class='fa')
-          ui-button(v-on:buttonClicked="saveNotes", :disabled="!canSave", title='Save note')
+          ui-button(value="sec-save", v-on:buttonClicked="saveNotes", :disabled="!canSave", title='Save note')
             fas-icon(icon="check", class='fa')
-          ui-button(v-on:buttonClicked="nextStudent ()", :disabled="!enableNext", title='Next student')
+          ui-button(value="sec-next", v-on:buttonClicked="nextStudent ()", :disabled="!enableNext", title='Next student')
             fas-icon(icon="angle-right", class='fa')
         class-list-actions(
           :studentVisit='student',

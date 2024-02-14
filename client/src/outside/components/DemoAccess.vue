@@ -3,16 +3,16 @@
     div(v-if="hasErrMsg")
       div Can not show you the demonstration features because there is a system error.
       div {{ apiErrorMessage }}
-      ui-button(@buttonClicked="logoutUser") Reset
+      ui-button(value="demo-reset-error", @buttonClicked="logoutUser") Reset
     div(v-else)
       // no error
       div(v-if="isActive || (isDemo && demoFeatureFlag)")
         div {{ message }}
         div(class="enter-demo-buttons")
           div
-            ui-button(@buttonClicked="goto") {{goToLabel}}
+            ui-button(value="demo-goto", @buttonClicked="goto") {{goToLabel}}
           div
-            ui-button(@buttonClicked="logoutUser") Sign out
+            ui-button(value="demo-logout", @buttonClicked="logoutUser") Sign out
       div(v-else)
         div(class="enter-demo-buttons")
           div(v-if="showEhrOnlyDemoLink")

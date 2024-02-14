@@ -1,14 +1,14 @@
 <template lang='pug'>
   div
     div(class="")
-      ui-button(v-on:buttonClicked="confirmOpen", title="Allow all students to work on the assignment.")
+      ui-button(value="aa-all-open", v-on:buttonClicked="confirmOpen", title="Allow all students to work on the assignment.")
         fas-icon(class="icon-right", :icon="appIcons.retractSubmit")
         span(v-if="showLabels") &nbsp; Allow all
-      ui-button(v-on:buttonClicked="confirmClose", title="Force the submission of all work.")
+      ui-button(value="aa-all-close", v-on:buttonClicked="confirmClose", title="Force the submission of all work.")
         fas-icon(class="icon-right", :icon="appIcons.forceSubmit")
         span(v-if="showLabels") &nbsp; Force all
 
-      ui-button(
+      ui-button(value="aa-download",
         data-test-id="ClassList.button.download",
         v-on:buttonClicked="downloadEvaluations",
         :disabled='!classList',

@@ -3,7 +3,7 @@
     div
       router-link(to="/consumers") Return to consumers page
     div
-      ui-button(v-on:buttonClicked="downloadAll")
+      ui-button(value="admin-dwn-all", v-on:buttonClicked="downloadAll")
         fas-icon(class="fa", :icon="appIcons.download")
         span &nbsp; Download all seeds
     h2 Seeds

@@ -5,7 +5,7 @@
       input(class="input sdt-date", id="sDate", type="text", v-model="sDate")
       label(for="sTime") {{ehrText.simulationDayTimeTime}}
       input(class="input sdt-time", id="sTime", type="text", v-model='sTime')
-      ui-button(v-on:buttonClicked="saveChange", :disabled='!isReady', :text="ehrText.simulationDayTime" )
+      ui-button(value="estc-save", v-on:buttonClicked="saveChange", :disabled='!isReady', :text="ehrText.simulationDayTime" )
         fas-icon(class='fa', :icon='appIcons.save')
       ui-info(title="Simulation time", :text="ehrText.simulationDayTime")
     div(v-else, class='flow_across')
@@ -15,7 +15,7 @@
         input(class="input sdt-date", id="sDated", type="text", :value="cDate", disabled)
         label(for="sTimed") {{ehrText.simulationDayTimeTime}}
         input(class="input sdt-time", id="sTimed", type="text", :value='cTime', disabled)
-      ui-button(v-on:buttonClicked="enableEdit" )
+      ui-button(value="estc-enable", v-on:buttonClicked="enableEdit" )
         fas-icon(class='fa', :icon='appIcons.edit',
           :title='ehrText.simulationDayTimeToolTip')
 

@@ -3,7 +3,7 @@
     app-dialog(:isModal="true", ref="theLobjDialog", @cancel="cancelDialog", @save="saveDialog", :disableSave="disableSave", :errors="errors")
       h2(slot="header") {{dialogHeader}}
       div(slot="body")
-        ui-button(
+        ui-button(value="lodncc-explain",
           class="explain-button",
           secondary=true,
           @buttonClicked="showEx = !showEx")

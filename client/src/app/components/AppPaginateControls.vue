@@ -1,9 +1,9 @@
 <template lang='pug'>
   div(class="flow_across table_space_across")
     div {{ pagesOfText }}
-    ui-button(v-on:buttonClicked="previousPage", :disabled="!enablePrev", title='Previous page', class='paginate-button')
+    ui-button(value="apc-prev", v-on:buttonClicked="previousPage", :disabled="!enablePrev", title='Previous page', class='paginate-button')
       fas-icon(icon="angle-left", class='fa')
-    ui-button(v-on:buttonClicked="nextPage", :disabled="!enableNext", title='Next page', class='paginate-button')
+    ui-button(value="apc-next", v-on:buttonClicked="nextPage", :disabled="!enableNext", title='Next page', class='paginate-button')
       fas-icon(icon="angle-right", class='fa')
 
 </template>

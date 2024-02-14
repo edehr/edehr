@@ -30,11 +30,11 @@
           span(v-if="x+1 < assignmentList(seed).length") &nbsp;,&nbsp;
 
     div(v-if="isDevelopingContent && !seed.isDefault")
-     ui-button(v-on:buttonClicked="duplicateSeed(seed)", secondary, :title="`Make a copy of ${seed.name}`") Duplicate seed
-     ui-button(v-on:buttonClicked="downloadSeed(seed)",  secondary, title="Save a copy on your computer") Download seed file
-     ui-button(v-on:buttonClicked="showEditDialog(seed)", secondary, title="Edit seed properties or upload seed content") Edit properties and/or upload seed file
-     ui-button(v-on:buttonClicked="gotoEhrWithSeed(seed)", title="Edit the seed content in the EHR") Edit seed content (EHR)
-     ui-button(v-if="assignmentList(seed).length === 0", v-on:buttonClicked="deleteSeed(seed)", secondary, title="Delete") Delete
+     ui-button(value="smp-dup", v-on:buttonClicked="duplicateSeed(seed)", secondary, :title="`Make a copy of ${seed.name}`") Duplicate seed
+     ui-button(value="smp-down", v-on:buttonClicked="downloadSeed(seed)",  secondary, title="Save a copy on your computer") Download seed file
+     ui-button(value="smp-edit", v-on:buttonClicked="showEditDialog(seed)", secondary, title="Edit seed properties or upload seed content") Edit properties and/or upload seed file
+     ui-button(value="smp-ehr", v-on:buttonClicked="gotoEhrWithSeed(seed)", title="Edit the seed content in the EHR") Edit seed content (EHR)
+     ui-button(value="smp-delete", v-if="assignmentList(seed).length === 0", v-on:buttonClicked="deleteSeed(seed)", secondary, title="Delete") Delete
 </template>
 
 <script>

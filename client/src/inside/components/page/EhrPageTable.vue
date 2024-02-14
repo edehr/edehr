@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class="ehr-page-table")
     div(v-if="showTableAddButton")
-      ui-button(v-on:buttonClicked="showDialog") {{ buttonLabel }}
+      ui-button(value="ept-add", v-on:buttonClicked="showDialog") {{ buttonLabel }}
     div
       h2(v-show="tableLabel") {{tableLabel}}
       ehr-table-vertical(
@@ -28,7 +28,7 @@
       )
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
     div(v-if="canResetTableData", style="text-align: right;") <!-- put the clear button on the far right side -->
-      ui-button(class="reset-button", v-on:buttonClicked="clearAllData",
+      ui-button(value="ept-reset", class="reset-button", v-on:buttonClicked="clearAllData",
         :title="resetToolTip",
         v-bind:secondary="true") Reset
     ui-confirm(ref="confirmDialog", v-on:confirm="proceedClearAllData", saveLabel='Yes')

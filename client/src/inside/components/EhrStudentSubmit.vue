@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class='student-submit')
     div(v-if="showSubmit", :title='ehrText.submitToolTip')
-      ui-button(
+      ui-button(value="ess-submit",
         v-on:buttonClicked="npButtonClicked",
         :class='{draft : hasDraft}',
         :title='submitButtonTip',

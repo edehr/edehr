@@ -28,7 +28,7 @@
           div Note that the skills assessment mode is active. &nbsp;
             ui-info(title="Skills assessment", :html="skillsText")
           div(v-if='isInstructor')
-            ui-button(
+            ui-button(value="course-skills-stop",
               title='Stop the skills assessment',
               class='zone-lms-button stop-assessment',
               v-on:buttonClicked="skillsClear"
@@ -85,7 +85,7 @@
               @action="skillsToggle(activityItem)"
               )
             // END SKILLS ASSESSMENT
-            ui-button(
+            ui-button(value="course-go-ehr",
               v-if="isStudent && canAccessActivity(activityItem)",
               @buttonClicked="goToEhr(activityItem)"
               ) {{ appTypeGoToText(activityItem) }}

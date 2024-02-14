@@ -12,7 +12,7 @@
               h2 {{ v.title }}
               div {{ v.text }}
               div(class="cta")
-                ui-button(@buttonClicked="$router.push({name:v.dest})") {{v.label}}
+                ui-button(:value="`about-${v.dest}`", @buttonClicked="$router.push({name:v.dest})") {{v.label}}
 
 </template>
 <script>

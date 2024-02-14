@@ -7,11 +7,11 @@
       li Close this browser tab and return to your LMS and start again.
       li Return to the home page and locate the reset button
       li
-        ui-button(v-on:buttonClicked="home()")
+        ui-button(value="what-home", v-on:buttonClicked="home()")
           fas-icon(class="fa", :icon="appIcons.exitToLms")
           span &nbsp; Home
       li(v-if="lmsName")
-        ui-button(v-on:buttonClicked="exit()",
+        ui-button(value="what-exit", v-on:buttonClicked="exit()",
           :title="returnToLmsText")
           fas-icon(class="fa", :icon="appIcons.exitToLms")
           span &nbsp; {{returnToLmsText}}

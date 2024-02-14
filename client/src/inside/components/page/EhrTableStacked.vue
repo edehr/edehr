@@ -14,17 +14,17 @@
           tr(v-for="(dRow, rIndex) in cTableData", :key='rIndex', :class='{draftRow : isDraft(dRow) }')
             td(v-if="showTableAction")
               div(v-if='isDraft(dRow)') &nbsp;
-              ui-button(v-else, v-on:buttonClicked="tableAction(getIdFromRow(dRow))")
+              ui-button(value="ets-action", v-else, v-on:buttonClicked="tableAction(getIdFromRow(dRow))")
                 span {{ tableActionLabel(getIdFromRow(dRow)) }} &nbsp;
                 fas-icon(icon="notes-medical")
             td(class="table-actions")
-              ui-button(v-if="!isDraft(dRow)", v-on:buttonClicked="viewReport(getIdFromRow(dRow))")
+              ui-button(value="ets-view", v-if="!isDraft(dRow)", v-on:buttonClicked="viewReport(getIdFromRow(dRow))")
                 span {{ehrText.viewButtonLabel}} &nbsp;
                 fas-icon(icon="file-pdf")
-              ui-button(v-if="isDraft(dRow) && canEdit", v-on:buttonClicked="editDraft(getIdFromRow(dRow))")
+              ui-button(value="ets-edit-draft", v-if="isDraft(dRow) && canEdit", v-on:buttonClicked="editDraft(getIdFromRow(dRow))")
                 span {{ehrText.resumeButtonLabel}} &nbsp;
                 fas-icon(icon="edit")
-              ui-button(v-else-if="canEditSeed(dRow)", v-on:buttonClicked="editSeedRow(getIdFromRow(dRow))")
+              ui-button(value="ets-edit-row", v-else-if="canEditSeed(dRow)", v-on:buttonClicked="editSeedRow(getIdFromRow(dRow))")
                 span {{ehrText.editButtonLabel}} &nbsp;
                 fas-icon(icon="edit")
 

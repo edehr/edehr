@@ -5,7 +5,7 @@
     div(v-else)
       input(v-if="disabled", class="input text-input", disabled="true", :value="containerInputValue")
       div(v-else)
-        ui-button(v-on:buttonClicked="showDialog", :disabled="!canEdit",) Edit
+        ui-button(value="eebd-edit", v-on:buttonClicked="showDialog", :disabled="!canEdit",) Edit
         span &nbsp; {{containerInputValue }}
     ehr-dob-dialog(ref="refDobDialog", @update="updateDOBStr")
 

@@ -15,7 +15,7 @@
             class="day-selector",
             v-for='aDay in dayList',
             :key='aDay.dayId')
-            ui-button(
+            ui-button(value="mt-day",
               :class='{daySelectorSelected: aDay.dayNum === selectedDay}'
               v-on:buttonClicked="setSelectedDay(aDay.dayNum)",
             )
@@ -23,8 +23,8 @@
 
         // bar code buttons
         div(class='day-selector-bar flow_across')
-          ui-button(v-on:buttonClicked="resetSelectedMeds", v-bind:secondary="true") Reset
-          ui-button(v-on:buttonClicked="openBarCodeDialog") BarCode
+          ui-button(value="mt-meds", v-on:buttonClicked="resetSelectedMeds", v-bind:secondary="true") Reset
+          ui-button(value="mt-code", v-on:buttonClicked="openBarCodeDialog") BarCode
 
         // daily med admin tables
         mar-med-grid(

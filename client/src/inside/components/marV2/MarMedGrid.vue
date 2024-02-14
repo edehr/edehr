@@ -56,7 +56,7 @@
             ui-info(v-if="hasMedInfoContent(med)", :title="medInfoTitle(med)", :text="medInfoContent(med)", :html="medInfoContentHtml(med)")
             // MAR button within the first column block
             div(class="medication-element-button")
-              ui-button(
+              ui-button(value="mmg-main",
                 v-if="showMainMedAdminButton(med)",
                 class='mar-button',
                 :disabled='!med.selected'
@@ -102,14 +102,14 @@
                   )
                     div(v-for='(mme, px) in timeElement.getMedMarEvents()')
                       div {{ mme.marRecord && truncate(mme.marRecord.dose, 6) }}
-                      ui-button(v-if='!mme.canEdit()',
+                      ui-button(value="mmg-mme-view", v-if='!mme.canEdit()',
                         class='mar-button',
                         :class="marDoneClass(mme)",
                         v-on:buttonClicked="$emit('viewReport', mme.marRecordId)",
                         :title='mmeToolTip(mme)'
                         )
                           fas-icon(icon="file-prescription")
-                      ui-button(v-if='mme.canEdit()',
+                      ui-button(value="mmg-mme-edit", v-if='mme.canEdit()',
                         class='mar-button',
                         v-on:buttonClicked='showMarDialog(mme, timeElement.medOrder)',
                         :disabled='!timeElement.medOrder.selected'

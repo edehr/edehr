@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class="flow_across flow_wrap", :class='css')
     div(v-if="!hideEvalRaw")
-      ui-button(
+      ui-button(value="cla-eval",
         v-on:buttonClicked="goToEvaluation()",
         :disabled="!isSubmitted"
         :title="text.EVALUATE_TIP"
@@ -9,7 +9,7 @@
         fas-icon(class='fa', :icon='appIcons.rawEhr')
         span(v-if="showLabels") &nbsp; {{text.EVALUATE_BL}}
     div(v-if="!hideEvalEhr")
-      ui-button(
+      ui-button(value="cla-ehr",
         v-on:buttonClicked="goToEhr()",
         :disabled="!isSubmitted",
         :title="text.EVAL_IN_EHR_TIP"
@@ -17,7 +17,7 @@
         fas-icon(class='fa', :icon='appIcons.ehrPage')
         span(v-if="showLabels") &nbsp; {{text.EVAL_IN_EHR_BL}}
     div
-      ui-button(
+      ui-button(value="cla-rtn",
         v-on:buttonClicked="blockEditing()",
         :disabled="!isSubmitted",
         title="Send the assignment back to the student for further work"
@@ -25,7 +25,7 @@
         fas-icon(class='fa', :icon='appIcons.retractSubmit')
         span(v-if="showLabels") &nbsp; Send back
     div
-      ui-button(
+      ui-button(value="cla-close",
         v-on:buttonClicked="forceSubmit()",
         :disabled="isSubmitted",
         title='Force the submission so instructor can evaluate and student is unable to work on the assignment'

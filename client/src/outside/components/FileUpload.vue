@@ -34,9 +34,9 @@
               div.
                 Copyright: {{exif.Copyright}}
         div(class="controls")
-          ui-button(v-on:buttonClicked="cancelFile", :disabled="!hasFiles", v-bind:secondary="true") Cancel
-          ui-button(v-on:buttonClicked="uploadFile", :disabled="!hasValidFile")  Upload
-          ui-button(v-show="fileExists", v-on:buttonClicked="replaceFile")  Replace
+          ui-button(value="file-cancel", v-on:buttonClicked="cancelFile", :disabled="!hasFiles", v-bind:secondary="true") Cancel
+          ui-button(value="file-upload", v-on:buttonClicked="uploadFile", :disabled="!hasValidFile")  Upload
+          ui-button(value="file-replace", v-show="fileExists", v-on:buttonClicked="replaceFile")  Replace
       div(v-if="!!uploadedFile", class="successMessage") Your file
         span(class="fileName") {{uploadedFile.filename}}
         span &nbsp; ({{filesize(uploadedFile.size)}}) was uploaded.

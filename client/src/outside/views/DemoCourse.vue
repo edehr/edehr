@@ -4,7 +4,7 @@
       div(class="aside-login")
         div {{demoText.personaLabel}}: <strong>{{ demoPersona.name }}</strong>
         div {{demoText.roleLabel}}: <strong>{{ demoPersona.role}}</strong>
-        ui-button(v-on:buttonClicked="gotoChangeCharacter()",
+        ui-button(value="demo-change", v-on:buttonClicked="gotoChangeCharacter()",
           :title='demoText.switchRoleLabel') {{ demoText.switchRoleLabel }}
       div(class="aside-intro", v-text-to-html.noAutoLink="demoText.lmsAside")
       div(class='autoLinkToggle')
@@ -17,7 +17,7 @@
         h2 {{demoText.lmsTitle}}
           ui-info(:title="demoText.lmsTitle", :text="demoText.lmsHint")
         div(v-if="showAdvancedEdit") class="margin-match-h2")
-          ui-button(v-on:buttonClicked="editMode = !editMode", :class="editButtonClass",
+          ui-button(value="demo-lms-edit", v-on:buttonClicked="editMode = !editMode", :class="editButtonClass",
             title='Edit activity configuration'
             )
             span {{ !editMode ? "Advanced edit mode" : "Normal display" }} &nbsp;

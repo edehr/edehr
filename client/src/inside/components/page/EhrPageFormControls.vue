@@ -1,14 +1,14 @@
 <template lang="pug">
   div
     <!--div isEditing {{ isEditing}} canEdit {{canEdit}}-->
-    ui-button(v-on:buttonClicked="beginEdit", v-show="canEdit")
+    ui-button(value="epfc-begin", v-on:buttonClicked="beginEdit", v-show="canEdit")
       fas-icon(icon="edit", class="icon-left")
       span {{ ehrText.buttonLabelEditForm }}
-    ui-button(v-on:buttonClicked="saveEdit", v-show="isEditing")
+    ui-button(value="epfc-save", v-on:buttonClicked="saveEdit", v-show="isEditing")
       fas-icon(icon="check-circle", class="icon-left")
       span {{ ehrText.saveButtonLabel}}
     span(v-show="isEditing") &nbsp;
-    ui-button(v-on:buttonClicked="cancelEdit", v-show="isEditing")
+    ui-button(value="epfc-cancel", v-on:buttonClicked="cancelEdit", v-show="isEditing")
       fas-icon(icon="times-circle", class="icon-left")
       span {{ ehrText.cancelButtonLabel }}
 </template>

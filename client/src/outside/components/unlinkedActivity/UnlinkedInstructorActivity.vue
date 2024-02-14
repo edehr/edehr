@@ -33,7 +33,7 @@
       p Instance description: {{ consumer.tool_consumer_instance_description }}
 
       p(v-if="lmsUrl")
-        ui-button(v-on:buttonClicked="exit()",
+        ui-button(value="uia-exit", v-on:buttonClicked="exit()",
           :title="returnToLmsText")
           fas-icon(class="fa", :icon="appIcons.exitToLms")
           span &nbsp; {{returnToLmsText}}

@@ -9,9 +9,9 @@
         //div(v-text-to-html="submitData.resource_link_description", class="assignment-description")
 
         div(v-show='editMode', class="edit-buttons")
-          ui-button(v-on:buttonClicked="resetSubmitData", title='Reset activity data')
+          ui-button(value="dca-reset", v-on:buttonClicked="resetSubmitData", title='Reset activity data')
             fas-icon(:icon="appIcons.undo")
-          ui-button(v-on:buttonClicked="showEditDialog", title='Edit activity')
+          ui-button(value="dca-edit", v-on:buttonClicked="showEditDialog", title='Edit activity')
             fas-icon(:icon="appIcons.edit")
       div(class="config-data", v-show='editMode')
         div(class="config-data-block")

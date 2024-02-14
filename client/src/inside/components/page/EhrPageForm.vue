@@ -11,7 +11,7 @@
       ui-spinner-small(refId='theEhrPageForm', :loading="isLoading")
       ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp")
       div(v-if="canEdit", class="resetFormButton")
-        ui-button(
+        ui-button(value="epf-reset",
           v-on:buttonClicked="promptConfirmDialog",
           :disabled="ehrHelp.isEditingForm(formKey)"
         ) {{ ehrText.buttonLabelResetForm }}

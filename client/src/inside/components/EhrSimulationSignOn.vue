@@ -2,11 +2,11 @@
   div(class='student-sign-on', v-if='isSimSignOnEnabled')
     div(v-if='isSimSignedOn', class='flow_across')
       div(class="signed-in-user")  {{ userName }}
-      ui-button(v-on:buttonClicked="actionSignOut", secondary=true )
+      ui-button(value="esso-out", v-on:buttonClicked="actionSignOut", secondary=true )
         fas-icon(class="fa", :icon="appIcons.signOut")
         // {{ ehrText.signOutButtonLabel }}
     div(v-else, class='flow_across')
-      ui-button(v-on:buttonClicked="showSignIn")
+      ui-button(value="esso-in", v-on:buttonClicked="showSignIn")
         fas-icon(class="fa", :icon="appIcons.signIn")
         span &nbsp; {{ ehrText.signInButtonLabel }}
     app-dialog( ref="theDialog", :isModal="true", @save='actionSignOn', @cancel='cancelSignIn', :disable-save='isReady')

@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    ui-button(v-on:buttonClicked="assignmentDetailsShow()") Activity Details
+    ui-button(value="ead-details", v-on:buttonClicked="assignmentDetailsShow()") Activity Details
     app-dialog(
     :isModal="false",
     ref="assignmentDetails",

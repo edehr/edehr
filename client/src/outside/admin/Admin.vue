@@ -5,12 +5,12 @@
       div(class='login-form')
         label Admin password
         input(class="input password-input", v-model="password", type="password")
-        ui-button(@buttonClicked="adminLogin", :disabled="!password") Login
+        ui-button(value="admin-lgin", @buttonClicked="adminLogin", :disabled="!password") Login
     div(v-else)
       div You are logged in as an administrator. Exit the EdEHR to remove your admin role.
-    div
-      button(@click="throwError") Throw error to test Sentry
-      button(@click="consoleErr") Send message to console error to test Sentry
+    //div
+    //  button(@click="throwError") Throw error to test Sentry
+    //  button(@click="consoleErr") Send message to console error to test Sentry
 
 </template>
 

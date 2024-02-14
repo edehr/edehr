@@ -1,6 +1,6 @@
 <template lang='pug'>
 div
-  ui-button(
+  ui-button(value="zlih-explain",
     class="explain-button",
     secondary=true,
     @buttonClicked="toggleShowExplanationTextOutside",

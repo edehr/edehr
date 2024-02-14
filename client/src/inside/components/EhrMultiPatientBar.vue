@@ -1,7 +1,7 @@
 <template lang='pug'>
   div
     div(class='multi-patient-bar')
-      ui-button(
+      ui-button(value="empb-search",
         v-if='showSearchPatient',
         :disabled='disableNavAction',
         v-on:buttonClicked='searchPatient'

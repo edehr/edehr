@@ -3,8 +3,8 @@
     h1 LTI Consumers
     div(class='showing-labels flow_across')
       div
-        ui-button(v-on:buttonClicked="showCreateDialog") Create a new consumer
-        ui-button(v-on:buttonClicked="loadComponent") Refresh list
+        ui-button(value="cons-new", v-on:buttonClicked="showCreateDialog") Create a new consumer
+        ui-button(value="cons-refresh", v-on:buttonClicked="loadComponent") Refresh list
     table.table
       thead
         tr
@@ -27,7 +27,7 @@
               div
                 router-link(:to="{ name:'admin-seeds', query: { id: item._id }}") Seeds
           td
-            ui-button(v-on:buttonClicked="showEditDialog", :value="item._id")
+            ui-button(value="cons-edit", v-on:buttonClicked="showEditDialog", :value="item._id")
               fas-icon(icon="edit") Edit consumer properties
           td
             div {{ item.tool_consumer_instance_name }}

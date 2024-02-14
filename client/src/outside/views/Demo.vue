@@ -3,7 +3,7 @@
     section(v-if="canAccessDemo", class="content")
       div(style="display: flex;")
         h2(class="has-text-centered") {{ demoText.title }}
-        ui-button(@buttonClicked="fullExit" secondary, style='margin-left: auto;')
+        ui-button(value="demo-exit", @buttonClicked="fullExit" secondary, style='margin-left: auto;')
           span Exit Full Demo
       div
         div(v-text-to-html="demoText.intro")
@@ -23,7 +23,7 @@
 
             div(v-else) &nbsp;
             div
-              ui-button(:disabled="!isFormValid", @buttonClicked="submitDemoAccess")
+              ui-button(value="demo-login", :disabled="!isFormValid", @buttonClicked="submitDemoAccess")
                 span Login to Demonstration
         div(v-text-to-html="demoText.advanced")
       div

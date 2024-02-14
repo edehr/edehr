@@ -7,14 +7,14 @@
         div(style="display:inline") {{ehrText.customPages.allergies.title }}
         div
           <!--div isEditing {{ isEditing}} canEdit {{canEdit}}-->
-          ui-button(v-on:buttonClicked="beginEdit", v-show="canEdit")
+          ui-button(value="alg-begin", v-on:buttonClicked="beginEdit", v-show="canEdit")
             fas-icon(icon="edit", class="icon-left")
             span {{ ehrText.buttonLabelEditForm }}
-          ui-button(v-on:buttonClicked="saveEdit", v-show="isEditing")
+          ui-button(value="alg-save", v-on:buttonClicked="saveEdit", v-show="isEditing")
             fas-icon(icon="check-circle", class="icon-left")
             span {{ ehrText.saveButtonLabel }}
           span(v-show="isEditing") &nbsp;
-          ui-button(v-on:buttonClicked="cancelEdit", v-show="isEditing")
+          ui-button(value="alg-cancel", v-on:buttonClicked="cancelEdit", v-show="isEditing")
             fas-icon(icon="times-circle", class="icon-left")
             span {{ ehrText.cancelButtonLabel }}
         allergies-n-k-a(:elementKey="nkaElemKey", :ehrHelp="ehrHelp", :viewOnly='!isEditing')

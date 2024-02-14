@@ -3,7 +3,7 @@
     tabs
       tab(:name="ehrText.tabGraph", :selected="true")
         div(v-show="showTableAddButton")
-          ui-button(v-on:buttonClicked="showDialog") {{ buttonLabel }}
+          ui-button(value="v2-show", v-on:buttonClicked="showDialog") {{ buttonLabel }}
         vitals-chart(v-bind:vitals="tableData", v-bind:vitalsModel="vitalsModel")
         ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
       tab(:name="ehrText.tabChart")

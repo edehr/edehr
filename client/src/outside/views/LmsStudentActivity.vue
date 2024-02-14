@@ -2,7 +2,7 @@
   div
     zone-lms-page-banner(:title="activityTitle")
       span {{ submitted ? pageText.submitted : pageText.openToEdit }} &nbsp;
-      ui-button(@buttonClicked="goToEhr") {{ appTypeGoToText }}
+      ui-button(value="lsa-go-ehr", @buttonClicked="goToEhr") {{ appTypeGoToText }}
     zone-lms-instructions-header
       p {{ pageText.instructions }}
 

@@ -13,11 +13,11 @@
             div
               slot(name="header") default header
             div(class="dialog-header-buttons")
-              ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
+              ui-button(value="ads-cancel", v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
                 slot(name="cancel-button") {{ t18CancelButtonLabel }}
               div(v-show="useSave")
                 span &nbsp;
-                ui-button(v-on:buttonClicked="$emit('save')", :disabled="disableSave", ref='saveButton')
+                ui-button(value="ads-save", v-on:buttonClicked="$emit('save')", :disabled="disableSave", ref='saveButton')
                   slot(name="save-button") {{ t18SaveButtonLabel }}
           // header important content from outter container
           div
