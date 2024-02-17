@@ -161,6 +161,8 @@ export default class ConsumerController extends BaseController {
     // use the .lean() option to get a plain object we can add properties to
     let consumer = await this.baseFindOneQuery(id).lean()
     try {
+      // do not include the key!
+      delete consumer.oauth_consumer_secret
       let consumerId = new ObjectID(consumer._id)
       let visits = await Visit.find({ toolConsumer: consumerId })
       consumer.visitCount = visits.length

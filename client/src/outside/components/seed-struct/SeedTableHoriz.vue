@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     rows () {
-      const pData = this.ehrData[this.pageKey] || []
+      const pData = this.ehrData && this.ehrData[this.pageKey] || []
       return pData[this.pageElement.tableKey] || []
     },
     hasData () {

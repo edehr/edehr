@@ -33,7 +33,10 @@ Schema.virtual('description').get(function () {
   return this.custom_description || this.context_label || ''
 })
 Schema.virtual('skillsAssessmentIsActive').get(function () {
-  return this.skillsAssessmentActivities.length > 0
+  // with mongoose arrays the null check should not be needed but in test where the course is
+  // used in a populate statement with a selection of fields the skills array was empty causing a NPE
+  // So, better safe than sorry.
+  return this.skillsAssessmentActivities && this.skillsAssessmentActivities.length > 0
 })
 
 const Course = mongoose.model('Course', Schema)

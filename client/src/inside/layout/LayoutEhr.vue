@@ -100,10 +100,10 @@ export default {
       }
     },
     evalDialogVisible (val) {
-      if (val) this.$refs.feedbackDialog.showDialog()
+      if (val && this.$refs.feedbackDialog) this.$refs.feedbackDialog.showDialog()
     },
     scratchPadVisible (val) {
-      if (val) this.$refs.scratchPad.showDialog()
+      if (val && this.$refs.scratchPad) this.$refs.scratchPad.showDialog()
     }
   }
 }
@@ -112,6 +112,9 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 $contentMinHeight: 700px;
+main {
+  padding-bottom: 5rem;
+}
 
 /* Padding and margins and overflow*/
 .ehr_layout {

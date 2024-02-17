@@ -25,6 +25,7 @@ export function demoGoToEhr (submitData) {
       if (debugDC) console.log('DemoCourse goto url ', url)
       window.location.replace(url)
     }).catch(err => {
+      console.error('Error in submitPersona', err)
       let msg = err.message || 'An error occurred during the launch of the demonstration mode.'
       StoreHelper.setApiError(msg)
     })

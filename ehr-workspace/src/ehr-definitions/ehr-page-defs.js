@@ -1818,6 +1818,7 @@ const DEFS = {
         "formIndex": "1",
         "inputType": "visitDay",
         "mandatory": "TRUE",
+        "validation": "visitDay",
         "fqn": "visit.admissionDay"
       },
       {
@@ -1826,6 +1827,7 @@ const DEFS = {
         "formIndex": "1",
         "inputType": "visitTime",
         "mandatory": "TRUE",
+        "validation": "time24",
         "fqn": "visit.admissionTime"
       },
       {
@@ -7290,6 +7292,7 @@ const DEFS = {
         "formIndex": "1",
         "inputType": "visitDay",
         "tableColumn": "12",
+        "validation": "visitDay",
         "fqn": "gastrointestinal.npoSinceDay"
       },
       {
@@ -7297,6 +7300,7 @@ const DEFS = {
         "formIndex": "1",
         "inputType": "visitTime",
         "tableColumn": "13",
+        "validation": "time24",
         "fqn": "gastrointestinal.npoSinceTime"
       },
       {
@@ -7800,6 +7804,7 @@ const DEFS = {
         "formIndex": "1",
         "inputType": "visitDay",
         "tableColumn": "3",
+        "validation": "visitDay",
         "fqn": "genitourinary.lastVoidedDay"
       },
       {
@@ -7807,6 +7812,7 @@ const DEFS = {
         "formIndex": "1",
         "inputType": "visitTime",
         "tableColumn": "4",
+        "validation": "time24",
         "fqn": "genitourinary.lastVoidedTime"
       },
       {
@@ -7957,6 +7963,7 @@ const DEFS = {
         "formIndex": "1",
         "inputType": "visitDay",
         "tableColumn": "12",
+        "validation": "visitDay",
         "fqn": "genitourinary.lastChange"
       },
       {
@@ -7964,6 +7971,7 @@ const DEFS = {
         "formIndex": "1",
         "inputType": "visitTime",
         "tableColumn": "13",
+        "validation": "time24",
         "fqn": "genitourinary.lastChangeTime"
       },
       {
@@ -9635,6 +9643,7 @@ const DEFS = {
         "formIndex": "1",
         "inputType": "visitDay",
         "tableColumn": "16",
+        "validation": "visitDay",
         "fqn": "biopsychosocial.restraintDay"
       },
       {
@@ -9642,6 +9651,7 @@ const DEFS = {
         "formIndex": "1",
         "inputType": "visitTime",
         "tableColumn": "17",
+        "validation": "time24",
         "fqn": "biopsychosocial.restraintTime"
       },
       {
@@ -10528,6 +10538,7 @@ const DEFS = {
         "formIndex": "1",
         "inputType": "visitTime",
         "tableColumn": "5",
+        "validation": "time24",
         "fqn": "referrals.appointmentTime"
       },
       {
@@ -11030,6 +11041,7 @@ const DEFS = {
         "formIndex": "2",
         "inputType": "visitDay",
         "tableColumn": "2",
+        "validation": "visitDay",
         "fqn": "labRequisitions.req_dateRequired"
       },
       {
@@ -11399,6 +11411,7 @@ const DEFS = {
         "formIndex": "3",
         "inputType": "visitDay",
         "tableColumn": "2",
+        "validation": "visitDay",
         "fqn": "labRequisitions.reqH_dateRequired"
       },
       {
@@ -11533,6 +11546,7 @@ const DEFS = {
         "formIndex": "4",
         "inputType": "visitDay",
         "tableColumn": "3",
+        "validation": "visitDay",
         "fqn": "labRequisitions.reqMi_dateRequired"
       },
       {
@@ -11677,6 +11691,7 @@ const DEFS = {
         "formIndex": "5",
         "inputType": "visitDay",
         "tableColumn": "2",
+        "validation": "visitDay",
         "fqn": "labRequisitions.reqMicro_dateRequired"
       },
       {
@@ -12705,6 +12720,7 @@ const DEFS = {
         "formIndex": "1",
         "inputType": "visitDay",
         "tableColumn": "5",
+        "validation": "visitDay",
         "fqn": "medicationOrders.startMeds"
       },
       {
@@ -12712,6 +12728,7 @@ const DEFS = {
         "formIndex": "1",
         "inputType": "visitDay",
         "tableColumn": "6",
+        "validation": "visitDay",
         "fqn": "medicationOrders.endMeds"
       },
       {
@@ -14031,7 +14048,7 @@ const DEFS = {
         "formIndex": "2",
         "formCss": "visit-time",
         "formOption": "elementViewOnly",
-        "inputType": "text",
+        "inputType": "visitTime",
         "tableColumn": "8",
         "fqn": "medAdminRec.mo_schedTime"
       },
@@ -14193,6 +14210,7 @@ const DEFS = {
         "formCss": "visit-day",
         "inputType": "visitDay",
         "tableColumn": "9",
+        "validation": "visitDay",
         "fqn": "medAdminRec.mar_event_day"
       },
       {
@@ -14201,6 +14219,7 @@ const DEFS = {
         "formCss": "visit-time",
         "inputType": "visitTime",
         "tableColumn": "10",
+        "validation": "time24",
         "fqn": "medAdminRec.mar_event_time"
       },
       {
@@ -14590,6 +14609,7 @@ const DEFS = {
         "defaultValue": "0",
         "formIndex": "1",
         "inputType": "visitDay",
+        "validation": "visitDay",
         "fqn": "dischargeSummary.admissionDay"
       },
       {
@@ -14663,12 +14683,14 @@ const DEFS = {
         "elementKey": "dischargeDay",
         "formIndex": "2",
         "inputType": "visitDay",
+        "validation": "visitDay",
         "fqn": "dischargeSummary.dischargeDay"
       },
       {
         "elementKey": "dischargeTime",
         "formIndex": "2",
         "inputType": "visitTime",
+        "validation": "time24",
         "fqn": "dischargeSummary.dischargeTime"
       },
       {
@@ -19045,6 +19067,7 @@ const DEFS = {
         "formIndex": "1",
         "inputType": "visitDay",
         "tableColumn": "4",
+        "validation": "visitDay",
         "fqn": "integumentaryAssessment.postOpDay"
       },
       {
@@ -19461,6 +19484,7 @@ const DEFS = {
         "formIndex": "3",
         "inputType": "visitDay",
         "tableColumn": "4",
+        "validation": "visitDay",
         "fqn": "integumentaryAssessment.woundDayOnset"
       },
       {
