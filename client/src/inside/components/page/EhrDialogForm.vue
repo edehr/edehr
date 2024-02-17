@@ -95,7 +95,7 @@ export default {
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
       this.ehrHelp.closeDialog()
     },
-    cancelDialog: function () {
+    cancelDialog: async function () {
       if (this.isViewOnly || !this.hasData) {
         this.closeDialog()
       } else {
@@ -104,6 +104,8 @@ export default {
             'Confirm cancel.',
             'This action will delete the current record. If you are not sure press the "Return to Edit" button and then save a draft record.')
         } else {
+          // for tables (like the patient location table) that do not have record headers we can still get draft row started. Need to remove this when canceling the edit
+          await this.ehrHelp.removeDraftRow()
           this.closeDialog()
         }
       }

@@ -8,13 +8,13 @@
         p {{ehrText.instructionsFixErrors}}
         ul
           li(v-for="error in errors") {{ error }}
-      ui-spinner-small(refId='theEhrPageForm', :loading="isLoading")
       ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp")
       div(v-if="canEdit", class="resetFormButton")
         ui-button(value="epf-reset",
           v-on:buttonClicked="promptConfirmDialog",
           :disabled="ehrHelp.isEditingForm(formKey)"
         ) {{ ehrText.buttonLabelResetForm }}
+    ui-spinner-small(refId='theEhrPageForm', :loading="isLoading")
     ui-confirm(ref="confirmDialog", @confirm="resetFormData")
 </template>
 

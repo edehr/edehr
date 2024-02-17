@@ -1,17 +1,20 @@
 <template lang='pug'>
   div(class='seed-form-element', v-show='isRelevant')
-    div(class='form-element-label') {{ element.label }}
+    div(class='form-element-label') {{ elementLabel }}
     div(class='form-element-value') {{ seedElement }}
 
 </template>
 
 <script>
+import { t18ElementLabel } from '@/helpers/ehr-t18'
+
 export default {
   props: {
     element: { type: Object },
     seedElement: { type: [String, Boolean] }
   },
   computed: {
+    elementLabel () { return t18ElementLabel(this.element)},
     isRelevant () {
       let relevant = this.element.inputType !== 'spacer'
       relevant = relevant && this.seedElement // has content

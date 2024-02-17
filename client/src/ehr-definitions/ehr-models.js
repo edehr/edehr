@@ -164,6 +164,7 @@ export class PageElement /* Form or Table */{
   }
   get elementKey () { return this.pgElementDef.elementKey }
   get isForm () { return this.pgElementDef.isPageForm }
+  get fqn () { return this.pgElementDef.fqn}
   get isTable () { return this.pgElementDef.isTable}
   get key () { return this.pgElementDef.elementKey}
   get hasRecHeader () { return this.pgElementDef.hasRecHeader}

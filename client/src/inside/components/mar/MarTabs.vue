@@ -23,7 +23,7 @@
 
         // bar code buttons
         div(class='day-selector-bar flow_across')
-          ui-button(value="mt-meds", v-on:buttonClicked="resetSelectedMeds", v-bind:secondary="true") Reset
+          //ui-button(value="mt-meds", v-on:buttonClicked="resetSelectedMeds", v-bind:secondary="true") Reset
           ui-button(value="mt-code", v-on:buttonClicked="openBarCodeDialog") BarCode
 
         // daily med admin tables

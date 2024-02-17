@@ -115,10 +115,11 @@ async  function onPageChange (toRoute) {
     StoreHelper.setPageIcon(icon)
     StoreHelper.setPageZone(zone)
     // call into the api to get and store in memory api data, which includes page title
-    perfStat.start.loadApi = performance.now()
-    await StoreHelper.loadApiData()
-    perfStat.elapsed.loadApi = performance.now() - perfStat.start.loadApi
-    document.title = StoreHelper.getAppTitle()
+    // perfStat.start.loadApi = performance.now()
+    StoreHelper.loadApiData().then( () => {
+      document.title = StoreHelper.getAppTitle()
+    })
+    // perfStat.elapsed.loadApi = performance.now() - perfStat.start.loadApi
     // **** If public page ... prep and EXIT
     if (StoreHelper.inZonePublic()) {
     // console.log('on a public page', routeName)

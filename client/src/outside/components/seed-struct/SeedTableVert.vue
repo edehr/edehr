@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     tableData () {
-      const pData = this.ehrData[this.pageKey] || []
+      const pData = this.ehrData && this.ehrData[this.pageKey] || []
       return pData[this.pageElement.tableKey] || []
     },
     tableRowCount () { return this.tableData.length },

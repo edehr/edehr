@@ -28,6 +28,20 @@ function sentryEnvironment (config) {
 export default class EhrApp {
   constructor (config) {
     const app = this.app = express()
+    /*
+    We use express-rate-limit so see
+    https://express-rate-limit.mintlify.app/guides/troubleshooting-proxy-issues
+    Which says to use app.set('trust proxy',...
+
+    https://expressjs.com/en/guide/behind-proxies.html
+    Which says ....
+    If true, the client’s IP address is understood as the left-most entry in the X-Forwarded-For header.
+
+    If false, the app is understood as directly facing the client and the client’s IP address is derived from req.socket.remoteAddress. This is the default setting.
+
+    When setting to true, it is important to ensure that the last reverse proxy trusted is removing/overwriting all of the following HTTP headers: X-Forwarded-For, X-Forwarded-Host, and X-Forwarded-Proto otherwise it may be possible for the client to provide any value.
+     */
+    app.set('trust proxy', 1 /* number of proxies between user and server */)
     app.authUtil = new AuthUtil(config)
 
     if (config.sentryDsn) {

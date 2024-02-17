@@ -50,7 +50,7 @@ export default {
   data () {
     return {
       appIcons: APP_ICONS,
-      activePageKey: '',
+      activePageKey: undefined,
       showingNavPanel: false
     }
   },
@@ -76,9 +76,17 @@ export default {
     setInitialPage () {
       const data = this.ehrData
       if (data) {
+        let key = undefined
         const keys = Object.keys(data).filter( k => k !== 'meta')
         if (keys.length > 0) {
-          const key = keys.includes('demographics') ? 'demographics' : keys[0]
+          if (this.activePageKey) {
+            if (keys.includes(this.activePageKey)) {
+              key = this.activePageKey
+            }
+          }
+          if (!key) {
+            key = keys.includes('demographics') ? 'demographics' : keys[0]
+          }
           this.selectPage(key)
         }
       } else {

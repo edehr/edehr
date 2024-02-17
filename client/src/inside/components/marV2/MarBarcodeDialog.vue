@@ -89,14 +89,14 @@ export default {
     },
     watchMrn () {
       if (this.validPatient) {
-        beep (250, 0.5)
+        beep (600, 0.2)
         this.$refs.medInput.focus()
       }
     },
     watchMed1 () {
       if (this.validPatient && this.validMed) {
         this.closeDialog()
-        beep (500, 0.5)
+        beep (900, 0.2)
         this.$emit('barcodedMed', this.inputMed)
       }
     },

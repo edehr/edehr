@@ -63,8 +63,8 @@ export function setupWebSocket () {
       // never seen this condition
       console.error('check while CLOSING')
     } else if (client.readyState === WebSocket.CONNECTING) {
-      // never seen this condition
-      console.error('check while CONNECTING')
+      // rarely happens.  Ignore it because the connection is already connecting
+      // console.error('check while CONNECTING')
     } else {
       // never seen this condition
       console.error('check while WS is in some unknown state')

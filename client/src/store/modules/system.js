@@ -97,7 +97,7 @@ const actions = {
     if(value === APP_TYPE_EHR || value === APP_TYPE_LIS) {
       commit('setAppTypeMode', value)
     } else {
-      console.error('Coding error setting app types. Only ' + APP_TYPE_EHR + ' or ' + APP_TYPE_LIS + ' is allowed. "' + value +'"')
+      console.error('Coding error setting app types. Only "' + APP_TYPE_EHR + '" or "' + APP_TYPE_LIS + '" is allowed. "' + value +'"')
     }
   },
   setOutsideShowButtonLabels ({ commit }, value) {

@@ -12,6 +12,7 @@
 <script>
 import SeedPage from '@/outside/components/seed-struct/SeedPage'
 import EhrData from '@/inside/components/page/ehr-data'
+import { t18ElementLabel } from '@/helpers/ehr-t18'
 
 export default {
   components: { SeedPage },
@@ -36,7 +37,8 @@ export default {
       const pageData = EhrData.getMergedPageData(this.pageKey)
       pgElems = pgElems.filter( element => {
         let show = true
-        if (element.label && element.label.toLowerCase().includes('v1')) {
+        let label = t18ElementLabel(element)
+        if (label && label.toLowerCase().includes('v1')) {
           let data = pageData[element.tableKey]
           show = data && Array.isArray(data) && data.length > 0
           if (show) {
