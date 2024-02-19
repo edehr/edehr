@@ -1904,12 +1904,12 @@ const DEFS = {
         "fqn": "visit.notes"
       },
       {
-        "elementKey": "location",
+        "elementKey": "table_name",
         "formIndex": "3",
-        "inputType": "text",
-        "mandatory": "TRUE",
+        "inputType": "practitionerName",
         "tableColumn": "1",
-        "fqn": "visit.location"
+        "recHeader": true,
+        "fqn": "visit.name"
       },
       {
         "elementKey": "table_id",
@@ -1919,10 +1919,46 @@ const DEFS = {
         "tableCss": "row-id"
       },
       {
+        "elementKey": "table_profession",
+        "formIndex": "3",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "visit.profession"
+      },
+      {
+        "elementKey": "table_day",
+        "formIndex": "3",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "visit.day"
+      },
+      {
+        "elementKey": "table_time",
+        "formIndex": "3",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "visit.time"
+      },
+      {
+        "elementKey": "location",
+        "formIndex": "3",
+        "inputType": "text",
+        "mandatory": "TRUE",
+        "tableColumn": "2",
+        "fqn": "visit.location"
+      },
+      {
         "elementKey": "transferInDay",
         "formIndex": "3",
         "inputType": "visitDay",
-        "tableColumn": "2",
+        "tableColumn": "3",
         "validation": "visitDay",
         "fqn": "visit.transferInDay"
       },
@@ -1930,7 +1966,7 @@ const DEFS = {
         "elementKey": "transferInTime",
         "formIndex": "3",
         "inputType": "visitTime",
-        "tableColumn": "3",
+        "tableColumn": "4",
         "validation": "time24",
         "fqn": "visit.transferInTime"
       },
@@ -1944,7 +1980,7 @@ const DEFS = {
         "elementKey": "transferOutDay",
         "formIndex": "3",
         "inputType": "visitDay",
-        "tableColumn": "4",
+        "tableColumn": "5",
         "validation": "visitDay",
         "fqn": "visit.transferOutDay"
       },
@@ -1952,7 +1988,7 @@ const DEFS = {
         "elementKey": "transferOutTime",
         "formIndex": "3",
         "inputType": "visitTime",
-        "tableColumn": "5",
+        "tableColumn": "6",
         "validation": "time24",
         "fqn": "visit.transferOutTime"
       },
@@ -2153,31 +2189,41 @@ const DEFS = {
             ]
           },
           {
+            "label": "Identification",
             "ehr_list_index": "1",
             "items": [
-              "location"
+              "table_name",
+              "table_profession",
+              "table_day",
+              "table_time"
             ]
           },
           {
             "ehr_list_index": "2",
             "items": [
-              "transferInDay"
+              "location"
             ]
           },
           {
             "ehr_list_index": "3",
             "items": [
-              "transferInTime"
+              "transferInDay"
             ]
           },
           {
             "ehr_list_index": "4",
             "items": [
-              "transferOutDay"
+              "transferInTime"
             ]
           },
           {
             "ehr_list_index": "5",
+            "items": [
+              "transferOutDay"
+            ]
+          },
+          {
+            "ehr_list_index": "6",
             "items": [
               "transferOutTime"
             ]
@@ -2190,10 +2236,22 @@ const DEFS = {
           "formKey": "table",
           "ehr_groups": [
             {
+              "elementKey": "hdrGroup",
+              "formCss": "record-header",
+              "fqn": "visit.hdrGroup",
+              "gIndex": "1",
+              "gChildren": [
+                "table_name",
+                "table_profession",
+                "table_day",
+                "table_time"
+              ]
+            },
+            {
               "elementKey": "cGroup",
               "formCss": "grid-left-to-right-1",
               "fqn": "visit.cGroup",
-              "gIndex": "1",
+              "gIndex": "2",
               "gChildren": [
                 "location"
               ]
@@ -2202,7 +2260,7 @@ const DEFS = {
               "elementKey": "cGroup2",
               "formCss": "grid-left-to-right-3",
               "fqn": "visit.cGroup2",
-              "gIndex": "2",
+              "gIndex": "3",
               "gChildren": [
                 "transferInDay",
                 "transferInTime",
@@ -2213,6 +2271,10 @@ const DEFS = {
             }
           ],
           "ehr_data": {
+            "table_name": "",
+            "table_profession": "",
+            "table_day": "",
+            "table_time": "",
             "location": "",
             "transferInDay": "",
             "transferInTime": "",
@@ -2223,12 +2285,17 @@ const DEFS = {
         "fqn": "visit.table",
         "tableChildren": [
           "table_id",
+          "table_name",
+          "table_profession",
+          "table_day",
+          "table_time",
           "location",
           "transferInDay",
           "transferInTime",
           "transferOutDay",
           "transferOutTime"
-        ]
+        ],
+        "hasRecHeader": true
       }
     }
   },
