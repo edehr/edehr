@@ -14,6 +14,7 @@ import authHelper from '@/helpers/auth-helper'
 import MPatientHelper from '@/helpers/mPatientHelper'
 import FeatureHelper from '@/helpers/feature-helper'
 import { t18SetEnglish, t18SetFrench, t18SetSpanish } from '@/helpers/ehr-t18'
+import { getCurrentSimDate, getCurrentSimTime } from '@/helpers/date-helper'
 
 const dbApp = false
 
@@ -402,8 +403,8 @@ async  function onPageChange (toRoute) {
     // set up the visit record with the DT from the ehr data, if needed.  Do this here because the ehrDate is now ready.
     const newPatient = !!patientId || !!seedEditId || !!evaluateStudentVisitId
     // also check that the user's visit record has a simulation time...
-    let cd = store.getters['visit/simDate']
-    let ct = store.getters['visit/simTime']
+    let cd = getCurrentSimDate()
+    let ct = getCurrentSimTime()
     if (!ct || !cd || newPatient) {
       if (dbApp) console.log('PC - newPatient so initialize simDateTime')
       await StoreHelper.initializeSimDateTime()

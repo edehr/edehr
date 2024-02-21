@@ -4,6 +4,14 @@ import { isValidDate } from '@/helpers/ehr-utils'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import store from '../store'
 
+export function getCurrentSimDate () {
+  return store.getters['visit/simDate']
+}
+
+export function getCurrentSimTime () {
+  return store.getters['visit/simTime']
+}
+
 export function hourStringToHour (ts) {
   return ts ? parseInt(ts.slice(0,2)) : ''
 }
@@ -17,7 +25,7 @@ export function currentSimDayNumber () {
   if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
     dayVal = metaSimTime.visitDay
   } else {
-    dayVal = store.getters['visit/simDate']
+    dayVal = getCurrentSimDate()
   }
   return Number(dayVal)
 }
@@ -27,7 +35,7 @@ export function currentSimTime () {
   if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
     timeVal = metaSimTime.visitTime
   } else {
-    timeVal = store.getters['visit/simTime']
+    timeVal = getCurrentSimTime()
   }
   return timeVal
 }
