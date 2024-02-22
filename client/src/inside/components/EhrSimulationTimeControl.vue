@@ -28,7 +28,7 @@ import UiButton from '@/app/ui/UiButton.vue'
 import { APP_ICONS } from '@/helpers/app-icons'
 import UiInfo from '@/app/ui/UiInfo.vue'
 import { t18EhrText } from '@/helpers/ehr-t18'
-import { simDateCalc } from '@/helpers/date-helper'
+import { getCurrentSimDate, getCurrentSimTime, simDateCalc } from '@/helpers/date-helper'
 
 export default {
   components: {
@@ -46,8 +46,8 @@ export default {
   computed: {
     ehrText () { return t18EhrText()},
     isStudent () { return StoreHelper.isStudent() },
-    cDate () { return this.$store.getters['visit/simDate']},
-    cTime () { return this.$store.getters['visit/simTime']},
+    cDate () { return getCurrentSimDate() },
+    cTime () { return getCurrentSimTime() },
     mergedData () { return StoreHelper.getMergedData() },
     isReady () { return validTimeStr(this.sTime) && validDayStr(this.sDate) },
     visitId () { return this.$store.getters['visit/visitId']},

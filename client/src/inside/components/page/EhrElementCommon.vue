@@ -10,6 +10,7 @@ import { validateAgeValue } from '@/ehr-definitions/ehr-def-utils'
 import { t18EhrText, t18ElementLabel, t18HelperText } from '@/helpers/ehr-t18'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import StoreHelper from '@/helpers/store-helper'
+import { getCurrentSimDate, getCurrentSimTime } from '@/helpers/date-helper'
 
 const DEPENDENT_PROPS = EhrTypes.dependentOn
 
@@ -163,7 +164,7 @@ export default {
           if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
             value = metaSimTime.visitDay
           } else {
-            value = this.$store.getters['visit/simDate']
+            value = getCurrentSimDate()
           }
           // console.log('EhrCommon set initial rec hdr date ', value)
         }
@@ -171,7 +172,7 @@ export default {
           if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
             value = metaSimTime.visitTime
           } else {
-            value = this.$store.getters['visit/simTime']
+            value = getCurrentSimTime()
           }
           // console.log('EhrCommon set initial rec hdr time ', value)
         }
