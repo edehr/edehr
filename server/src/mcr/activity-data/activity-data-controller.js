@@ -48,6 +48,24 @@ export default class ActivityDataController extends BaseController {
     }
   }
 
+  async resetAssignmentData (toolConsumer, visitId, userId, id) {
+    // console.log('PUT AD', visitId, id, action)
+    const ad = await this.baseFindOneQuery(id)
+    if (ad) {
+      const doc = await this._saveEhrData(ad, {})
+      const payload = {
+        toolConsumer: toolConsumer,
+        sourceId: visitId,
+        userId: userId,
+        objId: doc._id,
+        updated: doc.assignmentData
+      }
+      EHR_EVENT_BUS.emit(EHR_AD_EVENT, payload)
+      return doc
+    }
+  }
+
+
   /**
    * place date into the ehr data's page element
    * @param toolConsumer
@@ -194,6 +212,14 @@ export default class ActivityDataController extends BaseController {
       const authPayload = req.authPayload
       const { consumerKey, visitId, userId } = authPayload
       this.putAssignmentData(consumerKey, visitId, userId, id, dataPayload)
+        .then(ok(res))
+        .then(null, fail(req, res))
+    })
+    router.put('/reset-assignment-data/:key/', (req, res) => {
+      const id = req.params.key
+      const authPayload = req.authPayload
+      const { consumerKey, visitId, userId } = authPayload
+      this.resetAssignmentData(consumerKey, visitId, userId, id)
         .then(ok(res))
         .then(null, fail(req, res))
     })

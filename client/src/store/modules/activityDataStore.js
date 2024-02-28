@@ -53,6 +53,11 @@ async function _commonUpdate (context, data) {
 }
 
 const actions = {
+  async resetInstructorAsStudentAssignmentData (context) {
+    const adi = context.state.activityData._id
+    const url = `reset-assignment-data/${adi}`
+    await _commonPut(context, url, {})
+  },
   sendScratchData (context, data) {
     return context.dispatch('_sendActivityData', { parameter: 'scratch-data', data: data })
   },

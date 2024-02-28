@@ -76,6 +76,12 @@ export default {
           horizontal: true
         })
         menu.push({
+          label: 'Instructor Reset',
+          toolTip: 'Reset EHR activity data. Caution this will reset your "as student" EHR data',
+          callback: () => StoreHelper.resetAsInstructorActivityData(this.$router),
+          icon: this.appIcons.eraser
+        })
+        menu.push({
           label: nt.NORMAL_ROLE,
           toolTip: nt.NORMAL_ROLE_TOOLTIP,
           callback: () => StoreHelper.restoreAsInstructor(this.$router),

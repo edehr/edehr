@@ -11,6 +11,7 @@ export const APP_ICONS = {
   download: 'download',
   edit: 'edit',
   ehrPage: 'book-medical',
+  eraser: 'eraser',
   exitToLms: 'sign-out-alt',
   externalLink: 'external-link-alt',
   file: 'file-medical',
