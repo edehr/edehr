@@ -14,50 +14,17 @@
           The dialog will close if the scan matches one of this patient's medications.
         div(class="mbdInput")
           label Scan patient MRN
-          input(class="input", type="text", ref="mrnInput", v-model="inputPatientMrn", @input="watchMrn")
+          input(class="input", type="text", ref="mrnInput", v-model="inputPatientMrn", v-on:keyup.enter="watchMrn")
         div(class="mbdInput")
           label Scan medication
-          input(class="input", type="text", ref="medInput", v-model="inputMed", @input="watchMed1")
+          input(class="input", type="text", ref="medInput", v-model="inputMed", v-on:keyup.enter="watchMed1")
 
 </template>
 
 <script>
 import AppDialog from '@/app/components/AppDialogShell'
 import EhrPatient from '@/inside/components/page/ehr-patient'
-
-// From StackOveflow the most amazing people contribute to this resource
-// https://stackoverflow.com/questions/879152/how-do-i-make-javascript-beep
-function beep (frequency, durationSec, ramp=false)
-{
-  var audioContext = null
-  var oscillatorNode = null
-  var stopTime = 0
-  if (oscillatorNode === null) {
-    audioContext = new (window.AudioContext || window.webkitAudioContext) ()
-    stopTime = audioContext.currentTime
-
-    oscillatorNode = audioContext.createOscillator()
-    oscillatorNode.type = 'sine'
-    oscillatorNode.connect (audioContext.destination)
-    if (ramp) {
-      oscillatorNode.frequency.setValueAtTime (frequency, stopTime)
-    }
-    oscillatorNode.start ()
-    oscillatorNode.onended = function () {
-      oscillatorNode = null
-      audioContext = null
-    }
-  }
-
-  if (ramp) {
-    oscillatorNode.frequency.linearRampToValueAtTime (frequency, stopTime) // value in hertz
-  } else {
-    oscillatorNode.frequency.setValueAtTime (frequency, stopTime)  // value in hertz
-  }
-
-  stopTime += durationSec
-  oscillatorNode.stop (stopTime)
-}
+import { beepSound } from '@/inside/components/marV2/beep-util'
 
 export default {
   components: {
@@ -81,6 +48,9 @@ export default {
     }
   },
   methods: {
+    beepGood1 () { beepSound (600, 0.2) },
+    beepGood2 () { beepSound (900, 0.2) },
+    beepMiss () { beepSound (300, 0.4) },
     openBarCodeDialog (period, medOrder) {
       this.inputPatientMrn = ''
       this.inputMed = ''
@@ -89,24 +59,29 @@ export default {
     },
     watchMrn () {
       if (this.validPatient) {
-        beep (600, 0.2)
+        this.beepGood1()
         this.$refs.medInput.focus()
+      } else {
+        this.beepMiss()
+        this.inputPatientMrn = ''
+        this.$refs.mrnInput.focus()
       }
     },
-    watchMed1 () {
+    watchMed1 (event) {
       if (this.validPatient && this.validMed) {
         this.closeDialog()
-        beep (900, 0.2)
+        this.beepGood2()
         this.$emit('barcodedMed', this.inputMed)
+      } else {
+        this.beepMiss()
+        this.inputMed = ''
+        this.$refs.medInput.focus()
       }
     },
     closeDialog: function () {
       this.$refs.theDialog.onClose()
     }
   },
-  mounted () {
-    this.$refs.mrnInput.focus()
-  }
 }
 </script>
 
