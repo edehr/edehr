@@ -103,14 +103,18 @@ if (enableSentry) {
 Add a general catcher for unhandled rejections.
  */
 onunhandledrejection = async (event) => {
-  if (StoreHelper.hasConsumer()) {
-    // if logged in the clear everything. Some store modules make initialization calls via API, if they have saved ids (e.g. see Course store).  By clearing out all the storage we give the user a clean place to start again.
-    await StoreHelper.logUserOutOfEdEHR()
+  if (!LOCALHOST) {
+    if (StoreHelper.hasConsumer()) {
+      // if logged in the clear everything. Some store modules make initialization calls via API, if they have saved ids (e.g. see Course store).  By clearing out all the storage we give the user a clean place to start again.
+      await StoreHelper.logUserOutOfEdEHR()
+    }
+    // During development that involves error handling it is useful to stop the error here to explore the conditions.
+    // alert('Error page')
+    // GO TO the ERROR page. Add a timestamp in case there are two or more attempts to go to the same page.
+    await router.push({ name: ERROR_ROUTE_NAME, query: { ts: Date.now() } })
+  } else {
+    console.error('On production user will now be logged out and viewing the error page.')
   }
-  // During development that involves error handling it is useful to stop the error here to explore the conditions.
-  // alert('Error page')
-  // GO TO the ERROR page. Add a timestamp in case there are two or more attempts to go to the same page.
-  await router.push({ name: ERROR_ROUTE_NAME, query: { ts: Date.now() }})
 }
 /*
 Create the root Vue component.
