@@ -52,7 +52,10 @@ export default class ActivityDataController extends BaseController {
     // console.log('PUT AD', visitId, id, action)
     const ad = await this.baseFindOneQuery(id)
     if (ad) {
-      const doc = await this._saveEhrData(ad, {})
+      ad.assignmentData = {}
+      ad.submitted = false
+      ad.evaluationData = {}
+      let doc = ad.save()
       const payload = {
         toolConsumer: toolConsumer,
         sourceId: visitId,

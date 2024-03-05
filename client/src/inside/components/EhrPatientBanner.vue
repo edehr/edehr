@@ -12,6 +12,9 @@ div(class="patient-banner")
       span {{ ehrText.patientBannerGender }}
       span {{ patientData.gender }}
     div
+      span {{ ehrText.patientBannerWeight }}
+      span {{ patientData.weight }}
+    div
       span {{ ehrText.patientBannerCodeStatus }}
       span {{ patientData.codeStatus ? patientData.codeStatus : 'N/A' }}
     div
@@ -24,9 +27,6 @@ div(class="patient-banner")
       span {{ ehrText.patientBannerRisks }}
       span {{ truncate(patientData.risks, 40) }}
     div(class="patient-data bigger-screens-900")
-      div
-        span {{ ehrText.patientBannerWeight }}
-        span {{ patientData.weight }}
       div
         span {{ ehrText.patientBannerPHN }}
         span {{ patientData.phn }}
