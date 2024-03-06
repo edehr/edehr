@@ -101,22 +101,26 @@
                   :class='isTimeCurrentSimTimeClass(timeElement.ts)'
                   )
                     div(v-for='(mme, px) in timeElement.getMedMarEvents()')
-                      div {{ mme.marRecord && truncate(mme.marRecord.dose, 6) }}
-                      ui-button(value="mmg-mme-view", v-if='!mme.canEdit()',
-                        class='mar-button',
-                        :class="marDoneClass(mme)",
-                        v-on:buttonClicked="$emit('viewReport', mme.marRecordId)",
-                        :title='mmeToolTip(mme)'
+                      div(v-if='!mme.canEdit()')
+                        div(class='mar-dosage', v-if='mme.marRecord')
+                          div(v-if='mme.marRecord.dose') {{ truncate(mme.marRecord.dose, 6) }}
+                          div(v-else) {{ truncate(mme.marRecord.status, 6) }}
+                        ui-button(value="mmg-mme-view",
+                          class='mar-button',
+                          :class="marDoneClass(mme)",
+                          v-on:buttonClicked="$emit('viewReport', mme.marRecordId)",
+                          :title='mmeToolTip(mme)'
+                          )
+                            fas-icon(icon="file-prescription")
+                      div(v-if='mme.canEdit()')
+                        ui-button(value="mmg-mme-edit",
+                          class='mar-button',
+                          v-on:buttonClicked='showMarDialog(mme, timeElement.medOrder)',
+                          :disabled='!timeElement.medOrder.selected'
+                          :class='{draftRow : mme.hasDraftMar() }'
+                          :title='mmeToolTip(mme)'
                         )
-                          fas-icon(icon="file-prescription")
-                      ui-button(value="mmg-mme-edit", v-if='mme.canEdit()',
-                        class='mar-button',
-                        v-on:buttonClicked='showMarDialog(mme, timeElement.medOrder)',
-                        :disabled='!timeElement.medOrder.selected'
-                        :class='{draftRow : mme.hasDraftMar() }'
-                        :title='mmeToolTip(mme)'
-                      )
-                        fas-icon(icon="pen")
+                          fas-icon(icon="pen")
       // place a gap between rows
       div &nbsp;
 </template>
@@ -409,10 +413,10 @@ time-element are the boxes containing either a time value or
   background-color: #4abf8a;
 }
 .mar-done-button {
-  background-color: $grey30;
+  background-color: $success;
 }
 .mar-missed-button {
-  background-color: mediumpurple;
+  background-color: indianred;
 }
 
 .medication-element {
@@ -460,7 +464,9 @@ time-element are the boxes containing either a time value or
 .day-bar-element-title {
   text-align: center;
 }
-
+.mar-dosage {
+  font-size: 0.8rem;
+}
 .medRowSelected {
   background-color: $brand-selected;
   font-weight: bold;
