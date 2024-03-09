@@ -15,11 +15,11 @@
         div(class="medInputs")
           label Scan patient MRN
           input(class="input", type="text", ref="mrnInput", :disabled='matchedMrn', v-model="inputPatientMrn", v-on:keyup.enter="watchMrn")
-          div {{ matchedMrn ? 'Patient MRN is matched' : 'Enter Patient MRN' }}
+          div {{ matchedMrn ? 'Patient MRN is matched' : 'Enter Patient MRN and press ENTER' }}
         div(class="medInputs")
           label Scan medication
           input(class="input", type="text", ref="medInput", v-model="inputMed", v-on:keyup.enter="watchMed")
-          div {{ matchedMrn ? 'Enter a medication order' : '' }}
+          div {{ matchedMrn ? 'Enter a medication order and press ENTER' : '' }}
         h4 Medication orders
         div(v-for='(med) in inputMeds',
           :key='med',
@@ -122,7 +122,7 @@ export default {
   watch: {
     barCodedMeds () {
       this.inputMeds = [...this.barCodedMeds]
-      console.log('watch ', this.inputMeds, this.barCodedMeds)
+      // console.log('watch ', this.inputMeds, this.barCodedMeds)
     }
   }
 }

@@ -14146,6 +14146,10 @@ const DEFS = {
             "text": "Administered"
           },
           {
+            "key": "Held",
+            "text": "Held"
+          },
+          {
             "key": "Refused",
             "text": "Refused"
           },
@@ -14304,10 +14308,18 @@ const DEFS = {
         "fqn": "medAdminRec.mar_secSigName"
       },
       {
+        "elementKey": "mar_barCodeCheck",
+        "formIndex": "2",
+        "formOption": "elementViewOnly",
+        "inputType": "checkbox",
+        "tableColumn": "14",
+        "fqn": "medAdminRec.mar_barCodeCheck"
+      },
+      {
         "elementKey": "mar_comments",
         "formIndex": "2",
         "inputType": "textarea",
-        "tableColumn": "14",
+        "tableColumn": "15",
         "fqn": "medAdminRec.mar_comments"
       }
     ],
@@ -14542,6 +14554,12 @@ const DEFS = {
           {
             "ehr_list_index": "14",
             "items": [
+              "mar_barCodeCheck"
+            ]
+          },
+          {
+            "ehr_list_index": "15",
+            "items": [
               "mar_comments"
             ]
           }
@@ -14603,7 +14621,8 @@ const DEFS = {
                 "mar_event_day",
                 "mar_event_time",
                 "mar_location",
-                "mar_secSigName"
+                "mar_secSigName",
+                "mar_barCodeCheck"
               ]
             },
             {
@@ -14637,6 +14656,7 @@ const DEFS = {
             "mar_event_time": "",
             "mar_location": "",
             "mar_secSigName": "",
+            "mar_barCodeCheck": "",
             "mar_comments": ""
           }
         },
@@ -14660,6 +14680,7 @@ const DEFS = {
           "mar_event_time",
           "mar_location",
           "mar_secSigName",
+          "mar_barCodeCheck",
           "mar_comments"
         ],
         "hasRecHeader": true
