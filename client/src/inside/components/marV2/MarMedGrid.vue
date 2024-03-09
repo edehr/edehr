@@ -280,8 +280,8 @@ export default {
 
     /**
      * Open the MAR dialog. If available provide the time element, otherwise provide the med order.
-     * @param timeElement {obj | null}
-     * @param mo {obj}
+     * @param mme timeElement {obj | null}
+     * @param medOrder {obj}
      */
     showMarDialog ( mme, medOrder) {
       const sourceRowId = medOrder.id
