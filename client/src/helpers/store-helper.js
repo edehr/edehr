@@ -362,6 +362,11 @@ class StoreHelperWorker {
     router.push({name: 'lms-instructor-activity', query: { visitId: visitId } })
     StoreHelper.postActionEvent(INSTRUCTOR_ACTION,'restoreNormalRole')
   }
+  async resetAsInstructorActivityData (router) {
+    await store.dispatch('activityDataStore/resetInstructorAsStudentAssignmentData')
+    router.push({ name: 'ehr', query: { ts: Date.now() } })
+    StoreHelper.postActionEvent(INSTRUCTOR_ACTION,'resetInstructorAsStudentAssignmentData')
+  }
 
   async visitAsStudent (router, appType) {
     const currentActivityId = StoreHelper.getActivityId()

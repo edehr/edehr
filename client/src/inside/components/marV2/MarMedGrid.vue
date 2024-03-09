@@ -29,13 +29,13 @@
           // be sure to get each :key to be unique or else you can get errors when medications appear two or more time
           div(class="med-row-element medication-element",
             v-for='(med, mx) in medList',
-            :class='{ medRowSelected: med.selected }'
+            :class='{ medRowSelected: medOrderSelected(med) }'
             :id='med.id',
             :key="forElementKeyFromMed('med', med, mx)",
             :title='med.medName')
             // 1. checkbox, 2. medication summary
             div(class="medication-container")
-              input(type='checkbox', v-model="med.selected", :id="forElementKeyFromMed('med', med, mx)")
+              input(type='checkbox', v-model="med.checkBoxed", :id="forElementKeyFromMed('med', med, mx)")
               label(:for="forElementKeyFromMed('med', med, mx)")
                 span {{ medicationSummary(med) }}
         // Column for mar admin buttons and medication order info button
@@ -46,7 +46,7 @@
           // Section for mar admin buttons and medication order info button
           div(
             v-for='(med, px) in medList',
-            :class='{ medRowSelected: med.selected }'
+            :class='{ medRowSelected: medOrderSelected(med) }'
             class="med-row-element medication-button-area",
             :id='med.id',
             :key="`${med.id}-${px}`",
@@ -59,7 +59,7 @@
               ui-button(value="mmg-main",
                 v-if="showMainMedAdminButton(med)",
                 class='mar-button',
-                :disabled='!med.selected'
+                :disabled='!medOrderSelected(med)'
                 :class='{draftRow : medHasDraftMar(med) }'
                 v-on:buttonClicked='showMarDialog(undefined, med)',
                 )
@@ -92,7 +92,7 @@
               div(class="row-container",
                 v-for='(medRow, mrx) in dayMedSchedule(aDay, idPrefix)',
                 :key="`${idPrefix}-${medRow.medName}-${mrx}`",
-                :class='{ medRowSelected: medRow.medOrder.selected }'
+                :class='{ medRowSelected: medOrderSelected(medRow.medOrder) }'
                 )
                 // Time elements
                 div(v-for='(timeElement, tx) in medRow.timeElements',
@@ -101,22 +101,26 @@
                   :class='isTimeCurrentSimTimeClass(timeElement.ts)'
                   )
                     div(v-for='(mme, px) in timeElement.getMedMarEvents()')
-                      div {{ mme.marRecord && truncate(mme.marRecord.dose, 6) }}
-                      ui-button(value="mmg-mme-view", v-if='!mme.canEdit()',
-                        class='mar-button',
-                        :class="marDoneClass(mme)",
-                        v-on:buttonClicked="$emit('viewReport', mme.marRecordId)",
-                        :title='mmeToolTip(mme)'
+                      div(v-if='!mme.canEdit()')
+                        div(class='mar-dosage', v-if='mme.marRecord')
+                          div(v-if='mme.marRecord.dose') {{ truncate(mme.marRecord.dose, 6) }}
+                          div(v-else) {{ truncate(mme.marRecord.status, 6) }}
+                        ui-button(value="mmg-mme-view",
+                          class='mar-button',
+                          :class="marDoneClass(mme)",
+                          v-on:buttonClicked="$emit('viewReport', mme.marRecordId)",
+                          :title='mmeToolTip(mme)'
+                          )
+                            fas-icon(icon="file-prescription")
+                      div(v-if='mme.canEdit()')
+                        ui-button(value="mmg-mme-edit",
+                          class='mar-button',
+                          v-on:buttonClicked='showMarDialog(mme, timeElement.medOrder)',
+                          :disabled='!medOrderSelected(timeElement.medOrder)',
+                          :class='{draftRow : mme.hasDraftMar() }',
+                          :title='mmeToolTip(mme)'
                         )
-                          fas-icon(icon="file-prescription")
-                      ui-button(value="mmg-mme-edit", v-if='mme.canEdit()',
-                        class='mar-button',
-                        v-on:buttonClicked='showMarDialog(mme, timeElement.medOrder)',
-                        :disabled='!timeElement.medOrder.selected'
-                        :class='{draftRow : mme.hasDraftMar() }'
-                        :title='mmeToolTip(mme)'
-                      )
-                        fas-icon(icon="pen")
+                          fas-icon(icon="pen")
       // place a gap between rows
       div &nbsp;
 </template>
@@ -165,6 +169,11 @@ export default {
     },
   },
   methods: {
+    medOrderSelected ( medOrder ) {
+      const checkBoxed = medOrder && medOrder.checkBoxed
+      const barCoded = medOrder && this.barCodedMeds.includes(medOrder.medName)
+      return barCoded || checkBoxed
+    },
     isTimeCurrentSimTimeClass (ts) {
       let result = this.aDay.dayNum === currentSimDayNumber()
       if (result) {
@@ -176,8 +185,9 @@ export default {
     },
     forElementKeyFromMed (containerKey, med, index) { return `${containerKey}-${med.id}-${index}` },
     resetAll () {
+      // clear all the checkboxes beside the medication. These checks allow edit of the MAR without barcode scanning.
       this.medList.forEach( m => {
-        Vue.set(m, 'selected', false)
+        Vue.set(m, 'checkBoxed', false)
       })
     },
     dayIsActive (dN) {
@@ -276,45 +286,59 @@ export default {
 
     /**
      * Open the MAR dialog. If available provide the time element, otherwise provide the med order.
-     * @param timeElement {obj | null}
-     * @param mo {obj}
+     * @param mme timeElement {obj | null}
+     * @param medOrder {obj}
      */
     showMarDialog ( mme, medOrder) {
       const sourceRowId = medOrder.id
-      const sourcePageKey = MED_ORDERS_PAGE_KEY
-      const sourceTableKey = MED_ORDERS_TABLE_KEY
-      const sendersTableDef = EhrDefs.getPageTable(sourcePageKey, sourceTableKey)
+      const sendersTableDef = EhrDefs.getPageTable(MED_ORDERS_PAGE_KEY, MED_ORDERS_TABLE_KEY)
       // assert.ok(sendersTableDef, `Did not find table def for ${sourcePageKey} ${sourceTableKey}` )
       // assert.ok(sendersTableDef.tableAction, `Table definition does not have expected table action property ${sourcePageKey} ${sourceTableKey}` )
       const options = EhrTableActions.getTableActionRequestOptions(sendersTableDef, sourceRowId)
+      options.presetValues = options.presetValues || []
+      let barCoded = this.$store.getters['system/barCodedMedOrders']
+      const barCodeCheck = barCoded.includes(medOrder.medName)
+      if(barCodeCheck) {
+        // The action of opening the MAR will clear the medication from the barcoded list.
+        const index = barCoded.indexOf(medOrder.medName)
+        barCoded.splice(index, 1)
+        this.$store.dispatch('system/setBarCodedMedOrders', barCoded)
+      }
       /*
         Need a flag to prevent the default behavior which searches the target table for any row
         that is draft and then to use that row. For med mars we required explicit draft rows only.
        */
       options.explicitDraftRowOnly = true
       if (mme) {
+        // the user clicked a mar button on the grid
         if(mme.hasDraftMar()) {
           options.draftRowId = mme.marRecordId
+        } else {
+          // set the bar code checkmark into the dialog values. This will stay through save as draft and final save.
+          options.presetValues.push( { key: 'mar_barCodeCheck', value: barCodeCheck } )
         }
-        options.presetValues = [
+        options.presetValues = options.presetValues.concat([
           { key: 'mo_schedDay', value: mme.schedDay },
           { key: 'mo_schedTime', value: mme.schedTime },
           { key: 'mar_event_day', value: mme.schedDay },
           { key: 'mar_event_time', value: mme.schedTime },
-        ]
+        ])
         // console.log('Open mar for timeElement', JSON.stringify(options,null,2))
       }
       if (!mme) {
+        // user clicked the main button near the medication name
         const drafts = this.getDraftMarsForMed(medOrder)
         if(drafts.length > 0) {
           const mme = drafts[0]
-          console.log('find draft marRecordId',  mme.id)
+          // console.log('find draft marRecordId',  mme.id)
           options.draftRowId = mme.id
         } else {
-          options.presetValues = [
+          options.presetValues = options.presetValues.concat([
             { key: 'mar_event_day', value: currentSimDayNumber() },
             { key: 'mar_event_time', value: currentSimTime() },
-          ]
+            // set the bar code checkmark into the dialog values. This will stay through save as draft and final save.
+            { key: 'mar_barCodeCheck', value: barCodeCheck }
+          ])
         }
       }
       const { taTargetPageKey, taTargetTableKey} = sendersTableDef
@@ -328,17 +352,6 @@ export default {
     }
   },
   watch: {
-    barCodedMeds () {
-      if (this.barCodedMeds.length === 0 ) {
-        this.resetAll()
-      } else {
-        this.medList.forEach( medOrder => {
-          if (this.barCodedMeds.includes(medOrder.medName)) {
-            Vue.set(medOrder, 'selected', true)
-          }
-        })
-      }
-    },
     medList () {
       this.resetAll()
     }
@@ -409,10 +422,10 @@ time-element are the boxes containing either a time value or
   background-color: #4abf8a;
 }
 .mar-done-button {
-  background-color: $grey30;
+  background-color: $success;
 }
 .mar-missed-button {
-  background-color: mediumpurple;
+  background-color: indianred;
 }
 
 .medication-element {
@@ -460,7 +473,9 @@ time-element are the boxes containing either a time value or
 .day-bar-element-title {
   text-align: center;
 }
-
+.mar-dosage {
+  font-size: 0.8rem;
+}
 .medRowSelected {
   background-color: $brand-selected;
   font-weight: bold;

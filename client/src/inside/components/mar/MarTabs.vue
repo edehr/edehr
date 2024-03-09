@@ -45,7 +45,9 @@
 
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDefV2", :errorList="errorList" )
 
-    mar-barcode-dialog(ref="refBarCodeDialog", @barcodedMed='barcodedMed')
+    mar-barcode-dialog(ref="refBarCodeDialog", :patientData='patientData',
+      :barCodedMeds='barCodedMeds',
+      @barcodedMed='changeBarcodedMed')
 
 </template>
 
@@ -67,6 +69,7 @@ import EhrData from '@/inside/components/page/ehr-data'
 import UiButton from '@/app/ui/UiButton.vue'
 import { t18EhrText } from '@/helpers/ehr-t18'
 import MarBarcodeDialog from '@/inside/components/marV2/MarBarcodeDialog.vue'
+import EhrPatient from '@/inside/components/page/ehr-patient'
 
 export default {
   data () {
@@ -76,7 +79,6 @@ export default {
       groups: MED_GROUPS,
       tableKey: MAR_V2_TABLE_KEY,
       selectedDay: -1,
-      barCodedMeds: [],
       timeLineModel: undefined,
       v2Message: 'V2 MAR.  This is a new approach, for the EdEHR, to medication administration records (MARs). This second version is under construction so if you create records here they may not work once this page is completed.'
     }
@@ -107,6 +109,7 @@ export default {
     }
   },
   computed: {
+    barCodedMeds () { return this.$store.getters['system/barCodedMedOrders']},
     ehrText () { return t18EhrText().customPages.mar },
     activeTab () { return this.$store.getters['ehrPageTab/activeTab'](this.pageDataKey) },
     timeLineDays () { return this.timeLineModel.timeLineDays || [] },
@@ -114,6 +117,7 @@ export default {
     todayTabName () {
       return 'Day ' + this.marToday.getCurrentDay()
     },
+    patientData () { return EhrPatient.patientData() },
     // v2
     errorList () {
       return this.ehrHelp.getErrorList(MAR_V2_TABLE_KEY)
@@ -138,15 +142,11 @@ export default {
     dayWords (aDay) {
       return aDay.label
     },
-    barcodedMed ( med ) {
-      // the med contains a med order name.
-      this.barCodedMeds.push(med)
+    changeBarcodedMed ( list ) {
+      this.$store.dispatch('system/setBarCodedMedOrders', list)
     },
     openBarCodeDialog (period) {
       this.$refs.refBarCodeDialog.openBarCodeDialog()
-    },
-    resetSelectedMeds () {
-      this.barCodedMeds = []
     },
     // v2
     setSelectedDay (dN) {

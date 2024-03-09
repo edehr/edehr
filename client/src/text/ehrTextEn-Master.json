@@ -81,6 +81,7 @@
   "English": "English",
   "French": "French",
   "Spanish": "Spanish",
+  "isSubmitted": "Status: closed for edits.",
   "instructionsFixErrors": "Fix the following errors.",
   "medicationPlaceholder": "Medication",
   "mustSignIn": "You need to simulate signing in before you can access patient records.  Press the 'Sign in' button, and then enter a name and profession of the simulated care giver. (This is just a simulation so you don't need a password.)",

@@ -12,6 +12,7 @@ const state = {
   appDialogCount: 0,
   caseContextFeature: false,
   appTypeMode: appTypeEHR,
+  barCodedMedOrders: [],
   currentPageKey: '',
   lmsNavCollapsed: false,
   condensedTableVertical: false, // false = horizontal, See SeedPage.
@@ -42,6 +43,7 @@ const getters = {
   apiError: state => state.apiError,
   appTypeMode: state => state.appTypeMode,
   appDialogCount: state => state.appDialogCount,
+  barCodedMedOrders: state => state.barCodedMedOrders,
   caseContextFeature: state => state.caseContextFeature,
   condensedTableVertical: state => state.condensedTableVertical,
   isEditing: state => state.isEditing,
@@ -99,6 +101,9 @@ const actions = {
     } else {
       console.error('Coding error setting app types. Only "' + APP_TYPE_EHR + '" or "' + APP_TYPE_LIS + '" is allowed. "' + value +'"')
     }
+  },
+  setBarCodedMedOrders ( {commit}, list) {
+    commit('setBarCodedMedOrders', list)
   },
   setOutsideShowButtonLabels ({ commit }, value) {
     if (trace) console.log('set show', value)
@@ -174,6 +179,9 @@ const mutations = {
   setAppTypeMode: (state, appType) => {
     state.appTypeMode = appType
     localStorage.setItem('appTypeMode', appType)
+  },
+  setBarCodedMedOrders: ( state, list) => {
+    state.barCodedMedOrders = list
   },
   incrAppDialogCount: (state) => {
     state.appDialogCount++

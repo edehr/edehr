@@ -146,6 +146,7 @@ export default {
       let ww = window.innerWidth
       let wh = window.innerHeight
       let mx = ww > threshold ? (ww - ew) / 2 : 0
+      mx = mx < 0 ? 0 : mx
       let my = (wh - eh) / 8
       my = Math.max(my, 5) // don't let top disappear
       // console.log('The Dialog w', ww, ew, mx, d)
@@ -193,8 +194,8 @@ export default {
   font-size: 1rem;
   font-weight: normal;
   background-color: $dialog-wrapper-background-color;
-  border: 1px solid $grey40;
-  border-radius: 5px;
+  border: 1px solid $grey60;
+  border-radius: 10px;
   box-sizing: border-box;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
@@ -221,11 +222,13 @@ export default {
 }
 .dialog-header{
   width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   //max-height: 6rem;
   overflow-y: auto;
   max-height: 8rem;
-  background-color: $grey03;
-  border-bottom: 1px solid $grey30;
+  background-color: $grey20;
+  border-bottom: 1px solid $grey60;
   padding: 0.5rem 1rem 0.5rem 1rem;
   //margin-bottom: 1rem;
   touch-action: none;

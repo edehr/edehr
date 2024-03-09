@@ -3,61 +3,35 @@
     app-dialog(
       :isModal="false",
       ref="theDialog",
-      :useSave="false",
-      @cancel="closeDialog")
+      @save="closeProceed",
+      @cancel="closeCancel")
 
       h3(slot="header") Bar code scan to confirm medication
       div(slot="body")
         p.
-          Scan the Patient's MRN first. It must match exactly.  Once the match is made the focus will shift to the medication input field..
-          Next scan the medication.
-          The dialog will close if the scan matches one of this patient's medications.
-        div(class="mbdInput")
-          label Scan patient MRN
-          input(class="input", type="text", ref="mrnInput", v-model="inputPatientMrn", @input="watchMrn")
-        div(class="mbdInput")
-          label Scan medication
-          input(class="input", type="text", ref="medInput", v-model="inputMed", @input="watchMed1")
+          Scan the patient's MRN and when a match is made the focus will shift to the medication input field.
+          Next scan the medications. Each time there is a match with the patient's medication orders.
 
+        div(class="medInputs")
+          label Scan patient MRN
+          input(class="input", type="text", ref="mrnInput", :disabled='matchedMrn', v-model="inputPatientMrn", v-on:keyup.enter="watchMrn")
+          div {{ matchedMrn ? 'Patient MRN is matched' : 'Enter Patient MRN and press ENTER' }}
+        div(class="medInputs")
+          label Scan medication
+          input(class="input", type="text", ref="medInput", v-model="inputMed", v-on:keyup.enter="watchMed")
+          div {{ matchedMrn ? 'Enter a medication order and press ENTER' : '' }}
+        h4 Medication orders
+        div(v-for='(med) in inputMeds',
+          :key='med',
+          class="app-tag"
+        )
+          span(class="app-tag-label") {{med}}
+          button(v-on:click="removeMedAction(med)") x
 </template>
 
 <script>
 import AppDialog from '@/app/components/AppDialogShell'
-import EhrPatient from '@/inside/components/page/ehr-patient'
-
-// From StackOveflow the most amazing people contribute to this resource
-// https://stackoverflow.com/questions/879152/how-do-i-make-javascript-beep
-function beep (frequency, durationSec, ramp=false)
-{
-  var audioContext = null
-  var oscillatorNode = null
-  var stopTime = 0
-  if (oscillatorNode === null) {
-    audioContext = new (window.AudioContext || window.webkitAudioContext) ()
-    stopTime = audioContext.currentTime
-
-    oscillatorNode = audioContext.createOscillator()
-    oscillatorNode.type = 'sine'
-    oscillatorNode.connect (audioContext.destination)
-    if (ramp) {
-      oscillatorNode.frequency.setValueAtTime (frequency, stopTime)
-    }
-    oscillatorNode.start ()
-    oscillatorNode.onended = function () {
-      oscillatorNode = null
-      audioContext = null
-    }
-  }
-
-  if (ramp) {
-    oscillatorNode.frequency.linearRampToValueAtTime (frequency, stopTime) // value in hertz
-  } else {
-    oscillatorNode.frequency.setValueAtTime (frequency, stopTime)  // value in hertz
-  }
-
-  stopTime += durationSec
-  oscillatorNode.stop (stopTime)
-}
+import { beepSound } from '@/inside/components/marV2/beep-util'
 
 export default {
   components: {
@@ -66,58 +40,115 @@ export default {
   data () {
     return {
       inputPatientMrn: '',
-      inputMed: ''
+      inputLabels: [],
+      inputMeds: [],
+      inputMed: '',
+      matchedMrn: false
     }
+  },
+  props: {
+    patientData: { type: Object }, // EhrPatient.patientData()
+    barCodedMeds: { type: Array },
   },
   computed: {
-    patientData () { return EhrPatient.patientData() },
     patientMrn () { return this.patientData.mrn },
     medOrders () { return this.patientData.medorders.map( mo => mo.med_medication) },
-    validPatient () {
-      return this.patientMrn === this.inputPatientMrn
-    },
-    validMed () {
-      return this.medOrders.includes(this.inputMed)
-    }
+    validPatient () { return this.patientMrn === this.inputPatientMrn },
   },
   methods: {
+    beepGood1 () { beepSound (600, 0.2) },
+    beepGood2 () { beepSound (900, 0.2) },
+    beepMiss () { beepSound (300, 0.4) },
+    focusMrn () { this.$refs.mrnInput.focus() },
+    focusMed () { this.$refs.medInput.focus() },
+    removeMedAction ( med) {
+      const index = this.inputMeds.indexOf(med)
+      if (index > -1) {
+        this.inputMeds.splice(index, 1)
+      }
+    },
     openBarCodeDialog (period, medOrder) {
       this.inputPatientMrn = ''
       this.inputMed = ''
+      // this.inputMeds = []
       this.$refs.theDialog.onOpen()
-      this.$nextTick( () =>  this.$refs.mrnInput.focus())
+      this.matchedMrn = false
+      this.$nextTick( () => this.focusMrn() )
     },
     watchMrn () {
       if (this.validPatient) {
-        beep (600, 0.2)
-        this.$refs.medInput.focus()
+        this.beepGood1()
+        this.matchedMrn = true
+        this.focusMed(0)
+      } else {
+        this.beepMiss()
+        this.inputPatientMrn = ''
+        this.focusMrn()
       }
     },
-    watchMed1 () {
-      if (this.validPatient && this.validMed) {
-        this.closeDialog()
-        beep (900, 0.2)
-        this.$emit('barcodedMed', this.inputMed)
+    watchMed () {
+      if (this.validPatient && this.medOrders.includes(this.inputMed) ) {
+        this.beepGood1()
+        const index = this.inputMeds.indexOf(this.inputMed)
+        if (index < 0) {
+          this.inputMeds.push(this.inputMed)
+        }
+        this.inputMed = ''
+        this.focusMed()
+      } else {
+        this.beepMiss()
+        this.inputMed = ''
+        this.focusMed()
       }
     },
-    closeDialog: function () {
+    closeCancel () {
+      this.$emit('barcodedMed', [])
+      this.closeDialog()
+    },
+    closeProceed () {
+      this.$emit('barcodedMed', this.inputMeds)
+      this.closeDialog()
+    },
+    closeDialog () {
       this.$refs.theDialog.onClose()
     }
   },
   mounted () {
-    this.$refs.mrnInput.focus()
+    let limit = 5
+    for(let i = 0; i< limit; i++) {
+      this.inputLabels.push('Med'+i)
+    }
+  },
+  watch: {
+    barCodedMeds () {
+      this.inputMeds = [...this.barCodedMeds]
+      // console.log('watch ', this.inputMeds, this.barCodedMeds)
+    }
   }
 }
 </script>
 
 <style scoped lang='scss'>
-.mbdInput {
+@import '../../../scss/definitions';
+.app-tag {
+  margin-right: 1rem;
+}
+.app-tag-label {
+  padding: 5px;
+  background-color: $grey30;
+  border-radius: 5px;
+}
+.medInputs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
   input {
     width: 10rem;
   }
   label {
     width: 10rem;
   }
-  margin: 10px;
 }
 </style>

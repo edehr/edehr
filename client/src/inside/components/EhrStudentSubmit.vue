@@ -38,7 +38,7 @@ export default {
     },
     submitButtonTip () { return this.hasDraft ? this.ehrText.submitWarnHasDraft : ''},
     statusMessage () {
-      return StoreHelper.isSubmitted() ? this.ehrText.IS_SUBMITTED : ''
+      return StoreHelper.isSubmitted() ? this.ehrText.isSubmitted : ''
     },
     disableNavAction () {
       return this.$store.state.system.isEditing
