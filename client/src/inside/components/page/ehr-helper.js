@@ -467,6 +467,24 @@ export default class EhrPageHelper {
     const { pageKey, tableKey } = EhrDataModel.IdToParts(rowId)
     this.showDialogForTable(pageKey, tableKey, options)
   }
+
+  async deleteSeedRow (rowId) {
+    const { pageKey, tableKey } = EhrDataModel.IdToParts(rowId)
+    const pageData = this._getPageData()
+    let table = pageData[tableKey]
+    let tableIdKey = tableKey + '_id'
+    if (table) {
+      const previousRow = table.findIndex(row => {
+        console.log('row for delete?', row[tableIdKey] === rowId)
+        return row[tableIdKey] === rowId
+      })
+      if (previousRow >= 0) {
+        console.log('found it ', previousRow)
+        table.splice(previousRow, 1)
+      }
+    }
+    await this._saveData(pageKey, pageData)
+  }
   /**
    * Entry point to open the form dialog for a page table element. This is invoked when the user presses
    * the top page add report button.  We may be creating a new report, or we may need to reopen a

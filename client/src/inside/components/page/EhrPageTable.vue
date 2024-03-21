@@ -11,8 +11,10 @@
         :cTableForm='cTableForm',
         :cTableData='cTableData',
         :rowTemplate='rowTemplate',
+        :selectedRow='selectedRow',
         @editDraft='editDraft',
         @editSeedRow='editSeedRow',
+        @deleteSeedRow='deleteSeedRow',
         @viewReport='showReport'
       )
       ehr-table-stacked(
@@ -22,8 +24,10 @@
         :cTableForm='cTableForm',
         :cTableData='cTableData',
         :rowTemplate='rowTemplate',
+        :selectedRow='selectedRow',
         @editDraft='editDraft',
         @editSeedRow='editSeedRow',
+        @deleteSeedRow='deleteSeedRow',
         @viewReport='showReport'
       )
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
@@ -32,6 +36,7 @@
         :title="resetToolTip",
         v-bind:secondary="true") Reset
     ui-confirm(ref="confirmDialog", v-on:confirm="proceedClearAllData", saveLabel='Yes')
+    ui-confirm(ref="confirmDelete", v-on:confirm="proceedDeleteRow", saveLabel='Yes')
 
 </template>
 
@@ -56,6 +61,7 @@ export default {
   },
   data: function () {
     return {
+      selectedRow: ''
     }
   },
   inject: [ 'pageDataKey'],
@@ -153,6 +159,17 @@ export default {
     },
     editSeedRow (rowId) {
       this.ehrHelp.editSeedRow(rowId)
+    },
+    deleteSeedRow (rowId) {
+      this.toDeleteRow = rowId
+      const TEXT = {
+        TITLE: 'Delete row',
+        MSG: 'This action will remove the selected row. This can not be undone.'
+      }
+      this.$refs.confirmDelete.showDialog(TEXT.TITLE, TEXT.MSG)
+    },
+    proceedDeleteRow () {
+      this.ehrHelp.deleteSeedRow(this.toDeleteRow )
     },
     showReport (rowId) {
       this.ehrHelp.showReport(rowId)

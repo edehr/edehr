@@ -18,15 +18,18 @@
                 span {{ tableActionLabel(getIdFromRow(dRow)) }} &nbsp;
                 fas-icon(icon="notes-medical")
             td(class="table-actions")
-              ui-button(value="ets-view", v-if="!isDraft(dRow)", v-on:buttonClicked="viewReport(getIdFromRow(dRow))")
-                span {{ehrText.viewButtonLabel}} &nbsp;
+              ui-button(value="ets-view", v-if="!isDraft(dRow)", v-on:buttonClicked="viewReport(getIdFromRow(dRow))", :title='ehrText.viewButtonLabel')
+                //span {{ehrText.viewButtonLabel}} &nbsp;
                 fas-icon(icon="file-pdf")
-              ui-button(value="ets-edit-draft", v-if="isDraft(dRow) && canEdit", v-on:buttonClicked="editDraft(getIdFromRow(dRow))")
-                span {{ehrText.resumeButtonLabel}} &nbsp;
+              ui-button(value="ets-edit-draft", v-if="isDraft(dRow) && canEdit", v-on:buttonClicked="editDraft(getIdFromRow(dRow))", :title='ehrText.resumeButtonLabel')
+                //span {{ehrText.resumeButtonLabel}} &nbsp;
                 fas-icon(icon="edit")
-              ui-button(value="ets-edit-row", v-else-if="canEditSeed(dRow)", v-on:buttonClicked="editSeedRow(getIdFromRow(dRow))")
-                span {{ehrText.editButtonLabel}} &nbsp;
+              ui-button(value="ets-edit-row", v-if="canEditSeed(dRow)", v-on:buttonClicked="editSeedRow(getIdFromRow(dRow))", :title='ehrText.editButtonLabel')
+                //span {{ehrText.editButtonLabel}} &nbsp;
                 fas-icon(icon="edit")
+              ui-button(v-if="canEditSeed(dRow)", v-on:buttonClicked="deleteSeedRow(getIdFromRow(dRow))", :title='ehrText.deleteButtonLabel')
+                //span {{ehrText.deleteButtonLabel}} &nbsp;
+                fas-icon(icon="trash")
 
             td(v-for="(cell, cIndex) in dRow", :key="cIndex", :class="tableCellCss(cell)",  v-if="!!cell.stack")
                 ehr-table-element(v-for="(cPart, pIndex) in cell.stack", v-if="!!cPart.value", :key='pIndex', :cell="cPart")

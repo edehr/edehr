@@ -11,24 +11,26 @@
               div(v-html="transposeSuffix(column)", class='transpose-suffix')
             td(v-for="(cell, index) in transposeData(column)", :class="tdCss(cell, index)")
               div(v-if="!cell.isDraft && colIndex === 0", class='cell-action')
-                  ui-button(value="etv-view", v-on:buttonClicked="viewReport(getIdFromStack(cell))")
-                    span {{ehrText.viewButtonLabel}} &nbsp;
-                    fas-icon(icon="file-pdf")
-              div(class="cell-action")
-                ui-button(value="etv-action",
-                    v-if="!cell.isDraft && showTableAction && colIndex === 0",
-                    v-on:buttonClicked="tableAction(tableDef, index)"
-                    )
-                  span {{ tableDef.tableActionLabel }} &nbsp;
+                ui-button(value="etv-view", v-on:buttonClicked="viewReport(getIdFromStack(cell))", :title='ehrText.viewButtonLabel')
+                  //span {{ehrText.viewButtonLabel}} &nbsp;
+                  fas-icon(icon="file-pdf")
+                ui-button(value="etv-action", v-if="showTableAction", v-on:buttonClicked="tableAction(tableDef, index)", :title='tableDef.tableActionLabel')
+                  //span {{ tableDef.tableActionLabel }} &nbsp;
                   fas-icon(icon="notes-medical")
-              div(class="cell-action")
-                ui-button(value="etv-edit-draft", v-if="canEditDraft(cell,colIndex)", v-on:buttonClicked="editDraft(getIdFromStack(cell))")
-                  span {{ehrText.resumeButtonLabel}} &nbsp;
+                ui-button(value="etv-edit-row", v-if="canEditSeed(cell,colIndex)", v-on:buttonClicked="editSeedRow(getIdFromStack(cell))", title='ehrText.editButtonLabel')
+                  //span {{ehrText.editButtonLabel}} &nbsp;
                   fas-icon(icon="edit")
-                ui-button(value="etv-edit-row", v-else-if="canEditSeed(cell,colIndex)", v-on:buttonClicked="editSeedRow(getIdFromStack(cell))")
-                  span {{ehrText.editButtonLabel}} &nbsp;
+                ui-button(value="etv-delete-row", v-if="canEditSeed(cell,colIndex)", v-on:buttonClicked="deleteSeedRow(getIdFromStack(cell))", :title='ehrText.deleteButtonLabel')
+                  //span {{ehrText.deleteButtonLabel}} &nbsp;
+                  fas-icon(icon="trash")
+              div(v-if="cell.isDraft && colIndex === 0", class='cell-action')
+                ui-button(value="etv-edit-draft", v-if="canEditDraft(cell,colIndex)", v-on:buttonClicked="editDraft(getIdFromStack(cell))", :title='ehrText.resumeButtonLabel')
+                  //span {{ehrText.resumeButtonLabel}} &nbsp;
                   fas-icon(icon="edit")
-              div(v-for="cPart in cell.stack")
+                ui-button(value="etv-delete-draft", v-if="canEditDraft(cell,colIndex)", v-on:buttonClicked="deleteSeedRow(getIdFromStack(cell))", :title='ehrText.deleteButtonLabel')
+                  //span {{ehrText.deleteButtonLabel}} &nbsp;
+                  fas-icon(icon="trash")
+              div(v-for="(cPart, inx) in cell.stack")
                 ehr-table-element(v-if="!!cPart.value", :cell="cPart", :class="transposeValueCss(cell, index)")
 </template>
 
@@ -127,9 +129,13 @@ export default {
 
 <style lang='scss' scoped>
 .cell-action {
-  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  //flex: 1 0 auto;
+  gap: 5px;
+  //margin-bottom: 5px;
   & .button {
-    min-width: 9rem;
+    //min-width: 9rem;
   }
 }
 </style>

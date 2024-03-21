@@ -62,6 +62,9 @@ export default {
     editSeedRow (rowId) {
       this.$emit('editSeedRow', rowId)
     },
+    deleteSeedRow (rowId) {
+      this.$emit('deleteSeedRow', rowId)
+    },
     viewReport (rowId) {
       this.$emit('viewReport', rowId)
     }

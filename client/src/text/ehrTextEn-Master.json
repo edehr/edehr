@@ -75,6 +75,7 @@
   "confirmDialogResetFormDataBody": "Are you sure you want to reset the data? This will remove your data in this form or table and you can not undo this action.",
   "confirmDialogResetFormDataTitle": "Reset Form Data",
   "correctFollowingErrors": "Correct the following errors:",
+  "deleteButtonLabel": "Delete",
   "editButtonLabel": "Edit",
   "ehrDialogCancelButtonVEdit": "Cancel",
   "ehrDialogCancelButtonViewOnly": "Close",
