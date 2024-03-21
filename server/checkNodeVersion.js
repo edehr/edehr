@@ -1,7 +1,8 @@
+import { version } from 'process'
 
-if (process.version.includes('v18')) {
-  console.log(`Node Version: ${process.version}`)
+if (version.includes('v18') || version.includes('v20')) {
+  console.log(`Node Version: ${version}`)
 } else {
-  console.error('Unexpected version of Node is active ', process.version)
+  console.error('Unexpected version of Node is active ', version)
   process.exit(1)
 }
