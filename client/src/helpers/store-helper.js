@@ -2,6 +2,7 @@ import store from '../store'
 import sKeys from './session-keys'
 import { ZONE_ADMIN, ZONE_DEMO, ZONE_EHR, ZONE_LMS, ZONE_PUBLIC } from '@/router'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
+import { timeSequenceSliceData } from '@/ehr-definitions/sim-time-seq-utils'
 
 let debugSH = false
 
@@ -34,11 +35,22 @@ TODO refactor this class See https://github.com/edehr/edehr/issues/760
 
 class StoreHelperWorker {
 
-  getMergedPageData (pageKey) { return store.getters['ehrDataStore/mergedDataForPageKey'](pageKey) }
+  // getMergedPageData (pageKey) { return store.getters['ehrDataStore/mergedDataForPageKey'](pageKey) }
+  timeSliceData ( ehrData ) {
+    if (this.isStudent()) {
+      let activityRecord = store.getters['activityStore/activityRecord']
+      let activitySimTime = activityRecord.simTimeKey
+      if (activitySimTime) {
+        console.log('TIME SLICE EHR DATA TO', activitySimTime)
+        ehrData = timeSequenceSliceData(activitySimTime, ehrData)
+      }
+    }
+    return ehrData
+  }
 
-  getMergedData () { return store.getters['ehrDataStore/mergedData']  }
-  getSecondLevel () { return store.getters['ehrDataStore/secondLevel']  }
-  getBaseLevel () { return store.getters['ehrDataStore/baseLevel']  }
+  getMergedData () { return this.timeSliceData(store.getters['ehrDataStore/mergedData'] ) }
+  getSecondLevel () { return this.timeSliceData( store.getters['ehrDataStore/secondLevel'] ) }
+  getBaseLevel () { return this.timeSliceData( store.getters['ehrDataStore/baseLevel'] ) }
 
   getHasDataForPagesList () { return store.getters['ehrDataStore/hasDataForPagesList'] }
   hasDataOnPage (pageKey) {

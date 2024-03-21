@@ -319,4 +319,8 @@ footer {
 }
 .ui-info-body p {
   margin-bottom: 0;
+  color: $black;
+  font-family: $bodyFontFamily;
+  font-size: $bodyFontSize;
+  line-height: 1.4;
 }

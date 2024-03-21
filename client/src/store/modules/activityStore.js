@@ -104,6 +104,34 @@ const actions = {
     // console.log('activity-store update title. data ', data)
     return dispatch('put', data)
   },
+  simTimeKeyActivate ( context, payload) {
+    let url = 'sim-time-key-activate/' + payload.activityId
+    let data = { url: url, data: {
+      simTimeKey: payload.simTimeKey
+    } }
+    // console.log('activity-store updateSimTimeKey. data ', data)
+    return context.dispatch('put', data)
+  },
+  simTimeSetTimer ( context, payload) {
+    let url = 'sim-time-timer-set/' + payload.activityId
+    let data = { url: url, data: {
+      timerValue: payload.timerValue
+    } }
+    // console.log('activity-store updateSimTimeKey. data ', data)
+    return context.dispatch('put', data)
+  },
+  simTimeKeyClear ( context, payload) {
+    let url = 'sim-time-key-clear/' + payload.activityId
+    return context.dispatch('put', { url: url, data: {} })
+  },
+  simTimeTimerPause ( context, payload) {
+    let url = 'sim-time-timer-pause/' + payload.activityId
+    return context.dispatch('put', { url: url, data: {} })
+  },
+  simTimeTimerResume ( context, payload) {
+    let url = 'sim-time-timer-resume/' + payload.activityId
+    return context.dispatch('put', { url: url, data: {} })
+  },
   put (context, payload) {
     // console.log('activityStore put payload', payload)
     let url = payload.url

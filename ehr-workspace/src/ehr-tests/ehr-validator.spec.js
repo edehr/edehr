@@ -73,32 +73,41 @@ describe('Test EHR validator day', () => {
       done()
     })
   })
-  it(`Valid times ${vName}`, () => {
+  it(`Validator for ${vName}`, () => {
     const validator = ehrValidations[vName]
-    let aName = 'a field name'
+    let aName = 'zero string - a field name'
     let aValue = '0'
     let result = validator(aName, aValue)
     should.not.exist(result)
 
+    aName = 'nine - a field name'
     aValue = '9'
     result = validator(aName, aValue)
     should.not.exist(result)
-
-    // empty is valid
-    aValue = ''
-    result = validator(aName, aValue)
-    should.not.exist(result)
-
   })
   it(`Invalid times ${vName}`, () => {
     const validator = ehrValidations[vName]
-    let aName = 'a field name'
+    let aName = 'negative number is invalid'
     let aValue = '-1'
     let result = validator(aName, aValue)
     should.exist(result)
+
+    aName = 'zero number - not valid'
+    aValue = 0
+    result = validator(aName, aValue)
+    should.exist(result)
+
+    aName = 'empty - not valid'
+    aValue = ''
+    result = validator(aName, aValue)
+    should.exist(result)
+
+    aName = '20 - not valid'
     aValue = '20'
     result = validator(aName, aValue)
     should.exist(result)
+
+    aName = 'foo - not valid'
     aValue = 'foo'
     result = validator(aName, aValue)
     should.exist(result)

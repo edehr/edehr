@@ -1,5 +1,5 @@
 <template lang="pug">
-  button(v-on:click="buttonClicked", :class="classObject", :disabled="disabled", :title='title')
+  button(v-on:click.stop="buttonClicked", :class="classObject", :disabled="disabled", :title='title')
     slot
 </template>
 

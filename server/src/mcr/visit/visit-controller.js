@@ -7,6 +7,7 @@ import mongoose from 'mongoose'
 import { ParameterError, SystemError } from '../common/errors'
 import { ObjectId as ObjectID } from 'mongodb'
 import { logError } from '../../helpers/log-error'
+import ehrValidations from '../../ehr-definitions/ehr-validations'
 import User from '../user/user'
 
 const debug = require('debug')('server')
@@ -225,17 +226,26 @@ export default class VisitController extends BaseController {
         .then(null, fail(req, res))
     })
     router.post('/sim-date-time', (req, res) => {
+      console.log('sim-date-time body', req.body)
       if (!req.body || !req.body.visitId) {
         const msg = 'Simulation set date time requires visit id in request body.'
         logError(msg)
         return res.status(400).send(msg)
       }
-      if (!req.body.cDate || !req.body.cTime) {
-        const msg = 'Simulation set date time requires date and time strings.'
+      let { cDate, cTime, visitId} = req.body
+      cDate = cDate === 0 ? '0' : cDate
+      let invalidMsg = ehrValidations.visitDay('visitDate', cDate)
+      if (invalidMsg) {
+        const msg = `Simulation set-date-time requires date value. Got "${cDate}". Err ${invalidMsg}.`
         logError(msg)
         return res.status(400).send(msg)
       }
-      const { cDate, cTime, visitId} = req.body
+      invalidMsg = ehrValidations.time24(cTime)
+      if (invalidMsg) {
+        const msg = `Simulation set-date-time requires time value. Got "${cTime}". Err ${invalidMsg}.`
+        logError(msg)
+        return res.status(400).send(msg)
+      }
       this.setSimDateTime(visitId, cDate, cTime)
         .then(ok(res))
         .then(null, fail(req, res))

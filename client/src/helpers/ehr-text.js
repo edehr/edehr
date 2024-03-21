@@ -82,6 +82,17 @@ export const Text = {
     GOTOLOBJ: 'Go to learning object',
     STATUS: 'Status',
     STUDENTS_VAL: (total, submitted) => `${total} students participating and ${submitted} students with submitted work`,
+    WARNING_RESET: 'Pressing the RESET button will set the simulation time to empty which restores the default (i.e. latest) simulation time. It also restores the default behaviour where the student can individually control their simulation time.',
+    WARNING_RESET_TITLE: 'Disable simulation time control',
+    RESET_BUTTON_LABEL: 'RESET',
+    WARNING_SET_SIM_TIME:  'Pressing the SET TIME button will set the student\'s simulation time to the day and time selected. ' +
+      'Select a time stage below to select the stage you want to use.',
+    WARNING_SET_SIM_TIME_TITLE: 'Set simulation time',
+    SET_SIM_TIME_BUTTON:   'SET TIME',
+    SET_SIMULATION_TIMER: 'Enter the number of minutes you wish to have the simulation run for. Press the Pause/Play button to pause and start the timer, which will automatically increment the student\'s clock by a minute until the timer expires.',
+    SET_SIMULATION_TIMER_TITLE: 'Set simulation timer',
+    SIM_TIME_INITIALIZE_TITLE: 'Initialize simulation time control.',
+    SIM_TIME_INITIALIZE: 'This sets the simulation time to the first stage. If there is not stage defined then it uses the first time slice.'
   },
   CLASS_LIST_PAGE: {
     EVALUATION: 'Evaluation notes',
@@ -280,7 +291,8 @@ export const Text = {
     SEEDS: 'Case studies',
     SEED_VIEW: 'Case study',
     SEED_CONDENSED: 'Case study',
-    SIM_CONTROLLER: 'Simulation controls'
+    ACTIVITY_SIM_CONTROLLER: 'Activity Simulation Controls',
+    LOBJ_SIM_CONTROLLER: 'Learning object simulation staging'
   },
   SEED_ACTIONS: {
     SEED_DEVELOPERS_MENU: 'Content developer tools',

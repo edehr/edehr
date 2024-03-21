@@ -97,7 +97,5 @@ describe( 'visit time on bigger set', () => {
     data.meta.simTime.visitDay.should.equal(1)
     data.meta.simTime.should.have.property('visitTime')
     data.meta.simTime.visitTime.should.equal('2130')
-
-
   })
 })

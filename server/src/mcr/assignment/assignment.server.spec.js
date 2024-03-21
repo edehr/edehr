@@ -10,7 +10,7 @@ import { applicationConfiguration } from '../../config/config'
 const configuration = applicationConfiguration('test')
 const PROPERTY = 'assignment'
 const BASE = '/api/assignments'
-const BASE_SEED_DATA = '/api/seed-data'
+const BASE_SEED_DATA = '/api/seed-data/createSeed'
 const ehrApp = new EhrApp(configuration)
 
 const tokenData = Helper.sampleTokenData()
@@ -57,7 +57,7 @@ describe('Make server calls on Assignment', function () {
   })
 
   it('create assignment', function (done) {
-    let url = BASE
+    let url = BASE + '/create'
     if(theSeedId) {
       theData.seedDataId = theSeedId
     }
@@ -124,7 +124,7 @@ describe('Make server calls on Assignment', function () {
 
   it('update assignment', function (done) {
     theData.name = '2.0'
-    let url = BASE + '/' + theId
+    let url = BASE + '/update/' + theId
     request(app)
       .put(url)
       .send(theData)
@@ -146,7 +146,7 @@ describe('Make server calls on Assignment', function () {
   })
 
   it('create assignment', function (done) {
-    let url = BASE
+    let url = BASE + '/create'
     if(theSeedId) {
       theData.seedDataId = theSeedId
     }

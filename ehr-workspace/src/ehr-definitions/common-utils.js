@@ -66,7 +66,7 @@ export function validRangeStr (str, min, max) {
  */
 export function isObject ( possibleObj ) {
   return typeof possibleObj === 'object' &&
-  !Array.isArray(possibleObj) &&
+    !Array.isArray(possibleObj) &&
     possibleObj !== null
 
   // return possibleObj && possibleObj.constructor.name === 'Object'

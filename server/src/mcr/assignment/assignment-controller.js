@@ -262,6 +262,7 @@ export default class AssignmentController extends BaseController {
   }
 
   _updatePreSave ( assignmentDoc, data) {
+    // TODO refactor this functionality into an explicit clearing end point. This hidden save is dangerous.
     // If the incoming data does not have a seed, and this lobj previously
     // did have a seed then clear it. Note the regular update does remove empty properties.
     if (assignmentDoc.seedDataId && !data.seedDataId && assignmentDoc.mPatientAppType) {
@@ -270,6 +271,19 @@ export default class AssignmentController extends BaseController {
     return assignmentDoc
   }
 
+  updateSimStages (id, simStages) {
+    return this.baseFindOneQuery(id)
+      .then((modelInstance) => {
+        modelInstance.simStages = simStages
+        modelInstance.lastUpdateDate = Date.now()
+        return modelInstance.save()
+      })
+      .then((modelInstance) => {
+        const response = {}
+        response[this.modelName] = modelInstance
+        return response
+      })
+  }
   route () {
     const router = super.route()
     router.get('/withActivityCount/:tool', (req, res) => {
@@ -300,6 +314,19 @@ export default class AssignmentController extends BaseController {
     router.post('/create', (req, res) => {
       this
         .create(req.body)
+        .then(ok(res))
+        .then(null, fail(req, res))
+    })
+    router.put('/update/:key', (req, res) => {
+      this
+        .update(req.params.key, req.body)
+        .then(ok(res))
+        .then(null, fail(req, res))
+    })
+    router.put('/updateSimStages/:key', (req, res) => {
+      console.log('shall we validate the sim stages in ', req.params.key,  req.body)
+      this
+        .updateSimStages(req.params.key, req.body)
         .then(ok(res))
         .then(null, fail(req, res))
     })

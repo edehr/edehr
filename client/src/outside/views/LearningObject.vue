@@ -37,6 +37,14 @@
           app-type-details-page-element(:appType="learningObject.appType", :showEx='showEx')
       app-type-details-page-element-explain
 
+      div(v-if="learningObject.seedDataId", class="details-row")
+        div(class="details-name") Simulation staging
+        div(class="details-value")
+          ui-link(:name="'lobjSimController'", :query="{learningObjectId: learningObjectId}")
+            fas-icon(class='fa', :icon='appIcons.stopwatch')
+            span &nbsp; Configure the staging of the case study.
+
+
       div(class="details-row")
         div(class="details-name") {{text.USED}}
         div(class="details-value")

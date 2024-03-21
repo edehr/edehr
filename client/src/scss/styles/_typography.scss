@@ -7,6 +7,12 @@ body, button, input, select, textarea {
   line-height: 1.4;
 }
 
+.card-footer {
+	color: $black;
+	font-family: $bodyFontFamily;
+	font-size: $bodyFontSize;
+	line-height: 1.4;
+}
 h1, h2, h3, .h3, h4, h5, h6 {
 	color: $grey90;
 	font-family: $bodyFontFamily;

@@ -3,12 +3,37 @@ import EhrDataModel from '@/ehr-definitions/EhrDataModel'
 import { isValidDate } from '@/helpers/ehr-utils'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import store from '../store'
+import { splitSimTimeKey } from '@/ehr-definitions/sim-time-seq-utils'
+
+export function getActivitySimTimeKey () {
+  let activityRecord = store.getters['activityStore/activityRecord']
+  return activityRecord.simTimeKey
+}
+export function isActivitySimTimeActive () {
+  return !! getActivitySimTimeKey() // if there is a key then yes the sim time is coming from the activity
+}
 
 export function getCurrentSimDate () {
-  return store.getters['visit/simDate']
+  let d = store.getters['visit/simDate']
+  let isDev = StoreHelper.isDevelopingContent()
+  console.log('-----------', isDev, d)
+  if (! isDev) {
+    // non-content developer
+    let activityRecord = store.getters['activityStore/activityRecord']
+    if (activityRecord.simTimeKey) {
+      [ d ] = splitSimTimeKey(activityRecord.simTimeKey)
+    } // else use visit day if activity is not controlling time
+  }
+  return d
 }
 
 export function getCurrentSimTime () {
+  let activityRecord = store.getters['activityStore/activityRecord']
+  if (activityRecord.simTimeKey) {
+    // eslint-disable-next-line no-unused-vars
+    let [d, t] = splitSimTimeKey(activityRecord.simTimeKey)
+    return t
+  }
   return store.getters['visit/simTime']
 }
 

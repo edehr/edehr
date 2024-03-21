@@ -103,7 +103,7 @@ const actions = {
   updateAssignment (context, dataIdPlusPayload) {
     let id = dataIdPlusPayload.id
     let payload = dataIdPlusPayload.payload
-    let url = id
+    let url = 'update/' + id
     if(debug) console.log('updateAssignment', url, payload)
     return InstoreHelper
       .putRequest(context, API, url, payload)

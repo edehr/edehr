@@ -80,7 +80,7 @@ export const Text = {
   INVALID_MONTH: (m) => `Invalid month ${m}. Must be an integer >= 1 and <= 60`,
 
   INVALID_PARAMETER_NOT_BOOLEAN: 'Expected to receive a boolean value',
-  INVALID_PATIENT_SEARCH: 'Must provide either an MRN or family name to search for patient'
-
+  INVALID_PATIENT_SEARCH: 'Must provide either an MRN or family name to search for patient',
+  INVALID_PARAMETER_NOT_SIMTIMEKEY: 'Expected to receive a simulation time key in the form 0000-1234',
 }
 

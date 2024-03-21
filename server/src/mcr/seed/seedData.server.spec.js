@@ -15,7 +15,7 @@ const tokenData = Helper.sampleTokenData()
 const token = Helper.generateToken(tokenData)
 
 // these tests cause mocha to stay running.  Skip until we can resolve this problem
-describe(`Make server calls on ${TYPE}`, function () {
+describe('Make server calls on SeedData', function () {
   let app
   let theData
   let theId
@@ -38,7 +38,7 @@ describe(`Make server calls on ${TYPE}`, function () {
   })
 
   it('create seed-data', function (done) {
-    let url = BASE
+    let url = BASE + '/createSeed'
     request(app)
       .post(url)
       .send(theData)
@@ -99,7 +99,7 @@ describe(`Make server calls on ${TYPE}`, function () {
 
   it('update seed-data', function (done) {
     theData.version = '2.0'
-    let url = BASE + '/' + theId
+    let url = BASE + '/updateSeed/' + theId
     request(app)
       .put(url)
       .send(theData)

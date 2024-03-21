@@ -80,11 +80,14 @@ import {
   faUserGraduate,
   faUserClock,
   faUserFriends,
+  faPauseCircle,
+  faPlayCircle,
+  faFastForward,
+  faBackward,
   faUserInjured,
   faVial, faVials
 } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome, faCanadianMapleLeaf } from '@fortawesome/free-brands-svg-icons'
-
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faBookMedical } from '@fortawesome/free-solid-svg-icons/faBookMedical'
 
@@ -116,6 +119,7 @@ export default function (Vue) {
     faDownload,
     faEdit,
     faExternalLinkAlt,
+    faEraser,
     faEye,
     faFileMedical,
     faFilePrescription,
@@ -168,6 +172,10 @@ export default function (Vue) {
     faUserClock,
     faUserFriends,
     faUserInjured,
+    faPauseCircle,
+    faPlayCircle,
+    faFastForward,
+    faBackward,
     faVial, faVials
   )
   library.add(

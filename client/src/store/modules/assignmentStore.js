@@ -9,7 +9,8 @@ const debug = false
 const L_OBJ_INIT = {}
 const state = {
   learningObject: L_OBJ_INIT,
-  learningObjectId: ''
+  learningObjectId: '',
+  simStages: []
 }
 
 const getters = {
@@ -25,6 +26,7 @@ const getters = {
   seedDataId: state => {
     return state.learningObject.seedDataId
   },
+  simStages : state => { return state.simStages },
   assignmentCaseContext: state => {
     const { persona, time, day, profession } = state.learningObject
     // persona key is changed to 'name' to match structure of recHeader in the EHR page definitions.
@@ -37,7 +39,7 @@ const actions = {
     commit('initialize')
   },
   clearAssignment: function (context) {
-    context.commit('set', undefined)
+    context.commit('setLobj', undefined)
   },
   load (context, id) {
     let url = 'getLObj/' + id
@@ -49,9 +51,41 @@ const actions = {
         StoreHelper.setApiError(msg)
         return
       }
-      context.commit('set', results)
+      context.commit('setLobj', results)
       return results
     })
+  },
+  loadSimStages (context, lObjId) {
+    let url = 'getLObj/' + lObjId
+    return InstoreHelper.getRequest(context, API, url).then(response => {
+      let results = response.data['learningObject']
+      if (!results) {
+        let msg = Text.GET_ASSIGNMENT_ERROR(NAME, lObjId)
+        StoreHelper.setApiError(msg)
+        return
+      }
+      context.commit('setSimStages', results.simStages)
+      return results.simStages
+    })
+  },
+  updateStages (context, dataIdPlusPayload) {
+    let url = 'updateSimStages/' + dataIdPlusPayload.lObjId
+    let simStages = dataIdPlusPayload.simStages
+    return InstoreHelper.putRequest(context, API, url, simStages).then(response => {
+      let results = response.data['assignment']
+      if (!results) {
+        let msg = Text.GET_ASSIGNMENT_ERROR(NAME, lObjId)
+        StoreHelper.setApiError(msg)
+        return
+      }
+      context.commit('setSimStages', results.simStages)
+      return results.simStages
+    })
+      .catch(err => {
+        let msg = 'updateStages --- ' + Text.UPDATE_ASSIGNMENT_ERROR(err)
+        console.error(msg)
+        StoreHelper.setApiError(msg)
+      })
   },
   reload (context) {
     let id = context.state.learningObjectId
@@ -91,7 +125,7 @@ const mutations = {
       state.learningObjectId = learningObjectId
     }
   },
-  set: (state, assignment) => {
+  setLobj: (state, assignment) => {
     state.learningObject = assignment
     const learningObjectId = assignment ? assignment._id : ''
     if (assignment) {
@@ -101,6 +135,9 @@ const mutations = {
       localStorage.removeItem(sKeys.LOBJ_ID)
       state.learningObjectId = L_OBJ_INIT
     }
+  },
+  setSimStages: (state, stages) => {
+    state.simStages = stages
   }
 }
 

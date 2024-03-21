@@ -14,17 +14,18 @@
         class='flow_across_last_item'
       )
     zone-lms-instructions-header
-      p This is an EdEHR Activity and it is automatically created for each LMS activity that connects with the EdEHR.
+      p This page shows you an EdEHR Activity. These are automatically created, by the EdEHR, when any user activates an activity in their learning management system (LMS) that is set to connect to the EdEHR.
+      p Your LMS controls who can access and what they can access and what role they have, when visiting the EdEHR.
+      p When students click the LMS Activity they will be taken directly to the charting application and they will see the case study.  When instructors click the LMS Activity they are brought to this page.
+      p Each EdEHR Activity needs to be connected to EdEHR content, called a {{text.LOBJ}}, to get the activity name, instructions and case study (optional).
       p(v-if='isUnleashedActivityEnabled')
         span.
-          The first instructor that activates the LMS activity also selects the initial content (a "{{text.LOBJ}}") for this EdEHR activity.
+          The first instructor that activates the LMS activity also selects the initial {{text.LOBJ}} for this EdEHR activity.
           Instructor can change this content by using the gear icon &nbsp;
         fas-icon( class="fa", :icon="appIcons.configure")
-        span &nbsp; button.
-      p But be careful.  Only make these changes before students start work on the activity because you are changing the content they are working with.
-      p.
-         A "{{text.LOBJ}}" defines the learning activity and it usually provides a base case study with charting data.
-         When students click the same LMS Activity they will be taken directly to the charting application and they will see the case study.
+        span.
+          &nbsp; button.
+          But be careful.  Only make these changes before students start work on the activity because you will be changing the content they are working with.
       p
         span.
           TIP.  As an instructor you may wish to know what the student will experience. That's easy. Just use the button with the student icon &nbsp;
@@ -39,7 +40,7 @@
     div(class="details-container")
       div(class="details-row")
         div(class="details-name") {{text.DESCRIPTION}}
-        div(class="details-value")
+        div(class="details-value description-area")
           div( v-text-to-html="descriptionContent")
       zone-lms-instructions-element.
         Students see the instructions above. To change the instructions click on the {{text.LOBJ}} below and then edit the learning object properties. But remember you are also affecting all activities that share the {{text.LOBJ}}.
@@ -68,57 +69,58 @@
             fas-icon(class='fa', :icon='appIcons.course')
             span &nbsp; {{ courseTitle }}
 
+      div(v-if="showSimControls", class="details-row")
+        div(class="details-name") Simulation controls
+        div(class="details-value")
+          ui-link(:name="'activitySimController'", :query="{visitId: visitId}")
+            fas-icon(class='fa', :icon='appIcons.stopwatch')
+            span &nbsp; Control the simulation time that students see.
+      zone-lms-instructions-element.
+        Control what stage of the case study to display to the students in the class-list for this activity.
+
       div(class="details-row")
         div(class="details-name") Feedback viewable
         div(class="details-value")
+          div Students  {{ feedbackViewable ? 'can' : 'can not' }} see the instructor feedback and grading.
           app-type-toggle-button(
             :modelValue='feedbackViewable',
             @change='changeFeedbackViewable',
             labelOn='Viewable'
             labelOff='Locked'
           )
-          div Students  {{ feedbackViewable ? 'can' : 'can not' }} see the instructor feedback and grading.
       zone-lms-instructions-element.
         Use this toggle to change the viewing state, for the students. When enabled your students can view your feedback. They can see this feedback at the top just above the patient banner in the charting area.
 
-      div(v-if="isSimControlEnabled", class="details-row")
-        div(class="details-name") Simulation controls
+    div(v-if='contentEditor')
+      div(class="details-row")
+        div(class="details-name") LMS Id
         div(class="details-value")
-          ui-link(:name="'activitySimController'", :query="{visitId: visitId}")
-            fas-icon(class='fa', :icon='appIcons.stopwatch')
-            span &nbsp; Real time control of simulation data for students.
-
-
-      div(v-if='contentEditor')
-        div(class="details-row")
-          div(class="details-name") LMS Id
-          div(class="details-value")
-            div {{ activity.idForLTI }}
-        zone-lms-instructions-element.
-          The LMS ID can be used in your LMS connections to pre-link new activities to the same learning object.
-          This is helpful if you wish to clone the course in your LMS because these LMS IDs can be used to automatically link the Learning Object to the a new activity.
-
-        div(class="details-row")
-          div(class="details-name") Application type
-          div(class="details-value")
-            app-type-details-page-element(:appType="activity.appType", :showEx='showEx')
-        app-type-details-page-element-explain
-
-        div(v-if="isUnleashedActivityEnabled", class="details-row")
-          div(class="details-name") Activity name on LMS
-          div(class="details-value") {{ lmsTitle }}
-
-        div(v-if="isUnleashedActivityEnabled", class="details-row")
-          div(class="details-name") Activity description LMS
-          div(class="details-value") {{ lmsDescription }}
-        zone-lms-instructions-element.
-          Above are the activity title and description provided by your LMS. These may or may not be useful.
+          div {{ activity.idForLTI }}
+      zone-lms-instructions-element.
+        The LMS ID can be used in your LMS connections to pre-link new activities to the same learning object.
+        This is helpful if you wish to clone the course in your LMS because these LMS IDs can be used to automatically link the Learning Object to the a new activity.
 
       div(class="details-row")
-        div(class="details-name") {{text.DATES}}
-        div(class="details-value").
-          Created {{ activity.createDate | formatDateTime }}.
-          Last updated {{ activity.lastUpdate | formatDateTime }}
+        div(class="details-name") Application type
+        div(class="details-value")
+          app-type-details-page-element(:appType="activity.appType", :showEx='showEx')
+      app-type-details-page-element-explain
+
+      div(v-if="isUnleashedActivityEnabled", class="details-row")
+        div(class="details-name") Activity name on LMS
+        div(class="details-value") {{ lmsTitle }}
+
+      div(v-if="isUnleashedActivityEnabled", class="details-row")
+        div(class="details-name") Activity description LMS
+        div(class="details-value") {{ lmsDescription }}
+      zone-lms-instructions-element.
+        Above are the activity title and description provided by your LMS. These may or may not be useful.
+
+    div(class="details-row")
+      div(class="details-name") {{text.DATES}}
+      div(class="details-value").
+        Created {{ activity.createDate | formatDateTime }}.
+        Last updated {{ activity.lastUpdate | formatDateTime }}
 
     activity-dialog-v2(v-if='isUnleashedActivityEnabled', ref='theActivityDialog', @selected='changeLearningObjectForActivity')
     activity-dialog(v-else, ref="theDialog")
@@ -139,7 +141,7 @@ import StoreHelper from '@/helpers/store-helper'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner.vue'
 import router, { UNLINKED_ACTIVITY_ROUTE_NAME } from '@/router'
 import AppTypeToggleButton from '@/outside/components/seed-management/AppTypeToggleButton.vue'
-import FeatureHelper, { FF_SIM_CONTROL, FF_UNLEASH_ACTIVITY } from '@/helpers/feature-helper'
+import FeatureHelper, { FF_UNLEASH_ACTIVITY } from '@/helpers/feature-helper'
 import ActivityDialogV2 from '@/outside/components/lms-activity/ActivityDialogV2.vue'
 import UiConfirm from '@/app/ui/UiConfirm.vue'
 import UiInfo from '@/app/ui/UiInfo.vue'
@@ -150,40 +152,32 @@ import AppTypeDetailsPageElementExplain from '@/outside/components/AppTypeDetail
 export default {
   extends: OutsideCommon,
   components: {
+    ActivityActions,
+    ActivityDialog,
+    ActivityDialogV2,
+    AppTypeDetailsPageElement,
     AppTypeDetailsPageElementExplain,
+    AppTypeToggleButton,
+    UiConfirm,
+    UiInfo,
+    UiLink,
+    ZoneLmsButton,
     ZoneLmsInstructionsElement,
     ZoneLmsInstructionsHeader,
-    AppTypeDetailsPageElement,
-    UiInfo,
-    UiConfirm,
-    ActivityDialogV2,
-    AppTypeToggleButton,
     ZoneLmsPageBanner,
-    ZoneLmsButton,
-    ActivityDialog,
-    ZoneLmsPageName,
-    ActivityActions,
-    UiLink
+    ZoneLmsPageName
   },
   data () {
     return {
       text: Text.ACTIVITY_PAGE,
       textRoutes: Text.ROUTE_NAMES,
-      tips: {
-        LMS_ID: 'asdsad'
-      }
     }
   },
   computed: {
     contentEditor () { return StoreHelper.isDevelopingContent() },
-    isSimControlEnabled () {
-      const cid = this.$store.getters['consumerStore/consumerId']
-      return FeatureHelper.isFeatureFlagEnabled(cid, FF_SIM_CONTROL)
-    },
+    showSimControls () { return !!this.activity.caseStudyId },
     isUnleashedActivityEnabled () { return FeatureHelper.isFeatureFlagEnabled(this.consumerId, FF_UNLEASH_ACTIVITY) },
-    activity () {
-      return this.$store.getters['activityStore/activityRecord']
-    },
+    activity () { return this.$store.getters['activityStore/activityRecord'] },
     classList () {
       return this.$store.getters['instructor/classList']
     },
@@ -290,5 +284,11 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 
+.description-area {
+  max-height: 8rem;
+  padding: 5px;
+  overflow-y: auto;
+  border: 1px solid $grey30;
+}
 
 </style>

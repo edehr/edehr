@@ -8,8 +8,60 @@ import ActivityData from '../activity-data/activity-data'
 import { isAdmin } from '../../helpers/middleware'
 import { ParameterError } from '../common/errors'
 import { Text } from '../../config/text'
+import { splitSimTimeKey, validSimTimeKey } from '../../ehr-definitions/sim-time-seq-utils'
 const debug = require('debug')('server')
 const debugAC = false
+
+
+function _incrementTimeKey (d, tm) {
+  d = Number.parseInt(d)
+  let hr = Number.parseInt(tm.slice(0, 2))
+  let mn = Number.parseInt(tm.slice(2, 4))
+  mn = mn + 1
+  if (mn >= 60) {
+    mn = 2
+    hr = hr + 1
+  }
+  if (hr >= 24) {
+    hr = 0
+    d++
+  }
+  hr = hr.toString().padStart(2, '0')
+  mn = mn.toString().padStart(2, '0')
+  let timeVal = hr + mn
+  const dPart = String(d).padStart(4, '0')
+  return dPart + '-' + timeVal
+}
+async function  incrementTask () {
+  // console.log('----- activity sim time increment task')
+  const list = await Activity.find({
+    $and: [
+      { simCountdownRunning: true },
+      { simCountdownValue: { $gte: 0 } }
+    ] } )
+  for (let i = 0; i < list.length; i++) {
+    let act = list[i]
+    if (act.simTimeKey) {
+      let parts = act.simTimeKey.split('-') || []
+      let d = parts[0]
+      let t = parts[1]
+      act.simTimeKey = _incrementTimeKey(d, t)
+    }
+    act.simCountdownValue--
+    // console.log('----- ', act._id, act.simTimeKey, act.simCountdownValue, act.simCountdownRunning)
+    await act.save()
+  }
+}
+
+function _setupMinuteTask () {
+  let date = new Date()
+  let sec = date.getSeconds()
+  setTimeout(()=>{
+    setInterval(()=>{
+      console.log('----- DO SOMETHING EXACTLY EVERY MINUTE')
+    }, 60 * 1000)
+  }, (60 - sec) * 1000)
+}
 /*
 resource_link_id 	required 	unique id referencing the link, or "placement", of the app in the consumer. If an app was added twice to the same class, each placement would send a different id, and should be considered a unique "launch". For example, if the provider were a chat room app, then each resource_link_id would be a separate room.
 
@@ -17,6 +69,9 @@ resource_link_id 	required 	unique id referencing the link, or "placement", of t
 export default class ActivityController extends BaseController {
   constructor () {
     super(Activity)
+    // for development skip the one minute task and do it every second
+    // _setupMinuteTask(incrementTask)
+    setInterval( incrementTask, 1000)
   }
   setSharedControllers (cc) {
     this.comCon = cc
@@ -44,7 +99,11 @@ export default class ActivityController extends BaseController {
       title: activity.custom_title || activity.resource_link_title || 'Unknown',
       description: activity.custom_description || activity.resource_link_description || undefined,
       resource_link_title: activity.resource_link_title,
-      resource_link_description: activity.resource_link_description
+      resource_link_description: activity.resource_link_description,
+      simCountdownValue: activity.simCountdownValue,
+      simCountdownRunning: activity.simCountdownRunning,
+      simTimeKey: activity.simTimeKey,
+      simTimeKeyDate: activity.simTimeKeyDate,
     }
     const assignmentId = activity.assignment
     const assignment = assignmentId ? await Assignment.findById(assignmentId) : undefined
@@ -54,6 +113,7 @@ export default class ActivityController extends BaseController {
       userActivity.learningObjectId = assignment._id
       userActivity.learningObjectName = assignment.name
       userActivity.learningObjectDescription = assignment.description
+      userActivity.simStages = assignment.simStages
 
       // convert ObjectId to string for searching
       // note that learning objects (assignment) may not have seed
@@ -142,6 +202,41 @@ export default class ActivityController extends BaseController {
     // activity.visitors.push({ visitId: visitId})
     // console.log('updateActivityVisit', activityId, visitId)
     await activity.save()
+  }
+  async simTimeKeyClear (activityId) {
+    if(!activityId) {
+      throw new ParameterError(Text.REQUIRES_ACTIVITY_ID)
+    }
+    await Activity.updateOne({_id: activityId}, { $unset : { simTimeKey : 1, simTimeKeyDate: 1, simCountdownRunning: 1} })
+    return this.findOneById(activityId)
+  }
+  async activateSimTimeKey (activityId, simTimeKey) {
+    if(!activityId) {
+      throw new ParameterError(Text.REQUIRES_ACTIVITY_ID)
+    }
+    if (! validSimTimeKey(simTimeKey) ) {
+      throw new ParameterError(Text.INVALID_PARAMETER_NOT_SIMTIMEKEY + ' ' + simTimeKey)
+    }
+    const activity = await Activity.findById(activityId)
+    activity.simTimeKey = simTimeKey
+    activity.simTimeKeyDate = Date.now()
+    return await activity.save()
+  }
+  async setSimTimeTimer (activityId, timerValue) {
+    if(!activityId) {
+      throw new ParameterError(Text.REQUIRES_ACTIVITY_ID)
+    }
+    const activity = await Activity.findById(activityId)
+    activity.simCountdownValue = timerValue
+    return await activity.save()
+  }
+  async switchSimTimeKey (activityId, value) {
+    if(!activityId) {
+      throw new ParameterError(Text.REQUIRES_ACTIVITY_ID)
+    }
+    const activity = await Activity.findById(activityId)
+    activity.simCountdownRunning = value
+    return await activity.save()
   }
   async updateText (activityId, custom_title, custom_description) {
     const activity = await Activity.findById(activityId)
@@ -297,6 +392,40 @@ export default class ActivityController extends BaseController {
         .then(ok(res))
         .catch(fail(req, res))
     })
+    router.put('/sim-time-key-clear/:id', (req, res) => {
+      let id = req.params.id
+      this.simTimeKeyClear(id)
+        .then(ok(res))
+        .catch(fail(req, res))
+    })
+    router.put('/sim-time-key-activate/:id', (req, res) => {
+      let id = req.params.id
+      let {simTimeKey, timerValue } = req.body
+      // console.log('activity-controller route update simTimeKey body contains', req.body)
+      this.activateSimTimeKey(id, simTimeKey, timerValue)
+        .then(ok(res))
+        .catch(fail(req, res))
+    })
+    router.put('/sim-time-timer-set/:id', (req, res) => {
+      let id = req.params.id
+      let { timerValue } = req.body
+      console.log('activity-controller sim-time-set-timer timerValue', timerValue)
+      this.setSimTimeTimer(id, timerValue)
+        .then(ok(res))
+        .catch(fail(req, res))
+    })
+    router.put('/sim-time-timer-pause/:id', (req, res) => {
+      let id = req.params.id
+      this.switchSimTimeKey(id, false)
+        .then(ok(res))
+        .catch(fail(req, res))
+    })
+    router.put('/sim-time-timer-resume/:id', (req, res) => {
+      let id = req.params.id
+      this.switchSimTimeKey(id, true)
+        .then(ok(res))
+        .catch(fail(req, res))
+    })
 
     router.put('/update-text/:id/', (req, res) => {
       let id = req.params.id
@@ -313,7 +442,7 @@ export default class ActivityController extends BaseController {
       }
       let id = req.params.id
       let {isViewable } = req.body
-      // console.log('activity-controller update-viewable-feedback', req.body)
+      console.log('activity-controller update-viewable-feedback', req.body)
       this.updateViewableFeedback(id, isViewable)
         .then(ok(res))
         .catch(fail(req, res))

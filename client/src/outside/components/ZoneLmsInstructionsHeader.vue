@@ -1,11 +1,12 @@
 <template lang='pug'>
 div
-  ui-button(value="zlih-explain",
-    class="explain-button",
-    secondary=true,
-    @buttonClicked="toggleShowExplanationTextOutside",
-    title="Show helpful information")
-    span {{showEx ? 'Hide the explanation ' : 'Tell me about this page'}} &nbsp;
+  div(class="flow_across")
+    ui-button(value="zlih-explain",
+      class="explain-button flow_across_last_item",
+      secondary=true,
+      @buttonClicked="toggleShowExplanationTextOutside",
+      title="Show helpful information")
+      span {{showEx ? 'Hide the explanation ' : 'Tell me about this page'}} &nbsp;
   transition(name="fade")
     div(v-if="showEx", class="explain-container explain-page-intro")
       slot
