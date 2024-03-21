@@ -65,7 +65,7 @@ const actions = {
   },
   async clearVisitData (context) {
     context.commit('setVisitData', {})
-    context.commit('setVisitId', undefined)
+    context.commit('_setVisitId', undefined)
     context.commit('setSeedEditId', undefined)
     localStorage.removeItem(IS_CONTENT_EDITING)
   },
@@ -78,22 +78,17 @@ const actions = {
   },
   setVisitIdViaSh (context, visitId) {
     if (trace) console.log('Visit store setVisitIdViaSh', visitId)
-    context.commit('setVisitId', visitId)
+    context.commit('_setVisitId', visitId)
   },
   /**
-   * Convenience action that does three common tasks. Sets a visitId into storage, loads the visit record,
-   * and then loads the activity record associated with the visit.
+   * Required that a visitId has already been placed in this store.
+   * Convenience action that does three common tasks. Loads the visit record,
+   * and then sets the simulation date/time based on the visit record,
+   * and then sets the simulation sign on persona based on the visit record.
    *
    * @param context
-   * @param visitId
    * @returns {Promise<*>}
    */
-  // See loadActivityRecord in activityStore.js
-  // async setLoadVisitActivity (context, visitId) {
-  //   await context.dispatch('setVisitId', visitId)
-  //   await context.dispatch('loadVisitRecord')
-  //   return await context.dispatch('activityStore/loadActivityRecord', {}, {root:true})
-  // },
   loadVisitRecord (context) {
     const visitId = context.getters.visitId
     if (trace) console.log('Visit store loadVisitRecord', visitId)
@@ -140,20 +135,7 @@ const actions = {
     const visit = response.data.visit
     context.commit('setSimSignOn', visit.simulationSignOn)
   },
-  /**
-   * Ideally let the loadVisitRecord set up the sim date time. Use this action to specifically update the sim date time
-   * @param context
-   * @param visitId
-   * @returns {Promise<void>}
-   */
-  // Seems the following is no longer needed
-  // async loadSimulationDateTime (context, visitId ) {
-  //   if (trace) console.log('Visit store loadSimulationDateTime', visitId)
-  //   let url = 'sim-date-time/' + visitId
-  //   const response = await InstoreHelper.getRequest(context, API, url)
-  //   const simulationDateTime = response.data
-  //   context.commit('setSimDateTime', simulationDateTime)
-  // },
+
   /**
    *
    * @param context
@@ -201,8 +183,8 @@ const mutations = {
     if(debug) console.log('visit store setVisitData ', info)
     state.sVisitData = info
   },
-  setVisitId: (state, id) => {
-    if(debug) console.log('setVisitId ', id)
+  _setVisitId: (state, id) => {
+    if(debug) console.log('_setVisitId ', id)
     // This value needs to survive a browser refresh so make the source of truth the session storage
     if (id) {
       localStorage.setItem(VISIT_ID, id)

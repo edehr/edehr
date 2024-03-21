@@ -297,6 +297,12 @@ export default class AssignmentController extends BaseController {
           res.status(500).send(err)
         })
     })
+    router.post('/create', (req, res) => {
+      this
+        .create(req.body)
+        .then(ok(res))
+        .then(null, fail(req, res))
+    })
     router.delete('/:key', isAdmin, (req, res) => {
       const { key } = req.query
       if (debugAC) debug('Assignment. delete query')

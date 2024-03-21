@@ -91,7 +91,7 @@ const actions = {
 
 
   async createAssignment (context, payload) {
-    let url = undefined
+    let url = 'create'
     if(debug) console.log('send assignment data ', url, payload)
     const results = await InstoreHelper.postRequest(context, API, url, payload)
     let resultsData = results.data

@@ -5,6 +5,7 @@ import pluralize from 'pluralize'
 import { fail, ok } from './utils'
 import { ParameterError } from './errors'
 import { Text } from '../../config/text'
+import { logError } from '../../helpers/log-error'
 
 const MAX_RESULTS = 1000
 
@@ -264,10 +265,16 @@ export default class BaseController {
     })
 
     router.post('/', (req, res) => {
-      this
-        .create(req.body)
-        .then(ok(res))
-        .then(null, fail(req, res))
+      // see PUT below
+      // curl -X POST -H "Authorization: Bearer $TOKEN" http://localhost:27000/api/consumers
+      let msg = 'Base POST invoked and blocked for ' + this.modelName
+      logError(msg)
+      res.status(405)
+      res.json({message: msg , status: 405})
+      // this
+      //   .create(req.body)
+      //   .then(ok(res))
+      //   .then(null, fail(req, res))
     })
 
     router.get('/get/:key', (req, res) => {
@@ -277,11 +284,21 @@ export default class BaseController {
         .then(null, fail(req, res))
     })
 
+    /*
+    Want to remove this end point but not sure what might be using it.
+    So make the call to this end point an error and then log the request.
+    Can test this end point with this
+    curl -X PUT -H "Authorization: Bearer $TOKEN" http://localhost:27000/api/visits/65ce22b2a072e17ff3a6b4bb
+     */
     router.put('/:key', (req, res) => {
-      this
-        .update(req.params.key, req.body)
-        .then(ok(res))
-        .then(null, fail(req, res))
+      let msg = 'Base put invoked and blocked for ' + this.modelName
+      logError(msg)
+      res.status(405)
+      res.json({message: msg , status: 405})
+      // this
+      //   .update(req.params.key, req.body)
+      //   .then(ok(res))
+      //   .then(null, fail(req, res))
     })
 
     return router
