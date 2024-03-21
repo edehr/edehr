@@ -110,11 +110,13 @@ main {
   padding-bottom: 2rem;
 }
 .left_side {
-  width: 23%;
+  //width: 16%;
+  min-width: 15rem;
 }
 .right_side {
-  width: 76%;
+  width: 100%;
   margin-left: 1rem;
+  overflow-x: auto;
 }
 .left_side_small {
   width: 3.3rem !important;

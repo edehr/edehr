@@ -120,7 +120,7 @@ export default {
   .ehrData-structure {
     display: flex;
     flex-flow: row;
-    width: 95%; // less than 100% to keep the right side from slipping down the page
+    //width: 95%; // less than 100% to keep the right side from slipping down the page
   }
   .ehrData-menu {
     flex: 0 0 20rem;

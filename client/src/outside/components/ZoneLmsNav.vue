@@ -132,7 +132,7 @@ export default {
       StoreHelper.setIsDevelopingContent( !this.isDevelopingContent)
     },
     truncate (text) {
-      const lim = 25
+      const lim = 18
       return text && text.length > lim ? `${text.substring(0, lim)}...` : text
     }
   }
