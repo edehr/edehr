@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class='ehr-table-stacked')
     //div TABLE STACKED page: {{ pageDataKey}}, table: {{ tableKey }}
-    div(class="no-data" v-if="!hasData") ----
+    div(class="no-data" v-if="!hasData") No data
     div(v-else)
       table.table_horizontal
         thead

@@ -1,9 +1,11 @@
 <template lang="pug">
   div(class="ehr-page-table")
-    div(v-if="showTableAddButton")
-      ui-button(value="ept-add", v-on:buttonClicked="showDialog") {{ buttonLabel }}
-    div
+    div(class="flow_across menu_space_across")
       h2(v-show="tableLabel") {{tableLabel}}
+      div(class="flow_across menu_space_across flow_across_last_item")
+        ui-button(v-if="showTableAddButton", value="ept-add", v-on:buttonClicked="showDialog") {{ buttonLabel }}
+        ehr-page-context-menu
+    div
       ehr-table-vertical(
         v-if="isVertical",
         :ehrHelp="ehrHelp",
@@ -44,6 +46,7 @@
 import EhrDialogForm from './EhrDialogForm.vue'
 import EhrTableStacked from './EhrTableStacked'
 import EhrTableVertical from './EhrTableVertical'
+import EhrPageContextMenu from '@/inside/components/page/EhrPageContextMenu.vue'
 import UiButton from '@/app/ui/UiButton.vue'
 import UiConfirm from '@/app/ui/UiConfirm'
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
@@ -53,6 +56,7 @@ import { makeHumanTableCell } from '@/ehr-definitions/ehr-def-utils'
 import { t18ElementLabel, t18TableAddButtonLabel, t18TableLabel } from '@/helpers/ehr-t18'
 export default {
   components: {
+    EhrPageContextMenu,
     EhrTableStacked,
     EhrTableVertical,
     EhrDialogForm,

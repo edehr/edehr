@@ -6,7 +6,7 @@
         mar-today-content(:ehrHelp="ehrHelp", :marToday="marToday")
       tab(name="V1 Summary", v-if='showV1')
         mar-summary(:ehrHelp="ehrHelp")
-      tab(:name="ehrText.tabNameMar")
+      tab(class='tabContainer', :name="ehrText.tabNameMar")
 
         // day selection buttons
         div(class='day-selector-bar flow_across')
@@ -23,8 +23,9 @@
 
         // bar code buttons
         div(class='day-selector-bar flow_across')
-          //ui-button(value="mt-meds", v-on:buttonClicked="resetSelectedMeds", v-bind:secondary="true") Reset
-          ui-button(value="mt-code", v-on:buttonClicked="openBarCodeDialog") BarCode
+          div(class="flow_across menu_space_across flow_across_last_item")
+            ui-button(value="mt-code", v-on:buttonClicked="openBarCodeDialog") BarCode
+            ehr-page-context-menu
 
         // daily med admin tables
         mar-med-grid(
@@ -39,7 +40,7 @@
           @viewReport='showReport'
         )
         //mar-today-content-v2(:ehrHelp="ehrHelp")
-      tab(:name="ehrText.tabNameTable")
+      tab(class='tabContainer', :name="ehrText.tabNameTable")
         //p {{v2Message}}
         ehr-page-element(:element="tableDefV2", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 
@@ -70,6 +71,7 @@ import UiButton from '@/app/ui/UiButton.vue'
 import { t18EhrText } from '@/helpers/ehr-t18'
 import MarBarcodeDialog from '@/inside/components/marV2/MarBarcodeDialog.vue'
 import EhrPatient from '@/inside/components/page/ehr-patient'
+import EhrPageContextMenu from '@/inside/components/page/EhrPageContextMenu.vue'
 
 export default {
   data () {
@@ -84,6 +86,7 @@ export default {
     }
   },
   components: {
+    EhrPageContextMenu,
     MarBarcodeDialog,
     UiButton,
     EhrPageElement,
