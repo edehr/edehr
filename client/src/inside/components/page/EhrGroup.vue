@@ -6,7 +6,6 @@
         ehr-sub-group(v-if="isSubgroup(child)", :subgroup="child", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
         ehr-element-form(v-else-if="child", :elementKey="child", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
         div(v-else) This group has an undefined element
-    hr
 </template>
 
 <script>

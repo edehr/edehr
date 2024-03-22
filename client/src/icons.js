@@ -4,6 +4,7 @@ Import font awesome icons
 */
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
+  faAllergies,
   faAngleDown,
   faAngleLeft,
   faAngleRight,
@@ -34,6 +35,7 @@ import {
   faFilePdf,
   faFilePrescription,
   faFilter,
+  faFlask,
   faFolderPlus,
   faGlobe,
   faGraduationCap,
@@ -78,7 +80,8 @@ import {
   faUserGraduate,
   faUserClock,
   faUserFriends,
-  faUserInjured
+  faUserInjured,
+  faVial, faVials
 } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome, faCanadianMapleLeaf } from '@fortawesome/free-brands-svg-icons'
 
@@ -87,6 +90,7 @@ import { faBookMedical } from '@fortawesome/free-solid-svg-icons/faBookMedical'
 
 export default function (Vue) {
   library.add(
+    faAllergies,
     faAngleDown,
     faAngleLeft,
     faAngleRight,
@@ -118,6 +122,7 @@ export default function (Vue) {
     faFilePdf,
     faFilter,
     faFolderPlus,
+    faFlask,
     faEraser,
     faGlobe,
     faGraduationCap,
@@ -163,6 +168,7 @@ export default function (Vue) {
     faUserClock,
     faUserFriends,
     faUserInjured,
+    faVial, faVials
   )
   library.add(
     faFontAwesome,

@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    div(class="no-data" v-if="!hasData") -----
+    div(class="no-data" v-if="!hasData") No data
     div(v-else)
       table.table_vertical
         tbody

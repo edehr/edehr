@@ -1,6 +1,5 @@
 <template lang="pug">
   div
-    div(v-if="pageDef.tableLabel") {{ pageDef.tableLabel }}
     ehr-panel-content
       div(v-if="useTabs")
         tabs
@@ -125,6 +124,7 @@ export default {
 <style lang="scss">
 @import '../../../scss/definitions';
 .tabContainer {
+  width: 100%;
 }
 .section-divider {
     border-bottom: 1px solid $grey40;

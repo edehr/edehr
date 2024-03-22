@@ -1,9 +1,10 @@
 <template lang="pug">
   div
     div(id='theEhrPageForm', class="ehr-page-form")
-      h2(class="headerClass")
-      div(style="display:inline") {{ label }}
-      ehr-page-form-controls(class="headerControl", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :formKey="formKey")
+      div(class="flow_across menu_space_across")
+        div(class="flow_across menu_space_across flow_across_last_item")
+          ehr-page-form-controls(class="headerControl", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :formKey="formKey")
+          ehr-page-context-menu
       div(v-show="errors.length")
         p {{ehrText.instructionsFixErrors}}
         ul
@@ -20,6 +21,7 @@
 
 <script>
 import EhrPageFormControls from './EhrPageFormControls'
+import EhrPageContextMenu from '@/inside/components/page/EhrPageContextMenu.vue'
 import EhrGroup from './EhrGroup'
 import UiConfirm from '../../../app/ui/UiConfirm'
 import UiButton from '../../../app/ui/UiButton.vue'
@@ -29,6 +31,7 @@ import { t18EhrText, t18ElementLabel } from '@/helpers/ehr-t18'
 export default {
   name: 'EhrPageForm',
   components: {
+    EhrPageContextMenu,
     UiSpinnerSmall,
     EhrPageFormControls,
     EhrGroup,

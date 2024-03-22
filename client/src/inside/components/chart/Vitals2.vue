@@ -1,12 +1,14 @@
 <template lang="pug">
   div
     tabs
-      tab(:name="ehrText.tabGraph", :selected="true")
-        div(v-show="showTableAddButton")
-          ui-button(value="v2-show", v-on:buttonClicked="showDialog") {{ buttonLabel }}
+      tab(class='tabContainer', :name="ehrText.tabGraph", :selected="true")
+        div(class="flow_across")
+          div(class="flow_across menu_space_across flow_across_last_item")
+            ui-button(v-if="showTableAddButton", value="v2-show", v-on:buttonClicked="showDialog") {{ buttonLabel }}
+            ehr-page-context-menu
         vitals-chart(v-bind:vitals="tableData", v-bind:vitalsModel="vitalsModel")
         ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
-      tab(:name="ehrText.tabChart")
+      tab(class='tabContainer', :name="ehrText.tabChart")
         ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp")
 
 </template>
@@ -19,6 +21,7 @@ import VitalsChart from './VitalsChart'
 import VitalModel from './vitalModel'
 import EhrDefs from '../../../ehr-definitions/ehr-defs-grid'
 import EventBus, { PAGE_DATA_REFRESH_EVENT } from '../../../helpers/event-bus'
+import EhrPageContextMenu from '@/inside/components/page/EhrPageContextMenu.vue'
 import EhrDialogForm from '../page/EhrDialogForm.vue'
 import EhrPageTable from '../page/EhrPageTable'
 import EhrData from '@/inside/components/page/ehr-data'
@@ -26,6 +29,7 @@ import { t18EhrText, t18TableAddButtonLabel } from '@/helpers/ehr-t18'
 
 export default {
   components: {
+    EhrPageContextMenu,
     EhrDialogForm,
     Tabs,
     Tab,
