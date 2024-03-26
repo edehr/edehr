@@ -1,6 +1,7 @@
 import InstoreHelper from './instoreHelper'
-import StoreHelper from '../../helpers/store-helper'
-import { Text } from '../../helpers/ehr-text'
+import StoreHelper from '@/helpers/store-helper'
+import { Text } from '@/helpers/ehr-text'
+import { MEDICATION_DB_CANADA, MEDICATION_DB_USA } from '@/helpers/med-db-utils'
 const API = 'consumers'
 const NAME = 'ConsumerStore'
 const OBJ = 'consumer'
@@ -10,6 +11,7 @@ const state = {
   consumer: {},
   featureFlags: [],
   consumersListing: [],
+  medicationDatabase: MEDICATION_DB_CANADA
 }
 
 const getters = {
@@ -34,7 +36,8 @@ const getters = {
     if (debug) console.log(NAME + ' get lmsName', prop)
     return prop
   },
-  consumer: state => state.consumer
+  consumer: state => state.consumer,
+  medicationDatabase: state => state.medicationDatabase
 }
 
 const actions = {
@@ -142,6 +145,11 @@ const actions = {
       return results
     })
   },
+  medicationDatabaseSelect ({commit}, value) {
+    if (value === MEDICATION_DB_CANADA || value === MEDICATION_DB_USA) {
+      commit('setMedicationDatabase', value)
+    }
+  },
   updateConsumer (context, dataIdPlusPayload) {
     let id = dataIdPlusPayload.id
     let payload = dataIdPlusPayload.payload
@@ -174,6 +182,9 @@ const mutations = {
     if(debug) console.log('setConsumersListing ', cData)
     state.consumersListing = cData
   },
+  setMedicationDatabase: (state, value) => {
+    state.medicationDatabase = value
+  }
 }
 
 export default {

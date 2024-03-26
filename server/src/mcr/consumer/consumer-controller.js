@@ -166,7 +166,7 @@ export default class ConsumerController extends BaseController {
       let consumerId = new ObjectID(consumer._id)
       let visits = await Visit.find({ toolConsumer: consumerId })
       consumer.visitCount = visits.length
-      let visitStudents = visits.filter(v => v.isStudent)
+      let visitStudents = visits.filter(v => v.isStudent && !v.instructorAsStudent)
       let visitInstructors = visits.filter(v => v.isInstructor)
       consumer.visitStudentCount = visitStudents.length
       consumer.lastStudentVisit = ''

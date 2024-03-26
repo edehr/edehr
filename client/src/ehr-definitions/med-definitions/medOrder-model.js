@@ -1,6 +1,18 @@
 import { MED_ORDERS_PAGE_KEY, MED_ORDERS_TABLE_KEY } from '../ehr-defs-grid'
 import { hourStringToHour } from './mar-model'
 import { makeHumanTableCell } from '../ehr-def-utils'
+import { isObject } from '../common-utils'
+
+export function extractMedName (medMedication) {
+  let result = medMedication
+  if (isObject(medMedication)) {
+    // if (medMedication.v === 'can.1') {
+    //   console.log('CANADIAN Med', medMedication)
+    // }
+    result = medMedication.med
+  }
+  return result
+}
 
 export class MedOrders {
   constructor (ehrDataModel) {
@@ -34,6 +46,8 @@ export class MedOrder {
       med_reason, med_route, med_timing,
       med_time1, med_time2, med_time3, med_time4, med_time5, med_time6
     } = eData
+    this._med_data_object = med_medication
+    med_medication = extractMedName(med_medication)
     // translate the key data into human-readable
     med_route = makeHumanTableCell( 'medicationOrders', 'med_route', 'checkset', med_route)
     med_injectionLocation = makeHumanTableCell( 'medicationOrders', 'med_injectionLocation', 'select', med_injectionLocation)
@@ -82,6 +96,17 @@ export class MedOrder {
     return list.join(', ')
   }
 
+  medOrderDetails () {
+    const list = []
+    const obj = this._med_data_object
+    console.log('--- med order details', obj)
+    if (obj) {
+      list.push('Route: ' + obj.route)
+      list.push('Schedule: ' + obj.shed)
+      list.push('Therapeutic: ' + obj.thD)
+    }
+    return list.join(', ')
+  }
   /**
    * Compose a string of the orderedDay and orderedTime. This is handy to sort the medOrders.
    * @returns {string}

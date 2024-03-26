@@ -274,6 +274,13 @@ export function outside () {
       meta: { layout: 'outside', label: 'Demo Course', zone: ZONE_DEMO }
     },
     {
+      path: '/demo-med-lookup',
+      name: 'demoMedLookup',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/DemoMedLookup.vue'),
+      meta: { layout: 'outside', label: 'Demo Med Lookup', zone: ZONE_DEMO }
+    },
+    {
       path: '/privacy',
       name: 'privacy',
       component: () =>

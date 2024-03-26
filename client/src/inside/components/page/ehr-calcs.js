@@ -168,16 +168,20 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
       console.log('medAdminAlert no value!', values, 'srcKeys', srcKeys)
       // console.log('srcValues', srcValues)
     }
+  } else if (calculationType.includes('medOrderDetails')) {
+    if (values[0]) {
+      const mo = new MedOrder(values[0])
+      result = mo.medOrderDetails()
+    } else {
+      console.log('medOrderDetails no value!', values, 'srcKeys', srcKeys)
+    }
   } else if (calculationType.includes('medOrderSummary')) {
     // values is array with one element; the medication order
-    // console.log('medOrderSummary', values[0])
-    // console.log('medOrderSummary values', values)
     if (values[0]) {
       const mo = new MedOrder(values[0])
       result = mo.medOrderSummary()
     } else {
       console.log('medOrderSummary no value!', values, 'srcKeys', srcKeys)
-      // console.log('srcValues', srcValues)
     }
     // result = calculateMedicationConcentration(values)
   } else if (calculationType.includes('medMaxDosage')) {

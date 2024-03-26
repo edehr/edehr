@@ -21,8 +21,8 @@
     table(cellspacing="0" cellpadding="0")
       tr(v-for='med in patientData.medorders', :key='med. medicationOrdersTable_id')
         td
-          qrcode-vue(:value="med.med_medication",:size="150",level="H",margin="5")
-        td  {{ med.med_medication }}
+          qrcode-vue(:value="extractMedName(med.med_medication)", :size="150", level="H", margin="5")
+        td  {{ extractMedName(med.med_medication) }}
         td  {{ med.med_dose }}
         td  {{ med.med_timing }}
         td  {{ med.med_route }}
@@ -35,6 +35,7 @@ import { t18EhrText } from '@/helpers/ehr-t18'
 import StoreHelper from '@/helpers/store-helper'
 import EhrPatient from '@/inside/components/page/ehr-patient'
 import QrcodeVue from 'qrcode.vue'
+import { extractMedName } from '@/ehr-definitions/med-definitions/medOrder-model'
 export default {
   components: { QrcodeVue },
   computed: {
@@ -43,6 +44,7 @@ export default {
     patientData () { return EhrPatient.patientData() },
   },
   methods: {
+    extractMedName ( medMedication ) { return extractMedName (medMedication)},
     truncate (input, lim) {
       return input && input.length > lim ? `${input.substring(0, lim)}...` : input
     }
