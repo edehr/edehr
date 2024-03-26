@@ -61,7 +61,7 @@
     // type lookahead should have been named 'medication'
     div(v-else-if="isType('lookahead')", class="text_input_wrapper")
       ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_input_wrapper")
-      div(v-if="viewOnly") {{ inputVal }}
+      div(v-if="viewOnly") {{ extractMedName(inputVal) }}
       div(v-if="!viewOnly")
         ehr-element-medication(
           :domId="_id",
@@ -146,13 +146,12 @@ import EhrElementCheckset from './EhrElementCheckset'
 import EhrElementEmbedded from '@/inside/components/page/EhrElementEmbedded'
 import EhrElementFile from './EhrElementFile'
 import EhrElementPatient from '@/inside/components/page/EhrElementPatient'
-import EhrElementLookup from './EhrElementLookup.vue'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 import EhrElementSimTime from '@/inside/components/page/EhrElementSimTime'
 import EhrElementBirthDate from '@/inside/components/page/EhrElementBirthDate'
 import EhrElementPractitioner from '@/inside/components/page/EhrElementPractitioner'
 import EhrElementProfession from '@/inside/components/page/EhrElementProfession'
-import EhrElementMedication from '@/inside/components/page/EhrElementMedication'
+import EhrElementMedication from '@/inside/components/page/EhrElementMedication2.vue'
 import UiInfo from '@/app/ui/UiInfo'
 import EhrElementCustomForm from '@/inside/components/page/EhrElementCustomForm.vue'
 import EhrElementSelect from '@/inside/components/page/EhrElementSelect.vue'
@@ -161,6 +160,7 @@ import EhrElementBoxCheckset from '@/inside/components/page/EhrElementBoxCheckse
 import EhrElementCalculatedText from '@/inside/components/page/EhrElementCalculatedText.vue'
 import EhrElementCalculatedBool from '@/inside/components/page/EhrElementCalculatedBool.vue'
 import { simDateCalc } from '@/helpers/date-helper'
+import { extractMedName } from '@/ehr-definitions/med-definitions/medOrder-model'
 
 export default {
   name: 'EhrElementForm',
@@ -182,7 +182,6 @@ export default {
     EhrElementEmbedded,
     EhrElementFile,
     EhrElementPatient,
-    EhrElementLookup,
     UiInfo
   },
   props: {},
@@ -201,7 +200,8 @@ export default {
     },
     childUpdate (update) {
       this.internalSetInputValue(update)
-    }
+    },
+    extractMedName ( value ) { return extractMedName (value )}
   }
 }
 </script>

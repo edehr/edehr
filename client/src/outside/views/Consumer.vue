@@ -1,9 +1,10 @@
-<template lang="pug">
+<template lang='pug'>
   div
     zone-lms-page-banner
       div(class="flow_across flow_across_right flow_wrap menu_space_across")
         zone-lms-button(@action="downloadConsumer", :icon='appIcons.download', text='Download data')
     div(class="details-container card selected")
+      h2 Learning management system (LMS)
       div(class="details-row")
         div(class="details-name") {{text.NAME}}
           ui-info(:title="text.NAME", :text="text.NAME_TIP")
@@ -14,14 +15,6 @@
       div(class="details-row")
         div(class="details-name") {{text.KEY}}
         div(class="details-value") {{consumer.oauth_consumer_key}}
-      div(class="details-row")
-        div(class="details-name") Recent visit counts
-        div(class="details-value") {{recentVisitCounts}}
-
-
-      //div(class="details-row")
-      //  div(class="details-name") {{text.SECRET}}
-      //  div(class="details-value") {{consumer.oauth_consumer_secret}}
       div(class="details-row", v-if='!consumer.is_primary')
         div(class="details-name") {{text.TYPE}}
         div(class="details-value") Demonstration consumer
@@ -38,6 +31,19 @@
         div(class="details-name") {{text.GUID}}
         div(class="details-value") {{consumer.tool_consumer_instance_guid}}
       div(class="details-row")
+        div(class="details-name") {{text.DATES}}
+        div(class="details-value").
+          Created on {{ consumer.createDate | formatDateTime }}.
+          Last modified on {{ consumer.lastUpdateDate | formatDateTime }}.
+      div(class="details-row")
+        div(class="details-name") Id
+        div(class="details-value") {{consumer._id}}
+
+    medication-database-config
+
+    div(id="FeatureFlags", class="details-container card selected")
+      h2 Feature flags
+      div(class="details-row")
         div(class="details-name") Feature Flags
         div(class="details-value")
           div
@@ -53,11 +59,50 @@
             span &nbsp;
             button(@click='featureFlagSimTimeToggle') {{ featureFlagSimTimeOn ? 'disable' : 'enable '}} simulation time controls
 
+    div(id="Statistics", class="details-container card selected")
+      h2 Statistics
       div(class="details-row")
-        div(class="details-name") {{text.DATES}}
-        div(class="details-value").
-          Created on {{ consumer.createDate | formatDateTime }}.
-          Last modified on {{ consumer.lastUpdateDate | formatDateTime }}.
+        div(class="details-name") Recent visit counts
+        // { "year": { "t": 5, "s": 2, "i": 3 }, "half": { "t": 5, "s": 2, "i": 3 }, "month": { "t": 5, "s": 2, "i": 3 }, "week": { "t": 5, "s": 2, "i": 3 }, "day": { "t": 2, "s": 1, "i": 1 }, "hour": { "t": 1, "s": 0, "i": 1 } }
+        div(class="details-value")
+          table
+            thead
+              th
+              th Total
+              th Instructors
+              th Students
+            tbody
+              tr
+                td Year
+                td {{ recentVisitCounts.year.t }}
+                td {{ recentVisitCounts.year.i }}
+                td {{ recentVisitCounts.year.s }}
+              tr
+                td 6 months
+                td {{ recentVisitCounts.half.t }}
+                td {{ recentVisitCounts.half.i }}
+                td {{ recentVisitCounts.half.s }}
+              tr
+                td Month
+                td {{ recentVisitCounts.month.t }}
+                td {{ recentVisitCounts.month.i }}
+                td {{ recentVisitCounts.month.s }}
+              tr
+                td Week
+                td {{ recentVisitCounts.week.t }}
+                td {{ recentVisitCounts.week.i }}
+                td {{ recentVisitCounts.week.s }}
+              tr
+                td Day
+                td {{ recentVisitCounts.day.t }}
+                td {{ recentVisitCounts.day.i }}
+                td {{ recentVisitCounts.day.s }}
+              tr
+                td Hour
+                td {{ recentVisitCounts.hour.t }}
+                td {{ recentVisitCounts.hour.i }}
+                td {{ recentVisitCounts.hour.s }}
+
       div(class="details-row")
         div(class="details-name") {{text.VISITS_TOTAL}}
         div(class="details-value") {{consumer.visitCount}}
@@ -87,15 +132,13 @@
         div(class="details-name") {{text.SEEDS}}
         div(class="details-value") {{consumer.seedCount}}
       div(class="details-row")
-        div(class="details-name") Id
-        div(class="details-value") {{consumer._id}}
-      div(class="details-row")
         div(class="details-name") {{ text.USER_COUNT }}
         div(class="details-value") {{ consumer.userCount }}
       div(class="details-row", v-if='isAdmin')
         div(class="details-name") {{ text.USERS }}
         div(class="details-value")
           div(v-for="user in users") {{user.fullName}}
+
 </template>
 
 <script>
@@ -109,10 +152,21 @@ import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
 import StoreHelper from '@/helpers/store-helper'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton'
 import FeatureHelper, { FF_SIGN_ON, FF_SIM_CONTROL, FF_UNLEASH_ACTIVITY } from '@/helpers/feature-helper'
+import MedicationDatabaseConfig from '@/outside/components/MedicationDatabaseConfig.vue'
+
+const DEFAULTRVC = {
+  year: { t: 5, s: 2, i: 3 },
+  half: { t: 5, s: 2, i: 3 },
+  month: { t: 5, s: 2, i: 3 },
+  week: { t: 5, s: 2, i: 3 },
+  day: { t: 2, s: 1, i: 1 },
+  hour: { t: 1, s: 0, i: 1 }
+}
+
 
 export default {
   extends: OutsideCommon,
-  components: { ZoneLmsButton, ZoneLmsPageBanner, UiButton, UiInfo  },
+  components: { MedicationDatabaseConfig, ZoneLmsButton, ZoneLmsPageBanner, UiButton, UiInfo },
   data () {
     return {
       text: Text.CONSUMER_PAGE,
@@ -124,13 +178,21 @@ export default {
     }
   },
   computed: {
-    consumer () { return this.$store.getters['consumerStore/consumer']},
+    consumer () {
+      return this.$store.getters['consumerStore/consumer']
+    },
     featureFlags () {
       return this.$store.getters['consumerStore/featureFlags']
     },
-    showLabels () { return StoreHelper.isOutsideShowButtonLabels() },
-    recentVisitCounts () { return this.consumer.recentVisitCounts },
-    users () { return this.consumer.users || [] },
+    showLabels () {
+      return StoreHelper.isOutsideShowButtonLabels()
+    },
+    recentVisitCounts () {
+      return this.consumer.recentVisitCounts || DEFAULTRVC
+    },
+    users () {
+      return this.consumer.users || []
+    }
   },
   methods: {
     downloadConsumer () {
@@ -145,21 +207,21 @@ export default {
       downObjectToFile(fName, sorted)
     },
     async featureFlagUnleashActivityToggle () {
-      if(!this.featureFlagUnleashActivity) {
+      if (!this.featureFlagUnleashActivity) {
         await FeatureHelper.enableFeatureFlag(this.consumerId, FF_UNLEASH_ACTIVITY)
       } else {
         await FeatureHelper.disableFeatureFlag(this.consumerId, FF_UNLEASH_ACTIVITY)
       }
     },
     async featureFlagSimSignToggle () {
-      if(!this.featureFlagSimSignOn) {
+      if (!this.featureFlagSimSignOn) {
         await FeatureHelper.enableFeatureFlag(this.consumerId, FF_SIGN_ON)
       } else {
         await FeatureHelper.disableFeatureFlag(this.consumerId, FF_SIGN_ON)
       }
     },
     async featureFlagSimTimeToggle () {
-      if(!this.featureFlagSimTimeOn) {
+      if (!this.featureFlagSimTimeOn) {
         await FeatureHelper.enableFeatureFlag(this.consumerId, FF_SIM_CONTROL)
       } else {
         await FeatureHelper.disableFeatureFlag(this.consumerId, FF_SIM_CONTROL)

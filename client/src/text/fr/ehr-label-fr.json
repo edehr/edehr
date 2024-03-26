@@ -1292,5 +1292,6 @@
   "demographics.legalGender": "Marqueur de genre légal",
   "medAdminRec.mar_event_day": "Jour de l'événement",
   "medAdminRec.mar_event_time": "Heure de l'événement",
-  "medAdminRec.mar_barCodeCheck": "Barcode scanné"
+  "medAdminRec.mar_barCodeCheck": "Barcode scanné",
+  "medAdminRec.mo_medDetails": "Détails des médicaments"
 }

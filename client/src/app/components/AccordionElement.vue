@@ -1,19 +1,29 @@
 <template lang="pug">
-  div(class="accordion" :class="theme")
-    transition(name="accordion", v-on:before-enter="beforeEnter", v-on:enter="enter" , v-on:before-leave="beforeLeave", v-on:leave="leave")
-      div(class="body", v-show="show")
-        div(class="body-inner")
-          slot
+  div(class='accordion-element')
+    div(@click="show = !show")
+      h3(class='accordion-header')
+        fas-icon(class="fa", :icon="icon")
+        span &nbsp; {{ headerText }}
+    div(class="accordion" :class="theme")
+      transition(name="accordion", v-on:before-enter="beforeEnter", v-on:enter="enter" , v-on:before-leave="beforeLeave", v-on:leave="leave")
+        div(class="accordion-body", v-show="show")
+          div(class="body-inner")
+            slot(name="body") default body
 </template>
 
 <script>
 export default {
   data () {
-    return {}
+    return {
+      show: false
+    }
   },
   props: {
-    theme: { type: String, default: 'defaultTheme' },
-    show: { type: Boolean }
+    headerText: { type: String },
+    theme: { type: String, default: 'defaultTheme' }
+  },
+  computed: {
+    icon () { return this.show ? 'chevron-up' : 'chevron-down'},
   },
   methods: {
     beforeEnter: function (el) {
@@ -33,18 +43,30 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import '../../scss/definitions';
+.accordion-element {
+  padding-bottom: 5px;
+}
 .accordion {
   background-color: $grey10;
-  .body {
+  .accordion-body {
     border-top: 0;
     transition: 350ms ease-out;
+    overflow-x: auto;
   }
-
   .body-inner {
+    padding: 5px 1rem;
   }
 }
+.accordion-header {
+  padding: 5px 1rem;
+  margin-bottom: 1rem;
+  height: 2rem;
+  width: 100%;
+  background-color: $grey03;
+  font-weight: bold;
+}
 .defaultTheme {
-  background-color: palegoldenrod;
+  background-color: $grey03;
 }
 .blueTheme {
   background-color: skyblue;

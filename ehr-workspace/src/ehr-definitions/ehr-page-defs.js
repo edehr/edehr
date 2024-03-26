@@ -14064,7 +14064,7 @@ const DEFS = {
         "formIndex": "2",
         "embedRef": "medicationOrders.medicationOrdersTable",
         "inputType": "ehr_embedded",
-        "passToFunction": "[mo_medOrder mo_alert mo_timing mo_medInstructions mo_medReason mo_id]",
+        "passToFunction": "[mo_medOrder mo_medDetails mo_alert mo_timing mo_medInstructions mo_medReason mo_id]",
         "tableColumn": "13",
         "fqn": "medAdminRec.med_order_embedded"
       },
@@ -14076,6 +14076,14 @@ const DEFS = {
         "inputType": "calculatedValue",
         "tableColumn": "2",
         "fqn": "medAdminRec.mo_medOrder"
+      },
+      {
+        "elementKey": "mo_medDetails",
+        "calculationType": "medOrderDetails(medicationOrders,medicationOrdersTable)",
+        "formIndex": "2",
+        "formCss": "grid-span-3-columns",
+        "inputType": "calculatedValue",
+        "fqn": "medAdminRec.mo_medDetails"
       },
       {
         "elementKey": "mo_medInstructions",
@@ -14599,6 +14607,7 @@ const DEFS = {
               "gIndex": "3",
               "gChildren": [
                 "mo_medOrder",
+                "mo_medDetails",
                 "mo_medInstructions",
                 "mo_medReason",
                 "mo_timing",
@@ -14642,6 +14651,7 @@ const DEFS = {
             "marTable_time": "",
             "med_order_embedded": "",
             "mo_medOrder": "",
+            "mo_medDetails": "",
             "mo_medInstructions": "",
             "mo_medReason": "",
             "mo_timing": "",

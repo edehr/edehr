@@ -2,6 +2,7 @@ import StoreHelper from '@/helpers/store-helper'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 import { computeDateOfBirth } from '@/ehr-definitions/ehr-def-utils'
 import { makeHumanTableCell } from '@/ehr-definitions/ehr-def-utils'
+import { extractMedName } from '@/ehr-definitions/med-definitions/medOrder-model'
 
 class EhrPatientC {
   patientData () {
@@ -134,9 +135,10 @@ class EhrPatientC {
     let asStored = data.medicationOrders || {}
     asStored = asStored.medicationOrdersTable || []
     let medOrders = JSON.parse(JSON.stringify(asStored))
+    // console.log('---medOrders', medOrders)
     medOrders.sort( (a,b) => {
-      const m1 = a.med_medication || ''
-      const m2 = b.med_medication || ''
+      const m1 = extractMedName(a.med_medication)
+      const m2 = extractMedName(b.med_medication)
       return m1.localeCompare(m2)
     })
     return medOrders

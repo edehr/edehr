@@ -1292,5 +1292,6 @@
   "demographics.legalGender": "Indicador legal de género",
   "medAdminRec.mar_event_day": "Día de evento",
   "medAdminRec.mar_event_time": "Tiempo de evento",
-  "medAdminRec.mar_barCodeCheck": "Escaneo de código de barras"
+  "medAdminRec.mar_barCodeCheck": "Escaneo de código de barras",
+  "medAdminRec.mo_medDetails": "Detalles de medicación"
 }
