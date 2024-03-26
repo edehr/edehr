@@ -32,6 +32,7 @@
 <script>
 import AppDialog from '@/app/components/AppDialogShell'
 import { beepSound } from '@/inside/components/marV2/beep-util'
+import { extractMedName } from '@/ehr-definitions/med-definitions/medOrder-model'
 
 export default {
   components: {
@@ -52,7 +53,7 @@ export default {
   },
   computed: {
     patientMrn () { return this.patientData.mrn },
-    medOrders () { return this.patientData.medorders.map( mo => mo.med_medication) },
+    medOrders () { return this.patientData.medorders.map( mo => extractMedName(mo.med_medication)) },
     validPatient () { return this.patientMrn === this.inputPatientMrn },
   },
   methods: {

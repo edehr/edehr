@@ -29,7 +29,7 @@ export default {
         let mom = moment(value, 'YYYY-MM-DDTHH:mm:ss ZZ')
         if (mom.isValid()) value = formatDateStr(value) //mom.format('DD MMM YYYY')
       }
-      if (inputType === 'lookahead') {
+      if (inputType === EhrTypes.dataInputTypes.lookahead) {
         value = extractMedName(value)
       }
       if (inputType === EhrTypes.dataInputTypes.visitDay) {
