@@ -5,8 +5,8 @@ import { ParameterError } from '../common/errors'
 const MEDICATIONS = require('../../resources/medicationsList.json')
 
 // Support for new medication databases and /medicationsV3/
-const MEDICATIONS_VA = require('../../resources/medications/vaMedications.json')
-const MEDICATIONS_CA = require('../../resources/medications/canMedications.json')
+const MEDICATIONS_VA = require('../../resources/vaMedications.json')
+const MEDICATIONS_CA = require('../../resources/canMedications.json')
 const MED_KEY = 'med'
 function getSearchList (medicationList) {
   const T_KEY = 'thD'
