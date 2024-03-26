@@ -15,26 +15,31 @@ export function isActivitySimTimeActive () {
 
 export function getCurrentSimDate () {
   let d = store.getters['visit/simDate']
-  let isDev = StoreHelper.isDevelopingContent()
-  console.log('-----------', isDev, d)
+  let isDev = StoreHelper.isSeedEditing()
+  // console.log('-----------getCurrentSimDate', isDev, d)
   if (! isDev) {
     // non-content developer
     let activityRecord = store.getters['activityStore/activityRecord']
     if (activityRecord.simTimeKey) {
       [ d ] = splitSimTimeKey(activityRecord.simTimeKey)
+      // console.log('-----------getCurrentSimDate. Is Not dev content. Is using activityRecord.simTimeKey', activityRecord.simTimeKey, d)
     } // else use visit day if activity is not controlling time
   }
   return d
 }
 
 export function getCurrentSimTime () {
+  let t = store.getters['visit/simTime']
   let activityRecord = store.getters['activityStore/activityRecord']
-  if (activityRecord.simTimeKey) {
-    // eslint-disable-next-line no-unused-vars
-    let [d, t] = splitSimTimeKey(activityRecord.simTimeKey)
-    return t
+  let isDev = StoreHelper.isSeedEditing()
+  // console.log('-----------getCurrentSimTime', isDev, t)
+  if (! isDev) {
+    if (activityRecord.simTimeKey) {
+      t = splitSimTimeKey(activityRecord.simTimeKey)[1]
+      // console.log('-----------getCurrentSimTime. Is using activityRecord.simTimeKey', activityRecord.simTimeKey, t)
+    }
   }
-  return store.getters['visit/simTime']
+  return t
 }
 
 export function hourStringToHour (ts) {
