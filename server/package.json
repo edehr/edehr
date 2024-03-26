@@ -1,7 +1,7 @@
 {
   "name": "edehr-server",
   "scripts": {
-    "checkVer": "node checkNodeVersion.js",
+    "checkVer": "node checkNodeVersion.mjs",
     "build": "npm run checkVer && npm run clean && npm run build:babel && npm run build:resources",
     "build:babel": "mkdir -p build && babel src --out-dir ./build",
     "build:resources": "mkdir -p build/resources/seeds && cp src/resources/*.json build/resources && cp src/resources/seeds/*.json build/resources/seeds",

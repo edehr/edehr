@@ -2,7 +2,7 @@
   "name": "edehr-client",
   "description": "This is the client sub-package of the parent EdEhr project",
   "scripts": {
-    "checkVer": "node checkNodeVersion.js",
+    "checkVer": "node checkNodeVersion.mjs",
     "setup": "cp sample.env .env",
     "start": "npm run checkVer && NODE_ENV=development VUE_APP_ROOT_API=http://localhost:27000/api vue-cli-service serve",
     "build": "npm run checkVer && vue-cli-service build",
