@@ -1,12 +1,17 @@
 <template lang='pug'>
   div(class="seed-table")
-    table(v-show="hasData", class="table_horizontal")
-      tr
-        th(v-for="col in columns", v-text-to-html='colLabel(col)', :class="tableCellCss(col, {})")
-      tr(v-for="row in rows")
-        td(v-for="(d, index) in rowData(row)", :class="tableCellCss(columns[index], row)" )
-          pre(v-if='columns[index].inputType === "textarea"') {{d}}
-          span(v-else) {{human(columns[index], d)}}
+    table(v-show="hasData", class="table_horizontal", tabindex="0")
+      thead
+        tr
+          th(v-for="col in columns", v-text-to-html='colLabel(col)', :class="tableCellCss(col, {})")
+      tfoot
+        tr
+          th(v-for="col in columns", v-text-to-html='colLabel(col)', :class="tableCellCss(col, {})")
+      tbody
+        tr(v-for="row in rows")
+          td(v-for="(d, index) in rowData(row)", :class="tableCellCss(columns[index], row)" )
+            pre(v-if='columns[index].inputType === "textarea"') {{d}}
+            span(v-else) {{human(columns[index], d)}}
     div(v-show='!hasData') No data in this table.
 
 </template>
@@ -82,10 +87,26 @@ export default {
 <style scoped lang='scss'>
 @import "../../../scss/definitions";
 
-.table_horizontal {
-  display: block;
-  overflow-x: auto;
+.seed-table {
+  overflow-y: auto;
+  height: 45em;
 }
+table {
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 1rem;
+}
+thead,
+tfoot {
+  background: #eee;
+}
+thead th {
+  position: sticky;
+  top: 0;
+}
+
 .draft {
   background-color: $table-draft-colour !important;
   color: black;
