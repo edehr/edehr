@@ -12,7 +12,7 @@
               span(v-html="tableLabel(tCell)")
         tbody
           tr(v-for="(dRow, rIndex) in cTableData", :key='rIndex', :class='{draftRow : isDraft(dRow) }')
-            td(v-if="showTableAction")
+            td(v-if="showTableAction", class='aux-table-actions')
               div(v-if='isDraft(dRow)') &nbsp;
               ui-button(value="ets-action", v-else, v-on:buttonClicked="tableAction(getIdFromRow(dRow))")
                 span {{ tableActionLabel(getIdFromRow(dRow)) }} &nbsp;
@@ -100,6 +100,12 @@ export default {
 }
 .table-actions > button {
   margin-right: 5px;
+  margin-bottom: 5px;
 }
 </style>
 
+<style>
+.table-actions .button .svg-inline--fa {
+  min-width: 1.2rem !important;
+}
+</style>
