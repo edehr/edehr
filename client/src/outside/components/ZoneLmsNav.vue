@@ -37,7 +37,8 @@
       fas-icon(class="fa", :icon="appIcons.file")
       span(v-show='!iconsOnly') &nbsp; {{navText.FILE_LABEL}}
     div(class='mode-toggle')
-      input(type="checkbox", id="creator", @input="setDevContent", :checked="isDevelopingContent")
+      input(type="checkbox", id="creator", @input="setDevContent", :checked="isDevelopingContent",
+        :title='navText.DESIGNER_MODE_LABEL')
       label(for='creator') &nbsp; {{navText.DESIGNER_MODE_LABEL}}
     transition(name="fade")
       span(v-if="showEx", class="explain-text") &nbsp; {{navText.DESIGNER_MODE_EXPLAIN}}
@@ -149,7 +150,9 @@ export default {
   margin: 0.5rem 0 0.5rem 0.75rem;
   cursor: pointer;
 }
-
+.left_side_small .mode-toggle label {
+  display: none;
+}
 /*
 .router-item is defined in outside.css. Here we adjust its bottom margin
 */

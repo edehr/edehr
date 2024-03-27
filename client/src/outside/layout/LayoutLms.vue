@@ -120,6 +120,7 @@ main {
 }
 .left_side_small {
   width: 3.3rem !important;
+  min-width: 3.3rem !important;
 }
 .right_side_large {
   width: 94% !important;
