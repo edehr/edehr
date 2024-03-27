@@ -4647,5 +4647,3941 @@
   "description": "Short-acting anaesthetic and sedative drug",
   "extract": "Etomidate is a short-acting intravenous anaesthetic agent used for the induction of general anaesthesia and sedation for short procedures such as reduction of dislocated joints, tracheal intubation, cardioversion and electroconvulsive therapy. It was developed at Janssen Pharmaceutica in 1964 and was introduced as an intravenous agent in 1972 in Europe and in 1983 in the United States.",
   "extract_html": "<p><b>Etomidate</b> is a short-acting intravenous anaesthetic agent used for the induction of general anaesthesia and sedation for short procedures such as reduction of dislocated joints, tracheal intubation, cardioversion and electroconvulsive therapy. It was developed at Janssen Pharmaceutica in 1964 and was introduced as an intravenous agent in 1972 in Europe and in 1983 in the United States.</p>"
+ },
+ "V04CG05": {
+  "code": "V04CG05",
+  "term": "METHYLTHIONINE"
+ },
+ "V03AB17": {
+  "code": "V03AB17",
+  "term": "METHYLTHIONINIUM CHLORIDE"
+ },
+ "A03AD01": {
+  "code": "A03AD01",
+  "term": "PAPAVERINE"
+ },
+ "M03AB01": {
+  "code": "M03AB01",
+  "term": "SUXAMETHONIUM"
+ },
+ "L01DA01": {
+  "code": "L01DA01",
+  "term": "DACTINOMYCIN"
+ },
+ "S01FA01": {
+  "code": "S01FA01",
+  "term": "ATROPINE"
+ },
+ "S01FA06": {
+  "code": "S01FA06",
+  "term": "TROPICAMIDE"
+ },
+ "M01CC01": {
+  "code": "M01CC01",
+  "term": "PENICILLAMINE"
+ },
+ "P01BC01": {
+  "code": "P01BC01",
+  "term": "QUININE"
+ },
+ "N05BB01": {
+  "code": "N05BB01",
+  "term": "HYDROXYZINE"
+ },
+ "H02AB01": {
+  "code": "H02AB01",
+  "term": "BETAMETHASONE"
+ },
+ "N02CA01": {
+  "code": "N02CA01",
+  "term": "DIHYDROERGOTAMINE"
+ },
+ "G03DA02": {
+  "code": "G03DA02",
+  "term": "MEDROXYPROGESTERONE"
+ },
+ "H02AB07": {
+  "code": "H02AB07",
+  "term": "PREDNISONE"
+ },
+ "N01BB52": {
+  "code": "N01BB52",
+  "term": "LIDOCAINE, COMBINATIONS"
+ },
+ "N03AB02": {
+  "code": "N03AB02",
+  "term": "PHENYTOIN"
+ },
+ "D07CB05": {
+  "code": "D07CB05",
+  "term": "FLUMETASONE AND ANTIBIOTICS"
+ },
+ "A03CA02": {
+  "code": "A03CA02",
+  "term": "CLIDINIUM AND PSYCHOLEPTICS"
+ },
+ "N03AD01": {
+  "code": "N03AD01",
+  "term": "ETHOSUXIMIDE"
+ },
+ "D07CA01": {
+  "code": "D07CA01",
+  "term": "HYDROCORTISONE AND ANTIBIOTICS"
+ },
+ "N02AA79": {
+  "code": "N02AA79",
+  "term": "CODEIN, COMBINATIONS WITH PSYCHOLEPTICS"
+ },
+ "S01GA01": {
+  "code": "S01GA01",
+  "term": "NAPHAZOLINE"
+ },
+ "A07DA01": {
+  "code": "A07DA01",
+  "term": "DIPHENOXYLATE"
+ },
+ "L01XB01": {
+  "code": "L01XB01",
+  "term": "PROCARBAZINE"
+ },
+ "R05DA04": {
+  "code": "R05DA04",
+  "term": "CODEINE"
+ },
+ "N06AA12": {
+  "code": "N06AA12",
+  "term": "DOXEPIN"
+ },
+ "L01BB02": {
+  "code": "L01BB02",
+  "term": "MERCAPTOPURINE"
+ },
+ "R02AA20": {
+  "code": "R02AA20",
+  "term": "VARIOUS"
+ },
+ "S01HA04": {
+  "code": "S01HA04",
+  "term": "PROXYMETACAINE"
+ },
+ "B05BC01": {
+  "code": "B05BC01",
+  "term": "MANNITOL"
+ },
+ "L04AX01": {
+  "code": "L04AX01",
+  "term": "AZATHIOPRINE"
+ },
+ "L01AA02": {
+  "code": "L01AA02",
+  "term": "CHLORAMBUCIL"
+ },
+ "N02BA71": {
+  "code": "N02BA71",
+  "term": "ACETYLSALICYLIC ACID, COMB WITH PSYCHOLEPTICS"
+ },
+ "C01DA02": {
+  "code": "C01DA02",
+  "term": "GLYCERYL TRINITRATE"
+ },
+ "G03BA03": {
+  "code": "G03BA03",
+  "term": "TESTOSTERONE"
+ },
+ "N05AA01": {
+  "code": "N05AA01",
+  "term": "CHLORPROMAZINE"
+ },
+ "G03DC02": {
+  "code": "G03DC02",
+  "term": "NORETHISTERONE"
+ },
+ "C03DA01": {
+  "code": "C03DA01",
+  "term": "SPIRONOLACTONE"
+ },
+ "S01BA07": {
+  "code": "S01BA07",
+  "term": "FLUOROMETHOLONE"
+ },
+ "J04AK02": {
+  "code": "J04AK02",
+  "term": "ETHAMBUTOL"
+ },
+ "B02BC09": {
+  "code": "B02BC09",
+  "term": "EPINEPHRINE"
+ },
+ "S01FA04": {
+  "code": "S01FA04",
+  "term": "CYCLOPENTOLATE"
+ },
+ "H02BX01": {
+  "code": "H02BX01",
+  "term": "METHYLPREDNISOLONE, COMBINATIONS"
+ },
+ "B05BB01": {
+  "code": "B05BB01",
+  "term": "ELECTROLYTES"
+ },
+ "B05BB02": {
+  "code": "B05BB02",
+  "term": "ELECTROLYTES WITH CARBOHYDRATES"
+ },
+ "B05AA55": {
+  "code": "B05AA55",
+  "term": "DEXTRAN,COMBINATIONS"
+ },
+ "H02AB10": {
+  "code": "H02AB10",
+  "term": "CORTISONE"
+ },
+ "L01BB03": {
+  "code": "L01BB03",
+  "term": "TIOGUANINE"
+ },
+ "V01AA20": {
+  "code": "V01AA20",
+  "term": "VARIOUS"
+ },
+ "M04AC01": {
+  "code": "M04AC01",
+  "term": "COLCHICINE"
+ },
+ "S01BA04": {
+  "code": "S01BA04",
+  "term": "PREDNISOLONE"
+ },
+ "H01AA02": {
+  "code": "H01AA02",
+  "term": "TETRACOSACTIDE"
+ },
+ "D07AC01": {
+  "code": "D07AC01",
+  "term": "BETAMETHASONE"
+ },
+ "V04CF01": {
+  "code": "V04CF01",
+  "term": "TUBERCULIN"
+ },
+ "D06BA01": {
+  "code": "D06BA01",
+  "term": "SILVER SULFADIAZINE"
+ },
+ "N05AB06": {
+  "code": "N05AB06",
+  "term": "TRIFLUOPERAZINE"
+ },
+ "J01CF02": {
+  "code": "J01CF02",
+  "term": "CLOXACILLIN"
+ },
+ "N05AB03": {
+  "code": "N05AB03",
+  "term": "PERPHENAZINE"
+ },
+ "S01EB01": {
+  "code": "S01EB01",
+  "term": "PILOCARPINE"
+ },
+ "C03BA04": {
+  "code": "C03BA04",
+  "term": "CHLORTALIDONE"
+ },
+ "C02AB02": {
+  "code": "C02AB02",
+  "term": "METHYLDOPA (RACEMIC)"
+ },
+ "B05XA01": {
+  "code": "B05XA01",
+  "term": "POTASSIUM CHLORIDE"
+ },
+ "L01AD02": {
+  "code": "L01AD02",
+  "term": "LOMUSTINE"
+ },
+ "V08AD01": {
+  "code": "V08AD01",
+  "term": "ETHYL ESTERS OF IODISED FATTY ACIDS"
+ },
+ "S01BA01": {
+  "code": "S01BA01",
+  "term": "DEXAMETHASONE"
+ },
+ "N05BA01": {
+  "code": "N05BA01",
+  "term": "DIAZEPAM"
+ },
+ "G02AD02": {
+  "code": "G02AD02",
+  "term": "DINOPROSTONE"
+ },
+ "N01BB03": {
+  "code": "N01BB03",
+  "term": "MEPIVACAINE"
+ },
+ "N03AA03": {
+  "code": "N03AA03",
+  "term": "PRIMIDONE"
+ },
+ "J01BA01": {
+  "code": "J01BA01",
+  "term": "CHLORAMPHENICOL"
+ },
+ "N01BB54": {
+  "code": "N01BB54",
+  "term": "PRILOCAINE, COMBINATIONS"
+ },
+ "N05AB02": {
+  "code": "N05AB02",
+  "term": "FLUPHENAZINE"
+ },
+ "J04AB02": {
+  "code": "J04AB02",
+  "term": "RIFAMPICIN"
+ },
+ "V08AA04": {
+  "code": "V08AA04",
+  "term": "IOTALAMIC ACID"
+ },
+ "J07BL01": {
+  "code": "J07BL01",
+  "term": "YELLOW FEVER, LIVE ATTENUATED"
+ },
+ "B05XA05": {
+  "code": "B05XA05",
+  "term": "MAGNESIUM SULPHATE"
+ },
+ "C07AA03": {
+  "code": "C07AA03",
+  "term": "PINDOLOL"
+ },
+ "S01FB01": {
+  "code": "S01FB01",
+  "term": "PHENYLEPHRINE"
+ },
+ "L01XX23": {
+  "code": "L01XX23",
+  "term": "MITOTANE"
+ },
+ "V04CD": {
+  "code": "V04CD",
+  "term": "TESTS FOR PITUITARY FUNCTION"
+ },
+ "A11CC04": {
+  "code": "A11CC04",
+  "term": "CALCITRIOL"
+ },
+ "N05BA04": {
+  "code": "N05BA04",
+  "term": "OXAZEPAM"
+ },
+ "J07BD52": {
+  "code": "J07BD52",
+  "term": "MEASLES, COMBIN. WITH MUMPS AND RUBELLA, LIVE ATTENUATED"
+ },
+ "G04BX13": {
+  "code": "G04BX13",
+  "term": "DIMETHYL SULFOXIDE"
+ },
+ "B05CX10": {
+  "code": "B05CX10",
+  "term": "COMBINATIONS"
+ },
+ "B05CX03": {
+  "code": "B05CX03",
+  "term": "GLYCINE"
+ },
+ "S01EB02": {
+  "code": "S01EB02",
+  "term": "CARBACHOL"
+ },
+ "N05CD02": {
+  "code": "N05CD02",
+  "term": "NITRAZEPAM"
+ },
+ "C02DC01": {
+  "code": "C02DC01",
+  "term": "MINOXIDIL"
+ },
+ "J07AM51": {
+  "code": "J07AM51",
+  "term": "TETANUS TOXOID, COMB. WITH DIPHTHERIA TOXOID"
+ },
+ "A07EB01": {
+  "code": "A07EB01",
+  "term": "CROMOGLICIC ACID"
+ },
+ "M01AB01": {
+  "code": "M01AB01",
+  "term": "INDOMETACIN"
+ },
+ "N02CX01": {
+  "code": "N02CX01",
+  "term": "PIZOTIFEN"
+ },
+ "R03DA05": {
+  "code": "R03DA05",
+  "term": "AMINOPHYLLINE"
+ },
+ "B05XA07": {
+  "code": "B05XA07",
+  "term": "CALCIUM CHLORIDE"
+ },
+ "N06AX05": {
+  "code": "N06AX05",
+  "term": "TRAZODONE"
+ },
+ "R03DA54": {
+  "code": "R03DA54",
+  "term": "THEOPHYLLINE, COMBINATIONS EXCL. PSYCHOLEPTICS"
+ },
+ "N05BA02": {
+  "code": "N05BA02",
+  "term": "CHLORDIAZEPOXIDE"
+ },
+ "H01BB02": {
+  "code": "H01BB02",
+  "term": "OXYTOCIN"
+ },
+ "N06AF03": {
+  "code": "N06AF03",
+  "term": "PHENELZINE"
+ },
+ "C05AA01": {
+  "code": "C05AA01",
+  "term": "HYDROCORTISONE"
+ },
+ "C01BB01": {
+  "code": "C01BB01",
+  "term": "LIDOCAINE"
+ },
+ "C03EA01": {
+  "code": "C03EA01",
+  "term": "HYDROCHLOROTHIAZIDE AND POTASSIUM-SPARING AGENTS"
+ },
+ "S01AA12": {
+  "code": "S01AA12",
+  "term": "TOBRAMYCIN"
+ },
+ "A03AA07": {
+  "code": "A03AA07",
+  "term": "DICYCLOVERINE"
+ },
+ "N05CD01": {
+  "code": "N05CD01",
+  "term": "FLURAZEPAM"
+ },
+ "C01DA08": {
+  "code": "C01DA08",
+  "term": "ISOSORBIDE DINITRATE"
+ },
+ "P02CA01": {
+  "code": "P02CA01",
+  "term": "MEBENDAZOLE"
+ },
+ "C01EA01": {
+  "code": "C01EA01",
+  "term": "ALPROSTADIL"
+ },
+ "R01AX10": {
+  "code": "R01AX10",
+  "term": "VARIOUS"
+ },
+ "S01EC01": {
+  "code": "S01EC01",
+  "term": "ACETAZOLAMIDE"
+ },
+ "N04AA01": {
+  "code": "N04AA01",
+  "term": "TRIHEXYPHENIDYL"
+ },
+ "D06BB03": {
+  "code": "D06BB03",
+  "term": "ACICLOVIR"
+ },
+ "C07CA03": {
+  "code": "C07CA03",
+  "term": "PINDOLOL AND OTHER DIURETICS"
+ },
+ "V03AN04": {
+  "code": "V03AN04",
+  "term": "NITROGEN"
+ },
+ "D07XC01": {
+  "code": "D07XC01",
+  "term": "BETAMETHASONE"
+ },
+ "J01AA07": {
+  "code": "J01AA07",
+  "term": "TETRACYCLINE"
+ },
+ "A10AC01": {
+  "code": "A10AC01",
+  "term": "INSULIN (HUMAN)"
+ },
+ "R06AD02": {
+  "code": "R06AD02",
+  "term": "PROMETHAZINE"
+ },
+ "D07AC08": {
+  "code": "D07AC08",
+  "term": "FLUOCINONIDE"
+ },
+ "J01XB01": {
+  "code": "J01XB01",
+  "term": "COLISTIN"
+ },
+ "B05XA30": {
+  "code": "B05XA30",
+  "term": "COMBINATIONS OF ELECTROLYTES"
+ },
+ "B05XC": {
+  "code": "B05XC",
+  "term": "VITAMINS"
+ },
+ "V03AN01": {
+  "code": "V03AN01",
+  "term": "OXYGEN"
+ },
+ "V03AN05": {
+  "code": "V03AN05",
+  "term": "MEDICAL AIR"
+ },
+ "N01AX13": {
+  "code": "N01AX13",
+  "term": "NITROUS OXIDE"
+ },
+ "V03AN": {
+  "code": "V03AN",
+  "term": "MEDICAL GASES"
+ },
+ "V03AN02": {
+  "code": "V03AN02",
+  "term": "CARBON DIOXIDE"
+ },
+ "V03AN03": {
+  "code": "V03AN03",
+  "term": "HELIUM"
+ },
+ "A07EC01": {
+  "code": "A07EC01",
+  "term": "SULFASALAZINE"
+ },
+ "N02AJ18": {
+  "code": "N02AJ18",
+  "term": "OXYCODONE AND ACETYLSALICYLIC ACID"
+ },
+ "N02AJ17": {
+  "code": "N02AJ17",
+  "term": "OXYCODONE AND PARACETAMOL"
+ },
+ "L04AD01": {
+  "code": "L04AD01",
+  "term": "CICLOSPORIN"
+ },
+ "L01CB01": {
+  "code": "L01CB01",
+  "term": "ETOPOSIDE"
+ },
+ "N05BA06": {
+  "code": "N05BA06",
+  "term": "LORAZEPAM"
+ },
+ "V03AH01": {
+  "code": "V03AH01",
+  "term": "DIAZOXIDE"
+ },
+ "M01AB05": {
+  "code": "M01AB05",
+  "term": "DICLOFENAC"
+ },
+ "J01CE02": {
+  "code": "J01CE02",
+  "term": "PHENOXYMETHYLPENICILLIN"
+ },
+ "M01AC01": {
+  "code": "M01AC01",
+  "term": "PIROXICAM"
+ },
+ "N01AX63": {
+  "code": "N01AX63",
+  "term": "NITROUS OXIDE,COMBINATIONS"
+ },
+ "G03HA01": {
+  "code": "G03HA01",
+  "term": "CYPROTERONE"
+ },
+ "J01XD01": {
+  "code": "J01XD01",
+  "term": "METRONIDAZOLE"
+ },
+ "G03CA07": {
+  "code": "G03CA07",
+  "term": "ESTRONE"
+ },
+ "C09AA02": {
+  "code": "C09AA02",
+  "term": "ENALAPRIL"
+ },
+ "B05XA06": {
+  "code": "B05XA06",
+  "term": "POTASSIUM PHOS INCL COMB W/0TH POT. SALTS"
+ },
+ "N02AB02": {
+  "code": "N02AB02",
+  "term": "PETHIDINE"
+ },
+ "G03AB03": {
+  "code": "G03AB03",
+  "term": "LEVONORGESTREL AND ESTROGEN"
+ },
+ "C05BB04": {
+  "code": "C05BB04",
+  "term": "SODIUM TETRADECYL SULPHATE"
+ },
+ "D07AB09": {
+  "code": "D07AB09",
+  "term": "TRIAMCINOLONE"
+ },
+ "C07AA06": {
+  "code": "C07AA06",
+  "term": "TIMOLOL"
+ },
+ "B05CB10": {
+  "code": "B05CB10",
+  "term": "COMBINATIONS"
+ },
+ "P03AC04": {
+  "code": "P03AC04",
+  "term": "PERMETHRIN"
+ },
+ "D01AA01": {
+  "code": "D01AA01",
+  "term": "NYSTATIN"
+ },
+ "C07AA12": {
+  "code": "C07AA12",
+  "term": "NADOLOL"
+ },
+ "M01AB02": {
+  "code": "M01AB02",
+  "term": "SULINDAC"
+ },
+ "D11AF": {
+  "code": "D11AF",
+  "term": "WART AND ANTI-CORN PREPARATIONS"
+ },
+ "J01FA01": {
+  "code": "J01FA01",
+  "term": "ERYTHROMYCIN"
+ },
+ "D07CB01": {
+  "code": "D07CB01",
+  "term": "TRIAMCINOLONE AND ANTIBIOTICS"
+ },
+ "N05CD05": {
+  "code": "N05CD05",
+  "term": "TRIAZOLAM"
+ },
+ "A10AD01": {
+  "code": "A10AD01",
+  "term": "INSULIN (HUMAN)"
+ },
+ "N05AB04": {
+  "code": "N05AB04",
+  "term": "PROCHLORPERAZINE"
+ },
+ "A07AA02": {
+  "code": "A07AA02",
+  "term": "NYSTATIN"
+ },
+ "A11GA01": {
+  "code": "A11GA01",
+  "term": "ASCORBIC ACID (VIT C)"
+ },
+ "B02BA01": {
+  "code": "B02BA01",
+  "term": "PHYTOMENADIONE"
+ },
+ "S03AA30": {
+  "code": "S03AA30",
+  "term": "ANTIINFECTIVES, COMBINATIONS"
+ },
+ "D07XA01": {
+  "code": "D07XA01",
+  "term": "HYDROCORTISONE"
+ },
+ "M01AE03": {
+  "code": "M01AE03",
+  "term": "KETOPROFEN"
+ },
+ "B01AB51": {
+  "code": "B01AB51",
+  "term": "HEPARIN, COMBINATIONS"
+ },
+ "J01DD08": {
+  "code": "J01DD08",
+  "term": "CEFIXIME"
+ },
+ "D08AJ02": {
+  "code": "D08AJ02",
+  "term": "CETRIMONIUM"
+ },
+ "N07AA02": {
+  "code": "N07AA02",
+  "term": "PYRIDOSTIGMINE"
+ },
+ "L02BA01": {
+  "code": "L02BA01",
+  "term": "TAMOXIFEN"
+ },
+ "R03AC03": {
+  "code": "R03AC03",
+  "term": "TERBUTALINE"
+ },
+ "D01AC20": {
+  "code": "D01AC20",
+  "term": "IMIDAZOLES/TRIAZOLES IN COMBINATION WITH CORTICOSTEROIDS"
+ },
+ "C02CA01": {
+  "code": "C02CA01",
+  "term": "PRAZOSIN"
+ },
+ "N05BA05": {
+  "code": "N05BA05",
+  "term": "CLORAZEPATE POTASSIUM"
+ },
+ "C09AA01": {
+  "code": "C09AA01",
+  "term": "CAPTOPRIL"
+ },
+ "C09BA02": {
+  "code": "C09BA02",
+  "term": "ENALAPRIL AND DIURETICS"
+ },
+ "B05XA09": {
+  "code": "B05XA09",
+  "term": "SODIUM PHOSPHATE"
+ },
+ "R02AA12": {
+  "code": "R02AA12",
+  "term": "HEXYLRESORCINOL"
+ },
+ "B05BA01": {
+  "code": "B05BA01",
+  "term": "AMINO ACIDS"
+ },
+ "M03BB53": {
+  "code": "M03BB53",
+  "term": "CHLORZOXAZONE, COMBINATIONS EXCL PSYCHOLEPTICS"
+ },
+ "J01DD02": {
+  "code": "J01DD02",
+  "term": "CEFTAZIDIME"
+ },
+ "M01AE09": {
+  "code": "M01AE09",
+  "term": "FLURBIPROFEN"
+ },
+ "C01CA04": {
+  "code": "C01CA04",
+  "term": "DOPAMINE"
+ },
+ "A10BB01": {
+  "code": "A10BB01",
+  "term": "GLIBENCLAMIDE"
+ },
+ "R01BA52": {
+  "code": "R01BA52",
+  "term": "PSEUDOEPHEDRINE, COMBINATIONS"
+ },
+ "R06AD01": {
+  "code": "R06AD01",
+  "term": "ALIMEMAZINE"
+ },
+ "N05AC01": {
+  "code": "N05AC01",
+  "term": "PERICIAZINE"
+ },
+ "C08CA02": {
+  "code": "C08CA02",
+  "term": "FELODIPINE"
+ },
+ "N04AA05": {
+  "code": "N04AA05",
+  "term": "PROFENAMINE"
+ },
+ "G01AA51": {
+  "code": "G01AA51",
+  "term": "NYSTATIN, COMBINATIONS"
+ },
+ "N07AB02": {
+  "code": "N07AB02",
+  "term": "BETHANECHOL"
+ },
+ "S03AA07": {
+  "code": "S03AA07",
+  "term": "CIPROFLOXACIN"
+ },
+ "S01EA03": {
+  "code": "S01EA03",
+  "term": "APRACLONIDINE"
+ },
+ "S01BC05": {
+  "code": "S01BC05",
+  "term": "KETOROLAC"
+ },
+ "C03BA08": {
+  "code": "C03BA08",
+  "term": "METOLAZONE"
+ },
+ "J07AG01": {
+  "code": "J07AG01",
+  "term": "HEMOPHILUS INFLUENZAE B, PURIFIED ANTIG. CONJUGATED"
+ },
+ "N05AA02": {
+  "code": "N05AA02",
+  "term": "LEVOMEPROMAZINE"
+ },
+ "N06AG02": {
+  "code": "N06AG02",
+  "term": "MOCLOBEMIDE"
+ },
+ "M03BA03": {
+  "code": "M03BA03",
+  "term": "METHOCARBAMOL"
+ },
+ "D05AX02": {
+  "code": "D05AX02",
+  "term": "CALCIPOTRIOL"
+ },
+ "D04AB30": {
+  "code": "D04AB30",
+  "term": "TOPICAL ANESTHETICS, COMBINATIONS"
+ },
+ "A01AC01": {
+  "code": "A01AC01",
+  "term": "TRIAMCINOLONE"
+ },
+ "V08CA01": {
+  "code": "V08CA01",
+  "term": "GADOPENTETIC ACID"
+ },
+ "A12CX": {
+  "code": "A12CX",
+  "term": "OTHER MINERAL PRODUCTS"
+ },
+ "V03AC01": {
+  "code": "V03AC01",
+  "term": "DEFEROXAMINE"
+ },
+ "S01GX05": {
+  "code": "S01GX05",
+  "term": "LODOXAMIDE"
+ },
+ "J07AP01": {
+  "code": "J07AP01",
+  "term": "TYPHOID, ORAL, LIVE ATTENUATED"
+ },
+ "M01AB55": {
+  "code": "M01AB55",
+  "term": "DICLOFENAC, COMBINATIONS"
+ },
+ "N02AF02": {
+  "code": "N02AF02",
+  "term": "NALBUFINE"
+ },
+ "H01BA02": {
+  "code": "H01BA02",
+  "term": "DESMOPRESSIN"
+ },
+ "D07AC04": {
+  "code": "D07AC04",
+  "term": "FLUOCINOLONE ACETONIDE"
+ },
+ "V03AN20": {
+  "code": "V03AN20",
+  "term": "COMBINATION"
+ },
+ "R05DB10": {
+  "code": "R05DB10",
+  "term": "CLOFEDANOL"
+ },
+ "D07AC21": {
+  "code": "D07AC21",
+  "term": "ULOBETASOL"
+ },
+ "H02AB08": {
+  "code": "H02AB08",
+  "term": "TRIAMCINOLONE"
+ },
+ "M03CA01": {
+  "code": "M03CA01",
+  "term": "DANTROLENE"
+ },
+ "C05BA04": {
+  "code": "C05BA04",
+  "term": "PENTOSTAN POLYSULFATE SODIUM"
+ },
+ "C05BB56": {
+  "code": "C05BB56",
+  "term": "GLUCOSE, COMBINATIONS"
+ },
+ "C03CA02": {
+  "code": "C03CA02",
+  "term": "BUMETANIDE"
+ },
+ "G03AA09": {
+  "code": "G03AA09",
+  "term": "DESOGESTREL AND ESTROGEN"
+ },
+ "N01AX10": {
+  "code": "N01AX10",
+  "term": "PROPOFOL"
+ },
+ "A02BX02": {
+  "code": "A02BX02",
+  "term": "SUCRALFATE"
+ },
+ "J02AC02": {
+  "code": "J02AC02",
+  "term": "ITRACONAZOLE"
+ },
+ "G03XA01": {
+  "code": "G03XA01",
+  "term": "DANAZOL"
+ },
+ "A03AX04": {
+  "code": "A03AX04",
+  "term": "PINAVERIUM"
+ },
+ "N06AF04": {
+  "code": "N06AF04",
+  "term": "TRANYLCYPROMINE"
+ },
+ "R05CB13": {
+  "code": "R05CB13",
+  "term": "DORNASE ALFA (DESOXYRIBONUCLEASE)"
+ },
+ "N03AG04": {
+  "code": "N03AG04",
+  "term": "VIGABATRIN"
+ },
+ "M03BX01": {
+  "code": "M03BX01",
+  "term": "BACLOFEN"
+ },
+ "S01ED02": {
+  "code": "S01ED02",
+  "term": "BETAXOLOL"
+ },
+ "G03CA57": {
+  "code": "G03CA57",
+  "term": "CONJUGATED ESTROGENS"
+ },
+ "M01CB03": {
+  "code": "M01CB03",
+  "term": "AURANOFIN"
+ },
+ "H03AA02": {
+  "code": "H03AA02",
+  "term": "LIOTHYRONINE SODIUM"
+ },
+ "G01AA10": {
+  "code": "G01AA10",
+  "term": "CLINDAMYCIN"
+ },
+ "N01BB51": {
+  "code": "N01BB51",
+  "term": "BUPIVACAINE, COMBINATIONS"
+ },
+ "D05BB02": {
+  "code": "D05BB02",
+  "term": "ACITRETIN"
+ },
+ "V08AB05": {
+  "code": "V08AB05",
+  "term": "IOPROMIDE"
+ },
+ "N04BC01": {
+  "code": "N04BC01",
+  "term": "BROMOCRIPTINE"
+ },
+ "L02AE03": {
+  "code": "L02AE03",
+  "term": "GOSERELIN"
+ },
+ "S03BA01": {
+  "code": "S03BA01",
+  "term": "DEXAMETHASONE"
+ },
+ "H01CA01": {
+  "code": "H01CA01",
+  "term": "GONADORELIN"
+ },
+ "N01BB58": {
+  "code": "N01BB58",
+  "term": "ARTICAINE, COMBINATIONS"
+ },
+ "G01AF04": {
+  "code": "G01AF04",
+  "term": "MICONAZOLE"
+ },
+ "D01AC02": {
+  "code": "D01AC02",
+  "term": "MICONAZOLE"
+ },
+ "C09BA03": {
+  "code": "C09BA03",
+  "term": "LISINOPRIL AND DIURETICS"
+ },
+ "A07AA06": {
+  "code": "A07AA06",
+  "term": "PAROMOMYCIN"
+ },
+ "G01AF01": {
+  "code": "G01AF01",
+  "term": "METRONIDAZOLE"
+ },
+ "C10AB02": {
+  "code": "C10AB02",
+  "term": "BEZAFIBRATE"
+ },
+ "C10AB04": {
+  "code": "C10AB04",
+  "term": "GEMFIBROZIL"
+ },
+ "D06BX01": {
+  "code": "D06BX01",
+  "term": "METRONIDAZOLE"
+ },
+ "C07AB04": {
+  "code": "C07AB04",
+  "term": "ACEBUTOLOL"
+ },
+ "A07EC03": {
+  "code": "A07EC03",
+  "term": "OLSALAZINE"
+ },
+ "C03BA11": {
+  "code": "C03BA11",
+  "term": "INDAPAMIDE"
+ },
+ "L01XF01": {
+  "code": "L01XF01",
+  "term": "TRETINOIN"
+ },
+ "J04AB04": {
+  "code": "J04AB04",
+  "term": "RIFABUTIN"
+ },
+ "B01AB04": {
+  "code": "B01AB04",
+  "term": "DALTEPARIN"
+ },
+ "J01GB03": {
+  "code": "J01GB03",
+  "term": "GENTAMICIN"
+ },
+ "L03AC01": {
+  "code": "L03AC01",
+  "term": "ALDESLEUKIN"
+ },
+ "P01BA03": {
+  "code": "P01BA03",
+  "term": "PRIMAQUINE"
+ },
+ "V03AF02": {
+  "code": "V03AF02",
+  "term": "DEXRAZOXANE"
+ },
+ "S01AE01": {
+  "code": "S01AE01",
+  "term": "OFLOXACIN"
+ },
+ "C10AC02": {
+  "code": "C10AC02",
+  "term": "COLESTIPOL"
+ },
+ "B05BA02": {
+  "code": "B05BA02",
+  "term": "FAT EMULSIONS"
+ },
+ "V08AB09": {
+  "code": "V08AB09",
+  "term": "IODIXANOL"
+ },
+ "N05AF01": {
+  "code": "N05AF01",
+  "term": "FLUPENTIXOL"
+ },
+ "S01JA01": {
+  "code": "S01JA01",
+  "term": "FLUORESCEIN"
+ },
+ "S01HA03": {
+  "code": "S01HA03",
+  "term": "TETRACAINE"
+ },
+ "B01AB09": {
+  "code": "B01AB09",
+  "term": "DANAPAROID"
+ },
+ "A16AA01": {
+  "code": "A16AA01",
+  "term": "LEVOCARNITINE"
+ },
+ "B05XA19": {
+  "code": "B05XA19",
+  "term": "CALCIUM GLUCONATE"
+ },
+ "J01DC01": {
+  "code": "J01DC01",
+  "term": "CEFOXITIN"
+ },
+ "B01AB10": {
+  "code": "B01AB10",
+  "term": "TINZAPARIN"
+ },
+ "L03AB08": {
+  "code": "L03AB08",
+  "term": "INTERFERON BETA-1B"
+ },
+ "C01BA02": {
+  "code": "C01BA02",
+  "term": "PROCAINAMIDE"
+ },
+ "V03AB14": {
+  "code": "V03AB14",
+  "term": "PROTAMINE"
+ },
+ "R02AA02": {
+  "code": "R02AA02",
+  "term": "DEQUALINIUM"
+ },
+ "H02AA02": {
+  "code": "H02AA02",
+  "term": "FLUDROCORTISONE"
+ },
+ "N01AB08": {
+  "code": "N01AB08",
+  "term": "SEVOFLURANE"
+ },
+ "L01CA02": {
+  "code": "L01CA02",
+  "term": "VINCRISTINE"
+ },
+ "L03AX03": {
+  "code": "L03AX03",
+  "term": "BCG VACCINE"
+ },
+ "B01AD02": {
+  "code": "B01AD02",
+  "term": "ALTEPLASE"
+ },
+ "N01AB06": {
+  "code": "N01AB06",
+  "term": "ISOFLURANE"
+ },
+ "G03AA05": {
+  "code": "G03AA05",
+  "term": "NORETHISTERONE AND ESTROGEN"
+ },
+ "J05AB11": {
+  "code": "J05AB11",
+  "term": "VALACICLOVIR"
+ },
+ "J07BC02": {
+  "code": "J07BC02",
+  "term": "HEPATITIS A, INACTIVATED, WHOLE VIRUS"
+ },
+ "J07AP03": {
+  "code": "J07AP03",
+  "term": "TYPHOID, PURIFIED POLYSACCHARIDE ANTIGEN"
+ },
+ "N01BB20": {
+  "code": "N01BB20",
+  "term": "COMBINATIONS"
+ },
+ "D07AC15": {
+  "code": "D07AC15",
+  "term": "BECLOMETASONE"
+ },
+ "S01EB09": {
+  "code": "S01EB09",
+  "term": "ACETYLCHOLINE"
+ },
+ "V03AB06": {
+  "code": "V03AB06",
+  "term": "THIOSULPHATE"
+ },
+ "H01BA01": {
+  "code": "H01BA01",
+  "term": "VASOPRESSIN (ARGIPRESSIN)"
+ },
+ "B05XA08": {
+  "code": "B05XA08",
+  "term": "SODIUM ACETATE"
+ },
+ "J05AP01": {
+  "code": "J05AP01",
+  "term": "RIBAVIRIN"
+ },
+ "G01AA01": {
+  "code": "G01AA01",
+  "term": "NYSTATIN"
+ },
+ "R01AA07": {
+  "code": "R01AA07",
+  "term": "XYLOMETAZOLINE"
+ },
+ "D07AB01": {
+  "code": "D07AB01",
+  "term": "CLOBETASONE"
+ },
+ "J01CE01": {
+  "code": "J01CE01",
+  "term": "BENZYLPENICILLIN"
+ },
+ "S03CA01": {
+  "code": "S03CA01",
+  "term": "DEXAMETHASONE AND ANTIINFECTIVES"
+ },
+ "C01BA03": {
+  "code": "C01BA03",
+  "term": "DISOPYRAMIDE"
+ },
+ "R01AB01": {
+  "code": "R01AB01",
+  "term": "PHENYLEPHRINE"
+ },
+ "V08AA01": {
+  "code": "V08AA01",
+  "term": "DIATRIZOIC ACID"
+ },
+ "M02AX10": {
+  "code": "M02AX10",
+  "term": "VARIOUS"
+ },
+ "D02AX": {
+  "code": "D02AX",
+  "term": "OTHER EMOLLIENTS AND PROTECTIVES"
+ },
+ "G03AB04": {
+  "code": "G03AB04",
+  "term": "NORETHISTERONE AND ESTROGEN"
+ },
+ "H01CA02": {
+  "code": "H01CA02",
+  "term": "NAFARELIN"
+ },
+ "C07AB09": {
+  "code": "C07AB09",
+  "term": "ESMOLOL"
+ },
+ "N07XX06": {
+  "code": "N07XX06",
+  "term": "TETRABENAZINE"
+ },
+ "J01DC02": {
+  "code": "J01DC02",
+  "term": "CEFUROXIME"
+ },
+ "R03CC02": {
+  "code": "R03CC02",
+  "term": "SALBUTAMOL"
+ },
+ "N07BB04": {
+  "code": "N07BB04",
+  "term": "NALTREXONE"
+ },
+ "V01AA11": {
+  "code": "V01AA11",
+  "term": "ANIMALS"
+ },
+ "C10AA02": {
+  "code": "C10AA02",
+  "term": "LOVASTATIN"
+ },
+ "D01AE14": {
+  "code": "D01AE14",
+  "term": "CICLOPIROX"
+ },
+ "L02BB02": {
+  "code": "L02BB02",
+  "term": "NILUTAMIDE"
+ },
+ "D07AC03": {
+  "code": "D07AC03",
+  "term": "DESOXIMETASONE"
+ },
+ "L02AE01": {
+  "code": "L02AE01",
+  "term": "BUSERELIN"
+ },
+ "D10AF52": {
+  "code": "D10AF52",
+  "term": "ERYTHROMYCIN, COMBINATIONS"
+ },
+ "V08AB04": {
+  "code": "V08AB04",
+  "term": "IOPAMIDOL"
+ },
+ "V08CA04": {
+  "code": "V08CA04",
+  "term": "GADOTERIDOL"
+ },
+ "L01DC01": {
+  "code": "L01DC01",
+  "term": "BLEOMYCIN"
+ },
+ "J07BF03": {
+  "code": "J07BF03",
+  "term": "POLIOMYELITIS, TRIVALENT, INACTIVATED, WHOLE VIRUS"
+ },
+ "V08AB02": {
+  "code": "V08AB02",
+  "term": "IOHEXOL"
+ },
+ "V08CA03": {
+  "code": "V08CA03",
+  "term": "GADODIAMIDE"
+ },
+ "C09BA08": {
+  "code": "C09BA08",
+  "term": "CILAZAPRIL AND DIURETICS"
+ },
+ "G03GA01": {
+  "code": "G03GA01",
+  "term": "CHORIONIC GONADOTROPHIN"
+ },
+ "D01AC08": {
+  "code": "D01AC08",
+  "term": "KETOCONAZOLE"
+ },
+ "L01CA01": {
+  "code": "L01CA01",
+  "term": "VINBLASTINE"
+ },
+ "P01CX01": {
+  "code": "P01CX01",
+  "term": "PENTAMIDINE ISETHIONATE"
+ },
+ "J07BG01": {
+  "code": "J07BG01",
+  "term": "RABIES, INACTIVATED, WHOLE VIRUS"
+ },
+ "A12BA02": {
+  "code": "A12BA02",
+  "term": "POTASSIUM CITRATE"
+ },
+ "N01BB09": {
+  "code": "N01BB09",
+  "term": "ROPIVACAINE"
+ },
+ "M01AG01": {
+  "code": "M01AG01",
+  "term": "MEFENAMIC ACID"
+ },
+ "J01MA06": {
+  "code": "J01MA06",
+  "term": "NORFLOXACIN"
+ },
+ "L01BA03": {
+  "code": "L01BA03",
+  "term": "RALTITREXED"
+ },
+ "A01AD02": {
+  "code": "A01AD02",
+  "term": "BENZYDAMINE"
+ },
+ "C04AD03": {
+  "code": "C04AD03",
+  "term": "PENTOXIFYLLINE"
+ },
+ "L01DC03": {
+  "code": "L01DC03",
+  "term": "MITOMYCIN"
+ },
+ "D04AB06": {
+  "code": "D04AB06",
+  "term": "TETRACAINE"
+ },
+ "J07BC20": {
+  "code": "J07BC20",
+  "term": "COMBINATIONS"
+ },
+ "H02AB06": {
+  "code": "H02AB06",
+  "term": "PREDNISOLONE"
+ },
+ "N04BD01": {
+  "code": "N04BD01",
+  "term": "SELEGILINE"
+ },
+ "D07AC18": {
+  "code": "D07AC18",
+  "term": "PREDNICARBATE"
+ },
+ "R01AD05": {
+  "code": "R01AD05",
+  "term": "BUDESONIDE"
+ },
+ "B01AC09": {
+  "code": "B01AC09",
+  "term": "EPOPROSTENOL"
+ },
+ "P02BA01": {
+  "code": "P02BA01",
+  "term": "PRAZIQUANTEL"
+ },
+ "R06AA52": {
+  "code": "R06AA52",
+  "term": "DIPHENHYDRAMINE, COMBINATIONS"
+ },
+ "N03AB05": {
+  "code": "N03AB05",
+  "term": "FOSPHENYTOIN"
+ },
+ "R03AC12": {
+  "code": "R03AC12",
+  "term": "SALMETEROL"
+ },
+ "R06AX26": {
+  "code": "R06AX26",
+  "term": "FEXOFENADINE"
+ },
+ "B03XA01": {
+  "code": "B03XA01",
+  "term": "ERYTHROPOIETIN"
+ },
+ "J06BB09": {
+  "code": "J06BB09",
+  "term": "CYTOMEGALOVIRUS IMMUNOGLOBULIN"
+ },
+ "G03HB01": {
+  "code": "G03HB01",
+  "term": "CYPROTERONE AND ESTROGEN"
+ },
+ "L04AA03": {
+  "code": "L04AA03",
+  "term": "ANTILYMPHOCYTE IMMUNOGLOBULIN (HORSE)"
+ },
+ "L01XX35": {
+  "code": "L01XX35",
+  "term": "ANAGRELIDE"
+ },
+ "R03AC13": {
+  "code": "R03AC13",
+  "term": "FORMOTEROL"
+ },
+ "A11CC01": {
+  "code": "A11CC01",
+  "term": "ERGOCALCIFEROL"
+ },
+ "B01AC06": {
+  "code": "B01AC06",
+  "term": "ACETYLSALICYLIC ACID"
+ },
+ "P01BB51": {
+  "code": "P01BB51",
+  "term": "PROGUANIL AND ATOVAQUONE"
+ },
+ "N05BA09": {
+  "code": "N05BA09",
+  "term": "CLOBAZAM"
+ },
+ "A16AA06": {
+  "code": "A16AA06",
+  "term": "BETAINE"
+ },
+ "S01EC04": {
+  "code": "S01EC04",
+  "term": "BRINZOLAMIDE"
+ },
+ "G03XC01": {
+  "code": "G03XC01",
+  "term": "RALOXIFENE"
+ },
+ "S02AA30": {
+  "code": "S02AA30",
+  "term": "ANTIINFECTIVES, COMBINATIONS"
+ },
+ "J05AR01": {
+  "code": "J05AR01",
+  "term": "ZIDOVUDINE AND LAMIVUDINE"
+ },
+ "A10BX02": {
+  "code": "A10BX02",
+  "term": "REPAGLINIDE"
+ },
+ "L02AE04": {
+  "code": "L02AE04",
+  "term": "TRIPTORELIN"
+ },
+ "A08AB01": {
+  "code": "A08AB01",
+  "term": "ORLISTAT"
+ },
+ "A16AX02": {
+  "code": "A16AX02",
+  "term": "ANETHOLE TRITHIONE"
+ },
+ "J05AF06": {
+  "code": "J05AF06",
+  "term": "ABACAVIR"
+ },
+ "N01AH01": {
+  "code": "N01AH01",
+  "term": "FENTANYL"
+ },
+ "L01FD01": {
+  "code": "L01FD01",
+  "term": "TRASTUZUMAB"
+ },
+ "B01AC17": {
+  "code": "B01AC17",
+  "term": "TIROFIBAN"
+ },
+ "J05AX05": {
+  "code": "J05AX05",
+  "term": "INOSINE PRANOBEX"
+ },
+ "B05DA": {
+  "code": "B05DA",
+  "term": "ISOTONIC SOLUTIONS"
+ },
+ "J05AH01": {
+  "code": "J05AH01",
+  "term": "ZANAMIVIR"
+ },
+ "J07BK01": {
+  "code": "J07BK01",
+  "term": "VARICELLA, LIVE ATTENUATED"
+ },
+ "V08CA09": {
+  "code": "V08CA09",
+  "term": "GADOBUTROL"
+ },
+ "V03AF01": {
+  "code": "V03AF01",
+  "term": "MESNA"
+ },
+ "L01AX04": {
+  "code": "L01AX04",
+  "term": "DACARBAZINE"
+ },
+ "A16AB02": {
+  "code": "A16AB02",
+  "term": "IMIGLUCERASE"
+ },
+ "G03FA01": {
+  "code": "G03FA01",
+  "term": "NORETHISTERONE AND ESTROGEN"
+ },
+ "L04AK01": {
+  "code": "L04AK01",
+  "term": "LEFLUNOMIDE"
+ },
+ "L01FA01": {
+  "code": "L01FA01",
+  "term": "RITUXIMAB"
+ },
+ "R03BA01": {
+  "code": "R03BA01",
+  "term": "BECLOMETASONE"
+ },
+ "S01LA01": {
+  "code": "S01LA01",
+  "term": "VERTEPORFIN"
+ },
+ "C01BD05": {
+  "code": "C01BD05",
+  "term": "IBUTILIDE"
+ },
+ "G02CB03": {
+  "code": "G02CB03",
+  "term": "CABERGOLINE"
+ },
+ "N02AF01": {
+  "code": "N02AF01",
+  "term": "BUTORPHANOL"
+ },
+ "B01AA03": {
+  "code": "B01AA03",
+  "term": "WARFARIN"
+ },
+ "L02BG06": {
+  "code": "L02BG06",
+  "term": "EXEMESTANE"
+ },
+ "N07XX02": {
+  "code": "N07XX02",
+  "term": "RILUZOLE"
+ },
+ "N05CM05": {
+  "code": "N05CM05",
+  "term": "SCOPOLAMINE"
+ },
+ "L04AC02": {
+  "code": "L04AC02",
+  "term": "BASILIXIMAB"
+ },
+ "V03AB34": {
+  "code": "V03AB34",
+  "term": "FOMEPIZOLE"
+ },
+ "D07AA02": {
+  "code": "D07AA02",
+  "term": "HYDROCORTISONE"
+ },
+ "G02BA03": {
+  "code": "G02BA03",
+  "term": "PLASTIC IUD WITH PROGESTOGENS"
+ },
+ "A02BA53": {
+  "code": "A02BA53",
+  "term": "FAMOTIDINE, COMBINATIONS"
+ },
+ "J01EA01": {
+  "code": "J01EA01",
+  "term": "TRIMETHOPRIM"
+ },
+ "D10AF51": {
+  "code": "D10AF51",
+  "term": "CLINDAMYCIN, COMBINATIONS"
+ },
+ "V08DA04": {
+  "code": "V08DA04",
+  "term": "MICROSPHERES OF PHOSPHOLIPIDS"
+ },
+ "L04AH01": {
+  "code": "L04AH01",
+  "term": "SIROLIMUS"
+ },
+ "B03AC": {
+  "code": "B03AC",
+  "term": "IRON, PARENTERAL PREPARATIONS"
+ },
+ "M03BC01": {
+  "code": "M03BC01",
+  "term": "ORPHENADRINE (CITRATE)"
+ },
+ "R03BA07": {
+  "code": "R03BA07",
+  "term": "MOMETASONE"
+ },
+ "J05AR10": {
+  "code": "J05AR10",
+  "term": "LOPINAVIR AND RITONAVIR"
+ },
+ "J01GA01": {
+  "code": "J01GA01",
+  "term": "STREPTOMYCIN"
+ },
+ "C04AB01": {
+  "code": "C04AB01",
+  "term": "PHENTOLAMINE"
+ },
+ "B01AE03": {
+  "code": "B01AE03",
+  "term": "ARGATROBAN"
+ },
+ "D11AX16": {
+  "code": "D11AX16",
+  "term": "EFLORNITHINE"
+ },
+ "S01AA13": {
+  "code": "S01AA13",
+  "term": "FUSIDIC ACID"
+ },
+ "L01XD04": {
+  "code": "L01XD04",
+  "term": "AMINOLEVULINIC ACID"
+ },
+ "G03GA06": {
+  "code": "G03GA06",
+  "term": "FOLLITROPIN BETA"
+ },
+ "A02BB01": {
+  "code": "A02BB01",
+  "term": "MISOPROSTOL"
+ },
+ "D05AX52": {
+  "code": "D05AX52",
+  "term": "CALCIPOTRIOL, COMBINATIONS"
+ },
+ "V03AE02": {
+  "code": "V03AE02",
+  "term": "SEVELAMER"
+ },
+ "P01BC02": {
+  "code": "P01BC02",
+  "term": "MEFLOQUINE"
+ },
+ "B01AD11": {
+  "code": "B01AD11",
+  "term": "TENECTEPLASE"
+ },
+ "J07AH07": {
+  "code": "J07AH07",
+  "term": "MENINGOCOCCUS C, PURIFIED POLYSACCHARIDES ANTIGEN CONJUGATED"
+ },
+ "A07DA53": {
+  "code": "A07DA53",
+  "term": "LOPERAMIDE, COMBINATIONS"
+ },
+ "A11HA02": {
+  "code": "A11HA02",
+  "term": "PYRIDOXINE (VIT B6)"
+ },
+ "G04CA01": {
+  "code": "G04CA01",
+  "term": "ALFUZOSIN"
+ },
+ "H01CC01": {
+  "code": "H01CC01",
+  "term": "GANIRELIX"
+ },
+ "A03AA05": {
+  "code": "A03AA05",
+  "term": "TRIMEBUTINE"
+ },
+ "A10AE04": {
+  "code": "A10AE04",
+  "term": "INSULIN GLARGINE"
+ },
+ "M05BA02": {
+  "code": "M05BA02",
+  "term": "CLODRONIC ACID"
+ },
+ "S01EC05": {
+  "code": "S01EC05",
+  "term": "METHAZOLAMIDE"
+ },
+ "L04AC03": {
+  "code": "L04AC03",
+  "term": "ANAKINRA"
+ },
+ "C07AG02": {
+  "code": "C07AG02",
+  "term": "CARVEDILOL"
+ },
+ "V04CJ01": {
+  "code": "V04CJ01",
+  "term": "THYROTROPHIN"
+ },
+ "N07CA03": {
+  "code": "N07CA03",
+  "term": "FLUNARIZINE"
+ },
+ "R01AX03": {
+  "code": "R01AX03",
+  "term": "IPRATROPIUM BROMIDE"
+ },
+ "D07AC11": {
+  "code": "D07AC11",
+  "term": "AMCINONIDE"
+ },
+ "R03BB04": {
+  "code": "R03BB04",
+  "term": "TIOTROPIUM BROMIDE"
+ },
+ "L04AA04": {
+  "code": "L04AA04",
+  "term": "ANTITHYMOCYTE IMMUNOGLOBULIN (RABBIT)"
+ },
+ "J05AF07": {
+  "code": "J05AF07",
+  "term": "TENOFOVIR DISOPROXIL"
+ },
+ "J07AE01": {
+  "code": "J07AE01",
+  "term": "CHOLERA, INACTIVATED, WHOLE CELL"
+ },
+ "D11AH02": {
+  "code": "D11AH02",
+  "term": "PIMECROLIMUS"
+ },
+ "J07AX": {
+  "code": "J07AX",
+  "term": "OTHER BACTERIAL VACCINES"
+ },
+ "G01AG02": {
+  "code": "G01AG02",
+  "term": "TERCONAZOLE"
+ },
+ "J05AX07": {
+  "code": "J05AX07",
+  "term": "ENFUVIRTIDE"
+ },
+ "H01CC02": {
+  "code": "H01CC02",
+  "term": "CETRORELIX"
+ },
+ "L03AB11": {
+  "code": "L03AB11",
+  "term": "PEGINTERFERON ALFA-2A"
+ },
+ "G03GA05": {
+  "code": "G03GA05",
+  "term": "FOLLITROPIN ALFA"
+ },
+ "M01AC06": {
+  "code": "M01AC06",
+  "term": "MELOXICAM"
+ },
+ "G03AA13": {
+  "code": "G03AA13",
+  "term": "NORELGESTROMIN AND ESTROGEN"
+ },
+ "V08CA08": {
+  "code": "V08CA08",
+  "term": "GADOBENIC ACID"
+ },
+ "V03AF07": {
+  "code": "V03AF07",
+  "term": "RASBURICASE"
+ },
+ "C07CB03": {
+  "code": "C07CB03",
+  "term": "ATENOLOL AND OTHER DIURETICS"
+ },
+ "A16AB04": {
+  "code": "A16AB04",
+  "term": "AGALSIDASE BETA"
+ },
+ "A16AB03": {
+  "code": "A16AB03",
+  "term": "AGALSIDASE ALFA"
+ },
+ "C03DB01": {
+  "code": "C03DB01",
+  "term": "AMILORIDE"
+ },
+ "L03AA13": {
+  "code": "L03AA13",
+  "term": "PEGFILGRASTIM"
+ },
+ "A16AX06": {
+  "code": "A16AX06",
+  "term": "MIGLUSTAT"
+ },
+ "S02CA06": {
+  "code": "S02CA06",
+  "term": "DEXAMETHASONE AND ANTIINFECTIVES"
+ },
+ "G02BB01": {
+  "code": "G02BB01",
+  "term": "VAGINAL RING WITH PROGESTOGEN AND ESTROGEN"
+ },
+ "A16AB05": {
+  "code": "A16AB05",
+  "term": "LARONIDASE"
+ },
+ "N02CC06": {
+  "code": "N02CC06",
+  "term": "ELETRIPTAN"
+ },
+ "G03AB05": {
+  "code": "G03AB05",
+  "term": "DESOGESTREL AND ESTROGEN"
+ },
+ "R03DX05": {
+  "code": "R03DX05",
+  "term": "OMALIZUMAB"
+ },
+ "J05AE07": {
+  "code": "J05AE07",
+  "term": "FOSAMPRENAVIR"
+ },
+ "G03GA08": {
+  "code": "G03GA08",
+  "term": "CHORIOGONADOTROPIN ALFA"
+ },
+ "A10AD05": {
+  "code": "A10AD05",
+  "term": "INSULIN ASPART"
+ },
+ "N02BG10": {
+  "code": "N02BG10",
+  "term": "CANNABINOIDS"
+ },
+ "D10AF01": {
+  "code": "D10AF01",
+  "term": "CLINDAMYCIN"
+ },
+ "C01EB10": {
+  "code": "C01EB10",
+  "term": "ADENOSINE"
+ },
+ "N07XX04": {
+  "code": "N07XX04",
+  "term": "HYDROXYBUTYRIC ACID"
+ },
+ "G03FA17": {
+  "code": "G03FA17",
+  "term": "DROSPIRENONE AND ESTROGEN"
+ },
+ "L01EB02": {
+  "code": "L01EB02",
+  "term": "ERLOTINIB"
+ },
+ "G03GA07": {
+  "code": "G03GA07",
+  "term": "LUTROPIN ALFA"
+ },
+ "A10BB12": {
+  "code": "A10BB12",
+  "term": "GLIMEPIRIDE"
+ },
+ "B05AX03": {
+  "code": "B05AX03",
+  "term": "BLOOD PLASMA"
+ },
+ "D10AX03": {
+  "code": "D10AX03",
+  "term": "AZELAIC ACID"
+ },
+ "R07AX01": {
+  "code": "R07AX01",
+  "term": "NITRIC OXIDE"
+ },
+ "L01CA04": {
+  "code": "L01CA04",
+  "term": "VINORELBINE"
+ },
+ "L01FE01": {
+  "code": "L01FE01",
+  "term": "CETUXIMAB"
+ },
+ "A10AE05": {
+  "code": "A10AE05",
+  "term": "INSULIN DETEMIR"
+ },
+ "H01AX01": {
+  "code": "H01AX01",
+  "term": "PEGVISOMANT"
+ },
+ "R03AL02": {
+  "code": "R03AL02",
+  "term": "SALBUTAMOL AND IPRATROPIUM BROMIDE"
+ },
+ "G04BD10": {
+  "code": "G04BD10",
+  "term": "DARIFENACIN"
+ },
+ "J05AE09": {
+  "code": "J05AE09",
+  "term": "TIPRANAVIR"
+ },
+ "C09AA07": {
+  "code": "C09AA07",
+  "term": "BENAZEPRIL"
+ },
+ "J05AR03": {
+  "code": "J05AR03",
+  "term": "TENOFOVIR DISOPROXIL AND EMTRICITABINE"
+ },
+ "A10AC03": {
+  "code": "A10AC03",
+  "term": "INSULIN (PORK)"
+ },
+ "A10AB03": {
+  "code": "A10AB03",
+  "term": "INSULIN (PORK)"
+ },
+ "B05AA07": {
+  "code": "B05AA07",
+  "term": "HYDROXYETHYLSTARCH"
+ },
+ "A01AB23": {
+  "code": "A01AB23",
+  "term": "MINOCYCLINE"
+ },
+ "A10AB06": {
+  "code": "A10AB06",
+  "term": "INSULIN GLULISINE"
+ },
+ "S01KX02": {
+  "code": "S01KX02",
+  "term": "TRYPAN BLUE"
+ },
+ "P03AX": {
+  "code": "P03AX",
+  "term": "OTHER ECTOPARASITICIDES, INCL SCABICIDES"
+ },
+ "D06AX09": {
+  "code": "D06AX09",
+  "term": "MUPIROCIN"
+ },
+ "D10AX05": {
+  "code": "D10AX05",
+  "term": "DAPSONE"
+ },
+ "L04AA24": {
+  "code": "L04AA24",
+  "term": "ABATACEPT"
+ },
+ "N02AB03": {
+  "code": "N02AB03",
+  "term": "FENTANYL"
+ },
+ "G03GA02": {
+  "code": "G03GA02",
+  "term": "HUMAN MENOPAUSAL GONADOTROPHIN"
+ },
+ "H01CB03": {
+  "code": "H01CB03",
+  "term": "LANREOTIDE"
+ },
+ "J07BH02": {
+  "code": "J07BH02",
+  "term": "ROTA VIRUS, PENTAVALENT, LIVE, REASSORTED"
+ },
+ "A16AB07": {
+  "code": "A16AB07",
+  "term": "ALGLUCOSIDASE ALFA"
+ },
+ "R03BA08": {
+  "code": "R03BA08",
+  "term": "CICLESONIDE"
+ },
+ "L01DB07": {
+  "code": "L01DB07",
+  "term": "MITOXANTRONE"
+ },
+ "L04AG03": {
+  "code": "L04AG03",
+  "term": "NATALIZUMAB"
+ },
+ "N02AX02": {
+  "code": "N02AX02",
+  "term": "TRAMADOL"
+ },
+ "V03AE03": {
+  "code": "V03AE03",
+  "term": "LANTHANUM CARBONATE"
+ },
+ "V08DA05": {
+  "code": "V08DA05",
+  "term": "SULFUR HEXAFLUORIDE"
+ },
+ "L04AG06": {
+  "code": "L04AG06",
+  "term": "ALEMTUZUMAB"
+ },
+ "J01CE08": {
+  "code": "J01CE08",
+  "term": "BENZATHINE BENZYLPENICILLIN"
+ },
+ "L01EA02": {
+  "code": "L01EA02",
+  "term": "DASATINIB"
+ },
+ "N07BB03": {
+  "code": "N07BB03",
+  "term": "ACAMPROSATE"
+ },
+ "B02BD01": {
+  "code": "B02BD01",
+  "term": "COAGULATION FACTOR IX, II, VII AND X IN COMB"
+ },
+ "A16AB09": {
+  "code": "A16AB09",
+  "term": "IDURSULFASE"
+ },
+ "J07BD54": {
+  "code": "J07BD54",
+  "term": "MEASLES, COMBINATIONS WITH MUMPS, RUBELLA AND VARICELLA, LIVE ATTENUATED"
+ },
+ "R01AD12": {
+  "code": "R01AD12",
+  "term": "FLUTICASONE FUROATE"
+ },
+ "A04AD12": {
+  "code": "A04AD12",
+  "term": "APREPITANT"
+ },
+ "J05AX09": {
+  "code": "J05AX09",
+  "term": "MARAVIROC"
+ },
+ "L01BB07": {
+  "code": "L01BB07",
+  "term": "NELARABINE"
+ },
+ "S02BA08": {
+  "code": "S02BA08",
+  "term": "FLUOCINOLONE ACETONIDE"
+ },
+ "J07BH01": {
+  "code": "J07BH01",
+  "term": "ROTA VIRUS, LIVE ATTENUATED"
+ },
+ "J05AJ01": {
+  "code": "J05AJ01",
+  "term": "RALTEGRAVIR"
+ },
+ "C09XA02": {
+  "code": "C09XA02",
+  "term": "ALISKIREN"
+ },
+ "R01AD13": {
+  "code": "R01AD13",
+  "term": "CICLESONIDE"
+ },
+ "L01EG01": {
+  "code": "L01EG01",
+  "term": "TEMSIROLIMUS"
+ },
+ "J05AG04": {
+  "code": "J05AG04",
+  "term": "ETRAVIRINE"
+ },
+ "S01BA15": {
+  "code": "S01BA15",
+  "term": "FLUOCINOLONE ACETONIDE"
+ },
+ "S01BC10": {
+  "code": "S01BC10",
+  "term": "NEPAFENAC"
+ },
+ "L01EA03": {
+  "code": "L01EA03",
+  "term": "NILOTINIB"
+ },
+ "B01AF01": {
+  "code": "B01AF01",
+  "term": "RIVAROXABAN"
+ },
+ "L01BB04": {
+  "code": "L01BB04",
+  "term": "CLADRIBINE"
+ },
+ "J07AL02": {
+  "code": "J07AL02",
+  "term": "PNEUMOCOCCUS, PURIFIED POLYSACC.ANTIGEN CONJUGATED"
+ },
+ "S01BA14": {
+  "code": "S01BA14",
+  "term": "LOTEPREDNOL"
+ },
+ "L04AJ01": {
+  "code": "L04AJ01",
+  "term": "ECULIZUMAB"
+ },
+ "B02BX04": {
+  "code": "B02BX04",
+  "term": "ROMIPLOSTIM"
+ },
+ "N06BA12": {
+  "code": "N06BA12",
+  "term": "LISDEXAMFETAMINE"
+ },
+ "L01XD03": {
+  "code": "L01XD03",
+  "term": "METHYL AMINOLEVULINATE"
+ },
+ "R05DA03": {
+  "code": "R05DA03",
+  "term": "HYDROCODONE"
+ },
+ "L04AB06": {
+  "code": "L04AB06",
+  "term": "GOLIMUMAB"
+ },
+ "C08CA06": {
+  "code": "C08CA06",
+  "term": "NIMODIPINE"
+ },
+ "A06AB52": {
+  "code": "A06AB52",
+  "term": "BISACODYL, COMBINATIONS"
+ },
+ "L01EH01": {
+  "code": "L01EH01",
+  "term": "LAPATINIB"
+ },
+ "L01XH01": {
+  "code": "L01XH01",
+  "term": "VORINOSTAT"
+ },
+ "J01DF01": {
+  "code": "J01DF01",
+  "term": "AZTREONAM"
+ },
+ "L01BB06": {
+  "code": "L01BB06",
+  "term": "CLOFARABINE"
+ },
+ "J02AX06": {
+  "code": "J02AX06",
+  "term": "ANIDULAFUNGIN"
+ },
+ "L04AB05": {
+  "code": "L04AB05",
+  "term": "CERTOLIZUMAB PEGOL"
+ },
+ "J07BA02": {
+  "code": "J07BA02",
+  "term": "ENCEPHALITIS, JAPANESE, INACTIVATED, WHOLE VIRUS"
+ },
+ "H04AA01": {
+  "code": "H04AA01",
+  "term": "GLUCAGON"
+ },
+ "S01AE08": {
+  "code": "S01AE08",
+  "term": "BESIFLOXACIN"
+ },
+ "L02BX02": {
+  "code": "L02BX02",
+  "term": "DEGARELIX"
+ },
+ "D05AX03": {
+  "code": "D05AX03",
+  "term": "CALCITRIOL"
+ },
+ "L04AH02": {
+  "code": "L04AH02",
+  "term": "EVEROLIMUS"
+ },
+ "N02AA55": {
+  "code": "N02AA55",
+  "term": "OXYCODONE AND NALOXONE"
+ },
+ "V08CA10": {
+  "code": "V08CA10",
+  "term": "GADOXETIC ACID"
+ },
+ "J07BM02": {
+  "code": "J07BM02",
+  "term": "PAPILLOMAVIRUS (HUMAN TYPES 16,18)"
+ },
+ "M05BX04": {
+  "code": "M05BX04",
+  "term": "DENOSUMAB"
+ },
+ "L04AC07": {
+  "code": "L04AC07",
+  "term": "TOCILIZUMAB"
+ },
+ "A16AX07": {
+  "code": "A16AX07",
+  "term": "SAPROPTERIN"
+ },
+ "A10BJ02": {
+  "code": "A10BJ02",
+  "term": "LIRAGLUTIDE"
+ },
+ "L01CX01": {
+  "code": "L01CX01",
+  "term": "TRABECTEDIN"
+ },
+ "B06AC01": {
+  "code": "B06AC01",
+  "term": "C1-INHIBITOR, PLASMA DERIVED"
+ },
+ "S01XA18": {
+  "code": "S01XA18",
+  "term": "CICLOSPORIN"
+ },
+ "A16AB10": {
+  "code": "A16AB10",
+  "term": "VELAGLUCERASE ALFA"
+ },
+ "J05AE03": {
+  "code": "J05AE03",
+  "term": "RITONAVIR"
+ },
+ "R03DX07": {
+  "code": "R03DX07",
+  "term": "ROFLUMILAST"
+ },
+ "V03AB24": {
+  "code": "V03AB24",
+  "term": "DIGITALIS ANTITOXIN"
+ },
+ "M01AE52": {
+  "code": "M01AE52",
+  "term": "NAPROXEN AND ESOMEPRAZOLE"
+ },
+ "C02DD01": {
+  "code": "C02DD01",
+  "term": "NITROPRUSSIDE"
+ },
+ "R03AK09": {
+  "code": "R03AK09",
+  "term": "FORMOTEROL AND MOMETASONE"
+ },
+ "B02BX05": {
+  "code": "B02BX05",
+  "term": "ELTROMBOPAG"
+ },
+ "L01CD02": {
+  "code": "L01CD02",
+  "term": "DOCETAXEL"
+ },
+ "B05XA17": {
+  "code": "B05XA17",
+  "term": "POTASSIUM ACETATE"
+ },
+ "L04AE01": {
+  "code": "L04AE01",
+  "term": "FINGOLIMOD"
+ },
+ "D10AD53": {
+  "code": "D10AD53",
+  "term": "ADAPALENE, COMBINATIONS"
+ },
+ "S01BA05": {
+  "code": "S01BA05",
+  "term": "TRIAMCINOLONE"
+ },
+ "N03AF03": {
+  "code": "N03AF03",
+  "term": "RUFINAMIDE"
+ },
+ "L04AG04": {
+  "code": "L04AG04",
+  "term": "BELIMUMAB"
+ },
+ "J05AG05": {
+  "code": "J05AG05",
+  "term": "RILPIVIRINE"
+ },
+ "A10BH05": {
+  "code": "A10BH05",
+  "term": "LINAGLIPTIN"
+ },
+ "G04CA52": {
+  "code": "G04CA52",
+  "term": "TAMSULOSIN AND DUTASTERIDE"
+ },
+ "P03AX05": {
+  "code": "P03AX05",
+  "term": "DIMETICONE"
+ },
+ "V07AX": {
+  "code": "V07AX",
+  "term": "WASHING AGENTS ETC."
+ },
+ "C10AC04": {
+  "code": "C10AC04",
+  "term": "COLESEVELAM"
+ },
+ "J05AR08": {
+  "code": "J05AR08",
+  "term": "EMTRICITABINE, TENOFOVIR DISOPROXIL AND RILPIVIRINE"
+ },
+ "N05AH05": {
+  "code": "N05AH05",
+  "term": "ASENAPINE"
+ },
+ "G03DB08": {
+  "code": "G03DB08",
+  "term": "DIENOGEST"
+ },
+ "V03AB33": {
+  "code": "V03AB33",
+  "term": "HYDROXOCOBALAMIN"
+ },
+ "L01XX41": {
+  "code": "L01XX41",
+  "term": "ERIBULIN"
+ },
+ "L01EX04": {
+  "code": "L01EX04",
+  "term": "VANDETANIB"
+ },
+ "L01FX04": {
+  "code": "L01FX04",
+  "term": "IPILIMUMAB"
+ },
+ "N07XX07": {
+  "code": "N07XX07",
+  "term": "FAMPRIDINE"
+ },
+ "L01EC01": {
+  "code": "L01EC01",
+  "term": "VEMURAFENIB"
+ },
+ "C09CA09": {
+  "code": "C09CA09",
+  "term": "AZILSARTAN MEDOXOMIL"
+ },
+ "J05AG03": {
+  "code": "J05AG03",
+  "term": "EFAVIRENZ"
+ },
+ "A04AA05": {
+  "code": "A04AA05",
+  "term": "PALONOSETRON"
+ },
+ "L01ED01": {
+  "code": "L01ED01",
+  "term": "CRIZOTINIB"
+ },
+ "A07AA12": {
+  "code": "A07AA12",
+  "term": "FIDAXOMICIN"
+ },
+ "L01EJ01": {
+  "code": "L01EJ01",
+  "term": "RUXOLITINIB"
+ },
+ "A10BD10": {
+  "code": "A10BD10",
+  "term": "METFORMIN AND SAXAGLIPTIN"
+ },
+ "B02BD11": {
+  "code": "B02BD11",
+  "term": "CATRIDECACOG"
+ },
+ "B02BB01": {
+  "code": "B02BB01",
+  "term": "FIBRINOGEN, HUMAN"
+ },
+ "J05AR06": {
+  "code": "J05AR06",
+  "term": "EMTRICITABINE, TENOFOVIR DISOPROXIL AND EFAVIRENZ"
+ },
+ "R03BB06": {
+  "code": "R03BB06",
+  "term": "GLYCOPYRRONIUM BROMIDE"
+ },
+ "J05AR09": {
+  "code": "J05AR09",
+  "term": "EMTRICITABINE, TENOFOVIR DISOPROXIL, ELVITEGRAVIR AND COBICISTAT"
+ },
+ "R07AX02": {
+  "code": "R07AX02",
+  "term": "IVACAFTOR"
+ },
+ "C09DA09": {
+  "code": "C09DA09",
+  "term": "AZILSARTANT MEDOXIMIL AND DIURETICS"
+ },
+ "N03AX17": {
+  "code": "N03AX17",
+  "term": "STIRIPENTOL"
+ },
+ "L01FX05": {
+  "code": "L01FX05",
+  "term": "BRENTUXIMAB VEDOTIN"
+ },
+ "G03AB09": {
+  "code": "G03AB09",
+  "term": "NORGESTIMATE AND ETHINYLESTRADIOL"
+ },
+ "D10AE51": {
+  "code": "D10AE51",
+  "term": "BENZOYL PEROXIDE, COMBINATIONS"
+ },
+ "G04BD": {
+  "code": "G04BD",
+  "term": "URINARY ANTISPASMODICS"
+ },
+ "J07AH04": {
+  "code": "J07AH04",
+  "term": "MENINGOCOCCUS, A, C, Y, W-135, TETRAVAL. PURIFIED POLYSACC. ANTIGEN"
+ },
+ "A10BD11": {
+  "code": "A10BD11",
+  "term": "METFORMIN AND LINAGLIPTIN"
+ },
+ "A10BG02": {
+  "code": "A10BG02",
+  "term": "ROSIGLITAZONE"
+ },
+ "L01EX05": {
+  "code": "L01EX05",
+  "term": "REGORAFENIB"
+ },
+ "N04BC09": {
+  "code": "N04BC09",
+  "term": "ROTIGOTINE"
+ },
+ "D06BB53": {
+  "code": "D06BB53",
+  "term": "ACICLOVIR, COMBINATIONS"
+ },
+ "N03AX22": {
+  "code": "N03AX22",
+  "term": "PERAMPANEL"
+ },
+ "L01FD02": {
+  "code": "L01FD02",
+  "term": "PERTUZUMAB"
+ },
+ "L01FY01": {
+  "code": "L01FY01",
+  "term": "PERTUZUMAB AND TRASTUZUMAB"
+ },
+ "D05BA02": {
+  "code": "D05BA02",
+  "term": "METHOXALEN, SYSTEMIC"
+ },
+ "L02BB04": {
+  "code": "L02BB04",
+  "term": "ENZALUTAMIDE"
+ },
+ "R03AK10": {
+  "code": "R03AK10",
+  "term": "VILANTEROL AND FLUTICASONE FUROATE"
+ },
+ "L01XJ01": {
+  "code": "L01XJ01",
+  "term": "VISMODEGIB"
+ },
+ "L01EC02": {
+  "code": "L01EC02",
+  "term": "DABRAFENIB"
+ },
+ "L01EE01": {
+  "code": "L01EE01",
+  "term": "TRAMETINIB"
+ },
+ "R03BB05": {
+  "code": "R03BB05",
+  "term": "ACLIDINIUM BROMIDE"
+ },
+ "L01DB06": {
+  "code": "L01DB06",
+  "term": "IDARUBICIN"
+ },
+ "G03AC01": {
+  "code": "G03AC01",
+  "term": "NORETHISTERONE"
+ },
+ "A07AA11": {
+  "code": "A07AA11",
+  "term": "RIFAXIMIN"
+ },
+ "D06BB12": {
+  "code": "D06BB12",
+  "term": "SINECATECHINS"
+ },
+ "L01FD03": {
+  "code": "L01FD03",
+  "term": "TRASTUZUMAB EMTANSINE"
+ },
+ "A16AB08": {
+  "code": "A16AB08",
+  "term": "GALSUFASE"
+ },
+ "C02KX05": {
+  "code": "C02KX05",
+  "term": "RIOCIGUAT"
+ },
+ "H01CB05": {
+  "code": "H01CB05",
+  "term": "PASIREOTIDE"
+ },
+ "D01AC19": {
+  "code": "D01AC19",
+  "term": "EFINACONAZOLE"
+ },
+ "L01XH02": {
+  "code": "L01XH02",
+  "term": "ROMIDEPSIN"
+ },
+ "J05AJ03": {
+  "code": "J05AJ03",
+  "term": "DOLUTEGRAVIR"
+ },
+ "S01BA": {
+  "code": "S01BA",
+  "term": "CORTICOSTEROIDS, PLAIN"
+ },
+ "L01EB03": {
+  "code": "L01EB03",
+  "term": "AFATINIB"
+ },
+ "C02KX04": {
+  "code": "C02KX04",
+  "term": "MACITENTAN"
+ },
+ "S01LA05": {
+  "code": "S01LA05",
+  "term": "AFLIBERCEPT"
+ },
+ "L04AK02": {
+  "code": "L04AK02",
+  "term": "TERIFLUNOMIDE"
+ },
+ "J07BX01": {
+  "code": "J07BX01",
+  "term": "SMALLPOX AND MONKEYPOX VACCINES"
+ },
+ "J07AH09": {
+  "code": "J07AH09",
+  "term": "MENINGOCOCCUS B, MULTICOMPONENT VACCINE"
+ },
+ "A06AX04": {
+  "code": "A06AX04",
+  "term": "LINACLOTIDE"
+ },
+ "A10BH04": {
+  "code": "A10BH04",
+  "term": "ALOGLIPTIN"
+ },
+ "A10BD13": {
+  "code": "A10BD13",
+  "term": "METFORMIN AND ALOGLIPTIN"
+ },
+ "R03AL04": {
+  "code": "R03AL04",
+  "term": "INDACATEROL AND GLYCOPYRRONIUM BROMIDE"
+ },
+ "J05AP08": {
+  "code": "J05AP08",
+  "term": "SOFOSBUVIR"
+ },
+ "R03AL03": {
+  "code": "R03AL03",
+  "term": "VILANTEROL AND UMECLIDINIUM BROMIDE"
+ },
+ "B02BD07": {
+  "code": "B02BD07",
+  "term": "COAGULATION FACTOR XIII"
+ },
+ "J05AF08": {
+  "code": "J05AF08",
+  "term": "ADEFOVIR DIPIVOXIL"
+ },
+ "C10AX12": {
+  "code": "C10AX12",
+  "term": "LOMITAPIDE"
+ },
+ "D11AX21": {
+  "code": "D11AX21",
+  "term": "BRIMONIDINE"
+ },
+ "V03AB36": {
+  "code": "V03AB36",
+  "term": "PHENTOLAMINE"
+ },
+ "R03BB07": {
+  "code": "R03BB07",
+  "term": "UMECLIDINIUM BROMIDE"
+ },
+ "L04AF01": {
+  "code": "L04AF01",
+  "term": "TOFACITINIB"
+ },
+ "A10BK02": {
+  "code": "A10BK02",
+  "term": "CANAGLIFLOZIN"
+ },
+ "A16AB11": {
+  "code": "A16AB11",
+  "term": "TALIGLUCERASE ALFA"
+ },
+ "J05AR14": {
+  "code": "J05AR14",
+  "term": "DARUNAVIR AND COBICISTAT"
+ },
+ "J07BB03": {
+  "code": "J07BB03",
+  "term": "INFLUENZA, LIVE ATTENUATED"
+ },
+ "N03AF04": {
+  "code": "N03AF04",
+  "term": "ESLICARBAZEPINE"
+ },
+ "A16AB12": {
+  "code": "A16AB12",
+  "term": "ELOSULFASE ALFA"
+ },
+ "L01BC52": {
+  "code": "L01BC52",
+  "term": "FLUOROURACIL, COMBINATIONS"
+ },
+ "J05AR13": {
+  "code": "J05AR13",
+  "term": "LAMIVUDINE, ABACAVIR AND DOLUTEGRAVIR"
+ },
+ "J05AP51": {
+  "code": "J05AP51",
+  "term": "SOFOSBUVIR AND LEDIPASVIR"
+ },
+ "G03CC07": {
+  "code": "G03CC07",
+  "term": "CONJUGATED ESTROGENS AND BAZEDOXIFENE"
+ },
+ "L01FA03": {
+  "code": "L01FA03",
+  "term": "OBINUTUZUMAB"
+ },
+ "L04AC11": {
+  "code": "L04AC11",
+  "term": "SILTUXIMAB"
+ },
+ "N01BB04": {
+  "code": "N01BB04",
+  "term": "PRILOCAINE"
+ },
+ "S01EC54": {
+  "code": "S01EC54",
+  "term": "BRINZOLAMIDE, COMBINATIONS"
+ },
+ "A10BK01": {
+  "code": "A10BK01",
+  "term": "DAPAGLIFLOZIN"
+ },
+ "G03AD02": {
+  "code": "G03AD02",
+  "term": "ULIPRISTAL"
+ },
+ "J07AL01": {
+  "code": "J07AL01",
+  "term": "PNEUMOCOCCUS, PURIFIED POLYSACCHARIDES ANTIGEN"
+ },
+ "A16AX03": {
+  "code": "A16AX03",
+  "term": "SODIUM PHENYLBUTYRATE"
+ },
+ "L01ED02": {
+  "code": "L01ED02",
+  "term": "CERITINIB"
+ },
+ "L04AG05": {
+  "code": "L04AG05",
+  "term": "VEDOLIZUMAB"
+ },
+ "J07BM03": {
+  "code": "J07BM03",
+  "term": "PAPILLOMAVIRUS (HUMAN TYPES 6,11,16,18,31,33,45,52,58)"
+ },
+ "L01EA05": {
+  "code": "L01EA05",
+  "term": "PONATINIB"
+ },
+ "J06BD01": {
+  "code": "J06BD01",
+  "term": "PALIVIZUMAB"
+ },
+ "L01EM01": {
+  "code": "L01EM01",
+  "term": "IDELALISIB"
+ },
+ "S01BC11": {
+  "code": "S01BC11",
+  "term": "BROMFENAC"
+ },
+ "A16AA05": {
+  "code": "A16AA05",
+  "term": "CARGLUMIC ACID"
+ },
+ "R03AL05": {
+  "code": "R03AL05",
+  "term": "FORMOTEROL AND ACLIDINIUM BROMIDE"
+ },
+ "D11AX22": {
+  "code": "D11AX22",
+  "term": "IVERMECTIN"
+ },
+ "V03AB08": {
+  "code": "V03AB08",
+  "term": "SODIUM NITRITE"
+ },
+ "J07AH": {
+  "code": "J07AH",
+  "term": "MENINGOCOCCAL VACCINES"
+ },
+ "N06AX28": {
+  "code": "N06AX28",
+  "term": "LEVOMILNACIPRAN"
+ },
+ "G02AB03": {
+  "code": "G02AB03",
+  "term": "ERGOMETRINE"
+ },
+ "B05ZB": {
+  "code": "B05ZB",
+  "term": "HEMOFILTRATES"
+ },
+ "R03AL06": {
+  "code": "R03AL06",
+  "term": "OLODATEROL AND TIOTROPIUM BROMIDE"
+ },
+ "A06AH03": {
+  "code": "A06AH03",
+  "term": "NALOXEGOL"
+ },
+ "J06BB03": {
+  "code": "J06BB03",
+  "term": "VARICELLA/ZOSTER IMMUNOGLOBULIN"
+ },
+ "L01EX09": {
+  "code": "L01EX09",
+  "term": "NINTEDANIB"
+ },
+ "B05Z": {
+  "code": "B05Z",
+  "term": "HEMODIALYTICS AND HEMOFILTRATES"
+ },
+ "N06AX24": {
+  "code": "N06AX24",
+  "term": "VILAZODONE"
+ },
+ "L01FG02": {
+  "code": "L01FG02",
+  "term": "RAMUCIRUMAB"
+ },
+ "D11AX24": {
+  "code": "D11AX24",
+  "term": "DEOXYCHOLIC ACID"
+ },
+ "A10BK03": {
+  "code": "A10BK03",
+  "term": "EMPAGLIFLOZIN"
+ },
+ "A16AX08": {
+  "code": "A16AX08",
+  "term": "TEDUGLUTIDE"
+ },
+ "C10AX13": {
+  "code": "C10AX13",
+  "term": "EVOLOCUMAB"
+ },
+ "R03BA09": {
+  "code": "R03BA09",
+  "term": "FLUTICASONE FUROATE"
+ },
+ "L01FF01": {
+  "code": "L01FF01",
+  "term": "NIVOLUMAB"
+ },
+ "J01DI01": {
+  "code": "J01DI01",
+  "term": "CEFTOBIPROLE MEDOCARIL"
+ },
+ "J01DI54": {
+  "code": "J01DI54",
+  "term": "CEFTOLOZANE AND BETA-LACTAMASE INHIBITOR"
+ },
+ "C09DX04": {
+  "code": "C09DX04",
+  "term": "VALSARTAN AND SACUBITRIL"
+ },
+ "J05AR18": {
+  "code": "J05AR18",
+  "term": "EMTRICITABINE, TENOFOVIR ALAFENAMIDE, ELVITEGRAVIR AND COBICISTAT"
+ },
+ "A10BD15": {
+  "code": "A10BD15",
+  "term": "METFORMIN AND DAPAGLIFLOZIN"
+ },
+ "L01FX07": {
+  "code": "L01FX07",
+  "term": "BLINATUMOMAB"
+ },
+ "L01EX08": {
+  "code": "L01EX08",
+  "term": "LENVATINIB"
+ },
+ "B01AB06": {
+  "code": "B01AB06",
+  "term": "NADROPARIN"
+ },
+ "L01XG02": {
+  "code": "L01XG02",
+  "term": "CARFILZOMIB"
+ },
+ "B01AC27": {
+  "code": "B01AC27",
+  "term": "SELEXIPAG"
+ },
+ "R07AX30": {
+  "code": "R07AX30",
+  "term": "IVACAFTOR AND LUMACAFTOR"
+ },
+ "C09BB04": {
+  "code": "C09BB04",
+  "term": "PERINDOPRIL AND AMLODIPINE"
+ },
+ "V03AB35": {
+  "code": "V03AB35",
+  "term": "SUGAMMADEX"
+ },
+ "L01EE02": {
+  "code": "L01EE02",
+  "term": "COBIMETINIB"
+ },
+ "N03AX23": {
+  "code": "N03AX23",
+  "term": "BRIVARACETAM"
+ },
+ "L01EF01": {
+  "code": "L01EF01",
+  "term": "PALBOCICLIB"
+ },
+ "N05CF04": {
+  "code": "N05CF04",
+  "term": "ESZOPICLONE"
+ },
+ "A16AX09": {
+  "code": "A16AX09",
+  "term": "GLYCEROL PHENYLBUTYRATE"
+ },
+ "C10AX14": {
+  "code": "C10AX14",
+  "term": "ALIROCUMAB"
+ },
+ "R06AX29": {
+  "code": "R06AX29",
+  "term": "BILASTINE"
+ },
+ "V03AB37": {
+  "code": "V03AB37",
+  "term": "IDARUCIZIMAB"
+ },
+ "J05AR17": {
+  "code": "J05AR17",
+  "term": "EMTRICITABINE AND TENOFOVIR ALAFENAMIDE"
+ },
+ "L04AC13": {
+  "code": "L04AC13",
+  "term": "IXEKIZUMAB"
+ },
+ "A10BD16": {
+  "code": "A10BD16",
+  "term": "METFORMIN AND CANAGLIFLOZIN"
+ },
+ "L01FC01": {
+  "code": "L01FC01",
+  "term": "DARATUMUMAB"
+ },
+ "L01EB04": {
+  "code": "L01EB04",
+  "term": "OSIMERTINIB"
+ },
+ "J05AP55": {
+  "code": "J05AP55",
+  "term": "SOFOSBUVIR AND VELPATASVIR"
+ },
+ "R03DX08": {
+  "code": "R03DX08",
+  "term": "RESLIZUMAB"
+ },
+ "R06AX28": {
+  "code": "R06AX28",
+  "term": "RUPATADINE"
+ },
+ "S01": {
+  "code": "S01",
+  "term": "OPHTHALMOLOGICALS"
+ },
+ "A10BD20": {
+  "code": "A10BD20",
+  "term": "METFORMIN AND EMPAGLIFLOZIN"
+ },
+ "L01XG03": {
+  "code": "L01XG03",
+  "term": "IXAZOMIB"
+ },
+ "L01FF02": {
+  "code": "L01FF02",
+  "term": "PEMBROLIZUMAB"
+ },
+ "A16AX04": {
+  "code": "A16AX04",
+  "term": "NITISINONE"
+ },
+ "L01XX52": {
+  "code": "L01XX52",
+  "term": "VENETOCLAX"
+ },
+ "L01ED03": {
+  "code": "L01ED03",
+  "term": "ALECTINIB"
+ },
+ "B01AF03": {
+  "code": "B01AF03",
+  "term": "EDOXABAN"
+ },
+ "V08CA02": {
+  "code": "V08CA02",
+  "term": "GADOTERIC ACID"
+ },
+ "S02CA05": {
+  "code": "S02CA05",
+  "term": "FLUOCINOLONE ACETONIDE AND ANTIINFECTIVES"
+ },
+ "C01EB17": {
+  "code": "C01EB17",
+  "term": "IVABRADINE"
+ },
+ "G04BD06": {
+  "code": "G04BD06",
+  "term": "PROPIVERINE"
+ },
+ "L04AC08": {
+  "code": "L04AC08",
+  "term": "CANAKINUMAB"
+ },
+ "L04AC14": {
+  "code": "L04AC14",
+  "term": "SARILUMAB"
+ },
+ "A07DA06": {
+  "code": "A07DA06",
+  "term": "ELUXADOLINE"
+ },
+ "J05AR19": {
+  "code": "J05AR19",
+  "term": "EMTRICITABINE, TENOFOVIR ALAFENAMIDE AND RILPIVIRINE"
+ },
+ "L01XX24": {
+  "code": "L01XX24",
+  "term": "PEGASPARGASE"
+ },
+ "C01BG11": {
+  "code": "C01BG11",
+  "term": "VERNAKALANT"
+ },
+ "L01FF05": {
+  "code": "L01FF05",
+  "term": "ATEZOLIZUMAB"
+ },
+ "A05AA04": {
+  "code": "A05AA04",
+  "term": "OBETICHOLIC ACID"
+ },
+ "A16AX10": {
+  "code": "A16AX10",
+  "term": "ELIGLUSTAT"
+ },
+ "D06AX14": {
+  "code": "D06AX14",
+  "term": "OZENOXACIN"
+ },
+ "J05AF13": {
+  "code": "J05AF13",
+  "term": "TENOFOVIR ALAFENAMIDE"
+ },
+ "A16AA04": {
+  "code": "A16AA04",
+  "term": "MERCAPTAMINE"
+ },
+ "M09AX07": {
+  "code": "M09AX07",
+  "term": "NUSINERSEN"
+ },
+ "B01AX01": {
+  "code": "B01AX01",
+  "term": "DEFIBROTIDE"
+ },
+ "L01EX10": {
+  "code": "L01EX10",
+  "term": "MIDOSTAURIN"
+ },
+ "L04AG08": {
+  "code": "L04AG08",
+  "term": "OCRELIZUMAB"
+ },
+ "J05AP56": {
+  "code": "J05AP56",
+  "term": "SOFOSBUVIR, VELPATASVIR AND VOXILAPREVIR"
+ },
+ "J05AP57": {
+  "code": "J05AP57",
+  "term": "GLECAPREVIR AND PIBRENTASVIR"
+ },
+ "A10AE06": {
+  "code": "A10AE06",
+  "term": "INSULIN DEGLUDEC"
+ },
+ "A16AX14": {
+  "code": "A16AX14",
+  "term": "MIGALASTAT"
+ },
+ "J07BK": {
+  "code": "J07BK",
+  "term": "VARICELLA ZOSTER VACCINES"
+ },
+ "A04AA55": {
+  "code": "A04AA55",
+  "term": "PALONOSETRON, COMBINATIONS"
+ },
+ "L01FF03": {
+  "code": "L01FF03",
+  "term": "DURVALUMAB"
+ },
+ "J05AX18": {
+  "code": "J05AX18",
+  "term": "LETERMOVIR"
+ },
+ "A16AB14": {
+  "code": "A16AB14",
+  "term": "SEBELIPASE ALFA"
+ },
+ "L01FF04": {
+  "code": "L01FF04",
+  "term": "AVELUMAB"
+ },
+ "L04AC16": {
+  "code": "L04AC16",
+  "term": "GUSELKUMAB"
+ },
+ "L04AA40*": {
+  "code": "L04AA40*",
+  "term": "CLADRIBINE"
+ },
+ "G03GA30": {
+  "code": "G03GA30",
+  "term": "COMBINATIONS"
+ },
+ "A02BD07": {
+  "code": "A02BD07",
+  "term": "LANSOPRAZOLE, AMOXICILLIN AND CLARITHROMYCIN"
+ },
+ "S01XA25": {
+  "code": "S01XA25",
+  "term": "LIFITEGRAST"
+ },
+ "B01AC30": {
+  "code": "B01AC30",
+  "term": "COMBINATIONS"
+ },
+ "V03AE05": {
+  "code": "V03AE05",
+  "term": "SUCROFERRIC OXYHYDROXIDE"
+ },
+ "L01BC59": {
+  "code": "L01BC59",
+  "term": "TRIFLURIDINE, COMBINATIONS"
+ },
+ "A08AA62": {
+  "code": "A08AA62",
+  "term": "BUPROPION AND NALTREXONE"
+ },
+ "R03DX10": {
+  "code": "R03DX10",
+  "term": "BENRALIZUMAB"
+ },
+ "G02CX02": {
+  "code": "G02CX02",
+  "term": "FLIBANSERIN"
+ },
+ "L01EF02": {
+  "code": "L01EF02",
+  "term": "RIBOCICLIB"
+ },
+ "L04AC12": {
+  "code": "L04AC12",
+  "term": "BRODALUMAB"
+ },
+ "J05AR22": {
+  "code": "J05AR22",
+  "term": "EMTRICITABINE, TENOFOVIR ALAFENAMIDE, DARUNAVIR AND COBICISTAT"
+ },
+ "L01FB01": {
+  "code": "L01FB01",
+  "term": "INOTUZUMAB OZOGAMICIN"
+ },
+ "J05AB12": {
+  "code": "J05AB12",
+  "term": "CIDOFOVIR"
+ },
+ "R03AL08": {
+  "code": "R03AL08",
+  "term": "VILANTEROL, UMECLIDINIUM BROMIDE AND FLUTICASONE FUROATE"
+ },
+ "N02BG09": {
+  "code": "N02BG09",
+  "term": "METHOXYFLURANE"
+ },
+ "A10AE56": {
+  "code": "A10AE56",
+  "term": "INSULIN DEGLUDEC AND LIRAGLUTIDE"
+ },
+ "D07CC01": {
+  "code": "D07CC01",
+  "term": "BETAMETHASONE AND ANTIBIOTICS"
+ },
+ "L01XK01": {
+  "code": "L01XK01",
+  "term": "OLAPARIB"
+ },
+ "N07XX14": {
+  "code": "N07XX14",
+  "term": "EDARAVONE"
+ },
+ "J05AR21": {
+  "code": "J05AR21",
+  "term": "DOLUTEGRAVIR AND RILPIVIRINE"
+ },
+ "D11AH06": {
+  "code": "D11AH06",
+  "term": "CRISABOROLE"
+ },
+ "D11AH04": {
+  "code": "D11AH04",
+  "term": "ALITRETINOIN"
+ },
+ "R07AX31": {
+  "code": "R07AX31",
+  "term": "IVACAFTOR AND TEZACAFTOR"
+ },
+ "A10AE54": {
+  "code": "A10AE54",
+  "term": "INSULIN GLARGINE AND LIXISENATIDE"
+ },
+ "L02BB05": {
+  "code": "L02BB05",
+  "term": "APALUTAMIDE"
+ },
+ "J05AR20": {
+  "code": "J05AR20",
+  "term": "EMTRICITABINE, TENOFOVIR ALAFENAMIDE AND BICTEGRAVIR"
+ },
+ "B06AB01": {
+  "code": "B06AB01",
+  "term": "HEMATIN"
+ },
+ "L01ED04": {
+  "code": "L01ED04",
+  "term": "BRIGATINIB"
+ },
+ "B02BX06": {
+  "code": "B02BX06",
+  "term": "EMICIZUMAB"
+ },
+ "L04AF02": {
+  "code": "L04AF02",
+  "term": "BARICITINIB"
+ },
+ "D02BA": {
+  "code": "D02BA",
+  "term": "PROTECTIVES AGAINST UV-RADIATION FOR TOPICAL USE"
+ },
+ "L01XL04": {
+  "code": "L01XL04",
+  "term": "TISAGENLECLEUCEL"
+ },
+ "J01XA04": {
+  "code": "J01XA04",
+  "term": "DALBAVANCIN"
+ },
+ "P02CF01": {
+  "code": "P02CF01",
+  "term": "IVERMECTIN"
+ },
+ "L01EX07": {
+  "code": "L01EX07",
+  "term": "CABOZANTINIB"
+ },
+ "B06AC05": {
+  "code": "B06AC05",
+  "term": "LANADELUMAB"
+ },
+ "G03XA": {
+  "code": "G03XA",
+  "term": "ANTIGONADOTROPINS AND SIMILAR AGENTS"
+ },
+ "N07XX15": {
+  "code": "N07XX15",
+  "term": "INOTERSEN"
+ },
+ "J05AG06": {
+  "code": "J05AG06",
+  "term": "DORAVIRINE"
+ },
+ "A16AX15": {
+  "code": "A16AX15",
+  "term": "TELOTRISTAT"
+ },
+ "J05AR24": {
+  "code": "J05AR24",
+  "term": "LAMIVUDINE, TENOFOVIR DISOPROXIL AND DORAVIRINE"
+ },
+ "L01FX06": {
+  "code": "L01FX06",
+  "term": "DINUTUXIMAB BETA"
+ },
+ "N07BC01": {
+  "code": "N07BC01",
+  "term": "BUPRENORPHINE"
+ },
+ "M05BX05": {
+  "code": "M05BX05",
+  "term": "BUROSUMAB"
+ },
+ "J02AC05": {
+  "code": "J02AC05",
+  "term": "ISAVUCONAZOLE"
+ },
+ "A16AB17": {
+  "code": "A16AB17",
+  "term": "CERLIPONASE ALFA"
+ },
+ "S01EE06": {
+  "code": "S01EE06",
+  "term": "LATANOPROSTENE BUNOD"
+ },
+ "N04BD03": {
+  "code": "N04BD03",
+  "term": "SAFINAMIDE"
+ },
+ "S01XA21": {
+  "code": "S01XA21",
+  "term": "MERCAPTAMINE"
+ },
+ "L01XL03": {
+  "code": "L01XL03",
+  "term": "AXICABTAGENE CILOLEUCEL"
+ },
+ "L01ED05": {
+  "code": "L01ED05",
+  "term": "LORLATINIB"
+ },
+ "L01EF03": {
+  "code": "L01EF03",
+  "term": "ABEMACICLIB"
+ },
+ "L01FF06": {
+  "code": "L01FF06",
+  "term": "CEMIPLIMAB"
+ },
+ "L01XX27": {
+  "code": "L01XX27",
+  "term": "ARSENIC TRIOXIDE"
+ },
+ "L04AC18": {
+  "code": "L04AC18",
+  "term": "RIZANKIZUMAB"
+ },
+ "G03GA10": {
+  "code": "G03GA10",
+  "term": "FOLLITROPIN DELTA"
+ },
+ "G03CX01": {
+  "code": "G03CX01",
+  "term": "TIBOLONE"
+ },
+ "H01BB03": {
+  "code": "H01BB03",
+  "term": "CARBETOCIN"
+ },
+ "N07XX12": {
+  "code": "N07XX12",
+  "term": "PATISIRAN"
+ },
+ "M05BX06": {
+  "code": "M05BX06",
+  "term": "ROMOSOZUMAB"
+ },
+ "L01EX12": {
+  "code": "L01EX12",
+  "term": "LAROTRECTINIB"
+ },
+ "L01EH02": {
+  "code": "L01EH02",
+  "term": "NERATINIB"
+ },
+ "V03AE10": {
+  "code": "V03AE10",
+  "term": "SODIUM ZIRCONIUM CYCLOSILICATE"
+ },
+ "N02CD02": {
+  "code": "N02CD02",
+  "term": "GALCANEZUMAB"
+ },
+ "L04AJ02": {
+  "code": "L04AJ02",
+  "term": "RAVULIZUMAB"
+ },
+ "D11AX11": {
+  "code": "D11AX11",
+  "term": "HYDROQUINONE"
+ },
+ "J05AR25": {
+  "code": "J05AR25",
+  "term": "LAMIVUDINE AND DOLUTEGRAVIR"
+ },
+ "R03DX09": {
+  "code": "R03DX09",
+  "term": "MEPOLIZUMAB"
+ },
+ "A06AX07": {
+  "code": "A06AX07",
+  "term": "PLECANATIDE"
+ },
+ "G03XX01": {
+  "code": "G03XX01",
+  "term": "PRASTERONE"
+ },
+ "A10BF01": {
+  "code": "A10BF01",
+  "term": "ACARBOSE"
+ },
+ "D10AD06": {
+  "code": "D10AD06",
+  "term": "TRIFAROTENE"
+ },
+ "L01FX02": {
+  "code": "L01FX02",
+  "term": "GEMTUZUMAB OZOGAMICIN"
+ },
+ "L01EX14": {
+  "code": "L01EX14",
+  "term": "ENTRECTINIB"
+ },
+ "L01EX13": {
+  "code": "L01EX13",
+  "term": "GILTERITINIB"
+ },
+ "L04AF03": {
+  "code": "L04AF03",
+  "term": "UPADACITINIB"
+ },
+ "C10AX": {
+  "code": "C10AX",
+  "term": "OTHER LIPID MODIFYING AGENTS"
+ },
+ "N07XX08": {
+  "code": "N07XX08",
+  "term": "TAFAMIDIS"
+ },
+ "B01AX07": {
+  "code": "B01AX07",
+  "term": "CAPLACIZUMAB"
+ },
+ "N02CC51": {
+  "code": "N02CC51",
+  "term": "SUMATRIPTAN AND NAPROXEN"
+ },
+ "L02BB06": {
+  "code": "L02BB06",
+  "term": "DAROLUTAMIDE"
+ },
+ "L04AE03": {
+  "code": "L04AE03",
+  "term": "SIPONIMOD"
+ },
+ "J05AJ04": {
+  "code": "J05AJ04",
+  "term": "CABOTEGRAVIR"
+ },
+ "J05AR": {
+  "code": "J05AR",
+  "term": "ANTIVIRALS FOR TREATMENT OF HIV INFECTIONS, COMBINATIONS"
+ },
+ "N02CD03": {
+  "code": "N02CD03",
+  "term": "FREMANEZUMAB"
+ },
+ "A03AX": {
+  "code": "A03AX",
+  "term": "OTHER DRUGS FOR FUNCTIONAL BOWEL DISORDERS"
+ },
+ "V01AA05": {
+  "code": "V01AA05",
+  "term": "TREE POLLEN"
+ },
+ "L01FC02": {
+  "code": "L01FC02",
+  "term": "ISATUXIMAB"
+ },
+ "L01XJ03": {
+  "code": "L01XJ03",
+  "term": "GLASDEGIB"
+ },
+ "R03AK14": {
+  "code": "R03AK14",
+  "term": "INDACATEROL AND MOMETASONE"
+ },
+ "N06AX27": {
+  "code": "N06AX27",
+  "term": "ESKETAMINE"
+ },
+ "G03AC08": {
+  "code": "G03AC08",
+  "term": "ETONOGESTREL"
+ },
+ "L01FX14": {
+  "code": "L01FX14",
+  "term": "POLATUZUMAB VEDOTIN"
+ },
+ "L04AC19": {
+  "code": "L04AC19",
+  "term": "SATRALIZUMAB"
+ },
+ "L01EH03": {
+  "code": "L01EH03",
+  "term": "TUCATINIB"
+ },
+ "D05AX05": {
+  "code": "D05AX05",
+  "term": "TAZAROTENE"
+ },
+ "L01XJ02": {
+  "code": "L01XJ02",
+  "term": "SONIDEGIB"
+ },
+ "L01EX19": {
+  "code": "L01EX19",
+  "term": "RIPRETINIB"
+ },
+ "R03AL12": {
+  "code": "R03AL12",
+  "term": "INDACATEROL, GLYCOPYRRONIUM BROMIDE AND MOMETASONE"
+ },
+ "L01BC58": {
+  "code": "L01BC58",
+  "term": "DECITABINE, COMBINATIONS"
+ },
+ "J05AB16": {
+  "code": "J05AB16",
+  "term": "REMDESIVIR"
+ },
+ "B01AC22": {
+  "code": "B01AC22",
+  "term": "PRASUGREL"
+ },
+ "L01EJ02": {
+  "code": "L01EJ02",
+  "term": "FEDRATINIB"
+ },
+ "J06BC04": {
+  "code": "J06BC04",
+  "term": "OBILTOXAXIMAB"
+ },
+ "N07XX05": {
+  "code": "N07XX05",
+  "term": "AMIFAMPRIDINE"
+ },
+ "A16AX12": {
+  "code": "A16AX12",
+  "term": "TRIENTINE"
+ },
+ "B03XA06": {
+  "code": "B03XA06",
+  "term": "LUSPATERCEPT"
+ },
+ "S01XA27": {
+  "code": "S01XA27",
+  "term": "VORETIGENE NEPARVOVEC"
+ },
+ "J05AD01": {
+  "code": "J05AD01",
+  "term": "FOSCARNET"
+ },
+ "L04AE02": {
+  "code": "L04AE02",
+  "term": "OZANIMOD"
+ },
+ "A16AX16": {
+  "code": "A16AX16",
+  "term": "GIVOSIRAN"
+ },
+ "N05CJ02": {
+  "code": "N05CJ02",
+  "term": "LEMBOREXANT"
+ },
+ "B02BX09": {
+  "code": "B02BX09",
+  "term": "FOSTAMATINIB"
+ },
+ "M09AX09": {
+  "code": "M09AX09",
+  "term": "ONASEMNOGENE ABEPARVOVEC"
+ },
+ "H01AC03": {
+  "code": "H01AC03",
+  "term": "MECASERMIN"
+ },
+ "N02CD05": {
+  "code": "N02CD05",
+  "term": "EPTINEZUMAB"
+ },
+ "S01K": {
+  "code": "S01K",
+  "term": "SURGICAL AIDS"
+ },
+ "D04AB04": {
+  "code": "D04AB04",
+  "term": "BENZOCAINE"
+ },
+ "L04AG12": {
+  "code": "L04AG12",
+  "term": "OFATUMUMAB"
+ },
+ "A16AX17": {
+  "code": "A16AX17",
+  "term": "TRIHEPTANOIN"
+ },
+ "L01EL03": {
+  "code": "L01EL03",
+  "term": "ZANUBRUTINIB"
+ },
+ "L01EE03": {
+  "code": "L01EE03",
+  "term": "BINIMETINIB"
+ },
+ "L01EC03": {
+  "code": "L01EC03",
+  "term": "ENCORAFENIB"
+ },
+ "G03AA18": {
+  "code": "G03AA18",
+  "term": "DROSPIRENONE AND ESTETROL"
+ },
+ "L01FD04": {
+  "code": "L01FD04",
+  "term": "TRASTUZUMAB DERUXTECAN"
+ },
+ "M09AX10": {
+  "code": "M09AX10",
+  "term": "RISDIPLAM"
+ },
+ "L04AE04": {
+  "code": "L04AE04",
+  "term": "PONESIMOD"
+ },
+ "L01XY01": {
+  "code": "L01XY01",
+  "term": "CYTARABINE AND DAUNORUBICIN"
+ },
+ "N06BA14": {
+  "code": "N06BA14",
+  "term": "SOLRIAMFETOL"
+ },
+ "L04AC17": {
+  "code": "L04AC17",
+  "term": "TILDRAKIZUMAB"
+ },
+ "N07XX11": {
+  "code": "N07XX11",
+  "term": "PITOLISANT"
+ },
+ "L01EX21": {
+  "code": "L01EX21",
+  "term": "TEPOTINIB"
+ },
+ "L01AA05": {
+  "code": "L01AA05",
+  "term": "CHLORMETHINE"
+ },
+ "L01EX22": {
+  "code": "L01EX22",
+  "term": "SELPERCATINIB"
+ },
+ "R07AX32": {
+  "code": "R07AX32",
+  "term": "IVACAFTOR, TEZACAFTOR AND ELEXACAFTOR"
+ },
+ "L01EX23": {
+  "code": "L01EX23",
+  "term": "PRALSETINIB"
+ },
+ "R03AL11": {
+  "code": "R03AL11",
+  "term": "FORMOTEROL, GLYCOPYRRONIUM BROMIDE AND BUDESONIDE"
+ },
+ "G03XC05": {
+  "code": "G03XC05",
+  "term": "OSPEMIFENE"
+ },
+ "G01AC05": {
+  "code": "G01AC05",
+  "term": "DEQUALINIUM"
+ },
+ "C10AX16": {
+  "code": "C10AX16",
+  "term": "INCLISIRAN"
+ },
+ "J06BD05": {
+  "code": "J06BD05",
+  "term": "SOTROVIMAB"
+ },
+ "L01FX12": {
+  "code": "L01FX12",
+  "term": "TAFASITAMAB"
+ },
+ "L01EN02": {
+  "code": "L01EN02",
+  "term": "PEMIGATINIB"
+ },
+ "J06BB02": {
+  "code": "J06BB02",
+  "term": "TETANUS IMMUNOGLOBULIN"
+ },
+ "L01XX73": {
+  "code": "L01XX73",
+  "term": "SOTORASIB"
+ },
+ "L01FX17": {
+  "code": "L01FX17",
+  "term": "SACITUZUMAB GOVITECAN"
+ },
+ "L01XX69": {
+  "code": "L01XX69",
+  "term": "LURBINECTEDIN"
+ },
+ "J05AX29": {
+  "code": "J05AX29",
+  "term": "FOSTEMSAVIR"
+ },
+ "C02KX54": {
+  "code": "C02KX54",
+  "term": "MACITENTAN AND TADALAFIL"
+ },
+ "D11AH07": {
+  "code": "D11AH07",
+  "term": "TRALOKINUMAB"
+ },
+ "H01AC08": {
+  "code": "H01AC08",
+  "term": "SOMATROGON"
+ },
+ "L01FX13": {
+  "code": "L01FX13",
+  "term": "ENFORTUMAB VEDOTIN"
+ },
+ "A16AB22": {
+  "code": "A16AB22",
+  "term": "AVALGLUCOSIDASE ALFA"
+ },
+ "J05AX24": {
+  "code": "J05AX24",
+  "term": "TECOVIRIMAT"
+ },
+ "G03AC10": {
+  "code": "G03AC10",
+  "term": "DROSPIRENONE"
+ },
+ "L04AG11": {
+  "code": "L04AG11",
+  "term": "ANIFROLUMAB"
+ },
+ "L01FF07": {
+  "code": "L01FF07",
+  "term": "DOSTARLIMAB"
+ },
+ "J05AE30": {
+  "code": "J05AE30",
+  "term": "NIRMATRELVIR AND RITONAVIR"
+ },
+ "M09AX11": {
+  "code": "M09AX11",
+  "term": "PALOVAROTENE"
+ },
+ "N07BC06": {
+  "code": "N07BC06",
+  "term": "DIAMORPHINE"
+ },
+ "L04AC21": {
+  "code": "L04AC21",
+  "term": "BIMEKIZUMAB"
+ },
+ "J07BN04": {
+  "code": "J07BN04",
+  "term": "COVID-19, PROTEIN SUBUNIT"
+ },
+ "A16AX18": {
+  "code": "A16AX18",
+  "term": "LUMASIRAN"
+ },
+ "L04AA48": {
+  "code": "L04AA48",
+  "term": "BELUMOSUDIL"
+ },
+ "L01FX18": {
+  "code": "L01FX18",
+  "term": "AMIVANTAMAB"
+ },
+ "A16AB19": {
+  "code": "A16AB19",
+  "term": "PEGVALIASE"
+ },
+ "L04AJ05": {
+  "code": "L04AJ05",
+  "term": "AVACOPAN"
+ },
+ "N05AX15": {
+  "code": "N05AX15",
+  "term": "CARIPRAZINE"
+ },
+ "L01EX17": {
+  "code": "L01EX17",
+  "term": "CAPMATINIB"
+ },
+ "L01XX75": {
+  "code": "L01XX75",
+  "term": "TEBENTAFUSP"
+ },
+ "S01LA09": {
+  "code": "S01LA09",
+  "term": "FARICIMAB"
+ },
+ "L01XX66": {
+  "code": "L01XX66",
+  "term": "SELINEXOR"
+ },
+ "B06AC06": {
+  "code": "B06AC06",
+  "term": "BEROTRALSTAT"
+ },
+ "N07XX19": {
+  "code": "N07XX19",
+  "term": "SODIUM PHENYLBUTYRATE AND URSODOXICOLTAURINE"
+ },
+ "L01EA06": {
+  "code": "L01EA06",
+  "term": "ASCIMINIB"
+ },
+ "D11AH08": {
+  "code": "D11AH08",
+  "term": "ABROCITINIB"
+ },
+ "L01XX74": {
+  "code": "L01XX74",
+  "term": "BELZUTIFAN"
+ },
+ "R03DX11": {
+  "code": "R03DX11",
+  "term": "TEZEPELUMAB"
+ },
+ "V03AX04": {
+  "code": "V03AX04",
+  "term": "DIFELIKEFALIN"
+ },
+ "A12BA01": {
+  "code": "A12BA01",
+  "term": "POTASSIUM CHLORIDE"
+ },
+ "L01EE04": {
+  "code": "L01EE04",
+  "term": "SELUMETINIB"
+ },
+ "J05AX10": {
+  "code": "J05AX10",
+  "term": "MARIBAVIR"
+ },
+ "R01AD59": {
+  "code": "R01AD59",
+  "term": "MOMETASONE, COMBINATIONS"
+ },
+ "J07BN01": {
+  "code": "J07BN01",
+  "term": "COVID-19, RNA-BASED VACCINE"
+ },
+ "C03DA05": {
+  "code": "C03DA05",
+  "term": "FINERENONE"
+ },
+ "J05AX31": {
+  "code": "J05AX31",
+  "term": "LENACAPAVIR"
+ },
+ "L04AF07": {
+  "code": "L04AF07",
+  "term": "DEUCRAVACITINIB"
+ },
+ "L04AJ03": {
+  "code": "L04AJ03",
+  "term": "PEGCETACOPLAN"
+ },
+ "N02CD07": {
+  "code": "N02CD07",
+  "term": "ATOGEPANT"
+ },
+ "L01FX28": {
+  "code": "L01FX28",
+  "term": "GLOFITAMAB"
+ },
+ "N05CJ03": {
+  "code": "N05CJ03",
+  "term": "DARIDOREXANT"
+ },
+ "D05AX06": {
+  "code": "D05AX06",
+  "term": "ROFLUMILAST"
+ },
+ "A08AA12": {
+  "code": "A08AA12",
+  "term": "SETMELANOTIDE"
+ },
+ "N04BA07": {
+  "code": "N04BA07",
+  "term": "FOSLEVODOPA AND DECARBOXYLASE INHIBITOR"
+ },
+ "L01XK52": {
+  "code": "L01XK52",
+  "term": "NIRAPARIB AND ABIRATERONE"
+ },
+ "N03AX25": {
+  "code": "N03AX25",
+  "term": "CENOBAMATE"
+ },
+ "D10AX06": {
+  "code": "D10AX06",
+  "term": "CLASCOTERONE"
+ },
+ "L01FX24": {
+  "code": "L01FX24",
+  "term": "TECLISTAMAB"
+ },
+ "L04AC24": {
+  "code": "L04AC24",
+  "term": "MIRIKIZUMAB"
+ },
+ "A05AX04": {
+  "code": "A05AX04",
+  "term": "MARALIXIMAB CHLORIDE"
+ },
+ "H01AC07": {
+  "code": "H01AC07",
+  "term": "SOMAPACITAN"
+ },
+ "J07": {
+  "code": "J07",
+  "term": "VACCINES"
+ },
+ "L01": {
+  "code": "L01",
+  "term": "ANTINEOPLASTIC AGENTS"
+ },
+ "L04AA58": {
+  "code": "L04AA58",
+  "term": "EFGARTIGIMOD ALFA"
+ },
+ "H01CC54": {
+  "code": "H01CC54",
+  "term": "RELUGOLIX, ESTRADIOL AND NORETHISTERONE"
+ },
+ "C10AX17": {
+  "code": "C10AX17",
+  "term": "EVINACUMAB"
+ },
+ "L02BX04": {
+  "code": "L02BX04",
+  "term": "RELUGOLIX"
+ },
+ "L01FX27": {
+  "code": "L01FX27",
+  "term": "EPCORITAMAB"
+ },
+ "N07XX18": {
+  "code": "N07XX18",
+  "term": "VUTRISIRAN"
+ },
+ "B02BX08": {
+  "code": "B02BX08",
+  "term": "AVATROMBOPAG"
+ },
+ "L04AF08": {
+  "code": "L04AF08",
+  "term": "RITLECITINIB"
+ },
+ "L01FX": {
+  "code": "L01FX",
+  "term": "OTHER MONOCLONAL ANTIBODIES AND ANTIBODY DRUG CONJUGATES"
  }
 }
