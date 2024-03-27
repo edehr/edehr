@@ -21,6 +21,7 @@
     "test:cov": "npm run bb && nyc -x '**/*.spec.js' node_modules/.bin/mocha --recursive --sort --bail  'build/**/*.spec.js'",
     "test:mar": "npm run bb && node_modules/.bin/mocha 'build/ehr-tests/mar-timeline.spec.js'",
     "test:one": "npm run bb && node_modules/.bin/mocha 'build/ehr-tests/ehr-data-model.spec.js'",
+    "test:val": "npm run bb && node_modules/.bin/mocha 'build/ehr-tests/ehr-validator.spec.js'",
     "test:v241": "npm run bb && node_modules/.bin/mocha 'build/ehr-tests/ev2_4_1.spec.js'",
     "test:hema": "npm run bb && node_modules/.bin/mocha 'build/ehr-tests/ehr-data-upgrade-hematology-lymphocytes.spec.js'",
     "test:seq": "npm run bb && node_modules/.bin/mocha build/ehr-tests/ehr-data-event-seq.spec.js"

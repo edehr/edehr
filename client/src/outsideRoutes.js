@@ -197,11 +197,18 @@ export function outside () {
       meta: { layout: 'lms', label: NAMES.SEED_CONDENSED, icon: APP_ICONS.seed, zone: ZONE_LMS }
     },
     {
-      path: '/sim-controller',
-      name: 'simController',
+      path: '/activity-sim-controller',
+      name: 'activitySimController',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/SimController.vue'),
-      meta: { layout: 'lms', label: NAMES.SIM_CONTROLLER, icon: APP_ICONS.stopwatch, zone: ZONE_LMS }
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/ActivitySimController.vue'),
+      meta: { layout: 'lms', label: NAMES.ACTIVITY_SIM_CONTROLLER, icon: APP_ICONS.stopwatch, zone: ZONE_LMS }
+    },
+    {
+      path: '/lobj-sim-controller',
+      name: 'lobjSimController',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/LObjSimController.vue'),
+      meta: { layout: 'lms', label: NAMES.LOBJ_SIM_CONTROLLER, icon: APP_ICONS.stopwatch, zone: ZONE_LMS }
     },
     {
       path: '/admin-login',

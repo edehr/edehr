@@ -14,6 +14,8 @@ The resource_link_id is the assignment id in the LMS.
 The custom_assignment value is the link to the EdEHR seed data.
 Many Activities use the same seed data.
 Each Activity is tracked and managed separately.
+
+Feb 2024: Add simulation time control
  */
 
 const Schema = new mongoose.Schema({
@@ -33,6 +35,10 @@ const Schema = new mongoose.Schema({
   assignment: { type: ObjectId, ref: 'Assignment' }, // empty until instructor links assignment to activity
   createDate: { type: Date, default: Date.now },
   lastDate: { type: Date, default: Date.now },
+  simCountdownRunning: {type: Boolean, default: false},
+  simCountdownValue: {type: Number, default: 0},
+  simTimeKey: {type: String}, // e.g. '0001-1325'
+  simTimeKeyDate: { type: Date },
   oId: {type: String},
   visitors: [ {
     visitId: { type: ObjectId, ref: 'Visit' },
@@ -45,6 +51,12 @@ const Schema = new mongoose.Schema({
 
 Schema.post('save', function (doc) {
   WS_EVENT_BUS.emit(WS_S2C_MESSAGE_EVENT, JSON.stringify({channel: 'ACTIVITY', id: doc._id}))
+})
+
+Schema.post('updateOne', async function (one) {
+  let query = this.getQuery() || {}
+  let id = query._id
+  WS_EVENT_BUS.emit(WS_S2C_MESSAGE_EVENT, JSON.stringify({channel: 'ACTIVITY', id: id}))
 })
 
 Schema.virtual('title').get(function () {

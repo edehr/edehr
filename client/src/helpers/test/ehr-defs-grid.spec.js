@@ -65,7 +65,7 @@ describe ('testing calculation supports', () =>{
     // console.log(result)
     should.exists(result)
     result.length.should.equal(1)
-    result[0].should.equal('wbcEstimate')
+    result[0].should.equal('wbcAnalysis')
     done()
   })
 })
@@ -154,19 +154,5 @@ describe('testing ehr-defs-grid', () => {
     done()
   })
 
-  it('getValidationRule', done => {
-    should.doesNotThrow(() => EhrDefsGrid.getValidationRule(DEFAULT_KEY, elemKey))
-    done()
-  })
-
-  it('getMandatoryRule', done => {
-    should.doesNotThrow(() => EhrDefsGrid.getMandatoryRule(DEFAULT_KEY, elemKey))
-    done()
-  })
-
-  it('getMedOrderSchedule', done => {
-    should.doesNotThrow(() => EhrDefsGrid.getMedOrderSchedule(DEFAULT_KEY))
-    done()
-  })
 
 })

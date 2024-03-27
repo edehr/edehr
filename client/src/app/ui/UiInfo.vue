@@ -58,10 +58,4 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 // see styles.scss for more
-
-.UiInfo {
-  display: inline;
-  margin-left: 4px;
-  margin-right: 5px;
-}
 </style>

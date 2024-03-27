@@ -47,15 +47,10 @@ export default {
   },
   computed: {
     ehrText () { return t18EhrText() },
-    isUnleashedActivityEnabled () {
-      const cid = this.$store.getters['consumerStore/consumerId']
-      return FeatureHelper.isFeatureFlagEnabled(cid, FF_UNLEASH_ACTIVITY)
-    },
     activityRecord () { return this.$store.getters['activityStore/activityRecord'] },
     assignmentName () { return this.activityRecord.learningObjectName },
     instructions () { return textToHtml(this.studentInstructions || '') },
-    studentInstructions () { return this.isUnleashedActivityEnabled ? this.activityRecord.learningObjectDescription : this.activityRecord.description },
-
+    studentInstructions () { return this.activityRecord.learningObjectDescription },
     evaluationData () { return this.$store.getters['activityDataStore/evaluationData'] },
     givenName () { return StoreHelper.givenName()},
     feedbackViewable () { return this.activityRecord.feedbackViewable },

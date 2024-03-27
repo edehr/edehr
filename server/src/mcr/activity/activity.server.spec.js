@@ -138,6 +138,33 @@ describe('Activity mongoose schema testing', function () {
     activity.resource_link_title.should.equal('AC-something')
   })
 
+  let activityId
+  it('ActivityController updateSimTimeKey', async () => {
+    let data = Helper.sampleActivity(theConsumer, theCourse, theAssignment)
+    let doc = await activityController.create(data)
+    should.exist(doc)
+    should.exist(doc._id)
+    theActivity = doc
+    let activityId = theActivity._id
+    should.not.exist(doc.simTimeKey)
+    let simTimeKey = '0000-1111'
+    doc = await activityController.simTimeKeyUpdate(activityId, simTimeKey)
+    should.exist(doc.simTimeKey)
+    doc.simTimeKey.should.equal(simTimeKey)
+    simTimeKey = ''
+    activityController.simTimeKeyUpdate(activityId, simTimeKey)
+      .then((doc) => {
+        should.not.exist(doc)
+      })
+      .catch((err) => {
+        should.exist(err)
+      })
+
+    doc = await activityController.simTimeKeyClear(activityId)
+    should.exist(doc)
+    should.not.exist(doc.simTimeKey)
+    should.not.exist(doc.simTimeKeyDate)
+  })
 })
 describe.skip('more tests TO DO!', () => {
   it('ActivityController test closeOpenActivity', () =>{

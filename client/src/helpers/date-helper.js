@@ -3,13 +3,43 @@ import EhrDataModel from '@/ehr-definitions/EhrDataModel'
 import { isValidDate } from '@/helpers/ehr-utils'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import store from '../store'
+import { splitSimTimeKey } from '@/ehr-definitions/sim-time-seq-utils'
+
+export function getActivitySimTimeKey () {
+  let activityRecord = store.getters['activityStore/activityRecord']
+  return activityRecord.simTimeKey
+}
+export function isActivitySimTimeActive () {
+  return !! getActivitySimTimeKey() // if there is a key then yes the sim time is coming from the activity
+}
 
 export function getCurrentSimDate () {
-  return store.getters['visit/simDate']
+  let d = store.getters['visit/simDate']
+  let isDev = StoreHelper.isSeedEditing()
+  // console.log('-----------getCurrentSimDate', isDev, d)
+  if (! isDev) {
+    // non-content developer
+    let activityRecord = store.getters['activityStore/activityRecord']
+    if (activityRecord.simTimeKey) {
+      [ d ] = splitSimTimeKey(activityRecord.simTimeKey)
+      // console.log('-----------getCurrentSimDate. Is Not dev content. Is using activityRecord.simTimeKey', activityRecord.simTimeKey, d)
+    } // else use visit day if activity is not controlling time
+  }
+  return d
 }
 
 export function getCurrentSimTime () {
-  return store.getters['visit/simTime']
+  let t = store.getters['visit/simTime']
+  let activityRecord = store.getters['activityStore/activityRecord']
+  let isDev = StoreHelper.isSeedEditing()
+  // console.log('-----------getCurrentSimTime', isDev, t)
+  if (! isDev) {
+    if (activityRecord.simTimeKey) {
+      t = splitSimTimeKey(activityRecord.simTimeKey)[1]
+      // console.log('-----------getCurrentSimTime. Is using activityRecord.simTimeKey', activityRecord.simTimeKey, t)
+    }
+  }
+  return t
 }
 
 export function hourStringToHour (ts) {

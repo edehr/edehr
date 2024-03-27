@@ -362,10 +362,12 @@ export function downloadLearningObjectToFile (learningObject, seedObject) {
     appType: learningObject.appType,
     license: Text.LICENSE_FULL_TEXT,
     description: learningObject.description,
+    idForLTI: learningObject.idForLTI,
     name: name,
     version: ver,
     fileName: fName,
-    caseStudy: seedObject
+    caseStudy: seedObject,
+    simStages: learningObject.simStages
   }
   data = JSON.stringify(data, null, 2)
   if (debug) console.log('EhrUtil Download learning object to ', fName)

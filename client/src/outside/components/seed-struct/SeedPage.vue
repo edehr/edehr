@@ -59,14 +59,9 @@ export default {
     tableKey () {return this.pageElement.tableKey},
     tableOrientation () { return this.$store.getters['system/condensedTableVertical']},
     tableCollapsed () { return this.$store.getters['system/seedTableCollapse'](this.tableKey)},
-    tableData () {
-      return EhrData.getMergedTableData(this.pageKey, this.pageElement.tableKey) || []
-    },
+    tableData () { return EhrData.getMergedTableData(this.pageKey, this.pageElement.tableKey) || [] },
     tableRowCount () { return this.tableData.length },
-    hasData () {
-      return this.tableData.length > 0
-    },
-
+    hasData () { return this.tableData.length > 0 },
   },
   methods: {
     flipTableCollapsed () {

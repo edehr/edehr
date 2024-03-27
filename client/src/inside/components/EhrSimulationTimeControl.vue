@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class='simulation-time-control', v-if='isSimSignOnEnabled')
+  div(class='simulation-time-control')
     div(v-if='editOn', class='flow_across')
       label(for="sDate") {{ehrText.simulationDayTimeDay}}
       input(class="input sdt-date", id="sDate", type="text", v-model="sDate")
@@ -9,26 +9,20 @@
         fas-icon(class='fa', :icon='appIcons.save')
       ui-info(title="Simulation time", :text="ehrText.simulationDayTime")
     div(v-else, class='flow_across')
-      div(v-if="isActualDateEnabled()", class="sdt-display") {{ dateVal  }}T{{ cTime }}
-      div(v-else)
-        label(for="sDated") {{ehrText.simulationDayTimeDay}}
-        input(class="input sdt-date", id="sDated", type="text", :value="cDate", disabled)
-        label(for="sTimed") {{ehrText.simulationDayTimeTime}}
-        input(class="input sdt-time", id="sTimed", type="text", :value='cTime', disabled)
-      ui-button(value="estc-enable", v-on:buttonClicked="enableEdit" )
+      div(class="sdt-display") {{ dateVal  }}T{{ cTime }}
+      ui-button(v-if="showEditTime", value="estc-enable", v-on:buttonClicked="enableEdit" )
         fas-icon(class='fa', :icon='appIcons.edit',
           :title='ehrText.simulationDayTimeToolTip')
 
 </template>
 <script>
 import StoreHelper from '@/helpers/store-helper'
-import FeatureHelper, { FF_SIGN_ON } from '@/helpers/feature-helper'
 import { validDayStr, validTimeStr } from '@/helpers/ehr-utils'
 import UiButton from '@/app/ui/UiButton.vue'
 import { APP_ICONS } from '@/helpers/app-icons'
 import UiInfo from '@/app/ui/UiInfo.vue'
 import { t18EhrText } from '@/helpers/ehr-t18'
-import { getCurrentSimDate, getCurrentSimTime, simDateCalc } from '@/helpers/date-helper'
+import { getCurrentSimDate, getCurrentSimTime, isActivitySimTimeActive, simDateCalc } from '@/helpers/date-helper'
 
 export default {
   components: {
@@ -44,8 +38,11 @@ export default {
     }
   },
   computed: {
+    isActivitySimTimeActive () { return isActivitySimTimeActive() },
     ehrText () { return t18EhrText()},
     isStudent () { return StoreHelper.isStudent() },
+    isDevelopingContent () { return StoreHelper.isDevelopingContent },
+    showEditTime () { return this.isStudent ? !this.isActivitySimTimeActive : this.isDevelopingContent},
     cDate () { return getCurrentSimDate() },
     cTime () { return getCurrentSimTime() },
     mergedData () { return StoreHelper.getMergedData() },
@@ -60,10 +57,10 @@ export default {
       // const cid = this.$store.getters['consumerStore/consumerId']
       return true //FeatureHelper.isFeatureFlagEnabled(cid, FF_ACTUAL_DATE)
     },
-    isSimSignOnEnabled () {
-      const cid = this.$store.getters['consumerStore/consumerId']
-      return FeatureHelper.isFeatureFlagEnabled(cid, FF_SIGN_ON)
-    },
+    // isSimSignOnEnabled () {
+    //   const cid = this.$store.getters['consumerStore/consumerId']
+    //   return FeatureHelper.isFeatureFlagEnabled(cid, FF_SIGN_ON)
+    // },
     enableEdit () {
       this.sDate= this.cDate
       this.sTime = this.cTime

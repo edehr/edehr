@@ -74,7 +74,9 @@ export default class EhrSummaryHelpV2 {
     summary.tableColumns = tableColumns
     if(debug) console.log('EhrSummaryHelpV2 tableColumns: ', tableColumns)
 
-    let pageData = StoreHelper.getMergedPageData(pageKey) || {}
+    // let pageData = StoreHelper.getMergedPageData(pageKey) || {}
+    let pageData = StoreHelper.getMergedData()[pageKey] || {}
+
     if(debug) console.log('EhrSummaryHelpV2 pageData: ', pageData)
 
     let tableData = pageData[tableKey] || []

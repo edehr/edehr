@@ -197,7 +197,7 @@ export default class EhrPageHelper {
     Otherwise, this is a student, and we want to use the asLoadedData
      */
     if (!this._isDevelopingContent()) {
-      const studentData = store.getters['ehrDataStore/secondLevel']
+      const studentData = StoreHelper.getSecondLevel()
       const sPageData = studentData[this.pageKey]
       this.pageFormData.value = sPageData
     } // else use what is already in this.pageFormData.value
