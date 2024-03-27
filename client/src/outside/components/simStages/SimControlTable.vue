@@ -64,6 +64,8 @@ export default {
       if (key2) {
         let [d2, t2] = splitSimTimeKey(key2)
         test = cd <= d2 && t2 <= ct
+      } else {
+        test = false
       }
       return test
     },
