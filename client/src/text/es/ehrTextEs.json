@@ -150,7 +150,9 @@
     "SEED_LIST_LABEL": "Estudios de caso",
     "SEED_LIST_TOOLTIP": "Ehr Seeds (datos de estudio de caso de simulación)",
     "NORMAL_ROLE": "Volver a mi papel normal",
-    "NORMAL_ROLE_TOOLTIP": "Salga de la vista como papel estudiantil."
+    "NORMAL_ROLE_TOOLTIP": "Salga de la vista como papel estudiantil.",
+    "USER_SETTINGS": "Ajustes de usuario",
+    "USER_SETTING_TIP": "Ajusta tu configuración personal"
   },
   "activityPage": {
     "course": "Curso",

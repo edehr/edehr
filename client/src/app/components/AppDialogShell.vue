@@ -244,6 +244,9 @@ export default {
     max-height: calc(86vh - 6rem);
   }
 }
+.compactLayout .fullScreen {
+  font-size: 1rem;
+}
 
 ::v-deep(.dialog-header h2),
 ::v-deep(.dialog-header h3){

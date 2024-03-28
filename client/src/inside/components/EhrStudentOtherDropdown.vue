@@ -57,6 +57,17 @@ export default {
         })
       }
       menu.push({
+        label: nt.USER_SETTINGS,
+        toolTip: nt.USER_SETTINGS,
+        callback: () => {
+          const path = '/user-settings'
+          if (this.$route.path !== path) {
+            this.$router.push(path)
+          }
+        },
+        icon: APP_ICONS.configure
+      })
+      menu.push({
         label: nt.SCRATCH_PAD ,
         toolTip: nt.SCRATCH_PAD_TOOLTIP,
         callback: () => this.$store.dispatch('system/toggleScratchPadVisible' ),

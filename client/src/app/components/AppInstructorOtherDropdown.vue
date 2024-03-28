@@ -60,12 +60,24 @@ export default {
         callback: () => { this.navigate('/fileList') },
         icon: APP_ICONS.file
       })
-      menuItems.push( {
-        label: MENU_TEXT.LMS_LABEL,
-        toolTip: MENU_TEXT.LMS_TOOLTIP,
-        callback: () => { this.navigate({ name: 'consumer', query: { consumerId: StoreHelper.consumerId() } }) },
-        icon: APP_ICONS.consumer
+      menuItems.push({
+        label: MENU_TEXT.USER_SETTINGS,
+        toolTip: MENU_TEXT.USER_SETTING_TIP,
+        callback: () => {
+          this.navigate({ name: 'userSettings' })
+        },
+        icon: APP_ICONS.configure
       })
+      if (this.isDevelopingContent) {
+        menuItems.push({
+          label: MENU_TEXT.LMS_LABEL,
+          toolTip: MENU_TEXT.LMS_TOOLTIP,
+          callback: () => {
+            this.navigate({ name: 'consumer', query: { consumerId: StoreHelper.consumerId() } })
+          },
+          icon: APP_ICONS.consumer
+        })
+      }
       if(this.exitUrl) {
         menuItems.push({
           label: MENU_TEXT.EXIT_LABEL,

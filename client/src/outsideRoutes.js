@@ -309,6 +309,13 @@ export function outside () {
       meta: { layout: 'lms', label: 'Unlinked Activity', zone: ZONE_LMS }
     },
     {
+      path: '/user-settings',
+      name: 'userSettings',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/UserSettings.vue'),
+      meta: { layout: 'lms', label: NAMES.USER_SETTINGS, icon: APP_ICONS.configure, zone: ZONE_LMS }
+    },
+    {
       path: '/edehrDetails',
       name: 'edehrDetails',
       component: () =>

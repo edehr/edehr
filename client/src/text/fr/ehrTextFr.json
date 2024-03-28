@@ -151,7 +151,9 @@
     "SEED_LIST_LABEL": "Études de cas",
     "SEED_LIST_TOOLTIP": "Graines du DSE (données d'étude de cas de simulation)",
     "NORMAL_ROLE": "Retour à mon rôle normal",
-    "NORMAL_ROLE_TOOLTIP": "Quittez le point de vue comme un rôle étudiant."
+    "NORMAL_ROLE_TOOLTIP": "Quittez le point de vue comme un rôle étudiant.",
+    "USER_SETTINGS": "Paramètres utilisateur",
+    "USER_SETTING_TIP": "Ajustez vos paramètres personnels"
   },
   "activityPage": {
     "course": "Cours",

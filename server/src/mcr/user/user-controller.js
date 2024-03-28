@@ -19,6 +19,22 @@ export default class UserController extends BaseController {
     this.courseController = cc.courseController
   }
 
+  getUser ( userId ) {
+    return this.baseFindOneQuery(userId)
+      .then((modelInstance) => {
+        const response = {}
+        response[this.modelName] = modelInstance
+        return response
+      })
+  }
+  async updateUserSettings (userId, data) {
+    let userRec = await this.baseFindOneQuery(userId)
+    userRec.userSettings = data
+    await userRec.save()
+    return this.getUser(userId)
+  }
+
+
   /*
   listAsInstructorCourses will collect all visits the current user has made with the role of instructor.
   For each visit get the activity and associated assignment information. Collect all into a course collection.
@@ -164,6 +180,18 @@ export default class UserController extends BaseController {
         .then(null, fail(req, res))
     })
 
+    router.get('/getUser/:key', (req, res) => {
+      this
+        .getUser(req.params.key)
+        .then(ok(res))
+        .then(null, fail(req, res))
+    })
+    router.put('/user-settings/:userId', (req, res) => {
+      this
+        .updateUserSettings(req.params.userId, req.body)
+        .then(ok(res))
+        .then(null, fail(req, res))
+    })
     return router
   }
 }

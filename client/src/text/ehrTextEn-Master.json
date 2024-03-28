@@ -155,7 +155,9 @@
     "SEED_LIST_LABEL": "Case studies",
     "SEED_LIST_TOOLTIP": "EHR seeds (simulation case study data)",
     "NORMAL_ROLE": "Return to my normal role",
-    "NORMAL_ROLE_TOOLTIP": "Exit the view as student role."
+    "NORMAL_ROLE_TOOLTIP": "Exit the view as student role.",
+    "USER_SETTINGS": "User settings",
+    "USER_SETTING_TIP": "Adjust your personal settings"
   },
   "activityPage": {
     "course": "Course",

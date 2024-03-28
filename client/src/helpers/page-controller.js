@@ -263,7 +263,7 @@ async  function onPageChange (toRoute) {
 
     // Load the user based on auth message
     const userId = store.getters['authStore/userId']
-    await store.dispatch('userStore/load', userId)
+    await store.dispatch('userStore/loadUser', userId)
     const storedVisitId = store.getters['visit/visitId']
     const authVisitId = store.getters['authStore/visitId']
     let visitId = optionalVisitId || storedVisitId || authVisitId

@@ -196,6 +196,8 @@ export const Text = {
     DESIGNER_MODE_TURN_ON_TOOLTIP: 'Elevate your role to modify course content',
     // SHOW_BUTTON_LABELS: (state) => state ? 'Hide button labels' : 'Show button labels',
     // SHOW_BUTTON_LABELS_TOOLTIP: (state) => state ? 'Buttons show icons only' : 'Buttons show icons and text labels',
+    USER_SETTINGS: 'User settings',
+    USER_SETTING_TIP: 'Adjust your personal settings',
   },
   LOBJ_LIST_LINK_TEXT: 'Learning Objects List',
   LOBJ_ACTIONS: {
@@ -292,7 +294,8 @@ export const Text = {
     SEED_VIEW: 'Case study',
     SEED_CONDENSED: 'Case study',
     ACTIVITY_SIM_CONTROLLER: 'Activity Simulation Controls',
-    LOBJ_SIM_CONTROLLER: 'Learning object simulation staging'
+    LOBJ_SIM_CONTROLLER: 'Learning object simulation staging',
+    USER_SETTINGS: 'User settings'
   },
   SEED_ACTIONS: {
     SEED_DEVELOPERS_MENU: 'Content developer tools',
@@ -331,6 +334,14 @@ export const Text = {
     STATS: 'EHR statistics',
     STATS_VALUE: (cnt) => `Contains ${cnt} EHR pages`,
     VERSION: 'Version',
+  },
+  USER_SETTINGS_PAGE: {
+    PAGE_TITLE: 'User Settings',
+    COMPACT_BUTTON_LABEL: 'Compact',
+    OPEN_BUTTON_LABEL: 'Open',
+    EHR_LAYOUT_LABEL: 'EHR layout',
+    EHR_LAYOUT_TITLE: 'EHR Layout',
+    EHR_LAYOUT_TIP: 'Select either the compact or regular layout for EHR pages. The open setting is the default and good for people new to EHR. The compact layout is better for advanced EHR users.'
   }
 }
 

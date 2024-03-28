@@ -1,61 +1,33 @@
 import InstoreHelper from './instoreHelper'
-import StoreHelper from '../../helpers/store-helper'
-import { Text } from '../../helpers/ehr-text'
+import StoreHelper from '@/helpers/store-helper'
+import { Text } from '@/helpers/ehr-text'
 const API = 'users'
 const NAME = 'UserStore'
 const OBJ = 'user'
 const debug = false
 
 const state = {
-  dataStore: {},
-  usersList: []
+  userData: {},
+  usersList: [],
+  userSettings: {}
 }
 
 const getters = {
-  fullName: state => {
-    let info = state.dataStore
-    let name = info ? info.fullName : ''
-    return name
-  },
-  givenName: state => {
-    let info = state.dataStore
-    let name = info ? info.givenName : ''
-    return name
-  },
-  userId: state => {
-    return state.dataStore._id
-  },
-  username: state => {
-    let info = state.dataStore
-    let name = info ? info.givenName : ''
-    return name
-  },
-  user: state => state.dataStore,
-  list: state => {
-    return state.usersList
-  }
-
+  fullName: state => state.userData?.fullName || '',
+  givenName: state => state.userData?.givenName || '',
+  username: state => state.userData?.givenName || '',
+  userId: state => state.userData._id,
+  user: state => state.userData,
+  list: state => state.usersList,
+  userSettings: state => state.userData?. userSettings
 }
 
 const actions = {
-  load ({dispatch, commit}, id) {
-    return dispatch('get',id)
-      .then( (user) => {
-        if(debug) console.log('User store loaded ', user)
-        return commit('set', user)
-      })
-  },
-  get (context, id) {
-    let url = 'get/' + id
+  loadUser (context, id) {
+    let url = 'getUser/' + id
     return InstoreHelper.getRequest(context, API, url).then(response => {
       let user = response.data[OBJ]
-      if(debug) console.log('response.data', response.data)
-      if (!user) {
-        let msg = Text.GET_USER_STORE_ERROR(NAME, id)
-        StoreHelper.setApiError(msg)
-        return
-      }
-      return user
+      return context.commit('setUser', user)
     })
   },
   loadUsers (context, toolId) {
@@ -69,11 +41,23 @@ const actions = {
       return list
     })
   },
+  setEhrLayout ( context, layoutStyle) {
+    let userSettings = Object.assign({}, context.getters.userSettings)
+    userSettings.ehrLayout = layoutStyle
+    return context.dispatch('updateUserSettings', userSettings)
+  },
+  updateUserSettings (context, settings) {
+    const url = 'user-settings/'+ context.state.userData._id
+    return InstoreHelper.putRequest(context, API, url, settings).then(response => {
+      let user = response.data[OBJ]
+      return context.commit('setUser', user)
+    })
+  }
 }
 
 const mutations = {
-  set: (state, user) => {
-    state.dataStore = user
+  setUser: (state, user) => {
+    state.userData = user
   },
   setUsersList: (state, cData) => {
     if(debug) console.log('setUsersList ', cData)

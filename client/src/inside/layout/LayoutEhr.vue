@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="ehr_layout flow_down")
+  div(class="ehr_layout flow_down", :class='{compactLayout : isCompact}')
     div(class="sticky")
       app-header
       // banner for student, eval, seed, or ehr only
@@ -75,8 +75,9 @@ export default {
     pId () { return this.$store.getters['mPatientStore/currentPatientObjectId'] },
     hasPatient () { return !! this.pId },
     evalDialogVisible () { return this.$store.getters['system/evalDialogVisible']},
-    scratchPadVisible () { return this.$store.getters['system/scratchPadVisible']}
-
+    scratchPadVisible () { return this.$store.getters['system/scratchPadVisible']},
+    userSettings () { return this.$store.getters['userStore/userSettings'] || {} },
+    isCompact () { return this.userSettings.ehrLayout === 'compact' },
   },
   methods: {
     openPatientSummary () {

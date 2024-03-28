@@ -225,10 +225,23 @@ $select_width_2col: 20rem;
     margin-bottom: 5px;
   }
 }
+.compactLayout .select_wrapper {
+  .select {
+    max-width: inherit;
+    margin-bottom: 0;
+  }
+}
+
+
 .sim_day_wrapper,
 .text_input_wrapper {
   .input {
     margin-bottom: 5px;
+  }
+}
+.compactLayout .text_input_wrapper {
+  .input {
+    margin-bottom: 0;
   }
 }
 
@@ -400,6 +413,12 @@ select, .select {
   }
 }
 
+.compactLayout .ehr-group-wrapper {
+  .ehr-group-for {
+    border: 1px solid $grey05;
+    padding: 4px;
+  }
+}
 
 .column_table {
   .column_label {
@@ -734,6 +753,18 @@ select, .select {
   }
 }
 
+#ehrDialogForm .form-table-group {
+  gap: 0;
+  margin-bottom: 0;
+
+  .ehr-group-for {
+    border: 1px solid $grey60;
+    padding: 1px;
+    margin-bottom: 0;
+    min-height: inherit;
+  }
+}
+
 /* Hematology */
 .wbc-differential-group {
   grid-template-columns: 1fr 1fr 1fr;
@@ -832,15 +863,21 @@ select, .select {
   }
 }
 
+#chemSodiumFlag {
+  width: 14rem;
+}
 .chem-results-table {
   grid-template-columns: 1fr 1fr 0.5fr 1fr;
   .input {
     width: 10rem;
   }
   .chem-results-lhclch .radio_set  {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    label{
+      margin-left: 2px;
+    }
   }
 }
 .chem-qc-assay {

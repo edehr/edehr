@@ -43,12 +43,12 @@
     transition(name="fade")
       span(v-if="showEx", class="explain-text") &nbsp; {{navText.DESIGNER_MODE_EXPLAIN}}
 
-      // hiding show button labels.
-      // TODO consider removal of unused code
-      //div(v-if="false", class="clickable")
-      //  input(type="checkbox", id="showLabels", @input="setOutsideLabels",
-      //    :checked="isOutsideShowButtonLabels")
-      //  label(for='showLabels') {{navText.SHOW_BUTTON_LABELS(this.isOutsideShowButtonLabels)}}
+    router-link(
+      :class="routeClass('/userSettings')",
+      to="/user-settings", :title='navText.USER_SETTINGS', class='router-item level1')
+      fas-icon(class="fa", :icon="appIcons.configure")
+      span(v-show='!iconsOnly') &nbsp; {{navText.USER_SETTINGS}}
+
     router-link( v-if="isDevelopingContent",
       :class="routeClass('/consumer')",
       :to="{ name: 'consumer', query: { consumerId: consumerId } }",
