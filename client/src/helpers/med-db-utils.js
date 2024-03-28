@@ -21,6 +21,6 @@ export function getCurrentMedicationDbLabel () {
   return label
 }
 
-export function setCurrentMedicationDb(value) {
+export function setCurrentMedicationDb (value) {
   store.dispatch('consumerStore/medicationDatabaseSelect', value)
 }

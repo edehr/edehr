@@ -33,6 +33,8 @@ import { getCurrentMedicationDb } from '@/helpers/med-db-utils'
 https://codesandbox.io/p/sandbox/vueautosuggest-api-fetching-forked-ryk5pq?file=%2FApp.vue%3A13%2C31
 https://codesandbox.io/p/sandbox/vueautosuggest-api-fetching-forked-ryk5pq?file=%2FApp.vue%3A118%2C55-118%2C56
 
+API to fetch details about a medication
+https://en.wikipedia.org/api/rest_v1/page/summary/Barbituric_acid
 Adding @focus="autoSuggestHasFocus = true" so that TAB closes suggestion list
 Use @keydown.tab rather than @blur because using @blur disables click select option
 

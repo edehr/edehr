@@ -29,15 +29,6 @@ class InstoreHelperWorker {
     return rootState.visit.isDevelopingContent
   }
 
-  // postRequest (context, api, url, bodyData, config) {
-  //   console.log('here in post req')
-  //   return this.upsert(context, 'post', api, url, bodyData, config)
-  // }
-  //
-  // putRequest (context, api, url, bodyData, config) {
-  //   return this.upsert(context, 'put', api, url, bodyData, config)
-  // }
-
   putRequest (context, api, url, bodyData, silent) {
     url = this.composeUrl(context, api, url)
     if(debug) console.log('PUT to this url', url)

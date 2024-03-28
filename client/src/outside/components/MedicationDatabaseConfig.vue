@@ -1,6 +1,7 @@
 <template lang='pug'>
   div(class="details-container card selected")
     h2 Medication database
+    p This section allows you to change the medication database for ALL users of your instance of EdEHR.
     div(class="about-section")
       div(class="details-row")
         div(class="details-name") Current

@@ -1,6 +1,6 @@
 // import crypto from 'crypto'
 
-const debugErrs = true
+const debugErrs = false
 
 /**
  * Test if str is a valid 24 hr time format. Eg. 00:00 through to 23:59
@@ -53,7 +53,7 @@ export function validRangeStr (str, min, max) {
     const number = parseInt(str)
     return number >= min && number <= max
   } catch (err) {
-    console.log('isIntegerInRange threw', err)
+    if (debugErrs) console.log('isIntegerInRange threw', err)
     return false
   }
 }

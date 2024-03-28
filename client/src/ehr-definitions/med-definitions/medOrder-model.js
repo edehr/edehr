@@ -102,7 +102,7 @@ export class MedOrder {
     console.log('--- med order details', obj)
     if (obj) {
       list.push('Route: ' + obj.route)
-      list.push('Schedule: ' + obj.shed)
+      list.push('Control: ' + obj.sched)
       list.push('Therapeutic: ' + obj.thD)
     }
     return list.join(', ')

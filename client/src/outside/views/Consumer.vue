@@ -41,7 +41,7 @@
 
     medication-database-config
 
-    div(id="FeatureFlags", class="details-container card selected")
+    div(id="FeatureFlags", v-if='showFeatureFlags', class="details-container card selected")
       h2 Feature flags
       div(class="details-row")
         div(class="details-name") Feature Flags
@@ -174,7 +174,8 @@ export default {
       consumerId: undefined,
       featureFlagUnleashActivity: false,
       featureFlagSimTimeOn: false,
-      featureFlagSimSignOn: false
+      featureFlagSimSignOn: false,
+      showFeatureFlags: false
     }
   },
   computed: {
