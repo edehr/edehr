@@ -1293,5 +1293,9 @@
   "medAdminRec.mar_event_day": "Jour de l'événement",
   "medAdminRec.mar_event_time": "Heure de l'événement",
   "medAdminRec.mar_barCodeCheck": "Barcode scanné",
-  "medAdminRec.mo_medDetails": "Détails des médicaments"
+  "medAdminRec.mo_medDetails": "Détails des médicaments",
+  "medLabChemistry.tableQcChemistry": "Chimie CQ",
+  "medLabChemistry.label55-112": "Le fait de signaler « en attente » au personnel soignant des patients indique que les résultats ne sont pas disponibles et sont en attente de validation par le technologue avant que les résultats ne soient publiés.",
+  "medLabChemistry.label55-113": "Analyte en attente",
+  "medLabChemistry.label55-114": "Résultat en attente (inclure les unités)"
 }

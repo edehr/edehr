@@ -64,5 +64,6 @@
   "visit.table": "Add a patient location",
   "vitals.systolic": "Add a row to the test table",
   "vitals.table": "Add vital signs",
-  "progressNotes.sbar": "Add a SBAR note"
+  "progressNotes.sbar": "Add a SBAR note",
+  "medLabChemistry.tableQcChemistry": "Create a urinalysis QC report"
 }

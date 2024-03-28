@@ -1293,5 +1293,9 @@
   "medAdminRec.mar_event_day": "Día de evento",
   "medAdminRec.mar_event_time": "Tiempo de evento",
   "medAdminRec.mar_barCodeCheck": "Escaneo de código de barras",
-  "medAdminRec.mo_medDetails": "Detalles de medicación"
+  "medAdminRec.mo_medDetails": "Detalles de medicación",
+  "medLabChemistry.tableQcChemistry": "Control de calidad de química",
+  "medLabChemistry.label55-112": "Informar \\pendiente\\ al personal de atención al paciente indica que los resultados no están disponibles y están a la espera de la validación por parte del tecnólogo antes de publicarlos.",
+  "medLabChemistry.label55-113": "Analito pendiente",
+  "medLabChemistry.label55-114": "Resultado pendiente (incluir unidades)"
 }

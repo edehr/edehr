@@ -1293,5 +1293,9 @@
   "medAdminRec.mar_event_day": "Day of event",
   "medAdminRec.mar_event_time": "Time of event",
   "medAdminRec.mar_barCodeCheck": "Barcode scanned",
-  "medAdminRec.mo_medDetails": "Medication details"
+  "medAdminRec.mo_medDetails": "Medication details",
+  "medLabChemistry.tableQcChemistry": "Chemistry QC",
+  "medLabChemistry.label55-112": "Reporting  'pending' to patient care staff indicates that results are unavailable and awaiting validation by the technologist before results are released.",
+  "medLabChemistry.label55-113": "Pending analyte",
+  "medLabChemistry.label55-114": "Pending result (include units)"
 }

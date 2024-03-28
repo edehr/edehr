@@ -64,5 +64,6 @@
   "visit.table": "Agregar una ubicación del paciente",
   "vitals.systolic": "Agregar una fila a la tabla de pruebas",
   "vitals.table": "Agregar signos vitales",
-  "progressNotes.sbar": "Agregar una nota SAER"
+  "progressNotes.sbar": "Agregar una nota SAER",
+  "medLabChemistry.tableQcChemistry": "Crear un informe de control de calidad del análisis de orina"
 }
