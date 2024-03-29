@@ -48,9 +48,9 @@ class StoreHelperWorker {
     return ehrData
   }
 
-  getMergedData () { return this.timeSliceData(store.getters['ehrDataStore/mergedData'] ) }
-  getSecondLevel () { return this.timeSliceData( store.getters['ehrDataStore/secondLevel'] ) }
-  getBaseLevel () { return this.timeSliceData( store.getters['ehrDataStore/baseLevel'] ) }
+  getMergedData () { return store.getters['ehrDataStore/mergedData'] }
+  getSecondLevel () { return  store.getters['ehrDataStore/secondLevel'] }
+  getBaseLevel () { return  store.getters['ehrDataStore/baseLevel'] }
 
   getHasDataForPagesList () { return store.getters['ehrDataStore/hasDataForPagesList'] }
   hasDataOnPage (pageKey) {

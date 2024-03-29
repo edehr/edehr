@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { composeAxiosResponseError } from '../../helpers/ehr-utils'
 import StoreHelper from '../../helpers/store-helper'
+import store from '@/store'
+import { timeSequenceSliceData } from '@/ehr-definitions/sim-time-seq-utils'
 
 const debug = false
 /*
@@ -19,6 +21,16 @@ class InstoreHelperWorker {
   composeUrl (context, api, url) {
     let apiUrl = StoreHelper.apiUrlGet()
     return `${apiUrl}/${api}/` + (url ? url : '')
+  }
+  timeSliceData ( rootState, ehrData ) {
+    if (ehrData && rootState.visit.sVisitData.isStudent) {
+      let activityRecord = rootState.activityStore.activityRecord
+      if (activityRecord.simTimeKey) {
+        console.log('TIME SLICE EHR DATA TO', activityRecord.simTimeKey)
+        ehrData = timeSequenceSliceData(activityRecord.simTimeKey, ehrData)
+      }
+    }
+    return ehrData
   }
 
   instoreIsInstructor (rootState) {

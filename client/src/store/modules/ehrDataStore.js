@@ -69,6 +69,9 @@ const getters = {
       //EhrDataModel both updates the data as needed it also computes the sim time
       mData = EhrDataModel.MergeTwoLevels(baseLevelData, secondLevelData)
     }
+    if (mData) {
+      mData = InstoreHelper.timeSliceData(rootState, mData)
+    }
     if (debug) {
       console.log('EhrData base  ', baseLevelData)
       console.log('EhrData second  ', secondLevelData)

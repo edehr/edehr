@@ -149,6 +149,7 @@ export function convertToEventSequence (ehrData) {
 }
 
 export function timeSequenceSliceData (currentKey, ehrData) {
+  const meta = ehrData.meta
   const timeSequence = convertToEventSequence(ehrData)
   const keys = Object.keys(timeSequence)
   let eDate = {}
@@ -162,5 +163,6 @@ export function timeSequenceSliceData (currentKey, ehrData) {
     // console.log('merge in', currentKey, cKey, JSON.stringify(data))
     eDate = EhrDataModel.MergeTwoLevels(eDate, data)
   }
+  eDate.meta = meta
   return eDate
 }
