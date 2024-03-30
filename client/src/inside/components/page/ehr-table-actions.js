@@ -15,7 +15,8 @@ export default class EhrTableActions {
     const desiredRowValue = sourceRowId
     const srcElemKey = this.getTableActionTargetElementKey(tableDef)
     if (!srcElemKey) {
-      const msg = ehrText.ERROR_IN_TABLE_ACTION_DEF(JSON.stringify(tableDef))
+      const msg = ehrText.ERROR_IN_TABLE_ACTION_DEF + ' ' + taTargetPageKey + ' ' + taTargetTableKey
+      console.log(msg)
       StoreHelper.setApiError(msg)
       throw new Error(msg)
     }

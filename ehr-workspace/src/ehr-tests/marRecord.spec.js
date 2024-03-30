@@ -30,6 +30,8 @@ describe('marRecords', () => {
       marTable_name: 'Dorothea',
       marTable_day: 1,
       marTable_time: '2130',
+      mar_event_day: '0',
+      mar_event_time: '1111',
       med_order_embedded: 'medicationOrders.medicationOrdersTable.4',
       mar_status: 'Administered',
       mar_dose: '2.5mg',

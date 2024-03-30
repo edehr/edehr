@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { composeAxiosResponseError } from '../../helpers/ehr-utils'
 import StoreHelper from '../../helpers/store-helper'
-import store from '@/store'
 import { timeSequenceSliceData } from '@/ehr-definitions/sim-time-seq-utils'
 
 const debug = false

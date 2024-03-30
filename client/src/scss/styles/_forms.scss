@@ -35,6 +35,9 @@ li {
   display: none;
 }
 
+.no-border {
+  border: none !important;
+}
 /* EHR tables have ids. This hides them from view */
 .row-id {
   display: none;
@@ -449,6 +452,9 @@ select, .select {
   .record-header {
     flex-flow: wrap;
   }
+}
+.grid-new-subsection {
+  margin-top: 10px;
 }
 .cardio-assessment,
 .ehr-banner-grid,

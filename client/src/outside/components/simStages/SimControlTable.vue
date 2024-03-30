@@ -33,7 +33,7 @@ div(class="sim-table-main")
 <script>
 import UiButton from '@/app/ui/UiButton.vue'
 import ZoneLmsInstructionsElement from '@/outside/components/ZoneLmsInstructionsElement.vue'
-import { splitSimTimeKey, timeSequenceSliceData } from '@/ehr-definitions/sim-time-seq-utils'
+import { splitSimTimeKey } from '@/ehr-definitions/sim-time-seq-utils'
 
 export default {
   components: { ZoneLmsInstructionsElement, UiButton },

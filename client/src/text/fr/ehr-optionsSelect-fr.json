@@ -1185,5 +1185,21 @@
   "demographics.legalGender.X": "X",
   "demographics.languagePrimary.Other": "Autre",
   "demographics.birthSex.inter": "Intersexe",
-  "medAdminRec.mar_status.Held": "Détenu"
+  "medAdminRec.mar_status.Held": "Détenu",
+  "medLabChemistry.chemInterpValue.y": "Oui",
+  "medLabChemistry.chemInterpValue.n": "Non",
+  "medLabChemistry.chemInterpValue.na": "N / A",
+  "medLabChemistry.chemPhValue.y": "Oui",
+  "medLabChemistry.chemPhValue.n": "Non",
+  "medLabChemistry.chemPhValue.na": "N / A",
+  "medLabPhoneLog.mlphRecipient.Blood": "Sang",
+  "medLabPhoneLog.mlphRecipient.Urine": "Urine",
+  "medLabPhoneLog.mlphRecipient.Tissue": "Tissu",
+  "medLabPhoneLog.mlphRecipient.Saliva": "Salive",
+  "medLabPhoneLog.mlphRecipient.Stool": "Tabouret",
+  "medLabPhoneLog.mlphRecipient.Swab": "Écouvillon",
+  "medLabPhoneLog.mlphRecipient.Sputum": "Expectorations",
+  "medLabPhoneLog.mlphRecipient.Fluid": "Fluide",
+  "medLabPhoneLog.mlphRecipient.Bone": "Os",
+  "medLabPhoneLog.mlphRecipient.Hair": "Cheveux"
 }

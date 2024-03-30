@@ -97,7 +97,7 @@
       div {{ inputVal }}
 
     div(v-else-if="isType('practitionerProfession')", class="text_input_wrapper")
-      div {{ inputVal }} &nbsp; &sol; &nbsp;
+      div {{ inputVal }} &nbsp;
 
     ehr-element-select(v-else-if="isType('select')", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 

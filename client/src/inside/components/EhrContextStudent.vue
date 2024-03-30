@@ -35,7 +35,6 @@ import EhrStudentSubmit from '@/inside/components/EhrStudentSubmit.vue'
 import EhrSimulationSignOn from '@/inside/components/EhrSimulationSignOn.vue'
 import UiInfo from '@/app/ui/UiInfo.vue'
 import { textToHtml } from '@/directives/text-to-html'
-import FeatureHelper, { FF_UNLEASH_ACTIVITY } from '@/helpers/feature-helper'
 import EhrSimulationTimeControl from '@/inside/components/EhrSimulationTimeControl.vue'
 import { t18EhrText } from '@/helpers/ehr-t18'
 

@@ -65,5 +65,6 @@
   "vitals.systolic": "Ajouter une ligne à la table de test",
   "vitals.table": "Ajouter des signes vitaux",
   "progressNotes.sbar": "Ajouter une note SBAR",
-  "medLabChemistry.tableQcChemistry": "Créer un rapport de CQ d'analyse d'urine"
+  "medLabChemistry.tableQcChemistry": "Créer un rapport de CQ d'analyse d'urine",
+  "medLabPhoneLog.phLogTable": "NONE"
 }

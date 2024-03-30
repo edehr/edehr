@@ -6,7 +6,6 @@ const PAGE_TABLE_KEY = 'biopsychosocial'
 
 // console.log('pageKeys >> ', pageKeys)
 // console.log('pageKeys >> ', pageKeys.map(k => EhrDefsGrid.getPageDefinition(k) ))
-const elemKey = 'text'
 
 describe ('testing calculation supports', () =>{
 

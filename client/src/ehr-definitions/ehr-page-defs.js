@@ -25314,8 +25314,425 @@ const DEFS = {
     "hasGridTable": true,
     "pageChildren": [
       {
-        "elementKey": "tableChem_name",
+        "elementKey": "tableQcChemistry_name",
         "formIndex": "1",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "medLabChemistry.name"
+      },
+      {
+        "elementKey": "tableQcChemistry_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "tableQcChemistry_profession",
+        "formIndex": "1",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "medLabChemistry.profession"
+      },
+      {
+        "elementKey": "tableQcChemistry_day",
+        "formIndex": "1",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "medLabChemistry.day"
+      },
+      {
+        "elementKey": "tableQcChemistry_time",
+        "formIndex": "1",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "medLabChemistry.time"
+      },
+      {
+        "elementKey": "label55-11",
+        "formIndex": "1",
+        "formCss": "grid-span-2-columns",
+        "inputType": "form_label",
+        "fqn": "medLabChemistry.label55-11"
+      },
+      {
+        "elementKey": "label55-12",
+        "formIndex": "1",
+        "inputType": "form_label",
+        "fqn": "medLabChemistry.label55-12"
+      },
+      {
+        "elementKey": "chemQcAllAcceptable",
+        "formIndex": "1",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "y",
+            "text": "Yes"
+          },
+          {
+            "key": "n",
+            "text": "No"
+          },
+          {
+            "key": "na",
+            "text": "N/A"
+          }
+        ],
+        "tableColumn": "89",
+        "fqn": "medLabChemistry.chemQcAllAcceptable"
+      },
+      {
+        "elementKey": "label55-13",
+        "formIndex": "1",
+        "inputType": "form_label",
+        "fqn": "medLabChemistry.label55-13"
+      },
+      {
+        "elementKey": "chemQcAllDuplicatesAcceptable",
+        "formIndex": "1",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "y",
+            "text": "Yes"
+          },
+          {
+            "key": "n",
+            "text": "No"
+          },
+          {
+            "key": "na",
+            "text": "N/A"
+          }
+        ],
+        "tableColumn": "90",
+        "fqn": "medLabChemistry.chemQcAllDuplicatesAcceptable"
+      },
+      {
+        "elementKey": "label55-14",
+        "formIndex": "1",
+        "inputType": "form_label",
+        "fqn": "medLabChemistry.label55-14"
+      },
+      {
+        "elementKey": "chemQcAllPlausible",
+        "formIndex": "1",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "y",
+            "text": "Yes"
+          },
+          {
+            "key": "n",
+            "text": "No"
+          },
+          {
+            "key": "na",
+            "text": "N/A"
+          }
+        ],
+        "tableColumn": "91",
+        "fqn": "medLabChemistry.chemQcAllPlausible"
+      },
+      {
+        "elementKey": "label55-15",
+        "formIndex": "1",
+        "inputType": "form_label",
+        "fqn": "medLabChemistry.label55-15"
+      },
+      {
+        "elementKey": "chemQcAllCanBeReported",
+        "formIndex": "1",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "y",
+            "text": "Yes"
+          },
+          {
+            "key": "n",
+            "text": "No"
+          },
+          {
+            "key": "na",
+            "text": "N/A"
+          }
+        ],
+        "tableColumn": "92",
+        "fqn": "medLabChemistry.chemQcAllCanBeReported"
+      },
+      {
+        "elementKey": "label55-16",
+        "formIndex": "1",
+        "formCss": "grid-new-subsection grid-span-2-columns no-border",
+        "inputType": "form_label",
+        "fqn": "medLabChemistry.label55-16"
+      },
+      {
+        "elementKey": "label55-17",
+        "formIndex": "1",
+        "formCss": "grid-new-subsection grid-span-2-columns no-border",
+        "inputType": "form_label",
+        "fqn": "medLabChemistry.label55-17"
+      },
+      {
+        "elementKey": "label55-18",
+        "formIndex": "1",
+        "inputType": "formTableHeader",
+        "fqn": "medLabChemistry.label55-18"
+      },
+      {
+        "elementKey": "label55-19",
+        "formIndex": "1",
+        "inputType": "formTableHeader",
+        "fqn": "medLabChemistry.label55-19"
+      },
+      {
+        "elementKey": "label55-20",
+        "formIndex": "1",
+        "inputType": "formTableHeader",
+        "fqn": "medLabChemistry.label55-20"
+      },
+      {
+        "elementKey": "label55-21",
+        "formIndex": "1",
+        "inputType": "formTableHeader",
+        "fqn": "medLabChemistry.label55-21"
+      },
+      {
+        "elementKey": "label55-22",
+        "formIndex": "1",
+        "inputType": "formTableText",
+        "fqn": "medLabChemistry.label55-22"
+      },
+      {
+        "elementKey": "chmQcAnalyte1",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "93",
+        "fqn": "medLabChemistry.chmQcAnalyte1"
+      },
+      {
+        "elementKey": "chmQcLevel1",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "94",
+        "fqn": "medLabChemistry.chmQcLevel1"
+      },
+      {
+        "elementKey": "chmQcRule1",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "95",
+        "fqn": "medLabChemistry.chmQcRule1"
+      },
+      {
+        "elementKey": "chmQcSeRe1",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "96",
+        "fqn": "medLabChemistry.chmQcSeRe1"
+      },
+      {
+        "elementKey": "chmQcDescribe1",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "97",
+        "fqn": "medLabChemistry.chmQcDescribe1"
+      },
+      {
+        "elementKey": "chmQcAnalyte2",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "98",
+        "fqn": "medLabChemistry.chmQcAnalyte2"
+      },
+      {
+        "elementKey": "chmQcLevel2",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "99",
+        "fqn": "medLabChemistry.chmQcLevel2"
+      },
+      {
+        "elementKey": "chmQcRule2",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "100",
+        "fqn": "medLabChemistry.chmQcRule2"
+      },
+      {
+        "elementKey": "chmQcSeRe2",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "101",
+        "fqn": "medLabChemistry.chmQcSeRe2"
+      },
+      {
+        "elementKey": "chmQcDescribe2",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "102",
+        "fqn": "medLabChemistry.chmQcDescribe2"
+      },
+      {
+        "elementKey": "chmQcAnalyte3",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "103",
+        "fqn": "medLabChemistry.chmQcAnalyte3"
+      },
+      {
+        "elementKey": "chmQcLevel3",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "104",
+        "fqn": "medLabChemistry.chmQcLevel3"
+      },
+      {
+        "elementKey": "chmQcRule3",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "105",
+        "fqn": "medLabChemistry.chmQcRule3"
+      },
+      {
+        "elementKey": "chmQcSeRe3",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "106",
+        "fqn": "medLabChemistry.chmQcSeRe3"
+      },
+      {
+        "elementKey": "chmQcDescribe3",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "107",
+        "fqn": "medLabChemistry.chmQcDescribe3"
+      },
+      {
+        "elementKey": "chmQcAnalyte4",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "108",
+        "fqn": "medLabChemistry.chmQcAnalyte4"
+      },
+      {
+        "elementKey": "chmQcLevel4",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "109",
+        "fqn": "medLabChemistry.chmQcLevel4"
+      },
+      {
+        "elementKey": "chmQcRule4",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "110",
+        "fqn": "medLabChemistry.chmQcRule4"
+      },
+      {
+        "elementKey": "chmQcSeRe4",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "111",
+        "fqn": "medLabChemistry.chmQcSeRe4"
+      },
+      {
+        "elementKey": "chmQcDescribe4",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "112",
+        "fqn": "medLabChemistry.chmQcDescribe4"
+      },
+      {
+        "elementKey": "label55-112",
+        "formIndex": "1",
+        "formCss": "grid-new-subsection grid-span-2-columns no-border",
+        "inputType": "form_label",
+        "fqn": "medLabChemistry.label55-112"
+      },
+      {
+        "elementKey": "label55-113",
+        "formIndex": "1",
+        "inputType": "form_label",
+        "fqn": "medLabChemistry.label55-113"
+      },
+      {
+        "elementKey": "label55-114",
+        "formIndex": "1",
+        "inputType": "form_label",
+        "fqn": "medLabChemistry.label55-114"
+      },
+      {
+        "elementKey": "cqcPendAnal_1",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "113",
+        "fqn": "medLabChemistry.cqcPendAnal_1"
+      },
+      {
+        "elementKey": "cqcPendResult_1",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "114",
+        "fqn": "medLabChemistry.cqcPendResult_1"
+      },
+      {
+        "elementKey": "cqcPendAnal_2",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "115",
+        "fqn": "medLabChemistry.cqcPendAnal_2"
+      },
+      {
+        "elementKey": "cqcPendResult_2",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "116",
+        "fqn": "medLabChemistry.cqcPendResult_2"
+      },
+      {
+        "elementKey": "cqcPendAnal_3",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "117",
+        "fqn": "medLabChemistry.cqcPendAnal_3"
+      },
+      {
+        "elementKey": "cqcPendResult_3",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "118",
+        "fqn": "medLabChemistry.cqcPendResult_3"
+      },
+      {
+        "elementKey": "cqcPendAnal_4",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "119",
+        "fqn": "medLabChemistry.cqcPendAnal_4"
+      },
+      {
+        "elementKey": "cqcPendResult_4",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "120",
+        "fqn": "medLabChemistry.cqcPendResult_4"
+      },
+      {
+        "elementKey": "tableChem_name",
+        "formIndex": "2",
         "inputType": "practitionerName",
         "tableColumn": "1",
         "recHeader": true,
@@ -25330,7 +25747,7 @@ const DEFS = {
       },
       {
         "elementKey": "tableChem_profession",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "practitionerProfession",
         "tableColumn": "1",
         "recHeader": true,
@@ -25338,7 +25755,7 @@ const DEFS = {
       },
       {
         "elementKey": "tableChem_day",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "visitDay",
         "mandatory": true,
         "tableColumn": "1",
@@ -25348,7 +25765,7 @@ const DEFS = {
       },
       {
         "elementKey": "tableChem_time",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "visitTime",
         "mandatory": true,
         "tableColumn": "1",
@@ -25358,7 +25775,7 @@ const DEFS = {
       },
       {
         "elementKey": "chemAccession",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "2",
         "fqn": "medLabChemistry.chemAccession"
@@ -25366,28 +25783,28 @@ const DEFS = {
       {
         "elementKey": "chemCollDay",
         "defaultValue": "Today",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "3",
         "fqn": "medLabChemistry.chemCollDay"
       },
       {
         "elementKey": "chemCollTime",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "4",
         "fqn": "medLabChemistry.chemCollTime"
       },
       {
         "elementKey": "urinOrderPhys",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "5",
         "fqn": "medLabChemistry.urinOrderPhys"
       },
       {
         "elementKey": "label45-3-1",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableHeader",
         "options": [
           {
@@ -25411,7 +25828,7 @@ const DEFS = {
       },
       {
         "elementKey": "label45-3-2",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableHeader",
         "options": [
           {
@@ -25455,19 +25872,19 @@ const DEFS = {
       },
       {
         "elementKey": "label45-3-3",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableHeader",
         "fqn": "medLabChemistry.label45-3-3"
       },
       {
         "elementKey": "label45-3-4",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableHeader",
         "fqn": "medLabChemistry.label45-3-4"
       },
       {
         "elementKey": "label45-3-5",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableText",
         "suffix": "mmol/L",
         "fqn": "medLabChemistry.label45-3-5",
@@ -25475,14 +25892,14 @@ const DEFS = {
       },
       {
         "elementKey": "chemSodium",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "6",
         "fqn": "medLabChemistry.chemSodium"
       },
       {
         "elementKey": "chemSodiumFlag",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -25509,27 +25926,27 @@ const DEFS = {
       {
         "elementKey": "chemSodiumRange",
         "defaultValue": "135 – 145 mmol/L",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "8",
         "fqn": "medLabChemistry.chemSodiumRange"
       },
       {
         "elementKey": "label45-3-7",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableText",
         "fqn": "medLabChemistry.label45-3-7"
       },
       {
         "elementKey": "chemPotassium",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "9",
         "fqn": "medLabChemistry.chemPotassium"
       },
       {
         "elementKey": "chemPotassiumFlag",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -25556,27 +25973,27 @@ const DEFS = {
       {
         "elementKey": "chemPotassiumRange",
         "defaultValue": "3.5–5.1 mmol/L",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "11",
         "fqn": "medLabChemistry.chemPotassiumRange"
       },
       {
         "elementKey": "label45-3-9",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableText",
         "fqn": "medLabChemistry.label45-3-9"
       },
       {
         "elementKey": "chemChloride",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "12",
         "fqn": "medLabChemistry.chemChloride"
       },
       {
         "elementKey": "chemChlorideFlag",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -25602,27 +26019,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemChlorideRange",
-        "formIndex": "1",
+        "defaultValue": "95 – 107 mmol/L",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "14",
         "fqn": "medLabChemistry.chemChlorideRange"
       },
       {
         "elementKey": "label45-3-11",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableText",
         "fqn": "medLabChemistry.label45-3-11"
       },
       {
         "elementKey": "chemtCO2",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "15",
         "fqn": "medLabChemistry.chemtCO2"
       },
       {
         "elementKey": "chemtCO2Flag",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -25648,27 +26066,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemtCO2Range",
-        "formIndex": "1",
+        "defaultValue": "22 – 31 mmol/L",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "17",
         "fqn": "medLabChemistry.chemtCO2Range"
       },
       {
         "elementKey": "label45-3-13",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableText",
         "fqn": "medLabChemistry.label45-3-13"
       },
       {
         "elementKey": "chemAnionGap",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "18",
         "fqn": "medLabChemistry.chemAnionGap"
       },
       {
         "elementKey": "chemAnionGapFlag",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -25694,27 +26113,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemAnionGapRange",
-        "formIndex": "1",
+        "defaultValue": "8 – 16 mmol/L",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "20",
         "fqn": "medLabChemistry.chemAnionGapRange"
       },
       {
         "elementKey": "label45-3-15",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableText",
         "fqn": "medLabChemistry.label45-3-15"
       },
       {
         "elementKey": "chemOsmalityMeasured",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "21",
         "fqn": "medLabChemistry.chemOsmalityMeasured"
       },
       {
         "elementKey": "chemOsmalityMeasuredFlag",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -25740,27 +26160,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemOsmalityMeasuredRange",
-        "formIndex": "1",
+        "defaultValue": "275 – 295 mOsm/kg",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "23",
         "fqn": "medLabChemistry.chemOsmalityMeasuredRange"
       },
       {
         "elementKey": "label45-3-17",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableText",
         "fqn": "medLabChemistry.label45-3-17"
       },
       {
         "elementKey": "chemOsmalityCalculated",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "24",
         "fqn": "medLabChemistry.chemOsmalityCalculated"
       },
       {
         "elementKey": "chemOsmalityCalculatedFlag",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -25786,27 +26207,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemOsmalityCalculatedRange",
-        "formIndex": "1",
+        "defaultValue": "275 – 295 mOsm/kg",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "26",
         "fqn": "medLabChemistry.chemOsmalityCalculatedRange"
       },
       {
         "elementKey": "label45-3-19",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableText",
         "fqn": "medLabChemistry.label45-3-19"
       },
       {
         "elementKey": "chemOsmolarGap",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "27",
         "fqn": "medLabChemistry.chemOsmolarGap"
       },
       {
         "elementKey": "chemOsmolarGapFlag",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -25832,27 +26254,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemOsmolarGapRange",
-        "formIndex": "1",
+        "defaultValue": "≤ 10 mOsm/kg",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "29",
         "fqn": "medLabChemistry.chemOsmolarGapRange"
       },
       {
         "elementKey": "label45-3-22",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableText",
         "fqn": "medLabChemistry.label45-3-22"
       },
       {
         "elementKey": "chemGlugoseFastingRandom",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "30",
         "fqn": "medLabChemistry.chemGlugoseFastingRandom"
       },
       {
         "elementKey": "chemGlugoseFastingRandomFlag",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -25878,27 +26301,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemGlugoseFastingRandomRange",
-        "formIndex": "1",
+        "defaultValue": "F(3.6-6.0) R(3.6-11.0)mmol/L",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "32",
         "fqn": "medLabChemistry.chemGlugoseFastingRandomRange"
       },
       {
         "elementKey": "label45-3-24",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableText",
         "fqn": "medLabChemistry.label45-3-24"
       },
       {
         "elementKey": "chemCreatinine",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "33",
         "fqn": "medLabChemistry.chemCreatinine"
       },
       {
         "elementKey": "chemCreatinineFlag",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -25924,27 +26348,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemCreatinineRange",
-        "formIndex": "1",
+        "defaultValue": "M(60-115) F(40-95) umol/L",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "35",
         "fqn": "medLabChemistry.chemCreatinineRange"
       },
       {
         "elementKey": "label45-3-26",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableText",
         "fqn": "medLabChemistry.label45-3-26"
       },
       {
         "elementKey": "chemUreaBun",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "36",
         "fqn": "medLabChemistry.chemUreaBun"
       },
       {
         "elementKey": "chemUreaBunFlag",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -25970,27 +26395,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemUreaBunRange",
-        "formIndex": "1",
+        "defaultValue": "2.0 – 8.2 mmol/L",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "38",
         "fqn": "medLabChemistry.chemUreaBunRange"
       },
       {
         "elementKey": "label55-1",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableText",
         "fqn": "medLabChemistry.label55-1"
       },
       {
         "elementKey": "chemCalcium",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "39",
         "fqn": "medLabChemistry.chemCalcium"
       },
       {
         "elementKey": "chemCalciumFlag",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -26016,27 +26442,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemCalciumRange",
-        "formIndex": "1",
+        "defaultValue": "2.10 – 2.55 mmol/L",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "41",
         "fqn": "medLabChemistry.chemCalciumRange"
       },
       {
         "elementKey": "label55-3",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableText",
         "fqn": "medLabChemistry.label55-3"
       },
       {
         "elementKey": "chemMagnesium",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "42",
         "fqn": "medLabChemistry.chemMagnesium"
       },
       {
         "elementKey": "chemMagnesiumFlag",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -26062,27 +26489,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemMagnesiumRange",
-        "formIndex": "1",
+        "defaultValue": "0.70 – 1.10 mmol/L",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "44",
         "fqn": "medLabChemistry.chemMagnesiumRange"
       },
       {
         "elementKey": "label55-5",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableText",
         "fqn": "medLabChemistry.label55-5"
       },
       {
         "elementKey": "chemPhosphorus",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "45",
         "fqn": "medLabChemistry.chemPhosphorus"
       },
       {
         "elementKey": "chemPhosphorusFlag",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -26108,27 +26536,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemPhosphorusRange",
-        "formIndex": "1",
+        "defaultValue": "0.80 – 1.45 mmol/L",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "47",
         "fqn": "medLabChemistry.chemPhosphorusRange"
       },
       {
         "elementKey": "label55-7",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableText",
         "fqn": "medLabChemistry.label55-7"
       },
       {
         "elementKey": "chemTotalProtein",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "48",
         "fqn": "medLabChemistry.chemTotalProtein"
       },
       {
         "elementKey": "chemTotalProteinFlag",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -26154,27 +26583,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemTotalProteinRange",
-        "formIndex": "1",
+        "defaultValue": "62 – 82 g/L",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "50",
         "fqn": "medLabChemistry.chemTotalProteinRange"
       },
       {
         "elementKey": "label55-9",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "formTableText",
         "fqn": "medLabChemistry.label55-9"
       },
       {
         "elementKey": "chemAlbumin",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "51",
         "fqn": "medLabChemistry.chemAlbumin"
       },
       {
         "elementKey": "chemAlbuminFlag",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -26200,28 +26630,29 @@ const DEFS = {
       },
       {
         "elementKey": "chemAlbuminRange",
-        "formIndex": "1",
+        "defaultValue": "34 – 50 g/L",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "53",
         "fqn": "medLabChemistry.chemAlbuminRange"
       },
       {
         "elementKey": "chemOpt1Analyte",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "54",
         "fqn": "medLabChemistry.chemOpt1Analyte"
       },
       {
         "elementKey": "chemOpt1Result",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "55",
         "fqn": "medLabChemistry.chemOpt1Result"
       },
       {
         "elementKey": "chemOpt1Type",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -26247,28 +26678,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemOpt1RI",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "57",
         "fqn": "medLabChemistry.chemOpt1RI"
       },
       {
         "elementKey": "chemOpt2Analyte",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "58",
         "fqn": "medLabChemistry.chemOpt2Analyte"
       },
       {
         "elementKey": "chemOpt2Result",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "59",
         "fqn": "medLabChemistry.chemOpt2Result"
       },
       {
         "elementKey": "chemOpt2Type",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -26294,28 +26725,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemOpt2RI",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "61",
         "fqn": "medLabChemistry.chemOpt2RI"
       },
       {
         "elementKey": "chemOpt3Analyte",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "62",
         "fqn": "medLabChemistry.chemOpt3Analyte"
       },
       {
         "elementKey": "chemOpt3Result",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "63",
         "fqn": "medLabChemistry.chemOpt3Result"
       },
       {
         "elementKey": "chemOpt3Type",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -26341,28 +26772,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemOpt3RI",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "65",
         "fqn": "medLabChemistry.chemOpt3RI"
       },
       {
         "elementKey": "chemOpt4Analyte",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "66",
         "fqn": "medLabChemistry.chemOpt4Analyte"
       },
       {
         "elementKey": "chemOpt4Result",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "67",
         "fqn": "medLabChemistry.chemOpt4Result"
       },
       {
         "elementKey": "chemOpt4Type",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -26388,28 +26819,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemOpt4RI",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "69",
         "fqn": "medLabChemistry.chemOpt4RI"
       },
       {
         "elementKey": "chemOpt5Analyte",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "70",
         "fqn": "medLabChemistry.chemOpt5Analyte"
       },
       {
         "elementKey": "chemOpt5Result",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "71",
         "fqn": "medLabChemistry.chemOpt5Result"
       },
       {
         "elementKey": "chemOpt5Type",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -26435,28 +26866,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemOpt5RI",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "73",
         "fqn": "medLabChemistry.chemOpt5RI"
       },
       {
         "elementKey": "chemOpt6Analyte",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "74",
         "fqn": "medLabChemistry.chemOpt6Analyte"
       },
       {
         "elementKey": "chemOpt6Result",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "75",
         "fqn": "medLabChemistry.chemOpt6Result"
       },
       {
         "elementKey": "chemOpt6Type",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -26482,28 +26913,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemOpt6RI",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "77",
         "fqn": "medLabChemistry.chemOpt6RI"
       },
       {
         "elementKey": "chemOpt7Analyte",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "78",
         "fqn": "medLabChemistry.chemOpt7Analyte"
       },
       {
         "elementKey": "chemOpt7Result",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "79",
         "fqn": "medLabChemistry.chemOpt7Result"
       },
       {
         "elementKey": "chemOpt7Type",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -26529,28 +26960,28 @@ const DEFS = {
       },
       {
         "elementKey": "chemOpt7RI",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "81",
         "fqn": "medLabChemistry.chemOpt7RI"
       },
       {
         "elementKey": "chemOpt8Analyte",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "82",
         "fqn": "medLabChemistry.chemOpt8Analyte"
       },
       {
         "elementKey": "chemOpt8Result",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "83",
         "fqn": "medLabChemistry.chemOpt8Result"
       },
       {
         "elementKey": "chemOpt8Type",
-        "formIndex": "1",
+        "formIndex": "2",
         "formCss": "chem-results-lhclch",
         "inputType": "radioset",
         "options": [
@@ -26576,21 +27007,21 @@ const DEFS = {
       },
       {
         "elementKey": "chemOpt8RI",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "85",
         "fqn": "medLabChemistry.chemOpt8RI"
       },
       {
         "elementKey": "urnInternal",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "textarea",
         "tableColumn": "86",
         "fqn": "medLabChemistry.urnInternal"
       },
       {
         "elementKey": "chemSpecimumType",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "checkset",
         "options": [
           {
@@ -26611,69 +27042,19 @@ const DEFS = {
       },
       {
         "elementKey": "chemSerumAppearance",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "text",
         "tableColumn": "88",
         "fqn": "medLabChemistry.chemSerumAppearance"
       },
       {
-        "elementKey": "tableQcChemistry_name",
-        "formIndex": "2",
-        "inputType": "practitionerName",
-        "tableColumn": "1",
-        "recHeader": true,
-        "fqn": "medLabChemistry.name"
-      },
-      {
-        "elementKey": "tableQcChemistry_id",
-        "inputType": "generatedId",
-        "tableColumn": 0,
-        "label": "Row id",
-        "tableCss": "row-id"
-      },
-      {
-        "elementKey": "tableQcChemistry_profession",
-        "formIndex": "2",
-        "inputType": "practitionerProfession",
-        "tableColumn": "1",
-        "recHeader": true,
-        "fqn": "medLabChemistry.profession"
-      },
-      {
-        "elementKey": "tableQcChemistry_day",
-        "formIndex": "2",
-        "inputType": "visitDay",
-        "mandatory": true,
-        "tableColumn": "1",
-        "validation": "visitDay",
-        "recHeader": true,
-        "fqn": "medLabChemistry.day"
-      },
-      {
-        "elementKey": "tableQcChemistry_time",
-        "formIndex": "2",
-        "inputType": "visitTime",
-        "mandatory": true,
-        "tableColumn": "1",
-        "validation": "time24",
-        "recHeader": true,
-        "fqn": "medLabChemistry.time"
-      },
-      {
-        "elementKey": "label55-11",
-        "formIndex": "2",
-        "formCss": "chem-qc-assay-into",
-        "inputType": "form_label",
-        "fqn": "medLabChemistry.label55-11"
-      },
-      {
-        "elementKey": "label55-12",
+        "elementKey": "chemInterpLabel",
         "formIndex": "2",
         "inputType": "form_label",
-        "fqn": "medLabChemistry.label55-12"
+        "fqn": "medLabChemistry.chemInterpLabel"
       },
       {
-        "elementKey": "chemQcAllAcceptable",
+        "elementKey": "chemInterpValue",
         "formIndex": "2",
         "inputType": "radioset",
         "options": [
@@ -26691,43 +27072,31 @@ const DEFS = {
           }
         ],
         "tableColumn": "89",
-        "fqn": "medLabChemistry.chemQcAllAcceptable"
+        "fqn": "medLabChemistry.chemInterpValue"
       },
       {
-        "elementKey": "label55-13",
+        "elementKey": "label55-40",
         "formIndex": "2",
+        "formCss": "grid-span-2-columns",
         "inputType": "form_label",
-        "fqn": "medLabChemistry.label55-13"
+        "fqn": "medLabChemistry.label55-40"
       },
       {
-        "elementKey": "chemQcAllDuplicatesAcceptable",
+        "elementKey": "chemInterpReason",
         "formIndex": "2",
-        "inputType": "radioset",
-        "options": [
-          {
-            "key": "y",
-            "text": "Yes"
-          },
-          {
-            "key": "n",
-            "text": "No"
-          },
-          {
-            "key": "na",
-            "text": "N/A"
-          }
-        ],
+        "formCss": "grid-span-2-columns",
+        "inputType": "text",
         "tableColumn": "90",
-        "fqn": "medLabChemistry.chemQcAllDuplicatesAcceptable"
+        "fqn": "medLabChemistry.chemInterpReason"
       },
       {
-        "elementKey": "label55-14",
+        "elementKey": "chemPhLabel",
         "formIndex": "2",
         "inputType": "form_label",
-        "fqn": "medLabChemistry.label55-14"
+        "fqn": "medLabChemistry.chemPhLabel"
       },
       {
-        "elementKey": "chemQcAllPlausible",
+        "elementKey": "chemPhValue",
         "formIndex": "2",
         "inputType": "radioset",
         "options": [
@@ -26745,314 +27114,433 @@ const DEFS = {
           }
         ],
         "tableColumn": "91",
-        "fqn": "medLabChemistry.chemQcAllPlausible"
+        "fqn": "medLabChemistry.chemPhValue"
       },
       {
-        "elementKey": "label55-15",
+        "elementKey": "label55-41",
         "formIndex": "2",
+        "formCss": "grid-new-subsection grid-span-2-columns no-border",
         "inputType": "form_label",
-        "fqn": "medLabChemistry.label55-15"
-      },
-      {
-        "elementKey": "chemQcAllCanBeReported",
-        "formIndex": "2",
-        "inputType": "radioset",
-        "options": [
-          {
-            "key": "y",
-            "text": "Yes"
-          },
-          {
-            "key": "n",
-            "text": "No"
-          },
-          {
-            "key": "na",
-            "text": "N/A"
-          }
-        ],
-        "tableColumn": "92",
-        "fqn": "medLabChemistry.chemQcAllCanBeReported"
-      },
-      {
-        "elementKey": "label55-16",
-        "formIndex": "2",
-        "formCss": "grid-new-subsection grid-span-3-columns",
-        "inputType": "form_label",
-        "fqn": "medLabChemistry.label55-16"
-      },
-      {
-        "elementKey": "label55-17",
-        "formIndex": "2",
-        "formCss": "grid-new-subsection grid-span-3-columns",
-        "inputType": "form_label",
-        "fqn": "medLabChemistry.label55-17"
-      },
-      {
-        "elementKey": "label55-18",
-        "formIndex": "2",
-        "inputType": "formTableHeader",
-        "fqn": "medLabChemistry.label55-18"
-      },
-      {
-        "elementKey": "label55-19",
-        "formIndex": "2",
-        "inputType": "formTableHeader",
-        "fqn": "medLabChemistry.label55-19"
-      },
-      {
-        "elementKey": "label55-20",
-        "formIndex": "2",
-        "inputType": "formTableHeader",
-        "fqn": "medLabChemistry.label55-20"
-      },
-      {
-        "elementKey": "label55-21",
-        "formIndex": "2",
-        "inputType": "formTableHeader",
-        "fqn": "medLabChemistry.label55-21"
-      },
-      {
-        "elementKey": "label55-22",
-        "formIndex": "2",
-        "inputType": "formTableText",
-        "fqn": "medLabChemistry.label55-22"
-      },
-      {
-        "elementKey": "chmQcAnalyte1",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "93",
-        "fqn": "medLabChemistry.chmQcAnalyte1"
-      },
-      {
-        "elementKey": "chmQcLevel1",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "94",
-        "fqn": "medLabChemistry.chmQcLevel1"
-      },
-      {
-        "elementKey": "chmQcRule1",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "95",
-        "fqn": "medLabChemistry.chmQcRule1"
-      },
-      {
-        "elementKey": "chmQcSeRe1",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "96",
-        "fqn": "medLabChemistry.chmQcSeRe1"
-      },
-      {
-        "elementKey": "chmQcDescribe1",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "97",
-        "fqn": "medLabChemistry.chmQcDescribe1"
-      },
-      {
-        "elementKey": "chmQcAnalyte2",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "98",
-        "fqn": "medLabChemistry.chmQcAnalyte2"
-      },
-      {
-        "elementKey": "chmQcLevel2",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "99",
-        "fqn": "medLabChemistry.chmQcLevel2"
-      },
-      {
-        "elementKey": "chmQcRule2",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "100",
-        "fqn": "medLabChemistry.chmQcRule2"
-      },
-      {
-        "elementKey": "chmQcSeRe2",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "101",
-        "fqn": "medLabChemistry.chmQcSeRe2"
-      },
-      {
-        "elementKey": "chmQcDescribe2",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "102",
-        "fqn": "medLabChemistry.chmQcDescribe2"
-      },
-      {
-        "elementKey": "chmQcAnalyte3",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "103",
-        "fqn": "medLabChemistry.chmQcAnalyte3"
-      },
-      {
-        "elementKey": "chmQcLevel3",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "104",
-        "fqn": "medLabChemistry.chmQcLevel3"
-      },
-      {
-        "elementKey": "chmQcRule3",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "105",
-        "fqn": "medLabChemistry.chmQcRule3"
-      },
-      {
-        "elementKey": "chmQcSeRe3",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "106",
-        "fqn": "medLabChemistry.chmQcSeRe3"
-      },
-      {
-        "elementKey": "chmQcDescribe3",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "107",
-        "fqn": "medLabChemistry.chmQcDescribe3"
-      },
-      {
-        "elementKey": "chmQcAnalyte4",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "108",
-        "fqn": "medLabChemistry.chmQcAnalyte4"
-      },
-      {
-        "elementKey": "chmQcLevel4",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "109",
-        "fqn": "medLabChemistry.chmQcLevel4"
-      },
-      {
-        "elementKey": "chmQcRule4",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "110",
-        "fqn": "medLabChemistry.chmQcRule4"
-      },
-      {
-        "elementKey": "chmQcSeRe4",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "111",
-        "fqn": "medLabChemistry.chmQcSeRe4"
-      },
-      {
-        "elementKey": "chmQcDescribe4",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "112",
-        "fqn": "medLabChemistry.chmQcDescribe4"
-      },
-      {
-        "elementKey": "label55-112",
-        "formIndex": "2",
-        "formCss": "grid-span-2-columns",
-        "inputType": "form_label",
-        "fqn": "medLabChemistry.label55-112"
-      },
-      {
-        "elementKey": "label55-113",
-        "formIndex": "2",
-        "inputType": "form_label",
-        "fqn": "medLabChemistry.label55-113"
-      },
-      {
-        "elementKey": "label55-114",
-        "formIndex": "2",
-        "inputType": "form_label",
-        "fqn": "medLabChemistry.label55-114"
-      },
-      {
-        "elementKey": "cqcPendAnal_1",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "113",
-        "fqn": "medLabChemistry.cqcPendAnal_1"
-      },
-      {
-        "elementKey": "cqcPendResult_1",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "114",
-        "fqn": "medLabChemistry.cqcPendResult_1"
-      },
-      {
-        "elementKey": "cqcPendAnal_2",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "115",
-        "fqn": "medLabChemistry.cqcPendAnal_2"
-      },
-      {
-        "elementKey": "cqcPendResult_2",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "116",
-        "fqn": "medLabChemistry.cqcPendResult_2"
-      },
-      {
-        "elementKey": "cqcPendAnal_3",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "117",
-        "fqn": "medLabChemistry.cqcPendAnal_3"
-      },
-      {
-        "elementKey": "cqcPendResult_3",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "118",
-        "fqn": "medLabChemistry.cqcPendResult_3"
-      },
-      {
-        "elementKey": "cqcPendAnal_4",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "119",
-        "fqn": "medLabChemistry.cqcPendAnal_4"
-      },
-      {
-        "elementKey": "cqcPendResult_4",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "120",
-        "fqn": "medLabChemistry.cqcPendResult_4"
-      },
-      {
-        "elementKey": "label55-23",
-        "formIndex": "2",
-        "inputType": "form_label",
-        "fqn": "medLabChemistry.label55-23"
-      },
-      {
-        "elementKey": "label55-24",
-        "formIndex": "2",
-        "inputType": "form_label",
-        "fqn": "medLabChemistry.label55-24"
+        "fqn": "medLabChemistry.label55-41"
       }
     ],
     "pageElements": {
+      "tableQcChemistry": {
+        "elementKey": "tableQcChemistry",
+        "pageElementIndex": "1",
+        "pageKey": "medLabChemistry",
+        "tableKey": "tableQcChemistry",
+        "isTable": true,
+        "ehr_list": [
+          {
+            "label": "Row id",
+            "tableCss": "row-id",
+            "ehr_list_index": 0,
+            "items": [
+              "tableQcChemistry_id"
+            ]
+          },
+          {
+            "label": "Identification",
+            "ehr_list_index": "1",
+            "items": [
+              "tableQcChemistry_name",
+              "tableQcChemistry_profession",
+              "tableQcChemistry_day",
+              "tableQcChemistry_time"
+            ]
+          },
+          {
+            "ehr_list_index": "89",
+            "items": [
+              "chemQcAllAcceptable"
+            ]
+          },
+          {
+            "ehr_list_index": "90",
+            "items": [
+              "chemQcAllDuplicatesAcceptable"
+            ]
+          },
+          {
+            "ehr_list_index": "91",
+            "items": [
+              "chemQcAllPlausible"
+            ]
+          },
+          {
+            "ehr_list_index": "92",
+            "items": [
+              "chemQcAllCanBeReported"
+            ]
+          },
+          {
+            "label": "Analyte",
+            "ehr_list_index": "93",
+            "items": [
+              "chmQcAnalyte1"
+            ]
+          },
+          {
+            "label": "QC Level",
+            "ehr_list_index": "94",
+            "items": [
+              "chmQcLevel1"
+            ]
+          },
+          {
+            "label": "QC rule failed",
+            "ehr_list_index": "95",
+            "items": [
+              "chmQcRule1"
+            ]
+          },
+          {
+            "label": "SE or RE",
+            "ehr_list_index": "96",
+            "items": [
+              "chmQcSeRe1"
+            ]
+          },
+          {
+            "label": "Describe",
+            "ehr_list_index": "97",
+            "items": [
+              "chmQcDescribe1"
+            ]
+          },
+          {
+            "label": "Analyte",
+            "ehr_list_index": "98",
+            "items": [
+              "chmQcAnalyte2"
+            ]
+          },
+          {
+            "label": "QC Level",
+            "ehr_list_index": "99",
+            "items": [
+              "chmQcLevel2"
+            ]
+          },
+          {
+            "label": "QC rule failed",
+            "ehr_list_index": "100",
+            "items": [
+              "chmQcRule2"
+            ]
+          },
+          {
+            "label": "SE or RE",
+            "ehr_list_index": "101",
+            "items": [
+              "chmQcSeRe2"
+            ]
+          },
+          {
+            "label": "Describe",
+            "ehr_list_index": "102",
+            "items": [
+              "chmQcDescribe2"
+            ]
+          },
+          {
+            "label": "Analyte",
+            "ehr_list_index": "103",
+            "items": [
+              "chmQcAnalyte3"
+            ]
+          },
+          {
+            "label": "QC Level",
+            "ehr_list_index": "104",
+            "items": [
+              "chmQcLevel3"
+            ]
+          },
+          {
+            "label": "QC rule failed",
+            "ehr_list_index": "105",
+            "items": [
+              "chmQcRule3"
+            ]
+          },
+          {
+            "label": "SE or RE",
+            "ehr_list_index": "106",
+            "items": [
+              "chmQcSeRe3"
+            ]
+          },
+          {
+            "label": "Describe",
+            "ehr_list_index": "107",
+            "items": [
+              "chmQcDescribe3"
+            ]
+          },
+          {
+            "label": "Analyte",
+            "ehr_list_index": "108",
+            "items": [
+              "chmQcAnalyte4"
+            ]
+          },
+          {
+            "label": "QC Level",
+            "ehr_list_index": "109",
+            "items": [
+              "chmQcLevel4"
+            ]
+          },
+          {
+            "label": "QC rule failed",
+            "ehr_list_index": "110",
+            "items": [
+              "chmQcRule4"
+            ]
+          },
+          {
+            "label": "SE or RE",
+            "ehr_list_index": "111",
+            "items": [
+              "chmQcSeRe4"
+            ]
+          },
+          {
+            "label": "Describe",
+            "ehr_list_index": "112",
+            "items": [
+              "chmQcDescribe4"
+            ]
+          },
+          {
+            "ehr_list_index": "113",
+            "items": [
+              "cqcPendAnal_1"
+            ]
+          },
+          {
+            "ehr_list_index": "114",
+            "items": [
+              "cqcPendResult_1"
+            ]
+          },
+          {
+            "ehr_list_index": "115",
+            "items": [
+              "cqcPendAnal_2"
+            ]
+          },
+          {
+            "ehr_list_index": "116",
+            "items": [
+              "cqcPendResult_2"
+            ]
+          },
+          {
+            "ehr_list_index": "117",
+            "items": [
+              "cqcPendAnal_3"
+            ]
+          },
+          {
+            "ehr_list_index": "118",
+            "items": [
+              "cqcPendResult_3"
+            ]
+          },
+          {
+            "ehr_list_index": "119",
+            "items": [
+              "cqcPendAnal_4"
+            ]
+          },
+          {
+            "ehr_list_index": "120",
+            "items": [
+              "cqcPendResult_4"
+            ]
+          }
+        ],
+        "form": {
+          "elementKey": "tableQcChemistry",
+          "label": "Chemistry QC",
+          "addButtonText": "Create a chemistry QC report",
+          "formKey": "tableQcChemistry",
+          "ehr_groups": [
+            {
+              "elementKey": "hdrGroup",
+              "formCss": "record-header",
+              "fqn": "medLabChemistry.hdrGroup",
+              "gIndex": "1",
+              "gChildren": [
+                "tableQcChemistry_name",
+                "tableQcChemistry_profession",
+                "tableQcChemistry_day",
+                "tableQcChemistry_time"
+              ]
+            },
+            {
+              "elementKey": "cGroup45-6",
+              "formCss": "chem-qc-assay form-table-group",
+              "fqn": "medLabChemistry.cGroup45-6",
+              "gIndex": "2",
+              "gChildren": [
+                "label55-11",
+                "label55-12",
+                "chemQcAllAcceptable",
+                "label55-13",
+                "chemQcAllDuplicatesAcceptable",
+                "label55-14",
+                "chemQcAllPlausible",
+                "label55-15",
+                "chemQcAllCanBeReported",
+                "label55-16",
+                "label55-17"
+              ]
+            },
+            {
+              "elementKey": "cGroup45-7",
+              "formCss": "chem-qc-trouble form-table-group",
+              "fqn": "medLabChemistry.cGroup45-7",
+              "gIndex": "3",
+              "gChildren": [
+                "label55-18",
+                "label55-19",
+                "label55-20",
+                "label55-21",
+                "label55-22",
+                "chmQcAnalyte1",
+                "chmQcLevel1",
+                "chmQcRule1",
+                "chmQcSeRe1",
+                "chmQcDescribe1",
+                "chmQcAnalyte2",
+                "chmQcLevel2",
+                "chmQcRule2",
+                "chmQcSeRe2",
+                "chmQcDescribe2",
+                "chmQcAnalyte3",
+                "chmQcLevel3",
+                "chmQcRule3",
+                "chmQcSeRe3",
+                "chmQcDescribe3",
+                "chmQcAnalyte4",
+                "chmQcLevel4",
+                "chmQcRule4",
+                "chmQcSeRe4",
+                "chmQcDescribe4"
+              ]
+            },
+            {
+              "elementKey": "cGroup46-5",
+              "formCss": "med-lab-urin-qc-pending-table form-table-group",
+              "fqn": "medLabChemistry.cGroup46-5",
+              "gIndex": "4",
+              "gChildren": [
+                "label55-112",
+                "label55-113",
+                "label55-114",
+                "cqcPendAnal_1",
+                "cqcPendResult_1",
+                "cqcPendAnal_2",
+                "cqcPendResult_2",
+                "cqcPendAnal_3",
+                "cqcPendResult_3",
+                "cqcPendAnal_4",
+                "cqcPendResult_4"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "tableQcChemistry_name": "",
+            "tableQcChemistry_profession": "",
+            "tableQcChemistry_day": "",
+            "tableQcChemistry_time": "",
+            "chemQcAllAcceptable": "",
+            "chemQcAllDuplicatesAcceptable": "",
+            "chemQcAllPlausible": "",
+            "chemQcAllCanBeReported": "",
+            "chmQcAnalyte1": "",
+            "chmQcLevel1": "",
+            "chmQcRule1": "",
+            "chmQcSeRe1": "",
+            "chmQcDescribe1": "",
+            "chmQcAnalyte2": "",
+            "chmQcLevel2": "",
+            "chmQcRule2": "",
+            "chmQcSeRe2": "",
+            "chmQcDescribe2": "",
+            "chmQcAnalyte3": "",
+            "chmQcLevel3": "",
+            "chmQcRule3": "",
+            "chmQcSeRe3": "",
+            "chmQcDescribe3": "",
+            "chmQcAnalyte4": "",
+            "chmQcLevel4": "",
+            "chmQcRule4": "",
+            "chmQcSeRe4": "",
+            "chmQcDescribe4": "",
+            "cqcPendAnal_1": "",
+            "cqcPendResult_1": "",
+            "cqcPendAnal_2": "",
+            "cqcPendResult_2": "",
+            "cqcPendAnal_3": "",
+            "cqcPendResult_3": "",
+            "cqcPendAnal_4": "",
+            "cqcPendResult_4": ""
+          }
+        },
+        "fqn": "medLabChemistry.tableQcChemistry",
+        "tableChildren": [
+          "tableQcChemistry_id",
+          "tableQcChemistry_name",
+          "tableQcChemistry_profession",
+          "tableQcChemistry_day",
+          "tableQcChemistry_time",
+          "chemQcAllAcceptable",
+          "chemQcAllDuplicatesAcceptable",
+          "chemQcAllPlausible",
+          "chemQcAllCanBeReported",
+          "chmQcAnalyte1",
+          "chmQcLevel1",
+          "chmQcRule1",
+          "chmQcSeRe1",
+          "chmQcDescribe1",
+          "chmQcAnalyte2",
+          "chmQcLevel2",
+          "chmQcRule2",
+          "chmQcSeRe2",
+          "chmQcDescribe2",
+          "chmQcAnalyte3",
+          "chmQcLevel3",
+          "chmQcRule3",
+          "chmQcSeRe3",
+          "chmQcDescribe3",
+          "chmQcAnalyte4",
+          "chmQcLevel4",
+          "chmQcRule4",
+          "chmQcSeRe4",
+          "chmQcDescribe4",
+          "cqcPendAnal_1",
+          "cqcPendResult_1",
+          "cqcPendAnal_2",
+          "cqcPendResult_2",
+          "cqcPendAnal_3",
+          "cqcPendResult_3",
+          "cqcPendAnal_4",
+          "cqcPendResult_4"
+        ],
+        "hasRecHeader": true
+      },
       "tableChem": {
         "elementKey": "tableChem",
-        "pageElementIndex": "1",
+        "pageElementIndex": "2",
         "pageKey": "medLabChemistry",
         "tableKey": "tableChem",
         "isTable": true,
+        "tableAction": "medLabPhoneLog.phLogTable",
         "ehr_list": [
           {
             "label": "Row id",
@@ -27672,6 +28160,24 @@ const DEFS = {
             "items": [
               "chemSerumAppearance"
             ]
+          },
+          {
+            "ehr_list_index": "89",
+            "items": [
+              "chemInterpValue"
+            ]
+          },
+          {
+            "ehr_list_index": "90",
+            "items": [
+              "chemInterpReason"
+            ]
+          },
+          {
+            "ehr_list_index": "91",
+            "items": [
+              "chemPhValue"
+            ]
           }
         ],
         "form": {
@@ -27830,6 +28336,29 @@ const DEFS = {
                 "chemSpecimumType",
                 "chemSerumAppearance"
               ]
+            },
+            {
+              "elementKey": "cGroup45-4",
+              "formCss": "grid-left-to-right-2",
+              "fqn": "medLabChemistry.cGroup45-4",
+              "gIndex": "6",
+              "gChildren": [
+                "chemInterpLabel",
+                "chemInterpValue",
+                "label55-40",
+                "chemInterpReason"
+              ]
+            },
+            {
+              "elementKey": "cGroup45-4",
+              "formCss": "grid-left-to-right-2",
+              "fqn": "medLabChemistry.cGroup45-4",
+              "gIndex": "7",
+              "gChildren": [
+                "chemPhLabel",
+                "chemPhValue",
+                "label55-41"
+              ]
             }
           ],
           "ehr_data": {
@@ -27849,46 +28378,46 @@ const DEFS = {
             "chemPotassiumRange": "3.5–5.1 mmol/L",
             "chemChloride": "",
             "chemChlorideFlag": "",
-            "chemChlorideRange": "",
+            "chemChlorideRange": "95 – 107 mmol/L",
             "chemtCO2": "",
             "chemtCO2Flag": "",
-            "chemtCO2Range": "",
+            "chemtCO2Range": "22 – 31 mmol/L",
             "chemAnionGap": "",
             "chemAnionGapFlag": "",
-            "chemAnionGapRange": "",
+            "chemAnionGapRange": "8 – 16 mmol/L",
             "chemOsmalityMeasured": "",
             "chemOsmalityMeasuredFlag": "",
-            "chemOsmalityMeasuredRange": "",
+            "chemOsmalityMeasuredRange": "275 – 295 mOsm/kg",
             "chemOsmalityCalculated": "",
             "chemOsmalityCalculatedFlag": "",
-            "chemOsmalityCalculatedRange": "",
+            "chemOsmalityCalculatedRange": "275 – 295 mOsm/kg",
             "chemOsmolarGap": "",
             "chemOsmolarGapFlag": "",
-            "chemOsmolarGapRange": "",
+            "chemOsmolarGapRange": "≤ 10 mOsm/kg",
             "chemGlugoseFastingRandom": "",
             "chemGlugoseFastingRandomFlag": "",
-            "chemGlugoseFastingRandomRange": "",
+            "chemGlugoseFastingRandomRange": "F(3.6-6.0) R(3.6-11.0)mmol/L",
             "chemCreatinine": "",
             "chemCreatinineFlag": "",
-            "chemCreatinineRange": "",
+            "chemCreatinineRange": "M(60-115) F(40-95) umol/L",
             "chemUreaBun": "",
             "chemUreaBunFlag": "",
-            "chemUreaBunRange": "",
+            "chemUreaBunRange": "2.0 – 8.2 mmol/L",
             "chemCalcium": "",
             "chemCalciumFlag": "",
-            "chemCalciumRange": "",
+            "chemCalciumRange": "2.10 – 2.55 mmol/L",
             "chemMagnesium": "",
             "chemMagnesiumFlag": "",
-            "chemMagnesiumRange": "",
+            "chemMagnesiumRange": "0.70 – 1.10 mmol/L",
             "chemPhosphorus": "",
             "chemPhosphorusFlag": "",
-            "chemPhosphorusRange": "",
+            "chemPhosphorusRange": "0.80 – 1.45 mmol/L",
             "chemTotalProtein": "",
             "chemTotalProteinFlag": "",
-            "chemTotalProteinRange": "",
+            "chemTotalProteinRange": "62 – 82 g/L",
             "chemAlbumin": "",
             "chemAlbuminFlag": "",
-            "chemAlbuminRange": "",
+            "chemAlbuminRange": "34 – 50 g/L",
             "chemOpt1Analyte": "",
             "chemOpt1Result": "",
             "chemOpt1Type": "",
@@ -27923,10 +28452,18 @@ const DEFS = {
             "chemOpt8RI": "",
             "urnInternal": "",
             "chemSpecimumType": "",
-            "chemSerumAppearance": ""
+            "chemSerumAppearance": "",
+            "chemInterpValue": "",
+            "chemInterpReason": "",
+            "chemPhValue": ""
           }
         },
         "fqn": "medLabChemistry.tableChem",
+        "tableActionType": "openDialog",
+        "taTargetPageKey": "medLabPhoneLog",
+        "taTargetTableKey": "phLogTable",
+        "taSourcePageKey": "medLabChemistry",
+        "taSourceTableKey": "tableChem",
         "tableChildren": [
           "tableChem_id",
           "tableChem_name",
@@ -28019,399 +28556,10 @@ const DEFS = {
           "chemOpt8RI",
           "urnInternal",
           "chemSpecimumType",
-          "chemSerumAppearance"
-        ],
-        "hasRecHeader": true
-      },
-      "tableQcChemistry": {
-        "elementKey": "tableQcChemistry",
-        "pageElementIndex": "2",
-        "pageKey": "medLabChemistry",
-        "tableKey": "tableQcChemistry",
-        "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "tableQcChemistry_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "tableQcChemistry_name",
-              "tableQcChemistry_profession",
-              "tableQcChemistry_day",
-              "tableQcChemistry_time"
-            ]
-          },
-          {
-            "ehr_list_index": "89",
-            "items": [
-              "chemQcAllAcceptable"
-            ]
-          },
-          {
-            "ehr_list_index": "90",
-            "items": [
-              "chemQcAllDuplicatesAcceptable"
-            ]
-          },
-          {
-            "ehr_list_index": "91",
-            "items": [
-              "chemQcAllPlausible"
-            ]
-          },
-          {
-            "ehr_list_index": "92",
-            "items": [
-              "chemQcAllCanBeReported"
-            ]
-          },
-          {
-            "label": "Analyte",
-            "ehr_list_index": "93",
-            "items": [
-              "chmQcAnalyte1"
-            ]
-          },
-          {
-            "label": "QC Level",
-            "ehr_list_index": "94",
-            "items": [
-              "chmQcLevel1"
-            ]
-          },
-          {
-            "label": "QC rule failed",
-            "ehr_list_index": "95",
-            "items": [
-              "chmQcRule1"
-            ]
-          },
-          {
-            "label": "SE or RE",
-            "ehr_list_index": "96",
-            "items": [
-              "chmQcSeRe1"
-            ]
-          },
-          {
-            "label": "Describe",
-            "ehr_list_index": "97",
-            "items": [
-              "chmQcDescribe1"
-            ]
-          },
-          {
-            "label": "Analyte",
-            "ehr_list_index": "98",
-            "items": [
-              "chmQcAnalyte2"
-            ]
-          },
-          {
-            "label": "QC Level",
-            "ehr_list_index": "99",
-            "items": [
-              "chmQcLevel2"
-            ]
-          },
-          {
-            "label": "QC rule failed",
-            "ehr_list_index": "100",
-            "items": [
-              "chmQcRule2"
-            ]
-          },
-          {
-            "label": "SE or RE",
-            "ehr_list_index": "101",
-            "items": [
-              "chmQcSeRe2"
-            ]
-          },
-          {
-            "label": "Describe",
-            "ehr_list_index": "102",
-            "items": [
-              "chmQcDescribe2"
-            ]
-          },
-          {
-            "label": "Analyte",
-            "ehr_list_index": "103",
-            "items": [
-              "chmQcAnalyte3"
-            ]
-          },
-          {
-            "label": "QC Level",
-            "ehr_list_index": "104",
-            "items": [
-              "chmQcLevel3"
-            ]
-          },
-          {
-            "label": "QC rule failed",
-            "ehr_list_index": "105",
-            "items": [
-              "chmQcRule3"
-            ]
-          },
-          {
-            "label": "SE or RE",
-            "ehr_list_index": "106",
-            "items": [
-              "chmQcSeRe3"
-            ]
-          },
-          {
-            "label": "Describe",
-            "ehr_list_index": "107",
-            "items": [
-              "chmQcDescribe3"
-            ]
-          },
-          {
-            "label": "Analyte",
-            "ehr_list_index": "108",
-            "items": [
-              "chmQcAnalyte4"
-            ]
-          },
-          {
-            "label": "QC Level",
-            "ehr_list_index": "109",
-            "items": [
-              "chmQcLevel4"
-            ]
-          },
-          {
-            "label": "QC rule failed",
-            "ehr_list_index": "110",
-            "items": [
-              "chmQcRule4"
-            ]
-          },
-          {
-            "label": "SE or RE",
-            "ehr_list_index": "111",
-            "items": [
-              "chmQcSeRe4"
-            ]
-          },
-          {
-            "label": "Describe",
-            "ehr_list_index": "112",
-            "items": [
-              "chmQcDescribe4"
-            ]
-          },
-          {
-            "ehr_list_index": "113",
-            "items": [
-              "cqcPendAnal_1"
-            ]
-          },
-          {
-            "ehr_list_index": "114",
-            "items": [
-              "cqcPendResult_1"
-            ]
-          },
-          {
-            "ehr_list_index": "115",
-            "items": [
-              "cqcPendAnal_2"
-            ]
-          },
-          {
-            "ehr_list_index": "116",
-            "items": [
-              "cqcPendResult_2"
-            ]
-          },
-          {
-            "ehr_list_index": "117",
-            "items": [
-              "cqcPendAnal_3"
-            ]
-          },
-          {
-            "ehr_list_index": "118",
-            "items": [
-              "cqcPendResult_3"
-            ]
-          },
-          {
-            "ehr_list_index": "119",
-            "items": [
-              "cqcPendAnal_4"
-            ]
-          },
-          {
-            "ehr_list_index": "120",
-            "items": [
-              "cqcPendResult_4"
-            ]
-          }
-        ],
-        "form": {
-          "elementKey": "tableQcChemistry",
-          "label": "Chemistry QC",
-          "addButtonText": "Create a urinalysis QC report",
-          "formKey": "tableQcChemistry",
-          "ehr_groups": [
-            {
-              "elementKey": "hdrGroup",
-              "formCss": "record-header",
-              "fqn": "medLabChemistry.hdrGroup",
-              "gIndex": "1",
-              "gChildren": [
-                "tableQcChemistry_name",
-                "tableQcChemistry_profession",
-                "tableQcChemistry_day",
-                "tableQcChemistry_time"
-              ]
-            },
-            {
-              "elementKey": "cGroup45-6",
-              "formCss": "chem-qc-assay form-table-group",
-              "fqn": "medLabChemistry.cGroup45-6",
-              "gIndex": "2",
-              "gChildren": [
-                "label55-11",
-                "label55-12",
-                "chemQcAllAcceptable",
-                "label55-13",
-                "chemQcAllDuplicatesAcceptable",
-                "label55-14",
-                "chemQcAllPlausible",
-                "label55-15",
-                "chemQcAllCanBeReported",
-                "label55-16",
-                "label55-17"
-              ]
-            },
-            {
-              "elementKey": "cGroup45-7",
-              "formCss": "chem-qc-trouble form-table-group",
-              "fqn": "medLabChemistry.cGroup45-7",
-              "gIndex": "3",
-              "gChildren": [
-                "label55-18",
-                "label55-19",
-                "label55-20",
-                "label55-21",
-                "label55-22",
-                "chmQcAnalyte1",
-                "chmQcLevel1",
-                "chmQcRule1",
-                "chmQcSeRe1",
-                "chmQcDescribe1",
-                "chmQcAnalyte2",
-                "chmQcLevel2",
-                "chmQcRule2",
-                "chmQcSeRe2",
-                "chmQcDescribe2",
-                "chmQcAnalyte3",
-                "chmQcLevel3",
-                "chmQcRule3",
-                "chmQcSeRe3",
-                "chmQcDescribe3",
-                "chmQcAnalyte4",
-                "chmQcLevel4",
-                "chmQcRule4",
-                "chmQcSeRe4",
-                "chmQcDescribe4"
-              ]
-            },
-            {
-              "elementKey": "cGroup45-8",
-              "formCss": "grid-left-to-right-3",
-              "fqn": "medLabChemistry.cGroup45-8",
-              "gIndex": "4",
-              "gChildren": [
-                "label55-23",
-                "label55-24"
-              ]
-            }
-          ],
-          "ehr_data": {
-            "tableQcChemistry_name": "",
-            "tableQcChemistry_profession": "",
-            "tableQcChemistry_day": "",
-            "tableQcChemistry_time": "",
-            "chemQcAllAcceptable": "",
-            "chemQcAllDuplicatesAcceptable": "",
-            "chemQcAllPlausible": "",
-            "chemQcAllCanBeReported": "",
-            "chmQcAnalyte1": "",
-            "chmQcLevel1": "",
-            "chmQcRule1": "",
-            "chmQcSeRe1": "",
-            "chmQcDescribe1": "",
-            "chmQcAnalyte2": "",
-            "chmQcLevel2": "",
-            "chmQcRule2": "",
-            "chmQcSeRe2": "",
-            "chmQcDescribe2": "",
-            "chmQcAnalyte3": "",
-            "chmQcLevel3": "",
-            "chmQcRule3": "",
-            "chmQcSeRe3": "",
-            "chmQcDescribe3": "",
-            "chmQcAnalyte4": "",
-            "chmQcLevel4": "",
-            "chmQcRule4": "",
-            "chmQcSeRe4": "",
-            "chmQcDescribe4": ""
-          }
-        },
-        "fqn": "medLabChemistry.tableQcChemistry",
-        "tableChildren": [
-          "tableQcChemistry_id",
-          "tableQcChemistry_name",
-          "tableQcChemistry_profession",
-          "tableQcChemistry_day",
-          "tableQcChemistry_time",
-          "chemQcAllAcceptable",
-          "chemQcAllDuplicatesAcceptable",
-          "chemQcAllPlausible",
-          "chemQcAllCanBeReported",
-          "chmQcAnalyte1",
-          "chmQcLevel1",
-          "chmQcRule1",
-          "chmQcSeRe1",
-          "chmQcDescribe1",
-          "chmQcAnalyte2",
-          "chmQcLevel2",
-          "chmQcRule2",
-          "chmQcSeRe2",
-          "chmQcDescribe2",
-          "chmQcAnalyte3",
-          "chmQcLevel3",
-          "chmQcRule3",
-          "chmQcSeRe3",
-          "chmQcDescribe3",
-          "chmQcAnalyte4",
-          "chmQcLevel4",
-          "chmQcRule4",
-          "chmQcSeRe4",
-          "chmQcDescribe4",
-          "cqcPendAnal_1",
-          "cqcPendResult_1",
-          "cqcPendAnal_2",
-          "cqcPendResult_2",
-          "cqcPendAnal_3",
-          "cqcPendResult_3",
-          "cqcPendAnal_4",
-          "cqcPendResult_4"
+          "chemSerumAppearance",
+          "chemInterpValue",
+          "chemInterpReason",
+          "chemPhValue"
         ],
         "hasRecHeader": true
       }
@@ -33473,6 +33621,242 @@ const DEFS = {
           "riskList_time",
           "riskIndicator",
           "riskComment"
+        ],
+        "hasRecHeader": true
+      }
+    }
+  },
+  "medLabPhoneLog": {
+    "pageDataKey": "medLabPhoneLog",
+    "pIndex": "52",
+    "hasGridTable": true,
+    "pageChildren": [
+      {
+        "elementKey": "phLogTable_name",
+        "formIndex": "1",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "medLabPhoneLog.name"
+      },
+      {
+        "elementKey": "phLogTable_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "phLogTable_profession",
+        "formIndex": "1",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "medLabPhoneLog.profession"
+      },
+      {
+        "elementKey": "phLogTable_day",
+        "formIndex": "1",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "medLabPhoneLog.day"
+      },
+      {
+        "elementKey": "phLogTable_time",
+        "formIndex": "1",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "medLabPhoneLog.time"
+      },
+      {
+        "elementKey": "mlplReason",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "2",
+        "fqn": "medLabPhoneLog.mlplReason"
+      },
+      {
+        "elementKey": "mlphReadBack",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "3",
+        "fqn": "medLabPhoneLog.mlphReadBack"
+      },
+      {
+        "elementKey": "mlphRecipient",
+        "formIndex": "1",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "Blood",
+            "text": "Blood"
+          },
+          {
+            "key": "Urine",
+            "text": "Urine"
+          },
+          {
+            "key": "Tissue",
+            "text": "Tissue"
+          },
+          {
+            "key": "Saliva",
+            "text": "Saliva"
+          },
+          {
+            "key": "Stool",
+            "text": "Stool"
+          },
+          {
+            "key": "Swab",
+            "text": "Swab"
+          },
+          {
+            "key": "Sputum",
+            "text": "Sputum"
+          },
+          {
+            "key": "Fluid",
+            "text": "Fluid"
+          },
+          {
+            "key": "Bone",
+            "text": "Bone"
+          },
+          {
+            "key": "Hair",
+            "text": "Hair"
+          }
+        ],
+        "tableColumn": "4",
+        "fqn": "medLabPhoneLog.mlphRecipient"
+      },
+      {
+        "elementKey": "accComments",
+        "formIndex": "1",
+        "inputType": "textarea",
+        "tableColumn": "5",
+        "fqn": "medLabPhoneLog.accComments"
+      }
+    ],
+    "pageElements": {
+      "phLogTable": {
+        "elementKey": "phLogTable",
+        "pageElementIndex": "1",
+        "pageKey": "medLabPhoneLog",
+        "tableKey": "phLogTable",
+        "isTable": true,
+        "ehr_list": [
+          {
+            "label": "Row id",
+            "tableCss": "row-id",
+            "ehr_list_index": 0,
+            "items": [
+              "phLogTable_id"
+            ]
+          },
+          {
+            "label": "Identification",
+            "ehr_list_index": "1",
+            "items": [
+              "phLogTable_name",
+              "phLogTable_profession",
+              "phLogTable_day",
+              "phLogTable_time"
+            ]
+          },
+          {
+            "ehr_list_index": "2",
+            "items": [
+              "mlplReason"
+            ]
+          },
+          {
+            "ehr_list_index": "3",
+            "items": [
+              "mlphReadBack"
+            ]
+          },
+          {
+            "ehr_list_index": "4",
+            "items": [
+              "mlphRecipient"
+            ]
+          },
+          {
+            "ehr_list_index": "5",
+            "items": [
+              "accComments"
+            ]
+          }
+        ],
+        "form": {
+          "elementKey": "phLogTable",
+          "label": "Phone Log",
+          "addButtonText": "NONE",
+          "formKey": "phLogTable",
+          "ehr_groups": [
+            {
+              "elementKey": "hdrGroup",
+              "formCss": "record-header",
+              "fqn": "medLabPhoneLog.hdrGroup",
+              "gIndex": "1",
+              "gChildren": [
+                "phLogTable_name",
+                "phLogTable_profession",
+                "phLogTable_day",
+                "phLogTable_time"
+              ]
+            },
+            {
+              "elementKey": "cGroup50-2",
+              "formCss": "grid-left-to-right-3",
+              "fqn": "medLabPhoneLog.cGroup50-2",
+              "gIndex": "2",
+              "gChildren": [
+                "mlplReason",
+                "mlphReadBack",
+                "mlphRecipient"
+              ]
+            },
+            {
+              "elementKey": "cGroup50-3",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "medLabPhoneLog.cGroup50-3",
+              "gIndex": "3",
+              "gChildren": [
+                "accComments"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "phLogTable_name": "",
+            "phLogTable_profession": "",
+            "phLogTable_day": "",
+            "phLogTable_time": "",
+            "mlplReason": "",
+            "mlphReadBack": "",
+            "mlphRecipient": "",
+            "accComments": ""
+          }
+        },
+        "fqn": "medLabPhoneLog.phLogTable",
+        "tableChildren": [
+          "phLogTable_id",
+          "phLogTable_name",
+          "phLogTable_profession",
+          "phLogTable_day",
+          "phLogTable_time",
+          "mlplReason",
+          "mlphReadBack",
+          "mlphRecipient",
+          "accComments"
         ],
         "hasRecHeader": true
       }

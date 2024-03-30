@@ -385,6 +385,13 @@ export function inside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/SpecialIndicators.vue'),
       meta: { layout: 'inside', label: 'Special Indicators (Risk)', topLevel: 'patient', zone: 'ehr' }
+    },
+    {
+      path: '/ehr/med-lab/med-lab-phone-log',
+      name: 'med-lab-phone-log',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/MedLabPhoneLog.vue'),
+      meta: { layout: 'inside', label: 'Phone Log', topLevel: 'med-lab', zone: 'ehr' }
     }
   ]
 }

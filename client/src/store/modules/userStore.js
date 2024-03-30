@@ -1,8 +1,5 @@
 import InstoreHelper from './instoreHelper'
-import StoreHelper from '@/helpers/store-helper'
-import { Text } from '@/helpers/ehr-text'
 const API = 'users'
-const NAME = 'UserStore'
 const OBJ = 'user'
 const debug = false
 

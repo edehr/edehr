@@ -1599,6 +1599,35 @@
           "zone": "ehr"
         },
         "children": []
+      },
+      {
+        "name": "med-lab-phone-log",
+        "isLIS": true,
+        "isEHR": false,
+        "label": "Phone Log",
+        "pageDataKey": "medLabPhoneLog",
+        "fqn": "medLabPhoneLog",
+        "routeName": "med-lab-phone-log",
+        "topLevel": "med-lab",
+        "def": {
+          "path": "/ehr/med-lab",
+          "routeName": "med-lab-phone-log",
+          "pageDataKey": "medLabPhoneLog",
+          "label": "Phone Log",
+          "generateComponent": "yes",
+          "menuIndex": "59",
+          "lis": "yes",
+          "componentName": "MedLabPhoneLog",
+          "dataName": "medLabPhoneLog",
+          "fullPath": "/ehr/med-lab/med-lab-phone-log",
+          "title": "Med Lab Phone Log",
+          "redirectEhr": "",
+          "redirectLis": "",
+          "topLevel": "med-lab",
+          "componentPath": "./inside/views",
+          "zone": "ehr"
+        },
+        "children": []
       }
     ]
   }

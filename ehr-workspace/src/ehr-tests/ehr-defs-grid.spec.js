@@ -165,7 +165,10 @@ describe('testing ehr-defs-grid', () => {
         let a = filtered.sort().toString()
         let b = uniqKeys.sort().toString()
         let di = findFirstDiffPos(a, b)
-        console.log('Duplicate keys found in page', pKey, di, a.substring(di-5, di+5), b.substring(di-5, di+5), a, b)
+        console.log('Duplicate keys found in page', pKey, di)
+        console.log(a.substring(di-15, di+15))
+        console.log(b.substring(di-15, di+15))
+        // console.log(a, b)
       }
       filtered.length.should.equal(setLen, `${pKey} has duplicates in children`)
       // }

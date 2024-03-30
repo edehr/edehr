@@ -1,0 +1,41 @@
+// Generated VUE file. Before modifying see docs about Vue file generation
+<template lang="pug">
+  div(class="ehr-page")
+    ehr-page(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
+    div(style="display:none")
+      p This Med Lab Phone Log page is generated.
+      p Label: Phone Log
+      p Data Key: medLabPhoneLog
+      p Component name: MedLabPhoneLog
+      p Redirect: 
+      p Route name: med-lab-phone-log
+      p Full path: /ehr/med-lab/med-lab-phone-log
+</template>
+
+<script>
+import EhrPage from '../components/page/EhrPage'
+import EhrPageHelper from '../components/page/ehr-helper'
+
+export default {
+  name: 'MedLabPhoneLog',
+  components: { EhrPage },
+  data: function () {
+    return {
+      pageDataKey: 'medLabPhoneLog',
+      ehrHelp: undefined
+    }
+  },
+  computed: {
+  },
+  created () {
+    this.ehrHelp = new EhrPageHelper(this.pageDataKey)
+  },
+  // must declare beforeRouteLeave on the component that is routed
+  beforeRouteLeave (to, from, next) {
+    this.ehrHelp.beforeRouteLeave(to, from, next)
+  },
+  beforeDestroy: function () {
+    this.ehrHelp.beforeDestroy(this.pageDataKey)
+  }
+}
+</script>
