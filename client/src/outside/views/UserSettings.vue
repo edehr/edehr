@@ -1,9 +1,6 @@
 <template lang='pug'>
   div
     zone-lms-page-banner
-    div
-      h2 testing
-      div user sertings {{ userSettings }}
     div(class="details-container card selected")
       h2 {{ text.PAGE_TITLE }}
       div(class="details-row")

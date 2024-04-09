@@ -26,7 +26,7 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 main {
-  min-height: 50vh;
+  min-height: 90vh;
   padding-bottom: 2rem;
 }
 </style>
