@@ -1105,8 +1105,8 @@
   "orderSets.time": "Hora",
   "pain": "Evaluación del dolor",
   "pain.alleviation": "Síntomas asociados",
-  "pain.alleviationAssociatedSymptoms": "Alivio y síntomas asociados",
-  "pain.alleviationAssociatedSymptoms2": "Alivio y síntomas asociados",
+  "pain.alleviationAssociatedSymptoms": "Alivio",
+  "pain.alleviationAssociatedSymptoms2": "Alivio",
   "pain.cGroup20-2": "Sitio de dolor primario",
   "pain.cGroup20-3": "Sitio de dolor secundario",
   "pain.comments": "Comentarios",
@@ -1293,7 +1293,7 @@
   "medAdminRec.mar_barCodeCheck": "Escaneo de código de barras",
   "medAdminRec.mo_medDetails": "Detalles de medicación",
   "medLabChemistry.tableQcChemistry": "Control de calidad de química",
-  "medLabChemistry.label55-112": "Informar \\\\pendiente\\\\\\ al personal de atención al paciente indica que los resultados no están disponibles y están a la espera de la validación por parte del tecnólogo antes de publicarlos.\\",
+  "medLabChemistry.label55-112": "Informar \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\pendiente\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ al personal de atención al paciente indica que los resultados no están disponibles y están a la espera de la validación por parte del tecnólogo antes de publicarlos.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\",
   "medLabChemistry.label55-113": "Analito pendiente",
   "medLabChemistry.label55-114": "Resultado pendiente (incluir unidades)",
   "medLabChemistry.chemInterpLabel": "¿Alguno de los resultados es anormal?",
@@ -1309,5 +1309,8 @@
   "medLabPhoneLog.mlplReason": "Razón",
   "medLabPhoneLog.mlphReadBack": "Resultados leídos",
   "medLabPhoneLog.mlphRecipient": "Nombre completo del destinatario",
-  "medLabPhoneLog.accComments": "Comentarios"
+  "medLabPhoneLog.accComments": "Comentarios",
+  "medLabPhoneLog.testAccessionID": "ID de acceso",
+  "pain.alleviation2": "Síntomas asociados",
+  "medAdminRec.mar_internal": "Comentarios internos"
 }

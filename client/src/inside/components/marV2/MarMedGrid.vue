@@ -57,7 +57,6 @@
             // MAR button within the first column block
             div(class="medication-element-button")
               ui-button(value="mmg-main",
-                v-if="showMainMedAdminButton(med)",
                 class='mar-button',
                 :disabled='!medOrderSelected(med)'
                 :class='{draftRow : medHasDraftMar(med) }'
@@ -130,16 +129,21 @@
 import UiButton from '@/app/ui/UiButton.vue'
 import EhrTableActions from '@/inside/components/page/ehr-table-actions'
 import EhrDefs, { MED_ORDERS_PAGE_KEY, MED_ORDERS_TABLE_KEY } from '@/ehr-definitions/ehr-defs-grid'
-import { MarTimelineModel, MAR_STATUS_REFUSED,
+import {
   MAR_STATUS_MISSED,
+  MAR_STATUS_REFUSED,
   MAR_STATUS_SKIPPED,
-  MED_GROUP_LABELS, MED_GROUPS } from '@/ehr-definitions/med-definitions/mar-model'
+  MarTimelineModel,
+  MED_GROUP_LABELS,
+  MED_GROUPS
+} from '@/ehr-definitions/med-definitions/mar-model'
 import UiInfo from '@/app/ui/UiInfo.vue'
 import { textToHtml } from '@/directives/text-to-html'
 import { t18EhrText } from '@/helpers/ehr-t18'
 import MarBarcodeDialog from '@/inside/components/marV2/MarBarcodeDialog.vue'
 import Vue from 'vue'
 import { currentSimDayNumber, currentSimTime, hourStringToHour, simDateCalc } from '@/helpers/date-helper'
+
 export default {
   components: { MarBarcodeDialog, UiInfo, UiButton },
   data () {
@@ -170,9 +174,13 @@ export default {
   },
   methods: {
     medOrderSelected ( medOrder ) {
-      const checkBoxed = medOrder && medOrder.checkBoxed
-      const barCoded = medOrder && this.barCodedMeds.includes(medOrder.medName)
-      return barCoded || checkBoxed
+      if (!medOrder) {
+        return false
+      }
+      if (medOrder.checkBoxed) {
+        return true
+      }
+      return this.barCodedMeds.find(bmo => bmo.medName === medOrder.medName)
     },
     isTimeCurrentSimTimeClass (ts) {
       let result = this.aDay.dayNum === currentSimDayNumber()
@@ -269,21 +277,6 @@ export default {
     medHasDraftMar (med) {
       return this.getDraftMarsForMed(med).length > 0
     },
-    showMainMedAdminButton (med) {
-      let show = true
-      // if (med.isStatOrOnce()) {
-      //   const mc = this.getMarsForMed(med).length
-      //   show = mc === 0
-      // } else if (med.isPrn()) {
-      //   const dc = this.getDraftMarsForMed(med).length
-      //   show = dc === 0
-      // } else {
-      //   // OD meds can appear on both the title area and the day's schedule
-      //   show = 'OD' === med.schedule || !med.isSchedulable()
-      // }
-      return show
-    },
-
     /**
      * Open the MAR dialog. If available provide the time element, otherwise provide the med order.
      * @param mme timeElement {obj | null}
@@ -297,7 +290,8 @@ export default {
       const options = EhrTableActions.getTableActionRequestOptions(sendersTableDef, sourceRowId)
       options.presetValues = options.presetValues || []
       let barCoded = this.$store.getters['system/barCodedMedOrders']
-      const barCodeCheck = barCoded.includes(medOrder.medName)
+      const barCodeCheck = barCoded.find( mo => mo.medName === medOrder.medName)
+      // console.log('Open MAR dialog withbarCodeCheck?', barCodeCheck, medOrder.medName, barCoded)
       if(barCodeCheck) {
         // The action of opening the MAR will clear the medication from the barcoded list.
         const index = barCoded.indexOf(medOrder.medName)

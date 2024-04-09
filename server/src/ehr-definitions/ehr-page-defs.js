@@ -9123,17 +9123,24 @@ const DEFS = {
         "fqn": "pain.alleviationAssociatedSymptoms2"
       },
       {
-        "elementKey": "radiation2",
+        "elementKey": "alleviation2",
         "formIndex": "1",
         "inputType": "text",
         "tableColumn": "17",
+        "fqn": "pain.alleviation2"
+      },
+      {
+        "elementKey": "radiation2",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "18",
         "fqn": "pain.radiation2"
       },
       {
         "elementKey": "precipitatingEvents2",
         "formIndex": "1",
         "inputType": "text",
-        "tableColumn": "18",
+        "tableColumn": "19",
         "fqn": "pain.precipitatingEvents2"
       },
       {
@@ -9141,7 +9148,7 @@ const DEFS = {
         "formIndex": "1",
         "formCss": "grid-span-3-columns",
         "inputType": "textarea",
-        "tableColumn": "19",
+        "tableColumn": "20",
         "fqn": "pain.comments2"
       }
     ],
@@ -9271,29 +9278,36 @@ const DEFS = {
             ]
           },
           {
-            "label": "Alleviation & associated symptoms",
+            "label": "Alleviation",
             "ehr_list_index": "16",
             "items": [
               "alleviationAssociatedSymptoms2"
             ]
           },
           {
-            "label": "Radiation",
+            "label": "Associated symptoms",
             "ehr_list_index": "17",
+            "items": [
+              "alleviation2"
+            ]
+          },
+          {
+            "label": "Radiation",
+            "ehr_list_index": "18",
             "items": [
               "radiation2"
             ]
           },
           {
             "label": "Precipitating events",
-            "ehr_list_index": "18",
+            "ehr_list_index": "19",
             "items": [
               "precipitatingEvents2"
             ]
           },
           {
             "label": "Comments",
-            "ehr_list_index": "19",
+            "ehr_list_index": "20",
             "items": [
               "comments2"
             ]
@@ -9348,6 +9362,7 @@ const DEFS = {
                 "onset2",
                 "type2",
                 "alleviationAssociatedSymptoms2",
+                "alleviation2",
                 "radiation2",
                 "precipitatingEvents2",
                 "comments2"
@@ -9375,6 +9390,7 @@ const DEFS = {
             "onset2": "",
             "type2": "",
             "alleviationAssociatedSymptoms2": "",
+            "alleviation2": "",
             "radiation2": "",
             "precipitatingEvents2": "",
             "comments2": ""
@@ -9403,6 +9419,7 @@ const DEFS = {
           "onset2",
           "type2",
           "alleviationAssociatedSymptoms2",
+          "alleviation2",
           "radiation2",
           "precipitatingEvents2",
           "comments2"
@@ -14329,6 +14346,13 @@ const DEFS = {
         "inputType": "textarea",
         "tableColumn": "15",
         "fqn": "medAdminRec.mar_comments"
+      },
+      {
+        "elementKey": "mar_internal",
+        "formIndex": "2",
+        "inputType": "textarea",
+        "tableColumn": "16",
+        "fqn": "medAdminRec.mar_internal"
       }
     ],
     "pageElements": {
@@ -14570,6 +14594,12 @@ const DEFS = {
             "items": [
               "mar_comments"
             ]
+          },
+          {
+            "ehr_list_index": "16",
+            "items": [
+              "mar_internal"
+            ]
           }
         ],
         "form": {
@@ -14640,7 +14670,8 @@ const DEFS = {
               "fqn": "medAdminRec.mar_group_notes",
               "gIndex": "5",
               "gChildren": [
-                "mar_comments"
+                "mar_comments",
+                "mar_internal"
               ]
             }
           ],
@@ -14667,7 +14698,8 @@ const DEFS = {
             "mar_location": "",
             "mar_secSigName": "",
             "mar_barCodeCheck": "",
-            "mar_comments": ""
+            "mar_comments": "",
+            "mar_internal": ""
           }
         },
         "fqn": "medAdminRec.marTable",
@@ -14691,7 +14723,8 @@ const DEFS = {
           "mar_location",
           "mar_secSigName",
           "mar_barCodeCheck",
-          "mar_comments"
+          "mar_comments",
+          "mar_internal"
         ],
         "hasRecHeader": true
       }
@@ -27540,7 +27573,6 @@ const DEFS = {
         "pageKey": "medLabChemistry",
         "tableKey": "tableChem",
         "isTable": true,
-        "tableAction": "medLabPhoneLog.phLogTable",
         "ehr_list": [
           {
             "label": "Row id",
@@ -28459,11 +28491,6 @@ const DEFS = {
           }
         },
         "fqn": "medLabChemistry.tableChem",
-        "tableActionType": "openDialog",
-        "taTargetPageKey": "medLabPhoneLog",
-        "taTargetTableKey": "phLogTable",
-        "taSourcePageKey": "medLabChemistry",
-        "taSourceTableKey": "tableChem",
         "tableChildren": [
           "tableChem_id",
           "tableChem_name",
@@ -33675,73 +33702,38 @@ const DEFS = {
         "fqn": "medLabPhoneLog.time"
       },
       {
-        "elementKey": "mlplReason",
+        "elementKey": "testAccessionID",
         "formIndex": "1",
         "inputType": "text",
         "tableColumn": "2",
-        "fqn": "medLabPhoneLog.mlplReason"
-      },
-      {
-        "elementKey": "mlphReadBack",
-        "formIndex": "1",
-        "inputType": "text",
-        "tableColumn": "3",
-        "fqn": "medLabPhoneLog.mlphReadBack"
+        "fqn": "medLabPhoneLog.testAccessionID"
       },
       {
         "elementKey": "mlphRecipient",
         "formIndex": "1",
-        "inputType": "select",
-        "options": [
-          {
-            "key": "Blood",
-            "text": "Blood"
-          },
-          {
-            "key": "Urine",
-            "text": "Urine"
-          },
-          {
-            "key": "Tissue",
-            "text": "Tissue"
-          },
-          {
-            "key": "Saliva",
-            "text": "Saliva"
-          },
-          {
-            "key": "Stool",
-            "text": "Stool"
-          },
-          {
-            "key": "Swab",
-            "text": "Swab"
-          },
-          {
-            "key": "Sputum",
-            "text": "Sputum"
-          },
-          {
-            "key": "Fluid",
-            "text": "Fluid"
-          },
-          {
-            "key": "Bone",
-            "text": "Bone"
-          },
-          {
-            "key": "Hair",
-            "text": "Hair"
-          }
-        ],
-        "tableColumn": "4",
+        "inputType": "text",
+        "tableColumn": "3",
         "fqn": "medLabPhoneLog.mlphRecipient"
+      },
+      {
+        "elementKey": "mlphReadBack",
+        "formIndex": "1",
+        "inputType": "checkbox",
+        "tableColumn": "4",
+        "fqn": "medLabPhoneLog.mlphReadBack"
+      },
+      {
+        "elementKey": "mlplReason",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "5",
+        "fqn": "medLabPhoneLog.mlplReason"
       },
       {
         "elementKey": "accComments",
         "formIndex": "1",
         "inputType": "textarea",
-        "tableColumn": "5",
+        "tableColumn": "6",
         "fqn": "medLabPhoneLog.accComments"
       }
     ],
@@ -33774,23 +33766,29 @@ const DEFS = {
           {
             "ehr_list_index": "2",
             "items": [
-              "mlplReason"
+              "testAccessionID"
             ]
           },
           {
             "ehr_list_index": "3",
             "items": [
-              "mlphReadBack"
+              "mlphRecipient"
             ]
           },
           {
             "ehr_list_index": "4",
             "items": [
-              "mlphRecipient"
+              "mlphReadBack"
             ]
           },
           {
             "ehr_list_index": "5",
+            "items": [
+              "mlplReason"
+            ]
+          },
+          {
+            "ehr_list_index": "6",
             "items": [
               "accComments"
             ]
@@ -33799,7 +33797,7 @@ const DEFS = {
         "form": {
           "elementKey": "phLogTable",
           "label": "Phone Log",
-          "addButtonText": "NONE",
+          "addButtonText": "Create a phone log",
           "formKey": "phLogTable",
           "ehr_groups": [
             {
@@ -33820,9 +33818,9 @@ const DEFS = {
               "fqn": "medLabPhoneLog.cGroup50-2",
               "gIndex": "2",
               "gChildren": [
-                "mlplReason",
-                "mlphReadBack",
-                "mlphRecipient"
+                "testAccessionID",
+                "mlphRecipient",
+                "mlphReadBack"
               ]
             },
             {
@@ -33831,6 +33829,7 @@ const DEFS = {
               "fqn": "medLabPhoneLog.cGroup50-3",
               "gIndex": "3",
               "gChildren": [
+                "mlplReason",
                 "accComments"
               ]
             }
@@ -33840,9 +33839,10 @@ const DEFS = {
             "phLogTable_profession": "",
             "phLogTable_day": "",
             "phLogTable_time": "",
-            "mlplReason": "",
-            "mlphReadBack": "",
+            "testAccessionID": "",
             "mlphRecipient": "",
+            "mlphReadBack": "",
+            "mlplReason": "",
             "accComments": ""
           }
         },
@@ -33853,9 +33853,10 @@ const DEFS = {
           "phLogTable_profession",
           "phLogTable_day",
           "phLogTable_time",
-          "mlplReason",
-          "mlphReadBack",
+          "testAccessionID",
           "mlphRecipient",
+          "mlphReadBack",
+          "mlplReason",
           "accComments"
         ],
         "hasRecHeader": true

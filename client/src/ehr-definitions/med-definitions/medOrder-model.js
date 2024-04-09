@@ -91,6 +91,8 @@ export class MedOrder {
       med_scheduled = makeHumanTableCell('medicationOrders', 'med_scheduled', 'select', med_scheduled)
       list.push(med_scheduled)
     }
+    const med_timing = makeHumanTableCell('medicationOrders', 'med_timing', 'select', this.timing)
+    med_timing && list.push(med_timing)
     this.route ? list.push(this.route) : null
     this.location ? list.push(this.location) : null
     return list.join(', ')

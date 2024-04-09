@@ -1106,7 +1106,7 @@
   "pain": "Pain assessment",
   "pain.alleviation": "Associated symptoms",
   "pain.alleviationAssociatedSymptoms": "Alleviation",
-  "pain.alleviationAssociatedSymptoms2": "Alleviation & associated symptoms",
+  "pain.alleviationAssociatedSymptoms2": "Alleviation",
   "pain.cGroup20-2": "Primary pain site",
   "pain.cGroup20-3": "Secondary pain site",
   "pain.comments": "Comments",
@@ -1309,5 +1309,8 @@
   "medLabPhoneLog.mlplReason": "Reason",
   "medLabPhoneLog.mlphReadBack": "Results read back",
   "medLabPhoneLog.mlphRecipient": "Full name of recipient",
-  "medLabPhoneLog.accComments": "Comments"
+  "medLabPhoneLog.accComments": "Comments",
+  "medLabPhoneLog.testAccessionID": "Accession ID",
+  "pain.alleviation2": "Associated symptoms",
+  "medAdminRec.mar_internal": "Internal comments"
 }

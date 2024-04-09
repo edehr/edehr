@@ -48,6 +48,7 @@ const getters = {
     return baseLevelData
   },
   mergedData: (state, getters, rootState, rootGetters) => {
+    let startTime = performance.now()
     let type = ''
     let mData
     const baseLevelData = getters.baseLevel
@@ -62,9 +63,6 @@ const getters = {
     } else {
       type = 'Student merged data'
     }
-    if (debug) console.log('EhrData type: ' + type, secondLevelData)
-
-    // console.log('baseLevelData', baseLevelData)
     if (secondLevelData) {
       //EhrDataModel both updates the data as needed it also computes the sim time
       mData = EhrDataModel.MergeTwoLevels(baseLevelData, secondLevelData)
@@ -78,6 +76,8 @@ const getters = {
       console.log('EhrData merged', mData)
       console.log('merged data has this meta', mData.meta)
     }
+    let elapsedTime = performance.now() - startTime
+    console.log('EhrData merged elapsedTime, type', elapsedTime, type)
     return mData || {meta:{}}
   },
   hasDataForPagesList (state, getters) {

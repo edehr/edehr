@@ -3,10 +3,11 @@ import { Router } from 'express'
 import { Text } from '../../config/text'
 import { ParameterError } from '../common/errors'
 const MEDICATIONS = require('../../resources/medicationsList.json')
-
-// Support for new medication databases and /medicationsV3/
 const MEDICATIONS_VA = require('../../resources/vaMedications.json')
 const MEDICATIONS_CA = require('../../resources/canMedications.json')
+const Therapeutics_CA = require('../../resources/canTherapeutics.json')
+const Therapeutics_VA = require('../../resources/vaTherapeutics.json')
+
 const MED_KEY = 'med'
 function getSearchList (medicationList) {
   const T_KEY = 'thD'
@@ -23,6 +24,8 @@ const CaMedicationList = MEDICATIONS_CA.medicationList
 const CaSearchList = getSearchList(CaMedicationList)
 const VaMedicationList = MEDICATIONS_VA.medicationList
 const VaSearchList = getSearchList(VaMedicationList)
+
+let debug = false
 
 export default class LookaheadController {
 
@@ -60,21 +63,18 @@ export default class LookaheadController {
           }
         })
       }
-      console.log('lookupMedsv2', term, results.length)
+      if (debug) console.log('lookupMedsv2', term, results.length)
       resolve(results)
     })
   }
 
   lookupMedsV3 (src, term) {
-    console.log('--------- lookupMedsV3', src, term)
-    let searchList, medList
+    if (debug) console.log('--------- lookupMedsV3', src, term)
+    let searchList
     if (src === 'ca') {
       searchList = CaSearchList
-      medList = CaMedicationList
-    }
-    else if (src === 'va') {
+    } else if (src === 'va') {
       searchList = VaSearchList
-      medList = VaMedicationList
     } else {
       throw new ParameterError('Medication lookahead requires src of "ca" or "va"')
     }
@@ -82,7 +82,7 @@ export default class LookaheadController {
     return new Promise( (resolve, reject) => {
       let results = []
       if(!term || typeof term !== 'string' || term.length <= 1) {
-        console.log('--------- lookupMedsV3 no term so return first', this.limitCnt, ' records')
+        console.error('--------- lookupMedsV3 no term so return first', this.limitCnt, ' records')
         results = [] // medList.splice(0, 50)
       } else {
         const searchTerm = term.toLowerCase()
@@ -97,8 +97,31 @@ export default class LookaheadController {
         })
       }
       results.sort( (a,b) => a[MED_KEY].localeCompare(b[MED_KEY]))
-      console.log('lookupMedsV3', term, results.length)
+      if (debug) console.log('lookupMedsV3', term, results.length)
       resolve(results)
+    })
+  }
+
+  lookupTherapeutics (src, code) {
+    let searchList
+    if (src === 'ca') {
+      searchList = Therapeutics_CA
+    }
+    else if (src === 'va') {
+      searchList = Therapeutics_VA
+    } else {
+      throw new ParameterError('Therapeutics lookahead requires src of "ca" or "va"')
+    }
+    return new Promise( (resolve) => {
+      let result = {}
+      if(!code || typeof code !== 'string') {
+        console.error('--------- lookupTherapeutics no code so return empty')
+      } else {
+        const searchTerm = code.toUpperCase()
+        result = searchList[searchTerm]
+      }
+      if (debug) console.log('lookupTherapeutics', src, code, result)
+      resolve(result)
     })
   }
 
@@ -139,12 +162,20 @@ export default class LookaheadController {
         .then(null, fail(req, res))
     })
     router.get('/medicationsV3/', (req, res) => {
-      console.log('---- ', req.query)
       this
         .lookupMedsV3(req.query.src, req.query.term)
         .then(ok(res))
         .then(null, fail(req, res))
     })
+    router.get('/therapeutics/', (req, res) => {
+      // sample
+      // http://localhost:28000/api/lookahead/therapeutics?src=ca&code=A11AA03
+      this
+        .lookupTherapeutics(req.query.src, req.query.code)
+        .then(ok(res))
+        .then(null, fail(req, res))
+    })
+
     return router
   }
 }
