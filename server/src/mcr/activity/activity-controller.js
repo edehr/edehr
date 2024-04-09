@@ -8,7 +8,7 @@ import ActivityData from '../activity-data/activity-data'
 import { isAdmin } from '../../helpers/middleware'
 import { ParameterError } from '../common/errors'
 import { Text } from '../../config/text'
-import { splitSimTimeKey, validSimTimeKey } from '../../ehr-definitions/sim-time-seq-utils'
+import { validSimTimeKey } from '../../ehr-definitions/sim-time-seq-utils'
 const debug = require('debug')('server')
 const debugAC = false
 
@@ -53,12 +53,13 @@ async function  incrementTask () {
   }
 }
 
-function _setupMinuteTask () {
+function _setupMinuteTask (incrementTask) {
   let date = new Date()
   let sec = date.getSeconds()
   setTimeout(()=>{
     setInterval(()=>{
-      console.log('----- DO SOMETHING EXACTLY EVERY MINUTE')
+      incrementTask()
+      // console.log('----- DO SOMETHING EXACTLY EVERY MINUTE')
     }, 60 * 1000)
   }, (60 - sec) * 1000)
 }
@@ -70,8 +71,8 @@ export default class ActivityController extends BaseController {
   constructor () {
     super(Activity)
     // for development skip the one minute task and do it every second
-    // _setupMinuteTask(incrementTask)
-    setInterval( incrementTask, 1000)
+    _setupMinuteTask(incrementTask)
+    // setInterval( incrementTask, 1000)
   }
   setSharedControllers (cc) {
     this.comCon = cc

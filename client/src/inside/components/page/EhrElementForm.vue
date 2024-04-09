@@ -129,7 +129,7 @@
         span(v-if="viewOnly", class='bold') {{ inputVal }}
         input(v-else, class="input numb-input",
           pattern="^([01][0-9]|2[0-3])([0-5][0-9])$"
-          type="text", :name="elementKey", v-model="inputVal")
+          type="text", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
 
     div(v-else) ELSE: {{inputType}} {{label}}
 

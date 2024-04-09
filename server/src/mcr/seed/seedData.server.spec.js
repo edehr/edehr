@@ -6,7 +6,6 @@ const helper = new Helper()
 import EhrApp from '../../server/app'
 import { applicationConfiguration } from '../../config/config'
 const configuration = applicationConfiguration('test')
-const TYPE = 'SeedData'
 const PROPERTY = 'seeddata'
 const BASE = '/api/seed-data'
 const ehrApp = new EhrApp(configuration)

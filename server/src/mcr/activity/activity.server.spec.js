@@ -138,8 +138,8 @@ describe('Activity mongoose schema testing', function () {
     activity.resource_link_title.should.equal('AC-something')
   })
 
-  let activityId
-  it('ActivityController updateSimTimeKey', async () => {
+  // maybe delete the following since there is no code that 'simTimeKeyUpdate'
+  it.skip('ActivityController updateSimTimeKey', async () => {
     let data = Helper.sampleActivity(theConsumer, theCourse, theAssignment)
     let doc = await activityController.create(data)
     should.exist(doc)

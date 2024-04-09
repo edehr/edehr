@@ -1105,8 +1105,8 @@
   "orderSets.time": "Temps",
   "pain": "Évaluation de la douleur",
   "pain.alleviation": "Symptômes associés",
-  "pain.alleviationAssociatedSymptoms": "Rétulation et symptômes associés",
-  "pain.alleviationAssociatedSymptoms2": "Rétulation et symptômes associés",
+  "pain.alleviationAssociatedSymptoms": "Allégement",
+  "pain.alleviationAssociatedSymptoms2": "Allégement",
   "pain.cGroup20-2": "Site de douleur primaire",
   "pain.cGroup20-3": "Site de douleur secondaire",
   "pain.comments": "commentaires",
@@ -1309,5 +1309,8 @@
   "medLabPhoneLog.mlplReason": "Raison",
   "medLabPhoneLog.mlphReadBack": "Relecture des résultats",
   "medLabPhoneLog.mlphRecipient": "Nom complet du destinataire",
-  "medLabPhoneLog.accComments": "commentaires"
+  "medLabPhoneLog.accComments": "commentaires",
+  "medLabPhoneLog.testAccessionID": "ID d'adhésion",
+  "pain.alleviation2": "Symptômes associés",
+  "medAdminRec.mar_internal": "Commentaires internes"
 }

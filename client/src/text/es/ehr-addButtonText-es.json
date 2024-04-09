@@ -65,6 +65,6 @@
   "vitals.systolic": "Agregar una fila a la tabla de pruebas",
   "vitals.table": "Agregar signos vitales",
   "progressNotes.sbar": "Agregar una nota SAER",
-  "medLabChemistry.tableQcChemistry": "Crear un informe de control de calidad del análisis de orina",
-  "medLabPhoneLog.phLogTable": "NONE"
+  "medLabChemistry.tableQcChemistry": "Crear un informe de control de calidad de química",
+  "medLabPhoneLog.phLogTable": "Crear un registro telefónico"
 }

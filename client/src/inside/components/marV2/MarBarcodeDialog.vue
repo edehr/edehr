@@ -4,7 +4,8 @@
       :isModal="false",
       ref="theDialog",
       @save="closeProceed",
-      @cancel="closeCancel")
+      @cancel="closeCancel",
+      :disableSave="disableSave")
 
       h3(slot="header") Bar code scan to confirm medication
       div(slot="body")
@@ -15,27 +16,67 @@
         div(class="medInputs")
           label Scan patient MRN
           input(class="input", type="text", ref="mrnInput", :disabled='matchedMrn', v-model="inputPatientMrn", v-on:keyup.enter="watchMrn")
-          div {{ matchedMrn ? 'Patient MRN is matched' : 'Enter Patient MRN and press ENTER' }}
+          ehr-patient-banner(v-if="matchedMrn")
+          div(v-else) Scan Patient MRN and press ENTER
         div(class="medInputs")
           label Scan medication
           input(class="input", type="text", ref="medInput", v-model="inputMed", v-on:keyup.enter="watchMed")
-          div {{ matchedMrn ? 'Enter a medication order and press ENTER' : '' }}
-        h4 Medication orders
-        div(v-for='(med) in inputMeds',
-          :key='med',
-          class="app-tag"
-        )
-          span(class="app-tag-label") {{med}}
-          button(v-on:click="removeMedAction(med)") x
+          div Enter a medication order and press ENTER
+
+        section(v-show="inputMeds.length>0")
+          h4 Medication orders
+          table(class="med-details-table")
+            thead
+              tr
+                th Medication order
+                th Information
+                th
+                  div Schedule
+                  div Now {{ getCurrentSimDate}} T {{currentSimTime}}
+                th(class="table-action-col") &nbsp;
+            tbody
+              template(v-for='(medOrder) in inputMeds')
+                tr
+                  td(rowspan=2) {{ medSummary(medOrder) }}
+                  td Reason: {{ medReason(medOrder) }}
+                  td Actioned:
+                    div(v-if='medActioned(medOrder).length === 0') No previous
+                    div(v-else)
+                      table(class="event-table")
+                        tbody
+                          tr(v-for='mar in medActioned(medOrder)')
+                            td {{marDate(mar)}}T{{mar.schedTime}}
+                            td {{mar.status}}
+                            td {{mar.dose}}
+                  td
+                    button(v-on:click="removeMedAction(medOrder)") x
+                tr(class="second-row")
+                  td Alerts: {{ medAlerts(medOrder) }}
+                  td Scheduled:
+                    div(v-if="medPending(medOrder).length === 0")
+                      div Nothing scheduled
+                    div(v-else)
+                      table(class="event-table")
+                        tbody
+                          tr(v-for='mme in medPending(medOrder)')
+                            td {{marDate(mme)}}T{{mme.schedTime}}
+                  td &nbsp;
 </template>
 
 <script>
 import AppDialog from '@/app/components/AppDialogShell'
 import { beepSound } from '@/inside/components/marV2/beep-util'
-import { extractMedName } from '@/ehr-definitions/med-definitions/medOrder-model'
+import { MedOrder } from '@/ehr-definitions/med-definitions/medOrder-model'
+import { getCurrentSimDate, getCurrentSimTime, simDateCalc } from '@/helpers/date-helper'
+import { makeHumanTableCell } from '@/ehr-definitions/ehr-def-utils'
+import { MED_ORDERS_ALERT_ELEMENT, MED_ORDERS_PAGE_KEY } from '@/ehr-definitions/ehr-defs-grid'
+import EhrTypes from '@/ehr-definitions/ehr-types'
+import { MarTimelineModel } from '@/ehr-definitions/med-definitions/mar-model'
+import EhrPatientBanner from '@/inside/components/EhrPatientBanner.vue'
 
 export default {
   components: {
+    EhrPatientBanner,
     AppDialog,
   },
   data () {
@@ -50,20 +91,51 @@ export default {
   props: {
     patientData: { type: Object }, // EhrPatient.patientData()
     barCodedMeds: { type: Array },
+    timeLineModel : { type: MarTimelineModel }
   },
   computed: {
+    getCurrentSimDate () { return simDateCalc(getCurrentSimDate()) },
+    currentSimTime () { return getCurrentSimTime() },
+    disableSave () { return !(this.validPatient && this.inputMeds.length > 0) },
     patientMrn () { return this.patientData.mrn },
-    medOrders () { return this.patientData.medorders.map( mo => extractMedName(mo.med_medication)) },
+    medOrders () { return this.patientData.medorders.map( raw => new MedOrder(raw)) },
+    medOrderNames () { return this.medOrders.map( mo => mo.medName) },
     validPatient () { return this.patientMrn === this.inputPatientMrn },
+    actionedMarEvents () { return this.timeLineModel.actionedMarEvents},
+    pendingMarEvents () { return this.timeLineModel.pendingMarEvents}
   },
   methods: {
+    marDate (mar) { return simDateCalc(mar.schedDay)},
     beepGood1 () { beepSound (600, 0.2) },
     beepGood2 () { beepSound (900, 0.2) },
     beepMiss () { beepSound (300, 0.4) },
     focusMrn () { this.$refs.mrnInput.focus() },
     focusMed () { this.$refs.medInput.focus() },
-    removeMedAction ( med) {
-      const index = this.inputMeds.indexOf(med)
+    medAlerts (medOrder) {
+      return medOrder.alerts ? makeHumanTableCell(
+        MED_ORDERS_PAGE_KEY,
+        MED_ORDERS_ALERT_ELEMENT,
+        EhrTypes.dataInputTypes.checkset,
+        medOrder.alerts) : 'No alerts'
+    },
+    medActioned ( medOrder ) {
+      const filtered =  this.actionedMarEvents.filter( mme => mme.medOrderId === medOrder.id)
+      return filtered.map( mme => mme.marRecord)
+    },
+    medPending ( medOrder ) {
+      let pending = this.pendingMarEvents.filter( mme => mme.medOrderId === medOrder.id)
+      return pending.slice(0, 2)
+    },
+    medReason (medOrder) {
+      return medOrder.reason || 'No reason given in the order.'
+    },
+    medScheduleTimes (medOrder) {
+      const times = medOrder.getScheduledTimes()
+      return times.length > 0 ? times.join(', ') : 'No scheduled times'
+    },
+    medSummary (medOrder) { return medOrder.medOrderSummary() },
+    removeMedAction ( removeOrder) {
+      const index = this.inputMeds.findIndex( medOrder => medOrder.med_medication === removeOrder.med_medication)
       if (index > -1) {
         this.inputMeds.splice(index, 1)
       }
@@ -71,7 +143,8 @@ export default {
     openBarCodeDialog (period, medOrder) {
       this.inputPatientMrn = ''
       this.inputMed = ''
-      // this.inputMeds = []
+      this.inputMeds = []
+      this.inputLabels = []
       this.$refs.theDialog.onOpen()
       this.matchedMrn = false
       this.$nextTick( () => this.focusMrn() )
@@ -88,11 +161,12 @@ export default {
       }
     },
     watchMed () {
-      if (this.validPatient && this.medOrders.includes(this.inputMed) ) {
+      if (this.medOrderNames.includes(this.inputMed) ) {
         this.beepGood1()
-        const index = this.inputMeds.indexOf(this.inputMed)
-        if (index < 0) {
-          this.inputMeds.push(this.inputMed)
+        const found = this.inputMeds.find( medOrder => medOrder.medName === this.inputMed)
+        if (!found) {
+          const selectedMedOrder = this.medOrders.find(medOrder => medOrder.medName === this.inputMed)
+          selectedMedOrder && this.inputMeds.push(selectedMedOrder)
         }
         this.inputMed = ''
         this.focusMed()
@@ -131,25 +205,29 @@ export default {
 
 <style scoped lang='scss'>
 @import '../../../scss/definitions';
-.app-tag {
-  margin-right: 1rem;
+.med-details-table {
+  table-layout: fixed;
+  td {
+    width: 1%
+  }
+  table-action-col {
+    width: 4rem;
+  }
 }
-.app-tag-label {
-  padding: 5px;
-  background-color: $grey30;
-  border-radius: 5px;
+
+.event-table {
+  border: none;
+  td {
+    border: none;
+  }
+}
+.second-row {
+    border-bottom: 2px solid;
 }
 .medInputs {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 5fr;
   gap: 1rem;
   margin-bottom: 1rem;
-  input {
-    width: 10rem;
-  }
-  label {
-    width: 10rem;
-  }
 }
 </style>

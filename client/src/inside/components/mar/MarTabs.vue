@@ -48,6 +48,7 @@
 
     mar-barcode-dialog(ref="refBarCodeDialog", :patientData='patientData',
       :barCodedMeds='barCodedMeds',
+      :timeLineModel='timeLineModel',
       @barcodedMed='changeBarcodedMed')
 
 </template>
@@ -72,7 +73,7 @@ import { t18EhrText } from '@/helpers/ehr-t18'
 import MarBarcodeDialog from '@/inside/components/marV2/MarBarcodeDialog.vue'
 import EhrPatient from '@/inside/components/page/ehr-patient'
 import EhrPageContextMenu from '@/inside/components/page/EhrPageContextMenu.vue'
-
+const debug = false
 export default {
   data () {
     return {
@@ -157,6 +158,8 @@ export default {
     },
     // v2
     setupTimeline () {
+      let startTime = performance.now()
+      if (debug) console.log('MarTabs setup timeline')
       const mergedData = StoreHelper.getMergedData()
       // console.log('mar tabs setup', mergedData)
       // console.log('mar tabs setup', JSON.stringify(mergedData.meta))
@@ -164,19 +167,24 @@ export default {
       // console.log('mar tabs ehrDataModel', JSON.stringify(ehrDataModel.ehrData))
       this.timeLineModel = new MarTimelineModel(ehrDataModel)
       this.selectedDay = this.timeLineModel.numberOfDays - 1
+      let elapsedTime = performance.now() - startTime
+      if (debug) console.log('MarTabs setup timeline', elapsedTime)
     },
     showReport (rowId) {
       this.ehrHelp.showReport(rowId)
     },
   },
   // v2
-  mounted () {  },
   created: function () {
+    let startTime = performance.now()
+    if (debug)     console.log('MarTabs created')
     this.marToday = new MarToday()
     this.setupTimeline()
     const _this = this
     this.refreshEventHandler = function () { _this.setupTimeline() }
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+    let elapsedTime = performance.now() - startTime
+    if (debug) console.log('MarTabs created ready', elapsedTime)
   },
   beforeDestroy: function () {
     if (this.refreshEventHandler) {

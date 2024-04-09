@@ -29,6 +29,7 @@ import axios from 'axios'
 import { h } from 'vue'
 import StoreHelper from '@/helpers/store-helper'
 import { getCurrentMedicationDb } from '@/helpers/med-db-utils'
+import { extractMedName } from '@/ehr-definitions/med-definitions/medOrder-model'
 /*
 https://codesandbox.io/p/sandbox/vueautosuggest-api-fetching-forked-ryk5pq?file=%2FApp.vue%3A13%2C31
 https://codesandbox.io/p/sandbox/vueautosuggest-api-fetching-forked-ryk5pq?file=%2FApp.vue%3A118%2C55-118%2C56
@@ -64,14 +65,14 @@ export default {
           // need this default section with onSelected to handle ENTER keypress.
           limit: 6,
           onSelected: function (item, originalInput) {
-            console.log(originalInput, item)
+            console.log('onSelected - default', originalInput, item)
           },
         },
         medications: {
           limit: 200,
           label: 'Medications',
           onSelected: (selected) => {
-            console.log('onSelected', selected)
+            console.log('onSelected - medications', selected)
             this.selected = selected.item
             this.$emit('selected', this.selected)
           },
@@ -80,7 +81,8 @@ export default {
     }
   },
   props: {
-    domId: { type: String }
+    domId: { type: String },
+    inputVal: [Object, String]
   },
   computed: {
     source () { return getCurrentMedicationDb() }
@@ -107,7 +109,7 @@ export default {
         // encode the text to safely send characters like '/'
         queryUrl += '&term=' +encodeURIComponent(query)
         axios.get(queryUrl).then((values) => {
-          console.log('--- Received ', values.data.length, 'results')
+          // console.log('--- Received ', values.data.length, 'results')
           this.suggestions = []
           this.selected = null
           values.data &&
@@ -140,11 +142,16 @@ export default {
       return h('div', parts)
     },
     getSuggestionValue (suggestion) {
-      console.log('----suggestion.item',suggestion.item)
+      // console.log('----suggestion.item',suggestion.item)
       // extract the value to display, from the data object.
       return suggestion.item.med
     },
   },
+  watch: {
+    inputVal () {
+      this.query = extractMedName(this.inputVal)
+    }
+  }
 }
 </script>
 
