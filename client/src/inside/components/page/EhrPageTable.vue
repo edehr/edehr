@@ -6,21 +6,7 @@
         ui-button(v-if="showTableAddButton", value="ept-add", v-on:buttonClicked="showDialog") {{ buttonLabel }}
         ehr-page-context-menu
     div
-      ehr-table-vertical(
-        v-if="isVertical",
-        :ehrHelp="ehrHelp",
-        :tableDef="tableDef",
-        :cTableForm='cTableForm',
-        :cTableData='cTableData',
-        :rowTemplate='rowTemplate',
-        :selectedRow='selectedRow',
-        @editDraft='editDraft',
-        @editSeedRow='editSeedRow',
-        @deleteSeedRow='deleteSeedRow',
-        @viewReport='showReport'
-      )
-      ehr-table-stacked(
-        v-if="isStacked",
+      ehr-table-table(
         :ehrHelp="ehrHelp",
         :tableDef="tableDef",
         :cTableForm='cTableForm',
@@ -44,8 +30,6 @@
 
 <script>
 import EhrDialogForm from './EhrDialogForm.vue'
-import EhrTableStacked from './EhrTableStacked'
-import EhrTableVertical from './EhrTableVertical'
 import EhrPageContextMenu from '@/inside/components/page/EhrPageContextMenu.vue'
 import UiButton from '@/app/ui/UiButton.vue'
 import UiConfirm from '@/app/ui/UiConfirm'
@@ -54,11 +38,11 @@ import EhrData from '@/inside/components/page/ehr-data'
 import EhrTableDraft from '@/inside/components/page/ehr-table-draft'
 import { makeHumanTableCell } from '@/ehr-definitions/ehr-def-utils'
 import { t18ElementLabel, t18TableAddButtonLabel, t18TableLabel } from '@/helpers/ehr-t18'
+import EhrTableTable from '@/inside/components/page/EhrTableTable.vue'
 export default {
   components: {
+    EhrTableTable,
     EhrPageContextMenu,
-    EhrTableStacked,
-    EhrTableVertical,
     EhrDialogForm,
     UiConfirm,
     UiButton
@@ -91,21 +75,16 @@ export default {
     cTableForm () { return this.ehrHelp.getTableForm(this.tableDef.tableKey) },
     rowTemplate () {
       let rowTemplate = []
-      this.tableDef.ehr_list.forEach(stack => {
+      this.tableDef.tableChildren.forEach(key => {
+        let cellDef = EhrDefs.getPageChildElement(this.pageDataKey, key)
         let templateCell = {
-          stack: []
+          key: key,
+          cellDef: cellDef,
+          inputType: cellDef.inputType
         }
-        stack.items.forEach(cell => {
-          let cellDef = EhrDefs.getPageChildElement(this.pageDataKey, cell)
-          templateCell.stack.push({
-            key: cell,
-            inputType: cellDef.inputType
-          })
-          // column header .. use previous label if set else use special tableLabel value from Inputs else use element label
-          templateCell.tableLabel = t18TableLabel(cellDef) || t18ElementLabel(cellDef)
-          templateCell.tableSuffix = cellDef.suffixText
-          templateCell.tableCss = templateCell.tableCss || cellDef.tableCss
-        })
+        templateCell.tableLabel = t18TableLabel(cellDef) || t18ElementLabel(cellDef)
+        templateCell.tableSuffix = cellDef.suffixText
+        templateCell.tableCss =  cellDef.tableCss
         rowTemplate.push(templateCell)
       })
       return rowTemplate
@@ -119,13 +98,11 @@ export default {
       if (dbData) {
         dbData.forEach((dbRow) => {
           let dataRow = JSON.parse(JSON.stringify(rowTemplate)) // deep copy the array
-          Object.values(dataRow).forEach((templateCell) => {
-            templateCell.stack.forEach((cell) => {
-              let dbVal = dbRow[cell.key] === 0 ? '0' : dbRow[cell.key]
-              dbVal = makeHumanTableCell( this.pageDataKey,cell.key, cell.inputType, dbVal)
-              cell.value = dbVal || ''
-              cell.tableCss = templateCell.tableCss
-            })
+          Object.values(dataRow).forEach((cell) => {
+            let dbVal = dbRow[cell.key] === 0 ? '0' : dbRow[cell.key]
+            dbVal = makeHumanTableCell(this.pageDataKey, cell.key, cell.inputType, dbVal)
+            cell.value = dbVal || ''
+            cell.tableCss = cell.tableCss
           })
           if (dbRow.isDraft) {
             dataRow.push({ isDraft: dbRow.isDraft })
@@ -141,14 +118,6 @@ export default {
     },
     resetToolTip () {
       return `Reset your ${this.tableLabel} data`
-    },
-    isVertical () {
-      let isVert = this.tableDef.form.formOption === 'transpose'
-      // console.log('EhrPageTable is table vertical? ', isVert,  this.tableDef.form.formOption)
-      return isVert
-    },
-    isStacked () {
-      return ! this.isVertical
     },
     showTableAddButton () {
       return this.ehrHelp.showTableAddButton() && t18TableAddButtonLabel(this.tableDef) !== 'NONE'

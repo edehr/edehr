@@ -201,13 +201,8 @@ export class PageForm extends PageElement {
 export class PageTable extends PageElement{
   constructor (pgElementDef, pageChildren) {
     super(pgElementDef, pageChildren)
-    let cKeys = []
-    let lists = pgElementDef.ehr_list
-    lists.forEach( grp => {
-      cKeys = cKeys.concat(grp.items)
-    })
-    this.childrenKeys = cKeys
-    super._setupChildren(cKeys)
+    this.childrenKeys = pgElementDef.tableChildren
+    super._setupChildren(this.childrenKeys)
   }
 }
 

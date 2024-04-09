@@ -8,12 +8,6 @@
           :ehrData='ehrData')
       div(class="smaller-than-900")
         div(class="flow_across")
-          zone-lms-button(@action="toggleTableOrientation"
-            class="flow_across_last_item mr5"
-            :title="`Rotate the table ${tableOrientation ? 'vertical' : 'horizontal'}`",
-            :icon='appIcons.table',
-            :icon-class='{rotatedIcon: tableOrientation}',
-            text="")
         h2(class="smaller-than-900")
           fas-icon(:icon="appIcons.menu", @click="showingNavPanel = !showingNavPanel")
           span &nbsp; {{pageTitle}}
@@ -26,12 +20,6 @@
     div(class="ehrData-details")
       div(class="flow_across")
         h2(class="bigger-screens-900") {{pageTitle}}
-        zone-lms-button(@action="toggleTableOrientation"
-          class="flow_across_last_item mr5"
-          :title="`Rotate the table ${tableOrientation ? 'vertical' : 'horizontal'}`",
-          :icon='appIcons.table',
-          :icon-class='{rotatedIcon: tableOrientation}',
-          text="")
       seed-pages(
         :ehrData="ehrData",
         :pageKey="activePageKey",
@@ -65,8 +53,7 @@ export default {
     pageSeedData (  ) {
       const pkey = this.activePageKey
       return this.ehrData ? (pkey ? this.ehrData[pkey] : {}) : {}
-    },
-    tableOrientation () { return this.$store.getters['system/condensedTableVertical']},
+    }
   },
   methods: {
     selectPage ( key ) {
@@ -92,10 +79,6 @@ export default {
       } else {
         console.log('ehrData structure without data. Why?')
       }
-    },
-    toggleTableOrientation () {
-      const value = this.tableOrientation
-      this.$store.dispatch('system/setCondensedTableVertical', !value)
     }
   },
   mounted () {

@@ -26,13 +26,17 @@ export function hourStringToHour (ts) {
   return ts ? parseInt(ts.slice(0,2)) : ''
 }
 
+const debug = false
 const HOURS = 24
 const DAY_TEMPLATE = [...Array(HOURS).keys()].map( t => hourString(t))
 
 export class MarTimelineModel {
   constructor (ehrDataModel) {
     // assert.ok(ehrDataModel instanceof EhrDataModel)
+    if (debug) console.log('MTM')
     this._timeline = {}
+    this._pendingMarEvents = []
+    this._actionedMarEvents = []
     this._medOrders = new MedOrders(ehrDataModel)
     this._marRecords = new MarRecords(ehrDataModel)
     const simTime = ehrDataModel.simTime
@@ -49,6 +53,8 @@ export class MarTimelineModel {
   get marRecords () { return this._marRecords }
   get medOrders () { return this._medOrders }
 
+  get actionedMarEvents () { return this._actionedMarEvents }
+  get pendingMarEvents () { return this._pendingMarEvents }
   /**
    * For the given day and medication return the number of medMarEvents
    * @param dayNum
@@ -87,6 +93,7 @@ export class MarTimelineModel {
     })
   }
   setupMedMarEvents () {
+    if (debug) console.log('MTM')
     this._setupMedMarEvents( (medOrder, dayNum, te, mars, medId) => {
       this.medMarEventLink(medOrder, dayNum, te, mars, medId)
     })
@@ -101,7 +108,8 @@ export class MarTimelineModel {
         let mme = new MedMarEvent(dayNum, te.ts, medOrder)
         mme.setMar(mar)
         te.addMedMarEvent(mme)
-        // console.log(' push view mar button data ', te, te.manyMars)
+        this._actionedMarEvents.push(mme)
+        // console.log(' push view mar button data -- _actionedMarEvents ', te, mee)
       })
     }
   }
@@ -116,7 +124,8 @@ export class MarTimelineModel {
       // time and the possible MAR.
       const mme = new MedMarEvent(dayNum, stb.orderScheduleTime, medOrder)
       te.addMedMarEvent(mme)
-      // console.log(' make a mar button data ', te,  te.manyMars)
+      this._pendingMarEvents.push(mme)
+      // console.log(' make a mar button data _pendingMarEvents', te, mme)
     }
 
   }
@@ -144,7 +153,7 @@ export class MarTimelineModel {
  */
 export class TimeLineDay {
   constructor (dayNumber, medOrders, maxDays) {
-    // console.log('constructing time line day', dayNumber, maxDays)
+    if (debug) console.log('TLD', 'constructing time line day', dayNumber, maxDays)
     const todayNum = maxDays - 1
     this.dayId = 'day-' + dayNumber
     this.dayNum = dayNumber

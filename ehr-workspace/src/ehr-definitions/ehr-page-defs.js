@@ -640,38 +640,6 @@ const DEFS = {
         "pageKey": "allergies",
         "tableKey": "allergyList",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "allergyList_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "allergyList_name",
-              "allergyList_profession",
-              "allergyList_day",
-              "allergyList_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "allergen"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "reaction"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "allergyList",
           "label": "Allergies",
@@ -713,12 +681,12 @@ const DEFS = {
         "fqn": "allergies.allergyList",
         "tableChildren": [
           "allergyList_id",
-          "allergyList_name",
-          "allergyList_profession",
           "allergyList_day",
           "allergyList_time",
           "allergen",
-          "reaction"
+          "reaction",
+          "allergyList_name",
+          "allergyList_profession"
         ],
         "hasRecHeader": true
       }
@@ -1043,34 +1011,6 @@ const DEFS = {
         "pageKey": "surgical",
         "tableKey": "pastSurgery",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "pastSurgery_id"
-            ]
-          },
-          {
-            "ehr_list_index": "1",
-            "items": [
-              "physician"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "timeSince"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "procedure"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "pastSurgery",
           "label": "Previous surgeries",
@@ -1098,9 +1038,9 @@ const DEFS = {
         "fqn": "surgical.pastSurgery",
         "tableChildren": [
           "pastSurgery_id",
+          "procedure",
           "physician",
-          "timeSince",
-          "procedure"
+          "timeSince"
         ]
       },
       "previous": {
@@ -1109,46 +1049,6 @@ const DEFS = {
         "pageKey": "surgical",
         "tableKey": "previous",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "previous_id"
-            ]
-          },
-          {
-            "ehr_list_index": "1",
-            "items": [
-              "previousAdmissionsDate"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "with"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "details"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "previousAdmissions"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "previous",
           "label": "Previous appointments",
@@ -1180,11 +1080,11 @@ const DEFS = {
         "fqn": "surgical.previous",
         "tableChildren": [
           "previous_id",
-          "previousAdmissionsDate",
-          "with",
           "details",
           "previousAdmissions",
-          "comments"
+          "comments",
+          "previousAdmissionsDate",
+          "with"
         ]
       }
     }
@@ -1524,28 +1424,6 @@ const DEFS = {
         "pageKey": "careTeam",
         "tableKey": "teams",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "teams_id"
-            ]
-          },
-          {
-            "ehr_list_index": "1",
-            "items": [
-              "name"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "profession"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "teams",
           "label": "Care team",
@@ -1660,40 +1538,6 @@ const DEFS = {
         "pageKey": "pastAppointments",
         "tableKey": "encounters",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "encounters_id"
-            ]
-          },
-          {
-            "ehr_list_index": "1",
-            "items": [
-              "encounterDate"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "site"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "diagnosis"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "mrp"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "encounters",
           "label": "Past encounters",
@@ -1723,10 +1567,10 @@ const DEFS = {
         "fqn": "pastAppointments.encounters",
         "tableChildren": [
           "encounters_id",
-          "encounterDate",
-          "site",
           "diagnosis",
-          "mrp"
+          "mrp",
+          "encounterDate",
+          "site"
         ]
       },
       "outpatientAppointments": {
@@ -1735,40 +1579,6 @@ const DEFS = {
         "pageKey": "pastAppointments",
         "tableKey": "outpatientAppointments",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "outpatientAppointments_id"
-            ]
-          },
-          {
-            "ehr_list_index": "1",
-            "items": [
-              "appointmentDate"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "site"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "reasonForVisit"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "diagnosis"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "outpatientAppointments",
           "label": "Past outpatient appointments",
@@ -1798,10 +1608,10 @@ const DEFS = {
         "fqn": "pastAppointments.outpatientAppointments",
         "tableChildren": [
           "outpatientAppointments_id",
-          "appointmentDate",
-          "site",
           "reasonForVisit",
-          "diagnosis"
+          "diagnosis",
+          "appointmentDate",
+          "site"
         ]
       }
     }
@@ -2091,38 +1901,6 @@ const DEFS = {
         "pageKey": "visit",
         "tableKey": "diagnosisTable",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "diagnosisTable_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "diagnosisTable_name",
-              "diagnosisTable_profession",
-              "diagnosisTable_day",
-              "diagnosisTable_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "diagnosisRecord"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "diagnosisDetails"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "diagnosisTable",
           "label": "Diagnosis",
@@ -2164,12 +1942,12 @@ const DEFS = {
         "fqn": "visit.diagnosisTable",
         "tableChildren": [
           "diagnosisTable_id",
-          "diagnosisTable_name",
-          "diagnosisTable_profession",
           "diagnosisTable_day",
           "diagnosisTable_time",
           "diagnosisRecord",
-          "diagnosisDetails"
+          "diagnosisDetails",
+          "diagnosisTable_name",
+          "diagnosisTable_profession"
         ],
         "hasRecHeader": true
       },
@@ -2179,56 +1957,6 @@ const DEFS = {
         "pageKey": "visit",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "location"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "transferInDay"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "transferInTime"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "transferOutDay"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "transferOutTime"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Patient Location",
@@ -2285,15 +2013,15 @@ const DEFS = {
         "fqn": "visit.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "location",
           "transferInDay",
           "transferInTime",
           "transferOutDay",
-          "transferOutTime"
+          "transferOutTime",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       }
@@ -2562,124 +2290,6 @@ const DEFS = {
         "pageKey": "vitals",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Systolic blood pressure",
-            "ehr_list_index": "2",
-            "items": [
-              "systolic"
-            ]
-          },
-          {
-            "label": "Diastolic blood pressure",
-            "ehr_list_index": "3",
-            "items": [
-              "diastolic"
-            ]
-          },
-          {
-            "label": "Patient position",
-            "ehr_list_index": "4",
-            "items": [
-              "patientPosition"
-            ]
-          },
-          {
-            "label": "Temperature",
-            "ehr_list_index": "5",
-            "items": [
-              "temperature"
-            ]
-          },
-          {
-            "label": "Source",
-            "ehr_list_index": "6",
-            "items": [
-              "source"
-            ]
-          },
-          {
-            "label": "Pulse site",
-            "ehr_list_index": "7",
-            "items": [
-              "strength"
-            ]
-          },
-          {
-            "label": "Pulse rate",
-            "ehr_list_index": "8",
-            "items": [
-              "rate"
-            ]
-          },
-          {
-            "label": "Pulse rhythm",
-            "ehr_list_index": "9",
-            "items": [
-              "rhythm"
-            ]
-          },
-          {
-            "label": "Respiration rate",
-            "ehr_list_index": "10",
-            "items": [
-              "respirationRate"
-            ]
-          },
-          {
-            "label": "Oxygen saturation",
-            "ehr_list_index": "11",
-            "items": [
-              "oxygenSaturation"
-            ]
-          },
-          {
-            "label": "Oxygen mode",
-            "ehr_list_index": "12",
-            "items": [
-              "oxygenMode"
-            ]
-          },
-          {
-            "label": "Flow rate",
-            "ehr_list_index": "13",
-            "items": [
-              "flowRate"
-            ]
-          },
-          {
-            "label": "Blood sugar",
-            "ehr_list_index": "14",
-            "items": [
-              "bloodSugar"
-            ]
-          },
-          {
-            "label": "CVP (Central Venous Pressure)",
-            "ehr_list_index": "15",
-            "items": [
-              "cvp"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Vital signs",
@@ -2749,8 +2359,6 @@ const DEFS = {
         "fqn": "vitals.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "systolic",
@@ -2766,7 +2374,9 @@ const DEFS = {
           "oxygenMode",
           "flowRate",
           "bloodSugar",
-          "cvp"
+          "cvp",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       }
@@ -3023,110 +2633,6 @@ const DEFS = {
         "pageKey": "fluidBalance",
         "tableKey": "fluidInOutTable",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "fluidInOutTable_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "fluidInOutTable_name",
-              "fluidInOutTable_profession",
-              "fluidInOutTable_day",
-              "fluidInOutTable_time"
-            ]
-          },
-          {
-            "label": "Oral",
-            "ehr_list_index": "2",
-            "items": [
-              "inOral"
-            ]
-          },
-          {
-            "label": "IV",
-            "ehr_list_index": "3",
-            "items": [
-              "inIV"
-            ]
-          },
-          {
-            "label": "Enteral feeds",
-            "ehr_list_index": "4",
-            "items": [
-              "inEnteral"
-            ]
-          },
-          {
-            "label": "Other",
-            "ehr_list_index": "5",
-            "items": [
-              "inOther"
-            ]
-          },
-          {
-            "label": "Total inputs",
-            "ehr_list_index": "6",
-            "items": [
-              "totalInputs"
-            ]
-          },
-          {
-            "label": "Urine",
-            "ehr_list_index": "7",
-            "items": [
-              "outUrine"
-            ]
-          },
-          {
-            "label": "Drains",
-            "ehr_list_index": "8",
-            "items": [
-              "outDrains"
-            ]
-          },
-          {
-            "label": "Blood",
-            "ehr_list_index": "9",
-            "items": [
-              "outBlood"
-            ]
-          },
-          {
-            "label": "Other",
-            "ehr_list_index": "10",
-            "items": [
-              "outOther"
-            ]
-          },
-          {
-            "label": "Total outputs",
-            "ehr_list_index": "11",
-            "items": [
-              "totalOutputs"
-            ]
-          },
-          {
-            "label": "Cumulative",
-            "ehr_list_index": "12",
-            "items": [
-              "cumulativeTotal"
-            ]
-          },
-          {
-            "label": "Comments",
-            "ehr_list_index": "13",
-            "items": [
-              "comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "fluidInOutTable",
           "label": "Fluid balance",
@@ -3205,8 +2711,6 @@ const DEFS = {
         "fqn": "fluidBalance.fluidInOutTable",
         "tableChildren": [
           "fluidInOutTable_id",
-          "fluidInOutTable_name",
-          "fluidInOutTable_profession",
           "fluidInOutTable_day",
           "fluidInOutTable_time",
           "inOral",
@@ -3220,7 +2724,9 @@ const DEFS = {
           "outOther",
           "totalOutputs",
           "cumulativeTotal",
-          "comments"
+          "comments",
+          "fluidInOutTable_name",
+          "fluidInOutTable_profession"
         ],
         "hasRecHeader": true
       },
@@ -3230,40 +2736,6 @@ const DEFS = {
         "pageKey": "fluidBalance",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Fluid in",
-            "ehr_list_index": "2",
-            "items": [
-              "fluidIn"
-            ]
-          },
-          {
-            "label": "Fluid out",
-            "ehr_list_index": "3",
-            "items": [
-              "fluidOut"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Fluid balance v1",
@@ -3305,12 +2777,12 @@ const DEFS = {
         "fqn": "fluidBalance.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "fluidIn",
-          "fluidOut"
+          "fluidOut",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       }
@@ -4727,192 +4199,6 @@ const DEFS = {
         "pageKey": "neurological",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Level of Consciousness",
-            "ehr_list_index": "2",
-            "items": [
-              "alert"
-            ]
-          },
-          {
-            "label": "Orientation",
-            "ehr_list_index": "3",
-            "items": [
-              "orientation"
-            ]
-          },
-          {
-            "label": "Communication",
-            "ehr_list_index": "4",
-            "items": [
-              "communication"
-            ]
-          },
-          {
-            "label": "Eye opening",
-            "ehr_list_index": "5",
-            "items": [
-              "eyeOpening"
-            ]
-          },
-          {
-            "label": "Verbal response",
-            "ehr_list_index": "6",
-            "items": [
-              "verbalResponse"
-            ]
-          },
-          {
-            "label": "Best motor response",
-            "ehr_list_index": "7",
-            "items": [
-              "bestMotorResponse"
-            ]
-          },
-          {
-            "label": "Glasgow Coma Scale",
-            "ehr_list_index": "8",
-            "items": [
-              "glasgowCalculation"
-            ]
-          },
-          {
-            "label": "Loss of consciousness",
-            "ehr_list_index": "9",
-            "items": [
-              "loss"
-            ]
-          },
-          {
-            "label": "Duration",
-            "ehr_list_index": "10",
-            "items": [
-              "duration"
-            ]
-          },
-          {
-            "label": "Left pupil size",
-            "ehr_list_index": "11",
-            "items": [
-              "leftPupilSize"
-            ]
-          },
-          {
-            "label": "Left pupil response to light",
-            "ehr_list_index": "12",
-            "items": [
-              "leftPupilResponseToLight"
-            ]
-          },
-          {
-            "label": "Right pupil size",
-            "ehr_list_index": "13",
-            "items": [
-              "rightPupilSize"
-            ]
-          },
-          {
-            "label": "Right pupil response to light",
-            "ehr_list_index": "14",
-            "items": [
-              "rightPupilResponseToLight"
-            ]
-          },
-          {
-            "label": "Both pupils",
-            "ehr_list_index": "15",
-            "items": [
-              "bothPupils"
-            ]
-          },
-          {
-            "label": "Facial",
-            "ehr_list_index": "16",
-            "items": [
-              "facialSymmetry"
-            ]
-          },
-          {
-            "ehr_list_index": "17",
-            "items": [
-              "handRight"
-            ]
-          },
-          {
-            "ehr_list_index": "18",
-            "items": [
-              "handLet"
-            ]
-          },
-          {
-            "ehr_list_index": "19",
-            "items": [
-              "armRight"
-            ]
-          },
-          {
-            "ehr_list_index": "20",
-            "items": [
-              "armLeft"
-            ]
-          },
-          {
-            "ehr_list_index": "21",
-            "items": [
-              "legRight"
-            ]
-          },
-          {
-            "ehr_list_index": "22",
-            "items": [
-              "legLeft"
-            ]
-          },
-          {
-            "ehr_list_index": "23",
-            "items": [
-              "armDrift"
-            ]
-          },
-          {
-            "ehr_list_index": "24",
-            "items": [
-              "otherArmDrift"
-            ]
-          },
-          {
-            "ehr_list_index": "25",
-            "items": [
-              "pressure"
-            ]
-          },
-          {
-            "label": "Comments",
-            "ehr_list_index": "26",
-            "items": [
-              "comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Neurological assessment",
@@ -5052,8 +4338,6 @@ const DEFS = {
         "fqn": "neurological.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "alert",
@@ -5080,7 +4364,9 @@ const DEFS = {
           "armDrift",
           "otherArmDrift",
           "pressure",
-          "comments"
+          "comments",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       },
@@ -5090,145 +4376,6 @@ const DEFS = {
         "pageKey": "neurological",
         "tableKey": "strokeAssessmentTable",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "strokeAssessmentTable_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "strokeAssessmentTable_name",
-              "strokeAssessmentTable_profession",
-              "strokeAssessmentTable_day",
-              "strokeAssessmentTable_time"
-            ]
-          },
-          {
-            "label": "Level of conciousness",
-            "ehr_list_index": "2",
-            "items": [
-              "levelOfConciousness"
-            ]
-          },
-          {
-            "label": "Response to questions",
-            "ehr_list_index": "3",
-            "items": [
-              "levelOfConciousnessQuestions"
-            ]
-          },
-          {
-            "label": "Response to commands",
-            "ehr_list_index": "4",
-            "items": [
-              "levelOfConciousnessCommands"
-            ]
-          },
-          {
-            "label": "Motor - left arm",
-            "ehr_list_index": "5",
-            "items": [
-              "motorLeftArm"
-            ]
-          },
-          {
-            "label": "Motor - right arm",
-            "ehr_list_index": "6",
-            "items": [
-              "motorRightArm"
-            ]
-          },
-          {
-            "label": "Motor - left leg",
-            "ehr_list_index": "7",
-            "items": [
-              "motorLeftLeg"
-            ]
-          },
-          {
-            "label": "Motor - right leg",
-            "ehr_list_index": "8",
-            "items": [
-              "motorRightLeg"
-            ]
-          },
-          {
-            "label": "Limb ataxia",
-            "ehr_list_index": "9",
-            "items": [
-              "limbAtaxia"
-            ]
-          },
-          {
-            "label": "Best gaze",
-            "ehr_list_index": "10",
-            "items": [
-              "bestGaze"
-            ]
-          },
-          {
-            "label": "Visual",
-            "ehr_list_index": "11",
-            "items": [
-              "visual"
-            ]
-          },
-          {
-            "label": "Facial palsy",
-            "ehr_list_index": "12",
-            "items": [
-              "facialPalsy"
-            ]
-          },
-          {
-            "label": "Sensory",
-            "ehr_list_index": "13",
-            "items": [
-              "sensory"
-            ]
-          },
-          {
-            "label": "Best language",
-            "ehr_list_index": "14",
-            "items": [
-              "bestLanguage"
-            ]
-          },
-          {
-            "label": "Dysarthria",
-            "ehr_list_index": "15",
-            "items": [
-              "dysarthria"
-            ]
-          },
-          {
-            "label": "Extinction and inattention",
-            "ehr_list_index": "16",
-            "items": [
-              "extinctionAndInattention"
-            ]
-          },
-          {
-            "label": "Stroke assessment score",
-            "ehr_list_index": "17",
-            "items": [
-              "strokeAssessmentCalculation"
-            ]
-          },
-          {
-            "label": "Comments",
-            "ehr_list_index": "18",
-            "items": [
-              "strokeComments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "strokeAssessmentTable",
           "label": "Stroke assessment",
@@ -5302,8 +4449,6 @@ const DEFS = {
         "fqn": "neurological.strokeAssessmentTable",
         "tableChildren": [
           "strokeAssessmentTable_id",
-          "strokeAssessmentTable_name",
-          "strokeAssessmentTable_profession",
           "strokeAssessmentTable_day",
           "strokeAssessmentTable_time",
           "levelOfConciousness",
@@ -5322,7 +4467,9 @@ const DEFS = {
           "dysarthria",
           "extinctionAndInattention",
           "strokeAssessmentCalculation",
-          "strokeComments"
+          "strokeComments",
+          "strokeAssessmentTable_name",
+          "strokeAssessmentTable_profession"
         ],
         "hasRecHeader": true
       },
@@ -5332,56 +4479,6 @@ const DEFS = {
         "pageKey": "neurological",
         "tableKey": "del_table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "del_table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "del_table_name",
-              "del_table_profession",
-              "del_table_day",
-              "del_table_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "del_individual"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "del_medicaal"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "del_medication"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "del_doCam"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "del_comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "del_table",
           "label": "Delirium risk assessment",
@@ -5441,15 +4538,15 @@ const DEFS = {
         "fqn": "neurological.del_table",
         "tableChildren": [
           "del_table_id",
-          "del_table_name",
-          "del_table_profession",
           "del_table_day",
           "del_table_time",
           "del_individual",
           "del_medicaal",
           "del_medication",
           "del_doCam",
-          "del_comments"
+          "del_comments",
+          "del_table_name",
+          "del_table_profession"
         ],
         "hasRecHeader": true
       },
@@ -5459,56 +4556,6 @@ const DEFS = {
         "pageKey": "neurological",
         "tableKey": "cam_table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "cam_table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "cam_table_name",
-              "cam_table_profession",
-              "cam_table_day",
-              "cam_table_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "cam_1"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "cam_2"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "cam_3"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "cam_4"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "cam_assessment"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "cam_table",
           "label": "CAM assessment",
@@ -5558,15 +4605,15 @@ const DEFS = {
         "fqn": "neurological.cam_table",
         "tableChildren": [
           "cam_table_id",
-          "cam_table_name",
-          "cam_table_profession",
           "cam_table_day",
           "cam_table_time",
           "cam_1",
           "cam_2",
           "cam_3",
           "cam_4",
-          "cam_assessment"
+          "cam_assessment",
+          "cam_table_name",
+          "cam_table_profession"
         ],
         "hasRecHeader": true
       }
@@ -5969,124 +5016,6 @@ const DEFS = {
         "pageKey": "respiratory",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Airway",
-            "ehr_list_index": "2",
-            "items": [
-              "airway"
-            ]
-          },
-          {
-            "label": "Mode of oxygen therapy",
-            "ehr_list_index": "3",
-            "items": [
-              "oxygenTherapy"
-            ]
-          },
-          {
-            "label": "Flow rate",
-            "ehr_list_index": "4",
-            "items": [
-              "flowRate"
-            ]
-          },
-          {
-            "label": "Left upper lobe",
-            "ehr_list_index": "5",
-            "items": [
-              "lul"
-            ]
-          },
-          {
-            "label": "Left lower lobe",
-            "ehr_list_index": "6",
-            "items": [
-              "lll"
-            ]
-          },
-          {
-            "label": "Right upper lobe",
-            "ehr_list_index": "7",
-            "items": [
-              "rul"
-            ]
-          },
-          {
-            "label": "Right middle lobe",
-            "ehr_list_index": "8",
-            "items": [
-              "rml"
-            ]
-          },
-          {
-            "label": "Right lower lobe",
-            "ehr_list_index": "9",
-            "items": [
-              "rll"
-            ]
-          },
-          {
-            "label": "Respiratory rhythm",
-            "ehr_list_index": "10",
-            "items": [
-              "respiratoryRhythm"
-            ]
-          },
-          {
-            "label": "Respiratory depth",
-            "ehr_list_index": "11",
-            "items": [
-              "respiratoryDepth"
-            ]
-          },
-          {
-            "label": "Cough",
-            "ehr_list_index": "12",
-            "items": [
-              "cough"
-            ]
-          },
-          {
-            "label": "Sputum colour",
-            "ehr_list_index": "13",
-            "items": [
-              "sputumColour"
-            ]
-          },
-          {
-            "label": "Sputum comments",
-            "ehr_list_index": "14",
-            "items": [
-              "sputumComments"
-            ]
-          },
-          {
-            "label": "Comments",
-            "ehr_list_index": "15",
-            "items": [
-              "generalComments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Respiratory assessment",
@@ -6171,8 +5100,6 @@ const DEFS = {
         "fqn": "respiratory.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "airway",
@@ -6188,7 +5115,9 @@ const DEFS = {
           "cough",
           "sputumColour",
           "sputumComments",
-          "generalComments"
+          "generalComments",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       }
@@ -6737,159 +5666,6 @@ const DEFS = {
         "pageKey": "cardiovascular",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Peripheral Pulse",
-            "ehr_list_index": "2",
-            "items": [
-              "pulse"
-            ]
-          },
-          {
-            "label": "Skin appearance",
-            "ehr_list_index": "3",
-            "items": [
-              "skinAppearance"
-            ]
-          },
-          {
-            "label": "Cap refill: Right hand",
-            "ehr_list_index": "4",
-            "items": [
-              "capRefillLeftHand"
-            ]
-          },
-          {
-            "label": "Temperature: Right hand",
-            "ehr_list_index": "5",
-            "items": [
-              "temperatureRightHand"
-            ]
-          },
-          {
-            "label": "Peripheral edema: Right hand",
-            "ehr_list_index": "6",
-            "items": [
-              "peripheralEdemaRightHand"
-            ]
-          },
-          {
-            "label": "Nail bed colour: Right hand",
-            "ehr_list_index": "7",
-            "items": [
-              "nailBedColourRightHand"
-            ]
-          },
-          {
-            "label": "Cap refill: Left hand",
-            "ehr_list_index": "8",
-            "items": [
-              "capRefillRightHand"
-            ]
-          },
-          {
-            "label": "Temperature: Left hand",
-            "ehr_list_index": "9",
-            "items": [
-              "temperatureLeftHand"
-            ]
-          },
-          {
-            "label": "Peripheral edema: Left hand",
-            "ehr_list_index": "10",
-            "items": [
-              "peripheralEdemaLeftHand"
-            ]
-          },
-          {
-            "label": "Nail bed colour: Left hand",
-            "ehr_list_index": "11",
-            "items": [
-              "nailBedColourLeftHand"
-            ]
-          },
-          {
-            "label": "Cap refill: Right foot",
-            "ehr_list_index": "12",
-            "items": [
-              "capRefillRightFoot"
-            ]
-          },
-          {
-            "label": "Temperature: Right foot",
-            "ehr_list_index": "13",
-            "items": [
-              "temperatureRightFoot"
-            ]
-          },
-          {
-            "label": "Peripheral edema: Right foot",
-            "ehr_list_index": "14",
-            "items": [
-              "peripheralEdemaRightFoot"
-            ]
-          },
-          {
-            "label": "Nail bed colour: Right Foot",
-            "ehr_list_index": "15",
-            "items": [
-              "nailBedColourRightFoot"
-            ]
-          },
-          {
-            "label": "Cap refill: Left foot",
-            "ehr_list_index": "16",
-            "items": [
-              "capRefillLeftFoot"
-            ]
-          },
-          {
-            "label": "Temperature: Left foot",
-            "ehr_list_index": "17",
-            "items": [
-              "temperatureLeftFoot"
-            ]
-          },
-          {
-            "label": "Peripheral edema: Left foot",
-            "ehr_list_index": "18",
-            "items": [
-              "peripheralEdemaLeftFoot"
-            ]
-          },
-          {
-            "label": "Nail bed colour: Left foot",
-            "ehr_list_index": "19",
-            "items": [
-              "nailBedColourLeftFoot"
-            ]
-          },
-          {
-            "label": "Comments",
-            "ehr_list_index": "20",
-            "items": [
-              "comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Cardiovascular assessment",
@@ -7023,8 +5799,6 @@ const DEFS = {
         "fqn": "cardiovascular.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "pulse",
@@ -7045,7 +5819,9 @@ const DEFS = {
           "temperatureLeftFoot",
           "peripheralEdemaLeftFoot",
           "nailBedColourLeftFoot",
-          "comments"
+          "comments",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       }
@@ -7482,159 +6258,6 @@ const DEFS = {
         "pageKey": "gastrointestinal",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Bowel",
-            "ehr_list_index": "2",
-            "items": [
-              "bowel"
-            ]
-          },
-          {
-            "label": "Bowel sounds",
-            "ehr_list_index": "3",
-            "items": [
-              "bSounds"
-            ]
-          },
-          {
-            "label": "Abdomen",
-            "ehr_list_index": "4",
-            "items": [
-              "condition"
-            ]
-          },
-          {
-            "label": "Abdominal pain",
-            "ehr_list_index": "5",
-            "items": [
-              "pain"
-            ]
-          },
-          {
-            "label": "Emesis present?",
-            "ehr_list_index": "6",
-            "items": [
-              "emesisPresent"
-            ]
-          },
-          {
-            "label": "Emesis colour",
-            "ehr_list_index": "7",
-            "items": [
-              "colour"
-            ]
-          },
-          {
-            "label": "Approximate volume",
-            "ehr_list_index": "8",
-            "items": [
-              "amount"
-            ]
-          },
-          {
-            "label": "Description",
-            "ehr_list_index": "9",
-            "items": [
-              "description"
-            ]
-          },
-          {
-            "label": "Difficulty",
-            "ehr_list_index": "10",
-            "items": [
-              "eating"
-            ]
-          },
-          {
-            "label": "Reason",
-            "ehr_list_index": "11",
-            "items": [
-              "reason"
-            ]
-          },
-          {
-            "label": "NPO since day",
-            "ehr_list_index": "12",
-            "items": [
-              "npoSinceDay"
-            ]
-          },
-          {
-            "label": "NPO since time",
-            "ehr_list_index": "13",
-            "items": [
-              "npoSinceTime"
-            ]
-          },
-          {
-            "label": "Weight loss",
-            "ehr_list_index": "14",
-            "items": [
-              "weightLoss"
-            ]
-          },
-          {
-            "label": "Last bowel movement",
-            "ehr_list_index": "15",
-            "items": [
-              "lastBm"
-            ]
-          },
-          {
-            "label": "Stool colour",
-            "ehr_list_index": "16",
-            "items": [
-              "stoolColour"
-            ]
-          },
-          {
-            "label": "Description",
-            "ehr_list_index": "17",
-            "items": [
-              "stoolDescription"
-            ]
-          },
-          {
-            "label": "Amount",
-            "ehr_list_index": "18",
-            "items": [
-              "stoolAmount"
-            ]
-          },
-          {
-            "label": "Source",
-            "ehr_list_index": "19",
-            "items": [
-              "stoolSource"
-            ]
-          },
-          {
-            "label": "Comments",
-            "ehr_list_index": "20",
-            "items": [
-              "comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Gastrointestinal assessment",
@@ -7749,8 +6372,6 @@ const DEFS = {
         "fqn": "gastrointestinal.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "bowel",
@@ -7771,7 +6392,9 @@ const DEFS = {
           "stoolDescription",
           "stoolAmount",
           "stoolSource",
-          "comments"
+          "comments",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       }
@@ -8181,186 +6804,6 @@ const DEFS = {
         "pageKey": "genitourinary",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Urinary symptoms",
-            "ehr_list_index": "2",
-            "items": [
-              "urinaryGroup1"
-            ]
-          },
-          {
-            "label": "Last voided day",
-            "ehr_list_index": "3",
-            "items": [
-              "lastVoidedDay"
-            ]
-          },
-          {
-            "label": "Last voided time",
-            "ehr_list_index": "4",
-            "items": [
-              "lastVoidedTime"
-            ]
-          },
-          {
-            "label": "Urine colour",
-            "ehr_list_index": "5",
-            "items": [
-              "colour"
-            ]
-          },
-          {
-            "label": "Urine transparency",
-            "ehr_list_index": "6",
-            "items": [
-              "consistency"
-            ]
-          },
-          {
-            "label": "Continence containment device",
-            "ehr_list_index": "7",
-            "items": [
-              "diaper"
-            ]
-          },
-          {
-            "ehr_list_index": "8",
-            "items": [
-              "toilettingMethod"
-            ]
-          },
-          {
-            "label": "Indwelling Catheter",
-            "ehr_list_index": "9",
-            "items": [
-              "foley"
-            ]
-          },
-          {
-            "label": "Type",
-            "ehr_list_index": "10",
-            "items": [
-              "foleyType"
-            ]
-          },
-          {
-            "label": "Size",
-            "ehr_list_index": "11",
-            "items": [
-              "foleySize"
-            ]
-          },
-          {
-            "label": "Last catheter change (day)",
-            "ehr_list_index": "12",
-            "items": [
-              "lastChange"
-            ]
-          },
-          {
-            "label": "Last catheter change (time)",
-            "ehr_list_index": "13",
-            "items": [
-              "lastChangeTime"
-            ]
-          },
-          {
-            "label": "Pelvic pain",
-            "ehr_list_index": "14",
-            "items": [
-              "pelvicPain"
-            ]
-          },
-          {
-            "label": "Location",
-            "ehr_list_index": "15",
-            "items": [
-              "location"
-            ]
-          },
-          {
-            "label": "Pelvic pain source",
-            "ehr_list_index": "16",
-            "items": [
-              "pelvicPainSource"
-            ]
-          },
-          {
-            "label": "Discharge",
-            "ehr_list_index": "17",
-            "items": [
-              "discharge"
-            ]
-          },
-          {
-            "label": "Last menstrual period date",
-            "ehr_list_index": "18",
-            "items": [
-              "lastMenstrualPeriodDate"
-            ]
-          },
-          {
-            "label": "Description",
-            "ehr_list_index": "19",
-            "items": [
-              "description"
-            ]
-          },
-          {
-            "label": "Pregnant",
-            "ehr_list_index": "20",
-            "items": [
-              "pregnant"
-            ]
-          },
-          {
-            "label": "Gravida (number of pregnancies)",
-            "ehr_list_index": "21",
-            "items": [
-              "gravida"
-            ]
-          },
-          {
-            "label": "Para (number of children)",
-            "ehr_list_index": "22",
-            "items": [
-              "para"
-            ]
-          },
-          {
-            "label": "Living children",
-            "ehr_list_index": "23",
-            "items": [
-              "livingChildren"
-            ]
-          },
-          {
-            "label": "Comments",
-            "ehr_list_index": "24",
-            "items": [
-              "comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Genitourinary assessment",
@@ -8486,8 +6929,6 @@ const DEFS = {
         "fqn": "genitourinary.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "urinaryGroup1",
@@ -8512,7 +6953,9 @@ const DEFS = {
           "gravida",
           "para",
           "livingChildren",
-          "comments"
+          "comments",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       }
@@ -8770,96 +7213,6 @@ const DEFS = {
         "pageKey": "musculoskeletal",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Swelling",
-            "ehr_list_index": "2",
-            "items": [
-              "swelling"
-            ]
-          },
-          {
-            "label": "Pain",
-            "ehr_list_index": "3",
-            "items": [
-              "pain"
-            ]
-          },
-          {
-            "label": "Deformity",
-            "ehr_list_index": "4",
-            "items": [
-              "deformity"
-            ]
-          },
-          {
-            "label": "Movement",
-            "ehr_list_index": "5",
-            "items": [
-              "movement"
-            ]
-          },
-          {
-            "label": "Sensation",
-            "ehr_list_index": "6",
-            "items": [
-              "sensation"
-            ]
-          },
-          {
-            "label": "Colour",
-            "ehr_list_index": "7",
-            "items": [
-              "colour"
-            ]
-          },
-          {
-            "label": "Skin Temp",
-            "ehr_list_index": "8",
-            "items": [
-              "temp"
-            ]
-          },
-          {
-            "label": "Use of ambulatory aid",
-            "ehr_list_index": "10",
-            "items": [
-              "useOfAmbulatoryAid"
-            ]
-          },
-          {
-            "label": "Type",
-            "ehr_list_index": "11",
-            "items": [
-              "type"
-            ]
-          },
-          {
-            "label": "Comments",
-            "ehr_list_index": "12",
-            "items": [
-              "comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Musculoskeletal assessment",
@@ -8934,8 +7287,6 @@ const DEFS = {
         "fqn": "musculoskeletal.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "swelling",
@@ -8947,7 +7298,9 @@ const DEFS = {
           "temp",
           "useOfAmbulatoryAid",
           "type",
-          "comments"
+          "comments",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       }
@@ -9159,160 +7512,6 @@ const DEFS = {
         "pageKey": "pain",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Location",
-            "ehr_list_index": "2",
-            "items": [
-              "location"
-            ]
-          },
-          {
-            "label": "Pain intensity (0-10)",
-            "ehr_list_index": "3",
-            "items": [
-              "painScale"
-            ]
-          },
-          {
-            "label": "Respiratory rate",
-            "ehr_list_index": "4",
-            "items": [
-              "respiratoryRate"
-            ]
-          },
-          {
-            "label": "Onset",
-            "ehr_list_index": "5",
-            "items": [
-              "onset"
-            ]
-          },
-          {
-            "label": "Type",
-            "ehr_list_index": "6",
-            "items": [
-              "type"
-            ]
-          },
-          {
-            "label": "Alleviation",
-            "ehr_list_index": "7",
-            "items": [
-              "alleviationAssociatedSymptoms"
-            ]
-          },
-          {
-            "label": "Associated symptoms",
-            "ehr_list_index": "8",
-            "items": [
-              "alleviation",
-              "radiation"
-            ]
-          },
-          {
-            "label": "Precipitating events",
-            "ehr_list_index": "9",
-            "items": [
-              "precipitatingEvents"
-            ]
-          },
-          {
-            "label": "Comments",
-            "ehr_list_index": "10",
-            "items": [
-              "comments"
-            ]
-          },
-          {
-            "label": "Location",
-            "ehr_list_index": "11",
-            "items": [
-              "location2"
-            ]
-          },
-          {
-            "label": "Pain intensity (0-10)",
-            "ehr_list_index": "12",
-            "items": [
-              "painScale2"
-            ]
-          },
-          {
-            "label": "Respiratory rate",
-            "ehr_list_index": "13",
-            "items": [
-              "respiratoryRate2"
-            ]
-          },
-          {
-            "label": "Onset",
-            "ehr_list_index": "14",
-            "items": [
-              "onset2"
-            ]
-          },
-          {
-            "label": "Type",
-            "ehr_list_index": "15",
-            "items": [
-              "type2"
-            ]
-          },
-          {
-            "label": "Alleviation",
-            "ehr_list_index": "16",
-            "items": [
-              "alleviationAssociatedSymptoms2"
-            ]
-          },
-          {
-            "label": "Associated symptoms",
-            "ehr_list_index": "17",
-            "items": [
-              "alleviation2"
-            ]
-          },
-          {
-            "label": "Radiation",
-            "ehr_list_index": "18",
-            "items": [
-              "radiation2"
-            ]
-          },
-          {
-            "label": "Precipitating events",
-            "ehr_list_index": "19",
-            "items": [
-              "precipitatingEvents2"
-            ]
-          },
-          {
-            "label": "Comments",
-            "ehr_list_index": "20",
-            "items": [
-              "comments2"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Pain assessment",
@@ -9399,8 +7598,6 @@ const DEFS = {
         "fqn": "pain.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "location",
@@ -9422,7 +7619,9 @@ const DEFS = {
           "alleviation2",
           "radiation2",
           "precipitatingEvents2",
-          "comments2"
+          "comments2",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       }
@@ -9761,136 +7960,6 @@ const DEFS = {
         "pageKey": "biopsychosocial",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "hygieneGrooming"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "hygieneComments"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "behaviour"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "hallucinations"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "suicidal"
-            ]
-          },
-          {
-            "ehr_list_index": "7",
-            "items": [
-              "homicidal"
-            ]
-          },
-          {
-            "ehr_list_index": "8",
-            "items": [
-              "speech"
-            ]
-          },
-          {
-            "label": "Domestic violence?",
-            "ehr_list_index": "9",
-            "items": [
-              "domesticViolence"
-            ]
-          },
-          {
-            "label": "Social worker?",
-            "ehr_list_index": "10",
-            "items": [
-              "requestContact"
-            ]
-          },
-          {
-            "ehr_list_index": "11",
-            "items": [
-              "supportPerson"
-            ]
-          },
-          {
-            "ehr_list_index": "12",
-            "items": [
-              "supportComments"
-            ]
-          },
-          {
-            "ehr_list_index": "13",
-            "items": [
-              "securityPolicePresent"
-            ]
-          },
-          {
-            "ehr_list_index": "14",
-            "items": [
-              "securityComments"
-            ]
-          },
-          {
-            "ehr_list_index": "15",
-            "items": [
-              "patientRestrained"
-            ]
-          },
-          {
-            "ehr_list_index": "16",
-            "items": [
-              "restraintDay"
-            ]
-          },
-          {
-            "ehr_list_index": "17",
-            "items": [
-              "restraintTime"
-            ]
-          },
-          {
-            "ehr_list_index": "18",
-            "items": [
-              "restraintComments"
-            ]
-          },
-          {
-            "ehr_list_index": "19",
-            "items": [
-              "generalComments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Biopsychosocial assessment",
@@ -9999,8 +8068,6 @@ const DEFS = {
         "fqn": "biopsychosocial.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "hygieneGrooming",
@@ -10020,7 +8087,9 @@ const DEFS = {
           "restraintDay",
           "restraintTime",
           "restraintComments",
-          "generalComments"
+          "generalComments",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       }
@@ -10255,56 +8324,6 @@ const DEFS = {
         "pageKey": "nonmedOrders",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "order"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "orderedBy"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "reason"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "status"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "comment"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Nonmedication orders",
@@ -10352,15 +8371,15 @@ const DEFS = {
         "fqn": "nonmedOrders.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "order",
           "orderedBy",
           "reason",
           "status",
-          "comment"
+          "comment",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       },
@@ -10370,89 +8389,6 @@ const DEFS = {
         "pageKey": "nonmedOrders",
         "tableKey": "dietOrders",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "dietOrders_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "dietOrders_name",
-              "dietOrders_profession",
-              "dietOrders_day",
-              "dietOrders_time"
-            ]
-          },
-          {
-            "label": "Regular",
-            "ehr_list_index": "2",
-            "items": [
-              "diet_regular"
-            ]
-          },
-          {
-            "label": "NPO",
-            "ehr_list_index": "3",
-            "items": [
-              "diet_npo"
-            ]
-          },
-          {
-            "label": "Heart",
-            "ehr_list_index": "4",
-            "items": [
-              "diet_heart"
-            ]
-          },
-          {
-            "label": "Diabetic",
-            "ehr_list_index": "5",
-            "items": [
-              "diet_diabetic"
-            ]
-          },
-          {
-            "label": "Restrict fluids",
-            "ehr_list_index": "6",
-            "items": [
-              "diet_fluid"
-            ]
-          },
-          {
-            "label": "Restrict to",
-            "ehr_list_index": "7",
-            "items": [
-              "diet_fluid_amount"
-            ]
-          },
-          {
-            "label": "Other",
-            "ehr_list_index": "8",
-            "items": [
-              "diet_other"
-            ]
-          },
-          {
-            "label": "Explain",
-            "ehr_list_index": "9",
-            "items": [
-              "diet_other_explain"
-            ]
-          },
-          {
-            "label": "Comment",
-            "ehr_list_index": "10",
-            "items": [
-              "diet_comment"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "dietOrders",
           "label": "Diet",
@@ -10524,8 +8460,6 @@ const DEFS = {
         "fqn": "nonmedOrders.dietOrders",
         "tableChildren": [
           "dietOrders_id",
-          "dietOrders_name",
-          "dietOrders_profession",
           "dietOrders_day",
           "dietOrders_time",
           "diet_regular",
@@ -10536,7 +8470,9 @@ const DEFS = {
           "diet_fluid_amount",
           "diet_other",
           "diet_other_explain",
-          "diet_comment"
+          "diet_comment",
+          "dietOrders_name",
+          "dietOrders_profession"
         ],
         "hasRecHeader": true
       }
@@ -10650,61 +8586,6 @@ const DEFS = {
         "pageKey": "referrals",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Referral name",
-            "ehr_list_index": "2",
-            "items": [
-              "referralName"
-            ]
-          },
-          {
-            "label": "Referral profession",
-            "ehr_list_index": "3",
-            "items": [
-              "referralProfession"
-            ]
-          },
-          {
-            "label": "Appointment date",
-            "ehr_list_index": "4",
-            "items": [
-              "appointmentDate"
-            ]
-          },
-          {
-            "label": "Appointment time",
-            "ehr_list_index": "5",
-            "items": [
-              "appointmentTime"
-            ]
-          },
-          {
-            "label": "Status",
-            "ehr_list_index": "6",
-            "items": [
-              "status"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Referrals",
@@ -10753,15 +8634,15 @@ const DEFS = {
         "fqn": "referrals.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "referralName",
           "referralProfession",
           "appointmentDate",
           "appointmentTime",
-          "status"
+          "status",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       }
@@ -11847,122 +9728,6 @@ const DEFS = {
         "pageKey": "labRequisitions",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "patientName"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "patientHealthNumber"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "dateOfBirth"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "location"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "dateRequired"
-            ]
-          },
-          {
-            "ehr_list_index": "7",
-            "items": [
-              "reason"
-            ]
-          },
-          {
-            "ehr_list_index": "8",
-            "items": [
-              "hematology"
-            ]
-          },
-          {
-            "ehr_list_index": "9",
-            "items": [
-              "electrolytes"
-            ]
-          },
-          {
-            "ehr_list_index": "10",
-            "items": [
-              "bloodGas"
-            ]
-          },
-          {
-            "ehr_list_index": "11",
-            "items": [
-              "renalProfile"
-            ]
-          },
-          {
-            "ehr_list_index": "12",
-            "items": [
-              "liverFunction"
-            ]
-          },
-          {
-            "ehr_list_index": "13",
-            "items": [
-              "urineAnalysis"
-            ]
-          },
-          {
-            "ehr_list_index": "14",
-            "items": [
-              "microbiologyCulture"
-            ]
-          },
-          {
-            "ehr_list_index": "15",
-            "items": [
-              "microbiologyLocation"
-            ]
-          },
-          {
-            "ehr_list_index": "16",
-            "items": [
-              "histologyTissueType"
-            ]
-          },
-          {
-            "ehr_list_index": "17",
-            "items": [
-              "histologyLocation"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Lab requisitions v1",
@@ -12048,8 +9813,6 @@ const DEFS = {
         "fqn": "labRequisitions.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "patientName",
@@ -12067,7 +9830,9 @@ const DEFS = {
           "microbiologyCulture",
           "microbiologyLocation",
           "histologyTissueType",
-          "histologyLocation"
+          "histologyLocation",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       },
@@ -12077,99 +9842,6 @@ const DEFS = {
         "pageKey": "labRequisitions",
         "tableKey": "requisitions",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "requisitions_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "requisitions_name",
-              "requisitions_profession",
-              "requisitions_day",
-              "requisitions_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "req_dateRequired"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "req_reason"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "req_schedule"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "req_hematology"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "req_cogagulation"
-            ]
-          },
-          {
-            "ehr_list_index": "7",
-            "items": [
-              "req_tropinin"
-            ]
-          },
-          {
-            "ehr_list_index": "8",
-            "items": [
-              "req_electrolytes"
-            ]
-          },
-          {
-            "ehr_list_index": "9",
-            "items": [
-              "req_liverFunction"
-            ]
-          },
-          {
-            "ehr_list_index": "10",
-            "items": [
-              "req_renalProfile"
-            ]
-          },
-          {
-            "ehr_list_index": "11",
-            "items": [
-              "req_bloodGas"
-            ]
-          },
-          {
-            "ehr_list_index": "12",
-            "items": [
-              "req_urineAnalysis"
-            ]
-          },
-          {
-            "label": "Comments",
-            "ehr_list_index": "13",
-            "items": [
-              "req_comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "requisitions",
           "label": "Lab requisitions",
@@ -12272,8 +9944,6 @@ const DEFS = {
         "fqn": "labRequisitions.requisitions",
         "tableChildren": [
           "requisitions_id",
-          "requisitions_name",
-          "requisitions_profession",
           "requisitions_day",
           "requisitions_time",
           "req_dateRequired",
@@ -12287,7 +9957,9 @@ const DEFS = {
           "req_renalProfile",
           "req_bloodGas",
           "req_urineAnalysis",
-          "req_comments"
+          "req_comments",
+          "requisitions_name",
+          "requisitions_profession"
         ],
         "hasRecHeader": true
       },
@@ -12297,56 +9969,6 @@ const DEFS = {
         "pageKey": "labRequisitions",
         "tableKey": "histologyRequisitions",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "histologyRequisitions_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "histologyRequisitions_name",
-              "histologyRequisitions_profession",
-              "histologyRequisitions_day",
-              "histologyRequisitions_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "reqH_dateRequired"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "reqH_reason"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "reqH_type"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "reqH_location"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "reqH_comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "histologyRequisitions",
           "label": "Histology",
@@ -12403,15 +10025,15 @@ const DEFS = {
         "fqn": "labRequisitions.histologyRequisitions",
         "tableChildren": [
           "histologyRequisitions_id",
-          "histologyRequisitions_name",
-          "histologyRequisitions_profession",
           "histologyRequisitions_day",
           "histologyRequisitions_time",
           "reqH_dateRequired",
           "reqH_reason",
           "reqH_type",
           "reqH_location",
-          "reqH_comments"
+          "reqH_comments",
+          "histologyRequisitions_name",
+          "histologyRequisitions_profession"
         ],
         "hasRecHeader": true
       },
@@ -12421,68 +10043,6 @@ const DEFS = {
         "pageKey": "labRequisitions",
         "tableKey": "med_image_req",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "med_image_req_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "med_image_req_name",
-              "med_image_req_profession",
-              "med_image_req_day",
-              "med_image_req_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "reqMi_type"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "reqMi_dateRequired"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "reqMi_schedule"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "reqMi_reason"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "reqMi_Location"
-            ]
-          },
-          {
-            "ehr_list_index": "7",
-            "items": [
-              "reqMi_mobile"
-            ]
-          },
-          {
-            "ehr_list_index": "8",
-            "items": [
-              "reqMi_comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "med_image_req",
           "label": "Medical Imaging",
@@ -12543,8 +10103,6 @@ const DEFS = {
         "fqn": "labRequisitions.med_image_req",
         "tableChildren": [
           "med_image_req_id",
-          "med_image_req_name",
-          "med_image_req_profession",
           "med_image_req_day",
           "med_image_req_time",
           "reqMi_type",
@@ -12553,7 +10111,9 @@ const DEFS = {
           "reqMi_reason",
           "reqMi_Location",
           "reqMi_mobile",
-          "reqMi_comments"
+          "reqMi_comments",
+          "med_image_req_name",
+          "med_image_req_profession"
         ],
         "hasRecHeader": true
       },
@@ -12563,56 +10123,6 @@ const DEFS = {
         "pageKey": "labRequisitions",
         "tableKey": "microRequisitions",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "microRequisitions_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "microRequisitions_name",
-              "microRequisitions_profession",
-              "microRequisitions_day",
-              "microRequisitions_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "reqMicro_dateRequired"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "reqMicro_reason"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "reqMicro_culture"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "reqMicro_location"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "reqMicro_comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "microRequisitions",
           "label": "Microbiology",
@@ -12669,15 +10179,15 @@ const DEFS = {
         "fqn": "labRequisitions.microRequisitions",
         "tableChildren": [
           "microRequisitions_id",
-          "microRequisitions_name",
-          "microRequisitions_profession",
           "microRequisitions_day",
           "microRequisitions_time",
           "reqMicro_dateRequired",
           "reqMicro_reason",
           "reqMicro_culture",
           "reqMicro_location",
-          "reqMicro_comments"
+          "reqMicro_comments",
+          "microRequisitions_name",
+          "microRequisitions_profession"
         ],
         "hasRecHeader": true
       }
@@ -13359,134 +10869,6 @@ const DEFS = {
         "pageKey": "medicationOrders",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Medication",
-            "ehr_list_index": "2",
-            "items": [
-              "medication"
-            ]
-          },
-          {
-            "label": "Dose",
-            "ehr_list_index": "3",
-            "items": [
-              "dose"
-            ]
-          },
-          {
-            "label": "Route",
-            "ehr_list_index": "4",
-            "items": [
-              "route"
-            ]
-          },
-          {
-            "label": "Start day",
-            "ehr_list_index": "5",
-            "items": [
-              "startMeds"
-            ]
-          },
-          {
-            "label": "End day",
-            "ehr_list_index": "6",
-            "items": [
-              "endMeds"
-            ]
-          },
-          {
-            "label": "Administration",
-            "ehr_list_index": "7",
-            "items": [
-              "administration"
-            ]
-          },
-          {
-            "label": "Scheduled",
-            "ehr_list_index": "9",
-            "items": [
-              "scheduled"
-            ]
-          },
-          {
-            "ehr_list_index": "10",
-            "items": [
-              "prn1",
-              "once",
-              "stat"
-            ]
-          },
-          {
-            "ehr_list_index": "11",
-            "items": [
-              "prn2"
-            ]
-          },
-          {
-            "ehr_list_index": "12",
-            "items": [
-              "prn3"
-            ]
-          },
-          {
-            "ehr_list_index": "13",
-            "items": [
-              "prn4"
-            ]
-          },
-          {
-            "ehr_list_index": "14",
-            "items": [
-              "prn5"
-            ]
-          },
-          {
-            "ehr_list_index": "15",
-            "items": [
-              "prn6"
-            ]
-          },
-          {
-            "label": "Instructions",
-            "ehr_list_index": "16",
-            "items": [
-              "instructions"
-            ]
-          },
-          {
-            "label": "Reason",
-            "ehr_list_index": "17",
-            "items": [
-              "reason"
-            ]
-          },
-          {
-            "label": "Notes",
-            "ehr_list_index": "18",
-            "items": [
-              "notes"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Medication orders v1",
@@ -13612,8 +10994,6 @@ const DEFS = {
         "fqn": "medicationOrders.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "medication",
@@ -13633,7 +11013,9 @@ const DEFS = {
           "stat",
           "instructions",
           "reason",
-          "notes"
+          "notes",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       },
@@ -13644,130 +11026,6 @@ const DEFS = {
         "tableKey": "medicationOrdersTable",
         "isTable": true,
         "tableAction": "medAdminRec.marTable",
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "medicationOrdersTable_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "medicationOrdersTable_name",
-              "medicationOrdersTable_profession",
-              "medicationOrdersTable_day",
-              "medicationOrdersTable_time"
-            ]
-          },
-          {
-            "label": "Medication",
-            "ehr_list_index": "2",
-            "items": [
-              "med_medication"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "med_dose"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "med_timing"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "med_route"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "med_reason"
-            ]
-          },
-          {
-            "ehr_list_index": "7",
-            "items": [
-              "med_injectionLocation"
-            ]
-          },
-          {
-            "ehr_list_index": "8",
-            "items": [
-              "med_alert"
-            ]
-          },
-          {
-            "ehr_list_index": "9",
-            "items": [
-              "med_scheduled"
-            ]
-          },
-          {
-            "ehr_list_index": "10",
-            "items": [
-              "med_prnMaxDosage"
-            ]
-          },
-          {
-            "ehr_list_index": "11",
-            "items": [
-              "med_time1"
-            ]
-          },
-          {
-            "ehr_list_index": "12",
-            "items": [
-              "med_time2"
-            ]
-          },
-          {
-            "ehr_list_index": "13",
-            "items": [
-              "med_time3"
-            ]
-          },
-          {
-            "ehr_list_index": "14",
-            "items": [
-              "med_time4"
-            ]
-          },
-          {
-            "ehr_list_index": "15",
-            "items": [
-              "med_time5"
-            ]
-          },
-          {
-            "ehr_list_index": "16",
-            "items": [
-              "med_time6"
-            ]
-          },
-          {
-            "ehr_list_index": "17",
-            "items": [
-              "med_continuous_description"
-            ]
-          },
-          {
-            "label": "Instructions",
-            "ehr_list_index": "18",
-            "items": [
-              "med_instructions"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "medicationOrdersTable",
           "label": "Medication orders",
@@ -13888,8 +11146,6 @@ const DEFS = {
         "taSourceTableKey": "medicationOrdersTable",
         "tableChildren": [
           "medicationOrdersTable_id",
-          "medicationOrdersTable_name",
-          "medicationOrdersTable_profession",
           "medicationOrdersTable_day",
           "medicationOrdersTable_time",
           "med_medication",
@@ -13908,7 +11164,9 @@ const DEFS = {
           "med_time5",
           "med_time6",
           "med_continuous_description",
-          "med_instructions"
+          "med_instructions",
+          "medicationOrdersTable_name",
+          "medicationOrdersTable_profession"
         ],
         "hasRecHeader": true
       }
@@ -14362,79 +11620,6 @@ const DEFS = {
         "pageKey": "medAdminRec",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Medication status",
-            "ehr_list_index": "1",
-            "items": [
-              "medStatus"
-            ]
-          },
-          {
-            "label": "Administration status",
-            "ehr_list_index": "2",
-            "items": [
-              "adminStatus"
-            ]
-          },
-          {
-            "label": "Medication",
-            "ehr_list_index": "3",
-            "items": [
-              "medication"
-            ]
-          },
-          {
-            "label": "Route",
-            "ehr_list_index": "4",
-            "items": [
-              "route"
-            ]
-          },
-          {
-            "label": "Today's plan",
-            "ehr_list_index": "5",
-            "items": [
-              "todayPlan"
-            ]
-          },
-          {
-            "label": "Today's given",
-            "ehr_list_index": "6",
-            "items": [
-              "todayGiven"
-            ]
-          },
-          {
-            "label": "Administered by",
-            "ehr_list_index": "7",
-            "items": [
-              "administeredBy"
-            ]
-          },
-          {
-            "label": "Profession",
-            "ehr_list_index": "8",
-            "items": [
-              "adminProfession"
-            ]
-          },
-          {
-            "label": "Administered time",
-            "ehr_list_index": "9",
-            "items": [
-              "administeredTime"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Medication administration records v1",
@@ -14474,15 +11659,15 @@ const DEFS = {
         "fqn": "medAdminRec.table",
         "tableChildren": [
           "table_id",
-          "medStatus",
-          "adminStatus",
           "medication",
           "route",
           "todayPlan",
           "todayGiven",
           "administeredBy",
           "adminProfession",
-          "administeredTime"
+          "administeredTime",
+          "medStatus",
+          "adminStatus"
         ]
       },
       "marTable": {
@@ -14491,117 +11676,6 @@ const DEFS = {
         "pageKey": "medAdminRec",
         "tableKey": "marTable",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "marTable_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "marTable_name",
-              "marTable_profession",
-              "marTable_day",
-              "marTable_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "mo_medOrder"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "mo_timing"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "mar_status"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "mar_dose"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "mar_route"
-            ]
-          },
-          {
-            "ehr_list_index": "7",
-            "items": [
-              "mo_schedDay"
-            ]
-          },
-          {
-            "ehr_list_index": "8",
-            "items": [
-              "mo_schedTime"
-            ]
-          },
-          {
-            "ehr_list_index": "9",
-            "items": [
-              "mar_event_day"
-            ]
-          },
-          {
-            "ehr_list_index": "10",
-            "items": [
-              "mar_event_time"
-            ]
-          },
-          {
-            "ehr_list_index": "11",
-            "items": [
-              "mo_alert"
-            ]
-          },
-          {
-            "ehr_list_index": "12",
-            "items": [
-              "mar_location"
-            ]
-          },
-          {
-            "ehr_list_index": "13",
-            "items": [
-              "med_order_embedded",
-              "mar_secSigName"
-            ]
-          },
-          {
-            "ehr_list_index": "14",
-            "items": [
-              "mar_barCodeCheck"
-            ]
-          },
-          {
-            "ehr_list_index": "15",
-            "items": [
-              "mar_comments"
-            ]
-          },
-          {
-            "ehr_list_index": "16",
-            "items": [
-              "mar_internal"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "marTable",
           "label": "Medication administration records",
@@ -14705,8 +11779,6 @@ const DEFS = {
         "fqn": "medAdminRec.marTable",
         "tableChildren": [
           "marTable_id",
-          "marTable_name",
-          "marTable_profession",
           "marTable_day",
           "marTable_time",
           "med_order_embedded",
@@ -14724,7 +11796,9 @@ const DEFS = {
           "mar_secSigName",
           "mar_barCodeCheck",
           "mar_comments",
-          "mar_internal"
+          "mar_internal",
+          "marTable_name",
+          "marTable_profession"
         ],
         "hasRecHeader": true
       }
@@ -14795,12 +11869,14 @@ const DEFS = {
       {
         "elementKey": "dischargeDiagnosis",
         "formIndex": "2",
+        "formCss": "grid-span-3-columns",
         "inputType": "textarea",
         "fqn": "dischargeSummary.dischargeDiagnosis"
       },
       {
         "elementKey": "dischargeEducation",
         "formIndex": "2",
+        "formCss": "grid-span-3-columns",
         "inputType": "textarea",
         "fqn": "dischargeSummary.dischargeEducation"
       },
@@ -15105,33 +12181,6 @@ const DEFS = {
         "pageKey": "progressNotes",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Encounter note",
-            "ehr_list_index": "2",
-            "items": [
-              "note"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Progress notes",
@@ -15171,11 +12220,11 @@ const DEFS = {
         "fqn": "progressNotes.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
-          "note"
+          "note",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       },
@@ -15185,50 +12234,6 @@ const DEFS = {
         "pageKey": "progressNotes",
         "tableKey": "sbar",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "sbar_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "sbar_name",
-              "sbar_profession",
-              "sbar_day",
-              "sbar_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "situation"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "background"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "assessment"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "recommendation"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "sbar",
           "label": "SBAR notes",
@@ -15274,14 +12279,14 @@ const DEFS = {
         "fqn": "progressNotes.sbar",
         "tableChildren": [
           "sbar_id",
-          "sbar_name",
-          "sbar_profession",
           "sbar_day",
           "sbar_time",
           "situation",
           "background",
           "assessment",
-          "recommendation"
+          "recommendation",
+          "sbar_name",
+          "sbar_profession"
         ],
         "hasRecHeader": true
       }
@@ -15388,61 +12393,6 @@ const DEFS = {
         "pageKey": "carePlan",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Clinical issue",
-            "ehr_list_index": "2",
-            "items": [
-              "clinical"
-            ]
-          },
-          {
-            "label": "Goal of care",
-            "ehr_list_index": "3",
-            "items": [
-              "goal"
-            ]
-          },
-          {
-            "label": "Intervention",
-            "ehr_list_index": "4",
-            "items": [
-              "interventions"
-            ]
-          },
-          {
-            "label": "Evaluation of intervention",
-            "ehr_list_index": "5",
-            "items": [
-              "evaluation"
-            ]
-          },
-          {
-            "label": "Status",
-            "ehr_list_index": "6",
-            "items": [
-              "status"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Care plan",
@@ -15490,15 +12440,15 @@ const DEFS = {
         "fqn": "carePlan.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "clinical",
           "goal",
           "interventions",
           "evaluation",
-          "status"
+          "status",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       }
@@ -15574,40 +12524,6 @@ const DEFS = {
         "pageKey": "consults",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Consult Report",
-            "ehr_list_index": "2",
-            "items": [
-              "consultReport"
-            ]
-          },
-          {
-            "label": "Comments",
-            "ehr_list_index": "3",
-            "items": [
-              "comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Consults",
@@ -15649,12 +12565,12 @@ const DEFS = {
         "fqn": "consults.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "consultReport",
-          "comments"
+          "comments",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       }
@@ -16633,40 +13549,6 @@ const DEFS = {
         "pageKey": "labResults",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Laboratory Report",
-            "ehr_list_index": "2",
-            "items": [
-              "laboratoryReport"
-            ]
-          },
-          {
-            "label": "Comments",
-            "ehr_list_index": "3",
-            "items": [
-              "comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Laboratory reports v1",
@@ -16708,12 +13590,12 @@ const DEFS = {
         "fqn": "labResults.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "laboratoryReport",
-          "comments"
+          "comments",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       },
@@ -16723,236 +13605,6 @@ const DEFS = {
         "pageKey": "labResults",
         "tableKey": "labResultGeneral",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "labResultGeneral_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "labResultGeneral_name",
-              "labResultGeneral_profession",
-              "labResultGeneral_day",
-              "labResultGeneral_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "urinOrderPhys"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "lrh_HCO3"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "lrh_Ca"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "lrh_Ca_Ion"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "lrh_CO2"
-            ]
-          },
-          {
-            "ehr_list_index": "7",
-            "items": [
-              "lrh_chloride"
-            ]
-          },
-          {
-            "ehr_list_index": "8",
-            "items": [
-              "lrh_ck"
-            ]
-          },
-          {
-            "ehr_list_index": "9",
-            "items": [
-              "lrh_glucose"
-            ]
-          },
-          {
-            "ehr_list_index": "10",
-            "items": [
-              "lrh_Mg"
-            ]
-          },
-          {
-            "ehr_list_index": "11",
-            "items": [
-              "lrh_PO4"
-            ]
-          },
-          {
-            "ehr_list_index": "12",
-            "items": [
-              "lrh_K"
-            ]
-          },
-          {
-            "ehr_list_index": "13",
-            "items": [
-              "lrh_Na"
-            ]
-          },
-          {
-            "ehr_list_index": "14",
-            "items": [
-              "lrh_bun"
-            ]
-          },
-          {
-            "ehr_list_index": "15",
-            "items": [
-              "lrh_cr"
-            ]
-          },
-          {
-            "ehr_list_index": "16",
-            "items": [
-              "lrh_egfr"
-            ]
-          },
-          {
-            "ehr_list_index": "17",
-            "items": [
-              "lrh_alt"
-            ]
-          },
-          {
-            "ehr_list_index": "18",
-            "items": [
-              "lrh_ast"
-            ]
-          },
-          {
-            "ehr_list_index": "19",
-            "items": [
-              "lrh_alp"
-            ]
-          },
-          {
-            "ehr_list_index": "20",
-            "items": [
-              "lrh_bilirubinD"
-            ]
-          },
-          {
-            "ehr_list_index": "21",
-            "items": [
-              "lrh_bilirubinT"
-            ]
-          },
-          {
-            "ehr_list_index": "22",
-            "items": [
-              "lrh_ggt"
-            ]
-          },
-          {
-            "ehr_list_index": "23",
-            "items": [
-              "lrh_ldh"
-            ]
-          },
-          {
-            "ehr_list_index": "24",
-            "items": [
-              "lrh_lipase"
-            ]
-          },
-          {
-            "ehr_list_index": "25",
-            "items": [
-              "lrh_abg_hco3"
-            ]
-          },
-          {
-            "ehr_list_index": "26",
-            "items": [
-              "lrh_abg_o2sat"
-            ]
-          },
-          {
-            "ehr_list_index": "27",
-            "items": [
-              "lrh_abg_pco2"
-            ]
-          },
-          {
-            "ehr_list_index": "28",
-            "items": [
-              "lrh_po2"
-            ]
-          },
-          {
-            "ehr_list_index": "29",
-            "items": [
-              "lrh_abg_ph"
-            ]
-          },
-          {
-            "ehr_list_index": "30",
-            "items": [
-              "lru_bnp"
-            ]
-          },
-          {
-            "ehr_list_index": "31",
-            "items": [
-              "lrh_lrtrop_I"
-            ]
-          },
-          {
-            "ehr_list_index": "32",
-            "items": [
-              "lrh_lrtrop_T"
-            ]
-          },
-          {
-            "ehr_list_index": "33",
-            "items": [
-              "lrh_lrtrop_H"
-            ]
-          },
-          {
-            "ehr_list_index": "34",
-            "items": [
-              "lrh_bloodGroup"
-            ]
-          },
-          {
-            "ehr_list_index": "35",
-            "items": [
-              "lrh_antibody"
-            ]
-          },
-          {
-            "ehr_list_index": "36",
-            "items": [
-              "lrh_gen_comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "labResultGeneral",
           "label": "General",
@@ -17117,8 +13769,6 @@ const DEFS = {
         "fqn": "labResults.labResultGeneral",
         "tableChildren": [
           "labResultGeneral_id",
-          "labResultGeneral_name",
-          "labResultGeneral_profession",
           "labResultGeneral_day",
           "labResultGeneral_time",
           "urinOrderPhys",
@@ -17155,7 +13805,9 @@ const DEFS = {
           "lrh_lrtrop_H",
           "lrh_bloodGroup",
           "lrh_antibody",
-          "lrh_gen_comments"
+          "lrh_gen_comments",
+          "labResultGeneral_name",
+          "labResultGeneral_profession"
         ],
         "hasRecHeader": true
       },
@@ -17165,100 +13817,6 @@ const DEFS = {
         "pageKey": "labResults",
         "tableKey": "labResultHematology",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "labResultHematology_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "labResultHematology_name",
-              "labResultHematology_profession",
-              "labResultHematology_day",
-              "labResultHematology_time"
-            ]
-          },
-          {
-            "label": "Hemoglobin A1-C",
-            "ehr_list_index": "2",
-            "items": [
-              "lrh_HbA1C"
-            ]
-          },
-          {
-            "label": "Hemoglobin",
-            "ehr_list_index": "3",
-            "items": [
-              "lrh_Hgb"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "lrh_hct"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "lrh_platelets"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "lrh_rbc"
-            ]
-          },
-          {
-            "ehr_list_index": "7",
-            "items": [
-              "lrh_wbc"
-            ]
-          },
-          {
-            "ehr_list_index": "8",
-            "items": [
-              "lrh_basophils"
-            ]
-          },
-          {
-            "ehr_list_index": "9",
-            "items": [
-              "lrh_eosinophils"
-            ]
-          },
-          {
-            "ehr_list_index": "10",
-            "items": [
-              "lrh_lymphocytes"
-            ]
-          },
-          {
-            "ehr_list_index": "11",
-            "items": [
-              "lrh_monocytes"
-            ]
-          },
-          {
-            "ehr_list_index": "12",
-            "items": [
-              "lrh_neutrophils"
-            ]
-          },
-          {
-            "ehr_list_index": "13",
-            "items": [
-              "lrh_comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "labResultHematology",
           "label": "Hematology",
@@ -17337,8 +13895,6 @@ const DEFS = {
         "fqn": "labResults.labResultHematology",
         "tableChildren": [
           "labResultHematology_id",
-          "labResultHematology_name",
-          "labResultHematology_profession",
           "labResultHematology_day",
           "labResultHematology_time",
           "lrh_HbA1C",
@@ -17352,7 +13908,9 @@ const DEFS = {
           "lrh_lymphocytes",
           "lrh_monocytes",
           "lrh_neutrophils",
-          "lrh_comments"
+          "lrh_comments",
+          "labResultHematology_name",
+          "labResultHematology_profession"
         ],
         "hasRecHeader": true
       },
@@ -17362,62 +13920,6 @@ const DEFS = {
         "pageKey": "labResults",
         "tableKey": "labResultCoagulation",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "labResultCoagulation_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "labResultCoagulation_name",
-              "labResultCoagulation_profession",
-              "labResultCoagulation_day",
-              "labResultCoagulation_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "coag_fib"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "coag_ddimer"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "coag_inr"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "coag_ptt"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "coag_appt"
-            ]
-          },
-          {
-            "ehr_list_index": "7",
-            "items": [
-              "coag_comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "labResultCoagulation",
           "label": "Coagulation",
@@ -17476,8 +13978,6 @@ const DEFS = {
         "fqn": "labResults.labResultCoagulation",
         "tableChildren": [
           "labResultCoagulation_id",
-          "labResultCoagulation_name",
-          "labResultCoagulation_profession",
           "labResultCoagulation_day",
           "labResultCoagulation_time",
           "coag_fib",
@@ -17485,7 +13985,9 @@ const DEFS = {
           "coag_inr",
           "coag_ptt",
           "coag_appt",
-          "coag_comments"
+          "coag_comments",
+          "labResultCoagulation_name",
+          "labResultCoagulation_profession"
         ],
         "hasRecHeader": true
       },
@@ -17495,189 +13997,6 @@ const DEFS = {
         "pageKey": "labResults",
         "tableKey": "labResultUrine",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "labResultUrine_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "labResultUrine_name",
-              "labResultUrine_profession",
-              "labResultUrine_day",
-              "labResultUrine_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "lru_calrity"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "lru_colour"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "lru_ordour"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "lru_gravity",
-              "lru_albumin"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "lru_acr"
-            ]
-          },
-          {
-            "ehr_list_index": "7",
-            "items": [
-              "lru_aldosterone"
-            ]
-          },
-          {
-            "ehr_list_index": "8",
-            "items": [
-              "lru_calcium"
-            ]
-          },
-          {
-            "ehr_list_index": "9",
-            "items": [
-              "lru_catecholamines"
-            ]
-          },
-          {
-            "ehr_list_index": "10",
-            "items": [
-              "lru_cortisol"
-            ]
-          },
-          {
-            "ehr_list_index": "11",
-            "items": [
-              "lru_glucose"
-            ]
-          },
-          {
-            "ehr_list_index": "12",
-            "items": [
-              "lru_ketones"
-            ]
-          },
-          {
-            "ehr_list_index": "13",
-            "items": [
-              "lru_leukocyte"
-            ]
-          },
-          {
-            "ehr_list_index": "14",
-            "items": [
-              "lru_nitrates"
-            ]
-          },
-          {
-            "ehr_list_index": "15",
-            "items": [
-              "lru_osmolality"
-            ]
-          },
-          {
-            "ehr_list_index": "16",
-            "items": [
-              "lru_ph"
-            ]
-          },
-          {
-            "ehr_list_index": "17",
-            "items": [
-              "lru_phosphate"
-            ]
-          },
-          {
-            "ehr_list_index": "18",
-            "items": [
-              "lru_protein"
-            ]
-          },
-          {
-            "ehr_list_index": "19",
-            "items": [
-              "lru_sodium"
-            ]
-          },
-          {
-            "ehr_list_index": "20",
-            "items": [
-              "lru_speccificGravity"
-            ]
-          },
-          {
-            "ehr_list_index": "21",
-            "items": [
-              "lru_uricAcid"
-            ]
-          },
-          {
-            "ehr_list_index": "22",
-            "items": [
-              "lru_urobilinogen"
-            ]
-          },
-          {
-            "ehr_list_index": "23",
-            "items": [
-              "lru_casts"
-            ]
-          },
-          {
-            "ehr_list_index": "24",
-            "items": [
-              "lru_crystals"
-            ]
-          },
-          {
-            "ehr_list_index": "25",
-            "items": [
-              "lru_epitehlial"
-            ]
-          },
-          {
-            "ehr_list_index": "26",
-            "items": [
-              "lru_rbc"
-            ]
-          },
-          {
-            "ehr_list_index": "27",
-            "items": [
-              "lru_wbc"
-            ]
-          },
-          {
-            "ehr_list_index": "28",
-            "items": [
-              "lruComments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "labResultUrine",
           "label": "Urine analysis",
@@ -17796,8 +14115,6 @@ const DEFS = {
         "fqn": "labResults.labResultUrine",
         "tableChildren": [
           "labResultUrine_id",
-          "labResultUrine_name",
-          "labResultUrine_profession",
           "labResultUrine_day",
           "labResultUrine_time",
           "lru_calrity",
@@ -17827,7 +14144,9 @@ const DEFS = {
           "lru_epitehlial",
           "lru_rbc",
           "lru_wbc",
-          "lruComments"
+          "lruComments",
+          "labResultUrine_name",
+          "labResultUrine_profession"
         ],
         "hasRecHeader": true
       }
@@ -17903,40 +14222,6 @@ const DEFS = {
         "pageKey": "medicalImaging",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Medical imaging",
-            "ehr_list_index": "2",
-            "items": [
-              "laboratoryReport"
-            ]
-          },
-          {
-            "label": "Comments",
-            "ehr_list_index": "3",
-            "items": [
-              "comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Medical imaging",
@@ -17978,12 +14263,12 @@ const DEFS = {
         "fqn": "medicalImaging.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "laboratoryReport",
-          "comments"
+          "comments",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       }
@@ -18059,40 +14344,6 @@ const DEFS = {
         "pageKey": "operationReports",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Operative and anaesthesia records",
-            "ehr_list_index": "2",
-            "items": [
-              "laboratoryReport"
-            ]
-          },
-          {
-            "label": "Comments",
-            "ehr_list_index": "3",
-            "items": [
-              "comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Operative and anaesthesia records",
@@ -18134,12 +14385,12 @@ const DEFS = {
         "fqn": "operationReports.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "laboratoryReport",
-          "comments"
+          "comments",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       }
@@ -18518,68 +14769,6 @@ const DEFS = {
         "pageKey": "diagnosticCodes",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "ICD-10",
-            "ehr_list_index": "2",
-            "items": [
-              "icd10"
-            ]
-          },
-          {
-            "label": "Condition",
-            "ehr_list_index": "3",
-            "items": [
-              "condition"
-            ]
-          },
-          {
-            "label": "Diagnosis code",
-            "ehr_list_index": "4",
-            "items": [
-              "code"
-            ]
-          },
-          {
-            "label": "Diagnosis type",
-            "ehr_list_index": "5",
-            "items": [
-              "type"
-            ]
-          },
-          {
-            "label": "Prefix",
-            "ehr_list_index": "6",
-            "items": [
-              "prefix"
-            ]
-          },
-          {
-            "label": "Diagnosis cluster",
-            "ehr_list_index": "7",
-            "items": [
-              "cluster"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Diagnostic codes (ICD-10)",
@@ -18628,8 +14817,6 @@ const DEFS = {
         "fqn": "diagnosticCodes.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "icd10",
@@ -18637,7 +14824,9 @@ const DEFS = {
           "code",
           "type",
           "prefix",
-          "cluster"
+          "cluster",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       }
@@ -18727,54 +14916,6 @@ const DEFS = {
         "pageKey": "interventionCodes",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Intervention",
-            "ehr_list_index": "2",
-            "items": [
-              "intervention"
-            ]
-          },
-          {
-            "label": "Status",
-            "ehr_list_index": "3",
-            "items": [
-              "status"
-            ]
-          },
-          {
-            "label": "Laterally",
-            "ehr_list_index": "4",
-            "items": [
-              "laterally"
-            ]
-          },
-          {
-            "label": "Extent",
-            "ehr_list_index": "5",
-            "items": [
-              "extent"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Intervention codes",
@@ -18827,14 +14968,14 @@ const DEFS = {
         "fqn": "interventionCodes.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "intervention",
           "status",
           "laterally",
-          "extent"
+          "extent",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       }
@@ -18931,61 +15072,6 @@ const DEFS = {
         "pageKey": "caseMixGroup",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Category",
-            "ehr_list_index": "2",
-            "items": [
-              "clinicalCategory"
-            ]
-          },
-          {
-            "label": "Case mix number",
-            "ehr_list_index": "3",
-            "items": [
-              "caseMixNumber"
-            ]
-          },
-          {
-            "label": "Resource intensity weight",
-            "ehr_list_index": "4",
-            "items": [
-              "resourceIntensity"
-            ]
-          },
-          {
-            "label": "Expected length of stay",
-            "ehr_list_index": "5",
-            "items": [
-              "expectedStay"
-            ]
-          },
-          {
-            "label": "Analysis",
-            "ehr_list_index": "6",
-            "items": [
-              "analysis"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Case mix group",
@@ -19033,15 +15119,15 @@ const DEFS = {
         "fqn": "caseMixGroup.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "clinicalCategory",
           "caseMixNumber",
           "resourceIntensity",
           "expectedStay",
-          "analysis"
+          "analysis",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       }
@@ -20932,68 +17018,6 @@ const DEFS = {
         "pageKey": "integumentaryAssessment",
         "tableKey": "tableIncision",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "tableIncision_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "tableIncision_name",
-              "tableIncision_profession",
-              "tableIncision_day",
-              "tableIncision_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "incisionLabel"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "incisionLocation"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "postOpDay"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "opProcedure"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "closureMethod"
-            ]
-          },
-          {
-            "ehr_list_index": "7",
-            "items": [
-              "incisionProfileImage"
-            ]
-          },
-          {
-            "ehr_list_index": "8",
-            "items": [
-              "incisionProfileComments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "tableIncision",
           "label": "Incision profile",
@@ -21045,8 +17069,6 @@ const DEFS = {
         "fqn": "integumentaryAssessment.tableIncision",
         "tableChildren": [
           "tableIncision_id",
-          "tableIncision_name",
-          "tableIncision_profession",
           "tableIncision_day",
           "tableIncision_time",
           "incisionLabel",
@@ -21055,7 +17077,9 @@ const DEFS = {
           "opProcedure",
           "closureMethod",
           "incisionProfileImage",
-          "incisionProfileComments"
+          "incisionProfileComments",
+          "tableIncision_name",
+          "tableIncision_profession"
         ],
         "hasRecHeader": true
       },
@@ -21065,81 +17089,6 @@ const DEFS = {
         "pageKey": "integumentaryAssessment",
         "tableKey": "tableIncisionAssessment",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "tableIncisionAssessment_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "tableIncisionAssessment_name",
-              "tableIncisionAssessment_profession",
-              "tableIncisionAssessment_day",
-              "tableIncisionAssessment_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "incisionLabel"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "incisionStatus"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "incisionStatusImage"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "closureChanges"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "exudateAmount"
-            ]
-          },
-          {
-            "ehr_list_index": "7",
-            "items": [
-              "exudateType"
-            ]
-          },
-          {
-            "ehr_list_index": "8",
-            "items": [
-              "periIncisionSkin"
-            ]
-          },
-          {
-            "ehr_list_index": "9",
-            "items": [
-              "periIncisionSkinOther"
-            ]
-          },
-          {
-            "label": "Comments",
-            "ehr_list_index": "10",
-            "items": [
-              "incisionStatusComments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "tableIncisionAssessment",
           "label": "Incision assessment",
@@ -21212,8 +17161,6 @@ const DEFS = {
         "fqn": "integumentaryAssessment.tableIncisionAssessment",
         "tableChildren": [
           "tableIncisionAssessment_id",
-          "tableIncisionAssessment_name",
-          "tableIncisionAssessment_profession",
           "tableIncisionAssessment_day",
           "tableIncisionAssessment_time",
           "incisionLabel",
@@ -21224,7 +17171,9 @@ const DEFS = {
           "exudateType",
           "periIncisionSkin",
           "periIncisionSkinOther",
-          "incisionStatusComments"
+          "incisionStatusComments",
+          "tableIncisionAssessment_name",
+          "tableIncisionAssessment_profession"
         ],
         "hasRecHeader": true
       },
@@ -21234,82 +17183,6 @@ const DEFS = {
         "pageKey": "integumentaryAssessment",
         "tableKey": "tableWound",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "tableWound_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "tableWound_name",
-              "tableWound_profession",
-              "tableWound_day",
-              "tableWound_time"
-            ]
-          },
-          {
-            "label": "Wound location",
-            "ehr_list_index": "2",
-            "items": [
-              "woundLocation"
-            ]
-          },
-          {
-            "label": "Wound label",
-            "ehr_list_index": "3",
-            "items": [
-              "woundLabel"
-            ]
-          },
-          {
-            "label": "Wound day of onset",
-            "ehr_list_index": "4",
-            "items": [
-              "woundDayOnset"
-            ]
-          },
-          {
-            "label": "Wound Etiology/Type",
-            "ehr_list_index": "5",
-            "items": [
-              "stageType"
-            ]
-          },
-          {
-            "label": "Other",
-            "ehr_list_index": "6",
-            "items": [
-              "stageOther"
-            ]
-          },
-          {
-            "label": "Goal of care",
-            "ehr_list_index": "7",
-            "items": [
-              "goalOfCare"
-            ]
-          },
-          {
-            "label": "Image",
-            "ehr_list_index": "8",
-            "items": [
-              "woundProfileImage"
-            ]
-          },
-          {
-            "label": "Comments",
-            "ehr_list_index": "9",
-            "items": [
-              "woundProfileComments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "tableWound",
           "label": "Wound profile",
@@ -21371,8 +17244,6 @@ const DEFS = {
         "fqn": "integumentaryAssessment.tableWound",
         "tableChildren": [
           "tableWound_id",
-          "tableWound_name",
-          "tableWound_profession",
           "tableWound_day",
           "tableWound_time",
           "woundLocation",
@@ -21382,7 +17253,9 @@ const DEFS = {
           "stageOther",
           "goalOfCare",
           "woundProfileImage",
-          "woundProfileComments"
+          "woundProfileComments",
+          "tableWound_name",
+          "tableWound_profession"
         ],
         "hasRecHeader": true
       },
@@ -21392,278 +17265,6 @@ const DEFS = {
         "pageKey": "integumentaryAssessment",
         "tableKey": "tableWoundAssessment",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "tableWoundAssessment_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "tableWoundAssessment_name",
-              "tableWoundAssessment_profession",
-              "tableWoundAssessment_day",
-              "tableWoundAssessment_time"
-            ]
-          },
-          {
-            "label": "Wound label",
-            "ehr_list_index": "2",
-            "items": [
-              "woundLabel"
-            ]
-          },
-          {
-            "label": "Image",
-            "ehr_list_index": "3",
-            "items": [
-              "woundAssessmentImage"
-            ]
-          },
-          {
-            "label": "Length cm.mm",
-            "ehr_list_index": "4",
-            "items": [
-              "length"
-            ]
-          },
-          {
-            "label": "Width cm.mm",
-            "ehr_list_index": "5",
-            "items": [
-              "width"
-            ]
-          },
-          {
-            "label": "Depth cm.mm",
-            "ehr_list_index": "6",
-            "items": [
-              "depth"
-            ]
-          },
-          {
-            "label": "Sinus/tunnel 1 depth cm.mm",
-            "ehr_list_index": "7",
-            "items": [
-              "sinusDepth1"
-            ]
-          },
-          {
-            "label": "Location",
-            "ehr_list_index": "8",
-            "items": [
-              "sinusDepthLocation1"
-            ]
-          },
-          {
-            "label": "Sinus/tunnel 2 depth cm.mm",
-            "ehr_list_index": "9",
-            "items": [
-              "sinusDepth2"
-            ]
-          },
-          {
-            "label": "Location",
-            "ehr_list_index": "10",
-            "items": [
-              "sinusDepthLocation2"
-            ]
-          },
-          {
-            "label": "Undermining 1 depth cm.mm",
-            "ehr_list_index": "11",
-            "items": [
-              "underminingDepth1"
-            ]
-          },
-          {
-            "label": "Location",
-            "ehr_list_index": "12",
-            "items": [
-              "underminingDepthLocation1A"
-            ]
-          },
-          {
-            "label": "Location",
-            "ehr_list_index": "13",
-            "items": [
-              "underminingDepthLocation1B"
-            ]
-          },
-          {
-            "label": "Undermining 2 depth cm.mm",
-            "ehr_list_index": "14",
-            "items": [
-              "underminingDepth2"
-            ]
-          },
-          {
-            "label": "Location",
-            "ehr_list_index": "15",
-            "items": [
-              "underminingDepthLocation2A"
-            ]
-          },
-          {
-            "label": "Location",
-            "ehr_list_index": "16",
-            "items": [
-              "underminingDepthLocation2B"
-            ]
-          },
-          {
-            "label": "% Superficial (pink/red)",
-            "ehr_list_index": "17",
-            "items": [
-              "pinkred"
-            ]
-          },
-          {
-            "label": "% Granulation",
-            "ehr_list_index": "18",
-            "items": [
-              "granulation"
-            ]
-          },
-          {
-            "label": "% Nongranulated",
-            "ehr_list_index": "19",
-            "items": [
-              "nongranulated"
-            ]
-          },
-          {
-            "label": "% Slough",
-            "ehr_list_index": "20",
-            "items": [
-              "slough"
-            ]
-          },
-          {
-            "label": "% Eschar (soft, boggy)",
-            "ehr_list_index": "21",
-            "items": [
-              "escharBoggy"
-            ]
-          },
-          {
-            "label": "% Eschar (dry, stable)",
-            "ehr_list_index": "22",
-            "items": [
-              "escharStable"
-            ]
-          },
-          {
-            "label": "% Foreign body",
-            "ehr_list_index": "23",
-            "items": [
-              "foreign"
-            ]
-          },
-          {
-            "label": "% Underlying structures",
-            "ehr_list_index": "24",
-            "items": [
-              "underlying"
-            ]
-          },
-          {
-            "label": "% Not visible",
-            "ehr_list_index": "25",
-            "items": [
-              "notVisible"
-            ]
-          },
-          {
-            "label": "% Other",
-            "ehr_list_index": "26",
-            "items": [
-              "other"
-            ]
-          },
-          {
-            "label": "Wound bed calculation",
-            "ehr_list_index": "27",
-            "items": [
-              "woundBedCalculation"
-            ]
-          },
-          {
-            "label": "Exudate amount",
-            "ehr_list_index": "28",
-            "items": [
-              "exudateAmount"
-            ]
-          },
-          {
-            "label": "Exudate type",
-            "ehr_list_index": "29",
-            "items": [
-              "exudateType"
-            ]
-          },
-          {
-            "label": "Odour present after cleansing",
-            "ehr_list_index": "30",
-            "items": [
-              "odour"
-            ]
-          },
-          {
-            "label": "Wound edge",
-            "ehr_list_index": "31",
-            "items": [
-              "woundEdge"
-            ]
-          },
-          {
-            "label": "Peri-wound skin",
-            "ehr_list_index": "32",
-            "items": [
-              "periWoundSkin"
-            ]
-          },
-          {
-            "label": "Wound pain",
-            "ehr_list_index": "33",
-            "items": [
-              "woundPain"
-            ]
-          },
-          {
-            "label": "Packing out",
-            "ehr_list_index": "34",
-            "items": [
-              "packingOut"
-            ]
-          },
-          {
-            "label": "Packing in",
-            "ehr_list_index": "35",
-            "items": [
-              "packinIn"
-            ]
-          },
-          {
-            "label": "Treatments as per plan of care",
-            "ehr_list_index": "36",
-            "items": [
-              "treatmentComplete"
-            ]
-          },
-          {
-            "label": "Comments",
-            "ehr_list_index": "37",
-            "items": [
-              "woundAssessmentComments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "tableWoundAssessment",
           "label": "Wound assessment",
@@ -21833,8 +17434,6 @@ const DEFS = {
         "fqn": "integumentaryAssessment.tableWoundAssessment",
         "tableChildren": [
           "tableWoundAssessment_id",
-          "tableWoundAssessment_name",
-          "tableWoundAssessment_profession",
           "tableWoundAssessment_day",
           "tableWoundAssessment_time",
           "woundLabel",
@@ -21872,7 +17471,9 @@ const DEFS = {
           "packingOut",
           "packinIn",
           "treatmentComplete",
-          "woundAssessmentComments"
+          "woundAssessmentComments",
+          "tableWoundAssessment_name",
+          "tableWoundAssessment_profession"
         ],
         "hasRecHeader": true
       }
@@ -23704,158 +19305,6 @@ const DEFS = {
         "tableKey": "tableCbcAnalysis",
         "isTable": true,
         "tableAction": "hematology.tablePbfReview",
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "tableCbcAnalysis_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "tableCbcAnalysis_name",
-              "tableCbcAnalysis_profession",
-              "tableCbcAnalysis_day",
-              "tableCbcAnalysis_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "wbc"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "wbc-interp"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "rbc"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "rbc-interp"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "hgb"
-            ]
-          },
-          {
-            "ehr_list_index": "7",
-            "items": [
-              "hgb-interp"
-            ]
-          },
-          {
-            "ehr_list_index": "8",
-            "items": [
-              "HCT"
-            ]
-          },
-          {
-            "ehr_list_index": "9",
-            "items": [
-              "HCT-interp"
-            ]
-          },
-          {
-            "ehr_list_index": "10",
-            "items": [
-              "MCV"
-            ]
-          },
-          {
-            "ehr_list_index": "11",
-            "items": [
-              "MCV-interp"
-            ]
-          },
-          {
-            "ehr_list_index": "12",
-            "items": [
-              "MCH"
-            ]
-          },
-          {
-            "ehr_list_index": "13",
-            "items": [
-              "MCH-interp"
-            ]
-          },
-          {
-            "ehr_list_index": "14",
-            "items": [
-              "MCHC"
-            ]
-          },
-          {
-            "ehr_list_index": "15",
-            "items": [
-              "MCHC-interp"
-            ]
-          },
-          {
-            "ehr_list_index": "16",
-            "items": [
-              "RDW"
-            ]
-          },
-          {
-            "ehr_list_index": "17",
-            "items": [
-              "RDW-interp"
-            ]
-          },
-          {
-            "ehr_list_index": "18",
-            "items": [
-              "PLT"
-            ]
-          },
-          {
-            "ehr_list_index": "19",
-            "items": [
-              "PLT-interp"
-            ]
-          },
-          {
-            "ehr_list_index": "20",
-            "items": [
-              "MPV"
-            ]
-          },
-          {
-            "ehr_list_index": "21",
-            "items": [
-              "MPV-interp"
-            ]
-          },
-          {
-            "ehr_list_index": "22",
-            "items": [
-              "cbcScatterPlot"
-            ]
-          },
-          {
-            "ehr_list_index": "23",
-            "items": [
-              "comments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "tableCbcAnalysis",
           "label": "CBC analysis",
@@ -23960,8 +19409,6 @@ const DEFS = {
         "taSourceTableKey": "tableCbcAnalysis",
         "tableChildren": [
           "tableCbcAnalysis_id",
-          "tableCbcAnalysis_name",
-          "tableCbcAnalysis_profession",
           "tableCbcAnalysis_day",
           "tableCbcAnalysis_time",
           "wbc",
@@ -23985,7 +19432,9 @@ const DEFS = {
           "MPV",
           "MPV-interp",
           "cbcScatterPlot",
-          "comments"
+          "comments",
+          "tableCbcAnalysis_name",
+          "tableCbcAnalysis_profession"
         ],
         "hasRecHeader": true
       },
@@ -23995,682 +19444,6 @@ const DEFS = {
         "pageKey": "hematology",
         "tableKey": "tablePbfReview",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "tablePbfReview_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "tablePbfReview_name",
-              "tablePbfReview_profession",
-              "tablePbfReview_day",
-              "tablePbfReview_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "bloodAnalysis"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "actionsTaken"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "scanComments"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "wbc-1"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "wbc-2"
-            ]
-          },
-          {
-            "ehr_list_index": "7",
-            "items": [
-              "wbc-3"
-            ]
-          },
-          {
-            "ehr_list_index": "8",
-            "items": [
-              "wbc-4"
-            ]
-          },
-          {
-            "ehr_list_index": "9",
-            "items": [
-              "wbc-5"
-            ]
-          },
-          {
-            "ehr_list_index": "10",
-            "items": [
-              "wbc-6"
-            ]
-          },
-          {
-            "ehr_list_index": "11",
-            "items": [
-              "wbc-7"
-            ]
-          },
-          {
-            "ehr_list_index": "12",
-            "items": [
-              "wbc-8"
-            ]
-          },
-          {
-            "ehr_list_index": "13",
-            "items": [
-              "wbc-9"
-            ]
-          },
-          {
-            "ehr_list_index": "14",
-            "items": [
-              "wbc-10"
-            ]
-          },
-          {
-            "ehr_list_index": "15",
-            "items": [
-              "wbcFieldFactor"
-            ]
-          },
-          {
-            "ehr_list_index": "16",
-            "items": [
-              "wbcAverage"
-            ]
-          },
-          {
-            "ehr_list_index": "17",
-            "items": [
-              "wbcEstimate"
-            ]
-          },
-          {
-            "ehr_list_index": "18",
-            "items": [
-              "wbcAnalysis"
-            ]
-          },
-          {
-            "ehr_list_index": "19",
-            "items": [
-              "wbcLowRange"
-            ]
-          },
-          {
-            "ehr_list_index": "20",
-            "items": [
-              "wbcHighRange"
-            ]
-          },
-          {
-            "ehr_list_index": "21",
-            "items": [
-              "wbcComment"
-            ]
-          },
-          {
-            "ehr_list_index": "22",
-            "items": [
-              "wbcCorrectedWbc",
-              "plt-1"
-            ]
-          },
-          {
-            "ehr_list_index": "23",
-            "items": [
-              "plt-2"
-            ]
-          },
-          {
-            "ehr_list_index": "24",
-            "items": [
-              "plt-3"
-            ]
-          },
-          {
-            "ehr_list_index": "25",
-            "items": [
-              "plt-4"
-            ]
-          },
-          {
-            "ehr_list_index": "26",
-            "items": [
-              "plt-5"
-            ]
-          },
-          {
-            "ehr_list_index": "27",
-            "items": [
-              "plt-6"
-            ]
-          },
-          {
-            "ehr_list_index": "28",
-            "items": [
-              "plt-7"
-            ]
-          },
-          {
-            "ehr_list_index": "29",
-            "items": [
-              "plt-8"
-            ]
-          },
-          {
-            "ehr_list_index": "30",
-            "items": [
-              "plt-9"
-            ]
-          },
-          {
-            "ehr_list_index": "31",
-            "items": [
-              "plt-10"
-            ]
-          },
-          {
-            "ehr_list_index": "32",
-            "items": [
-              "pltFieldFactor"
-            ]
-          },
-          {
-            "ehr_list_index": "33",
-            "items": [
-              "pltAverage"
-            ]
-          },
-          {
-            "ehr_list_index": "34",
-            "items": [
-              "pltEstimate"
-            ]
-          },
-          {
-            "ehr_list_index": "35",
-            "items": [
-              "pltAnalysis"
-            ]
-          },
-          {
-            "ehr_list_index": "36",
-            "items": [
-              "pltLowRange"
-            ]
-          },
-          {
-            "ehr_list_index": "37",
-            "items": [
-              "pltHighRange"
-            ]
-          },
-          {
-            "ehr_list_index": "38",
-            "items": [
-              "pltComment"
-            ]
-          },
-          {
-            "ehr_list_index": "39",
-            "items": [
-              "pltNormalMorphology"
-            ]
-          },
-          {
-            "ehr_list_index": "40",
-            "items": [
-              "pltMorphology"
-            ]
-          },
-          {
-            "label": "Segmented Neutrophil",
-            "ehr_list_index": "41",
-            "items": [
-              "cellCntSegNeutrophil"
-            ]
-          },
-          {
-            "label": "Absolute",
-            "ehr_list_index": "42",
-            "items": [
-              "cellCntSegNeutrophilAbs"
-            ]
-          },
-          {
-            "label": "Band Neutrophil",
-            "ehr_list_index": "43",
-            "items": [
-              "cellCntBandCells"
-            ]
-          },
-          {
-            "label": "Absolute",
-            "ehr_list_index": "44",
-            "items": [
-              "cellCntBandCellsAbs"
-            ]
-          },
-          {
-            "label": "Lymphocyte",
-            "ehr_list_index": "45",
-            "items": [
-              "cellCntLymph"
-            ]
-          },
-          {
-            "label": "Absolute",
-            "ehr_list_index": "46",
-            "items": [
-              "cellCntLymphAbs"
-            ]
-          },
-          {
-            "label": "Monocyte",
-            "ehr_list_index": "47",
-            "items": [
-              "cellCntMono"
-            ]
-          },
-          {
-            "label": "Absolute",
-            "ehr_list_index": "48",
-            "items": [
-              "cellCntMonoAbs"
-            ]
-          },
-          {
-            "label": "Eosinophil",
-            "ehr_list_index": "49",
-            "items": [
-              "cellCntEosin"
-            ]
-          },
-          {
-            "label": "Absolute",
-            "ehr_list_index": "50",
-            "items": [
-              "cellCntEosinAbs"
-            ]
-          },
-          {
-            "label": "Basophil",
-            "ehr_list_index": "51",
-            "items": [
-              "cellCntBaso"
-            ]
-          },
-          {
-            "label": "Absolute",
-            "ehr_list_index": "52",
-            "items": [
-              "cellCntBasoAbs"
-            ]
-          },
-          {
-            "label": "Metamyelocyte",
-            "ehr_list_index": "53",
-            "items": [
-              "cellCntMeta"
-            ]
-          },
-          {
-            "label": "Absolute",
-            "ehr_list_index": "54",
-            "items": [
-              "cellCntMetaAbs"
-            ]
-          },
-          {
-            "label": "Myelocyte",
-            "ehr_list_index": "55",
-            "items": [
-              "cellCntMyelo"
-            ]
-          },
-          {
-            "label": "Absolute",
-            "ehr_list_index": "56",
-            "items": [
-              "cellCntMyeloAbs"
-            ]
-          },
-          {
-            "label": "Promyelocyte",
-            "ehr_list_index": "57",
-            "items": [
-              "cellCntPromyelo"
-            ]
-          },
-          {
-            "label": "Absolute",
-            "ehr_list_index": "58",
-            "items": [
-              "cellCntPromyeloAbs"
-            ]
-          },
-          {
-            "label": "Blast",
-            "ehr_list_index": "59",
-            "items": [
-              "cellCntBlast"
-            ]
-          },
-          {
-            "label": "Absolute",
-            "ehr_list_index": "60",
-            "items": [
-              "cellCntBlastAbs"
-            ]
-          },
-          {
-            "label": "Other",
-            "ehr_list_index": "61",
-            "items": [
-              "cellCntOther"
-            ]
-          },
-          {
-            "label": "Absolute",
-            "ehr_list_index": "62",
-            "items": [
-              "cellCntOtherAbs"
-            ]
-          },
-          {
-            "label": "Specify",
-            "ehr_list_index": "63",
-            "items": [
-              "cellCntOtherSpecify"
-            ]
-          },
-          {
-            "label": "Total",
-            "ehr_list_index": "64",
-            "items": [
-              "cellCntTotal"
-            ]
-          },
-          {
-            "label": "Abs Total",
-            "ehr_list_index": "65",
-            "items": [
-              "cellCntAbsTotal"
-            ]
-          },
-          {
-            "ehr_list_index": "66",
-            "items": [
-              "cellCntNRBCs"
-            ]
-          },
-          {
-            "ehr_list_index": "67",
-            "items": [
-              "cellCntComment"
-            ]
-          },
-          {
-            "ehr_list_index": "68",
-            "items": [
-              "wbcmNormalMorphology"
-            ]
-          },
-          {
-            "ehr_list_index": "69",
-            "items": [
-              "wbcmAbnormalMorphology"
-            ]
-          },
-          {
-            "ehr_list_index": "70",
-            "items": [
-              "wbcmAbnormalTypeMorphology"
-            ]
-          },
-          {
-            "ehr_list_index": "71",
-            "items": [
-              "wbcmToxicTypeMorphology"
-            ]
-          },
-          {
-            "ehr_list_index": "72",
-            "items": [
-              "rcmNormal"
-            ]
-          },
-          {
-            "ehr_list_index": "73",
-            "items": [
-              "rcmConsistent"
-            ]
-          },
-          {
-            "ehr_list_index": "74",
-            "items": [
-              "rcmMcvMchc"
-            ]
-          },
-          {
-            "ehr_list_index": "75",
-            "items": [
-              "rcmAnisocytosis"
-            ]
-          },
-          {
-            "ehr_list_index": "76",
-            "items": [
-              "rcmPolychromasia"
-            ]
-          },
-          {
-            "ehr_list_index": "77",
-            "items": [
-              "rcmRouleaux"
-            ]
-          },
-          {
-            "ehr_list_index": "78",
-            "items": [
-              "rcmAcanthocytes"
-            ]
-          },
-          {
-            "ehr_list_index": "79",
-            "items": [
-              "rcmAcanthocytesGrading"
-            ]
-          },
-          {
-            "ehr_list_index": "80",
-            "items": [
-              "rcmCodocytes"
-            ]
-          },
-          {
-            "ehr_list_index": "81",
-            "items": [
-              "rcmCodocytesGrading"
-            ]
-          },
-          {
-            "ehr_list_index": "82",
-            "items": [
-              "rcmDacryocytes"
-            ]
-          },
-          {
-            "ehr_list_index": "83",
-            "items": [
-              "rcmDacryocytesGrading"
-            ]
-          },
-          {
-            "ehr_list_index": "84",
-            "items": [
-              "rcmDrepanocytes"
-            ]
-          },
-          {
-            "ehr_list_index": "85",
-            "items": [
-              "rcmDrepanocytesGrading"
-            ]
-          },
-          {
-            "ehr_list_index": "86",
-            "items": [
-              "rcmEchinocytes"
-            ]
-          },
-          {
-            "ehr_list_index": "87",
-            "items": [
-              "rcmEchinocytesGrading"
-            ]
-          },
-          {
-            "ehr_list_index": "88",
-            "items": [
-              "rcmOvalocytes"
-            ]
-          },
-          {
-            "ehr_list_index": "89",
-            "items": [
-              "rcmOvalocytesGrading"
-            ]
-          },
-          {
-            "ehr_list_index": "90",
-            "items": [
-              "rcmMacroOvalocytes"
-            ]
-          },
-          {
-            "ehr_list_index": "91",
-            "items": [
-              "rcmMacroOvalocytesGrading"
-            ]
-          },
-          {
-            "ehr_list_index": "92",
-            "items": [
-              "rcmStomatocytes"
-            ]
-          },
-          {
-            "ehr_list_index": "93",
-            "items": [
-              "rcmStomatocytesGrading"
-            ]
-          },
-          {
-            "ehr_list_index": "94",
-            "items": [
-              "rcmSpherocytes"
-            ]
-          },
-          {
-            "ehr_list_index": "95",
-            "items": [
-              "rcmSpherocytesGrading"
-            ]
-          },
-          {
-            "ehr_list_index": "96",
-            "items": [
-              "rcmICC"
-            ]
-          },
-          {
-            "ehr_list_index": "97",
-            "items": [
-              "rcmICCGrading"
-            ]
-          },
-          {
-            "ehr_list_index": "98",
-            "items": [
-              "rcmICCSchistocytes"
-            ]
-          },
-          {
-            "ehr_list_index": "99",
-            "items": [
-              "rcmICCSchistocytesGrading"
-            ]
-          },
-          {
-            "ehr_list_index": "100",
-            "items": [
-              "rcmBasophilicStippling"
-            ]
-          },
-          {
-            "ehr_list_index": "101",
-            "items": [
-              "rcmHowellJollyBodies"
-            ]
-          },
-          {
-            "ehr_list_index": "102",
-            "items": [
-              "rcmPappenheimerBodies"
-            ]
-          },
-          {
-            "ehr_list_index": "103",
-            "items": [
-              "rcmMalariaType"
-            ]
-          },
-          {
-            "ehr_list_index": "104",
-            "items": [
-              "rbcComments"
-            ]
-          },
-          {
-            "ehr_list_index": "105",
-            "items": [
-              "referralToHema"
-            ]
-          },
-          {
-            "ehr_list_index": "106",
-            "items": [
-              "explain"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "tablePbfReview",
           "label": "PBF Review",
@@ -25024,8 +19797,6 @@ const DEFS = {
         "fqn": "hematology.tablePbfReview",
         "tableChildren": [
           "tablePbfReview_id",
-          "tablePbfReview_name",
-          "tablePbfReview_profession",
           "tablePbfReview_day",
           "tablePbfReview_time",
           "bloodAnalysis",
@@ -25133,7 +19904,9 @@ const DEFS = {
           "rcmMalariaType",
           "rbcComments",
           "referralToHema",
-          "explain"
+          "explain",
+          "tablePbfReview_name",
+          "tablePbfReview_profession"
         ],
         "hasRecHeader": true
       }
@@ -25235,54 +20008,6 @@ const DEFS = {
         "pageKey": "dishargeplan",
         "tableKey": "table",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "table_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "table_name",
-              "table_profession",
-              "table_day",
-              "table_time"
-            ]
-          },
-          {
-            "label": "Goal",
-            "ehr_list_index": "2",
-            "items": [
-              "goal"
-            ]
-          },
-          {
-            "label": "Intervention",
-            "ehr_list_index": "3",
-            "items": [
-              "interventions"
-            ]
-          },
-          {
-            "label": "Evaluation of intervention",
-            "ehr_list_index": "4",
-            "items": [
-              "evaluation"
-            ]
-          },
-          {
-            "label": "Status",
-            "ehr_list_index": "5",
-            "items": [
-              "status"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "table",
           "label": "Discharge plan",
@@ -25328,14 +20053,14 @@ const DEFS = {
         "fqn": "dishargeplan.table",
         "tableChildren": [
           "table_id",
-          "table_name",
-          "table_profession",
           "table_day",
           "table_time",
           "goal",
           "interventions",
           "evaluation",
-          "status"
+          "status",
+          "table_name",
+          "table_profession"
         ],
         "hasRecHeader": true
       }
@@ -27164,238 +21889,6 @@ const DEFS = {
         "pageKey": "medLabChemistry",
         "tableKey": "tableQcChemistry",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "tableQcChemistry_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "tableQcChemistry_name",
-              "tableQcChemistry_profession",
-              "tableQcChemistry_day",
-              "tableQcChemistry_time"
-            ]
-          },
-          {
-            "ehr_list_index": "89",
-            "items": [
-              "chemQcAllAcceptable"
-            ]
-          },
-          {
-            "ehr_list_index": "90",
-            "items": [
-              "chemQcAllDuplicatesAcceptable"
-            ]
-          },
-          {
-            "ehr_list_index": "91",
-            "items": [
-              "chemQcAllPlausible"
-            ]
-          },
-          {
-            "ehr_list_index": "92",
-            "items": [
-              "chemQcAllCanBeReported"
-            ]
-          },
-          {
-            "label": "Analyte",
-            "ehr_list_index": "93",
-            "items": [
-              "chmQcAnalyte1"
-            ]
-          },
-          {
-            "label": "QC Level",
-            "ehr_list_index": "94",
-            "items": [
-              "chmQcLevel1"
-            ]
-          },
-          {
-            "label": "QC rule failed",
-            "ehr_list_index": "95",
-            "items": [
-              "chmQcRule1"
-            ]
-          },
-          {
-            "label": "SE or RE",
-            "ehr_list_index": "96",
-            "items": [
-              "chmQcSeRe1"
-            ]
-          },
-          {
-            "label": "Describe",
-            "ehr_list_index": "97",
-            "items": [
-              "chmQcDescribe1"
-            ]
-          },
-          {
-            "label": "Analyte",
-            "ehr_list_index": "98",
-            "items": [
-              "chmQcAnalyte2"
-            ]
-          },
-          {
-            "label": "QC Level",
-            "ehr_list_index": "99",
-            "items": [
-              "chmQcLevel2"
-            ]
-          },
-          {
-            "label": "QC rule failed",
-            "ehr_list_index": "100",
-            "items": [
-              "chmQcRule2"
-            ]
-          },
-          {
-            "label": "SE or RE",
-            "ehr_list_index": "101",
-            "items": [
-              "chmQcSeRe2"
-            ]
-          },
-          {
-            "label": "Describe",
-            "ehr_list_index": "102",
-            "items": [
-              "chmQcDescribe2"
-            ]
-          },
-          {
-            "label": "Analyte",
-            "ehr_list_index": "103",
-            "items": [
-              "chmQcAnalyte3"
-            ]
-          },
-          {
-            "label": "QC Level",
-            "ehr_list_index": "104",
-            "items": [
-              "chmQcLevel3"
-            ]
-          },
-          {
-            "label": "QC rule failed",
-            "ehr_list_index": "105",
-            "items": [
-              "chmQcRule3"
-            ]
-          },
-          {
-            "label": "SE or RE",
-            "ehr_list_index": "106",
-            "items": [
-              "chmQcSeRe3"
-            ]
-          },
-          {
-            "label": "Describe",
-            "ehr_list_index": "107",
-            "items": [
-              "chmQcDescribe3"
-            ]
-          },
-          {
-            "label": "Analyte",
-            "ehr_list_index": "108",
-            "items": [
-              "chmQcAnalyte4"
-            ]
-          },
-          {
-            "label": "QC Level",
-            "ehr_list_index": "109",
-            "items": [
-              "chmQcLevel4"
-            ]
-          },
-          {
-            "label": "QC rule failed",
-            "ehr_list_index": "110",
-            "items": [
-              "chmQcRule4"
-            ]
-          },
-          {
-            "label": "SE or RE",
-            "ehr_list_index": "111",
-            "items": [
-              "chmQcSeRe4"
-            ]
-          },
-          {
-            "label": "Describe",
-            "ehr_list_index": "112",
-            "items": [
-              "chmQcDescribe4"
-            ]
-          },
-          {
-            "ehr_list_index": "113",
-            "items": [
-              "cqcPendAnal_1"
-            ]
-          },
-          {
-            "ehr_list_index": "114",
-            "items": [
-              "cqcPendResult_1"
-            ]
-          },
-          {
-            "ehr_list_index": "115",
-            "items": [
-              "cqcPendAnal_2"
-            ]
-          },
-          {
-            "ehr_list_index": "116",
-            "items": [
-              "cqcPendResult_2"
-            ]
-          },
-          {
-            "ehr_list_index": "117",
-            "items": [
-              "cqcPendAnal_3"
-            ]
-          },
-          {
-            "ehr_list_index": "118",
-            "items": [
-              "cqcPendResult_3"
-            ]
-          },
-          {
-            "ehr_list_index": "119",
-            "items": [
-              "cqcPendAnal_4"
-            ]
-          },
-          {
-            "ehr_list_index": "120",
-            "items": [
-              "cqcPendResult_4"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "tableQcChemistry",
           "label": "Chemistry QC",
@@ -27528,8 +22021,6 @@ const DEFS = {
         "fqn": "medLabChemistry.tableQcChemistry",
         "tableChildren": [
           "tableQcChemistry_id",
-          "tableQcChemistry_name",
-          "tableQcChemistry_profession",
           "tableQcChemistry_day",
           "tableQcChemistry_time",
           "chemQcAllAcceptable",
@@ -27563,7 +22054,9 @@ const DEFS = {
           "cqcPendAnal_3",
           "cqcPendResult_3",
           "cqcPendAnal_4",
-          "cqcPendResult_4"
+          "cqcPendResult_4",
+          "tableQcChemistry_name",
+          "tableQcChemistry_profession"
         ],
         "hasRecHeader": true
       },
@@ -27573,645 +22066,6 @@ const DEFS = {
         "pageKey": "medLabChemistry",
         "tableKey": "tableChem",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "tableChem_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "tableChem_name",
-              "tableChem_profession",
-              "tableChem_day",
-              "tableChem_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "chemAccession"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "chemCollDay"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "chemCollTime"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "urinOrderPhys"
-            ]
-          },
-          {
-            "label": "Sodium",
-            "ehr_list_index": "6",
-            "items": [
-              "chemSodium"
-            ]
-          },
-          {
-            "label": "Flag",
-            "ehr_list_index": "7",
-            "items": [
-              "chemSodiumFlag"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "8",
-            "items": [
-              "chemSodiumRange"
-            ]
-          },
-          {
-            "label": "Potassium",
-            "ehr_list_index": "9",
-            "items": [
-              "chemPotassium"
-            ]
-          },
-          {
-            "label": "Flag",
-            "ehr_list_index": "10",
-            "items": [
-              "chemPotassiumFlag"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "11",
-            "items": [
-              "chemPotassiumRange"
-            ]
-          },
-          {
-            "label": "Chloride",
-            "ehr_list_index": "12",
-            "items": [
-              "chemChloride"
-            ]
-          },
-          {
-            "label": "Flag",
-            "ehr_list_index": "13",
-            "items": [
-              "chemChlorideFlag"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "14",
-            "items": [
-              "chemChlorideRange"
-            ]
-          },
-          {
-            "label": "tCO2",
-            "ehr_list_index": "15",
-            "items": [
-              "chemtCO2"
-            ]
-          },
-          {
-            "label": "Flag",
-            "ehr_list_index": "16",
-            "items": [
-              "chemtCO2Flag"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "17",
-            "items": [
-              "chemtCO2Range"
-            ]
-          },
-          {
-            "label": "Anion Gap",
-            "ehr_list_index": "18",
-            "items": [
-              "chemAnionGap"
-            ]
-          },
-          {
-            "label": "Flag",
-            "ehr_list_index": "19",
-            "items": [
-              "chemAnionGapFlag"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "20",
-            "items": [
-              "chemAnionGapRange"
-            ]
-          },
-          {
-            "label": "Osmality, Measured",
-            "ehr_list_index": "21",
-            "items": [
-              "chemOsmalityMeasured"
-            ]
-          },
-          {
-            "label": "Flag",
-            "ehr_list_index": "22",
-            "items": [
-              "chemOsmalityMeasuredFlag"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "23",
-            "items": [
-              "chemOsmalityMeasuredRange"
-            ]
-          },
-          {
-            "label": "Osmality, Calculated",
-            "ehr_list_index": "24",
-            "items": [
-              "chemOsmalityCalculated"
-            ]
-          },
-          {
-            "label": "Flag",
-            "ehr_list_index": "25",
-            "items": [
-              "chemOsmalityCalculatedFlag"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "26",
-            "items": [
-              "chemOsmalityCalculatedRange"
-            ]
-          },
-          {
-            "label": "Osmolar Gap",
-            "ehr_list_index": "27",
-            "items": [
-              "chemOsmolarGap"
-            ]
-          },
-          {
-            "label": "Flag",
-            "ehr_list_index": "28",
-            "items": [
-              "chemOsmolarGapFlag"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "29",
-            "items": [
-              "chemOsmolarGapRange"
-            ]
-          },
-          {
-            "label": "Glucose (Fasting Random)",
-            "ehr_list_index": "30",
-            "items": [
-              "chemGlugoseFastingRandom"
-            ]
-          },
-          {
-            "label": "Flag",
-            "ehr_list_index": "31",
-            "items": [
-              "chemGlugoseFastingRandomFlag"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "32",
-            "items": [
-              "chemGlugoseFastingRandomRange"
-            ]
-          },
-          {
-            "label": "Creatinine",
-            "ehr_list_index": "33",
-            "items": [
-              "chemCreatinine"
-            ]
-          },
-          {
-            "label": "Flag",
-            "ehr_list_index": "34",
-            "items": [
-              "chemCreatinineFlag"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "35",
-            "items": [
-              "chemCreatinineRange"
-            ]
-          },
-          {
-            "label": "Urea (BUN)",
-            "ehr_list_index": "36",
-            "items": [
-              "chemUreaBun"
-            ]
-          },
-          {
-            "label": "Flag",
-            "ehr_list_index": "37",
-            "items": [
-              "chemUreaBunFlag"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "38",
-            "items": [
-              "chemUreaBunRange"
-            ]
-          },
-          {
-            "label": "Calcium",
-            "ehr_list_index": "39",
-            "items": [
-              "chemCalcium"
-            ]
-          },
-          {
-            "label": "Flag",
-            "ehr_list_index": "40",
-            "items": [
-              "chemCalciumFlag"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "41",
-            "items": [
-              "chemCalciumRange"
-            ]
-          },
-          {
-            "label": "Magnesium",
-            "ehr_list_index": "42",
-            "items": [
-              "chemMagnesium"
-            ]
-          },
-          {
-            "label": "Flag",
-            "ehr_list_index": "43",
-            "items": [
-              "chemMagnesiumFlag"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "44",
-            "items": [
-              "chemMagnesiumRange"
-            ]
-          },
-          {
-            "label": "Phosphorus",
-            "ehr_list_index": "45",
-            "items": [
-              "chemPhosphorus"
-            ]
-          },
-          {
-            "label": "Flag",
-            "ehr_list_index": "46",
-            "items": [
-              "chemPhosphorusFlag"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "47",
-            "items": [
-              "chemPhosphorusRange"
-            ]
-          },
-          {
-            "label": "Total Protein",
-            "ehr_list_index": "48",
-            "items": [
-              "chemTotalProtein"
-            ]
-          },
-          {
-            "label": "Flag",
-            "ehr_list_index": "49",
-            "items": [
-              "chemTotalProteinFlag"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "50",
-            "items": [
-              "chemTotalProteinRange"
-            ]
-          },
-          {
-            "label": "Albumin",
-            "ehr_list_index": "51",
-            "items": [
-              "chemAlbumin"
-            ]
-          },
-          {
-            "ehr_list_index": "52",
-            "items": [
-              "chemAlbuminFlag"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "53",
-            "items": [
-              "chemAlbuminRange"
-            ]
-          },
-          {
-            "label": "Analyte",
-            "ehr_list_index": "54",
-            "items": [
-              "chemOpt1Analyte"
-            ]
-          },
-          {
-            "label": "Result",
-            "ehr_list_index": "55",
-            "items": [
-              "chemOpt1Result"
-            ]
-          },
-          {
-            "label": "Type",
-            "ehr_list_index": "56",
-            "items": [
-              "chemOpt1Type"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "57",
-            "items": [
-              "chemOpt1RI"
-            ]
-          },
-          {
-            "label": "Analyte",
-            "ehr_list_index": "58",
-            "items": [
-              "chemOpt2Analyte"
-            ]
-          },
-          {
-            "label": "Result",
-            "ehr_list_index": "59",
-            "items": [
-              "chemOpt2Result"
-            ]
-          },
-          {
-            "label": "Type",
-            "ehr_list_index": "60",
-            "items": [
-              "chemOpt2Type"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "61",
-            "items": [
-              "chemOpt2RI"
-            ]
-          },
-          {
-            "label": "Analyte",
-            "ehr_list_index": "62",
-            "items": [
-              "chemOpt3Analyte"
-            ]
-          },
-          {
-            "label": "Result",
-            "ehr_list_index": "63",
-            "items": [
-              "chemOpt3Result"
-            ]
-          },
-          {
-            "label": "Type",
-            "ehr_list_index": "64",
-            "items": [
-              "chemOpt3Type"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "65",
-            "items": [
-              "chemOpt3RI"
-            ]
-          },
-          {
-            "label": "Analyte",
-            "ehr_list_index": "66",
-            "items": [
-              "chemOpt4Analyte"
-            ]
-          },
-          {
-            "label": "Result",
-            "ehr_list_index": "67",
-            "items": [
-              "chemOpt4Result"
-            ]
-          },
-          {
-            "label": "Type",
-            "ehr_list_index": "68",
-            "items": [
-              "chemOpt4Type"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "69",
-            "items": [
-              "chemOpt4RI"
-            ]
-          },
-          {
-            "label": "Analyte",
-            "ehr_list_index": "70",
-            "items": [
-              "chemOpt5Analyte"
-            ]
-          },
-          {
-            "label": "Result",
-            "ehr_list_index": "71",
-            "items": [
-              "chemOpt5Result"
-            ]
-          },
-          {
-            "label": "Type",
-            "ehr_list_index": "72",
-            "items": [
-              "chemOpt5Type"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "73",
-            "items": [
-              "chemOpt5RI"
-            ]
-          },
-          {
-            "label": "Analyte",
-            "ehr_list_index": "74",
-            "items": [
-              "chemOpt6Analyte"
-            ]
-          },
-          {
-            "label": "Result",
-            "ehr_list_index": "75",
-            "items": [
-              "chemOpt6Result"
-            ]
-          },
-          {
-            "label": "Type",
-            "ehr_list_index": "76",
-            "items": [
-              "chemOpt6Type"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "77",
-            "items": [
-              "chemOpt6RI"
-            ]
-          },
-          {
-            "label": "Analyte",
-            "ehr_list_index": "78",
-            "items": [
-              "chemOpt7Analyte"
-            ]
-          },
-          {
-            "label": "Result",
-            "ehr_list_index": "79",
-            "items": [
-              "chemOpt7Result"
-            ]
-          },
-          {
-            "label": "Type",
-            "ehr_list_index": "80",
-            "items": [
-              "chemOpt7Type"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "81",
-            "items": [
-              "chemOpt7RI"
-            ]
-          },
-          {
-            "label": "Analyte",
-            "ehr_list_index": "82",
-            "items": [
-              "chemOpt8Analyte"
-            ]
-          },
-          {
-            "label": "Result",
-            "ehr_list_index": "83",
-            "items": [
-              "chemOpt8Result"
-            ]
-          },
-          {
-            "label": "Type",
-            "ehr_list_index": "84",
-            "items": [
-              "chemOpt8Type"
-            ]
-          },
-          {
-            "label": "RI",
-            "ehr_list_index": "85",
-            "items": [
-              "chemOpt8RI"
-            ]
-          },
-          {
-            "ehr_list_index": "86",
-            "items": [
-              "urnInternal"
-            ]
-          },
-          {
-            "ehr_list_index": "87",
-            "items": [
-              "chemSpecimumType"
-            ]
-          },
-          {
-            "ehr_list_index": "88",
-            "items": [
-              "chemSerumAppearance"
-            ]
-          },
-          {
-            "ehr_list_index": "89",
-            "items": [
-              "chemInterpValue"
-            ]
-          },
-          {
-            "ehr_list_index": "90",
-            "items": [
-              "chemInterpReason"
-            ]
-          },
-          {
-            "ehr_list_index": "91",
-            "items": [
-              "chemPhValue"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "tableChem",
           "label": "Chemistry analysis",
@@ -28493,8 +22347,6 @@ const DEFS = {
         "fqn": "medLabChemistry.tableChem",
         "tableChildren": [
           "tableChem_id",
-          "tableChem_name",
-          "tableChem_profession",
           "tableChem_day",
           "tableChem_time",
           "chemAccession",
@@ -28586,7 +22438,9 @@ const DEFS = {
           "chemSerumAppearance",
           "chemInterpValue",
           "chemInterpReason",
-          "chemPhValue"
+          "chemPhValue",
+          "tableChem_name",
+          "tableChem_profession"
         ],
         "hasRecHeader": true
       }
@@ -30828,419 +24682,6 @@ const DEFS = {
         "pageKey": "medLabUrinalysis",
         "tableKey": "tableQcUrinalysis",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "tableQcUrinalysis_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "tableQcUrinalysis_name",
-              "tableQcUrinalysis_profession",
-              "tableQcUrinalysis_day",
-              "tableQcUrinalysis_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "uqcManOrClinitek"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "uqcMultistixLotNum"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "uqcMultistixExp"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "uqcQcType"
-            ]
-          },
-          {
-            "label": "Normal Lot #",
-            "ehr_list_index": "6",
-            "items": [
-              "uqcNormalLotNum"
-            ]
-          },
-          {
-            "label": "Abnormal Lot #",
-            "ehr_list_index": "7",
-            "items": [
-              "uqcAbnormalLotNum"
-            ]
-          },
-          {
-            "label": "QC Exp Date Normal",
-            "ehr_list_index": "8",
-            "items": [
-              "uqcNormalExpDate"
-            ]
-          },
-          {
-            "label": "QC Exp Date Abnormal",
-            "ehr_list_index": "9",
-            "items": [
-              "uqcAbnormalExpDate"
-            ]
-          },
-          {
-            "label": "Normal Glucose",
-            "ehr_list_index": "10",
-            "items": [
-              "uqcNormalRunGlucose"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "11",
-            "items": [
-              "uqcNormalRepeatGlucose"
-            ]
-          },
-          {
-            "label": "Abnormal Glucose",
-            "ehr_list_index": "12",
-            "items": [
-              "uqcAbnormalRunGlucose"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "13",
-            "items": [
-              "uqcAbnormalRepeatGlucose"
-            ]
-          },
-          {
-            "label": "Normal Bilirubin",
-            "ehr_list_index": "14",
-            "items": [
-              "uqcNormalRunBilirubin"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "15",
-            "items": [
-              "uqcNormalRepeatBilirubin"
-            ]
-          },
-          {
-            "label": "Abnormal Bilirubin",
-            "ehr_list_index": "16",
-            "items": [
-              "uqcAbnormalRunBilirubin"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "17",
-            "items": [
-              "uqcAbnormalRepeatBilirubin"
-            ]
-          },
-          {
-            "label": "Normal Ketone",
-            "ehr_list_index": "18",
-            "items": [
-              "uqcNormalRunKetone"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "19",
-            "items": [
-              "uqcNormalRepeatKetone"
-            ]
-          },
-          {
-            "label": "Abnormal Ketone",
-            "ehr_list_index": "20",
-            "items": [
-              "uqcAbnormalRunKetone"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "21",
-            "items": [
-              "uqcAbnormalRepeatKetone"
-            ]
-          },
-          {
-            "label": "Normal Specific Gravity",
-            "ehr_list_index": "22",
-            "items": [
-              "uqcNormalRunSpecific Gravity"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "23",
-            "items": [
-              "uqcNormalRepeatSpecific Gravity"
-            ]
-          },
-          {
-            "label": "Abnormal Specific Gravity",
-            "ehr_list_index": "24",
-            "items": [
-              "uqcAbnormalRunSpecific Gravity"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "25",
-            "items": [
-              "uqcAbnormalRepeatSpecific Gravity"
-            ]
-          },
-          {
-            "label": "Normal Blood",
-            "ehr_list_index": "26",
-            "items": [
-              "uqcNormalRunBlood"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "27",
-            "items": [
-              "uqcNormalRepeatBlood"
-            ]
-          },
-          {
-            "label": "Abnormal Blood",
-            "ehr_list_index": "28",
-            "items": [
-              "uqcAbnormalRunBlood"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "29",
-            "items": [
-              "uqcAbnormalRepeatBlood"
-            ]
-          },
-          {
-            "label": "Normal pH",
-            "ehr_list_index": "30",
-            "items": [
-              "uqcNormalRunpH"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "31",
-            "items": [
-              "uqcNormalRepeatpH"
-            ]
-          },
-          {
-            "label": "Abnormal pH",
-            "ehr_list_index": "32",
-            "items": [
-              "uqcAbnormalRunpH"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "33",
-            "items": [
-              "uqcAbnormalRepeatpH"
-            ]
-          },
-          {
-            "label": "Normal Protein",
-            "ehr_list_index": "34",
-            "items": [
-              "uqcNormalRunProtein"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "35",
-            "items": [
-              "uqcNormalRepeatProtein"
-            ]
-          },
-          {
-            "label": "Abnormal Protein",
-            "ehr_list_index": "36",
-            "items": [
-              "uqcAbnormalRunProtein"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "37",
-            "items": [
-              "uqcAbnormalRepeatProtein"
-            ]
-          },
-          {
-            "label": "Normal Urobilinogen",
-            "ehr_list_index": "38",
-            "items": [
-              "uqcNormalRunUrobilinogen"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "39",
-            "items": [
-              "uqcNormalRepeatUrobilinogen"
-            ]
-          },
-          {
-            "label": "Abnormal Urobilinogen",
-            "ehr_list_index": "40",
-            "items": [
-              "uqcAbnormalRunUrobilinogen"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "41",
-            "items": [
-              "uqcAbnormalRepeatUrobilinogen"
-            ]
-          },
-          {
-            "label": "Normal Nitrite",
-            "ehr_list_index": "42",
-            "items": [
-              "uqcNormalRunNitrite"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "43",
-            "items": [
-              "uqcNormalRepeatNitrite"
-            ]
-          },
-          {
-            "label": "Abnormal Nitrite",
-            "ehr_list_index": "44",
-            "items": [
-              "uqcAbnormalRunNitrite"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "45",
-            "items": [
-              "uqcAbnormalRepeatNitrite"
-            ]
-          },
-          {
-            "label": "Normal Leukocytes",
-            "ehr_list_index": "46",
-            "items": [
-              "uqcNormalRunLeukocytes"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "47",
-            "items": [
-              "uqcNormalRepeatLeukocytes"
-            ]
-          },
-          {
-            "label": "Abnormal Leukocytes",
-            "ehr_list_index": "48",
-            "items": [
-              "uqcAbnormalRunLeukocytes"
-            ]
-          },
-          {
-            "label": "Repeat",
-            "ehr_list_index": "49",
-            "items": [
-              "uqcAbnormalRepeatLeukocytes"
-            ]
-          },
-          {
-            "ehr_list_index": "50",
-            "items": [
-              "uqcPerformedBy"
-            ]
-          },
-          {
-            "label": "Some QC pending",
-            "ehr_list_index": "51",
-            "items": [
-              "uqcSomeQcUnacceptable"
-            ]
-          },
-          {
-            "ehr_list_index": "52",
-            "items": [
-              "uqcPendAnal_1"
-            ]
-          },
-          {
-            "ehr_list_index": "53",
-            "items": [
-              "uqcPendResult_1"
-            ]
-          },
-          {
-            "ehr_list_index": "54",
-            "items": [
-              "uqcPendAnal_2"
-            ]
-          },
-          {
-            "ehr_list_index": "55",
-            "items": [
-              "uqcPendResult_2"
-            ]
-          },
-          {
-            "ehr_list_index": "56",
-            "items": [
-              "uqcPendAnal_3"
-            ]
-          },
-          {
-            "ehr_list_index": "57",
-            "items": [
-              "uqcPendResult_3"
-            ]
-          },
-          {
-            "ehr_list_index": "58",
-            "items": [
-              "uqcPendAnal_4"
-            ]
-          },
-          {
-            "ehr_list_index": "59",
-            "items": [
-              "uqcPendResult_4"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "tableQcUrinalysis",
           "label": "Urinalysis QC",
@@ -31475,8 +24916,6 @@ const DEFS = {
         "fqn": "medLabUrinalysis.tableQcUrinalysis",
         "tableChildren": [
           "tableQcUrinalysis_id",
-          "tableQcUrinalysis_name",
-          "tableQcUrinalysis_profession",
           "tableQcUrinalysis_day",
           "tableQcUrinalysis_time",
           "uqcManOrClinitek",
@@ -31536,7 +24975,9 @@ const DEFS = {
           "uqcPendAnal_3",
           "uqcPendResult_3",
           "uqcPendAnal_4",
-          "uqcPendResult_4"
+          "uqcPendResult_4",
+          "tableQcUrinalysis_name",
+          "tableQcUrinalysis_profession"
         ],
         "hasRecHeader": true
       },
@@ -31546,368 +24987,6 @@ const DEFS = {
         "pageKey": "medLabUrinalysis",
         "tableKey": "tableUrinalysis",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "tableUrinalysis_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "tableUrinalysis_name",
-              "tableUrinalysis_profession",
-              "tableUrinalysis_day",
-              "tableUrinalysis_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "urinAccession"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "urinCollDay"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "urinCollTime"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "urinOrderPhys",
-              "urinTransparency"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "urinColour"
-            ]
-          },
-          {
-            "label": "Manual Glucose",
-            "ehr_list_index": "7",
-            "items": [
-              "uchemManGlucose"
-            ]
-          },
-          {
-            "label": "Auto Glucose",
-            "ehr_list_index": "8",
-            "items": [
-              "uchemAutoGlucose"
-            ]
-          },
-          {
-            "label": "Manual Bilirubin",
-            "ehr_list_index": "9",
-            "items": [
-              "uchemManBilirubin"
-            ]
-          },
-          {
-            "label": "Auto Bilirubin",
-            "ehr_list_index": "10",
-            "items": [
-              "uchemAutoBilirubin"
-            ]
-          },
-          {
-            "label": "Manual Ketone",
-            "ehr_list_index": "11",
-            "items": [
-              "uchemManKetone"
-            ]
-          },
-          {
-            "label": "Auto Ketone",
-            "ehr_list_index": "12",
-            "items": [
-              "uchemAutoKetone"
-            ]
-          },
-          {
-            "label": "Manual Specific Gravity",
-            "ehr_list_index": "13",
-            "items": [
-              "uchemManSpecificGravity"
-            ]
-          },
-          {
-            "label": "Auto Specific Gravity",
-            "ehr_list_index": "14",
-            "items": [
-              "uchemAutoSpecificGravity"
-            ]
-          },
-          {
-            "label": "Manual Blood",
-            "ehr_list_index": "15",
-            "items": [
-              "uchemManBlood"
-            ]
-          },
-          {
-            "label": "Auto Blood",
-            "ehr_list_index": "16",
-            "items": [
-              "uchemAutoBlood"
-            ]
-          },
-          {
-            "label": "Manual pH",
-            "ehr_list_index": "17",
-            "items": [
-              "uchemManpH"
-            ]
-          },
-          {
-            "label": "Auto pH",
-            "ehr_list_index": "18",
-            "items": [
-              "uchemAutopH"
-            ]
-          },
-          {
-            "label": "Manual Protein",
-            "ehr_list_index": "19",
-            "items": [
-              "uchemManProtein"
-            ]
-          },
-          {
-            "label": "Auto Protein",
-            "ehr_list_index": "20",
-            "items": [
-              "uchemAutoProtein"
-            ]
-          },
-          {
-            "label": "Manual Urobilinogen",
-            "ehr_list_index": "21",
-            "items": [
-              "uchemManUrobilinogen"
-            ]
-          },
-          {
-            "label": "Auto Urobilinogen",
-            "ehr_list_index": "22",
-            "items": [
-              "uchemAutoUrobilinogen"
-            ]
-          },
-          {
-            "label": "Manual Nitrite",
-            "ehr_list_index": "23",
-            "items": [
-              "uchemManNitrite"
-            ]
-          },
-          {
-            "label": "Auto Nitrite",
-            "ehr_list_index": "24",
-            "items": [
-              "uchemAutoNitrite"
-            ]
-          },
-          {
-            "label": "Manual Leukocytes",
-            "ehr_list_index": "25",
-            "items": [
-              "uchemManLeukocytes"
-            ]
-          },
-          {
-            "label": "Auto Leukocytes",
-            "ehr_list_index": "26",
-            "items": [
-              "uchemAutoLeukocytes"
-            ]
-          },
-          {
-            "ehr_list_index": "27",
-            "items": [
-              "uchemMicroIndicater"
-            ]
-          },
-          {
-            "ehr_list_index": "28",
-            "items": [
-              "urnDiscMA"
-            ]
-          },
-          {
-            "ehr_list_index": "29",
-            "items": [
-              "uchemInstructorlComment"
-            ]
-          },
-          {
-            "ehr_list_index": "30",
-            "items": [
-              "uchemSulfosalicylic"
-            ]
-          },
-          {
-            "ehr_list_index": "31",
-            "items": [
-              "uchemIcotest"
-            ]
-          },
-          {
-            "label": "WBC",
-            "ehr_list_index": "32",
-            "items": [
-              "umicroWBC"
-            ]
-          },
-          {
-            "label": "RBC",
-            "ehr_list_index": "33",
-            "items": [
-              "umicroRBC"
-            ]
-          },
-          {
-            "label": "Epithelial Cells",
-            "ehr_list_index": "34",
-            "items": [
-              "umicroEpithelial"
-            ]
-          },
-          {
-            "label": "Types",
-            "ehr_list_index": "35",
-            "items": [
-              "umicroTypesEpithelial Cells"
-            ]
-          },
-          {
-            "label": "Cast results 1",
-            "ehr_list_index": "36",
-            "items": [
-              "umicrocCastsResults1"
-            ]
-          },
-          {
-            "label": "Cast type 1",
-            "ehr_list_index": "37",
-            "items": [
-              "umicrocCastsType1"
-            ]
-          },
-          {
-            "label": "Cast results 2",
-            "ehr_list_index": "38",
-            "items": [
-              "umicrocCastsResults2"
-            ]
-          },
-          {
-            "label": "Cast type 2",
-            "ehr_list_index": "39",
-            "items": [
-              "umicrocCastsType2"
-            ]
-          },
-          {
-            "label": "Cast results 3",
-            "ehr_list_index": "40",
-            "items": [
-              "umicrocCastsResults3"
-            ]
-          },
-          {
-            "label": "Cast type 3",
-            "ehr_list_index": "41",
-            "items": [
-              "umicrocCastsType3"
-            ]
-          },
-          {
-            "label": "Cast results 4",
-            "ehr_list_index": "42",
-            "items": [
-              "umicrocCastsResults4"
-            ]
-          },
-          {
-            "label": "Cast type 4",
-            "ehr_list_index": "43",
-            "items": [
-              "umicrocCastsType4"
-            ]
-          },
-          {
-            "ehr_list_index": "44",
-            "items": [
-              "umicroCrystalsNonePresent"
-            ]
-          },
-          {
-            "ehr_list_index": "45",
-            "items": [
-              "umicroCrystalsPresent"
-            ]
-          },
-          {
-            "ehr_list_index": "46",
-            "items": [
-              "umicroCrystalsObscures"
-            ]
-          },
-          {
-            "label": "Yeast",
-            "ehr_list_index": "47",
-            "items": [
-              "umicroYeast"
-            ]
-          },
-          {
-            "label": "Bacteria",
-            "ehr_list_index": "48",
-            "items": [
-              "umicroBacteria"
-            ]
-          },
-          {
-            "label": "Other",
-            "ehr_list_index": "49",
-            "items": [
-              "umicroOther"
-            ]
-          },
-          {
-            "ehr_list_index": "50",
-            "items": [
-              "urnInternal"
-            ]
-          },
-          {
-            "ehr_list_index": "51",
-            "items": [
-              "urnDiscCE"
-            ]
-          },
-          {
-            "ehr_list_index": "52",
-            "items": [
-              "urnInstructor2"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "tableUrinalysis",
           "label": "Urinalysis",
@@ -32149,8 +25228,6 @@ const DEFS = {
         "fqn": "medLabUrinalysis.tableUrinalysis",
         "tableChildren": [
           "tableUrinalysis_id",
-          "tableUrinalysis_name",
-          "tableUrinalysis_profession",
           "tableUrinalysis_day",
           "tableUrinalysis_time",
           "urinAccession",
@@ -32204,7 +25281,9 @@ const DEFS = {
           "umicroOther",
           "urnInternal",
           "urnDiscCE",
-          "urnInstructor2"
+          "urnInstructor2",
+          "tableUrinalysis_name",
+          "tableUrinalysis_profession"
         ],
         "hasRecHeader": true
       }
@@ -32324,32 +25403,6 @@ const DEFS = {
         "pageKey": "orderSets",
         "tableKey": "insulinOrderSets",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "insulinOrderSets_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "insulinOrderSets_name",
-              "insulinOrderSets_profession",
-              "insulinOrderSets_day",
-              "insulinOrderSets_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "insulinOrderSetForm"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "insulinOrderSets",
           "label": "Insulin",
@@ -32389,11 +25442,11 @@ const DEFS = {
         "fqn": "orderSets.insulinOrderSets",
         "tableChildren": [
           "insulinOrderSets_id",
-          "insulinOrderSets_name",
-          "insulinOrderSets_profession",
           "insulinOrderSets_day",
           "insulinOrderSets_time",
-          "insulinOrderSetForm"
+          "insulinOrderSetForm",
+          "insulinOrderSets_name",
+          "insulinOrderSets_profession"
         ],
         "hasRecHeader": true
       },
@@ -32403,32 +25456,6 @@ const DEFS = {
         "pageKey": "orderSets",
         "tableKey": "preprintOrderSet",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "preprintOrderSet_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "preprintOrderSet_name",
-              "preprintOrderSet_profession",
-              "preprintOrderSet_day",
-              "preprintOrderSet_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "preOrderSetFile"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "preprintOrderSet",
           "label": "Preprinted",
@@ -32468,11 +25495,11 @@ const DEFS = {
         "fqn": "orderSets.preprintOrderSet",
         "tableChildren": [
           "preprintOrderSet_id",
-          "preprintOrderSet_name",
-          "preprintOrderSet_profession",
           "preprintOrderSet_day",
           "preprintOrderSet_time",
-          "preOrderSetFile"
+          "preOrderSetFile",
+          "preprintOrderSet_name",
+          "preprintOrderSet_profession"
         ],
         "hasRecHeader": true
       }
@@ -32906,92 +25933,6 @@ const DEFS = {
         "pageKey": "medLabAccession",
         "tableKey": "mlAccessioning",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "mlAccessioning_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "mlAccessioning_name",
-              "mlAccessioning_profession",
-              "mlAccessioning_day",
-              "mlAccessioning_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "accessionID"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "accRequisitionID"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "accSpecimenType"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "accTestPanel"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "accTestOther"
-            ]
-          },
-          {
-            "ehr_list_index": "7",
-            "items": [
-              "preAnalytic"
-            ]
-          },
-          {
-            "ehr_list_index": "8",
-            "items": [
-              "postAnalytic"
-            ]
-          },
-          {
-            "ehr_list_index": "9",
-            "items": [
-              "collectionDate"
-            ]
-          },
-          {
-            "ehr_list_index": "10",
-            "items": [
-              "collectionTime"
-            ]
-          },
-          {
-            "ehr_list_index": "11",
-            "items": [
-              "collectionLocation"
-            ]
-          },
-          {
-            "ehr_list_index": "12",
-            "items": [
-              "accComments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "mlAccessioning",
           "label": "Accessioning",
@@ -33059,8 +26000,6 @@ const DEFS = {
         "fqn": "medLabAccession.mlAccessioning",
         "tableChildren": [
           "mlAccessioning_id",
-          "mlAccessioning_name",
-          "mlAccessioning_profession",
           "mlAccessioning_day",
           "mlAccessioning_time",
           "accessionID",
@@ -33073,7 +26012,9 @@ const DEFS = {
           "collectionDate",
           "collectionTime",
           "collectionLocation",
-          "accComments"
+          "accComments",
+          "mlAccessioning_name",
+          "mlAccessioning_profession"
         ],
         "hasRecHeader": true
       },
@@ -33083,62 +26024,6 @@ const DEFS = {
         "pageKey": "medLabAccession",
         "tableKey": "mlChain",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "mlChain_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "mlChain_name",
-              "mlChain_profession",
-              "mlChain_day",
-              "mlChain_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "chainAccessionID"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "chainEvent"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "chainDate"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "chainTime"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "chainDetails"
-            ]
-          },
-          {
-            "ehr_list_index": "7",
-            "items": [
-              "chainComments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "mlChain",
           "label": "Chain of Custody",
@@ -33188,8 +26073,6 @@ const DEFS = {
         "fqn": "medLabAccession.mlChain",
         "tableChildren": [
           "mlChain_id",
-          "mlChain_name",
-          "mlChain_profession",
           "mlChain_day",
           "mlChain_time",
           "chainAccessionID",
@@ -33197,7 +26080,9 @@ const DEFS = {
           "chainDate",
           "chainTime",
           "chainDetails",
-          "chainComments"
+          "chainComments",
+          "mlChain_name",
+          "mlChain_profession"
         ],
         "hasRecHeader": true
       },
@@ -33207,56 +26092,6 @@ const DEFS = {
         "pageKey": "medLabAccession",
         "tableKey": "mlTestStatus",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "mlTestStatus_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "mlTestStatus_name",
-              "mlTestStatus_profession",
-              "mlTestStatus_day",
-              "mlTestStatus_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "testAccessionID"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "testStatus"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "testDate"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "testTime"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "testComments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "mlTestStatus",
           "label": "Test Status",
@@ -33304,15 +26139,15 @@ const DEFS = {
         "fqn": "medLabAccession.mlTestStatus",
         "tableChildren": [
           "mlTestStatus_id",
-          "mlTestStatus_name",
-          "mlTestStatus_profession",
           "mlTestStatus_day",
           "mlTestStatus_time",
           "testAccessionID",
           "testStatus",
           "testDate",
           "testTime",
-          "testComments"
+          "testComments",
+          "mlTestStatus_name",
+          "mlTestStatus_profession"
         ],
         "hasRecHeader": true
       }
@@ -33481,38 +26316,6 @@ const DEFS = {
         "pageKey": "specialIndicators",
         "tableKey": "precautionList",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "precautionList_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "precautionList_name",
-              "precautionList_profession",
-              "precautionList_day",
-              "precautionList_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "precautionIndicator"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "precautionComment"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "precautionList",
           "label": "Precautions",
@@ -33554,12 +26357,12 @@ const DEFS = {
         "fqn": "specialIndicators.precautionList",
         "tableChildren": [
           "precautionList_id",
-          "precautionList_name",
-          "precautionList_profession",
           "precautionList_day",
           "precautionList_time",
           "precautionIndicator",
-          "precautionComment"
+          "precautionComment",
+          "precautionList_name",
+          "precautionList_profession"
         ],
         "hasRecHeader": true
       },
@@ -33569,38 +26372,6 @@ const DEFS = {
         "pageKey": "specialIndicators",
         "tableKey": "riskList",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "riskList_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "riskList_name",
-              "riskList_profession",
-              "riskList_day",
-              "riskList_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "riskIndicator"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "riskComment"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "riskList",
           "label": "Indicators",
@@ -33642,12 +26413,12 @@ const DEFS = {
         "fqn": "specialIndicators.riskList",
         "tableChildren": [
           "riskList_id",
-          "riskList_name",
-          "riskList_profession",
           "riskList_day",
           "riskList_time",
           "riskIndicator",
-          "riskComment"
+          "riskComment",
+          "riskList_name",
+          "riskList_profession"
         ],
         "hasRecHeader": true
       }
@@ -33744,56 +26515,6 @@ const DEFS = {
         "pageKey": "medLabPhoneLog",
         "tableKey": "phLogTable",
         "isTable": true,
-        "ehr_list": [
-          {
-            "label": "Row id",
-            "tableCss": "row-id",
-            "ehr_list_index": 0,
-            "items": [
-              "phLogTable_id"
-            ]
-          },
-          {
-            "label": "Identification",
-            "ehr_list_index": "1",
-            "items": [
-              "phLogTable_name",
-              "phLogTable_profession",
-              "phLogTable_day",
-              "phLogTable_time"
-            ]
-          },
-          {
-            "ehr_list_index": "2",
-            "items": [
-              "testAccessionID"
-            ]
-          },
-          {
-            "ehr_list_index": "3",
-            "items": [
-              "mlphRecipient"
-            ]
-          },
-          {
-            "ehr_list_index": "4",
-            "items": [
-              "mlphReadBack"
-            ]
-          },
-          {
-            "ehr_list_index": "5",
-            "items": [
-              "mlplReason"
-            ]
-          },
-          {
-            "ehr_list_index": "6",
-            "items": [
-              "accComments"
-            ]
-          }
-        ],
         "form": {
           "elementKey": "phLogTable",
           "label": "Phone Log",
@@ -33849,15 +26570,15 @@ const DEFS = {
         "fqn": "medLabPhoneLog.phLogTable",
         "tableChildren": [
           "phLogTable_id",
-          "phLogTable_name",
-          "phLogTable_profession",
           "phLogTable_day",
           "phLogTable_time",
           "testAccessionID",
           "mlphRecipient",
           "mlphReadBack",
           "mlplReason",
-          "accComments"
+          "accComments",
+          "phLogTable_name",
+          "phLogTable_profession"
         ],
         "hasRecHeader": true
       }

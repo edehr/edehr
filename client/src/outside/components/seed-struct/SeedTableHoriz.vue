@@ -4,7 +4,7 @@
       thead
         tr
           th(v-for="col in columns", v-text-to-html='colLabel(col)', :class="tableCellCss(col, {})")
-      tfoot
+      tfoot(v-if="rows.length> 5")
         tr
           th(v-for="col in columns", v-text-to-html='colLabel(col)', :class="tableCellCss(col, {})")
       tbody
@@ -38,17 +38,13 @@ export default {
       return this.rows.length > 0
     },
     columns () {
-      const ehr_list = this.pageElement.ehr_list
+      const list = this.pageElement.tableChildren
       const cols = []
-      for(let i = 0; i< ehr_list.length; i++) {
-        const items = ehr_list[i].items
-        for(let k = 0; k < items.length; k++) {
-          const item = items[k]
-          const def = EhrDefs.getPageChildElement(this.pageKey, item)
-          // skip the rowId
-          if (def.inputType !== EhrTypes.dataInputTypes.generatedId) {
-            cols.push(def)
-          }
+      for(let i = 0; i< list.length; i++) {
+        const key = list[i]
+        const def = EhrDefs.getPageChildElement(this.pageKey, key)
+        if (def.inputType !== EhrTypes.dataInputTypes.generatedId) {
+          cols.push(def)
         }
       }
       return cols

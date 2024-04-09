@@ -31,8 +31,8 @@
                 //span {{ehrText.deleteButtonLabel}} &nbsp;
                 fas-icon(icon="trash")
 
-            td(v-for="(cell, cIndex) in dRow", :key="cIndex", :class="tableCellCss(cell)",  v-if="!!cell.stack")
-                ehr-table-element(v-for="(cPart, pIndex) in cell.stack", v-if="!!cPart.value", :key='pIndex', :cell="cPart")
+            td(v-for="(cell, cIndex) in dRow", :key="cIndex", :class="tableCellCss(cell)")
+              ehr-table-element(:cell="cell")
 </template>
 
 
@@ -82,9 +82,7 @@ export default {
       return stack.tableCss
     },
     tableCellCss (cell) {
-      const stack = cell.stack || []
-      const sRow = stack[0] || {}
-      const css = sRow.inputType === EhrTypes.dataInputTypes.textarea ? 'table-cell-textarea' : ''
+      const css = cell.inputType === EhrTypes.dataInputTypes.textarea ? 'table-cell-textarea' : ''
       return cell.tableCss ? cell.tableCss : css
     }
 

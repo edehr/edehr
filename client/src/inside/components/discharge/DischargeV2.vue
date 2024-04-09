@@ -26,6 +26,7 @@ export default {
   data: function () {
     return {
       summaries: [ESK_Procedures, ESK_MARS, ESK_Medications, ESK_DischargeProcedures, ESK_LabReqs, ESK_Referrals],
+      summariesFocus: [ ESK_Procedures, ESK_DischargeProcedures],
     }
   },
   inject: [ 'pageDataKey'],
