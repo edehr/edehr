@@ -3,10 +3,10 @@
     table(v-show="hasData", class="table_horizontal", tabindex="0")
       thead
         tr
-          th(v-for="col in columns", v-text-to-html='colLabel(col)', :class="tableCellCss(col, {})")
+          th(v-for="col in columns", :class="tableCellCss(col, {})") {{ colLabel(col) }}
       tfoot(v-if="rows.length> 5")
         tr
-          th(v-for="col in columns", v-text-to-html='colLabel(col)', :class="tableCellCss(col, {})")
+          th(v-for="col in columns", :class="tableCellCss(col, {})")  {{ colLabel(col) }}
       tbody
         tr(v-for="row in rows")
           td(v-for="(d, index) in rowData(row)", :class="tableCellCss(columns[index], row)" )
@@ -43,7 +43,9 @@ export default {
       for(let i = 0; i< list.length; i++) {
         const key = list[i]
         const def = EhrDefs.getPageChildElement(this.pageKey, key)
-        if (def.inputType !== EhrTypes.dataInputTypes.generatedId) {
+        const types = EhrTypes.dataInputTypes
+        let noTypes = [ types.ehr_embedded, types.generatedId]
+        if (!noTypes.includes(def.inputType)) {
           cols.push(def)
         }
       }
@@ -92,7 +94,10 @@ table {
 }
 th,
 td {
-  padding: 1rem;
+  padding: 5px;
+  pre {
+    padding: 5px;
+  }
 }
 thead,
 tfoot {

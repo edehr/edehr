@@ -31,7 +31,9 @@ const state = {
   scratchPadVisible: false,
   evalDialogVisible: false,
   seedTableCollapse: {},
+  seedStructPageKey: undefined,
   smallWindow: false,
+  smallerThan900Window: false,
   sysMessage: '',
   showingEHR: true,
   showingLIS: true,
@@ -58,6 +60,9 @@ const getters = {
   evalDialogVisible: state => state.evalDialogVisible,
   seedTableCollapse: state => (tableKey) => state.seedTableCollapse[tableKey],
   showExplanationTextOutside: state => state.showExplanationTextOutside,
+  smallWindow: state => state.smallWindow,
+  seedStructPageKey: state => state.seedStructPageKey,
+  smallerThan900Window: state => state.smallerThan900Window,
   sysMessage: state => state.sysMessage,
   showingEHR: state => state.showingEHR,
   showingLIS: state => state.showingLIS,
@@ -249,8 +254,14 @@ const mutations = {
     state.caseContextFeature = value
     localStorage.setItem('CaseContextFeature', value)
   },
+  setSeedStructPageKey: (state, value) => {
+    state.seedStructPageKey = value
+  },
   setSmallWindow: (state, value) => {
     state.smallWindow = value
+  },
+  setSmallerThan900Window: (state,value) => {
+    state.smallerThan900Window = value
   },
   setOutsideShowButtonLabels: (state, value) => {
     localStorage.setItem('ShowButtonLabels', value)
