@@ -12,7 +12,7 @@
         // Once there is a patient open then prompt user to do the simulated sign on if they haven't.
         ui-not-signed-on
         // patient banner area. Also displays current ehr page
-        div(class="ehr-context flow_across")
+        div(class="ehr-banner-context flow_across")
           div(class="pageTitle left_side_banner") {{pageTitle}}
           // banner with patient information
           ehr-patient-banner(class="patient-banner right_side_banner")
@@ -170,7 +170,7 @@ main {
     //width: 40rem;
   }
 }
-.ehr-context {
+.ehr-banner-context {
   padding-left: $ehr-layout-padding-left;
   padding-right: $ehr-layout-padding-left;
   gap: 10px;
@@ -230,16 +230,28 @@ main {
 }
 
 /* COLOURS */
-.ehr-context {
+.content-side {
+  border-bottom: 1px solid $grey40;
+}
+.ehr-banner-context {
+  border-bottom: 1px solid black;
+}
+.nav-side,
+.ehr-banner-context {
   background-color: $grey22;
 }
+.ehr-context {
+  background-color: white;
+}
 .ehr-branding {
+  .ehr-banner-context,
   .ehr-context {
     border-left: 2px solid $colour-brand-ehr;
     border-right: 2px solid $colour-brand-ehr;
   }
 }
 .lis-branding {
+  .ehr-banner-context,
   .ehr-context {
     border-top: 2px solid $colour-brand-lis;
     border-left: 2px solid $colour-brand-lis;
