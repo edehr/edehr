@@ -66,5 +66,6 @@
   "vitals.table": "Ajouter des signes vitaux",
   "progressNotes.sbar": "Ajouter une note SBAR",
   "medLabChemistry.tableQcChemistry": "Créer un rapport de contrôle qualité chimique",
-  "medLabPhoneLog.phLogTable": "Créer un journal téléphonique"
+  "medLabPhoneLog.phLogTable": "Créer un journal téléphonique",
+  "medicationOrders.medicationOrdersTable.medicationOrderAux": "Mettre à jour la commande de médicaments"
 }

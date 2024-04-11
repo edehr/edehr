@@ -10738,6 +10738,39 @@ const DEFS = {
         "fqn": "medicationOrders.med_alert"
       },
       {
+        "elementKey": "med_status",
+        "formIndex": "2",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "orde",
+            "text": "Ordered"
+          },
+          {
+            "key": "appr",
+            "text": "Approved"
+          },
+          {
+            "key": "disp",
+            "text": "Dispensed"
+          },
+          {
+            "key": "sche",
+            "text": "Scheduled"
+          },
+          {
+            "key": "reac",
+            "text": "Reactivated"
+          },
+          {
+            "key": "erro",
+            "text": "Error"
+          }
+        ],
+        "tableColumn": "9",
+        "fqn": "medicationOrders.med_status"
+      },
+      {
         "elementKey": "med_scheduled",
         "formIndex": "2",
         "inputType": "select",
@@ -10860,6 +10893,137 @@ const DEFS = {
         "inputType": "textarea",
         "tableColumn": "18",
         "fqn": "medicationOrders.med_instructions"
+      },
+      {
+        "elementKey": "med_aux_data",
+        "formIndex": "2",
+        "formOption": "hideElement",
+        "inputType": "aux_data",
+        "fqn": "medicationOrders.med_aux_data"
+      },
+      {
+        "elementKey": "medicationOrderAux_name",
+        "formIndex": "3",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "medicationOrders.name"
+      },
+      {
+        "elementKey": "medicationOrderAux_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "medicationOrderAux_profession",
+        "formIndex": "3",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "medicationOrders.profession"
+      },
+      {
+        "elementKey": "medicationOrderAux_day",
+        "formIndex": "3",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "medicationOrders.day"
+      },
+      {
+        "elementKey": "medicationOrderAux_time",
+        "formIndex": "3",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "medicationOrders.time"
+      },
+      {
+        "elementKey": "aux_med_dose",
+        "formIndex": "3",
+        "inputType": "text",
+        "tableColumn": "1",
+        "fqn": "medicationOrders.aux_med_dose"
+      },
+      {
+        "elementKey": "aux_med_status",
+        "formIndex": "3",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "appr",
+            "text": "Approved"
+          },
+          {
+            "key": "disp",
+            "text": "Dispensed"
+          },
+          {
+            "key": "admi",
+            "text": "Administered"
+          },
+          {
+            "key": "sche",
+            "text": "Scheduled"
+          },
+          {
+            "key": "hold",
+            "text": "On Hold"
+          },
+          {
+            "key": "dose",
+            "text": "Dose Change"
+          },
+          {
+            "key": "disc",
+            "text": "Discontinued"
+          },
+          {
+            "key": "canc",
+            "text": "Cancelled"
+          },
+          {
+            "key": "expi",
+            "text": "Expired"
+          },
+          {
+            "key": "reac",
+            "text": "Reactivated"
+          },
+          {
+            "key": "erro",
+            "text": "Error"
+          }
+        ],
+        "tableColumn": "2",
+        "fqn": "medicationOrders.aux_med_status"
+      },
+      {
+        "elementKey": "aux_med_prnMaxDosage",
+        "formIndex": "3",
+        "inputType": "text",
+        "tableColumn": "2",
+        "fqn": "medicationOrders.aux_med_prnMaxDosage"
+      },
+      {
+        "elementKey": "aux_med_reason",
+        "formIndex": "3",
+        "inputType": "text",
+        "tableColumn": "1",
+        "fqn": "medicationOrders.aux_med_reason"
+      },
+      {
+        "elementKey": "aux_med_instructions",
+        "formIndex": "3",
+        "inputType": "textarea",
+        "tableColumn": "1",
+        "fqn": "medicationOrders.aux_med_instructions"
       }
     ],
     "pageElements": {
@@ -11026,6 +11190,7 @@ const DEFS = {
         "tableKey": "medicationOrdersTable",
         "isTable": true,
         "tableAction": "medAdminRec.marTable",
+        "auxTableRef": "medicationOrderAux",
         "form": {
           "elementKey": "medicationOrdersTable",
           "label": "Medication orders",
@@ -11056,7 +11221,8 @@ const DEFS = {
                 "med_route",
                 "med_reason",
                 "med_injectionLocation",
-                "med_alert"
+                "med_alert",
+                "med_status"
               ]
             },
             {
@@ -11110,7 +11276,8 @@ const DEFS = {
               "fqn": "medicationOrders.med_group_notes",
               "gIndex": "7",
               "gChildren": [
-                "med_instructions"
+                "med_instructions",
+                "med_aux_data"
               ]
             }
           ],
@@ -11126,6 +11293,7 @@ const DEFS = {
             "med_reason": "",
             "med_injectionLocation": "",
             "med_alert": "",
+            "med_status": "",
             "med_scheduled": "",
             "med_prnMaxDosage": "",
             "med_time1": "",
@@ -11155,6 +11323,7 @@ const DEFS = {
           "med_reason",
           "med_injectionLocation",
           "med_alert",
+          "med_status",
           "med_scheduled",
           "med_prnMaxDosage",
           "med_time1",
@@ -11167,6 +11336,156 @@ const DEFS = {
           "med_instructions",
           "medicationOrdersTable_name",
           "medicationOrdersTable_profession"
+        ],
+        "auxTable": {
+          "elementKey": "medicationOrderAux",
+          "pageElementIndex": "3",
+          "pageKey": "medicationOrders",
+          "tableKey": "medicationOrderAux",
+          "mainTableKey": "medicationOrdersTable",
+          "isTable": true,
+          "isAuxTable": true,
+          "form": {
+            "elementKey": "medicationOrderAux",
+            "label": "Change Med Order",
+            "addButtonText": "Update Medication Order",
+            "formKey": "medicationOrderAux",
+            "ehr_groups": [
+              {
+                "elementKey": "hdrGroup",
+                "formCss": "record-header",
+                "fqn": "medicationOrders.hdrGroup",
+                "gIndex": "1",
+                "gChildren": [
+                  "medicationOrderAux_name",
+                  "medicationOrderAux_profession",
+                  "medicationOrderAux_day",
+                  "medicationOrderAux_time"
+                ]
+              },
+              {
+                "elementKey": "aux_med_group_main",
+                "formCss": "grid-left-to-right-3",
+                "fqn": "medicationOrders.aux_med_group_main",
+                "gIndex": "2",
+                "gChildren": [
+                  "aux_med_dose",
+                  "aux_med_status",
+                  "aux_med_prnMaxDosage"
+                ]
+              },
+              {
+                "elementKey": "aux_med_group_notes",
+                "formCss": "grid-left-to-right-1",
+                "fqn": "medicationOrders.aux_med_group_notes",
+                "gIndex": "3",
+                "gChildren": [
+                  "aux_med_reason",
+                  "aux_med_instructions"
+                ]
+              }
+            ],
+            "ehr_data": {
+              "medicationOrderAux_name": "",
+              "medicationOrderAux_profession": "",
+              "medicationOrderAux_day": "",
+              "medicationOrderAux_time": "",
+              "aux_med_dose": "",
+              "aux_med_status": "",
+              "aux_med_prnMaxDosage": "",
+              "aux_med_reason": "",
+              "aux_med_instructions": ""
+            }
+          },
+          "fqn": "medicationOrders.medicationOrdersTable.medicationOrderAux",
+          "tableChildren": [
+            "medicationOrderAux_id",
+            "medicationOrderAux_day",
+            "medicationOrderAux_time",
+            "aux_med_dose",
+            "aux_med_status",
+            "aux_med_prnMaxDosage",
+            "aux_med_reason",
+            "aux_med_instructions",
+            "medicationOrderAux_name",
+            "medicationOrderAux_profession"
+          ],
+          "hasRecHeader": true
+        },
+        "hasRecHeader": true
+      },
+      "medicationOrderAux": {
+        "elementKey": "medicationOrderAux",
+        "pageElementIndex": "3",
+        "pageKey": "medicationOrders",
+        "tableKey": "medicationOrderAux",
+        "mainTableKey": "medicationOrdersTable",
+        "isTable": true,
+        "isAuxTable": true,
+        "form": {
+          "elementKey": "medicationOrderAux",
+          "label": "Change Med Order",
+          "addButtonText": "Update Medication Order",
+          "formKey": "medicationOrderAux",
+          "ehr_groups": [
+            {
+              "elementKey": "hdrGroup",
+              "formCss": "record-header",
+              "fqn": "medicationOrders.hdrGroup",
+              "gIndex": "1",
+              "gChildren": [
+                "medicationOrderAux_name",
+                "medicationOrderAux_profession",
+                "medicationOrderAux_day",
+                "medicationOrderAux_time"
+              ]
+            },
+            {
+              "elementKey": "aux_med_group_main",
+              "formCss": "grid-left-to-right-3",
+              "fqn": "medicationOrders.aux_med_group_main",
+              "gIndex": "2",
+              "gChildren": [
+                "aux_med_dose",
+                "aux_med_status",
+                "aux_med_prnMaxDosage"
+              ]
+            },
+            {
+              "elementKey": "aux_med_group_notes",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "medicationOrders.aux_med_group_notes",
+              "gIndex": "3",
+              "gChildren": [
+                "aux_med_reason",
+                "aux_med_instructions"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "medicationOrderAux_name": "",
+            "medicationOrderAux_profession": "",
+            "medicationOrderAux_day": "",
+            "medicationOrderAux_time": "",
+            "aux_med_dose": "",
+            "aux_med_status": "",
+            "aux_med_prnMaxDosage": "",
+            "aux_med_reason": "",
+            "aux_med_instructions": ""
+          }
+        },
+        "fqn": "medicationOrders.medicationOrdersTable.medicationOrderAux",
+        "tableChildren": [
+          "medicationOrderAux_id",
+          "medicationOrderAux_day",
+          "medicationOrderAux_time",
+          "aux_med_dose",
+          "aux_med_status",
+          "aux_med_prnMaxDosage",
+          "aux_med_reason",
+          "aux_med_instructions",
+          "medicationOrderAux_name",
+          "medicationOrderAux_profession"
         ],
         "hasRecHeader": true
       }

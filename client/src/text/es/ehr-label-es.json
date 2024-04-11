@@ -1312,5 +1312,12 @@
   "medLabPhoneLog.accComments": "Comentarios",
   "medLabPhoneLog.testAccessionID": "ID de acceso",
   "pain.alleviation2": "Síntomas asociados",
-  "medAdminRec.mar_internal": "Comentarios internos"
+  "medAdminRec.mar_internal": "Comentarios internos",
+  "medicationOrders.med_status": "Estado",
+  "medicationOrders.medicationOrdersTable.medicationOrderAux": "Cambiar orden médica",
+  "medicationOrders.aux_med_dose": "Dosis",
+  "medicationOrders.aux_med_status": "Estado",
+  "medicationOrders.aux_med_prnMaxDosage": "Dosis máxima",
+  "medicationOrders.aux_med_reason": "Razón",
+  "medicationOrders.aux_med_instructions": "Instrucciones"
 }

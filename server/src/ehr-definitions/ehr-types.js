@@ -84,8 +84,10 @@ const EhrTypes = {
     page: 'page',
     page_form: 'page_form',
     table_form: 'table_form',
+    aux_table_form: 'aux_table_form',
     group: 'ehr_group',
-    subgroup: 'ehr_subgroup'
+    subgroup: 'ehr_subgroup',
+    auxData: 'aux_data'
   },
 
   shortFormTypes: {

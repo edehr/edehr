@@ -1312,5 +1312,12 @@
   "medLabPhoneLog.accComments": "Comments",
   "medLabPhoneLog.testAccessionID": "Accession ID",
   "pain.alleviation2": "Associated symptoms",
-  "medAdminRec.mar_internal": "Internal comments"
+  "medAdminRec.mar_internal": "Internal comments",
+  "medicationOrders.med_status": "Status",
+  "medicationOrders.medicationOrdersTable.medicationOrderAux": "Change Med Order",
+  "medicationOrders.aux_med_dose": "Dose",
+  "medicationOrders.aux_med_status": "Status",
+  "medicationOrders.aux_med_prnMaxDosage": "Max dosage",
+  "medicationOrders.aux_med_reason": "Reason",
+  "medicationOrders.aux_med_instructions": "Instructions"
 }

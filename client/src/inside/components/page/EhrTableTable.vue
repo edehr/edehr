@@ -1,37 +1,43 @@
 <template lang="pug">
-  div(class='ehr-table-stacked')
-    //div TABLE STACKED page: {{ pageDataKey}}, table: {{ tableKey }}
+  div(class='ehr-table-table')
     div(class="no-data" v-if="!hasData") No data
     div(v-else)
-      table.table_horizontal
+      table.table_horizontal(tabindex="0")
         thead
           tr
-            th(v-if="showTableAction") &nbsp;
             th &nbsp;
-            th(v-for="(tCell, cIndex) in rowTemplate", :key='cIndex', :class="tableColumnCss(tCell)")
+            th Date
+            th(v-for="(tCell, cIndex) in extractData(rowTemplate)", :key='cIndex', :class="tableColumnCss(tCell)")
+              span(v-html="tableLabel(tCell)")
+        tfoot(v-if="cTableData.length> 5")
+          tr
+            th &nbsp;
+            th Date
+            th(v-for="(tCell, cIndex) in extractData(rowTemplate)", :key='cIndex', :class="tableColumnCss(tCell)")
               span(v-html="tableLabel(tCell)")
         tbody
           tr(v-for="(dRow, rIndex) in cTableData", :key='rIndex', :class='{draftRow : isDraft(dRow) }')
-            td(v-if="showTableAction", class='aux-table-actions')
-              div(v-if='isDraft(dRow)') &nbsp;
-              ui-button(value="ets-action", v-else, v-on:buttonClicked="tableAction(getIdFromRow(dRow))")
-                span {{ tableActionLabel(getIdFromRow(dRow)) }} &nbsp;
-                fas-icon(icon="notes-medical")
-            td(class="table-actions")
-              ui-button(value="ets-view", v-if="!isDraft(dRow)", v-on:buttonClicked="viewReport(getIdFromRow(dRow))", :title='ehrText.viewButtonLabel')
-                //span {{ehrText.viewButtonLabel}} &nbsp;
+            th(class="table-actions")
+              div(v-if="showTableAction", class='aux-table-actions')
+                div(                          v-if='isDraft(dRow)') &nbsp;
+                ui-button(value="ets-action", v-else,
+                  v-on:buttonClicked="tableAction(getIdFromRow(dRow))")
+                  span {{ tableActionLabel(getIdFromRow(dRow)) }} &nbsp;
+                  fas-icon(icon="notes-medical")
+              ui-button(value="ets-view",       v-if="!isDraft(dRow)",
+                v-on:buttonClicked="viewReport(getIdFromRow(dRow))", :title='ehrText.viewButtonLabel')
                 fas-icon(icon="file-pdf")
-              ui-button(value="ets-edit-draft", v-if="isDraft(dRow) && canEdit", v-on:buttonClicked="editDraft(getIdFromRow(dRow))", :title='ehrText.resumeButtonLabel')
-                //span {{ehrText.resumeButtonLabel}} &nbsp;
+              ui-button(value="ets-edit-draft", v-if="isDraft(dRow) && canEdit",
+                v-on:buttonClicked="editDraft(getIdFromRow(dRow))", :title='ehrText.resumeButtonLabel')
                 fas-icon(icon="edit")
-              ui-button(value="ets-edit-row", v-if="canEditSeed(dRow)", v-on:buttonClicked="editSeedRow(getIdFromRow(dRow))", :title='ehrText.editButtonLabel')
-                //span {{ehrText.editButtonLabel}} &nbsp;
+              ui-button(value="ets-edit-row",   v-if="canEditSeed(dRow)",
+                v-on:buttonClicked="editSeedRow(getIdFromRow(dRow))", :title='ehrText.editButtonLabel')
                 fas-icon(icon="edit")
-              ui-button(v-if="canEditSeed(dRow)", v-on:buttonClicked="deleteSeedRow(getIdFromRow(dRow))", :title='ehrText.deleteButtonLabel')
-                //span {{ehrText.deleteButtonLabel}} &nbsp;
+              ui-button(value="ets-delt-row",   v-if="canEditSeed(dRow)",
+                v-on:buttonClicked="deleteSeedRow(getIdFromRow(dRow))", :title='ehrText.deleteButtonLabel')
                 fas-icon(icon="trash")
-
-            td(v-for="(cell, cIndex) in dRow", :key="cIndex", :class="tableCellCss(cell)")
+            th {{ extractDate(dRow) }}
+            td(v-for="(cell, cIndex) in extractData(dRow)", :key="cIndex", :class="tableCellCss(cell)")
               ehr-table-element(:cell="cell")
 </template>
 
@@ -44,6 +50,9 @@ import EhrTableActions from '@/inside/components/page/ehr-table-actions'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 import StoreHelper from '@/helpers/store-helper'
 import { t18EhrText } from '@/helpers/ehr-t18'
+import moment from 'moment/moment'
+import { formatDateStr } from '@/helpers/ehr-utils'
+import { simDateCalc } from '@/helpers/date-helper'
 
 export default {
   extends: EhrTableCommon,
@@ -56,6 +65,15 @@ export default {
     ehrText () { return t18EhrText() }
   },
   methods: {
+    extractData (dRow) {
+      // drop ID, day and time
+      return dRow.slice(3)
+    },
+    extractDate (dRow) {
+      let [,day, time] = dRow
+      let value = simDateCalc(day.value)
+      return value + 'T' + time.value
+    },
     tableLabel (cell) {
       // the cell contains translation
       return cell.tableLabel
@@ -85,17 +103,38 @@ export default {
       const css = cell.inputType === EhrTypes.dataInputTypes.textarea ? 'table-cell-textarea' : ''
       return cell.tableCss ? cell.tableCss : css
     }
-
   },
 
 }
 </script>
 
 <style lang='scss' scoped>
-/* the ehr content has overflow hidden yet tables may be big ...*/
-.ehr-table-stacked {
-  overflow-x: auto;
+
+.ehr-table-table {
+  overflow-y: auto;
+  height: 40em;
 }
+thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+table thead th:first-child,
+table thead th:nth-child(2){
+  position: sticky;
+  left: 0;
+  z-index: 3;
+}
+table tbody th {
+  position: sticky;
+  left: 0;
+}
+
+table thead th:nth-child(2),
+table tbody th:nth-child(2) {
+  left: 66px; // by trial and error width of first col. BUT will be different when there are more buttons
+}
+
 .table-actions > button {
   margin-right: 5px;
   margin-bottom: 5px;

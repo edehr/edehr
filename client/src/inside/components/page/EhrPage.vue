@@ -86,8 +86,12 @@ export default {
     pageElements () {
       // convert the object into an array and then sort based on the defined index.
       // pageElementIndex is the value under column fN in the inputs worksheet
-      const pElems = EhrDefs.getPageElements(this.pageDataKey)
+      let pElems = EhrDefs.getPageElements(this.pageDataKey)
       let pgElems = Object.keys(pElems).map((k) => pElems[k]).sort( (a,b) => a.pageElementIndex - b.pageElementIndex)
+      pgElems = pgElems.filter( element => {
+        return !element.isAuxTable
+      })
+
       // Filter out tables that contain "v1" in their labels. These tables have been replaced with "v2" tables.
       // which may or may not have "v2" in their names. This is a crude way of doing the filtering.
       // TODO document this filtering, for developers, in the project readme or a github issue. See MarTabs.vue too.

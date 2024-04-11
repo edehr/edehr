@@ -42,15 +42,7 @@ export default {
       return value
     },
     getIdFromRow (dbRow) {
-      return this.getIdFromStack(dbRow[0])
-    },
-    getIdFromStack (cell) {
-      let id = ''
-      const stack = cell.stack || []
-      const idElement = stack.find( e => e.inputType === 'generatedId')
-      id = idElement ? idElement.value : ''
-      // console.log('getIdFromStack', cell, idElement, id)
-      return id
+      return dbRow[0].value
     },
     tableAction: function (sourceRowId) {
       // console.log('TABLE ACTION EVENT EMIT', sourceRowId)
