@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="EhrNavList")
+  div(class="EhrNavList", :class="ehrNavCollapsed ? 'ehr-nav-collapsed' : 'ehr-nav-full'")
     div(v-show="showNavPath(path)", class="EhrNavList__teaserList")
       ehr-nav-list-item(:path="path", :level="level", :opened='open')
       div(v-show="open")
@@ -22,6 +22,7 @@ export default {
     level: { type: Number }
   },
   computed: {
+    ehrNavCollapsed () { return this.$store.getters['system/ehrNavCollapsed']},
     open () {
       if(StoreHelper.isLIS_Showing()) {
         // force all LIS nav groups to be open
@@ -52,6 +53,13 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
+
+.ehr-nav-collapsed {
+  width: 9rem;
+}
+.ehr-nav-full {
+  width: 20rem;
+}
 
 .EhrNavList {
   padding: 0;

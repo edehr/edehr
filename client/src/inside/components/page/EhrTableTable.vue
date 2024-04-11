@@ -112,7 +112,6 @@ export default {
 
 .ehr-table-table {
   overflow-y: auto;
-  height: 40em;
 }
 thead th {
   position: sticky;

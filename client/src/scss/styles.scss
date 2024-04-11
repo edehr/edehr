@@ -113,10 +113,11 @@ $panelContentPadding: 0.5rem 1rem;
   margin-bottom: 3rem;
 }
 .ehr-page{
-  min-height: 100vh;
   border: 1px solid black;
   padding: 5px;
   position: relative;
+  width: 100%;
+  background-color: white;
 }
 .ehr-page-footer {
   position: absolute;

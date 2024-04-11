@@ -14,6 +14,7 @@ const state = {
   appTypeMode: appTypeEHR,
   barCodedMedOrders: [],
   currentPageKey: '',
+  ehrNavCollapsed: false,
   lmsNavCollapsed: false,
   condensedTableVertical: false, // false = horizontal, See SeedPage.
   isEditing: false,
@@ -50,6 +51,7 @@ const getters = {
   condensedTableVertical: state => state.condensedTableVertical,
   isEditing: state => state.isEditing,
   isLoading: state => state._isLoading,
+  ehrNavCollapsed: state => state.ehrNavCollapsed,
   lmsNavCollapsed: state => state.lmsNavCollapsed,
   outsideShowButtonLabels: state => state.outsideShowButtonLabels,
   pageIcon: state => state.pageIcon,
@@ -118,6 +120,9 @@ const actions = {
     console.log('setLmsNavCollapsed', value)
     commit('setLmsNavCollapsed', value)
   },
+  setEhrNavCollapsed ( {commit}, value) {
+    commit('setEhrNavCollapsed', value)
+  },
   setCondensedTableVertical ( {commit}, value) {
     commit('setCondensedTableVertical', value)
   },
@@ -163,6 +168,7 @@ const mutations = {
     let asStored = localStorage.getItem('SeedTableCollapse')
     state.seedTableCollapse = asStored ? JSON.parse(asStored) : {}
     state.lmsNavCollapsed = localStorage.getItem('LmsNavCollapsed') === 'true'
+    state.ehrNavCollapsed = localStorage.getItem('ehrNavCollapsed') === 'true'
     state.userPrefNoShowTranslationWarning = localStorage.getItem('userPrefNoShowTranslationWarning') === 'true'
     asStored = localStorage.getItem('appTypeMode')
     if (asStored) {
@@ -194,6 +200,10 @@ const mutations = {
   setLmsNavCollapsed: (state, value) => {
     localStorage.setItem('LmsNavCollapsed', value)
     state.lmsNavCollapsed = value
+  },
+  setEhrNavCollapsed: (state, value) => {
+    localStorage.setItem('EhrNavCollapsed', value)
+    state.ehrNavCollapsed = value
   },
   setCondensedTableVertical: (state, value) => {
     localStorage.setItem('CondensedTableVertical', value)

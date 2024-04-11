@@ -2,7 +2,7 @@
   div(class="EhrNavListItem")
     ui-link(:name="routeName(path)", :class="levelClass")
       div(:class="linkClass", class="linkElement")
-        div(class="linkLabel") {{ linkLabel }}
+        div(class="linkLabel", :title='linkLabel') {{ linkLabelDisplay }}
         div(class="indicator")
           div(:class="dataIndicatorClass")
           div(v-if="level === 1")
@@ -17,6 +17,9 @@ import UiLink from '../../app/ui/UiLink.vue'
 import StoreHelper from '../../helpers/store-helper'
 import { t18EhrText, t18ElementLabel } from '@/helpers/ehr-t18'
 
+function truncate (input, lim) {
+  return input && input.length > lim ? `${input.substring(0, lim)}...` : input
+}
 export default {
   name: 'EhrNavListItem',
   components: {
@@ -70,10 +73,12 @@ export default {
       let val = key ? t18ElementLabel({fqn: key}) : undefined
       return val || t18EhrText()[this.path.label] || this.path.label
     },
+    linkLabelDisplay () { return this.ehrNavCollapsed ? truncate(this.linkLabel, 5) : this.linkLabel },
     linkClass () {
       let lv = this.level || 1
       return 'EhrNavListItem__link' + lv
-    }
+    },
+    ehrNavCollapsed () { return this.$store.getters['system/ehrNavCollapsed']},
   },
   methods: {
     routeName (path) {
