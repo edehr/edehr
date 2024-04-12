@@ -1,6 +1,7 @@
 <template lang="pug">
   div(class="EhrNavListItem")
-    ui-link(:name="routeName(path)", :class="levelClass")
+    // add query to open items that are just under headers (e.g. demographics) and open same page after menu click
+    ui-link(:name="routeName(path)", :query="{_r: Date.now()}", :class="levelClass")
       div(:class="linkClass", class="linkElement")
         div(class="linkLabel", :title='linkLabel') {{ linkLabelDisplay }}
         div(class="indicator")
