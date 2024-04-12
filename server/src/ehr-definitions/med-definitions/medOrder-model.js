@@ -103,9 +103,9 @@ export class MedOrder {
     const obj = this._med_data_object
     console.log('--- med order details', obj)
     if (obj) {
-      list.push('Route: ' + obj.route)
-      list.push('Control: ' + obj.sched)
-      list.push('Therapeutic: ' + obj.thD)
+      obj.route && list.push('Route: ' + obj.route)
+      obj.sched && list.push('Control: ' + obj.sched)
+      obj.thD && list.push('Therapeutic: ' + obj.thD)
     }
     return list.join(', ')
   }

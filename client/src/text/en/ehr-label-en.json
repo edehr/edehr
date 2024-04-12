@@ -876,7 +876,7 @@
   "medLabUrinalysis.label55-108": "Positive",
   "medLabUrinalysis.label55-109": "Leukocytes",
   "medLabUrinalysis.label55-110": "Negative",
-  "medLabUrinalysis.label55-112": "Reporting  'pending' to patient care staff indicates that results are unavailable and awaiting validation by the technologist before results are released.",
+  "medLabUrinalysis.label55-112": "Reporting pending to patient care staff indicates that results are unavailable and awaiting validation by the technologist before results are released.",
   "medLabUrinalysis.label55-113": "Pending analyte",
   "medLabUrinalysis.label55-114": "Pending result (include units)",
   "medLabUrinalysis.label55-25": "Reagent Strip",
@@ -1293,7 +1293,7 @@
   "medAdminRec.mar_barCodeCheck": "Barcode scanned",
   "medAdminRec.mo_medDetails": "Medication details",
   "medLabChemistry.tableQcChemistry": "Chemistry QC",
-  "medLabChemistry.label55-112": "Reporting  'pending' to patient care staff indicates that results are unavailable and awaiting validation by the technologist before results are released.",
+  "medLabChemistry.label55-112": "Reporting pending to patient care staff indicates that results are unavailable and awaiting validation by the technologist before results are released.",
   "medLabChemistry.label55-113": "Pending analyte",
   "medLabChemistry.label55-114": "Pending result (include units)",
   "medLabChemistry.chemInterpLabel": "Are any of the results abnormal",
@@ -1319,5 +1319,6 @@
   "medicationOrders.aux_med_status": "Status",
   "medicationOrders.aux_med_prnMaxDosage": "Max dosage",
   "medicationOrders.aux_med_reason": "Reason",
-  "medicationOrders.aux_med_instructions": "Instructions"
+  "medicationOrders.aux_med_instructions": "Instructions",
+  "medAdminRec.mo_route": "Route"
 }

@@ -128,7 +128,7 @@ export default {
     visitId () { return this.activityRecord.visitId },
   },
   methods: {
-    async downloadData() {
+    async downloadData () {
       let purpose = this.ehrText.studentSaveActivity_Tip
       let id = this.activityRecord.activityDataId
       await store.dispatch('activityDataStore/loadActivityData', { id: id, silent: true })

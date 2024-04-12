@@ -11658,7 +11658,7 @@ const DEFS = {
         "formIndex": "2",
         "embedRef": "medicationOrders.medicationOrdersTable",
         "inputType": "ehr_embedded",
-        "passToFunction": "[mo_medOrder mo_medDetails mo_alert mo_timing mo_medInstructions mo_medReason mo_id]",
+        "passToFunction": "[mo_medOrder mo_medDetails mo_alert mo_route mo_timing mo_medInstructions mo_medReason mo_id]",
         "tableColumn": "13",
         "fqn": "medAdminRec.med_order_embedded"
       },
@@ -11666,7 +11666,7 @@ const DEFS = {
         "elementKey": "mo_medOrder",
         "calculationType": "medOrderSummary(medicationOrders,medicationOrdersTable)",
         "formIndex": "2",
-        "formCss": "grid-span-3-columns",
+        "formCss": "grid-span-4-columns",
         "inputType": "calculatedValue",
         "tableColumn": "2",
         "fqn": "medAdminRec.mo_medOrder"
@@ -11675,7 +11675,7 @@ const DEFS = {
         "elementKey": "mo_medDetails",
         "calculationType": "medOrderDetails(medicationOrders,medicationOrdersTable)",
         "formIndex": "2",
-        "formCss": "grid-span-3-columns",
+        "formCss": "grid-span-4-columns",
         "inputType": "calculatedValue",
         "fqn": "medAdminRec.mo_medDetails"
       },
@@ -11683,7 +11683,7 @@ const DEFS = {
         "elementKey": "mo_medInstructions",
         "calculationType": "embedValue(medicationOrders, medicationOrdersTable, med_instructions)",
         "formIndex": "2",
-        "formCss": "grid-span-3-columns",
+        "formCss": "grid-span-4-columns",
         "inputType": "calculatedValue",
         "fqn": "medAdminRec.mo_medInstructions"
       },
@@ -11691,16 +11691,24 @@ const DEFS = {
         "elementKey": "mo_medReason",
         "calculationType": "embedValue(medicationOrders, medicationOrdersTable, med_reason)",
         "formIndex": "2",
-        "formCss": "grid-span-3-columns",
+        "formCss": "grid-span-4-columns",
         "inputType": "calculatedValue",
         "fqn": "medAdminRec.mo_medReason"
       },
       {
-        "elementKey": "mo_timing",
-        "calculationType": "embedValue(medicationOrders, medicationOrdersTable, med_timing)",
+        "elementKey": "mo_route",
+        "calculationType": "medAdminRoute(medicationOrders, medicationOrdersTable, med_route)",
         "formIndex": "2",
         "inputType": "calculatedValue",
         "tableColumn": "3",
+        "fqn": "medAdminRec.mo_route"
+      },
+      {
+        "elementKey": "mo_timing",
+        "calculationType": "medAdminTiming(medicationOrders, medicationOrdersTable, med_timing)",
+        "formIndex": "2",
+        "inputType": "calculatedValue",
+        "tableColumn": "4",
         "fqn": "medAdminRec.mo_timing"
       },
       {
@@ -11733,7 +11741,7 @@ const DEFS = {
         "elementKey": "mo_alert",
         "calculationType": "medAdminAlert(medicationOrders,medicationOrdersTable)",
         "formIndex": "2",
-        "formCss": "grid-span-3-columns",
+        "formCss": "grid-span-4-columns",
         "inputType": "calculatedValue",
         "tableColumn": "11",
         "fqn": "medAdminRec.mo_alert"
@@ -12025,7 +12033,7 @@ const DEFS = {
             },
             {
               "elementKey": "medGroup2",
-              "formCss": "embedded-data grid-left-to-right-3",
+              "formCss": "embedded-data grid-left-to-right-4",
               "fqn": "medAdminRec.medGroup2",
               "gIndex": "3",
               "gChildren": [
@@ -12033,6 +12041,7 @@ const DEFS = {
                 "mo_medDetails",
                 "mo_medInstructions",
                 "mo_medReason",
+                "mo_route",
                 "mo_timing",
                 "mo_schedDay",
                 "mo_schedTime",
@@ -12078,6 +12087,7 @@ const DEFS = {
             "mo_medDetails": "",
             "mo_medInstructions": "",
             "mo_medReason": "",
+            "mo_route": "",
             "mo_timing": "",
             "mo_schedDay": "",
             "mo_schedTime": "",
@@ -12102,6 +12112,7 @@ const DEFS = {
           "marTable_time",
           "med_order_embedded",
           "mo_medOrder",
+          "mo_route",
           "mo_timing",
           "mo_schedDay",
           "mo_schedTime",

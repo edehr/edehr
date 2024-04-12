@@ -11,6 +11,8 @@ export const MAR_V2_TABLE_KEY = 'marTable'
 export const MED_ORDERS_PAGE_KEY = 'medicationOrders'
 export const MED_ORDERS_TABLE_KEY = 'medicationOrdersTable'
 export const MED_ORDERS_ALERT_ELEMENT = 'med_alert'
+export const MED_ORDERS_ROUTE_ELEMENT = 'med_route'
+export const MED_ORDERS_TIME_ELEMENT = 'med_timing'
 
 class EhrDefsWorker {
   constructor () {
