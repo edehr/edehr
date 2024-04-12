@@ -9,6 +9,7 @@
             fas-icon(v-show="opened", class="fa top-level", icon="angle-right")
             fas-icon(v-show="!opened", class="fa top-level", icon="angle-down")
             span &nbsp;
+      span(class="tooltiptext") {{linkLabel}}
 </template>
 
 <script>
@@ -66,7 +67,8 @@ export default {
       let lvClass = 'EhrNavListItem__level' + lv
       let isTopAndActive = this.$store.state.visit.topLevelMenu === this.path.name
       let aClass = isTopAndActive ? ' router-link-active' : ''
-      return lvClass + aClass
+      let tooltip = ' ' + (this.ehrNavCollapsed ? 'tooltip-aside' : 'tooltip-item')
+      return lvClass + aClass + tooltip
     },
     linkLabel () {
       let key = this.path.fqn
@@ -119,11 +121,6 @@ $indicator-color: $grey10;
     padding-right: 0;
   }
 }
-.linkLabel:hover {
-  transform-origin: left;
-  transform:  scale(1.25);
-  //transform:  translate(30px, 2px)  scale(1.25);
-}
 
 a:hover {
   color: #ffffff;
@@ -132,16 +129,10 @@ a:hover {
   .router-link-active {
     background-color: $colour-brand-ehr;
   }
-  .linkElement:hover {
-    background-color: $colour-brand-ehr-hover;
-  }
 }
 .lis-branding {
   .router-link-active {
     background-color: $colour-brand-lis;
-  }
-  .linkElement:hover {
-    background-color: $colour-brand-lis-hover;
   }
 }
   .EhrNavListItem {
@@ -248,4 +239,57 @@ a:hover {
       color: $indicator-color;
     }
   }
+
+/* Tooltip container */
+.tooltip-aside {
+  position: relative;
+  display: block;
+}
+.tooltip-item .tooltiptext {
+  display: none;
+}
+/* Tooltip text */
+.tooltip-aside .tooltiptext {
+  visibility: hidden;
+  text-align:left;
+  font-size: 1.05rem;
+  font-weight: bold;
+  background-color: white;
+  width: 20rem;
+  border: 1px solid;
+  border-radius: 6px;
+  padding: 5px 5px 5px 8px;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 10;
+}
+// right
+.tooltip-aside .tooltiptext {
+  top: -5px;
+  left: 105%;
+}
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip-aside:hover .tooltiptext {
+  visibility: visible;
+}
+.ehr-branding {
+  .tooltip-item:hover {
+    background-color: $colour-brand-ehr-hover;
+  }
+
+  .tooltip-aside .tooltiptext {
+    border-color: $colour-brand-ehr;
+    color: $colour-brand-ehr;
+  }
+}
+.lis-branding {
+  .tooltip-item:hover {
+    background-color: $colour-brand-lis-hover;
+  }
+
+  .tooltip-aside .tooltiptext {
+    border-color: $colour-brand-lis;
+    color: $colour-brand-lis;
+  }
+}
 </style>
