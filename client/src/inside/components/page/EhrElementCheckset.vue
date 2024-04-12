@@ -2,11 +2,10 @@
   div(class="checkset_wrapper", :class='formCss')
     ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="checkset_label")
     div(class="checkset_list")
-      div(v-for="option in checkOptions")
+      div(v-for="option in filteredOptions")
         label
           input(class="checkbox", type="checkbox", :disabled="disabled || viewOnly", :value="option.prop", v-model="checkValues")
           span {{ optionText(option) }}
-    //div(style="display:none") computedInitialValue {{computedInitialValue}}
 </template>
 
 <script>
@@ -26,7 +25,15 @@ export default {
   },
   computed : {
     options () { return this.element.options },
-    checkOptions () { return EhrCheckset.optionsToChecklist(this.options) }
+    checkOptions () { return EhrCheckset.optionsToChecklist(this.options) },
+    filteredOptions () {
+      // In view mode remove all unchecked values.
+      let opts = this.checkOptions
+      if (this.viewOnly) {
+        opts = opts.filter( opt => this.checkValues.includes(opt.prop) )
+      }
+      return opts
+    }
   },
   watch: {
     checkValues (val) {
