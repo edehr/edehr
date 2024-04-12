@@ -39,6 +39,7 @@ import EhrTableDraft from '@/inside/components/page/ehr-table-draft'
 import { makeHumanTableCell } from '@/ehr-definitions/ehr-def-utils'
 import { t18ElementLabel, t18TableAddButtonLabel, t18TableLabel } from '@/helpers/ehr-t18'
 import EhrTableTable from '@/inside/components/page/EhrTableTable.vue'
+import EhrTypes from '@/ehr-definitions/ehr-types'
 export default {
   components: {
     EhrTableTable,
@@ -75,17 +76,20 @@ export default {
     cTableForm () { return this.ehrHelp.getTableForm(this.tableDef.tableKey) },
     rowTemplate () {
       let rowTemplate = []
+      const skipTypes = [EhrTypes.dataInputTypes.ehr_embedded]
       this.tableDef.tableChildren.forEach(key => {
         let cellDef = EhrDefs.getPageChildElement(this.pageDataKey, key)
-        let templateCell = {
-          key: key,
-          cellDef: cellDef,
-          inputType: cellDef.inputType
+        if ( ! skipTypes.includes(cellDef.inputType) ) {
+          let templateCell = {
+            key: key,
+            cellDef: cellDef,
+            inputType: cellDef.inputType
+          }
+          templateCell.tableLabel = t18TableLabel(cellDef) || t18ElementLabel(cellDef)
+          templateCell.tableSuffix = cellDef.suffixText
+          templateCell.tableCss = cellDef.tableCss
+          rowTemplate.push(templateCell)
         }
-        templateCell.tableLabel = t18TableLabel(cellDef) || t18ElementLabel(cellDef)
-        templateCell.tableSuffix = cellDef.suffixText
-        templateCell.tableCss =  cellDef.tableCss
-        rowTemplate.push(templateCell)
       })
       return rowTemplate
     },

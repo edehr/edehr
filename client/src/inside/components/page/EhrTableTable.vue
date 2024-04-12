@@ -37,7 +37,7 @@
                 v-on:buttonClicked="deleteSeedRow(getIdFromRow(dRow))", :title='ehrText.deleteButtonLabel')
                 fas-icon(icon="trash")
             th {{ extractDate(dRow) }}
-            td(v-for="(cell, cIndex) in extractData(dRow)", :key="cIndex", :class="tableCellCss(cell)")
+            td(v-for="(cell, cIndex) in extractData(dRow)", :id="`${rIndex}-${cell.key}`", :key="cIndex", :class="tableCellCss(cell)")
               ehr-table-element(:cell="cell")
 </template>
 
@@ -50,8 +50,6 @@ import EhrTableActions from '@/inside/components/page/ehr-table-actions'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 import StoreHelper from '@/helpers/store-helper'
 import { t18EhrText } from '@/helpers/ehr-t18'
-import moment from 'moment/moment'
-import { formatDateStr } from '@/helpers/ehr-utils'
 import { simDateCalc } from '@/helpers/date-helper'
 
 export default {
@@ -70,6 +68,7 @@ export default {
       return dRow.slice(3)
     },
     extractDate (dRow) {
+      // in first position is the row id
       let [,day, time] = dRow
       let value = simDateCalc(day.value)
       return value + 'T' + time.value
