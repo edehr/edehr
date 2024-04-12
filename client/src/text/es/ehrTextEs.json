@@ -123,6 +123,8 @@
   "studentBannerInstructorsFeedback": "Comentarios del instructor:",
   "studentBannerSubmitText": "Envíe su trabajo para que su instructor pueda proporcionar comentarios.",
   "studentBannerAwaitEvalText": "Your work has been submitted to your instructor.",
+  "studentSaveActivity_Title": "Save activity data",
+  "studentSaveActivity_Tip": "Download your activity data to a structured text file. Use this file if you need to report a problem with the EdEHR application. This file can also be used to save your work. ",
   "submitActivityButtonLabel": "Enviar actividad",
   "submitButtonLabel": "Entregar",
   "submitConfirmBody": "Proceda a enviar su trabajo a su instructor o cancelar.",

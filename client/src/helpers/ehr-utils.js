@@ -374,6 +374,46 @@ export function downloadLearningObjectToFile (learningObject, seedObject) {
   _saveAs(data, fName, mJSON)
 }
 
+export function downloadStudentActivityToFile (activityRecord, aData, vData, user, purpose, INCLUDE_ALL_DEETS = false) {
+  let lastUpdate = formatDateStr(activityRecord.lastUpdate)
+  let name = activityRecord.learningObjectName
+  let fName = 'activity_' + camelcase(name)
+    + '_' + lastUpdate
+    + '.json'
+  let data = {
+    fileName: fName,
+    purpose: purpose
+  }
+  data.fullName = user.fullName
+  data.courseTitle = activityRecord.courseTitle
+  data.title = activityRecord.title
+  data.description = activityRecord.description
+  data.caseStudyName = activityRecord.caseStudyName
+  data.submitted = activityRecord.submitted
+  data.activityLastDate = activityRecord.activityLastDate
+  data.assignmentData = aData.assignmentData
+  data.simulationSignOn = vData.simulationSignOn
+  data.simStages = activityRecord.simStages
+  data.simulationDateTime = vData.simulationDateTime
+  data.simulationSignOn = vData.simulationSignOn
+  data.userSettings = user.userSettings
+  data.appType = activityRecord.appType
+  data.id = activityRecord.id
+  data.visitId = activityRecord.visitId
+  data.lobj = activityRecord.learningObjectId
+  if (INCLUDE_ALL_DEETS) {
+    data.activityRecord = activityRecord
+    data.visit = vData
+    data.user = user
+    data.aData = aData
+  }
+  delete data.simulationSignOn?._id
+  delete data.simulationDateTime?._id
+  delete data.userSettings?._id
+  data = JSON.stringify(data, null, 2)
+  if (debug) console.log('EhrUtil Download student activity to ', fName)
+  _saveAs(data, fName, mJSON)
+}
 export function downObjectToFile (fileName, object) {
   let data = JSON.stringify(object, null, 2)
   if (debug) console.log('EhrUtil Download object to file ', fileName, data)
