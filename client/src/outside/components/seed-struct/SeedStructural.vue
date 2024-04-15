@@ -1,37 +1,19 @@
 <template lang='pug'>
   div(class="ehrData-structure")
-    div(class="ehrData-menu")
-      div(class="bigger-screens-900")
+    zone-lms-button(
+      @action="toggleShowNav",
+      :icon='showingNavPanel ? "angle-left" : "bars" '
+    )
+    div(class="ehrData-menu", v-show="showingNavPanel")
+      transition(name="hamburger-action")
         seed-menus(
+          ref='seedMenu',
           @selectPage="selectPage",
           :activePageKey='activePageKey',
           :ehrData='ehrData')
-      div(class="smaller-than-900")
-        div(class="flow_across")
-          zone-lms-button(@action="toggleTableOrientation"
-            class="flow_across_last_item mr5"
-            :title="`Rotate the table ${tableOrientation ? 'vertical' : 'horizontal'}`",
-            :icon='appIcons.table',
-            :icon-class='{rotatedIcon: tableOrientation}',
-            text="")
-        h2(class="smaller-than-900")
-          fas-icon(:icon="appIcons.menu", @click="showingNavPanel = !showingNavPanel")
-          span &nbsp; {{pageTitle}}
-
-        transition(name="hamburger-action")
-          seed-menus(v-if="showingNavPanel",
-            @selectPage="selectPage",
-            :activePageKey='activePageKey',
-            :ehrData='ehrData')
     div(class="ehrData-details")
       div(class="flow_across")
         h2(class="bigger-screens-900") {{pageTitle}}
-        zone-lms-button(@action="toggleTableOrientation"
-          class="flow_across_last_item mr5"
-          :title="`Rotate the table ${tableOrientation ? 'vertical' : 'horizontal'}`",
-          :icon='appIcons.table',
-          :icon-class='{rotatedIcon: tableOrientation}',
-          text="")
       seed-pages(
         :ehrData="ehrData",
         :pageKey="activePageKey",
@@ -50,7 +32,6 @@ export default {
   data () {
     return {
       appIcons: APP_ICONS,
-      activePageKey: undefined,
       showingNavPanel: false
     }
   },
@@ -59,19 +40,27 @@ export default {
     ehrData: { type: Object }
   },
   computed: {
+    activePageKey () { return this.$store.getters['system/seedStructPageKey']},
     seedEhrData () { return this.ehrData ? this.ehrData.ehrData : {}},
     pageDef () { return this.activePageKey ? EhrDefs.getPageDefinition(this.activePageKey) : {}},
     pageTitle () { return this.pageDef ? this.pageDef.pageTitle : 'Select a page from the menu'},
     pageSeedData (  ) {
       const pkey = this.activePageKey
       return this.ehrData ? (pkey ? this.ehrData[pkey] : {}) : {}
-    },
-    tableOrientation () { return this.$store.getters['system/condensedTableVertical']},
+    }
   },
   methods: {
     selectPage ( key ) {
-      this.activePageKey = key
-      this.showingNavPanel = false
+      this.$store.commit('system/setSeedStructPageKey', key)
+      if(this.$store.getters['system/smallerThan900Window']) {
+        this.showingNavPanel = false
+      }
+    },
+    toggleShowNav () {
+      this.showingNavPanel = !this.showingNavPanel
+      if (this.showingNavPanel) {
+        this.$refs.seedMenu.scrollTo(this.activePageKey)
+      }
     },
     setInitialPage () {
       const data = this.ehrData
@@ -92,10 +81,6 @@ export default {
       } else {
         console.log('ehrData structure without data. Why?')
       }
-    },
-    toggleTableOrientation () {
-      const value = this.tableOrientation
-      this.$store.dispatch('system/setCondensedTableVertical', !value)
     }
   },
   mounted () {
@@ -116,6 +101,10 @@ export default {
   border-top: 1px solid $brand-primary;
   padding-top: 5px;
 }
+.hide-menu {
+  display: none !important;
+}
+
 @media screen and (min-width: $main-width-threshold3) {
   .ehrData-structure {
     display: flex;

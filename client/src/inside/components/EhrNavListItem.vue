@@ -1,14 +1,16 @@
 <template lang="pug">
   div(class="EhrNavListItem")
-    ui-link(:name="routeName(path)", :class="levelClass")
+    // add query to open items that are just under headers (e.g. demographics) and open same page after menu click
+    ui-link(:name="routeName(path)", :query="{_r: Date.now()}", :class="levelClass")
       div(:class="linkClass", class="linkElement")
-        div(class="linkLabel") {{ linkLabel }}
+        div(class="linkLabel", :title='linkLabel') {{ linkLabelDisplay }}
         div(class="indicator")
           div(:class="dataIndicatorClass")
           div(v-if="level === 1")
             fas-icon(v-show="opened", class="fa top-level", icon="angle-right")
             fas-icon(v-show="!opened", class="fa top-level", icon="angle-down")
             span &nbsp;
+      span(class="tooltiptext") {{linkLabel}}
 </template>
 
 <script>
@@ -17,6 +19,9 @@ import UiLink from '../../app/ui/UiLink.vue'
 import StoreHelper from '../../helpers/store-helper'
 import { t18EhrText, t18ElementLabel } from '@/helpers/ehr-t18'
 
+function truncate (input, lim) {
+  return input && input.length > lim ? `${input.substring(0, lim)}...` : input
+}
 export default {
   name: 'EhrNavListItem',
   components: {
@@ -63,17 +68,20 @@ export default {
       let lvClass = 'EhrNavListItem__level' + lv
       let isTopAndActive = this.$store.state.visit.topLevelMenu === this.path.name
       let aClass = isTopAndActive ? ' router-link-active' : ''
-      return lvClass + aClass
+      let tooltip = ' ' + (this.ehrNavCollapsed ? 'tooltip-aside' : 'tooltip-item')
+      return lvClass + aClass + tooltip
     },
     linkLabel () {
       let key = this.path.fqn
       let val = key ? t18ElementLabel({fqn: key}) : undefined
       return val || t18EhrText()[this.path.label] || this.path.label
     },
+    linkLabelDisplay () { return this.ehrNavCollapsed ? truncate(this.linkLabel, 5) : this.linkLabel },
     linkClass () {
       let lv = this.level || 1
       return 'EhrNavListItem__link' + lv
-    }
+    },
+    ehrNavCollapsed () { return this.$store.getters['system/ehrNavCollapsed']},
   },
   methods: {
     routeName (path) {
@@ -114,11 +122,6 @@ $indicator-color: $grey10;
     padding-right: 0;
   }
 }
-.linkLabel:hover {
-  transform-origin: left;
-  transform:  scale(1.25);
-  //transform:  translate(30px, 2px)  scale(1.25);
-}
 
 a:hover {
   color: #ffffff;
@@ -127,16 +130,10 @@ a:hover {
   .router-link-active {
     background-color: $colour-brand-ehr;
   }
-  .linkElement:hover {
-    background-color: $colour-brand-ehr-hover;
-  }
 }
 .lis-branding {
   .router-link-active {
     background-color: $colour-brand-lis;
-  }
-  .linkElement:hover {
-    background-color: $colour-brand-lis-hover;
   }
 }
   .EhrNavListItem {
@@ -243,4 +240,57 @@ a:hover {
       color: $indicator-color;
     }
   }
+
+/* Tooltip container */
+.tooltip-aside {
+  position: relative;
+  display: block;
+}
+.tooltip-item .tooltiptext {
+  display: none;
+}
+/* Tooltip text */
+.tooltip-aside .tooltiptext {
+  visibility: hidden;
+  text-align:left;
+  font-size: 1.05rem;
+  font-weight: bold;
+  background-color: white;
+  width: 20rem;
+  border: 1px solid;
+  border-radius: 6px;
+  padding: 5px 5px 5px 8px;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 10;
+}
+// right
+.tooltip-aside .tooltiptext {
+  top: -5px;
+  left: 105%;
+}
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip-aside:hover .tooltiptext {
+  visibility: visible;
+}
+.ehr-branding {
+  .tooltip-item:hover {
+    background-color: $colour-brand-ehr-hover;
+  }
+
+  .tooltip-aside .tooltiptext {
+    border-color: $colour-brand-ehr;
+    color: $colour-brand-ehr;
+  }
+}
+.lis-branding {
+  .tooltip-item:hover {
+    background-color: $colour-brand-lis-hover;
+  }
+
+  .tooltip-aside .tooltiptext {
+    border-color: $colour-brand-lis;
+    color: $colour-brand-lis;
+  }
+}
 </style>

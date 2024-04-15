@@ -1,4 +1,8 @@
-import EhrDefs, { MED_ORDERS_PAGE_KEY, MED_ORDERS_ALERT_ELEMENT }  from '@/ehr-definitions/ehr-defs-grid'
+import EhrDefs, {
+  MED_ORDERS_PAGE_KEY,
+  MED_ORDERS_ALERT_ELEMENT,
+  MED_ORDERS_ROUTE_ELEMENT, MED_ORDERS_TIME_ELEMENT
+} from '@/ehr-definitions/ehr-defs-grid'
 import { isObject, isString, validNumberStr } from '@/helpers/ehr-utils'
 import StoreHelper from '@/helpers/store-helper'
 import { calculateMedicationConcentration, calculateMedicationMaxDosage } from '@/ehr-definitions/ehr-def-utils'
@@ -153,7 +157,6 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
     // console.log('---------- cal type embedValue refs, result:', refs, result)
   } else if (calculationType.includes('medConcentration')) {
     result = calculateMedicationConcentration(values)
-
   } else if (calculationType.includes('fluidBalance')) {
     const inputs = values[0] || 0
     const outputs = values[1] || 0
@@ -166,7 +169,24 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
       result = val
     } else {
       console.log('medAdminAlert no value!', values, 'srcKeys', srcKeys)
-      // console.log('srcValues', srcValues)
+    }
+  } else  if (calculationType.includes('medAdminRoute')) {
+    let type = EhrTypes.dataInputTypes.checkset
+    if (values[0]) {
+      let val = values[0].med_route
+      val = val ? makeHumanTableCell(MED_ORDERS_PAGE_KEY, MED_ORDERS_ROUTE_ELEMENT, type, val) : undefined
+      result = val
+    } else {
+      console.log('medAdminRoute no value!', values, 'srcKeys', srcKeys)
+    }
+  } else  if (calculationType.includes('medAdminTiming')) {
+    let type = EhrTypes.dataInputTypes.select
+    if (values[0]) {
+      let val = values[0].med_timing
+      val = val ? makeHumanTableCell(MED_ORDERS_PAGE_KEY, MED_ORDERS_TIME_ELEMENT, type, val) : undefined
+      result = val
+    } else {
+      console.log('medAdminTiming no value!', values, 'srcKeys', srcKeys)
     }
   } else if (calculationType.includes('medOrderDetails')) {
     if (values[0]) {

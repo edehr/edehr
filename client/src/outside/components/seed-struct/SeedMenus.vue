@@ -5,6 +5,7 @@
       div(class='ehrData-page-container')
         div(v-for='ch1 in collectChildren(menuGroup)')
           div(
+            :ref="`menu-${ch1.pageDataKey}`",
             class='ehrData-page-selector',
             :class="childCss(ch1.pageDataKey)",
             v-on:click="selectPage(ch1.pageDataKey)") {{ch1.label}}
@@ -56,6 +57,14 @@ export default {
     },
     selectPage (pkey) {
       this.$emit('selectPage', pkey)
+    },
+    scrollTo (activePageKey) {
+      const id = 'menu-' + activePageKey
+      let elem = this.$refs[id]
+      if (Array.isArray(elem)) {
+        elem = elem[0]
+      }
+      elem?.scrollIntoView()
     }
   }
 }

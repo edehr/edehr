@@ -118,23 +118,32 @@ export default {
       }, this.debounceMilliseconds)
     },
     renderSuggestion ( suggestion ) {
-      // console.log(' render sugg', suggestion)
+      let term = this.query.toLowerCase()
       if (!suggestion.item) {
+        // console.log(' render sugg no item', suggestion)
+        return ''
+      }
+      if (!term || term === '') {
+        this.query = ''
+        this.suggestions = []
+        this.selected = null
         return ''
       }
       let name = suggestion.item.med
       let thera = suggestion.item.thD
-      let term = this.query.toLowerCase()
       let combined = name + ' (' + thera + ')'
       let parts = []
       let index = combined.toLowerCase().indexOf(term)
-      while (index >= 0) {
+      const maxParts = 10
+      let cnt = 0
+      while (index >= 0 && cnt < maxParts) {
         let p1 = combined.substring(0, index)
         let p2 = combined.substring(index, index + term.length)
         p1.length > 0 ? parts.push((<span>{p1}</span>)) : null
         parts.push((<strong>{p2}</strong>))
         combined = combined.substring(index + term.length)
         index = combined.toLowerCase().indexOf(term)
+        cnt++ //prevent infinite loop
       }
       if (combined.length > 0) {
         parts.push((<span>{combined}</span>))

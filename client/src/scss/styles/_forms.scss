@@ -40,7 +40,7 @@ li {
 }
 /* EHR tables have ids. This hides them from view */
 .row-id {
-  display: none;
+  //display: none;
   //border: 1px solid red;
 }
 
@@ -418,7 +418,7 @@ select, .select {
 
 .compactLayout .ehr-group-wrapper {
   .ehr-group-for {
-    border: 1px solid $grey05;
+    //border: 1px solid $grey05;
     padding: 4px;
   }
 }
@@ -549,16 +549,20 @@ select, .select {
 .grid-span-3-columns {
   grid-column: span 3;
 }
+.grid-span-4-columns {
+  grid-column: span 4;
+}
 
 
 .grid-span-2-columns,
-.grid-span-3-columns {
+.grid-span-3-columns,
+.grid-span-4-columns
+{
   .computed_wrapper {
     .input {
       max-width: inherit;
     }
   }
-
   .checkbox_wrapper {
     .form_label {
       max-width: inherit;
@@ -578,13 +582,12 @@ select, .select {
     grid-template-columns: 1fr;
   }
 
-  .grid-span-2-columns {
+  .grid-span-2-columns,
+  .grid-span-3-columns,
+  .grid-span-4-columns
+  {
     grid-column: span 1;
   }
-  .grid-span-3-columns {
-    grid-column: span 1;
-  }
-
 }
 
 .thumbnail {

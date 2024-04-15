@@ -113,10 +113,10 @@ $panelContentPadding: 0.5rem 1rem;
   margin-bottom: 3rem;
 }
 .ehr-page{
-  min-height: 100vh;
-  border: 1px solid black;
   padding: 5px;
   position: relative;
+  width: 100%;
+  background-color: white;
 }
 .ehr-page-footer {
   position: absolute;
@@ -215,7 +215,7 @@ footer {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 5;
 }
 .flex_stick_bottom {
   flex-shrink: 0;
@@ -261,6 +261,7 @@ footer {
   height: 1.5em;
   color: $brand-primary;
   padding-left: 5px;
+  font-size: 2rem;
 }
 
 .external-link-icon {

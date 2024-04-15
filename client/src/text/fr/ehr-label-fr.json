@@ -1312,5 +1312,13 @@
   "medLabPhoneLog.accComments": "commentaires",
   "medLabPhoneLog.testAccessionID": "ID d'adhésion",
   "pain.alleviation2": "Symptômes associés",
-  "medAdminRec.mar_internal": "Commentaires internes"
+  "medAdminRec.mar_internal": "Commentaires internes",
+  "medicationOrders.med_status": "Statut",
+  "medicationOrders.medicationOrdersTable.medicationOrderAux": "Modifier la commande médicale",
+  "medicationOrders.aux_med_dose": "Dose",
+  "medicationOrders.aux_med_status": "Statut",
+  "medicationOrders.aux_med_prnMaxDosage": "Dosage maximum",
+  "medicationOrders.aux_med_reason": "Raison",
+  "medicationOrders.aux_med_instructions": "Instructions",
+  "medAdminRec.mo_route": "Itinéraire"
 }

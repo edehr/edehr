@@ -1,7 +1,7 @@
 
 import EhrDefs, { MED_ORDERS_PAGE_KEY } from '../../../ehr-definitions/ehr-defs-grid'
 import StoreHelper from  '../../../helpers/store-helper'
-import { t18EhrText } from '@/helpers/ehr-t18'
+import { t18EhrText, t18ElementLabel, t18TableLabel } from '@/helpers/ehr-t18'
 
 export const ESK_Medications = 'Discharge Rx'
 export const ESK_Referrals = 'Referrals'
@@ -41,7 +41,7 @@ Referrals: Pulled in from the referrals to other disciplines page.
 const medSchedules = [] // TODO get MARs
 console.log('EhrSummaryHelp TODO get medSchedules', medSchedules)
 
-const debug = false
+const debug = true
 
 export default class EhrSummaryHelpV2 {
   constructor (summaryKey, ehrHelp) {
@@ -52,22 +52,28 @@ export default class EhrSummaryHelpV2 {
     let tableDef = EhrDefs.getPageTable(pageKey, tableKey)
     if(debug) console.log('EhrSummaryHelpV2 summary, tableDef: ', summary, tableDef)
     let rowTemplate = []
-    tableDef.ehr_list.forEach(stack => {
-      stack.items.forEach(cellKey => {
-        let cellDef = EhrDefs.getPageChildElement(pageKey, cellKey)
-        rowTemplate.push({
-          key: cellKey,
-          inputType: cellDef.inputType,
-          label: cellDef.label
-        })
-      })
+    tableDef.tableChildren.forEach(key => {
+      let cellDef = EhrDefs.getPageChildElement(pageKey, key)
+      let templateCell = {
+        key: key,
+        label: t18ElementLabel(cellDef),
+        cellDef: cellDef,
+        inputType: cellDef.inputType
+      }
+      templateCell.tableLabel = t18TableLabel(cellDef) || t18ElementLabel(cellDef)
+      templateCell.tableSuffix = cellDef.suffixText
+      templateCell.tableCss =  cellDef.tableCss
+      rowTemplate.push(templateCell)
     })
     if(debug) console.log('EhrSummaryHelpV2 rowTemplate: ', rowTemplate)
     let tableColumns = []
     def.columnKeys.forEach( key => {
       let cell = rowTemplate.find( c => c.key === key)
       if (cell) {
-        cell = {label: cell.label, inputType: cell.inputType, elementKey: cell.key}
+        cell = {
+          label: cell.label,
+          inputType: cell.inputType,
+          elementKey: cell.key}
         tableColumns.push(cell)
       }
     })
@@ -115,8 +121,18 @@ export default class EhrSummaryHelpV2 {
       pageKey: MED_ORDERS_PAGE_KEY,
       summaryTitle: et.meds.title,
       description: et.meds.desc,
-      tableKey: 'table',
-      columnKeys: ['medication', 'route', 'administration', 'schedule', 'dose', 'reason', 'name', 'profession', 'instructions'],
+      tableKey: 'medicationOrdersTable',
+      // 'administration'
+      columnKeys: ['med_medication',
+        'med_dose',
+        'med_route',
+        'med_scheduled',
+        'med_timing',
+        'med_reason',
+        'med_alert',
+        'med_instructions',
+        'medicationOrdersTable_day', 'medicationOrdersTable_time', 'medicationOrdersTable_name', 'medicationOrdersTable_profession'
+      ],
       customGetters: {
         schedule: function (key, data) {
           let value = ''
@@ -147,7 +163,7 @@ export default class EhrSummaryHelpV2 {
       customGetters: {},
       filter: notCompleteFilter
     }
-    const NonMedCols = ['order', 'orderedBy', 'details', 'startDay', 'startTime', 'endDay', 'endTime', 'comment', 'status']
+    const NonMedCols = ['order', 'orderedBy', 'reason', 'status', 'comment', 'table_day', 'table_time', 'table_name', 'table_profession']
     defs[ESK_Procedures] = {
       pageKey: 'nonmedOrders',
       summaryTitle: et.procedures.title,
@@ -172,8 +188,8 @@ export default class EhrSummaryHelpV2 {
       pageKey: 'medAdminRec',
       summaryTitle: et.mar.title,
       description: et.mar.desc,
-      tableKey: 'table',
-      columnKeys: ['medication', 'day', 'route', 'actualTime'],
+      tableKey: 'marTable',
+      columnKeys: ['mo_medOrder', 'mar_status', 'mar_dose', 'mar_route', 'mar_event_day', 'mar_event_time', 'mar_comments'],
       customGetters: {
         medication: function (key, data) {
           const reducer = (accum, med) => accum + med.medication

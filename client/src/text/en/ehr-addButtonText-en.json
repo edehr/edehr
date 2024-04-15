@@ -66,5 +66,6 @@
   "vitals.table": "Add vital signs",
   "progressNotes.sbar": "Add a SBAR note",
   "medLabChemistry.tableQcChemistry": "Create a chemistry QC report",
-  "medLabPhoneLog.phLogTable": "Create a phone log"
+  "medLabPhoneLog.phLogTable": "Create a phone log",
+  "medicationOrders.medicationOrdersTable.medicationOrderAux": "Update Medication Order"
 }

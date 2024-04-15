@@ -1,8 +1,8 @@
 <template lang="pug">
   div
     zone-lms-page-banner(:title="activityTitle")
-      span {{ submitted ? pageText.submitted : pageText.openToEdit }} &nbsp;
-      ui-button(value="lsa-go-ehr", @buttonClicked="goToEhr") {{ appTypeGoToText }}
+      zone-lms-button(@action="downloadData", :icon='appIcons.download',
+        :title='ehrText.studentSaveActivity_Tip', :text='ehrText.studentSaveActivity_Title')
     zone-lms-instructions-header
       p {{ pageText.instructions }}
 
@@ -15,6 +15,11 @@
         div(class="details-value")
           div(v-text-to-html="studentInstructions")
       zone-lms-instructions-element {{ pageText.instructionsExplained }}
+      div(class="details-row")
+        div(class="details-name") Status
+        div(class="details-value")
+          div {{ submitted ? pageText.submitted : pageText.openToEdit }}
+          ui-button(value="lsa-go-ehr", @buttonClicked="goToEhr") {{ appTypeGoToText }}
       div(class="details-row")
         div(class="details-name") {{pageText.feedbackLabel}}
         div(class="details-value")
@@ -52,10 +57,14 @@ import FeatureHelper, { FF_UNLEASH_ACTIVITY } from '@/helpers/feature-helper'
 import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
 import ZoneLmsInstructionsElement from '@/outside/components/ZoneLmsInstructionsElement.vue'
 import { t18EhrText } from '@/helpers/ehr-t18'
-import { formatTimeStr } from '@/helpers/ehr-utils'
+import { downloadStudentActivityToFile, formatTimeStr } from '@/helpers/ehr-utils'
+import { APP_ICONS } from '@/helpers/app-icons'
+import store from '@/store'
+import ZoneLmsButton from '@/outside/components/ZoneLmsButton.vue'
 export default {
   extends: OutsideCommon,
   components: {
+    ZoneLmsButton,
     ZoneLmsInstructionsElement,
     ZoneLmsInstructionsHeader,
     ZoneLmsPageBanner,
@@ -68,6 +77,7 @@ export default {
     return {
       // text: Text.ACTIVITY_PAGE,
       textRoutes: Text.ROUTE_NAMES,
+      appIcons: APP_ICONS,
     }
   },
   computed: {
@@ -118,6 +128,15 @@ export default {
     visitId () { return this.activityRecord.visitId },
   },
   methods: {
+    async downloadData () {
+      let purpose = this.ehrText.studentSaveActivity_Tip
+      let id = this.activityRecord.activityDataId
+      await store.dispatch('activityDataStore/loadActivityData', { id: id, silent: true })
+      let ad = this.$store.getters['activityDataStore/activityData']
+      let visit = this.$store.getters['visit/visitData']
+      let user = this.$store.getters['userStore/user']
+      downloadStudentActivityToFile(this.activityRecord, ad, visit, user, purpose)
+    },
     async loadComponent () {
       const vFromRoute = this.$route.query.visitId
       const vFomStore = this.$store.getters['visit/visitId']

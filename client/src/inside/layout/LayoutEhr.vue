@@ -6,31 +6,40 @@
       ehr-context-banner
     main(:class="ehrOrLis")
       ehr-multi-patient-bar(class='ehr-multi-patient-bar')
+      div(v-if="!hasPatient", class="ehr-no-content")
+        div Search and select a patient.
       div(v-if="hasPatient")
+        // Once there is a patient open then prompt user to do the simulated sign on if they haven't.
         ui-not-signed-on
-        div(class="ehr-context flow_across")
-          div(class="pageTitle left_side") {{pageTitle}}
+        // patient banner area. Also displays current ehr page
+        div(class="ehr-banner-context flow_across")
+          div(class="pageTitle left_side_banner") {{pageTitle}}
           // banner with patient information
-          ehr-patient-banner(class="patient-banner right_side")
+          ehr-patient-banner(class="patient-banner right_side_banner")
           ui-button(value="lay-summary", class="banner-button", v-on:buttonClicked="openPatientSummary" )
             fas-icon(class='fa', icon='user-injured', title='patient summary')
 
-        div(class="ehr-main-content flow_across")
-          div(class="ehr_layout__nav left_side bigger-screens-900")
-            ehr-nav-panel
-          div(class="ehr_layout__content right_side")
-            div(class="smaller-than-900")
+        div(class="ehr-context flow_across")
+          div(v-if="smallerThan900Window")
+            div.smallLeftSide
               span(class="ehr-nav-menu")
                 span(class="ehr-nav-hamburger")
                   fas-icon(class="fa bars", icon="bars", @click="showingNavPanel = !showingNavPanel")
                 transition(name="hamburger-action")
                   ehr-nav-panel(v-if="showingNavPanel")
-            slot Main EHR content selected by the router
-          ehr-scratch-pad-dialog(ref='scratchPad')
-          ehr-eval-feedback-dialog(ref='feedbackDialog')
-      div(v-else, class="ehr-no-content")
-        div Search and select a patient.
+            div.smallRightSide
+              slot(name='default') Main EHR content selected by the router
+          div(v-else, class='ehr-large-screen')
+            div(:class="ehrNavCollapsed ? 'ehr-nav-collapsed' : 'ehr-nav-full'", class='ehr-main')
+              div(class='nav-side')
+                ui-button(v-on:buttonClicked="toggleCollapseNavPanel" )
+                  fas-icon(class='fa', :icon='ehrNavCollapsed ? "angle-right" : "angle-left" ', :title='ehrNavCollapsed ? "expand navigation" : "shrink navigation"')
+                ehr-nav-panel
+              div(class='content-side')
+                slot(name='default') Main EHR content selected by the router
     app-footer
+    ehr-scratch-pad-dialog(ref='scratchPad')
+    ehr-eval-feedback-dialog(ref='feedbackDialog')
 </template>
 
 <script>
@@ -70,14 +79,16 @@ export default {
     }
   },
   computed: {
-    pageTitle () { return StoreHelper.getPageTitle() },
+    ehrNavCollapsed () { return this.$store.getters['system/ehrNavCollapsed']},
     ehrOrLis () { return StoreHelper.isEHR_Showing() ? 'ehr-branding' : StoreHelper.isLIS_Showing() ? 'lis-branding' : ''},
-    pId () { return this.$store.getters['mPatientStore/currentPatientObjectId'] },
-    hasPatient () { return !! this.pId },
     evalDialogVisible () { return this.$store.getters['system/evalDialogVisible']},
-    scratchPadVisible () { return this.$store.getters['system/scratchPadVisible']},
-    userSettings () { return this.$store.getters['userStore/userSettings'] || {} },
+    hasPatient () { return !! this.pId },
     isCompact () { return this.userSettings.ehrLayout === 'compact' },
+    pageTitle () { return StoreHelper.getPageTitle() },
+    pId () { return this.$store.getters['mPatientStore/currentPatientObjectId'] },
+    scratchPadVisible () { return this.$store.getters['system/scratchPadVisible']},
+    smallerThan900Window () { return this.$store.getters['system/smallerThan900Window']},
+    userSettings () { return this.$store.getters['userStore/userSettings'] || {} },
   },
   methods: {
     openPatientSummary () {
@@ -85,7 +96,11 @@ export default {
       // const routeData = this.$router.resolve({name: 'patient-summary', query: {data: "someData"}});
       const routeData = this.$router.resolve({name: 'patient-summary'})
       window.open(routeData.href, '_blank')
-    }
+    },
+    toggleCollapseNavPanel () {
+      const value = this.ehrNavCollapsed
+      this.$store.dispatch('system/setEhrNavCollapsed', !value)
+    },
   },
   watch: {
     $route: function (curr, prev) {
@@ -133,20 +148,19 @@ main {
     padding: 0;
     margin: 0;
   }
-  .pageTitle {
-  }
   .pageTitle,
   .patient-banner {
     padding-bottom: 5px;
     padding-top: 5px;
+  }
+  .patient-banner {
+    padding-left: 5px;
   }
 }
 .ehr-no-content {
   height: 40rem;
   display: flex;
   position: relative;
-  //align-items: center;
-
   align-content: center;
   & div {
     font-size: 2rem;
@@ -156,35 +170,45 @@ main {
     //width: 40rem;
   }
 }
-.ehr-context {
+.ehr-banner-context {
   padding-left: $ehr-layout-padding-left;
-  padding-bottom: 5px;
+  padding-right: $ehr-layout-padding-left;
+  gap: 10px;
+}
+.left_side_banner { // page title
+  width: 15%;
+}
+.right_side_banner { //patient data
+  width: 100%; // set width to fill container to get nice wrapping
 }
 
-@media(device-width: 768px) and (device-height: 1024px){
-    ::-webkit-scrollbar {
-        -webkit-appearance: none;
-        width: 7px;
-    }
-    ::-webkit-scrollbar-thumb {
-        border-radius: 4px;
-        background-color: rgba(0,0,0,.5);
-        -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
-    }
-}
-.left_side {
-  width: 25%;
-}
-.right_side {
-  width: 75%;
-}
 @media screen and (max-width: $main-width-threshold3) {
   .flow_across {
     flex-direction: column;
   }
-  .left_side,
-  .right_side {
+  .left_side_banner,
+  .right_side_banner,
+  .left_side_content,
+  .right_side_content {
     width: 100%;
+  }
+}
+
+.ehr-main {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+.ehr-large-screen {
+  width: 100%;
+
+  .content-side {
+    flex: 1 1 auto;
+    width: 52%;
+
+    .nav-side {
+      flex: 0 1;
+    }
   }
 }
 
@@ -206,16 +230,28 @@ main {
 }
 
 /* COLOURS */
-.ehr-context {
+.content-side {
+  border-bottom: 1px solid $grey40;
+}
+.ehr-banner-context {
+  border-bottom: 1px solid black;
+}
+.nav-side,
+.ehr-banner-context {
   background-color: $grey22;
 }
+.ehr-context {
+  background-color: white;
+}
 .ehr-branding {
+  .ehr-banner-context,
   .ehr-context {
     border-left: 2px solid $colour-brand-ehr;
     border-right: 2px solid $colour-brand-ehr;
   }
 }
 .lis-branding {
+  .ehr-banner-context,
   .ehr-context {
     border-top: 2px solid $colour-brand-lis;
     border-left: 2px solid $colour-brand-lis;

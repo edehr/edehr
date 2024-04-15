@@ -20,6 +20,7 @@ export default {
   methods: {
     handleResize () {
       this.$store.commit('system/setSmallWindow', window.innerWidth <= 500 )
+      this.$store.commit('system/setSmallerThan900Window', window.innerWidth <= 900 )
     },
     showLanguageWarning () {
       this.$refs.theLanguageWarningDialog.showWarningDialog()
