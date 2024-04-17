@@ -67,5 +67,7 @@
   "progressNotes.sbar": "Add a SBAR note",
   "medLabChemistry.tableQcChemistry": "Create a chemistry QC report",
   "medLabPhoneLog.phLogTable": "Create a phone log",
-  "medicationOrders.medicationOrdersTable.medicationOrderAux": "Update Medication Order"
+  "medicationOrders.medicationOrdersTable.medicationOrderAux": "Update Medication Order",
+  "leveyJennings.tableLJ": "Add a Levey-Jennings Chart",
+  "medLabBody.tableLabBody": "Add a Bodily Fluid Report"
 }

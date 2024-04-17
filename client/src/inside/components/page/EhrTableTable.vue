@@ -40,8 +40,6 @@
             td(v-for="(cell, cIndex) in extractData(dRow)", :id="`${rIndex}-${cell.key}`", :key="cIndex", :class="tableCellCss(cell)")
               ehr-table-element(:cell="cell")
 </template>
-
-
 <script>
 import EhrTableCommon from './EhrTableCommon'
 import EhrTableElement from './EhrTableElement'

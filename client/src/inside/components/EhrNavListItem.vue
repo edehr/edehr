@@ -257,8 +257,6 @@ a:hover {
   font-weight: bold;
   background-color: white;
   width: 20rem;
-  border: 1px solid;
-  border-radius: 6px;
   padding: 5px 5px 5px 8px;
   /* Position the tooltip text - see examples below! */
   position: absolute;
@@ -279,8 +277,11 @@ a:hover {
   }
 
   .tooltip-aside .tooltiptext {
-    border-color: $colour-brand-ehr;
-    color: $colour-brand-ehr;
+    border: 1px solid $grey30;
+    border-radius: 6px;
+    background-color: $colour-brand-ehr;
+    color: white;
+    box-shadow: 3px 3px 5px 0 rgba(0,0,0,0.75);
   }
 }
 .lis-branding {

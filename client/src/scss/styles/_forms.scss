@@ -769,7 +769,7 @@ select, .select {
   .ehr-group-for {
     border: 1px solid $grey60;
     padding: 1px;
-    margin-bottom: 0;
+    margin: 0;
     min-height: inherit;
   }
 }
@@ -827,6 +827,20 @@ select, .select {
   }
 }
 
+.body-main-table {
+  grid-template-columns: 0.5fr 0.5fr 0.5fr;
+  .text-input {
+    width: 16rem;
+    max-width: 16rem;
+  }
+}
+.body-diff-table {
+  grid-template-columns: repeat(5, 1fr);
+  .text-input {
+    width: 11rem;
+    max-width: 11rem;
+  }
+}
 .med-lab-urin-micro {
   grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
   .select {

@@ -26913,6 +26913,1293 @@ const DEFS = {
         "hasRecHeader": true
       }
     }
+  },
+  "leveyJennings": {
+    "pageDataKey": "leveyJennings",
+    "pIndex": "53",
+    "hasGridTable": true,
+    "pageChildren": [
+      {
+        "elementKey": "tableLJ_name",
+        "formIndex": "1",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "leveyJennings.name"
+      },
+      {
+        "elementKey": "tableLJ_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "tableLJ_profession",
+        "formIndex": "1",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "leveyJennings.profession"
+      },
+      {
+        "elementKey": "tableLJ_day",
+        "formIndex": "1",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "leveyJennings.day"
+      },
+      {
+        "elementKey": "tableLJ_time",
+        "formIndex": "1",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "leveyJennings.time"
+      },
+      {
+        "elementKey": "ljAnalyte",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "2",
+        "fqn": "leveyJennings.ljAnalyte"
+      },
+      {
+        "elementKey": "ljUseControl",
+        "formIndex": "1",
+        "inputType": "checkbox",
+        "tableColumn": "3",
+        "fqn": "leveyJennings.ljUseControl"
+      },
+      {
+        "elementKey": "ljControl",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "4",
+        "fqn": "leveyJennings.ljControl"
+      },
+      {
+        "elementKey": "ljStdDev",
+        "formIndex": "1",
+        "inputType": "decimal2",
+        "tableColumn": "5",
+        "fqn": "leveyJennings.ljStdDev"
+      },
+      {
+        "elementKey": "ljValue1",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "6",
+        "fqn": "leveyJennings.ljValue1"
+      },
+      {
+        "elementKey": "ljValue2",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "7",
+        "fqn": "leveyJennings.ljValue2"
+      },
+      {
+        "elementKey": "ljValue3",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "8",
+        "fqn": "leveyJennings.ljValue3"
+      },
+      {
+        "elementKey": "ljValue4",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "9",
+        "fqn": "leveyJennings.ljValue4"
+      },
+      {
+        "elementKey": "ljValue5",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "10",
+        "fqn": "leveyJennings.ljValue5"
+      },
+      {
+        "elementKey": "ljValue6",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "11",
+        "fqn": "leveyJennings.ljValue6"
+      },
+      {
+        "elementKey": "ljValue7",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "12",
+        "fqn": "leveyJennings.ljValue7"
+      },
+      {
+        "elementKey": "ljValue8",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "13",
+        "fqn": "leveyJennings.ljValue8"
+      },
+      {
+        "elementKey": "ljValue9",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "14",
+        "fqn": "leveyJennings.ljValue9"
+      },
+      {
+        "elementKey": "ljValue10",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "15",
+        "fqn": "leveyJennings.ljValue10"
+      },
+      {
+        "elementKey": "ljValue11",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "16",
+        "fqn": "leveyJennings.ljValue11"
+      },
+      {
+        "elementKey": "ljValue12",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "17",
+        "fqn": "leveyJennings.ljValue12"
+      },
+      {
+        "elementKey": "ljValue13",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "18",
+        "fqn": "leveyJennings.ljValue13"
+      },
+      {
+        "elementKey": "ljValue14",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "19",
+        "fqn": "leveyJennings.ljValue14"
+      },
+      {
+        "elementKey": "ljValue15",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "20",
+        "fqn": "leveyJennings.ljValue15"
+      },
+      {
+        "elementKey": "ljValue16",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "21",
+        "fqn": "leveyJennings.ljValue16"
+      },
+      {
+        "elementKey": "ljValue17",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "22",
+        "fqn": "leveyJennings.ljValue17"
+      },
+      {
+        "elementKey": "ljValue18",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "23",
+        "fqn": "leveyJennings.ljValue18"
+      },
+      {
+        "elementKey": "ljValue19",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "24",
+        "fqn": "leveyJennings.ljValue19"
+      },
+      {
+        "elementKey": "ljValue20",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "25",
+        "fqn": "leveyJennings.ljValue20"
+      },
+      {
+        "elementKey": "ljValue21",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "26",
+        "fqn": "leveyJennings.ljValue21"
+      },
+      {
+        "elementKey": "ljValue22",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "27",
+        "fqn": "leveyJennings.ljValue22"
+      },
+      {
+        "elementKey": "ljValue23",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "28",
+        "fqn": "leveyJennings.ljValue23"
+      },
+      {
+        "elementKey": "ljValue24",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "29",
+        "fqn": "leveyJennings.ljValue24"
+      },
+      {
+        "elementKey": "ljValue25",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "30",
+        "fqn": "leveyJennings.ljValue25"
+      },
+      {
+        "elementKey": "ljValue26",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "31",
+        "fqn": "leveyJennings.ljValue26"
+      },
+      {
+        "elementKey": "ljValue27",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "32",
+        "fqn": "leveyJennings.ljValue27"
+      },
+      {
+        "elementKey": "ljValue28",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "33",
+        "fqn": "leveyJennings.ljValue28"
+      },
+      {
+        "elementKey": "ljValue29",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "34",
+        "fqn": "leveyJennings.ljValue29"
+      },
+      {
+        "elementKey": "ljValue30",
+        "formIndex": "1",
+        "inputType": "number",
+        "tableColumn": "35",
+        "fqn": "leveyJennings.ljValue30"
+      },
+      {
+        "elementKey": "ljcomments",
+        "formIndex": "1",
+        "formCss": "grid-span-3-columns",
+        "inputType": "textarea",
+        "tableColumn": "36",
+        "fqn": "leveyJennings.ljcomments"
+      }
+    ],
+    "pageElements": {
+      "tableLJ": {
+        "elementKey": "tableLJ",
+        "pageElementIndex": "1",
+        "pageKey": "leveyJennings",
+        "tableKey": "tableLJ",
+        "isTable": true,
+        "form": {
+          "elementKey": "tableLJ",
+          "label": "Levey-Jennings",
+          "addButtonText": "Add a Levey-Jennings Chart",
+          "formOption": "openToEdit",
+          "formKey": "tableLJ",
+          "ehr_groups": [
+            {
+              "elementKey": "hdrGroup",
+              "formCss": "record-header",
+              "fqn": "leveyJennings.hdrGroup",
+              "gIndex": "1",
+              "gChildren": [
+                "tableLJ_name",
+                "tableLJ_profession",
+                "tableLJ_day",
+                "tableLJ_time"
+              ]
+            },
+            {
+              "elementKey": "ljGroup1",
+              "formCss": "grid-left-to-right-3",
+              "fqn": "leveyJennings.ljGroup1",
+              "gIndex": "2",
+              "gChildren": [
+                "ljAnalyte",
+                "ljUseControl",
+                "ljControl",
+                "ljStdDev",
+                "ljValue1",
+                "ljValue2",
+                "ljValue3",
+                "ljValue4",
+                "ljValue5",
+                "ljValue6",
+                "ljValue7",
+                "ljValue8",
+                "ljValue9",
+                "ljValue10",
+                "ljValue11",
+                "ljValue12",
+                "ljValue13",
+                "ljValue14",
+                "ljValue15",
+                "ljValue16",
+                "ljValue17",
+                "ljValue18",
+                "ljValue19",
+                "ljValue20",
+                "ljValue21",
+                "ljValue22",
+                "ljValue23",
+                "ljValue24",
+                "ljValue25",
+                "ljValue26",
+                "ljValue27",
+                "ljValue28",
+                "ljValue29",
+                "ljValue30",
+                "ljcomments"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "tableLJ_name": "",
+            "tableLJ_profession": "",
+            "tableLJ_day": "",
+            "tableLJ_time": "",
+            "ljAnalyte": "",
+            "ljUseControl": "",
+            "ljControl": "",
+            "ljStdDev": "",
+            "ljValue1": "",
+            "ljValue2": "",
+            "ljValue3": "",
+            "ljValue4": "",
+            "ljValue5": "",
+            "ljValue6": "",
+            "ljValue7": "",
+            "ljValue8": "",
+            "ljValue9": "",
+            "ljValue10": "",
+            "ljValue11": "",
+            "ljValue12": "",
+            "ljValue13": "",
+            "ljValue14": "",
+            "ljValue15": "",
+            "ljValue16": "",
+            "ljValue17": "",
+            "ljValue18": "",
+            "ljValue19": "",
+            "ljValue20": "",
+            "ljValue21": "",
+            "ljValue22": "",
+            "ljValue23": "",
+            "ljValue24": "",
+            "ljValue25": "",
+            "ljValue26": "",
+            "ljValue27": "",
+            "ljValue28": "",
+            "ljValue29": "",
+            "ljValue30": "",
+            "ljcomments": ""
+          }
+        },
+        "fqn": "leveyJennings.tableLJ",
+        "tableChildren": [
+          "tableLJ_id",
+          "tableLJ_day",
+          "tableLJ_time",
+          "ljAnalyte",
+          "ljUseControl",
+          "ljControl",
+          "ljStdDev",
+          "ljValue1",
+          "ljValue2",
+          "ljValue3",
+          "ljValue4",
+          "ljValue5",
+          "ljValue6",
+          "ljValue7",
+          "ljValue8",
+          "ljValue9",
+          "ljValue10",
+          "ljValue11",
+          "ljValue12",
+          "ljValue13",
+          "ljValue14",
+          "ljValue15",
+          "ljValue16",
+          "ljValue17",
+          "ljValue18",
+          "ljValue19",
+          "ljValue20",
+          "ljValue21",
+          "ljValue22",
+          "ljValue23",
+          "ljValue24",
+          "ljValue25",
+          "ljValue26",
+          "ljValue27",
+          "ljValue28",
+          "ljValue29",
+          "ljValue30",
+          "ljcomments",
+          "tableLJ_name",
+          "tableLJ_profession"
+        ],
+        "hasRecHeader": true
+      }
+    }
+  },
+  "medLabBody": {
+    "pageDataKey": "medLabBody",
+    "pIndex": "54",
+    "hasGridTable": true,
+    "pageChildren": [
+      {
+        "elementKey": "tableLabBody_name",
+        "formIndex": "1",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "medLabBody.name"
+      },
+      {
+        "elementKey": "tableLabBody_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "tableLabBody_profession",
+        "formIndex": "1",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "medLabBody.profession"
+      },
+      {
+        "elementKey": "tableLabBody_day",
+        "formIndex": "1",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "medLabBody.day"
+      },
+      {
+        "elementKey": "tableLabBody_time",
+        "formIndex": "1",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "medLabBody.time"
+      },
+      {
+        "elementKey": "bdyAccession",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "2",
+        "fqn": "medLabBody.bdyAccession"
+      },
+      {
+        "elementKey": "bdyCollDay",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "3",
+        "fqn": "medLabBody.bdyCollDay"
+      },
+      {
+        "elementKey": "bdyCollTime",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "4",
+        "fqn": "medLabBody.bdyCollTime"
+      },
+      {
+        "elementKey": "bdyOrderPhys",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "5",
+        "fqn": "medLabBody.bdyOrderPhys"
+      },
+      {
+        "elementKey": "bdyLabel1",
+        "formIndex": "1",
+        "inputType": "formTableHeader",
+        "fqn": "medLabBody.bdyLabel1"
+      },
+      {
+        "elementKey": "bdyLabel2",
+        "formIndex": "1",
+        "inputType": "formTableHeader",
+        "fqn": "medLabBody.bdyLabel2"
+      },
+      {
+        "elementKey": "bdyLabel3",
+        "formIndex": "1",
+        "inputType": "formTableHeader",
+        "fqn": "medLabBody.bdyLabel3"
+      },
+      {
+        "elementKey": "bdyWBCLabel",
+        "formIndex": "1",
+        "inputType": "form_label",
+        "fqn": "medLabBody.bdyWBCLabel"
+      },
+      {
+        "elementKey": "bdyWBC",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "10^6/L",
+        "tableColumn": "6",
+        "fqn": "medLabBody.bdyWBC",
+        "suffixText": "10^6/L"
+      },
+      {
+        "elementKey": "bdyWBCRefInt",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "7",
+        "fqn": "medLabBody.bdyWBCRefInt"
+      },
+      {
+        "elementKey": "bdyRBCLabel",
+        "formIndex": "1",
+        "inputType": "form_label",
+        "fqn": "medLabBody.bdyRBCLabel"
+      },
+      {
+        "elementKey": "bdyRBC",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "10^6/L",
+        "tableColumn": "8",
+        "fqn": "medLabBody.bdyRBC",
+        "suffixText": "10^6/L"
+      },
+      {
+        "elementKey": "bdyRBCRefInt",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "9",
+        "fqn": "medLabBody.bdyRBCRefInt"
+      },
+      {
+        "elementKey": "bdyType",
+        "formIndex": "1",
+        "formCss": "grid-span-3-columns",
+        "inputType": "checkset",
+        "options": [
+          {
+            "key": "blood",
+            "text": "Blood"
+          },
+          {
+            "key": "csfl",
+            "text": "Cerebrospinal Fluid (CSF)"
+          },
+          {
+            "key": "syno",
+            "text": "Synovial Fluid"
+          },
+          {
+            "key": "pleu",
+            "text": "Pleural Fluid"
+          },
+          {
+            "key": "periton",
+            "text": "Peritoneal Fluid"
+          },
+          {
+            "key": "pericar",
+            "text": "Pericardial Fluid"
+          },
+          {
+            "key": "sptm",
+            "text": "Sputum"
+          },
+          {
+            "key": "stool",
+            "text": "Stool"
+          },
+          {
+            "key": "smen",
+            "text": "Semen"
+          },
+          {
+            "key": "vag",
+            "text": "Vaginal Fluid"
+          },
+          {
+            "key": "amniotic",
+            "text": "Amniotic Fluid"
+          },
+          {
+            "key": "nswb",
+            "text": "Nasal Swabs"
+          },
+          {
+            "key": "tswb",
+            "text": "Throat Swabs"
+          },
+          {
+            "key": "wswb",
+            "text": "Wound Swabs"
+          },
+          {
+            "key": "tears",
+            "text": "Tears"
+          },
+          {
+            "key": "saliva",
+            "text": "Saliva"
+          },
+          {
+            "key": "eswb",
+            "text": "Ear Swabs"
+          },
+          {
+            "key": "rcsw",
+            "text": "Rectal Swabs"
+          },
+          {
+            "key": "edisc",
+            "text": "Eye Discharge"
+          },
+          {
+            "key": "wdext",
+            "text": "Wound Exudate"
+          },
+          {
+            "key": "ascfl",
+            "text": "Ascitic Fluid"
+          },
+          {
+            "key": "dialy",
+            "text": "Dialysis Fluid"
+          },
+          {
+            "key": "organ",
+            "text": "Fluids from Organ Drainage"
+          },
+          {
+            "key": "cvswb",
+            "text": "Cervical/Vaginal Swabs"
+          },
+          {
+            "key": "npdsc",
+            "text": "Nipple Discharge"
+          },
+          {
+            "key": "saspi",
+            "text": "Salivary Gland Aspirate"
+          }
+        ],
+        "tableColumn": "10",
+        "fqn": "medLabBody.bdyType"
+      },
+      {
+        "elementKey": "bdyColour",
+        "formIndex": "1",
+        "inputType": "checkset",
+        "options": [
+          {
+            "key": "clrless",
+            "text": "Colorless"
+          },
+          {
+            "key": "red",
+            "text": "Red"
+          },
+          {
+            "key": "xanth",
+            "text": "Xanthochromic"
+          },
+          {
+            "key": "sxanth",
+            "text": "Slightly Xanthochromic"
+          }
+        ],
+        "tableColumn": "11",
+        "fqn": "medLabBody.bdyColour"
+      },
+      {
+        "elementKey": "bdyClarity",
+        "formIndex": "1",
+        "inputType": "checkset",
+        "options": [
+          {
+            "key": "clear",
+            "text": "Clear"
+          },
+          {
+            "key": "hazy",
+            "text": "Hazy"
+          },
+          {
+            "key": "cloudy",
+            "text": "Cloudy"
+          },
+          {
+            "key": "turbid",
+            "text": "Turbid"
+          },
+          {
+            "key": "bloody",
+            "text": "Bloody"
+          }
+        ],
+        "tableColumn": "12",
+        "fqn": "medLabBody.bdyClarity"
+      },
+      {
+        "elementKey": "bdyVolume",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "mL",
+        "tableColumn": "13",
+        "fqn": "medLabBody.bdyVolume",
+        "suffixText": "mL"
+      },
+      {
+        "elementKey": "bdyLabel5",
+        "formIndex": "1",
+        "inputType": "formTableHeader",
+        "fqn": "medLabBody.bdyLabel5"
+      },
+      {
+        "elementKey": "bdyLabel6",
+        "formIndex": "1",
+        "inputType": "formTableHeader",
+        "fqn": "medLabBody.bdyLabel6"
+      },
+      {
+        "elementKey": "bdyLabel7",
+        "formIndex": "1",
+        "inputType": "formTableHeader",
+        "fqn": "medLabBody.bdyLabel7"
+      },
+      {
+        "elementKey": "bdyLabel8",
+        "formIndex": "1",
+        "inputType": "formTableHeader",
+        "fqn": "medLabBody.bdyLabel8"
+      },
+      {
+        "elementKey": "bdyLabel9",
+        "formIndex": "1",
+        "inputType": "formTableHeader",
+        "fqn": "medLabBody.bdyLabel9"
+      },
+      {
+        "elementKey": "bdyLabel10",
+        "formIndex": "1",
+        "inputType": "formTableText",
+        "fqn": "medLabBody.bdyLabel10"
+      },
+      {
+        "elementKey": "bdyNeutrophilsrel",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "%",
+        "tableColumn": "14",
+        "fqn": "medLabBody.bdyNeutrophilsrel",
+        "suffixText": "%"
+      },
+      {
+        "elementKey": "bdyNeutrophilsabs",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "10^6/L",
+        "tableColumn": "15",
+        "fqn": "medLabBody.bdyNeutrophilsabs",
+        "suffixText": "10^6/L"
+      },
+      {
+        "elementKey": "bdyNeutrophilsrelref",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "%",
+        "tableColumn": "16",
+        "fqn": "medLabBody.bdyNeutrophilsrelref",
+        "suffixText": "%"
+      },
+      {
+        "elementKey": "bdyNeutrophilsabsref",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "10^6/L",
+        "tableColumn": "17",
+        "fqn": "medLabBody.bdyNeutrophilsabsref",
+        "suffixText": "10^6/L"
+      },
+      {
+        "elementKey": "bdyLabel11",
+        "formIndex": "1",
+        "inputType": "formTableText",
+        "fqn": "medLabBody.bdyLabel11"
+      },
+      {
+        "elementKey": "bdyLymphocytesrel",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "%",
+        "tableColumn": "18",
+        "fqn": "medLabBody.bdyLymphocytesrel",
+        "suffixText": "%"
+      },
+      {
+        "elementKey": "bdyLymphocytesabs",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "10^6/L",
+        "tableColumn": "19",
+        "fqn": "medLabBody.bdyLymphocytesabs",
+        "suffixText": "10^6/L"
+      },
+      {
+        "elementKey": "bdyLymphocytesrelref",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "%",
+        "tableColumn": "20",
+        "fqn": "medLabBody.bdyLymphocytesrelref",
+        "suffixText": "%"
+      },
+      {
+        "elementKey": "bdyLymphocytesabsref",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "10^6/L",
+        "tableColumn": "21",
+        "fqn": "medLabBody.bdyLymphocytesabsref",
+        "suffixText": "10^6/L"
+      },
+      {
+        "elementKey": "bdyLabel12",
+        "formIndex": "1",
+        "inputType": "formTableText",
+        "fqn": "medLabBody.bdyLabel12"
+      },
+      {
+        "elementKey": "bdyMonocytesrel",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "%",
+        "tableColumn": "22",
+        "fqn": "medLabBody.bdyMonocytesrel",
+        "suffixText": "%"
+      },
+      {
+        "elementKey": "bdyMonocytesabs",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "10^6/L",
+        "tableColumn": "23",
+        "fqn": "medLabBody.bdyMonocytesabs",
+        "suffixText": "10^6/L"
+      },
+      {
+        "elementKey": "bdyMonocytesrelref",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "%",
+        "tableColumn": "24",
+        "fqn": "medLabBody.bdyMonocytesrelref",
+        "suffixText": "%"
+      },
+      {
+        "elementKey": "bdyMonocytesabsref",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "10^6/L",
+        "tableColumn": "25",
+        "fqn": "medLabBody.bdyMonocytesabsref",
+        "suffixText": "10^6/L"
+      },
+      {
+        "elementKey": "bdyLabel13",
+        "formIndex": "1",
+        "inputType": "formTableText",
+        "fqn": "medLabBody.bdyLabel13"
+      },
+      {
+        "elementKey": "bdyMacrophagerel",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "%",
+        "tableColumn": "26",
+        "fqn": "medLabBody.bdyMacrophagerel",
+        "suffixText": "%"
+      },
+      {
+        "elementKey": "bdyMacrophageabs",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "10^6/L",
+        "tableColumn": "27",
+        "fqn": "medLabBody.bdyMacrophageabs",
+        "suffixText": "10^6/L"
+      },
+      {
+        "elementKey": "bdyMacrophagerelref",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "%",
+        "tableColumn": "28",
+        "fqn": "medLabBody.bdyMacrophagerelref",
+        "suffixText": "%"
+      },
+      {
+        "elementKey": "bdyMacrophageabsref",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "10^6/L",
+        "tableColumn": "29",
+        "fqn": "medLabBody.bdyMacrophageabsref",
+        "suffixText": "10^6/L"
+      },
+      {
+        "elementKey": "bdyOther1label",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "30",
+        "fqn": "medLabBody.bdyOther1label"
+      },
+      {
+        "elementKey": "bdyOther1rel",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "%",
+        "tableColumn": "31",
+        "fqn": "medLabBody.bdyOther1rel",
+        "suffixText": "%"
+      },
+      {
+        "elementKey": "bdyOther1abs",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "10^6/L",
+        "tableColumn": "32",
+        "fqn": "medLabBody.bdyOther1abs",
+        "suffixText": "10^6/L"
+      },
+      {
+        "elementKey": "bdyOther1relref",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "%",
+        "tableColumn": "33",
+        "fqn": "medLabBody.bdyOther1relref",
+        "suffixText": "%"
+      },
+      {
+        "elementKey": "bdyOther1absref",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "10^6/L",
+        "tableColumn": "34",
+        "fqn": "medLabBody.bdyOther1absref",
+        "suffixText": "10^6/L"
+      },
+      {
+        "elementKey": "bdyOther2label",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "35",
+        "fqn": "medLabBody.bdyOther2label"
+      },
+      {
+        "elementKey": "bdyOther2rel",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "%",
+        "tableColumn": "36",
+        "fqn": "medLabBody.bdyOther2rel",
+        "suffixText": "%"
+      },
+      {
+        "elementKey": "bdyOther2abs",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "10^6/L",
+        "tableColumn": "37",
+        "fqn": "medLabBody.bdyOther2abs",
+        "suffixText": "10^6/L"
+      },
+      {
+        "elementKey": "bdyOther2relref",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "%",
+        "tableColumn": "38",
+        "fqn": "medLabBody.bdyOther2relref",
+        "suffixText": "%"
+      },
+      {
+        "elementKey": "bdyOther2absref",
+        "formIndex": "1",
+        "inputType": "text",
+        "suffix": "10^6/L",
+        "tableColumn": "39",
+        "fqn": "medLabBody.bdyOther2absref",
+        "suffixText": "10^6/L"
+      },
+      {
+        "elementKey": "bdyComments",
+        "formIndex": "1",
+        "inputType": "textarea",
+        "tableColumn": "40",
+        "fqn": "medLabBody.bdyComments"
+      },
+      {
+        "elementKey": "bdyInternal",
+        "formIndex": "1",
+        "inputType": "textarea",
+        "tableColumn": "41",
+        "fqn": "medLabBody.bdyInternal"
+      }
+    ],
+    "pageElements": {
+      "tableLabBody": {
+        "elementKey": "tableLabBody",
+        "pageElementIndex": "1",
+        "pageKey": "medLabBody",
+        "tableKey": "tableLabBody",
+        "isTable": true,
+        "form": {
+          "elementKey": "tableLabBody",
+          "label": "Body Fluids",
+          "addButtonText": "Add a Bodily Fluid Report",
+          "formKey": "tableLabBody",
+          "ehr_groups": [
+            {
+              "elementKey": "hdrGroup",
+              "formCss": "record-header",
+              "fqn": "medLabBody.hdrGroup",
+              "gIndex": "1",
+              "gChildren": [
+                "tableLabBody_name",
+                "tableLabBody_profession",
+                "tableLabBody_day",
+                "tableLabBody_time"
+              ]
+            },
+            {
+              "elementKey": "bdyGroup1",
+              "formCss": "grid-left-to-right-4",
+              "fqn": "medLabBody.bdyGroup1",
+              "gIndex": "2",
+              "gChildren": [
+                "bdyAccession",
+                "bdyCollDay",
+                "bdyCollTime",
+                "bdyOrderPhys"
+              ]
+            },
+            {
+              "elementKey": "bdyGroup2",
+              "formCss": "body-main-table form-table-group",
+              "fqn": "medLabBody.bdyGroup2",
+              "gIndex": "3",
+              "gChildren": [
+                "bdyLabel1",
+                "bdyLabel2",
+                "bdyLabel3",
+                "bdyWBCLabel",
+                "bdyWBC",
+                "bdyWBCRefInt",
+                "bdyRBCLabel",
+                "bdyRBC",
+                "bdyRBCRefInt"
+              ]
+            },
+            {
+              "elementKey": "bdyGroup3",
+              "formCss": "grid-left-to-right-3",
+              "fqn": "medLabBody.bdyGroup3",
+              "gIndex": "4",
+              "gChildren": [
+                "bdyType",
+                "bdyColour",
+                "bdyClarity",
+                "bdyVolume"
+              ]
+            },
+            {
+              "elementKey": "bdyGroup4",
+              "formCss": "body-diff-table form-table-group",
+              "fqn": "medLabBody.bdyGroup4",
+              "gIndex": "5",
+              "gChildren": [
+                "bdyLabel5",
+                "bdyLabel6",
+                "bdyLabel7",
+                "bdyLabel8",
+                "bdyLabel9",
+                "bdyLabel10",
+                "bdyNeutrophilsrel",
+                "bdyNeutrophilsabs",
+                "bdyNeutrophilsrelref",
+                "bdyNeutrophilsabsref",
+                "bdyLabel11",
+                "bdyLymphocytesrel",
+                "bdyLymphocytesabs",
+                "bdyLymphocytesrelref",
+                "bdyLymphocytesabsref",
+                "bdyLabel12",
+                "bdyMonocytesrel",
+                "bdyMonocytesabs",
+                "bdyMonocytesrelref",
+                "bdyMonocytesabsref",
+                "bdyLabel13",
+                "bdyMacrophagerel",
+                "bdyMacrophageabs",
+                "bdyMacrophagerelref",
+                "bdyMacrophageabsref",
+                "bdyOther1label",
+                "bdyOther1rel",
+                "bdyOther1abs",
+                "bdyOther1relref",
+                "bdyOther1absref",
+                "bdyOther2label",
+                "bdyOther2rel",
+                "bdyOther2abs",
+                "bdyOther2relref",
+                "bdyOther2absref"
+              ]
+            },
+            {
+              "elementKey": "bdyGroup5",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "medLabBody.bdyGroup5",
+              "gIndex": "6",
+              "gChildren": [
+                "bdyComments",
+                "bdyInternal"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "tableLabBody_name": "",
+            "tableLabBody_profession": "",
+            "tableLabBody_day": "",
+            "tableLabBody_time": "",
+            "bdyAccession": "",
+            "bdyCollDay": "",
+            "bdyCollTime": "",
+            "bdyOrderPhys": "",
+            "bdyWBC": "",
+            "bdyWBCRefInt": "",
+            "bdyRBC": "",
+            "bdyRBCRefInt": "",
+            "bdyType": "",
+            "bdyColour": "",
+            "bdyClarity": "",
+            "bdyVolume": "",
+            "bdyNeutrophilsrel": "",
+            "bdyNeutrophilsabs": "",
+            "bdyNeutrophilsrelref": "",
+            "bdyNeutrophilsabsref": "",
+            "bdyLymphocytesrel": "",
+            "bdyLymphocytesabs": "",
+            "bdyLymphocytesrelref": "",
+            "bdyLymphocytesabsref": "",
+            "bdyMonocytesrel": "",
+            "bdyMonocytesabs": "",
+            "bdyMonocytesrelref": "",
+            "bdyMonocytesabsref": "",
+            "bdyMacrophagerel": "",
+            "bdyMacrophageabs": "",
+            "bdyMacrophagerelref": "",
+            "bdyMacrophageabsref": "",
+            "bdyOther1label": "",
+            "bdyOther1rel": "",
+            "bdyOther1abs": "",
+            "bdyOther1relref": "",
+            "bdyOther1absref": "",
+            "bdyOther2label": "",
+            "bdyOther2rel": "",
+            "bdyOther2abs": "",
+            "bdyOther2relref": "",
+            "bdyOther2absref": "",
+            "bdyComments": "",
+            "bdyInternal": ""
+          }
+        },
+        "fqn": "medLabBody.tableLabBody",
+        "tableChildren": [
+          "tableLabBody_id",
+          "tableLabBody_day",
+          "tableLabBody_time",
+          "bdyAccession",
+          "bdyCollDay",
+          "bdyCollTime",
+          "bdyOrderPhys",
+          "bdyWBC",
+          "bdyWBCRefInt",
+          "bdyRBC",
+          "bdyRBCRefInt",
+          "bdyType",
+          "bdyColour",
+          "bdyClarity",
+          "bdyVolume",
+          "bdyNeutrophilsrel",
+          "bdyNeutrophilsabs",
+          "bdyNeutrophilsrelref",
+          "bdyNeutrophilsabsref",
+          "bdyLymphocytesrel",
+          "bdyLymphocytesabs",
+          "bdyLymphocytesrelref",
+          "bdyLymphocytesabsref",
+          "bdyMonocytesrel",
+          "bdyMonocytesabs",
+          "bdyMonocytesrelref",
+          "bdyMonocytesabsref",
+          "bdyMacrophagerel",
+          "bdyMacrophageabs",
+          "bdyMacrophagerelref",
+          "bdyMacrophageabsref",
+          "bdyOther1label",
+          "bdyOther1rel",
+          "bdyOther1abs",
+          "bdyOther1relref",
+          "bdyOther1absref",
+          "bdyOther2label",
+          "bdyOther2rel",
+          "bdyOther2abs",
+          "bdyOther2relref",
+          "bdyOther2absref",
+          "bdyComments",
+          "bdyInternal",
+          "tableLabBody_name",
+          "tableLabBody_profession"
+        ],
+        "hasRecHeader": true
+      }
+    }
   }
 }
 export default DEFS
