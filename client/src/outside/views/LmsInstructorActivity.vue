@@ -14,11 +14,15 @@
         class='flow_across_last_item'
       )
     zone-lms-instructions-header
-      p This page shows you an EdEHR Activity. These are automatically created, by the EdEHR, when any user activates an activity in their learning management system (LMS) that is set to connect to the EdEHR.
-      p Your LMS controls who can access and what they can access and what role they have, when visiting the EdEHR.
-      p When students click the LMS Activity they will be taken directly to the charting application and they will see the case study.  When instructors click the LMS Activity they are brought to this page.
-      p Each EdEHR Activity needs to be connected to EdEHR content, called a {{text.LOBJ}}, to get the activity name, instructions and case study (optional).
-      p(v-if='isUnleashedActivityEnabled')
+      p This page shows your current EdEHR Activity.  It is called "your Activity Landing Page".
+      p The EdEHR automatically creates one Activity to match the activity in your learning management system (LMS).
+      p Your LMS controls who can access and what courses and what activities so your LMS is controlling who sees this EdEHR Activity and what role (student, instructor) they will have..
+      p When students click the LMS Activity they will be taken directly to the EHR/LIS charting application and they will see the case study.  When instructors click the LMS Activity they are brought to this Activity Landing Page.
+      p Each EdEHR Activity is EdEHR content, called a {{text.LOBJ}}, to get the activity name, instructions and the (optional) case study.
+      p
+        span.
+          TIP.  As an instructor you can edit the Student Instructions via the {{text.LOBJ}} Landing Page.  Click the {{text.LOBJ}} link to see this page.
+      p
         span.
           The first instructor that activates the LMS activity also selects the initial {{text.LOBJ}} for this EdEHR activity.
           Instructor can change this content by using the gear icon &nbsp;
