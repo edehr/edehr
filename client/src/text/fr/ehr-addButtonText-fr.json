@@ -67,5 +67,7 @@
   "progressNotes.sbar": "Ajouter une note SBAR",
   "medLabChemistry.tableQcChemistry": "Créer un rapport de contrôle qualité chimique",
   "medLabPhoneLog.phLogTable": "Créer un journal téléphonique",
-  "medicationOrders.medicationOrdersTable.medicationOrderAux": "Mettre à jour la commande de médicaments"
+  "medicationOrders.medicationOrdersTable.medicationOrderAux": "Mettre à jour la commande de médicaments",
+  "leveyJennings.tableLJ": "Ajouter un graphique de Levey-Jennings",
+  "medLabBody.tableLabBody": "Ajouter un rapport sur les fluides corporels"
 }

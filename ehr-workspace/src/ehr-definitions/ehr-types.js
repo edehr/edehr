@@ -48,6 +48,8 @@ const EhrTypes = {
     // time: 'time',
     lookahead: 'lookahead',
     number: 'number',
+    decimal1: 'decimal1',
+    decimal2: 'decimal2',
     visitDay: 'visitDay',
     visitTime: 'visitTime'
   },

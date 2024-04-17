@@ -1628,6 +1628,64 @@
           "zone": "ehr"
         },
         "children": []
+      },
+      {
+        "name": "levey-jennings",
+        "isLIS": true,
+        "isEHR": false,
+        "label": "Levey-Jennings",
+        "pageDataKey": "leveyJennings",
+        "fqn": "leveyJennings",
+        "routeName": "levey-jennings",
+        "topLevel": "med-lab",
+        "def": {
+          "path": "/ehr/med-lab",
+          "routeName": "levey-jennings",
+          "pageDataKey": "leveyJennings",
+          "label": "Levey-Jennings",
+          "generateComponent": "custom",
+          "menuIndex": "60",
+          "lis": "yes",
+          "componentName": "LeveyJennings",
+          "dataName": "leveyJennings",
+          "fullPath": "/ehr/med-lab/levey-jennings",
+          "title": "Levey Jennings",
+          "redirectEhr": "",
+          "redirectLis": "",
+          "topLevel": "med-lab",
+          "componentPath": "./inside/custom",
+          "zone": "ehr"
+        },
+        "children": []
+      },
+      {
+        "name": "med-lab-body",
+        "isLIS": true,
+        "isEHR": false,
+        "label": "Body Fluids",
+        "pageDataKey": "medLabBody",
+        "fqn": "medLabBody",
+        "routeName": "med-lab-body",
+        "topLevel": "med-lab",
+        "def": {
+          "path": "/ehr/med-lab",
+          "routeName": "med-lab-body",
+          "pageDataKey": "medLabBody",
+          "label": "Body Fluids",
+          "generateComponent": "yes",
+          "menuIndex": "61",
+          "lis": "yes",
+          "componentName": "MedLabBody",
+          "dataName": "medLabBody",
+          "fullPath": "/ehr/med-lab/med-lab-body",
+          "title": "Med Lab Body",
+          "redirectEhr": "",
+          "redirectLis": "",
+          "topLevel": "med-lab",
+          "componentPath": "./inside/views",
+          "zone": "ehr"
+        },
+        "children": []
       }
     ]
   }

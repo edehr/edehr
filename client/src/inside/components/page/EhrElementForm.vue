@@ -92,6 +92,12 @@
       div(v-if="viewOnly") {{ inputVal }}
       span(class="suffix") {{suffix }}
 
+    div(v-else-if="isType('decimal2')", class="text_input_wrapper", :class='formCss')
+      ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
+      input(v-if="!viewOnly", class="input numb-input", type="number", step="0.01", :disabled="disabled", :name="elementKey", v-model="inputVal")
+      div(v-if="viewOnly") {{ inputVal }}
+      span(class="suffix") {{suffix }}
+
     div(v-else-if="isType('practitionerName')", class="care_provider_wrapper")
       // name and profession are read only even if editing because they are part of the record header
       div {{ inputVal }}

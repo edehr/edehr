@@ -392,6 +392,20 @@ export function inside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/MedLabPhoneLog.vue'),
       meta: { layout: 'inside', label: 'Phone Log', topLevel: 'med-lab', zone: 'ehr' }
+    },
+    {
+      path: '/ehr/med-lab/levey-jennings',
+      name: 'levey-jennings',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/LeveyJennings.vue'),
+      meta: { layout: 'inside', label: 'Levey-Jennings', topLevel: 'med-lab', zone: 'ehr' }
+    },
+    {
+      path: '/ehr/med-lab/med-lab-body',
+      name: 'med-lab-body',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/MedLabBody.vue'),
+      meta: { layout: 'inside', label: 'Body Fluids', topLevel: 'med-lab', zone: 'ehr' }
     }
   ]
 }
