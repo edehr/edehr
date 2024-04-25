@@ -59,7 +59,7 @@ export default {
     EhrPageFormLabel,
     UiInfo
   },
-  inject: ['pageDataKey', 'isPageElement', 'isTableElement', 'tableKey', 'formKey', 'isEmbedded'],
+  inject: ['pageDataKey', 'isPageElement', 'isTableElement', 'formKey', 'isEmbedded'],
   data: function () {
     return {
       dialogIsOpen: false,
@@ -72,6 +72,7 @@ export default {
   props: {
     elementKey: { type: String },
     ehrHelp: { type: Object },
+    tableKey: { type: String, required: true},
     viewOnly: { type: Boolean, default: false }
   },
   computed: {

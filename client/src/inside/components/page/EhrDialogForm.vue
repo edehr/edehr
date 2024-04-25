@@ -16,7 +16,9 @@
       h3(slot="header") {{ formLabel }}
       div(slot="body", class='ehr-dialog-form')
         div(id="ehrDialogForm")
-          ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp", :viewOnly='isViewOnly')
+          ehr-group(v-for="group in groups", :key="group.gIndex",
+            :tableKey="tableKey",
+            :group="group", :ehrHelp="ehrHelp", :viewOnly='isViewOnly')
         ui-spinner-small(refId='ehrDialogForm', :loading="isClosing")
       span(slot="save-button") Save
 
