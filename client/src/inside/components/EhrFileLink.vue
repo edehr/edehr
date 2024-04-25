@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { isImageFile } from '@/helpers/ehr-utils'
+import { isImageFile, isObject } from '@/helpers/ehr-utils'
 import StoreHelper from '@/helpers/store-helper'
 // import { APP_ICONS } from '@/helpers/app-icons'
 
@@ -23,12 +23,12 @@ export default {
     }
   },
   props: {
-    ehrFile: { type: Object },
+    ehrFile: [String, Object],
     alink: { type: Boolean, default: true}
   },
   computed: {
-    isImage () { return this.ehrFile ? isImageFile(this.ehrFile.fName) : false },
-    name ()  { return this.ehrFile ? this.ehrFile.fName : '' },
+    isImage () { return this.name ? isImageFile(this.name) : false },
+    name ()  { return this.ehrFile && isObject(this.ehrFile) ? this.ehrFile.fName : '' },
     url () {
       const apiUrl = StoreHelper.apiUrlGet()
       const consumerId = StoreHelper.getAuthdConsumerId()
