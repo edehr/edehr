@@ -18,24 +18,13 @@
         tbody
           tr(v-for="(dRow, rIndex) in cTableData", :key='rIndex', :class='{draftRow : isDraft(dRow) }')
             th(class="table-actions")
-              div(v-if="showTableAction", class='aux-table-actions')
-                div(                          v-if='isDraft(dRow)') &nbsp;
-                ui-button(value="ets-action", v-else,
-                  v-on:buttonClicked="tableAction(getIdFromRow(dRow))")
-                  span {{ tableActionLabel(getIdFromRow(dRow)) }} &nbsp;
-                  fas-icon(icon="notes-medical")
-              ui-button(value="ets-view",       v-if="!isDraft(dRow)",
-                v-on:buttonClicked="viewReport(getIdFromRow(dRow))", :title='ehrText.viewButtonLabel')
-                fas-icon(icon="file-pdf")
-              ui-button(value="ets-edit-draft", v-if="isDraft(dRow) && canEdit",
-                v-on:buttonClicked="editDraft(getIdFromRow(dRow))", :title='ehrText.resumeButtonLabel')
-                fas-icon(icon="edit")
-              ui-button(value="ets-edit-row",   v-if="canEditSeed(dRow)",
-                v-on:buttonClicked="editSeedRow(getIdFromRow(dRow))", :title='ehrText.editButtonLabel')
-                fas-icon(icon="edit")
-              ui-button(value="ets-delt-row",   v-if="canEditSeed(dRow)",
-                v-on:buttonClicked="deleteSeedRow(getIdFromRow(dRow))", :title='ehrText.deleteButtonLabel')
-                fas-icon(icon="trash")
+              ehr-table-table-actions(:dRow="dRow", :tableDef='tableDef',
+                :ehrHelp="ehrHelp",
+                @editDraft='editDraft',
+                @editSeedRow='editSeedRow',
+                @deleteSeedRow='deleteSeedRow',
+                @viewReport='viewReport'
+              )
             th {{ extractDate(dRow) }}
             td(v-for="(cell, cIndex) in extractData(dRow)", :id="`${rIndex}-${cell.key}`", :key="cIndex", :class="tableCellCss(cell)")
               ehr-table-element(:cell="cell")
@@ -49,10 +38,11 @@ import EhrTypes from '@/ehr-definitions/ehr-types'
 import StoreHelper from '@/helpers/store-helper'
 import { t18EhrText } from '@/helpers/ehr-t18'
 import { simDateCalc } from '@/helpers/date-helper'
+import EhrTableTableActions from '@/inside/components/page/EhrTableTableActions.vue'
 
 export default {
   extends: EhrTableCommon,
-  components: { EhrTableElement, UiButton },
+  components: { EhrTableTableActions, EhrTableElement, UiButton },
   inject: [ 'pageDataKey', 'tableKey'],
   computed: {
     canEdit () {
