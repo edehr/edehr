@@ -103,7 +103,6 @@ class StoreHelperWorker {
   setPageZone (pageZone) { return store.commit('system/setPageZone', pageZone)}
   getPageIcon () { return this._getSystemProperty('pageIcon')}
   setPageIcon (icon) { return store.commit('system/setPageIcon', icon)}
-  setCurrentPageKey (pageKey) { return store.commit('system/setCurrentPageKey', pageKey)}
   isEditing () { return store.getters['system/isEditing']}
   setEditingMode (flag) { return store.commit('system/setEditing', flag)}
   inZoneAdmin () { return store.getters['system/pageZone'] === ZONE_ADMIN}
