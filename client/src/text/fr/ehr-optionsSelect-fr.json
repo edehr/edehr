@@ -1208,5 +1208,8 @@
   "medicationOrders.aux_med_status.canc": "Annulé",
   "medicationOrders.aux_med_status.expi": "Expiré",
   "medicationOrders.aux_med_status.reac": "Réactivé",
-  "medicationOrders.aux_med_status.erro": "Erreur"
+  "medicationOrders.aux_med_status.erro": "Erreur",
+  "labRequisitions.reqH_schedule.stat": "Statistique",
+  "labRequisitions.reqH_schedule.urgent": "Urgent",
+  "labRequisitions.reqH_schedule.routine": "Routine"
 }

@@ -69,5 +69,6 @@
   "medLabPhoneLog.phLogTable": "Créer un journal téléphonique",
   "medicationOrders.medicationOrdersTable.medicationOrderAux": "Mettre à jour la commande de médicaments",
   "leveyJennings.tableLJ": "Ajouter un graphique de Levey-Jennings",
-  "medLabBody.tableLabBody": "Ajouter un rapport sur les fluides corporels"
+  "medLabBody.tableLabBody": "Ajouter un rapport sur les fluides corporels",
+  "leveyJennings.tableLJ.ljAuxEntryTable": "Ajouter une valeur LJ"
 }
