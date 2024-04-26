@@ -9002,19 +9002,19 @@ const DEFS = {
         "fqn": "labRequisitions.time"
       },
       {
+        "elementKey": "req_id",
+        "formIndex": "2",
+        "inputType": "text",
+        "tableColumn": "1",
+        "fqn": "labRequisitions.req_id"
+      },
+      {
         "elementKey": "req_dateRequired",
         "formIndex": "2",
         "inputType": "visitDay",
         "tableColumn": "2",
         "validation": "visitDay",
         "fqn": "labRequisitions.req_dateRequired"
-      },
-      {
-        "elementKey": "req_reason",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "3",
-        "fqn": "labRequisitions.req_reason"
       },
       {
         "elementKey": "req_schedule",
@@ -9034,8 +9034,16 @@ const DEFS = {
             "text": "Routine"
           }
         ],
-        "tableColumn": "4",
+        "tableColumn": "3",
         "fqn": "labRequisitions.req_schedule"
+      },
+      {
+        "elementKey": "req_reason",
+        "formIndex": "2",
+        "formCss": "grid-span-3-columns",
+        "inputType": "text",
+        "tableColumn": "4",
+        "fqn": "labRequisitions.req_reason"
       },
       {
         "elementKey": "req_hematology",
@@ -9372,6 +9380,13 @@ const DEFS = {
         "fqn": "labRequisitions.time"
       },
       {
+        "elementKey": "reqH_id",
+        "formIndex": "3",
+        "inputType": "text",
+        "tableColumn": "1",
+        "fqn": "labRequisitions.reqH_id"
+      },
+      {
         "elementKey": "reqH_dateRequired",
         "formIndex": "3",
         "inputType": "visitDay",
@@ -9380,8 +9395,30 @@ const DEFS = {
         "fqn": "labRequisitions.reqH_dateRequired"
       },
       {
+        "elementKey": "reqH_schedule",
+        "formIndex": "3",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "stat",
+            "text": "Stat"
+          },
+          {
+            "key": "urgent",
+            "text": "Urgent"
+          },
+          {
+            "key": "routine",
+            "text": "Routine"
+          }
+        ],
+        "tableColumn": "3",
+        "fqn": "labRequisitions.reqH_schedule"
+      },
+      {
         "elementKey": "reqH_reason",
         "formIndex": "3",
+        "formCss": "grid-span-3-columns",
         "inputType": "text",
         "tableColumn": "3",
         "fqn": "labRequisitions.reqH_reason"
@@ -9466,6 +9503,50 @@ const DEFS = {
         "fqn": "labRequisitions.time"
       },
       {
+        "elementKey": "reqMi_id",
+        "formIndex": "4",
+        "inputType": "text",
+        "tableColumn": "1",
+        "fqn": "labRequisitions.reqMi_id"
+      },
+      {
+        "elementKey": "reqMi_dateRequired",
+        "formIndex": "4",
+        "inputType": "visitDay",
+        "tableColumn": "2",
+        "validation": "visitDay",
+        "fqn": "labRequisitions.reqMi_dateRequired"
+      },
+      {
+        "elementKey": "reqMi_schedule",
+        "formIndex": "4",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "stat",
+            "text": "Stat"
+          },
+          {
+            "key": "urgent",
+            "text": "Urgent"
+          },
+          {
+            "key": "routine",
+            "text": "Routine"
+          }
+        ],
+        "tableColumn": "3",
+        "fqn": "labRequisitions.reqMi_schedule"
+      },
+      {
+        "elementKey": "reqMi_reason",
+        "formIndex": "4",
+        "formCss": "grid-span-3-columns",
+        "inputType": "text",
+        "tableColumn": "1",
+        "fqn": "labRequisitions.reqMi_reason"
+      },
+      {
         "elementKey": "reqMi_type",
         "formIndex": "4",
         "inputType": "select",
@@ -9505,43 +9586,6 @@ const DEFS = {
         ],
         "tableColumn": "2",
         "fqn": "labRequisitions.reqMi_type"
-      },
-      {
-        "elementKey": "reqMi_dateRequired",
-        "formIndex": "4",
-        "inputType": "visitDay",
-        "tableColumn": "3",
-        "validation": "visitDay",
-        "fqn": "labRequisitions.reqMi_dateRequired"
-      },
-      {
-        "elementKey": "reqMi_schedule",
-        "formIndex": "4",
-        "inputType": "select",
-        "options": [
-          {
-            "key": "stat",
-            "text": "Stat"
-          },
-          {
-            "key": "urgent",
-            "text": "Urgent"
-          },
-          {
-            "key": "routine",
-            "text": "Routine"
-          }
-        ],
-        "tableColumn": "4",
-        "fqn": "labRequisitions.reqMi_schedule"
-      },
-      {
-        "elementKey": "reqMi_reason",
-        "formIndex": "4",
-        "formCss": "grid-span-2-columns grid-new-subsection",
-        "inputType": "text",
-        "tableColumn": "5",
-        "fqn": "labRequisitions.reqMi_reason"
       },
       {
         "elementKey": "reqMi_Location",
@@ -9589,7 +9633,6 @@ const DEFS = {
             "text": "Pelvis"
           }
         ],
-        "tableColumn": "6",
         "fqn": "labRequisitions.reqMi_Location"
       },
       {
@@ -9597,7 +9640,6 @@ const DEFS = {
         "formIndex": "4",
         "formCss": "grid-new-subsection",
         "inputType": "checkbox",
-        "tableColumn": "7",
         "fqn": "labRequisitions.reqMi_mobile"
       },
       {
@@ -9605,7 +9647,6 @@ const DEFS = {
         "formIndex": "4",
         "formCss": "grid-span-3-columns",
         "inputType": "textarea",
-        "tableColumn": "8",
         "fqn": "labRequisitions.reqMi_comments"
       },
       {
@@ -9652,6 +9693,13 @@ const DEFS = {
         "fqn": "labRequisitions.time"
       },
       {
+        "elementKey": "reqMicro_id",
+        "formIndex": "5",
+        "inputType": "text",
+        "tableColumn": "1",
+        "fqn": "labRequisitions.reqMicro_id"
+      },
+      {
         "elementKey": "reqMicro_dateRequired",
         "formIndex": "5",
         "inputType": "visitDay",
@@ -9660,8 +9708,30 @@ const DEFS = {
         "fqn": "labRequisitions.reqMicro_dateRequired"
       },
       {
+        "elementKey": "reqMi_schedule",
+        "formIndex": "5",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "stat",
+            "text": "Stat"
+          },
+          {
+            "key": "urgent",
+            "text": "Urgent"
+          },
+          {
+            "key": "routine",
+            "text": "Routine"
+          }
+        ],
+        "tableColumn": "3",
+        "fqn": "labRequisitions.reqMi_schedule"
+      },
+      {
         "elementKey": "reqMicro_reason",
         "formIndex": "5",
+        "formCss": "grid-span-3-columns",
         "inputType": "text",
         "tableColumn": "3",
         "fqn": "labRequisitions.reqMicro_reason"
@@ -9867,9 +9937,10 @@ const DEFS = {
               "fqn": "labRequisitions.req_notice",
               "gIndex": "2",
               "gChildren": [
+                "req_id",
                 "req_dateRequired",
-                "req_reason",
-                "req_schedule"
+                "req_schedule",
+                "req_reason"
               ]
             },
             {
@@ -9927,9 +9998,10 @@ const DEFS = {
             "requisitions_profession": "",
             "requisitions_day": "",
             "requisitions_time": "",
+            "req_id": "",
             "req_dateRequired": "",
-            "req_reason": "",
             "req_schedule": "",
+            "req_reason": "",
             "req_hematology": "",
             "req_cogagulation": "",
             "req_tropinin": "",
@@ -9946,9 +10018,10 @@ const DEFS = {
           "requisitions_id",
           "requisitions_day",
           "requisitions_time",
+          "req_id",
           "req_dateRequired",
-          "req_reason",
           "req_schedule",
+          "req_reason",
           "req_hematology",
           "req_cogagulation",
           "req_tropinin",
@@ -9994,7 +10067,9 @@ const DEFS = {
               "fqn": "labRequisitions.cGroup24-2",
               "gIndex": "2",
               "gChildren": [
+                "reqH_id",
                 "reqH_dateRequired",
+                "reqH_schedule",
                 "reqH_reason"
               ]
             },
@@ -10015,7 +10090,9 @@ const DEFS = {
             "histologyRequisitions_profession": "",
             "histologyRequisitions_day": "",
             "histologyRequisitions_time": "",
+            "reqH_id": "",
             "reqH_dateRequired": "",
+            "reqH_schedule": "",
             "reqH_reason": "",
             "reqH_type": "",
             "reqH_location": "",
@@ -10027,7 +10104,9 @@ const DEFS = {
           "histologyRequisitions_id",
           "histologyRequisitions_day",
           "histologyRequisitions_time",
+          "reqH_id",
           "reqH_dateRequired",
+          "reqH_schedule",
           "reqH_reason",
           "reqH_type",
           "reqH_location",
@@ -10068,9 +10147,10 @@ const DEFS = {
               "fqn": "labRequisitions.reqMi_notice",
               "gIndex": "2",
               "gChildren": [
-                "reqMi_type",
+                "reqMi_id",
                 "reqMi_dateRequired",
-                "reqMi_schedule"
+                "reqMi_schedule",
+                "reqMi_reason"
               ]
             },
             {
@@ -10079,7 +10159,7 @@ const DEFS = {
               "fqn": "labRequisitions.cGroup24-3",
               "gIndex": "3",
               "gChildren": [
-                "reqMi_reason",
+                "reqMi_type",
                 "reqMi_Location",
                 "reqMi_mobile",
                 "reqMi_comments"
@@ -10091,10 +10171,11 @@ const DEFS = {
             "med_image_req_profession": "",
             "med_image_req_day": "",
             "med_image_req_time": "",
-            "reqMi_type": "",
+            "reqMi_id": "",
             "reqMi_dateRequired": "",
             "reqMi_schedule": "",
             "reqMi_reason": "",
+            "reqMi_type": "",
             "reqMi_Location": "",
             "reqMi_mobile": "",
             "reqMi_comments": ""
@@ -10105,13 +10186,11 @@ const DEFS = {
           "med_image_req_id",
           "med_image_req_day",
           "med_image_req_time",
-          "reqMi_type",
+          "reqMi_id",
           "reqMi_dateRequired",
           "reqMi_schedule",
           "reqMi_reason",
-          "reqMi_Location",
-          "reqMi_mobile",
-          "reqMi_comments",
+          "reqMi_type",
           "med_image_req_name",
           "med_image_req_profession"
         ],
@@ -10148,7 +10227,9 @@ const DEFS = {
               "fqn": "labRequisitions.cGroup24-2",
               "gIndex": "2",
               "gChildren": [
+                "reqMicro_id",
                 "reqMicro_dateRequired",
+                "reqMi_schedule",
                 "reqMicro_reason"
               ]
             },
@@ -10169,7 +10250,9 @@ const DEFS = {
             "microRequisitions_profession": "",
             "microRequisitions_day": "",
             "microRequisitions_time": "",
+            "reqMicro_id": "",
             "reqMicro_dateRequired": "",
+            "reqMi_schedule": "",
             "reqMicro_reason": "",
             "reqMicro_culture": "",
             "reqMicro_location": "",
@@ -10181,7 +10264,9 @@ const DEFS = {
           "microRequisitions_id",
           "microRequisitions_day",
           "microRequisitions_time",
+          "reqMicro_id",
           "reqMicro_dateRequired",
+          "reqMi_schedule",
           "reqMicro_reason",
           "reqMicro_culture",
           "reqMicro_location",
@@ -11337,81 +11422,6 @@ const DEFS = {
           "medicationOrdersTable_name",
           "medicationOrdersTable_profession"
         ],
-        "auxTable": {
-          "elementKey": "medicationOrderAux",
-          "pageElementIndex": "3",
-          "pageKey": "medicationOrders",
-          "tableKey": "medicationOrderAux",
-          "mainTableKey": "medicationOrdersTable",
-          "isTable": true,
-          "isAuxTable": true,
-          "form": {
-            "elementKey": "medicationOrderAux",
-            "label": "Change Med Order",
-            "addButtonText": "Update Medication Order",
-            "formKey": "medicationOrderAux",
-            "ehr_groups": [
-              {
-                "elementKey": "hdrGroup",
-                "formCss": "record-header",
-                "fqn": "medicationOrders.hdrGroup",
-                "gIndex": "1",
-                "gChildren": [
-                  "medicationOrderAux_name",
-                  "medicationOrderAux_profession",
-                  "medicationOrderAux_day",
-                  "medicationOrderAux_time"
-                ]
-              },
-              {
-                "elementKey": "aux_med_group_main",
-                "formCss": "grid-left-to-right-3",
-                "fqn": "medicationOrders.aux_med_group_main",
-                "gIndex": "2",
-                "gChildren": [
-                  "aux_med_dose",
-                  "aux_med_status",
-                  "aux_med_prnMaxDosage"
-                ]
-              },
-              {
-                "elementKey": "aux_med_group_notes",
-                "formCss": "grid-left-to-right-1",
-                "fqn": "medicationOrders.aux_med_group_notes",
-                "gIndex": "3",
-                "gChildren": [
-                  "aux_med_reason",
-                  "aux_med_instructions"
-                ]
-              }
-            ],
-            "ehr_data": {
-              "medicationOrderAux_name": "",
-              "medicationOrderAux_profession": "",
-              "medicationOrderAux_day": "",
-              "medicationOrderAux_time": "",
-              "aux_med_dose": "",
-              "aux_med_status": "",
-              "aux_med_prnMaxDosage": "",
-              "aux_med_reason": "",
-              "aux_med_instructions": ""
-            }
-          },
-          "fqn": "medicationOrders.medicationOrdersTable.medicationOrderAux",
-          "tableChildren": [
-            "medicationOrderAux_id",
-            "medicationOrderAux_day",
-            "medicationOrderAux_time",
-            "aux_med_dose",
-            "aux_med_status",
-            "aux_med_prnMaxDosage",
-            "aux_med_reason",
-            "aux_med_instructions",
-            "medicationOrderAux_name",
-            "medicationOrderAux_profession"
-          ],
-          "hasRecHeader": true
-        },
         "hasRecHeader": true
       },
       "medicationOrderAux": {
@@ -20992,16 +21002,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21039,16 +21049,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21086,16 +21096,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21133,16 +21143,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21180,16 +21190,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21227,16 +21237,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21274,16 +21284,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21321,16 +21331,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21368,16 +21378,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21415,16 +21425,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21462,16 +21472,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21509,16 +21519,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21556,16 +21566,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21603,16 +21613,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21650,16 +21660,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21697,16 +21707,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21745,16 +21755,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21792,16 +21802,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21839,16 +21849,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21886,16 +21896,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21933,16 +21943,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -21980,16 +21990,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -22027,16 +22037,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -22074,16 +22084,16 @@ const DEFS = {
         "inputType": "radioset",
         "options": [
           {
+            "key": "CL",
+            "text": "CL"
+          },
+          {
             "key": "L",
             "text": "L"
           },
           {
             "key": "H",
             "text": "H"
-          },
-          {
-            "key": "CL",
-            "text": "CL"
           },
           {
             "key": "CH",
@@ -25949,6 +25959,7 @@ const DEFS = {
       {
         "elementKey": "accTestPanel",
         "formIndex": "1",
+        "formCss": "grid-span-3-columns",
         "inputType": "checkset",
         "options": [
           {
@@ -27207,6 +27218,63 @@ const DEFS = {
         "inputType": "textarea",
         "tableColumn": "36",
         "fqn": "leveyJennings.ljcomments"
+      },
+      {
+        "elementKey": "lj_aux_data",
+        "formIndex": "1",
+        "formOption": "hideElement",
+        "inputType": "aux_data",
+        "fqn": "leveyJennings.lj_aux_data"
+      },
+      {
+        "elementKey": "ljAuxEntryTable_name",
+        "formIndex": "2",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "leveyJennings.name"
+      },
+      {
+        "elementKey": "ljAuxEntryTable_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "ljAuxEntryTable_profession",
+        "formIndex": "2",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "leveyJennings.profession"
+      },
+      {
+        "elementKey": "ljAuxEntryTable_day",
+        "formIndex": "2",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "leveyJennings.day"
+      },
+      {
+        "elementKey": "ljAuxEntryTable_time",
+        "formIndex": "2",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "leveyJennings.time"
+      },
+      {
+        "elementKey": "ljAuxValue",
+        "formIndex": "2",
+        "inputType": "text",
+        "tableColumn": "1",
+        "fqn": "leveyJennings.ljAuxValue"
       }
     ],
     "pageElements": {
@@ -27216,6 +27284,7 @@ const DEFS = {
         "pageKey": "leveyJennings",
         "tableKey": "tableLJ",
         "isTable": true,
+        "auxTableRef": "ljAuxEntryTable",
         "form": {
           "elementKey": "tableLJ",
           "label": "Levey-Jennings",
@@ -27275,7 +27344,8 @@ const DEFS = {
                 "ljValue28",
                 "ljValue29",
                 "ljValue30",
-                "ljcomments"
+                "ljcomments",
+                "lj_aux_data"
               ]
             }
           ],
@@ -27363,6 +27433,61 @@ const DEFS = {
           "ljcomments",
           "tableLJ_name",
           "tableLJ_profession"
+        ],
+        "hasRecHeader": true
+      },
+      "ljAuxEntryTable": {
+        "elementKey": "ljAuxEntryTable",
+        "pageElementIndex": "2",
+        "pageKey": "leveyJennings",
+        "tableKey": "ljAuxEntryTable",
+        "mainTableKey": "tableLJ",
+        "isTable": true,
+        "isAuxTable": true,
+        "form": {
+          "elementKey": "ljAuxEntryTable",
+          "label": "LJvalue",
+          "addButtonText": "Add LJ value",
+          "formKey": "ljAuxEntryTable",
+          "ehr_groups": [
+            {
+              "elementKey": "hdrGroup",
+              "formCss": "record-header",
+              "fqn": "leveyJennings.hdrGroup",
+              "gIndex": "1",
+              "gChildren": [
+                "ljAuxEntryTable_name",
+                "ljAuxEntryTable_profession",
+                "ljAuxEntryTable_day",
+                "ljAuxEntryTable_time"
+              ]
+            },
+            {
+              "elementKey": "auxljgroup",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "leveyJennings.auxljgroup",
+              "gIndex": "2",
+              "gChildren": [
+                "ljAuxValue"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "ljAuxEntryTable_name": "",
+            "ljAuxEntryTable_profession": "",
+            "ljAuxEntryTable_day": "",
+            "ljAuxEntryTable_time": "",
+            "ljAuxValue": ""
+          }
+        },
+        "fqn": "leveyJennings.tableLJ.ljAuxEntryTable",
+        "tableChildren": [
+          "ljAuxEntryTable_id",
+          "ljAuxEntryTable_day",
+          "ljAuxEntryTable_time",
+          "ljAuxValue",
+          "ljAuxEntryTable_name",
+          "ljAuxEntryTable_profession"
         ],
         "hasRecHeader": true
       }
@@ -27541,10 +27666,6 @@ const DEFS = {
             "text": "Sputum"
           },
           {
-            "key": "stool",
-            "text": "Stool"
-          },
-          {
             "key": "smen",
             "text": "Semen"
           },
@@ -27557,52 +27678,16 @@ const DEFS = {
             "text": "Amniotic Fluid"
           },
           {
-            "key": "nswb",
-            "text": "Nasal Swabs"
-          },
-          {
-            "key": "tswb",
-            "text": "Throat Swabs"
-          },
-          {
-            "key": "wswb",
-            "text": "Wound Swabs"
-          },
-          {
-            "key": "tears",
-            "text": "Tears"
-          },
-          {
             "key": "saliva",
             "text": "Saliva"
-          },
-          {
-            "key": "eswb",
-            "text": "Ear Swabs"
-          },
-          {
-            "key": "rcsw",
-            "text": "Rectal Swabs"
-          },
-          {
-            "key": "edisc",
-            "text": "Eye Discharge"
           },
           {
             "key": "wdext",
             "text": "Wound Exudate"
           },
           {
-            "key": "ascfl",
-            "text": "Ascitic Fluid"
-          },
-          {
             "key": "dialy",
             "text": "Dialysis Fluid"
-          },
-          {
-            "key": "organ",
-            "text": "Fluids from Organ Drainage"
           },
           {
             "key": "cvswb",
