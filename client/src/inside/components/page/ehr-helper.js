@@ -25,6 +25,9 @@ import { t18ElementLabel, t18TableLabel } from '@/helpers/ehr-t18'
 
 export const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
+export const DIALOG_EVENT_OPEN = 'DIALOG_EVENT_OPEN'
+export const DIALOG_EVENT_CLOSE = 'DIALOG_EVENT_CLOSE'
+
 const PROPS = EhrTypes.elementProperties
 const dbDialog = false
 const dbPageForm = false
@@ -63,10 +66,6 @@ export default class EhrPageHelper {
       throw new Error(`The page with key ${this.getPageKey()} has no form or tables. Tell your EdEHR admin about this problem.`)
     }
     return data
-  }
-  getDialogEventChannel (dialogKey) {
-    const DIALOG_SHOW_HIDE_EVENT_KEY = 'modal:'
-    return DIALOG_SHOW_HIDE_EVENT_KEY + dialogKey
   }
   getDialogInputs (tableKey) {
     let dialog = this.tableFormMap[tableKey]
@@ -591,9 +590,9 @@ export default class EhrPageHelper {
     dialog.active = false
     let eData = Object.assign({ key: tableKey, open: false}, {} )
     const _this = this
-    const options = { open: false }
+    const options = { open: false, tableKey: tableKey }
     Vue.nextTick(function () {
-      EventBus.$emit(_this.getDialogEventChannel(tableKey), eData, options)
+      EventBus.$emit(DIALOG_EVENT_CLOSE, options)
     })
   }
   /**
@@ -705,20 +704,17 @@ export default class EhrPageHelper {
     // NOW set the open state flag which enables the FORM_INPUT_EVENT event to fire when a dialog input is changed.
     dialog.active = true
     // End by sending out the "I'm opened event"
-    let eData = Object.assign({ key: tableKey, open: true}, options )
-    /* Send an event on our transmission channel with a payload containing the open flag
+    let eData = Object.assign({ tableKey: tableKey, open: true }, options)
+    /* Send an event containing the open flag
      This is picked up by each form element (see EhrElementCommon)
 
      Also in the EhrDialogForm (see receiveShowHideEvent). This is used to call the "open"
      event on embedded forms, so they get loaded.  this.$refs.theDialog.onOpen()
      Might be better to not reused the open event here?
 
-     This event on channel is also EMITTED by the EhrElementEmbedded when setEmbeddedGroupData() is invoked
     */
-    const _this = this
     Vue.nextTick(function () {
-      // console.log('send emit getDialogEventChannel event with eData', JSON.stringify(eData))
-      EventBus.$emit(_this.getDialogEventChannel(tableKey), eData)
+      EventBus.$emit(DIALOG_EVENT_OPEN, eData)
     })
   }
   _clearDialogInputs (dialog) {

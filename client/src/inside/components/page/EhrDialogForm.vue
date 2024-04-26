@@ -3,7 +3,7 @@
     app-dialog(
       :isModal="!isViewOnly",
       fullScreen=true,
-      ref="theDialog",
+      :ref="dialogRef",
       @cancel="cancelDialog",
       @save="saveDialog",
       v-bind:errors="errorList",
@@ -34,6 +34,7 @@ import UiSpinnerSmall from '@/app/ui/UiSpinnerSmall.vue'
 import UiConfirm from '@/app/ui/UiConfirm'
 import { t18EhrFunctions, t18EhrText, t18ElementLabel, t18TableAddButtonLabel } from '@/helpers/ehr-t18'
 import { formatYmdDateInLocalZone } from '@/helpers/date-helper'
+import { DIALOG_EVENT_CLOSE, DIALOG_EVENT_OPEN } from '@/inside/components/page/ehr-helper'
 
 export default {
   components: {
@@ -55,6 +56,7 @@ export default {
     tableDef: { type: Object },
   },
   computed: {
+    dialogRef () { return 'diaglogRef' + this.tableKey},
     ehrText () { return t18EhrText() },
     ehrTextFn () { return t18EhrFunctions() },
     cancelButtonText () { return this.isViewOnly ? this.ehrText.ehrDialogCancelButtonViewOnly : this.ehrText.ehrDialogCancelButtonVEdit },
@@ -122,19 +124,23 @@ export default {
         clearTimeout(this.saveDraftTimeoutId)
       }
     },
-    receiveShowHideEvent (eData) {
-      // console.log('receiveShowHideEvent (eData)', eData)
-      // this event doesn't happen on embedded forms so the following does nothing
-      if (eData.isEmbedded) {
-        console.log('When a portion of the dialog form is used as an embedded form fragment we must not open the dialog associated that fragment.', this.tableKey)
-        this.ehrHelp.setViewOnly(this.tableKey)
-        return
+    receiveEventClose (eData) {
+      // console.log('receiveEventClose (eData)', eData)
+      if (eData.tableKey === this.tableKey) {
+        this.$refs[this.dialogRef].onClose()
       }
-      this.isClosing = false
-      if(eData.open) {
-        this.$refs.theDialog.onOpen()
-      } else {
-        this.$refs.theDialog.onClose()
+    },
+    receiveEventOpen (eData) {
+      // console.log('receiveEventOpen (eData)', eData)
+      if (eData.tableKey === this.tableKey) {
+        // this event doesn't happen on embedded forms so the following does nothing
+        if (eData.isEmbedded) {
+          console.log('When a portion of the dialog form is used as an embedded form fragment we must not open the dialog associated that fragment.', this.tableKey)
+          this.ehrHelp.setViewOnly(this.tableKey)
+          return
+        }
+        this.isClosing = false
+        this.$refs[this.dialogRef].onOpen()
       }
     },
     receiveInputChangeEvent (eData) {
@@ -204,24 +210,14 @@ export default {
     },
   },
   mounted: function () {
-    const _this = this
-    this.eventHandler = function (eData) {
-      _this.receiveShowHideEvent(eData)
-    }
-    EventBus.$on(this.ehrHelp.getDialogEventChannel(this.tableKey), this.eventHandler)
-    this.inputChangeEventHandler = function (eData) {
-      _this.receiveInputChangeEvent(eData)
-    }
-    EventBus.$on(FORM_INPUT_EVENT, this.inputChangeEventHandler)
-
+    EventBus.$on(DIALOG_EVENT_OPEN, this.receiveEventOpen)
+    EventBus.$on(DIALOG_EVENT_CLOSE, this.receiveEventClose)
+    EventBus.$on(FORM_INPUT_EVENT, this.receiveInputChangeEvent)
   },
   beforeDestroy: function () {
-    if (this.eventHandler) {
-      EventBus.$off(this.ehrHelp.getDialogEventChannel(this.tableKey), this.eventHandler)
-    }
-    if (this.inputChangeEventHandler) {
-      EventBus.$off(FORM_INPUT_EVENT, this.inputChangeEventHandler)
-    }
+    EventBus.$off(DIALOG_EVENT_OPEN, this.receiveEventOpen)
+    EventBus.$off(DIALOG_EVENT_CLOSE, this.receiveEventClose)
+    EventBus.$off(FORM_INPUT_EVENT, this.receiveInputChangeEvent)
   }
 }
 </script>

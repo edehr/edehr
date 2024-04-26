@@ -11,6 +11,7 @@ import { t18EhrText, t18ElementLabel, t18HelperText } from '@/helpers/ehr-t18'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import StoreHelper from '@/helpers/store-helper'
 import { getCurrentSimDate, getCurrentSimTime } from '@/helpers/date-helper'
+import { DIALOG_EVENT_CLOSE, DIALOG_EVENT_OPEN } from '@/inside/components/page/ehr-helper'
 
 const DEPENDENT_PROPS = EhrTypes.dependentOn
 
@@ -305,10 +306,7 @@ export default {
       }
       // is the container a table?
       if (this.isTableElement) {
-        this.dialogEventHandler = function (eData) {
-          _this.handleDialogEvent(eData)
-        }
-        EventBus.$on(this.ehrHelp.getDialogEventChannel(this.tableKey), this.dialogEventHandler)
+        EventBus.$on(DIALOG_EVENT_OPEN, this.handleDialogEvent)
       }
     },
     /**
@@ -333,9 +331,7 @@ export default {
     if (this.pageRefreshEventHandler) {
       EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.pageRefreshEventHandler)
     }
-    if (this.dialogEventHandler) {
-      EventBus.$off(this.ehrHelp.getDialogEventChannel(this.tableKey), this.dialogEventHandler)
-    }
+    EventBus.$off(DIALOG_EVENT_OPEN, this.pageRefreshEventHandler)
   },
   watch: {
     inputVal (val) {
