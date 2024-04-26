@@ -14,7 +14,7 @@ function calculateAxisRange (values, average, stdDeviation) {
   let margin = Math.trunc(maxValue / 50 )
   const R = MAXSD * stdDeviation + margin
   let minValue = Math.min(...values, average - R)
-  maxValue = Math.min(...values, average + R)
+  maxValue = Math.max(...values, average + R)
   return { min: minValue, max: maxValue }
 }
 
