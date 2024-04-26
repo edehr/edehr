@@ -39,6 +39,7 @@ export default {
   components: { ZoneLmsInstructionsElement, UiButton },
   data () { return {} },
   props: {
+    onlyStages: { type: Boolean, default: () => false },
     ehrData: { type: Object },
     activitySimTime: { type: String },
     simStages : { type: Array, default: () => [] },
@@ -50,6 +51,9 @@ export default {
     stagesKeys () { return this.simStages.map( s => s.simKey)  },
     timeSteps () {
       // combine and sort remove duplicates that may happen if both sets have the same key
+      if (this.onlyStages) {
+        return this.stagesKeys
+      }
       return [ ... new Set([...this.timeKeys, ...this.stagesKeys].sort()) ]
     },
     timeElements () { return this.timeSteps.map( key => { return { simKey: key, timeElem: this.findTimeElem(key), simStage: this.findStage(key) } } ) }

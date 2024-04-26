@@ -71,6 +71,7 @@
       div(class="card-content")
         h4 Stages
         sim-control-table(
+          onlyStages=true,
           :ehrData='ehrData',
           :simStages='simStages',
           :activitySimTime='activitySimTime',
