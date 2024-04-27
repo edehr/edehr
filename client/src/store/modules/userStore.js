@@ -5,8 +5,7 @@ const debug = false
 
 const state = {
   userData: {},
-  usersList: [],
-  userSettings: {}
+  usersList: []
 }
 
 const getters = {
@@ -16,7 +15,7 @@ const getters = {
   userId: state => state.userData._id,
   user: state => state.userData,
   list: state => state.usersList,
-  userSettings: state => state.userData?. userSettings
+  userSettings: state => state.userData?.userSettings
 }
 
 const actions = {
@@ -38,10 +37,15 @@ const actions = {
       return list
     })
   },
+  toggleAllowDark ( context, ) {
+    let obj = Object.assign({}, context.getters.userSettings)
+    obj.allowDark = !obj.allowDark
+    return context.dispatch('updateUserSettings', obj)
+  },
   setEhrLayout ( context, layoutStyle) {
-    let userSettings = Object.assign({}, context.getters.userSettings)
-    userSettings.ehrLayout = layoutStyle
-    return context.dispatch('updateUserSettings', userSettings)
+    let obj = Object.assign({}, context.getters.userSettings)
+    obj.ehrLayout = layoutStyle
+    return context.dispatch('updateUserSettings', obj)
   },
   updateUserSettings (context, settings) {
     const url = 'user-settings/'+ context.state.userData._id

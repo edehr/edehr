@@ -316,4 +316,9 @@ export default {
   transform: scale(1.1);
 }
 
+.dark-theme .dialog-wrapper,
+.dark-theme .dialog-body,
+.dark-theme .dialog-footer {
+  background-color: $grey30;
+}
 </style>

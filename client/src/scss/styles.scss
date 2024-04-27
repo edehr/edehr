@@ -118,6 +118,20 @@ $panelContentPadding: 0.5rem 1rem;
   width: 100%;
   background-color: white;
 }
+
+.dark-theme .page_banner,
+.dark-theme .details-container.selected,
+.dark-theme .outside-layout,
+.dark-theme .ehr_layout,
+.dark-theme .ehr-page
+{
+  background-color: $grey30 !important;
+}
+
+.dark-theme .lmsNavPanel {
+  background-color: $grey40;
+}
+
 .ehr-page-footer {
   position: absolute;
   bottom: 0;
