@@ -11034,6 +11034,7 @@ const DEFS = {
         "formIndex": "3",
         "inputType": "text",
         "tableColumn": "1",
+        "mainKey": "med_dose",
         "fqn": "medicationOrders.aux_med_dose"
       },
       {
@@ -11087,6 +11088,7 @@ const DEFS = {
           }
         ],
         "tableColumn": "2",
+        "mainKey": "med_status",
         "fqn": "medicationOrders.aux_med_status"
       },
       {
@@ -11094,6 +11096,7 @@ const DEFS = {
         "formIndex": "3",
         "inputType": "text",
         "tableColumn": "2",
+        "mainKey": "med_prnMaxDosage",
         "fqn": "medicationOrders.aux_med_prnMaxDosage"
       },
       {
@@ -11101,6 +11104,7 @@ const DEFS = {
         "formIndex": "3",
         "inputType": "text",
         "tableColumn": "1",
+        "mainKey": "med_reason",
         "fqn": "medicationOrders.aux_med_reason"
       },
       {
@@ -11108,6 +11112,7 @@ const DEFS = {
         "formIndex": "3",
         "inputType": "textarea",
         "tableColumn": "1",
+        "mainKey": "med_instructions",
         "fqn": "medicationOrders.aux_med_instructions"
       }
     ],
