@@ -39,6 +39,8 @@
         div(class="details-name") Id
         div(class="details-value") {{consumer._id}}
 
+    lms-active-student-counts
+
     medication-database-config
 
     div(id="FeatureFlags", v-if='showFeatureFlags', class="details-container card selected")
@@ -153,6 +155,7 @@ import StoreHelper from '@/helpers/store-helper'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton'
 import FeatureHelper, { FF_SIGN_ON, FF_SIM_CONTROL, FF_UNLEASH_ACTIVITY } from '@/helpers/feature-helper'
 import MedicationDatabaseConfig from '@/outside/components/MedicationDatabaseConfig.vue'
+import LmsActiveStudentCounts from '@/outside/components/LmsActiveStudentCounts.vue'
 
 const DEFAULTRVC = {
   year: { t: 5, s: 2, i: 3 },
@@ -166,7 +169,7 @@ const DEFAULTRVC = {
 
 export default {
   extends: OutsideCommon,
-  components: { MedicationDatabaseConfig, ZoneLmsButton, ZoneLmsPageBanner, UiButton, UiInfo },
+  components: { LmsActiveStudentCounts, MedicationDatabaseConfig, ZoneLmsButton, ZoneLmsPageBanner, UiButton, UiInfo },
   data () {
     return {
       text: Text.CONSUMER_PAGE,

@@ -16,6 +16,27 @@ function debugvc (msg) {
   //   debug('VisitController: ' + msg)
 }
 
+// Define a helper function for sending error responses
+const sendErrorResponse = (res, statusCode, message) => {
+  return res.status(statusCode).json({ message })
+}
+
+const fillMissingMonths = (results, year, month) => {
+  const currentMonth = month // Use today's month
+  const months = Array.from({ length: 12 }, (_, index) => ({
+    month: (currentMonth - index + 12) % 12 || 12, // Convert negative months to their positive counterparts
+    year: currentMonth - index <= 0 ? year - 1 : year,
+    count: 0, // Initialize count to 0 for missing months
+  }))
+
+  const mergedResults = months.map(({ month, year }) => {
+    const match = results.find((result) => result.month === month && result.year === year)
+    return match || { month, year, count: 0 } // Use actual count if available, otherwise fill with 0
+  })
+
+  return mergedResults.reverse() // Reverse to get the months in ascending order
+}
+
 export default class VisitController extends BaseController {
   constructor () {
     super(Visit)
@@ -336,6 +357,43 @@ export default class VisitController extends BaseController {
       })
     })
 
+    router.get('/active-student-count', async (req, res) => {
+      try {
+        const pipeline = [
+          { $match: { isStudent: true } },
+          {
+            $group: {
+              _id: {
+                month: { $month: '$createDate' },
+                year: { $year: '$createDate' },
+              },
+              users: { $addToSet: '$user' },
+            },
+          },
+          {
+            $project: {
+              _id: 0,
+              month: '$_id.month',
+              year: '$_id.year',
+              count: { $size: '$users' },
+            },
+          },
+        ]
+        const today = new Date()
+        const yearInt = today.getFullYear()
+        const monthInt = today.getMonth() + 1 // Months are 0-indexed, so add 1
+        let aggregateResult = await Visit.aggregate(pipeline)
+        aggregateResult = [...aggregateResult]
+        aggregateResult = aggregateResult.filter((r) => r.year === yearInt)
+        // Fill in missing months for the last 12 months
+        const last12Months = fillMissingMonths(aggregateResult, yearInt, monthInt)
+        // console.log('last12Months', last12Months)
+        res.json(last12Months)
+      } catch (err) {
+        console.error(err)
+        sendErrorResponse(res, 500, 'Server Error')
+      }
+    })
     return router
   }
 
