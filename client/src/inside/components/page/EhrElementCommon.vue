@@ -72,7 +72,7 @@ export default {
   props: {
     elementKey: { type: String },
     ehrHelp: { type: Object },
-    tableKey: { type: String, required: true},
+    tableKey: { type: String},
     viewOnly: { type: Boolean, default: false }
   },
   computed: {
