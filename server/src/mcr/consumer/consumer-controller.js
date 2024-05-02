@@ -211,14 +211,15 @@ export default class ConsumerController extends BaseController {
 
   async addLearningObject (activity,  tcId) {
     const seedDef = activity.seedDef
-    const assignmentDef = activity.learningObject
+    const assignmentDef = activity.lObjDef
     const seedDefTooled = Object.assign({}, seedDef, { toolConsumer:  tcId })
     const assignmentDefTooled = Object.assign({}, assignmentDef, { toolConsumer:  tcId })
     const theSeed = await  this.comCon.seedController.create(seedDefTooled)
     await this.comCon.assignmentController.createAssignment(assignmentDefTooled, theSeed._id)
   }
 
-  async createToolConsumerWithSeeds (oauth_consumer_key, oauth_consumer_secret) {
+  async createToolConsumerWithSeeds (data) {
+    const {oauth_consumer_key, oauth_consumer_secret} = data
     if (!oauth_consumer_key || !oauth_consumer_secret) {
       throw new ParameterError(Text.SYSTEM_REQUIRE_KEY_AND_SECRET)
     }
@@ -233,6 +234,7 @@ export default class ConsumerController extends BaseController {
     const consumerDef = {
       oauth_consumer_key: oauth_consumer_key,
       oauth_consumer_secret: oauth_consumer_secret,
+      tool_consumer_instance_name: data.tool_consumer_instance_name,
       is_primary: true
     }
     const toolConsumer = await this.model.create(consumerDef)
@@ -286,14 +288,18 @@ export default class ConsumerController extends BaseController {
     ]
     const router = super.route()
 
+    router.put('/update/:key', (req, res) => {
+      this
+        .update(req.params.key, req.body)
+        .then(ok(res))
+        .then(null, fail(req, res))
+    })
     router.post('/create', adminMiddleware, (req, res) => {
       /* Create a new tool consumer with key/secret pair (the key must be unique in the system) */
       if (!req.body) {
         throw new ParameterError(Text.SYSTEM_REQUIRE_REQUEST_BODY)
       }
-      const key = req.body.oauth_consumer_key
-      const secret = req.body.oauth_consumer_secret
-      this.createToolConsumerWithSeeds(key, secret)
+      this.createToolConsumerWithSeeds(req.body)
         .then(ok(res))
         .then(null, fail(req, res))
     })

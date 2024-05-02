@@ -1,32 +1,45 @@
 <template lang="pug">
-  div
-    div
-      router-link(to="/consumers") Return to consumers page
+  div(class="outside-admin-page")
+    admin-links(:consumerId="consumerId")
+    h2 Case studies
     div
       ui-button(value="admin-dwn-all", v-on:buttonClicked="downloadAll")
         fas-icon(class="fa", :icon="appIcons.download")
         span &nbsp; Download all seeds
-    h2 Seeds
-    admin-seeds
-    div
-      router-link(to="/consumers") Return to consumers page
+    div(v-for='(seed, index) in seeds')
+      div(class='row', :id="`S-${seed._id}`")
+        div(class='kvpair')
+          div(class='key') Seed Name
+          div(class='value')
+            strong {{ seed.name }}  ({{ seed.lastUpdateDate }})
+        div(class='kvpair')
+          div(class='key') Id
+          div(class='value') {{ seed._id }} ({{ seed.toolConsumer }})
+        div(class='kvpair')
+          div(class='key') Created
+          div(class='value') {{ seed.createDate }}
+        div(class='kvpair')
+          div(class='key') Description
+          div(class='description value') {{ truncate(seed.description, 50) }}
 </template>
 
 <script>
 import StoreHelper from '@/helpers/store-helper'
-import AdminSeeds from '@/outside/admin/AdminSeeds'
-import OutsideCommon from '@/outside/views/OutsideCommon'
 import { downObjectToFile } from '@/helpers/ehr-utils'
 import UiButton from '@/app/ui/UiButton'
+import AdminLinks from '@/outside/admin/components/AdminLinks.vue'
+import AdminCommon from '@/outside/admin/AdminCommon.vue'
 
 export default {
-  extends: OutsideCommon,
-  components: { UiButton, AdminSeeds },
+  extends: AdminCommon,
+  components: { AdminLinks, UiButton },
   computed: {
-    consumerId () {
-      return this.$route.query.id
-    },
-    seeds () { return StoreHelper.getSeedDataList().filter( sd => !sd.isDefault)}
+    seeds () {
+      let list = this.$store.getters['seedListStore/list'].filter( sd => !sd.isDefault)
+      list = JSON.parse(JSON.stringify(list))
+      list.sort((a,b) => a.name.localeCompare(b.name))
+      return list
+    }
   },
   methods: {
     downloadAll () {
@@ -40,11 +53,15 @@ export default {
     loadComponent: async function () {
       if (this.isAdmin) {
         await StoreHelper.loadConsumer(this.consumerId)
-        await StoreHelper.loadAssignmentAndSeedLists()
+        await this.$store.dispatch('seedListStore/loadSeedsConsumer', this.consumerId)
       }
-      // else page controller has already redirected to login
-    }
+    },
+    truncate (input, lim) {
+      return input && input.length > lim ? `${input.substring(0, lim)}...` : input
+    },
   },
 }
 </script>
 
+<style scoped lang='scss'>
+</style>

@@ -123,7 +123,13 @@ const actions = {
       // console.log('seedListStore. Will not load seeds at this time because the consumer id is not yet set up.')
       return
     }
-    // console.log('seedListStore. Fetch seed list')
+    context.dispatch('loadSeedsConsumer', consumerId)
+  },
+  loadSeedsConsumer (context, consumerId) {
+    if (!consumerId) {
+      console.error('Error to try to load case studies without providing consumer id')
+      return
+    }
     let url = 'consumer/' + consumerId
     return InstoreHelper.getRequest(context, API, url).then(response => {
       let list = response.data.seeddata
@@ -135,7 +141,6 @@ const actions = {
       return list
     })
   },
-
   loadAllTags (context) {
     let consumerId = StoreHelper.getAuthdConsumerId()
     if (!consumerId) {

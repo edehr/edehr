@@ -9,7 +9,6 @@
       thead
         tr
           th &nbsp;
-          th &nbsp;
           th Name
           th Key
           th LTI version
@@ -21,16 +20,11 @@
       tbody
         tr(v-for="item in consumerListing", :class="rowClass(item)")
           td
-            div
-              div
-                router-link(:to="{ name:'admin-consumer', query: { consumerId: item._id }}") Details
-              div
-                router-link(:to="{ name:'admin-seeds', query: { id: item._id }}") Seeds
-          td
             ui-button(value="cons-edit", v-on:buttonClicked="showEditDialog", :value="item._id")
               fas-icon(icon="edit") Edit consumer properties
           td
-            div {{ item.tool_consumer_instance_name }}
+            router-link(:to="{ name:'admin-consumer', query: { consumerId: item._id }}").
+              {{ item.tool_consumer_instance_name }}
             div {{ item._id }}
           td
             div {{ item.oauth_consumer_key}}
@@ -61,6 +55,7 @@ import UiLink from '@/app/ui/UiLink.vue'
 import StoreHelper from '@/helpers/store-helper'
 import ConsumerDialog from '@/outside/components/ConsumerDialog'
 import OutsideCommon from '@/outside/views/OutsideCommon'
+import AdminLinks from '@/outside/admin/components/AdminLinks.vue'
 
 export default {
   extends: OutsideCommon,
@@ -68,7 +63,7 @@ export default {
     return {
     }
   },
-  components: { ConsumerDialog, UiButton, UiLink },
+  components: { AdminLinks, ConsumerDialog, UiButton, UiLink },
   computed: {
     consumerListing () { return StoreHelper.getConsumersList()}
   },

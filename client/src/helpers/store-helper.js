@@ -72,8 +72,8 @@ class StoreHelperWorker {
   _getVisitProperty (key) { return store.getters['visit/' + key]}
   _dispatchActivity (key, payload) { return store.dispatch('activityStore/' + key, payload)}
   _dispatchActivityData (key, payload) { return store.dispatch('activityDataStore/' + key, payload)}
-  _dispatchAssignment (key, payload) { return store.dispatch('assignmentStore/' + key, payload)}
-  _dispatchAssignmentList (key, payload) { return store.dispatch('assignmentListStore/' + key, payload)}
+  async _dispatchAssignment (key, payload) { return await store.dispatch('assignmentStore/' + key, payload)}
+  async _dispatchAssignmentList (key, payload) { return await store.dispatch('assignmentListStore/' + key, payload)}
   async _dispatchAuthStore (key, payload) { return await store.dispatch(`authStore/${key}`, payload) }
   _dispatchClassList (key, payload) { return store.dispatch('classListStore/' + key, payload)}
   _dispatchCourse (key, payload) { return store.dispatch('courseStore/' + key, payload)}

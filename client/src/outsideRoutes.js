@@ -246,6 +246,13 @@ export function outside () {
       meta: { layout: 'outside', label: NAMES.ADMIN_CONSUMER, zone: ZONE_ADMIN }
     },
     {
+      path: '/admin-lobjlist',
+      name: 'admin-lobjlist',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/admin/AdminLobjs.vue'),
+      meta: { layout: 'outside', label: 'Admin learning objects', zone: ZONE_ADMIN }
+    },
+    {
       path: '/admin-seeds',
       name: 'admin-seeds',
       component: () =>

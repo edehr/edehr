@@ -1,9 +1,12 @@
 <template lang="pug">
-  div(id="toplevel")
+  div(class="outside-admin-page")
+    admin-links(:consumerId="consumerId")
+    h4 Admin Activities - Courses
     div(v-for="(course, index) in activities")
       div(class='cell e-name')
         a(:href="`#course${index}`") {{ course.title}}
     hr
+    h4 Admin Activities - Activities
     div(v-for="(course, index) in activities", :id="`course${index}`")
       div(class='cell e-name') {{course.title}}
       div(class="e-table-container")
@@ -21,21 +24,23 @@
               div(class="cell") {{truncate(activity.description, 200)}}
               div(class="cell e-date") {{ activity.createDate | formatDateTime }}.
               div(class="cell e-date") {{ activity.lastDate | formatDateTime }}
-        a(href="#toplevel") Go to top
+        a(href="#app") Go to top
         hr
 </template>
 <script>
-import OutsideCommon from '@/outside/views/OutsideCommon.vue'
+import AdminLinks from '@/outside/admin/components/AdminLinks.vue'
+import AdminCommon from '@/outside/admin/AdminCommon.vue'
 
 export default {
-  extends: OutsideCommon,
+  extends: AdminCommon,
+  components: { AdminLinks },
   computed: {
     activities () { return this.$store.getters['activityStore/adminActivities'] }
   },
   methods: {
     async loadComponent () {
       if (this.isAdmin) {
-        const consumerId = this.$route.query.consumerId
+        const consumerId = this.consumerId
         await this.$store.dispatch('activityStore/loadAdminActivities', consumerId)
       }
     },
@@ -52,7 +57,3 @@ export default {
   },
 }
 </script>
-
-<style scoped lang='scss'>
-
-</style>

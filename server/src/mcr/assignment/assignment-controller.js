@@ -96,6 +96,10 @@ export default class AssignmentController extends BaseController {
     response[pluralize(this.modelName)] = results
     return response
   }
+  async justLobjList (tool) {
+    return await this.model.find({ toolConsumer: tool })
+  }
+
   async assignmentsUsingSeed (tool, seedId) {
     const query = {toolConsumer: tool, seedDataId: seedId}
     const results = await this.model.find(query)
@@ -172,12 +176,15 @@ export default class AssignmentController extends BaseController {
    * @returns {Promise<*>}
    */
   async createAssignment (data, seedId = undefined) {
-    const {
+    let {
       title,
+      resource_link_title,
       description,
       toolConsumer
     } = data
+    title = title || resource_link_title
     if (!title) {
+      console.log('create assignment (data)', data)
       logError(Text.ASSIGNMENT_REQUIRE_RESOURCE(toolConsumer.oauth_consumer_key, toolConsumer._id), data)
       throw new ParameterError(Text.ASSIGNMENT_REQUIRE_RESOURCE(toolConsumer.oauth_consumer_key, toolConsumer._id))
     }
@@ -343,6 +350,12 @@ export default class AssignmentController extends BaseController {
           return req.status(500).send(err)
           // fail(req, res)
         })
+    })
+    router.get('/justLobjList/:tool', (req, res) => {
+      this
+        .justLobjList(req.params.tool)
+        .then(ok(res))
+        .then(null, fail(req, res))
     })
     return router
   }

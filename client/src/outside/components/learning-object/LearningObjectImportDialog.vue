@@ -93,6 +93,9 @@ export default {
       uploadedLObj: undefined
     }
   },
+  props: {
+    toolConsumer: {type: String, required: true}
+  },
   components: { UiInfo, AppTagListEditor, AppTypeToggleButton, AppDialog },
   computed: {
     appTypeDescriptionText () {
@@ -200,7 +203,7 @@ export default {
           mrn: this.seed_mrn,
           tagList: this.seed_tagList,
           version: this.seed_version,
-          toolConsumer: StoreHelper.getAuthdConsumerId()
+          toolConsumer: this.toolConsumer
         }
         let seedModel = await StoreHelper.createSeed(undefined, seedData)
         sId = seedModel.id
@@ -209,7 +212,7 @@ export default {
         name: this.lobj_name,
         description: this.lobj_description,
         seedDataId: sId,
-        toolConsumer: StoreHelper.getAuthdConsumerId(),
+        toolConsumer: this.toolConsumer
       }
       await StoreHelper.createAssignment(aAssignment)
       this.$emit('update')

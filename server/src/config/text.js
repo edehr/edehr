@@ -29,8 +29,8 @@ export const Text = {
 
   ASSIGNMENT_MISSING_SEED: (key, id) => `Could not find any EHR seed data object for tool consumer ${key} - ${id}`,
   ASSIGNMENT_MISSING_SEED_OR_APPTYPE: 'To create a learning object you need either a case study or to provide the application type',
-  ASSIGNMENT_REQUIRE_EXTERNAL_ID: (key, id) => `To create an learning object we need the learning object id for tool consumer ${key} - ${id}`,
-  ASSIGNMENT_REQUIRE_RESOURCE: (key, id) => `To create an learning object we need a title for tool consumer ${key} - ${id}`,
+  ASSIGNMENT_REQUIRE_EXTERNAL_ID: (key, id) => `To create a learning object we need the learning object id for tool consumer ${key} - ${id}`,
+  ASSIGNMENT_REQUIRE_RESOURCE: (key, id) => `To create a learning object we need a title for tool consumer ${key} - ${id}`,
 
   SYSTEM_REQUIRE_REQUEST_BODY: 'Must provide request body',
   SYSTEM_REQUIRE_KEY_AND_SECRET: 'Must provide both a key and secret to create a tool consumer',
