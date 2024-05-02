@@ -32,7 +32,7 @@ export default {
 <style lang="scss" scoped>
 .modal-mask {
   position: fixed;
-  z-index: 1;
+  z-index: 4; /* trial and error to have the mask cover EHR tables with sticky headers and yet allow the sign in dialog to come out on top of this mask*/
   top: 7rem;
   left: 0;
   width: 100%;
