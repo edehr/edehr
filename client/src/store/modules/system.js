@@ -49,6 +49,7 @@ const getters = {
   barCodedMedOrders: state => state.barCodedMedOrders,
   caseContextFeature: state => state.caseContextFeature,
   condensedTableVertical: state => state.condensedTableVertical,
+  currentPageKey: state => state.currentPageKey,
   isEditing: state => state.isEditing,
   isLoading: state => state._isLoading,
   ehrNavCollapsed: state => state.ehrNavCollapsed,

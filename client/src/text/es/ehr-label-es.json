@@ -536,7 +536,7 @@
   "labRequisitions.cGroup24-4": "Química",
   "labRequisitions.cGroup24-5": "Gases en sangre",
   "labRequisitions.cGroup24-6": "Análisis de orina",
-  "labRequisitions.dateOfBirth": "Fecha de Nacimiento",
+  "labRequisitions.dateOfBirth": "FDN",
   "labRequisitions.dateRequired": "Fecha requerida",
   "labRequisitions.day": "Día",
   "labRequisitions.demographics": "Demográfico",
@@ -1392,5 +1392,12 @@
   "medLabBody.bdyLabel12": "monocitos",
   "medLabBody.bdyLabel13": "macrófago",
   "medLabBody.bdyWBCLabel": "WBC",
-  "medLabBody.bdyRBCLabel": "RBC"
+  "medLabBody.bdyRBCLabel": "RBC",
+  "labRequisitions.req_id": "ID de solicitud",
+  "labRequisitions.reqH_id": "ID de solicitud",
+  "labRequisitions.reqH_schedule": "Cronograma",
+  "labRequisitions.reqMi_id": "ID de solicitud",
+  "labRequisitions.reqMicro_id": "ID de solicitud",
+  "leveyJennings.tableLJ.ljAuxEntryTable": "Valor LJ",
+  "leveyJennings.ljAuxValue": "Valor"
 }

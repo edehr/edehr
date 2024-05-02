@@ -25,6 +25,9 @@ import { t18ElementLabel, t18TableLabel } from '@/helpers/ehr-t18'
 
 export const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
+export const DIALOG_EVENT_OPEN = 'DIALOG_EVENT_OPEN'
+export const DIALOG_EVENT_CLOSE = 'DIALOG_EVENT_CLOSE'
+
 const PROPS = EhrTypes.elementProperties
 const dbDialog = false
 const dbPageForm = false
@@ -36,8 +39,7 @@ const ehrPages = new EhrPages()
 export default class EhrPageHelper {
   constructor (pageKey) {
     // console.log('Construct helper', pageKey)
-    this.pageKey = pageKey
-    StoreHelper.setCurrentPageKey(pageKey)
+    store.commit('system/setCurrentPageKey', pageKey)
     this.pageFormData = { pageKey: pageKey }
     this.tableFormMap = {}
     const tables = this.getPageTableDefs()
@@ -61,13 +63,9 @@ export default class EhrPageHelper {
     }
     if (!data) {
       console.error('ERROR call to getActiveData when there is none')
-      throw new Error(`The page with key ${this.pageKey} has no form or tables. Tell your EdEHR admin about this problem.`)
+      throw new Error(`The page with key ${this.getPageKey()} has no form or tables. Tell your EdEHR admin about this problem.`)
     }
     return data
-  }
-  getDialogEventChannel (dialogKey) {
-    const DIALOG_SHOW_HIDE_EVENT_KEY = 'modal:'
-    return DIALOG_SHOW_HIDE_EVENT_KEY + dialogKey
   }
   getDialogInputs (tableKey) {
     let dialog = this.tableFormMap[tableKey]
@@ -79,12 +77,12 @@ export default class EhrPageHelper {
     return dialog ? dialog.errorList : []
   }
 
-  getPageDef () { return EhrDefs.getPageDefinition(this.pageKey) }
+  getPageDef () { return EhrDefs.getPageDefinition(this.getPageKey()) }
   getPageErrors () {
     // TODO code clean up needed here
     return []
   }
-  getPageForms () { return EhrDefs.getPageForms(this.pageKey) }
+  getPageForms () { return EhrDefs.getPageForms(this.getPageKey()) }
 
   /**
    * Get the date string that says when this EHR page definition was last updated.
@@ -93,8 +91,8 @@ export default class EhrPageHelper {
   getPageGeneratedDate () {
     return this.formatDate(this.getPageDef().generated)
   }
-  getPageKey () { return this.pageKey }
-  getPageTableDefs () { return EhrDefs.getPageTables(this.pageKey) }
+  getPageKey () { return store.getters['system/currentPageKey'] }
+  getPageTableDefs () { return EhrDefs.getPageTables(this.getPageKey()) }
 
   // TODO rename getTableForm to getDialog
   getTableForm (tableKey) { return this.tableFormMap[tableKey]}
@@ -186,7 +184,7 @@ export default class EhrPageHelper {
    * @private
    */
   _loadPageFormData (formKey) {
-    let asLoadedData = EhrData.getMergedPageData(this.pageKey)
+    let asLoadedData = EhrData.getMergedPageData(this.getPageKey())
     this.pageFormData.cacheData = JSON.stringify(asLoadedData)
     this.pageFormData.formKey = formKey
     /*
@@ -198,7 +196,7 @@ export default class EhrPageHelper {
      */
     if (!this._isDevelopingContent()) {
       const studentData = StoreHelper.getSecondLevel()
-      const sPageData = studentData[this.pageKey]
+      const sPageData = studentData[this.getPageKey()]
       this.pageFormData.value = sPageData
     } // else use what is already in this.pageFormData.value
   }
@@ -289,7 +287,7 @@ export default class EhrPageHelper {
    * Cancel the edit on a page form. Restore values from the database.
    */
   cancelEdit (customRouter = router) {
-    if (dbPageForm) console.log('EhrHelperV2 cancelEdit', this.pageKey)
+    if (dbPageForm) console.log('EhrHelperV2 cancelEdit', this.getPageKey())
     this._resetPageFormData()
     StoreHelper.setEditingMode(false)
     // To restore the data we do a full page load to get the same flow as happens when the user comes to this page.
@@ -303,7 +301,7 @@ export default class EhrPageHelper {
    * @returns {Promise<void>}
    */
   async clearTable (tableKey) {
-    const pageKey = this.pageKey
+    const pageKey = this.getPageKey()
     const pageData = this._getPageData()
     delete pageData[tableKey]
     await this._saveData(pageKey, pageData)
@@ -348,7 +346,7 @@ export default class EhrPageHelper {
    * @returns {Promise<void>}
    */
   async removeDraftRow () {
-    const pageKey = this.pageKey
+    const pageKey = this.getPageKey()
     const activeDialog = this._getActiveTableDialog()
     const tableKey = activeDialog.tableKey
     const pageData = this._getPageData()
@@ -377,7 +375,7 @@ export default class EhrPageHelper {
         delete pageData[ck]
       })
     }
-    await this._saveData(this.pageKey, pageData)
+    await this._saveData(this.getPageKey(), pageData)
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   }
   async savePageFormEdit () {
@@ -389,7 +387,7 @@ export default class EhrPageHelper {
     }
     pageData = removeEmptyProperties(pageData)
     StoreHelper.setEditingMode(false)
-    await this._saveData(this.pageKey, pageData)
+    await this._saveData(this.getPageKey(), pageData)
   }
 
   _getPageData () {
@@ -400,7 +398,7 @@ export default class EhrPageHelper {
     } else {
       initialData = StoreHelper.getBaseLevel()
     }
-    return initialData[this.pageKey] || {}
+    return initialData[this.getPageKey()] || {}
   }
 
   async saveDialogData () {
@@ -592,9 +590,9 @@ export default class EhrPageHelper {
     dialog.active = false
     let eData = Object.assign({ key: tableKey, open: false}, {} )
     const _this = this
-    const options = { open: false }
+    const options = { open: false, tableKey: tableKey }
     Vue.nextTick(function () {
-      EventBus.$emit(_this.getDialogEventChannel(tableKey), eData, options)
+      EventBus.$emit(DIALOG_EVENT_CLOSE, options)
     })
   }
   /**
@@ -706,20 +704,17 @@ export default class EhrPageHelper {
     // NOW set the open state flag which enables the FORM_INPUT_EVENT event to fire when a dialog input is changed.
     dialog.active = true
     // End by sending out the "I'm opened event"
-    let eData = Object.assign({ key: tableKey, open: true}, options )
-    /* Send an event on our transmission channel with a payload containing the open flag
+    let eData = Object.assign({ tableKey: tableKey, open: true }, options)
+    /* Send an event containing the open flag
      This is picked up by each form element (see EhrElementCommon)
 
      Also in the EhrDialogForm (see receiveShowHideEvent). This is used to call the "open"
      event on embedded forms, so they get loaded.  this.$refs.theDialog.onOpen()
      Might be better to not reused the open event here?
 
-     This event on channel is also EMITTED by the EhrElementEmbedded when setEmbeddedGroupData() is invoked
     */
-    const _this = this
     Vue.nextTick(function () {
-      // console.log('send emit getDialogEventChannel event with eData', JSON.stringify(eData))
-      EventBus.$emit(_this.getDialogEventChannel(tableKey), eData)
+      EventBus.$emit(DIALOG_EVENT_OPEN, eData)
     })
   }
   _clearDialogInputs (dialog) {
@@ -761,7 +756,7 @@ export default class EhrPageHelper {
     return result
   }
   _validateInputs (dialog) {
-    const pageKey = this.pageKey
+    const pageKey = this.getPageKey()
     const tableDef = dialog.tableDef
     const inputs = dialog.inputs
     const ehr_data = tableDef.form.ehr_data
@@ -810,7 +805,7 @@ export default class EhrPageHelper {
     EventBus.$on(FORM_INPUT_EVENT, this.inputChangeEventHandler)
   }
 
-  beforeDestroy (pageKey) {
+  beforeDestroy () {
     window.removeEventListener('beforeunload', this.windowUnloadHandler)
     EventBus.$off(FORM_INPUT_EVENT, this.inputChangeEventHandler)
   }

@@ -7,6 +7,7 @@ const debug = false
 const state = {
   assignmentsListing: [],
   listMetadata: {},
+  justLobjList: []
 }
 
 const getters = {
@@ -14,6 +15,7 @@ const getters = {
     return state.assignmentsListing
   },
   listMetadata: state => { return state.listMetadata },
+  justLobjList: state => { return state.justLobjList }
 }
 
 function getAssignmentViaApi (context, url) {
@@ -72,7 +74,6 @@ const actions = {
     })
   },
 
-
   // TODO  remove the following and replace with the loadAssignmentsWithCounts
   // because the create and update use the following but most other parts of the system use the with counts
   async loadAssignments (context) {
@@ -88,7 +89,6 @@ const actions = {
     commit('setAssignmentsListing', list)
     return list
   },
-
 
   async createAssignment (context, payload) {
     let url = 'create'
@@ -117,7 +117,26 @@ const actions = {
         console.error(msg)
         StoreHelper.setApiError(msg)
       })
-  }
+  },
+
+  loadJustLobjList (context, consumerId) {
+    if (!consumerId) {
+      console.error('coding error trying to get list of lobjs without consumer id')
+      return
+    }
+    // console.log('seedListStore. Fetch seed list')
+    let url = 'justLobjList/' + consumerId
+    return InstoreHelper.getRequest(context, API, url).then(response => {
+      let list = response.data
+      console.log('justLobjList results', list)
+      if (!list) {
+        console.error('ERROR the system should have list of lobjs')
+        return
+      }
+      context.commit('_setJustLobjList', list)
+      return list
+    })
+  },
 }
 
 const mutations = {
@@ -129,6 +148,9 @@ const mutations = {
   _setListMeta: (state, metadata) => {
     state.listMetadata = metadata
   },
+  _setJustLobjList: (state, list) => {
+    state.justLobjList = list
+  }
 }
 
 export default {

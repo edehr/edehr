@@ -115,7 +115,7 @@ export const activity1 = {
   resource_link_title: `${assignment1.title} - Activity`,
   resource_link_description: 'This demonstration activity is based on Case Study #1 from the open text book ' +
     'https://pressbooks.bccampus.ca/healthcasestudies/' +
-    '. Your task is to expore the patient\'s current status, determine what interventions are required and record your recommendations in a nursing note (progress note).',
+    '. Your task is to explore the patient\'s current status, determine what interventions are required and record your recommendations in a nursing note (progress note).',
 }
 export const activity2 = {
   lObjDef: assignment2,
@@ -123,13 +123,13 @@ export const activity2 = {
   resource_link_title: `${assignment2.title} - Activity`,
   resource_link_description: 'This demonstration activity is based on Case Study #2 from the open text book ' +
     'https://pressbooks.bccampus.ca/healthcasestudies/' +
-    '. Your task is to expore the patient\'s current status, determine what interventions are required and record your recommendations in a nursing note (progress note).',
+    '. Your task is to explore the patient\'s current status, determine what interventions are required and record your recommendations in a nursing note (progress note).',
 }
 
 export const activity3 = {
   lObjDef: assignment3,
   seedDef: wound1SeedDef,
-  resource_link_title: `${assignment3.title}`,
+  resource_link_title: `${assignment3.title} - Activity`,
   resource_link_description: 'This demonstration activity is a case study devised to illustrate the Integumentary and Wound Care module in the EdEHR. ' +
     'Your task is to conduct and record a wound assessment. ',
 }

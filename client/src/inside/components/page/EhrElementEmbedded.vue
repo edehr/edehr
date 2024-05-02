@@ -9,6 +9,7 @@ import EventBus from '@/helpers/event-bus'
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import EhrElementCommon from '@/inside/components/page/EhrElementCommon'
 import EhrData from '@/inside/components/page/ehr-data'
+import { DIALOG_EVENT_OPEN } from '@/inside/components/page/ehr-helper'
 
 export default {
   name: 'EhrElementEmbedded', // need to declare name
@@ -78,16 +79,14 @@ export default {
       options.open = true
       // tell the form fragment to not allow edits
       options.viewOnly = true
-      let eData = {}
-      // When we send the channel event two things happen: (1) the dialog associated with the referenced
+      // When we send the open event two things happen: (1) the dialog associated with the referenced
       // table is opened and (2) the content of the form fragment is loaded.  We don't want the
       // first thing to happen so include "isEmbedded: true" in the eData. Then the dialog itself
       // can skip the dialog open.
-      eData.isEmbedded= true
-      eData = Object.assign(eData, options)
-      const _this = this
+      options.refTable = this.refTable
+      options.isEmbedded = true
       Vue.nextTick(function () {
-        EventBus.$emit(_this.ehrHelp.getDialogEventChannel(_this.refTable), eData)
+        EventBus.$emit(DIALOG_EVENT_OPEN, options)
       })
     }
   }}

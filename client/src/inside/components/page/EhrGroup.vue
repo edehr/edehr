@@ -3,8 +3,12 @@
     h3(v-if="elementLabel(group)") {{ elementLabel(group) }}
     div(class="ehr-group-wrapper", :class="groupClass")
       div(v-for="child in group.gChildren", :key="forIndex(child)", class="ehr-group-for", :class="childClass(child)")
-        ehr-sub-group(v-if="isSubgroup(child)", :subgroup="child", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
-        ehr-element-form(v-else-if="child", :elementKey="child", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
+        ehr-sub-group(v-if="isSubgroup(child)",
+          :tableKey="tableKey",
+          :subgroup="child", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
+        ehr-element-form(v-else-if="child", :elementKey="child",
+          :tableKey="tableKey",
+          :ehrHelp="ehrHelp", :viewOnly='viewOnly')
         div(v-else) This group has an undefined element
 </template>
 
@@ -31,6 +35,7 @@ export default {
   props: {
     group: {type: Object },
     ehrHelp: { type: Object },
+    tableKey: { type: String},
     viewOnly: { type: Boolean, default: false}
   },
   computed: {

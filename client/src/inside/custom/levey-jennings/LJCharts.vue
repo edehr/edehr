@@ -2,8 +2,8 @@
 <template lang="pug">
   div
     div(v-for='data in tableData')
-      div Analyte {{ data.analyte }}
-      // div Values: {{ data.values }}
+      div Analyte: {{ data.analyte }}
+      div Values: {{ data.values }}
       l-j-chart(:values="data.values")
 </template>
 
@@ -37,7 +37,7 @@ export default {
           const key = 'ljValue' + i
           const v = tRow[key]
           if (v) {
-            ljData.values.push(parseInt(v))
+            ljData.values.push(parseFloat(v))
           }
         }
         return ljData

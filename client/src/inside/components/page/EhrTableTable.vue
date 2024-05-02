@@ -1,13 +1,13 @@
 <template lang="pug">
   div(class='ehr-table-table')
     div(class="no-data" v-if="!hasData") No data
-    div(v-else)
-      table.table_horizontal(tabindex="0")
+    div(v-else class='table-container')
+      table.table_horizontal.main-table(tabindex="0")
         thead
           tr
-            th &nbsp;
-            th Date
-            th(v-for="(tCell, cIndex) in extractData(rowTemplate)", :key='cIndex', :class="tableColumnCss(tCell)")
+            th(class="desc-col sticky-top-left") &nbsp;
+            th(class="time-col sticky-top-left-time") Date
+            th(v-for="(tCell, cIndex) in extractData(rowTemplate)", :key='cIndex', class="sticky-top" :class="tableColumnCss(tCell)")
               span(v-html="tableLabel(tCell)")
         tfoot(v-if="cTableData.length> 5")
           tr
@@ -17,26 +17,15 @@
               span(v-html="tableLabel(tCell)")
         tbody
           tr(v-for="(dRow, rIndex) in cTableData", :key='rIndex', :class='{draftRow : isDraft(dRow) }')
-            th(class="table-actions")
-              div(v-if="showTableAction", class='aux-table-actions')
-                div(                          v-if='isDraft(dRow)') &nbsp;
-                ui-button(value="ets-action", v-else,
-                  v-on:buttonClicked="tableAction(getIdFromRow(dRow))")
-                  span {{ tableActionLabel(getIdFromRow(dRow)) }} &nbsp;
-                  fas-icon(icon="notes-medical")
-              ui-button(value="ets-view",       v-if="!isDraft(dRow)",
-                v-on:buttonClicked="viewReport(getIdFromRow(dRow))", :title='ehrText.viewButtonLabel')
-                fas-icon(icon="file-pdf")
-              ui-button(value="ets-edit-draft", v-if="isDraft(dRow) && canEdit",
-                v-on:buttonClicked="editDraft(getIdFromRow(dRow))", :title='ehrText.resumeButtonLabel')
-                fas-icon(icon="edit")
-              ui-button(value="ets-edit-row",   v-if="canEditSeed(dRow)",
-                v-on:buttonClicked="editSeedRow(getIdFromRow(dRow))", :title='ehrText.editButtonLabel')
-                fas-icon(icon="edit")
-              ui-button(value="ets-delt-row",   v-if="canEditSeed(dRow)",
-                v-on:buttonClicked="deleteSeedRow(getIdFromRow(dRow))", :title='ehrText.deleteButtonLabel')
-                fas-icon(icon="trash")
-            th {{ extractDate(dRow) }}
+            th(class="table-actions desc-col sticky-left")
+              ehr-table-table-actions(:dRow="dRow", :tableDef='tableDef',
+                :ehrHelp="ehrHelp",
+                @editDraft='editDraft',
+                @editSeedRow='editSeedRow',
+                @deleteSeedRow='deleteSeedRow',
+                @viewReport='viewReport'
+              )
+            th(class="time-col sticky-left-time") {{ extractDate(dRow) }}
             td(v-for="(cell, cIndex) in extractData(dRow)", :id="`${rIndex}-${cell.key}`", :key="cIndex", :class="tableCellCss(cell)")
               ehr-table-element(:cell="cell")
 </template>
@@ -49,10 +38,11 @@ import EhrTypes from '@/ehr-definitions/ehr-types'
 import StoreHelper from '@/helpers/store-helper'
 import { t18EhrText } from '@/helpers/ehr-t18'
 import { simDateCalc } from '@/helpers/date-helper'
+import EhrTableTableActions from '@/inside/components/page/EhrTableTableActions.vue'
 
 export default {
   extends: EhrTableCommon,
-  components: { EhrTableElement, UiButton },
+  components: { EhrTableTableActions, EhrTableElement, UiButton },
   inject: [ 'pageDataKey', 'tableKey'],
   computed: {
     canEdit () {
@@ -107,9 +97,65 @@ export default {
 
 <style lang='scss' scoped>
 
-.ehr-table-table {
-  overflow-y: auto;
+.table-container {
+  //max-width: 60%;
+  max-height: 40rem;
+  overflow: auto;
+  display: flex; /* Use flexbox for layout */
 }
+
+.main-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  position: relative; /* Ensure relative positioning for sticky elements */
+}
+thead tr th,
+tbody tr td {
+  border: 1px solid #888;
+  padding: 8px;
+  text-align: center;
+}
+.desc-col {
+  min-width: 63px;
+}
+.sticky-left-time,
+.sticky-top-left-time {
+  left: 63px;
+}
+.sticky-left,
+.sticky-left-time,
+.sticky-top-left-time,
+.sticky-top-left,
+.sticky-top {
+  position: sticky;
+  background-color: #bbb; /* Match the sticky header background color */
+}
+.sticky-top-left,
+.sticky-left {
+  left: 0;
+}
+.sticky-top-left,
+.sticky-top-left-time,
+.sticky-top {
+  top: 0;
+}
+
+.sticky-left {
+  z-index: 2; /* Ensure sticky elements are above normal elements */
+}
+.sticky-left-time {
+  z-index: 2; /* Ensure sticky elements are above normal elements */
+}
+.sticky-top {
+  z-index: 3; /* Ensure sticky elements are above normal elements */
+}
+.sticky-top-left-time,
+.sticky-top-left {
+  z-index: 4;
+}
+
+/*
 thead th {
   position: sticky;
   top: 0;
@@ -130,7 +176,7 @@ table thead th:nth-child(2),
 table tbody th:nth-child(2) {
   left: 66px; // by trial and error width of first col. BUT will be different when there are more buttons
 }
-
+*/
 .table-actions > button {
   margin-right: 5px;
   margin-bottom: 5px;

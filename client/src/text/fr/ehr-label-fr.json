@@ -536,7 +536,7 @@
   "labRequisitions.cGroup24-4": "Chimie",
   "labRequisitions.cGroup24-5": "Gaz sanguin",
   "labRequisitions.cGroup24-6": "Analyse d'urine",
-  "labRequisitions.dateOfBirth": "Nœud",
+  "labRequisitions.dateOfBirth": "DDN",
   "labRequisitions.dateRequired": "Date requise",
   "labRequisitions.day": "Jour",
   "labRequisitions.demographics": "Démographique",
@@ -1392,5 +1392,12 @@
   "medLabBody.bdyLabel12": "Monocytes",
   "medLabBody.bdyLabel13": "Macrophages",
   "medLabBody.bdyWBCLabel": "WBC",
-  "medLabBody.bdyRBCLabel": "RBC"
+  "medLabBody.bdyRBCLabel": "RBC",
+  "labRequisitions.req_id": "Numéro de demande",
+  "labRequisitions.reqH_id": "Numéro de demande",
+  "labRequisitions.reqH_schedule": "Calendrier",
+  "labRequisitions.reqMi_id": "Numéro de demande",
+  "labRequisitions.reqMicro_id": "Numéro de demande",
+  "leveyJennings.tableLJ.ljAuxEntryTable": "Valeur LJ",
+  "leveyJennings.ljAuxValue": "Valeur"
 }

@@ -14,6 +14,11 @@
           label(class="clickable")
             input(type="radio", name='ehrLayout', v-model="ehrLayout", value="open", id="radio-regular",  @change="setOpenEHRLayout")
             span &nbsp; {{ text.OPEN_BUTTON_LABEL }}
+      div(class="details-row")
+        div(class="details-name") Enable automatic dark theme
+        div(class="details-value")
+          input(type="checkbox", id="allowDark", @input="setAllowDark", :checked="allowDark")
+          label(for='creator') &nbsp; Dark them {{ allowDark ? 'will' : 'will not' }} sync with OS.
 </template>
 
 <script>
@@ -33,7 +38,6 @@ export default {
       text: Text.USER_SETTINGS_PAGE,
       appIcons: APP_ICONS,
       ehrLayout: 'open'
-
     }
   },
   computed: {
@@ -44,8 +48,12 @@ export default {
     isOpenEhrLayout () {
       return this.userSettings.ehrLayout === 'open'
     },
+    allowDark () {
+      return !!this.userSettings.allowDark
+    }
   },
   methods: {
+    setAllowDark () { return this.$store.dispatch('userStore/toggleAllowDark')},
     setCompactEHRLayout () { return this.$store.dispatch('userStore/setEhrLayout', 'compact')
     },
     setOpenEHRLayout () { return this.$store.dispatch('userStore/setEhrLayout', 'open')

@@ -160,9 +160,6 @@ describe('ehr-helper tests', () => {
   })
 
   describe('dialog tests', () => {
-    it('getDialogEventChannel', () => {
-      should.doesNotThrow(() => ehrHelper.getDialogEventChannel())
-    })
 
     it('getErrorList', () => {
       should.doesNotThrow(() => {

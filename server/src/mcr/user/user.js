@@ -9,6 +9,9 @@ const UserSettings = new mongoose.Schema({
     type: String,
     enum : ['open','compact'],
     default: 'open'
+  },
+  allowDark: {
+    type: Boolean
   }
   // signOnName: { type: String },
   // signOnRole: { type: String }

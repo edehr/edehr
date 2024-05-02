@@ -17,11 +17,11 @@
               div(class="text_input_wrapper")
                 label Consumer secret
                 input(class="input text-input", type="text", v-model="secret", v-validate="secretValidate")
-            div(class="form-element")
-              div(class="text_input_wrapper")
-                label
-                  input(class="checkbox", type="checkbox", v-model="isPrimary")
-                  span {{consumerType}}
+            //div(class="form-element")
+            //  div(class="text_input_wrapper")
+            //    label
+            //      input(class="checkbox", type="checkbox", v-model="isPrimary")
+            //      span {{consumerType}}
 
 </template>
 
@@ -89,7 +89,7 @@ export default {
         this.consumerName = consumerData.tool_consumer_instance_name || ''
         this.key = consumerData.oauth_consumer_key
         this.secret = consumerData.oauth_consumer_secret
-        this.isPrimary = consumerData.is_primary
+        // this.isPrimary = consumerData.is_primary
       } else {
         this.actionType = CREATE_ACTION
       }
@@ -103,8 +103,7 @@ export default {
       let aConsumer = {
         tool_consumer_instance_name: this.consumerName,
         oauth_consumer_key: this.key,
-        oauth_consumer_secret: this.secret,
-        is_primary: !!this.isPrimary
+        oauth_consumer_secret: this.secret
       }
       this.$refs.theDialog.onClose()
       if (this.actionType === EDIT_ACTION) {

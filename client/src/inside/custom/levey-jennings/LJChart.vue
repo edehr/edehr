@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import { drawChart } from '@/inside/custom//levey-jennings/drawChart'
+import { drawChart } from '@/inside/custom//levey-jennings/LjDrawChart'
 
 export default {
   components: { },

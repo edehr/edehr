@@ -69,13 +69,6 @@ async  function onPageChange (toRoute) {
     console.log('Skip page change for error page')
     return perfExit(perfStat)
   }
-
-  /*
-  Note that the browser settings can override the OS setting
-   */
-  const isDark = window.matchMedia('(prefers-color-scheme:dark)').matches
-  console.log('isDark', isDark)
-
   // console.log('toRoute', toRoute.fullPath)
   // console.log('page change to: ', toRoute.name, JSON.stringify(toRoute.meta), JSON.stringify(toRoute.query))
   const {

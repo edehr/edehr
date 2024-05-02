@@ -1297,7 +1297,7 @@
   "medLabChemistry.label55-113": "Pending analyte",
   "medLabChemistry.label55-114": "Pending result (include units)",
   "medLabChemistry.chemInterpLabel": "Are any of the results abnormal",
-  "medLabChemistry.label55-40": "If YES and results are clinically significant, name ONE common clinical condition contributing to these patient results.",
+  "medLabChemistry.label55-40": "If YES and results are clinically significant, name common clinical conditions contributing to these patient results.",
   "medLabChemistry.chemPhLabel": "Should any of the reportable results be phoned to the ordering physician",
   "medLabChemistry.label55-41": "If YES, phone results and fill out the Laboratory Phone Log.",
   "medLabPhoneLog": "Phone Log",
@@ -1379,7 +1379,7 @@
   "medLabBody.bdyLabel5": "Analyte",
   "medLabBody.bdyType": "Fluid Type",
   "medLabBody.bdyColour": "Color",
-  "medLabBody.bdyClarity": "Clairty",
+  "medLabBody.bdyClarity": "Clarity",
   "medLabBody.bdyVolume": "Volume",
   "medLabBody.bdyLabel6": "Relative %",
   "medLabBody.bdyComments": "Comments",
@@ -1392,5 +1392,12 @@
   "medLabBody.bdyLabel12": "Monocytes",
   "medLabBody.bdyLabel13": "Macrophage",
   "medLabBody.bdyWBCLabel": "WBC",
-  "medLabBody.bdyRBCLabel": "RBC"
+  "medLabBody.bdyRBCLabel": "RBC",
+  "labRequisitions.req_id": "Requisition Id",
+  "labRequisitions.reqH_id": "Requisition Id",
+  "labRequisitions.reqH_schedule": "Schedule",
+  "labRequisitions.reqMi_id": "Requisition Id",
+  "labRequisitions.reqMicro_id": "Requisition Id",
+  "leveyJennings.tableLJ.ljAuxEntryTable": "LJvalue",
+  "leveyJennings.ljAuxValue": "Value"
 }

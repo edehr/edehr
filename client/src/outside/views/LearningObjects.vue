@@ -70,7 +70,7 @@
           div(class="cell date") {{ lObj.lastUpdateDate | formatDateTime }}
           div(class="cell description").
              {{truncate(lObj.description, 200)}}
-    learning-object-import-dialog(ref='theLObjImportDialog')
+    learning-object-import-dialog(ref='theLObjImportDialog', :toolConsumer='toolConsumer')
     learning-object-dialog-no-case-create(ref='theLObjDialog', @create="createNewLobj")
 </template>
 
@@ -106,7 +106,8 @@ export default {
       columnLti: 'idForLTI',
       sortKey: 'name',
       sortDir: ASC,
-      searchTerm: ''
+      searchTerm: '',
+      toolConsumer: StoreHelper.getAuthdConsumerId()
     }
   },
   components: { ZoneLmsInstructionsHeader, ZoneLmsButton, AppPaginateControls, AppTypeRadio, AppSearchBox, UiButton, UiTableHeaderButton, ZoneLmsPageBanner, LearningObjectListItem, LearningObjectImportDialog, LearningObjectDialogNoCaseCreate },

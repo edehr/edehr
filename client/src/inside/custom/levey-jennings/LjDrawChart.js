@@ -5,11 +5,16 @@
 // Constants
 const MARGIN = 50
 const TICK_LENGTH = 5
+const MAXSD = 3
 
 // Function to calculate the start and end values for the left axis
 function calculateAxisRange (values, average, stdDeviation) {
-  const minValue = Math.min(...values, average - 3 * stdDeviation - 5)
-  const maxValue = Math.max(...values, average + 3 * stdDeviation + 5)
+  // add a margin of one px per 50 points based on the max value
+  let maxValue = Math.max(...values)
+  let margin = Math.trunc(maxValue / 50 )
+  const R = MAXSD * stdDeviation + margin
+  let minValue = Math.min(...values, average - R)
+  maxValue = Math.max(...values, average + R)
   return { min: minValue, max: maxValue }
 }
 

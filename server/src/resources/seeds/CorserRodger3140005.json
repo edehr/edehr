@@ -15,6 +15,68 @@
       "personAge": "25",
       "dateOfBirth": "1997-12-10",
       "gender": "Male"
+    },
+    "leveyJennings": {
+      "tableLJ": [
+        {
+          "ljAnalyte": "Glucose (mmol/L)",
+          "ljValue1": "5.6",
+          "ljValue2": "5.5",
+          "ljValue3": "5.7",
+          "ljValue4": "5.8",
+          "ljValue5": "8.2",
+          "ljValue6": "5.9",
+          "ljValue7": "3.5",
+          "ljValue8": "5.6",
+          "ljValue9": "5.7",
+          "ljValue10": "5.8",
+          "ljValue11": "5.4",
+          "ljValue12": "5.9",
+          "ljValue13": "9.1",
+          "ljValue14": "5.6",
+          "createdDate": "2024-04-20T06:08:20-07:00",
+          "tableLJ_id": "leveyJennings.tableLJ.0"
+        },
+        {
+          "ljAnalyte": "Bilirubin (mmol/L)",
+          "ljValue1": "0.8",
+          "ljValue2": "0.7",
+          "ljValue3": "0.9",
+          "ljValue4": "2.1",
+          "ljValue5": "0.5",
+          "ljValue6": "0.7",
+          "ljValue7": "0.8",
+          "ljValue8": "0.6",
+          "ljValue9": "0.7",
+          "ljValue10": "0.8",
+          "ljValue11": "0.9",
+          "ljValue12": "0.6",
+          "ljValue13": "1.7",
+          "ljValue14": "0.8",
+          "createdDate": "2024-04-20T06:08:20-07:00",
+          "tableLJ_id": "leveyJennings.tableLJ.1"
+        },
+        {
+          "ljAnalyte": "Ketone (mmol/L)",
+          "ljValue1": "1.2",
+          "ljValue2": "1.1",
+          "ljValue3": "1.3",
+          "ljValue4": "3.0",
+          "ljValue5": "1.4",
+          "ljValue6": "1.1",
+          "ljValue7": "1.2",
+          "ljValue8": "1.3",
+          "ljValue9": "1.0",
+          "ljValue10": "1.2",
+          "ljValue11": "1.1",
+          "ljValue12": "2.7",
+          "ljValue13": "1.4",
+          "ljValue14": "1.2",
+          "createdDate": "2024-04-20T06:08:20-07:00",
+          "tableLJ_id": "leveyJennings.tableLJ.2"
+        }
+      ],
+      "lastUpdate": "2024-04-20T06:08:20-07:00"
     }
   },
   "appType": "LIS",

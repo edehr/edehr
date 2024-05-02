@@ -15,6 +15,7 @@ const state = {
   simSignOnData: {},
   simDateTime: {  },
   _visitId: undefined,
+  activeStudentCount: {},
   topLevelMenu: '',
   _seedEditId: '',
   _isDevelopingContent: false, // disable, by default, This sets the ability to create content if user is an instructor
@@ -27,6 +28,7 @@ const getters = {
   activityDataId: state => {
     return state.sVisitData.activityData
   },
+  activeStudentCount: state => state.activeStudentCount,
   // isDeveloper: state => {
   // the isDeveloper field is the same as isInstructor see lti on server
   //   return state.sVisitData.isDeveloper
@@ -109,6 +111,15 @@ const actions = {
       context.commit('setSimSignOn', visit.simulationSignOn)
     })
   },
+  loadActiveStudentCount (context) {
+    let url = 'active-student-count'
+    if (debug) console.log('loadActiveStudentCount api call ', url)
+    return InstoreHelper.getRequest(context, API, url).then(response => {
+      let last12 = response.data
+      last12.reverse()
+      context.commit('setActiveStudentCount', last12)
+    })
+  },
   restoreAsInstructor (context) {
     if (trace) console.log('Visit store restore as instructor')
     return InstoreHelper.postRequest(context, API, 'restoreAsInstructor').then(results => {
@@ -182,6 +193,9 @@ const mutations = {
   setVisitData: (state, info) => {
     if(debug) console.log('visit store setVisitData ', info)
     state.sVisitData = info
+  },
+  setActiveStudentCount: (state, last12) => {
+    state.activeStudentCount = last12
   },
   _setVisitId: (state, id) => {
     if(debug) console.log('_setVisitId ', id)

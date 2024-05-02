@@ -15,18 +15,19 @@
         fas-icon(class="linkIcon", icon="file-pdf")
         span {{ label }}
 
-    ehr-element-calculated-bool(v-else-if="isType('calculatedBool')", :elementKey="elementKey", :ehrHelp="ehrHelp" )
+    ehr-element-calculated-bool(v-else-if="isType('calculatedBool')",
+      :tableKey="tableKey", :elementKey="elementKey", :ehrHelp="ehrHelp" )
 
-    ehr-element-calculated(v-else-if="isType('calculatedValue')", :elementKey="elementKey", :ehrHelp="ehrHelp" )
+    ehr-element-calculated(v-else-if="isType('calculatedValue')", :tableKey="tableKey", :elementKey="elementKey", :ehrHelp="ehrHelp" )
 
-    ehr-element-calculated-text(v-else-if="isType('calculatedText')", :elementKey="elementKey", :ehrHelp="ehrHelp" )
+    ehr-element-calculated-text(v-else-if="isType('calculatedText')", :tableKey="tableKey", :elementKey="elementKey", :ehrHelp="ehrHelp" )
 
-    ehr-element-box-checkset(v-else-if="isType('boxcheckset')", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
+    ehr-element-box-checkset(v-else-if="isType('boxcheckset')", :tableKey="tableKey", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
-    ehr-element-checkset(v-else-if="isType('checkset')", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
+    ehr-element-checkset(v-else-if="isType('checkset')", :tableKey="tableKey", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
     ehr-element-radioset(v-else-if="isType('radioset')",
-      :elementKey="elementKey",
+      :tableKey="tableKey", :elementKey="elementKey",
       :ehrHelp="ehrHelp",
       :viewOnly='viewOnly')
 
@@ -35,7 +36,7 @@
       ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="checkbox_label, check-label", :forElement="inputId")
 
     div(v-else-if="isType('custom_form')", class='grid-span-3-columns', :class='formCss')
-      ehr-element-custom-form(:element="element", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
+      ehr-element-custom-form(:element="element", :tableKey="tableKey", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
     div(v-else-if="isType('date')", class="text_input_wrapper", :class='formCss')
       ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
@@ -44,18 +45,19 @@
       ui-info(:title="ehrText.simulationDayUserTipTitle", :text="ehrText.simulationDayUserTipBody")
 
     div(v-else-if="isPatientData" )
-      ehr-element-patient(:element="element", :elementKey="elementKey", :ehrHelp="ehrHelp")
+      ehr-element-patient(:element="element", :tableKey="tableKey", :elementKey="elementKey", :ehrHelp="ehrHelp")
 
     ehr-element-file(
       v-else-if="isType('ehrFile')"
       :containerInputValue="inputVal",
+      :tableKey="tableKey",
       :elementKey="elementKey",
       :ehrHelp="ehrHelp",
       :viewOnly='viewOnly',
       @update="childUpdate")
 
     div(v-else-if="isType('ehr_embedded')")
-      ehr-element-embedded(:elementKey="elementKey", :ehrHelp="ehrHelp", :inputVal="inputVal")
+      ehr-element-embedded(:elementKey="elementKey", :tableKey="tableKey", :ehrHelp="ehrHelp", :inputVal="inputVal")
 
     hr(v-else-if="isType('horizontal')")
     // type lookahead should have been named 'medication'
@@ -65,6 +67,7 @@
       div(v-if="!viewOnly")
         ehr-element-medication(
           :domId="_id",
+          :tableKey="tableKey",
           :disabled="disabled",
           @selected="(selected) => inputVal = selected",
           :inputVal="inputVal"
@@ -80,6 +83,7 @@
     ehr-element-birth-date(
       v-else-if="isType('mainDOB')"
       :elementKey="elementKey",
+      :tableKey="tableKey",
       :ehrHelp="ehrHelp",
       :viewOnly='viewOnly',
       :containerInputValue="inputVal"
@@ -88,7 +92,7 @@
 
     div(v-else-if="isType('number') || isType('personAge')", class="text_input_wrapper", :class='formCss')
       ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
-      input(v-if="!viewOnly", class="input numb-input", type="number", :disabled="disabled", :name="elementKey", v-model="inputVal")
+      input(v-if="!viewOnly", class="input numb-input", type="number", step="any", :disabled="disabled", :name="elementKey", v-model="inputVal")
       div(v-if="viewOnly") {{ inputVal }}
       span(class="suffix") {{suffix }}
 
@@ -105,7 +109,7 @@
     div(v-else-if="isType('practitionerProfession')", class="text_input_wrapper")
       div {{ inputVal }} &nbsp;
 
-    ehr-element-select(v-else-if="isType('select')", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
+    ehr-element-select(v-else-if="isType('select')", :elementKey="elementKey", :tableKey="tableKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
     div(v-else-if="isType('spacer')", class="label_wrapper") <!--class="spacer"-->
       div &nbsp;

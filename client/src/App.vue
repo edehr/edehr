@@ -38,6 +38,10 @@ export default {
        */
       return false // && StoreHelper.isLoading()
     },
+    userSettings () { return this.$store.getters['userStore/userSettings'] || {} },
+    allowDark () {
+      return !!this.userSettings.allowDark
+    },
     appCssClass () {
       let css = []
       if (StoreHelper.isStudent()) {
@@ -45,6 +49,13 @@ export default {
       }
       if (StoreHelper.isInstructor()) {
         css.push('isInstructorClass')
+      }
+      if (this.allowDark) {
+        // Get OS dark mode. Note that the browser settings can override the OS setting
+        const isDark = window.matchMedia('(prefers-color-scheme:dark)').matches
+        if (isDark) {
+          css.push('dark-theme')
+        }
       }
       return css.join(' ')
     },
