@@ -30,6 +30,7 @@ const consumerBaseDef = {
   tool_consumer_instance_description: 'Virtual LMS for demonstration',
   tool_consumer_instance_guid: 'Demo-EdEHR',
   tool_consumer_instance_name: 'EdEHR Demo',
+  display_name: 'Demo',
   oauth_signature_method: 'HMAC-SHA1',
   lti_message_type: 'basic-lti-launch-request',
 }

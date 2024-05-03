@@ -8,6 +8,7 @@
         div(v-else)
           router-link(:to="{ name: 'home' }", class="navLink")
             img(src="/edehr-Logo.png", class='brand-image', alt='EdEHR')
+      div(class="display-name") {{ consumerDisplayName }}
       div(class="flow_across menu_space_across flow_across_last_item side-menu")
         app-header-documentation-menu
         router-link(v-if="isDemo", :to="{ name: `demo` }", class="navLink") {{demoText}}
@@ -31,6 +32,12 @@ import AppHeaderLanguageMenu from '@/app/components/AppHeaderLanguageMenu.vue'
 export default {
   components: { AppHeaderLanguageMenu, AppHeaderDocumentationMenu, AppHeaderInstructorMenu, AppHeaderStudentMenu, AppHeaderPublicMenu },
   computed: {
+    consumer () {
+      return this.$store.getters['consumerStore/consumer']
+    },
+    consumerDisplayName () {
+      return this.consumer.display_name || ''
+    },
     isDemoServer () { return window.location.href.includes('demo.edehr')},
     isPublic () { return StoreHelper.inZonePublic() },
     isDemo () { return StoreHelper.isDemoMode() },
@@ -58,6 +65,9 @@ export default {
 }
 .app-header-brand {
   min-width: 10rem;
+}
+.display-name {
+  margin-top: 10px;
 }
 .side-menu {
   margin-top: 10px;

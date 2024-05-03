@@ -26,6 +26,7 @@
             router-link(:to="{ name:'admin-consumer', query: { consumerId: item._id }}").
               {{ item.tool_consumer_instance_name }}
             div {{ item._id }}
+            div {{ item.display_name}}
           td
             div {{ item.oauth_consumer_key}}
             div {{ item.oauth_consumer_secret}}

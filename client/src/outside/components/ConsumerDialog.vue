@@ -11,6 +11,10 @@
                 input(class="input text-input", type="text", v-model="consumerName", v-validate="nameValidate")
             div(class="form-element")
               div(class="text_input_wrapper")
+                label Display name
+                input(class="input text-input", type="text", v-model="displayName")
+            div(class="form-element")
+              div(class="text_input_wrapper")
                 label Consumer key
                 input(class="input text-input", type="text", v-model="key", v-validate="keyValidate")
             div(class="form-element")
@@ -45,7 +49,9 @@ const CREATE_ACTION = 'create'
 export default {
   data () {
     return {
-      consumerName: '', key: '', secret: '',
+      consumerName: '',
+      displayName: '',
+      key: '', secret: '',
       actionType: '',
       consumerId: '',
       isPrimary: undefined
@@ -76,6 +82,7 @@ export default {
     clearInputs: function () {
       this.actionType
         = this.consumerName
+        = this.displayName
         = this.key
         = this.secret
         = this.consumerId = ''
@@ -87,6 +94,7 @@ export default {
         this.actionType = EDIT_ACTION
         this.consumerId = consumerData._id
         this.consumerName = consumerData.tool_consumer_instance_name || ''
+        this.displayName = consumerData.displayName || ''
         this.key = consumerData.oauth_consumer_key
         this.secret = consumerData.oauth_consumer_secret
         // this.isPrimary = consumerData.is_primary
@@ -102,6 +110,7 @@ export default {
     saveDialog: function () {
       let aConsumer = {
         tool_consumer_instance_name: this.consumerName,
+        display_name: this.displayName,
         oauth_consumer_key: this.key,
         oauth_consumer_secret: this.secret
       }
