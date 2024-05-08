@@ -1,25 +1,9 @@
 <template lang="pug">
-  div(class='student-sign-on', v-if='isSimSignOnEnabled')
-    div(v-if='isSimSignedOn', class='flow_across')
-      div(class="signed-in-user")  {{ userName }}
-      ui-button(value="esso-out", v-on:buttonClicked="actionSignOut", secondary=true )
-        fas-icon(class="fa", :icon="appIcons.signOut")
-        span &nbsp; {{ ehrText.signOutButtonLabel }}
-    div(v-else, class='flow_across')
-      ui-button(value="esso-in", v-on:buttonClicked="showSignIn")
-        fas-icon(class="fa", :icon="appIcons.signIn")
-        span &nbsp; {{ ehrText.signInButtonLabel }}
-    app-dialog( ref="theDialog", :isModal="true", @save='actionSignOn', @cancel='cancelSignIn', :disable-save='isReady')
-      h3(slot="header") {{ ehrText.signInButtonLabel }}
-      div(slot="body")
-        div(class='so-group')
-          div(class="so-element")
-            label(for="nInput")  {{ ehrText.signInNameLabel }}
-            input(class="input sso-input", id="nInput", type="text", v-model="pName", :placeholder='ehrText.signInNameLabel')
-          div(class="so-element")
-            label(for="pInput")  {{ ehrText.signInProfessionLabel }}
-            input(class="input sso-input", id="pInput", type="text", v-model="pProfession", :placeholder='ehrText.signInProfessionLabel')
-
+  div(v-if='isSimSignedOn', class='flow_across')
+    div(class="signed-in-user")  {{ userName }}
+    ui-button(value="esso-out", v-on:buttonClicked="actionSignOut")
+      span {{ ehrText.signOutButtonLabel }}  &nbsp;
+      fas-icon(class="fa", :icon="appIcons.signOut")
 </template>
 <script>
 import UiButton from '@/app/ui/UiButton.vue'

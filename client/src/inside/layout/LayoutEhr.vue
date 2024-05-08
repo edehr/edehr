@@ -1,16 +1,16 @@
 <template lang="pug">
   div(class="ehr_layout flow_down", :class='{compactLayout : isCompact}')
-    div(class="sticky")
+    div(:class="hdrCssClass")
       app-header
       // banner for student, eval, seed, or ehr only
       ehr-context-banner
     main(:class="ehrOrLis")
+      ui-not-signed-on
       ehr-multi-patient-bar(class='ehr-multi-patient-bar')
       div(v-if="!hasPatient", class="ehr-no-content")
         div Search and select a patient.
       div(v-if="hasPatient")
         // Once there is a patient open then prompt user to do the simulated sign on if they haven't.
-        ui-not-signed-on
         // patient banner area. Also displays current ehr page
         div(class="ehr-banner-context flow_across")
           div(class="pageTitle left_side_banner") {{pageTitle}}
@@ -79,6 +79,14 @@ export default {
     }
   },
   computed: {
+    hdrCssClass () {
+      let css = []
+      if(!this.smallerThan900Window) {
+        css.push('sticky')
+      }
+      return css.join(' ')
+    },
+
     ehrNavCollapsed () { return this.$store.getters['system/ehrNavCollapsed']},
     ehrOrLis () { return StoreHelper.isEHR_Showing() ? 'ehr-branding' : StoreHelper.isLIS_Showing() ? 'lis-branding' : ''},
     evalDialogVisible () { return this.$store.getters['system/evalDialogVisible']},
@@ -130,6 +138,7 @@ export default {
 $contentMinHeight: 700px;
 main {
   padding-bottom: 5rem;
+  position: relative;
 }
 
 /* Padding and margins and overflow*/
