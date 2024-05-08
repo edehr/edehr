@@ -78,7 +78,7 @@ export default {
 @import "../../scss/definitions";
 .sdt-display {
   font-weight: 600;
-  padding: 5px 5px 5px 7px;
+  padding: 5px 5px 5px 1px;
 }
 .sdt-date {
   max-width: 2rem;

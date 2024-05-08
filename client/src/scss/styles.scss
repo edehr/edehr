@@ -179,6 +179,22 @@ $panelContentPadding: 0.5rem 1rem;
   }
 }
 
+.smaller-than-threshold3 {
+  display: none  !important;
+}
+.bigger-than-threshold3 {
+  display: inherit !important;
+}
+@media screen and (max-width: $main-width-threshold3) {
+  .smaller-than-threshold3 {
+    display: inherit !important;
+  }
+  .bigger-than-threshold3 {
+    display: none !important;
+  }
+}
+
+
 .bigger-than-threshold4 {
   display: inherit !important;
 }
@@ -255,7 +271,7 @@ footer {
   flex-wrap: wrap;
 }
 .menu_space_across {
-  gap: 1.5rem;
+  column-gap: 1.5rem;
 }
 .table_space_across {
   gap: 5px;
