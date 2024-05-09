@@ -241,7 +241,9 @@ async  function onPageChange (toRoute) {
 
     // *** If user is here and is not auth'd then something is wrong ... EXIT
     if (!authToken) {
-      console.error('Coding error. At this point the user must be auth\'d to be in the ehr zone')
+      let deets = routeName
+      deets += ' ' + JSON.stringify(Object.keys(toRoute.query))
+      console.error('Coding error. At this point the user must be auth\'d to be in the ehr zone. ' + deets)
       return perfExit(perfStat)
       // EXIT
     }
