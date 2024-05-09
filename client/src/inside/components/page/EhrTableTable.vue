@@ -96,12 +96,20 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@import '../../../scss/definitions';
 
 .table-container {
   //max-width: 60%;
   max-height: 40rem;
   overflow: auto;
   display: flex; /* Use flexbox for layout */
+  /*
+  On the iPhone in portrait mode large tables are huge and unbounded.
+  Try adding a max bounds to see if they stay within range.
+   */
+  @media screen and (max-width: 400px) {
+    max-width: 400px;
+  }
 }
 
 .main-table {
