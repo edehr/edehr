@@ -12,6 +12,7 @@
 **/sessions/**
 **/trash/**
 **/.env
+server/*.env
 **/.env*
 **/.env-*
 **/.park/**
