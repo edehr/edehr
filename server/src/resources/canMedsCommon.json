@@ -1,0 +1,619 @@
+{
+  "fName": "canCommonDb.json",
+  "count": 102,
+  "date": "2024-05-14T13:49:15.758Z",
+  "medicationList": [
+    {
+      "med": "Acetaminophen",
+      "route": "oral",
+      "thC": "N02BE01",
+      "thD": "analgesic and antipyretic"
+    },
+    {
+      "med": "Alendronate",
+      "route": "oral",
+      "thC": "M05BA04",
+      "thD": "bisphosphonate for osteoporosis"
+    },
+    {
+      "med": "Amiodarone",
+      "route": "oral, injection",
+      "thC": "C01BD01",
+      "thD": "antiarrhythmic medication"
+    },
+    {
+      "med": "Amlodipine",
+      "route": "oral",
+      "thC": "C08CA01",
+      "thD": "calcium channel blocker for hypertension"
+    },
+    {
+      "med": "Amoxicillin",
+      "route": "oral",
+      "thC": "J01CA04",
+      "thD": "antibiotic"
+    },
+    {
+      "med": "Aripiprazole",
+      "route": "oral",
+      "thC": "N05AX12",
+      "thD": "antipsychotic medication"
+    },
+    {
+      "med": "Atomoxetine",
+      "route": "oral",
+      "thC": "N06BA09",
+      "thD": "used for ADHD"
+    },
+    {
+      "med": "Atorvastatin (Lipitor)",
+      "route": "oral",
+      "thC": "C10AA05",
+      "thD": "cholesterol-lowering medication"
+    },
+    {
+      "med": "Azithromycin",
+      "route": "oral",
+      "thC": "J01FA10",
+      "thD": "antibiotic"
+    },
+    {
+      "med": "Benzonatate",
+      "route": "oral",
+      "thC": "R05DB07",
+      "thD": "used for cough suppression"
+    },
+    {
+      "med": "Bisoprolol",
+      "route": "oral",
+      "thC": "C07AB07",
+      "thD": "beta blocker for hypertension"
+    },
+    {
+      "med": "Budesonide",
+      "route": "oral",
+      "thC": "A07EA06",
+      "thD": "corticosteroid used in asthma and Crohn's disease"
+    },
+    {
+      "med": "Buprenorphine/Naloxone",
+      "route": "sublingual",
+      "thC": "N07BC01",
+      "thD": "used in opioid dependence treatment"
+    },
+    {
+      "med": "Bupropion",
+      "route": "oral",
+      "thC": "N06AX12",
+      "thD": "antidepressant and smoking cessation aid"
+    },
+    {
+      "med": "Buspirone",
+      "route": "oral",
+      "thC": "N05BE01",
+      "thD": "used for anxiety"
+    },
+    {
+      "med": "Candesartan",
+      "route": "oral",
+      "thC": "C09CA06",
+      "thD": "angiotensin II receptor blocker for hypertension"
+    },
+    {
+      "med": "Carvedilol",
+      "route": "oral",
+      "thC": "C07AG02",
+      "thD": "beta blocker for heart failure and hypertension"
+    },
+    {
+      "med": "Celecoxib",
+      "route": "oral",
+      "thC": "M01AH01",
+      "thD": "COX-2 inhibitor used as an NSAID"
+    },
+    {
+      "med": "Cephalexin",
+      "route": "oral",
+      "thC": "J01DB01",
+      "thD": "antibiotic"
+    },
+    {
+      "med": "Ciprofloxacin",
+      "route": "oral, IV",
+      "thC": "J01MA02",
+      "thD": "antibiotic"
+    },
+    {
+      "med": "Citalopram",
+      "route": "oral",
+      "thC": "N06AB04",
+      "thD": "antidepressant"
+    },
+    {
+      "med": "Clarithromycin",
+      "route": "oral",
+      "thC": "J01FA09",
+      "thD": "antibiotic"
+    },
+    {
+      "med": "Clonazepam",
+      "route": "oral",
+      "thC": "N03AE01",
+      "thD": "benzodiazepine used for seizures and anxiety"
+    },
+    {
+      "med": "Clopidogrel",
+      "route": "oral",
+      "thC": "B01AC04",
+      "thD": "antiplatelet medication"
+    },
+    {
+      "med": "Clozapine",
+      "route": "oral",
+      "thC": "N05AH02",
+      "thD": "antipsychotic medication"
+    },
+    {
+      "med": "Codeine",
+      "route": "oral",
+      "thC": "R05DA04",
+      "thD": "opioid pain medication"
+    },
+    {
+      "med": "Cyclobenzaprine",
+      "route": "oral",
+      "thC": "M03BX08",
+      "thD": "muscle relaxant"
+    },
+    {
+      "med": "Dexamethasone",
+      "route": "oral, injection, topical",
+      "thC": "H02AB02",
+      "thD": "corticosteroid used for various conditions"
+    },
+    {
+      "med": "Diazepam",
+      "route": "oral, IV, injection",
+      "thC": "N05BA01",
+      "thD": "benzodiazepine used for anxiety and seizures"
+    },
+    {
+      "med": "Dicyclomine",
+      "route": "oral",
+      "thC": "A03AA07",
+      "thD": "antispasmodic used for irritable bowel syndrome"
+    },
+    {
+      "med": "Diltiazem",
+      "route": "oral, IV",
+      "thC": "C08DB01",
+      "thD": "calcium channel blocker used for hypertension and arrhythmias"
+    },
+    {
+      "med": "Doxazosin",
+      "route": "oral",
+      "thC": "C02CA04",
+      "thD": "alpha blocker used for BPH and hypertension"
+    },
+    {
+      "med": "Doxycycline",
+      "route": "oral",
+      "thC": "J01AA02",
+      "thD": "antibiotic"
+    },
+    {
+      "med": "Duloxetine",
+      "route": "oral",
+      "thC": "N06AX21",
+      "thD": "antidepressant and nerve pain medication"
+    },
+    {
+      "med": "Escitalopram",
+      "route": "oral",
+      "thC": "N06AB10",
+      "thD": "antidepressant"
+    },
+    {
+      "med": "Esomeprazole",
+      "route": "oral",
+      "thC": "A02BC05",
+      "thD": "proton pump inhibitor for acid reflux"
+    },
+    {
+      "med": "Ezetimibe",
+      "route": "oral",
+      "thC": "C10AX09",
+      "thD": "cholesterol-lowering medication"
+    },
+    {
+      "med": "Fentanyl",
+      "route": "transdermal, injection",
+      "thC": "N02AB03",
+      "thD": "potent opioid pain medication"
+    },
+    {
+      "med": "Fluconazole",
+      "route": "oral, IV",
+      "thC": "J02AC01",
+      "thD": "antifungal medication"
+    },
+    {
+      "med": "Fluoxetine",
+      "route": "oral",
+      "thC": "N06AB03",
+      "thD": "antidepressant"
+    },
+    {
+      "med": "Fluticasone",
+      "route": "inhalation",
+      "thC": "R03BA05",
+      "thD": "inhaled corticosteroid for asthma and COPD"
+    },
+    {
+      "med": "Fluvoxamine",
+      "route": "oral",
+      "thC": "N06AB08",
+      "thD": "antidepressant"
+    },
+    {
+      "med": "Furosemide",
+      "route": "oral",
+      "thC": "C03CA01",
+      "thD": "loop diuretic for edema and hypertension"
+    },
+    {
+      "med": "Gabapentin",
+      "route": "oral",
+      "thC": "N03AX12",
+      "thD": "used for neuropathic pain and seizures"
+    },
+    {
+      "med": "Haloperidol",
+      "route": "oral, injection",
+      "thC": "N05AD01",
+      "thD": "antipsychotic medication"
+    },
+    {
+      "med": "Hydrochlorothiazide",
+      "route": "oral",
+      "thC": "C03AA03",
+      "thD": "diuretic for high blood pressure"
+    },
+    {
+      "med": "Hydrocodone/Acetaminophen",
+      "route": "oral",
+      "thC": "N02AJ07",
+      "thD": "opioid pain medication combination"
+    },
+    {
+      "med": "Hydromorphone",
+      "route": "oral, injection",
+      "thC": "N02AA08",
+      "thD": "opioid pain medication"
+    },
+    {
+      "med": "Hydroxyzine",
+      "route": "oral, IM",
+      "thC": "N05BB01",
+      "thD": "antihistamine used for anxiety and itching"
+    },
+    {
+      "med": "Ibuprofen",
+      "route": "oral",
+      "thC": "M01AE01",
+      "thD": "nonsteroidal anti-inflammatory drug (NSAID)"
+    },
+    {
+      "med": "Lamotrigine",
+      "route": "oral",
+      "thC": "N03AX09",
+      "thD": "used for seizures and bipolar disorder"
+    },
+    {
+      "med": "Lansoprazole",
+      "route": "oral",
+      "thC": "A02BC03",
+      "thD": "proton pump inhibitor for acid reflux"
+    },
+    {
+      "med": "Levothyroxine",
+      "route": "oral",
+      "thC": "H03AA01",
+      "thD": "thyroid hormone replacement"
+    },
+    {
+      "med": "Lisinopril",
+      "route": "oral",
+      "thC": "C09AA03",
+      "thD": "ACE inhibitor for hypertension"
+    },
+    {
+      "med": "Lorazepam",
+      "route": "oral, IV",
+      "thC": "N05BA06",
+      "thD": "benzodiazepine used for anxiety and seizures"
+    },
+    {
+      "med": "Meclizine",
+      "route": "oral",
+      "thC": "R06AE05",
+      "thD": "used for vertigo and motion sickness"
+    },
+    {
+      "med": "Metformin",
+      "route": "oral",
+      "thC": "A10BA02",
+      "thD": "used to manage type 2 diabetes"
+    },
+    {
+      "med": "Methadone",
+      "route": "oral",
+      "thC": "N07BC02",
+      "thD": "used in opioid dependence treatment and pain management"
+    },
+    {
+      "med": "Methotrexate",
+      "route": "oral, injection",
+      "thC": "L01BA01",
+      "thD": "used in the treatment of cancer, rheumatoid arthritis, and psoriasis"
+    },
+    {
+      "med": "Methylphenidate",
+      "route": "oral",
+      "thC": "N06BA04",
+      "thD": "stimulant used for ADHD and narcolepsy"
+    },
+    {
+      "med": "Methylprednisolone",
+      "route": "oral, IV, injection",
+      "thC": "H02AB04",
+      "thD": "corticosteroid used for various conditions"
+    },
+    {
+      "med": "Metoclopramide",
+      "route": "oral, IV",
+      "thC": "A03FA01",
+      "thD": "used for nausea and vomiting"
+    },
+    {
+      "med": "Metoprolol",
+      "route": "oral",
+      "thC": "C07AB02",
+      "thD": "beta blocker for high blood pressure"
+    },
+    {
+      "med": "Metoprolol/Hydrochlorothiazide",
+      "route": "oral",
+      "thC": "C07BB02",
+      "thD": "combination medication for hypertension"
+    },
+    {
+      "med": "Metronidazole",
+      "route": "oral",
+      "thC": "P01AB01",
+      "thD": "antibiotic and antiprotozoal medication"
+    },
+    {
+      "med": "Mirtazapine",
+      "route": "oral",
+      "thC": "N06AX11",
+      "thD": "antidepressant"
+    },
+    {
+      "med": "Mometasone",
+      "route": "inhalation, topical",
+      "thC": "R01AD09",
+      "thD": "corticosteroid used in asthma and allergic rhinitis"
+    },
+    {
+      "med": "Montelukast",
+      "route": "oral",
+      "thC": "R03DC03",
+      "thD": "leukotriene receptor antagonist for asthma and allergies"
+    },
+    {
+      "med": "Naproxen",
+      "route": "oral",
+      "thC": "M01AE02",
+      "thD": "nonsteroidal anti-inflammatory drug (NSAID)"
+    },
+    {
+      "med": "Nebivolol",
+      "route": "oral",
+      "thC": "C07AB12",
+      "thD": "beta blocker used for hypertension and heart failure"
+    },
+    {
+      "med": "Nortriptyline",
+      "route": "oral",
+      "thC": "N06AA10",
+      "thD": "antidepressant"
+    },
+    {
+      "med": "Olanzapine",
+      "route": "oral",
+      "thC": "N05AH03",
+      "thD": "antipsychotic medication"
+    },
+    {
+      "med": "Omeprazole",
+      "route": "oral",
+      "thC": "A02BC01",
+      "thD": "proton pump inhibitor for acid reflux"
+    },
+    {
+      "med": "OxyContin (Oxycodone)",
+      "route": "oral",
+      "thC": "N02AA05",
+      "thD": "opioid pain medication"
+    },
+    {
+      "med": "Pantoprazole",
+      "route": "oral",
+      "thC": "A02BC02",
+      "thD": "proton pump inhibitor for acid reflux"
+    },
+    {
+      "med": "Pantoprazole/Levofloxacin/Amoxicillin",
+      "route": "oral",
+      "thC": "A02BD05",
+      "thD": "combination used for H. pylori eradication"
+    },
+    {
+      "med": "Paroxetine",
+      "route": "oral",
+      "thC": "N06AB05",
+      "thD": "antidepressant"
+    },
+    {
+      "med": "Pramipexole",
+      "route": "oral",
+      "thC": "N04BC05",
+      "thD": "used for Parkinson's disease and restless legs syndrome"
+    },
+    {
+      "med": "Pregabalin",
+      "route": "oral",
+      "thC": "N03AX16",
+      "thD": "used for neuropathic pain and seizures"
+    },
+    {
+      "med": "Pregabalin",
+      "route": "oral",
+      "thC": "N03AX16",
+      "thD": "used for neuropathic pain and seizures"
+    },
+    {
+      "med": "Quetiapine",
+      "route": "oral",
+      "thC": "N05AH04",
+      "thD": "antipsychotic medication"
+    },
+    {
+      "med": "Rabeprazole",
+      "route": "oral",
+      "thC": "A02BC04",
+      "thD": "proton pump inhibitor for acid reflux"
+    },
+    {
+      "med": "Ramipril",
+      "route": "oral",
+      "thC": "C09AA05",
+      "thD": "ACE inhibitor for high blood pressure"
+    },
+    {
+      "med": "Risperidone",
+      "route": "oral",
+      "thC": "N05AX08",
+      "thD": "antipsychotic medication"
+    },
+    {
+      "med": "Rivastigmine",
+      "route": "oral, patch",
+      "thC": "N06DA03",
+      "thD": "used for Alzheimer's disease and dementia"
+    },
+    {
+      "med": "Rosuvastatin",
+      "route": "oral",
+      "thC": "C10AA07",
+      "thD": "cholesterol-lowering medication"
+    },
+    {
+      "med": "Salbutamol",
+      "route": "inhalation",
+      "thC": "R03AC02",
+      "thD": "short-acting beta agonist for asthma"
+    },
+    {
+      "med": "Sertraline",
+      "route": "oral",
+      "thC": "N06AB06",
+      "thD": "antidepressant"
+    },
+    {
+      "med": "Sildenafil",
+      "route": "oral",
+      "thC": "G04BE03",
+      "thD": "used for erectile dysfunction and pulmonary arterial hypertension"
+    },
+    {
+      "med": "Sitagliptin",
+      "route": "oral",
+      "thC": "A10BH01",
+      "thD": "used to manage type 2 diabetes"
+    },
+    {
+      "med": "Tamsulosin",
+      "route": "oral",
+      "thC": "G04CA02",
+      "thD": "alpha blocker for benign prostatic hyperplasia (BPH)"
+    },
+    {
+      "med": "Telmisartan",
+      "route": "oral",
+      "thC": "C09CA07",
+      "thD": "angiotensin II receptor blocker for high blood pressure"
+    },
+    {
+      "med": "Temazepam",
+      "route": "oral",
+      "thC": "N05CD07",
+      "thD": "benzodiazepine used for insomnia and anxiety"
+    },
+    {
+      "med": "Terbinafine",
+      "route": "oral",
+      "thC": "D01BA02",
+      "thD": "antifungal medication"
+    },
+    {
+      "med": "Tolterodine",
+      "route": "oral",
+      "thC": "G04BD07",
+      "thD": "used for overactive bladder"
+    },
+    {
+      "med": "Topiramate",
+      "route": "oral",
+      "thC": "N03AX11",
+      "thD": "used for seizures and migraine prevention"
+    },
+    {
+      "med": "Tramadol",
+      "route": "oral",
+      "thC": "N02AX02",
+      "thD": "opioid pain medication"
+    },
+    {
+      "med": "Trazodone",
+      "route": "oral",
+      "thC": "N06AX05",
+      "thD": "antidepressant"
+    },
+    {
+      "med": "Triamterene/Hydrochlorothiazide",
+      "route": "oral",
+      "thC": "C03EA02",
+      "thD": "combination diuretic for hypertension and edema"
+    },
+    {
+      "med": "Valsartan",
+      "route": "oral",
+      "thC": "C09CA03",
+      "thD": "angiotensin II receptor blocker for hypertension"
+    },
+    {
+      "med": "Venlafaxine",
+      "route": "oral",
+      "thC": "N06AX16",
+      "thD": "antidepressant"
+    },
+    {
+      "med": "Warfarin",
+      "route": "oral",
+      "thC": "B01AA03",
+      "thD": "anticoagulant"
+    }
+  ]
+}

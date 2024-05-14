@@ -135,10 +135,9 @@ class EhrPatientC {
     let asStored = data.medicationOrders || {}
     asStored = asStored.medicationOrdersTable || []
     let medOrders = JSON.parse(JSON.stringify(asStored))
-    // console.log('---medOrders', medOrders)
     medOrders.sort( (a,b) => {
-      const m1 = extractMedName(a.med_medication)
-      const m2 = extractMedName(b.med_medication)
+      const m1 = extractMedName(a.med_medication || '')
+      const m2 = extractMedName(b.med_medication || '')
       return m1.localeCompare(m2)
     })
     return medOrders

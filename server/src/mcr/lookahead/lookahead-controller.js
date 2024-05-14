@@ -2,6 +2,8 @@ import {ok, fail} from '../common/utils'
 import { Router } from 'express'
 import { Text } from '../../config/text'
 import { ParameterError } from '../common/errors'
+
+const CommonCanadianMedications = require('../../resources/canMedsCommon.json')
 const MEDICATIONS = require('../../resources/medicationsList.json')
 const MEDICATIONS_VA = require('../../resources/vaMedications.json')
 const MEDICATIONS_CA = require('../../resources/canMedications.json')
@@ -20,8 +22,14 @@ function getSearchList (medicationList) {
   })
   return results
 }
+
+const CaCommonList = CommonCanadianMedications.medicationList
+const CaCommonSearch = getSearchList(CaCommonList)
 const CaMedicationList = MEDICATIONS_CA.medicationList
-const CaSearchList = getSearchList(CaMedicationList)
+const CaGovernmentList = getSearchList(CaMedicationList)
+// Combine the common with government placing common first
+const CaSearchList = Object.assign(CaCommonSearch, CaGovernmentList)
+// console.log('CaCommonSearch',CaCommonSearch)
 const VaMedicationList = MEDICATIONS_VA.medicationList
 const VaSearchList = getSearchList(VaMedicationList)
 
@@ -82,8 +90,7 @@ export default class LookaheadController {
     return new Promise( (resolve, reject) => {
       let results = []
       if(!term || typeof term !== 'string' || term.length <= 1) {
-        console.error('--------- lookupMedsV3 no term so return first', this.limitCnt, ' records')
-        results = [] // medList.splice(0, 50)
+        results = []
       } else {
         const searchTerm = term.toLowerCase()
         let cnt = 0
@@ -96,7 +103,9 @@ export default class LookaheadController {
           }
         })
       }
-      results.sort( (a,b) => a[MED_KEY].localeCompare(b[MED_KEY]))
+      // do not sort here. First because it slows the response and second because we want the order
+      // in the lists
+      // results.sort( (a,b) => a[MED_KEY].localeCompare(b[MED_KEY]))
       if (debug) console.log('lookupMedsV3', term, results.length)
       resolve(results)
     })
