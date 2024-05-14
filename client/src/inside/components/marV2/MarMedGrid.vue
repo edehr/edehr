@@ -309,7 +309,7 @@ export default {
           options.draftRowId = mme.marRecordId
         } else {
           // set the bar code checkmark into the dialog values. This will stay through save as draft and final save.
-          options.presetValues.push( { key: 'mar_barCodeCheck', value: barCodeCheck } )
+          options.presetValues.push( { key: 'mar_barCodeCheck', value: !!barCodeCheck } ) // checkval is a boolean  
         }
         options.presetValues = options.presetValues.concat([
           { key: 'mo_schedDay', value: mme.schedDay },
@@ -331,7 +331,7 @@ export default {
             { key: 'mar_event_day', value: currentSimDayNumber() },
             { key: 'mar_event_time', value: currentSimTime() },
             // set the bar code checkmark into the dialog values. This will stay through save as draft and final save.
-            { key: 'mar_barCodeCheck', value: barCodeCheck }
+            { key: 'mar_barCodeCheck', value: !!barCodeCheck } // checkval is a boolean
           ])
         }
       }
