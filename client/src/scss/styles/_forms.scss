@@ -267,10 +267,10 @@ $select_width_2col: 20rem;
   flex-flow: row;
   .checkset_list {
     display: flex;
-    flex-flow: column wrap;
+    // let the check items flow across and wrap to fill the space
+    flex-flow: row wrap;
     column-gap: 1rem;
     align-content: flex-start;
-    max-height: 17rem;
     //border: 1px solid $grey20;
     padding: 5px;
     margin-bottom: 5px;

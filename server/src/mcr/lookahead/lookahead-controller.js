@@ -3,7 +3,7 @@ import { Router } from 'express'
 import { Text } from '../../config/text'
 import { ParameterError } from '../common/errors'
 
-const CommonCanadianMedications = require('../../resources/canMedsCommon.json')
+const CommonCanadianMedications = require('../../resources/commonCanMedsAndSupps.json')
 const MEDICATIONS = require('../../resources/medicationsList.json')
 const MEDICATIONS_VA = require('../../resources/vaMedications.json')
 const MEDICATIONS_CA = require('../../resources/canMedications.json')

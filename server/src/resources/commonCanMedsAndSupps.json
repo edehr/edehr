@@ -1,0 +1,1081 @@
+{
+ "fName": "canCommonDb.json",
+ "count": 179,
+ "date": "2024-05-15T13:14:45.693Z",
+ "medicationList": [
+  {
+   "med": "Acetaminophen",
+   "route": "oral",
+   "thC": "N02BE01",
+   "thD": "analgesic and antipyretic"
+  },
+  {
+   "med": "Alendronate",
+   "route": "oral",
+   "thC": "M05BA04",
+   "thD": "bisphosphonate for osteoporosis"
+  },
+  {
+   "med": "Amiodarone",
+   "route": "oral, injection",
+   "thC": "C01BD01",
+   "thD": "antiarrhythmic medication"
+  },
+  {
+   "med": "Amlodipine",
+   "route": "oral",
+   "thC": "C08CA01",
+   "thD": "calcium channel blocker for hypertension"
+  },
+  {
+   "med": "Amoxicillin",
+   "route": "oral",
+   "thC": "J01CA04",
+   "thD": "antibiotic"
+  },
+  {
+   "med": "Aripiprazole",
+   "route": "oral",
+   "thC": "N05AX12",
+   "thD": "antipsychotic medication"
+  },
+  {
+   "med": "Ashwagandha",
+   "route": "oral",
+   "thC": "N02BX30",
+   "thD": "herbal supplement for stress and anxiety"
+  },
+  {
+   "med": "Atomoxetine",
+   "route": "oral",
+   "thC": "N06BA09",
+   "thD": "used for ADHD"
+  },
+  {
+   "med": "Atorvastatin (Lipitor)",
+   "route": "oral",
+   "thC": "C10AA05",
+   "thD": "cholesterol-lowering medication"
+  },
+  {
+   "med": "Azithromycin",
+   "route": "oral",
+   "thC": "J01FA10",
+   "thD": "antibiotic"
+  },
+  {
+   "med": "Benzonatate",
+   "route": "oral",
+   "thC": "R05DB07",
+   "thD": "used for cough suppression"
+  },
+  {
+   "med": "Berberine",
+   "route": "oral",
+   "thC": "A02BX",
+   "thD": "herbal supplement for blood sugar control and gut health"
+  },
+  {
+   "med": "Biotin",
+   "route": "oral",
+   "thC": "A11HA30",
+   "thD": "vitamin supplement for hair, skin, and nails"
+  },
+  {
+   "med": "Bisoprolol",
+   "route": "oral",
+   "thC": "C07AB07",
+   "thD": "beta blocker for hypertension"
+  },
+  {
+   "med": "Black cohosh extract",
+   "route": "oral",
+   "thC": "G02CX",
+   "thD": "herbal supplement for menopausal symptoms"
+  },
+  {
+   "med": "Budesonide",
+   "route": "oral",
+   "thC": "A07EA06",
+   "thD": "corticosteroid used in asthma and Crohn's disease"
+  },
+  {
+   "med": "Buprenorphine/Naloxone",
+   "route": "sublingual",
+   "thC": "N07BC01",
+   "thD": "used in opioid dependence treatment"
+  },
+  {
+   "med": "Bupropion",
+   "route": "oral",
+   "thC": "N06AX12",
+   "thD": "antidepressant and smoking cessation aid"
+  },
+  {
+   "med": "Buspirone",
+   "route": "oral",
+   "thC": "N05BE01",
+   "thD": "used for anxiety"
+  },
+  {
+   "med": "Calcium carbonate",
+   "route": "oral",
+   "thC": "A12AA04",
+   "thD": "mineral supplement for bone health"
+  },
+  {
+   "med": "Candesartan",
+   "route": "oral",
+   "thC": "C09CA06",
+   "thD": "angiotensin II receptor blocker for hypertension"
+  },
+  {
+   "med": "Carvedilol",
+   "route": "oral",
+   "thC": "C07AG02",
+   "thD": "beta blocker for heart failure and hypertension"
+  },
+  {
+   "med": "Celecoxib",
+   "route": "oral",
+   "thC": "M01AH01",
+   "thD": "COX-2 inhibitor used as an NSAID"
+  },
+  {
+   "med": "Cephalexin",
+   "route": "oral",
+   "thC": "J01DB01",
+   "thD": "antibiotic"
+  },
+  {
+   "med": "Choline",
+   "route": "oral",
+   "thC": "A11HA02",
+   "thD": "vitamin-like essential nutrient for liver health"
+  },
+  {
+   "med": "Chondroitin sulfate",
+   "route": "oral",
+   "thC": "M01AX05",
+   "thD": "supplement for joint health and cartilage repair"
+  },
+  {
+   "med": "Chromium picolinate",
+   "route": "oral",
+   "thC": "A11HA",
+   "thD": "mineral supplement for blood sugar control and metabolism"
+  },
+  {
+   "med": "Ciprofloxacin",
+   "route": "oral, IV",
+   "thC": "J01MA02",
+   "thD": "antibiotic"
+  },
+  {
+   "med": "Citalopram",
+   "route": "oral",
+   "thC": "N06AB04",
+   "thD": "antidepressant"
+  },
+  {
+   "med": "Clarithromycin",
+   "route": "oral",
+   "thC": "J01FA09",
+   "thD": "antibiotic"
+  },
+  {
+   "med": "Clonazepam",
+   "route": "oral",
+   "thC": "N03AE01",
+   "thD": "benzodiazepine used for seizures and anxiety"
+  },
+  {
+   "med": "Clopidogrel",
+   "route": "oral",
+   "thC": "B01AC04",
+   "thD": "antiplatelet medication"
+  },
+  {
+   "med": "Clozapine",
+   "route": "oral",
+   "thC": "N05AH02",
+   "thD": "antipsychotic medication"
+  },
+  {
+   "med": "Codeine",
+   "route": "oral",
+   "thC": "R05DA04",
+   "thD": "opioid pain medication"
+  },
+  {
+   "med": "Coenzyme Q10 (ubiquinone)",
+   "route": "oral",
+   "thC": "C01EB09",
+   "thD": "supplement for heart health and energy production"
+  },
+  {
+   "med": "Collagen peptides",
+   "route": "oral",
+   "thC": "V03AX",
+   "thD": "protein supplement for skin, hair, and joint health"
+  },
+  {
+   "med": "Cranberry extract",
+   "route": "oral",
+   "thC": "G04BX",
+   "thD": "supplement for urinary tract health"
+  },
+  {
+   "med": "Creatine monohydrate",
+   "route": "oral",
+   "thC": "A16AA",
+   "thD": "supplement for muscle strength and performance"
+  },
+  {
+   "med": "Curcumin (turmeric extract)",
+   "route": "oral",
+   "thC": "M01AX03",
+   "thD": "herbal supplement with anti-inflammatory properties"
+  },
+  {
+   "med": "Cyclobenzaprine",
+   "route": "oral",
+   "thC": "M03BX08",
+   "thD": "muscle relaxant"
+  },
+  {
+   "med": "Dandelion root extract",
+   "route": "oral",
+   "thC": "A05CX",
+   "thD": "herbal supplement for liver detoxification and digestion"
+  },
+  {
+   "med": "Dexamethasone",
+   "route": "oral, injection, topical",
+   "thC": "H02AB02",
+   "thD": "corticosteroid used for various conditions"
+  },
+  {
+   "med": "DHA (docosahexaenoic acid)",
+   "route": "oral",
+   "thC": "A11HA02",
+   "thD": "omega-3 fatty acid supplement for brain health"
+  },
+  {
+   "med": "Diazepam",
+   "route": "oral, IV, injection",
+   "thC": "N05BA01",
+   "thD": "benzodiazepine used for anxiety and seizures"
+  },
+  {
+   "med": "Dicyclomine",
+   "route": "oral",
+   "thC": "A03AA07",
+   "thD": "antispasmodic used for irritable bowel syndrome"
+  },
+  {
+   "med": "Diltiazem",
+   "route": "oral, IV",
+   "thC": "C08DB01",
+   "thD": "calcium channel blocker used for hypertension and arrhythmias"
+  },
+  {
+   "med": "Doxazosin",
+   "route": "oral",
+   "thC": "C02CA04",
+   "thD": "alpha blocker used for BPH and hypertension"
+  },
+  {
+   "med": "Doxycycline",
+   "route": "oral",
+   "thC": "J01AA02",
+   "thD": "antibiotic"
+  },
+  {
+   "med": "Duloxetine",
+   "route": "oral",
+   "thC": "N06AX21",
+   "thD": "antidepressant and nerve pain medication"
+  },
+  {
+   "med": "EPA (eicosapentaenoic acid)",
+   "route": "oral",
+   "thC": "A11HA02",
+   "thD": "omega-3 fatty acid supplement for heart health"
+  },
+  {
+   "med": "Escitalopram",
+   "route": "oral",
+   "thC": "N06AB10",
+   "thD": "antidepressant"
+  },
+  {
+   "med": "Esomeprazole",
+   "route": "oral",
+   "thC": "A02BC05",
+   "thD": "proton pump inhibitor for acid reflux"
+  },
+  {
+   "med": "Evening primrose oil",
+   "route": "oral",
+   "thC": "A11HA",
+   "thD": "supplement for skin health and hormonal balance"
+  },
+  {
+   "med": "Ezetimibe",
+   "route": "oral",
+   "thC": "C10AX09",
+   "thD": "cholesterol-lowering medication"
+  },
+  {
+   "med": "Fentanyl",
+   "route": "transdermal, injection",
+   "thC": "N02AB03",
+   "thD": "potent opioid pain medication"
+  },
+  {
+   "med": "Fluconazole",
+   "route": "oral, IV",
+   "thC": "J02AC01",
+   "thD": "antifungal medication"
+  },
+  {
+   "med": "Fluoxetine",
+   "route": "oral",
+   "thC": "N06AB03",
+   "thD": "antidepressant"
+  },
+  {
+   "med": "Fluticasone",
+   "route": "inhalation",
+   "thC": "R03BA05",
+   "thD": "inhaled corticosteroid for asthma and COPD"
+  },
+  {
+   "med": "Fluvoxamine",
+   "route": "oral",
+   "thC": "N06AB08",
+   "thD": "antidepressant"
+  },
+  {
+   "med": "Folic acid",
+   "route": "oral",
+   "thC": "B03BB01",
+   "thD": "vitamin supplement for pregnancy and anemia"
+  },
+  {
+   "med": "Furosemide",
+   "route": "oral",
+   "thC": "C03CA01",
+   "thD": "loop diuretic for edema and hypertension"
+  },
+  {
+   "med": "Gabapentin",
+   "route": "oral",
+   "thC": "N03AX12",
+   "thD": "used for neuropathic pain and seizures"
+  },
+  {
+   "med": "Garlic extract",
+   "route": "oral",
+   "thC": "A06AB10",
+   "thD": "supplement with cardiovascular and immune benefits"
+  },
+  {
+   "med": "Ginkgo biloba extract",
+   "route": "oral",
+   "thC": "N06DX02",
+   "thD": "herbal supplement for cognitive function"
+  },
+  {
+   "med": "Glucosamine/chondroitin",
+   "route": "oral",
+   "thC": "M01AX05",
+   "thD": "supplement for joint health"
+  },
+  {
+   "med": "Glutamine",
+   "route": "oral",
+   "thC": "A12AX",
+   "thD": "amino acid supplement for gut health and immune support"
+  },
+  {
+   "med": "Green tea extract",
+   "route": "oral",
+   "thC": "N02AX",
+   "thD": "herbal supplement with antioxidant properties"
+  },
+  {
+   "med": "Haloperidol",
+   "route": "oral, injection",
+   "thC": "N05AD01",
+   "thD": "antipsychotic medication"
+  },
+  {
+   "med": "Hyaluronic acid",
+   "route": "oral, topical",
+   "thC": "A16AX",
+   "thD": "supplement for joint health and skin hydration"
+  },
+  {
+   "med": "Hydrochlorothiazide",
+   "route": "oral",
+   "thC": "C03AA03",
+   "thD": "diuretic for high blood pressure"
+  },
+  {
+   "med": "Hydrocodone/Acetaminophen",
+   "route": "oral",
+   "thC": "N02AJ07",
+   "thD": "opioid pain medication combination"
+  },
+  {
+   "med": "Hydromorphone",
+   "route": "oral, injection",
+   "thC": "N02AA08",
+   "thD": "opioid pain medication"
+  },
+  {
+   "med": "Hydroxyzine",
+   "route": "oral, IM",
+   "thC": "N05BB01",
+   "thD": "antihistamine used for anxiety and itching"
+  },
+  {
+   "med": "Ibuprofen",
+   "route": "oral",
+   "thC": "M01AE01",
+   "thD": "nonsteroidal anti-inflammatory drug (NSAID)"
+  },
+  {
+   "med": "Iron (ferrous sulfate)",
+   "route": "oral",
+   "thC": "B03AA07",
+   "thD": "mineral supplement for iron deficiency"
+  },
+  {
+   "med": "L-arginine",
+   "route": "oral",
+   "thC": "B05XB",
+   "thD": "amino acid supplement for cardiovascular health"
+  },
+  {
+   "med": "L-carnitine",
+   "route": "oral",
+   "thC": "A16AA",
+   "thD": "amino acid supplement for energy production and muscle health"
+  },
+  {
+   "med": "L-lysine",
+   "route": "oral",
+   "thC": "A16AA",
+   "thD": "amino acid supplement for immune support and herpes treatment"
+  },
+  {
+   "med": "Lamotrigine",
+   "route": "oral",
+   "thC": "N03AX09",
+   "thD": "used for seizures and bipolar disorder"
+  },
+  {
+   "med": "Lansoprazole",
+   "route": "oral",
+   "thC": "A02BC03",
+   "thD": "proton pump inhibitor for acid reflux"
+  },
+  {
+   "med": "Lecithin",
+   "route": "oral",
+   "thC": "A11HA",
+   "thD": "supplement for brain health and cholesterol management"
+  },
+  {
+   "med": "Levothyroxine",
+   "route": "oral",
+   "thC": "H03AA01",
+   "thD": "thyroid hormone replacement"
+  },
+  {
+   "med": "Lisinopril",
+   "route": "oral",
+   "thC": "C09AA03",
+   "thD": "ACE inhibitor for hypertension"
+  },
+  {
+   "med": "Lorazepam",
+   "route": "oral, IV",
+   "thC": "N05BA06",
+   "thD": "benzodiazepine used for anxiety and seizures"
+  },
+  {
+   "med": "Lutein/zeaxanthin",
+   "route": "oral",
+   "thC": "S01XA",
+   "thD": "supplement for eye health"
+  },
+  {
+   "med": "Magnesium oxide",
+   "route": "oral",
+   "thC": "A12CC01",
+   "thD": "mineral supplement for magnesium deficiency"
+  },
+  {
+   "med": "Meclizine",
+   "route": "oral",
+   "thC": "R06AE05",
+   "thD": "used for vertigo and motion sickness"
+  },
+  {
+   "med": "Melatonin",
+   "route": "oral",
+   "thC": "N05CH01",
+   "thD": "supplement for sleep support"
+  },
+  {
+   "med": "Melatonin extended-release",
+   "route": "oral",
+   "thC": "N05CH01",
+   "thD": "supplement for prolonged sleep support"
+  },
+  {
+   "med": "Metformin",
+   "route": "oral",
+   "thC": "A10BA02",
+   "thD": "used to manage type 2 diabetes"
+  },
+  {
+   "med": "Methadone",
+   "route": "oral",
+   "thC": "N07BC02",
+   "thD": "used in opioid dependence treatment and pain management"
+  },
+  {
+   "med": "Methotrexate",
+   "route": "oral, injection",
+   "thC": "L01BA01",
+   "thD": "used in the treatment of cancer, rheumatoid arthritis, and psoriasis"
+  },
+  {
+   "med": "Methylphenidate",
+   "route": "oral",
+   "thC": "N06BA04",
+   "thD": "stimulant used for ADHD and narcolepsy"
+  },
+  {
+   "med": "Methylprednisolone",
+   "route": "oral, IV, injection",
+   "thC": "H02AB04",
+   "thD": "corticosteroid used for various conditions"
+  },
+  {
+   "med": "Methylprednisolone",
+   "route": "H02AB04",
+   "thC": "oral, IV, injection",
+   "thD": "corticosteroid used for various conditions"
+  },
+  {
+   "med": "Metoclopramide",
+   "route": "oral, IV",
+   "thC": "A03FA01",
+   "thD": "used for nausea and vomiting"
+  },
+  {
+   "med": "Metoprolol",
+   "route": "oral",
+   "thC": "C07AB02",
+   "thD": "beta blocker for high blood pressure"
+  },
+  {
+   "med": "Metoprolol/Hydrochlorothiazide",
+   "route": "oral",
+   "thC": "C07BB02",
+   "thD": "combination medication for hypertension"
+  },
+  {
+   "med": "Metronidazole",
+   "route": "oral",
+   "thC": "P01AB01",
+   "thD": "antibiotic and antiprotozoal medication"
+  },
+  {
+   "med": "Milk thistle extract",
+   "route": "oral",
+   "thC": "A05BA03",
+   "thD": "herbal supplement for liver health"
+  },
+  {
+   "med": "Mirtazapine",
+   "route": "oral",
+   "thC": "N06AX11",
+   "thD": "antidepressant"
+  },
+  {
+   "med": "Mometasone",
+   "route": "inhalation, topical",
+   "thC": "R01AD09",
+   "thD": "corticosteroid used in asthma and allergic rhinitis"
+  },
+  {
+   "med": "Montelukast",
+   "route": "oral",
+   "thC": "R03DC03",
+   "thD": "leukotriene receptor antagonist for asthma and allergies"
+  },
+  {
+   "med": "Multivitamin",
+   "route": "oral",
+   "thC": "A11JB",
+   "thD": "combination supplement for overall health"
+  },
+  {
+   "med": "Naproxen",
+   "route": "oral",
+   "thC": "M01AE02",
+   "thD": "nonsteroidal anti-inflammatory drug (NSAID)"
+  },
+  {
+   "med": "Nebivolol",
+   "route": "oral",
+   "thC": "C07AB12",
+   "thD": "beta blocker used for hypertension and heart failure"
+  },
+  {
+   "med": "Nortriptyline",
+   "route": "oral",
+   "thC": "N06AA10",
+   "thD": "antidepressant"
+  },
+  {
+   "med": "Olanzapine",
+   "route": "oral",
+   "thC": "N05AH03",
+   "thD": "antipsychotic medication"
+  },
+  {
+   "med": "Omega-3 fatty acids (fish oil)",
+   "route": "oral",
+   "thC": "C10AX06",
+   "thD": "supplement for heart health and inflammation"
+  },
+  {
+   "med": "Omeprazole",
+   "route": "oral",
+   "thC": "A02BC01",
+   "thD": "proton pump inhibitor for acid reflux"
+  },
+  {
+   "med": "OxyContin (Oxycodone)",
+   "route": "oral",
+   "thC": "N02AA05",
+   "thD": "opioid pain medication"
+  },
+  {
+   "med": "Pantoprazole",
+   "route": "oral",
+   "thC": "A02BC02",
+   "thD": "proton pump inhibitor for acid reflux"
+  },
+  {
+   "med": "Pantoprazole/Levofloxacin/Amoxicillin",
+   "route": "oral",
+   "thC": "A02BD05",
+   "thD": "combination used for H. pylori eradication"
+  },
+  {
+   "med": "Paroxetine",
+   "route": "oral",
+   "thC": "N06AB05",
+   "thD": "antidepressant"
+  },
+  {
+   "med": "Phosphatidylserine",
+   "route": "oral",
+   "thC": "N06BX",
+   "thD": "supplement for cognitive function and memory"
+  },
+  {
+   "med": "Potassium chloride",
+   "route": "oral",
+   "thC": "A12BA01",
+   "thD": "mineral supplement for electrolyte balance"
+  },
+  {
+   "med": "Pramipexole",
+   "route": "oral",
+   "thC": "N04BC05",
+   "thD": "used for Parkinson's disease and restless legs syndrome"
+  },
+  {
+   "med": "Pregabalin",
+   "route": "oral",
+   "thC": "N03AX16",
+   "thD": "used for neuropathic pain and seizures"
+  },
+  {
+   "med": "Pregabalin",
+   "route": "oral",
+   "thC": "N03AX16",
+   "thD": "used for neuropathic pain and seizures"
+  },
+  {
+   "med": "Probiotics",
+   "route": "oral",
+   "thC": "A07FA",
+   "thD": "supplement for gut health"
+  },
+  {
+   "med": "Quercetin",
+   "route": "oral",
+   "thC": "N/A",
+   "thD": "antioxidant supplement with anti-inflammatory properties"
+  },
+  {
+   "med": "Quetiapine",
+   "route": "oral",
+   "thC": "N05AH04",
+   "thD": "antipsychotic medication"
+  },
+  {
+   "med": "Rabeprazole",
+   "route": "oral",
+   "thC": "A02BC04",
+   "thD": "proton pump inhibitor for acid reflux"
+  },
+  {
+   "med": "Ramipril",
+   "route": "oral",
+   "thC": "C09AA05",
+   "thD": "ACE inhibitor for high blood pressure"
+  },
+  {
+   "med": "Resveratrol",
+   "route": "oral",
+   "thC": "C09CA",
+   "thD": "antioxidant supplement with cardiovascular benefits"
+  },
+  {
+   "med": "Risperidone",
+   "route": "oral",
+   "thC": "N05AX08",
+   "thD": "antipsychotic medication"
+  },
+  {
+   "med": "Rivastigmine",
+   "route": "oral, patch",
+   "thC": "N06DA03",
+   "thD": "used for Alzheimer's disease and dementia"
+  },
+  {
+   "med": "Rosuvastatin",
+   "route": "oral",
+   "thC": "C10AA07",
+   "thD": "cholesterol-lowering medication"
+  },
+  {
+   "med": "Salbutamol",
+   "route": "inhalation",
+   "thC": "R03AC02",
+   "thD": "short-acting beta agonist for asthma"
+  },
+  {
+   "med": "SAM-e (S-adenosylmethionine)",
+   "route": "oral",
+   "thC": "N06AX",
+   "thD": "supplement for mood support and joint health"
+  },
+  {
+   "med": "Saw palmetto extract",
+   "route": "oral",
+   "thC": "G04CX",
+   "thD": "herbal supplement for prostate health"
+  },
+  {
+   "med": "Selenium (sodium selenite)",
+   "route": "oral",
+   "thC": "A11CC01",
+   "thD": "mineral supplement with antioxidant properties"
+  },
+  {
+   "med": "Senna",
+   "route": "oral",
+   "thC": "A06AB56",
+   "thD": "stimulant laxative for constipation relief"
+  },
+  {
+   "med": "Sertraline",
+   "route": "oral",
+   "thC": "N06AB06",
+   "thD": "antidepressant"
+  },
+  {
+   "med": "Sildenafil",
+   "route": "oral",
+   "thC": "G04BE03",
+   "thD": "used for erectile dysfunction and pulmonary arterial hypertension"
+  },
+  {
+   "med": "Sitagliptin",
+   "route": "oral",
+   "thC": "A10BH01",
+   "thD": "used to manage type 2 diabetes"
+  },
+  {
+   "med": "St. John's wort extract",
+   "route": "oral",
+   "thC": "N06AX16",
+   "thD": "herbal supplement for mood support"
+  },
+  {
+   "med": "St. John's wort extract (hypericin)",
+   "route": "oral",
+   "thC": "N06AX",
+   "thD": "herbal supplement for mood support and depression"
+  },
+  {
+   "med": "Tamsulosin",
+   "route": "oral",
+   "thC": "G04CA02",
+   "thD": "alpha blocker for benign prostatic hyperplasia (BPH)"
+  },
+  {
+   "med": "Taurine",
+   "route": "oral",
+   "thC": "A16AA",
+   "thD": "amino acid supplement for cardiovascular and eye health"
+  },
+  {
+   "med": "Taurine (taurinate)",
+   "route": "oral",
+   "thC": "A16AA",
+   "thD": "amino acid supplement for cardiovascular and eye health"
+  },
+  {
+   "med": "Telmisartan",
+   "route": "oral",
+   "thC": "C09CA07",
+   "thD": "angiotensin II receptor blocker for high blood pressure"
+  },
+  {
+   "med": "Temazepam",
+   "route": "oral",
+   "thC": "N05CD07",
+   "thD": "benzodiazepine used for insomnia and anxiety"
+  },
+  {
+   "med": "Terbinafine",
+   "route": "oral",
+   "thC": "D01BA02",
+   "thD": "antifungal medication"
+  },
+  {
+   "med": "Tolterodine",
+   "route": "oral",
+   "thC": "G04BD07",
+   "thD": "used for overactive bladder"
+  },
+  {
+   "med": "Tolterodine",
+   "route": "G04BD07",
+   "thC": "oral",
+   "thD": "used for overactive bladder"
+  },
+  {
+   "med": "Topiramate",
+   "route": "oral",
+   "thC": "N03AX11",
+   "thD": "used for seizures and migraine prevention"
+  },
+  {
+   "med": "Tramadol",
+   "route": "oral",
+   "thC": "N02AX02",
+   "thD": "opioid pain medication"
+  },
+  {
+   "med": "Trazodone",
+   "route": "oral",
+   "thC": "N06AX05",
+   "thD": "antidepressant"
+  },
+  {
+   "med": "Triamterene/Hydrochlorothiazide",
+   "route": "oral",
+   "thC": "C03EA02",
+   "thD": "combination diuretic for hypertension and edema"
+  },
+  {
+   "med": "Turmeric (curcumin)",
+   "route": "oral",
+   "thC": "M01AX03",
+   "thD": "herbal supplement with anti-inflammatory properties"
+  },
+  {
+   "med": "Ubiquinol (CoQ10)",
+   "route": "oral",
+   "thC": "C01EB09",
+   "thD": "supplement for heart health and energy production"
+  },
+  {
+   "med": "Valerian root extract",
+   "route": "oral",
+   "thC": "N05CM",
+   "thD": "herbal supplement for sleep support and anxiety relief"
+  },
+  {
+   "med": "Valerian root extract (valerate)",
+   "route": "oral",
+   "thC": "N05CM",
+   "thD": "herbal supplement for sleep support and anxiety relief"
+  },
+  {
+   "med": "Valsartan",
+   "route": "oral",
+   "thC": "C09CA03",
+   "thD": "angiotensin II receptor blocker for hypertension"
+  },
+  {
+   "med": "Venlafaxine",
+   "route": "oral",
+   "thC": "N06AX16",
+   "thD": "antidepressant"
+  },
+  {
+   "med": "Vitamin A (retinol)",
+   "route": "oral",
+   "thC": "A11CA01",
+   "thD": "vitamin supplement for vision and immune support"
+  },
+  {
+   "med": "Vitamin B complex",
+   "route": "oral",
+   "thC": "A11EA",
+   "thD": "combination vitamin supplement for energy and metabolism"
+  },
+  {
+   "med": "Vitamin B1 (thiamine)",
+   "route": "oral",
+   "thC": "A11DA01",
+   "thD": "vitamin supplement for nerve function and energy production"
+  },
+  {
+   "med": "Vitamin B12 (cyanocobalamin)",
+   "route": "oral, injection",
+   "thC": "B03BA01",
+   "thD": "vitamin supplement for B12 deficiency"
+  },
+  {
+   "med": "Vitamin B12 (methylcobalamin)",
+   "route": "oral, injection",
+   "thC": "A11HA02",
+   "thD": "vitamin supplement for energy production and nerve function"
+  },
+  {
+   "med": "Vitamin B2 (riboflavin)",
+   "route": "oral",
+   "thC": "A11HA02",
+   "thD": "vitamin supplement for energy production and eye health"
+  },
+  {
+   "med": "Vitamin B3 (niacin)",
+   "route": "oral",
+   "thC": "A11HA02",
+   "thD": "vitamin supplement for cholesterol management and skin health"
+  },
+  {
+   "med": "Vitamin B5 (pantothenic acid)",
+   "route": "oral",
+   "thC": "A11HA02",
+   "thD": "vitamin supplement for energy production and hormone synthesis"
+  },
+  {
+   "med": "Vitamin B6 (pyridoxine)",
+   "route": "oral",
+   "thC": "A11HA02",
+   "thD": "vitamin supplement for metabolism and nerve function"
+  },
+  {
+   "med": "Vitamin B7 (biotin)",
+   "route": "oral",
+   "thC": "A11HA02",
+   "thD": "vitamin supplement for hair, skin, and nail health"
+  },
+  {
+   "med": "Vitamin B9 (folate)",
+   "route": "oral",
+   "thC": "A11HA02",
+   "thD": "vitamin supplement for cell division and DNA synthesis"
+  },
+  {
+   "med": "Vitamin C (ascorbate)",
+   "route": "oral",
+   "thC": "A11GA01",
+   "thD": "vitamin supplement for immune support and antioxidant protection"
+  },
+  {
+   "med": "Vitamin C (ascorbic acid)",
+   "route": "oral",
+   "thC": "A11GA01",
+   "thD": "vitamin supplement for immune support"
+  },
+  {
+   "med": "Vitamin D (cholecalciferol)",
+   "route": "oral",
+   "thC": "A11CC05",
+   "thD": "vitamin supplement for bone health"
+  },
+  {
+   "med": "Vitamin D3 (cholecalciferol)",
+   "route": "oral",
+   "thC": "A11CC05",
+   "thD": "vitamin supplement for bone health and immune support"
+  },
+  {
+   "med": "Vitamin E (alpha-tocopherol)",
+   "route": "oral",
+   "thC": "A11HA03",
+   "thD": "vitamin supplement with antioxidant properties"
+  },
+  {
+   "med": "Vitamin E (mixed tocopherols)",
+   "route": "oral",
+   "thC": "A11HA02",
+   "thD": "vitamin supplement with antioxidant properties"
+  },
+  {
+   "med": "Vitamin E (tocopherol)",
+   "route": "oral",
+   "thC": "A11HA03",
+   "thD": "vitamin supplement with antioxidant properties"
+  },
+  {
+   "med": "Vitamin K (phytonadione)",
+   "route": "oral, injection",
+   "thC": "B02BA01",
+   "thD": "vitamin supplement for blood clotting"
+  },
+  {
+   "med": "Vitamin K2 (menaquinone)",
+   "route": "oral",
+   "thC": "B02BA04",
+   "thD": "vitamin supplement for bone health and blood clotting"
+  },
+  {
+   "med": "Warfarin",
+   "route": "oral",
+   "thC": "B01AA03Alpha-lipoic acid",
+   "thD": "anticoagulant"
+  },
+  {
+   "med": "Zinc gluconate",
+   "route": "oral",
+   "thC": "A12CB02",
+   "thD": "mineral supplement for immune support and wound healing"
+  },
+  {
+   "med": "Zinc sulfate",
+   "route": "oral",
+   "thC": "A12CB01",
+   "thD": "mineral supplement for immune support and wound healing"
+  }
+ ]
+}
