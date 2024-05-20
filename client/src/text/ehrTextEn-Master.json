@@ -179,14 +179,14 @@
     "dateLabelUpdated": "Date updated"
   },
   "COURSE_PAGE": {
+    "DOWNLOAD": "Archive this course",
     "COURSE_PAGE_INTRO": "This page lists all the activities you have worked with for the selected course. Click on an activity name to view its details.",
     "COURSES_PAGE_INTRO": "This page lists all the courses with EdEHR content that you have worked with. Click on a course name to view its activities.",
     "DESCRIPTION": "Description",
     "ACTIVITY_STUDENT_SELECT_NAV": "Click on an activity name to see details about the activity or click on the 'Go to EHR' button to enter the charting application.",
     "ACTIVITY_INSTRUCTOR_SELECT_NAV": "Click on an activity name to see its details.",
-    "instruction1": "Click on the gears button",
-    "instruction2": "to view the course configuration.",
-    "instruction3": "Enable 'Course designer mode' to edit the configuration."
+    "configureInstructions": "Click on the gears button to view the course configuration. Enable 'Course designer mode' to edit the configuration.",
+    "downloadInstructions": "Download a file that is an archive of this course. The archive will include every activity with associated learning object and case studies. Plus the class list for each activity that will include the student's work and instructor's evaluation notes. The archive will also include the student's name. The file should be safe guarded because it contains the students names."
   },
   "COURSE_DIALOG": {
     "TITLES": {

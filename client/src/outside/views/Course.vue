@@ -8,17 +8,20 @@
         :icon='appIcons.configure',
         :text='buttonText'
       )
+      zone-lms-button(@action="downloadCourseData", :icon='appIcons.download', :title='coursePageText.downloadInstructions', :coursePageText='coursePageText.DOWNLOAD')
+
     zone-lms-instructions-header
       p {{ coursePageText.COURSE_PAGE_INTRO }}
       p(v-if='isInstructor')
-        | {{ coursePageText.instruction1 }} &nbsp;
         fas-icon( class="fa", :icon="appIcons.configure")
-        | &nbsp; {{ coursePageText.instruction2 }}  &nbsp; {{ coursePageText.instruction3 }}
+        | &nbsp; {{ coursePageText.configureInstructions }}
       p(v-if='isInstructor')
-        | Click on the stopwatch button &nbsp;
+        fas-icon( class="fa", :icon="appIcons.download")
+        |  &nbsp; {{ coursePageText.downloadInstructions }}
+      p(v-if='isInstructor')
         fas-icon( class="fa", :icon="appIcons.stopwatch")
-        | &nbsp; to enable the "Skills Assessment Mode".  This is where students are only permitted to view the activities you select.
-      p(v-else) {{ coursePageText.ACTIVITY_STUDENT_SELECT_NAV }}
+        | &nbsp; Click on the stopwatch button to enable the "Skills Assessment Mode".  This is where students are only permitted to view the activities you select.
+      p(v-if='isStudent') {{ coursePageText.ACTIVITY_STUDENT_SELECT_NAV }}
 
     div(class="details-container")
       div(class="course-description") Course description: {{ course.description ? course.description : '(empty)' }}
@@ -111,6 +114,7 @@ import UiConfirm from '@/app/ui/UiConfirm.vue'
 import UiAgree from '@/app/ui/UiAgree.vue'
 import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
 import { t18EhrText } from '@/helpers/ehr-t18'
+import { downObjectToFile } from '@/helpers/ehr-utils'
 
 const ASC = 'asc'
 const DESC = 'desc'
@@ -186,6 +190,12 @@ export default {
         }
         return canAccess
       }
+    },
+    async downloadCourseData () {
+      let title = this.course.title.replaceAll(' ', '_')
+      let fName = 'Extract-' + title + '.json'
+      let extract = await this.$store.dispatch('courseStore/getCourseArchive')
+      downObjectToFile(fName, extract)
     },
     activityRouting (activityItem) {
       const name = this.isInstructor ? 'lms-instructor-activity' : 'lms-student-activity'

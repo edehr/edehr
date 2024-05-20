@@ -8,6 +8,7 @@ import Activity from '../activity/activity'
 import { ParameterError } from '../common/errors'
 import { Text } from '../../config/text'
 import mongoose from 'mongoose'
+import extractCourse from './utils_extractCourse'
 const debug = require('debug')('server')
 
 const SKILLS_ADD = 'add'
@@ -119,6 +120,9 @@ export default class CourseController extends BaseController {
     return courseActivities
   }
 
+  async getCourseArchive (courseId, isInstructor) {
+    return extractCourse(courseId)
+  }
   updateSkillsAssessment (courseId, action, activityId) {
     debug(`updateSkillsAssessment. Course id ${courseId}. Action: ${action}. Activity id: ${activityId}`)
     return this.baseFindOneQuery(courseId).then(course => {
@@ -220,7 +224,19 @@ export default class CourseController extends BaseController {
         .then(ok(res))
         .then(null, fail(req, res))
     })
-
+    router.get('/course-archive/:key', (req, res) => {
+      const courseId = req.params.key
+      if (!courseId || courseId === 'undefined') {
+        throw new ParameterError(Text.REQUIRES_COURSE_ID)
+      }
+      const authPayload = req.authPayload
+      // const userId = authPayload.userId
+      const isInstructor = authPayload.isInstructor
+      // const consumerId = authPayload.toolConsumerId
+      this.getCourseArchive(courseId, isInstructor)
+        .then(ok(res))
+        .then(null, fail(req, res))
+    })
     router.put('/update-course/:key', (req, res) => {
       this
         .updateCourse(req.params.key, req.body)

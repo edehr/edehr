@@ -61,6 +61,14 @@ const actions = {
     context.commit('_clearCourse')
     await context.dispatch('activityStore/clearCurrentActivity', undefined, { root: true })
   },
+  getCourseArchive (context) {
+    let id = context.state.course?._id
+    console.log('get course archive', id)
+    let url = 'course-archive/' + id
+    return InstoreHelper.getRequest(context, API, url).then(response => {
+      return response.data
+    })
+  },
   loadCourses (context) {
     let url = 'courseList'
     return InstoreHelper.getRequest(context, API, url)
