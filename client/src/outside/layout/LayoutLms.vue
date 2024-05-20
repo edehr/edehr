@@ -112,6 +112,7 @@ main {
 .left_side {
   //width: 16%;
   min-width: 15rem;
+  max-width: 15rem;
 }
 .right_side {
   width: 100%;
