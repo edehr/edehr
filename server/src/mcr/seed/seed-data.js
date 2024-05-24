@@ -20,6 +20,7 @@ const Schema = new mongoose.Schema(
     ehrData: { type: Object, default: {} },
     keyData: { type: Object, default: {} },
     mrn: { type: String },
+    creatorNotes: { type: String },
     createDate: { type: Date, default: Date.now },
     lastUpdateDate: { type: Date, default: Date.now },
     tagList: [{

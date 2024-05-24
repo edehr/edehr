@@ -14,6 +14,7 @@ export default class SeedModel {
     return this.pageKeys.map( pk => EhrDefs.getPageDefinition(pk).pageTitle).sort( (a,b,) => a.localeCompare(b))
   }
   get seed () { return this.sData }
+  get creatorNotes () { return this.sData.creatorNotes }
   set seed (s) { this.sData = s}
   get id () { return this.sData._id}
   get ehrDataModel () { return this.sData.ehrData ? new EhrDataModel(this.sData.ehrData): undefined}

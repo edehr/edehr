@@ -180,7 +180,8 @@ export default class AssignmentController extends BaseController {
       title,
       resource_link_title,
       description,
-      toolConsumer
+      toolConsumer,
+      facultyNotes, creatorNotes
     } = data
     title = title || resource_link_title
     if (!title) {
@@ -203,7 +204,9 @@ export default class AssignmentController extends BaseController {
     const lObjDef = {
       toolConsumer: toolConsumer._id,
       name: title,
-      description: description || this.defaultAssignmentDescription
+      description: description || this.defaultAssignmentDescription,
+      facultyNotes: facultyNotes,
+      creatorNotes: creatorNotes
     }
     if (seed) {
       lObjDef.seedDataId = seed._id

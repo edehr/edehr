@@ -34,6 +34,8 @@ const Schema = new mongoose.Schema({
   },
   mPatientFilterTag: { type: String},
   simStages: [SimStage],
+  facultyNotes: { type: String },
+  creatorNotes: { type: String },
   createDate: { type: Date, default: Date.now },
   lastUpdateDate: { type: Date, default: Date.now },
   oId: {type: String}

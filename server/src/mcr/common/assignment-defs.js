@@ -26,7 +26,8 @@ const ej0SeedDef = {
   version: '1',
   ehrData: ej0Seed.ehrData,
   tagList: ej0Seed.tagList,
-  appType: 'EHR'
+  appType: 'EHR',
+  creatorNotes: 'Good general purpose case study for exploring the EHR. '
 }
 const assignment2 = {
   description: 'This learning object/assignment is based on Case Study #2.\n ' +
@@ -48,7 +49,8 @@ const ej2SeedDef = {
   version: '1',
   ehrData: ej2Seed.ehrData,
   tagList: ej2Seed.tagList,
-  appType: 'EHR'
+  appType: 'EHR',
+  creatorNotes: 'At 1930 several assessments are recorded. At 2000 several doctor\'s orders are entered. This case study needs to include the results for the above doctors orders. '
 }
 const assignment3 = {
   description: 'This is a demonstration assignment illustrating how wounds (or incisions) can be monitored within the EdEHR.\n' +
@@ -66,7 +68,8 @@ const wound1SeedDef = {
   version: '1',
   ehrData: wound1Seed.ehrData,
   tagList: wound1Seed.tagList,
-  appType: 'EHR'
+  appType: 'EHR',
+  creatorNotes: 'Placeholder area for faculty to describe this case study to aid in use. '
 }
 
 const assignment4 = {
@@ -83,7 +86,8 @@ const seedDef4 = {
   version: '1',
   ehrData: seed4.ehrData,
   tagList: seed4.tagList,
-  appType: 'LIS'
+  appType: 'LIS',
+  creatorNotes: 'Placeholder area for faculty to describe this case study to aid in use. '
 }
 
 const assignment5 = {
@@ -107,7 +111,8 @@ const seedDef5 = {
   version: '1',
   ehrData: seed5.ehrData,
   tagList: seed5.tagList,
-  appType: 'LIS'
+  appType: 'LIS',
+  creatorNotes: 'Placeholder area for faculty to describe this case study to aid in use. '
 }
 export const activity1 = {
   lObjDef: assignment1,
@@ -148,7 +153,7 @@ export const activity5 = {
   lObjDef: assignment5,
   seedDef: seedDef5,
   resource_link_title: `${assignment5.title}`,
-  resource_link_description: 'This activity complements the previous one by showing the completed PBF in the Med Lab Hematology module',
+  resource_link_description: assignment5.description
 }
 
 export const activity6 = {
@@ -158,7 +163,7 @@ export const activity6 = {
   },
   seedDef: lobj_tooth.caseStudy,
   resource_link_title: lobj_tooth.name,
-  resource_link_description: 'Explores pain management',
+  resource_link_description: lobj_tooth.description
 }
 
 export const activityMP1 = {
@@ -176,7 +181,7 @@ export const activityMedComplex = {
   },
   seedDef: medComplexLObj.caseStudy,
   resource_link_title: `${medComplexLObj.name}`,
-  resource_link_description: 'Medical Client with Complex Needs',
+  resource_link_description: medComplexLObj.description
 }
 
 const mentalHealthLObj = require('../../resources/lobj_MentalHealthSim.json')
@@ -187,7 +192,7 @@ export const activityMentalHealth = {
   },
   seedDef: mentalHealthLObj.caseStudy,
   resource_link_title: `${mentalHealthLObj.name}`,
-  resource_link_description: 'Students will access the EdEHR to review the chart for Melissa Ashmann.',
+  resource_link_description: mentalHealthLObj.description
 }
 
 
@@ -195,11 +200,14 @@ const ehrOrientation = require('../../resources/lobj_pggnEhrOrientation.json')
 export const activityEhrOrientation = {
   lObjDef: {
     title: ehrOrientation.name,
-    description: ehrOrientation.description
+    description: ehrOrientation.description,
+    facultyNotes: 'testing faculty notes',
+    creatorNotes: 'testing creator notes',
+    simStages: ehrOrientation.simStages
   },
   seedDef: ehrOrientation.caseStudy,
   resource_link_title: `${ehrOrientation.name}`,
-  resource_link_description: 'This activity is suitable as an introduction to EHR for students.',
+  resource_link_description: ehrOrientation.description,
 }
 
 const simExpo2023 = require('../../resources/lobj_simExpo2023.json')
@@ -210,5 +218,5 @@ export const activitySimExpo2023 = {
   },
   seedDef: simExpo2023.caseStudy,
   resource_link_title: `${simExpo2023.name}`,
-  resource_link_description: 'This activity demonstrates the use of Escape Rooms as a means to orientate students to an EHR system.',
+  resource_link_description: simExpo2023.description
 }

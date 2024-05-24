@@ -67,6 +67,12 @@
         div(class="details-value").
           Created on {{ learningObject.createDate | formatDateTime }}.
           Last modified on {{ learningObject.lastUpdateDate | formatDateTime }}.
+
+      div(class="details-row")
+        div(class="details-name") Faculty Notes
+        div(class="details-value")
+          in-place-text-area-edit(:value='learningObject.facultyNotes', @change='updateFacultyNotes')
+
 </template>
 
 <script>
@@ -82,10 +88,11 @@ import AppTypeDetailsPageElement from '@/outside/components/AppTypeDetailsPageEl
 import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
 import ZoneLmsInstructionsElement from '@/outside/components/ZoneLmsInstructionsElement.vue'
 import AppTypeDetailsPageElementExplain from '@/outside/components/AppTypeDetailsPageElementExplain.vue'
+import InPlaceTextAreaEdit from '@/app/components/InPlaceTextAreaEdit.vue'
 
 export default {
   extends: OutsideCommon,
-  components: { AppTypeDetailsPageElementExplain, ZoneLmsInstructionsElement, ZoneLmsInstructionsHeader, AppTypeDetailsPageElement, ZoneLmsPageBanner, LearningObjectActions, UiLink },
+  components: { InPlaceTextAreaEdit, AppTypeDetailsPageElementExplain, ZoneLmsInstructionsElement, ZoneLmsInstructionsHeader, AppTypeDetailsPageElement, ZoneLmsPageBanner, LearningObjectActions, UiLink },
   data () {
     return {
       text: Text.LOBJ_PAGE,
@@ -145,14 +152,15 @@ export default {
         return e._id === id
       })
     },
-    showEditDialog: async function (event, assignmentId) {
-      await this.$store.dispatch('seedListStore/loadSeeds')
-      let lObjData = Object.assign({}, this.findAssignment(assignmentId))
-      this.$refs.theDialog.showDialog(lObjData)
+    async updateFacultyNotes (notes) {
+      await this.updateLearningObject('facultyNotes', notes)
     },
-    showCreateDialog: function () {
-      this.$refs.theDialog.showDialog()
+    async updateLearningObject (field, value) {
+      const lObjData = JSON.parse(JSON.stringify(this.learningObject))
+      lObjData[field] = value
+      await StoreHelper.updateAssignment(this.learningObject, lObjData)
     },
+
     async loadComponent () {
       const fromRoute = this.$route.query.learningObjectId
       const fromStore = this.$store.getters['assignmentStore/learningObjectId']

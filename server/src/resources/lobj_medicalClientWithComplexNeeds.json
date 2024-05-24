@@ -7,6 +7,7 @@
     "isDefault": false,
     "tagList": [],
     "appType": "EHR",
+    "creatorNotes": "Placeholder area for faculty to describe this case study to aid in use.",
     "name": "George Hart",
     "version": "1.0",
     "description": "George is a 65-year-old male with cardiovascular and respiratory health issues. He's been admitted for COPD exacerbation and concerns about ETOH misuse.\nUseful for 2nd year nursing simulation.",

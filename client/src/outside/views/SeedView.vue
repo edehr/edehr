@@ -20,6 +20,12 @@
       zone-lms-instructions-element The description is used by instructors to help put this case study to use. It is not visible to students.
 
       div(class="details-row")
+        div(class="details-name") Creator Notes
+        div(class="details-value")
+          in-place-text-area-edit(:value='seedModel.creatorNotes', @change='updateCreatorNotes')
+      zone-lms-instructions-element Use the creator notes field to describe this case study in a way that helps faculty know what it can be used for. Keep the description to be about the EHR content and use "faculty notes" in the learning object to describe how the case study is used.
+
+      div(class="details-row")
         div(class="details-name") Patient
         div(class="details-value") {{ patientData(seed) }}
       zone-lms-instructions-element The above information has been extracted from the case study to help you identify the contents.
@@ -91,10 +97,11 @@ import AppTypeDetailsPageElement from '@/outside/components/AppTypeDetailsPageEl
 import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
 import ZoneLmsInstructionsElement from '@/outside/components/ZoneLmsInstructionsElement.vue'
 import AppTypeDetailsPageElementExplain from '@/outside/components/AppTypeDetailsPageElementExplain.vue'
+import InPlaceTextAreaEdit from '@/app/components/InPlaceTextAreaEdit.vue'
 
 export default {
   extends: OutsideCommon,
-  components: { AppTypeDetailsPageElementExplain, ZoneLmsInstructionsElement, ZoneLmsInstructionsHeader, AppTypeDetailsPageElement, AppTagListEditor, AppTagList, ZoneLmsPageBanner, SeedActions, SeedListLink, UiButton, SeedDuplicate, SeedStructural, UiLink },
+  components: { InPlaceTextAreaEdit, AppTypeDetailsPageElementExplain, ZoneLmsInstructionsElement, ZoneLmsInstructionsHeader, AppTypeDetailsPageElement, AppTagListEditor, AppTagList, ZoneLmsPageBanner, SeedActions, SeedListLink, UiButton, SeedDuplicate, SeedStructural, UiLink },
   data () {
     return {
       appIcons: APP_ICONS,
@@ -170,11 +177,15 @@ export default {
       // let sd = this.$store.getters['seedListStore/seedContent']
       // console.log('SeedView loaded ', sd)
       // await this._dispatchSeedListProperty('loadSeedContent', seedId)
-
       // console.log('loading seed view', seedId)
       // StoreHelper.loadAssignmentAndSeedLists()
       // StoreHelper.loadSeed(seedId)
-    }
+    },
+    async updateCreatorNotes (notes) {
+      const seedData = JSON.parse(JSON.stringify(this.seedModel))
+      seedData.creatorNotes = notes
+      await StoreHelper.updateSeed(this, this.seedId, seedData)
+    },
   },
 }
 </script>

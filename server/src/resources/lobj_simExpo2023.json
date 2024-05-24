@@ -7,6 +7,7 @@
     "isDefault": false,
     "tagList": [],
     "appType": "EHR",
+    "creatorNotes": "Placeholder area for faculty to describe this case study to aid in use.",
     "name": "Sim Expo Escape Room",
     "version": "1.0",
     "description": "",

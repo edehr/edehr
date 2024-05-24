@@ -6,6 +6,7 @@
   "caseStudy": {
     "isDefault": false,
     "tagList": [],
+    "creatorNotes": "Placeholder area for faculty to describe this case study to aid in use.",
     "appType": "EHR",
     "description": "A teen visits the ER at 2 in the morning with severe tooth pain.",
     "contributors": "Bryan Gilbert, Joan Humphries",

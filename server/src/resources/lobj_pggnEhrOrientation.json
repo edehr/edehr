@@ -1,7 +1,7 @@
 {
   "appType": "EHR",
   "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
-  "description": "This activity is suitable as an introduction to EHR for students.",
+  "description": "This activity is an introduction to EHR for students. Explore this patient's medical history, and explore the charts under the Current Visit. You will find medication orders here. Also check out the Patient Charts and look for hematology lab reports.",
   "name": "EHR Orientation",
   "caseStudy": {
     "isDefault": false,
@@ -285,5 +285,20 @@
     "mrn": "65004",
     "draftRowCount": 0,
     "id": "61ae94a9f48d610019f8b540"
-  }
+  },
+  "simStages": [
+    {
+      "simKey": "0000-0920",
+      "faculty": "Stage 1, lab report available",
+      "instructions": "Look for a new lab result",
+      "name": "Stage 1"
+    },
+    {
+      "simKey": "0000-1645",
+      "faculty": "Stage 2, lab report available",
+      "instructions": "Is it later in the day and a new lab result is available.",
+      "name": "Stage 2"
+    }
+  ]
+
 }

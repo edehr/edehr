@@ -12,6 +12,15 @@
           ui-link(:name="'seed-view'",  :query='{ seedId: seedId }' )
             fas-icon(class="fa", :icon="appIcons.seed")
             span &nbsp; {{seed.name}}
+      div(class="details-row")
+        div(class="details-name") Creator Notes
+        div(class="details-value")
+          in-place-text-area-edit(:value='seed.description', @change='updateSeedDescription')
+      div(class="details-row")
+        div(class="details-name") Creator Notes
+        div(class="details-value")
+          in-place-text-area-edit(:value='seedModel.creatorNotes', @change='updateCreatorNotes')
+      zone-lms-instructions-element See the explanation on the main seed page.
 
     div(class="details-container selected card")
       h3 Case study time slices
@@ -30,9 +39,10 @@ import AppTagList from '@/app/components/AppTagList.vue'
 import SeedTimeSplit from '@/outside/components/seed-struct/SeedTimeSplit.vue'
 import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
 import ZoneLmsInstructionsElement from '@/outside/components/ZoneLmsInstructionsElement.vue'
+import InPlaceTextAreaEdit from '@/app/components/InPlaceTextAreaEdit.vue'
 export default {
   extends: OutsideCommon,
-  components: { ZoneLmsInstructionsElement, ZoneLmsInstructionsHeader, SeedTimeSplit, AppTagList, SeedActions, ZoneLmsPageBanner, UiLink },
+  components: { InPlaceTextAreaEdit, ZoneLmsInstructionsElement, ZoneLmsInstructionsHeader, SeedTimeSplit, AppTagList, SeedActions, ZoneLmsPageBanner, UiLink },
   data () {
     return {
       appIcons: APP_ICONS,
@@ -58,6 +68,16 @@ export default {
       StoreHelper.loadAssignmentAndSeedLists()
       StoreHelper.loadSeed(seedId)
     },
+    async updateCreatorNotes (notes) {
+      const seedData = JSON.parse(JSON.stringify(this.seedModel))
+      seedData.creatorNotes = notes
+      await StoreHelper.updateSeed(this, this.seedId, seedData)
+    },
+    async updateSeedDescription ( text ) {
+      const seedData = JSON.parse(JSON.stringify(this.seedModel))
+      seedData.description = text
+      await StoreHelper.updateSeed(this, this.seedId, seedData)
+    }
   },
 }
 </script>
