@@ -45,7 +45,7 @@
                       table(class="event-table")
                         tbody
                           tr(v-for='mar in medActioned(medOrder)')
-                            td {{marDate(mar)}}T{{mar.schedTime}}
+                            td  {{ mar.schedTime ? `${marDate(mar)}T${mar.schedTime}` : '' }}
                             td {{mar.status}}
                             td {{mar.dose}}
                   td

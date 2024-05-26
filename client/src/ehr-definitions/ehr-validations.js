@@ -52,7 +52,7 @@ export default {
     if (value) {
       const valid = validNumberStr(value)
       if (!valid) {
-        return `${fieldName} must be a numeric value`
+        return `${fieldName} must be a numeric value (${value})`
       }
     }
   },

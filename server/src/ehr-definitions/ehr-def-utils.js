@@ -11,6 +11,9 @@ export function validateAgeValue (age) {
 }
 
 export function makeHumanTableCell ( pageKey, elementKey, inputType, dbVal) {
+  if (inputType === EhrTypes.dataInputTypes.lookahead) {
+    dbVal = dbVal.med
+  }
   if (inputType === EhrTypes.dataInputTypes.checkset) {
     dbVal = EhrCheckset.makeHuman(dbVal, pageKey, elementKey)
   }
