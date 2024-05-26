@@ -23,7 +23,7 @@
 import UiButton from '@/app/ui/UiButton'
 import StoreHelper from '@/helpers/store-helper'
 import { t18EhrText } from '@/helpers/ehr-t18'
-import { TABLE_ACTION_EVENT } from '@/helpers/event-bus'
+import EventBus, { TABLE_ACTION_EVENT } from '@/helpers/event-bus'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 import EhrTableActions from '@/inside/components/page/ehr-table-actions'
 
