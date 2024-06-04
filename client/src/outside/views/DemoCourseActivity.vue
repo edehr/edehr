@@ -78,13 +78,11 @@ export default {
     this.resetSubmitData()
   },
   methods: {
-    lObjLink ( activityTitle) {
-      const data =  StoreHelper.getDemoLObjInfoFromName(activityTitle)
-      return data.id
+    lObjLink ( demoDef) {
+      return demoDef.lObjDef._id
     },
-    lObjAppType ( activityTitle) {
-      const data =  StoreHelper.getDemoLObjInfoFromName(activityTitle)
-      return data.appType
+    lObjAppType ( demoDef) {
+      return demoDef.lObjDef.appType
     },
     resetSubmitData: function () {
       const personaName = this.demoPersonaName

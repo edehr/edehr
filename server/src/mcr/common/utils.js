@@ -39,6 +39,10 @@ export function fail (req, res) {
       code = 400
       message = error.name + ' ' + error.message
       break
+    case 'NetworkError' :
+      code = 500
+      message = 'NetworkError'
+      break
     case 'CastError' :
       code = 500
       message = error.name + ' ' + error.message
@@ -51,10 +55,10 @@ export function fail (req, res) {
       // return Internal Server Error ... "something has gone wrong on the web site's server but the server could not be more specific on what the exact problem is."
       code = 500
       message = 'Unknown error:' + error.name + ' ' + error.message
-      logError('Server utils fail unknown error return 500.', message)
+      // logError('Server utils fail unknown error return 500.', message)
     }
     let url = getFullUrl(req)
-    logError('Send fail status', code, 'message', message, 'url', url)
+    logError('Send fail status code:', code, 'message:', message, ' url:', url)
     res.status(code)
     res.json({message: message, status: code, url: url})
   }

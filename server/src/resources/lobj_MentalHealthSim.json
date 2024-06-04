@@ -1,7 +1,7 @@
 {
   "appType": "EHR",
   "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
-  "description": "Students will access the EdEHR to review the chart for Melissa Ashmann.",
+  "description": " Students will access the EdEHR to review the chart for Melissa Ashmann.\n\nAfter completing the simulation, students will be asked to enter a DAR format nurse's narrative entry on the scene of the session they participated in, as part of their reflection on the case. ",
   "name": "Mental Health sim",
   "caseStudy": {
     "isDefault": false,
@@ -10,7 +10,7 @@
     "creatorNotes": "Placeholder area for faculty to describe this case study to aid in use.",
     "name": "Melissa Ashmann",
     "version": "2.0",
-    "description": "Melissa Ashmann is a 32-year old who was involved in a motor vehicle crash, near Kaslo. She sustained a left tib-fib fracture and underwent an ORIF.\nMelissa has a history of depression, anxiety and previous knee surgery.\nUseful for 2nd year nursing.",
+    "description": "Melissa Ashmann is a 32-year old who was involved in a motor vehicle crash, near Kaslo. She sustained a left tib-fib fracture and underwent an ORIF.\nMelissa has a history of depression, anxiety and previous knee surgery.\nUseful for 2nd year nursing.ever",
     "contributors": "Christopher Hillary, Bryan",
     "ehrData": {
       "demographics": {

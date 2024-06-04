@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import uniqueValidator from 'mongoose-unique-validator'
+import { ObjectId } from 'mongodb'
 
 const Schema = new mongoose.Schema({
   oauth_consumer_key: { type: String, required: [true, 'Require consumer key'], unique: true },
@@ -16,6 +17,7 @@ const Schema = new mongoose.Schema({
   createDate: {type: Date, default: Date.now},
   lastUpdateDate: {type: Date, default: Date.now},
   oId: {type: String},
+  appLms: {type: ObjectId, ref: 'AppLmsLms'},
 })
 
 Schema.plugin(uniqueValidator)

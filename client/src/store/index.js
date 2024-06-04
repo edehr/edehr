@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import activityStore from './modules/activityStore'
 import activityDataStore from './modules/activityDataStore'
+import appLmsStore from '@/store/modules/appLmsStore'
 import authStore from './modules/authStore'
 import assignmentStore from './modules/assignmentStore'
 import assignmentListStore from './modules/assignmentListStore'
@@ -31,6 +32,7 @@ export default new Vuex.Store({
   modules: {
     activityStore,
     activityDataStore,
+    appLmsStore,
     authStore,
     assignmentListStore,
     assignmentStore,
@@ -60,6 +62,7 @@ export function initializeStore (store) {
   // console.log('Initialize vuex modules')
   store.dispatch('activityStore/initialize')
   store.dispatch('assignmentStore/initialize')
+  store.dispatch('appLmsStore/initialize')
   store.dispatch('authStore/initialize')
   store.dispatch('courseStore/initialize')
   store.dispatch('demoStore/initialize')

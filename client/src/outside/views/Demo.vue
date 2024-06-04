@@ -2,10 +2,12 @@
   div(class="demo_page showing-labels")
     section(v-if="canAccessDemo", class="content")
       div(style="display: flex;")
-        h2(class="has-text-centered") {{ demoText.title }}
+        h2(class="has-text-centered") {{ demoText.pageTitle }}
         ui-button(value="demo-exit", @buttonClicked="fullExit" secondary, style='margin-left: auto;')
           span Exit Full Demo
       div
+        div Press this Copy Link button to get an URL in your clipboard.  You can give this URL to someone and they can use it to join into this demo instance.  Or you can use it in a different browser to join this demo instance and "log-in" as a different user.
+        ui-button(@buttonClicked='copyJoinText') Copy Link
         div(v-text-to-html="demoText.intro")
         div(class="columns")
           div(class="column is-4")
@@ -63,6 +65,7 @@ export default {
     }
   },
   computed: {
+    demoData () { return this.$store.getters['demoStore/demoTokenData']},
     demoPersonaList () {
       return StoreHelper.getDemoTokenData().personaList
     },
@@ -74,6 +77,11 @@ export default {
     }
   },
   methods: {
+    copyJoinText () {
+      let joinText = window.location + '-join?code=' + this.demoData.toolConsumerId
+      navigator.clipboard.writeText(joinText)
+      alert('Copied the text: \n' + joinText)
+    },
     submitDemoAccess () {
       StoreHelper.setDemoPersona(this.persona)
       this.$router.push('demo-course')

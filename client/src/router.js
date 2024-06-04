@@ -4,12 +4,17 @@ import store from './store'
 
 Vue.use(Router)
 
+export const HOME_PAGE = 'home'
+export const APP_LMS_ACCESS_ROUTE_NAME = 'AppLmsAccessS1'
+export const APP_LMS_DASH_ROUTE_NAME = 'appLmsDashboard'
+
 export const UNLINKED_ACTIVITY_ROUTE_NAME = 'unlinked-activity'
 export const COURSE_ROUTE_NAME = 'course'
 export const ADMIN_LOGIN_ROUTE_NAME = 'admin-login'
 export const ERROR_ROUTE_NAME = 'error'
 export const ZONE_ADMIN = 'admin'
 export const ZONE_PUBLIC = 'public'
+export const ZONE_APP_LMS = 'add-lms'
 export const ZONE_DEMO = 'demo'
 export const ZONE_LMS = 'lms'
 // ehr zone is only use in the inside routes. The inside
@@ -23,10 +28,10 @@ export function routeIsPublic (route) {
 let routes = [
   {
     path: '/',
-    name: 'home',
+    name: HOME_PAGE,
     component: () =>
       import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Home'),
-    meta: { layout: 'home', label: 'Home', zone: 'public' }
+    meta: { layout: 'home', label: 'Home', zone: ZONE_PUBLIC }
   },
   {
     path: '/patient-labels',
@@ -64,7 +69,7 @@ routes.push({
   path: '*',
   component: () =>
     import(/* webpackChunkName: "notfound" */ './outside/components/PageNotFound.vue'),
-  meta: { layout: 'outside', label: 'Page Not Found', zone: 'public' }
+  meta: { layout: 'outside', label: 'Page Not Found', zone: ZONE_PUBLIC }
 })
 
 

@@ -148,7 +148,7 @@ export function formatTimeStr (dateStrFromDb) {
 
 export function composeAxiosResponseError (error, msg = '') {
   if (!error.response) {
-    if(error.message === 'Network Error') {
+    if(error.response?.data?.message === 'Network Error') {
       return 'EdEHR API server is not available. Either you have network issues or the server is down. \n' + msg
     }
     msg += ' Error: "' + error.message + '"'
@@ -156,16 +156,18 @@ export function composeAxiosResponseError (error, msg = '') {
   }
   const res = error.response
   msg += res.status ? ` status: ${res.status}` : ''
-  msg += res.statusText ? ` ${res.statusText}` : ''
   if (res.data) {
     if (res.data.message)
       msg += ' ' + res.data.message
     else
       msg += ' ' + JSON.stringify(res.data)
-  } else {
+  } else if (res.statusText) {
+    msg += res.statusText ? ` ${res.statusText}` : ''
+  }
+  else {
     msg += ' ' + error.message
   }
-  console.error('composeAxiosResponseError "', msg, '" "', res.data, '"')
+  console.error('composeAxiosResponseError "', msg)
   return msg
 }
 

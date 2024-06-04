@@ -1,0 +1,35 @@
+@import '../definitions';
+
+.appLms-layout {
+  section.card {
+    border: 1px solid $brand-primary-dark;
+    margin-bottom: 1rem;
+  }
+  .content {
+    font-size: 1.2rem;
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .button {
+    background-color: $brand-primary-dark;
+    &:hover {
+      border-color: $brand-primary;
+      color: $brand-primary;
+      background-color: $ehr-brand-option2;
+    }
+  }
+  .button.is-light, {
+    background-color: white;
+    border-color: $brand-primary-dark;
+    color: $brand-primary-dark;
+    &:hover {
+      background-color: $brand-highlight;
+      color: $white;
+    }
+
+  }
+
+}
+

@@ -23,6 +23,7 @@ function worker (el, binding, source) {
   }
 }
 
+// TODO - deDup - textToHtl is duplicated in the client directives and ehr-definitions/app-lms directories.
 export function textToHtml (value, noAutoLink=false) {
   let sentences = value.split('\n')
   let html = []

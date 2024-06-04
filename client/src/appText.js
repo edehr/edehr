@@ -157,6 +157,10 @@ export const ehrText = {
   ERROR_IN_TABLE_ACTION_DEF: (tableDef) => `Error in the TableAction EHR definitions. Missing source for table ${tableDef} `
 }
 export const demoText = {
+  createDialogTitle: 'Create a demonstration instance',
+  yourEmailLabel: 'Your email address',
+  yourNameForTheInstance: 'Name your instance',
+  pageTitle: 'Demonstration ',
   course1Title: 'Sample Course - Health Care',
   course2Title: 'Sample Course - Med Lab',
   personaLabel: 'Your demo persona is',
@@ -167,7 +171,6 @@ export const demoText = {
   switchRoleExplain: 'When you click on an activity this \'instructor\' will become a \'student\' same as how Moodle allows users to switch roles.',
   switchRoleLabel: 'Logout and change to another persona',
   switchRoleSegmentTitle: 'Check to switch role:',
-  title: 'Demonstration - "Log In"',
   intro: 'Here you can "log in", as a student or instructor, to a simulated learning management system (LMS) and try out the EdEHR. ' +
     ' Once you log in you can choose a sample course with sample activities that use the EdEHR. ' +
     ' In the real world, your school\'s lead instructors will create course content that will use a special connector that will' +

@@ -77,7 +77,7 @@ const getters = {
       console.log('merged data has this meta', mData.meta)
     }
     let elapsedTime = performance.now() - startTime
-    console.log('EhrData merged elapsedTime, type', elapsedTime, type)
+    console.log('EhrData merge data  ', String(elapsedTime).padStart(3, ' '), 'ms Type:', type)
     return mData || {meta:{}}
   },
   hasDataForPagesList (state, getters) {

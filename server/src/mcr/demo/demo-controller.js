@@ -17,6 +17,7 @@ import Consumer from '../consumer/consumer'
 const {ltiVersions} = require('../../mcr/lti/lti-defs')
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
 const debugDC = false
+const debugJoin = true
 const debug = require('debug')('server')
 import { logError} from '../../helpers/log-error'
 import { APP_TYPE_LIS } from '../../helpers/appType'
@@ -104,13 +105,12 @@ export default class DemoController {
       const demoData = {
         toolConsumerKey: theId,
         toolConsumerId: toolC._id,
-        personaList: demoPersonae,
-        lObjList: []
+        personaList: demoPersonae
       }
       // see comment below about lObjList
       const activities = [ activity1, activity2, activity3, activity4, activity5, activity6, activityMP1, activityMedComplex, activityMentalHealth, activityEhrOrientation, activitySimExpo2023]
       for (let i = 0; i< activities.length; i++ ) {
-        demoData.lObjList.push(await this.createSampleSeedAndObj(activities[i], toolC))
+        await this.createSampleSeedAndObj(activities[i], toolC)
       }
       await this._createExtraSeeds(toolC._id)
       if (debugDC) debug('DemoController generate token')
@@ -122,6 +122,40 @@ export default class DemoController {
     } catch (err) {
       let msg = err.toString()
       logError('DemoController _createDemoToolConsumer ERROR "' + msg + '"')
+      res.status(500).send(msg)
+    }
+  }
+
+  async _joinDemoToolConsumer (req, res, next) {
+    try {
+      let {toolConsumerId, joinCode} = req.body
+      if (debugJoin) debug('DemoController join tool. Caller sent ', toolConsumerId, 'join code', joinCode)
+      if (!toolConsumerId || !joinCode) {
+        let error = new Error('Caller must provide the consumer and join code')
+        error.status = 400
+        return next(error)
+      }
+      let toolC = await Consumer.findById(toolConsumerId)
+      if (toolC) {
+        if (debugJoin) debug('DemoController found consumer', toolC.oauth_consumer_key)
+        const demoData = {
+          toolConsumerKey: toolC.oauth_consumer_key,
+          toolConsumerId: toolC._id,
+          personaList: demoPersonae,
+          joinCode: joinCode,
+          lObjList: []
+        }
+        const demoToken = this.comCon.authUtil.createToken({ demoData: demoData }, undefined /* no expiry */)
+        if (debugDC) debug('DemoController _createDemoToolConsumer generated token')
+        res.status(200).json({ demoToken })
+      } else {
+        let error = new Error('Join failed to find the requested demo instance.')
+        error.status = 400
+        return next(error)
+      }
+    } catch (err) {
+      let msg = err.toString()
+      logError('DemoController _joinDemoToolConsumer ERROR "' + msg + '"')
       res.status(500).send(msg)
     }
   }
@@ -143,25 +177,42 @@ export default class DemoController {
   Generally, this code base strives to make the code tell the story so that when code is changed the story is immediately changed too. But sometimes the story is too complex so documentation is needed. But that risks confusion when code is eventually changed and the documentation is not kept in sync.
    */
 
-  listDemoActivities () {
+  /**
+   * Connect the demo consumer's LObjs to the demo def'd activities.  NB these activities may not
+   * yet exist in the consumer. We only have a title/name to match on. For now.  Ideally there
+   * will be a custom parameter with a simple key for making the connection
+   * @param toolConsumerId
+   * @returns {Promise<{courses: [{courseTitle: string, activities: *[]},{courseTitle: string, activities: *[]}]}>}
+   */
+  async listDemoActivities (toolConsumerId) {
+    const lObjList = await this.comCon.assignmentController.justLobjList(toolConsumerId)
+    function connectDots (aDef) {
+      aDef = JSON.parse(JSON.stringify(aDef))
+      aDef.lObjDef = lObjList.find(obj => obj.name === aDef.lObjDef.title)
+      return aDef
+    }
     const response = {
       courses: [
         {
           courseTitle: 'Intro to EHR',
           activities: [
-            activityEhrOrientation,
-            activitySimExpo2023,
-            activity3,
-            activity6,
-            activityMedComplex,
-            activityMentalHealth,
-            activity1,
-            activity2
+            connectDots(activityEhrOrientation),
+            connectDots(activitySimExpo2023),
+            connectDots(activity3),
+            connectDots(activity6),
+            connectDots(activityMedComplex),
+            connectDots(activityMentalHealth),
+            connectDots(activity1),
+            connectDots(activity2)
           ]
         },
         {
           courseTitle: 'Intro to MedLab',
-          activities: [activity4, activity5, activityMP1]
+          activities: [
+            connectDots(activity4),
+            connectDots(activity5),
+            connectDots(activityMP1)
+          ]
         }
       ]
     }
@@ -284,8 +335,16 @@ export default class DemoController {
     router.post('/',
       demoLimiter,
       (req, res, next) => {
-        this._createDemoToolConsumer(req, res, next)
+        return this._createDemoToolConsumer(req, res, next)
       })
+
+    router.post('/demo-join',
+      demoLimiter,
+      (req, res, next) => {
+        if (debugJoin) debug('DemoController /demo-join')
+        return this._joinDemoToolConsumer(req, res, next)
+      })
+
 
     /**
      * @description Fetches the auth data which is contained in the demoToken payload,
@@ -297,9 +356,10 @@ export default class DemoController {
       res.status(200).json(req.authPayload)
     })
 
-    router.get('/demo-activities/', (req, res) => {
+    router.get('/demo-activities/:toolConsumerId', (req, res) => {
+      let toolConsumerId = req.params.toolConsumerId
       this
-        .listDemoActivities()
+        .listDemoActivities(toolConsumerId)
         .then(ok(res))
         .then(null, fail(req, res))
     })
@@ -324,7 +384,7 @@ export default class DemoController {
      * It then signs the LTI request and then it completes the LTI post,
      * returning the returnUrl and the refreshToken, which were obtained in the POST request.
      */
-    router.post('/set', (req, res) => {
+    router.post('/demo-submit', (req, res) => {
       this.submitLTIData(req, res)
     })
 
