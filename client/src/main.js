@@ -8,6 +8,7 @@ import { initializeStore } from './store'
 import icons from './icons'
 import homeLayout from './app/layout/LayoutHome.vue'
 import outsideLayout from './outside/layout/LayoutOutside.vue'
+import appLmsLayout from './outside/layout/LayoutAppLms.vue'
 import lmsLayout from './outside/layout/LayoutLms.vue'
 import insideLayout from './inside/layout/LayoutEhr.vue'
 import printLayout from './inside/layout/PrintLayout.vue'
@@ -30,6 +31,7 @@ Vue.config.productionTip = false
 Vue.use(require('vue-moment'))
 Vue.use(VueAutosuggest)
 Vue.component('home-layout', homeLayout)
+Vue.component('appLms-layout', appLmsLayout)
 Vue.component('outside-layout', outsideLayout)
 Vue.component('lms-layout', lmsLayout)
 Vue.component('inside-layout', insideLayout)

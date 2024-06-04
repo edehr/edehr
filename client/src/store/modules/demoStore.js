@@ -30,6 +30,7 @@ function clearStorage () {
 }
 
 const getters = {
+  userDemosEnabled: (state) => state.userDemosEnabled,
   autoLinkLobj: (state) => { return state.autoLinkLobj },
   demoToken: function () {
     return _getStoredDemoToken()
@@ -58,12 +59,16 @@ const getters = {
 
 const state = {
   autoLinkLobj: true,
+  userDemosEnabled: true,
   demoData: undefined, // load from a fetch token
   persona: undefined, // selected by user on the Demo page
   demoFeature: true // ToDo remove this flag soon. and ui code. We shouldn't need it if full demo is easy enough to use.
 }
 
 const actions = {
+  setUserDemosEnabled: (context, mode) => {
+    context.commit('_setUserDemosEnabled', mode)
+  },
   setAutoLinkLobj: (context, mode) => {
     context.commit('_setAutoLinkLobj', mode)
   },
@@ -75,6 +80,14 @@ const actions = {
         return Promise.resolve(demoToken)
       })
       // let the caller do the catching, so it can handle the error for the user
+  },
+  joinToolConsumer: function (context, payload) {
+    return _getHelper().joinToolConsumer(payload)
+      .then(res => {
+        const { demoToken } = res.data
+        _setDemoToken(demoToken)
+        return Promise.resolve(demoToken)
+      })
   },
   demoLogout: async function ({ commit, getters }) {
     const tid = getters.toolConsumerId
@@ -132,6 +145,7 @@ const mutations = {
   initialize: function (state) {
     // default the autoLinkLobj to true if storage has no value
     state.autoLinkLobj = !(localStorage.getItem('autoLinkDemoLobj') === 'false')
+    state.userDemosEnabled = !(localStorage.getItem('userDemosEnabled') === 'false')
     // console.log( 'AUTO LINK ININITIALIZE', state.autoLinkLobj)
     state.demoFeature = true // _getStoredDemoFeature() === 'true'
     if (debugDS) console.log('DemoStore initialize: demo feature state',  state.demoFeature)
@@ -148,6 +162,10 @@ const mutations = {
       state.persona = undefined
       clearStorage()
     }
+  },
+  _setUserDemosEnabled: (state, mode) => {
+    localStorage.setItem('userDemosEnabled', mode)
+    state.userDemosEnabled = mode
   },
   _setAutoLinkLobj: (state, mode) => {
     localStorage.setItem('autoLinkDemoLobj', mode)

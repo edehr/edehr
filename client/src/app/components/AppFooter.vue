@@ -23,6 +23,8 @@
       div {{ authData.timeRemaining }}
     div(v-if="isAdminZone", class="error-testing")
       button(@click="throwError")  error testing
+    ui-button(@buttonClicked="toggleAppLms")
+      span {{ appLmsEnabled ? 'Disable App LMS ' : 'Enable App LMS' }}
 </template>
 
 <script>
@@ -30,12 +32,15 @@ import StoreHelper from '../../helpers/store-helper'
 import EdEhrOrgFooter from '@/app/edehr-org/EdEhrOrgFooter'
 import edherorg from '@/app/edehr-org/ed-ehr-org'
 import UiLink from '@/app/ui/UiLink'
+import UiButton from '@/app/ui/UiButton.vue'
 export default {
   components: {
+    UiButton,
     UiLink,
     EdEhrOrgFooter
   },
   computed: {
+    appLmsEnabled () { return this.$store.getters['appLmsStore/appLmsEnabled']},
     apiData () { return StoreHelper.getApiData()   },
     authData () { return StoreHelper.getAuthData() },
     appVersion () {
@@ -52,7 +57,12 @@ export default {
   methods: {
     throwError () {
       throw new Error('Sentry Error')
+    },
+    toggleAppLms () {
+      console.log('toggle app lms', this.appLmsEnabled)
+      this.$store.dispatch('appLmsStore/setAppLmsEnabled', !this.appLmsEnabled)
     }
+
   }
 }
 </script>

@@ -3,6 +3,7 @@ import StoreHelper from './store-helper'
 import InstoreHelper from '../store/modules/instoreHelper'
 
 const debugDC = false
+const debugJoin = true
 
 export function demoGoToEhr (submitData) {
   // const submitData = {
@@ -49,6 +50,22 @@ export default class DemoHelper {
       })
   }
 
+  joinDemoToolConsumerCreation (payload) {
+    StoreHelper.setLoading('joinDemoToolConsumerCreation', true)
+    if (debugJoin) console.log('Demo joinDemoToolConsumerCreation', JSON.stringify(payload))
+    return StoreHelper.joinDemoToolConsumer(payload)
+      .then((demoToken) => {
+        if (!demoToken) {
+          throw Error('Attempt to join demonstration space failed with payload' + JSON.stringify(payload))
+        }
+        if (debugJoin) console.log(`Join into demo consumer. If have token? ${!!demoToken} go to demo`)
+        return StoreHelper.loadDemoData()
+      })// let the caller handle any errors
+      .finally(() => {
+        StoreHelper.setLoading('joinDemoToolConsumerCreation', false)
+      })
+  }
+
   loadAssignments () {
     const token = StoreHelper.getDemoToken()
     const dd = StoreHelper.getDemoTokenData()
@@ -73,8 +90,15 @@ export default class DemoHelper {
   }
   async loadActivities () {
     const token = StoreHelper.getDemoToken()
+    const dd = StoreHelper.getDemoTokenData()
+    const toolConsumerId = dd.toolConsumerId
+    if (!toolConsumerId) {
+      if (debugDC) console.log('DC can not get assignments no toolConsumerId')
+      return
+    }
+
     const apiUrl = StoreHelper.apiUrlGet()
-    const url = `${apiUrl}/demo/demo-activities`
+    const url = `${apiUrl}/demo/demo-activities/` + toolConsumerId
     const options = {
       method: 'GET',
       headers: {

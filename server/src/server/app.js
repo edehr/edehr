@@ -12,6 +12,7 @@ import { setUpEhrTraceLogger } from './trace-ehr'
 import { setUpActionLogger } from './trace-actions'
 import AuthUtil from '../mcr/common/auth-util'
 import { getFullUrl } from '../mcr/common/utils'
+import { setUpSendGrid } from '../helpers/send-email-helper'
 const debug = require('debug')('server')
 const helmet = require('helmet')
 
@@ -67,6 +68,7 @@ export default class EhrApp {
   }
 
   setup (config) {
+    setUpSendGrid(config)
     setUpActionLogger(config)
     setUpEhrTraceLogger(config)
     let app = this.app
@@ -145,6 +147,7 @@ export default class EhrApp {
       res.status(status).send(Text.NO_FAVICON)
     } else {
       var msg = 'Could not find "' + fullUrl + '". Environment: ' + env
+      console.log('-9-9-9-9', msg)
       debug(msg)
       res.status(status)
       res.json({message: msg, status: status, url: fullUrl})

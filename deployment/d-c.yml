@@ -49,6 +49,7 @@ services:
       - SCHEME
       - SERVER_PORT
       - SENTRY_DSN
+      - SENDGRID_API_KEY
       - START_ARG
     depends_on:
      - mongo_service

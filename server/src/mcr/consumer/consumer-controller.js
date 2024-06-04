@@ -17,6 +17,7 @@ const debugCC = false
 const debug = require('debug')('server')
 import { logError} from '../../helpers/log-error'
 
+// Route is '/consumers
 export default class ConsumerController extends BaseController {
   constructor () {
     super(Consumer)
@@ -282,6 +283,12 @@ export default class ConsumerController extends BaseController {
     return {featureFlags: []}
   }
 
+  async appLmsLink (consumerId, appLmsId) {
+    let consumer = await this.baseFindOneQuery(consumerId)
+    consumer.appLms = appLmsId
+    consumer = await consumer.save()
+    return { consumer }
+  }
   route () {
     const adminMiddleware = [
       isAdmin

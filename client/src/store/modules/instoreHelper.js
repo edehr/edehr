@@ -1,7 +1,30 @@
 import axios from 'axios'
-import { composeAxiosResponseError } from '../../helpers/ehr-utils'
+import { composeAxiosResponseError } from '@/helpers/ehr-utils'
 import StoreHelper from '../../helpers/store-helper'
 import { timeSequenceSliceData } from '@/ehr-definitions/sim-time-seq-utils'
+
+/*
+ *
+ * Add interceptor to axios to trace time to complete each request, and display in a console message (for the time being).
+ * This could be a push message to a server that can track these metrics.
+ */
+const apiAxios = axios
+apiAxios.interceptors.request.use(request => {
+  request.perfMon = {
+    url: request.url,
+    start: performance.now()
+  }
+  return request
+})
+
+apiAxios.interceptors.response.use(response => {
+  const perfMon = response.config.perfMon
+  const { url, start } = perfMon
+  let elapsedTime = performance.now() - start
+  elapsedTime = String(elapsedTime).padStart(3, ' ')
+  console.log('API call performance', elapsedTime, 'ms URL: ',  url)
+  return response
+})
 
 const debug = false
 /*
@@ -46,7 +69,7 @@ class InstoreHelperWorker {
     if(debug) console.log('with this data "', bodyData, '"')
     if (!silent) StoreHelper.setLoading('putRequest', true)
     return new Promise((resolve, reject) => {
-      axios
+      apiAxios
         .put(url, bodyData)
         .then(results => {
           resolve(results)
@@ -60,22 +83,26 @@ class InstoreHelperWorker {
         })
     })
   }
-  postRequest (context, api, url, bodyData) {
+  postRequest (context, api, url, bodyData, errorHandler) {
     url = this.composeUrl(context, api, url)
     if(debug) console.log('POST to this url', url)
     if(debug) console.log('POST with this data "', bodyData, '"')
     StoreHelper.setLoading('postRequest', true)
     return new Promise((resolve, reject) => {
-      axios
+      apiAxios
         .post(url, bodyData)
         .then(results => {
           // console.log('success instoreHelper putRequest', results)
           resolve(results)
         })
         .catch(error => {
-          let msg = `Post for ${url} failed`
-          msg += ' ' + JSON.stringify(bodyData)
-          catchHandler(msg, error, reject)
+          if (errorHandler && errorHandler(url, bodyData, error)) {
+            /// done
+          } else {
+            let msg = `Post for ${url} failed`
+            msg += ' ' + JSON.stringify(bodyData)
+            catchHandler(msg, error, reject)
+          }
         })
         .finally(() => StoreHelper.setLoading('postRequest', false))
     })
@@ -91,7 +118,7 @@ class InstoreHelperWorker {
     if(debug) console.log('POST to this url', url)
     StoreHelper.setLoading('upsert', true)
     return new Promise((resolve, reject) => {
-      axios(config)
+      apiAxios(config)
         .then(results => {
           console.log('success instoreHelper upsert', results)
           resolve(results)
@@ -109,7 +136,7 @@ class InstoreHelperWorker {
     if(debug) console.log('GET to this url', url)
     if (!silent) StoreHelper.setLoading('getRequest - not silent', true)
     return new Promise((resolve, reject) => {
-      axios
+      apiAxios
         .get(url)
         .then(results => {
           if(debug) console.log('GOT ', api, '>> ', results)
@@ -130,7 +157,7 @@ class InstoreHelperWorker {
     if (debug) console.log('delete TO URL ', url, context)
     StoreHelper.setLoading('deleteRequest', true)
     return new Promise ((resolve, reject) => {
-      axios.delete(url)
+      apiAxios.delete(url)
         .then(result => {
           resolve(result)
         }).catch(error => {

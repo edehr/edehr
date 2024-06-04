@@ -40,6 +40,13 @@ class SystemError extends EdEhrError {
     this.status = 500
   }
 }
+class NetworkError extends EdEhrError {
+  constructor (message, errorData) {
+    super(...arguments)
+    this.name = 'NetworkError'
+    this.status = 500
+  }
+}
 
 class NotAllowedError extends EdEhrError {
   constructor (message, errorData) {
@@ -99,6 +106,7 @@ module.exports = {
   // OutcomeResponseError
   AssignmentMismatchError,
   ConfigurationChangeError,
+  NetworkError,
   NotAllowedError,
   ParameterError,
   SystemError

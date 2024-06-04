@@ -11,9 +11,12 @@ import {
 } from '../helpers/middleware'
 import ActivityController from '../mcr/activity/activity-controller'
 import ActivityDataController from '../mcr/activity-data/activity-data-controller'
+import ActionsController from '../mcr/metric/actions-controller'
+import AppLmsController from '../mcr/app-lms/app-lms-controller'
 import AssignmentController from '../mcr/assignment/assignment-controller'
 import AuthController from '../mcr/auth/auth-controller'
 import ConsumerController from '../mcr/consumer/consumer-controller'
+import CourseController from '../mcr/course/course-controller'
 import DemoController from '../mcr/demo/demo-controller'
 import FeedbackController from '../mcr/feedback/feedback-controller'
 import FilesController from '../mcr/files/files-controller'
@@ -26,6 +29,7 @@ import UserController from '../mcr/user/user-controller.js'
 import VisitController from '../mcr/visit/visit-controller'
 import UtilController from '../mcr/util/util-controller'
 import { apiTrace } from './trace-api'
+import { logError} from '../helpers/log-error'
 // Sessions and session cookies
 // express-session stores session data here on the server and only puts session id in the cookie
 const session = require('express-session')
@@ -34,9 +38,6 @@ const FileStore = require('session-file-store')(session)
 import { v4 as uuidv4 } from 'uuid'
 
 const debug = require('debug')('server')
-import { logError} from '../helpers/log-error'
-import ActionsController from '../mcr/metric/actions-controller'
-import CourseController from '../mcr/course/course-controller'
 
 export function apiMiddle (app, config) {
   const fileStoreOptions = {}
@@ -74,6 +75,7 @@ export function apiMiddle (app, config) {
   const authUtil = app.authUtil
   const act = new ActivityController()
   const acc = new ActivityDataController()
+  const appLms = new AppLmsController(config)
   const as = new AssignmentController(config)
   const auth = new AuthController(config)
   const actions = new ActionsController()
@@ -105,6 +107,7 @@ export function apiMiddle (app, config) {
     visitController: vc
   }
   auth.setSharedControllers(lcc)
+  appLms.setSharedControllers(lcc)
   crs.setSharedControllers(lcc)
   lti.setSharedControllers(lcc)
   cc.setSharedControllers(lcc)
@@ -159,6 +162,10 @@ export function apiMiddle (app, config) {
       api.use('/api/metric', cors(corsOptions), metric.route())
       api.use('/metric', cors(corsOptions), metric.route())
       api.use('/actions', cors(), actions.route())
+
+      // App LMS
+      api.use(appLms.routePath(), cors(corsOptions), appLms.route())
+      api.use('/api' + appLms.routePath(), cors(corsOptions), appLms.route())
 
       // Inside API
       api.use('/activities', middleWare, act.route())

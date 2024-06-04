@@ -31,6 +31,7 @@ const getters = {
     if (debug) console.log(NAME + ' get lastUpdateDate', prop)
     return prop
   },
+  lmsDisplayName: state => state.consumer.displayName,
   lmsName: state => {
     let prop =  state.consumer.tool_consumer_instance_name
     if (debug) console.log(NAME + ' get lmsName', prop)

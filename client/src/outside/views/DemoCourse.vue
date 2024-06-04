@@ -41,7 +41,7 @@ import UiInfo from '@/app/ui/UiInfo'
 import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import { demoText } from '@/appText'
 
-const debugDC = false
+const debugDC = true
 
 export default {
   components: {

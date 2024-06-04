@@ -8,7 +8,13 @@
           div &nbsp;
           h2(class="subtitle", style='font-size:1.7rem') {{ appText.heroText.yesItIs }}
           h2(class="subtitle", style='font-size:1.7rem') {{ appText.heroText.subTitle }}
-          demo-access(class="demo-access")
+          app-lms-home-component(v-if='showAppLmsAccess')
+          demo-access(v-if='showOldDemoMode', class="demo-access")
+          div &nbsp;
+          div &nbsp;
+          div &nbsp;
+          div
+            a(href="#introText") Learn more ...
 
     section(id="introText", class="container features features-light")
       div(class="content", v-text-to-html.noAutoLink="appText.heroText.introText")
@@ -19,8 +25,6 @@
     //section(class="no-container")
     //  div(class="content")
     //    input(type="checkbox", v-model="activateDemoMode", class="is-pulled-right")
-
-
 </template>
 
 <script>
@@ -29,9 +33,11 @@ import UiLink from '../../app/ui/UiLink.vue'
 import DemoAccess from '../components/DemoAccess.vue'
 import EdEhrValues from '../components/EdEhrValues.vue'
 import { appText } from '@/appText'
+import AppLmsHomeComponent from '@/outside/components/app-lms/AppLmsHomeComponent.vue'
 
 export default {
   components: {
+    AppLmsHomeComponent,
     DemoAccess,
     EdEhrValues,
     UiButton, UiLink
@@ -43,6 +49,9 @@ export default {
     }
   },
   computed: {
+    showOldDemoMode () { return !this.showAppLmsAccess },
+    showAppLmsAccess () { return this.appLmsEnabled },
+    appLmsEnabled () { return this.$store.getters['appLmsStore/appLmsEnabled']},
   },
   methods: {
   },

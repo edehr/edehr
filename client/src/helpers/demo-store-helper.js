@@ -3,6 +3,7 @@ import qs from 'qs'
 import StoreHelper from '@/helpers/store-helper'
 
 const debugDH = false
+const debugJoin = true
 
 export default class DemoStoreHelper {
   createToolConsumer () {
@@ -15,6 +16,23 @@ export default class DemoStoreHelper {
     console.log('DemoStoreHelper create consumer for user id ', id, 'apiUrl', apiUrl)
     const url = `${apiUrl}/demo/`
     return axios.post(url, { id })
+  }
+
+  joinToolConsumer (payload) {
+    if (debugJoin) console.log('DemoStoreHelper join consumer.\nsPayload: ', payload)
+    const apiUrl = StoreHelper.apiUrlGet()
+    const sPayload = qs.stringify(payload)
+    if (debugJoin) console.log('DemoStoreHelper join consumer.\nsPayload: ', sPayload, '. \nApiUrl:', apiUrl)
+    const url = `${apiUrl}/demo/demo-join/`
+    const options = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: sPayload,
+      url,
+    }
+    return axios(options)
   }
 
   demoLogout (token, consumerId) {
@@ -60,7 +78,7 @@ export default class DemoStoreHelper {
    */
   submitPersona (token, ltiData /*submitData*/) {
     const apiUrl = StoreHelper.apiUrlGet()
-    const url = `${apiUrl}/demo/set`
+    const url = `${apiUrl}/demo/demo-submit`
     if(debugDH) console.log('DH submitPersona', ltiData, apiUrl)
     const options = {
       method: 'POST',

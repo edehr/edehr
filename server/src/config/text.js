@@ -67,6 +67,7 @@ export const Text = {
 
   // Base errors
   INVALID_BASE_ID: (id, model) => `Invalid id: ${id} for ${model}`,
+  INVALID_ID_PARAMETER: (id) => `Invalid id (${id}) for database object.`,
 
   /* for Files */
   EXPECTED_FIELD: (fld) => {return `Expected field to be ${fld}` },

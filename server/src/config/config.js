@@ -4,6 +4,12 @@ import moment from 'moment'
 import { logError} from '../helpers/log-error'
 const debug = require('debug')('server')
 
+// NB, the system does NOT send or use cookies.  But the use of Passport to validate the LTI seems to need
+// sessions to work. This was discovered by attempting to remove all session related code. Yet once removed
+// the following error will happen during LTI validation:
+// 'Login sessions require session support. Did you forget to use `express-session` middleware?'
+// The bottom line: the secrets for cookies are not important because sessions and cookies are
+// not actually used.
 const DEFAULT_COOKIE_SECRET = 'this is the secret for the session cookie'
 // specify how long an authentication token should live.  For time examples see https://github.com/vercel/ms
 const DEFAULT_TOKEN_LIFE = process.env.NODE_ENV === 'production' ? '10d' : '10d'
@@ -68,6 +74,7 @@ function defaultConfig (env) {
     // Use this hard coded value on a temporary basis on localhost. you do this to test sentry
     // sentryDsn: 'https://cab9cdff46224d679f1cb5d9a24c643d@o1411884.ingest.sentry.io/6756187',
     sentryTraceRate: process.env.SENTRY_TRACES_SAMPLE_RATE || 0.05, // default to 5%
+    sendGridApiKey: process.env.SENDGRID_API_KEY
   }
 }
 
@@ -144,6 +151,7 @@ Set the following cookie options to enhance security:
 
  */
 function cookieSettings () {
+  // see note above regarding cookies and secrets.  Essentially, it's ok to not use secure setting.
   return {
     secure: false,
     sameSite: 'lax',
@@ -162,9 +170,10 @@ function validateEnvironmentVariable (env) {
   if (env === 'development' || env === 'test' || env === 'production') {
     let beStrictOnProd = true
     if (beStrictOnProd && env === 'production') {
-      if (!process.env.COOKIE_SECRET || process.env.COOKIE_SECRET === DEFAULT_COOKIE_SECRET) {
-        throw new Error('For production you must set COOKIE_SECRET env ')
-      }
+      // see note above regarding cookies and secrets.  Essentially, it's ok to not use secure setting.
+      // if (!process.env.COOKIE_SECRET || process.env.COOKIE_SECRET === DEFAULT_COOKIE_SECRET) {
+      //   throw new Error('For production you must set COOKIE_SECRET env ')
+      // }
     }
   } else {
     throw new Error('environment must be one of test, development or production')

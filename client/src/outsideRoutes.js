@@ -3,9 +3,11 @@ import { Text } from '@/helpers/ehr-text'
 const NAMES = Text.ROUTE_NAMES
 
 import {
+  APP_LMS_ACCESS_ROUTE_NAME,
+  APP_LMS_DASH_ROUTE_NAME,
   ERROR_ROUTE_NAME,
   UNLINKED_ACTIVITY_ROUTE_NAME,
-  ZONE_ADMIN,
+  ZONE_ADMIN, ZONE_APP_LMS,
   ZONE_DEMO,
   ZONE_LMS,
   ZONE_PUBLIC
@@ -35,6 +37,57 @@ export function outside () {
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/AboutCollaborations.vue'),
       meta: { layout: 'outside', label: 'Current Collaborations', zone: ZONE_PUBLIC }
     },
+    /* *********************** APP LMS ***************************** */
+    {
+      path: '/app-lms-home',
+      name: APP_LMS_DASH_ROUTE_NAME,
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/app-lms/AppLmsHome.vue'),
+      meta: { layout: 'appLms', label: 'App LMS', zone: ZONE_APP_LMS }
+    },
+    {
+      path: '/app-lms-user-account',
+      name: 'AppLmsUserAccount',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/app-lms/AppLmsUserAccount.vue'),
+      meta: { layout: 'appLms', label: 'App LMS User Account', zone: ZONE_APP_LMS }
+    },
+    {
+      path: '/app-lms-personal-lms',
+      name: 'AppLmsPersonalLms',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/app-lms/AppLmsPersonalLms.vue'),
+      meta: { layout: 'appLms', label: 'App LMS User\'s LMS', zone: ZONE_APP_LMS }
+    },
+    {
+      path: '/app-lms-user-links',
+      name: 'AppLmsUserLinks',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/app-lms/AppLmsUserLinks.vue'),
+      meta: { layout: 'appLms', label: 'App LMS User\'s Links', zone: ZONE_APP_LMS }
+    },
+    {
+      path: '/app-lms-access-s1',
+      name: APP_LMS_ACCESS_ROUTE_NAME,
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/app-lms/AppLmsAccessS1.vue'),
+      meta: { layout: 'appLms', label: 'App LMS Access', zone: ZONE_PUBLIC }
+    },
+    {
+      path: '/app-lms-access-s2',
+      name: 'AppLmsAccessS2',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/app-lms/AppLmsAccessS2.vue'),
+      meta: { layout: 'appLms', label: 'App LMS Verification', zone: ZONE_PUBLIC }
+    },
+    {
+      path: '/app-lms-admin-dev',
+      name: 'AppLmsAdminDev',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/app-lms/AppLmsAdminDev.vue'),
+      meta: { layout: 'appLms', label: 'App LMS Admin Dev', zone: ZONE_APP_LMS }
+    },
+
     {
       path: '/collaborationChemHistology',
       name: 'collaborationChemHistology',
@@ -286,6 +339,13 @@ export function outside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/DemoCourse.vue'),
       meta: { layout: 'outside', label: 'Demo Course', zone: ZONE_DEMO }
+    },
+    {
+      path: '/demo-join',
+      name: 'demoJoin',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/DemoJoin.vue'),
+      meta: { layout: 'outside', label: 'Demo Join', zone: ZONE_DEMO }
     },
     {
       path: '/demo-med-lookup',

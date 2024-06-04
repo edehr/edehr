@@ -1,6 +1,6 @@
 import store from '../store'
 import sKeys from './session-keys'
-import { ZONE_ADMIN, ZONE_DEMO, ZONE_EHR, ZONE_LMS, ZONE_PUBLIC } from '@/router'
+import { ZONE_ADMIN, ZONE_APP_LMS, ZONE_DEMO, ZONE_EHR, ZONE_LMS, ZONE_PUBLIC } from '@/router'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import { timeSequenceSliceData } from '@/ehr-definitions/sim-time-seq-utils'
 
@@ -110,6 +110,7 @@ class StoreHelperWorker {
   inZoneEHR () { return store.getters['system/pageZone'] === ZONE_EHR}
   inZoneLMS () { return store.getters['system/pageZone'] === ZONE_LMS}
   inZonePublic () { return store.getters['system/pageZone'] === ZONE_PUBLIC}
+  inZoneAppLms () { return store.getters['system/pageZone'] === ZONE_APP_LMS}
 
   isAuthd () { return store.getters['authStore/isAuthd']}
   // isDemo see demo section
@@ -363,7 +364,7 @@ class StoreHelperWorker {
   }
   getAssignmentsList () { return this._getAssignmentListProperty('list') }
   getInstructorCourses () { return this._getInstructorProperty('courseList') }
-  dispatchLoadCourses ( ) { return this._dispatchInstructor('loadCourses' )  }
+  // dispatchLoadCourses ( ) { return this._dispatchInstructor('loadCourses' )  }
 
   async restoreAsInstructor (router) {
     const newToken = await this._dispatchVisit('restoreAsInstructor')
@@ -641,6 +642,11 @@ class StoreHelperWorker {
   createDemoToolConsumer () {
     StoreHelper.postActionEvent(DEMO_ACTION,'createDemoConsumer')
     return this._dispatchDemoStore('createToolConsumer')
+  }
+
+  joinDemoToolConsumer (payload) {
+    StoreHelper.postActionEvent(DEMO_ACTION,'joinDemoConsumer')
+    return store.dispatch('demoStore/joinToolConsumer', payload)
   }
 
   async loadDemoData () {

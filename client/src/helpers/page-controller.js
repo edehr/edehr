@@ -17,6 +17,7 @@ import { t18SetEnglish, t18SetFrench, t18SetSpanish } from '@/helpers/ehr-t18'
 import { getCurrentSimDate, getCurrentSimTime } from '@/helpers/date-helper'
 
 const dbApp = false
+const dbPerf = false
 
 function perfExit (perfStat) {
   perfStat.elapsed.loading = performance.now() - perfStat.start.loading
@@ -83,6 +84,7 @@ async  function onPageChange (toRoute) {
     visitId: optionalVisitId, // user is coming from an LmsStudentActivity page OR from this page-controller after processing the refresh token
   } = toRoute.query
 
+  let plng = performance.now()
   const lang = toRoute.query.lang
   switch (lang) {
   case 'es':
@@ -96,6 +98,7 @@ async  function onPageChange (toRoute) {
     break
     // no default. we do not want to override what the user may have selected before.
   }
+  console.log('LANGUAGE setup', performance.now() - plng)
 
   // To force a sample exception that is not caught just
   // 1. Get into the EHR pages ...
@@ -116,9 +119,17 @@ async  function onPageChange (toRoute) {
     // perfStat.elapsed.loadApi = performance.now() - perfStat.start.loadApi
     // **** If public page ... prep and EXIT
     if (StoreHelper.inZonePublic()) {
-    // console.log('on a public page', routeName)
+      console.log('on a public page', routeName)
       return perfExit(perfStat)
     // EXIT
+    }
+
+    if (StoreHelper.inZoneAppLms()) {
+      console.log('on a EdEHR Minimal LMS page', routeName)
+      await store.dispatch('appLmsStore/initialize')
+      EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
+      return perfExit(perfStat)
+      // EXIT
     }
 
     // **** If demo only then ... prep and EXIT
@@ -129,7 +140,6 @@ async  function onPageChange (toRoute) {
     // entered the ehr demo and has paged to another ehr page
       await EhrOnlyDemo.selectCaseStudy(demoOnlyKey)
       await store.dispatch('mPatientStore/ehrOnlyDemo', demoOnlyKey)
-
       if (dbApp) console.log('loaded demo only ', demoOnlyKey)
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
       return perfExit(perfStat)
@@ -192,6 +202,7 @@ async  function onPageChange (toRoute) {
       if(demo_lobjId) {
         query.demo_lobjId = demo_lobjId
       }
+      // RE-DIRECT TO THIS PAGE WITH NEW QUERY
       await router.push({ path: path, query: query })
       return perfExit(perfStat)
     }
@@ -199,6 +210,7 @@ async  function onPageChange (toRoute) {
     // **** auth token process and unpack.  Do this before any API calls that require auth ... CONTINUE
     const authToken = StoreHelper.getAuthToken()
     if (authToken) {
+      // USER HAS BEEN HERE BEFORE AND IS LOGGED IN
       if (dbApp) console.log('_loadAuth. We have an auth token. Get the auth data....')
       // must set auth header before invoking fetch. The fetch is an authenticated post
       setAuthHeader(authToken)
@@ -238,7 +250,6 @@ async  function onPageChange (toRoute) {
       return perfExit(perfStat)
       // EXIT
     }
-
     // *** If user is here and is not auth'd then something is wrong ... EXIT
     if (!authToken) {
       let deets = routeName
@@ -282,6 +293,7 @@ async  function onPageChange (toRoute) {
       // EXIT
     }
 
+    if (dbPerf) console.log('FROM HERE ON THE USER IS LOADING AN EHR PAGE')
     /*
       FROM HERE ON THE USER IS LOADING AN EHR PAGE
      */
@@ -342,6 +354,7 @@ async  function onPageChange (toRoute) {
       }
     }
     if (StoreHelper.isStudent()) {
+      if (dbPerf) console.log('LOAD FOR STUDENT')
       /*
       SKILLS ASSESSMENT  --
 
@@ -373,10 +386,8 @@ async  function onPageChange (toRoute) {
       if (StoreHelper.isDevelopingContent()) {
         StoreHelper.setIsDevelopingContent(false)
       }
-      /*
-      STUDENT PAGE LOAD FOR EHR PAGES
-       */
-      if (dbApp) console.log('student ehr page load')
+
+      if (dbPerf) console.log('STUDENT PAGE LOAD FOR EHR PAGES')
       // loadActivityData gets both the activityData and the student's assignment data with the patient list
       await store.dispatch('activityDataStore/loadActivityData', { id: theActivity.activityDataId })
       // load the Learning Object .... (formerly called an 'assignment')
@@ -405,6 +416,7 @@ async  function onPageChange (toRoute) {
       await StoreHelper.initializeSimDateTime()
     }
 
+    if (dbPerf) console.log('PAGE_DATA_REFRESH_EVENT')
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   } catch (err) {
     // IF DEVELOPMENT ON LOCALHOST .... show the stack trace for speedier location of error
