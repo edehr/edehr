@@ -80,6 +80,9 @@ export default {
       await appLmsClientUpdateUserData(payload)
     },
   },
+  mounted () {
+    this.editName = this.showCancel
+  }
 }
 </script>
 

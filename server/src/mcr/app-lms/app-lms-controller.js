@@ -15,7 +15,7 @@ import { demoLimiter } from '../../helpers/middleware'
 import { generateAccessCode } from '../../ehr-definitions/app-lms/app-lms-utils'
 import { logError } from '../../helpers/log-error'
 import { ltiVersions } from '../lti/lti-defs'
-import { sendEdEHRAccessCode } from '../../helpers/send-email-helper'
+import { isSendGridActive, sendEdEHRAccessCode } from '../../helpers/send-email-helper'
 import mongoose from 'mongoose'
 import { Text } from '../../config/text'
 import { ParameterError, NetworkError } from '../common/errors'
@@ -474,6 +474,11 @@ export default class AppLmsController {
 
   route () {
     const router = new Router()
+
+    router.get('/isSendGridActive', this.middleWare, async (req, res) => {
+      let enabled = isSendGridActive()
+      return res.status(200).json({isSendGridActive: enabled})
+    })
 
     router.get('/isKeyInUse/:ltiKey', this.middleWare, async (req, res) => {
       this

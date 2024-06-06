@@ -7,14 +7,22 @@ const sgMail = require('@sendgrid/mail')
 let sgConfigured = false
 export function setUpSendGrid (config) {
   if (!config.sendGridApiKey) {
-    throw new Error('To use the SendGrid requires the send grid api key to be defined in configuration')
+    sgConfigured = false
+    console.error('To use the SendGrid requires the send grid api key to be defined in configuration')
+    return
   }
+  console.log('setUpSendGrid will set api key')
   sgMail.setApiKey(config.sendGridApiKey)
   sgConfigured = true
 }
 
+export function isSendGridActive () {
+  return sgConfigured
+}
+
 export function sendEdEHRAccessCode (toEmail, accessCode) {
   if (!sgConfigured) {
+    // throw error. caller will convert to a 500 error
     throw new SystemError('To use the SendGrid requires the application to configure this helper before use.')
   }
   if(!emailValidate(toEmail)) {
@@ -28,7 +36,8 @@ export function sendEdEHRAccessCode (toEmail, accessCode) {
   '### ' + accessCode + '\n' +
   'Please reach out to us at mailto:info@edehr.org or visit our web site at https://edehr.org ' +
     ' if you have any questions or want to learn more.\n' +
-  'Please ignore this message if you did not request this access code.'
+  'Please ignore this message if you did not request this access code.\n '+
+  'To protect your privacy this email was sent without tracking codes.'
 
   if ( process.env.NODE_ENV !== 'production' ) {
     console.log('DEV OVERRIDE TO ADDRESS')

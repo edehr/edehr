@@ -33,7 +33,7 @@ div(class="patient-banner")
       div
         span {{ ehrText.patientBannerLocation }}
         span {{ patientData.location }}
-    ehr-sim-time(:ehr-data="md")
+    ehr-sim-time
 
 </template>
 

@@ -5,7 +5,7 @@ div(id="appLmsCode")
   div
     ui-button(value="lms-start-code", :disabled="!isAccessCodeValid", @buttonClicked="submitAccessCode")
       span Verify
-  div(v-if='inDevAccessCode') access code only visible on dev {{ inDevAccessCode }}
+  div(v-if='isOnDevMachine') access code only visible on dev {{ inDevAccessCode }}
 </template>
 
 <script>
@@ -26,6 +26,7 @@ export default {
     }
   },
   computed: {
+    isOnDevMachine () { return this.$store.getters['system/isOnDevMachine']},
     inDevAccessCode () { return this.$store.getters['appLmsStore/inDevAccessCode']},
     appLmsAccessToken () { return this.$store.getters['appLmsStore/appLmsAccessToken']},
     appLmsUserToken () { return this.$store.getters['appLmsStore/appLmsUserToken']},

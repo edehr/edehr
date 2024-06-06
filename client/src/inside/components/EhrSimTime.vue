@@ -14,9 +14,6 @@ export default {
     return {
     }
   },
-  props: {
-    ehrData: { type: Object, default () { return {} } },
-  },
   computed: {
     ehrText () { return t18EhrFunctions()},
     visitDay () { return currentSimDayDate() },

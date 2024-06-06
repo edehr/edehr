@@ -203,8 +203,9 @@ class StoreHelperWorker {
   getSimTime () { return this.getSimSDateTimeData().cTime}
 
   getMetaSimTime () {
-    let data = StoreHelper.getMergedData()
-    return data.meta.simTime || {}
+    let data = StoreHelper.getMergedData() || {}
+    let meta = data.meta || {}
+    return meta.simTime || {}
   }
   /**
    * initializeSimDateTime assumes this is invoked AFTER loadVisitRecord or loadSimulationDateTime

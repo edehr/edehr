@@ -7,8 +7,8 @@ import { logError} from './log-error'
 
 const debugMW = false
 
-const LIMIT_MINUTES = process.env.NODE_ENV === 'production' ? 120 : 2
-const LIMIT_TRIES = process.env.NODE_ENV === 'production' ? 15 : 30
+const LIMIT_MINUTES = 5 //  process.env.NODE_ENV === 'production' ? 120 : 2
+const LIMIT_TRIES = 30 // process.env.NODE_ENV === 'production' ? 15 : 30
 const ADMIN_MAX_REQUEST_LIMIT = LIMIT_TRIES
 const DEMO_MAX_REQUEST_LIMIT = LIMIT_TRIES
 logAuth('validatorMiddlewareWrapper ADMIN_MAX_REQUEST_LIMIT', ADMIN_MAX_REQUEST_LIMIT)
@@ -24,7 +24,7 @@ logAuth('process.env.NODE_ENV', process.env.NODE_ENV)
 export const validatorMiddlewareWrapper = (commonControllers) => {
   const { authUtil, visitController } = commonControllers
   return async (req, res, next) => {
-    console.log('--------------- ' , req.headers.authorization)
+    // console.log('vMW --------------- ' , req.headers.authorization)
     if (req && req.headers.authorization) {
       // logAuth('validatorMiddlewareWrapper has header')
       try {

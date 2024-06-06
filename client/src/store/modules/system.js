@@ -7,6 +7,7 @@ const appTypeEHR = 'EHR'
 const trace = false
 const state = {
   _isLoading: false,
+  isOnDevMachine: window.location.origin.includes('localhost'),
   apiData: {},
   apiError: '',
   appDialogCount: 0,
@@ -50,6 +51,7 @@ const getters = {
   caseContextFeature: state => state.caseContextFeature,
   condensedTableVertical: state => state.condensedTableVertical,
   currentPageKey: state => state.currentPageKey,
+  isOnDevMachine: state => state.isOnDevMachine,
   isEditing: state => state.isEditing,
   isLoading: state => state._isLoading,
   ehrNavCollapsed: state => state.ehrNavCollapsed,
