@@ -30,7 +30,6 @@ import {
 } from '../common/assignment-defs'
 import qs from 'qs'
 import axios from 'axios'
-import { APP_TYPE_LIS } from '../../helpers/appType'
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
 
 const debug = require('debug')('server')
@@ -409,6 +408,19 @@ export default class AppLmsController {
     return Promise.resolve( createData )
   }
 
+  async _updateLmsInviteCode (appLmsId, role, code) {
+    let appLms = await AppLmsLms.findById(appLmsId)
+    if (appLms) {
+      if (role === 'student') {
+        appLms.inviteCodeWordStudent = code
+      }
+      if (role === 'instructor') {
+        appLms.inviteCodeWordTeacher = code
+      }
+      appLms = await appLms.save()
+    }
+    return appLms
+  }
 
   _signAndPrepareLTIRequest (ltiData, host, scheme) {
     const signedRequest = {
@@ -576,6 +588,14 @@ export default class AppLmsController {
     })
     router.post('/verify-access-code', demoLimiter, (req, res, next) => {
       return this._validateAccessCode(req, res, next)
+    })
+
+    router.get('/updateLmsInviteCode/:appLmsId/:role/:code', this.middleWare, async (req, res) => {
+      const { appLmsId, role, code } = req.params
+      this
+        ._updateLmsInviteCode(appLmsId, role, code)
+        .then(ok(res))
+        .then(null, fail(req, res))
     })
 
     router.put('/user-data-update', demoLimiter, this.middleWare, (req, res, next) => {

@@ -139,6 +139,14 @@ export async function appLmsGoToEhr (ltiData) {
   window.location.replace(newUrl)
 }
 
+export async function updateLmsInviteCode (appLmsId, role, code) {
+  const url = 'updateLmsInviteCode'
+  const payload = qs.stringify({appLmsId, role, code})
+  const appLms = await commonPostPut(POST, url, payload)
+  await store.dispatch('appLmsStore/setAppLmsData', appLms)
+}
+
+
 function _getAuthHeader (url) {
   const appLmsUserToken = store.getters['appLmsStore/appLmsUserToken']
   // console.log('_getAuthHeader --- must have user token', appLmsUserToken)

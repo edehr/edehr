@@ -39,10 +39,10 @@ export function sendEdEHRAccessCode (toEmail, accessCode) {
   'Please ignore this message if you did not request this access code.\n '+
   'To protect your privacy this email was sent without tracking codes.'
 
-  if ( process.env.NODE_ENV !== 'production' ) {
-    console.log('DEV OVERRIDE TO ADDRESS')
-    toEmail= 'bryan.gilbert@gmail.com'
-  }
+  // if ( process.env.NODE_ENV !== 'production' ) {
+  //   console.log('DEV OVERRIDE TO ADDRESS')
+  //   toEmail= 'bryan.gilbert@gmail.com'
+  // }
   let msg = {
     to: toEmail,
     from: 'EdEHR <info@edehr.org>',

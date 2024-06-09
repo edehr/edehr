@@ -23,7 +23,7 @@
       zone-lms-instructions-element See the explanation on the main seed page.
 
     div(class="details-container selected card")
-      h3 Case study time slices
+      h3 Case study timed records
       zone-lms-instructions-element This section allows you select a time slice of the data. Show all times combined or just the selected time's data.
       seed-time-split(:ehrData='ehrData', purpose='seed', class='structural-container card selected ')
 </template>

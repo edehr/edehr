@@ -32,7 +32,7 @@ export default {
   data () {
     return {
       appIcons: APP_ICONS,
-      showingNavPanel: false
+      showingNavPanel: true
     }
   },
   props: {

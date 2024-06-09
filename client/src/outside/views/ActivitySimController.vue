@@ -3,11 +3,11 @@
     zone-lms-page-banner(:title='activityTitle')
       ui-link(:name="'lms-instructor-activity'")
         fas-icon(class="fa", :icon="appIcons.activity")
-        span &nbsp; Activity
+        span &nbsp; Return to activity
       span  &nbsp;
       ui-link(:name="'lobjSimController'", :query="{learningObjectId: activity.learningObjectId}")
         fas-icon(class='fa', :icon='appIcons.stopwatch')
-        span &nbsp; Stages
+        span &nbsp; Manage stages
       span  &nbsp;
       zone-lms-button(
         title="View your current activity as a student experiences it.",

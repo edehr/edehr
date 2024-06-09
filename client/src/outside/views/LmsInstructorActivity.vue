@@ -29,7 +29,7 @@
         fas-icon( class="fa", :icon="appIcons.configure")
         span.
           &nbsp; button.
-          But be careful.  Only make these changes before students start work on the activity because you will be changing the content they are working with.
+          But be careful.  Only make changes like this before your students start work on the activity because you will be changing the content they are working with.
       p
         span.
           TIP.  As an instructor you may wish to know what the student will experience. That's easy. Just use the button with the student icon &nbsp;
@@ -43,7 +43,9 @@
 
     div(class="details-container")
       div(class="details-row")
-        div(class="details-name") {{text.DESCRIPTION}}
+        div(class="details-name")
+          div {{text.DESCRIPTION}}
+          span (from the learning object)
         div(class="details-value description-area")
           div( v-text-to-html="descriptionContent")
       zone-lms-instructions-element.
@@ -54,7 +56,7 @@
         div(class="details-value")
           ui-link(:name="'learning-object'", :query="{learningObjectId: activity.learningObjectId}")
             fas-icon(class='fa', :icon='appIcons.lobj')
-            span &nbsp; {{ activity.learningObjectName }}
+            span &nbsp; Go to: {{ activity.learningObjectName }}
       zone-lms-instructions-element  A "{{text.LOBJ}}" is also a lesson plan, a simulation plan, or the activity content. It defines what the student sees and does. Click this link to access the {{text.LOBJ}} details page.
 
       div(class="details-row")
@@ -71,14 +73,17 @@
         div(class="details-value")
           ui-link(:name="'course'", :query="{courseId: course._id}")
             fas-icon(class='fa', :icon='appIcons.course')
-            span &nbsp; {{ courseTitle }}
+            span &nbsp; Go to: {{ courseTitle }}
 
       div(v-if="showSimControls", class="details-row")
         div(class="details-name") Simulation controls
         div(class="details-value")
-          ui-link(:name="'activitySimController'", :query="{visitId: visitId}")
-            fas-icon(class='fa', :icon='appIcons.stopwatch')
-            span &nbsp; Control the simulation time that students see.
+          div(v-if="simStages.length === 0")
+            p The learning object does not define simulation stages. You will need to edit the Learning Object.
+          div(v-else)
+            ui-link(:name="'activitySimController'", :query="{visitId: visitId}")
+              fas-icon(class='fa', :icon='appIcons.stopwatch')
+              span &nbsp; Control the simulation time that students see.
       zone-lms-instructions-element.
         Control what stage of the case study to display to the students in the class-list for this activity.
 
@@ -90,7 +95,7 @@
             :modelValue='feedbackViewable',
             @change='changeFeedbackViewable',
             labelOn='Viewable'
-            labelOff='Locked'
+            labelOff='Hidden'
           )
       zone-lms-instructions-element.
         Use this toggle to change the viewing state, for the students. When enabled your students can view your feedback. They can see this feedback at the top just above the patient banner in the charting area.
@@ -178,6 +183,7 @@ export default {
     }
   },
   computed: {
+    simStages () { return this.$store.getters['assignmentStore/simStages']},
     contentEditor () { return StoreHelper.isDevelopingContent() },
     showSimControls () { return !!this.activity.caseStudyId },
     isUnleashedActivityEnabled () { return FeatureHelper.isFeatureFlagEnabled(this.consumerId, FF_UNLEASH_ACTIVITY) },
@@ -271,6 +277,10 @@ export default {
         await router.push({ name: UNLINKED_ACTIVITY_ROUTE_NAME, query: { activityId: activityRecord.id } })
         return
       }
+      const learningObjectId = activityRecord.learningObjectId
+      // const learningObject = await this.$store.dispatch('assignmentStore/load', learningObjectId)
+      await this.$store.dispatch('assignmentStore/loadSimStages', learningObjectId)
+
       await this.$store.dispatch('courseStore/loadCurrentCourse', { courseId: activityRecord.courseId })
       await this.$store.dispatch('instructor/loadClassList')
     },

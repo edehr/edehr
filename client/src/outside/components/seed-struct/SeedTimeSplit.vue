@@ -2,7 +2,7 @@
 div
   table(class="time-seq-table")
     tr
-      td(class="timeElementHeader") Time Slices
+      td(class="timeElementHeader") Timed records
       td(v-for="key in timeSteps", :class='{ selectedTime: isSelected(key), active: isActive(key)  }')
         ui-button(v-if="isSimTimeKey(key)", v-on:buttonClicked='showTime(key)') {{displayLabel(key)}}
         div(v-else, class='emptySpace') &nbsp;
@@ -12,7 +12,7 @@ div
         ui-button(v-if="isStageKey(key)", class="stageButton",  v-on:buttonClicked='showTime(key)') {{displayLabel(key)}}
         div(v-else, class='emptySpace') &nbsp;
   div(id="showCombinedWrapper")
-    label(for="showCombined") show combined &nbsp;
+    label(for="showCombined") In the display below, combine all records up to the selected time &nbsp;
     input(id='showCombined', @input="toggleCombined", type="checkbox", :checked="showCombined")
   seed-structural(:ehrData='sliceData', v-on="$listeners", :viewOnly='viewOnly')
 </template>
@@ -28,7 +28,7 @@ export default {
   components: { UiButton, SeedStructural },
   data () {
     return {
-      showCombined: true,
+      showCombined: false,
       currentKey: ''
     }
   },
@@ -98,7 +98,7 @@ export default {
     },
     displayLabel (key) {
       if ( key === PAGEDATA_KEY) {
-        return 'Base'
+        return 'Not timed'
       }
       let [d, t] = splitSimTimeKey(key)
       return  d + ' / ' + t

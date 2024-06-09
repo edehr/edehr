@@ -1,41 +1,48 @@
 <template lang="pug">
   div
     zone-lms-page-banner(:title="learningObject.name", theme='lobj-theme')
+      ui-link(v-if="learningObject.seedDataId", :name="'seed-view'", :query="{seedId: learningObject.seedDataId}") Go to case study
+
     zone-lms-instructions-header
       p.
-        Simulation staging allows instructors to create an immersive experience for their students. Classroom or lab sessions can begin with the case data set for a point in simulation time and then during the class instructors can step the simulation forward to a new stage.  Students experience the simulation time advancing, but they also see new medical records ready for them to respond to.
+        Simulation staging allows instructors to create an immersive experience for their students.
+        This can be used both for theory or lab sessions.
+        Create one or more "simulation stages" and then, during the class,
+        you can easily step the simulation forward to a new stage.
+        Students experience the simulation time advancing, and they also
+        see all the medical records from the beginning of the case study up to the simulation time.
 
     div(class="details-container card")
       div(class="details-row")
-        div(class="details-name") Learning object
+        div(class="details-name") Return to main Learning Object page
         div(class="details-value")
           ui-link(:name="'learning-object'", :query='{ learningObjectId: this.learningObjectId }')
             // no visit id because we are not changing visit
             fas-icon(class="fa", :icon="appIcons.lobj")
             span &nbsp; {{learningObject.name}}
       div(class="details-row")
-        div(class="details-name") {{ text.SEED }}
+        div(class="details-name") Go to {{ text.SEED }}
         div(class="details-value")
           ui-link(v-if="learningObject.seedDataId", :name="'seed-view'", :query="{seedId: learningObject.seedDataId}") {{ learningObject.seedName }}
           div(v-else) (This learning object does not provide a case study.)
-      zone-lms-instructions-element This section allows you to return to the learning object or go to the case study.
+      zone-lms-instructions-element The above links let you to return to the learning object or go to the case study.
 
     sim-stages-table(:learning-object="learningObject",
       :selectedKey='selectedKey',
-      actionLabelRow="Edit",
-      actionLabelTable="Create",
       @actionRow='showEditDialog',
+      @actionDelete='deleteRow',
       @actionTable='showCreateDialog',
       @selectRow='selectRow'
       )
 
     div(class="details-container card")
-      h3 Simulation Time Slices and Stages
+      h3 Simulation Timing and Stages
       zone-lms-instructions-element This section allows you select a time or stage and view the EHR records..
       seed-time-split(:ehrData='ehrData', :stages="simStages", purpose='lobj', @selected='selectTime')
 
 
     learning-object-sim-stage-dialog(ref='simStageDialog', @update='stageUpdate', @create='stageCreate', :suggestedKey='selectedKey')
+    ui-confirm(ref="confirmDelete", v-on:confirm="proceedDeleteRow", saveLabel='Yes')
 
 </template>
 
@@ -51,10 +58,11 @@ import ZoneLmsInstructionsElement from '@/outside/components/ZoneLmsInstructions
 import { Text } from '@/helpers/ehr-text'
 import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
 import LearningObjectSimStageDialog from '@/outside/components/simStages/LearningObjectSimStageDialog.vue'
+import UiConfirm from '@/app/ui/UiConfirm.vue'
 
 export default {
   extends: OutsideCommon,
-  components: { LearningObjectSimStageDialog, ZoneLmsInstructionsHeader, ZoneLmsInstructionsElement, SimStagesTable, SeedTimeSplit, UiButton, UiLink, ZoneLmsPageBanner  },
+  components: { UiConfirm, LearningObjectSimStageDialog, ZoneLmsInstructionsHeader, ZoneLmsInstructionsElement, SimStagesTable, SeedTimeSplit, UiButton, UiLink, ZoneLmsPageBanner  },
   data () {
     return {
       text: Text.LOBJ_PAGE,
@@ -68,6 +76,19 @@ export default {
     simStages () { return this.$store.getters['assignmentStore/simStages'] || [] }
   },
   methods: {
+    deleteRow (rowIndex) {
+      let stage = this.simStages[rowIndex]
+      this.$refs.confirmDelete.showDialog('Delete', 'Delete ' + stage.simKey, rowIndex)
+    },
+    proceedDeleteRow (rowIndex) {
+      const newStages = [...this.simStages]
+      newStages.splice(rowIndex, 1)
+      const payload = {
+        lObjId: this.learningObject._id,
+        simStages: newStages
+      }
+      this.$store.dispatch('assignmentStore/updateStages', payload)
+    },
     showEditDialog (rowIndex) {
       this.activeEditRowIndex = rowIndex
       const stage = this.simStages[rowIndex]
