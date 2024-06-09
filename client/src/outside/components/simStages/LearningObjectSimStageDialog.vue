@@ -3,8 +3,8 @@
     app-dialog(:isModal="true", ref="theSimStage", @cancel="cancelDialog", @save="saveDialog", :disableSave="disableSave", :errors="errors")
       h2(slot="header") Simulation Stage
       div(slot="body")
-        div selectedKey {{ suggestedKey }}
-        div encounterDay {{ encounterDay }}
+        //div selectedKey {{ suggestedKey }}
+        //div encounterDay {{ encounterDay }}
         ui-button(value="losimstg-explain",
           class="explain-button",
           secondary=true,

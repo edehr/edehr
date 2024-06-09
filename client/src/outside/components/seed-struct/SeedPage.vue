@@ -3,7 +3,7 @@
     div(v-if='pageElement.isTable')
       div(class="flow_across seed-table-intro-row")
         h4 {{ label }}
-        h4 Table contains {{ tableData.length }} rows.
+        //h4 Table contains {{ tableData.length }} rows.
         zone-lms-button(@action="flipTableCollapsed"
           class="flow_across_last_item mr5"
           :title='tableCollapsed ? "Expand the table" : "Collapse the table"',

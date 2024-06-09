@@ -588,8 +588,6 @@ export default class EhrPageHelper {
   _dialogCloseEvent (tableKey) {
     let dialog = this.tableFormMap[tableKey]
     dialog.active = false
-    let eData = Object.assign({ key: tableKey, open: false}, {} )
-    const _this = this
     const options = { open: false, tableKey: tableKey }
     Vue.nextTick(function () {
       EventBus.$emit(DIALOG_EVENT_CLOSE, options)

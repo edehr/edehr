@@ -89,7 +89,7 @@ describe(_factorTypeName('making server calls'), () => {
       .expect(res => {
         should.exist(res)
         should.exist(res.body)
-        assignments = res.body.assignments
+        // assignments = res.body.assignments
         // console.log('properly fetches assignments', assignments)
         // should.exist(assignments[0])
       })
@@ -136,7 +136,7 @@ describe(_factorTypeName('making server calls'), () => {
       user_id: userId
     }
 
-    const url = `${BASE}/set`
+    const url = `${BASE}/demo-submit`
     request(app)
       .post(url)
       .send({ ltiData })

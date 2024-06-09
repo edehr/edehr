@@ -19,7 +19,7 @@ div
           div
       div(v-else)
         label Given name
-          input(type='text', v-model='given')
+          input(type='text',  ref="givenNameInput", v-model='given')
         span &nbsp;
         label Family name &nbsp;
           input(type='text', v-model='family')
@@ -67,6 +67,9 @@ export default {
       this.given = this.givenName
       this.family = this.familyName
       this.editName = true
+      this.$nextTick( () => {
+        this.$refs.givenNameInput.focus()
+      })
     },
     cancelSave () {
       this.editName = false
@@ -81,7 +84,9 @@ export default {
     },
   },
   mounted () {
-    this.editName = this.showCancel
+    if (!this.givenName || ! this.familyName) {
+      this.startEdit()
+    }
   }
 }
 </script>

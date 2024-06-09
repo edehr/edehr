@@ -11,7 +11,7 @@ import { t18EhrText, t18ElementLabel, t18HelperText } from '@/helpers/ehr-t18'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import StoreHelper from '@/helpers/store-helper'
 import { getCurrentSimDate, getCurrentSimTime } from '@/helpers/date-helper'
-import { DIALOG_EVENT_CLOSE, DIALOG_EVENT_OPEN } from '@/inside/components/page/ehr-helper'
+import { DIALOG_EVENT_OPEN } from '@/inside/components/page/ehr-helper'
 
 const DEPENDENT_PROPS = EhrTypes.dependentOn
 
