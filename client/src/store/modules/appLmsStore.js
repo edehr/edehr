@@ -70,7 +70,7 @@ const actions = {
   },
   fetchTokenData: async (context) => {
     const token = context.state.appLmsUserToken
-    if (token) {
+    if (!!token && token.length > 0) {
       // console.log('AppLmsStore fetchTokenData')
       let data = await appLmsClientFetchTokenData(token)
       context.commit('_setAppLmsTokenData', data)
