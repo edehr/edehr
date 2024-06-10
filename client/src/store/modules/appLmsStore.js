@@ -60,7 +60,9 @@ const actions = {
   initialize: async function (context) {
     context.commit('initialize')
     const token = localStorage.getItem('appLmsUserToken')
-    await context.dispatch('setAppLmsUserToken', token)
+    if (token) {
+      await context.dispatch('setAppLmsUserToken', token)
+    }
   },
   setAppLmsUserToken: async (context, token) => {
     await context.commit('_setAppLmsUserToken', token)
