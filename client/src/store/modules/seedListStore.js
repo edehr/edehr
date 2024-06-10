@@ -123,7 +123,8 @@ const actions = {
       // console.log('seedListStore. Will not load seeds at this time because the consumer id is not yet set up.')
       return
     }
-    context.dispatch('loadSeedsConsumer', consumerId)
+    // need to return the results so that the download-all seed button works.
+    return context.dispatch('loadSeedsConsumer', consumerId)
   },
   loadSeedsConsumer (context, consumerId) {
     if (!consumerId) {
