@@ -160,7 +160,11 @@ export default {
       if (keyData.personAge && keyData.dateOfBirth) {
         newDob = computeDateOfBirth(keyData.personAge, keyData.dateOfBirth)
       }
-      return `${keyData.familyName}, ${keyData.givenName}  MRN: ${keyData.mrn}  Gender: ${keyData.gender}  DoB: ${newDob}`
+      let name = keyData.familyName ? keyData.familyName +', ' : ''
+      name += keyData.givenName ? keyData.givenName : ''
+      let gender = keyData.gender ? 'Gender: ' + keyData.gender : ''
+      let dob = keyData.newDob ? 'DoB: ' + keyData.newDob : ''
+      return `${name}  MRN: ${keyData.mrn}  ${gender} ${dob}`
     },
     seedDuplicated () {
       // delete to prevent NavigationDuplication error from vue router.
