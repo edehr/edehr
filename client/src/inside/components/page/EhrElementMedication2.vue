@@ -14,7 +14,7 @@
       @focus="autoSuggestHasFocus = true"
       @keydown.tab="autoSuggestHasFocus = false"
     />
-    <div v-if="selected" style="margin-top: 10px">
+    <div v-if="false && selected" style="margin-top: 10px">
       You have selected:
       <code>
         <pre>{{ JSON.stringify(selected, null, 4) }}</pre>
@@ -41,7 +41,6 @@ Use @keydown.tab rather than @blur because using @blur disables click select opt
 
  */
 export default {
-  name: 'app',
   components: {
     VueAutosuggest,
   },
@@ -64,15 +63,19 @@ export default {
         default: {
           // need this default section with onSelected to handle ENTER keypress.
           limit: 6,
-          onSelected: function (item, originalInput) {
-            console.log('onSelected - default', originalInput, item)
+          onSelected: (item, originalInput) => {
+            this.selected = {
+              med: originalInput,
+            }
+            // console.log('DEFAULT onSelected', originalInput, this.selected)
+            this.$emit('selected', this.selected)
           },
         },
         medications: {
           limit: 200,
           label: 'Medications',
           onSelected: (selected) => {
-            console.log('onSelected - medications', selected)
+            // console.log('onSelected - medications', selected)
             this.selected = selected.item
             this.$emit('selected', this.selected)
           },

@@ -214,8 +214,8 @@ export default {
         await StoreHelper.updateSeed(this, this.seedId, seedData)
         this.$emit('update')
       } else if (this.actionType === CREATE_ACTION) {
-        await StoreHelper.createSeed(this, seedData)
-        this.$emit('create')
+        let newSeed = await StoreHelper.createSeed(this, seedData)
+        this.$router.push({ name: 'seed-view', query: { seedId: newSeed._id } })
       }
     },
     setFile (event) {

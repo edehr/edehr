@@ -10422,7 +10422,7 @@ const DEFS = {
           },
           {
             "key": "prn",
-            "text": "PRN (as needed)"
+            "text": "PRN"
           },
           {
             "key": "once",
@@ -10633,7 +10633,7 @@ const DEFS = {
           },
           {
             "key": "prn",
-            "text": "PRN (as needed)"
+            "text": "PRN"
           },
           {
             "key": "sched",

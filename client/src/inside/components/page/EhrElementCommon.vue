@@ -337,6 +337,7 @@ export default {
   watch: {
     inputVal (val) {
       if (dbInputs) console.log('EhrElement input val changed', this.elementKey, val)
+      // console.log('EhrElement input val changed', this.elementKey, val)
       this.validateSelf(val)
       this.sendInputEvent(val)
     }
