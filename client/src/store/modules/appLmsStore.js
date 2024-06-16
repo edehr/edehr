@@ -11,7 +11,7 @@ const APP_LMS_ROLE_STUDENT = 'Student'
 const APP_LMS_ROLE_INSTRUCTOR = 'Instructor'
 
 const state = {
-  appLmsEnabled: true,
+  appLmsEnabled: false,
   appLmsAccessToken: '', // is the token given after user submits email and before access code is verified
   appLmsUserToken: '',
   appLmsTokenData: {},
@@ -148,7 +148,7 @@ const actions = {
 
 const mutations = {
   initialize: function (state) {
-    state.appLmsEnabled = !(localStorage.getItem('appLmsEnabled') === 'false')
+    // state.appLmsEnabled = !(localStorage.getItem('appLmsEnabled') === 'true')
   },
   _setAppLmsData: (state, data) => {
     state.appLmsData = data
@@ -158,7 +158,7 @@ const mutations = {
     state.appUserData = data
   },
   _setAppLmsEnabled: (state, mode) => {
-    localStorage.setItem('appLmsEnabled', mode)
+    // localStorage.setItem('appLmsEnabled', mode)
     state.appLmsEnabled = mode
   },
   _setAppLmsUserToken: (state, token) => {

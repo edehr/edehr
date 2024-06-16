@@ -38,9 +38,9 @@ export function setUpCronitor (config) {
       }
     }
     cronitorMonitor.ping(pingData)
-    let dt = new Date()
-    dt = dt.toISOString()
-    console.log('Send PING to Cronitor', dt, pingData)
+    // let dt = new Date()
+    // dt = dt.toISOString()
+    // console.log('Send PING to Cronitor', dt, pingData)
   }
   // run once on startup
   pingHandler()
@@ -75,6 +75,7 @@ class TimeMonitor {
   getStats () {
     let rt = this.responseTimes
     let average = rt.length > 0 ? rt.reduce((a, b) => a + b, 0) / rt.length : 0
+    average = Math.round(average)
     let p95 = rt.length > 0 ? percentile(95, rt) : 0
     return {
       avg: average,
