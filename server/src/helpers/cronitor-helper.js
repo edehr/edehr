@@ -23,7 +23,7 @@ export function setUpCronitor (config) {
   const cronitor = require('cronitor')(config.cronitorApiKey)
   const cronitorMonitor = new cronitor.Monitor(config.cronitorMonitorKey)
   let tMonitor = new TimeMonitor()
-  const PERIOD = 3 * 1000 /// every minute
+  const PERIOD = 30 * 1000 /// every 1/2 minute
   const pingHandler = () => {
     const stats = tMonitor.getStats()
     tMonitor.resetStats()
