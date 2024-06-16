@@ -13,7 +13,7 @@
             fas-icon(class="fa", :icon="appIcons.seed")
             span &nbsp; {{seed.name}}
       div(class="details-row")
-        div(class="details-name") Creator Notes
+        div(class="details-name") Description
         div(class="details-value")
           in-place-text-area-edit(:value='seed.description', @change='updateSeedDescription')
       div(class="details-row")

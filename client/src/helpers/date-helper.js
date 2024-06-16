@@ -49,6 +49,9 @@ export function hourStringToHour (ts) {
 export function currentSimDayDate () {
   return simDateCalc(currentSimDayNumber())
 }
+export function currentSimDayTime () {
+  return currentSimDayDate() + 'T' + currentSimTime()
+}
 export function currentSimDayNumber () {
   let metaSimTime = StoreHelper.getMetaSimTime()
   let dayVal
