@@ -74,7 +74,8 @@ function defaultConfig (env) {
     // Use this hard coded value on a temporary basis on localhost. you do this to test sentry
     // sentryDsn: 'https://cab9cdff46224d679f1cb5d9a24c643d@o1411884.ingest.sentry.io/6756187',
     sentryTraceRate: process.env.SENTRY_TRACES_SAMPLE_RATE || 0.05, // default to 5%
-    sendGridApiKey: process.env.SENDGRID_API_KEY
+    sendGridApiKey: process.env.SENDGRID_API_KEY,
+    cronitorApiKey: process.env.CRONITOR_API_KEY
   }
 }
 

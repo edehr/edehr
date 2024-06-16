@@ -13,6 +13,7 @@ import { setUpActionLogger } from './trace-actions'
 import AuthUtil from '../mcr/common/auth-util'
 import { getFullUrl } from '../mcr/common/utils'
 import { setUpSendGrid } from '../helpers/send-email-helper'
+import { setUpCronitor } from '../helpers/cronitor-helper'
 const debug = require('debug')('server')
 const helmet = require('helmet')
 
@@ -69,6 +70,7 @@ export default class EhrApp {
 
   setup (config) {
     setUpSendGrid(config)
+    setUpCronitor(config)
     setUpActionLogger(config)
     setUpEhrTraceLogger(config)
     let app = this.app
