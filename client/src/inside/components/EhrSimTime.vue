@@ -1,13 +1,13 @@
 <template lang='pug'>
 div
   div Date:  &nbsp;
-    span(class='bold') {{ visitDay }}T{{ visitTime }} (Day {{visitDayNum}})
+    span(class='bold') {{ visitDayAndTime }} (Day {{visitDayNum}})
 </template>
 
 <script>
 import UiInfo from '@/app/ui/UiInfo'
 import { t18EhrFunctions } from '@/helpers/ehr-t18'
-import { currentSimDayNumber, currentSimTime, currentSimDayDate } from '@/helpers/date-helper'
+import { currentSimDayNumber, currentSimDayTime } from '@/helpers/date-helper'
 export default {
   components: { UiInfo },
   data () {
@@ -16,9 +16,8 @@ export default {
   },
   computed: {
     ehrText () { return t18EhrFunctions()},
-    visitDay () { return currentSimDayDate() },
+    visitDayAndTime () { return currentSimDayTime() },
     visitDayNum () { return currentSimDayNumber() },
-    visitTime () { return currentSimTime() }
   }
 }
 </script>

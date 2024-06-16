@@ -1399,5 +1399,14 @@
   "labRequisitions.reqMi_id": "Numéro de demande",
   "labRequisitions.reqMicro_id": "Numéro de demande",
   "leveyJennings.tableLJ.ljAuxEntryTable": "Valeur LJ",
-  "leveyJennings.ljAuxValue": "Valeur"
+  "leveyJennings.ljAuxValue": "Valeur",
+  "labRequisitions.reqMicro_schedule": "Calendrier",
+  "medLabBody.bdyOther1label": "Autre 1",
+  "medLabBody.bdyOther2label": "Autre 2",
+  "acpMost": "Plans de soins avancés",
+  "acpMost.table": "Ordonnances médicales concernant l’étendue du traitement",
+  "acpMost.name": "Nom",
+  "acpMost.profession": "Profession",
+  "acpMost.day": "Jour",
+  "acpMost.time": "Temps"
 }

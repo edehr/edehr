@@ -1,0 +1,72 @@
+// Be sure to nest all styles inside the top level class
+.ehr-custom-form {
+  & section {
+    margin: 2rem 0;
+  }
+
+  input[type=checkbox] {
+    transform: scale(1.5);
+  }
+  & .section {
+    table {
+      width: 100%;
+    }
+  }
+  & .section {
+    margin: 1rem;
+    padding: 1rem;
+    //border: 1px solid #222222;
+    & h2 {
+      margin-top: 0;
+    }
+  }
+  & .boxed {
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid #222222;
+    & h2 {
+      margin-top: 0;
+    }
+  }
+
+  & .indent {
+    margin-left: 2rem;
+  }
+
+  & .tbl-no-borders {
+    border-collapse: collapse;
+    border: none;
+    & td, tr, th {
+      border: none;
+    }
+  }
+
+  & .tbl-full-width {
+    width: 100%;
+  }
+
+  & article {
+    padding-left: 1rem;
+    margin-top: 1rem;
+    & h3 {
+      margin-bottom: 0;
+    }
+    & ul {
+      margin-left: 2rem;
+    }
+    & ul > li {
+      list-style: square;
+    }
+  }
+  & .text-right {
+    float: right;
+  }
+  & .form-title {
+    margin-bottom: 0;
+    text-align: center;
+  }
+  & .form-subtitle {
+    margin-top: 0;
+    text-align: center;
+  }
+}

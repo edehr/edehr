@@ -70,5 +70,6 @@
   "medicationOrders.medicationOrdersTable.medicationOrderAux": "Update Medication Order",
   "leveyJennings.tableLJ": "Add a Levey-Jennings Chart",
   "medLabBody.tableLabBody": "Add a Bodily Fluid Report",
-  "leveyJennings.tableLJ.ljAuxEntryTable": "Add LJ value"
+  "leveyJennings.tableLJ.ljAuxEntryTable": "Add LJ value",
+  "acpMost.table": "Add a MOST"
 }

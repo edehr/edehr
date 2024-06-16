@@ -6,8 +6,9 @@
         ui-button(value="demo-exit", @buttonClicked="fullExit" secondary, style='margin-left: auto;')
           span Exit Full Demo
       div
-        div Press this Copy Link button to get an URL in your clipboard.  You can give this URL to someone and they can use it to join into this demo instance.  Or you can use it in a different browser to join this demo instance and "log-in" as a different user.
-        ui-button(@buttonClicked='copyJoinText') Copy Link
+        div(v-if="showCopyLink")
+          div Press this Copy Link button to get an URL in your clipboard.  You can give this URL to someone and they can use it to join into this demo instance.  Or you can use it in a different browser to join this demo instance and "log-in" as a different user.
+          ui-button(@buttonClicked='copyJoinText') Copy Link
         div(v-text-to-html="demoText.intro")
         div(class="columns")
           div(class="column is-4")
@@ -61,7 +62,8 @@ export default {
   data () {
     return {
       persona: '',
-      demoText: demoText
+      demoText: demoText,
+      showCopyLink: false // enable when code is ready
     }
   },
   computed: {

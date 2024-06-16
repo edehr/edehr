@@ -7,8 +7,14 @@
 
 <script>
 import EhrElementCommon from '@/inside/components/page/EhrElementCommon'
+import StoreHelper from '@/helpers/store-helper'
+import { currentSimDayTime } from '@/helpers/date-helper'
 const textRegExp = /(\{input:([a-z][0-9a-z_]*)})/g
 const checkBoxRegExp = /(\{checkbox:([a-z][0-9a-z_]*)})/g
+const recDateRegExp = /(\{recordDate})/g
+const recPersonRegExp = /(\{recordPerson})/g
+const commentRegExp = /(\{textarea:([a-z][0-9a-z_]*)})/g
+
 
 export default {
   extends: EhrElementCommon,
@@ -44,14 +50,26 @@ export default {
       this.formValues = {}
       this.structure = {
         checkboxIdList: [],
-        textIdList: []
+        textIdList: [],
+        recDateIdList: [],
+        recPersonIdList: [],
+        commentList: []
       }
       this.html = this.getHtml()
       // common code invokes setup when component is mounted
+      this.structure.recDateIdList = this.collectIds(this.html, recDateRegExp)
+      this.structure.recPersonIdList = this.collectIds(this.html, recPersonRegExp)
       this.structure.checkboxIdList = this.collectIds(this.html, checkBoxRegExp)
       this.structure.textIdList = this.collectIds(this.html, textRegExp)
+      this.structure.commentIdList = this.collectIds(this.html, commentRegExp)
       // next see if the html contains duplicate ids. Can't proceed if it does.
-      const combined = [...this.structure.textIdList, ...this.structure.checkboxIdList]
+      const combined = [
+        ...this.structure.textIdList,
+        ...this.structure.commentList,
+        ...this.structure.checkboxIdList,
+        ...this.structure.recDateIdList,
+        ...this.structure.recPersonIdList
+      ]
       const idDup = this.getDuplicates(combined)
       if (idDup.length > 0) {
         this.duplicateIds = idDup.join(', ')
@@ -60,10 +78,23 @@ export default {
         console.error('Found duplicate ids so stop set up of custom form')
         return
       }
+      this.customSetupRecValues()
       this.customSetupCheckboxes()
       this.customSetupText()
+      this.customSetupComments()
       // set the inner html. Vue reactivity will load the dom
       this.customHtml = this.html
+    },
+    customSetupRecValues () {
+      let dateStamp = currentSimDayTime()
+      let name = StoreHelper.getSimSignOnName()
+      let role = StoreHelper.getSimSignOnProfession()
+      this.html = this.makeSubstitutions( this.html, recDateRegExp,
+        () => { return `<span>${dateStamp}</span>` }
+      )
+      this.html = this.makeSubstitutions( this.html, recPersonRegExp,
+        () => { return `<span>${name}, ${role}</span>` }
+      )
     },
     customSetupCheckboxes () {
       this.html = this.makeSubstitutions(
@@ -80,6 +111,27 @@ export default {
             elem.push('checked')
           }
           elem.push('/>')
+          return elem.join(' ')
+        }
+      )
+    },
+    customSetupComments () {
+      this.html = this.makeSubstitutions(
+        this.html,
+        commentRegExp,
+        (id) => {
+          let elem = [`<textarea id='${id}' rows="5" cols="33"`]
+          if (this.viewOnly) {
+            elem.push('disabled')
+          }
+          elem.push('>')
+          // elem.push('uncomment to see textarea')
+          let value = this.initial[id]
+          if (value) {
+            this.formValues[id] = value
+            elem.push(value)
+          }
+          elem.push('</textarea>')
           return elem.join(' ')
         }
       )
@@ -166,67 +218,3 @@ export default {
   },
 }
 </script>
-
-<!--can not use scoped because that prevents the elements inside the custom form from being styled-->
-<style lang='scss' >
-// Be sure to nest all styles inside the top level class
-.ehr-custom-form {
-  & section {
-    margin: 2rem 0;
-  }
-
-  input[type=checkbox] {
-    transform: scale(1.5);
-  }
-
-  & .boxed {
-    margin: 1rem;
-    padding: 1rem;
-    border: 1px solid #222222;
-    & h2 {
-      margin-top: 0;
-    }
-  }
-
-  & .indent {
-    margin-left: 2rem;
-  }
-
-  & .tbl-no-borders {
-    border-collapse: collapse;
-    border: none;
-    & td, tr, th {
-      border: none;
-    }
-  }
-
-  & .tbl-full-width {
-    width: 100%;
-  }
-
-  & article {
-    padding-left: 1rem;
-    margin-top: 1rem;
-    & h3 {
-      margin-bottom: 0;
-    }
-    & ul {
-      margin-left: 2rem;
-    }
-    & ul > li {
-      list-style: square;
-    }
-  }
-  & .text-right {
-    float: right;
-  }
-  & .form-title {
-    margin-bottom: 0;
-    text-align: center;
-  }
-  & .form-subtitle {
-    margin-top: 0;
-    text-align: center;
-  }
-}
-</style>
