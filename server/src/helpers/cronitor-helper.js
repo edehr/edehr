@@ -13,7 +13,7 @@ export function isCronitorActive () {
 
 export function setUpCronitor (config) {
   const host = config.apiHost
-  if (!config.cronitorApiKey) {
+  if (!config.cronitorApiKey || !config.cronitorMonitorKey) {
     cronitorConfigured = false
     console.error('To use the Cronitor requires the api key to be defined in configuration')
     return // STOP HERE
@@ -21,15 +21,15 @@ export function setUpCronitor (config) {
   cronitorConfigured = true
   // GOOD TO GO ....
   const cronitor = require('cronitor')(config.cronitorApiKey)
-  const cronitorMonitor = new cronitor.Monitor('WXA0QS')
+  const cronitorMonitor = new cronitor.Monitor(config.cronitorMonitorKey)
   let tMonitor = new TimeMonitor()
   const PERIOD = 3 * 1000 /// every minute
   const pingHandler = () => {
-    const stats = tMonitor.stats
+    const stats = tMonitor.getStats()
+    tMonitor.resetStats()
     const pingData = {
       state: 'ok', // 'run|complete|fail|ok',
       host: host,
-      // env: 'dev',
       message: JSON.stringify(stats),
       metrics: {
         duration: stats.p95,
@@ -42,13 +42,11 @@ export function setUpCronitor (config) {
     dt = dt.toISOString()
     console.log('Send PING to Cronitor', dt, pingData)
   }
+  // run once on startup
   pingHandler()
+  // run once every period
   setInterval(pingHandler, PERIOD)
-  schedule.scheduleJob('0 0 * * *', () => {
-    if (tMonitor) {
-      tMonitor.resetMidnight()
-    }
-  })
+  // listen for API events
   API_EVENT_BUS.on(API_CALL_EVENT, (rec) => {
     try {
       tMonitor.update(rec)
@@ -66,21 +64,22 @@ class TimeMonitor {
   constructor () {
     this.windowSize = WINDOW_SIZE
     this.responseTimes = []
-    this.avgTime = 0
-    this.percentile95 = 0
-    this.percentile90 = 0
     this.responseCount = 0
     this.errorCount = 0
   }
-  resetMidnight () {
+  resetStats () {
     this.errorCount = 0
     this.responseCount = 0
+    this.responseTimes = []
   }
-  get stats () {
+  getStats () {
+    let rt = this.responseTimes
+    let average = rt.length > 0 ? rt.reduce((a, b) => a + b, 0) / rt.length : 0
+    let p95 = rt.length > 0 ? percentile(95, rt) : 0
     return {
-      avg: this.avgTime,
-      p90: this.percentile90,
-      p95: this.percentile95,
+      avg: average,
+      // p90: percentile(90, rt),
+      p95: p95,
       errorRatio: this.errRatio,
       errorCount: this.errorCount,
       responseCount: this.responseCount,
@@ -92,32 +91,21 @@ class TimeMonitor {
     if (this.errorCount > 0 && this.responseCount > 0) {
       ratio = this.errorCount / this.responseCount
     }
-    return ratio
+    return ratio.toFixed(2)
   }
   update (rec) {
     this.updateErrorCount(rec.status)
-    this.updateTime(rec.elapsedMs)
+    let newTime = rec.elapsedMs
+    if (this.responseTimes.length >= this.windowSize) {
+      this.responseTimes.shift()
+    }
+    this.responseTimes.push(newTime)
+
   }
   updateErrorCount (status) {
     this.responseCount++
     if (status >= 400) {
       this.errorCount++
     }
-  }
-  updateTime (newTime) {
-    if (this.responseTimes.length === 0) {
-      this.avgTime = newTime
-      this.percentile90 = newTime
-      this.percentile95 = newTime
-      return
-    }
-    if (this.responseTimes.length >= this.windowSize) {
-      this.responseTimes.shift()
-    }
-    this.responseTimes.push(newTime)
-    let rt = this.responseTimes
-    this.avgTime = rt.reduce((a, b) => a + b, 0) / rt.length
-    this.percentile90 = percentile(90, rt)
-    this.percentile95 = percentile(95, rt)
   }
 }

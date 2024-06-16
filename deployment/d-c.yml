@@ -51,6 +51,7 @@ services:
       - SENTRY_DSN
       - SENDGRID_API_KEY
       - CRONITOR_API_KEY
+      - CRONITOR_MONITOR_KEY
       - START_ARG
     depends_on:
      - mongo_service
