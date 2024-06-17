@@ -60,8 +60,11 @@ const actions = {
   initialize: async function (context) {
     context.commit('initialize')
     const token = localStorage.getItem('appLmsUserToken')
-    if (token) {
+    // sometimes the stored token becomes the value "null" (string)
+    if (token && token.length > 'undefined'.length) {
       await context.dispatch('setAppLmsUserToken', token)
+    } else {
+      localStorage.removeItem('appLmsUserToken')
     }
   },
   setAppLmsUserToken: async (context, token) => {
@@ -162,7 +165,11 @@ const mutations = {
     state.appLmsEnabled = mode
   },
   _setAppLmsUserToken: (state, token) => {
-    localStorage.setItem('appLmsUserToken', token)
+    if (token && token.length > 20 ) {
+      localStorage.setItem('appLmsUserToken', token)
+    } else {
+      localStorage.removeItem('appLmsUserToken')
+    }
     state.appLmsUserToken = token
   },
   _setAppLmsTokenData: (state, token) => {

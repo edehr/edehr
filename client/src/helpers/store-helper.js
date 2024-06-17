@@ -611,6 +611,7 @@ class StoreHelperWorker {
   async exitFullDemo () {
     await this.logUserOutOfEdEHR()
     await this._dispatchDemoStore('demoLogout')
+    await store.dispatch('appLmsStore/appLmsLogOut')
   }
   async logUserOutOfEdEHR () {
     StoreHelper.postActionEvent(SYSTEM_ACTION,'logUserOut')
