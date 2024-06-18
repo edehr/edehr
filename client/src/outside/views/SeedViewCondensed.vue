@@ -1,6 +1,6 @@
 <template lang='pug'>
   div
-    zone-lms-page-banner
+    zone-lms-page-banner(:title="seed.name", theme='seed-theme')
       seed-actions(class="flow_across_last_item", :seedModel='seedModel', :hideCondensed='true')
     zone-lms-instructions-header
       p This view presents the case study data, without the EHR/LIS context, and with tools that allow you to explore the data and how it evolves over simulation time.

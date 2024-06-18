@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    div(v-if='editState')
+    div(v-if='editState', class='working-area')
       textarea(rows="3",
         v-model='workingText')
       zone-lms-button(@action="editSave",
@@ -9,8 +9,8 @@
       zone-lms-button(@action="editCancel",
         :icon='appIcons.stopCircle',
         text='Cancel')
-    div(v-else)
-      div {{ value }}
+    div(v-else, class='working-area')
+      div(class='clickable', @click='editStart') {{ value }}
       zone-lms-button(@action="editStart",
         :icon='appIcons.edit',
         text='Edit')
@@ -58,6 +58,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
+.working-area{
+  display: flex;
+  flex-direction: row;
+}
 //textarea {
   //max-width: 60rem;
   //height: auto;

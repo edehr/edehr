@@ -87,7 +87,7 @@ export default {
 
 .seed-table {
   overflow-y: auto;
-  height: 45em;
+  //height: 45em;
 }
 table {
   border-collapse: collapse;

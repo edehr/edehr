@@ -23,7 +23,7 @@ export function setUpCronitor (config) {
   const cronitor = require('cronitor')(config.cronitorApiKey)
   const cronitorMonitor = new cronitor.Monitor(config.cronitorMonitorKey)
   let tMonitor = new TimeMonitor()
-  const PERIOD = 30 * 1000 /// every 1/2 minute
+  const PERIOD = 10 * 60 * 1000 /// every 10 minutes
   const pingHandler = () => {
     const stats = tMonitor.getStats()
     tMonitor.resetStats()
@@ -59,7 +59,7 @@ export function setUpCronitor (config) {
 /* ****************
       Monitor
  */
-const WINDOW_SIZE = 1000 // last N responses
+const WINDOW_SIZE = 10000 // last N responses
 class TimeMonitor {
   constructor () {
     this.windowSize = WINDOW_SIZE
