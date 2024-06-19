@@ -28,7 +28,8 @@ export function setUpCronitor (config) {
     const stats = tMonitor.getStats()
     tMonitor.resetStats()
     const pingData = {
-      state: 'tick', // 'run|complete|fail|ok' plus 'tick' is allowed
+      // state: 'tick', // 'run|complete|fail|ok' plus 'tick' is allowed
+      state: 'ok', // 'run|complete|fail|ok' plus 'tick' is allowed
       host: host,
       message: JSON.stringify(stats),
       metrics: {
