@@ -73,6 +73,8 @@ import { readFile, validateLObjFileContents } from '@/helpers/ehr-utils'
 export default {
   data () {
     return {
+      creatorNotes: '',
+      facultyNotes: '',
       lobj_description: '',
       lobj_name: '',
       seed_appType: '',
@@ -83,6 +85,7 @@ export default {
       seed_name: '',
       seed_tagList: [],
       seed_version: '',
+      simStages: undefined,
       // mPatientAppType
       // mPatientFilterTag
       lObjFile: null,
@@ -141,6 +144,8 @@ export default {
   },
   methods: {
     clearData () {
+      this.creatorNotes = ''
+      this.facultyNotes = ''
       this.lobj_description= ''
       this.lobj_name= ''
       this.seed_appType= ''
@@ -155,8 +160,10 @@ export default {
       this.uploadedLObj = undefined
       this.uploadError = ''
       this.uploadWarn = ''
+      this.simStages = undefined
     },
     copyData () {
+      //do not copy idForLTI
       if (this.hasUploadLObj) {
         const lobj = this.uploadedLObj
         this.lobj_name = lobj.name
@@ -180,6 +187,10 @@ export default {
             }
           }
         }
+        this.simStages = lobj.simStages
+        this.creatorNotes = lobj.creatorNotes
+        this.facultyNotes = lobj.facultyNotes
+
       }
     },
     async showLObjImportDialog () {
@@ -212,7 +223,8 @@ export default {
         name: this.lobj_name,
         description: this.lobj_description,
         seedDataId: sId,
-        toolConsumer: this.toolConsumer
+        toolConsumer: this.toolConsumer,
+        simStages: this.simStages
       }
       await StoreHelper.createAssignment(aAssignment)
       this.$emit('update')

@@ -64,7 +64,7 @@
             ui-info(:title="text.SET_SIMULATION_TIMER_TITLE", :text='text.SET_SIMULATION_TIMER', :html='text.SET_SIMULATION_TIMER')
 
         div(class="card-footer-item")
-          ui-button(@buttonClicked="simTimeKeyClear") {{ text.RESET_BUTTON_LABEL }}
+          ui-button(@buttonClicked="promptReset") {{ text.RESET_BUTTON_LABEL }}
           ui-info(:title="text.WARNING_RESET_TITLE", :text='text.WARNING_RESET', :html='text.WARNING_RESET')
 
     div(v-if="activitySimTime", class="activity-group card")
@@ -84,6 +84,8 @@
       div(class="card-content")
         h4 EHR Content
         seed-structural(:ehrData='sliceData', v-on="$listeners", viewOnly='true')
+
+    ui-confirm(ref="confirmResetTimeControl", v-on:confirm="simTimeKeyClear", :saveLabel='text.RESET_BUTTON_LABEL')
 </template>
 
 <script>
@@ -206,6 +208,9 @@ export default {
     simTimeKeyActivate () {
       let key = makeSimTimeKey(this.dayValue, this.timeValue)
       this.$store.dispatch('activityStore/simTimeKeyActivate', { activityId: this.activity.id, simTimeKey: key })
+    },
+    promptReset () {
+      this.$refs.confirmResetTimeControl.showDialog('Reset time control', 'Do you want to stop using SimTiming and return to the default approach where students can adjust the simulation time?')
     },
     simTimeKeyClear () {
       this.$store.dispatch('activityStore/simTimeKeyClear', { activityId: this.activity.id })

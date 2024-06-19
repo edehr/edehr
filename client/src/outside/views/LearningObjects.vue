@@ -107,11 +107,11 @@ export default {
       sortKey: 'name',
       sortDir: ASC,
       searchTerm: '',
-      toolConsumer: StoreHelper.getAuthdConsumerId()
     }
   },
   components: { ZoneLmsInstructionsHeader, ZoneLmsButton, AppPaginateControls, AppTypeRadio, AppSearchBox, UiButton, UiTableHeaderButton, ZoneLmsPageBanner, LearningObjectListItem, LearningObjectImportDialog, LearningObjectDialogNoCaseCreate },
   computed: {
+    toolConsumer () { return StoreHelper.getAuthdConsumerId() },
     appTypeMode () { return this.$store.getters['system/appTypeMode']},
     canDo () {
       return StoreHelper.isDevelopingContent()

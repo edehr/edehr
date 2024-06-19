@@ -14862,7 +14862,7 @@ const DEFS = {
       {
         "elementKey": "medication1_1",
         "assetBase": "standardized-assessment-tools",
-        "assetName": "best_possible_medication.pdf",
+        "assetName": "best-possible-medication.pdf",
         "formIndex": "1",
         "inputType": "assetLink",
         "fqn": "assessmentTools.medication1_1"
