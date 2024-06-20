@@ -209,7 +209,8 @@ export default class EhrPageHelper {
 
   activeTableDialogHasData () {
     const dialog = this._getActiveTableDialog()
-    if (dialog && dialog.inputs) {
+    // if the dialog is view only then it can't have any 'data'
+    if (dialog && dialog.inputs && !dialog.viewOnly) {
       const values = decoupleObject(dialog.inputs)
       let reduced = removeEmptyProperties(values)
       const keys = Object.keys(reduced)

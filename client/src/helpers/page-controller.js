@@ -255,6 +255,9 @@ async  function onPageChange (toRoute) {
       let deets = routeName
       deets += ' ' + JSON.stringify(Object.keys(toRoute.query))
       console.error('Coding error. At this point the user must be auth\'d to be in the ehr zone. ' + deets)
+      StoreHelper.setApiError('Your authorization to view the EHR has either expired or an error occurred and the system was reset.')
+      // let this qsync call happen without waiting
+      router.push({ name: ERROR_ROUTE_NAME, query: { ts: Date.now() } })
       return perfExit(perfStat)
       // EXIT
     }

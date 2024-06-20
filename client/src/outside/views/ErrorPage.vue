@@ -1,7 +1,8 @@
 <template lang='pug'>
   div
-    h1 Error
-    div {{ apiError }}
+    h1 Error Page
+    div(v-if='apiError')
+      div Message: {{ apiError }}
     what-to-do-instructions
 </template>
 

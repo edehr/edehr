@@ -1,11 +1,17 @@
 <template lang='pug'>
   div
+    h2 What happened?
+    p.
+      We're sorry you've had to see this page.  Something unexpected happened!
+    ol
+      li Maybe a error that could not be handled occurred? If so you may see the error message above.
+      li Maybe your session expired in a way the application was not able to handle in a nicer way.
     h2 What to do?
     ol
-      li Reach out to the administrator of edehr.org &nbsp;
+      li If you can help this app's developers then send an email to the administrator of edehr.org.  Describe what happened and what you were doing. &nbsp;
         span <a href="mailto:info@edehr.org">info@edehr.org</a>
-      li Close this browser tab and return to your LMS and start again.
-      li Return to the home page and locate the reset button
+      li If you came to the EdEHR via your school's learning management system (LMS) and then go back there and start again.
+      li Otherwise, return to this site's home page and locate the reset button
       li
         ui-button(value="what-home", v-on:buttonClicked="home()")
           fas-icon(class="fa", :icon="appIcons.exitToLms")
