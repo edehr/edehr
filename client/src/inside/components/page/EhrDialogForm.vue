@@ -101,6 +101,7 @@ export default {
     },
     cancelDialog: async function () {
       if (this.isViewOnly || !this.hasData) {
+        await this.ehrHelp.removeDraftRow()
         this.closeDialog()
       } else {
         if (this.hasRecHeader) {

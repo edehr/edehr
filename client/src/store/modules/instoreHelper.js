@@ -22,7 +22,7 @@ apiAxios.interceptors.response.use(response => {
   const { url, start } = perfMon
   let elapsedTime = performance.now() - start
   elapsedTime = String(elapsedTime).padStart(3, ' ')
-  console.log('API call performance', elapsedTime, 'ms URL: ',  url)
+  // console.log('API call performance', elapsedTime, 'ms URL: ',  url)
   return response
 })
 

@@ -409,6 +409,10 @@ export default class EhrPageHelper {
     await this._saveDialogData(true)
   }
   async saveDialogDraft () {
+    const dialog = this._getActiveTableDialog()
+    // put the draft flag into the active inputs for later use. The user may make some edits and then remove the content until the dialog appears to have no data. Yet, the draft maybe has been saved to the db.  With the draft flag we and remove the draft row during the cancel operation.
+    // See EhrDialogForm.cancelDialog
+    dialog.inputs.isDraft = 'isDraft'
     await this._saveDialogData(false)
   }
   async _saveDialogData (committingFlag) {
