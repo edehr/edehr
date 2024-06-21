@@ -208,30 +208,33 @@ export default class EhrPageHelper {
   }
 
   activeTableDialogHasData () {
+    let hasData = false
     const dialog = this._getActiveTableDialog()
-    // if the dialog is view only then it can't have any 'data'
-    if (dialog && dialog.inputs && !dialog.viewOnly) {
-      const values = decoupleObject(dialog.inputs)
-      let reduced = removeEmptyProperties(values)
-      const keys = Object.keys(reduced)
+    if (dialog && !dialog.viewOnly) { // if the dialog is view only then it can't have any 'data'
       const tableKey = dialog.tableKey
       const pageKey = dialog.pageKey
-      // remove rec header fields because they are not important unless there is other data
-      const KEYS = ['_id', 'name', 'profession', 'day', 'time']
-      const recHdrKeys = KEYS.map(key => tableKey + '_' + key)
-      recHdrKeys.push('isDraft', 'createdDate')
-      let otherKeys = keys.filter( key => !recHdrKeys.includes(key))
-      // remove any elements that are calculated
-      otherKeys = otherKeys.filter( oKey => {
-        const child = ehrPages.getPageChild(pageKey, oKey)
-        return child
-          && child.inputType !== EhrTypes.dataInputTypes.calculatedValue
-          && child.inputType !== EhrTypes.dataInputTypes.calculatedText
-      })
-      // console.log('has data keys 2', otherKeys)
-      return otherKeys.length > 0
+      if (dialog.inputs) {
+        const values = decoupleObject(dialog.inputs)
+        let reduced = removeEmptyProperties(values)
+        const keys = Object.keys(reduced)
+        // remove rec header fields because they are not important unless there is other data
+        const KEYS = ['_id', 'name', 'profession', 'day', 'time']
+        const recHdrKeys = KEYS.map(key => tableKey + '_' + key)
+        recHdrKeys.push('isDraft', 'createdDate')
+        let otherKeys = keys.filter(key => !recHdrKeys.includes(key))
+        // remove any elements that are calculated
+        otherKeys = otherKeys.filter(oKey => {
+          const child = ehrPages.getPageChild(pageKey, oKey)
+          return child
+            && child.inputType !== EhrTypes.dataInputTypes.calculatedValue
+            && child.inputType !== EhrTypes.dataInputTypes.calculatedText
+        })
+        console.log('has data keys 2', otherKeys)
+        hasData = otherKeys.length > 0
+      }
+      console.log('has data?', pageKey, tableKey, hasData)
     }
-    return false
+    return hasData
   }
   activeTableDialogHasRecordHeader () {
     const dialog = this._getActiveTableDialog()
