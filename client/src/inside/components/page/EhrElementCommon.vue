@@ -12,6 +12,7 @@ import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import StoreHelper from '@/helpers/store-helper'
 import { getCurrentSimDate, getCurrentSimTime } from '@/helpers/date-helper'
 import { DIALOG_EVENT_OPEN } from '@/inside/components/page/ehr-helper'
+import FormInputEvent from '@/helpers/form-input-event'
 
 const DEPENDENT_PROPS = EhrTypes.dependentOn
 
@@ -210,8 +211,8 @@ export default {
       // notify the dependents that they have a new value to use
       this.dependentUIEvent()
       if (this.isPageElement &&  this.isEditing || this.isTableElement && this.dialogIsOpen) {
-        // TODO consider changing dialogIsOpen flag to something we actively get from the open dialog.
-        EventBus.$emit(FORM_INPUT_EVENT, { value: val, element: this.element, tableKey: this.tableKey })
+        const eData = new FormInputEvent(val, this.element, this.tableKey )
+        EventBus.$emit(FORM_INPUT_EVENT, eData)
       } else {
         // do nothing.  This happens on load when setIntialValue is used.
       }

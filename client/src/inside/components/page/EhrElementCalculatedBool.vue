@@ -33,7 +33,7 @@ export default {
     }
   },
   methods: {
-    receiveEvent (eData) {
+    receiveEvent (eData /*FormInputEvent*/) {
       let pageDataKey = this.pageDataKey
       let elementKey = this.element.elementKey
       let srcValues = this.ehrHelp.getActiveData()

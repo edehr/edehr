@@ -797,7 +797,7 @@ export default class EhrPageHelper {
     this.windowUnloadHandler = function (eData) {
       _this.beforeUnloadListener(eData)
     }
-    this.inputChangeEventHandler = function (eData) {
+    this.inputChangeEventHandler = function (eData /*FormInputEvent*/) {
       _this._handleInputChangeEvent(eData)
     }
     window.addEventListener('beforeunload', this.windowUnloadHandler)
@@ -862,11 +862,11 @@ export default class EhrPageHelper {
    * FORM_INPUT_EVENT
    * This message is from a child component, and it's passing the new value up to the parent's helper (here).
    * Take the value and stash it into the appropriate input, so we have access to the inputs when it's time to save.
-   * @param eData
+   * @param eData FormInputEvent
    * @private
    */
   _handleInputChangeEvent (eData) {
-    let elementKey = eData.element.elementKey
+    let elementKey = eData.elementKey
     let value = eData.value
     this.stashActiveData(elementKey, value)
   }

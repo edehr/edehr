@@ -29,11 +29,11 @@ export default {
     }
   },
   methods: {
-    receiveEvent (eData) {
+    receiveEvent (eData /*FormInputEvent*/) {
       const worker = () => {
         let pageDataKey = this.pageDataKey
         let elementKey = this.element.elementKey
-        if (db) console.log('EhrCalculated rcv FORM_INPUT_EVENT', eData, pageDataKey, elementKey)
+        if (db) console.log('EhrCalculated rcv FORM_INPUT_EVENT', pageDataKey, eData)
         let srcValues = this.ehrHelp.getActiveData()
         let value = ehrCalculateProperty(pageDataKey, elementKey, srcValues)
         if (db) console.log('EhrComputedValue ', elementKey, value)
