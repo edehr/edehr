@@ -22,7 +22,9 @@
         ui-spinner-small(refId='ehrDialogForm', :loading="isClosing")
       span(slot="save-button") Save
 
-    ui-confirm(ref="confirmCancelDialog", @confirm="cancelConfirmed", :saveLabel='ehrText.cancelDialogExitDialogLabel', :cancel-label='ehrText.cancelDialogReturnToEditLabel' )
+    ui-confirm(ref="confirmCancelDialog", @confirm="cancelConfirmed",
+      :saveLabel='ehrText.cancelDialogExitDialogLabel',
+      :cancel-label='ehrText.cancelDialogReturnToEditLabel' )
     ui-confirm(ref="confirmSaveDialog", @confirm="saveConfirmed", @abort="saveDraft", :saveLabel='ehrText.saveDialogButtonLabel', :cancel-label='ehrText.saveDialogAsDraftButtonLabel' )
 </template>
 
@@ -106,7 +108,7 @@ export default {
       } else {
         if (this.hasRecHeader) {
           this.$refs.confirmCancelDialog.showDialog(
-            'Confirm cancel.',
+            'Confirm delete.',
             'This action will delete the current record. If you are not sure press the "Return to Edit" button and then save a draft record.')
         } else {
           // for tables (like the patient location table) that do not have record headers we can still get draft row started. Need to remove this when canceling the edit
