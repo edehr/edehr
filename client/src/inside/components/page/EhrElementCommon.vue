@@ -77,6 +77,7 @@ export default {
     viewOnly: { type: Boolean, default: false }
   },
   computed: {
+    isModified () { return this.initialVal !== this.inputVal },
     ehrText () { return t18EhrText()},
     devEnv () { return process.env.NODE_ENV === 'development' },
     elementIsId () { return this.element.inputType === EhrTypes.dataInputTypes.generatedId },

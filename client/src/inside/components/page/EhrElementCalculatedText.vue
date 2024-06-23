@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="computed_wrapper", :class='formCss')
+  div(class="computed_wrapper", :class='[formCss, {modifiedElement : isModified}]')
     span {{ value }}
 </template>
 

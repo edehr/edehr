@@ -562,7 +562,6 @@ export default class EhrPageHelper {
   }
 
   stashActiveData (elementKey, value) {
-    // TODO why do we need the try catch block here?
     try {
       let data = this.getActiveData()
       data[elementKey] = value
@@ -614,7 +613,6 @@ export default class EhrPageHelper {
      * @private
      */
   _dialogOpenEvent (tableKey,  options) {
-    let key
     options.open = true
     if (dbDialog) console.log('EhrHelpV2 dialog open event', tableKey, JSON.stringify(options))
     // Get the dialog object for the target table
@@ -622,7 +620,6 @@ export default class EhrPageHelper {
     // stash the options into the dialog definition.
     dialog.options = options
     dialog.viewOnly = options.viewOnly
-    let hasRecHeader = dialog.tableDef.hasRecHeader
     /*
     Set the dialog "open" flag to false for the initialization step.
     See EhrElementCommon.dialogEvent. See the setInitialValue call.  Normally, all changes to
@@ -631,82 +628,11 @@ export default class EhrPageHelper {
     open flag until after initializing the dialog inputs so that we do not trigger the FORM_INPUT_EVENT.
      */
     dialog.active = false
-    /* Now can ....
-     * set inputs to any default values
-     * set simTime
-     * if there is data then load it
-     * then turn on form input updates
-     */
     dialog.errorList = []
-    this._clearDialogInputs(dialog)
     if (options.draftRowId) {
       dialog.draftRowId = options.draftRowId
     }
-    // TODO what about default values?  From a code review it seems these are not set into table dialogs.
-    // Defaulting comes from the form.ehr_data that is composed by the maker of the ehr page defs.  This is set into the form in _clearDialogInputs
-    //  Furthermore, the assignment below is too blunt and would overwrite the defaults, like it overwrites
-    //  the simTime. The assignment below should be rewritten to use a property by property copy.
-    if (options.draftRowData) {
-      // will override the sim day/time here if previously set to something else
-      dialog.inputs = { ...options.draftRowData }
-    }
-    if (options.viewOnlyData) {
-      // For view only we only want to see the data given in the options
-      dialog.inputs = { ...options.viewOnlyData }
-    }
-    if (options.embedRefValue) {
-      // When the embedded element, inside the current table, gets the "dialog is opened" event it will
-      // use this embedRefValue to in turn load the source row into the dialog.
-      const srcElemKey = EhrTableActions.getTableActionTargetElementKey(options.sendersTableDef)
-      // console.log('Setup dialog for embedded ref. Source element key', srcElemKey)
-      // console.log('options.embedRefValue', options.embedRefValue)
-      dialog.inputs[srcElemKey] = options.embedRefValue
-    }
-    if (hasRecHeader) {
-      let metaSimTime = StoreHelper.getMetaSimTime()
-      key = tableKey + '_day'
-      if (!validDayStr(dialog.inputs[key])) {
-        let cDate
-        if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
-          cDate = metaSimTime.visitDay
-        } else {
-          cDate = StoreHelper.getSimDate()
-        }
-        dialog.inputs[key] = parseInt(cDate)
-        // console.log('dialog opening set sim day', key, dialog.inputs[key])
-      }
-      key = tableKey + '_time'
-      if (!validTimeStr(dialog.inputs[key])) {
-        let cTime
-        if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
-          cTime = metaSimTime.visitTime
-        } else {
-          cTime = StoreHelper.getSimTime()
-        }
-        dialog.inputs[key] = cTime
-        // console.log('dialog opening set sim time', key, dialog.inputs[key])
-      }
-
-      function _isEmptyString (text) {
-        return !(text && text.trim().length > 0)
-      }
-      key = tableKey + '_name'
-      if (_isEmptyString(dialog.inputs[key])) {
-        dialog.inputs[key] = StoreHelper.getSimSignOnName()
-        // console.log('dialog opening set rec hdr name', key, dialog.inputs[key])
-      }
-      key = tableKey + '_profession'
-      if (_isEmptyString(dialog.inputs[key])) {
-        dialog.inputs[key] = StoreHelper.getSimSignOnProfession()
-        // console.log('dialog opening set rec hdr name', key, dialog.inputs[key])
-      }
-    }
-
-    if (options.presetValues) {
-      options.presetValues.forEach( pv => {
-        dialog.inputs[pv.key] = pv.value
-      })
-    }
+    dialog.inputs = this._getInitialDialogInputs(tableKey, dialog, options)
     // NOW set the open state flag which enables the FORM_INPUT_EVENT event to fire when a dialog input is changed.
     dialog.active = true
     // End by sending out the "I'm opened event"
@@ -722,17 +648,89 @@ export default class EhrPageHelper {
     Vue.nextTick(function () {
       EventBus.$emit(DIALOG_EVENT_OPEN, eData)
     })
-  }
-  _clearDialogInputs (dialog) {
-    // let dialog = this.tableFormMap[tableKey]
+  } // end _dialogOpenEvent
+  // ------------------------------------------------------------------------------------------
+
+
+  /**
+   * _setupDialogInputs can ....
+   * set inputs to any default values
+   * set simTime
+   * if there is data then load it
+   *
+   * @param tableKey
+   * @param dialog
+   * @param options
+   * @private
+   */
+  _getInitialDialogInputs (tableKey, dialog, options) {
+    const _isEmptyString = (text) => {
+      return !(text && text.trim().length > 0)
+    }
+    let key
+    let inputs = {}
     let tableDef = dialog.tableDef
+    let hasRecHeader = tableDef.hasRecHeader
     let form = tableDef.form
     // set inputs equal to the form's data definition
-    // console.log('set inputs equal to the form\'s data definition', JSON.stringify(form.ehr_data))
-    dialog.inputs = { ...form.ehr_data}
-    if (dbDialog) console.log('EhrHelpV2 cleared key, form ', dialog.tableKey, JSON.stringify(dialog.inputs))
-    // empty the error list array
-    dialog.errorList = []
+    inputs = { ...form.ehr_data}
+    if (options.draftRowData) {
+    // will override the sim day/time here if previously set to something else
+      inputs = { ...options.draftRowData }
+    }
+    if (options.viewOnlyData) {
+    // For view only we only want to see the data given in the options
+      inputs = { ...options.viewOnlyData }
+    }
+    if (options.embedRefValue) {
+    // When the embedded element, inside the current table, gets the "dialog is opened" event it will
+    // use this embedRefValue to in turn load the source row into the dialog.
+      const srcElemKey = EhrTableActions.getTableActionTargetElementKey(options.sendersTableDef)
+      // console.log('Setup dialog for embedded ref. Source element key', srcElemKey)
+      // console.log('options.embedRefValue', options.embedRefValue)
+      inputs[srcElemKey] = options.embedRefValue
+    }
+    if (hasRecHeader) {
+      let metaSimTime = StoreHelper.getMetaSimTime()
+      key = tableKey + '_day'
+      if (!validDayStr(inputs[key])) {
+        let cDate
+        if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+          cDate = metaSimTime.visitDay
+        } else {
+          cDate = StoreHelper.getSimDate()
+        }
+        inputs[key] = parseInt(cDate)
+      // console.log('dialog opening set sim day', key, inputs[key])
+      }
+      key = tableKey + '_time'
+      if (!validTimeStr(inputs[key])) {
+        let cTime
+        if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+          cTime = metaSimTime.visitTime
+        } else {
+          cTime = StoreHelper.getSimTime()
+        }
+        inputs[key] = cTime
+      // console.log('dialog opening set sim time', key, inputs[key])
+      }
+      key = tableKey + '_name'
+      if (_isEmptyString(inputs[key])) {
+        inputs[key] = StoreHelper.getSimSignOnName()
+      // console.log('dialog opening set rec hdr name', key, inputs[key])
+      }
+      key = tableKey + '_profession'
+      if (_isEmptyString(inputs[key])) {
+        inputs[key] = StoreHelper.getSimSignOnProfession()
+      // console.log('dialog opening set rec hdr name', key, inputs[key])
+      }
+    }
+    if (options.presetValues) {
+      options.presetValues.forEach( pv => {
+        inputs[pv.key] = pv.value
+      })
+    }
+    return inputs
   }
 
   /**

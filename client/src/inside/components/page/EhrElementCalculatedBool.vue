@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="checkbox_wrapper", :class='formCss')
+  div(class="checkbox_wrapper", :class='[formCss, {modifiedElement : isModified}]')
     input(class="checkbox",
       type="checkbox",
       disabled,

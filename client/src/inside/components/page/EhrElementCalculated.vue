@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="computed_wrapper", :class='formCss')
+  div(class="computed_wrapper", :class='[formCss, {modifiedElement : isModified}]')
     ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
     input(class="input text-input", disabled, :name="elementKey", v-model="value")
     span(class="suffix") {{suffix }}

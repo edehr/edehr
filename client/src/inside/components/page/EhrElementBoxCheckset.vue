@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="box-checkset-wrapper", :class='formCss')
+  div(class="box-checkset-wrapper", :class='[formCss, {modifiedElement : isModified}]')
     div
       input(class="checkbox", type="checkbox", :disabled="disabled || viewOnly", :name="elementKey", v-model="mainCheck")
       label(:for="elementKey", class="main_label") {{mainLabel}}
@@ -23,10 +23,12 @@ export default {
   data () {
     return {
       mainCheck: false,
+      // use local storage instead of common inputVal
       checkValues: [],
     }
   },
   computed : {
+    isModified () { return this.initialVal !== JSON.stringify(this.checkValues) },
     disableSubset () { return !this.mainCheck },
     label () { return t18ElementLabel(this.element) },
     mainLabel () { return this.label.split(';')[0] },
@@ -54,6 +56,8 @@ export default {
       // console.log('checkOptions', this.checkOptions)
       // console.log('checkValues', this.checkValues)
       this.mainCheck = this.checkValues.length > 0 && this.checkValues[0] !== ''
+      this.initialVal = this.checkValues
+      this.initialVal = JSON.stringify(this.initialVal)
     },
     setup () {
     }

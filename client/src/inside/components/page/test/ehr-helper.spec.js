@@ -168,10 +168,9 @@ describe('ehr-helper tests', () => {
       })
     })
 
-    it('getDialogInputs', () => {
+    it('get Dialog Inputs', () => {
       const dialogs = ehrHelper.getDialogInputs(tableKey)
       should.exist(dialogs)
-
     })
 
     it.skip('cancelDialog', () => {
