@@ -35,16 +35,13 @@ export default {
    */
   visitDay: function (fieldName, dayString) {
     if (dayString!==undefined) {
+      // only validate when there is a value. Let a mandatory check for existence of a value
       // console.log('valid day?', dayString)
       // only invalid if there is both some input content, and it is invalid. Use mandatory test for validation of content existence
       const valid = (dayString === '') || validDayStr(dayString)
       if (!valid) {
         return `${fieldName} must be a visit day (number) between 0 and ${VISIT_DAY_LIMIT}.`
       }
-    } else {
-      let msg = `Coding Error. Ehr Validations.visitDay. To validate visitDay must provide the field name and the dayString. Got "${fieldName}" and "${dayString}".`
-      console.error(msg)
-      return msg
     }
   },
   numeric: function (fieldName, value) {

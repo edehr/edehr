@@ -704,7 +704,8 @@ export default class EhrPageHelper {
         } else {
           cDate = StoreHelper.getSimDate()
         }
-        inputs[key] = parseInt(cDate)
+        // Store record date as a string
+        inputs[key] = ''+ parseInt(cDate)
       // console.log('dialog opening set sim day', key, inputs[key])
       }
       key = tableKey + '_time'
