@@ -156,14 +156,10 @@ export default {
     },
     patientData (seed) {
       let keyData = seed.keyData || {}
-      let newDob = ''
-      if (keyData.personAge && keyData.dateOfBirth) {
-        newDob = computeDateOfBirth(keyData.personAge, keyData.dateOfBirth)
-      }
       let name = keyData.familyName ? keyData.familyName +', ' : ''
       name += keyData.givenName ? keyData.givenName : ''
       let gender = keyData.gender ? 'Gender: ' + keyData.gender : ''
-      let dob = keyData.newDob ? 'DoB: ' + keyData.newDob : ''
+      let dob = 'DoB: ' + keyData.dateOfBirth
       return `${name}  MRN: ${keyData.mrn}  ${gender} ${dob}`
     },
     seedDuplicated () {
