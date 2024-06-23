@@ -94,6 +94,10 @@ export default class EhrPageHelper {
   getPageKey () { return store.getters['system/currentPageKey'] }
   getPageTableDefs () { return EhrDefs.getPageTables(this.getPageKey()) }
 
+  isTableDialogActive (tableKey) {
+    const dialog = this._getActiveTableDialog()
+    return dialog && tableKey === dialog.tableKey
+  }
   // TODO rename getTableForm to getDialog
   getTableForm (tableKey) { return this.tableFormMap[tableKey]}
 

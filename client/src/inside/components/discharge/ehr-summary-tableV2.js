@@ -39,9 +39,9 @@ Referrals: Pulled in from the referrals to other disciplines page.
  */
 
 const medSchedules = [] // TODO get MARs
-console.log('EhrSummaryHelp TODO get medSchedules', medSchedules)
+// console.log('EhrSummaryHelp TODO get medSchedules', medSchedules)
 
-const debug = true
+const debug = false
 
 export default class EhrSummaryHelpV2 {
   constructor (summaryKey, ehrHelp) {

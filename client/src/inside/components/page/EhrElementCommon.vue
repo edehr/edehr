@@ -210,12 +210,14 @@ export default {
     sendInputEvent (val) {
       if (dbInputs) console.log('EhrCommon broadcast PAGE_FORM_INPUT_EVENT ', val, this.elementKey)
       // notify the dependents that they have a new value to use
-      this.dependentUIEvent()
-      if (this.isPageElement &&  this.isEditing || this.isTableElement && this.dialogIsOpen) {
+      this.dependentUIEvent() //i.e. calculated values
+      let isPageEditing = this.isPageElement && this.isEditing
+      // filter out events that are not from actively open dialog
+      let isActive = this.ehrHelp.isTableDialogActive(this.tableKey)
+      let isTableEditing = isActive && this.isTableElement && this.dialogIsOpen
+      if (isPageEditing || isTableEditing) {
         const eData = new FormInputEvent(val, this.element, this.tableKey )
         EventBus.$emit(FORM_INPUT_EVENT, eData)
-      } else {
-        // do nothing.  This happens on load when setIntialValue is used.
       }
     },
     refreshPage () {
