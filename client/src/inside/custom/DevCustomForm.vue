@@ -1,7 +1,7 @@
 <template lang='pug'>
 div
   ehr-element-custom-form(:element='elementDef',
-    elementKey='mostOrderSert'
+    :elementKey='elementKey'
     )
 </template>
 
@@ -24,7 +24,8 @@ export default {
   data () {
     return {
       elementDef: { },
-      pageDataKey: 'acpMost'
+      pageDataKey: 'neurological',
+      elementKey: 'mseCustomForm'
     }
   },
   mounted () {

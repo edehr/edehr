@@ -11,6 +11,7 @@ import StoreHelper from '@/helpers/store-helper'
 import { currentSimDayTime } from '@/helpers/date-helper'
 const textRegExp = /(\{input:([a-z][0-9a-z_]*)})/g
 const checkBoxRegExp = /(\{checkbox:([a-z][0-9a-z_]*)})/g
+const radioSetRegExp = /(\{radioSet:id=([a-z][0-9a-z_]*),name=([a-z][0-9a-z_]*)})/g
 const recDateRegExp = /(\{recordDate})/g
 const recPersonRegExp = /(\{recordPerson})/g
 const commentRegExp = /(\{textarea:([a-z][0-9a-z_]*)})/g
@@ -50,6 +51,7 @@ export default {
       this.formValues = {}
       this.structure = {
         checkboxIdList: [],
+        radioSetIdList: [],
         textIdList: [],
         recDateIdList: [],
         recPersonIdList: [],
@@ -60,6 +62,7 @@ export default {
       this.structure.recDateIdList = this.collectIds(this.html, recDateRegExp)
       this.structure.recPersonIdList = this.collectIds(this.html, recPersonRegExp)
       this.structure.checkboxIdList = this.collectIds(this.html, checkBoxRegExp)
+      this.structure.radiosetIdList = this.collectIds(this.html, radioSetRegExp)
       this.structure.textIdList = this.collectIds(this.html, textRegExp)
       this.structure.commentIdList = this.collectIds(this.html, commentRegExp)
       // next see if the html contains duplicate ids. Can't proceed if it does.
@@ -67,6 +70,7 @@ export default {
         ...this.structure.textIdList,
         ...this.structure.commentList,
         ...this.structure.checkboxIdList,
+        ...this.structure.radiosetIdList,
         ...this.structure.recDateIdList,
         ...this.structure.recPersonIdList
       ]
@@ -80,6 +84,7 @@ export default {
       }
       this.customSetupRecValues()
       this.customSetupCheckboxes()
+      this.customSetupRadioSets()
       this.customSetupText()
       this.customSetupComments()
       // set the inner html. Vue reactivity will load the dom
@@ -102,6 +107,25 @@ export default {
         checkBoxRegExp,
         (id) => {
           let elem = [`<input type='checkbox' id='${id}'`]
+          if (this.viewOnly) {
+            elem.push('disabled')
+          }
+          let value = this.initial[id]
+          if (value) {
+            this.formValues[id] = value
+            elem.push('checked')
+          }
+          elem.push('/>')
+          return elem.join(' ')
+        }
+      )
+    },
+    customSetupRadioSets () {
+      this.html = this.makeSubstitutions(
+        this.html,
+        radioSetRegExp,
+        (id, name) => {
+          let elem = [`<input type='radio' id='${id}' name='${name}'`]
           if (this.viewOnly) {
             elem.push('disabled')
           }
@@ -176,8 +200,9 @@ export default {
       const elements = [...html.matchAll(regexp)]
       elements.forEach(element => {
         const id = element[2]
+        const name = element[3]
         const toReplace = element[0]
-        const newElement = composer(id)
+        const newElement = composer(id, name)
         html = html.replace(toReplace, newElement)
       })
       return html

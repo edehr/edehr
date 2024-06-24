@@ -4190,6 +4190,57 @@ const DEFS = {
         "inputType": "text",
         "tableColumn": "6",
         "fqn": "neurological.cam_assessment"
+      },
+      {
+        "elementKey": "mse_table_name",
+        "formIndex": "4",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "neurological.name"
+      },
+      {
+        "elementKey": "mse_table_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "mse_table_profession",
+        "formIndex": "4",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "neurological.profession"
+      },
+      {
+        "elementKey": "mse_table_day",
+        "formIndex": "4",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "neurological.day"
+      },
+      {
+        "elementKey": "mse_table_time",
+        "formIndex": "4",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "neurological.time"
+      },
+      {
+        "elementKey": "mseCustomForm",
+        "formIndex": "4",
+        "formOption": "mmse-form",
+        "inputType": "custom_form",
+        "tableColumn": "2",
+        "fqn": "neurological.mseCustomForm"
       }
     ],
     "pageElements": {
@@ -4550,70 +4601,56 @@ const DEFS = {
         ],
         "hasRecHeader": true
       },
-      "cam_table": {
-        "elementKey": "cam_table",
+      "mse_table": {
+        "elementKey": "mse_table",
         "pageElementIndex": "4",
         "pageKey": "neurological",
-        "tableKey": "cam_table",
+        "tableKey": "mse_table",
         "isTable": true,
         "form": {
-          "elementKey": "cam_table",
-          "label": "CAM assessment",
-          "addButtonText": "Add a confusion assessment",
-          "formOption": "transpose",
-          "formKey": "cam_table",
+          "elementKey": "mse_table",
+          "label": "MSE",
+          "addButtonText": "Add a MSE assessment",
+          "formKey": "mse_table",
           "ehr_groups": [
             {
-              "elementKey": "hdrGroup4",
+              "elementKey": "mse_recHdrGroup",
               "formCss": "record-header",
-              "fqn": "neurological.hdrGroup4",
+              "fqn": "neurological.mse_recHdrGroup",
               "gIndex": "1",
               "gChildren": [
-                "cam_table_name",
-                "cam_table_profession",
-                "cam_table_day",
-                "cam_table_time"
+                "mse_table_name",
+                "mse_table_profession",
+                "mse_table_day",
+                "mse_table_time"
               ]
             },
             {
-              "elementKey": "camGroup",
+              "elementKey": "mseGroup",
               "formCss": "grid-left-to-right-1",
-              "fqn": "neurological.camGroup",
+              "fqn": "neurological.mseGroup",
               "gIndex": "2",
               "gChildren": [
-                "camLink",
-                "cam_1",
-                "cam_2",
-                "cam_3",
-                "cam_4",
-                "cam_assessment"
+                "mseCustomForm"
               ]
             }
           ],
           "ehr_data": {
-            "cam_table_name": "",
-            "cam_table_profession": "",
-            "cam_table_day": "",
-            "cam_table_time": "",
-            "cam_1": "",
-            "cam_2": "",
-            "cam_3": "",
-            "cam_4": "",
-            "cam_assessment": ""
+            "mse_table_name": "",
+            "mse_table_profession": "",
+            "mse_table_day": "",
+            "mse_table_time": "",
+            "mseCustomForm": ""
           }
         },
-        "fqn": "neurological.cam_table",
+        "fqn": "neurological.mse_table",
         "tableChildren": [
-          "cam_table_id",
-          "cam_table_day",
-          "cam_table_time",
-          "cam_1",
-          "cam_2",
-          "cam_3",
-          "cam_4",
-          "cam_assessment",
-          "cam_table_name",
-          "cam_table_profession"
+          "mse_table_id",
+          "mse_table_day",
+          "mse_table_time",
+          "mseCustomForm",
+          "mse_table_name",
+          "mse_table_profession"
         ],
         "hasRecHeader": true
       }

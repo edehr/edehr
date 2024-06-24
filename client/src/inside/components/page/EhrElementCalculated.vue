@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="computed_wrapper", :class='formCss')
+  div(class="computed_wrapper", :class='[formCss, {modifiedElement : isModified}]')
     ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="text_label")
     input(class="input text-input", disabled, :name="elementKey", v-model="value")
     span(class="suffix") {{suffix }}
@@ -29,11 +29,11 @@ export default {
     }
   },
   methods: {
-    receiveEvent (eData) {
+    receiveEvent (eData /*FormInputEvent*/) {
       const worker = () => {
         let pageDataKey = this.pageDataKey
         let elementKey = this.element.elementKey
-        if (db) console.log('EhrCalculated rcv FORM_INPUT_EVENT', eData, pageDataKey, elementKey)
+        if (db) console.log('EhrCalculated rcv FORM_INPUT_EVENT', pageDataKey, eData)
         let srcValues = this.ehrHelp.getActiveData()
         let value = ehrCalculateProperty(pageDataKey, elementKey, srcValues)
         if (db) console.log('EhrComputedValue ', elementKey, value)

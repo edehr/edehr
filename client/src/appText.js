@@ -145,7 +145,7 @@ export const ehrText = {
   cancelDialogReturnToEditLabel: 'Return to edit',
   cancelDialogExitDialogLabel: 'Confirm cancel',
   ehrDialogCancelButtonViewOnly: 'Close',
-  ehrDialogCancelButtonVEdit: 'Cancel',
+  ehrDialogCancelButtonVEdit: 'Delete',
   medicationPlaceholder: 'Medication',
   practitionerPlaceholder: 'Care team member',
   professionPlaceholder: 'Profession',

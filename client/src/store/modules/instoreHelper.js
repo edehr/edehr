@@ -17,16 +17,17 @@ apiAxios.interceptors.request.use(request => {
   return request
 })
 
+const debug = false
+
 apiAxios.interceptors.response.use(response => {
   const perfMon = response.config.perfMon
   const { url, start } = perfMon
   let elapsedTime = performance.now() - start
   elapsedTime = String(elapsedTime).padStart(3, ' ')
-  console.log('API call performance', elapsedTime, 'ms URL: ',  url)
+  if(debug) console.log('API call performance', elapsedTime, 'ms URL: ',  url)
   return response
 })
 
-const debug = false
 /*
   const API = 'someBase'
 ...

@@ -1211,5 +1211,8 @@
   "medicationOrders.aux_med_status.erro": "Error",
   "labRequisitions.reqH_schedule.stat": "estadística",
   "labRequisitions.reqH_schedule.urgent": "Urgente",
-  "labRequisitions.reqH_schedule.routine": "Rutina"
+  "labRequisitions.reqH_schedule.routine": "Rutina",
+  "labRequisitions.reqMicro_schedule.stat": "estadística",
+  "labRequisitions.reqMicro_schedule.urgent": "Urgente",
+  "labRequisitions.reqMicro_schedule.routine": "Rutina"
 }

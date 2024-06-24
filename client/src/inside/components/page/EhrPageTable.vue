@@ -5,6 +5,7 @@
       div(class="flow_across menu_space_across flow_across_last_item")
         ui-button(v-if="showTableAddButton", value="ept-add", v-on:buttonClicked="showDialog") {{ buttonLabel }}
         ehr-page-context-menu
+    div(v-show='secondLevelTableLabel') {{secondLevelTableLabel}}
     div
       ehr-table-table(
         :ehrHelp="ehrHelp",
@@ -69,6 +70,7 @@ export default {
   },
   computed: {
     tableLabel () { return t18ElementLabel(this.tableDef)},
+    secondLevelTableLabel () { return t18TableLabel(this.tableDef) },
     buttonLabel () { return t18TableAddButtonLabel(this.tableDef)},
     canResetTableData () { return this.hasData &&  this.ehrHelp.canResetTableData() },
     hasData () { return this.cTableData.length > 0},

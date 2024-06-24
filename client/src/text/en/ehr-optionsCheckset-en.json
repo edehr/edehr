@@ -311,5 +311,7 @@
   "medLabBody.bdyClarity.hazy": "Hazy",
   "medLabBody.bdyClarity.cloudy": "Cloudy",
   "medLabBody.bdyClarity.turbid": "Turbid",
-  "medLabBody.bdyClarity.bloody": "Bloody"
+  "medLabBody.bdyClarity.bloody": "Bloody",
+  "neurological.mse_1.normal": "casual dress, normal grooming and hygiene",
+  "neurological.mse_1.other": "Other"
 }

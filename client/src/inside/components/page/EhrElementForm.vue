@@ -1,6 +1,6 @@
 <template lang='pug'>
-  div(:id="elementKey", class="form-element", :class='{invalidElement : !validData, hideTableElement: hideElement}')
-    div(v-if="isType('form_label')", :class='formCss')
+  div(:id="elementKey", class="form-element", :class='{invalidElement : !validData, hideTableElement: hideElement, modifiedElement : isModified }')
+    div(v-if="isType('form_label')", :class='[formCss, {modifiedElement : isModified}]')
       div(v-html="label", class='form_label_wrapper')
       ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
     div(v-else-if="isType('formTableHeader')", class="formTableHeader", :class='formCss', v-html="label")

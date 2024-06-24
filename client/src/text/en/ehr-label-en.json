@@ -1408,5 +1408,11 @@
   "acpMost.name": "Name",
   "acpMost.profession": "Profession",
   "acpMost.day": "Day",
-  "acpMost.time": "Time"
+  "acpMost.time": "Time",
+  "neurological.mse_table": "MSE",
+  "neurological.mseGroup": "MSE",
+  "neurological.mse_1": "Appearance",
+  "neurological.mse_3": "Feature 3: Disorganized thinking",
+  "neurological.mse_4": "Feature 4: Altered level of consciousness",
+  "neurological.mse_comments": "Assessment"
 }

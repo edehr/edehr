@@ -311,5 +311,7 @@
   "medLabBody.bdyClarity.hazy": "Brumoso",
   "medLabBody.bdyClarity.cloudy": "Nublado",
   "medLabBody.bdyClarity.turbid": "Túrbido",
-  "medLabBody.bdyClarity.bloody": "Sangriento"
+  "medLabBody.bdyClarity.bloody": "Sangriento",
+  "neurological.mse_1.normal": "vestimenta informal, aseo e higiene normales.",
+  "neurological.mse_1.other": "Otro"
 }

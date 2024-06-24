@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="radio_wrapper", :class='formCss')
+  div(class="radio_wrapper", :class='[formCss, {modifiedElement : isModified}]')
     ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="radioset_label")
     div(class="radio_set")
       div(v-for="option in options")
@@ -15,10 +15,12 @@ export default {
   // for props, etc see EhrCommonElement
   data () {
     return {
+      // use local storage instead of common inputVal
       radioValue: '',
     }
   },
   computed : {
+    isModified () { return this.initialVal !== JSON.stringify(this.radioValue) },
     options () { return this.element.options },
   },
   watch: {
@@ -29,6 +31,8 @@ export default {
   methods: {
     setInitialValue (value) {
       this.radioValue = value
+      this.initialVal = this.radioValue
+      this.initialVal = JSON.stringify(this.initialVal)
     },
     setup () {
     }

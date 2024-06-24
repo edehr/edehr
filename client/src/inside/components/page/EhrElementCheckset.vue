@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="checkset_wrapper", :class='formCss')
+  div(class="checkset_wrapper", :class='[formCss, {modifiedElement : isModified}]')
     ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="checkset_label")
     div(class="checkset_list")
       div(v-for="option in filteredOptions")
@@ -20,10 +20,12 @@ export default {
   // for props, etc see EhrCommonElement
   data () {
     return {
+      // use local storage instead of common inputVal
       checkValues: []
     }
   },
   computed : {
+    isModified () { return this.initialVal !== JSON.stringify(this.checkValues) },
     options () { return this.element.options },
     checkOptions () { return EhrCheckset.optionsToChecklist(this.options) },
     filteredOptions () {
@@ -52,6 +54,8 @@ export default {
     setInitialValue (value) {
       // Take the db stored value (csv string) and convert to array of strings
       this.checkValues = EhrCheckset.dbValueToCheckSet(value)
+      this.initialVal = this.checkValues
+      this.initialVal = JSON.stringify(this.initialVal)
     },
     setup () {
     }

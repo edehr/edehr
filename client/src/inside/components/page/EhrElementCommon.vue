@@ -12,6 +12,7 @@ import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import StoreHelper from '@/helpers/store-helper'
 import { getCurrentSimDate, getCurrentSimTime } from '@/helpers/date-helper'
 import { DIALOG_EVENT_OPEN } from '@/inside/components/page/ehr-helper'
+import FormInputEvent from '@/helpers/form-input-event'
 
 const DEPENDENT_PROPS = EhrTypes.dependentOn
 
@@ -76,6 +77,7 @@ export default {
     viewOnly: { type: Boolean, default: false }
   },
   computed: {
+    isModified () { return this.initialVal !== this.inputVal },
     ehrText () { return t18EhrText()},
     devEnv () { return process.env.NODE_ENV === 'development' },
     elementIsId () { return this.element.inputType === EhrTypes.dataInputTypes.generatedId },
@@ -208,12 +210,14 @@ export default {
     sendInputEvent (val) {
       if (dbInputs) console.log('EhrCommon broadcast PAGE_FORM_INPUT_EVENT ', val, this.elementKey)
       // notify the dependents that they have a new value to use
-      this.dependentUIEvent()
-      if (this.isPageElement &&  this.isEditing || this.isTableElement && this.dialogIsOpen) {
-        // TODO consider changing dialogIsOpen flag to something we actively get from the open dialog.
-        EventBus.$emit(FORM_INPUT_EVENT, { value: val, element: this.element, tableKey: this.tableKey })
-      } else {
-        // do nothing.  This happens on load when setIntialValue is used.
+      this.dependentUIEvent() //i.e. calculated values
+      let isPageEditing = this.isPageElement && this.isEditing
+      // filter out events that are not from actively open dialog
+      let isActive = this.ehrHelp.isTableDialogActive(this.tableKey)
+      let isTableEditing = isActive && this.isTableElement && this.dialogIsOpen
+      if (isPageEditing || isTableEditing) {
+        const eData = new FormInputEvent(val, this.element, this.tableKey )
+        EventBus.$emit(FORM_INPUT_EVENT, eData)
       }
     },
     refreshPage () {

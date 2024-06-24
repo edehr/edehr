@@ -124,10 +124,16 @@ textarea {
 }
 input, textarea, select, input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:disabled, .input:disabled, .textarea:disabled, .select:disabled, .select select:disabled {
   color: $black;
-  font-weight: bold;
+  //font-weight: bold;
   font-size: $bodyFontSize;
   line-height: 1.4;
 }
+.modifiedElement {
+  input, textarea, select, input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:disabled, .input:disabled, .textarea:disabled, .select:disabled, .select select:disabled {
+    font-weight: bold;
+  }
+}
+
 
 input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:disabled, .input:disabled, .textarea:disabled, .select:disabled, .select select:disabled {
   background: 0;
@@ -922,4 +928,10 @@ select, .select {
 
 #medicationOrders\.med_medication {
   width: 60rem;
+}
+
+.modifiedElement {
+  .form_label_wrapper label {
+    font-weight: bold;
+  }
 }

@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="computed_wrapper", :class='formCss')
+  div(class="computed_wrapper", :class='[formCss, {modifiedElement : isModified}]')
     span {{ value }}
 </template>
 
@@ -23,7 +23,7 @@ export default {
     }
   },
   methods: {
-    receiveEvent (eData) {
+    receiveEvent (eData /*FormInputEvent*/) {
       let pageDataKey = this.pageDataKey
       let elementKey = this.element.elementKey
       let srcValues = this.ehrHelp.getActiveData()

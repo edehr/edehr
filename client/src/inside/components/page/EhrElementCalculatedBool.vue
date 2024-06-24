@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="checkbox_wrapper", :class='formCss')
+  div(class="checkbox_wrapper", :class='[formCss, {modifiedElement : isModified}]')
     input(class="checkbox",
       type="checkbox",
       disabled,
@@ -33,7 +33,7 @@ export default {
     }
   },
   methods: {
-    receiveEvent (eData) {
+    receiveEvent (eData /*FormInputEvent*/) {
       let pageDataKey = this.pageDataKey
       let elementKey = this.element.elementKey
       let srcValues = this.ehrHelp.getActiveData()

@@ -71,5 +71,6 @@
   "leveyJennings.tableLJ": "Agregar un gráfico de Levey-Jennings",
   "medLabBody.tableLabBody": "Agregar un informe de fluidos corporales",
   "leveyJennings.tableLJ.ljAuxEntryTable": "Añadir valor LJ",
-  "acpMost.table": "Agregar un MOST"
+  "acpMost.table": "Agregar un MOST",
+  "neurological.mse_table": "Agregar una evaluación de confusión"
 }

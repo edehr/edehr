@@ -13,6 +13,7 @@ import { updateRespiratory } from './ehr-data-upgrade-utils'
 import { updateWoundCaseStudy } from './ehr-data-upgrade-woundCaseStudy'
 import { updateHematologyLymphocytes } from './ehr-data-upgrade-hematology'
 import { updateV2_4_1 } from './ehr-data-upgrade-v2.4.1'
+import { computeDateOfBirth } from './ehr-def-utils'
 
 export const CURRENT_EHR_DATA_VERSION = 'ev2.4.1'
 // ev2.4.0 major change in how the student's ehrData is stored. It is now in an array of patients.
@@ -138,6 +139,7 @@ export default class EhrDataModel {
     return ehrData
   }
 
+  // noinspection DuplicatedCode
   static ExtractKeyPatientData (ehrData) {
     const keyData = {}
     const dp = ehrData['demographics']
@@ -151,6 +153,9 @@ export default class EhrDataModel {
       keyData.phn = dp.phn
       keyData.familyName = dp.familyName ? dp.familyName.toUpperCase() : ''
       keyData.givenName = dp.givenName
+    }
+    if (keyData.personAge && keyData.dateOfBirth) {
+      keyData.dateOfBirth = computeDateOfBirth(keyData.personAge, keyData.dateOfBirth)
     }
     return keyData
   }

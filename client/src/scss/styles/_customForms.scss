@@ -4,9 +4,18 @@
     margin: 2rem 0;
   }
 
-  input[type=checkbox] {
-    transform: scale(1.5);
+  .flow_across {
+    column-gap: 10px;
   }
+
+  input[type=checkbox] {
+    //transform: scale(1.5);
+  }
+  input[type="checkbox"]:hover {
+    color: black;
+    font-weight: bold;
+  }
+
   & .section {
     table {
       width: 100%;
@@ -68,5 +77,12 @@
   & .form-subtitle {
     margin-top: 0;
     text-align: center;
+  }
+
+  .mse_explain {
+    width: 80%;
+    input {
+      width: 100%;
+    }
   }
 }

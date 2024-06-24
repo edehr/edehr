@@ -22,7 +22,9 @@
         ui-spinner-small(refId='ehrDialogForm', :loading="isClosing")
       span(slot="save-button") Save
 
-    ui-confirm(ref="confirmCancelDialog", @confirm="cancelConfirmed", :saveLabel='ehrText.cancelDialogExitDialogLabel', :cancel-label='ehrText.cancelDialogReturnToEditLabel' )
+    ui-confirm(ref="confirmCancelDialog", @confirm="cancelConfirmed",
+      :saveLabel='ehrText.cancelDialogExitDialogLabel',
+      :cancel-label='ehrText.cancelDialogReturnToEditLabel' )
     ui-confirm(ref="confirmSaveDialog", @confirm="saveConfirmed", @abort="saveDraft", :saveLabel='ehrText.saveDialogButtonLabel', :cancel-label='ehrText.saveDialogAsDraftButtonLabel' )
 </template>
 
@@ -101,11 +103,12 @@ export default {
     },
     cancelDialog: async function () {
       if (this.isViewOnly || !this.hasData) {
+        await this.ehrHelp.removeDraftRow()
         this.closeDialog()
       } else {
         if (this.hasRecHeader) {
           this.$refs.confirmCancelDialog.showDialog(
-            'Confirm cancel.',
+            'Confirm delete.',
             'This action will delete the current record. If you are not sure press the "Return to Edit" button and then save a draft record.')
         } else {
           // for tables (like the patient location table) that do not have record headers we can still get draft row started. Need to remove this when canceling the edit
@@ -145,25 +148,23 @@ export default {
         this.$refs[this.dialogRef].onOpen()
       }
     },
-    receiveInputChangeEvent (eData) {
+    receiveInputChangeEvent (eData /*FormInputEvent*/) {
       const showMsgs = false
-      const {element, tableKey, value} = eData
-      const { elementKey, formIndex } = element
-      if (showMsgs) console.log('receiveInputChangeEvent', tableKey, elementKey, formIndex, value)
+      if (showMsgs) console.log('receiveInputChangeEvent', eData)
       if ( this.isEmbedded) {
-        if (showMsgs) console.log('skip receiveInputChangeEvent on elements because this dialog form is isEmbedded',tableKey, elementKey, formIndex, value)
+        if (showMsgs) console.log('skip receiveInputChangeEvent on elements because this dialog form is isEmbedded')
         return
       }
       if (this.isViewOnly) {
-        if (showMsgs) console.log('skip receiveInputChangeEvent on elements in view only areas',tableKey, elementKey, formIndex, value)
+        if (showMsgs) console.log('skip receiveInputChangeEvent on elements in view only areas')
         return
       }
-      if (tableKey !== this.tableKey) {
-        if (showMsgs) console.log('skip receiveInputChangeEvent on elements from different table:', this.tableKey, tableKey, elementKey, formIndex, value)
+      if (eData.tableKey !== this.tableKey) {
+        if (showMsgs) console.log('skip receiveInputChangeEvent on elements from different table:', this.tableKey, eData.tableKey)
         return
       }
       // some pages have more than one table, each with a dialog. Only respond to events for the right table
-      if (showMsgs) console.log('SET UP VALIDATION AND SAVE FOR ', tableKey, elementKey)
+      if (showMsgs) console.log('SET UP VALIDATION AND SAVE FOR ', eData.tableKey, eData.elementKey)
       // Delay validation until input stream goes quiet for the timeout period
       const VALIDATION_TIMEOUT = 500
       if (this.validationTimeoutId) {

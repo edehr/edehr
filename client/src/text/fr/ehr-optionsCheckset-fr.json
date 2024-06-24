@@ -311,5 +311,7 @@
   "medLabBody.bdyClarity.hazy": "Brumeux",
   "medLabBody.bdyClarity.cloudy": "Nuageux",
   "medLabBody.bdyClarity.turbid": "Trouble",
-  "medLabBody.bdyClarity.bloody": "Sanglant"
+  "medLabBody.bdyClarity.bloody": "Sanglant",
+  "neurological.mse_1.normal": "tenue décontractée, toilettage et hygiène normaux",
+  "neurological.mse_1.other": "Autre"
 }
