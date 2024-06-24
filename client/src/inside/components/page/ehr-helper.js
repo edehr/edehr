@@ -233,10 +233,10 @@ export default class EhrPageHelper {
             && child.inputType !== EhrTypes.dataInputTypes.calculatedValue
             && child.inputType !== EhrTypes.dataInputTypes.calculatedText
         })
-        console.log('has data keys 2', otherKeys)
+        // console.log('has data keys 2', otherKeys)
         hasData = otherKeys.length > 0
       }
-      console.log('has data?', pageKey, tableKey, hasData)
+      // console.log('has data?', pageKey, tableKey, hasData)
     }
     return hasData
   }
