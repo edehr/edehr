@@ -700,9 +700,10 @@ select, .select {
   height: 3rem;
 }
 
-.grid-left-to-right-2 select {
-  min-width: $select_width_2col;
-}
+// Does not work well with the styling above .select_wrapper .select
+//.grid-left-to-right-2 select {
+//  min-width: $select_width_2col;
+//}
 
 .form-table-group {
   display: grid;
