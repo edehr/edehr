@@ -19,7 +19,7 @@
           ehr-group(v-for="group in groups", :key="group.gIndex",
             :tableKey="tableKey",
             :group="group", :ehrHelp="ehrHelp", :viewOnly='isViewOnly')
-        ui-spinner-small(refId='ehrDialogForm', :loading="isClosing")
+        ui-spinner-small(refId='ehrDialogForm', :loading="showSpinner")
       span(slot="save-button") Save
 
     ui-confirm(ref="confirmCancelDialog", @confirm="cancelConfirmed",
@@ -52,7 +52,7 @@ export default {
   data: function () {
     return {
       errorList: [],
-      isClosing: false
+      showSpinner: false
     }
   },
   props: {
@@ -97,7 +97,7 @@ export default {
   },
   methods: {
     closeDialog () {
-      this.isClosing = true
+      this.showSpinner = true
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
       this.ehrHelp.closeDialog()
     },
@@ -108,8 +108,8 @@ export default {
       } else {
         if (this.hasRecHeader) {
           this.$refs.confirmCancelDialog.showDialog(
-            'Confirm delete.',
-            'This action will delete the current record. If you are not sure press the "Return to Edit" button and then save a draft record.')
+            'Confirm cancel.',
+            'This action will cancel the changes you made.')
         } else {
           // for tables (like the patient location table) that do not have record headers we can still get draft row started. Need to remove this when canceling the edit
           await this.ehrHelp.removeDraftRow()
@@ -118,9 +118,8 @@ export default {
       }
     },
     cancelConfirmed: async function () {
-      this.isClosing = true
-      // TODO fix this future defect. Remove the row the dialog was opened on and not just the first draft row.
-      await this.ehrHelp.removeDraftRow()
+      this.showSpinner = true
+      await this.ehrHelp.cancelFormDialog()
       this.closeDialog()
       this.errorList = []
     },
@@ -144,7 +143,7 @@ export default {
           this.ehrHelp.setViewOnly(this.tableKey)
           return
         }
-        this.isClosing = false
+        this.showSpinner = false
         this.$refs[this.dialogRef].onOpen()
       }
     },
@@ -173,7 +172,6 @@ export default {
       this.validationTimeoutId = setTimeout(() => {
         this.errorList = this.ehrHelp.validateDialog() || []
       }, VALIDATION_TIMEOUT)
-
       // Any input change sets up a draft save after timeout. Don't wait for quiet time.
       const SAVE_DRAFT_TIMEOUT = 3000
       if ( !this.saveDraftTimeoutId ) { // IF a save is pending then done else set up a delayed save
@@ -188,7 +186,7 @@ export default {
       }
     },
     saveConfirmed: async function () {
-      this.isClosing = true
+      this.showSpinner = true
       // note that save is disabled if there are errors or there is no data
       // If there is a pending draft save then just cancel it.
       this.clearDraftTimeout()
@@ -206,7 +204,7 @@ export default {
       }
     },
     saveDraft: async function () {
-      this.isClosing = true
+      this.showSpinner = true
       this.clearDraftTimeout()
       await this.ehrHelp.saveDialogDraft()
       this.closeDialog()

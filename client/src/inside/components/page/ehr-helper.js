@@ -34,6 +34,10 @@ const dbPageForm = false
 const dbLeave = false
 const dbDraft = false
 
+const ACTION_COMMIT = 'commit'
+const ACTION_DRAFT = 'draft'
+const ACTION_RESTORE = 'restore'
+
 const ehrPages = new EhrPages()
 
 export default class EhrPageHelper {
@@ -153,8 +157,8 @@ export default class EhrPageHelper {
    * @returns {*}
    * @private
    */
-  _injectDataIntoTable (dialog, committing) {
-    const rowId = dialog.draftRowId
+  _injectDataIntoTable (rowId, dialogValues, committing) {
+    dialogValues = decoupleObject(dialogValues)
     const { tableKey } = EhrDataModel.IdToParts(rowId)
     const rowElementKey = tableKey + '_id'
     const pageData = this._getPageData()
@@ -162,13 +166,6 @@ export default class EhrPageHelper {
     if (!theTable) {
       theTable = []
       pageData[tableKey] = theTable
-    }
-    const dialogValues = decoupleObject(dialog.inputs)
-    dialogValues.createdDate = moment().format()
-    if (committing) {
-      delete dialogValues.isDraft
-    } else {
-      dialogValues.isDraft = 'isDraft' // mark the data as draft
     }
     if (!dialogValues[rowElementKey]) {
       dialogValues[rowElementKey] = rowId
@@ -415,17 +412,23 @@ export default class EhrPageHelper {
     return initialData[this.getPageKey()] || {}
   }
 
+  async cancelFormDialog () {
+    const dialog = this._getActiveTableDialog()
+    const originalData = dialog.intialInputs
+    console.log('cancelFormDialog', originalData)
+    await this._saveDialogData(ACTION_RESTORE)
+  }
   async saveDialogData () {
-    await this._saveDialogData(true)
+    await this._saveDialogData(ACTION_COMMIT)
   }
   async saveDialogDraft () {
     const dialog = this._getActiveTableDialog()
     // put the draft flag into the active inputs for later use. The user may make some edits and then remove the content until the dialog appears to have no data. Yet, the draft maybe has been saved to the db.  With the draft flag we and remove the draft row during the cancel operation.
     // See EhrDialogForm.cancelDialog
     dialog.inputs.isDraft = 'isDraft'
-    await this._saveDialogData(false)
+    await this._saveDialogData(ACTION_DRAFT)
   }
-  async _saveDialogData (committingFlag) {
+  async _saveDialogData (action) {
     const dialog = this._getActiveTableDialog()
     if (!dialog) {
       console.log('Rare case when the save dialog timer fires after dialog is closed')
@@ -437,11 +440,26 @@ export default class EhrPageHelper {
       throw new Error('Can not save table data without an id')
     }
     const { pageKey } = EhrDataModel.IdToParts(draftRowId)
-    let pageData = this._injectDataIntoTable(dialog, committingFlag )
-    pageData = removeEmptyProperties(pageData)
-    if (committingFlag) {
-      await this._saveData(pageKey, pageData)
+    let dialogValues
+    if (action === ACTION_COMMIT) {
+      dialogValues = dialog.inputs
+      dialogValues.createdDate = moment().format()
+      delete dialogValues.isDraft
+    } else if (action === ACTION_DRAFT) {
+      dialogValues = dialog.inputs
+      dialogValues.createdDate = moment().format()
+      dialogValues.isDraft = 'isDraft' // mark the data as draft
+    } else if (action === ACTION_RESTORE) {
+      dialogValues = dialog.intialInputs
     } else {
+      throw new Error('Coding error. Must provide a valid action when calling saveDialogData.')
+    }
+    let pageData = this._injectDataIntoTable(draftRowId, dialogValues )
+    pageData = removeEmptyProperties(pageData)
+    if (action === ACTION_COMMIT || action === ACTION_RESTORE) {
+      await this._saveData(pageKey, pageData)
+    }
+    if (action === ACTION_DRAFT) {
       // saving draft data
       let payload = {
         propertyName: pageKey,
@@ -644,7 +662,7 @@ export default class EhrPageHelper {
     }
     dialog.inputs = this._getInitialDialogInputs(tableKey, dialog, options)
     // stash initial data for the cancel operation
-    dialog.intialInputs = options.draftRowData
+    dialog.intialInputs = decoupleObject(options.draftRowData)
     // NOW set the open state flag which enables the FORM_INPUT_EVENT event to fire when a dialog input is changed.
     dialog.active = true
     // End by sending out the "I'm opened event"
