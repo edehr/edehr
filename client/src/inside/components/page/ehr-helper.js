@@ -218,26 +218,32 @@ export default class EhrPageHelper {
       const tableKey = dialog.tableKey
       const pageKey = dialog.pageKey
       if (dialog.inputs) {
-        const values = decoupleObject(dialog.inputs)
-        let reduced = removeEmptyProperties(values)
-        const keys = Object.keys(reduced)
+        let values = decoupleObject(dialog.inputs)
+        values = removeEmptyProperties(values)
+        let keys = Object.keys(values)
         // remove rec header fields because they are not important unless there is other data
         const KEYS = ['_id', 'name', 'profession', 'day', 'time']
-        const recHdrKeys = KEYS.map(key => tableKey + '_' + key)
-        recHdrKeys.push('isDraft', 'createdDate')
-        let otherKeys = keys.filter(key => !recHdrKeys.includes(key))
+        const keysToRemove = KEYS.map(key => tableKey + '_' + key)
+        keysToRemove.push('isDraft', 'createdDate')
+        keys = keys.filter(key => !keysToRemove.includes(key))
         // remove any elements that are calculated
-        otherKeys = otherKeys.filter(oKey => {
+        keys = keys.filter(oKey => {
           const child = ehrPages.getPageChild(pageKey, oKey)
-          return child
-            && child.inputType !== EhrTypes.dataInputTypes.calculatedValue
-            && child.inputType !== EhrTypes.dataInputTypes.calculatedText
+          return child && !EhrTypes.calculatedTypes.includes(child.inputType)
         })
-        // console.log('has data keys 2', otherKeys)
-        hasData = otherKeys.length > 0
+        // console.log('has data keys 3', JSON.stringify(keys))
+        // remove values that are just equal the defaults ....
+        const defValues = this._getDialogFormDefaults(dialog)
+        keys = keys.filter(key => {
+          let v = values[key]
+          let d = defValues[key]
+          return v !== d
+        })
+        console.log('has data keys 4', JSON.stringify(keys))
+        hasData = keys.length > 0
       }
-      // console.log('has data?', pageKey, tableKey, hasData)
     }
+    // console.log('has data?', hasData)
     return hasData
   }
   activeTableDialogHasRecordHeader () {
@@ -637,6 +643,8 @@ export default class EhrPageHelper {
       dialog.draftRowId = options.draftRowId
     }
     dialog.inputs = this._getInitialDialogInputs(tableKey, dialog, options)
+    // stash initial data for the cancel operation
+    dialog.intialInputs = options.draftRowData
     // NOW set the open state flag which enables the FORM_INPUT_EVENT event to fire when a dialog input is changed.
     dialog.active = true
     // End by sending out the "I'm opened event"
@@ -656,6 +664,11 @@ export default class EhrPageHelper {
   // ------------------------------------------------------------------------------------------
 
 
+  _getDialogFormDefaults (dialog) {
+    let tableDef = dialog.tableDef
+    let form = tableDef.form
+    return { ...form.ehr_data}
+  }
   /**
    * _setupDialogInputs can ....
    * set inputs to any default values
@@ -675,9 +688,8 @@ export default class EhrPageHelper {
     let inputs = {}
     let tableDef = dialog.tableDef
     let hasRecHeader = tableDef.hasRecHeader
-    let form = tableDef.form
     // set inputs equal to the form's data definition
-    inputs = { ...form.ehr_data}
+    inputs = this._getDialogFormDefaults(dialog)
     if (options.draftRowData) {
     // will override the sim day/time here if previously set to something else
       inputs = { ...options.draftRowData }
