@@ -23,9 +23,6 @@ const EhrTypes = {
     checkbox: 'checkbox',
     boxcheckset: 'boxcheckset',
     select: 'select',
-    calculatedBool: 'calculatedBool',
-    calculatedText: 'calculatedText',
-    calculatedValue: 'calculatedValue',
     checkset: 'checkset',
     custom_form: 'custom_form',
     date: 'date',
@@ -35,8 +32,6 @@ const EhrTypes = {
     ehrLocation: 'ehrLocation',
     // day: 'day',
     ehrFile: 'ehrFile',
-    ehr_embedded: 'ehr_embedded',
-    generatedId: 'generatedId',
     lab_result: 'lab_result', // lab result value with range in the options property
     mainDOB: 'mainDOB', // main edit field on demographics page. Year is computed base on dependant age field.
     personAge: 'personAge',
@@ -51,7 +46,13 @@ const EhrTypes = {
     decimal1: 'decimal1',
     decimal2: 'decimal2',
     visitDay: 'visitDay',
-    visitTime: 'visitTime'
+    visitTime: 'visitTime',
+    // types controlled by the application. See ehr-helper activeTableDialogHasData
+    generatedId: 'generatedId',
+    calculatedBool: 'calculatedBool',
+    calculatedText: 'calculatedText',
+    calculatedValue: 'calculatedValue',
+    ehr_embedded: 'ehr_embedded',
   },
   dependentOn: {
     splitActionKeyOn: ':',
@@ -106,6 +107,11 @@ const EhrTypes = {
     }
   }
 }
+
+const types = EhrTypes.dataInputTypes
+EhrTypes.calculatedTypes = [
+  types.calculatedValue, types.calculatedText, types.calculatedBool,
+  types.ehr_embedded, types.generatedId]
 
 EhrTypes.inputTypes = Object.assign({},
   EhrTypes.structuralTypes,
