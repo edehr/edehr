@@ -72,5 +72,6 @@
   "medLabBody.tableLabBody": "Ajouter un rapport sur les fluides corporels",
   "leveyJennings.tableLJ.ljAuxEntryTable": "Ajouter une valeur LJ",
   "acpMost.table": "Ajouter un MOST",
-  "neurological.mse_table": "Ajouter une évaluation de la confusion"
+  "neurological.mse_table": "Ajouter une évaluation MSE",
+  "orderSets.pcaPpo": "Ajouter une analgésie contrôlée par le patient"
 }

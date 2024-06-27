@@ -52,7 +52,7 @@ let routes = [
     name: 'DEV_CUSTOM_FORM',
     component: () =>
       import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/DevCustomForm.vue'),
-    meta: { layout: 'print', label: 'Dev custom form', zone: ZONE_EHR }
+    meta: { layout: 'print', label: 'Dev custom form', zone: ZONE_PUBLIC }
   },
   {
     // Redirect from LTI entry to appropriate part of application based on current appType (from seed)

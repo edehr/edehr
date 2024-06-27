@@ -1411,8 +1411,6 @@
   "acpMost.time": "Tiempo",
   "neurological.mse_table": "MSE",
   "neurological.mseGroup": "MSE",
-  "neurological.mse_1": "Apariencia",
-  "neurological.mse_3": "Característica 3: Pensamiento desorganizado",
-  "neurological.mse_4": "Característica 4: nivel alterado de conciencia",
-  "neurological.mse_comments": "Evaluación"
+  "orderSets.pcaPpo": "PCA",
+  "orderSets.pcaPpo-2": "Analgesia controlada por el paciente"
 }

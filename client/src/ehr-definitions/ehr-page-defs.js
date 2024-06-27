@@ -25776,6 +25776,57 @@ const DEFS = {
         "inputType": "ehrFile",
         "tableColumn": "2",
         "fqn": "orderSets.preOrderSetFile"
+      },
+      {
+        "elementKey": "pcaPpo_name",
+        "formIndex": "3",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "orderSets.name"
+      },
+      {
+        "elementKey": "pcaPpo_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "pcaPpo_profession",
+        "formIndex": "3",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "orderSets.profession"
+      },
+      {
+        "elementKey": "pcaPpo_day",
+        "formIndex": "3",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "orderSets.day"
+      },
+      {
+        "elementKey": "pcaPpo_time",
+        "formIndex": "3",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "orderSets.time"
+      },
+      {
+        "elementKey": "pcaPpoForm",
+        "formIndex": "3",
+        "formOption": "pca-ppo",
+        "inputType": "custom_form",
+        "tableColumn": "2",
+        "fqn": "orderSets.pcaPpoForm"
       }
     ],
     "pageElements": {
@@ -25882,6 +25933,59 @@ const DEFS = {
           "preOrderSetFile",
           "preprintOrderSet_name",
           "preprintOrderSet_profession"
+        ],
+        "hasRecHeader": true
+      },
+      "pcaPpo": {
+        "elementKey": "pcaPpo",
+        "pageElementIndex": "3",
+        "pageKey": "orderSets",
+        "tableKey": "pcaPpo",
+        "isTable": true,
+        "form": {
+          "elementKey": "pcaPpo",
+          "label": "PCA",
+          "addButtonText": "Add Patient Controled Analgesia",
+          "formKey": "pcaPpo",
+          "ehr_groups": [
+            {
+              "elementKey": "pcaPpo-1",
+              "formCss": "record-header",
+              "fqn": "orderSets.pcaPpo-1",
+              "gIndex": "1",
+              "gChildren": [
+                "pcaPpo_name",
+                "pcaPpo_profession",
+                "pcaPpo_day",
+                "pcaPpo_time"
+              ]
+            },
+            {
+              "elementKey": "pcaPpo-2",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "orderSets.pcaPpo-2",
+              "gIndex": "2",
+              "gChildren": [
+                "pcaPpoForm"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "pcaPpo_name": "",
+            "pcaPpo_profession": "",
+            "pcaPpo_day": "",
+            "pcaPpo_time": "",
+            "pcaPpoForm": ""
+          }
+        },
+        "fqn": "orderSets.pcaPpo",
+        "tableChildren": [
+          "pcaPpo_id",
+          "pcaPpo_day",
+          "pcaPpo_time",
+          "pcaPpoForm",
+          "pcaPpo_name",
+          "pcaPpo_profession"
         ],
         "hasRecHeader": true
       }

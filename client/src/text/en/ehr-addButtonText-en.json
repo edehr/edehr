@@ -72,5 +72,6 @@
   "medLabBody.tableLabBody": "Add a Bodily Fluid Report",
   "leveyJennings.tableLJ.ljAuxEntryTable": "Add LJ value",
   "acpMost.table": "Add a MOST",
-  "neurological.mse_table": "Add a MSE assessment"
+  "neurological.mse_table": "Add a MSE assessment",
+  "orderSets.pcaPpo": "Add Patient Controled Analgesia"
 }

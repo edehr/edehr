@@ -15,7 +15,7 @@
     ui-button(value="ets-edit-row",   v-if="canEditSeed(dRow)",
       v-on:buttonClicked="editSeedRow(getIdFromRow(dRow))", :title='ehrText.editButtonLabel')
       fas-icon(icon="edit")
-    ui-button(value="ets-delt-row",   v-if="canEditSeed(dRow)",
+    ui-button(value="ets-delt-row",   v-if="canDeleteRow(dRow)",
       v-on:buttonClicked="deleteSeedRow(getIdFromRow(dRow))", :title='ehrText.deleteButtonLabel')
       fas-icon(icon="trash")
 </template>
@@ -65,6 +65,9 @@ export default {
     },
     canEditSeed (row) {
       return StoreHelper.isSeedEditing() && ! this.isDraft(row)
+    },
+    canDeleteRow (row) {
+      return ( StoreHelper.isSeedEditing() ) || ( StoreHelper.isStudent() && this.isDraft(row) )
     },
     getIdFromRow (dbRow) {
       return dbRow[0].value

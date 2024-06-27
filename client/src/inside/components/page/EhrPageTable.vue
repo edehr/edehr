@@ -27,6 +27,7 @@
     ui-confirm(ref="confirmDialog", v-on:confirm="proceedClearAllData", saveLabel='Yes')
     ui-confirm(ref="confirmDelete", v-on:confirm="proceedDeleteRow", saveLabel='Yes')
 
+    input(id="spControl", type='checkbox', v-model='useSidePanel')
 </template>
 
 <script>
@@ -178,5 +179,32 @@ export default {
 <style lang="scss" scoped>
 .reset-button {
   margin-top: 1.5rem;
+}
+#main-content {
+  transition: margin-right 1s;
+}
+
+#side-panel {
+  position: fixed;
+  right: -40%; /* Initially hidden */
+  top: 10rem;
+  width: 40%;
+  height: 70%;
+  overflow: auto;
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+  transition: right 1s;
+  z-index: 5;
+}
+.side-panel-inner{
+  padding: 20px;
+}
+#side-panel.open {
+  right: 0;
+}
+#spControl {
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
 </style>
