@@ -27,7 +27,7 @@
     ui-confirm(ref="confirmDialog", v-on:confirm="proceedClearAllData", saveLabel='Yes')
     ui-confirm(ref="confirmDelete", v-on:confirm="proceedDeleteRow", saveLabel='Yes')
 
-    input(id="spControl", type='checkbox', v-model='useSidePanel')
+    //input(id="spControl", type='checkbox', v-model='useSidePanel')
 </template>
 
 <script>
