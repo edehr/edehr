@@ -429,9 +429,10 @@ export default class EhrPageHelper {
     await this._saveDialogData(ACTION_DRAFT)
   }
   async _saveDialogData (action) {
+    const localDbg = false
     const dialog = this._getActiveTableDialog()
     if (!dialog) {
-      console.log('Rare case when the save dialog timer fires after dialog is closed')
+      if(localDbg) console.log('Rare case when the save dialog timer fires after dialog is closed')
       return
     }
     const { draftRowId } = dialog
@@ -441,26 +442,23 @@ export default class EhrPageHelper {
     }
     const { pageKey } = EhrDataModel.IdToParts(draftRowId)
     let dialogValues
+    let pageData
     if (action === ACTION_COMMIT) {
+      if(localDbg) console.log('commit row data')
       dialogValues = dialog.inputs
       dialogValues.createdDate = moment().format()
       delete dialogValues.isDraft
+      pageData = this._injectDataIntoTable(draftRowId, dialogValues )
+      pageData = removeEmptyProperties(pageData)
+      await this._saveData(pageKey, pageData)
+      // done
     } else if (action === ACTION_DRAFT) {
+      if(localDbg) console.log('save draft row data')
       dialogValues = dialog.inputs
       dialogValues.createdDate = moment().format()
       dialogValues.isDraft = 'isDraft' // mark the data as draft
-    } else if (action === ACTION_RESTORE) {
-      dialogValues = dialog.intialInputs || {}
-    } else {
-      throw new Error('Coding error. Must provide a valid action when calling saveDialogData.')
-    }
-    let pageData = this._injectDataIntoTable(draftRowId, dialogValues )
-    pageData = removeEmptyProperties(pageData)
-    if (action === ACTION_COMMIT || action === ACTION_RESTORE) {
-      await this._saveData(pageKey, pageData)
-    }
-    if (action === ACTION_DRAFT) {
-      // saving draft data
+      pageData = this._injectDataIntoTable(draftRowId, dialogValues )
+      pageData = removeEmptyProperties(pageData)
       let payload = {
         propertyName: pageKey,
         value: pageData
@@ -474,6 +472,20 @@ export default class EhrPageHelper {
       } else if (StoreHelper.isSeedEditing()) {
         await store.dispatch('seedListStore/sendSeedEhrDataDraft', payload)
       }
+      // done
+    } else if (action === ACTION_RESTORE) {
+      if (dialog.intialInputs) {
+        if(localDbg) console.log('restore row data')
+        dialogValues = dialog.intialInputs
+        pageData = this._injectDataIntoTable(draftRowId, dialogValues)
+        pageData = removeEmptyProperties(pageData)
+        await this._saveData(pageKey, pageData)
+      } else {
+        if(localDbg) console.log('remove initial draft row')
+        await this.deleteSeedRow(draftRowId)
+      }
+    } else {
+      throw new Error('Coding error. Must provide a valid action when calling saveDialogData.')
     }
   }
   async _saveData (pageKey, pageData) {
