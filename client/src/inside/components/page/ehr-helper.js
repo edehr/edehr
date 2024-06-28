@@ -450,7 +450,7 @@ export default class EhrPageHelper {
       dialogValues.createdDate = moment().format()
       dialogValues.isDraft = 'isDraft' // mark the data as draft
     } else if (action === ACTION_RESTORE) {
-      dialogValues = dialog.intialInputs
+      dialogValues = dialog.intialInputs || {}
     } else {
       throw new Error('Coding error. Must provide a valid action when calling saveDialogData.')
     }
