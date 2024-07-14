@@ -1,0 +1,3 @@
+docker exec -it $(docker ps -aqf "name=mongo")  /bin/bash
+
+mongosh --authenticationDatabase admin -u ${MONGODB_USER} -p ${MONGODB_PWORD} admin

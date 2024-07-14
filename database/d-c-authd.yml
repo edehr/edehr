@@ -1,0 +1,16 @@
+version: '3'
+services:
+  mongo:
+    container_name: mongo
+    image: mongo
+    environment:
+      - MONGODB_USER
+      - MONGODB_PWORD
+      - MONGODB_PORT=${MONGODB_PORT}
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PWORD}
+    ports:
+      - '27019:27017'
+    volumes:
+      - "./dbAuthdData:/data/db"
+      - "./dbdata/backups:/data/backups"

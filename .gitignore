@@ -26,6 +26,7 @@ database/backups/**
 database/dbdata/**
 database/data/**
 database/docker-dev/**
+database/dbAuthdData/**
 docs/.vuepress/dist/**
 ehr/dev/**
 ehr/dist/**
