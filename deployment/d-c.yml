@@ -18,7 +18,12 @@ services:
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     volumes:
       - ../client/published/:/usr/share/nginx/html
-      - ../logs/:/var/log/nginx/
+      - "${STORAGE_LOGFILES}:/var/log/nginx"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
   edehrapp:
     restart: unless-stopped
     build:
@@ -67,9 +72,15 @@ services:
       - npm
       - run
       - ${START_ARG}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "6"
   mongo_service:
     restart: unless-stopped
     image: mongo
+    user: mongodb
     environment:
       - MONGODB_USER
       - MONGODB_PWORD
@@ -78,8 +89,17 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PWORD}
     ports:
       - "${MONGODB_PORT}:${MONGODB_PORT}"
-    command: mongod --port ${MONGODB_PORT}
+    command: mongod --port ${MONGODB_PORT} --logpath /var/log/mongodb/mongod.log --logappend
     volumes:
       - "${STORAGE_DB_SCRIPTS}:/data/scripts"
       - "${STORAGE_DATABASE}:/data/db"
       - "${STORAGE_BACKUPS}:/data/backups"
+      - "${STORAGE_LOGFILES}/mongo:/var/log/mongodb"
+      - ./mongo-init.sh:/usr/local/bin/mongo-init.sh
+    entrypoint: [ "/usr/local/bin/mongo-init.sh" ]
+    stop_grace_period: 1m
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
