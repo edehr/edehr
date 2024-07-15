@@ -29,21 +29,8 @@ function connectWithRetry (uri, options, sanitized, retriesLeft = 3) {
   })
 }
 export default function (config) {
-  return new Promise((resolve, reject) => {
-    let uri = getDbUri(config)
-    const dbc = config.database
-    const sanitized = uri.includes('auth') ? uri.replace(dbc.password, 'aPassword') : uri
-    connectWithRetry(uri, dbc.options, sanitized)
-    // mongoose
-    //   .connect(uri, dbc.options)
-    //   .then(conn => {
-    //     debug('DB: Connected to ' + sanitized)
-    //     resolve(conn)
-    //   })
-    //   .catch(error => {
-    //     logError(`DB: connect error:  ${error}`)
-    //     reject(error)
-    //   })
-
-  })
+  let uri = getDbUri(config)
+  const dbc = config.database
+  const sanitized = uri.includes('auth') ? uri.replace(dbc.password, 'aPassword') : uri
+  return connectWithRetry(uri, dbc.options, sanitized)
 }
