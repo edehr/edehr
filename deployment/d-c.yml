@@ -82,6 +82,7 @@ services:
     image: mongo
     user: mongodb
     environment:
+      - SUBDOMAIN
       - MONGODB_USER
       - MONGODB_PWORD
       - MONGODB_PORT=${MONGODB_PORT}
