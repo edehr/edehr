@@ -3,6 +3,7 @@ services:
   mongo:
     container_name: mongo
     image: mongo
+    user: mongodb
     environment:
       - MONGODB_USER
       - MONGODB_PWORD
@@ -11,6 +12,16 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PWORD}
     ports:
       - '27019:27017'
+    command: mongod --logpath /var/log/mongodb/mongod.log
     volumes:
       - "./dbAuthdData:/data/db"
-      - "./dbdata/backups:/data/backups"
+      - "./dbAuthdData/backups:/data/backups"
+      - "./dbAuthdData/logs:/var/log/mongodb"
+      - ./dev-mongo-init.sh:/usr/local/bin/mongo-init.sh
+    entrypoint: [ "/usr/local/bin/mongo-init.sh" ]
+    stop_grace_period: 1m
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

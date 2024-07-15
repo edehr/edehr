@@ -20,6 +20,7 @@ const toCheck = [
   'STORAGE_DB_SCRIPTS=',
   'STORAGE_DATABASE=',
   'STORAGE_BACKUPS=',
+  'STORAGE_LOGFILES=',
   'NODE_ENV='
 ]
 

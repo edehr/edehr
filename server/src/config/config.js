@@ -135,7 +135,7 @@ export function getDbUri (config) {
   const sanitized = auth ? uri.replace(dbc.password, 'aPassword') : uri
   debug('DB: URN sanitized: ====  %s', sanitized)
   debug('DB: Options: %o', dbc.options)
-  debug('DB: ehrApp', uri)
+  // debug('DB: ehrApp', uri)
   return uri
 }
 ////////////////
