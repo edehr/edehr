@@ -561,5 +561,9 @@
   "medLabBody.bdyOther2relref": "Autre 2 Réf Rel",
   "medLabBody.bdyOther2absref": "Autre 2 Abs Réf",
   "acpMost.name": "Identification",
-  "neurological.mse_table": "Examen de l'état mental"
+  "neurological.mse_table": "Examen de l'état mental",
+  "checklistsPage.name": "Identification",
+  "consentsPage.name": "Identification",
+  "riskAssessment.name": "Identification",
+  "neurological.table": ""
 }

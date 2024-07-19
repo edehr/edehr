@@ -312,6 +312,15 @@
   "medLabBody.bdyClarity.cloudy": "Nublado",
   "medLabBody.bdyClarity.turbid": "Túrbido",
   "medLabBody.bdyClarity.bloody": "Sangriento",
-  "neurological.mse_1.normal": "vestimenta informal, aseo e higiene normales.",
-  "neurological.mse_1.other": "Otro"
+  "neurological.mse_1.normal": "toilettage et hygiène normaux",
+  "medicalImaging.mImg_Location.ab": "",
+  "medicalImaging.mImg_Location.armL": "",
+  "medicalImaging.mImg_Location.armR": "",
+  "medicalImaging.mImg_Location.chest": "",
+  "medicalImaging.mImg_Location.head": "",
+  "medicalImaging.mImg_Location.heart": "",
+  "medicalImaging.mImg_Location.neck": "",
+  "medicalImaging.mImg_Location.legL": "",
+  "medicalImaging.mImg_Location.legR": "",
+  "medicalImaging.mImg_Location.pelvis": ""
 }

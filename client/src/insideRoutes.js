@@ -380,11 +380,11 @@ export function inside () {
       meta: { layout: 'inside', label: 'Med Lab Accessioning', topLevel: 'med-lab', zone: 'ehr' }
     },
     {
-      path: '/ehr/patient/special-indicators',
-      name: 'special-indicators',
+      path: '/ehr/current/assessments/risk-assessment',
+      name: 'risk-assessment',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/SpecialIndicators.vue'),
-      meta: { layout: 'inside', label: 'Special Indicators (Risk)', topLevel: 'patient', zone: 'ehr' }
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/RiskAssessment.vue'),
+      meta: { layout: 'inside', label: 'Risk assessments', topLevel: 'current', zone: 'ehr' }
     },
     {
       path: '/ehr/med-lab/med-lab-phone-log',
@@ -413,6 +413,27 @@ export function inside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/AcpMost.vue'),
       meta: { layout: 'inside', label: 'Advanced care plans', topLevel: 'chart', zone: 'ehr' }
+    },
+    {
+      path: '/ehr/current/consents',
+      name: 'consents',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Consents.vue'),
+      meta: { layout: 'inside', label: 'Consents', topLevel: 'current', zone: 'ehr' }
+    },
+    {
+      path: '/ehr/current/checklists',
+      name: 'checklists',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Checklists.vue'),
+      meta: { layout: 'inside', label: 'Checklists', topLevel: 'current', zone: 'ehr' }
+    },
+    {
+      path: '/ehr/current/special-indicators',
+      name: 'special-indicators',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/SpecialIndicators.vue'),
+      meta: { layout: 'inside', label: 'Special indicators', topLevel: 'current', zone: 'ehr' }
     }
   ]
 }

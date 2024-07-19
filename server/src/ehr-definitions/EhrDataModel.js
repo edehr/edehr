@@ -397,7 +397,17 @@ export default class EhrDataModel {
   }
 
   static IdToParts (rowId) {
+    let results
     let p = rowId ? rowId.split('.') : undefined
-    return p && p.length === 3 ? { pageKey: p[0], tableKey: p[1], rowIndex: p[2] } : undefined
+    if (p) {
+      if (p.length === 3 ) {
+        results = { pageKey: p[0], tableKey: p[1], rowIndex: p[2] }
+      }
+      if (p.length === 5 ) {
+        results = { pageKey: p[0], tableKey: p[1], rowIndex: p[2], orderSetElement: p[3], medId: p[4] }
+      }
+    }
+    // return p && p.length === 3 ? { pageKey: p[0], tableKey: p[1], rowIndex: p[2] } : undefined
+    return results
   }
 }

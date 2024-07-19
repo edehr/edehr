@@ -312,6 +312,15 @@
   "medLabBody.bdyClarity.cloudy": "Nuageux",
   "medLabBody.bdyClarity.turbid": "Trouble",
   "medLabBody.bdyClarity.bloody": "Sanglant",
-  "neurological.mse_1.normal": "tenue décontractée, toilettage et hygiène normaux",
-  "neurological.mse_1.other": "Autre"
+  "neurological.mse_1.normal": "OBSOLETE",
+  "medicalImaging.mImg_Location.ab": "",
+  "medicalImaging.mImg_Location.armL": "",
+  "medicalImaging.mImg_Location.armR": "",
+  "medicalImaging.mImg_Location.chest": "",
+  "medicalImaging.mImg_Location.head": "",
+  "medicalImaging.mImg_Location.heart": "",
+  "medicalImaging.mImg_Location.neck": "",
+  "medicalImaging.mImg_Location.legL": "",
+  "medicalImaging.mImg_Location.legR": "",
+  "medicalImaging.mImg_Location.pelvis": ""
 }

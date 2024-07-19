@@ -1,7 +1,25 @@
 // Be sure to nest all styles inside the top level class
 .ehr-custom-form {
+  /* Overrides to make the custom form more compact */
+  font-size: 1rem;
+  h3 {
+    font-size: 1rem;
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+  input {
+    line-height: 1;
+  }
+  ol > li {
+    list-style: inherit;
+    margin-left: 2rem;
+  }
+  /* End of overrides */
+
   & section {
-    margin: 2rem 0;
+    margin: 5px 0;
   }
 
   .flow_across {
@@ -22,8 +40,8 @@
     }
   }
   & .section {
-    margin: 1rem;
-    padding: 1rem;
+    margin: 5px;
+    padding: 5px;
     //border: 1px solid #222222;
     & h2 {
       margin-top: 0;
@@ -54,17 +72,16 @@
     width: 100%;
   }
 
+  ul > li {
+    list-style: square;
+    margin-left: 2rem;
+  }
+
   & article {
     padding-left: 1rem;
     margin-top: 1rem;
     & h3 {
       margin-bottom: 0;
-    }
-    & ul {
-      margin-left: 2rem;
-    }
-    & ul > li {
-      list-style: square;
     }
   }
   & .text-right {
@@ -73,10 +90,12 @@
   & .form-title {
     margin-bottom: 0;
     text-align: center;
+    font-size: 1.1rem;
   }
   & .form-subtitle {
     margin-top: 0;
     text-align: center;
+    font-size: 1rem;
   }
 
   .mse_explain {
@@ -85,4 +104,20 @@
       width: 100%;
     }
   }
+  .flow_vertical {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .table-k-v tr td:first-child {
+    width: 20rem;
+    //color: red;
+  }
+
+  .table-checklist tr td:first-child {
+    width: 2rem;
+    //color: blue;
+  }
+
+
 }

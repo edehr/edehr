@@ -4,12 +4,12 @@
     ehr-page(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
     div(style="display:none")
       p This Special Indicators page is generated.
-      p Label: Special Indicators (Risk)
+      p Label: Special indicators
       p Data Key: specialIndicators
       p Component name: SpecialIndicators
       p Redirect: 
       p Route name: special-indicators
-      p Full path: /ehr/patient/special-indicators
+      p Full path: /ehr/current/special-indicators
 </template>
 
 <script>

@@ -52,6 +52,20 @@ export function extractDay (dateStr) {
   return results
 }
 
+export function calculateSumOptionValues ( srcValues) {
+  const regexp = /_([0-9]+)/g
+  let results = 0
+  srcValues.forEach( sVal => {
+    const elements = [...sVal.matchAll(regexp)]
+    let value = elements[0]
+    value = value ? value[1] : 0
+    value = parseInt(value)
+    console.log('------------ ', sVal, value, elements)
+    results += value
+  })
+  return results
+}
+
 /**
  * WIP === NOT READY FOR USE. NEED SME HELP.
  *
@@ -67,7 +81,6 @@ export function extractDay (dateStr) {
  * @param srcValues
  */
 export function calculateMedicationConcentration ( srcValues) {
-
   let results = 0
   if (srcValues.length === 4) {
     let dose = srcValues[0]
