@@ -1,0 +1,106 @@
+version: '3'
+services:
+  nginx:
+    restart: unless-stopped
+    build:
+      context: ../nginx
+      dockerfile: Dockerfile
+      args:
+        - NODE_ENV
+        - PROXY_PASS_HOST
+        - SERVER_PORT
+        - DOMAIN
+    depends_on:
+        - edehrapp
+    ports:
+      - "80:80"
+      - "443:443"
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    volumes:
+      - ../client/published/:/usr/share/nginx/html
+      - "${STORAGE_LOGFILES}:/var/log/nginx"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+  edehrapp:
+    restart: unless-stopped
+    build:
+      context: ../server
+      dockerfile: Dockerfile
+    hostname: edehrapp
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    environment:
+      - ADMIN_PWORD
+      - API_PORT
+      - API_TOKEN
+      - APP_TITLE
+      - APP_VERSION
+      - API_LOG_FILES_DIRECTORY
+      - EHR_LOG_FILES_DIRECTORY
+      - AUTH_TOKEN_SECRET
+      - CLIENT_PORT
+      - COOKIE_SECRET
+      - DEBUG
+      - DOMAIN
+      - MONGODB_HOST
+      - MONGODB_PORT
+      - MONGODB_PWORD
+      - MONGODB_USER
+      - NODE_ENV
+      - PROXY_PASS_HOST
+      - SCHEME
+      - SERVER_PORT
+      - SENTRY_DSN
+      - SENDGRID_API_KEY
+      - CRONITOR_API_KEY
+      - CRONITOR_MONITOR_KEY
+      - START_ARG
+    depends_on:
+     - mongo_service
+    volumes:
+      - "../server/src/:/usr/src/app/src/"
+      - "../server/resources/:/usr/src/app/resources/"
+      - "../server/action-logs/:/usr/src/app/action-logs/"
+      - "../server/api-logs/:/usr/src/app/api-logs/"
+      - "../server/ehr-logs/:/usr/src/app/ehr-logs/"
+      - "../server/files-common/:/usr/src/app/files-common/"
+      - "../server/files-ehr/:/usr/src/app/files-ehr/"
+    entrypoint:
+      - npm
+      - run
+      - ${START_ARG}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "6"
+  mongo_service:
+    restart: unless-stopped
+    image: mongo
+    user: mongodb
+    environment:
+      - SUBDOMAIN
+      - MONGODB_USER
+      - MONGODB_PWORD
+      - MONGODB_PORT=${MONGODB_PORT}
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PWORD}
+    ports:
+      - "${MONGODB_PORT}:${MONGODB_PORT}"
+    command: mongod --port ${MONGODB_PORT} --logpath /var/log/mongodb/mongod.log --logappend
+    volumes:
+      - "${STORAGE_DB_SCRIPTS}:/data/scripts"
+      - "${STORAGE_DATABASE}:/data/db"
+      - "${STORAGE_BACKUPS}:/data/backups"
+      - "${STORAGE_LOGFILES}/mongo:/var/log/mongodb"
+      - ./mongo-init.sh:/usr/local/bin/mongo-init.sh
+    entrypoint: [ "/usr/local/bin/mongo-init.sh" ]
+    stop_grace_period: 1m
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
