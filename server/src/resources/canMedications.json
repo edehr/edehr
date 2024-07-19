@@ -6173,6 +6173,14 @@
   },
   {
    "v": "can.1",
+   "med": "oxazepam",
+   "route": "ORAL",
+   "sched": "Targeted (CDSA IV)",
+   "thC": "N05BA04",
+   "thD": "OXAZEPAM"
+  },
+  {
+   "v": "can.1",
    "med": "apo-oxazepam",
    "route": "ORAL",
    "sched": "Targeted (CDSA IV)",

@@ -236,7 +236,7 @@ export default class EhrPageHelper {
           let d = defValues[key]
           return v !== d
         })
-        console.log('has data keys 4', JSON.stringify(keys))
+        // console.log('dialog has data keys 4', JSON.stringify(keys))
         hasData = keys.length > 0
       }
     }

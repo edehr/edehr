@@ -1714,6 +1714,63 @@ const DEFS = {
         "fqn": "visit.notes"
       },
       {
+        "elementKey": "diagnosisTable_name",
+        "formIndex": "2",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "visit.name"
+      },
+      {
+        "elementKey": "diagnosisTable_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "diagnosisTable_profession",
+        "formIndex": "2",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "visit.profession"
+      },
+      {
+        "elementKey": "diagnosisTable_day",
+        "formIndex": "2",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "visit.day"
+      },
+      {
+        "elementKey": "diagnosisTable_time",
+        "formIndex": "2",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "visit.time"
+      },
+      {
+        "elementKey": "diagnosisRecord",
+        "formIndex": "2",
+        "inputType": "text",
+        "tableColumn": "2",
+        "fqn": "visit.diagnosisRecord"
+      },
+      {
+        "elementKey": "diagnosisDetails",
+        "formIndex": "2",
+        "inputType": "textarea",
+        "tableColumn": "3",
+        "fqn": "visit.diagnosisDetails"
+      },
+      {
         "elementKey": "table_name",
         "formIndex": "3",
         "inputType": "practitionerName",
@@ -1801,63 +1858,6 @@ const DEFS = {
         "tableColumn": "6",
         "validation": "time24",
         "fqn": "visit.transferOutTime"
-      },
-      {
-        "elementKey": "diagnosisTable_name",
-        "formIndex": "2",
-        "inputType": "practitionerName",
-        "tableColumn": "1",
-        "recHeader": true,
-        "fqn": "visit.name"
-      },
-      {
-        "elementKey": "diagnosisTable_id",
-        "inputType": "generatedId",
-        "tableColumn": 0,
-        "label": "Row id",
-        "tableCss": "row-id"
-      },
-      {
-        "elementKey": "diagnosisTable_profession",
-        "formIndex": "2",
-        "inputType": "practitionerProfession",
-        "tableColumn": "1",
-        "recHeader": true,
-        "fqn": "visit.profession"
-      },
-      {
-        "elementKey": "diagnosisTable_day",
-        "formIndex": "2",
-        "inputType": "visitDay",
-        "mandatory": true,
-        "tableColumn": "1",
-        "validation": "visitDay",
-        "recHeader": true,
-        "fqn": "visit.day"
-      },
-      {
-        "elementKey": "diagnosisTable_time",
-        "formIndex": "2",
-        "inputType": "visitTime",
-        "mandatory": true,
-        "tableColumn": "1",
-        "validation": "time24",
-        "recHeader": true,
-        "fqn": "visit.time"
-      },
-      {
-        "elementKey": "diagnosisRecord",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "2",
-        "fqn": "visit.diagnosisRecord"
-      },
-      {
-        "elementKey": "diagnosisDetails",
-        "formIndex": "2",
-        "inputType": "textarea",
-        "tableColumn": "3",
-        "fqn": "visit.diagnosisDetails"
       }
     ],
     "pageElements": {
@@ -3031,12 +3031,6 @@ const DEFS = {
         "defaultValue": "0",
         "formIndex": "1",
         "inputType": "calculatedValue",
-        "options": [
-          {
-            "key": "=14+14+14",
-            "text": "=14+14+14"
-          }
-        ],
         "tableColumn": "8",
         "fqn": "neurological.glasgowCalculation"
       },
@@ -4193,7 +4187,7 @@ const DEFS = {
       },
       {
         "elementKey": "mse_table_name",
-        "formIndex": "4",
+        "formIndex": "5",
         "inputType": "practitionerName",
         "tableColumn": "1",
         "recHeader": true,
@@ -4208,7 +4202,7 @@ const DEFS = {
       },
       {
         "elementKey": "mse_table_profession",
-        "formIndex": "4",
+        "formIndex": "5",
         "inputType": "practitionerProfession",
         "tableColumn": "1",
         "recHeader": true,
@@ -4216,7 +4210,7 @@ const DEFS = {
       },
       {
         "elementKey": "mse_table_day",
-        "formIndex": "4",
+        "formIndex": "5",
         "inputType": "visitDay",
         "mandatory": true,
         "tableColumn": "1",
@@ -4226,7 +4220,7 @@ const DEFS = {
       },
       {
         "elementKey": "mse_table_time",
-        "formIndex": "4",
+        "formIndex": "5",
         "inputType": "visitTime",
         "mandatory": true,
         "tableColumn": "1",
@@ -4236,7 +4230,7 @@ const DEFS = {
       },
       {
         "elementKey": "mseCustomForm",
-        "formIndex": "4",
+        "formIndex": "5",
         "formOption": "mmse-form",
         "inputType": "custom_form",
         "tableColumn": "2",
@@ -4254,7 +4248,6 @@ const DEFS = {
           "elementKey": "table",
           "label": "Neurological assessment",
           "addButtonText": "Add a neurological assessment",
-          "formOption": "transpose",
           "formKey": "table",
           "ehr_groups": [
             {
@@ -4601,9 +4594,76 @@ const DEFS = {
         ],
         "hasRecHeader": true
       },
+      "cam_table": {
+        "elementKey": "cam_table",
+        "pageElementIndex": "4",
+        "pageKey": "neurological",
+        "tableKey": "cam_table",
+        "isTable": true,
+        "form": {
+          "elementKey": "cam_table",
+          "label": "CAM assessment",
+          "addButtonText": "Add a confusion assessment",
+          "formOption": "transpose",
+          "formKey": "cam_table",
+          "ehr_groups": [
+            {
+              "elementKey": "hdrGroup4",
+              "formCss": "record-header",
+              "fqn": "neurological.hdrGroup4",
+              "gIndex": "1",
+              "gChildren": [
+                "cam_table_name",
+                "cam_table_profession",
+                "cam_table_day",
+                "cam_table_time"
+              ]
+            },
+            {
+              "elementKey": "camGroup",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "neurological.camGroup",
+              "gIndex": "2",
+              "gChildren": [
+                "camLink",
+                "cam_1",
+                "cam_2",
+                "cam_3",
+                "cam_4",
+                "cam_assessment"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "cam_table_name": "",
+            "cam_table_profession": "",
+            "cam_table_day": "",
+            "cam_table_time": "",
+            "cam_1": "",
+            "cam_2": "",
+            "cam_3": "",
+            "cam_4": "",
+            "cam_assessment": ""
+          }
+        },
+        "fqn": "neurological.cam_table",
+        "tableChildren": [
+          "cam_table_id",
+          "cam_table_day",
+          "cam_table_time",
+          "cam_1",
+          "cam_2",
+          "cam_3",
+          "cam_4",
+          "cam_assessment",
+          "cam_table_name",
+          "cam_table_profession"
+        ],
+        "hasRecHeader": true
+      },
       "mse_table": {
         "elementKey": "mse_table",
-        "pageElementIndex": "4",
+        "pageElementIndex": "5",
         "pageKey": "neurological",
         "tableKey": "mse_table",
         "isTable": true,
@@ -9670,6 +9730,7 @@ const DEFS = {
             "text": "Pelvis"
           }
         ],
+        "tableColumn": "3",
         "fqn": "labRequisitions.reqMi_Location"
       },
       {
@@ -9677,6 +9738,7 @@ const DEFS = {
         "formIndex": "4",
         "formCss": "grid-new-subsection",
         "inputType": "checkbox",
+        "tableColumn": "4",
         "fqn": "labRequisitions.reqMi_mobile"
       },
       {
@@ -9684,6 +9746,7 @@ const DEFS = {
         "formIndex": "4",
         "formCss": "grid-span-3-columns",
         "inputType": "textarea",
+        "tableColumn": "5",
         "fqn": "labRequisitions.reqMi_comments"
       },
       {
@@ -10228,6 +10291,9 @@ const DEFS = {
           "reqMi_schedule",
           "reqMi_reason",
           "reqMi_type",
+          "reqMi_Location",
+          "reqMi_mobile",
+          "reqMi_comments",
           "med_image_req_name",
           "med_image_req_profession"
         ],
@@ -10670,7 +10736,7 @@ const DEFS = {
           },
           {
             "key": "prn",
-            "text": "PRN (as needed)"
+            "text": "PRN"
           },
           {
             "key": "sched",
@@ -14583,17 +14649,155 @@ const DEFS = {
         "fqn": "medicalImaging.time"
       },
       {
+        "elementKey": "mImg_type",
+        "formIndex": "1",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "angio",
+            "text": "Angiogram"
+          },
+          {
+            "key": "ecg",
+            "text": "Echocardiogram"
+          },
+          {
+            "key": "ekg",
+            "text": "Electrocardiogram"
+          },
+          {
+            "key": "ct",
+            "text": "CT scan"
+          },
+          {
+            "key": "mri",
+            "text": "MRI"
+          },
+          {
+            "key": "nuclear",
+            "text": "Nuclear medicine"
+          },
+          {
+            "key": "ultra",
+            "text": "Ultrasound"
+          },
+          {
+            "key": "xray",
+            "text": "X-ray"
+          }
+        ],
+        "tableColumn": "1",
+        "fqn": "medicalImaging.mImg_type"
+      },
+      {
+        "elementKey": "mImg_Location",
+        "formIndex": "1",
+        "inputType": "checkset",
+        "options": [
+          {
+            "key": "ab",
+            "text": "Abdomen"
+          },
+          {
+            "key": "armL",
+            "text": "Arm left"
+          },
+          {
+            "key": "armR",
+            "text": "Arm right"
+          },
+          {
+            "key": "chest",
+            "text": "Chest"
+          },
+          {
+            "key": "head",
+            "text": "Head"
+          },
+          {
+            "key": "heart",
+            "text": "Heart"
+          },
+          {
+            "key": "neck",
+            "text": "Neck"
+          },
+          {
+            "key": "legL",
+            "text": "Leg left"
+          },
+          {
+            "key": "legR",
+            "text": "Leg right"
+          },
+          {
+            "key": "pelvis",
+            "text": "Pelvis"
+          }
+        ],
+        "tableColumn": "2",
+        "fqn": "medicalImaging.mImg_Location"
+      },
+      {
+        "elementKey": "mImg_history",
+        "formIndex": "1",
+        "formCss": "form_label_15",
+        "inputType": "textarea",
+        "tableColumn": "3",
+        "fqn": "medicalImaging.mImg_history"
+      },
+      {
+        "elementKey": "mImg_comparision",
+        "formIndex": "1",
+        "formCss": "form_label_15",
+        "inputType": "textarea",
+        "tableColumn": "4",
+        "fqn": "medicalImaging.mImg_comparision"
+      },
+      {
+        "elementKey": "mImg_technique",
+        "formIndex": "1",
+        "formCss": "form_label_15",
+        "inputType": "textarea",
+        "tableColumn": "5",
+        "fqn": "medicalImaging.mImg_technique"
+      },
+      {
+        "elementKey": "mImg_findings",
+        "formIndex": "1",
+        "formCss": "form_label_15",
+        "inputType": "textarea",
+        "tableColumn": "6",
+        "fqn": "medicalImaging.mImg_findings"
+      },
+      {
+        "elementKey": "mImg_impression",
+        "formIndex": "1",
+        "formCss": "form_label_15",
+        "inputType": "textarea",
+        "tableColumn": "7",
+        "fqn": "medicalImaging.mImg_impression"
+      },
+      {
+        "elementKey": "mImg_recommendation",
+        "formIndex": "1",
+        "formCss": "form_label_15",
+        "inputType": "textarea",
+        "tableColumn": "8",
+        "fqn": "medicalImaging.mImg_recommendation"
+      },
+      {
         "elementKey": "laboratoryReport",
         "formIndex": "1",
         "inputType": "ehrFile",
-        "tableColumn": "2",
+        "tableColumn": "9",
         "fqn": "medicalImaging.laboratoryReport"
       },
       {
         "elementKey": "comments",
         "formIndex": "1",
         "inputType": "textarea",
-        "tableColumn": "3",
+        "tableColumn": "10",
         "fqn": "medicalImaging.comments"
       }
     ],
@@ -14628,6 +14832,30 @@ const DEFS = {
               "fqn": "medicalImaging.cGroup33-2",
               "gIndex": "2",
               "gChildren": [
+                "mImg_type",
+                "mImg_Location"
+              ]
+            },
+            {
+              "elementKey": "cGroup33-3",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "medicalImaging.cGroup33-3",
+              "gIndex": "3",
+              "gChildren": [
+                "mImg_history",
+                "mImg_comparision",
+                "mImg_technique",
+                "mImg_findings",
+                "mImg_impression",
+                "mImg_recommendation"
+              ]
+            },
+            {
+              "elementKey": "cGroup33-4",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "medicalImaging.cGroup33-4",
+              "gIndex": "4",
+              "gChildren": [
                 "laboratoryReport",
                 "comments"
               ]
@@ -14638,6 +14866,14 @@ const DEFS = {
             "table_profession": "",
             "table_day": "",
             "table_time": "",
+            "mImg_type": "",
+            "mImg_Location": "",
+            "mImg_history": "",
+            "mImg_comparision": "",
+            "mImg_technique": "",
+            "mImg_findings": "",
+            "mImg_impression": "",
+            "mImg_recommendation": "",
             "laboratoryReport": "",
             "comments": ""
           }
@@ -14647,6 +14883,14 @@ const DEFS = {
           "table_id",
           "table_day",
           "table_time",
+          "mImg_type",
+          "mImg_Location",
+          "mImg_history",
+          "mImg_comparision",
+          "mImg_technique",
+          "mImg_findings",
+          "mImg_impression",
+          "mImg_recommendation",
           "laboratoryReport",
           "comments",
           "table_name",
@@ -25827,6 +26071,159 @@ const DEFS = {
         "inputType": "custom_form",
         "tableColumn": "2",
         "fqn": "orderSets.pcaPpoForm"
+      },
+      {
+        "elementKey": "bpTable_name",
+        "formIndex": "4",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "orderSets.name"
+      },
+      {
+        "elementKey": "bpTable_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "bpTable_profession",
+        "formIndex": "4",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "orderSets.profession"
+      },
+      {
+        "elementKey": "bpTable_day",
+        "formIndex": "4",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "orderSets.day"
+      },
+      {
+        "elementKey": "bpTable_time",
+        "formIndex": "4",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "orderSets.time"
+      },
+      {
+        "elementKey": "bpForm",
+        "formIndex": "4",
+        "formOption": "bowel-protocol",
+        "inputType": "custom_form",
+        "tableColumn": "2",
+        "fqn": "orderSets.bpForm"
+      },
+      {
+        "elementKey": "bmTable_name",
+        "formIndex": "5",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "orderSets.name"
+      },
+      {
+        "elementKey": "bmTable_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "bmTable_profession",
+        "formIndex": "5",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "orderSets.profession"
+      },
+      {
+        "elementKey": "bmTable_day",
+        "formIndex": "5",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "orderSets.day"
+      },
+      {
+        "elementKey": "bmTable_time",
+        "formIndex": "5",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "orderSets.time"
+      },
+      {
+        "elementKey": "bmForm",
+        "formIndex": "5",
+        "formOption": "bowel-management",
+        "inputType": "custom_form",
+        "tableColumn": "2",
+        "fqn": "orderSets.bmForm"
+      },
+      {
+        "elementKey": "swallowTable_name",
+        "formIndex": "6",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "orderSets.name"
+      },
+      {
+        "elementKey": "swallowTable_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "swallowTable_profession",
+        "formIndex": "6",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "orderSets.profession"
+      },
+      {
+        "elementKey": "swallowTable_day",
+        "formIndex": "6",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "orderSets.day"
+      },
+      {
+        "elementKey": "swallowTable_time",
+        "formIndex": "6",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "orderSets.time"
+      },
+      {
+        "elementKey": "swallowForm",
+        "formIndex": "6",
+        "formOption": "swallow",
+        "inputType": "custom_form",
+        "tableColumn": "2",
+        "fqn": "orderSets.swallowForm"
       }
     ],
     "pageElements": {
@@ -25945,7 +26342,7 @@ const DEFS = {
         "form": {
           "elementKey": "pcaPpo",
           "label": "PCA",
-          "addButtonText": "Add Patient Controled Analgesia",
+          "addButtonText": "Add Patient Controlled Analgesia",
           "formKey": "pcaPpo",
           "ehr_groups": [
             {
@@ -25986,6 +26383,165 @@ const DEFS = {
           "pcaPpoForm",
           "pcaPpo_name",
           "pcaPpo_profession"
+        ],
+        "hasRecHeader": true
+      },
+      "bpTable": {
+        "elementKey": "bpTable",
+        "pageElementIndex": "4",
+        "pageKey": "orderSets",
+        "tableKey": "bpTable",
+        "isTable": true,
+        "form": {
+          "elementKey": "bpTable",
+          "label": "Bowel Protocol",
+          "addButtonText": "Add Bowel Protocol Order Set",
+          "formKey": "bpTable",
+          "ehr_groups": [
+            {
+              "elementKey": "bpGrp1",
+              "formCss": "record-header",
+              "fqn": "orderSets.bpGrp1",
+              "gIndex": "1",
+              "gChildren": [
+                "bpTable_name",
+                "bpTable_profession",
+                "bpTable_day",
+                "bpTable_time"
+              ]
+            },
+            {
+              "elementKey": "bpGrp2",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "orderSets.bpGrp2",
+              "gIndex": "2",
+              "gChildren": [
+                "bpForm"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "bpTable_name": "",
+            "bpTable_profession": "",
+            "bpTable_day": "",
+            "bpTable_time": "",
+            "bpForm": ""
+          }
+        },
+        "fqn": "orderSets.bpTable",
+        "tableChildren": [
+          "bpTable_id",
+          "bpTable_day",
+          "bpTable_time",
+          "bpForm",
+          "bpTable_name",
+          "bpTable_profession"
+        ],
+        "hasRecHeader": true
+      },
+      "bmTable": {
+        "elementKey": "bmTable",
+        "pageElementIndex": "5",
+        "pageKey": "orderSets",
+        "tableKey": "bmTable",
+        "isTable": true,
+        "form": {
+          "elementKey": "bmTable",
+          "label": "Bowel Management",
+          "addButtonText": "Add Bowel Management Order Set",
+          "formKey": "bmTable",
+          "ehr_groups": [
+            {
+              "elementKey": "bmGrp1",
+              "formCss": "record-header",
+              "fqn": "orderSets.bmGrp1",
+              "gIndex": "1",
+              "gChildren": [
+                "bmTable_name",
+                "bmTable_profession",
+                "bmTable_day",
+                "bmTable_time"
+              ]
+            },
+            {
+              "elementKey": "bmGrp2",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "orderSets.bmGrp2",
+              "gIndex": "2",
+              "gChildren": [
+                "bmForm"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "bmTable_name": "",
+            "bmTable_profession": "",
+            "bmTable_day": "",
+            "bmTable_time": "",
+            "bmForm": ""
+          }
+        },
+        "fqn": "orderSets.bmTable",
+        "tableChildren": [
+          "bmTable_id",
+          "bmTable_day",
+          "bmTable_time",
+          "bmForm",
+          "bmTable_name",
+          "bmTable_profession"
+        ],
+        "hasRecHeader": true
+      },
+      "swallowTable": {
+        "elementKey": "swallowTable",
+        "pageElementIndex": "6",
+        "pageKey": "orderSets",
+        "tableKey": "swallowTable",
+        "isTable": true,
+        "form": {
+          "elementKey": "swallowTable",
+          "label": "Swallow Screening",
+          "addButtonText": "Add Swallow Screening Order Set",
+          "formKey": "swallowTable",
+          "ehr_groups": [
+            {
+              "elementKey": "swallowGrp1",
+              "formCss": "record-header",
+              "fqn": "orderSets.swallowGrp1",
+              "gIndex": "1",
+              "gChildren": [
+                "swallowTable_name",
+                "swallowTable_profession",
+                "swallowTable_day",
+                "swallowTable_time"
+              ]
+            },
+            {
+              "elementKey": "swallowGrp2",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "orderSets.swallowGrp2",
+              "gIndex": "2",
+              "gChildren": [
+                "swallowForm"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "swallowTable_name": "",
+            "swallowTable_profession": "",
+            "swallowTable_day": "",
+            "swallowTable_time": "",
+            "swallowForm": ""
+          }
+        },
+        "fqn": "orderSets.swallowTable",
+        "tableChildren": [
+          "swallowTable_id",
+          "swallowTable_day",
+          "swallowTable_time",
+          "swallowForm",
+          "swallowTable_name",
+          "swallowTable_profession"
         ],
         "hasRecHeader": true
       }
@@ -26640,272 +27196,672 @@ const DEFS = {
       }
     }
   },
-  "specialIndicators": {
-    "pageDataKey": "specialIndicators",
+  "riskAssessment": {
+    "pageDataKey": "riskAssessment",
     "pIndex": "51",
     "hasGridTable": true,
     "pageChildren": [
       {
-        "elementKey": "precautionList_name",
+        "elementKey": "bradenList_name",
         "formIndex": "1",
         "inputType": "practitionerName",
         "tableColumn": "1",
         "recHeader": true,
-        "fqn": "specialIndicators.name"
+        "fqn": "riskAssessment.name"
       },
       {
-        "elementKey": "precautionList_id",
+        "elementKey": "bradenList_id",
         "inputType": "generatedId",
         "tableColumn": 0,
         "label": "Row id",
         "tableCss": "row-id"
       },
       {
-        "elementKey": "precautionList_profession",
+        "elementKey": "bradenList_profession",
         "formIndex": "1",
         "inputType": "practitionerProfession",
         "tableColumn": "1",
         "recHeader": true,
-        "fqn": "specialIndicators.profession"
+        "fqn": "riskAssessment.profession"
       },
       {
-        "elementKey": "precautionList_day",
+        "elementKey": "bradenList_day",
         "formIndex": "1",
         "inputType": "visitDay",
         "mandatory": true,
         "tableColumn": "1",
         "validation": "visitDay",
         "recHeader": true,
-        "fqn": "specialIndicators.day"
+        "fqn": "riskAssessment.day"
       },
       {
-        "elementKey": "precautionList_time",
+        "elementKey": "bradenList_time",
         "formIndex": "1",
         "inputType": "visitTime",
         "mandatory": true,
         "tableColumn": "1",
         "validation": "time24",
         "recHeader": true,
-        "fqn": "specialIndicators.time"
+        "fqn": "riskAssessment.time"
       },
       {
-        "elementKey": "precautionIndicator",
+        "elementKey": "bradenLink1",
+        "assetName": "https://www.fraserhealth.ca/-/media/Project/FraserHealth/FraserHealth/employees/clinical-resources/acute-care-orientation/Braden-Scale-and-Assessment-Flow-Sheet.pdf",
+        "formIndex": "1",
+        "inputType": "externalLink",
+        "fqn": "riskAssessment.bradenLink1"
+      },
+      {
+        "elementKey": "bradenLink2",
+        "assetName": "https://wtcs.pressbooks.pub/nursingfundamentals/chapter/10-5-braden-scale/",
+        "formIndex": "1",
+        "inputType": "externalLink",
+        "fqn": "riskAssessment.bradenLink2"
+      },
+      {
+        "elementKey": "bradenSensory",
+        "formIndex": "1",
+        "inputType": "number",
+        "passToFunction": "bradenTotal",
+        "tableColumn": "2",
+        "fqn": "riskAssessment.bradenSensory"
+      },
+      {
+        "elementKey": "bradenMoisture",
+        "formIndex": "1",
+        "inputType": "number",
+        "passToFunction": "bradenTotal",
+        "tableColumn": "3",
+        "fqn": "riskAssessment.bradenMoisture"
+      },
+      {
+        "elementKey": "bradenActivity",
+        "formIndex": "1",
+        "inputType": "number",
+        "passToFunction": "bradenTotal",
+        "tableColumn": "4",
+        "fqn": "riskAssessment.bradenActivity"
+      },
+      {
+        "elementKey": "bradenMobility",
+        "formIndex": "1",
+        "inputType": "number",
+        "passToFunction": "bradenTotal",
+        "tableColumn": "5",
+        "fqn": "riskAssessment.bradenMobility"
+      },
+      {
+        "elementKey": "bradenNutrition",
+        "formIndex": "1",
+        "inputType": "number",
+        "passToFunction": "bradenTotal",
+        "tableColumn": "6",
+        "fqn": "riskAssessment.bradenNutrition"
+      },
+      {
+        "elementKey": "bradenFriction",
+        "formIndex": "1",
+        "inputType": "number",
+        "passToFunction": "bradenTotal",
+        "tableColumn": "7",
+        "fqn": "riskAssessment.bradenFriction"
+      },
+      {
+        "elementKey": "bradenTotal",
+        "calculationType": "sum",
+        "formIndex": "1",
+        "inputType": "calculatedValue",
+        "tableColumn": "8",
+        "fqn": "riskAssessment.bradenTotal"
+      },
+      {
+        "elementKey": "bradenRiskDesc",
+        "calculationType": "sum",
+        "formIndex": "1",
+        "inputType": "form_label",
+        "fqn": "riskAssessment.bradenRiskDesc"
+      },
+      {
+        "elementKey": "bradenRiskLevel",
+        "calculationType": "sum",
         "formIndex": "1",
         "inputType": "select",
         "options": [
           {
-            "key": "Airborne",
-            "text": "Airborne Precautions"
+            "key": "severe",
+            "text": "SEVERE (9 or less)"
           },
           {
-            "key": "Contact",
-            "text": "Contact Precautions"
+            "key": "high",
+            "text": "HIGH (10-12)"
           },
           {
-            "key": "Droplet",
-            "text": "Droplet Precautions"
+            "key": "moderate",
+            "text": "MODERATE (13-14)"
           },
           {
-            "key": "DC",
-            "text": "Droplet/Contact Precautions"
-          },
-          {
-            "key": "Routine",
-            "text": "Routine Precautions"
+            "key": "mild",
+            "text": "MILD (15-18)"
           }
         ],
-        "tableColumn": "2",
-        "fqn": "specialIndicators.precautionIndicator"
+        "tableColumn": "9",
+        "fqn": "riskAssessment.bradenRiskLevel"
       },
       {
-        "elementKey": "precautionComment",
+        "elementKey": "bradenComments",
         "formIndex": "1",
-        "inputType": "text",
-        "tableColumn": "3",
-        "fqn": "specialIndicators.precautionComment"
+        "inputType": "textarea",
+        "tableColumn": "10",
+        "fqn": "riskAssessment.bradenComments"
       },
       {
-        "elementKey": "riskList_name",
+        "elementKey": "bradenInternal",
+        "formIndex": "1",
+        "inputType": "textarea",
+        "tableColumn": "11",
+        "fqn": "riskAssessment.bradenInternal"
+      },
+      {
+        "elementKey": "bradenLink3",
+        "formIndex": "1",
+        "inputType": "form_label",
+        "fqn": "riskAssessment.bradenLink3"
+      },
+      {
+        "elementKey": "morseList_name",
         "formIndex": "2",
         "inputType": "practitionerName",
         "tableColumn": "1",
         "recHeader": true,
-        "fqn": "specialIndicators.name"
+        "fqn": "riskAssessment.name"
       },
       {
-        "elementKey": "riskList_id",
+        "elementKey": "morseList_id",
         "inputType": "generatedId",
         "tableColumn": 0,
         "label": "Row id",
         "tableCss": "row-id"
       },
       {
-        "elementKey": "riskList_profession",
+        "elementKey": "morseList_profession",
         "formIndex": "2",
         "inputType": "practitionerProfession",
         "tableColumn": "1",
         "recHeader": true,
-        "fqn": "specialIndicators.profession"
+        "fqn": "riskAssessment.profession"
       },
       {
-        "elementKey": "riskList_day",
+        "elementKey": "morseList_day",
         "formIndex": "2",
         "inputType": "visitDay",
         "mandatory": true,
         "tableColumn": "1",
         "validation": "visitDay",
         "recHeader": true,
-        "fqn": "specialIndicators.day"
+        "fqn": "riskAssessment.day"
       },
       {
-        "elementKey": "riskList_time",
+        "elementKey": "morseList_time",
         "formIndex": "2",
         "inputType": "visitTime",
         "mandatory": true,
         "tableColumn": "1",
         "validation": "time24",
         "recHeader": true,
-        "fqn": "specialIndicators.time"
+        "fqn": "riskAssessment.time"
       },
       {
-        "elementKey": "riskIndicator",
+        "elementKey": "morseLink1",
+        "assetName": "https://networkofcare.org/library/Morse%20Fall%20Scale.pdf",
+        "formIndex": "2",
+        "inputType": "externalLink",
+        "fqn": "riskAssessment.morseLink1"
+      },
+      {
+        "elementKey": "morseHistory",
+        "formIndex": "2",
+        "formCss": "form_label_15",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "no_0",
+            "text": "No (0)"
+          },
+          {
+            "key": "yes_25",
+            "text": "Yes (25)"
+          }
+        ],
+        "passToFunction": "morseScore",
+        "tableColumn": "2",
+        "fqn": "riskAssessment.morseHistory"
+      },
+      {
+        "elementKey": "morseSecondary",
+        "formIndex": "2",
+        "formCss": "form_label_15",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "no_0",
+            "text": "No (0)"
+          },
+          {
+            "key": "yes_15",
+            "text": "Yes (15)"
+          }
+        ],
+        "passToFunction": "morseScore",
+        "tableColumn": "3",
+        "fqn": "riskAssessment.morseSecondary"
+      },
+      {
+        "elementKey": "morseAmbulation",
+        "formIndex": "2",
+        "formCss": "form_label_15",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "none_0",
+            "text": "None / Bed Rest / Wheelchair / Nurse (0)"
+          },
+          {
+            "key": "medium_15",
+            "text": "Crutches / Cane / Walker (15)"
+          },
+          {
+            "key": "high_20",
+            "text": "Furniture (20)"
+          }
+        ],
+        "passToFunction": "morseScore",
+        "tableColumn": "4",
+        "fqn": "riskAssessment.morseAmbulation"
+      },
+      {
+        "elementKey": "morseIv",
+        "formIndex": "2",
+        "formCss": "form_label_15",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "no_0",
+            "text": "No (0)"
+          },
+          {
+            "key": "yes_25",
+            "text": "Yes (25)"
+          }
+        ],
+        "passToFunction": "morseScore",
+        "tableColumn": "5",
+        "fqn": "riskAssessment.morseIv"
+      },
+      {
+        "elementKey": "morseGait",
+        "formIndex": "2",
+        "formCss": "form_label_15",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "none_0",
+            "text": "Normal / bedrest / immobile (0)"
+          },
+          {
+            "key": "medium_10",
+            "text": "Weak (10)"
+          },
+          {
+            "key": "high_20",
+            "text": "Impaired (20)"
+          }
+        ],
+        "passToFunction": "morseScore",
+        "tableColumn": "6",
+        "fqn": "riskAssessment.morseGait"
+      },
+      {
+        "elementKey": "morseMental",
+        "formIndex": "2",
+        "formCss": "form_label_15",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "none_0",
+            "text": "Oriented to Own Ability (0)"
+          },
+          {
+            "key": "high_15",
+            "text": "Forgets Limitations (15)"
+          }
+        ],
+        "passToFunction": "morseScore",
+        "tableColumn": "7",
+        "fqn": "riskAssessment.morseMental"
+      },
+      {
+        "elementKey": "morseScore",
+        "calculationType": "sumOptionValues",
+        "formIndex": "2",
+        "formCss": "form_label_15",
+        "inputType": "calculatedValue",
+        "tableColumn": "8",
+        "fqn": "riskAssessment.morseScore"
+      },
+      {
+        "elementKey": "morseRiskNo",
+        "formIndex": "2",
+        "inputType": "checkbox",
+        "tableColumn": "9",
+        "fqn": "riskAssessment.morseRiskNo"
+      },
+      {
+        "elementKey": "morseRiskLow",
+        "formIndex": "2",
+        "inputType": "checkbox",
+        "tableColumn": "10",
+        "fqn": "riskAssessment.morseRiskLow"
+      },
+      {
+        "elementKey": "morseRiskHigh",
+        "formIndex": "2",
+        "inputType": "checkbox",
+        "tableColumn": "11",
+        "fqn": "riskAssessment.morseRiskHigh"
+      },
+      {
+        "elementKey": "morseReason",
         "formIndex": "2",
         "inputType": "select",
         "options": [
           {
-            "key": "AVB",
-            "text": "AVB (Aggressive Violent Behaviour"
+            "key": "admission",
+            "text": "On admission"
           },
           {
-            "key": "ARO",
-            "text": "ARO (Antibiotic Resistant Organism)"
+            "key": "transfer",
+            "text": "Transfer"
           },
           {
-            "key": "DNA",
-            "text": "DNA (Do Not Acknowledge)"
+            "key": "change",
+            "text": "Change in condition"
+          },
+          {
+            "key": "fall",
+            "text": "After a fall"
           }
         ],
-        "tableColumn": "2",
-        "fqn": "specialIndicators.riskIndicator"
+        "tableColumn": "12",
+        "fqn": "riskAssessment.morseReason"
       },
       {
-        "elementKey": "riskComment",
+        "elementKey": "morseComments",
         "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "3",
-        "fqn": "specialIndicators.riskComment"
+        "inputType": "textarea",
+        "tableColumn": "13",
+        "fqn": "riskAssessment.morseComments"
+      },
+      {
+        "elementKey": "morseLink2",
+        "assetName": "https://www.ppno.ca/wp-content/uploads/2021/02/GRH-FALL-RISK-ASSESSMENT-TOOL.pdf",
+        "formIndex": "2",
+        "inputType": "externalLink",
+        "fqn": "riskAssessment.morseLink2"
+      },
+      {
+        "elementKey": "morseLink3",
+        "assetName": "https://en.wikipedia.org/wiki/Morse_Fall_Scale",
+        "formIndex": "2",
+        "inputType": "externalLink",
+        "fqn": "riskAssessment.morseLink3"
+      },
+      {
+        "elementKey": "morseResource",
+        "assetBase": "standardized-assessment-tools",
+        "assetName": "Post-FallDecisionTree-2010.pdf",
+        "formIndex": "2",
+        "inputType": "assetLink",
+        "fqn": "riskAssessment.morseResource"
+      },
+      {
+        "elementKey": "morseInternal",
+        "formIndex": "2",
+        "inputType": "textarea",
+        "tableColumn": "14",
+        "fqn": "riskAssessment.morseInternal"
       }
     ],
     "pageElements": {
-      "precautionList": {
-        "elementKey": "precautionList",
+      "bradenList": {
+        "elementKey": "bradenList",
         "pageElementIndex": "1",
-        "pageKey": "specialIndicators",
-        "tableKey": "precautionList",
+        "pageKey": "riskAssessment",
+        "tableKey": "bradenList",
         "isTable": true,
         "form": {
-          "elementKey": "precautionList",
-          "label": "Precautions",
-          "addButtonText": "Add an precaution",
-          "formKey": "precautionList",
+          "elementKey": "bradenList",
+          "label": "Braden",
+          "addButtonText": "Add Braden Scale assessment",
+          "formKey": "bradenList",
           "ehr_groups": [
             {
-              "elementKey": "hdrGroup",
+              "elementKey": "bradenHdrGrp",
               "formCss": "record-header",
-              "fqn": "specialIndicators.hdrGroup",
+              "fqn": "riskAssessment.bradenHdrGrp",
               "gIndex": "1",
               "gChildren": [
-                "precautionList_name",
-                "precautionList_profession",
-                "precautionList_day",
-                "precautionList_time"
+                "bradenList_name",
+                "bradenList_profession",
+                "bradenList_day",
+                "bradenList_time"
               ]
             },
             {
-              "elementKey": "cGroup",
-              "formCss": "grid-left-to-right-2",
-              "fqn": "specialIndicators.cGroup",
+              "elementKey": "bradenDataGroup1",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "riskAssessment.bradenDataGroup1",
               "gIndex": "2",
               "gChildren": [
-                "precautionIndicator",
-                "precautionComment"
+                "bradenLink1",
+                "bradenLink2"
+              ]
+            },
+            {
+              "elementKey": "bradenDataGroup2",
+              "formCss": "grid-left-to-right-3",
+              "fqn": "riskAssessment.bradenDataGroup2",
+              "gIndex": "3",
+              "gChildren": [
+                "bradenSensory",
+                "bradenMoisture",
+                "bradenActivity",
+                "bradenMobility",
+                "bradenNutrition",
+                "bradenFriction",
+                "bradenTotal"
+              ]
+            },
+            {
+              "elementKey": "bradenDataGroup3",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "riskAssessment.bradenDataGroup3",
+              "gIndex": "4",
+              "gChildren": [
+                "bradenRiskDesc",
+                "bradenRiskLevel",
+                "bradenComments"
+              ]
+            },
+            {
+              "elementKey": "bradenDataGroup4",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "riskAssessment.bradenDataGroup4",
+              "gIndex": "5",
+              "gChildren": [
+                "bradenInternal",
+                "bradenLink3"
               ]
             }
           ],
           "ehr_data": {
-            "precautionList_name": "",
-            "precautionList_profession": "",
-            "precautionList_day": "",
-            "precautionList_time": "",
-            "precautionIndicator": "",
-            "precautionComment": ""
+            "bradenList_name": "",
+            "bradenList_profession": "",
+            "bradenList_day": "",
+            "bradenList_time": "",
+            "bradenSensory": "",
+            "bradenMoisture": "",
+            "bradenActivity": "",
+            "bradenMobility": "",
+            "bradenNutrition": "",
+            "bradenFriction": "",
+            "bradenTotal": "",
+            "bradenRiskLevel": "",
+            "bradenComments": "",
+            "bradenInternal": ""
           }
         },
-        "fqn": "specialIndicators.precautionList",
+        "fqn": "riskAssessment.bradenList",
         "tableChildren": [
-          "precautionList_id",
-          "precautionList_day",
-          "precautionList_time",
-          "precautionIndicator",
-          "precautionComment",
-          "precautionList_name",
-          "precautionList_profession"
+          "bradenList_id",
+          "bradenList_day",
+          "bradenList_time",
+          "bradenSensory",
+          "bradenMoisture",
+          "bradenActivity",
+          "bradenMobility",
+          "bradenNutrition",
+          "bradenFriction",
+          "bradenTotal",
+          "bradenRiskLevel",
+          "bradenComments",
+          "bradenInternal",
+          "bradenList_name",
+          "bradenList_profession"
         ],
         "hasRecHeader": true
       },
-      "riskList": {
-        "elementKey": "riskList",
+      "morseList": {
+        "elementKey": "morseList",
         "pageElementIndex": "2",
-        "pageKey": "specialIndicators",
-        "tableKey": "riskList",
+        "pageKey": "riskAssessment",
+        "tableKey": "morseList",
         "isTable": true,
         "form": {
-          "elementKey": "riskList",
-          "label": "Indicators",
-          "addButtonText": "Add an indicator",
-          "formKey": "riskList",
+          "elementKey": "morseList",
+          "label": "Morse Fall",
+          "addButtonText": "Add Morse Fall assessment",
+          "formKey": "morseList",
           "ehr_groups": [
             {
-              "elementKey": "hdrGroup",
+              "elementKey": "morseHdrGrp",
               "formCss": "record-header",
-              "fqn": "specialIndicators.hdrGroup",
+              "fqn": "riskAssessment.morseHdrGrp",
               "gIndex": "1",
               "gChildren": [
-                "riskList_name",
-                "riskList_profession",
-                "riskList_day",
-                "riskList_time"
+                "morseList_name",
+                "morseList_profession",
+                "morseList_day",
+                "morseList_time"
               ]
             },
             {
-              "elementKey": "cGroup",
-              "formCss": "grid-left-to-right-2",
-              "fqn": "specialIndicators.cGroup",
+              "elementKey": "morseDataGroup1",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "riskAssessment.morseDataGroup1",
               "gIndex": "2",
               "gChildren": [
-                "riskIndicator",
-                "riskComment"
+                "morseLink1"
+              ]
+            },
+            {
+              "elementKey": "morseDataGroup2",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "riskAssessment.morseDataGroup2",
+              "gIndex": "3",
+              "gChildren": [
+                "morseHistory",
+                "morseSecondary",
+                "morseAmbulation",
+                "morseIv",
+                "morseGait",
+                "morseMental",
+                "morseScore",
+                "morseRiskNo",
+                "morseRiskLow",
+                "morseRiskHigh"
+              ]
+            },
+            {
+              "elementKey": "morseDataGroup3",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "riskAssessment.morseDataGroup3",
+              "gIndex": "4",
+              "gChildren": [
+                "morseReason",
+                "morseComments"
+              ]
+            },
+            {
+              "elementKey": "morseDataGroup4",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "riskAssessment.morseDataGroup4",
+              "gIndex": "5",
+              "gChildren": [
+                "morseLink2",
+                "morseLink3",
+                "morseResource"
+              ]
+            },
+            {
+              "elementKey": "morseDataGroup5",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "riskAssessment.morseDataGroup5",
+              "gIndex": "6",
+              "gChildren": [
+                "morseInternal"
               ]
             }
           ],
           "ehr_data": {
-            "riskList_name": "",
-            "riskList_profession": "",
-            "riskList_day": "",
-            "riskList_time": "",
-            "riskIndicator": "",
-            "riskComment": ""
+            "morseList_name": "",
+            "morseList_profession": "",
+            "morseList_day": "",
+            "morseList_time": "",
+            "morseHistory": "",
+            "morseSecondary": "",
+            "morseAmbulation": "",
+            "morseIv": "",
+            "morseGait": "",
+            "morseMental": "",
+            "morseScore": "",
+            "morseRiskNo": "",
+            "morseRiskLow": "",
+            "morseRiskHigh": "",
+            "morseReason": "",
+            "morseComments": "",
+            "morseInternal": ""
           }
         },
-        "fqn": "specialIndicators.riskList",
+        "fqn": "riskAssessment.morseList",
         "tableChildren": [
-          "riskList_id",
-          "riskList_day",
-          "riskList_time",
-          "riskIndicator",
-          "riskComment",
-          "riskList_name",
-          "riskList_profession"
+          "morseList_id",
+          "morseList_day",
+          "morseList_time",
+          "morseHistory",
+          "morseSecondary",
+          "morseAmbulation",
+          "morseIv",
+          "morseGait",
+          "morseMental",
+          "morseScore",
+          "morseRiskNo",
+          "morseRiskLow",
+          "morseRiskHigh",
+          "morseReason",
+          "morseComments",
+          "morseInternal",
+          "morseList_name",
+          "morseList_profession"
         ],
         "hasRecHeader": true
       }
@@ -28540,6 +29496,657 @@ const DEFS = {
           "mostOrderSert",
           "table_name",
           "table_profession"
+        ],
+        "hasRecHeader": true
+      }
+    }
+  },
+  "consentsPage": {
+    "pageDataKey": "consentsPage",
+    "pIndex": "56",
+    "hasGridTable": true,
+    "pageChildren": [
+      {
+        "elementKey": "consentTreatTable_name",
+        "formIndex": "1",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "consentsPage.name"
+      },
+      {
+        "elementKey": "consentTreatTable_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "consentTreatTable_profession",
+        "formIndex": "1",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "consentsPage.profession"
+      },
+      {
+        "elementKey": "consentTreatTable_day",
+        "formIndex": "1",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "consentsPage.day"
+      },
+      {
+        "elementKey": "consentTreatTable_time",
+        "formIndex": "1",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "consentsPage.time"
+      },
+      {
+        "elementKey": "consentTreatForm",
+        "formIndex": "1",
+        "formOption": "consent_for_treatment",
+        "inputType": "custom_form",
+        "tableColumn": "2",
+        "fqn": "consentsPage.consentTreatForm"
+      },
+      {
+        "elementKey": "consentBloodTable_name",
+        "formIndex": "2",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "consentsPage.name"
+      },
+      {
+        "elementKey": "consentBloodTable_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "consentBloodTable_profession",
+        "formIndex": "2",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "consentsPage.profession"
+      },
+      {
+        "elementKey": "consentBloodTable_day",
+        "formIndex": "2",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "consentsPage.day"
+      },
+      {
+        "elementKey": "consentBloodTable_time",
+        "formIndex": "2",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "consentsPage.time"
+      },
+      {
+        "elementKey": "consentBloodForm",
+        "formIndex": "2",
+        "formOption": "consent_for_blood",
+        "inputType": "custom_form",
+        "tableColumn": "2",
+        "fqn": "consentsPage.consentBloodForm"
+      }
+    ],
+    "pageElements": {
+      "consentTreatTable": {
+        "elementKey": "consentTreatTable",
+        "pageElementIndex": "1",
+        "pageKey": "consentsPage",
+        "tableKey": "consentTreatTable",
+        "isTable": true,
+        "form": {
+          "elementKey": "consentTreatTable",
+          "label": "Consent for treatment",
+          "addButtonText": "Add Consent for treatement",
+          "formKey": "consentTreatTable",
+          "ehr_groups": [
+            {
+              "elementKey": "consentTreatHdrGrp",
+              "formCss": "record-header",
+              "fqn": "consentsPage.consentTreatHdrGrp",
+              "gIndex": "1",
+              "gChildren": [
+                "consentTreatTable_name",
+                "consentTreatTable_profession",
+                "consentTreatTable_day",
+                "consentTreatTable_time"
+              ]
+            },
+            {
+              "elementKey": "consentTreatGroup",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "consentsPage.consentTreatGroup",
+              "gIndex": "2",
+              "gChildren": [
+                "consentTreatForm"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "consentTreatTable_name": "",
+            "consentTreatTable_profession": "",
+            "consentTreatTable_day": "",
+            "consentTreatTable_time": "",
+            "consentTreatForm": ""
+          }
+        },
+        "fqn": "consentsPage.consentTreatTable",
+        "tableChildren": [
+          "consentTreatTable_id",
+          "consentTreatTable_day",
+          "consentTreatTable_time",
+          "consentTreatForm",
+          "consentTreatTable_name",
+          "consentTreatTable_profession"
+        ],
+        "hasRecHeader": true
+      },
+      "consentBloodTable": {
+        "elementKey": "consentBloodTable",
+        "pageElementIndex": "2",
+        "pageKey": "consentsPage",
+        "tableKey": "consentBloodTable",
+        "isTable": true,
+        "form": {
+          "elementKey": "consentBloodTable",
+          "label": "Consent for blood",
+          "addButtonText": "Add Consent for blood products",
+          "formKey": "consentBloodTable",
+          "ehr_groups": [
+            {
+              "elementKey": "consentBloodHdrGrp",
+              "formCss": "record-header",
+              "fqn": "consentsPage.consentBloodHdrGrp",
+              "gIndex": "1",
+              "gChildren": [
+                "consentBloodTable_name",
+                "consentBloodTable_profession",
+                "consentBloodTable_day",
+                "consentBloodTable_time"
+              ]
+            },
+            {
+              "elementKey": "consentBloodGroup",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "consentsPage.consentBloodGroup",
+              "gIndex": "2",
+              "gChildren": [
+                "consentBloodForm"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "consentBloodTable_name": "",
+            "consentBloodTable_profession": "",
+            "consentBloodTable_day": "",
+            "consentBloodTable_time": "",
+            "consentBloodForm": ""
+          }
+        },
+        "fqn": "consentsPage.consentBloodTable",
+        "tableChildren": [
+          "consentBloodTable_id",
+          "consentBloodTable_day",
+          "consentBloodTable_time",
+          "consentBloodForm",
+          "consentBloodTable_name",
+          "consentBloodTable_profession"
+        ],
+        "hasRecHeader": true
+      }
+    }
+  },
+  "checklistsPage": {
+    "pageDataKey": "checklistsPage",
+    "pIndex": "57",
+    "hasGridTable": true,
+    "pageChildren": [
+      {
+        "elementKey": "surgChecklistTable_name",
+        "formIndex": "1",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "checklistsPage.name"
+      },
+      {
+        "elementKey": "surgChecklistTable_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "surgChecklistTable_profession",
+        "formIndex": "1",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "checklistsPage.profession"
+      },
+      {
+        "elementKey": "surgChecklistTable_day",
+        "formIndex": "1",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "checklistsPage.day"
+      },
+      {
+        "elementKey": "surgChecklistTable_time",
+        "formIndex": "1",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "checklistsPage.time"
+      },
+      {
+        "elementKey": "surgChecklistForm",
+        "formIndex": "1",
+        "formOption": "surg-checklist",
+        "inputType": "custom_form",
+        "tableColumn": "2",
+        "fqn": "checklistsPage.surgChecklistForm"
+      },
+      {
+        "elementKey": "preopChecklistTable_name",
+        "formIndex": "1",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "checklistsPage.name"
+      },
+      {
+        "elementKey": "preopChecklistTable_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "preopChecklistTable_profession",
+        "formIndex": "1",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "checklistsPage.profession"
+      },
+      {
+        "elementKey": "preopChecklistTable_day",
+        "formIndex": "1",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "checklistsPage.day"
+      },
+      {
+        "elementKey": "preopChecklistTable_time",
+        "formIndex": "1",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "checklistsPage.time"
+      },
+      {
+        "elementKey": "preopChecklistForm",
+        "formIndex": "1",
+        "formOption": "preop-checklist",
+        "inputType": "custom_form",
+        "tableColumn": "2",
+        "fqn": "checklistsPage.preopChecklistForm"
+      }
+    ],
+    "pageElements": {
+      "preopChecklistTable": {
+        "elementKey": "preopChecklistTable",
+        "pageElementIndex": "1",
+        "pageKey": "checklistsPage",
+        "tableKey": "preopChecklistTable",
+        "isTable": true,
+        "form": {
+          "elementKey": "preopChecklistTable",
+          "addButtonText": "Add a pre-op checklist",
+          "formKey": "preopChecklistTable",
+          "ehr_groups": [
+            {
+              "elementKey": "cGroup48-1",
+              "formCss": "record-header",
+              "fqn": "checklistsPage.cGroup48-1",
+              "gIndex": "1",
+              "gChildren": [
+                "preopChecklistTable_name",
+                "preopChecklistTable_profession",
+                "preopChecklistTable_day",
+                "preopChecklistTable_time"
+              ]
+            },
+            {
+              "elementKey": "cGroup48-2",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "checklistsPage.cGroup48-2",
+              "gIndex": "2",
+              "gChildren": [
+                "preopChecklistForm"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "preopChecklistTable_name": "",
+            "preopChecklistTable_profession": "",
+            "preopChecklistTable_day": "",
+            "preopChecklistTable_time": "",
+            "preopChecklistForm": ""
+          }
+        },
+        "fqn": "checklistsPage.preopChecklistTable",
+        "tableChildren": [
+          "preopChecklistTable_id",
+          "preopChecklistTable_day",
+          "preopChecklistTable_time",
+          "preopChecklistForm",
+          "preopChecklistTable_name",
+          "preopChecklistTable_profession"
+        ],
+        "hasRecHeader": true
+      }
+    }
+  },
+  "specialIndicators": {
+    "pageDataKey": "specialIndicators",
+    "pIndex": "58",
+    "hasGridTable": true,
+    "pageChildren": [
+      {
+        "elementKey": "precautionList_name",
+        "formIndex": "1",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "specialIndicators.name"
+      },
+      {
+        "elementKey": "precautionList_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "precautionList_profession",
+        "formIndex": "1",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "specialIndicators.profession"
+      },
+      {
+        "elementKey": "precautionList_day",
+        "formIndex": "1",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "specialIndicators.day"
+      },
+      {
+        "elementKey": "precautionList_time",
+        "formIndex": "1",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "specialIndicators.time"
+      },
+      {
+        "elementKey": "precautionIndicator",
+        "formIndex": "1",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "Airborne",
+            "text": "Airborne Precautions"
+          },
+          {
+            "key": "Contact",
+            "text": "Contact Precautions"
+          },
+          {
+            "key": "Droplet",
+            "text": "Droplet Precautions"
+          },
+          {
+            "key": "DC",
+            "text": "Droplet/Contact Precautions"
+          },
+          {
+            "key": "Routine",
+            "text": "Routine Precautions"
+          }
+        ],
+        "tableColumn": "2",
+        "fqn": "specialIndicators.precautionIndicator"
+      },
+      {
+        "elementKey": "precautionComment",
+        "formIndex": "1",
+        "inputType": "textarea",
+        "tableColumn": "3",
+        "fqn": "specialIndicators.precautionComment"
+      },
+      {
+        "elementKey": "riskList_name",
+        "formIndex": "2",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "specialIndicators.name"
+      },
+      {
+        "elementKey": "riskList_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "riskList_profession",
+        "formIndex": "2",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "specialIndicators.profession"
+      },
+      {
+        "elementKey": "riskList_day",
+        "formIndex": "2",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "specialIndicators.day"
+      },
+      {
+        "elementKey": "riskList_time",
+        "formIndex": "2",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "specialIndicators.time"
+      },
+      {
+        "elementKey": "riskIndicator",
+        "formIndex": "2",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "AVB",
+            "text": "AVB (Aggressive Violent Behaviour"
+          },
+          {
+            "key": "ARO",
+            "text": "ARO (Antibiotic Resistant Organism)"
+          },
+          {
+            "key": "DNA",
+            "text": "DNA (Do Not Acknowledge)"
+          }
+        ],
+        "tableColumn": "2",
+        "fqn": "specialIndicators.riskIndicator"
+      },
+      {
+        "elementKey": "riskComment",
+        "formIndex": "2",
+        "inputType": "textarea",
+        "tableColumn": "3",
+        "fqn": "specialIndicators.riskComment"
+      }
+    ],
+    "pageElements": {
+      "precautionList": {
+        "elementKey": "precautionList",
+        "pageElementIndex": "1",
+        "pageKey": "specialIndicators",
+        "tableKey": "precautionList",
+        "isTable": true,
+        "form": {
+          "elementKey": "precautionList",
+          "label": "Precautions",
+          "addButtonText": "Add an precaution",
+          "formKey": "precautionList",
+          "ehr_groups": [
+            {
+              "elementKey": "hdrGroup",
+              "formCss": "record-header",
+              "fqn": "specialIndicators.hdrGroup",
+              "gIndex": "1",
+              "gChildren": [
+                "precautionList_name",
+                "precautionList_profession",
+                "precautionList_day",
+                "precautionList_time"
+              ]
+            },
+            {
+              "elementKey": "cGroup",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "specialIndicators.cGroup",
+              "gIndex": "2",
+              "gChildren": [
+                "precautionIndicator",
+                "precautionComment"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "precautionList_name": "",
+            "precautionList_profession": "",
+            "precautionList_day": "",
+            "precautionList_time": "",
+            "precautionIndicator": "",
+            "precautionComment": ""
+          }
+        },
+        "fqn": "specialIndicators.precautionList",
+        "tableChildren": [
+          "precautionList_id",
+          "precautionList_day",
+          "precautionList_time",
+          "precautionIndicator",
+          "precautionComment",
+          "precautionList_name",
+          "precautionList_profession"
+        ],
+        "hasRecHeader": true
+      },
+      "riskList": {
+        "elementKey": "riskList",
+        "pageElementIndex": "2",
+        "pageKey": "specialIndicators",
+        "tableKey": "riskList",
+        "isTable": true,
+        "form": {
+          "elementKey": "riskList",
+          "label": "Indicators",
+          "addButtonText": "Add an indicator",
+          "formKey": "riskList",
+          "ehr_groups": [
+            {
+              "elementKey": "hdrGroup",
+              "formCss": "record-header",
+              "fqn": "specialIndicators.hdrGroup",
+              "gIndex": "1",
+              "gChildren": [
+                "riskList_name",
+                "riskList_profession",
+                "riskList_day",
+                "riskList_time"
+              ]
+            },
+            {
+              "elementKey": "cGroup",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "specialIndicators.cGroup",
+              "gIndex": "2",
+              "gChildren": [
+                "riskIndicator",
+                "riskComment"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "riskList_name": "",
+            "riskList_profession": "",
+            "riskList_day": "",
+            "riskList_time": "",
+            "riskIndicator": "",
+            "riskComment": ""
+          }
+        },
+        "fqn": "specialIndicators.riskList",
+        "tableChildren": [
+          "riskList_id",
+          "riskList_day",
+          "riskList_time",
+          "riskIndicator",
+          "riskComment",
+          "riskList_name",
+          "riskList_profession"
         ],
         "hasRecHeader": true
       }

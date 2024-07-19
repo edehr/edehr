@@ -39,9 +39,23 @@ export default class EhrData {
     return td
   }
   static getTableRowData (rowId) {
-    const { pageKey, tableKey } = EhrDataModel.IdToParts(rowId)
+    let result
+    const { pageKey, tableKey, rowIndex, orderSetElement, medId } = EhrDataModel.IdToParts(rowId)
+    // console.log('get table row data for rowId', rowId)
     const rowElementKey = tableKey + '_id'
     const tableData = this.getMergedTableData(pageKey, tableKey)
-    return tableData.find(row => 0 === rowId.localeCompare(row[rowElementKey]))
+    if (orderSetElement) {
+      const rowData = tableData[rowIndex]
+      const orderSetData = rowData[orderSetElement]
+      // console.log('get table row data for orderSetElement, medId', orderSetElement, ' - ', medId, ' - ', orderSetData)
+      const medOrders = orderSetData.medOrders || []
+      result = medOrders.find(elem => {
+        return elem.medicationOrdersTable_id === rowId
+      })
+    } else {
+      result = tableData.find(row => 0 === rowId.localeCompare(row[rowElementKey]))
+    }
+    // console.log('get table row result:', JSON.stringify(result))
+    return result
   }
 }

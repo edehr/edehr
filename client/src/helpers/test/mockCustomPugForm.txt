@@ -1,0 +1,21 @@
+h2(class="form-title") GENERAL TESTING FORM
+
+// intro
+section(class="section")
+div {mk="bolusMor",role="include",value="{checkbox:mor_include}"} {mk="bolusMor",role="med",value="Morphine"} {mk="bolusMor",role="dose",value="{input:mor_amt}"} (1 to 2 mg)  {mk="bolusMor",role="instruct",value="IV Q10 MIN to max of {input:mor_max}"} (12mg/H)
+
+div {mk="bolusHydro",role="include",value="{checkbox:hydro_include}"} {mk="bolusHydro",role="med",value="HYDROmorphone"} {mk="bolusHydro",role="dose",value="{input:hydro_amt}"} (0.1 to 0.4 mg)  {mk="bolusHydro",role="instruct",value="IV SCHEDULE: {input:hydro_sched} MIN to max of {input:hydro_max}"} (2mg/H)
+
+div
+label {checkbox:pca_drug_hydro} Hydromorphone (1mg/mL) {input:pca_mor_incr_start} mg
+
+div
+label {radioSet:id=mse8_sui_plan_yes,name=mse8_sui_plan} yes
+div
+label {radioSet:id=mse8_sui_plan_no,name=mse8_sui_plan} no
+
+div {mk="radioDose",role="include",value="{checkbox:radio_include}"} {mk="radioDose",role="med",value="Radio set dose medication"}
+div(class="indent") DOSE LOW:  {mk="radioDose",role="dose",value="{radioSet:id=radioDoseLow,name=radioDose} 1 to 3 mg"}
+div(class="indent") DOSE HIGH: {mk="radioDose",role="dose",value="{radioSet:id=radioDoseHigh,name=radioDose} 5 to 8 mg"}
+
+

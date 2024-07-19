@@ -1,5 +1,7 @@
 <template>
   <div id="ehr-element-medication-v2">
+    <div class='smallerText'> Press enter to use your choice of medication.</div>
+    <!-- Tab out of vue-autosuggest does not select the content -->
     <vue-autosuggest
       ref="autocomplete"
       v-model="query"
@@ -235,5 +237,8 @@ export default {
 .autosuggest__results .autosuggest__results-item.autosuggest__results-item--highlighted
 {
   background-color: #dddddd;
+}
+.smallerText{
+  font-size: 0.8rem;
 }
 </style>

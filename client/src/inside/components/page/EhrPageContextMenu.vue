@@ -62,6 +62,11 @@ export default {
           icon: 'prescription'
         })
         menu.push({
+          label: 'Order sets',
+          callback: () => { this.$router.push({name: 'order-sets'} ) },
+          icon: 'prescription'
+        })
+        menu.push({
           label: 'eMAR',
           callback: () => {
             this.$router.push({ name: 'mar' })

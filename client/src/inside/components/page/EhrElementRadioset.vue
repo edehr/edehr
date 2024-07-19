@@ -3,8 +3,9 @@
     ehr-page-form-label(:ehrHelp="ehrHelp", :element="element", css="radioset_label")
     div(class="radio_set")
       div(v-for="option in options")
-        input(type="radio", :name="elementKey", :id="option.key", :disabled="disabled || viewOnly", :value="option.key", v-model="radioValue")
-        label(:for='option.key') {{ option.text}}
+        label(:for='`${elementKey}-${option.key}`')
+          input(type="radio", :name="elementKey", :id="`${elementKey}-${option.key}`", :disabled="disabled || viewOnly", :value="option.key", v-model="radioValue")
+          | &nbsp; {{ option.text}}
 </template>
 
 <script>
@@ -39,11 +40,22 @@ export default {
   }
 }
 </script>
-<style lang='scss'>
+<style lang='scss' scoped>
 @import '../../../scss/definitions';
 
+.radio_wrapper {
+  margin-bottom: 5px;
+}
 .radio_set {
   display: flex;
   flex-direction: column;
+}
+
+label:hover,
+input[type="radio"]:hover {
+  cursor: pointer;
+}
+label:hover {
+  font-size: 1.1em; /* Slightly increase the font size */
 }
 </style>

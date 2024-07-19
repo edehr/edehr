@@ -4,11 +4,17 @@ import EhrDefs, {
   MED_ORDERS_ROUTE_ELEMENT, MED_ORDERS_TIME_ELEMENT
 } from '@/ehr-definitions/ehr-defs-grid'
 import { isObject, isString, validNumberStr } from '@/helpers/ehr-utils'
-import StoreHelper from '@/helpers/store-helper'
-import { calculateMedicationConcentration, calculateMedicationMaxDosage } from '@/ehr-definitions/ehr-def-utils'
+import {
+  calculateMedicationConcentration,
+  calculateMedicationMaxDosage,
+  calculateSumOptionValues
+} from '@/ehr-definitions/ehr-def-utils'
 import { MedOrder } from '@/ehr-definitions/med-definitions/medOrder-model'
 import { makeHumanTableCell } from '@/ehr-definitions/ehr-def-utils'
 import EhrTypes from '@/ehr-definitions/ehr-types'
+import EhrData from '@/inside/components/page/ehr-data'
+
+const SUM_OPTION_VALUES = 'sumOptionValues'
 
 // export for testing
 export function extractComboValue (src, pKey, eKey)  {
@@ -62,18 +68,13 @@ export function extractEmbedValueReferences ( input ) {
 
 
 function isEmbeddedRef ( ref ) {
-  return ref.split('.').length === 3
+  return ref.split('.').length >= 3
 }
 
 function getEmbeddedDataRow ( ref ) {
-  const mData = StoreHelper.getMergedData()
-  const [pageKey, tableKey, row] = ref.split('.')
-  const pg = mData[pageKey]
-  const tbl = pg[tableKey]
-  const idKey = tableKey + '_id'
-  let found = tbl.find( tElem => tElem[idKey] === ref)
-  if (!found) console.error(`Important change. Using id search to get embedded table row FAILED. Ref: ${ref}. Will default to use row index ${row}`)
-  return found || tbl[row]
+  let result = EhrData.getTableRowData(ref)
+  if (!result) console.error(`Using ref to get embedded table row FAILED. Ref: ${ref}.`)
+  return result
 }
 
 /**
@@ -146,6 +147,8 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
       result = values.reduce((a, b) => a + b * factor.value, 0)
       // console.log('multiplyBy', result)
     }
+  } else if (calculationType.includes(SUM_OPTION_VALUES)) {
+    result = calculateSumOptionValues(values)
   } else if (calculationType.includes('embedValue')) {
     // pull a value from an embedded object. The calculationType specifies the page, table and field
     // the row of the table is used to load the embedded object in the values

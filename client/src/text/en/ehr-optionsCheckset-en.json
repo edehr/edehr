@@ -312,6 +312,15 @@
   "medLabBody.bdyClarity.cloudy": "Cloudy",
   "medLabBody.bdyClarity.turbid": "Turbid",
   "medLabBody.bdyClarity.bloody": "Bloody",
-  "neurological.mse_1.normal": "casual dress, normal grooming and hygiene",
-  "neurological.mse_1.other": "Other"
+  "neurological.mse_1.normal": "casual dress",
+  "medicalImaging.mImg_Location.ab": "Abdomen",
+  "medicalImaging.mImg_Location.armL": "Arm left",
+  "medicalImaging.mImg_Location.armR": "Arm right",
+  "medicalImaging.mImg_Location.chest": "Chest",
+  "medicalImaging.mImg_Location.head": "Head",
+  "medicalImaging.mImg_Location.heart": "Heart",
+  "medicalImaging.mImg_Location.neck": "Neck",
+  "medicalImaging.mImg_Location.legL": "Leg left",
+  "medicalImaging.mImg_Location.legR": "Leg right",
+  "medicalImaging.mImg_Location.pelvis": "Pelvis"
 }

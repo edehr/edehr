@@ -561,5 +561,9 @@
   "medLabBody.bdyOther2relref": "Other 2 Rel Ref",
   "medLabBody.bdyOther2absref": "Other 2 Abs Ref",
   "acpMost.name": "Identification",
-  "neurological.mse_table": "Mental Status Exam"
+  "neurological.mse_table": "Mental Status Exam",
+  "checklistsPage.name": "Identification",
+  "consentsPage.name": "Identification",
+  "riskAssessment.name": "Identification",
+  "neurological.table": "Where do I show up?"
 }

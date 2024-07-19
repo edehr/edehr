@@ -1,7 +1,8 @@
 <template lang='pug'>
 div
   ehr-element-custom-form(:element='elementDef',
-    :elementKey='elementKey'
+    :elementKey='elementKey',
+    devMode=true
     )
 </template>
 

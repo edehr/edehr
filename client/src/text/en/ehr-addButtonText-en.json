@@ -73,5 +73,14 @@
   "leveyJennings.tableLJ.ljAuxEntryTable": "Add LJ value",
   "acpMost.table": "Add a MOST",
   "neurological.mse_table": "Add a MSE assessment",
-  "orderSets.pcaPpo": "Add Patient Controled Analgesia"
+  "orderSets.pcaPpo": "Add Patient Controlled Analgesia",
+  "orderSets.bpTable": "Add Bowel Protocol Order Set",
+  "orderSets.bmTable": "Add Bowel Management Order Set",
+  "checklistsPage.preopChecklistTable": "Add a pre-op checklist",
+  "consentsPage.consentTreatTable": "Add Consent for treatement",
+  "consentsPage.consentBloodTable": "Add Consent for blood products",
+  "riskAssessment.bradenList": "Add Braden Scale assessment",
+  "riskAssessment.morseList": "Add Morse Fall assessment",
+  "checklistsPage.surgChecklistTable": "Add a pre-op checklist",
+  "orderSets.swallowTable": "Add Swallow Screening Order Set"
 }

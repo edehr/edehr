@@ -18,8 +18,19 @@ export class MedOrders {
   constructor (ehrDataModel) {
     const medPage = ehrDataModel.getPageData(MED_ORDERS_PAGE_KEY) || {}
     const tableEhrData = medPage[MED_ORDERS_TABLE_KEY] || []
-    this._medList = tableEhrData.map( (eData) => new MedOrder(eData))
+
+    const orderSetsPage = ehrDataModel.getPageData('orderSets') || {}
+    // console.log('ehrDataModel',ehrDataModel)
+    // console.log('orderSetsPage',orderSetsPage)
+    let pcaData = orderSetsPage['pcaPpo'] || []
+    pcaData = pcaData.length > 0 ? pcaData[0] : {}
+    pcaData = pcaData['pcaPpoForm'] || {}
+    pcaData = pcaData['medOrders'] || []
+    const medOrderData = [...tableEhrData, ...pcaData]
+    // console.log('5 --- medOrderData', medOrderData)
+    this._medList = medOrderData.map( (eData) => new MedOrder(eData))
     this._medList.sort( (a,b) => a.sTime.localeCompare(b.sTime))
+    // console.log('6 --- this._medList', this._medList)
   }
   getList () { return this._medList}
   findByMedication ( medName ) {
@@ -101,7 +112,7 @@ export class MedOrder {
   medOrderDetails () {
     const list = []
     const obj = this._med_data_object
-    console.log('--- med order details', obj)
+    // console.log('--- med order details', obj)
     if (obj) {
       obj.route && list.push('Route: ' + obj.route)
       obj.sched && list.push('Control: ' + obj.sched)
@@ -165,7 +176,7 @@ export class MedOrder {
     return this.scheduledHours.length > 0
     // return ['sched', 'set'].includes(this.timing)
   }
-  isTimingGroup (timingCode) { return this.timing === timingCode }
+  isTimingGroup (timingCode) { return this.timing?.toLowerCase() === timingCode?.toLowerCase() }
 
   // todo replace day with orderedDay and time with orderedTime
   get day () { return  Number(this._e.orderedDay) }

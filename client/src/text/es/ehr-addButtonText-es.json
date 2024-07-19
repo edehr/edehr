@@ -73,5 +73,14 @@
   "leveyJennings.tableLJ.ljAuxEntryTable": "Añadir valor LJ",
   "acpMost.table": "Agregar un MOST",
   "neurological.mse_table": "Agregar una evaluación de MSE",
-  "orderSets.pcaPpo": "Agregar analgesia controlada por el paciente"
+  "orderSets.pcaPpo": "Agregar analgesia controlada por el paciente",
+  "orderSets.bpTable": "Agregar conjunto de pedidos de protocolo intestinal",
+  "orderSets.bmTable": "Agregar conjunto de orden de evacuación intestinal",
+  "checklistsPage.preopChecklistTable": "Agregar una lista de verificación preoperatoria",
+  "consentsPage.consentTreatTable": "Agregar consentimiento para el tratamiento",
+  "consentsPage.consentBloodTable": "Agregar consentimiento para productos sanguíneos",
+  "riskAssessment.bradenList": "Agregar evaluación de la escala Braden",
+  "riskAssessment.morseList": "Agregar evaluación de Morse Fall",
+  "checklistsPage.surgChecklistTable": "Agregar una lista de verificación preoperatoria",
+  "orderSets.swallowTable": ""
 }
