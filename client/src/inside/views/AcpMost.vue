@@ -9,7 +9,7 @@
       p Component name: AcpMost
       p Redirect: 
       p Route name: acp-most
-      p Full path: /ehr/chart/acp-most
+      p Full path: /ehr/patient/acp-most
 </template>
 
 <script>
