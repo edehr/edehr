@@ -12,7 +12,7 @@
     ui-button(value="ets-edit-draft", v-if="isDraft(dRow) && canEdit",
       v-on:buttonClicked="editDraft(getIdFromRow(dRow))", :title='ehrText.resumeButtonLabel')
       fas-icon(icon="edit")
-    ui-button(value="ets-edit-row",   v-if="canEditSeed(dRow)",
+    ui-button(value="ets-edit-row",   v-if="canEditSeed(dRow) || isCheckListForm",
       v-on:buttonClicked="editSeedRow(getIdFromRow(dRow))", :title='ehrText.editButtonLabel')
       fas-icon(icon="edit")
     ui-button(value="ets-delt-row",   v-if="canDeleteRow(dRow)",
@@ -37,6 +37,9 @@ export default {
   },
 
   computed: {
+    formDef () { return this.tableDef.form },
+    formOption () { return this.formDef.formOption },
+    isCheckListForm () { return this.formOption === 'checkListForm' },
     canEdit () {
       return this.ehrHelp._canEdit()
     },

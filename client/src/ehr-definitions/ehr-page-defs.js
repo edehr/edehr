@@ -29836,6 +29836,7 @@ const DEFS = {
         "form": {
           "elementKey": "preopChecklistTable",
           "addButtonText": "Add a pre-op checklist",
+          "formOption": "checkListForm",
           "formKey": "preopChecklistTable",
           "ehr_groups": [
             {
