@@ -78,7 +78,7 @@ export function diffSimulationDays (datePickerDate) {
   admissionDate.setDate(admissionDate.getDate() - df)
   const diffTime = Math.abs(datePickerDate - admissionDate)
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
-  console.log( '--- diffSimulationDays', diffDays)
+  // console.log( '--- diffSimulationDays', diffDays)
   return diffDays
 }
 
