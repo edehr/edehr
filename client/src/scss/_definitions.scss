@@ -79,6 +79,18 @@ $button-active-color: $ehr-brand-option2;
 $bodyFontFamily: 'Source Sans 3', sans-serif;
 $bodyFontSize: 16px;
 
+@font-face {
+  font-family: 'styleScript';
+  src: url('~/public/assets/fonts/Style_Script/StyleScript-Regular.ttf');
+}
+$fontFamilyStyleScript: 'styleScript';
+
+@font-face {
+  font-family: 'styleHand';
+  src: url('~/public/assets/fonts/League_Script/LeagueScript-Regular.ttf');
+}
+$fontFamilyStyleHand: 'styleHand';
+
 // Code 39 is a simple barcode font. Start and end with an '*'
 @font-face {
 	font-family: 'code39';

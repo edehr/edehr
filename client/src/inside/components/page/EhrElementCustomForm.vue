@@ -2,7 +2,11 @@
   div(:id='mainId')
     div(v-if='duplicateIds', class='errorMessage') Can not show the custom form because it contains duplicate identifiers. ---{{ duplicateIds }}---
     div(v-else)
-      div(id='customForm', v-text-to-html.noAutoLink="customHtml", class='ehr-custom-form', @change='formChanged')
+      div(id='customForm',
+        v-text-to-html.noAutoLink="customHtml",
+        class='ehr-custom-form',
+        :class='{ viewOnly: viewOnly}',
+        @change='formChanged')
 </template>
 
 <script>

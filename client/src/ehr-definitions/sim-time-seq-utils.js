@@ -7,7 +7,7 @@ export function validSimTimeKey (text) {
   return validDayStr(d) && t
 }
 export function splitSimTimeKey (key) {
-  let parts = key &&  key.split('-') || []
+  let parts = key &&  key.split(/[-T]/) || []
   let d = parts[0]
   d = validDayStr(d) ? Number(d) : undefined
   let t = parts[1]
