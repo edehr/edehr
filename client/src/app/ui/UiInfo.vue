@@ -50,7 +50,18 @@ export default {
     cancelDialog: function () {
       this.showingDialog = false
       this.$refs.theDialog.onClose()
+    },
+    handleKeyUp (event) {
+      if (event.key === 'Escape') {
+        this.cancelDialog()
+      }
     }
+  },
+  mounted () {
+    document.addEventListener('keyup', this.handleKeyUp)
+  },
+  beforeDestroy () {
+    document.removeEventListener('keyup', this.handleKeyUp)
   }
 }
 </script>
