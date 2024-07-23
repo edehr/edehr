@@ -47,11 +47,13 @@ export default {
       return require('../../../custom_forms/' + fName + '.txt')
     },
     setInitialValueExtended (value) {
+      this.customHtml = '' // clear any previous html content to remove any residual values that may have been cancelled earlier
+      // if(value) { // else this element is on a form of the page but is not the one being opened (e.g. another order set
       // this is invoked by EhrElementCommon when the element's initial value is set.
       // Here we rebuild the html with the given input values
       // value = '{"meto_include":true,"pca_drug_hydro":true,"mse8_sui_plan_no":true,"mse8_sui_plan":"no","radioDoseLow":true,"radioDose":"1 to 3 mg","meto_amt_high":true,"meto_amt":"10 to 20 mg","mor_max":"10"}'
+      // console.log('EECF setInitialValueExtended', this.elementKey, 'incoming value:', value)
       this.initialValues = value || {}
-      // value ? JSON.parse(value) : {}
       // Early development stored the form value directly in the object. We changed this when we started to store medication orders
       this.initialValues = this.initialValues.formValues || this.initialValues
       // no need to extract the med orders stashed in the initial values because they are all generated from the form values
@@ -60,6 +62,7 @@ export default {
       // set the inner html. Vue reactivity will load the dom
       this.customHtml = this.formHelper.buildForm(this.formValues, this.getHtml(), medHelper)
       medHelper.updateAllMedOrders(this.formValues)
+      // }
     },
     formChanged (event) {
       let { id, value, checked } = event.target

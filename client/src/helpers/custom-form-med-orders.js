@@ -125,20 +125,24 @@ export class CustomFormMedOrderHelper {
    * @returns {{}}
    */
   updateMedOrder (medKey, formValues ) {
+    let pageKey = 'orderSets'
+    let tableKey = 'bpTable' //'pcaPpo'
+    let rowIndex = '0'
+    let elementKey = 'bpForm' //'pcaPpoForm'
     // console.log('----- updateMedOrder', medKey)
     let include = true // initial assumption is the med order has no checkbox to indicate inclusion in the list of meds
     let name = StoreHelper.getSimSignOnName()
     let profession = StoreHelper.getSimSignOnProfession()
     // ToDo fix hard coded ref below
-    console.log('ToDo fix hard coded ref below')
     let composedMedOrderForMar = {
-      medicationOrdersTable_id: 'orderSets.pcaPpo.0.pcaPpoForm.' + medKey,
+      medicationOrdersTable_id: [pageKey, tableKey, rowIndex, elementKey, medKey].join('.'),
       med_timing: 'prn', // default is PRN
       medicationOrdersTable_name: name,
       medicationOrdersTable_profession: profession,
       medicationOrdersTable_day: /* to string */ '' + currentSimDayNumber(),
       medicationOrdersTable_time: currentSimTime(),
     }
+    // ToDo fix hard coded ref above:', composedMedOrderForMar.medicationOrdersTable_id)
     // Remember that some parts of the order (e.g. instructions) can contain one or more inputs.
     // All of these need to be fetched and inserted into a copy of the template to provide the complete order.
     // As well, we allow some parts to span multiple DOM elements so we need to gather the composed works.

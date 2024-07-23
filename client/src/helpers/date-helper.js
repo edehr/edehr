@@ -101,10 +101,10 @@ export function simDateCalc (simDateValue) {
       let dv = new Date()
       let sD = dv.getDate() - df
       dv.setDate(sD)
-      console.log('simDateCalc simDateValue:', simDateValue, 'todayNum:', todayNum, ' df:', df, ' dv:',  dv)
+      // console.log('simDateCalc simDateValue:', simDateValue, 'todayNum:', todayNum, ' df:', df, ' dv:',  dv)
       return formatYmdDateInLocalZone(dv)
     }
-    console.log('simDateCalc no change', simDateValue)
+    // console.log('simDateCalc no change', simDateValue)
     return simDateValue
   } catch (error) {
     console.error('simDateCalc ', simDateValue, '----', error)

@@ -68,7 +68,7 @@ export class CustomFormHelper {
       this.duplicateIds = idDup.join(', ')
     }
     if (this.duplicateIds && this.duplicateIds.length >0 ) {
-      console.error('Found duplicate ids so stop set up of custom form')
+      console.error('Found duplicate ids so stop set up of custom form', JSON.stringify(this.duplicateIds))
       return
     }
     html = medHelper.setupMeds(html)
