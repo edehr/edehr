@@ -80,12 +80,6 @@ $bodyFontFamily: 'Source Sans 3', sans-serif;
 $bodyFontSize: 16px;
 
 @font-face {
-  font-family: 'styleScript';
-  src: url('~/public/assets/fonts/Style_Script/StyleScript-Regular.ttf');
-}
-$fontFamilyStyleScript: 'styleScript';
-
-@font-face {
   font-family: 'styleHand';
   src: url('~/public/assets/fonts/League_Script/LeagueScript-Regular.ttf');
 }
