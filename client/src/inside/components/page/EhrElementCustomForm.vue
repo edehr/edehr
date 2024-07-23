@@ -14,9 +14,6 @@ import EhrElementCommon from '@/inside/components/page/EhrElementCommon'
 import { CustomFormMedOrderHelper} from '@/helpers/custom-form-med-orders'
 import { CustomFormHelper } from '@/helpers/custom-form-helper'
 
-const medHelper = new CustomFormMedOrderHelper()
-
-
 /*
 The entry point is when the ehr common sets the initialValues value. This component then creates the inner html and uses the starting values.  See setInitialValueExtended
  */
@@ -33,7 +30,8 @@ export default {
       customHtml: '',
       duplicateIds: undefined,
       initialValues: '',
-      formHelper: {}
+      formHelper: {},
+      medHelper: new CustomFormMedOrderHelper(this.pageDataKey, this.tableKey, this.elementKey)
     }
   },
   computed: {
@@ -47,6 +45,7 @@ export default {
       return require('../../../custom_forms/' + fName + '.txt')
     },
     setInitialValueExtended (value) {
+      // console.log('set initial value extended', this.mainId)
       this.customHtml = '' // clear any previous html content to remove any residual values that may have been cancelled earlier
       // if(value) { // else this element is on a form of the page but is not the one being opened (e.g. another order set
       // this is invoked by EhrElementCommon when the element's initial value is set.
@@ -60,8 +59,8 @@ export default {
       this.formValues = {}
       this.formHelper = new CustomFormHelper(this.viewOnly, this.initialValues)
       // set the inner html. Vue reactivity will load the dom
-      this.customHtml = this.formHelper.buildForm(this.formValues, this.getHtml(), medHelper)
-      medHelper.updateAllMedOrders(this.formValues)
+      this.customHtml = this.formHelper.buildForm(this.formValues, this.getHtml(), this.medHelper)
+      this.medHelper.updateAllMedOrders(this.formValues)
       // }
     },
     formChanged (event) {
@@ -70,7 +69,7 @@ export default {
       this.formHelper.formChanged(id, value, checked, this.formValues)
       // console.log('----- this.formValues', JSON.stringify(this.formValues))
       // UPDATE med orders
-      const medOrders = medHelper.updateAllMedOrders(this.formValues)
+      const medOrders = this.medHelper.updateAllMedOrders(this.formValues)
       // FINAL STEP --- push new EHR value into this.inputVal which will trigger the watch in ehr common
       const combined = { formValues: this.formValues, medOrders: medOrders }
       console.log('Output of custom form', combined)

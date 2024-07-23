@@ -408,8 +408,8 @@ export default class EhrDataModel {
         results = { pageKey: p[0], tableKey: p[1], rowIndex: p[2], orderSetElement: p[3], medId: p[4] }
       }
     }
-    console.log('IdToParts rowId', rowId)
-    console.log('IdToParts result', results)
+    // console.log('IdToParts rowId', rowId)
+    // console.log('IdToParts result', results)
     return results
   }
 
@@ -432,9 +432,11 @@ export default class EhrDataModel {
     let customFieldKeys = []
     customFieldKeys.push('orderSets.pcaPpo.pcaPpoForm')
     customFieldKeys.push('orderSets.bpTable.bpForm')
+    customFieldKeys.push('orderSets.bmTable.bmForm')
     customFieldKeys.forEach( key => {
       let [pageKey, tableKey, orderSetElement] = key.split('.')
       let data = this.getOrderSetMedOrders (pageKey, tableKey, orderSetElement)
+      // console.log(`get all med orders PK: ${pageKey} TK: ${tableKey} OSK: ${orderSetElement}. Data: `, data)
       medOrderData = [...medOrderData, ...data]
     })
     return medOrderData
