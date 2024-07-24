@@ -40,6 +40,7 @@
     app-footer
     ehr-scratch-pad-dialog(ref='scratchPad')
     ehr-eval-feedback-dialog(ref='feedbackDialog')
+    ehr-instructions-dialog(ref='instructionsDialog')
 </template>
 
 <script>
@@ -56,10 +57,12 @@ import UiNotSignedOn from '@/app/ui/UiNotSignedOn.vue'
 import AppDialog from '@/app/components/AppDialogShell.vue'
 import EhrEvalFeedbackDialog from '@/inside/components/EhrEvalFeedbackDialog.vue'
 import UiButton from '@/app/ui/UiButton.vue'
+import EhrInstructionsDialog from '@/inside/components/EhrInstructionsDialog.vue'
 
 export default {
   name: 'LayoutEhr',
   components: {
+    EhrInstructionsDialog,
     UiButton,
     EhrEvalFeedbackDialog,
     AppDialog,
@@ -90,6 +93,7 @@ export default {
     ehrNavCollapsed () { return this.$store.getters['system/ehrNavCollapsed']},
     ehrOrLis () { return StoreHelper.isEHR_Showing() ? 'ehr-branding' : StoreHelper.isLIS_Showing() ? 'lis-branding' : ''},
     evalDialogVisible () { return this.$store.getters['system/evalDialogVisible']},
+    dialogInstructionsVisible () { return this.$store.getters['system/dialogInstructionsVisible']},
     hasPatient () { return !! this.pId },
     isCompact () { return this.userSettings.ehrLayout === 'compact' },
     pageTitle () { return StoreHelper.getPageTitle() },
@@ -122,6 +126,9 @@ export default {
         if (currArray[2] === prevArray[2])
           this.showingNavPanel = false
       }
+    },
+    dialogInstructionsVisible (val) {
+      if (val && this.$refs.instructionsDialog) this.$refs.instructionsDialog.showDialog()
     },
     evalDialogVisible (val) {
       if (val && this.$refs.feedbackDialog) this.$refs.feedbackDialog.showDialog()

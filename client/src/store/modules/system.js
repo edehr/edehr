@@ -32,6 +32,7 @@ const state = {
   showExplanationTextOutside: false,
   scratchPadVisible: false,
   evalDialogVisible: false,
+  dialogInstructionsVisible: false,
   seedTableCollapse: {},
   seedStructPageKey: undefined,
   smallWindow: false,
@@ -63,6 +64,7 @@ const getters = {
   paginateLimit: state => state.paginateLimit,
   scratchPadVisible: state => state.scratchPadVisible,
   evalDialogVisible: state => state.evalDialogVisible,
+  dialogInstructionsVisible: state => state.dialogInstructionsVisible,
   seedTableCollapse: state => (tableKey) => state.seedTableCollapse[tableKey],
   showExplanationTextOutside: state => state.showExplanationTextOutside,
   smallWindow: state => state.smallWindow,
@@ -139,6 +141,13 @@ const actions = {
   toggleEvalDialogVisible ( context ) {
     context.commit('_setEvalDialogVisible', !context.state.evalDialogVisible)
   },
+  setDialogInstructionsVisible ( context, trueFalse ) {
+    context.commit('_setDialogInstructionsVisible', trueFalse)
+  },
+  toggleDialogInstructionsVisible ( context ) {
+    context.commit('_setDialogInstructionsVisible', !context.state.dialogInstructionsVisible)
+  },
+
   setScratchPadVisible ( context, trueFalse ) {
     context.commit('_setScratchPadVisible', trueFalse)
   },
@@ -240,6 +249,9 @@ const mutations = {
   },
   _setEvalDialogVisible: (state, trueFalse) => {
     state.evalDialogVisible = trueFalse
+  },
+  _setDialogInstructionsVisible: (state, trueFalse) => {
+    state.dialogInstructionsVisible = trueFalse
   },
   _setScratchPadVisible: (state, trueFalse) => {
     state.scratchPadVisible = trueFalse
