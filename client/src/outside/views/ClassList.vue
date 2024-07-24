@@ -30,12 +30,13 @@
           div(class="thcell e-name") Student
           div(class="thcell e-status") Submitted
           div(class="thcell e-date") Last date
-          div(class="thcell e-description") Evaluation
+          div(class="thcell e-description") Evaluation notes
           div(class="thcell e-actions") &nbsp;
         div(class="tbody")
           div(class="row", v-for="(studentVisit) in classList", :class="rowClass(studentVisit)")
             div(class='cell e-name') {{ studentVisit.user.fullName }}
-            div(class='cell e-status') {{ studentVisit.activityData.submitted ? 'Yes' : '' }}
+            div(class='cell e-status')
+              div(v-if="studentVisit.activityData.submitted") Time to submit {{ timeToComplete(studentVisit) }} (hrs:mins:secs)
             div(class='cell e-date') {{ studentVisit.activityData.lastDate | formatDateTime }}
             div(class="cell e-description").
               {{ truncate(studentVisit.activityData.evaluationData, 100) }}
@@ -82,6 +83,16 @@ export default {
     rowClass: function (sv) {
       let selected = sv._id === StoreHelper.getCurrentEvaluationStudentId()
       return selected ? 'selected' : ''
+    },
+    timeToComplete (sv) {
+      let ttc = sv.activityData.timeToComplete
+      let days = Math.floor(ttc/(24*60*60))
+      let leftSec = ttc - days * 24*60*60
+      let hrs = Math.floor(leftSec/(60*60))
+      leftSec = leftSec - hrs * 60*60
+      let min = Math.floor(leftSec/(60))
+      leftSec = leftSec - min * 60
+      return (days > 0 ? days + ' days ' : '') + hrs + ':' + min + ':' + leftSec
     },
     async loadComponent () {
       /*

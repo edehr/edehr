@@ -1,0 +1,10 @@
+export const ACTIVITY_EVENT_EVAL = 'eval'
+export const ACTIVITY_EVENT_START = 'start'
+export const ACTIVITY_EVENT_SUBMIT = 'submit'
+export const ACTIVITY_EVENT_UN_SUBMIT = 'un-submit'
+export const ACTIVITY_EVENT_TYPES = [
+  ACTIVITY_EVENT_EVAL,
+  ACTIVITY_EVENT_UN_SUBMIT,
+  ACTIVITY_EVENT_START,
+  ACTIVITY_EVENT_SUBMIT
+]
