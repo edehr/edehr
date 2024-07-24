@@ -235,6 +235,10 @@ export default {
       }
     },
     handleDialogEvent (options) {
+      if (this.tableKey !== options.tableKey) {
+        // console.log('skip this element because its for a different table ', options)
+        return
+      }
       const open = options.open
       // const { key, tableAction, sendersTableDef, sourceRowId, tableActionDraftRowIndex, draftRowData, draftRowId } = options
       // console.log('EEC dialog event.', key, tableAction, sourceRowId, tableActionDraftRowIndex, draftRowId)

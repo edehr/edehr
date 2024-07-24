@@ -27261,7 +27261,25 @@ const DEFS = {
       {
         "elementKey": "bradenSensory",
         "formIndex": "1",
-        "inputType": "number",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "1",
+            "text": "1 = Completely limited"
+          },
+          {
+            "key": "2",
+            "text": "2 = Very limited"
+          },
+          {
+            "key": "3",
+            "text": "3 = Slightly limited"
+          },
+          {
+            "key": "4",
+            "text": "4 = No impairment"
+          }
+        ],
         "passToFunction": "bradenTotal",
         "tableColumn": "2",
         "fqn": "riskAssessment.bradenSensory"
@@ -27269,7 +27287,25 @@ const DEFS = {
       {
         "elementKey": "bradenMoisture",
         "formIndex": "1",
-        "inputType": "number",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "1",
+            "text": "1 = Completely moist"
+          },
+          {
+            "key": "2",
+            "text": "2 = Very moist"
+          },
+          {
+            "key": "3",
+            "text": "3 = Occasionally moist"
+          },
+          {
+            "key": "4",
+            "text": "4 = Rarely moist"
+          }
+        ],
         "passToFunction": "bradenTotal",
         "tableColumn": "3",
         "fqn": "riskAssessment.bradenMoisture"
@@ -27277,7 +27313,25 @@ const DEFS = {
       {
         "elementKey": "bradenActivity",
         "formIndex": "1",
-        "inputType": "number",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "1",
+            "text": "1 = Bedfast"
+          },
+          {
+            "key": "2",
+            "text": "2 = Chairfast"
+          },
+          {
+            "key": "3",
+            "text": "3 = Walks occasionally"
+          },
+          {
+            "key": "4",
+            "text": "4 = Walks frequently"
+          }
+        ],
         "passToFunction": "bradenTotal",
         "tableColumn": "4",
         "fqn": "riskAssessment.bradenActivity"
@@ -27285,7 +27339,25 @@ const DEFS = {
       {
         "elementKey": "bradenMobility",
         "formIndex": "1",
-        "inputType": "number",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "1",
+            "text": "1 = Completely immobile"
+          },
+          {
+            "key": "2",
+            "text": "2 = Very limited"
+          },
+          {
+            "key": "3",
+            "text": "3 = Slightly limited"
+          },
+          {
+            "key": "4",
+            "text": "4 = No impairments"
+          }
+        ],
         "passToFunction": "bradenTotal",
         "tableColumn": "5",
         "fqn": "riskAssessment.bradenMobility"
@@ -27293,7 +27365,25 @@ const DEFS = {
       {
         "elementKey": "bradenNutrition",
         "formIndex": "1",
-        "inputType": "number",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "1",
+            "text": "1 = Very poor"
+          },
+          {
+            "key": "2",
+            "text": "2 = Probably inadequate"
+          },
+          {
+            "key": "3",
+            "text": "3 = Adequate"
+          },
+          {
+            "key": "4",
+            "text": "4 = Excellent"
+          }
+        ],
         "passToFunction": "bradenTotal",
         "tableColumn": "6",
         "fqn": "riskAssessment.bradenNutrition"
@@ -27301,7 +27391,21 @@ const DEFS = {
       {
         "elementKey": "bradenFriction",
         "formIndex": "1",
-        "inputType": "number",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "1",
+            "text": "1 = Problem"
+          },
+          {
+            "key": "2",
+            "text": "2 = Potential problem"
+          },
+          {
+            "key": "3",
+            "text": "3 = No apparent problem"
+          }
+        ],
         "passToFunction": "bradenTotal",
         "tableColumn": "7",
         "fqn": "riskAssessment.bradenFriction"
@@ -29619,7 +29723,7 @@ const DEFS = {
         "form": {
           "elementKey": "consentTreatTable",
           "label": "Consent for treatment",
-          "addButtonText": "Add Consent for treatement",
+          "addButtonText": "Add Consent for treatment",
           "formKey": "consentTreatTable",
           "ehr_groups": [
             {
@@ -29836,6 +29940,7 @@ const DEFS = {
         "form": {
           "elementKey": "preopChecklistTable",
           "addButtonText": "Add a pre-op checklist",
+          "formOption": "checkListForm",
           "formKey": "preopChecklistTable",
           "ehr_groups": [
             {

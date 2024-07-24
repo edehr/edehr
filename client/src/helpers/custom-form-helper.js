@@ -1,4 +1,4 @@
-import { currentSimDayTime } from '@/helpers/date-helper'
+import { currentSimDayTime, formatSimTimeKeyInLocalZone } from '@/helpers/date-helper'
 import StoreHelper from '@/helpers/store-helper'
 
 export function makeSubstitutions (html, regexp, composer) {
@@ -17,9 +17,11 @@ export function makeSubstitutions (html, regexp, composer) {
 export const checkBoxRegExp = /{checkbox:([a-zA-Z][0-9a-zA-Z_]*)}/g
 export const textRegExp = /{input:([a-zA-Z][0-9a-zA-Z_]*)}/g
 export const radioSetRegExp = /{radioSet:id=([a-zA-Z][0-9a-zA-Z_]*),name=([a-zA-Z][0-9a-zA-Z_]*),value='([^']*)'}/g
+export const simTimeRegExp = /{simTime:([a-zA-Z][0-9a-zA-Z_]*)}/g
 export const recDateRegExp = /{recordDate}/g
 export const recPersonRegExp = /{recordPerson}/g
 export const commentRegExp = /{textarea:([a-zA-Z][0-9a-zA-Z_]*)}/g
+export const signatureRegExp = /{signature:([a-zA-Z][0-9a-zA-Z_]*)}/g
 
 export class CustomFormHelper {
   constructor (viewOnly, initialValues) {
@@ -54,6 +56,8 @@ export class CustomFormHelper {
     // next see if the html contains duplicate ids. Can't proceed if it does.
     let combined = []
     combined = combined.concat(this.collectIds(html, recDateRegExp))
+    combined = combined.concat(this.collectIds(html, simTimeRegExp))
+    combined = combined.concat(this.collectIds(html, signatureRegExp))
     combined = combined.concat(this.collectIds(html, recPersonRegExp))
     combined = combined.concat(this.collectIds(html, checkBoxRegExp))
     combined = combined.concat(this.collectIds(html, radioSetRegExp))
@@ -64,11 +68,13 @@ export class CustomFormHelper {
       this.duplicateIds = idDup.join(', ')
     }
     if (this.duplicateIds && this.duplicateIds.length >0 ) {
-      console.error('Found duplicate ids so stop set up of custom form')
+      console.error('Found duplicate ids so stop set up of custom form', JSON.stringify(this.duplicateIds))
       return
     }
     html = medHelper.setupMeds(html)
     html = this.customSetupRecValues(html)
+    html = this.customSetupSimTimeValues(html, formValues)
+    html = this.customSetupSignature(html, formValues)
     html = this.customSetupCheckboxes(html, formValues)
     html = this.customSetupRadioSets(html, formValues)
     html = this.customSetupText(html, formValues)
@@ -116,6 +122,61 @@ export class CustomFormHelper {
     )
     return html
   }
+  customSetupSimTimeValues (html, formValues) {
+    html = makeSubstitutions(
+      html,
+      simTimeRegExp,
+      (id) => {
+        let elem = []
+        let value = this.initialValues[id]
+        if (this.viewOnly) {
+          if (value) {
+            let localTime = formatSimTimeKeyInLocalZone(value)
+            console.log('transforming input value into local time', value, localTime)
+            elem.push(localTime)
+          }
+        } else {
+          elem.push(`<input type='text' id='${id}'`)
+          elem.push('pattern="\\d+T([01][0-9]|2[0-3])([0-5][0-9])"')
+          elem.push('aria-label="sim time format: encounter day followed by T followed by 24hr time. E.g. 0T1234"')
+          if (value) {
+            formValues[id] = value
+            elem.push(`value='${value}'`)
+          }
+          elem.push('/>')
+        }
+        // return `<span>${dateStamp}</span>`
+        return elem.join(' ')
+      }
+    )
+    return html
+  }
+  customSetupSignature (html, formValues) {
+    html = makeSubstitutions(
+      html,
+      signatureRegExp,
+      (id) => {
+        this.idToType[id] = 'text'
+        let value = this.initialValues[id]
+        let elem = []
+        if (this.viewOnly) {
+          if (value) {
+            elem.push(`<span class='signature'>&nbsp;${value}&nbsp;</span>`)
+          }
+        } else {
+          elem.push(`<input type='text' id='${id}'`)
+          if (value) {
+            formValues[id] = value
+            elem.push(`value='${value}'`)
+          }
+          elem.push('/>')
+        }
+        return elem.join(' ')
+      }
+    )
+    return html
+  }
+
   customSetupCheckboxes (html, formValues) {
     html = makeSubstitutions(
       html,

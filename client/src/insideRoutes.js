@@ -408,11 +408,11 @@ export function inside () {
       meta: { layout: 'inside', label: 'Body Fluids', topLevel: 'med-lab', zone: 'ehr' }
     },
     {
-      path: '/ehr/chart/acp-most',
+      path: '/ehr/patient/acp-most',
       name: 'acp-most',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/AcpMost.vue'),
-      meta: { layout: 'inside', label: 'Advanced care plans', topLevel: 'chart', zone: 'ehr' }
+      meta: { layout: 'inside', label: 'Advanced care plans', topLevel: 'patient', zone: 'ehr' }
     },
     {
       path: '/ehr/current/consents',

@@ -77,7 +77,7 @@
   "orderSets.bpTable": "Add Bowel Protocol Order Set",
   "orderSets.bmTable": "Add Bowel Management Order Set",
   "checklistsPage.preopChecklistTable": "Add a pre-op checklist",
-  "consentsPage.consentTreatTable": "Add Consent for treatement",
+  "consentsPage.consentTreatTable": "Add Consent for treatment",
   "consentsPage.consentBloodTable": "Add Consent for blood products",
   "riskAssessment.bradenList": "Add Braden Scale assessment",
   "riskAssessment.morseList": "Add Morse Fall assessment",

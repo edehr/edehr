@@ -14,7 +14,7 @@
     )
       ehr-patient-banner(slot="header-extra-content")
       h3(slot="header") {{ formLabel }}
-      div(slot="body", class='ehr-dialog-form')
+      div(slot="body", class='ehr-dialog-form', :class='{ viewOnly: isViewOnly}')
         div(id="ehrDialogForm")
           ehr-group(v-for="group in groups", :key="group.gIndex",
             :tableKey="tableKey",

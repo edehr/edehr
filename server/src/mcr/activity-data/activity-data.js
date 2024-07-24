@@ -2,6 +2,21 @@ import mongoose from 'mongoose'
 import { WS_EVENT_BUS, WS_S2C_MESSAGE_EVENT } from '../../server/push-server'
 import Visit from '../visit/visit'
 import { ObjectId } from 'mongodb'
+import {
+  ACTIVITY_EVENT_START,
+  ACTIVITY_EVENT_SUBMIT,
+  ACTIVITY_EVENT_TYPES,
+  ACTIVITY_EVENT_UN_SUBMIT
+} from '../../helpers/activityEventType'
+
+const History = new mongoose.Schema({
+  eventDate: {type: Date},
+  eventType: {
+    type: String,
+    enum : ACTIVITY_EVENT_TYPES,
+    default: ACTIVITY_EVENT_START
+  },
+})
 
 /*
 A ActivityData represents the student's work for a particular LMS activity (with EdEHR assignment)
@@ -21,6 +36,8 @@ const Schema = new mongoose.Schema({
   evaluationData: {type: Object}, //place for instructor to mark the work
   scratchData: {type: Object}, // place for student to add notes
   submitted: { type: Boolean, default: false},
+  history: [History],
+  timeToComplete: { type: Number },
   createDate: {type: Date, default: Date.now},
   lastDate: {type: Date, default: Date.now},
   oId: {type: String}
@@ -30,6 +47,28 @@ const Schema = new mongoose.Schema({
 })
 
 Schema.pre('save', async function (next) {
+  let activityData = this
+  if (this.isNew) {
+    activityData.history.push({
+      eventDate: Date.now(),
+      eventType: ACTIVITY_EVENT_START
+    })
+  }
+  let changedSubmit = activityData.isModified('submitted')
+  if (changedSubmit) {
+    let eType = activityData.submitted ? ACTIVITY_EVENT_SUBMIT : ACTIVITY_EVENT_UN_SUBMIT
+    let now = Date.now()
+    activityData.history.push({
+      eventDate: now,
+      eventType: eType
+    })
+    if (activityData.submitted) {
+      let start = activityData.history.find( h => h.eventType === ACTIVITY_EVENT_START)
+      let diff = (now - start.eventDate)/1000
+      activityData.timeToComplete = Math.abs(Math.floor(diff))
+    }
+    // console.log('--------\n\nActivity DATA save', activityData.timeToComplete, activityData.history)
+  }
   // just make sure the assignment data (the student's ehr database) is ready for multiple patients
   const visit = Visit.find({activityData: new ObjectId(this._id)})
   if ( visit && visit.isStudent ) {

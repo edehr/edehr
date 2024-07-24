@@ -78,7 +78,7 @@ export function diffSimulationDays (datePickerDate) {
   admissionDate.setDate(admissionDate.getDate() - df)
   const diffTime = Math.abs(datePickerDate - admissionDate)
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
-  console.log( '--- diffSimulationDays', diffDays)
+  // console.log( '--- diffSimulationDays', diffDays)
   return diffDays
 }
 
@@ -101,8 +101,10 @@ export function simDateCalc (simDateValue) {
       let dv = new Date()
       let sD = dv.getDate() - df
       dv.setDate(sD)
+      // console.log('simDateCalc simDateValue:', simDateValue, 'todayNum:', todayNum, ' df:', df, ' dv:',  dv)
       return formatYmdDateInLocalZone(dv)
     }
+    // console.log('simDateCalc no change', simDateValue)
     return simDateValue
   } catch (error) {
     console.error('simDateCalc ', simDateValue, '----', error)
@@ -138,4 +140,11 @@ export function formatYmdDateInLocalZone ( inputDate) {
     console.error('formatYmdDateInLocalZone "' + inputDate + '" ----', error)
     return inputDate
   }
+}
+
+export function formatSimTimeKeyInLocalZone (simTimeKey) {
+  let [ d, t ] = splitSimTimeKey(simTimeKey)
+  let localDay = simDateCalc(d)
+  console.log('formatSimTimeKeyInLocalZone', simTimeKey, 'd', d, 't', t, 'localDay', localDay)
+  return localDay + ' ' + t
 }

@@ -413,9 +413,9 @@ export default class EhrPageHelper {
   }
 
   async cancelFormDialog () {
-    const dialog = this._getActiveTableDialog()
-    const originalData = dialog.intialInputs
-    console.log('cancelFormDialog', originalData)
+    // const dialog = this._getActiveTableDialog()
+    // const originalData = dialog.intialInputs
+    // console.log('cancelFormDialog', originalData)
     await this._saveDialogData(ACTION_RESTORE)
   }
   async saveDialogData () {

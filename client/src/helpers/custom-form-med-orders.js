@@ -19,7 +19,10 @@ export function makeReSubstitutions (html, regexp, composer) {
 }
 
 export class CustomFormMedOrderHelper {
-  constructor () {
+  constructor (pageKey, tableKey, elementKey) {
+    this.pageKey = pageKey
+    this.tableKey = tableKey
+    this.elementKey = elementKey
     this.medsByMedKey = {}
   }
 
@@ -125,14 +128,14 @@ export class CustomFormMedOrderHelper {
    * @returns {{}}
    */
   updateMedOrder (medKey, formValues ) {
+    // ToDo fix hard coded row index below
+    let rowIndex = '0'
     // console.log('----- updateMedOrder', medKey)
     let include = true // initial assumption is the med order has no checkbox to indicate inclusion in the list of meds
     let name = StoreHelper.getSimSignOnName()
     let profession = StoreHelper.getSimSignOnProfession()
-    // ToDo fix hard coded ref below
-    console.log('ToDo fix hard coded ref below')
     let composedMedOrderForMar = {
-      medicationOrdersTable_id: 'orderSets.pcaPpo.0.pcaPpoForm.' + medKey,
+      medicationOrdersTable_id: [this.pageKey, this.tableKey, rowIndex, this.elementKey, medKey].join('.'),
       med_timing: 'prn', // default is PRN
       medicationOrdersTable_name: name,
       medicationOrdersTable_profession: profession,
@@ -141,7 +144,7 @@ export class CustomFormMedOrderHelper {
     }
     // Remember that some parts of the order (e.g. instructions) can contain one or more inputs.
     // All of these need to be fetched and inserted into a copy of the template to provide the complete order.
-    // As well, we allow some parts to span multiple DOM elements so we need to gather the composed works.
+    // As well, we allow some parts to span multiple DOM elements, so we need to gather the composed works.
     let medOrderDef = this.medsByMedKey[medKey]
     let roles = Object.keys(medOrderDef)
     roles.forEach(role => {

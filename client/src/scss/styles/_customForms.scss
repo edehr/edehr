@@ -1,3 +1,4 @@
+@import '../definitions';
 // Be sure to nest all styles inside the top level class
 .ehr-custom-form {
   /* Overrides to make the custom form more compact */
@@ -119,5 +120,18 @@
     //color: blue;
   }
 
+  input:invalid {
+    border: red solid 3px;
+  }
 
+  .signature {
+    font-family: $fontFamilyStyleHand;
+    color: blue;
+    font-size: 2rem;
+    font-style: italic;
+  }
+}
+// declare outside ehr-custom-form because the viewOnly class is applied to the same element
+.viewOnly .viewOnlyHidden {
+  display: none;
 }
