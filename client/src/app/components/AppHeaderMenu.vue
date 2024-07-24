@@ -2,13 +2,11 @@
   div
     div(class="app-header flow_across")
       div(class="app-header-brand")
-        div(v-if="isDemoServer")
-          a(href="https://edehr.org")
-            img(src="/edehr-Logo.png", class='brand-image', alt='EdEHR')
-        div(v-else)
-          router-link(:to="{ name: 'home' }", class="navLink")
-            img(src="/edehr-Logo.png", class='brand-image', alt='EdEHR')
+        router-link(:to="{ name: 'home' }", class="navLink")
+          img(src="/edehr-Logo.png", class='brand-image', alt='EdEHR')
       div(class="display-name") {{ consumerDisplayName }}
+      div(v-if="isDemoServer", class="display-name")
+        a(href="https://edehr.org") edehr.org
       div(class="flow_across menu_space_across flow_across_last_item side-menu")
         app-header-documentation-menu
         router-link(v-if="isDemo", :to="{ name: `demo` }", class="navLink") {{demoText}}
@@ -68,6 +66,10 @@ export default {
 }
 .display-name {
   margin-top: 10px;
+  margin-right: 10px;
+  a {
+    font-size: inherit;
+  }
 }
 .side-menu {
   margin-top: 10px;
