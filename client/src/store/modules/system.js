@@ -33,6 +33,7 @@ const state = {
   scratchPadVisible: false,
   evalDialogVisible: false,
   dialogInstructionsVisible: false,
+  dialogZIndex: 1,
   seedTableCollapse: {},
   seedStructPageKey: undefined,
   smallWindow: false,
@@ -65,6 +66,7 @@ const getters = {
   scratchPadVisible: state => state.scratchPadVisible,
   evalDialogVisible: state => state.evalDialogVisible,
   dialogInstructionsVisible: state => state.dialogInstructionsVisible,
+  dialogZIndex: state => state.dialogZIndex,
   seedTableCollapse: state => (tableKey) => state.seedTableCollapse[tableKey],
   showExplanationTextOutside: state => state.showExplanationTextOutside,
   smallWindow: state => state.smallWindow,
@@ -134,7 +136,10 @@ const actions = {
   setShowExplanationTextOutside ( {commit}, value) {
     commit('setShowExplanationTextOutside', value)
   },
-
+  incrementDialogZIndex ({ commit, state }) {
+    commit('_incrementDialogZIndex')
+    return state.dialogZIndex
+  },
   setEvalDialogVisible ( context, trueFalse ) {
     context.commit('_setEvalDialogVisible', trueFalse)
   },
@@ -208,6 +213,9 @@ const mutations = {
   },
   incrAppDialogCount: (state) => {
     state.appDialogCount++
+  },
+  _incrementDialogZIndex: (state) => {
+    state.dialogZIndex++
   },
   setLmsNavCollapsed: (state, value) => {
     localStorage.setItem('LmsNavCollapsed', value)

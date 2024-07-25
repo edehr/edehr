@@ -7,10 +7,11 @@
         ref="theDialog",
         :style="{ top: top + 'px', left: left + 'px', zIndex: modalD }")
         // header
-        div(class="dialog-header draggable", v-dragged="onDragged")
+        div(class="dialog-header draggable", v-dragged="onDragged", @click='headerClicked')
           // header title with buttons
           div(class="dialog-header-title")
             div
+              span {{ dialogZIndex }} {{ modalD }} &nbsp;
               slot(name="header") default header
             div(class="dialog-header-buttons")
               ui-button(value="ads-cancel", v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
@@ -66,6 +67,7 @@ export default {
   },
   computed: {
     ehrText () { return t18EhrText() },
+    dialogZIndex () { return this.$store.getters['system/dialogZIndex'] },
     t18SaveButtonLabel () {
       // console.log('this.saveButtonLabel', this.saveButtonLabel)
       return this.saveButtonLabel === 'def' ? this.ehrText.saveButtonLabel : this.saveButtonLabel
@@ -93,6 +95,9 @@ export default {
       console.log('focus on save button', this.$refs.saveButton.$el)
       // this.$refs.saveButton.$el.focus({ focusVisible: true})
       this.$refs.saveButton.$el.focus()
+    },
+    headerClicked () {
+      this.updateZIndex()
     },
     onDragged ({ el, deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last }) {
       // if (this.fullScreen) return
@@ -156,13 +161,14 @@ export default {
       // let db = this.$refs.theDialogBody
       // let dbh = db.clientHeight
       // this.showTopButtons = dbh > 200
+      this.updateZIndex()
+    },
+    updateZIndex () {
+      this.$store.dispatch('system/incrementDialogZIndex')
+      const cnt = this.$store.getters['system/dialogZIndex']
+      this.modalD = cnt + 1 + this.zIndexBase
+      this.modalZ = cnt + this.zIndexBase
     }
-  },
-  mounted () {
-    this.$store.dispatch('system/appDialogCountIncrement')
-    const cnt = this.$store.getters['system/appDialogCount']
-    this.modalD = cnt + 1 + this.zIndexBase
-    this.modalZ = cnt + this.zIndexBase
   }
 }
 </script>
