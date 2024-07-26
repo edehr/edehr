@@ -11,7 +11,6 @@
           // header title with buttons
           div(class="dialog-header-title")
             div
-              span {{ dialogZIndex }} {{ modalD }} &nbsp;
               slot(name="header") default header
             div(class="dialog-header-buttons")
               ui-button(value="ads-cancel", v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
