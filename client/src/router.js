@@ -48,11 +48,18 @@ let routes = [
     meta: { layout: 'print', label: 'Patient summary', zone: ZONE_EHR }
   },
   {
-    path: '/cform/dev',
+    path: '/dev/cform',
     name: 'DEV_CUSTOM_FORM',
     component: () =>
       import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/DevCustomForm.vue'),
     meta: { layout: 'print', label: 'Dev custom form', zone: ZONE_PUBLIC }
+  },
+  {
+    path: '/dev/element',
+    name: 'DEV_ELEMENT',
+    component: () =>
+      import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/DevElement.vue'),
+    meta: { layout: 'print', label: 'Dev some element', zone: ZONE_PUBLIC }
   },
   {
     // Redirect from LTI entry to appropriate part of application based on current appType (from seed)
