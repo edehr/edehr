@@ -146,6 +146,9 @@ async  function onPageChange (toRoute) {
     // EXIT
     }
     if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+      let dKey = store.getters['mPatientStore/currentPatientObjectId']
+      await EhrOnlyDemo.selectCaseStudy(dKey)
+      // await store.dispatch('mPatientStore/ehrOnlyDemo', demoOnlyKey)
       console.log('ehr only demo is active')
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
       return perfExit(perfStat)

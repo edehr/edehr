@@ -291,6 +291,90 @@
         }
       ]
     },
+    "fluidBalance": {
+      "fluidInOutTable": [
+        {
+          "fluidInOutTable_name": "Jason",
+          "fluidInOutTable_profession": "RN",
+          "fluidInOutTable_day": 0,
+          "fluidInOutTable_time": "1800",
+          "inOral": "100",
+          "inIV": "345",
+          "totalInputs": 445,
+          "outUrine": "156",
+          "outDrains": "211",
+          "totalOutputs": 367,
+          "cumulativeTotal": 78,
+          "createdDate": "2024-07-29T19:24:19-07:00",
+          "fluidInOutTable_id": "fluidBalance.fluidInOutTable.0"
+        },
+        {
+          "fluidInOutTable_name": "Jason",
+          "fluidInOutTable_profession": "RN",
+          "fluidInOutTable_day": 1,
+          "fluidInOutTable_time": "0659",
+          "inOral": "140",
+          "inIV": "445",
+          "totalInputs": 585,
+          "outUrine": "156",
+          "outDrains": "211",
+          "totalOutputs": 367,
+          "cumulativeTotal": 218,
+          "createdDate": "2024-07-29T19:24:19-07:00",
+          "fluidInOutTable_id": "fluidBalance.fluidInOutTable.0"
+        }
+      ]
+    },
+    "integumentaryAssessment": {
+      "tableWound": [
+        {
+          "name": "Lori",
+          "profession": "RN",
+          "day": "0",
+          "time": "12:00",
+          "woundLocation": "Buttock",
+          "woundLabel": "Wound A",
+          "woundDayOnset": "2 months ago",
+          "stageType": "pressureInjuryStage4",
+          "goalOfCare": "To heal",
+          "woundBedCalculation": 0,
+          "woundProfileImage": {
+            "fName": "Stage_IV_Pressure_Injury.png"
+          },
+          "createdDate": "2020-08-31T15:07:17-07:00"
+        }
+      ],
+      "lastUpdate": "2020-08-31T22:17:34+00:00",
+      "tableWoundAssessment": [
+        {
+          "name": "Lori",
+          "profession": "RN",
+          "day": "0",
+          "time": "12:00",
+          "woundLabel": "Wound A",
+          "length": "11.5cm",
+          "width": "7cm",
+          "depth": "3cm",
+          "underminingDepth1": "2.5cm",
+          "underminingDepthLocation1A": "11",
+          "underminingDepthLocation1B": "4",
+          "slough": "20",
+          "notVisible": "10",
+          "other": "70",
+          "woundBedCalculation": 100,
+          "exudateAmount": "large",
+          "exudateType": "serous,sanginous",
+          "odour": "No",
+          "woundEdge": "nonAttached (edgeAppearsAsACliff),rolled (curledUnder)",
+          "periWoundSkin": "intact",
+          "woundPain": "2",
+          "packingOut": "1",
+          "packinIn": "1",
+          "treatmentComplete": "Yes",
+          "createdDate": "2020-08-31T15:17:34-07:00"
+        }
+      ]
+    },
     "neurological": {
       "table": [
         {
