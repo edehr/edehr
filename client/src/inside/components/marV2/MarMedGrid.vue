@@ -443,10 +443,10 @@ time-element are the boxes containing either a time value or
   display: flex;
   flex-direction: row;
   min-height: 2rem;
+  padding: $element-padding;
   & .medication-element-button {
     margin-left: 1rem;
   }
-  padding: $element-padding;
 }
 .med-row-element {
   min-height: $med-row-element-height;
