@@ -69,7 +69,7 @@ export default {
 }
 .modal-container {
   position: relative;
-  top: 3rem;
+  top: 5.5rem;
   margin-left: auto;
   margin-right: auto;
   width: 20rem;
