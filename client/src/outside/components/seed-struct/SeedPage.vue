@@ -63,7 +63,7 @@ export default {
       return EhrDefs.getPageChildElement(this.pageKey, eKey)
     },
     getSeedData (eKey) {
-      return this.pageSeedData[eKey]
+      return this.pageSeedData && this.pageSeedData[eKey]
     },
   }
 }
