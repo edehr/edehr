@@ -14,6 +14,19 @@ Setup bulma through this import
 @import '../../node_modules/bulma/bulma';
 
 /*
+August 2024. Updated to use bulma v1.x which comes with automatic dark mode.
+Unfortunately, that means any attempt to set background or foreground colours will collide with
+the bulma settings. For example, without making any adjustments the inclusion of v1.x Bulma sets the
+entire page to black. Both fore and back ground.
+
+The quick fix is to add
+<html lang="en" data-theme="light">
+into the root html file.
+
+TODO once EdEHR can work with Bulma's dark mode remove the data-theme attribute from the root html element
+ */
+
+/*
 Bulma is good yet it adds negative margin to columns and
 negative padding to column.  The following over rides this.
  */
