@@ -19,12 +19,13 @@ div
 </template>
 
 <script>
-import TableSample from '@/outside/views/TableSample.vue'
 
 export default {
-  components: { TableSample },
   computed: {
     last12 () { return this.$store.getters['visit/activeStudentCount']}
+  },
+  mounted () {
+    this.$store.dispatch('visit/loadActiveStudentCount')
   }
 }
 </script>
