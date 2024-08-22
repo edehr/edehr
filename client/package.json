@@ -49,6 +49,7 @@
     "vue-autosuggest": "^2.2.0",
     "vue-moment": "^4.1.0",
     "vue-router": "^3.6.5",
+    "vue-simple-suggest": "^1.11.2",
     "vue-spinner-component": "^1.0.5",
     "vue-upload-component": "^2.8.22",
     "vuejs-datepicker": "^1.5.4",

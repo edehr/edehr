@@ -2,8 +2,6 @@
 <script>
 import moment from 'moment'
 import { formatDateStr } from '@/helpers/ehr-utils'
-import EventBus from '@/helpers/event-bus'
-import { TABLE_ACTION_EVENT } from '@/helpers/event-bus'
 import StoreHelper from '@/helpers/store-helper'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 
@@ -43,10 +41,6 @@ export default {
     },
     getIdFromRow (dbRow) {
       return dbRow[0].value
-    },
-    tableAction: function (sourceRowId) {
-      // console.log('TABLE ACTION EVENT EMIT', sourceRowId)
-      EventBus.$emit(TABLE_ACTION_EVENT, this.tableDef, sourceRowId)
     },
     editDraft (rowId) {
       this.$emit('editDraft', rowId)

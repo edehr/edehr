@@ -127,7 +127,7 @@
     div(v-else-if="isType(dataTypes.visitDay)", class="sim_day_wrapper", :class='formCss')
       div(v-if='isRecHdr') {{ dateVal(inputVal) }} (Day {{inputVal}})
       div(v-else)
-        span {{label}}  &nbsp;
+        label(class="form_label") {{label}}
         ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
         span(v-if="viewOnly", class='bold') {{ dateVal(inputVal) }}
         input(v-else, class="input numb-input", type="text", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
@@ -135,11 +135,17 @@
     div(v-else-if="isType(dataTypes.visitTime)", class="sim_time_wrapper", :class='formCss')
       div(v-if='isRecHdr') {{ inputVal }}
       div(v-else)
-        span {{label}}  &nbsp;
+        label(class="form_label") {{label}}
         span(v-if="viewOnly", class='bold') {{ inputVal }}
         input(v-else, class="input numb-input",
           pattern="^([01][0-9]|2[0-3])([0-5][0-9])$"
           type="text", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
+
+    ehr-element-accession(v-else-if="isType(dataTypes.labTestSet)", :elementKey="elementKey", :tableKey="tableKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
+
+    div(v-else-if="isType(dataTypes.accessionId)")
+      label(class="form_label") {{label}}
+      span {{ inputVal }}
 
     div(v-else) ELSE: {{inputType}} {{label}}
 
@@ -151,6 +157,7 @@
 <script>
 // import the common component with the .vue extension so that the base component doesn't need to have a template section
 import EhrElementCommon from './EhrElementCommon.vue'
+import EhrElementAccession from '@/inside/components/page/accessioning/EhrElementAccession.vue'
 import EhrElementCalculated from './EhrElementCalculated'
 import EhrElementCheckset from './EhrElementCheckset'
 import EhrElementEmbedded from '@/inside/components/page/EhrElementEmbedded'
@@ -176,6 +183,7 @@ export default {
   name: 'EhrElementForm',
   extends: EhrElementCommon,
   components: {
+    EhrElementAccession,
     EhrElementCalculatedBool,
     EhrElementCalculatedText,
     EhrElementBoxCheckset,

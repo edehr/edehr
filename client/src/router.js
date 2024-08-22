@@ -1,3 +1,4 @@
+
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from './store'
@@ -48,6 +49,13 @@ let routes = [
     meta: { layout: 'print', label: 'Patient summary', zone: ZONE_EHR }
   },
   {
+    path: '/accessioning-print',
+    name: 'accessioning-print',
+    component: () =>
+      import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/AccessionPrint.vue'),
+    meta: { layout: 'print', label: 'Accessioning Print', zone: ZONE_EHR }
+  },
+  {
     path: '/dev/cform',
     name: 'DEV_CUSTOM_FORM',
     component: () =>
@@ -59,7 +67,7 @@ let routes = [
     name: 'DEV_ELEMENT',
     component: () =>
       import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/DevElement.vue'),
-    meta: { layout: 'print', label: 'Dev some element', zone: ZONE_PUBLIC }
+    meta: { layout: 'outside', label: 'Dev some element', zone: ZONE_PUBLIC }
   },
   {
     // Redirect from LTI entry to appropriate part of application based on current appType (from seed)

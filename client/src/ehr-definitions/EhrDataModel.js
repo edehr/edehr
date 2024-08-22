@@ -14,7 +14,7 @@ import { updateWoundCaseStudy } from './ehr-data-upgrade-woundCaseStudy'
 import { updateHematologyLymphocytes } from './ehr-data-upgrade-hematology'
 import { updateV2_4_1 } from './ehr-data-upgrade-v2.4.1'
 import { computeDateOfBirth } from './ehr-def-utils'
-import { MED_ORDERS_PAGE_KEY, MED_ORDERS_TABLE_KEY } from '@/ehr-definitions/ehr-defs-grid'
+import { MED_ORDERS_PAGE_KEY, MED_ORDERS_TABLE_KEY } from './ehr-defs-grid'
 
 export const CURRENT_EHR_DATA_VERSION = 'ev2.4.1'
 // ev2.4.0 major change in how the student's ehrData is stored. It is now in an array of patients.

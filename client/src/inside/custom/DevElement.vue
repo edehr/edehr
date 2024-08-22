@@ -1,25 +1,37 @@
 <template lang='pug'>
-div
-  ehr-element-medication(
-    :tableKey="tableKey",
-    :inputVal="inputVal"
-  )
+div(style="width:100%;")
+  div(class='devElement')
+    dev-lab-test-element
+  div(class='devElement')
+    h2 Medication lookup
+    ehr-element-medication(
+      :tableKey="tableKey",
+      :inputVal="inputVal",
+      @selected='medSelected'
+    )
+    div medication value {{ medicationValue }}
 </template>
 
 <script>
-import EhrElementCustomForm from '@/inside/components/page/EhrElementCustomForm.vue'
 import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
+import DevLabTestElement from '@/inside/components/page/accessioning/DevLabTestElement.vue'
 import EhrElementMedication from '@/inside/components/page/EhrElementMedication2.vue'
 
 export default {
-  components: { EhrElementMedication },
+  components: { DevLabTestElement, EhrElementMedication },
   data () {
     return {
       elementDef: { },
       pageDataKey: 'medicationOrders',
       tableKey: 'table',
       elementKey: 'medication',
-      inputVal: ''
+      inputVal: '',
+      medicationValue: ''
+    }
+  },
+  methods: {
+    medSelected (medVal) {
+      this.medicationValue = medVal
     }
   },
   mounted () {
@@ -30,5 +42,8 @@ export default {
 </script>
 
 <style scoped>
-
+.devElement {
+  margin: 1rem;
+  border: 1px solid blue;
+}
 </style>

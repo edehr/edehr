@@ -44,5 +44,6 @@
   "labResults.lru_bnp": "La prueba del péptido natriurético cerebral (BNP) es un análisis de sangre que mide los niveles de una proteína llamada BNP que es realizada por su corazón y vasos sanguíneos. Los niveles de BNP son más altos de lo normal cuando tienes insuficiencia cardíaca.",
   "labResults.lru_aldosterone": "La aldosterona (ALD) es una hormona que ayuda a regular su presión arterial manejando los niveles de sodio (sal) y potasio en la sangre e impactando el volumen sanguíneo.",
   "medAdminRec.mar_location": "Si el medicamento se administra por inyección, indique la ubicación aquí.",
-  "medAdminRec.mar_secSigName": "Si las alertas de medicamentos lo dicen, haga que otro proveedor calificado revise este registro e inserte su nombre aquí."
+  "medAdminRec.mar_secSigName": "Si las alertas de medicamentos lo dicen, haga que otro proveedor calificado revise este registro e inserte su nombre aquí.",
+  "medLabAccession.last_dose_day": "El día 0 es el día de admisión, el día 1 es el día siguiente, etc."
 }

@@ -22,6 +22,7 @@ import { validDayStr, validTimeStr } from '@/ehr-definitions/common-utils'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
 import store from '@/store'
 import { t18ElementLabel, t18TableLabel } from '@/helpers/ehr-t18'
+import axios from 'axios'
 
 export const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
@@ -97,6 +98,20 @@ export default class EhrPageHelper {
   }
   getPageKey () { return store.getters['system/currentPageKey'] }
   getPageTableDefs () { return EhrDefs.getPageTables(this.getPageKey()) }
+
+  getGeneratedAccessionId (isDemoOnly) {
+    if (isDemoOnly) {
+      let id = Math.random().toString(32).slice(-9)
+      return Promise.resolve(id)
+    }
+    let url = StoreHelper.apiUrlGet() + '/accession/generate-accession/'
+    // console.log('getGeneratedAccessionId axios call to ', url)
+    return axios.get(url)
+      .then(response => {
+        console.log('getGeneratedAccessionId response', response)
+        return response.data
+      })
+  }
 
   isTableDialogActive (tableKey) {
     const dialog = this._getActiveTableDialog()

@@ -14,6 +14,7 @@ import { updateWoundCaseStudy } from './ehr-data-upgrade-woundCaseStudy'
 import { updateHematologyLymphocytes } from './ehr-data-upgrade-hematology'
 import { updateV2_4_1 } from './ehr-data-upgrade-v2.4.1'
 import { computeDateOfBirth } from './ehr-def-utils'
+import { MED_ORDERS_PAGE_KEY, MED_ORDERS_TABLE_KEY } from './ehr-defs-grid'
 
 export const CURRENT_EHR_DATA_VERSION = 'ev2.4.1'
 // ev2.4.0 major change in how the student's ehrData is stored. It is now in an array of patients.
@@ -407,7 +408,38 @@ export default class EhrDataModel {
         results = { pageKey: p[0], tableKey: p[1], rowIndex: p[2], orderSetElement: p[3], medId: p[4] }
       }
     }
-    // return p && p.length === 3 ? { pageKey: p[0], tableKey: p[1], rowIndex: p[2] } : undefined
+    // console.log('IdToParts rowId', rowId)
+    // console.log('IdToParts result', results)
     return results
   }
+
+  getOrderSetMedOrders (pageKey, tableKey, orderSetElement) {
+    let results = []
+    const tableData = this.getPageTableData(pageKey, tableKey)
+    if (tableData) {
+      tableData.map(rowData => {
+        const orderSetData = rowData[orderSetElement]
+        const medOrders = orderSetData.medOrders || []
+        results = [...results, ...medOrders]
+      })
+    }
+    return results
+  }
+
+  getAllMedOrders () {
+    const medPage = this.getPageData(MED_ORDERS_PAGE_KEY) || {}
+    let medOrderData = medPage[MED_ORDERS_TABLE_KEY] || []
+    let customFieldKeys = []
+    customFieldKeys.push('orderSets.pcaPpo.pcaPpoForm')
+    customFieldKeys.push('orderSets.bpTable.bpForm')
+    customFieldKeys.push('orderSets.bmTable.bmForm')
+    customFieldKeys.forEach( key => {
+      let [pageKey, tableKey, orderSetElement] = key.split('.')
+      let data = this.getOrderSetMedOrders (pageKey, tableKey, orderSetElement)
+      // console.log(`get all med orders PK: ${pageKey} TK: ${tableKey} OSK: ${orderSetElement}. Data: `, data)
+      medOrderData = [...medOrderData, ...data]
+    })
+    return medOrderData
+  }
+
 }

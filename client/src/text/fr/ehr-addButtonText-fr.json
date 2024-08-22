@@ -75,12 +75,12 @@
   "neurological.mse_table": "Ajouter une évaluation MSE",
   "orderSets.pcaPpo": "Ajouter une analgésie contrôlée par le patient",
   "orderSets.bpTable": "Ajouter un ensemble d’ordres de protocole intestinal",
-  "orderSets.bmTable": "Ajouter un ensemble d’ordres de selles",
+  "orderSets.bmTable": "Ajouter un ensemble d’ordres de gestion intestinale",
   "checklistsPage.preopChecklistTable": "Ajouter une liste de contrôle préopératoire",
   "consentsPage.consentTreatTable": "Ajouter le consentement pour le traitement",
   "consentsPage.consentBloodTable": "Ajouter le consentement pour les produits sanguins",
   "riskAssessment.bradenList": "Ajouter une évaluation à l’échelle de Braden",
   "riskAssessment.morseList": "Ajouter une évaluation Morse Fall",
   "checklistsPage.surgChecklistTable": "Ajouter une liste de contrôle préopératoire",
-  "orderSets.swallowTable": ""
+  "orderSets.swallowTable": "Ajouter un ensemble d’ordres de dépistage des hirondelles"
 }

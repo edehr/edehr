@@ -564,6 +564,5 @@
   "neurological.mse_table": "Examen de l'état mental",
   "checklistsPage.name": "Identification",
   "consentsPage.name": "Identification",
-  "riskAssessment.name": "Identification",
-  "neurological.table": ""
+  "riskAssessment.name": "Identification"
 }

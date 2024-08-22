@@ -159,7 +159,7 @@ export default {
      * Set this element's model value (inputVal).
      * @param value
      */
-    setInitialValue (value) {
+    async setInitialValue (value) {
       if (dbInputs) console.log('EhrCommon set initial value ', value, this.elementKey)
       if (this.element.recHeader && !this.viewOnly) {
         let metaSimTime = StoreHelper.getMetaSimTime()
@@ -197,6 +197,10 @@ export default {
             value = signOnDetails.personaProfession
           }
         }
+      }
+      if (this.inputType === EhrTypes.dataInputTypes.accessionId) {
+        let isDemoOnly = EhrOnlyDemo.isActiveEhrOnlyDemo()
+        value = value || await this.ehrHelp.getGeneratedAccessionId(isDemoOnly)
       }
       this.initialVal = value
       this.inputVal = value

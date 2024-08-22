@@ -1,6 +1,6 @@
 import Counters from './counters'
 
-export async function getNextSequence (toolConsumer, name, size) {
+export async function getNextSequence (toolConsumer, name, size, initialValue = 0) {
   // be sure to keep only one doc for each name
   // Could have used unqique indexing but that required changing the db options
   // and that introduces unknown risks.
@@ -9,7 +9,7 @@ export async function getNextSequence (toolConsumer, name, size) {
   // drop database drops indices.
   let cnt = await Counters.findOne({ toolConsumer: toolConsumer, name: name })
   if (!cnt) {
-    await Counters.create({toolConsumer: toolConsumer, name: name, seq: 0})
+    await Counters.create({toolConsumer: toolConsumer, name: name, seq: initialValue})
     cnt = await Counters.findOne({ toolConsumer: toolConsumer, name: name })
   }
   cnt.seq++

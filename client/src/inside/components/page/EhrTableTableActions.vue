@@ -44,8 +44,19 @@ export default {
       return this.ehrHelp._canEdit()
     },
     showTableAction () {
-      const c1 = this.tableDef.tableActionType === EhrTypes.tableActions.actionTypes.openDialog
-      return this.isDevContent ? c1 : c1 && !this.isSubmitted
+      let show = false
+      const ats = EhrTypes.tableActions.actionTypes
+      const tat = this.tableDef.tableActionType
+      if (tat === ats.openDialog) {
+        show = this.isDevContent || !this.isSubmitted
+      }
+      if (tat === ats.printBarCode) {
+        show = true
+      }
+      if (tat === ats.hideButton) {
+        show = false
+      }
+      return show
     },
     ehrText () { return t18EhrText() }
   },
@@ -76,7 +87,7 @@ export default {
       return dbRow[0].value
     },
     tableAction: function (sourceRowId) {
-      // console.log('TABLE ACTION EVENT EMIT', sourceRowId)
+      console.log('TABLE ACTION EVENT EMIT', sourceRowId)
       EventBus.$emit(TABLE_ACTION_EVENT, this.tableDef, sourceRowId)
     },
     editDraft (rowId) {

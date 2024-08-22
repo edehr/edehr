@@ -44,5 +44,6 @@
   "labResults.lru_bnp": "Brain natriuretic peptide (BNP) test is a blood test that measures levels of a protein called BNP that is made by your heart and blood vessels. BNP levels are higher than normal when you have heart failure.",
   "labResults.lru_aldosterone": "Aldosterone (ALD) is a hormone that helps regulate your blood pressure by managing the levels of sodium (salt) and potassium in your blood and impacting blood volume.",
   "medAdminRec.mar_location": "If the medication is administered by injection then indicate the location here.",
-  "medAdminRec.mar_secSigName": "If the medication alerts say so then have another qualified provider review this record and insert their name here."
+  "medAdminRec.mar_secSigName": "If the medication alerts say so then have another qualified provider review this record and insert their name here.",
+  "medLabAccession.last_dose_day": "Day 0 is admission day, Day 1 is the next day, etc"
 }
