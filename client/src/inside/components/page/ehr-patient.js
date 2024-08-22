@@ -3,6 +3,7 @@ import EhrTypes from '@/ehr-definitions/ehr-types'
 import { computeDateOfBirth } from '@/ehr-definitions/ehr-def-utils'
 import { makeHumanTableCell } from '@/ehr-definitions/ehr-def-utils'
 import { extractMedName } from '@/ehr-definitions/med-definitions/medOrder-model'
+import EhrDataModel from '@/ehr-definitions/EhrDataModel'
 
 class EhrPatientC {
   patientData () {
@@ -132,9 +133,9 @@ class EhrPatientC {
     return JSON.parse(JSON.stringify(asStored))
   }
   _medicalOrders (data) {
-    let asStored = data.medicationOrders || {}
-    asStored = asStored.medicationOrdersTable || []
-    let medOrders = JSON.parse(JSON.stringify(asStored))
+    const ehrDataModel = new EhrDataModel(data)
+    let medOrders = ehrDataModel.getAllMedOrders()
+    medOrders = JSON.parse(JSON.stringify(medOrders))
     medOrders.sort( (a,b) => {
       const m1 = extractMedName(a.med_medication || '')
       const m2 = extractMedName(b.med_medication || '')

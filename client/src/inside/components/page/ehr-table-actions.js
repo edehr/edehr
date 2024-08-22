@@ -12,19 +12,22 @@ export default class EhrTableActions {
     const ehrText = t18EhrText()
     const { taTargetPageKey, taTargetTableKey} = tableDef
     let targetDraftRowIndex = -1
-    const desiredRowValue = sourceRowId
-    const srcElemKey = this.getTableActionTargetElementKey(tableDef)
-    if (!srcElemKey) {
-      const msg = ehrText.ERROR_IN_TABLE_ACTION_DEF + ' ' + taTargetPageKey + ' ' + taTargetTableKey
-      console.log(msg)
-      StoreHelper.setApiError(msg)
-      throw new Error(msg)
+    if (tableDef.tableActionType === EhrTypes.tableActions.actionTypes.openDialog) {
+      const desiredRowValue = sourceRowId
+      console.log('where to intercept here is table def', tableDef)
+      const srcElemKey = this.getTableActionTargetElementKey(tableDef)
+      if (!srcElemKey) {
+        const msg = ehrText.ERROR_IN_TABLE_ACTION_DEF + ' ' + taTargetPageKey + ' ' + taTargetTableKey
+        console.log(msg)
+        StoreHelper.setApiError(msg)
+        throw new Error(msg)
+      }
+      const mData = StoreHelper.getMergedData()
+      const pData = mData[taTargetPageKey] || {}
+      const tData = pData[taTargetTableKey] || []
+      targetDraftRowIndex = tData.findIndex(row => row.isDraft && row[srcElemKey] === desiredRowValue)
+      // console.log('getTableActionGetDraftRowIndex', sourceRowId, targetDraftRowIndex)
     }
-    const mData = StoreHelper.getMergedData()
-    const pData = mData[taTargetPageKey] || {}
-    const tData = pData[taTargetTableKey] || []
-    targetDraftRowIndex = tData.findIndex( row => row.isDraft && row[srcElemKey] === desiredRowValue )
-    // console.log('getTableActionGetDraftRowIndex', sourceRowId, targetDraftRowIndex)
     return targetDraftRowIndex
   }
 

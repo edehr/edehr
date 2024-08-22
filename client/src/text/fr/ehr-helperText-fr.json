@@ -44,5 +44,6 @@
   "labResults.lru_bnp": "Le test du peptide natriurétique cérébral (BNP) est un test sanguin qui mesure les niveaux d'une protéine appelée BNP qui est fabriquée par votre cœur et vos vaisseaux sanguins. Les niveaux de BNP sont plus élevés que la normale lorsque vous souffrez d'insuffisance cardiaque.",
   "labResults.lru_aldosterone": "L'aldostérone (ALD) est une hormone qui aide à réguler votre tension artérielle en gérant les niveaux de sodium (sel) et de potassium dans votre sang et un impact sur le volume sanguin.",
   "medAdminRec.mar_location": "Si le médicament est administré par injection, indiquez l'emplacement ici.",
-  "medAdminRec.mar_secSigName": "Si les alertes de médicaments le disent, alors demandez à un autre fournisseur qualifié examine ce dossier et insérez leur nom ici."
+  "medAdminRec.mar_secSigName": "Si les alertes de médicaments le disent, alors demandez à un autre fournisseur qualifié examine ce dossier et insérez leur nom ici.",
+  "medLabAccession.last_dose_day": "Le jour 0 est le jour d'admission, le jour 1 est le lendemain, etc."
 }

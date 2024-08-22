@@ -33,6 +33,7 @@ const EhrTypes = {
     // day: 'day',
     ehrFile: 'ehrFile',
     lab_result: 'lab_result', // lab result value with range in the options property
+    labTestSet: 'labTestSet', // lab test set in the accessioning record
     mainDOB: 'mainDOB', // main edit field on demographics page. Year is computed base on dependant age field.
     personAge: 'personAge',
     practitionerName: 'practitionerName',
@@ -48,6 +49,7 @@ const EhrTypes = {
     visitDay: 'visitDay',
     visitTime: 'visitTime',
     // types controlled by the application. See ehr-helper activeTableDialogHasData
+    accessionId: 'accessionId',
     generatedId: 'generatedId',
     calculatedBool: 'calculatedBool',
     calculatedText: 'calculatedText',
@@ -103,7 +105,8 @@ const EhrTypes = {
   tableActions: {
     actionTypes: {
       hideButton: 'hideButton',
-      openDialog: 'openDialog'
+      openDialog: 'openDialog',
+      printBarCode: 'printBarCode'
     }
   }
 }

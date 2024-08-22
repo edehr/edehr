@@ -16,17 +16,14 @@ export function extractMedName (medMedication) {
 
 export class MedOrders {
   constructor (ehrDataModel) {
-    const medPage = ehrDataModel.getPageData(MED_ORDERS_PAGE_KEY) || {}
-    const tableEhrData = medPage[MED_ORDERS_TABLE_KEY] || []
-
-    const orderSetsPage = ehrDataModel.getPageData('orderSets') || {}
-    // console.log('ehrDataModel',ehrDataModel)
-    // console.log('orderSetsPage',orderSetsPage)
-    let pcaData = orderSetsPage['pcaPpo'] || []
-    pcaData = pcaData.length > 0 ? pcaData[0] : {}
-    pcaData = pcaData['pcaPpoForm'] || {}
-    pcaData = pcaData['medOrders'] || []
-    const medOrderData = [...tableEhrData, ...pcaData]
+    let medOrderData = ehrDataModel.getAllMedOrders()
+    // const orderSetsPage = ehrDataModel.getPageData('orderSets') || {}
+    // let pcaData = orderSetsPage['pcaPpo'] || []
+    // pcaData = pcaData.length > 0 ? pcaData[0] : {}
+    // pcaData = pcaData['pcaPpoForm'] || {}
+    // pcaData = pcaData['medOrders'] || []
+    //
+    // const medOrderData = [...tableEhrData, ...pcaData]
     // console.log('5 --- medOrderData', medOrderData)
     this._medList = medOrderData.map( (eData) => new MedOrder(eData))
     this._medList.sort( (a,b) => a.sTime.localeCompare(b.sTime))

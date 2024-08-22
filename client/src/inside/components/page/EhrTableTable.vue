@@ -65,9 +65,6 @@ export default {
       // the cell contains translation
       return cell.tableLabel
     },
-    tableActionLabel (sourceRowId) {
-      return EhrTableActions.getTableActionLabel(this.tableDef, sourceRowId)
-    },
     canEditSeed (row) {
       return StoreHelper.isSeedEditing() && ! this.isDraft(row)
     },

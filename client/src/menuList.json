@@ -1613,7 +1613,7 @@
           "routeName": "med-lab-accession",
           "pageDataKey": "medLabAccession",
           "label": "Med Lab Accessioning",
-          "generateComponent": "yes",
+          "generateComponent": "custom",
           "menuIndex": "57",
           "lis": "yes",
           "componentName": "MedLabAccession",
@@ -1623,7 +1623,7 @@
           "redirectEhr": "",
           "redirectLis": "",
           "topLevel": "med-lab",
-          "componentPath": "./inside/views",
+          "componentPath": "./inside/custom",
           "zone": "ehr"
         },
         "children": []

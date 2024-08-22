@@ -1,4 +1,6 @@
 <template lang="pug">
+div
+  h2 Obsolete
   vue-typeahead(
     :disabled="disabled",
     :domId="domId",

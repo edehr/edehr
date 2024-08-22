@@ -24,7 +24,7 @@ export class MedOrders {
     // pcaData = pcaData['medOrders'] || []
     //
     // const medOrderData = [...tableEhrData, ...pcaData]
-    console.log('5 --- medOrderData', medOrderData)
+    // console.log('5 --- medOrderData', medOrderData)
     this._medList = medOrderData.map( (eData) => new MedOrder(eData))
     this._medList.sort( (a,b) => a.sTime.localeCompare(b.sTime))
     // console.log('6 --- this._medList', this._medList)

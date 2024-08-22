@@ -7543,54 +7543,45 @@ const DEFS = {
         "suffixText": "/10"
       },
       {
-        "elementKey": "respiratoryRate2",
-        "formIndex": "1",
-        "inputType": "text",
-        "suffix": "br/min",
-        "tableColumn": "13",
-        "fqn": "pain.respiratoryRate2",
-        "suffixText": "br/min"
-      },
-      {
         "elementKey": "onset2",
         "formIndex": "1",
         "inputType": "text",
-        "tableColumn": "14",
+        "tableColumn": "13",
         "fqn": "pain.onset2"
       },
       {
         "elementKey": "type2",
         "formIndex": "1",
         "inputType": "text",
-        "tableColumn": "15",
+        "tableColumn": "14",
         "fqn": "pain.type2"
       },
       {
         "elementKey": "alleviationAssociatedSymptoms2",
         "formIndex": "1",
         "inputType": "text",
-        "tableColumn": "16",
+        "tableColumn": "15",
         "fqn": "pain.alleviationAssociatedSymptoms2"
       },
       {
         "elementKey": "alleviation2",
         "formIndex": "1",
         "inputType": "text",
-        "tableColumn": "17",
+        "tableColumn": "16",
         "fqn": "pain.alleviation2"
       },
       {
         "elementKey": "radiation2",
         "formIndex": "1",
         "inputType": "text",
-        "tableColumn": "18",
+        "tableColumn": "17",
         "fqn": "pain.radiation2"
       },
       {
         "elementKey": "precipitatingEvents2",
         "formIndex": "1",
         "inputType": "text",
-        "tableColumn": "19",
+        "tableColumn": "18",
         "fqn": "pain.precipitatingEvents2"
       },
       {
@@ -7598,7 +7589,7 @@ const DEFS = {
         "formIndex": "1",
         "formCss": "grid-span-3-columns",
         "inputType": "textarea",
-        "tableColumn": "20",
+        "tableColumn": "19",
         "fqn": "pain.comments2"
       }
     ],
@@ -7654,7 +7645,6 @@ const DEFS = {
               "gChildren": [
                 "location2",
                 "painScale2",
-                "respiratoryRate2",
                 "onset2",
                 "type2",
                 "alleviationAssociatedSymptoms2",
@@ -7682,7 +7672,6 @@ const DEFS = {
             "comments": "",
             "location2": "",
             "painScale2": "",
-            "respiratoryRate2": "",
             "onset2": "",
             "type2": "",
             "alleviationAssociatedSymptoms2": "",
@@ -7709,7 +7698,6 @@ const DEFS = {
           "comments",
           "location2",
           "painScale2",
-          "respiratoryRate2",
           "onset2",
           "type2",
           "alleviationAssociatedSymptoms2",
@@ -11382,7 +11370,7 @@ const DEFS = {
         "pageKey": "medicationOrders",
         "tableKey": "medicationOrdersTable",
         "isTable": true,
-        "tableAction": "medAdminRec.marTable",
+        "tableAction": "[\"hideButton\",  \"medAdminRec.marTable\"]",
         "auxTableRef": "medicationOrderAux",
         "form": {
           "elementKey": "medicationOrdersTable",
@@ -11501,6 +11489,7 @@ const DEFS = {
         },
         "fqn": "medicationOrders.medicationOrdersTable",
         "tableActionType": "hideButton",
+        "tableActionRef": "medAdminRec.marTable",
         "taTargetPageKey": "medAdminRec",
         "taTargetTableKey": "marTable",
         "taSourcePageKey": "medicationOrders",
@@ -16325,7 +16314,7 @@ const DEFS = {
       {
         "elementKey": "woundDayOnset",
         "formIndex": "3",
-        "inputType": "visitDay",
+        "inputType": "text",
         "tableColumn": "4",
         "validation": "visitDay",
         "fqn": "integumentaryAssessment.woundDayOnset"
@@ -19930,7 +19919,7 @@ const DEFS = {
         "pageKey": "hematology",
         "tableKey": "tableCbcAnalysis",
         "isTable": true,
-        "tableAction": "hematology.tablePbfReview",
+        "tableAction": "[\"openDialog\",  \"hematology.tablePbfReview\"]",
         "form": {
           "elementKey": "tableCbcAnalysis",
           "label": "CBC analysis",
@@ -20029,6 +20018,7 @@ const DEFS = {
         },
         "fqn": "hematology.tableCbcAnalysis",
         "tableActionType": "openDialog",
+        "tableActionRef": "hematology.tablePbfReview",
         "taTargetPageKey": "hematology",
         "taTargetTableKey": "tablePbfReview",
         "taSourcePageKey": "hematology",
@@ -26598,211 +26588,94 @@ const DEFS = {
       {
         "elementKey": "accessionID",
         "formIndex": "1",
-        "inputType": "text",
+        "inputType": "accessionId",
         "tableColumn": "2",
         "fqn": "medLabAccession.accessionID"
       },
       {
-        "elementKey": "accRequisitionID",
+        "elementKey": "physician",
         "formIndex": "1",
         "inputType": "text",
         "tableColumn": "3",
-        "fqn": "medLabAccession.accRequisitionID"
+        "fqn": "medLabAccession.physician"
       },
       {
-        "elementKey": "accSpecimenType",
+        "elementKey": "priority",
         "formIndex": "1",
         "inputType": "select",
         "options": [
           {
-            "key": "Blood",
-            "text": "Blood"
+            "key": "Fasting",
+            "text": "Fasting"
           },
           {
-            "key": "Urine",
-            "text": "Urine"
+            "key": "Routine",
+            "text": "Routine"
           },
           {
-            "key": "Tissue",
-            "text": "Tissue"
+            "key": "ASAP",
+            "text": "ASAP"
           },
           {
-            "key": "Saliva",
-            "text": "Saliva"
-          },
-          {
-            "key": "Stool",
-            "text": "Stool"
-          },
-          {
-            "key": "Swab",
-            "text": "Swab"
-          },
-          {
-            "key": "Sputum",
-            "text": "Sputum"
-          },
-          {
-            "key": "Fluid",
-            "text": "Fluid"
-          },
-          {
-            "key": "Bone",
-            "text": "Bone"
-          },
-          {
-            "key": "Hair",
-            "text": "Hair"
+            "key": "STAT",
+            "text": "STAT"
           }
         ],
         "tableColumn": "4",
-        "fqn": "medLabAccession.accSpecimenType"
+        "fqn": "medLabAccession.priority"
       },
       {
-        "elementKey": "accTestPanel",
+        "elementKey": "labTestSet",
         "formIndex": "1",
         "formCss": "grid-span-3-columns",
-        "inputType": "checkset",
-        "options": [
-          {
-            "key": "cbc",
-            "text": "CBC (Complete Blood Count)"
-          },
-          {
-            "key": "hba1c",
-            "text": "HbA1c (Glycated Hemoglobin)"
-          },
-          {
-            "key": "ptinr",
-            "text": "PT/INR (Prothrombin Time/International Normalized Ratio)"
-          },
-          {
-            "key": "coag",
-            "text": "Coagulation Profile"
-          },
-          {
-            "key": "cmp",
-            "text": "CMP (Comprehensive Metabolic Panel)"
-          },
-          {
-            "key": "glufast",
-            "text": "Glucose, Fasting"
-          },
-          {
-            "key": "glurandom",
-            "text": "Glucose, Random"
-          },
-          {
-            "key": "iron",
-            "text": "Iron Studies"
-          },
-          {
-            "key": "lipid",
-            "text": "Lipid Panel"
-          },
-          {
-            "key": "psa",
-            "text": "PSA (Prostate-Specific Antigen)"
-          },
-          {
-            "key": "thyroid",
-            "text": "Thyroid Panel"
-          },
-          {
-            "key": "troponin",
-            "text": "Troponin"
-          },
-          {
-            "key": "tsh",
-            "text": "TSH (Thyroid-Stimulating Hormone)"
-          },
-          {
-            "key": "vitd",
-            "text": "Vitamin D Levels"
-          },
-          {
-            "key": "pregblood",
-            "text": "Pregnancy test, blood"
-          },
-          {
-            "key": "pregurin",
-            "text": "Pregnancy test, urine"
-          },
-          {
-            "key": "urinalysis",
-            "text": "Urinalysis"
-          },
-          {
-            "key": "bgasa",
-            "text": "Blood gas, arterial"
-          },
-          {
-            "key": "bgasv",
-            "text": "Blood gas, veneous"
-          },
-          {
-            "key": "bgasf",
-            "text": "Blood gase, fetal cord"
-          },
-          {
-            "key": "hepatitisc",
-            "text": "Hepatitis C Antibody Test"
-          },
-          {
-            "key": "other",
-            "text": "Other"
-          }
-        ],
+        "inputType": "labTestSet",
         "tableColumn": "5",
-        "fqn": "medLabAccession.accTestPanel"
-      },
-      {
-        "elementKey": "accTestOther",
-        "formIndex": "1",
-        "inputType": "text",
-        "tableColumn": "6",
-        "fqn": "medLabAccession.accTestOther"
-      },
-      {
-        "elementKey": "preAnalytic",
-        "formIndex": "1",
-        "inputType": "text",
-        "tableColumn": "7",
-        "fqn": "medLabAccession.preAnalytic"
-      },
-      {
-        "elementKey": "postAnalytic",
-        "formIndex": "1",
-        "inputType": "text",
-        "tableColumn": "8",
-        "fqn": "medLabAccession.postAnalytic"
+        "fqn": "medLabAccession.labTestSet"
       },
       {
         "elementKey": "collectionDate",
         "formIndex": "1",
         "inputType": "text",
-        "tableColumn": "9",
+        "tableColumn": "6",
         "fqn": "medLabAccession.collectionDate"
       },
       {
         "elementKey": "collectionTime",
         "formIndex": "1",
         "inputType": "text",
-        "tableColumn": "10",
+        "tableColumn": "7",
         "fqn": "medLabAccession.collectionTime"
       },
       {
-        "elementKey": "collectionLocation",
+        "elementKey": "mlAspacer",
         "formIndex": "1",
-        "inputType": "text",
-        "tableColumn": "11",
-        "fqn": "medLabAccession.collectionLocation"
+        "inputType": "spacer",
+        "tableColumn": "8",
+        "fqn": "medLabAccession.mlAspacer"
+      },
+      {
+        "elementKey": "last_dose_day",
+        "formIndex": "1",
+        "formCss": "visit-day",
+        "inputType": "visitDay",
+        "tableColumn": "9",
+        "validation": "visitDay",
+        "fqn": "medLabAccession.last_dose_day"
+      },
+      {
+        "elementKey": "last_dose_time",
+        "formIndex": "1",
+        "formCss": "visit-time",
+        "inputType": "visitTime",
+        "tableColumn": "10",
+        "validation": "time24",
+        "fqn": "medLabAccession.last_dose_time"
       },
       {
         "elementKey": "accComments",
         "formIndex": "1",
         "inputType": "textarea",
-        "tableColumn": "12",
+        "tableColumn": "11",
         "fqn": "medLabAccession.accComments"
       },
       {
@@ -26976,6 +26849,7 @@ const DEFS = {
         "pageKey": "medLabAccession",
         "tableKey": "mlAccessioning",
         "isTable": true,
+        "tableAction": "[ \"printBarCode\" ]",
         "form": {
           "elementKey": "mlAccessioning",
           "label": "Accessioning",
@@ -27001,15 +26875,14 @@ const DEFS = {
               "gIndex": "2",
               "gChildren": [
                 "accessionID",
-                "accRequisitionID",
-                "accSpecimenType",
-                "accTestPanel",
-                "accTestOther",
-                "preAnalytic",
-                "postAnalytic",
+                "physician",
+                "priority",
+                "labTestSet",
                 "collectionDate",
                 "collectionTime",
-                "collectionLocation"
+                "mlAspacer",
+                "last_dose_day",
+                "last_dose_time"
               ]
             },
             {
@@ -27028,33 +26901,31 @@ const DEFS = {
             "mlAccessioning_day": "",
             "mlAccessioning_time": "",
             "accessionID": "",
-            "accRequisitionID": "",
-            "accSpecimenType": "",
-            "accTestPanel": "",
-            "accTestOther": "",
-            "preAnalytic": "",
-            "postAnalytic": "",
+            "physician": "",
+            "priority": "",
+            "labTestSet": "",
             "collectionDate": "",
             "collectionTime": "",
-            "collectionLocation": "",
+            "last_dose_day": "",
+            "last_dose_time": "",
             "accComments": ""
           }
         },
         "fqn": "medLabAccession.mlAccessioning",
+        "tableActionType": "printBarCode",
         "tableChildren": [
           "mlAccessioning_id",
           "mlAccessioning_day",
           "mlAccessioning_time",
           "accessionID",
-          "accRequisitionID",
-          "accSpecimenType",
-          "accTestPanel",
-          "accTestOther",
-          "preAnalytic",
-          "postAnalytic",
+          "physician",
+          "priority",
+          "labTestSet",
           "collectionDate",
           "collectionTime",
-          "collectionLocation",
+          "mlAspacer",
+          "last_dose_day",
+          "last_dose_time",
           "accComments",
           "mlAccessioning_name",
           "mlAccessioning_profession"

@@ -36,6 +36,7 @@ const session = require('express-session')
 const FileStore = require('session-file-store')(session)
 // const uuid = require('uuid/v4')
 import { v4 as uuidv4 } from 'uuid'
+import AcessioningController from '../mcr/accession/accessioning-controller'
 
 const debug = require('debug')('server')
 
@@ -74,6 +75,7 @@ export function apiMiddle (app, config) {
   debug('corsOptions', corsOptions)
   const authUtil = app.authUtil
   const act = new ActivityController()
+  const accession = new AcessioningController()
   const acc = new ActivityDataController()
   const appLms = new AppLmsController(config)
   const as = new AssignmentController(config)
@@ -163,11 +165,16 @@ export function apiMiddle (app, config) {
       api.use('/metric', cors(corsOptions), metric.route())
       api.use('/actions', cors(), actions.route())
 
+      api.use('/medLabTestLibrary', cors(corsOptions), accession.publicRoute())
+      api.use('/api/medLabTestLibrary', cors(corsOptions), accession.publicRoute())
+
       // App LMS
       api.use(appLms.routePath(), cors(corsOptions), appLms.route())
       api.use('/api' + appLms.routePath(), cors(corsOptions), appLms.route())
 
+      const accessionRoute = accession.route()
       // Inside API
+      api.use('/accession', middleWare, accessionRoute)
       api.use('/activities', middleWare, act.route())
       api.use('/activity-data', middleWare, acc.route())
       api.use('/assignments', middleWare, as.route())
@@ -185,6 +192,7 @@ export function apiMiddle (app, config) {
       api.use('/api/actions', cors(), actions.route())
 
       api.use('/api/activities', middleWare, act.route())
+      api.use('/api/accession', middleWare, accessionRoute)
       api.use('/api/activity-data', middleWare, acc.route())
       api.use('/api/assignments', middleWare, as.route())
       api.use('/api/consumers', middleWare, cc.route())

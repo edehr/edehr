@@ -376,7 +376,7 @@ export function inside () {
       path: '/ehr/med-lab/med-lab-accession',
       name: 'med-lab-accession',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/MedLabAccession.vue'),
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/MedLabAccession.vue'),
       meta: { layout: 'inside', label: 'Med Lab Accessioning', topLevel: 'med-lab', zone: 'ehr' }
     },
     {
