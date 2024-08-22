@@ -3,7 +3,7 @@ import { Router } from 'express'
 import { getNextSequence } from '../common/counter-controller'
 
 const TEST_LIBRARY = {}
-const DATA = require('./testLibrary.json')
+const DATA = require('../../resources/testLibrary.json')
 DATA.forEach(test => {
   TEST_LIBRARY[test.test.toUpperCase()] = test
 })
