@@ -1,25 +1,28 @@
 <template lang="pug">
 div
-  div(v-for='tube in labTestSet')
+  div(v-if='labTestSet.length > 0', v-for='tube in labTestSet')
     .page
       .inner.toplabel
-        .demographic
+        .demographic.line.line1
           .patientName {{ patientData.patientName }}
           .patientDob {{ patientData.dateOfBirth }} ({{ patientData.personAge }} yrs)
-        .wrap39
+        .wrap39.line.line2
           .code39 {{ code39(patientData.mrn) }}
           .value39 MRN: {{ patientData.mrn }}
-        .wrap39
+        .wrap39.line.line3
           .code39 {{ code39(rowData.accessionID) }}
           .value39 ACCN#: {{ rowData.accessionID }}
-        div {{ tube }} {{ rowData.priority }}
-        div {{ rowData.physician }}
+        .line.line4 {{ tube }} {{ rowData.priority }}
+        .line.line5 {{ testInfo(tube) }}
+        .line.line6 Physician: {{ rowData.physician }}
       .inner.bottomlabel
-        div {{ patientData.patientName }}
-        .wrap39
+        .line.line1 {{ patientData.patientName }}
+        .line.line2 MRN: {{ patientData.mrn }}
+        .wrap39.line.line3
           .code39 {{ code39(rowData.accessionID) }}
           .value39 ACCN#: {{ rowData.accessionID }}
-        div {{ tube }} {{ rowData.priority }}
+        .line.line4 {{ testInfo(tube) }}
+  div(v-else) Your query does not match any accessioning records.
 </template>
 
 <script>
@@ -43,6 +46,15 @@ export default {
     labTestSet () { return this.rowData.labTestSet ? Object.keys(this.rowData.labTestSet) : '' }
   },
   methods: {
+    testInfo ( tube) {
+      let tests = []
+      let tstList = this.rowData.labTestSet[tube]
+      console.log('-----', tstList)
+      for (let i = 0; i< tstList.length; i++) {
+        tests.push(tstList[i].test)
+      }
+      return tests.join(', ')
+    },
     truncate (input, lim) {
       return input && input.length > lim ? `${input.substring(0, lim)}...` : input
     },
@@ -92,7 +104,6 @@ $bw: 50mm;
   height: $mh;
   min-height: $mh;
   max-height: $mh;
-  //margin: 2mm !important;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 57mm 31mm;
@@ -101,12 +112,8 @@ $bw: 50mm;
 
 .inner {
   display: grid;
-  //place-items: center;
   padding: 2mm 0 0 2mm;
-  outline: 2px dashed blue;
-  //div {
-  //  outline: 1px solid magenta;
-  //}
+  outline: 1px dashed blue;
 }
 .toplabel {
   width: $tw;
@@ -117,10 +124,50 @@ $bw: 50mm;
   width: $bw;
   min-width: $bw;
   max-width: $bw;
-  //height: 31mm;
-  //min-height: 31mm;
-  //max-height: 31mm;
-  //padding: 3mm;
+}
+
+.line { position: relative; }
+.toplabel {
+  .line1 {
+    top: 0;
+  }
+
+  .line2 {
+    top: -3mm;
+  }
+
+  .line3 {
+    top: -6mm;
+  }
+
+  .line4 {
+    top: -8mm;
+  }
+
+  .line5 {
+    top: -8mm;
+  }
+
+  .line6 {
+    top: -1mm;
+  }
+}
+
+.bottomlabel {
+  .line1 {
+    top: 0;
+  }
+
+  .line2 {
+    top: 0;
+  }
+
+  .line3 {
+    top: -2mm;
+  }
+  .line4 {
+    top: -3mm;
+  }
 }
 .wrap39 {
   position: relative;

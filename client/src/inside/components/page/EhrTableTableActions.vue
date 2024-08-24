@@ -4,8 +4,8 @@
       div(                          v-if='isDraft(dRow)') &nbsp;
       ui-button(value="ets-action", v-else,
         v-on:buttonClicked="tableAction(getIdFromRow(dRow))")
-        span {{ tableActionLabel(getIdFromRow(dRow)) }} &nbsp;
-        fas-icon(icon="notes-medical")
+        span(v-if='tableActionLabel(getIdFromRow(dRow))') {{tableActionLabel(getIdFromRow(dRow))}} &nbsp;
+        fas-icon(class="fa", :icon="tableActionIcon")
     ui-button(value="ets-view",       v-if="!isDraft(dRow)",
       v-on:buttonClicked="viewReport(getIdFromRow(dRow))", :title='ehrText.viewButtonLabel')
       fas-icon(icon="file-pdf")
@@ -57,6 +57,18 @@ export default {
         show = false
       }
       return show
+    },
+    tableActionIcon () {
+      let icon = 'notes-medical'
+      const ats = EhrTypes.tableActions.actionTypes
+      const tat = this.tableDef.tableActionType
+      if (tat === ats.openDialog) {
+        icon = 'notes-medical'
+      }
+      if (tat === ats.printBarCode) {
+        icon = 'print'
+      }
+      return icon
     },
     ehrText () { return t18EhrText() }
   },
