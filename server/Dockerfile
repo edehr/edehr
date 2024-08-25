@@ -1,6 +1,4 @@
-FROM node:18
-# Node 14 is currently 14.18.3
-# the node:14 image installs npm 6.14.15.
+FROM node:20
 
 # Create app directory
 RUN mkdir -p /usr/src/app
