@@ -434,6 +434,13 @@ export function inside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/SpecialIndicators.vue'),
       meta: { layout: 'inside', label: 'Special indicators', topLevel: 'current', zone: 'ehr' }
+    },
+    {
+      path: '/ehr/current/assessments/lines-devices',
+      name: 'lines-devices',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/LinesDevices.vue'),
+      meta: { layout: 'inside', label: 'Lines and Devices', topLevel: 'current', zone: 'ehr' }
     }
   ]
 }

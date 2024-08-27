@@ -461,7 +461,6 @@
   "pain.radiation": "Radiation",
   "pain.radiation2": "Radiation",
   "pain.respiratoryRate": "Respiratory rate",
-  "pain.respiratoryRate2": "Respiratory rate",
   "pain.type": "Type",
   "pain.type2": "Type",
   "progressNotes.name": "Identification",
@@ -564,5 +563,6 @@
   "neurological.mse_table": "Mental Status Exam",
   "checklistsPage.name": "Identification",
   "consentsPage.name": "Identification",
-  "riskAssessment.name": "Identification"
+  "riskAssessment.name": "Identification",
+  "linesDevices.name": "Identification"
 }

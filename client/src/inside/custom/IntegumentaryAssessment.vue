@@ -1,4 +1,4 @@
-// Generated VUE file. Before modifying see docs about Vue file generation
+// Custom View
 <template lang="pug">
   div(class="ehr-page")
     integumentary-content(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")

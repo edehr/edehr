@@ -1,9 +1,10 @@
 <template lang='pug'>
 div
-  ehr-element-custom-form(:element='elementDef',
+  ehr-element-custom-form(
     :elementKey='elementKey',
     devMode=true
     )
+  // best to use devMode and put all the rough work into the aTester.pug file
 </template>
 
 <script>
@@ -25,8 +26,8 @@ export default {
   data () {
     return {
       elementDef: { },
-      pageDataKey: 'orderSets',
-      elementKey: 'pcaPpoForm'
+      pageDataKey: 'checklistsPage',
+      elementKey: 'pccChecklistForm'
     }
   },
   mounted () {

@@ -1,0 +1,52 @@
+// Custom EHR Vue component
+<template lang="pug">
+  div()
+    ehr-panel-content
+      div(class="region")
+        tabs
+          tab(name="Chest Tubes", :selected="true")
+            ehr-page-table(:tableDef="tableDef[0]", :ehrHelp="ehrHelp")
+            ehr-page-table(:tableDef="tableDef[1]", :ehrHelp="ehrHelp")
+
+</template>
+
+<script>
+import EhrPanelContent from '@/inside/components/page/EhrPanelContent.vue'
+import EhrPageTable from '@/inside/components/page/EhrPageTable'
+import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
+import Tabs from '@/inside/components/Tabs.vue'
+import Tab from '@/inside/components/Tab.vue'
+
+export default {
+  components: {
+    EhrPanelContent,
+    EhrPageTable,
+    Tabs, Tab
+  },
+  data: function () {
+    return {
+    }
+  },
+  props: {
+    ehrHelp: {type: Object},
+    pageDataKey: { type: String }
+  },
+  provide () {
+    return {
+      pageDataKey: this.pageDataKey,
+    }
+  },
+  computed: {
+    pageDef () {
+      return this.ehrHelp.getPageDef(this.pageDataKey)
+    },
+    tableDef () {
+      let tables = EhrDefs.getPageTables(this.pageDataKey)
+      return tables
+    },
+
+  }
+}
+</script>
+
+<style lang="scss" scoped></style>

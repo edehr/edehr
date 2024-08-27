@@ -1771,8 +1771,59 @@ const DEFS = {
         "fqn": "visit.diagnosisDetails"
       },
       {
-        "elementKey": "table_name",
+        "elementKey": "aroScreen_name",
         "formIndex": "3",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "visit.name"
+      },
+      {
+        "elementKey": "aroScreen_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "aroScreen_profession",
+        "formIndex": "3",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "visit.profession"
+      },
+      {
+        "elementKey": "aroScreen_day",
+        "formIndex": "3",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "visit.day"
+      },
+      {
+        "elementKey": "aroScreen_time",
+        "formIndex": "3",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "visit.time"
+      },
+      {
+        "elementKey": "aroForm",
+        "formIndex": "3",
+        "formOption": "aro-screening",
+        "inputType": "custom_form",
+        "tableColumn": "2",
+        "fqn": "visit.aroForm"
+      },
+      {
+        "elementKey": "table_name",
+        "formIndex": "4",
         "inputType": "practitionerName",
         "tableColumn": "1",
         "recHeader": true,
@@ -1787,7 +1838,7 @@ const DEFS = {
       },
       {
         "elementKey": "table_profession",
-        "formIndex": "3",
+        "formIndex": "4",
         "inputType": "practitionerProfession",
         "tableColumn": "1",
         "recHeader": true,
@@ -1795,7 +1846,7 @@ const DEFS = {
       },
       {
         "elementKey": "table_day",
-        "formIndex": "3",
+        "formIndex": "4",
         "inputType": "visitDay",
         "mandatory": true,
         "tableColumn": "1",
@@ -1805,7 +1856,7 @@ const DEFS = {
       },
       {
         "elementKey": "table_time",
-        "formIndex": "3",
+        "formIndex": "4",
         "inputType": "visitTime",
         "mandatory": true,
         "tableColumn": "1",
@@ -1815,7 +1866,7 @@ const DEFS = {
       },
       {
         "elementKey": "location",
-        "formIndex": "3",
+        "formIndex": "4",
         "inputType": "text",
         "mandatory": "TRUE",
         "tableColumn": "2",
@@ -1823,7 +1874,7 @@ const DEFS = {
       },
       {
         "elementKey": "transferInDay",
-        "formIndex": "3",
+        "formIndex": "4",
         "inputType": "visitDay",
         "tableColumn": "3",
         "validation": "visitDay",
@@ -1831,7 +1882,7 @@ const DEFS = {
       },
       {
         "elementKey": "transferInTime",
-        "formIndex": "3",
+        "formIndex": "4",
         "inputType": "visitTime",
         "tableColumn": "4",
         "validation": "time24",
@@ -1839,13 +1890,13 @@ const DEFS = {
       },
       {
         "elementKey": "aSpacer",
-        "formIndex": "3",
+        "formIndex": "4",
         "inputType": "spacer",
         "fqn": "visit.aSpacer"
       },
       {
         "elementKey": "transferOutDay",
-        "formIndex": "3",
+        "formIndex": "4",
         "inputType": "visitDay",
         "tableColumn": "5",
         "validation": "visitDay",
@@ -1853,7 +1904,7 @@ const DEFS = {
       },
       {
         "elementKey": "transferOutTime",
-        "formIndex": "3",
+        "formIndex": "4",
         "inputType": "visitTime",
         "tableColumn": "6",
         "validation": "time24",
@@ -1951,9 +2002,62 @@ const DEFS = {
         ],
         "hasRecHeader": true
       },
+      "aroScreen": {
+        "elementKey": "aroScreen",
+        "pageElementIndex": "3",
+        "pageKey": "visit",
+        "tableKey": "aroScreen",
+        "isTable": true,
+        "form": {
+          "elementKey": "aroScreen",
+          "label": "MRSA - VRE - CPE - C auris",
+          "addButtonText": "Add MRSA etc screen",
+          "formKey": "aroScreen",
+          "ehr_groups": [
+            {
+              "elementKey": "aro-1",
+              "formCss": "record-header",
+              "fqn": "visit.aro-1",
+              "gIndex": "1",
+              "gChildren": [
+                "aroScreen_name",
+                "aroScreen_profession",
+                "aroScreen_day",
+                "aroScreen_time"
+              ]
+            },
+            {
+              "elementKey": "aro-2",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "visit.aro-2",
+              "gIndex": "2",
+              "gChildren": [
+                "aroForm"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "aroScreen_name": "",
+            "aroScreen_profession": "",
+            "aroScreen_day": "",
+            "aroScreen_time": "",
+            "aroForm": ""
+          }
+        },
+        "fqn": "visit.aroScreen",
+        "tableChildren": [
+          "aroScreen_id",
+          "aroScreen_day",
+          "aroScreen_time",
+          "aroForm",
+          "aroScreen_name",
+          "aroScreen_profession"
+        ],
+        "hasRecHeader": true
+      },
       "table": {
         "elementKey": "table",
-        "pageElementIndex": "3",
+        "pageElementIndex": "4",
         "pageKey": "visit",
         "tableKey": "table",
         "isTable": true,
@@ -29699,8 +29803,59 @@ const DEFS = {
     "hasGridTable": true,
     "pageChildren": [
       {
-        "elementKey": "surgChecklistTable_name",
+        "elementKey": "PersonalCareChecklist_name",
         "formIndex": "1",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "checklistsPage.name"
+      },
+      {
+        "elementKey": "PersonalCareChecklist_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "PersonalCareChecklist_profession",
+        "formIndex": "1",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "checklistsPage.profession"
+      },
+      {
+        "elementKey": "PersonalCareChecklist_day",
+        "formIndex": "1",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "checklistsPage.day"
+      },
+      {
+        "elementKey": "PersonalCareChecklist_time",
+        "formIndex": "1",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "checklistsPage.time"
+      },
+      {
+        "elementKey": "pccChecklistForm",
+        "formIndex": "1",
+        "formOption": "personal-care",
+        "inputType": "custom_form",
+        "tableColumn": "2",
+        "fqn": "checklistsPage.pccChecklistForm"
+      },
+      {
+        "elementKey": "surgChecklistTable_name",
+        "formIndex": "2",
         "inputType": "practitionerName",
         "tableColumn": "1",
         "recHeader": true,
@@ -29715,7 +29870,7 @@ const DEFS = {
       },
       {
         "elementKey": "surgChecklistTable_profession",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "practitionerProfession",
         "tableColumn": "1",
         "recHeader": true,
@@ -29723,7 +29878,7 @@ const DEFS = {
       },
       {
         "elementKey": "surgChecklistTable_day",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "visitDay",
         "mandatory": true,
         "tableColumn": "1",
@@ -29733,7 +29888,7 @@ const DEFS = {
       },
       {
         "elementKey": "surgChecklistTable_time",
-        "formIndex": "1",
+        "formIndex": "2",
         "inputType": "visitTime",
         "mandatory": true,
         "tableColumn": "1",
@@ -29743,7 +29898,7 @@ const DEFS = {
       },
       {
         "elementKey": "surgChecklistForm",
-        "formIndex": "1",
+        "formIndex": "2",
         "formOption": "surg-checklist",
         "inputType": "custom_form",
         "tableColumn": "2",
@@ -29751,7 +29906,7 @@ const DEFS = {
       },
       {
         "elementKey": "preopChecklistTable_name",
-        "formIndex": "1",
+        "formIndex": "3",
         "inputType": "practitionerName",
         "tableColumn": "1",
         "recHeader": true,
@@ -29766,7 +29921,7 @@ const DEFS = {
       },
       {
         "elementKey": "preopChecklistTable_profession",
-        "formIndex": "1",
+        "formIndex": "3",
         "inputType": "practitionerProfession",
         "tableColumn": "1",
         "recHeader": true,
@@ -29774,7 +29929,7 @@ const DEFS = {
       },
       {
         "elementKey": "preopChecklistTable_day",
-        "formIndex": "1",
+        "formIndex": "3",
         "inputType": "visitDay",
         "mandatory": true,
         "tableColumn": "1",
@@ -29784,7 +29939,7 @@ const DEFS = {
       },
       {
         "elementKey": "preopChecklistTable_time",
-        "formIndex": "1",
+        "formIndex": "3",
         "inputType": "visitTime",
         "mandatory": true,
         "tableColumn": "1",
@@ -29794,7 +29949,7 @@ const DEFS = {
       },
       {
         "elementKey": "preopChecklistForm",
-        "formIndex": "1",
+        "formIndex": "3",
         "formOption": "preop-checklist",
         "inputType": "custom_form",
         "tableColumn": "2",
@@ -29802,14 +29957,123 @@ const DEFS = {
       }
     ],
     "pageElements": {
+      "PersonalCareChecklist": {
+        "elementKey": "PersonalCareChecklist",
+        "pageElementIndex": "1",
+        "pageKey": "checklistsPage",
+        "tableKey": "PersonalCareChecklist",
+        "isTable": true,
+        "form": {
+          "elementKey": "PersonalCareChecklist",
+          "label": "Personal Care",
+          "addButtonText": "Add a personal care checklist",
+          "formOption": "checkListForm",
+          "formKey": "PersonalCareChecklist",
+          "ehr_groups": [
+            {
+              "elementKey": "pccGroup1",
+              "formCss": "record-header",
+              "fqn": "checklistsPage.pccGroup1",
+              "gIndex": "1",
+              "gChildren": [
+                "PersonalCareChecklist_name",
+                "PersonalCareChecklist_profession",
+                "PersonalCareChecklist_day",
+                "PersonalCareChecklist_time"
+              ]
+            },
+            {
+              "elementKey": "pccGroup2",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "checklistsPage.pccGroup2",
+              "gIndex": "2",
+              "gChildren": [
+                "pccChecklistForm"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "PersonalCareChecklist_name": "",
+            "PersonalCareChecklist_profession": "",
+            "PersonalCareChecklist_day": "",
+            "PersonalCareChecklist_time": "",
+            "pccChecklistForm": ""
+          }
+        },
+        "fqn": "checklistsPage.PersonalCareChecklist",
+        "tableChildren": [
+          "PersonalCareChecklist_id",
+          "PersonalCareChecklist_day",
+          "PersonalCareChecklist_time",
+          "pccChecklistForm",
+          "PersonalCareChecklist_name",
+          "PersonalCareChecklist_profession"
+        ],
+        "hasRecHeader": true
+      },
+      "surgChecklistTable": {
+        "elementKey": "surgChecklistTable",
+        "pageElementIndex": "2",
+        "pageKey": "checklistsPage",
+        "tableKey": "surgChecklistTable",
+        "isTable": true,
+        "form": {
+          "elementKey": "surgChecklistTable",
+          "label": "Surgical Initial Assessment",
+          "addButtonText": "Add a surgical checklist",
+          "formOption": "checkListForm",
+          "formKey": "surgChecklistTable",
+          "ehr_groups": [
+            {
+              "elementKey": "surgGroup1",
+              "formCss": "record-header",
+              "fqn": "checklistsPage.surgGroup1",
+              "gIndex": "1",
+              "gChildren": [
+                "surgChecklistTable_name",
+                "surgChecklistTable_profession",
+                "surgChecklistTable_day",
+                "surgChecklistTable_time"
+              ]
+            },
+            {
+              "elementKey": "surgGroup2",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "checklistsPage.surgGroup2",
+              "gIndex": "2",
+              "gChildren": [
+                "surgChecklistForm"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "surgChecklistTable_name": "",
+            "surgChecklistTable_profession": "",
+            "surgChecklistTable_day": "",
+            "surgChecklistTable_time": "",
+            "surgChecklistForm": ""
+          }
+        },
+        "fqn": "checklistsPage.surgChecklistTable",
+        "tableChildren": [
+          "surgChecklistTable_id",
+          "surgChecklistTable_day",
+          "surgChecklistTable_time",
+          "surgChecklistForm",
+          "surgChecklistTable_name",
+          "surgChecklistTable_profession"
+        ],
+        "hasRecHeader": true
+      },
       "preopChecklistTable": {
         "elementKey": "preopChecklistTable",
-        "pageElementIndex": "1",
+        "pageElementIndex": "3",
         "pageKey": "checklistsPage",
         "tableKey": "preopChecklistTable",
         "isTable": true,
         "form": {
           "elementKey": "preopChecklistTable",
+          "label": "Pre-op Checklist",
           "addButtonText": "Add a pre-op checklist",
           "formOption": "checkListForm",
           "formKey": "preopChecklistTable",
@@ -30123,6 +30387,846 @@ const DEFS = {
           "riskComment",
           "riskList_name",
           "riskList_profession"
+        ],
+        "hasRecHeader": true
+      }
+    }
+  },
+  "linesDevices": {
+    "pageDataKey": "linesDevices",
+    "pIndex": "59",
+    "hasGridTable": true,
+    "pageChildren": [
+      {
+        "elementKey": "chestTubeProfile_name",
+        "formIndex": "1",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "linesDevices.name"
+      },
+      {
+        "elementKey": "chestTubeProfile_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "chestTubeProfile_profession",
+        "formIndex": "1",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "linesDevices.profession"
+      },
+      {
+        "elementKey": "chestTubeProfile_day",
+        "formIndex": "1",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "linesDevices.day"
+      },
+      {
+        "elementKey": "chestTubeProfile_time",
+        "formIndex": "1",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "linesDevices.time"
+      },
+      {
+        "elementKey": "tubeLocation",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "2",
+        "fqn": "linesDevices.tubeLocation"
+      },
+      {
+        "elementKey": "tubeLabel",
+        "formIndex": "1",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "Chest Tube A",
+            "text": "Chest Tube A"
+          },
+          {
+            "key": "Chest Tube B",
+            "text": "Chest Tube B"
+          },
+          {
+            "key": "Chest Tube C",
+            "text": "Chest Tube C"
+          },
+          {
+            "key": "Chest Tube D",
+            "text": "Chest Tube D"
+          }
+        ],
+        "tableColumn": "3",
+        "fqn": "linesDevices.tubeLabel"
+      },
+      {
+        "elementKey": "tubeInsertDay",
+        "formIndex": "1",
+        "inputType": "visitDay",
+        "tableColumn": "4",
+        "validation": "visitDay",
+        "fqn": "linesDevices.tubeInsertDay"
+      },
+      {
+        "elementKey": "tubeInsertTime",
+        "formIndex": "1",
+        "inputType": "visitTime",
+        "tableColumn": "5",
+        "validation": "visitTime",
+        "fqn": "linesDevices.tubeInsertTime"
+      },
+      {
+        "elementKey": "tubeSuction",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "6",
+        "fqn": "linesDevices.tubeSuction"
+      },
+      {
+        "elementKey": "tubeReason",
+        "formIndex": "1",
+        "inputType": "text",
+        "tableColumn": "7",
+        "fqn": "linesDevices.tubeReason"
+      },
+      {
+        "elementKey": "comments",
+        "formIndex": "1",
+        "formCss": "grid-span-3-columns",
+        "inputType": "textarea",
+        "tableColumn": "8",
+        "fqn": "linesDevices.comments"
+      },
+      {
+        "elementKey": "chestTubeAssessment_name",
+        "formIndex": "2",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "linesDevices.name"
+      },
+      {
+        "elementKey": "chestTubeAssessment_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "chestTubeAssessment_profession",
+        "formIndex": "2",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "linesDevices.profession"
+      },
+      {
+        "elementKey": "chestTubeAssessment_day",
+        "formIndex": "2",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "linesDevices.day"
+      },
+      {
+        "elementKey": "chestTubeAssessment_time",
+        "formIndex": "2",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "linesDevices.time"
+      },
+      {
+        "elementKey": "ctaLabel",
+        "formIndex": "2",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "Chest Tube A",
+            "text": "Chest Tube A"
+          },
+          {
+            "key": "Chest Tube B",
+            "text": "Chest Tube B"
+          },
+          {
+            "key": "Chest Tube C",
+            "text": "Chest Tube C"
+          },
+          {
+            "key": "Chest Tube D",
+            "text": "Chest Tube D"
+          }
+        ],
+        "tableColumn": "1",
+        "fqn": "linesDevices.ctaLabel"
+      },
+      {
+        "elementKey": "ctaLabel2",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaLabel2"
+      },
+      {
+        "elementKey": "ctaPatient",
+        "formIndex": "2",
+        "inputType": "text",
+        "tableColumn": "2",
+        "fqn": "linesDevices.ctaPatient"
+      },
+      {
+        "elementKey": "ctaLabel3",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaLabel3"
+      },
+      {
+        "elementKey": "ctaDressing",
+        "formIndex": "2",
+        "inputType": "checkbox",
+        "tableColumn": "3",
+        "fqn": "linesDevices.ctaDressing"
+      },
+      {
+        "elementKey": "ctaLabel4",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaLabel4"
+      },
+      {
+        "elementKey": "ctaChanged",
+        "formIndex": "2",
+        "inputType": "checkbox",
+        "tableColumn": "4",
+        "fqn": "linesDevices.ctaChanged"
+      },
+      {
+        "elementKey": "ctaLabel5",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaLabel5"
+      },
+      {
+        "elementKey": "ctaSubcutaneous",
+        "formIndex": "2",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "y",
+            "text": "Yes"
+          },
+          {
+            "key": "n",
+            "text": "No"
+          }
+        ],
+        "tableColumn": "5",
+        "fqn": "linesDevices.ctaSubcutaneous"
+      },
+      {
+        "elementKey": "ctaLabel6",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaLabel6"
+      },
+      {
+        "elementKey": "ctaSmallBore",
+        "formIndex": "2",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "y",
+            "text": "Yes"
+          },
+          {
+            "key": "n",
+            "text": "No"
+          }
+        ],
+        "tableColumn": "6",
+        "fqn": "linesDevices.ctaSmallBore"
+      },
+      {
+        "elementKey": "ctaLabel7",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaLabel7"
+      },
+      {
+        "elementKey": "ctaConnections",
+        "formIndex": "2",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "y",
+            "text": "Yes"
+          },
+          {
+            "key": "n",
+            "text": "No"
+          }
+        ],
+        "tableColumn": "7",
+        "fqn": "linesDevices.ctaConnections"
+      },
+      {
+        "elementKey": "ctaLabel8",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaLabel8"
+      },
+      {
+        "elementKey": "ctaTubing",
+        "formIndex": "2",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "y",
+            "text": "Yes"
+          },
+          {
+            "key": "n",
+            "text": "No"
+          }
+        ],
+        "tableColumn": "8",
+        "fqn": "linesDevices.ctaTubing"
+      },
+      {
+        "elementKey": "ctaLabel9",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaLabel9"
+      },
+      {
+        "elementKey": "ctaBed",
+        "formIndex": "2",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "y",
+            "text": "Yes"
+          },
+          {
+            "key": "n",
+            "text": "No"
+          }
+        ],
+        "tableColumn": "9",
+        "fqn": "linesDevices.ctaBed"
+      },
+      {
+        "elementKey": "ctaLabel10",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaLabel10"
+      },
+      {
+        "elementKey": "ctaBreathing",
+        "formIndex": "2",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "y",
+            "text": "Yes"
+          },
+          {
+            "key": "n",
+            "text": "No"
+          }
+        ],
+        "tableColumn": "10",
+        "fqn": "linesDevices.ctaBreathing"
+      },
+      {
+        "elementKey": "ctaLabel11",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaLabel11"
+      },
+      {
+        "elementKey": "ctaPleurEvac",
+        "formIndex": "2",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "y",
+            "text": "Yes"
+          },
+          {
+            "key": "n",
+            "text": "No"
+          }
+        ],
+        "tableColumn": "11",
+        "fqn": "linesDevices.ctaPleurEvac"
+      },
+      {
+        "elementKey": "ctaLabel12",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaLabel12"
+      },
+      {
+        "elementKey": "ctaSuctionControlDial",
+        "formIndex": "2",
+        "inputType": "text",
+        "tableColumn": "12",
+        "fqn": "linesDevices.ctaSuctionControlDial"
+      },
+      {
+        "elementKey": "ctaLabel13",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaLabel13"
+      },
+      {
+        "elementKey": "ctaOrangeFloat",
+        "formIndex": "2",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "y",
+            "text": "Yes"
+          },
+          {
+            "key": "n",
+            "text": "No"
+          }
+        ],
+        "tableColumn": "13",
+        "fqn": "linesDevices.ctaOrangeFloat"
+      },
+      {
+        "elementKey": "ctaLabel14",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "tableColumn": "14",
+        "fqn": "linesDevices.ctaLabel14"
+      },
+      {
+        "elementKey": "ctaAirLeakMeter",
+        "formIndex": "2",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "y",
+            "text": "Yes"
+          },
+          {
+            "key": "n",
+            "text": "No"
+          }
+        ],
+        "tableColumn": "14",
+        "fqn": "linesDevices.ctaAirLeakMeter"
+      },
+      {
+        "elementKey": "ctaLabel15",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaLabel15"
+      },
+      {
+        "elementKey": "ctaAirLeakReading",
+        "formIndex": "2",
+        "inputType": "text",
+        "options": [
+          {
+            "key": "y",
+            "text": "Yes"
+          },
+          {
+            "key": "n",
+            "text": "No"
+          }
+        ],
+        "tableColumn": "15",
+        "fqn": "linesDevices.ctaAirLeakReading"
+      },
+      {
+        "elementKey": "ctaLabel16",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaLabel16"
+      },
+      {
+        "elementKey": "ctaTidaling",
+        "formIndex": "2",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "y",
+            "text": "Yes"
+          },
+          {
+            "key": "n",
+            "text": "No"
+          }
+        ],
+        "tableColumn": "16",
+        "fqn": "linesDevices.ctaTidaling"
+      },
+      {
+        "elementKey": "ctaLabel17",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaLabel17"
+      },
+      {
+        "elementKey": "ctaNegativePressure",
+        "formIndex": "2",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "I",
+            "text": "Intermittent: no wall sucton seen with respirations"
+          },
+          {
+            "key": "Y",
+            "text": "If on wall suction, seen continuously"
+          }
+        ],
+        "tableColumn": "17",
+        "fqn": "linesDevices.ctaNegativePressure"
+      },
+      {
+        "elementKey": "ctaLabel18",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaLabel18"
+      },
+      {
+        "elementKey": "ctaDrainageStatus",
+        "formIndex": "2",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "y",
+            "text": "Yes"
+          },
+          {
+            "key": "n",
+            "text": "No"
+          }
+        ],
+        "tableColumn": "18",
+        "fqn": "linesDevices.ctaDrainageStatus"
+      },
+      {
+        "elementKey": "ctaLabel19",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaLabel19"
+      },
+      {
+        "elementKey": "ctaDrainageType",
+        "formIndex": "2",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "s",
+            "text": "Serous"
+          },
+          {
+            "key": "sa",
+            "text": "Sanguinous"
+          },
+          {
+            "key": "ss",
+            "text": "Serosanguinous"
+          },
+          {
+            "key": "p",
+            "text": "Purulent"
+          },
+          {
+            "key": "n",
+            "text": "None"
+          }
+        ],
+        "tableColumn": "19",
+        "fqn": "linesDevices.ctaDrainageType"
+      },
+      {
+        "elementKey": "ctaLabel20",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaLabel20"
+      },
+      {
+        "elementKey": "ctaTidaling",
+        "formIndex": "2",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "y",
+            "text": "Yes"
+          },
+          {
+            "key": "n",
+            "text": "No"
+          }
+        ],
+        "tableColumn": "20",
+        "fqn": "linesDevices.ctaTidaling"
+      },
+      {
+        "elementKey": "ctaLabel21",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaLabel21"
+      },
+      {
+        "elementKey": "ctaEmergEquip",
+        "formIndex": "2",
+        "inputType": "checkbox",
+        "tableColumn": "21",
+        "fqn": "linesDevices.ctaEmergEquip"
+      },
+      {
+        "elementKey": "ctaEquipList",
+        "formIndex": "2",
+        "inputType": "form_label",
+        "fqn": "linesDevices.ctaEquipList"
+      }
+    ],
+    "pageElements": {
+      "chestTubeProfile": {
+        "elementKey": "chestTubeProfile",
+        "pageElementIndex": "1",
+        "pageKey": "linesDevices",
+        "tableKey": "chestTubeProfile",
+        "isTable": true,
+        "form": {
+          "elementKey": "chestTubeProfile",
+          "label": "Chest Tube Profile",
+          "addButtonText": "Add a Chest Tube Profile",
+          "formKey": "chestTubeProfile",
+          "ehr_groups": [
+            {
+              "elementKey": "cttp_1",
+              "formCss": "record-header",
+              "fqn": "linesDevices.cttp_1",
+              "gIndex": "1",
+              "gChildren": [
+                "chestTubeProfile_name",
+                "chestTubeProfile_profession",
+                "chestTubeProfile_day",
+                "chestTubeProfile_time"
+              ]
+            },
+            {
+              "elementKey": "cttp_2",
+              "formCss": "grid-left-to-right-2",
+              "fqn": "linesDevices.cttp_2",
+              "gIndex": "2",
+              "gChildren": [
+                "tubeLocation",
+                "tubeLabel",
+                "tubeInsertDay",
+                "tubeInsertTime",
+                "tubeSuction",
+                "tubeReason"
+              ]
+            },
+            {
+              "elementKey": "cttp_3",
+              "formCss": "grid-left-to-right-3",
+              "fqn": "linesDevices.cttp_3",
+              "gIndex": "3",
+              "gChildren": [
+                "comments"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "chestTubeProfile_name": "",
+            "chestTubeProfile_profession": "",
+            "chestTubeProfile_day": "",
+            "chestTubeProfile_time": "",
+            "tubeLocation": "",
+            "tubeLabel": "",
+            "tubeInsertDay": "",
+            "tubeInsertTime": "",
+            "tubeSuction": "",
+            "tubeReason": "",
+            "comments": ""
+          }
+        },
+        "fqn": "linesDevices.chestTubeProfile",
+        "tableChildren": [
+          "chestTubeProfile_id",
+          "chestTubeProfile_day",
+          "chestTubeProfile_time",
+          "tubeLocation",
+          "tubeLabel",
+          "tubeInsertDay",
+          "tubeInsertTime",
+          "tubeSuction",
+          "tubeReason",
+          "comments",
+          "chestTubeProfile_name",
+          "chestTubeProfile_profession"
+        ],
+        "hasRecHeader": true
+      },
+      "chestTubeAssessment": {
+        "elementKey": "chestTubeAssessment",
+        "pageElementIndex": "2",
+        "pageKey": "linesDevices",
+        "tableKey": "chestTubeAssessment",
+        "isTable": true,
+        "form": {
+          "elementKey": "chestTubeAssessment",
+          "label": "Chest Tube Assessment",
+          "addButtonText": "Add a Chest Tube Assessment",
+          "formKey": "chestTubeAssessment",
+          "ehr_groups": [
+            {
+              "elementKey": "cta_1",
+              "formCss": "record-header",
+              "fqn": "linesDevices.cta_1",
+              "gIndex": "1",
+              "gChildren": [
+                "chestTubeAssessment_name",
+                "chestTubeAssessment_profession",
+                "chestTubeAssessment_day",
+                "chestTubeAssessment_time"
+              ]
+            },
+            {
+              "elementKey": "cta_2",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "linesDevices.cta_2",
+              "gIndex": "2",
+              "gChildren": [
+                "ctaLabel"
+              ]
+            },
+            {
+              "elementKey": "cta_3",
+              "formCss": "chem-qc-assay form-table-group",
+              "fqn": "linesDevices.cta_3",
+              "gIndex": "3",
+              "gChildren": [
+                "ctaLabel2",
+                "ctaPatient",
+                "ctaLabel3",
+                "ctaDressing",
+                "ctaLabel4",
+                "ctaChanged",
+                "ctaLabel5",
+                "ctaSubcutaneous",
+                "ctaLabel6",
+                "ctaSmallBore",
+                "ctaLabel7",
+                "ctaConnections",
+                "ctaLabel8",
+                "ctaTubing",
+                "ctaLabel9",
+                "ctaBed",
+                "ctaLabel10",
+                "ctaBreathing",
+                "ctaLabel11",
+                "ctaPleurEvac",
+                "ctaLabel12",
+                "ctaSuctionControlDial",
+                "ctaLabel13",
+                "ctaOrangeFloat",
+                "ctaLabel14",
+                "ctaAirLeakMeter",
+                "ctaLabel15",
+                "ctaAirLeakReading",
+                "ctaLabel16",
+                "ctaTidaling",
+                "ctaLabel17",
+                "ctaNegativePressure",
+                "ctaLabel18",
+                "ctaDrainageStatus",
+                "ctaLabel19",
+                "ctaDrainageType",
+                "ctaLabel20",
+                "ctaTidaling",
+                "ctaLabel21",
+                "ctaEmergEquip",
+                "ctaEquipList"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "chestTubeAssessment_name": "",
+            "chestTubeAssessment_profession": "",
+            "chestTubeAssessment_day": "",
+            "chestTubeAssessment_time": "",
+            "ctaLabel": "",
+            "ctaPatient": "",
+            "ctaDressing": "",
+            "ctaChanged": "",
+            "ctaSubcutaneous": "",
+            "ctaSmallBore": "",
+            "ctaConnections": "",
+            "ctaTubing": "",
+            "ctaBed": "",
+            "ctaBreathing": "",
+            "ctaPleurEvac": "",
+            "ctaSuctionControlDial": "",
+            "ctaOrangeFloat": "",
+            "ctaAirLeakMeter": "",
+            "ctaAirLeakReading": "",
+            "ctaTidaling": "",
+            "ctaNegativePressure": "",
+            "ctaDrainageStatus": "",
+            "ctaDrainageType": "",
+            "ctaEmergEquip": ""
+          }
+        },
+        "fqn": "linesDevices.chestTubeAssessment",
+        "tableChildren": [
+          "chestTubeAssessment_id",
+          "chestTubeAssessment_day",
+          "chestTubeAssessment_time",
+          "ctaLabel",
+          "ctaPatient",
+          "ctaDressing",
+          "ctaChanged",
+          "ctaSubcutaneous",
+          "ctaSmallBore",
+          "ctaConnections",
+          "ctaTubing",
+          "ctaBed",
+          "ctaBreathing",
+          "ctaPleurEvac",
+          "ctaSuctionControlDial",
+          "ctaOrangeFloat",
+          "ctaLabel14",
+          "ctaAirLeakMeter",
+          "ctaAirLeakReading",
+          "ctaTidaling",
+          "ctaNegativePressure",
+          "ctaDrainageStatus",
+          "ctaDrainageType",
+          "ctaTidaling",
+          "ctaEmergEquip",
+          "chestTubeAssessment_name",
+          "chestTubeAssessment_profession"
         ],
         "hasRecHeader": true
       }

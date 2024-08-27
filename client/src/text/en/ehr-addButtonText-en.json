@@ -81,6 +81,10 @@
   "consentsPage.consentBloodTable": "Add Consent for blood products",
   "riskAssessment.bradenList": "Add Braden Scale assessment",
   "riskAssessment.morseList": "Add Morse Fall assessment",
-  "checklistsPage.surgChecklistTable": "Add a pre-op checklist",
-  "orderSets.swallowTable": "Add Swallow Screening Order Set"
+  "checklistsPage.surgChecklistTable": "Add a surgical checklist",
+  "orderSets.swallowTable": "Add Swallow Screening Order Set",
+  "checklistsPage.PersonalCareChecklist": "Add a personal care checklist",
+  "visit.aroScreen": "Add MRSA etc screen",
+  "linesDevices.chestTubeProfile": "Add a Chest Tube Profile",
+  "linesDevices.chestTubeAssessment": "Add a Chest Tube Assessment"
 }
