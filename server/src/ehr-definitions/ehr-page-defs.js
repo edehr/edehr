@@ -2010,8 +2010,8 @@ const DEFS = {
         "isTable": true,
         "form": {
           "elementKey": "aroScreen",
-          "label": "MRSA - VRE - CPE - C auris",
-          "addButtonText": "Add MRSA etc screen",
+          "label": "ARO Screening",
+          "addButtonText": "Add ARO screen",
           "formKey": "aroScreen",
           "ehr_groups": [
             {
@@ -29854,59 +29854,8 @@ const DEFS = {
         "fqn": "checklistsPage.pccChecklistForm"
       },
       {
-        "elementKey": "surgChecklistTable_name",
-        "formIndex": "2",
-        "inputType": "practitionerName",
-        "tableColumn": "1",
-        "recHeader": true,
-        "fqn": "checklistsPage.name"
-      },
-      {
-        "elementKey": "surgChecklistTable_id",
-        "inputType": "generatedId",
-        "tableColumn": 0,
-        "label": "Row id",
-        "tableCss": "row-id"
-      },
-      {
-        "elementKey": "surgChecklistTable_profession",
-        "formIndex": "2",
-        "inputType": "practitionerProfession",
-        "tableColumn": "1",
-        "recHeader": true,
-        "fqn": "checklistsPage.profession"
-      },
-      {
-        "elementKey": "surgChecklistTable_day",
-        "formIndex": "2",
-        "inputType": "visitDay",
-        "mandatory": true,
-        "tableColumn": "1",
-        "validation": "visitDay",
-        "recHeader": true,
-        "fqn": "checklistsPage.day"
-      },
-      {
-        "elementKey": "surgChecklistTable_time",
-        "formIndex": "2",
-        "inputType": "visitTime",
-        "mandatory": true,
-        "tableColumn": "1",
-        "validation": "time24",
-        "recHeader": true,
-        "fqn": "checklistsPage.time"
-      },
-      {
-        "elementKey": "surgChecklistForm",
-        "formIndex": "2",
-        "formOption": "surg-checklist",
-        "inputType": "custom_form",
-        "tableColumn": "2",
-        "fqn": "checklistsPage.surgChecklistForm"
-      },
-      {
         "elementKey": "preopChecklistTable_name",
-        "formIndex": "3",
+        "formIndex": "2",
         "inputType": "practitionerName",
         "tableColumn": "1",
         "recHeader": true,
@@ -29921,7 +29870,7 @@ const DEFS = {
       },
       {
         "elementKey": "preopChecklistTable_profession",
-        "formIndex": "3",
+        "formIndex": "2",
         "inputType": "practitionerProfession",
         "tableColumn": "1",
         "recHeader": true,
@@ -29929,7 +29878,7 @@ const DEFS = {
       },
       {
         "elementKey": "preopChecklistTable_day",
-        "formIndex": "3",
+        "formIndex": "2",
         "inputType": "visitDay",
         "mandatory": true,
         "tableColumn": "1",
@@ -29939,7 +29888,7 @@ const DEFS = {
       },
       {
         "elementKey": "preopChecklistTable_time",
-        "formIndex": "3",
+        "formIndex": "2",
         "inputType": "visitTime",
         "mandatory": true,
         "tableColumn": "1",
@@ -29949,7 +29898,7 @@ const DEFS = {
       },
       {
         "elementKey": "preopChecklistForm",
-        "formIndex": "3",
+        "formIndex": "2",
         "formOption": "preop-checklist",
         "inputType": "custom_form",
         "tableColumn": "2",
@@ -30011,63 +29960,9 @@ const DEFS = {
         ],
         "hasRecHeader": true
       },
-      "surgChecklistTable": {
-        "elementKey": "surgChecklistTable",
-        "pageElementIndex": "2",
-        "pageKey": "checklistsPage",
-        "tableKey": "surgChecklistTable",
-        "isTable": true,
-        "form": {
-          "elementKey": "surgChecklistTable",
-          "label": "Surgical Initial Assessment",
-          "addButtonText": "Add a surgical checklist",
-          "formOption": "checkListForm",
-          "formKey": "surgChecklistTable",
-          "ehr_groups": [
-            {
-              "elementKey": "surgGroup1",
-              "formCss": "record-header",
-              "fqn": "checklistsPage.surgGroup1",
-              "gIndex": "1",
-              "gChildren": [
-                "surgChecklistTable_name",
-                "surgChecklistTable_profession",
-                "surgChecklistTable_day",
-                "surgChecklistTable_time"
-              ]
-            },
-            {
-              "elementKey": "surgGroup2",
-              "formCss": "grid-left-to-right-1",
-              "fqn": "checklistsPage.surgGroup2",
-              "gIndex": "2",
-              "gChildren": [
-                "surgChecklistForm"
-              ]
-            }
-          ],
-          "ehr_data": {
-            "surgChecklistTable_name": "",
-            "surgChecklistTable_profession": "",
-            "surgChecklistTable_day": "",
-            "surgChecklistTable_time": "",
-            "surgChecklistForm": ""
-          }
-        },
-        "fqn": "checklistsPage.surgChecklistTable",
-        "tableChildren": [
-          "surgChecklistTable_id",
-          "surgChecklistTable_day",
-          "surgChecklistTable_time",
-          "surgChecklistForm",
-          "surgChecklistTable_name",
-          "surgChecklistTable_profession"
-        ],
-        "hasRecHeader": true
-      },
       "preopChecklistTable": {
         "elementKey": "preopChecklistTable",
-        "pageElementIndex": "3",
+        "pageElementIndex": "2",
         "pageKey": "checklistsPage",
         "tableKey": "preopChecklistTable",
         "isTable": true,

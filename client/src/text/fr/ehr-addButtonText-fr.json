@@ -81,10 +81,9 @@
   "consentsPage.consentBloodTable": "Ajouter le consentement pour les produits sanguins",
   "riskAssessment.bradenList": "Ajouter une évaluation à l’échelle de Braden",
   "riskAssessment.morseList": "Ajouter une évaluation Morse Fall",
-  "checklistsPage.surgChecklistTable": "Ajouter une liste de contrôle préopératoire",
   "orderSets.swallowTable": "Ajouter un ensemble d’ordres de dépistage des hirondelles",
   "checklistsPage.PersonalCareChecklist": "Ajouter une liste de contrôle pour les soins personnels",
-  "visit.aroScreen": "",
-  "linesDevices.chestTubeProfile": "",
-  "linesDevices.chestTubeAssessment": ""
+  "visit.aroScreen": "Ajouter un écran ARO",
+  "linesDevices.chestTubeProfile": "Ajouter un profil de drain thoracique",
+  "linesDevices.chestTubeAssessment": "Ajouter une évaluation du drain thoracique"
 }
