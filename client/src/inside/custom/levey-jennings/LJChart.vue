@@ -5,6 +5,7 @@
 
 <script>
 import { drawChart } from '@/inside/custom//levey-jennings/LjDrawChart'
+import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 
 export default {
   components: { },
@@ -19,6 +20,15 @@ export default {
   },
   mounted () {
     this.drawChart()
+    this.refreshEventHandler = () => {
+      this.drawChart()
+    }
+    EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+  },
+  beforeDestroy: function () {
+    if (this.refreshEventHandler) {
+      EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+    }
   }
 }
 </script>

@@ -2,9 +2,11 @@
 <template lang="pug">
   div
     div(v-for='data in tableData')
-      div Analyte: {{ data.analyte }}
+      div
+        strong Analyte: {{ data.analyte }}
       div Values: {{ data.values }}
       l-j-chart(:values="data.values")
+      div &nbsp;
 </template>
 
 <script>
