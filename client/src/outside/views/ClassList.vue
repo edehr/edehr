@@ -140,7 +140,7 @@ export default {
   width: 4rem;
 }
 .e-actions {
-  min-width: 9rem;
-  width: 9rem;
+  min-width: 12rem;
+  width: 12rem;
 }
 </style>

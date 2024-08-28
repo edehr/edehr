@@ -421,7 +421,21 @@ export function downObjectToFile (fileName, object) {
   if (debug) console.log('EhrUtil Download object to file ', fileName, data)
   _saveAs(data, fileName, mJSON)
 }
-
+export function downStudentWorkByInstructorToFile (studentVisitId, activityName, studentName, lastDate, submitted, assignmentData) {
+  let date = formatTimeStr(lastDate)
+  let title = activityName + ' ' + studentName + ' ' + date
+  title=title.replace(/\s+/g,'_')
+  let fName = 'ActivityData--' + title + '.json'
+  const extract = {
+    activityName: activityName,
+    studentName: studentName,
+    studentVisitId: studentVisitId,
+    submitted: submitted,
+    lastDate: date,
+    assignmentData: assignmentData
+  }
+  downObjectToFile(fName, extract)
+}
 export function isValidFilename (filename) {
   return validFilename(filename)
 }

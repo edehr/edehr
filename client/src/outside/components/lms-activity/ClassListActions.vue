@@ -32,7 +32,13 @@
         )
         fas-icon(class='fa', :icon='appIcons.forceSubmit')
         span(v-if="showLabels") &nbsp; Force submission
-
+    div
+      ui-button(value='cla-download',
+        v-on:buttonClicked='downloadStudentWork()',
+        title="Download the raw data file containing the student's work"
+        )
+        fas-icon(class='fa', :icon='appIcons.download')
+        span(v-if="showLabels") &nbsp; Download
 </template>
 
 <script>
@@ -41,6 +47,7 @@ import EvalHelper from '@/helpers/eval-helper'
 import { Text } from '@/helpers/ehr-text'
 import UiButton from '@/app/ui/UiButton.vue'
 import UiLink from '@/app/ui/UiLink.vue'
+import {  downStudentWorkByInstructorToFile } from '@/helpers/ehr-utils'
 export default {
   components: { UiButton, UiLink  },
   data () {
@@ -57,12 +64,16 @@ export default {
   },
   computed: {
     activityData () { return this.studentVisit.activityData},
+    activityName () { return this.activityRecord.learningObjectName },
+    activityRecord () { return this.$store.getters['activityStore/activityRecord'] },
+    assignmentData () { return this.activityData.assignmentData },
     studentVisitId ( ) { return this.studentVisit._id },
     // change of plan, Always hide the labels for class list actions. Gives compact UI
     showLabels () { return false }, //return StoreHelper.isOutsideShowButtonLabels() },
     isSubmitted () { return this.activityData.submitted },
     // when appearing in the class listing arrange for table layout
-    css () { return this.evaluating ? ' ': 'flow_across flow_across_right table_space_across' }
+    css () { return this.evaluating ? ' ': 'flow_across flow_across_right table_space_across' },
+    studentName () { return this.studentVisit.user.fullName },
   },
   methods: {
     goToEvaluation () {
@@ -71,6 +82,15 @@ export default {
     },
     enableEvaluation () {
       return this.activityData.closed || (this.activityData.submitted && !this.activityData.evaluated)
+    },
+    downloadStudentWork () {
+      downStudentWorkByInstructorToFile (
+        this.studentVisitId,
+        this.activityName,
+        this.studentName,
+        this.activityData.lastDate,
+        this.activityData.submitted,
+        this.assignmentData)
     },
     goToEhr () {
       const inEhr = true
