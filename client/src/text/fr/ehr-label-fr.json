@@ -1505,5 +1505,8 @@
   "linesDevices.ctaLabel19": "Drainage",
   "linesDevices.ctaLabel20": "Marées/fluctuations observées",
   "linesDevices.ctaLabel21": "Le matériel d'urgence est prêt",
-  "linesDevices.ctaEquipList": "Bouteille d'eau stérile, 2 pinces non dentées, drain thoracique, gaze de pétrole, 4x4"
+  "linesDevices.ctaEquipList": "Bouteille d'eau stérile, 2 pinces non dentées, drain thoracique, gaze de pétrole, 4x4",
+  "vitals.glucoseTable": "",
+  "vitals.gluGrp2": "",
+  "vitals.gluBloodSugar": ""
 }

@@ -61,6 +61,8 @@
       "respiratory": "Respiratory rate",
       "spo": "SP0",
       "systolic": "Systolic",
+      "tabGlucoseGraph": "Glucose Graph",
+      "tabGlucoseChart": "Glucose Chart",
       "tabGraph": "Vitals Graph",
       "tabChart": "Vitals Chart",
       "temperature": "Temperature"

@@ -85,5 +85,6 @@
   "checklistsPage.PersonalCareChecklist": "Agregar una lista de verificación de cuidado personal",
   "visit.aroScreen": "Agregar pantalla ARO",
   "linesDevices.chestTubeProfile": "Agregar un perfil de tubo torácico",
-  "linesDevices.chestTubeAssessment": "Agregar una evaluación de tubo torácico"
+  "linesDevices.chestTubeAssessment": "Agregar una evaluación de tubo torácico",
+  "vitals.glucoseTable": ""
 }

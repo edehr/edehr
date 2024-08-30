@@ -85,5 +85,6 @@
   "checklistsPage.PersonalCareChecklist": "Add a personal care checklist",
   "visit.aroScreen": "Add ARO screen",
   "linesDevices.chestTubeProfile": "Add a Chest Tube Profile",
-  "linesDevices.chestTubeAssessment": "Add a Chest Tube Assessment"
+  "linesDevices.chestTubeAssessment": "Add a Chest Tube Assessment",
+  "vitals.glucoseTable": "Add glucose reading"
 }

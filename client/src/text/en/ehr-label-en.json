@@ -1505,5 +1505,8 @@
   "linesDevices.ctaLabel19": "Drainage",
   "linesDevices.ctaLabel20": "Tidaling/fluctuating observed",
   "linesDevices.ctaLabel21": "Emergency equipment is ready",
-  "linesDevices.ctaEquipList": "Bottle sterile water, 2 non-toothed forceps, chest tube,petroleum gauze, 4x4s"
+  "linesDevices.ctaEquipList": "Bottle sterile water, 2 non-toothed forceps, chest tube,petroleum gauze, 4x4s",
+  "vitals.glucoseTable": "Glucose",
+  "vitals.gluGrp2": "Glucose",
+  "vitals.gluBloodSugar": "Blood sugar"
 }

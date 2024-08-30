@@ -2385,6 +2385,59 @@ const DEFS = {
         "tableColumn": "15",
         "validation": "cvp",
         "fqn": "vitals.cvp"
+      },
+      {
+        "elementKey": "glucoseTable_name",
+        "formIndex": "2",
+        "inputType": "practitionerName",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "vitals.name"
+      },
+      {
+        "elementKey": "glucoseTable_id",
+        "inputType": "generatedId",
+        "tableColumn": 0,
+        "label": "Row id",
+        "tableCss": "row-id"
+      },
+      {
+        "elementKey": "glucoseTable_profession",
+        "formIndex": "2",
+        "inputType": "practitionerProfession",
+        "tableColumn": "1",
+        "recHeader": true,
+        "fqn": "vitals.profession"
+      },
+      {
+        "elementKey": "glucoseTable_day",
+        "formIndex": "2",
+        "inputType": "visitDay",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "visitDay",
+        "recHeader": true,
+        "fqn": "vitals.day"
+      },
+      {
+        "elementKey": "glucoseTable_time",
+        "formIndex": "2",
+        "inputType": "visitTime",
+        "mandatory": true,
+        "tableColumn": "1",
+        "validation": "time24",
+        "recHeader": true,
+        "fqn": "vitals.time"
+      },
+      {
+        "elementKey": "gluBloodSugar",
+        "formIndex": "2",
+        "inputType": "text",
+        "suffix": "mmol/L",
+        "tableColumn": "2",
+        "validation": "numeric",
+        "fqn": "vitals.gluBloodSugar",
+        "suffixText": "mmol/L"
       }
     ],
     "pageElements": {
@@ -2481,6 +2534,60 @@ const DEFS = {
           "cvp",
           "table_name",
           "table_profession"
+        ],
+        "hasRecHeader": true
+      },
+      "glucoseTable": {
+        "elementKey": "glucoseTable",
+        "pageElementIndex": "2",
+        "pageKey": "vitals",
+        "tableKey": "glucoseTable",
+        "isTable": true,
+        "form": {
+          "elementKey": "glucoseTable",
+          "label": "Glucose",
+          "addButtonText": "Add glucose reading",
+          "formOption": "transpose",
+          "formKey": "glucoseTable",
+          "ehr_groups": [
+            {
+              "elementKey": "gluGrp1",
+              "formCss": "record-header",
+              "fqn": "vitals.gluGrp1",
+              "gIndex": "1",
+              "gChildren": [
+                "glucoseTable_name",
+                "glucoseTable_profession",
+                "glucoseTable_day",
+                "glucoseTable_time"
+              ]
+            },
+            {
+              "elementKey": "gluGrp2",
+              "formCss": "grid-left-to-right-3",
+              "fqn": "vitals.gluGrp2",
+              "gIndex": "2",
+              "gChildren": [
+                "gluBloodSugar"
+              ]
+            }
+          ],
+          "ehr_data": {
+            "glucoseTable_name": "",
+            "glucoseTable_profession": "",
+            "glucoseTable_day": "",
+            "glucoseTable_time": "",
+            "gluBloodSugar": ""
+          }
+        },
+        "fqn": "vitals.glucoseTable",
+        "tableChildren": [
+          "glucoseTable_id",
+          "glucoseTable_day",
+          "glucoseTable_time",
+          "gluBloodSugar",
+          "glucoseTable_name",
+          "glucoseTable_profession"
         ],
         "hasRecHeader": true
       }

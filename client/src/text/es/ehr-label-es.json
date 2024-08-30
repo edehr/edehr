@@ -1505,5 +1505,8 @@
   "linesDevices.ctaLabel19": "Drenaje",
   "linesDevices.ctaLabel20": "Se observan mareas/fluctuaciones",
   "linesDevices.ctaLabel21": "El equipo de emergencia está listo",
-  "linesDevices.ctaEquipList": "Botella de agua esterilizada, 2 pinzas sin dientes, tubo torácico, gasa de petróleo, 4x4"
+  "linesDevices.ctaEquipList": "Botella de agua esterilizada, 2 pinzas sin dientes, tubo torácico, gasa de petróleo, 4x4",
+  "vitals.glucoseTable": "",
+  "vitals.gluGrp2": "",
+  "vitals.gluBloodSugar": ""
 }
