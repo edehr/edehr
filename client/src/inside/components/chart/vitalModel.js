@@ -1,5 +1,4 @@
-import { options } from './vitalChart'
-import { POINT_TYPES } from './vitalChart'
+import { options, POINT_TYPES } from './vitalChart'
 import { t18EhrText } from '@/helpers/ehr-t18'
 
 const vitalRanges = {
@@ -12,71 +11,24 @@ const vitalRanges = {
   cvp: { min: 0, max: 21 }
 }
 
-let lastDay = 0
-let lastTime = 8
-let cnt = 0
-
 export default class VitalModel {
-  constructor () {
+  constructor (tableKey) {
+    this.tableKey = tableKey
     this.ehrText = t18EhrText().customPages.vitals
   }
 
-  addData (table) {
-    cnt++
-    lastTime += 4
-    if (lastTime > 24) {
-      lastTime -= 24
-      lastDay++
-    }
-    let diastolic, systolic, pulseRate
-    if (cnt <= 3) {
-      let normal = vitalRanges.bloodPressure.normal
-      diastolic = helper.random(normal.diastolic[0], normal.diastolic[1])
-      systolic = helper.random(normal.systolic[0], normal.systolic[1])
-      let normalPulse = vitalRanges.pulseRate.normal.adult
-      pulseRate = helper.random(normalPulse[0], normalPulse[1])
-    } else {
-      diastolic = helper.random(vitalRanges.bloodPressure.min, 100)
-      systolic = helper.random(diastolic, vitalRanges.bloodPressure.max)
-      pulseRate = helper.random(vitalRanges.pulseRate.min, vitalRanges.pulseRate.max)
-    }
-    // random(diastolic, vitalRanges.bloodPressure.max)
-    table.push({
-      name: 'Test',
-      day: lastDay,
-      time: lastTime,
-      temperature: helper.random(
-        vitalRanges.temperature.min - 1,
-        vitalRanges.temperature.max + 1,
-        1
-      ),
-      profession: 'nurse',
-      source: 'axilla',
-      rate: pulseRate,
-      rhythm: 'regular',
-      strength: 'strong',
-      systolic: systolic,
-      diastolic: diastolic,
-      patientPosition: 'lying',
-      respirationRate: helper.random(vitalRanges.respiratory.min, vitalRanges.respiratory.max),
-      respirationEffort: 'easy',
-      oxygenSaturation: helper.random(
-        vitalRanges.oxygenSaturation.min,
-        vitalRanges.oxygenSaturation.max
-      ),
-      oxygenMode: 'nasal prongs',
-      flowRate: helper.random(0, 5)
-    })
-  }
-
   getDates (table) {
-    console.log('-------------- getDates', table)
+    // console.log('-------------- getDates', this.tableKey, table)
+    const dayKey = this.tableKey + '_day'
+    const timeKey = this.tableKey + '_time'
     let values = table.map(element => {
-      let day = element.table_day === undefined ? 'x' : element.table_day
-      let time = element.table_time === undefined ? 'xx' : element.table_time
+      // console.log('-------------- getDates', this.tableKey, element)
+      let day = element[dayKey] // sometimes the value is '0' or 0 both are valid
+      day = isNaN(parseInt(day)) ? 'x' : day
+      let time = element[timeKey] || 'xx'
       return `Day ${day}\n${time}`
     })
-    let chartData = {
+    return {
       chartType: POINT_TYPES.TEXT,
       noYAxisGrid: true,
       noYAxisLabel: true,
@@ -91,7 +43,6 @@ export default class VitalModel {
         }
       ]
     }
-    return chartData
   }
 
   getTemperature (table) {
@@ -233,7 +184,7 @@ export default class VitalModel {
     let min = vitalRanges.bloodSugar.min
     let max = vitalRanges.bloodSugar.max
     const values = table.map(el => {
-      const v = el.bloodSugar
+      const v = el.gluBloodSugar // element key in the new glucose table
       let pt = { value: v }
       pt.pointFillColour = v > 7.7 || v < 4.1 ? 'red' : undefined
       return pt
@@ -259,9 +210,9 @@ export default class VitalModel {
           { spv: 5.7, clr: 'rgb(200,100,100)' },
           { spv: 5.0, dotted: [2, 6] },
           { spv: 4.1, dotted: [2, 6] },
-          { spv: 2.8, clr: 'red' },
-          { spv: 2, clr: 'red' },
-          { spv: 1, clr: 'red' },
+          { spv: 2.8, clr: 'green' },
+          { spv: 2, clr: 'green' },
+          { spv: 1, clr: 'green' },
         ]
       },
       gridX: {

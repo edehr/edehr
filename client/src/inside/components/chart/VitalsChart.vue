@@ -2,13 +2,14 @@
   div(class="content")
     div(class="chart-wrapper")
       div(class="axis-wrapper")
-        canvas(id="axisCanvas", :width="axisCanvasWidth", :height="axisCanvasHeight")
+        canvas(:id="axisId", :width="axisCanvasWidth", :height="axisCanvasHeight")
       div(id="chartWrapper", class="canvas-wrapper")
-        canvas(id="chartCanvas", :width="chartCanvasWidth", :height="chartCanvasHeight")
+        canvas(:id="chartId", :width="chartCanvasWidth", :height="chartCanvasHeight")
 </template>
 
 <script>
 import VitalChart from './vitalChart'
+import { GLUCOSE_TABLE_KEY, VITALS_TABLE_KEY } from '@/ehr-definitions/ehr-defs-grid'
 
 const yAxisWidth = 75
 const canvasHeight = 1700
@@ -25,9 +26,12 @@ export default {
   },
   props: {
     vitals: { type: Array },
-    vitalsModel: { type: Object }
+    vitalsModel: { type: Object },
+    tableDef: { type: Object }
   },
   computed: {
+    axisId () { return this.tableKey + 'axisCanvas' },
+    chartId () { return this.tableKey + 'chartCanvas' },
     // these arrays are magically updated by Vue when the vitals are changed
     temperatures () {
       return this.vitalsModel.getTemperature(this.vitals)
@@ -55,7 +59,8 @@ export default {
         navigator.userAgent.includes('AppleWebKit')
         && navigator.vendor === 'Apple Computer, Inc.'
       )
-    }
+    },
+    tableKey () { return this.tableDef.tableKey }
   },
   watch: {
     // when the vitals are changed trigger a redraw
@@ -64,12 +69,46 @@ export default {
     }
   },
   methods: {
-    // Prototype only ....
-    // add another row to the data table.
-    addData () {
-      this.vitalChart.addData(this.vitals.table)
-    },
     redraw () {
+      if (this.tableKey === VITALS_TABLE_KEY) {
+        this.redrawVitals()
+      }
+      if (this.tableKey === GLUCOSE_TABLE_KEY) {
+        this.redrawGlucose()
+      }
+    },
+    redrawGlucose () {
+      let vitalChart = this.vitalChart
+      vitalChart.clear()
+      // The first number is the origin of the chart relative to the top left
+      // The second number is the height of the chart
+      let y = 0
+      let ht = 50
+      let space = 40
+
+      space = 40
+      vitalChart.drawChart(this.dates, y, ht)
+      y += ht
+      vitalChart.drawYLine(y)
+      y += space
+
+      space = 20
+      // ht = 80
+      ht = 250
+      vitalChart.drawChart(this.bloodSugar, y, ht)
+      // vitalChart.drawChart(this.oxygen, y, ht)
+      y += ht + space
+
+      vitalChart.drawYLine(y)
+      y += 0
+      ht = 50
+      vitalChart.drawChart(this.dates, y, ht)
+
+      // force the chart to scroll to the beginning of the data.
+      let chartWrapper = document.getElementById('chartWrapper')
+      chartWrapper.scrollLeft = 0
+    },
+    redrawVitals () {
       let vitalChart = this.vitalChart
       vitalChart.clear()
       // The first number is the origin of the chart relative to the top left
@@ -112,13 +151,6 @@ export default {
       // vitalChart.drawChart(this.respiratory, y, ht)
       y += ht + space
 
-      space = 20
-      // ht = 80
-      ht = 250
-      vitalChart.drawChart(this.bloodSugar, y, ht)
-      // vitalChart.drawChart(this.oxygen, y, ht)
-      y += ht + space
-
       vitalChart.drawYLine(y)
       y += 0
       ht = 50
@@ -134,8 +166,8 @@ export default {
     }
   },
   mounted: function () {
-    let chartCanvas = document.getElementById('chartCanvas')
-    let axisCanvas = document.getElementById('axisCanvas')
+    let chartCanvas = document.getElementById(this.chartId)
+    let axisCanvas = document.getElementById(this.axisId)
     let f = 2
     if ( this.shouldScale ) {
       chartCanvas.width = canvasWidth * f

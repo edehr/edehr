@@ -14,6 +14,9 @@ export const MED_ORDERS_ALERT_ELEMENT = 'med_alert'
 export const MED_ORDERS_ROUTE_ELEMENT = 'med_route'
 export const MED_ORDERS_TIME_ELEMENT = 'med_timing'
 
+export const VITALS_TABLE_KEY = 'table'
+export const GLUCOSE_TABLE_KEY = 'glucoseTable'
+
 class EhrDefsWorker {
   constructor () {
     this.pageDefs = pageDefs
