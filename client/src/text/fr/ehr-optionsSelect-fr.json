@@ -1291,7 +1291,7 @@
   "linesDevices.ctaAirLeakReading.n": "Non",
   "linesDevices.ctaTidaling.y": "Oui",
   "linesDevices.ctaTidaling.n": "Non",
-  "linesDevices.ctaNegativePressure.I": "Intermittent : aucune aspiration murale observée avec les respirations",
+  "linesDevices.ctaNegativePressure.I": "Intermittent : aucune aspiration murale observée avec les respirations",
   "linesDevices.ctaNegativePressure.Y": "Si sur aspiration murale, vu en continu",
   "linesDevices.ctaDrainageStatus.y": "Oui",
   "linesDevices.ctaDrainageStatus.n": "Non",
