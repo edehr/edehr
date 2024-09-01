@@ -23,6 +23,14 @@ function perfExit (perfStat) {
   perfStat.elapsed.loading = performance.now() - perfStat.start.loading
   return perfStat
 }
+function perfDone (perfStat, key) {
+  perfStat.elapsed[key] = performance.now() - perfStat.start[key]
+  return perfStat
+}
+function perfStart (perfStat, key) {
+  perfStat.start[key] = performance.now()
+  return perfStat
+}
 
 function determineCurrentPatientId (optionalVisitId, patientId) {
   const theLObj = store.getters['assignmentStore/learningObject']
@@ -98,7 +106,7 @@ async  function onPageChange (toRoute) {
     break
     // no default. we do not want to override what the user may have selected before.
   }
-  console.log('LANGUAGE setup', performance.now() - plng)
+  // console.log('LANGUAGE setup', performance.now() - plng)
 
   // To force a sample exception that is not caught just
   // 1. Get into the EHR pages ...
@@ -213,18 +221,22 @@ async  function onPageChange (toRoute) {
     // **** auth token process and unpack.  Do this before any API calls that require auth ... CONTINUE
     const authToken = StoreHelper.getAuthToken()
     if (authToken) {
+      perfStart(perfStat,'auth')
       // USER HAS BEEN HERE BEFORE AND IS LOGGED IN
       if (dbApp) console.log('_loadAuth. We have an auth token. Get the auth data....')
       // must set auth header before invoking fetch. The fetch is an authenticated post
       setAuthHeader(authToken)
       await StoreHelper.fetchTokenData(authToken)
+      perfDone(perfStat,'auth')
     }
 
     // **** Full demo setup ... prep and CONTINUE
     if (haveDemoToken) {
       if (dbApp) console.log('onPageChange loadDemoData')
+      perfStart(perfStat,'demo')
       // Must have auth setup to succeed
       await StoreHelper.loadDemoData()
+      perfDone(perfStat,'demo')
     }
 
     // **** If in zone Admin .... prep and EXIT via new route
@@ -268,29 +280,36 @@ async  function onPageChange (toRoute) {
     // If a student is coming from the "My Activities" page then the query has the intended visitId
     // user is authorized to enter the EHR zone (Note the EHR only entry is already handled. See if (demoOnlyKey) above)
     if (dbApp) console.log('onPageChange is authed so load data')
-
+    perfStart(perfStat,'consumer')
     const toolConsumerId = store.getters['authStore/consumerId']
     await store.dispatch('consumerStore/loadConsumer', toolConsumerId)
     await FeatureHelper.loadFlags(toolConsumerId)
-
+    perfDone(perfStat,'consumer')
+    perfStart(perfStat,'user')
     // Load the user based on auth message
     const userId = store.getters['authStore/userId']
     await store.dispatch('userStore/loadUser', userId)
+    perfDone(perfStat,'user')
+    perfStart(perfStat,'visit')
     const storedVisitId = store.getters['visit/visitId']
     const authVisitId = store.getters['authStore/visitId']
     let visitId = optionalVisitId || storedVisitId || authVisitId
     await StoreHelper.setVisitId(visitId) //note this stores the visit id to survive page changes and browser refresh
     // dup-in loadInstructorWithStudent
     await store.dispatch('visit/loadVisitRecord')
+    perfDone(perfStat,'visit')
     // The above load visit record gets visit data including the sim date time.
     // But we also need to initialize sim DT from the merged metaData if needed
     // ... and set this into the visit record.
     // See StoreHelper.initializeSimDateTime which is invoked below once the ehr data is ready
-
+    perfStart(perfStat,'activity')
     // dup-in loadInstructorWithStudent
     let theActivity = await store.dispatch('activityStore/loadActivityRecord')
     // need to load course to obtain skills assessment details
+    perfDone(perfStat,'activity')
+    perfStart(perfStat,'course')
     await store.dispatch('courseStore/loadCurrentCourse', { courseId: theActivity.courseId })
+    perfDone(perfStat,'course')
     // **** If page is the one that handles unlinked activities then we are done ... EXIT
     if (routeName === UNLINKED_ACTIVITY_ROUTE_NAME) {
       // console.log('UNLINKED_ACTIVITY_ROUTE_NAME --- OKAY? ---finish page change for unlinked activity')

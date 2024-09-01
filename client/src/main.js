@@ -62,9 +62,10 @@ if (!LOCALHOST) {
 }
 router.afterEach(async (to, from) => {
   let startTime = performance.now()
-  const perfStat = await onPageChange(to, from)
+  const perfStat = await onPageChange(to)
+  const routeName = to.name
   let elapsedTime = performance.now() - startTime
-  console.log('page change elapsed', elapsedTime, JSON.stringify(perfStat.elapsed))
+  console.log(`page change (${routeName}) elapsed ${elapsedTime}`, JSON.stringify(perfStat.elapsed))
 })
 
 if (LOCALHOST) {
