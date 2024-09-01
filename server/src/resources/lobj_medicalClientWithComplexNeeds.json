@@ -26,7 +26,7 @@
         "nextOfKinName": "Maureen Walker",
         "nextOfKinRelationship": "Daughter",
         "personAge": "65",
-        "mrn": "S:650003"
+        "mrn": "S-650003"
       },
       "medical": {
         "history": "Hypertension\nCOPD\nCHF",
@@ -56,7 +56,7 @@
           {
             "medicationOrdersTable_name": "S. Right",
             "medicationOrdersTable_profession": "MD",
-            "medicationOrdersTable_day": "1",
+            "medicationOrdersTable_day": "0",
             "medicationOrdersTable_time": "1700",
             "med_timing": "sched",
             "med_route": "oral",
@@ -71,66 +71,71 @@
           {
             "medicationOrdersTable_name": "S. Right",
             "medicationOrdersTable_profession": "MD",
-            "medicationOrdersTable_day": "1",
+            "medicationOrdersTable_day": "0",
             "medicationOrdersTable_time": "1700",
-            "med_timing": "od",
+            "med_timing": "sched",
             "med_route": "oral",
             "med_medication": "apo prednisone tab ",
             "med_dose": "50 mg",
             "createdDate": "2023-06-06T10:48:04-07:00",
-            "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.1"
+            "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.1",
+            "med_scheduled": "OD"
           },
           {
             "medicationOrdersTable_name": "S. Right",
             "medicationOrdersTable_profession": "MD",
-            "medicationOrdersTable_day": "1",
+            "medicationOrdersTable_day": "0",
             "medicationOrdersTable_time": "1700",
-            "med_timing": "od",
+            "med_timing": "sched",
             "med_route": "oral",
             "med_medication": "apo-ramipril",
             "med_dose": "5 mg",
             "createdDate": "2023-06-06T10:49:05-07:00",
-            "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.2"
+            "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.2",
+            "med_scheduled": "OD"
           },
           {
             "medicationOrdersTable_name": "S. Right",
             "medicationOrdersTable_profession": "MD",
-            "medicationOrdersTable_day": "1",
+            "medicationOrdersTable_day": "0",
             "medicationOrdersTable_time": "1700",
-            "med_timing": "od",
+            "med_timing": "sched",
             "med_route": "tran",
             "med_medication": "nicotine patch",
             "med_dose": "21 mg",
             "createdDate": "2023-06-06T10:49:49-07:00",
-            "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.3"
+            "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.3",
+            "med_scheduled": "OD"
           },
           {
             "medicationOrdersTable_name": "S. Right",
             "medicationOrdersTable_profession": "MD",
-            "medicationOrdersTable_day": "1",
+            "medicationOrdersTable_day": "0",
             "medicationOrdersTable_time": "1700",
-            "med_timing": "od",
+            "med_timing": "sched",
             "med_route": "oral",
             "med_medication": "Thiamine",
             "med_dose": "100 mg",
             "createdDate": "2023-06-06T10:50:21-07:00",
-            "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.4"
+            "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.4",
+            "med_scheduled": "OD"
           },
           {
             "medicationOrdersTable_name": "S. Right",
             "medicationOrdersTable_profession": "MD",
-            "medicationOrdersTable_day": "1",
+            "medicationOrdersTable_day": "0",
             "medicationOrdersTable_time": "1700",
-            "med_timing": "od",
+            "med_timing": "sched",
             "med_medication": "multivitamin",
             "med_dose": "1 tablet",
             "createdDate": "2023-06-06T10:51:12-07:00",
-            "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.5"
+            "medicationOrdersTable_id": "medicationOrders.medicationOrdersTable.5",
+            "med_scheduled": "OD"
           },
           {
             "medicationOrdersTable_name": "S. Right",
             "medicationOrdersTable_profession": "MD",
-            "medicationOrdersTable_day": "1",
+            "medicationOrdersTable_day": "0",
             "medicationOrdersTable_time": "1700",
             "med_timing": "sched",
             "med_route": "inha",
@@ -147,7 +152,7 @@
           {
             "medicationOrdersTable_name": "S. Right",
             "medicationOrdersTable_profession": "MD",
-            "medicationOrdersTable_day": "1",
+            "medicationOrdersTable_day": "0",
             "medicationOrdersTable_time": "1700",
             "med_timing": "sched",
             "med_route": "inha",
@@ -164,7 +169,7 @@
           {
             "medicationOrdersTable_name": "S. Right",
             "medicationOrdersTable_profession": "MD",
-            "medicationOrdersTable_day": "1",
+            "medicationOrdersTable_day": "0",
             "medicationOrdersTable_time": "1700",
             "med_timing": "sched",
             "med_route": "inha",
@@ -179,7 +184,7 @@
           {
             "medicationOrdersTable_name": "S. Right",
             "medicationOrdersTable_profession": "MD",
-            "medicationOrdersTable_day": "1",
+            "medicationOrdersTable_day": "0",
             "medicationOrdersTable_time": "1700",
             "med_timing": "prn",
             "med_route": "inha",
@@ -192,7 +197,7 @@
           {
             "medicationOrdersTable_name": "S. Right",
             "medicationOrdersTable_profession": "MD",
-            "medicationOrdersTable_day": "1",
+            "medicationOrdersTable_day": "0",
             "medicationOrdersTable_time": "1700",
             "med_timing": "sched",
             "med_route": "oral",
@@ -207,7 +212,7 @@
           {
             "medicationOrdersTable_name": "S. Right",
             "medicationOrdersTable_profession": "MD",
-            "medicationOrdersTable_day": "1",
+            "medicationOrdersTable_day": "0",
             "medicationOrdersTable_time": "1700",
             "med_timing": "prn",
             "med_route": "oral",
@@ -220,7 +225,7 @@
           {
             "medicationOrdersTable_name": "S. Right",
             "medicationOrdersTable_profession": "MD",
-            "medicationOrdersTable_day": "1",
+            "medicationOrdersTable_day": "0",
             "medicationOrdersTable_time": "1700",
             "med_timing": "prn",
             "med_route": "oral",
@@ -233,10 +238,10 @@
           {
             "medicationOrdersTable_name": "S. Right",
             "medicationOrdersTable_profession": "MD",
-            "medicationOrdersTable_day": "1",
+            "medicationOrdersTable_day": "0",
             "medicationOrdersTable_time": "1700",
             "med_timing": "prn",
-            "med_route": "inje",
+            "med_route": "subc",
             "med_reason": "AWA score of 4 or greater",
             "med_medication": "diazepam injection usp",
             "med_dose": "5 mg",
@@ -246,7 +251,7 @@
           {
             "medicationOrdersTable_name": "S. Right",
             "medicationOrdersTable_profession": "MD",
-            "medicationOrdersTable_day": "1",
+            "medicationOrdersTable_day": "0",
             "medicationOrdersTable_time": "1700",
             "med_timing": "prn",
             "med_route": "oral",
@@ -259,10 +264,10 @@
           {
             "medicationOrdersTable_name": "S. Right",
             "medicationOrdersTable_profession": "MD",
-            "medicationOrdersTable_day": "1",
+            "medicationOrdersTable_day": "0",
             "medicationOrdersTable_time": "1700",
             "med_timing": "prn",
-            "med_route": "inje",
+            "med_route": "subc",
             "med_reason": "AWA score of 7 or greater",
             "med_medication": "diazepam injection usp",
             "med_dose": "10 mg",
@@ -338,7 +343,7 @@
           {
             "table_name": "S. Right",
             "table_profession": "Physician",
-            "table_day": "1",
+            "table_day": "0",
             "table_time": "0800",
             "consultReport": {
               "fName": "Admission_dictation-_George_Hart.pdf"
@@ -353,7 +358,7 @@
           {
             "labResultCoagulation_name": "Joan",
             "labResultCoagulation_profession": "Lab tech",
-            "labResultCoagulation_day": 2,
+            "labResultCoagulation_day": "1",
             "labResultCoagulation_time": "0800",
             "coag_inr": "1.0",
             "createdDate": "2023-04-25T11:15:32-07:00",
@@ -364,7 +369,7 @@
           {
             "labResultGeneral_name": "Joan",
             "labResultGeneral_profession": "Lab tech",
-            "labResultGeneral_day": 2,
+            "labResultGeneral_day": "1",
             "labResultGeneral_time": "0800",
             "lrh_Ca": "2.65",
             "lrh_chloride": "99",
@@ -392,7 +397,7 @@
           {
             "labResultHematology_name": "Joan",
             "labResultHematology_profession": "Lab tech",
-            "labResultHematology_day": "2",
+            "labResultHematology_day": "1",
             "labResultHematology_time": "0800",
             "lrh_Hgb": "142",
             "lrh_hct": "0.41",
@@ -416,7 +421,7 @@
           "visitDay": 3,
           "visitTime": "0600"
         },
-        "ehrVersion": "ev2.4.0"
+        "ehrVersion": "ev2.4.2"
       },
       "careTeam": {
         "lastUpdate": "2023-04-24T22:35:04+00:00",
@@ -464,7 +469,7 @@
           {
             "table_name": "J. Smith",
             "table_profession": "RN",
-            "table_day": "2",
+            "table_day": "1",
             "table_time": "2000",
             "systolic": "140",
             "diastolic": "80",
@@ -482,7 +487,7 @@
           {
             "table_name": "J. Smith",
             "table_profession": "RN",
-            "table_day": 2,
+            "table_day": "1",
             "table_time": "2345",
             "systolic": "138",
             "diastolic": "84",
@@ -499,7 +504,7 @@
           {
             "table_name": "J. Smith",
             "table_profession": "RN",
-            "table_day": "3",
+            "table_day": "2",
             "table_time": "0430",
             "systolic": "148",
             "diastolic": "78",
@@ -519,7 +524,7 @@
         "marTable": [
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 1,
+            "marTable_day": "0",
             "marTable_time": "1700",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.6",
             "mo_medOrder": "salbutamol MDI 2 sprays inha QID",
@@ -530,7 +535,7 @@
             "mar_dose": "2 sprays",
             "medicationOrdersTable_name": "S. Right",
             "medicationOrdersTable_profession": "MD",
-            "medicationOrdersTable_day": "1",
+            "medicationOrdersTable_day": "0",
             "medicationOrdersTable_time": "1700",
             "med_timing": "sched",
             "med_route": "inha",
@@ -546,7 +551,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 2,
+            "marTable_day": "1",
             "marTable_time": "0800",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.0",
             "mo_medOrder": "apo-amoxi clav 875/125 mg oral Q12H",
@@ -565,7 +570,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 1,
+            "marTable_day": "0",
             "marTable_time": "2000",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.0",
             "mo_medOrder": "apo-amoxi clav 875/125 mg oral Q12H",
@@ -579,7 +584,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 1,
+            "marTable_day": "0",
             "marTable_time": "1700",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.7",
             "mo_medOrder": "ipratroprium MDI 2 sprays  inha QID",
@@ -600,7 +605,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 1,
+            "marTable_day": "0",
             "marTable_time": "1700",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.8",
             "mo_medOrder": "budenoside DPI 180 mcg  inha BID",
@@ -619,7 +624,7 @@
           },
           {
             "marTable_name": "J Smith",
-            "marTable_day": 1,
+            "marTable_day": "0",
             "marTable_time": "2200",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.6",
             "mo_medOrder": "salbutamol MDI 2 sprays inha QID",
@@ -640,7 +645,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 1,
+            "marTable_day": "0",
             "marTable_time": "2200",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.7",
             "mo_medOrder": "ipratroprium MDI 2 sprays  inha QID",
@@ -656,7 +661,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 2,
+            "marTable_day": "1",
             "marTable_time": "0800",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.6",
             "mo_medOrder": "salbutamol MDI 2 sprays inha QID",
@@ -672,7 +677,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 2,
+            "marTable_day": "1",
             "marTable_time": "0800",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.7",
             "mo_medOrder": "ipratroprium MDI 2 sprays  inha QID",
@@ -688,7 +693,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 2,
+            "marTable_day": "1",
             "marTable_time": "0900",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.8",
             "mo_medOrder": "budenoside DPI 180 mcg  inha BID",
@@ -707,7 +712,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 2,
+            "marTable_day": "1",
             "marTable_time": "1200",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.6",
             "mo_medOrder": "salbutamol MDI 2 sprays inha QID",
@@ -728,7 +733,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 1,
+            "marTable_day": "0",
             "marTable_time": "1700",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.10",
             "mo_medOrder": "apo furosemide tab 40mg 40 mg oral BID",
@@ -739,7 +744,7 @@
             "mar_dose": "40 mg",
             "medicationOrdersTable_name": "S. Right",
             "medicationOrdersTable_profession": "MD",
-            "medicationOrdersTable_day": "1",
+            "medicationOrdersTable_day": "0",
             "medicationOrdersTable_time": "1700",
             "med_timing": "sched",
             "med_route": "oral",
@@ -753,7 +758,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 2,
+            "marTable_day": "1",
             "marTable_time": "1200",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.7",
             "mo_medOrder": "ipratroprium MDI 2 sprays  inha QID",
@@ -775,7 +780,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 2,
+            "marTable_day": "1",
             "marTable_time": "0900",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.10",
             "mo_medOrder": "apo furosemide tab 40mg 40 mg oral BID",
@@ -795,7 +800,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 2,
+            "marTable_day": "1",
             "marTable_time": "1700",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.6",
             "mo_medOrder": "salbutamol MDI 2 sprays inha QID",
@@ -817,7 +822,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 2,
+            "marTable_day": "1",
             "marTable_time": "1700",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.7",
             "mo_medOrder": "ipratroprium MDI 2 sprays  inha QID",
@@ -833,7 +838,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 2,
+            "marTable_day": "1",
             "marTable_time": "1700",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.8",
             "mo_medOrder": "budenoside DPI 180 mcg  inha BID",
@@ -852,7 +857,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 2,
+            "marTable_day": "1",
             "marTable_time": "1700",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.10",
             "mo_medOrder": "apo furosemide tab 40mg 40 mg oral BID",
@@ -869,7 +874,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 2,
+            "marTable_day": "1",
             "marTable_time": "2000",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.0",
             "mo_medOrder": "apo-amoxi clav 875/125 mg oral Q12H",
@@ -888,7 +893,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 2,
+            "marTable_day": "1",
             "marTable_time": "2200",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.6",
             "mo_medOrder": "salbutamol MDI 2 sprays inha QID",
@@ -909,7 +914,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 2,
+            "marTable_day": "1",
             "marTable_time": "2200",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.7",
             "mo_medOrder": "ipratroprium MDI 2 sprays  inha QID",
@@ -925,7 +930,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": "1",
+            "marTable_day": "0",
             "marTable_time": "1900",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.9",
             "mo_medOrder": "Salubutamol 2 sprays by MDI or 5 mg nebulized inha Q1H",
@@ -937,23 +942,24 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": "1",
+            "marTable_day": "0",
             "marTable_time": "0800",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.1",
             "mo_medOrder": "apo prednisone tab  50 mg oral ",
             "mo_id": "medicationOrders.medicationOrdersTable.1",
             "mar_status": "Administered",
             "mar_dose": "50 mg",
-            "med_timing": "od",
+            "med_timing": "sched",
             "med_route": "oral",
             "med_medication": "apo prednisone tab ",
             "med_dose": "50 mg",
             "createdDate": "2023-06-06T11:08:17-07:00",
-            "marTable_id": "medAdminRec.marTable.22"
+            "marTable_id": "medAdminRec.marTable.22",
+            "med_scheduled": "OD"
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": "1",
+            "marTable_day": "0",
             "marTable_time": "0800",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.2",
             "mo_medOrder": "apo-ramipril 5 mg oral ",
@@ -967,7 +973,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": "1",
+            "marTable_day": "0",
             "marTable_time": "0800",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.3",
             "mo_medOrder": "nicotine patch 21 mg tran ",
@@ -982,7 +988,7 @@
           },
           {
             "marTable_name": "Christopher",
-            "marTable_day": "1",
+            "marTable_day": "0",
             "marTable_time": "0800",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.4",
             "mo_medOrder": "Thiamine 100 mg oral ",
@@ -997,7 +1003,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": "1",
+            "marTable_day": "0",
             "marTable_time": "0800",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.5",
             "mo_medOrder": "multivitamin 1 tablet  ",
@@ -1011,7 +1017,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": "2",
+            "marTable_day": "1",
             "marTable_time": "0800",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.1",
             "mo_medOrder": "apo prednisone tab  50 mg oral ",
@@ -1026,7 +1032,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": "2",
+            "marTable_day": "1",
             "marTable_time": "0800",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.2",
             "mo_medOrder": "apo-ramipril 5 mg oral ",
@@ -1040,7 +1046,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": "2",
+            "marTable_day": "1",
             "marTable_time": "0800",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.3",
             "mo_medOrder": "nicotine patch 21 mg tran ",
@@ -1056,7 +1062,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": "2",
+            "marTable_day": "1",
             "marTable_time": "0800",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.4",
             "mo_medOrder": "Thiamine 100 mg oral ",
@@ -1071,7 +1077,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": "2",
+            "marTable_day": "1",
             "marTable_time": "0800",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.5",
             "mo_medOrder": "multivitamin 1 tablet  ",
@@ -1085,7 +1091,7 @@
           },
           {
             "marTable_name": "J. Smith",
-            "marTable_day": 3,
+            "marTable_day": "2",
             "marTable_time": "0600",
             "med_order_embedded": "medicationOrders.medicationOrdersTable.11",
             "mo_medOrder": "ibuprofen 600 mg oral Q6H",
@@ -1094,7 +1100,7 @@
             "mar_dose": "600 mg",
             "medicationOrdersTable_name": "S. Right",
             "medicationOrdersTable_profession": "MD",
-            "medicationOrdersTable_day": "1",
+            "medicationOrdersTable_day": "0",
             "medicationOrdersTable_time": "1700",
             "med_timing": "prn",
             "med_route": "oral",
@@ -1116,7 +1122,7 @@
           {
             "preprintOrderSet_name": "S. Right",
             "preprintOrderSet_profession": "MD",
-            "preprintOrderSet_day": "1",
+            "preprintOrderSet_day": "0",
             "preprintOrderSet_time": "1700",
             "preOrderSetFile": {
               "fName": "George_Hart_AWA_orders.pdf"
