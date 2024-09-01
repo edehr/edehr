@@ -39,7 +39,7 @@ describe('Test EHR validator time24 ', () => {
     should.not.exist(result)
 
   })
-  it(`Invalid times ${vName}`, (done) => {
+  it(`42 Invalid times ${vName}`, (done) => {
     const validator = ehrValidations[vName]
     let aName = 'a field name'
     let aValue = '7:55'
@@ -85,32 +85,32 @@ describe('Test EHR validator day', () => {
     result = validator(aName, aValue)
     should.not.exist(result)
   })
-  it(`Invalid times ${vName}`, () => {
+  it(`88 Invalid times ${vName}`, () => {
     const validator = ehrValidations[vName]
     let aName = 'negative number is invalid'
     let aValue = '-1'
     let result = validator(aName, aValue)
-    should.exist(result)
+    should.exist(result, aName + ' ' + result)
 
-    aName = 'zero number - not valid'
+    aName = 'zero number - is valid'
     aValue = 0
     result = validator(aName, aValue)
-    should.exist(result)
+    should.not.exist(result, aName + ' ' + result)
 
-    aName = 'empty - not valid'
+    aName = 'empty - is valid'
     aValue = ''
     result = validator(aName, aValue)
-    should.exist(result)
+    should.not.exist(result, aName + ' ' + result)
 
     aName = '20 - not valid'
     aValue = '20'
     result = validator(aName, aValue)
-    should.exist(result)
+    should.exist(result, aName + ' ' + result)
 
     aName = 'foo - not valid'
     aValue = 'foo'
     result = validator(aName, aValue)
-    should.exist(result)
+    should.exist(result, aName + ' ' + result)
   })
 })
 

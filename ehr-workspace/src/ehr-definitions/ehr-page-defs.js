@@ -30487,7 +30487,7 @@ const DEFS = {
         "formIndex": "1",
         "inputType": "visitTime",
         "tableColumn": "5",
-        "validation": "visitTime",
+        "validation": "time24",
         "fqn": "linesDevices.tubeInsertTime"
       },
       {
@@ -30974,33 +30974,10 @@ const DEFS = {
         "fqn": "linesDevices.ctaLabel20"
       },
       {
-        "elementKey": "ctaTidaling",
-        "formIndex": "2",
-        "inputType": "radioset",
-        "options": [
-          {
-            "key": "y",
-            "text": "Yes"
-          },
-          {
-            "key": "n",
-            "text": "No"
-          }
-        ],
-        "tableColumn": "20",
-        "fqn": "linesDevices.ctaTidaling"
-      },
-      {
-        "elementKey": "ctaLabel21",
-        "formIndex": "2",
-        "inputType": "form_label",
-        "fqn": "linesDevices.ctaLabel21"
-      },
-      {
         "elementKey": "ctaEmergEquip",
         "formIndex": "2",
         "inputType": "checkbox",
-        "tableColumn": "21",
+        "tableColumn": "20",
         "fqn": "linesDevices.ctaEmergEquip"
       },
       {
@@ -31166,8 +31143,6 @@ const DEFS = {
                 "ctaLabel19",
                 "ctaDrainageType",
                 "ctaLabel20",
-                "ctaTidaling",
-                "ctaLabel21",
                 "ctaEmergEquip",
                 "ctaEquipList"
               ]
@@ -31225,7 +31200,6 @@ const DEFS = {
           "ctaNegativePressure",
           "ctaDrainageStatus",
           "ctaDrainageType",
-          "ctaTidaling",
           "ctaEmergEquip",
           "chestTubeAssessment_name",
           "chestTubeAssessment_profession"

@@ -13,6 +13,21 @@ export function updateRowElem (ehrData, pageKey, tableKey, rowIndex, elementKey,
   ehrData[pageKey][tableKey] = targetData
   return ehrData
 }
+export function deleteRowElem (ehrData, pageKey, tableKey, rowIndex, elementKey)
+{
+  const targetData = ehrData[pageKey][tableKey]
+  delete targetData[rowIndex][elementKey]
+  ehrData[pageKey][tableKey] = targetData
+  return ehrData
+}
+export function addEhrRowToTable (ehrData, pageKey, tableKey, record)
+{
+  const targetData = ehrData[pageKey][tableKey] || []
+  targetData.push(record)
+  ehrData[pageKey][tableKey] = targetData
+  return ehrData
+}
+
 
 export function updateRecHeaderElementKeys (givenEhrData, touchCounts) {
   const ehrData = decoupleObject(givenEhrData)

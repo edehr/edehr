@@ -7,7 +7,7 @@ const should = require('should')
 
 const pageDefs = EhrDefs
 
-const case1PageCount = 47 - 2 // take two off because 2 pages are skipped
+const case1PageCount = 53
 
 describe('Ehr Page', function () {
   it('Expected page count check.', () => {
@@ -21,6 +21,7 @@ describe('Ehr Page', function () {
     })
   })
 })
+const VisitPageTableCount = 3
 
 describe('Ehr Page Definitions', function () {
   let pages
@@ -43,7 +44,7 @@ describe('Ehr Page Definitions', function () {
     page.pageForms.length.should.equal(1)
     page.should.have.property('pageTables')
     page.pageTables.should.be.instanceof(Array)
-    page.pageTables.length.should.equal(2)
+    page.pageTables.length.should.equal(VisitPageTableCount, 'pageTables length')
   })
   it('get demographics', () => {
     const pageList = pages.pageList
@@ -76,6 +77,6 @@ describe('Ehr Page Form fields', function () {
     const page = pages.findPage(key)
     const vTables = page.pageTables
     vTables.should.be.instanceof(Array)
-    vTables.length.should.equal(2)
+    vTables.length.should.equal(VisitPageTableCount)
   })
 })

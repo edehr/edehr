@@ -15,9 +15,11 @@ import { updateHematologyLymphocytes } from './ehr-data-upgrade-hematology'
 import { updateV2_4_1 } from './ehr-data-upgrade-v2.4.1'
 import { computeDateOfBirth } from './ehr-def-utils'
 import { MED_ORDERS_PAGE_KEY, MED_ORDERS_TABLE_KEY } from './ehr-defs-grid'
+import { updateVitalsGlucose } from './ehr-data-upgrade-glucose-vitals'
 
-export const CURRENT_EHR_DATA_VERSION = 'ev2.4.1'
+export const CURRENT_EHR_DATA_VERSION = 'ev2.4.2'
 // ev2.4.0 major change in how the student's ehrData is stored. It is now in an array of patients.
+// ev2.4.2 upgrade vitals split out glucose into new table
 
 function ehrMergeEhrData (one, two) {
   one = one || {}
@@ -260,6 +262,8 @@ export default class EhrDataModel {
       this._ehrData = updateWoundCaseStudy(this._ehrData, touchCounts)
 
       this._ehrData = updateHematologyLymphocytes(this._ehrData, touchCounts)
+
+      this._ehrData = updateVitalsGlucose(this._ehrData, touchCounts)
 
       this._ehrData = updateV2_4_1(this, touchCounts)
 
