@@ -40,7 +40,8 @@ const Schema = new mongoose.Schema(
 )
 
 const startingNumber = 650000 // (good for 999,999 - 650,000 = 934,999 case studies
-const prefix = 'S:'
+const prefix = 'S-'
+const div = '-'
 async function generateNextUniqueMRN (toolConsumer) {
   let allSeedsWithMrnList = await SeedData.find(
     { $and: [{ toolConsumer: toolConsumer }, { mrn: { $exists: true } }] },
@@ -50,7 +51,7 @@ async function generateNextUniqueMRN (toolConsumer) {
   allSeedsWithMrnList = allSeedsWithMrnList.filter( sd => {
     let result = false
     if( sd.mrn && sd.mrn.startsWith(prefix)) {
-      let num = sd.mrn.split(':')[1]
+      let num = sd.mrn.split(div)[1]
       result = !isNaN(num)
     }
     return result
@@ -58,7 +59,7 @@ async function generateNextUniqueMRN (toolConsumer) {
   let nextId = prefix + startingNumber
   if (allSeedsWithMrnList.length > 0) {
     let lastMrn = allSeedsWithMrnList[0].mrn
-    let num = Number.parseInt(lastMrn.split(':')[1])
+    let num = Number.parseInt(lastMrn.split(div)[1])
     nextId = prefix + (1+num)
   }
   return nextId
