@@ -3,7 +3,10 @@
     zone-lms-page-banner(:title="seed.name", theme='seed-theme')
       seed-actions(:seedModel='seedModel')
     zone-lms-instructions-header
-      p Each Case Study contains the simulated health records for a single patient. Each Case Study contains the simulated health records for a single patient.Each Case Study contains the simulated health records for a single patient. Each Case Study contains the simulated health records for a single patient.
+      p Each Case Study contains the simulated health records for a single patient.
+      p Remember that Activities have the class list and are linked to a Learning Object.
+      p The Learning Object may optionally provide a Case Study.
+      p The Case Study provides the EHR content.
 
     div(class="details-container ", :class='{ draftStyle: hasDraftReports }')
       div(v-if="hasDraftReports", class="details-row")
@@ -17,13 +20,16 @@
         div(class="details-name") {{text.DESCRIPTION}}
         div(class="details-value")
           div(v-text-to-html="seed.description")
-      zone-lms-instructions-element The description is used by instructors to help put this case study to use. It is not visible to students.
+      zone-lms-instructions-element
+        p Describe the pedagogical goals for this case study here and use the "Faculty Notes" in the Learning Object to describe how to use the case study in class. Students will not see this description.
 
       div(class="details-row")
-        div(class="details-name") Creator Notes
+        div(class="details-name") Creator notes
         div(class="details-value")
-          in-place-text-area-edit(:value='seedModel.creatorNotes', @change='updateCreatorNotes')
-      zone-lms-instructions-element Use the creator notes field to describe this case study in a way that helps faculty know what it can be used for. Keep the description to be about the EHR content and use "faculty notes" in the learning object to describe how the case study is used.
+          div(v-text-to-html="seed.creatorNotes")
+      zone-lms-instructions-element
+        p Use the creator notes field to describe how to manage the EHR content in the Case Study.
+        p Tip: Compose a sequence of events for your scenario. E.g. Admission at 0900, Jane, RN does initial assessments.  Doctor Perry sees the patient at 0915 and enters lab reqs and med orders. Lab results are prepared by Lenah, MLT at 1030. Etc.
 
       div(class="details-row")
         div(class="details-name") Patient

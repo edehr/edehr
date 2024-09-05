@@ -26,14 +26,14 @@
             div(class="dialog-item")
               label(class="version-label") Version
               input(class="input version-input", type="text", v-model="version")
-          dialog-instructions-element(:show-ex="showEx") Use the version to indicate if this case study has evolved from an earlier version.  E.g. v 2.0 would say this case study has changed a lot since the orginal was created.
+          dialog-instructions-element(:show-ex="showEx") Use the version to indicate if this case study has evolved from an earlier version.  E.g. v 2.0 would say this case study has changed a lot since the original was created.
 
 
           div(class="dialog-step")
             div(class="dialog-item")
               label Application type &nbsp;
               app-type-radio(:value="checkAppTypes", @changeAppTypes='changeAppTypes')
-          dialog-instructions-element(:show-ex="showEx")  Does this case study apply to clinical setting (EHR) or the laboratory (LIS)?
+          dialog-instructions-element(:show-ex="showEx")  Does this case study apply to clinical setting (EHR) or the medical laboratory (LIS)?
 
           div(class="dialog-step")
             div(class="dialog-item")
@@ -45,7 +45,13 @@
             div(class="dialog-item")
               label Description
               textarea(v-model="description")
-          dialog-instructions-element(:show-ex="showEx") This description is for you and other content creators to know what the case study is for.
+          dialog-instructions-element(:show-ex="showEx") Describe the pedagogical goals for this case study here and use the "Faculty Notes" in the Learning Object to describe how to use the case study in class. Students will not see these notes.
+
+          div(class="dialog-step")
+            div(class="dialog-item")
+              label Creator notes
+              textarea(v-model="creatorNotes")
+          dialog-instructions-element(:show-ex="showEx") Use the creator notes field to describe how to manage the EHR content in the Case Study. Students will not see these notes.
 
           div(class="dialog-step")
             div(class="dialog-item")
@@ -109,6 +115,7 @@ export default {
       name: '',
       version: '',
       contributors: '',
+      creatorNotes: '',
       description: '',
       ehrData: {},
       ehrDataString: '',
@@ -177,6 +184,7 @@ export default {
         this.contributors = seedData.contributors || ''
         this.ehrData = seedData.ehrData
         this.description = seedData.description
+        this.creatorNotes = seedData.creatorNotes
         this.seedId = seedModel.id
         this.tagList = seedData.tagList
       } else {
@@ -204,6 +212,7 @@ export default {
         appType: this.checkAppTypes,
         version: this.version,
         description: this.description,
+        creatorNotes: this.creatorNotes,
         contributors: this.contributors,
         ehrData: this.ehrData,
         tagList: this.tagList,
