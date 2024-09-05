@@ -2,6 +2,13 @@
 div
   div(v-if='labTestSet.length > 0', v-for='tube in labTestSet')
     .page
+      .inner.bottomlabel
+        .line.line1 {{ patientData.patientName }}
+        .line.line2 MRN: {{ patientData.mrn }}
+        .wrap39.line.line3
+          .code39 {{ code39(rowData.accessionID) }}
+          .value39 ACCN#: {{ rowData.accessionID }}
+        .line.line4 {{ testInfo(tube) }}
       .inner.toplabel
         .demographic.line.line1
           .patientName {{ patientData.patientName }}
@@ -15,13 +22,6 @@ div
         .line.line4 {{ tube }} {{ rowData.priority }}
         .line.line5 {{ testInfo(tube) }}
         .line.line6 Physician: {{ rowData.physician }}
-      .inner.bottomlabel
-        .line.line1 {{ patientData.patientName }}
-        .line.line2 MRN: {{ patientData.mrn }}
-        .wrap39.line.line3
-          .code39 {{ code39(rowData.accessionID) }}
-          .value39 ACCN#: {{ rowData.accessionID }}
-        .line.line4 {{ testInfo(tube) }}
   div(v-else) Your query does not match any accessioning records.
 </template>
 
@@ -106,7 +106,7 @@ $bw: 50mm;
   max-height: $mh;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 57mm 31mm;
+  grid-template-rows: 31mm 57mm;
   //outline: 2px solid red;
 }
 
