@@ -82,6 +82,17 @@ export default class VitalChart {
     context.restore()
   }
 
+  drawText (y, text) {
+    // console.log('drawYLine at', y)
+    let context = this.chartCanvas.getContext('2d')
+    context.save()
+    context.font = options.textValueFont
+    context.fillStyle = options.textValueColor
+    context.textAlign = 'left'
+    context.fillText(text, 0, y)
+    // context.moveTo(0, y)
+    context.restore()
+  }
   /**
    * recompute the chart's origin and height and vertical scale factor.
    * @param chartData

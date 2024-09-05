@@ -2182,6 +2182,7 @@ const DEFS = {
       {
         "elementKey": "systolic",
         "formIndex": "1",
+        "formCss": "number-short",
         "inputType": "text",
         "tableColumn": "2",
         "validation": "numeric",
@@ -2190,6 +2191,7 @@ const DEFS = {
       {
         "elementKey": "diastolic",
         "formIndex": "1",
+        "formCss": "number-short",
         "inputType": "text",
         "tableColumn": "3",
         "validation": "numeric",
@@ -2219,6 +2221,7 @@ const DEFS = {
       {
         "elementKey": "temperature",
         "formIndex": "1",
+        "formCss": "number-short",
         "inputType": "text",
         "suffix": "C",
         "tableColumn": "5",
@@ -2277,6 +2280,7 @@ const DEFS = {
       {
         "elementKey": "rate",
         "formIndex": "1",
+        "formCss": "number-short",
         "inputType": "text",
         "tableColumn": "8",
         "validation": "numeric",
@@ -2302,6 +2306,7 @@ const DEFS = {
       {
         "elementKey": "respirationRate",
         "formIndex": "1",
+        "formCss": "number-short",
         "inputType": "text",
         "tableColumn": "10",
         "validation": "numeric",
@@ -2322,6 +2327,7 @@ const DEFS = {
       {
         "elementKey": "oxygenSaturation",
         "formIndex": "1",
+        "formCss": "number-short",
         "inputType": "text",
         "suffix": "%",
         "tableColumn": "11",
@@ -2361,6 +2367,7 @@ const DEFS = {
       {
         "elementKey": "flowRate",
         "formIndex": "1",
+        "formCss": "number-short",
         "inputType": "text",
         "suffix": "/lpm",
         "tableColumn": "13",
@@ -2371,6 +2378,7 @@ const DEFS = {
       {
         "elementKey": "bloodSugar",
         "formIndex": "1",
+        "formCss": "number-short",
         "inputType": "text",
         "suffix": "mmol/L",
         "tableColumn": "14",
@@ -2379,10 +2387,34 @@ const DEFS = {
         "suffixText": "mmol/L"
       },
       {
-        "elementKey": "cvp",
+        "elementKey": "glucoseWarn",
         "formIndex": "1",
+        "formCss": "grid-span-2-columns",
+        "inputType": "form_label",
+        "fqn": "vitals.glucoseWarn"
+      },
+      {
+        "elementKey": "painLevel",
+        "formIndex": "1",
+        "formCss": "number-short",
         "inputType": "text",
         "tableColumn": "15",
+        "validation": "numeric",
+        "fqn": "vitals.painLevel"
+      },
+      {
+        "elementKey": "painWarn",
+        "formIndex": "1",
+        "formCss": "grid-span-2-columns",
+        "inputType": "form_label",
+        "fqn": "vitals.painWarn"
+      },
+      {
+        "elementKey": "cvp",
+        "formIndex": "1",
+        "formCss": "number-short",
+        "inputType": "text",
+        "tableColumn": "16",
         "validation": "cvp",
         "fqn": "vitals.cvp"
       },
@@ -2488,6 +2520,9 @@ const DEFS = {
                 "oxygenMode",
                 "flowRate",
                 "bloodSugar",
+                "glucoseWarn",
+                "painLevel",
+                "painWarn",
                 "cvp"
               ]
             }
@@ -2510,6 +2545,7 @@ const DEFS = {
             "oxygenMode": "",
             "flowRate": "",
             "bloodSugar": "",
+            "painLevel": "",
             "cvp": ""
           }
         },
@@ -2531,6 +2567,7 @@ const DEFS = {
           "oxygenMode",
           "flowRate",
           "bloodSugar",
+          "painLevel",
           "cvp",
           "table_name",
           "table_profession"

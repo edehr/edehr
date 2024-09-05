@@ -1507,5 +1507,8 @@
   "linesDevices.ctaEquipList": "Bouteille d'eau stérile, 2 pinces non dentées, drain thoracique, gaze de pétrole, 4x4",
   "vitals.glucoseTable": "Glucose",
   "vitals.gluGrp2": "Glucose",
-  "vitals.gluBloodSugar": "Glycémie"
+  "vitals.gluBloodSugar": "Glycémie",
+  "vitals.glucoseWarn": "Consultez et utilisez les enregistrements de glucose pour un suivi détaillé des niveaux de glucose.",
+  "vitals.painLevel": "Douleur (0 à 10)",
+  "vitals.painWarn": "Voir et utiliser l'évaluation de la douleur pour obtenir des enregistrements détaillés."
 }

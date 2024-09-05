@@ -564,5 +564,6 @@
   "checklistsPage.name": "Identificación",
   "consentsPage.name": "Identificación",
   "riskAssessment.name": "Identificación",
-  "linesDevices.name": "Identificación"
+  "linesDevices.name": "Identificación",
+  "vitals.painLevel": "Dolor (0 a 10)"
 }

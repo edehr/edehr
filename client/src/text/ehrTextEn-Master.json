@@ -1,3 +1,5 @@
+
+
 {
   "Current visit": "Current visit",
   "Patient chart": "Patient chart",
@@ -56,6 +58,7 @@
       "diastolic": "Diastolic",
       "lpm": "LPM",
       "mode": "Mode",
+      "pain": "Pain",
       "pulseRate": "Pulse rate",
       "oxygen": "Oxygen saturation",
       "respiratory": "Respiratory rate",
@@ -65,7 +68,9 @@
       "tabGlucoseChart": "Glucose Chart",
       "tabGraph": "Vitals Graph",
       "tabChart": "Vitals Chart",
-      "temperature": "Temperature"
+      "temperature": "Temperature",
+      "warnGlucose": "See and use the Glucose tab for detailed tracking of glucose levels.",
+      "warnPain": "See and use Pain assessment for detailed records."
     }
   },
   "buttonLabelEditForm": "Edit form",

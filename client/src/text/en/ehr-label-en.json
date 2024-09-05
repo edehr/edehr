@@ -1507,5 +1507,8 @@
   "linesDevices.ctaEquipList": "Bottle sterile water, 2 non-toothed forceps, chest tube,petroleum gauze, 4x4s",
   "vitals.glucoseTable": "Glucose",
   "vitals.gluGrp2": "Glucose",
-  "vitals.gluBloodSugar": "Blood sugar"
+  "vitals.gluBloodSugar": "Blood sugar",
+  "vitals.glucoseWarn": "See and use Glucose records for detailed tracking of glucose levels.",
+  "vitals.painLevel": "Pain (0 to 10)",
+  "vitals.painWarn": "See and use Pain assessment for detailed records."
 }

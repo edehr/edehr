@@ -8,7 +8,8 @@ const vitalRanges = {
   respiratory: { min: 6, max: 42 },
   temperature: { min: 35, max: 40 },
   bloodSugar: { min: 1, max: 11, normal: [4.1, 5.9] },
-  cvp: { min: 0, max: 21 }
+  cvp: { min: 0, max: 21 },
+  pain: { min: 0, max: 10 }
 }
 
 export default class VitalModel {
@@ -184,7 +185,7 @@ export default class VitalModel {
     let min = vitalRanges.bloodSugar.min
     let max = vitalRanges.bloodSugar.max
     const values = table.map(el => {
-      const v = el.gluBloodSugar // element key in the new glucose table
+      const v = el.gluBloodSugar || el.bloodSugar  // element key in the new glucose table or the vitals table
       let pt = { value: v }
       pt.pointFillColour = v > 7.7 || v < 4.1 ? 'red' : undefined
       return pt
@@ -204,13 +205,12 @@ export default class VitalModel {
           { spv: 11, clr: 'red' },
           { spv: 10, clr: 'red' },
           { spv: 9, clr: 'red' },
-          { spv: 7.8, clr: 'red' },
+          { spv: 8, clr: 'red' },
           { spv: 7, clr: 'rgb(200,100,100)' },
-          { spv: 6.5, clr: 'rgb(200,100,100)' },
-          { spv: 5.7, clr: 'rgb(200,100,100)' },
-          { spv: 5.0, dotted: [2, 6] },
-          { spv: 4.1, dotted: [2, 6] },
-          { spv: 2.8, clr: 'green' },
+          { spv: 6, clr: 'rgb(200,100,100)' },
+          { spv: 5, dotted: [2, 6] },
+          { spv: 4, dotted: [2, 6] },
+          { spv: 3, clr: 'green' },
           { spv: 2, clr: 'green' },
           { spv: 1, clr: 'green' },
         ]
@@ -295,6 +295,46 @@ export default class VitalModel {
     }
     return chartData
   }
+
+  getPain (table) {
+    let min = vitalRanges.pain.min
+    let max = vitalRanges.pain.max
+    const values = table.map(el => {
+      const v = el.painLevel
+      let pt = { value: v }
+      pt.pointFillColour = v >= 8 ? 'red' : undefined
+      return pt
+    })
+    return {
+      label: this.ehrText.pain,
+      dMin: min,
+      dMax: max,
+      gridY: {
+        scalePoints: [
+          { spv: 10, clr: 'red' },
+          { spv: 9, clr: 'red' },
+          { spv: 8, clr: 'red' },
+          { spv: 7, clr: 'rgb(200,100,100)' },
+          { spv: 6, clr: 'rgb(200,100,100)' },
+          { spv: 5, dotted: [2, 6] },
+          { spv: 4, dotted: [2, 6] },
+          { spv: 3, clr: 'green' },
+          { spv: 2, clr: 'green' },
+          { spv: 1, clr: 'green' },
+        ]
+      },
+      gridX: {
+        steps: values.length
+      },
+      dataSet: [
+        {
+          pointStyle: POINT_TYPES.POINT,
+          values
+        }
+      ]
+    }
+  }
+
 
   getCVP (table) {
     let min = vitalRanges.cvp.min

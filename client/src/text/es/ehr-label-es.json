@@ -1507,5 +1507,8 @@
   "linesDevices.ctaEquipList": "Botella de agua esterilizada, 2 pinzas sin dientes, tubo torácico, gasa de petróleo, 4x4",
   "vitals.glucoseTable": "Glucosa",
   "vitals.gluGrp2": "Glucosa",
-  "vitals.gluBloodSugar": "Glucemia"
+  "vitals.gluBloodSugar": "Glucemia",
+  "vitals.glucoseWarn": "Vea y utilice registros de glucosa para realizar un seguimiento detallado de los niveles de glucosa.",
+  "vitals.painLevel": "Dolor (0 a 10)",
+  "vitals.painWarn": "Consulte y utilice Evaluación del dolor para obtener registros detallados."
 }

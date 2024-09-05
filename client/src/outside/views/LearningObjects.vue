@@ -63,8 +63,8 @@
               class='router-item')
               fas-icon(class="fa", :icon="appIcons.lobj")
               span {{truncate(lObj.name, 40)}}
-          div(class="cell date") {{ lObj.seedDataId ? lObj.seedDataId.appType : lObj.mPatientAppType }}
-          div(class="cell date") {{ lObj.activityCount }}
+          div(class="cell") {{ lObj.seedDataId ? lObj.seedDataId.appType : lObj.mPatientAppType }}
+          div(class="cell") {{ lObj.activityCount }}
           div(class="cell") {{ lObj.idForLTI }}
           //div(class="cell date") {{ lObj.createDate | formatDateTime }}
           div(class="cell date") {{ lObj.lastUpdateDate | formatDateTime }}

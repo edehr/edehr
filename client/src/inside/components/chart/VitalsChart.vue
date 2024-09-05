@@ -14,6 +14,7 @@ import { GLUCOSE_TABLE_KEY, VITALS_TABLE_KEY } from '@/ehr-definitions/ehr-defs-
 const yAxisWidth = 75
 const canvasHeight = 1700
 const canvasWidth = 8200
+const singleValueChartHt = 180
 
 export default {
   data: function () {
@@ -47,6 +48,9 @@ export default {
     },
     oxygen () {
       return this.vitalsModel.getOxygen(this.vitals)
+    },
+    pain () {
+      return this.vitalsModel.getPain(this.vitals)
     },
     respiratory () {
       return this.vitalsModel.getRespiratory(this.vitals)
@@ -93,10 +97,8 @@ export default {
       y += space
 
       space = 20
-      // ht = 80
-      ht = 250
+      ht = singleValueChartHt
       vitalChart.drawChart(this.bloodSugar, y, ht)
-      // vitalChart.drawChart(this.oxygen, y, ht)
       y += ht + space
 
       vitalChart.drawYLine(y)
@@ -128,27 +130,38 @@ export default {
       y += ht + space
 
       space = 60
-      ht = 250
+      ht = singleValueChartHt
       vitalChart.drawChart(this.temperatures, y, ht)
       y += ht + space
 
       space = 60
-      ht = 250
+      ht = singleValueChartHt
       vitalChart.drawChart(this.respiratory, y, ht)
-      // vitalChart.drawChart(this.bloodSugar, y, ht)
       y += ht + space
 
       space = 60
-      // ht = 250
       ht = 80
       vitalChart.drawChart(this.oxygen, y, ht)
-      // vitalChart.drawChart(this.cvp, y, ht)
       y += ht + space
 
       space = 60
-      ht = 250
+      ht = singleValueChartHt
+      vitalChart.drawChart(this.pain, y, ht)
+      y += ht + space
+      vitalChart.drawText(y,'See and use Pain assessment for detailed records.')
+      y += space
+
+      space = 20
+      ht = singleValueChartHt
+      vitalChart.drawChart(this.bloodSugar, y, ht)
+      y += ht + space
+      vitalChart.drawText(y,'See and use Glucose records for detailed tracking of glucose levels.')
+      y += space
+
+      space = 60
+      y += space
+      ht = singleValueChartHt
       vitalChart.drawChart(this.cvp, y, ht)
-      // vitalChart.drawChart(this.respiratory, y, ht)
       y += ht + space
 
       vitalChart.drawYLine(y)
@@ -198,6 +211,7 @@ export default {
 }
 canvas {
   /*border: 1px dotted black;*/
+  border: none;
 }
 
 .axis-wrapper {
