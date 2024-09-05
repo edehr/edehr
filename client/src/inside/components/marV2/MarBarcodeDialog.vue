@@ -100,6 +100,7 @@ export default {
     patientMrn () { return this.patientData.mrn },
     medOrders () { return this.patientData.medorders.map( raw => new MedOrder(raw)) },
     medOrderNames () { return this.medOrders.map( mo => mo.medName) },
+    medNamesLowerCase () { return this.medOrderNames.map( name => name.toLowerCase() )},
     validPatient () { return this.patientMrn === this.inputPatientMrn },
     actionedMarEvents () { return this.timeLineModel.actionedMarEvents},
     pendingMarEvents () { return this.timeLineModel.pendingMarEvents}
@@ -161,11 +162,12 @@ export default {
       }
     },
     watchMed () {
-      if (this.medOrderNames.includes(this.inputMed) ) {
+      const searchMed = this.inputMed.toLowerCase()
+      if (this.medNamesLowerCase.includes(searchMed) ) {
         this.beepGood1()
-        const found = this.inputMeds.find( medOrder => medOrder.medName === this.inputMed)
+        const found = this.inputMeds.find( medOrder => medOrder.medName.toLowerCase() === searchMed)
         if (!found) {
-          const selectedMedOrder = this.medOrders.find(medOrder => medOrder.medName === this.inputMed)
+          const selectedMedOrder = this.medOrders.find(medOrder => medOrder.medName.toLowerCase() === searchMed)
           selectedMedOrder && this.inputMeds.push(selectedMedOrder)
         }
         this.inputMed = ''
