@@ -82,7 +82,7 @@ export const Text = {
     GOTOLOBJ: 'Go to learning object',
     STATUS: 'Status',
     STUDENTS_VAL: (total, submitted) => `${total} students participating and ${submitted} students with submitted work`,
-    WARNING_RESET: 'Pressing the RESET button will set the simulation time to empty which restores the default (i.e. latest) simulation time. It also restores the default behaviour where the student can individually control their simulation time.',
+    WARNING_RESET: 'Pressing the RESET button will set the simulation time to empty which restores the default (i.e. latest) simulation time. It also restores the default behaviour where each student can individually control the simulation time.',
     WARNING_RESET_TITLE: 'Disable simulation time control',
     RESET_BUTTON_LABEL: 'RESET',
     WARNING_SET_SIM_TIME:  'Pressing the SET TIME button will set the student\'s simulation time to the day and time selected. ' +

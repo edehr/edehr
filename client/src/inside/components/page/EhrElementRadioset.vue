@@ -51,6 +51,12 @@ export default {
   flex-direction: column;
 }
 
+.radioset-inline {
+  .radio_set {
+    display: flex;
+    flex-direction: row;
+  }
+}
 label:hover,
 input[type="radio"]:hover {
   cursor: pointer;

@@ -30529,6 +30529,7 @@ const DEFS = {
       },
       {
         "elementKey": "tubeSuction",
+        "defaultValue": "20 cm H2O",
         "formIndex": "1",
         "inputType": "text",
         "tableColumn": "6",
@@ -30665,6 +30666,7 @@ const DEFS = {
       {
         "elementKey": "ctaSubcutaneous",
         "formIndex": "2",
+        "formCss": "radioset-inline",
         "inputType": "radioset",
         "options": [
           {
@@ -30688,6 +30690,7 @@ const DEFS = {
       {
         "elementKey": "ctaSmallBore",
         "formIndex": "2",
+        "formCss": "radioset-inline",
         "inputType": "radioset",
         "options": [
           {
@@ -30711,6 +30714,7 @@ const DEFS = {
       {
         "elementKey": "ctaConnections",
         "formIndex": "2",
+        "formCss": "radioset-inline",
         "inputType": "radioset",
         "options": [
           {
@@ -30734,6 +30738,7 @@ const DEFS = {
       {
         "elementKey": "ctaTubing",
         "formIndex": "2",
+        "formCss": "radioset-inline",
         "inputType": "radioset",
         "options": [
           {
@@ -30757,6 +30762,7 @@ const DEFS = {
       {
         "elementKey": "ctaBed",
         "formIndex": "2",
+        "formCss": "radioset-inline",
         "inputType": "radioset",
         "options": [
           {
@@ -30780,6 +30786,7 @@ const DEFS = {
       {
         "elementKey": "ctaBreathing",
         "formIndex": "2",
+        "formCss": "radioset-inline",
         "inputType": "radioset",
         "options": [
           {
@@ -30803,6 +30810,7 @@ const DEFS = {
       {
         "elementKey": "ctaPleurEvac",
         "formIndex": "2",
+        "formCss": "radioset-inline",
         "inputType": "radioset",
         "options": [
           {
@@ -30839,6 +30847,7 @@ const DEFS = {
       {
         "elementKey": "ctaOrangeFloat",
         "formIndex": "2",
+        "formCss": "radioset-inline",
         "inputType": "radioset",
         "options": [
           {
@@ -30857,12 +30866,12 @@ const DEFS = {
         "elementKey": "ctaLabel14",
         "formIndex": "2",
         "inputType": "form_label",
-        "tableColumn": "14",
         "fqn": "linesDevices.ctaLabel14"
       },
       {
         "elementKey": "ctaAirLeakMeter",
         "formIndex": "2",
+        "formCss": "radioset-inline",
         "inputType": "radioset",
         "options": [
           {
@@ -30909,6 +30918,7 @@ const DEFS = {
       {
         "elementKey": "ctaTidaling",
         "formIndex": "2",
+        "formCss": "radioset-inline",
         "inputType": "radioset",
         "options": [
           {
@@ -30936,11 +30946,11 @@ const DEFS = {
         "options": [
           {
             "key": "I",
-            "text": "Intermittent: no wall sucton seen with respirations"
+            "text": "Intermittent: no wall suction seen with respirations"
           },
           {
             "key": "Y",
-            "text": "If on wall suction, seen continuously"
+            "text": "Yes on wall suction, seen continuously"
           }
         ],
         "tableColumn": "17",
@@ -30955,6 +30965,7 @@ const DEFS = {
       {
         "elementKey": "ctaDrainageStatus",
         "formIndex": "2",
+        "formCss": "radioset-inline",
         "inputType": "radioset",
         "options": [
           {
@@ -31082,7 +31093,7 @@ const DEFS = {
             "tubeLabel": "",
             "tubeInsertDay": "",
             "tubeInsertTime": "",
-            "tubeSuction": "",
+            "tubeSuction": "20 cm H2O",
             "tubeReason": "",
             "comments": ""
           }
@@ -31139,7 +31150,7 @@ const DEFS = {
             },
             {
               "elementKey": "cta_3",
-              "formCss": "chem-qc-assay form-table-group",
+              "formCss": "chest-tube-assessment form-table-group",
               "fqn": "linesDevices.cta_3",
               "gIndex": "3",
               "gChildren": [
@@ -31230,7 +31241,6 @@ const DEFS = {
           "ctaPleurEvac",
           "ctaSuctionControlDial",
           "ctaOrangeFloat",
-          "ctaLabel14",
           "ctaAirLeakMeter",
           "ctaAirLeakReading",
           "ctaTidaling",

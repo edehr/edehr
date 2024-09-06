@@ -929,6 +929,13 @@ select, .select {
   grid-template-columns: repeat(5, 1fr);
 }
 
+.chest-tube-assessment {
+  grid-template-columns: 2fr 1fr;
+  .checkbox_wrapper {
+    margin-left: 2rem;
+  }
+}
+
 #medicationOrders\.med_medication {
   width: 60rem;
 }
