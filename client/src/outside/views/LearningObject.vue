@@ -38,7 +38,7 @@
       app-type-details-page-element-explain
 
       div(v-if="learningObject.seedDataId", class="details-row")
-        div(class="details-name") Simulation staging
+        div(class="details-name") Sim Timing©
         div(class="details-value")
           ui-link(:name="'lobjSimController'", :query="{learningObjectId: learningObjectId}")
             fas-icon(class='fa', :icon='appIcons.stopwatch')

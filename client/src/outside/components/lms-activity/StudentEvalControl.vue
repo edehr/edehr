@@ -27,12 +27,6 @@
           :hide-eval-raw='!inEhr'
         )
 
-    div(class="flow_across menu_space_across")
-      div(class="eval-controls")
-        ui-link(:name="'classList'", :query="{activityId: activityId}")
-          fas-icon(class="fa", :icon="appIcons.classList")
-          span &nbsp; Return to: class list
-      h4 {{ activityName }}
     ui-confirm(class="confirmDialog",
       ref="confirmDialog",
       @confirm="resetNotesConfirmed",

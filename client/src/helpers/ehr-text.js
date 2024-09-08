@@ -82,17 +82,16 @@ export const Text = {
     GOTOLOBJ: 'Go to learning object',
     STATUS: 'Status',
     STUDENTS_VAL: (total, submitted) => `${total} students participating and ${submitted} students with submitted work`,
-    WARNING_RESET: 'Pressing the RESET button will set the simulation time to empty which restores the default (i.e. latest) simulation time. It also restores the default behaviour where each student can individually control the simulation time.',
-    WARNING_RESET_TITLE: 'Disable simulation time control',
+    WARNING_RESET: 'Pressing the RESET button restores the activity to the default which allows each student to individually control their simulation time.',
+    WARNING_RESET_TITLE: 'Reset will disable Sim Timing©',
     RESET_BUTTON_LABEL: 'RESET',
-    WARNING_SET_SIM_TIME:  'Pressing the SET TIME button will set the student\'s simulation time to the day and time selected. ' +
-      'Select a time stage below to select the stage you want to use.',
+    WARNING_SET_SIM_TIME:  'Pressing the SET TIME button will set the student\'s simulation time to the day and time selected. ',
     WARNING_SET_SIM_TIME_TITLE: 'Set simulation time',
     SET_SIM_TIME_BUTTON:   'SET TIME',
-    SET_SIMULATION_TIMER: 'Enter the number of minutes you wish to have the simulation run for. Press the Pause/Play button to pause and start the timer, which will automatically increment the student\'s clock by a minute until the timer expires.',
+    SET_SIMULATION_TIMER: 'Enter the number of minutes you wish to have the simulation run for. Press the Pause/Play button to pause and start the timer. Until the time expores the simulation close will automatically increment the student\'s clock minute by minute.',
     SET_SIMULATION_TIMER_TITLE: 'Set simulation timer',
-    SIM_TIME_INITIALIZE_TITLE: 'Initialize simulation time control.',
-    SIM_TIME_INITIALIZE: 'This sets the simulation time to the first stage. If there is not stage defined then it uses the first time slice.'
+    SIM_TIME_INITIALIZE_TITLE: 'Activate Sim Timing© for this Activity.',
+    SIM_TIME_INITIALIZE: 'This enables Sim Timing© and sets the Activity to use the stages defined in the Learning Object. (See below.) When you first activate Sim Timing© you will be setting simulation time to be equal to the first stage. You will also be able to control the time on this page.'
   },
   CLASS_LIST_PAGE: {
     EVALUATION: 'Evaluation notes',
@@ -287,14 +286,15 @@ export const Text = {
     CONSUMER: 'Consumer',
     CONSUMERS: 'Consumers',
     COURSES: 'My activities',
+    EVAL_CLASS: 'Mentoring',
     FILES: 'Case study files',
     LOBJS: 'Learning objects',
     LOBJ: 'Learning object',
     SEEDS: 'Case studies',
     SEED_VIEW: 'Case study',
     SEED_CONDENSED: 'Case study',
-    ACTIVITY_SIM_CONTROLLER: 'Activity Simulation Controls',
-    LOBJ_SIM_CONTROLLER: 'Learning object simulation staging',
+    ACTIVITY_SIM_CONTROLLER: 'Sim Timing© for activity',
+    LOBJ_SIM_CONTROLLER: 'Sim Timing© staging',
     USER_SETTINGS: 'User settings'
   },
   SEED_ACTIONS: {

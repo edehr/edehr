@@ -1,5 +1,6 @@
 <template lang="pug">
 div(class="sim-table-main")
+  div OBSOLETE
   div(class="card selected tableFixHead")
     table(class="sim-table")
       thead
@@ -7,8 +8,7 @@ div(class="sim-table-main")
           //th Row
           th Status
           th Stage name
-          th From
-          th To
+          th Time
           th Faculty notes
           th Student instructions
           th Contains content for these pages
@@ -21,8 +21,7 @@ div(class="sim-table-main")
           td
             span(class="active-indicator", :class='{ activeTime: activeTime(rowIndex), activeIncludeTime: activeIncludeTime(key)}') &nbsp;
           td {{ stageName(key) }}
-          td {{ currentKey(rowIndex) }}
-          td {{ nextKey(rowIndex) }}
+          td {{key}}
           td {{ facultyStageNote(key) }}
           td {{ stageInstructions(key) }}
           td().
