@@ -46,6 +46,9 @@ export default {
     bloodSugar () {
       return this.vitalsModel.getBloodSugar(this.vitals)
     },
+    glucoseWhen () {
+      return this.vitalsModel.getGlucoseWhen(this.vitals)
+    },
     oxygen () {
       return this.vitalsModel.getOxygen(this.vitals)
     },
@@ -99,6 +102,11 @@ export default {
       space = 20
       ht = singleValueChartHt
       vitalChart.drawChart(this.bloodSugar, y, ht)
+      y += ht + space
+
+      space = 20
+      ht = 50
+      vitalChart.drawChart(this.glucoseWhen, y, ht)
       y += ht + space
 
       vitalChart.drawYLine(y)

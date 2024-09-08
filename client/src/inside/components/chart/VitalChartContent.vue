@@ -65,7 +65,7 @@ export default {
     }
   },
   created: function () {
-    this.vitalsModel = new VitalModel(this.tableKey)
+    this.vitalsModel = new VitalModel(this.pageKey, this.tableKey)
   },
   mounted: function () {
     const _this = this

@@ -2470,6 +2470,42 @@ const DEFS = {
         "validation": "numeric",
         "fqn": "vitals.gluBloodSugar",
         "suffixText": "mmol/L"
+      },
+      {
+        "elementKey": "gluWhen",
+        "formIndex": "2",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "brk",
+            "text": "Before breakfast"
+          },
+          {
+            "key": "lunch",
+            "text": "Before lunch"
+          },
+          {
+            "key": "supper",
+            "text": "Before supper"
+          },
+          {
+            "key": "bed",
+            "text": "Before bedtime snack"
+          },
+          {
+            "key": "outside",
+            "text": "Outside meal times"
+          }
+        ],
+        "tableColumn": "3",
+        "fqn": "vitals.gluWhen"
+      },
+      {
+        "elementKey": "comment",
+        "formIndex": "2",
+        "inputType": "textarea",
+        "tableColumn": "4",
+        "fqn": "vitals.comment"
       }
     ],
     "pageElements": {
@@ -2605,7 +2641,17 @@ const DEFS = {
               "fqn": "vitals.gluGrp2",
               "gIndex": "2",
               "gChildren": [
-                "gluBloodSugar"
+                "gluBloodSugar",
+                "gluWhen"
+              ]
+            },
+            {
+              "elementKey": "gluGrp3",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "vitals.gluGrp3",
+              "gIndex": "3",
+              "gChildren": [
+                "comment"
               ]
             }
           ],
@@ -2614,7 +2660,9 @@ const DEFS = {
             "glucoseTable_profession": "",
             "glucoseTable_day": "",
             "glucoseTable_time": "",
-            "gluBloodSugar": ""
+            "gluBloodSugar": "",
+            "gluWhen": "",
+            "comment": ""
           }
         },
         "fqn": "vitals.glucoseTable",
@@ -2623,6 +2671,8 @@ const DEFS = {
           "glucoseTable_day",
           "glucoseTable_time",
           "gluBloodSugar",
+          "gluWhen",
+          "comment",
           "glucoseTable_name",
           "glucoseTable_profession"
         ],
@@ -27772,25 +27822,26 @@ const DEFS = {
         "fqn": "riskAssessment.morseScore"
       },
       {
-        "elementKey": "morseRiskNo",
+        "elementKey": "morseRisk",
         "formIndex": "2",
-        "inputType": "checkbox",
+        "formCss": "form_label_15",
+        "inputType": "radioset",
+        "options": [
+          {
+            "key": "no",
+            "text": "No risk"
+          },
+          {
+            "key": "low",
+            "text": "Low risk"
+          },
+          {
+            "key": "high",
+            "text": "High risk"
+          }
+        ],
         "tableColumn": "9",
-        "fqn": "riskAssessment.morseRiskNo"
-      },
-      {
-        "elementKey": "morseRiskLow",
-        "formIndex": "2",
-        "inputType": "checkbox",
-        "tableColumn": "10",
-        "fqn": "riskAssessment.morseRiskLow"
-      },
-      {
-        "elementKey": "morseRiskHigh",
-        "formIndex": "2",
-        "inputType": "checkbox",
-        "tableColumn": "11",
-        "fqn": "riskAssessment.morseRiskHigh"
+        "fqn": "riskAssessment.morseRisk"
       },
       {
         "elementKey": "morseReason",
@@ -27814,14 +27865,14 @@ const DEFS = {
             "text": "After a fall"
           }
         ],
-        "tableColumn": "12",
+        "tableColumn": "10",
         "fqn": "riskAssessment.morseReason"
       },
       {
         "elementKey": "morseComments",
         "formIndex": "2",
         "inputType": "textarea",
-        "tableColumn": "13",
+        "tableColumn": "11",
         "fqn": "riskAssessment.morseComments"
       },
       {
@@ -27850,7 +27901,7 @@ const DEFS = {
         "elementKey": "morseInternal",
         "formIndex": "2",
         "inputType": "textarea",
-        "tableColumn": "14",
+        "tableColumn": "12",
         "fqn": "riskAssessment.morseInternal"
       }
     ],
@@ -28009,9 +28060,7 @@ const DEFS = {
                 "morseGait",
                 "morseMental",
                 "morseScore",
-                "morseRiskNo",
-                "morseRiskLow",
-                "morseRiskHigh"
+                "morseRisk"
               ]
             },
             {
@@ -28057,9 +28106,7 @@ const DEFS = {
             "morseGait": "",
             "morseMental": "",
             "morseScore": "",
-            "morseRiskNo": "",
-            "morseRiskLow": "",
-            "morseRiskHigh": "",
+            "morseRisk": "",
             "morseReason": "",
             "morseComments": "",
             "morseInternal": ""
@@ -28077,9 +28124,7 @@ const DEFS = {
           "morseGait",
           "morseMental",
           "morseScore",
-          "morseRiskNo",
-          "morseRiskLow",
-          "morseRiskHigh",
+          "morseRisk",
           "morseReason",
           "morseComments",
           "morseInternal",

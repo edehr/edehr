@@ -1299,5 +1299,13 @@
   "linesDevices.ctaDrainageType.sa": "sanguinario",
   "linesDevices.ctaDrainageType.ss": "serosanguinolento",
   "linesDevices.ctaDrainageType.p": "Purulento",
-  "linesDevices.ctaDrainageType.n": "Ninguno"
+  "linesDevices.ctaDrainageType.n": "Ninguno",
+  "riskAssessment.morseRisk.no": "",
+  "riskAssessment.morseRisk.low": "",
+  "riskAssessment.morseRisk.high": "",
+  "vitals.gluWhen.brk": "",
+  "vitals.gluWhen.lunch": "",
+  "vitals.gluWhen.supper": "",
+  "vitals.gluWhen.bed": "",
+  "vitals.gluWhen.outside": ""
 }

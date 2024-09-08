@@ -1444,9 +1444,6 @@
   "riskAssessment.morseGait": "Démarche/Transfert",
   "riskAssessment.morseMental": "État mental",
   "riskAssessment.morseScore": "Total",
-  "riskAssessment.morseRiskNo": "Aucun risque",
-  "riskAssessment.morseRiskLow": "Faible risque",
-  "riskAssessment.morseRiskHigh": "Risque élevé",
   "riskAssessment.bradenInternal": "Commentaires internes",
   "riskAssessment.morseReason": "Motif de l'évaluation",
   "riskAssessment.morseComments": "Commentaires",
@@ -1510,5 +1507,8 @@
   "vitals.gluBloodSugar": "Glycémie",
   "vitals.glucoseWarn": "Consultez et utilisez les enregistrements de glucose pour un suivi détaillé des niveaux de glucose.",
   "vitals.painLevel": "Douleur (0 à 10)",
-  "vitals.painWarn": "Voir et utiliser l'évaluation de la douleur pour obtenir des enregistrements détaillés."
+  "vitals.painWarn": "Voir et utiliser l'évaluation de la douleur pour obtenir des enregistrements détaillés.",
+  "riskAssessment.morseRisk": "",
+  "vitals.gluWhen": "",
+  "vitals.comment": ""
 }

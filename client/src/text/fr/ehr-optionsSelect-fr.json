@@ -1299,5 +1299,13 @@
   "linesDevices.ctaDrainageType.sa": "Sanguineux",
   "linesDevices.ctaDrainageType.ss": "Sérosanguineux",
   "linesDevices.ctaDrainageType.p": "Purulent",
-  "linesDevices.ctaDrainageType.n": "Aucun"
+  "linesDevices.ctaDrainageType.n": "Aucun",
+  "riskAssessment.morseRisk.no": "",
+  "riskAssessment.morseRisk.low": "",
+  "riskAssessment.morseRisk.high": "",
+  "vitals.gluWhen.brk": "",
+  "vitals.gluWhen.lunch": "",
+  "vitals.gluWhen.supper": "",
+  "vitals.gluWhen.bed": "",
+  "vitals.gluWhen.outside": ""
 }

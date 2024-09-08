@@ -1,5 +1,6 @@
 import { options, POINT_TYPES } from './vitalChart'
 import { t18EhrText } from '@/helpers/ehr-t18'
+import { makeHumanTableCell } from '@/ehr-definitions/ehr-def-utils'
 
 const vitalRanges = {
   bloodPressure: { min: 25, max: 225, normal: { systolic: [90, 130, 140], diastolic: [60, 85, 90] } },
@@ -13,7 +14,8 @@ const vitalRanges = {
 }
 
 export default class VitalModel {
-  constructor (tableKey) {
+  constructor (pageKey, tableKey) {
+    this.pageKey = pageKey
     this.tableKey = tableKey
     this.ehrText = t18EhrText().customPages.vitals
   }
@@ -227,6 +229,30 @@ export default class VitalModel {
     }
   }
 
+  getGlucoseWhen (table) {
+    let et = this.ehrText
+    let values = table.map(element => {
+      const eKey = 'gluWhen'
+      const text = makeHumanTableCell(this.pageKey, eKey, 'select', element[eKey])
+      return text.split(' ').join('\n')
+    })
+    let chartData = {
+      label: et.oxygen,
+      chartType: POINT_TYPES.TEXT,
+      noYAxisGrid: true,
+      noYAxisLabel: true,
+      gridX: {
+        steps: values.length
+      },
+      dataSet: [
+        {
+          pointStyle: POINT_TYPES.TEXT,
+          values: values
+        }
+      ]
+    }
+    return chartData
+  }
   getRespiratory (table) {
     let min = vitalRanges.respiratory.min
     let max = vitalRanges.respiratory.max
