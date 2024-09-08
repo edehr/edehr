@@ -1,28 +1,19 @@
 <template lang="pug">
   div
-    zone-lms-page-banner
+    zone-lms-page-banner(:title='activityName')
       div(class="flow_across menu_space_across flow_across_right")
+        ui-link(:name="'lms-instructor-activity'")
+          fas-icon(class="fa", :icon="appIcons.activity")
+          span &nbsp; Return to {{ activityName }}
         activity-actions(class="flow_across_last_item")
 
     zone-lms-instructions-header
       p This page shows you the class list for this activity. Here you can ....
 
     div(class="details-container card")
-      div(class="details-row")
-        div(class="details-name") Return to the activity
-        div(class="details-value")
-          ui-link(:name="'lms-instructor-activity'")
-            // no visit id because we are not changing visit
-            fas-icon(class="fa", :icon="appIcons.activity")
-            span &nbsp; {{activity.title}}
-      //div(class="details-row")
-      //  div(class="details-name") {{text.GOTOLOBJ}}
-      //  div(class="details-value")
-      //    div(v-if='hasLinkedLearningObject')
-      //      ui-link(:name="'learning-object'", :query="{learningObjectId: activity.learningObjectId}")
-      //        fas-icon(class='fa', :icon='appIcons.lobj')
-      //        span &nbsp; {{ activity.learningObjectName }}
-      //    div(v-else) {{ text.ACTIVITY_MISSING}}
+      span &nbsp; {{text.STUDENTS_VAL(classList.length, classSubmittedList.length)}}
+    //div(class="details-row")
+    //    span &nbsp; {{text.STUDENTS_VAL(classList.length, classSubmittedList.length)}}
     div(class="classlist-body")
       div(v-if="classList.length===0", class='empty-message') {{ text.EMPTY_CLASSLIST }}
       div(v-else, class="e-table")
@@ -53,6 +44,7 @@ import ClassListActions from '@/outside/components/lms-activity/ClassListActions
 import ActivityActions from '@/outside/components/lms-activity/ActivityActions.vue'
 import UiLink from '@/app/ui/UiLink.vue'
 import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
+import { APP_ICONS } from '@/helpers/app-icons'
 
 const debug = false
 export default {
@@ -60,6 +52,7 @@ export default {
   components: { ZoneLmsInstructionsHeader, UiLink, ActivityActions, ClassListActions, ZoneLmsPageBanner  },
   data () {
     return {
+      appIcons: APP_ICONS,
       text: Text.ACTIVITY_PAGE,
     }
   },
@@ -75,6 +68,9 @@ export default {
     },
     classList () {
       return this.$store.getters['instructor/classList'] || []
+    },
+    classSubmittedList () {
+      return this.classList.filter(sv => sv.activityData.submitted)
     },
     hasLinkedLearningObject () { return this.activity.hasLinkedLearningObject },
     showLabels () { return StoreHelper.isOutsideShowButtonLabels() },

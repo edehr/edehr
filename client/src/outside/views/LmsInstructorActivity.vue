@@ -76,7 +76,7 @@
             span &nbsp; Go to: {{ courseTitle }}
 
       div(v-if="showSimControls", class="details-row")
-        div(class="details-name") Simulation controls
+        div(class="details-name") Sim Timing©
         div(class="details-value")
           div(v-if="simStages.length === 0")
             p The learning object does not define simulation stages. You will need to edit the Learning Object.
@@ -206,7 +206,7 @@ export default {
     },
     lmsTitle () { return this.activity.resource_link_title },
     lmsDescription () { return this.activity.resource_link_description },
-    activityTitle () { return this.isUnleashedActivityEnabled ? this.activity.learningObjectName : this.activity.title},
+    activityTitle () { return this.activity.learningObjectName },
     descriptionContent () { return this.isUnleashedActivityEnabled ? this.activity.learningObjectDescription : this.activity.description },
     feedbackViewable () {
       return this.$store.getters['activityStore/feedbackViewable']

@@ -191,7 +191,7 @@ export function outside () {
       name: 'eval-student',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/EvalStudent.vue'),
-      meta: { layout: 'lms', label: NAMES.COURSES, icon: APP_ICONS.rawEhr, zone: ZONE_LMS }
+      meta: { layout: 'lms', label: NAMES.EVAL_CLASS, icon: APP_ICONS.rawEhr, zone: ZONE_LMS }
     },    {
       path: '/fileList',
       name: 'fileList',

@@ -1,7 +1,14 @@
 <template lang="pug">
   div
     zone-lms-page-banner(:title="learningObject.name", theme='lobj-theme')
-      ui-link(v-if="learningObject.seedDataId", :name="'seed-view'", :query="{seedId: learningObject.seedDataId}") Go to case study
+      div(class="flow_across menu_space_across flow_across_right")
+        ui-link(:name="'learning-object'", :query='{ learningObjectId: this.learningObjectId }')
+          // no visit id because we are not changing visit
+          fas-icon(class="fa", :icon="appIcons.lobj")
+          span &nbsp; Return to {{ learningObject.name }}
+        ui-link(v-if="learningObject.seedDataId", :name="'seed-view'", :query="{seedId: learningObject.seedDataId}")
+          fas-icon(class="fa", :icon="appIcons.seed")
+          span &nbsp; Go to {{ learningObject.seedName }}
 
     zone-lms-instructions-header
       p.
@@ -14,20 +21,13 @@
 
     div(class="details-container card")
       div(class="details-row")
-        div(class="details-name") Return to main Learning Object page
-        div(class="details-value")
-          ui-link(:name="'learning-object'", :query='{ learningObjectId: this.learningObjectId }')
-            // no visit id because we are not changing visit
-            fas-icon(class="fa", :icon="appIcons.lobj")
-            span &nbsp; {{learningObject.name}}
-      div(class="details-row")
         div(class="details-name") Go to {{ text.SEED }}
         div(class="details-value")
           ui-link(v-if="learningObject.seedDataId", :name="'seed-view'", :query="{seedId: learningObject.seedDataId}") {{ learningObject.seedName }}
           div(v-else) (This learning object does not provide a case study.)
       zone-lms-instructions-element The above links let you to return to the learning object or go to the case study.
 
-    sim-stages-table(:learning-object="learningObject",
+    l-obj-sim-stages-edit(:learning-object="learningObject",
       :selectedKey='selectedKey',
       @actionRow='showEditDialog',
       @actionDelete='deleteRow',
@@ -51,7 +51,7 @@ import StoreHelper from '@/helpers/store-helper'
 import OutsideCommon from '@/outside/views/OutsideCommon'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
 import SeedTimeSplit from '@/outside/components/seed-struct/SeedTimeSplit.vue'
-import SimStagesTable from '@/outside/components/simStages/SimStagesTable.vue'
+import LObjSimStagesEdit from '@/outside/components/simStages/LObjSimStagesEdit.vue'
 import UiLink from '@/app/ui/UiLink.vue'
 import UiButton from '@/app/ui/UiButton.vue'
 import ZoneLmsInstructionsElement from '@/outside/components/ZoneLmsInstructionsElement.vue'
@@ -62,7 +62,7 @@ import UiConfirm from '@/app/ui/UiConfirm.vue'
 
 export default {
   extends: OutsideCommon,
-  components: { UiConfirm, LearningObjectSimStageDialog, ZoneLmsInstructionsHeader, ZoneLmsInstructionsElement, SimStagesTable, SeedTimeSplit, UiButton, UiLink, ZoneLmsPageBanner  },
+  components: { UiConfirm, LearningObjectSimStageDialog, ZoneLmsInstructionsHeader, ZoneLmsInstructionsElement, LObjSimStagesEdit, SeedTimeSplit, UiButton, UiLink, ZoneLmsPageBanner  },
   data () {
     return {
       text: Text.LOBJ_PAGE,
