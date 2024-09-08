@@ -198,7 +198,7 @@
   "fluidBalance.fluidInOutTable": "Fluid balance",
   "fluidBalance.fluidOut": "Fluid out",
   "fluidBalance.inEnteral": "Enteral feeds",
-  "fluidBalance.inIV": "IV",
+  "fluidBalance.inIV": "IV 1",
   "fluidBalance.inOral": "Oral",
   "fluidBalance.inOther": "Other",
   "fluidBalance.name": "Name",
@@ -1510,5 +1510,8 @@
   "vitals.painWarn": "See and use Pain assessment for detailed records.",
   "riskAssessment.morseRisk": "Risk",
   "vitals.gluWhen": "Event",
-  "vitals.comment": "Comment"
+  "vitals.comment": "Comment",
+  "fluidBalance.inIV2": "IV 2",
+  "fluidBalance.inIV3": "IV 3",
+  "fluidBalance.inIV4": "IV 4"
 }

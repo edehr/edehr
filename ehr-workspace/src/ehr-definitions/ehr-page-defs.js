@@ -2753,13 +2753,49 @@ const DEFS = {
         "suffixText": "mL"
       },
       {
-        "elementKey": "inEnteral",
+        "elementKey": "inIV2",
         "formIndex": "1",
         "formCss": "number-short",
         "inputType": "number",
         "passToFunction": "totalInputs",
         "suffix": "mL",
         "tableColumn": "4",
+        "validation": "numeric",
+        "fqn": "fluidBalance.inIV2",
+        "suffixText": "mL"
+      },
+      {
+        "elementKey": "inIV3",
+        "formIndex": "1",
+        "formCss": "number-short",
+        "inputType": "number",
+        "passToFunction": "totalInputs",
+        "suffix": "mL",
+        "tableColumn": "5",
+        "validation": "numeric",
+        "fqn": "fluidBalance.inIV3",
+        "suffixText": "mL"
+      },
+      {
+        "elementKey": "inIV4",
+        "formIndex": "1",
+        "formCss": "number-short",
+        "inputType": "number",
+        "passToFunction": "totalInputs",
+        "suffix": "mL",
+        "tableColumn": "6",
+        "validation": "numeric",
+        "fqn": "fluidBalance.inIV4",
+        "suffixText": "mL"
+      },
+      {
+        "elementKey": "inEnteral",
+        "formIndex": "1",
+        "formCss": "number-short",
+        "inputType": "number",
+        "passToFunction": "totalInputs",
+        "suffix": "mL",
+        "tableColumn": "7",
         "validation": "numeric",
         "fqn": "fluidBalance.inEnteral",
         "suffixText": "mL"
@@ -2771,7 +2807,7 @@ const DEFS = {
         "inputType": "number",
         "passToFunction": "totalInputs",
         "suffix": "mL",
-        "tableColumn": "5",
+        "tableColumn": "8",
         "validation": "numeric",
         "fqn": "fluidBalance.inOther",
         "suffixText": "mL"
@@ -2784,7 +2820,7 @@ const DEFS = {
         "inputType": "calculatedValue",
         "passToFunction": "cumulativeTotal",
         "suffix": "mL",
-        "tableColumn": "6",
+        "tableColumn": "9",
         "fqn": "fluidBalance.totalInputs",
         "suffixText": "mL"
       },
@@ -2795,7 +2831,7 @@ const DEFS = {
         "inputType": "number",
         "passToFunction": "totalOutputs",
         "suffix": "mL",
-        "tableColumn": "7",
+        "tableColumn": "10",
         "validation": "numeric",
         "fqn": "fluidBalance.outUrine",
         "suffixText": "mL"
@@ -2807,7 +2843,7 @@ const DEFS = {
         "inputType": "number",
         "passToFunction": "totalOutputs",
         "suffix": "mL",
-        "tableColumn": "8",
+        "tableColumn": "11",
         "validation": "numeric",
         "fqn": "fluidBalance.outDrains",
         "suffixText": "mL"
@@ -2819,7 +2855,7 @@ const DEFS = {
         "inputType": "number",
         "passToFunction": "totalOutputs",
         "suffix": "mL",
-        "tableColumn": "9",
+        "tableColumn": "12",
         "validation": "numeric",
         "fqn": "fluidBalance.outBlood",
         "suffixText": "mL"
@@ -2831,7 +2867,7 @@ const DEFS = {
         "inputType": "number",
         "passToFunction": "totalOutputs",
         "suffix": "mL",
-        "tableColumn": "10",
+        "tableColumn": "13",
         "validation": "numeric",
         "fqn": "fluidBalance.outOther",
         "suffixText": "mL"
@@ -2844,7 +2880,7 @@ const DEFS = {
         "inputType": "calculatedValue",
         "passToFunction": "cumulativeTotal",
         "suffix": "mL",
-        "tableColumn": "11",
+        "tableColumn": "14",
         "fqn": "fluidBalance.totalOutputs",
         "suffixText": "mL"
       },
@@ -2855,7 +2891,7 @@ const DEFS = {
         "formCss": "number-short",
         "inputType": "calculatedValue",
         "suffix": "mL",
-        "tableColumn": "12",
+        "tableColumn": "15",
         "fqn": "fluidBalance.cumulativeTotal",
         "suffixText": "mL"
       },
@@ -2863,7 +2899,7 @@ const DEFS = {
         "elementKey": "comments",
         "formIndex": "1",
         "inputType": "textarea",
-        "tableColumn": "13",
+        "tableColumn": "16",
         "fqn": "fluidBalance.comments"
       },
       {
@@ -2958,8 +2994,19 @@ const DEFS = {
               "gChildren": [
                 "inOral",
                 "inIV",
+                "inIV2",
+                "inIV3",
+                "inIV4",
                 "inEnteral",
-                "inOther",
+                "inOther"
+              ]
+            },
+            {
+              "elementKey": "cGroup1b",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "fluidBalance.cGroup1b",
+              "gIndex": "3",
+              "gChildren": [
                 "totalInputs"
               ]
             },
@@ -2967,12 +3014,20 @@ const DEFS = {
               "elementKey": "cGroup2",
               "formCss": "grid-left-to-right-4",
               "fqn": "fluidBalance.cGroup2",
-              "gIndex": "3",
+              "gIndex": "4",
               "gChildren": [
                 "outUrine",
                 "outDrains",
                 "outBlood",
-                "outOther",
+                "outOther"
+              ]
+            },
+            {
+              "elementKey": "cGroup2b",
+              "formCss": "grid-left-to-right-1",
+              "fqn": "fluidBalance.cGroup2b",
+              "gIndex": "5",
+              "gChildren": [
                 "totalOutputs"
               ]
             },
@@ -2980,7 +3035,7 @@ const DEFS = {
               "elementKey": "cGroup3",
               "formCss": "grid-left-to-right-1",
               "fqn": "fluidBalance.cGroup3",
-              "gIndex": "4",
+              "gIndex": "6",
               "gChildren": [
                 "cumulativeTotal",
                 "comments"
@@ -2994,6 +3049,9 @@ const DEFS = {
             "fluidInOutTable_time": "",
             "inOral": "",
             "inIV": "",
+            "inIV2": "",
+            "inIV3": "",
+            "inIV4": "",
             "inEnteral": "",
             "inOther": "",
             "totalInputs": "",
@@ -3013,6 +3071,9 @@ const DEFS = {
           "fluidInOutTable_time",
           "inOral",
           "inIV",
+          "inIV2",
+          "inIV3",
+          "inIV4",
           "inEnteral",
           "inOther",
           "totalInputs",

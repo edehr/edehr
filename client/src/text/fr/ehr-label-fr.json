@@ -1510,5 +1510,8 @@
   "vitals.painWarn": "Voir et utiliser l'évaluation de la douleur pour obtenir des enregistrements détaillés.",
   "riskAssessment.morseRisk": "",
   "vitals.gluWhen": "",
-  "vitals.comment": ""
+  "vitals.comment": "",
+  "fluidBalance.inIV2": "",
+  "fluidBalance.inIV3": "",
+  "fluidBalance.inIV4": ""
 }
