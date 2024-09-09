@@ -233,7 +233,7 @@ export default class VitalModel {
     let et = this.ehrText
     let values = table.map(element => {
       const eKey = 'gluWhen'
-      const text = makeHumanTableCell(this.pageKey, eKey, 'select', element[eKey])
+      const text = makeHumanTableCell(this.pageKey, eKey, 'select', element[eKey]) || ''
       return text.split(' ').join('\n')
     })
     let chartData = {
