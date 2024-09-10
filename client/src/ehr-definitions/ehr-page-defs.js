@@ -11244,7 +11244,6 @@ const DEFS = {
             "text": "Subcutaneous"
           }
         ],
-        "tableColumn": "7",
         "fqn": "medicationOrders.med_injectionLocation"
       },
       {
@@ -11269,7 +11268,7 @@ const DEFS = {
             "text": "Second signature required"
           }
         ],
-        "tableColumn": "8",
+        "tableColumn": "7",
         "fqn": "medicationOrders.med_alert"
       },
       {
@@ -11302,7 +11301,7 @@ const DEFS = {
             "text": "Error"
           }
         ],
-        "tableColumn": "9",
+        "tableColumn": "8",
         "fqn": "medicationOrders.med_status"
       },
       {
@@ -11366,7 +11365,6 @@ const DEFS = {
         "dependentOn": "onChange:med_scheduled",
         "formIndex": "2",
         "inputType": "text",
-        "tableColumn": "11",
         "validation": "time24",
         "fqn": "medicationOrders.med_time1"
       },
@@ -11375,7 +11373,6 @@ const DEFS = {
         "dependentOn": "onChange:med_scheduled",
         "formIndex": "2",
         "inputType": "text",
-        "tableColumn": "12",
         "validation": "time24",
         "fqn": "medicationOrders.med_time2"
       },
@@ -11384,7 +11381,6 @@ const DEFS = {
         "dependentOn": "onChange:med_scheduled",
         "formIndex": "2",
         "inputType": "text",
-        "tableColumn": "13",
         "validation": "time24",
         "fqn": "medicationOrders.med_time3"
       },
@@ -11393,7 +11389,6 @@ const DEFS = {
         "dependentOn": "onChange:med_scheduled",
         "formIndex": "2",
         "inputType": "text",
-        "tableColumn": "14",
         "validation": "time24",
         "fqn": "medicationOrders.med_time4"
       },
@@ -11402,7 +11397,6 @@ const DEFS = {
         "dependentOn": "onChange:med_scheduled",
         "formIndex": "2",
         "inputType": "text",
-        "tableColumn": "15",
         "validation": "time24",
         "fqn": "medicationOrders.med_time5"
       },
@@ -11411,7 +11405,6 @@ const DEFS = {
         "dependentOn": "onChange:med_scheduled",
         "formIndex": "2",
         "inputType": "text",
-        "tableColumn": "16",
         "validation": "time24",
         "fqn": "medicationOrders.med_time6"
       },
@@ -11419,14 +11412,13 @@ const DEFS = {
         "elementKey": "med_continuous_description",
         "formIndex": "2",
         "inputType": "textarea",
-        "tableColumn": "17",
         "fqn": "medicationOrders.med_continuous_description"
       },
       {
         "elementKey": "med_instructions",
         "formIndex": "2",
         "inputType": "textarea",
-        "tableColumn": "18",
+        "tableColumn": "11",
         "fqn": "medicationOrders.med_instructions"
       },
       {
@@ -11862,18 +11854,10 @@ const DEFS = {
           "med_timing",
           "med_route",
           "med_reason",
-          "med_injectionLocation",
           "med_alert",
           "med_status",
           "med_scheduled",
           "med_prnMaxDosage",
-          "med_time1",
-          "med_time2",
-          "med_time3",
-          "med_time4",
-          "med_time5",
-          "med_time6",
-          "med_continuous_description",
           "med_instructions",
           "medicationOrdersTable_name",
           "medicationOrdersTable_profession"
