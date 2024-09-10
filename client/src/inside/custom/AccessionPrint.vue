@@ -73,21 +73,14 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.demographic {
-  display: flex;
-  flex-direction: row;
-  column-gap: 1rem;
-}
-.patientName {
-  font-size: 1.2rem;
-}
 
-$pw: 105mm;
-$ph: 93mm;
-$mw: 101mm;
-$mh: 89mm;
-$tw: 101mm;
-$bw: 50mm;
+$scale: 2;
+$pw: calc($scale * 105mm);
+$ph: calc($scale * 93mm);
+$mw: calc($scale * 101mm);
+$mh: calc($scale * 89mm);
+$tw: calc($scale * 101mm);
+$bw: calc($scale * 50mm);
 
 @page {
   size: $pw $ph;
@@ -95,9 +88,9 @@ $bw: 50mm;
 }
 
 .page {
-  font-size: 14px;
+  font-size: calc($scale * 14px);
   position: relative;
-  padding-left: 2mm;
+  padding-left: calc($scale * 2mm);
   width: $mw;
   min-width: $mw;
   max-width: $mw;
@@ -106,13 +99,13 @@ $bw: 50mm;
   max-height: $mh;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 31mm 57mm;
+  grid-template-rows: calc($scale * 31mm) calc($scale * 57mm);
   //outline: 2px solid red;
 }
 
 .inner {
   display: grid;
-  padding: 2mm 0 0 2mm;
+  padding: calc($scale * 2mm) 0 0 calc($scale * 2mm);
   outline: 1px dashed blue;
 }
 .toplabel {
@@ -133,23 +126,23 @@ $bw: 50mm;
   }
 
   .line2 {
-    top: -3mm;
+    top: calc($scale * -3mm);
   }
 
   .line3 {
-    top: -6mm;
+    top: calc($scale * -6mm);
   }
 
   .line4 {
-    top: -8mm;
+    top: calc($scale * -8mm);
   }
 
   .line5 {
-    top: -8mm;
+    top: calc($scale * -8mm);
   }
 
   .line6 {
-    top: -1mm;
+    top: calc($scale * -1mm);
   }
 }
 
@@ -163,29 +156,35 @@ $bw: 50mm;
   }
 
   .line3 {
-    top: -2mm;
+    top: calc($scale * -2mm);
   }
   .line4 {
-    top: -3mm;
+    top: calc($scale * -3mm);
   }
 }
 .wrap39 {
   position: relative;
   //overflow: hidden;
-  height: 14mm; /* just enough for the barcode and label */
+  height: calc($scale * 14mm); /* just enough for the barcode and label */
   .code39 {
     position: relative;
-    font-size: 33px;
+    font-size: calc($scale * 33px);
     //top: -2mm;
   }
   .value39 {
     position: relative;
     //width: 14rem;
-    top: -4mm;
+    top: calc($scale * -4mm);
     //left: 1mm;
     //padding: 0.5mm;
     //text-align: center;
     //background-color: grey;
   }
 }
+.demographic {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1rem;
+}
+
 </style>
