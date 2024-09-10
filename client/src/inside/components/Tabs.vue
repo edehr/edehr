@@ -59,6 +59,7 @@ export default {
 }
 
 .tabs {
+  margin-bottom: 1rem;
   ul {
     margin-left: 0;
   }
