@@ -11,8 +11,9 @@
         ehr-simulation-time-control
         ehr-simulation-sign-on
       div(class="flow_across_last_item")
-        zone-lms-button(class="shrink", @action="downloadSeed", :icon='appIcons.download', :title='text.DOWNLOAD_TP', :text='text.DOWNLOAD')
+        zone-lms-button(class="shrink", @action="viewEhrCondensed", :icon='appIcons.view', :title='text.VIEW_TP', :text='text.VIEW')
         zone-lms-button(class="shrink", @action="showEditDialog", :icon='appIcons.configure', :title='text.PROPERTIES_TP', :text='text.PROPERTIES')
+        zone-lms-button(class="shrink", @action="downloadSeed", :icon='appIcons.download', :title='text.DOWNLOAD_TP', :text='text.DOWNLOAD')
     seed-data-dialog(ref="theDialog")
 </template>
 
@@ -49,6 +50,9 @@ export default {
       let data = sSeedContent.ehrData
       downloadSeedToFile(seedId, sSeedContent, data, this.seedModel.tagListAsString())
     },
+    viewEhrCondensed () {
+      this.$router.push({ name: 'seed-view-condensed', query: { seedId: this.seedId } })
+    },
     showEditDialog: function () {
       this.$refs.theDialog.showSeedDataDialog(this.seedModel)
     },
@@ -80,7 +84,7 @@ export default {
 @import '../../scss/definitions';
 .ehr-context-case-study {
   display: grid;
-  grid-template-columns: 1fr 3fr 0.25fr;
+  grid-template-columns: 1fr 3fr 0.5fr;
   gap: 1rem;
   max-height: 3rem;
   overflow-y: auto;
