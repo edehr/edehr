@@ -9,6 +9,7 @@
           th Time Key
           th Faculty notes
           th Student instructions
+          th &nbsp;
       tbody()
         tr(v-for='(key, rowIndex) in timeSteps',
           :class='{ selectedTime: isSelected(key) }' )
@@ -16,12 +17,17 @@
           td
             span(class="active-indicator", :class='{ activeTime: activeTime(rowIndex), activeIncludeTime: activeIncludeTime(key)}') &nbsp;
             button(v-if='!activeIncludeTime(key)', @click='$emit("selectRow", key, findStage(key))')
-              span Activate {{ stageName(key) }}
-            span(v-else) Active
+              fas-icon(icon="fast-forward")
+            span(v-if='!activeTime(rowIndex) && activeIncludeTime(key)')
+              fas-icon(icon="user-clock")
+            span(v-else) &nbsp;
           //td {{ stageName(key) }}
           td {{key}}
           td {{ facultyStageNote(key) }}
           td {{ stageInstructions(key) }}
+          td
+            button(v-if='activeTime(rowIndex)', @click='$emit("selectRow", key, findStage(key))')
+              fas-icon(icon="backward")
 
 </template>
 
