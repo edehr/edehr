@@ -15,11 +15,11 @@
       div(class="details-row")
         div(class="details-name") Description
         div(class="details-value")
-          in-place-text-area-edit(:value='seed.description', @change='updateSeedDescription')
+          div(v-text-to-html="seed.description")
       div(class="details-row")
         div(class="details-name") Creator Notes
         div(class="details-value")
-          in-place-text-area-edit(:value='seedModel.creatorNotes', @change='updateCreatorNotes')
+          div(v-text-to-html="seed.creatorNotes")
       zone-lms-instructions-element See the explanation on the main seed page.
 
     div(class="details-container selected card")
@@ -67,16 +67,6 @@ export default {
       console.log('loading seed view', seedId)
       StoreHelper.loadAssignmentAndSeedLists()
       StoreHelper.loadSeed(seedId)
-    },
-    async updateCreatorNotes (notes) {
-      const seedData = JSON.parse(JSON.stringify(this.seedModel))
-      seedData.creatorNotes = notes
-      await StoreHelper.updateSeed(this, this.seedId, seedData)
-    },
-    async updateSeedDescription ( text ) {
-      const seedData = JSON.parse(JSON.stringify(this.seedModel))
-      seedData.description = text
-      await StoreHelper.updateSeed(this, this.seedId, seedData)
     }
   },
 }
