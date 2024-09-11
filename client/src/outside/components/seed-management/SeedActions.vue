@@ -1,6 +1,7 @@
 <template lang='pug'>
   div
     div(class="flow_across")
+      zone-lms-button(v-if='!hideGoToSeed', @action="viewCaseStudy", :icon='appIcons.seed', title='Go to case study', :text='seed.name')
       zone-lms-button(v-if="!hideCondensed", @action="viewEhrCondensed", :icon='appIcons.view', :title='text.VIEW_TP', :text='text.VIEW')
       zone-lms-button(v-show="canDo", @action="gotoEhrWithSeed", :icon='appIcons.edit', :title='text.EDIT_TP', :text='text.EDIT')
       zone-lms-button(v-show="canDo", @action="showEditDialog", :icon='appIcons.configure', :title='text.PROPERTIES_TP', :text='text.PROPERTIES')
@@ -43,6 +44,7 @@ export default {
     hideCondensed: {type: Boolean, default: false}
   },
   computed: {
+    hideGoToSeed () { return this.$route.name === 'seed-view'},
     canDo () { return StoreHelper.isDevelopingContent() },
     assignmentList: function () {
       const seed = this.seed
@@ -65,6 +67,9 @@ export default {
       let data = sSeedContent.ehrData
 
       downloadSeedToFile(seedId, sSeedContent, data, this.seedModel.tagListAsString())
+    },
+    viewCaseStudy () {
+      this.$router.push({ name: 'seed-view', query: { seedId: this.seedId } })
     },
     gotoEhrWithSeed () {
       this.$router.push({ name: 'ehr', query: { seedEditId: this.seedId }})

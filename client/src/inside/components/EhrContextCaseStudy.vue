@@ -11,6 +11,7 @@
         ehr-simulation-time-control
         ehr-simulation-sign-on
       div(class="flow_across_last_item")
+        zone-lms-button(class="shrink", @action="viewCaseStudy", :icon='appIcons.seed', title='Go to case study', :text='truncate(seedInfo.name, 50)')
         zone-lms-button(class="shrink", @action="viewEhrCondensed", :icon='appIcons.view', :title='text.VIEW_TP', :text='text.VIEW')
         zone-lms-button(class="shrink", @action="showEditDialog", :icon='appIcons.configure', :title='text.PROPERTIES_TP', :text='text.PROPERTIES')
         zone-lms-button(class="shrink", @action="downloadSeed", :icon='appIcons.download', :title='text.DOWNLOAD_TP', :text='text.DOWNLOAD')
@@ -40,6 +41,7 @@ export default {
     seedInfo () {
       return this.$store.getters['seedListStore/seedContent']
     },
+    seedId () { return this.seedModel.id },
     seedModel () {
       return this.$store.getters['seedListStore/seedModel'] },
   },
@@ -49,6 +51,9 @@ export default {
       let sSeedContent = this.seedModel.seed
       let data = sSeedContent.ehrData
       downloadSeedToFile(seedId, sSeedContent, data, this.seedModel.tagListAsString())
+    },
+    viewCaseStudy () {
+      this.$router.push({ name: 'seed-view', query: { seedId: this.seedId } })
     },
     viewEhrCondensed () {
       this.$router.push({ name: 'seed-view-condensed', query: { seedId: this.seedId } })

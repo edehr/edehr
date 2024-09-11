@@ -7,12 +7,6 @@
 
     div(class="details-container card")
       div(class="details-row")
-        div(class="details-name") Case study
-        div(class="details-value")
-          ui-link(:name="'seed-view'",  :query='{ seedId: seedId }' )
-            fas-icon(class="fa", :icon="appIcons.seed")
-            span &nbsp; {{seed.name}}
-      div(class="details-row")
         div(class="details-name") Description
         div(class="details-value")
           div(v-text-to-html="seed.description")
