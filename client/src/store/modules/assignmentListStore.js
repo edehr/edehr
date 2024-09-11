@@ -7,7 +7,8 @@ const debug = false
 const state = {
   assignmentsListing: [],
   listMetadata: {},
-  justLobjList: []
+  justLobjList: [],
+  lobjListForSeed: []
 }
 
 const getters = {
@@ -15,7 +16,8 @@ const getters = {
     return state.assignmentsListing
   },
   listMetadata: state => { return state.listMetadata },
-  justLobjList: state => { return state.justLobjList }
+  justLobjList: state => { return state.justLobjList },
+  lobjListForSeed: state => { return state.lobjListForSeed }
 }
 
 function getAssignmentViaApi (context, url) {
@@ -119,6 +121,25 @@ const actions = {
       })
   },
 
+  loadLobjForSeedList (context, payload) {
+    const { consumerId, seedId } = payload
+    if (!consumerId || !seedId) {
+      console.error('coding error trying to get list of lobjs without consumer and seed id')
+      return
+    }
+    let url = 'lobj-seed/' + consumerId + '/' + seedId
+    return InstoreHelper.getRequest(context, API, url).then(response => {
+      let list = response.data
+      // console.log('loadLobjForSeedList results', list)
+      if (!list) {
+        console.error('ERROR the system should have list of lobjs')
+        return
+      }
+      context.commit('_setLobjForSeedList', list)
+      return list
+    })
+  },
+
   loadJustLobjList (context, consumerId) {
     if (!consumerId) {
       console.error('coding error trying to get list of lobjs without consumer id')
@@ -150,6 +171,9 @@ const mutations = {
   },
   _setJustLobjList: (state, list) => {
     state.justLobjList = list
+  },
+  _setLobjForSeedList: (state, list) => {
+    state.lobjListForSeed = list
   }
 }
 

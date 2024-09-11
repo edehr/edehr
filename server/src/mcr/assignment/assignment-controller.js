@@ -13,6 +13,7 @@ import pluralize from 'pluralize'
 const debug = require('debug')('server')
 import { logError} from '../../helpers/log-error'
 import SeedData from '../seed/seed-data'
+import mongoose from 'mongoose'
 const debugAC = false
 
 const sd = new SeedDataController()
@@ -98,6 +99,15 @@ export default class AssignmentController extends BaseController {
   }
   async justLobjList (tool) {
     return await this.model.find({ toolConsumer: tool })
+  }
+  async lobjListForSeed (toolConsumerId, seedId) {
+    if (!mongoose.Types.ObjectId.isValid(toolConsumerId)) {
+      throw new ParameterError(Text.INVALID_CONSUMER_ID(toolConsumerId))
+    }
+    if (!mongoose.Types.ObjectId.isValid(seedId)) {
+      throw new ParameterError(Text.INVALID_ID_PARAMETER(seedId))
+    }
+    return await this.model.find({ toolConsumer: toolConsumerId, seedDataId: seedId })
   }
 
   async assignmentsUsingSeed (tool, seedId) {
@@ -357,6 +367,12 @@ export default class AssignmentController extends BaseController {
     router.get('/justLobjList/:tool', (req, res) => {
       this
         .justLobjList(req.params.tool)
+        .then(ok(res))
+        .then(null, fail(req, res))
+    })
+    router.get('/lobj-seed/:tool/:seed', (req, res) => {
+      this
+        .lobjListForSeed(req.params.tool, req.params.seed)
         .then(ok(res))
         .then(null, fail(req, res))
     })

@@ -65,11 +65,10 @@
           span {{text.STATS_VALUE(pageCount)}}:
           span(v-for='pgn in pageNamesWithContent', :key='pgn') &nbsp; {{ pgn }}
       zone-lms-instructions-element The above is meant to help you identify the case studies contents.
-
       div(class="details-row")
         div(class="details-name") {{text.LOBJ_LABEL}}
         div(class="details-value")
-          div(v-if="assignmentList.length > 0", v-for="lobj in assignmentList")
+          div(v-if="lobjListForSeed.length > 0", v-for="lobj in lobjListForSeed")
             router-link(:to="{ name:'learning-object', query: { learningObjectId: lobj._id }}") {{lobj.name}}
           span(v-else="") No learning objects are using this case study.
       zone-lms-instructions-element The list above provides links to all the learning objects that are using this case study.
@@ -118,11 +117,7 @@ export default {
     showIds () { return this.isAdmin },
     canDo () { return StoreHelper.isDevelopingContent() },
     hasDraftRows () { return this.statsMeta.draftRows },
-    assignmentList: function () {
-      const seedId = this.seed._id
-      let assList = StoreHelper.getAssignmentsList()
-      return assList.filter(a => a.seedDataId === seedId)
-    },
+    lobjListForSeed () { return this.$store.getters['assignmentListStore/lobjListForSeed'] },
     loCount () { return this.assignmentList.length  },
     hasDraftReports () { return this.statsMeta.draftRows && this.statsMeta.draftRows > 0 },
     pageCount () { return this.pageNamesWithContent.length },
@@ -179,12 +174,8 @@ export default {
       const fromStore = this.$store.getters['seedListStore/seedId']
       const seedId = fromRoute ? fromRoute : fromStore
       await this.$store.dispatch('seedListStore/loadSeedContent', seedId)
-      // let sd = this.$store.getters['seedListStore/seedContent']
-      // console.log('SeedView loaded ', sd)
-      // await this._dispatchSeedListProperty('loadSeedContent', seedId)
-      // console.log('loading seed view', seedId)
-      // StoreHelper.loadAssignmentAndSeedLists()
-      // StoreHelper.loadSeed(seedId)
+      const payload = { consumerId: StoreHelper.getAuthdConsumerId(), seedId: seedId}
+      await this.$store.dispatch('assignmentListStore/loadLobjForSeedList', payload)
     },
     async updateCreatorNotes (notes) {
       const seedData = JSON.parse(JSON.stringify(this.seedModel))
