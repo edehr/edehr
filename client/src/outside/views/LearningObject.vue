@@ -52,7 +52,7 @@
             div(v-for="act in accessibleActivities", :key="act.visitId")
               ui-link(:name="'lms-instructor-activity'", :query="{visitId: act.visitId}")
                 fas-icon(class="fa", :icon="appIcons.activity")
-                span &nbsp; {{act.courseTitle}} / {{act.activityTitle}}
+                span &nbsp; {{act.courseTitle}} / {{learningObject.name}}
             div(v-if="unreachableActivityCount > 0 ") {{unreachableActivityText}}
           div(v-else) (This learning object is not used by any activity.)
       zone-lms-instructions-element The above tells you how many activities are using this learning object. The above lists all the activities you have permission to see (because you have used the link in your LMS).  Otherwise, the list is reduced to a a count of the activities you can not access that are using this learning object.
