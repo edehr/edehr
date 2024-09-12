@@ -1,6 +1,8 @@
 <template lang='pug'>
   div
     div(class="flow_across")
+      zone-lms-button(@action="viewLObj", :icon='appIcons.lobj', :title="`Go to ${learningObject.name}`")
+      zone-lms-button(v-if="learningObject.seedDataId", @action="viewCaseStudy", :icon='appIcons.seed', :title='`Go to case study: ${learningObject.seedName}`')
       zone-lms-button(v-if="canDo", @action="showEditDialog",
           :title="text.PROPERTIES_TP",
           :icon='appIcons.configure',
@@ -54,9 +56,6 @@ export default {
       const seed = await this.$store.dispatch('seedListStore/fetchSeed', this.learningObject.seedDataId)
       downloadLearningObjectToFile(this.learningObject, seed)
     },
-    gotoLearningObjectView () {
-      this.$router.push({ name: 'learning-object', query: { learningObjectId: this.learningObjectId } })
-    },
     showEditDialog: function () {
       this.$refs.theDialog.showLObjDialog({ action:'edit', learningObject: this.learningObject})
     },
@@ -75,6 +74,12 @@ export default {
     },
     async updateTheLobj (lObj) {
       await StoreHelper.updateAssignment(this.learningObject, lObj)
+    },
+    viewLObj () {
+      this.$router.push({ name: 'learning-object', query: { learningObjectId: this.learningObjectId, ts: Date.now() } })
+    },
+    viewCaseStudy () {
+      this.$router.push({ name: 'seed-view', query: { seedId: this.learningObject.seedDataId } })
     },
   },
 }

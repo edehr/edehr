@@ -11,7 +11,7 @@
         ehr-simulation-time-control
         ehr-simulation-sign-on
       div(class="flow_across_last_item")
-        zone-lms-button(class="shrink", @action="viewCaseStudy", :icon='appIcons.seed', title='Go to case study', :text='truncate(seedInfo.name, 50)')
+        zone-lms-button(class="shrink", @action="viewCaseStudy", :icon='appIcons.seed', :title='`Go to case study: ${seedInfo.seedName}`')
         zone-lms-button(class="shrink", @action="viewEhrCondensed", :icon='appIcons.view', :title='text.VIEW_TP', :text='text.VIEW')
         zone-lms-button(class="shrink", @action="showEditDialog", :icon='appIcons.configure', :title='text.PROPERTIES_TP', :text='text.PROPERTIES')
         zone-lms-button(class="shrink", @action="downloadSeed", :icon='appIcons.download', :title='text.DOWNLOAD_TP', :text='text.DOWNLOAD')

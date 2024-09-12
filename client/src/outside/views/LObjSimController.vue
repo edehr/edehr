@@ -1,15 +1,7 @@
 <template lang="pug">
   div
     zone-lms-page-banner(:title="learningObject.name", theme='lobj-theme')
-      div(class="flow_across menu_space_across flow_across_right")
-        ui-link(:name="'learning-object'", :query='{ learningObjectId: this.learningObjectId }')
-          // no visit id because we are not changing visit
-          fas-icon(class="fa", :icon="appIcons.lobj")
-          span &nbsp; Return to {{ learningObject.name }}
-        ui-link(v-if="learningObject.seedDataId", :name="'seed-view'", :query="{seedId: learningObject.seedDataId}")
-          fas-icon(class="fa", :icon="appIcons.seed")
-          span &nbsp; Go to {{ learningObject.seedName }}
-
+      learning-object-actions(class="flow_across_last_item", :learningObject="learningObject", :showDetails='false')
     zone-lms-instructions-header
       p.
         Simulation staging allows instructors to create an immersive experience for their students.
@@ -20,12 +12,10 @@
         see all the medical records from the beginning of the case study up to the simulation time.
 
     div(class="details-container card")
-      div(class="details-row")
-        div(class="details-name") Go to {{ text.SEED }}
-        div(class="details-value")
-          ui-link(v-if="learningObject.seedDataId", :name="'seed-view'", :query="{seedId: learningObject.seedDataId}") {{ learningObject.seedName }}
-          div(v-else) (This learning object does not provide a case study.)
-      zone-lms-instructions-element The above links let you to return to the learning object or go to the case study.
+      p.
+        Create and configure Sim Timing stages here and then use these stages when you need to control
+        the student experience from the Activity page.
+
 
     l-obj-sim-stages-edit(:learning-object="learningObject",
       :selectedKey='selectedKey',
@@ -59,10 +49,11 @@ import { Text } from '@/helpers/ehr-text'
 import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
 import LearningObjectSimStageDialog from '@/outside/components/simStages/LearningObjectSimStageDialog.vue'
 import UiConfirm from '@/app/ui/UiConfirm.vue'
+import LearningObjectActions from '@/outside/components/learning-object/LearningObjectActions.vue'
 
 export default {
   extends: OutsideCommon,
-  components: { UiConfirm, LearningObjectSimStageDialog, ZoneLmsInstructionsHeader, ZoneLmsInstructionsElement, LObjSimStagesEdit, SeedTimeSplit, UiButton, UiLink, ZoneLmsPageBanner  },
+  components: { LearningObjectActions, UiConfirm, LearningObjectSimStageDialog, ZoneLmsInstructionsHeader, ZoneLmsInstructionsElement, LObjSimStagesEdit, SeedTimeSplit, UiButton, UiLink, ZoneLmsPageBanner  },
   data () {
     return {
       text: Text.LOBJ_PAGE,
