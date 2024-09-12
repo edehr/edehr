@@ -65,7 +65,7 @@
               fas-icon(class="fa", :icon="appIcons.lobj")
               span {{truncate(lObj.name, 40)}}
           div(class="cell e-name")
-            router-link(
+            router-link(v-if="lObj.seedDataId",
               :to="{ name: 'seed-view', query: { seedId: lObj.seedDataId._id }}",
               class='router-item')
               fas-icon(class="fa", :icon="appIcons.seed")
