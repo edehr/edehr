@@ -2,9 +2,6 @@
   div
     zone-lms-page-banner(:title='activityName')
       div(class="flow_across menu_space_across flow_across_right")
-        ui-link(:name="'lms-instructor-activity'")
-          fas-icon(class="fa", :icon="appIcons.activity")
-          span &nbsp; Return to {{ activityName }}
         activity-actions(class="flow_across_last_item")
 
     zone-lms-instructions-header

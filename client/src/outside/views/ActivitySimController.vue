@@ -1,14 +1,16 @@
 <template lang="pug">
   div
     zone-lms-page-banner(:title='activityTitle')
-      ui-link(:name="'lms-instructor-activity'")
-        fas-icon(class="fa", :icon="appIcons.activity")
-        span &nbsp; Return to {{ activityTitle }}
-      span  &nbsp;
-      ui-link(:name="'lobjSimController'", :query="{learningObjectId: activity.learningObjectId}")
-        fas-icon(class='fa', :icon='appIcons.stopwatch')
-        span &nbsp; Manage stages
-      span  &nbsp;
+      zone-lms-button(
+        :title="`Return to activity: ${activityTitle}`",
+        @action="gotoActivity",
+        :icon='appIcons.activity',
+        class='flow_across_last_item')
+      zone-lms-button(
+        title="Manage stages in the learning object",
+        @action="gotoStages",
+        :icon='appIcons.stopwatch',
+        class='flow_across_last_item')
       zone-lms-button(
         title="View your current activity as a student experiences it.",
         @action="switchToStudent",
@@ -76,6 +78,12 @@ export default {
     simStages () { return this.activity.simStages },
   },
   methods: {
+    gotoActivity () {
+      this.$router.push({ name: 'lms-instructor-activity' })
+    },
+    gotoStages () {
+      this.$router.push({ name: 'lobjSimController', query: {learningObjectId: this.activity.learningObjectId} })
+    },
     simTimeInitialize () {
       let key = this.defaultSimKey
       if (key) {

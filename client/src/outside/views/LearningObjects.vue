@@ -40,14 +40,15 @@
             v-on:buttonClicked="sortColumnToggle(columnName)",
             title="Sort by name")
             fas-icon(class="fa", :icon="sortColumnIcon(columnName)")
+        div(class="thcell") Case Study
         div(class="thcell") Type
         div(class="thcell") Usage
-        div(class="thcell") Id
-          ui-table-header-button(
-            class="flow_across_last_item",
-            v-on:buttonClicked="sortColumnToggle(columnLti)",
-            title="Sort by LTI id")
-            fas-icon(class="fa", :icon="sortColumnIcon(columnLti)")
+        //div(class="thcell") Id
+        //  ui-table-header-button(
+        //    class="flow_across_last_item",
+        //    v-on:buttonClicked="sortColumnToggle(columnLti)",
+        //    title="Sort by LTI id")
+        //    fas-icon(class="fa", :icon="sortColumnIcon(columnLti)")
         div(class="thcell date") Updated
           ui-table-header-button(
             class="flow_across_last_item",
@@ -63,9 +64,15 @@
               class='router-item')
               fas-icon(class="fa", :icon="appIcons.lobj")
               span {{truncate(lObj.name, 40)}}
+          div(class="cell e-name")
+            router-link(
+              :to="{ name: 'seed-view', query: { seedId: lObj.seedDataId._id }}",
+              class='router-item')
+              fas-icon(class="fa", :icon="appIcons.seed")
+              span {{truncate(lObj.seedDataId.name, 40)}}
           div(class="cell") {{ lObj.seedDataId ? lObj.seedDataId.appType : lObj.mPatientAppType }}
           div(class="cell") {{ lObj.activityCount }}
-          div(class="cell") {{ lObj.idForLTI }}
+          //div(class="cell") {{ lObj.idForLTI }}
           //div(class="cell date") {{ lObj.createDate | formatDateTime }}
           div(class="cell date") {{ lObj.lastUpdateDate | formatDateTime }}
           div(class="cell description").

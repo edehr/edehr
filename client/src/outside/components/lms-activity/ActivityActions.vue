@@ -1,6 +1,9 @@
 <template lang='pug'>
   div
     div(class="")
+      ui-button(value="aa-return", v-on:buttonClicked="gotoActivity", :title="`Return to ${activityName}`")
+        fas-icon(class="icon-right", :icon="appIcons.activity")
+        span(v-if="showLabels") &nbsp;
       ui-button(value="aa-all-open", v-on:buttonClicked="confirmOpen", title="Allow all students to work on the assignment.")
         fas-icon(class="icon-right", :icon="appIcons.retractSubmit")
         span(v-if="showLabels") &nbsp; Allow all
@@ -84,6 +87,12 @@ export default {
     showLabels () { return StoreHelper.isOutsideShowButtonLabels() },
   },
   methods: {
+    gotoActivity () {
+      this.$router.push({ name: 'lms-instructor-activity' })
+    },
+    gotoStages () {
+      this.$router.push({ name: 'lobjSimController', query: {learningObjectId: this.activity.learningObjectId} })
+    },
     confirmOpen () {
       this.$refs.confirmOpen.showDialog('Confirm', 'Proceed to allow all students to work on the assignment')
     },
