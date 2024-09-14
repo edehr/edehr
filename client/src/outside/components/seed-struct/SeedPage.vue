@@ -11,7 +11,13 @@
           text="")
       transition(name="fade" mode="out-in")
         div(v-if="!tableCollapsed")
-          seed-table-horiz(
+          seed-table-horiz(v-show='tableOrientation',
+            :ehrData="ehrData",
+            :pageKey="pageKey",
+            :pageChildren="pageChildren",
+            :pageElement='pageElement'
+          )
+          seed-table-vert(v-show='!tableOrientation',
             :ehrData="ehrData",
             :pageKey="pageKey",
             :pageChildren="pageChildren",
@@ -33,8 +39,9 @@ import ZoneLmsButton from '@/outside/components/ZoneLmsButton'
 import SeedTableHoriz from '@/outside/components/seed-struct/SeedTableHoriz'
 import EhrData from '@/inside/components/page/ehr-data'
 import { t18ElementLabel } from '@/helpers/ehr-t18'
+import SeedTableVert from '@/outside/components/seed-struct/SeedTableVert.vue'
 export default {
-  components: { SeedTableHoriz, ZoneLmsButton, SeedFormElement },
+  components: { SeedTableVert, SeedTableHoriz, ZoneLmsButton, SeedFormElement },
   data () {
     return {
       appIcons: APP_ICONS
@@ -52,6 +59,7 @@ export default {
     tableKey () {return this.pageElement.tableKey},
     tableCollapsed () { return this.$store.getters['system/seedTableCollapse'](this.tableKey)},
     tableData () { return EhrData.getMergedTableData(this.pageKey, this.pageElement.tableKey) || [] },
+    tableOrientation () { return this.$store.getters['system/condensedTableVertical']},
     tableRowCount () { return this.tableData.length },
     hasData () { return this.tableData.length > 0 },
   },
