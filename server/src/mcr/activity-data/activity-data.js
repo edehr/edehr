@@ -64,8 +64,10 @@ Schema.pre('save', async function (next) {
     })
     if (activityData.submitted) {
       let start = activityData.history.find( h => h.eventType === ACTIVITY_EVENT_START)
-      let diff = (now - start.eventDate)/1000
-      activityData.timeToComplete = Math.abs(Math.floor(diff))
+      if (start) {
+        let diff = (now - start.eventDate) / 1000
+        activityData.timeToComplete = Math.abs(Math.floor(diff))
+      }
     }
     // console.log('--------\n\nActivity DATA save', activityData.timeToComplete, activityData.history)
   }
