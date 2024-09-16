@@ -24,7 +24,7 @@
           div(class="row", v-for="(studentVisit) in classList", :class="rowClass(studentVisit)")
             div(class='cell e-name') {{ studentVisit.user.fullName }}
             div(class='cell e-status')
-              div(v-if="studentVisit.activityData.submitted") Time to submit {{ timeToComplete(studentVisit) }} (hrs:mins:secs)
+              div(v-if="canShowTimeToComplete(studentVisit)") Time to submit {{ timeToComplete(studentVisit) }} (hrs:mins:secs)
             div(class='cell e-date') {{ studentVisit.activityData.lastDate | formatDateTime }}
             div(class="cell e-description").
               {{ truncate(studentVisit.activityData.evaluationData, 100) }}
@@ -77,6 +77,7 @@ export default {
       let selected = sv._id === StoreHelper.getCurrentEvaluationStudentId()
       return selected ? 'selected' : ''
     },
+    canShowTimeToComplete (sv) { return sv.activityData.submitted && sv.activityData.timeToComplete  },
     timeToComplete (sv) {
       let ttc = sv.activityData.timeToComplete
       let days = Math.floor(ttc/(24*60*60))
