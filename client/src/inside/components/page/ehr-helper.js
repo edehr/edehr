@@ -335,8 +335,10 @@ export default class EhrPageHelper {
   }
   closeDialog () {
     const dialog = this._getActiveTableDialog()
-    const tableKey = dialog.tableKey
-    this._dialogCloseEvent(tableKey)
+    if(dialog) {
+      const tableKey = dialog.tableKey
+      this._dialogCloseEvent(tableKey)
+    }
   }
   formatDate (d) {
     // TODO just use this function in the one and only place needed
