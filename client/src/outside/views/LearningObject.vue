@@ -147,11 +147,6 @@ export default {
           downObjectToFile('EdEHR-learning-object-list.json', aList)
         })
     },
-    findAssignment: function (id) {
-      return this.assignmentsListing.find(e => {
-        return e._id === id
-      })
-    },
     async updateFacultyNotes (notes) {
       await this.updateLearningObject('facultyNotes', notes)
     },

@@ -212,7 +212,7 @@ export default {
       this.route()
     },
     truncate (input, lim) {
-      return input.length > lim ? `${input.substring(0, lim)}...` : input
+      return input && input.length > lim ? `${input.substring(0, lim)}...` : input
     },
     updateSearchTerm (searchTerm) {
       this.offset = 0
