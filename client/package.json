@@ -31,7 +31,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.10",
     "@sentry/integrations": "^7.75.0",
     "@sentry/tracing": "^7.13.0",
-    "@sentry/vue": "^7.13.0",
+    "@sentry/vue": "^7.119.1",
     "axios": "^1.7.4",
     "bulma": "^1.0.2",
     "core-js": "^3.8.3",
