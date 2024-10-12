@@ -56,9 +56,6 @@ export default class VisitController extends BaseController {
       .populate('user', 'givenName familyName fullName')
   }
 
-  findVisitSignOn (visitId) {
-    return this.model.find({_id: new ObjectID(visitId)}, { simulationSignOn: 1 })
-  }
   findVisit (id) {
     return this.baseFindOneQuery(id)
       .populate('activity')
@@ -101,9 +98,10 @@ export default class VisitController extends BaseController {
    * @param activityId
    * @param ltiRole - LMS role: student, instructor, etc
    * @param ltiReturnUrl - if LMS provides a return URL
+   * @param instructorAsStudent
    * @return {*}
    */
-  updateCreateVisit (user, toolConsumer, activityId, ltiRole, ltiReturnUrl, instructorAsStudent = false) {
+  async updateCreateVisit (user, toolConsumer, activityId, ltiRole, ltiReturnUrl, instructorAsStudent = false) {
     let role = new Role(ltiRole)
     let filter = {
       $and: [
@@ -113,52 +111,38 @@ export default class VisitController extends BaseController {
       ]
     }
     debugvc('Update Create Visit ' + JSON.stringify(filter, null, 2))
-    let theVisit
-    return Visit.findOne(filter)
-      .then((visit) => {
-        if (visit) {
-          theVisit = visit
-          debugvc('Update previous visit')
-          visit.lastVisitDate = Date.now()
-          // update the return URL for this visit in case it has changed
-          visit.returnUrl = ltiReturnUrl
-          return visit.save()
-        } else {
-          debugvc('Create a new visit record')
-          let data = {
-            toolConsumer: toolConsumer._id,
-            consumerKey: toolConsumer.oauth_consumer_key,
-            user: user._id,
-            userName: user.fullName,
-            activity: activityId,
-            role: role.asText(),
-            isStudent: role.isStudent,
-            isInstructor: role.isInstructor,
-            instructorAsStudent: instructorAsStudent,
-            returnUrl: ltiReturnUrl
-          }
-          return Visit.create(data)
-            .then((visit) => {
-              // save the reference to the return value
-              debugvc('New visit record  ' + visit._id)
-              theVisit = visit
-              // create and add the activity data to the visit
-              debugvc('Create activity data for the visit')
-              return ActivityData.create({
-                toolConsumer: toolConsumer._id,
-                visit: visit._id
-              })
-            })
-            .then((activityData) => {
-              theVisit.activityData = activityData
-              return theVisit.save()
-            })
-        }
+    let visit = await Visit.findOne(filter)
+    if (visit) {
+      debugvc('Update previous visit')
+      visit.lastVisitDate = Date.now()
+      // update the return URL for this visit in case it has changed
+      visit.returnUrl = ltiReturnUrl
+      // return await visit.save()
+    } else {
+      debugvc('Create a new visit record')
+      let data = {
+        toolConsumer: toolConsumer._id,
+        consumerKey: toolConsumer.oauth_consumer_key,
+        user: user._id,
+        userName: user.fullName,
+        activity: activityId,
+        role: role.asText(),
+        isStudent: role.isStudent,
+        isInstructor: role.isInstructor,
+        instructorAsStudent: instructorAsStudent,
+        returnUrl: ltiReturnUrl
+      }
+      visit = await Visit.create(data)
+      // save the reference to the return value
+      debugvc('New visit record  ' + visit._id)
+      // create and add the activity data to the visit
+      debugvc('Create activity data for the visit')
+      visit.activityData = await ActivityData.create({
+        toolConsumer: toolConsumer._id,
+        visit: visit._id
       })
-      .then(() => {
-        debugvc('UpdateCreateVisit returns the visit record')
-        return theVisit
-      })
+    }
+    return visit.save()
   }
 
   async visitAsStudent (instructorTokenData, activityId) {

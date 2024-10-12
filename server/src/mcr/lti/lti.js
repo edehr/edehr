@@ -69,39 +69,11 @@ export default class LTIController {
     const _this = this
     this.app = app
     app.lti = this
-    return Promise.resolve().then(() => {
-      let strategy = function (req, callback) {
-        // console.log('----------------------   STRATEGY ', req.url)
-        _this.strategyVerify(req, callback)
-      }
-      passport.use('ltiStrategy', new CustomStrategy(strategy))
-      // serialize the user object into the session. Provide a function that
-      // receives a user object and a done(err,id) callback
-      passport.serializeUser(function (user, done) {
-        if (debugFine) debug('----------------------   SERIALIZE user', user.user_id)
-        if (user && user._id) {
-          let id = user._id.valueOf()
-          if (debugFine) debug('serializeUser id:' + id)
-          done(null, id)
-        } else {
-          console.error('Can not serialize user', user)
-          done('Can not serialize user')
-        }
-      })
-      // deserializeUser is to take the user id stored in the session and
-      // go find the user object
-      passport.deserializeUser(function (id, done) {
-        if (debugFine) debug('---------------------- DESERIALIZE id', id)
-        _this.userController.read(id).then(results => {
-          let user = results.user
-          // debug('LTI deserializeUser result ' + (user ? user.user_id : 'none'))
-          // debug('deserializeUser user', user)
-          done(null, user)
-        })
-      })
-      app.use(passport.initialize())
-      app.use(passport.session())
-    })
+    app.use(passport.initialize())
+    let strategy = function (req, callback) {
+      _this.strategyVerify(req, callback)
+    }
+    passport.use('ltiStrategy', new CustomStrategy(strategy))
   }
 
   /**
@@ -146,12 +118,9 @@ export default class LTIController {
           callback(this._createParameterError(req.ltiData, err.message), null)
           return
         }
-        // let userId = ltiData['user_id']
-        // debug('strategyVerify find userId: ' + userId + ' consumer: ' + consumerKey)
-        await this._findCreateUser(req.toolConsumer, ltiData).then(user => {
-          logLti('strategyVerify verified and found userId: ', user)
-          callback(null, user)
-        })
+        const user = await this._findCreateUser(req.toolConsumer, ltiData)
+        // console.log(' Directly call the callback with the user')
+        callback(null, user)
       })
     } catch (err) {
       logError('strategyVerify authentication error: ' + err.message)
@@ -191,8 +160,7 @@ export default class LTIController {
     return true
   }
 
-  _findCreateUser (toolConsumer, ltiData) {
-    const _this = this
+  async _findCreateUser (toolConsumer, ltiData) {
     let userDate = {
       user_id: ltiData.user_id,
       givenName: ltiData.lis_person_name_given,
@@ -202,22 +170,18 @@ export default class LTIController {
       toolConsumer: toolConsumer._id
     }
     logLti('_findCreateUser ltiData user data ', JSON.stringify(userDate, null, 2))
-    return this.userController.findOne({
+    const foundUser = await this.userController.findOne({
       $and: [{ user_id: ltiData.user_id }, { toolConsumer: toolConsumer._id }]
-    }).then((foundUser, r) => {
-      if (foundUser) {
-        logLti('_findCreateUser found user', foundUser)
-        if (debugFine) debug('Found user ' + foundUser._id)
-        // will update the user record later
-        return foundUser
-      }
-      return _this.userController.create(userDate)
-        .then((newUser, r) => {
-          // create returns a structure with the new user inside
-          logLti('A new user has been created', newUser._id)
-          return newUser
-        })
     })
+    if (foundUser) {
+      logLti('_findCreateUser found user', foundUser)
+      if (debugFine) debug('Found user ' + foundUser._id)
+      // will update the user record later
+      return foundUser
+    }
+    const newUser = await this.userController.create(userDate)
+    logLti('A new user has been created', newUser._id)
+    return newUser
   }
 
   async updateToolConsumer (req) {
@@ -365,21 +329,14 @@ export default class LTIController {
   }
 
   async _postLtiChain (req) {
-    const _this = this
-    const db = false
-    if (db) console.log('Do update tool')
-    await _this.updateToolConsumer(req)
-    if (db) console.log('Do update user')
-    await _this.updateUser(req)
-    if (db) console.log('Do update activity and course')
+    await this.updateToolConsumer(req)
+    await this.updateUser(req)
     // update activity may create a new Course object too.
     // await _this.updateActivity(req)
     req.activity = await this.activityController.updateCreateActivity(req.ltiData, req.toolConsumer._id)
-    if (db) console.log('Do updateVisit')
-    await _this.updateVisit(req)
+    await this.updateVisit(req)
     let activityRecord = await this.activityController.getActivityRecord(req.visit)
-    if (db) console.log('Do composeLtiNextUrl', activityRecord)
-    await _this.composeLtiNextUrl(req, activityRecord)
+    await this.composeLtiNextUrl(req, activityRecord)
     return req
   }
 
@@ -388,7 +345,7 @@ export default class LTIController {
     router.get('/', (req, res) => {
       res.status(200).send('OK')
     })
-    router.post('/', passport.authenticate('ltiStrategy'), (req, res, next) => {
+    router.post('/', passport.authenticate('ltiStrategy', { session: false }), (req, res, next) => {
       req.errors = []
       if (debugFine) debug('have authenticated user. Now process the lti launch request')
       this._postLtiChain(req)
@@ -406,29 +363,11 @@ export default class LTIController {
           }
         })
         .catch(err => {
-          logError(`ERRRORRRR ${err}`)
+          logError(`LTI ERRRORRRR ${err}`)
           next(err)
         })
     })
     return router
-  }
-
-  _makeSignature (req, res) {
-    if(req.body) {
-      // console.log('req.body >>', req.body)
-      try {
-        let signer = new HMAC_SHA1()
-        const oauth_signature = signer.build_signature(
-          req,
-          req.body,
-          req.body.oauth_consumer_secret
-        )
-        res.status(200).json({ oauth_signature })
-      }
-      catch (err) {
-        req.status(500).send(err)
-      }
-    }
   }
 
   _extractLtiData (props, src, dest) {
@@ -451,10 +390,6 @@ export default class LTIController {
     return data
   }
 
-  _createAssignmentMismatchError (ltiData, msg) {
-    let errData = this._createErrorData(ltiData)
-    return new AssignmentMismatchError(msg, errData)
-  }
   _createParameterError (ltiData, msg) {
     let errData = this._createErrorData(ltiData)
     return new ParameterError(msg, errData)

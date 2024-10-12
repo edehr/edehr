@@ -3,16 +3,8 @@ import { Text } from './text'
 import moment from 'moment'
 import { logError} from '../helpers/log-error'
 const debug = require('debug')('server')
-
-// NB, the system does NOT send or use cookies.  But the use of Passport to validate the LTI seems to need
-// sessions to work. This was discovered by attempting to remove all session related code. Yet once removed
-// the following error will happen during LTI validation:
-// 'Login sessions require session support. Did you forget to use `express-session` middleware?'
-// The bottom line: the secrets for cookies are not important because sessions and cookies are
-// not actually used.
-const DEFAULT_COOKIE_SECRET = 'this is the secret for the session cookie'
 // specify how long an authentication token should live.  For time examples see https://github.com/vercel/ms
-const DEFAULT_TOKEN_LIFE = process.env.NODE_ENV === 'production' ? '10d' : '10d'
+const DEFAULT_TOKEN_LIFE = process.env.NODE_ENV === 'production' ? '10d' : '1h'
 console.log('config.js DEFAULT_TOKEN_LIFE', DEFAULT_TOKEN_LIFE)
 console.log('config.js process.env.NODE_ENV', process.env.NODE_ENV)
 
@@ -41,7 +33,6 @@ function defaultConfig (env) {
     serverPort: process.env.SERVER_PORT || 27000,
     authTokenSecret: process.env.AUTH_TOKEN_SECRET || 'defaultTokenSecretForJWT',
     authTokenLives:  process.env.AUTH_TOKEN_LIFETIME || DEFAULT_TOKEN_LIFE,
-    cookieSecret: process.env.COOKIE_SECRET || DEFAULT_COOKIE_SECRET,
     cookieSettings: cookieSettings(),
     ehrFilesDirectory: process.env.EHR_FILES_DIRECTORY || 'files-ehr',
     ehrCommonFilesDirectory: process.env.EHR_COMMON_FILES_DIRECTORY || 'files-common',
@@ -67,8 +58,6 @@ function defaultConfig (env) {
     ehr: {
       defaultAssignmentDescription: Text.DEFAULT_ASSIGNMENT_DESCRIPTION
     },
-    sessionTTL: process.env.TIME_TO_LIVE || 3600,
-    sessionPath: process.env.SESSION_DIR || '.session',
     favicon: process.env.FAVICON || 'favicon.ico',
     sentryDsn: process.env.SENTRY_DSN,
     // Use this hard coded value on a temporary basis on localhost. you do this to test sentry
@@ -172,10 +161,6 @@ function validateEnvironmentVariable (env) {
   if (env === 'development' || env === 'test' || env === 'production') {
     let beStrictOnProd = true
     if (beStrictOnProd && env === 'production') {
-      // see note above regarding cookies and secrets.  Essentially, it's ok to not use secure setting.
-      // if (!process.env.COOKIE_SECRET || process.env.COOKIE_SECRET === DEFAULT_COOKIE_SECRET) {
-      //   throw new Error('For production you must set COOKIE_SECRET env ')
-      // }
     }
   } else {
     throw new Error('environment must be one of test, development or production')
@@ -191,7 +176,6 @@ function asStringForLog (configuration) {
     logError('Error cloning configuration %o', error)
   }
   tmp.database.password = 'sanitizedFor2'
-  tmp.cookieSecret = 'sanitized cookie secret'
   tmp.authTokenSecret = 'sanitized auth token'
   tmp.adminPassword = 'sanitized'
   return JSON.stringify(tmp, null, 2)
