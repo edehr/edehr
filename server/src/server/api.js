@@ -30,41 +30,11 @@ import VisitController from '../mcr/visit/visit-controller'
 import UtilController from '../mcr/util/util-controller'
 import { apiTrace } from './trace-api'
 import { logError} from '../helpers/log-error'
-// Sessions and session cookies
-// express-session stores session data here on the server and only puts session id in the cookie
-const session = require('express-session')
-const FileStore = require('session-file-store')(session)
-// const uuid = require('uuid/v4')
-import { v4 as uuidv4 } from 'uuid'
 import AcessioningController from '../mcr/accession/accessioning-controller'
 
 const debug = require('debug')('server')
 
 export function apiMiddle (app, config) {
-  const fileStoreOptions = {}
-  if (config.sessionPath) {
-    fileStoreOptions.path = config.sessionPath
-  }
-  if (config.sessionTTL) {
-    fileStoreOptions.ttl = config.sessionTTL
-  }
-  app.sessionStore = new FileStore(fileStoreOptions)
-
-  app.use(session({
-    // TODO Remove the session and cookie stuff because it is not used
-    genid: req => {
-      // debug('Inside the session middleware req.sessionID ' + req.sessionID)
-      let guid = uuidv4()
-      // debug('------------------ SESSION genid ' + guid)
-      return guid
-    },
-    cookie: config.cookieSettings,
-    name: 'EdEhr.cookie',
-    store: app.sessionStore,
-    secret: config.cookieSecret,
-    resave: false,
-    saveUninitialized: false
-  }))
 
   apiTrace(app, config)
 
