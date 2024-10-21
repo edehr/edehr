@@ -47,7 +47,8 @@ export function setupWebSocket () {
         EventBus.$off(USER_LOGOUT_EVENT)
       }
       client.onerror = function (err) {
-        console.error('Socket encountered error: ', err.message, 'Closing socket')
+        // There is no serious problem if this happens. Just close and the system will reset.
+        console.error('Socket client error: ', err)
         client.close()
       }
     }

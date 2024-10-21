@@ -84,7 +84,7 @@ class Client {
         const payload = JSON.parse(value)
         WS_EVENT_BUS.emit(WS_C2S_MESSAGE_EVENT, payload) // broadcast the incoming message
       } catch (err) {
-        console.error(PX + 'Error parsing message', value)
+        console.error(PX + 'Error parsing message', err)
       }
     }
   }

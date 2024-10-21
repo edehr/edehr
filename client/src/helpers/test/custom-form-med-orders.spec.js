@@ -1,4 +1,3 @@
-import should from 'should'
 import { CustomFormMedOrderHelper } from '@/helpers/custom-form-med-orders'
 let mockCustomPugForm = require('./mockCustomPugForm.txt')
 let pug = require('pug')

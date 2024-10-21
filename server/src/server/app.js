@@ -14,6 +14,7 @@ import AuthUtil from '../mcr/common/auth-util'
 import { getFullUrl } from '../mcr/common/utils'
 import { setUpSendGrid } from '../helpers/send-email-helper'
 import { setUpCronitor } from '../helpers/cronitor-helper'
+import { setUpCustomError } from './custom-error'
 const debug = require('debug')('server')
 const helmet = require('helmet')
 
@@ -73,6 +74,7 @@ export default class EhrApp {
     setUpCronitor(config)
     setUpActionLogger(config)
     setUpEhrTraceLogger(config)
+    setUpCustomError(config)
     let app = this.app
     if (config.sentryDsn) {
       // RequestHandler creates a separate execution context using domains, so that every

@@ -57,10 +57,10 @@
           div(v-else) (This learning object is not used by any activity.)
       zone-lms-instructions-element The above tells you how many activities are using this learning object. The above lists all the activities you have permission to see (because you have used the link in your LMS).  Otherwise, the list is reduced to a a count of the activities you can not access that are using this learning object.
 
-      div(class="details-row")
-        div(class="details-name") EdEHR Content Id
-        div(class="details-value") {{ learningObject.idForLTI }}
-      zone-lms-instructions-element The LMS ID can be used in your LMS connections to pre-link new activities to the same learning object.
+      //div(class="details-row")
+      //  div(class="details-name") EdEHR Content Id
+      //  div(class="details-value") {{ learningObject.idForLTI }}
+      //zone-lms-instructions-element The LMS ID can be used in your LMS connections to pre-link new activities to the same learning object.
 
       div(class="details-row")
         div(class="details-name") {{ text.DATES }}

@@ -5,7 +5,7 @@
     div(style="display:none")
       p This Med Lab page is generated.
       p Label: Med Lab
-      p Data Key: undefined
+      p Data Key: med-lab
       p Component name: MedLab
       p Redirect: med-lab-accession
       p Route name: med-lab
@@ -21,7 +21,7 @@ export default {
   components: { EhrPage },
   data: function () {
     return {
-      pageDataKey: 'undefined',
+      pageDataKey: 'med-lab',
       ehrHelp: undefined
     }
   },

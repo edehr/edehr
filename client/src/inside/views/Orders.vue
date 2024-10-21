@@ -5,7 +5,7 @@
     div(style="display:none")
       p This Orders page is generated.
       p Label: Orders
-      p Data Key: undefined
+      p Data Key: orders
       p Component name: Orders
       p Redirect: no-med-orders
       p Route name: orders
@@ -21,7 +21,7 @@ export default {
   components: { EhrPage },
   data: function () {
     return {
-      pageDataKey: 'undefined',
+      pageDataKey: 'orders',
       ehrHelp: undefined
     }
   },

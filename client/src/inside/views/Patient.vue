@@ -5,7 +5,7 @@
     div(style="display:none")
       p This Patient page is generated.
       p Label: Patient profile
-      p Data Key: undefined
+      p Data Key: patient
       p Component name: Patient
       p Redirect: demographics
       p Route name: patient
@@ -21,7 +21,7 @@ export default {
   components: { EhrPage },
   data: function () {
     return {
-      pageDataKey: 'undefined',
+      pageDataKey: 'patient',
       ehrHelp: undefined
     }
   },

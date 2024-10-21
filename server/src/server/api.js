@@ -15,6 +15,7 @@ import ActionsController from '../mcr/metric/actions-controller'
 import AppLmsController from '../mcr/app-lms/app-lms-controller'
 import AssignmentController from '../mcr/assignment/assignment-controller'
 import AuthController from '../mcr/auth/auth-controller'
+import ConnectionEntryController from '../mcr/connect-entry/connectionEntry-controller'
 import ConsumerController from '../mcr/consumer/consumer-controller'
 import CourseController from '../mcr/course/course-controller'
 import DemoController from '../mcr/demo/demo-controller'
@@ -30,41 +31,12 @@ import VisitController from '../mcr/visit/visit-controller'
 import UtilController from '../mcr/util/util-controller'
 import { apiTrace } from './trace-api'
 import { logError} from '../helpers/log-error'
-// Sessions and session cookies
-// express-session stores session data here on the server and only puts session id in the cookie
-const session = require('express-session')
-const FileStore = require('session-file-store')(session)
-// const uuid = require('uuid/v4')
-import { v4 as uuidv4 } from 'uuid'
 import AcessioningController from '../mcr/accession/accessioning-controller'
+import { customErrorHandling } from './custom-error'
 
 const debug = require('debug')('server')
 
 export function apiMiddle (app, config) {
-  const fileStoreOptions = {}
-  if (config.sessionPath) {
-    fileStoreOptions.path = config.sessionPath
-  }
-  if (config.sessionTTL) {
-    fileStoreOptions.ttl = config.sessionTTL
-  }
-  app.sessionStore = new FileStore(fileStoreOptions)
-
-  app.use(session({
-    // TODO Remove the session and cookie stuff because it is not used
-    genid: req => {
-      // debug('Inside the session middleware req.sessionID ' + req.sessionID)
-      let guid = uuidv4()
-      // debug('------------------ SESSION genid ' + guid)
-      return guid
-    },
-    cookie: config.cookieSettings,
-    name: 'EdEhr.cookie',
-    store: app.sessionStore,
-    secret: config.cookieSecret,
-    resave: false,
-    saveUninitialized: false
-  }))
 
   apiTrace(app, config)
 
@@ -81,6 +53,7 @@ export function apiMiddle (app, config) {
   const as = new AssignmentController(config)
   const auth = new AuthController(config)
   const actions = new ActionsController()
+  const cEntry = new ConnectionEntryController()
   const crs = new CourseController()
   const fc = new FeedbackController(config)
   const fileC = new FilesController(config)
@@ -100,6 +73,7 @@ export function apiMiddle (app, config) {
     activityDataController: acc,
     assignmentController : as,
     authUtil,
+    connectionEntryController: cEntry,
     consumerController : cc,
     courseController: crs,
     demoController: demo,
@@ -205,6 +179,8 @@ export function apiMiddle (app, config) {
       api.use('/api/seed-data', middleWare, sd.route())
       api.use('/api/auth', cors(corsOptions), auth.route())
       api.use('/api/home', cors(corsOptions), homeRoute(config))
+      api.use('/api/err-api', cors(corsOptions), apiErrorRoute(config))
+      api.use('/api/count', cors(corsOptions), cEntry.route())
 
       return api
     })
@@ -223,6 +199,30 @@ function homeRoute (config) {
     homeData.isProduction = config.isProduction
     homeData.date = Date.now()
     res.json(homeData)
+  })
+  return router
+}
+function apiErrorRoute (config) {
+  const router = new Router()
+  router.post('/', (req, res) => {
+    const errMessage = req.body
+    let json = {
+      location: 'client via api',
+      url: req.url,
+      message: JSON.stringify(errMessage, null, 2)
+    }
+    console.log('API ERROR EndPoint', json)
+    customErrorHandling(json)
+    return res.status(200).json({errMessage})
+  })
+  router.get('/testErrorThrow', (req, res) => {
+    throw Error ('Testing error handling')
+  })
+  router.get('/testErrorLog', (req, res) => {
+    console.error('Testing using console error')
+    let status = 200
+    let json =  {message: 'test error log done'}
+    res.status(status).json(json)
   })
   return router
 }
@@ -257,11 +257,13 @@ export function apiError (app, config) {
     // The Sentry error id is attached to `res.sentry` if sentry is active
     errorData.sentry = res.sentry
     let json =  {
+      location: 'server final',
       url: req.url,
       message: err.message,
       status: status,
       errorData: JSON.stringify(errorData)}
     debug('API errorHandler json', json)
+    customErrorHandling(json)
     res.status(status).json(json)
   }
 }

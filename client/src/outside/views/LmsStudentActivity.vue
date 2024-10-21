@@ -53,7 +53,6 @@ import ZoneLmsPageName from '@/outside/components/ZoneLmsPageName'
 import UiButton from '@/app/ui/UiButton.vue'
 import StoreHelper, { APP_TYPE_EHR, APP_TYPE_LIS } from '@/helpers/store-helper'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner.vue'
-import FeatureHelper, { FF_UNLEASH_ACTIVITY } from '@/helpers/feature-helper'
 import ZoneLmsInstructionsHeader from '@/outside/components/ZoneLmsInstructionsHeader.vue'
 import ZoneLmsInstructionsElement from '@/outside/components/ZoneLmsInstructionsElement.vue'
 import { t18EhrText } from '@/helpers/ehr-t18'
@@ -103,15 +102,11 @@ export default {
     },
     studentInstructions () { return this.isUnleashedActivityEnabled ? this.activityRecord.learningObjectDescription : this.activityRecord.description },
     isUnleashedActivityEnabled () {
-      const cid = this.$store.getters['consumerStore/consumerId']
-      return FeatureHelper.isFeatureFlagEnabled(cid, FF_UNLEASH_ACTIVITY)
+      return true
     },
     feedbackViewable () {
       return this.$store.getters['activityStore/feedbackViewable']
     },
-    // assignment () {
-    //   return this.$store.getters['assignmentStore/assignment'] || {}
-    // },
     course () {
       return this.$store.getters['courseStore/course']
     },

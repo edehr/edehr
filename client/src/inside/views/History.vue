@@ -5,7 +5,7 @@
     div(style="display:none")
       p This History page is generated.
       p Label: History
-      p Data Key: undefined
+      p Data Key: history
       p Component name: History
       p Redirect: medical
       p Route name: history
@@ -21,7 +21,7 @@ export default {
   components: { EhrPage },
   data: function () {
     return {
-      pageDataKey: 'undefined',
+      pageDataKey: 'history',
       ehrHelp: undefined
     }
   },

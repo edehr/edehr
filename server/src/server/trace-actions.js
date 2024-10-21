@@ -6,7 +6,7 @@ const EventEmitter = require('events')
 let traceLogger
 
 // const isDevEnv = process.env.NODE_ENV !== 'production'
-export const ACTION_EVENT_BUS = new EventEmitter()
+export const ACTION_EVENT_BUS = new EventEmitter({ captureRejections: true })
 export const ACTION_EVENT = 'ACTION_EVENT'
 
 ACTION_EVENT_BUS.on(ACTION_EVENT, (rec) => {
@@ -21,6 +21,8 @@ ACTION_EVENT_BUS.on(ACTION_EVENT, (rec) => {
   trace(recStr)
   traceLogger.info(rec)
 })
+
+ACTION_EVENT_BUS.on('error', console.log)
 
 export function setUpActionLogger (config) {
   const actionLogPath = path.resolve(config.actionLogFile)

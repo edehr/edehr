@@ -1,10 +1,3 @@
-import { ref } from 'vue'
-import { isObject } from '@/helpers/ehr-utils'
-// keyMap is a set of test tubes (e.g. Lavender, Yellow, Blue, etc) and for each there is a list of lab tests
-const keyMap = ref({})
-/*
-https://docs.google.com/spreadsheets/d/1eXE1zyq__Uf_KYA91JAlzX7fA7SoZgjjZwA6rmHp2pw/edit?usp=sharing
- */
 /*
 Sample lab test record
   {
@@ -23,43 +16,35 @@ Sample lab test record
   },
  */
 
-const dbg = true
 export function useMedLabTestList () {
-  function initializeData (data) {
-    if (dbg) console.log('initializeData to ', data)
-    keyMap.value = isObject(data) ? data : {}
-  }
-  function addLabTest (labTest) {
+/*
+  keyMap is a set of test tubes (e.g. Lavender, Yellow, Blue, etc)
+  and for each there is a list of lab tests.
+  In both the add and remove functions we clone the keyMap to create
+  a new object. This is required for Vue reactivity to see the change.
+  */
+
+  function addLabTest (keyMap, labTest) {
+    keyMap = { ...keyMap }
     const tubeColour = labTest.tube
-    if (dbg) console.log('adding labtest to ', keyMap.value)
-    if(!keyMap.value[tubeColour]) {
-      keyMap.value[tubeColour] = []
+    let list = keyMap[tubeColour]
+    if(!list) {
+      list = []
     }
-    keyMap.value[tubeColour].push(labTest)
-    // using Vue 2.7 composition API which does not work with objects.
-    // workaround is to reset the root value. This workaround is not needed in Vue 3
-    keyMap.value = Object.assign({}, keyMap.value)
-    if (dbg) console.log('key map after adding', keyMap.value)
+    list.push(labTest)
+    keyMap[tubeColour] = list
+    return keyMap
   }
-  function removeLabTest (labTest) {
-    // console.log('remove lab test', labTest)
+  function removeLabTest (keyMap, labTest) {
+    keyMap = { ...keyMap }
     const tubeColour = labTest.tube
-    keyMap.value[tubeColour] = keyMap.value[tubeColour].filter( (item) => {
+    keyMap[tubeColour] = keyMap[tubeColour].filter( (item) => {
       return item.id !== labTest.id
     })
-    if (keyMap.value[tubeColour].length === 0)  {
-      delete keyMap.value[tubeColour]
+    if (keyMap[tubeColour].length === 0)  {
+      delete keyMap[tubeColour]
     }
-    // using Vue 2.7 composition API which does not work with objects.
-    // workaround is to reset the root value. This workaround is not needed in Vue 3
-    keyMap.value = Object.assign({}, keyMap.value)
-    if (dbg) console.log('key map after removal', keyMap.value)
-  }
-  function tubeColours () {
-    return Object.keys(keyMap.value)
-  }
-  function testListForTube (tube) {
-    return keyMap.value[tube]
+    return keyMap
   }
   function propsForTest (test) {
     let props = test.props
@@ -68,14 +53,10 @@ export function useMedLabTestList () {
       props = props.filter(p => !!p)
       props = props.join(', ')
     }
-    // props = props.length > 0 ? props : 'None'
     return props
   }
   return {
-    keyMap,
-    addLabTest, removeLabTest, initializeData,
-    tubeColours,
-    testListForTube,
+    addLabTest, removeLabTest,
     propsForTest
   }
 }

@@ -279,7 +279,9 @@ const mutations = {
   },
   setApiError: (state, error) => {
     if (error && process.env.NODE_ENV !== 'test') {
-      console.error('System setApiError:', error)
+      console.error('postApiErr - System setApiError:', error)
+      InstoreHelper.postApiErr(error)  //.then(r => console.log('Message sent to server ---- postApiError', r) )
+      console.error('postApiErr:', error)
     }
     state.apiError = error
   },

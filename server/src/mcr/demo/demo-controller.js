@@ -21,6 +21,7 @@ const debugJoin = true
 const debug = require('debug')('server')
 import { logError} from '../../helpers/log-error'
 import { APP_TYPE_LIS } from '../../helpers/appType'
+import { generateDemoName } from './name-generator'
 
 // match the same version as in the client side demo-store-helper.js
 export const   DEMO_CONSUMER_FAMILY_CODE = 'EdEHR Demo'
@@ -88,14 +89,7 @@ export default class DemoController {
 
   async _createDemoToolConsumer (req, res, next) {
     try {
-      let theId = req.body.id
-      if (debugDC) debug('DemoController create tool. Call provided this id:', theId)
-      if (!theId) {
-        let error = new Error('Caller must provide a new id for the demonstration to work.')
-        error.status = 400
-        return next(error)
-      }
-      theId = 'Demo-' + Date.now() + '-' + theId
+      let theId = generateDemoName()
       if (debugDC) debug('DemoController create tool. Create tool with this id:', theId)
       const consumerDef = Object.assign({}, consumerBaseDef, { oauth_consumer_key: theId, oauth_consumer_secret: theId })
       consumerDef.is_primary = false
@@ -233,6 +227,7 @@ export default class DemoController {
     await this.comCon.activityController.clearConsumer(toolConsumer)
     await this.comCon.activityDataController.clearConsumer(toolConsumer)
     await this.comCon.courseController.clearConsumer(toolConsumer)
+    await this.comCon.connectionEntryController.clearConsumer(toolConsumer)
     await this.comCon.seedController.clearConsumer(toolConsumer)
     await this.comCon.assignmentController.clearConsumer(toolConsumer)
     await this.comCon.userController.clearConsumer(toolConsumer)

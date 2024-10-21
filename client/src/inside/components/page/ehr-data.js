@@ -40,7 +40,7 @@ export default class EhrData {
   }
   static getTableRowData (rowId) {
     let result
-    const { pageKey, tableKey, rowIndex, orderSetElement, medId } = EhrDataModel.IdToParts(rowId)
+    const { pageKey, tableKey, rowIndex, orderSetElement } = EhrDataModel.IdToParts(rowId)
     // console.log('get table row data for rowId', rowId)
     const rowElementKey = tableKey + '_id'
     const tableData = this.getMergedTableData(pageKey, tableKey)

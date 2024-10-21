@@ -1302,12 +1302,6 @@
   "pain.alleviation2": "Associated symptoms",
   "medAdminRec.mar_internal": "Internal comments",
   "medicationOrders.med_status": "Status",
-  "medicationOrders.medicationOrdersTable.medicationOrderAux": "Change Med Order",
-  "medicationOrders.aux_med_dose": "Dose",
-  "medicationOrders.aux_med_status": "Status",
-  "medicationOrders.aux_med_prnMaxDosage": "Max dosage",
-  "medicationOrders.aux_med_reason": "Reason",
-  "medicationOrders.aux_med_instructions": "Instructions",
   "medAdminRec.mo_route": "Route",
   "leveyJennings": "Levey-Jennings",
   "leveyJennings.tableLJ": "Levey-Jennings",
@@ -1386,8 +1380,6 @@
   "labRequisitions.reqH_schedule": "Schedule",
   "labRequisitions.reqMi_id": "Requisition Id",
   "labRequisitions.reqMicro_id": "Requisition Id",
-  "leveyJennings.tableLJ.ljAuxEntryTable": "LJvalue",
-  "leveyJennings.ljAuxValue": "Value",
   "labRequisitions.reqMicro_schedule": "Schedule",
   "medLabBody.bdyOther1label": "Other 1",
   "medLabBody.bdyOther2label": "Other 2",
@@ -1513,5 +1505,7 @@
   "vitals.comment": "Comment",
   "fluidBalance.inIV2": "IV 2",
   "fluidBalance.inIV3": "IV 3",
-  "fluidBalance.inIV4": "IV 4"
+  "fluidBalance.inIV4": "IV 4",
+  "musculoskeletal.mAssistance": "Level of assistance",
+  "nonmedOrders.orderStatus": "Status New"
 }

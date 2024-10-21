@@ -1,10 +1,11 @@
 import { Router } from 'express'
 import Role from '../roles/roles'
-import { ParameterError, AssignmentMismatchError, SystemError } from '../common/errors'
+import { ParameterError, SystemError } from '../common/errors'
 import { Text } from '../../config/text'
 import { ltiVersions, LTI_BASIC } from './lti-defs'
 import { DEMO_CONSUMER_FAMILY_CODE} from '../demo/demo-controller'
 import { logError} from '../../helpers/log-error'
+import ConnectionEntry from '../connect-entry/connectionEntry'
 
 const debug = require('debug')('server')
 const logLti = require('debug')('lti')
@@ -69,39 +70,11 @@ export default class LTIController {
     const _this = this
     this.app = app
     app.lti = this
-    return Promise.resolve().then(() => {
-      let strategy = function (req, callback) {
-        // console.log('----------------------   STRATEGY ', req.url)
-        _this.strategyVerify(req, callback)
-      }
-      passport.use('ltiStrategy', new CustomStrategy(strategy))
-      // serialize the user object into the session. Provide a function that
-      // receives a user object and a done(err,id) callback
-      passport.serializeUser(function (user, done) {
-        if (debugFine) debug('----------------------   SERIALIZE user', user.user_id)
-        if (user && user._id) {
-          let id = user._id.valueOf()
-          if (debugFine) debug('serializeUser id:' + id)
-          done(null, id)
-        } else {
-          console.error('Can not serialize user', user)
-          done('Can not serialize user')
-        }
-      })
-      // deserializeUser is to take the user id stored in the session and
-      // go find the user object
-      passport.deserializeUser(function (id, done) {
-        if (debugFine) debug('---------------------- DESERIALIZE id', id)
-        _this.userController.read(id).then(results => {
-          let user = results.user
-          // debug('LTI deserializeUser result ' + (user ? user.user_id : 'none'))
-          // debug('deserializeUser user', user)
-          done(null, user)
-        })
-      })
-      app.use(passport.initialize())
-      app.use(passport.session())
-    })
+    app.use(passport.initialize())
+    let strategy = function (req, callback) {
+      _this.strategyVerify(req, callback)
+    }
+    passport.use('ltiStrategy', new CustomStrategy(strategy))
   }
 
   /**
@@ -133,6 +106,13 @@ export default class LTIController {
         return
       }
       req.toolConsumer = toolConsumer
+      req.connectData = {
+        toolConsumer: toolConsumer._id,
+        consumerKey: toolConsumer.oauth_consumer_key,
+        // isNewEntry: { type: Boolean, required: true },
+        // user: {type: ObjectId, ref: 'User', required: true},
+        // visit: {type: ObjectId, ref: 'Visit', required: true},
+      }
       const withDetailsCallback = logLti.enabled ? function (details) {
         logLti('LTI. Here are the details used to create the signature', details)
       } : undefined
@@ -146,12 +126,16 @@ export default class LTIController {
           callback(this._createParameterError(req.ltiData, err.message), null)
           return
         }
-        // let userId = ltiData['user_id']
-        // debug('strategyVerify find userId: ' + userId + ' consumer: ' + consumerKey)
-        await this._findCreateUser(req.toolConsumer, ltiData).then(user => {
-          logLti('strategyVerify verified and found userId: ', user)
-          callback(null, user)
+        let user = await this.userController.findOne({
+          $and: [{ user_id: ltiData.user_id }, { toolConsumer: toolConsumer._id }]
         })
+        req.connectData.newUser = !!user
+        if (!user) {
+          user = await this._createUser(req.toolConsumer, ltiData)
+        }
+        req.connectData.user = user._id
+        // console.log(' Directly call the callback with the user')
+        callback(null, user)
       })
     } catch (err) {
       logError('strategyVerify authentication error: ' + err.message)
@@ -191,8 +175,7 @@ export default class LTIController {
     return true
   }
 
-  _findCreateUser (toolConsumer, ltiData) {
-    const _this = this
+  _createUser (toolConsumer, ltiData) {
     let userDate = {
       user_id: ltiData.user_id,
       givenName: ltiData.lis_person_name_given,
@@ -201,23 +184,7 @@ export default class LTIController {
       consumerKey: toolConsumer.oauth_consumer_key,
       toolConsumer: toolConsumer._id
     }
-    logLti('_findCreateUser ltiData user data ', JSON.stringify(userDate, null, 2))
-    return this.userController.findOne({
-      $and: [{ user_id: ltiData.user_id }, { toolConsumer: toolConsumer._id }]
-    }).then((foundUser, r) => {
-      if (foundUser) {
-        logLti('_findCreateUser found user', foundUser)
-        if (debugFine) debug('Found user ' + foundUser._id)
-        // will update the user record later
-        return foundUser
-      }
-      return _this.userController.create(userDate)
-        .then((newUser, r) => {
-          // create returns a structure with the new user inside
-          logLti('A new user has been created', newUser._id)
-          return newUser
-        })
-    })
+    return this.userController.create(userDate)
   }
 
   async updateToolConsumer (req) {
@@ -291,15 +258,28 @@ export default class LTIController {
   async updateVisit (req) {
     if (debugFine) debug('updateVisit')
     if (req.activity) {
-      const visit = await this.visitController.updateCreateVisit(
+      let visit = await this.visitController.ltiVisitFind(
         req.user,
-        req.toolConsumer,
         req.activity._id,
         req.ltiData.roles,
-        req.ltiData.launch_presentation_return_url
       )
+      if (visit) {
+        await this.visitController.ltiVisitUpdate(visit, req.ltiData.launch_presentation_return_url )
+        req.connectData.isNewEntry = false
+      } else {
+        visit = await this.visitController.ltiVisitCreate(
+          req.user,
+          req.toolConsumer,
+          req.activity._id,
+          req.ltiData.roles,
+          req.ltiData.launch_presentation_return_url
+        )
+        req.connectData.isNewEntry = true
+      }
       await this.activityController.updateActivityVisit(req.activity._id, visit._id)
       req.visit = visit
+      req.connectData.visit = visit._id
+      req.connectData.isStudent = visit.isStudent
     }
   }
 
@@ -365,21 +345,16 @@ export default class LTIController {
   }
 
   async _postLtiChain (req) {
-    const _this = this
-    const db = false
-    if (db) console.log('Do update tool')
-    await _this.updateToolConsumer(req)
-    if (db) console.log('Do update user')
-    await _this.updateUser(req)
-    if (db) console.log('Do update activity and course')
+    await this.updateToolConsumer(req)
+    await this.updateUser(req)
     // update activity may create a new Course object too.
     // await _this.updateActivity(req)
     req.activity = await this.activityController.updateCreateActivity(req.ltiData, req.toolConsumer._id)
-    if (db) console.log('Do updateVisit')
-    await _this.updateVisit(req)
+    await this.updateVisit(req)
+    const cEntry = await ConnectionEntry.create(req.connectData)
+    debug('Create new connection entry', cEntry)
     let activityRecord = await this.activityController.getActivityRecord(req.visit)
-    if (db) console.log('Do composeLtiNextUrl', activityRecord)
-    await _this.composeLtiNextUrl(req, activityRecord)
+    await this.composeLtiNextUrl(req, activityRecord)
     return req
   }
 
@@ -388,7 +363,7 @@ export default class LTIController {
     router.get('/', (req, res) => {
       res.status(200).send('OK')
     })
-    router.post('/', passport.authenticate('ltiStrategy'), (req, res, next) => {
+    router.post('/', passport.authenticate('ltiStrategy', { session: false }), (req, res, next) => {
       req.errors = []
       if (debugFine) debug('have authenticated user. Now process the lti launch request')
       this._postLtiChain(req)
@@ -406,29 +381,11 @@ export default class LTIController {
           }
         })
         .catch(err => {
-          logError(`ERRRORRRR ${err}`)
+          logError(`LTI ERRRORRRR ${err}`)
           next(err)
         })
     })
     return router
-  }
-
-  _makeSignature (req, res) {
-    if(req.body) {
-      // console.log('req.body >>', req.body)
-      try {
-        let signer = new HMAC_SHA1()
-        const oauth_signature = signer.build_signature(
-          req,
-          req.body,
-          req.body.oauth_consumer_secret
-        )
-        res.status(200).json({ oauth_signature })
-      }
-      catch (err) {
-        req.status(500).send(err)
-      }
-    }
   }
 
   _extractLtiData (props, src, dest) {
@@ -451,10 +408,6 @@ export default class LTIController {
     return data
   }
 
-  _createAssignmentMismatchError (ltiData, msg) {
-    let errData = this._createErrorData(ltiData)
-    return new AssignmentMismatchError(msg, errData)
-  }
   _createParameterError (ltiData, msg) {
     let errData = this._createErrorData(ltiData)
     return new ParameterError(msg, errData)

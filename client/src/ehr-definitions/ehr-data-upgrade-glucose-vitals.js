@@ -1,4 +1,4 @@
-import { addEhrRowToTable, deleteRowElem, updateRowElem } from './ehr-data-model-utils'
+import { addEhrRowToTable, deleteRowElem } from './ehr-data-model-utils'
 import EhrDataModel from './EhrDataModel'
 
 
@@ -8,7 +8,6 @@ export function updateVitalsGlucose (ehrData, touchCounts) {
   const vitalsTableKey = 'table'
   const glucoseTableKey = 'glucoseTable'
   const elementKey1 = 'bloodSugar'
-  const elementKey2 = 'gluBloodSugar'
 
   const pageData = ehrData[pageKey]
   if (pageData) {

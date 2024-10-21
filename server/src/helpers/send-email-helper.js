@@ -5,6 +5,7 @@ import { ParameterError, SystemError } from '../mcr/common/errors'
 const sgMail = require('@sendgrid/mail')
 
 let sgConfigured = false
+let errorEmail = undefined
 export function setUpSendGrid (config) {
   if (!config.sendGridApiKey) {
     sgConfigured = false
@@ -14,12 +15,55 @@ export function setUpSendGrid (config) {
   console.log('setUpSendGrid will set api key')
   sgMail.setApiKey(config.sendGridApiKey)
   sgConfigured = true
+  errorEmail = config.sendErrorToEmail
+  if(errorEmail && !emailValidate(errorEmail)) {
+    throw new Error(`Email address "${errorEmail}" is not valid`)
+  }
+  console.log('setUpSendGrid. Will send emails to ', errorEmail)
 }
+
+
 
 export function isSendGridActive () {
   return sgConfigured
 }
 
+/**
+ * If the system is configured properly this function sends an email to the configured email address
+ * with the given object.
+ * @param subject
+ * @param errorObj
+ */
+export function sendErrorEmail (subject, errorObj) {
+  if (!sgConfigured || !errorEmail) {
+    return
+  }
+  let message = errorObj.message || 'Some error happened in your EdEHR system.'
+  let mainBody = message + '\n' + JSON.stringify(errorObj,null, 2)
+  let htmlBody = `<p>${message} </p>\n` +
+    '<pre>\n' +
+      JSON.stringify(errorObj,null, 2) +
+    '</pre>'
+
+  let msg = {
+    to: errorEmail,
+    from: 'EdEHR <info@edehr.org>',
+    subject: subject,
+    text: mainBody,
+    html: htmlBody,
+    trackingSettings: {
+      clickTracking: {
+        enable: false,
+        enableText: false
+      },
+      openTracking: {
+        enable: false
+      }
+    }
+  }
+  // SEND THE EMAIL, caller to handle errors
+  sgMail.send(msg).catch(e => console.log('Error sending email within the custom error handling' + e.message))
+}
 export function sendEdEHRAccessCode (toEmail, accessCode) {
   if (!sgConfigured) {
     // throw error. caller will convert to a 500 error

@@ -45,6 +45,18 @@ class InstoreHelperWorker {
     let apiUrl = StoreHelper.apiUrlGet()
     return `${apiUrl}/${api}/` + (url ? url : '')
   }
+  postApiErr (errMessage) {
+    let body = { clientError: errMessage }
+    let url = StoreHelper.apiUrlGet() + '/err-api'
+    console.log('postApiErr ---- ', url, body)
+    return new Promise((resolve, reject) => {
+      apiAxios
+        .post(url, body)
+        .catch(error => {
+          console.log(`postApiERrr for ${url} failed `+ JSON.stringify(error))
+        })
+    })
+  }
   timeSliceData ( rootState, ehrData ) {
     if (ehrData && rootState.visit.sVisitData.isStudent) {
       let activityRecord = rootState.activityStore.activityRecord
