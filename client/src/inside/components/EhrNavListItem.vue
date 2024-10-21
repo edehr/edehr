@@ -36,6 +36,10 @@ export default {
       // - hasStudent (student data) and
       // - hasMerged (any data)
       // - draftMerged, draftSeed, and draftStudent if page has a draft record
+      const nonDataPage = this.path.redirectEhr || this.path.redirectLis
+      if (nonDataPage) {
+        return {}
+      }
       let k = this.path.pageDataKey
       let d = this.pageDataList()[k]
       if (!d) {

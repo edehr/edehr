@@ -8,7 +8,6 @@
 <script>
 import UiButton from '@/app/ui/UiButton.vue'
 import UiInfo from '@/app/ui/UiInfo.vue'
-import FeatureHelper, { FF_SIGN_ON } from '@/helpers/feature-helper'
 import AppDialog from '@/app/components/AppDialogShell.vue'
 import StoreHelper from '@/helpers/store-helper'
 import { t18EhrText } from '@/helpers/ehr-t18'
@@ -33,10 +32,6 @@ export default {
   },
   computed: {
     ehrText () { return t18EhrText() },
-    isSimSignOnEnabled () {
-      const cid = this.$store.getters['consumerStore/consumerId']
-      return FeatureHelper.isFeatureFlagEnabled(cid, FF_SIGN_ON)
-    },
     isReady () { return !(this.pName && this.pName.trim().length > 0 && this.pProfession && this.pProfession.trim().length > 0) },
     isSimSignedOn () { return this.$store.getters['visit/isSimSignedOn']},
     signOnDetails () { return this.$store.getters['visit/simSignOnData'] },

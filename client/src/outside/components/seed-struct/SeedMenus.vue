@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import StoreHelper from '@/helpers/store-helper'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
 export default {
   props: {
@@ -19,8 +20,12 @@ export default {
     ehrData: { type: Object }
   },
   computed: {
+    isEhr () { return StoreHelper.isEHR_Showing() },
+    isLis () { return StoreHelper.isLIS_Showing() },
     seedEhrData () { return this.ehrData || {} },
-    menuList () {  return require('@/menuList.json')  },
+    menuList () {
+      return require('@/menuList.json').filter( menuGroup => menuGroup.isLIS && this.isLis || menuGroup.isEHR && this.isEhr)
+    },
     pageStats () {
       const ehrPages = new EhrPages()
       return ehrPages.ehrPagesStats(this.seedEhrData)
@@ -28,6 +33,9 @@ export default {
 
   },
   methods: {
+    displayGroup (menuGroup) {
+      return menuGroup.isLIS && this.isLis || menuGroup.isEHR && this.isEhr
+    },
     childCss ( pkey ) {
       return {
         active: pkey === this.activePageKey,

@@ -23,6 +23,7 @@ import 'vue-simple-suggest/dist/styles.css'
 const chosen = ref('')
 const emit = defineEmits(['selected'])
 
+// eslint-disable-next-line no-unused-vars
 const onSuggestSelect = (suggest) => {
   // VueSimpleSuggest handles ENTER differently than TAB. Both invoke this onSuggestSelect.
   // While TAB will let us clear the input box,  ENTER will reset the focus back into the input and retain the

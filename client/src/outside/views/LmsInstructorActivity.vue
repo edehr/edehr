@@ -150,7 +150,6 @@ import StoreHelper from '@/helpers/store-helper'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner.vue'
 import router, { UNLINKED_ACTIVITY_ROUTE_NAME } from '@/router'
 import AppTypeToggleButton from '@/outside/components/seed-management/AppTypeToggleButton.vue'
-import FeatureHelper, { FF_UNLEASH_ACTIVITY } from '@/helpers/feature-helper'
 import ActivityDialogV2 from '@/outside/components/lms-activity/ActivityDialogV2.vue'
 import UiConfirm from '@/app/ui/UiConfirm.vue'
 import UiInfo from '@/app/ui/UiInfo.vue'
@@ -186,7 +185,7 @@ export default {
     simStages () { return this.$store.getters['assignmentStore/simStages']},
     contentEditor () { return StoreHelper.isDevelopingContent() },
     showSimControls () { return !!this.activity.caseStudyId },
-    isUnleashedActivityEnabled () { return FeatureHelper.isFeatureFlagEnabled(this.consumerId, FF_UNLEASH_ACTIVITY) },
+    isUnleashedActivityEnabled () { return true },
     activity () { return this.$store.getters['activityStore/activityRecord'] },
     classList () {
       return this.$store.getters['instructor/classList']

@@ -372,7 +372,8 @@ class StoreHelperWorker {
     // console.log('newToken', newToken)
     await StoreHelper.storeReplaceToken(newToken)
     const visitId = StoreHelper.getAuthVisitId()
-    router.push({name: 'lms-instructor-activity', query: { visitId: visitId } })
+    router.push({name: 'lms-instructor-activity',
+      query: { visitId: visitId, ts: Date.now() } })
     StoreHelper.postActionEvent(INSTRUCTOR_ACTION,'restoreNormalRole')
   }
   async resetAsInstructorActivityData (router) {
@@ -397,7 +398,8 @@ class StoreHelperWorker {
     // clear any previous seed id to turn off the seed editing mode. Otherwise, instructors see Case Study context banner and not Student context banner.
     await StoreHelper.setSeedEditId('')
     const visitId = StoreHelper.getAuthVisitId()
-    router.push({ name: 'ehr', query: { visitId: visitId, appType: appType } })
+    router.push({ name: 'ehr',
+      query: { visitId: visitId, appType: appType, ts: Date.now() } })
     StoreHelper.postActionEvent(INSTRUCTOR_ACTION,'visitAsStudent')
   }
 

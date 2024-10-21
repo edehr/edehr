@@ -98,7 +98,10 @@ class EhrDefsWorker {
    */
   getPageElements (pageKey) {
     let pd = this.getPageDefinition(pageKey)
-    if(!pd) { console.error('Coding error. No page for pageKey', pageKey)}
+    if(!pd) {
+      console.error('Possible coding error. No page definition for pageKey "' + pageKey + '"')
+      return {}
+    }
     return pd.pageElements
   }
 

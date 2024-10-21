@@ -53,14 +53,6 @@ export default {
     }
   },
   methods: {
-    isActualDateEnabled () {
-      // const cid = this.$store.getters['consumerStore/consumerId']
-      return true //FeatureHelper.isFeatureFlagEnabled(cid, FF_ACTUAL_DATE)
-    },
-    // isSimSignOnEnabled () {
-    //   const cid = this.$store.getters['consumerStore/consumerId']
-    //   return FeatureHelper.isFeatureFlagEnabled(cid, FF_SIGN_ON)
-    // },
     enableEdit () {
       this.sDate= this.cDate
       this.sTime = this.cTime

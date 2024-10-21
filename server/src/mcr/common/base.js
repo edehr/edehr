@@ -172,6 +172,7 @@ export default class BaseController {
   }
 
   delete (id) {
+    console.error(`DELETION: Record ${id} is now deleted.`)
     const filter = this.baseFilter(id)
     return this.model
       .deleteMany(filter)

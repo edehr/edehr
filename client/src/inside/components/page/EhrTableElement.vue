@@ -5,7 +5,7 @@
     span(v-else-if="cell.inputType==='custom_form'")
       span Use View to see contents
     span(v-else-if="cell.inputType==='labTestSet'")
-      lab-test-list-table-element(:tableData='cell.value')
+      lab-test-list(viewOnly=true, :tableData='cell.value')
     span(v-else) {{getCellData(cell)}}
 </template>
 
@@ -17,9 +17,9 @@ import EhrTypes from '@/ehr-definitions/ehr-types'
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import { simDateCalc } from '@/helpers/date-helper'
 import { extractMedName } from '@/ehr-definitions/med-definitions/medOrder-model'
-import LabTestListTableElement from '@/inside/components/page/accessioning/LabTestListTableElement.vue'
+import LabTestList from '@/inside/components/page/accessioning/LabTestList.vue'
 export default {
-  components: { LabTestListTableElement, EhrFileLink },
+  components: { LabTestList, EhrFileLink },
   inject: [ 'pageDataKey'],
   props: {
     cell: { type: Object },

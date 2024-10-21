@@ -19,7 +19,7 @@ export default {
     evVersion () { return this.metaData.ehrVersion  },
     contentDate () {
       let results = 'No page content'
-      const pageStats = StoreHelper.hasDataOnPage(this.pageDataKey)
+      const pageStats = StoreHelper.hasDataOnPage(this.pageDataKey) || {}
       const hasMerged = pageStats['hasMerged']
       if (hasMerged) {
         const mdata = StoreHelper.getMergedData()

@@ -101,6 +101,44 @@ export default class VisitController extends BaseController {
    * @param instructorAsStudent
    * @return {*}
    */
+  async ltiVisitCreate (user, toolConsumer, activityId, ltiRole, ltiReturnUrl) {
+    let role = new Role(ltiRole)
+    let vData = {
+      toolConsumer: toolConsumer._id,
+      consumerKey: toolConsumer.oauth_consumer_key,
+      user: user._id,
+      userName: user.fullName,
+      activity: activityId,
+      role: role.asText(),
+      isStudent: role.isStudent,
+      isInstructor: role.isInstructor,
+      instructorAsStudent: false,
+      returnUrl: ltiReturnUrl
+    }
+    let visit = await Visit.create(vData)
+    visit.activityData = await ActivityData.create({
+      toolConsumer: toolConsumer._id,
+      visit: visit._id
+    })
+    return visit.save()
+  }
+  ltiVisitFind (user, activityId, ltiRole) {
+    let role = new Role(ltiRole)
+    let filter = {
+      $and: [
+        { user: user._id },
+        { role: role.asText() },
+        { activity: activityId }
+      ]
+    }
+    return Visit.findOne(filter)
+  }
+  ltiVisitUpdate (visit, ltiReturnUrl) {
+    visit.lastVisitDate = Date.now()
+    // update the return URL for this visit in case it has changed
+    visit.returnUrl = ltiReturnUrl
+    return visit.save()
+  }
   async updateCreateVisit (user, toolConsumer, activityId, ltiRole, ltiReturnUrl, instructorAsStudent = false) {
     let role = new Role(ltiRole)
     let filter = {

@@ -5,7 +5,7 @@
     div(style="display:none")
       p This Chart page is generated.
       p Label: Patient chart
-      p Data Key: undefined
+      p Data Key: chart
       p Component name: Chart
       p Redirect: progress-notes
       p Route name: chart
@@ -21,7 +21,7 @@ export default {
   components: { EhrPage },
   data: function () {
     return {
-      pageDataKey: 'undefined',
+      pageDataKey: 'chart',
       ehrHelp: undefined
     }
   },

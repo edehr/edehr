@@ -1,4 +1,3 @@
-import { MED_ORDERS_PAGE_KEY, MED_ORDERS_TABLE_KEY } from '../ehr-defs-grid'
 import { hourStringToHour } from './mar-model'
 import { makeHumanTableCell } from '../ehr-def-utils'
 import { isObject } from '../common-utils'

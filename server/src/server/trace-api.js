@@ -51,15 +51,14 @@ export function apiTrace (app, config) {
 function composeData (req, statusCode, time) {
   const ts = Date.now()
   const url = req.baseUrl + req.url
-  const key = (req.method + url).toLowerCase()
+  const key = req.method.toLowerCase()+ '__' + url.toLowerCase()
     .replace(/[:.]/g, '')
-    .replace(/\//g, '_')
   const elapsedMs = Math.round(time)
   const rec = { }
+  rec.key = key
   rec.consumerKey = req.consumerKey
   rec.userId = req.userId
   rec.visitId = req.visitId // req.authPayload ? req.authPayload.visitId : undefined
-  rec.key = key
   rec.elapsedMs = elapsedMs
   rec.isPrimary = req.isPrimary
   rec.status = statusCode

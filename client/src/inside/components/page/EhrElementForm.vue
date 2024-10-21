@@ -141,11 +141,19 @@
           pattern="^([01][0-9]|2[0-3])([0-5][0-9])$"
           type="text", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
 
-    ehr-element-accession(v-else-if="isType(dataTypes.labTestSet)", :elementKey="elementKey", :tableKey="tableKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
+    ehr-element-accession(v-else-if="isType(dataTypes.labTestSet)",
+      :containerInputValue="inputVal",
+      :elementKey="elementKey",
+      :pageDataKey="pageDataKey",
+      :viewOnly='viewOnly',
+      @update="childUpdate")
 
     div(v-else-if="isType(dataTypes.accessionId)")
       label(class="form_label") {{label}}
       span {{ inputVal }}
+
+    div(v-else-if="isType(dataTypes.orderState)", :class="{ffHidden : !ffOrders}")
+      span TODO insert order status {{ inputVal }} ffOrders {{ ffOrders }}
 
     div(v-else) ELSE: {{inputType}} {{label}}
 
@@ -178,6 +186,7 @@ import EhrElementCalculatedText from '@/inside/components/page/EhrElementCalcula
 import EhrElementCalculatedBool from '@/inside/components/page/EhrElementCalculatedBool.vue'
 import { simDateCalc } from '@/helpers/date-helper'
 import { extractMedName } from '@/ehr-definitions/med-definitions/medOrder-model'
+import FeatureHelper, { FF_ORDERS } from '@/helpers/feature-helper'
 
 export default {
   name: 'EhrElementForm',
@@ -204,6 +213,7 @@ export default {
   },
   props: {},
   computed: {
+    ffOrders () { return FeatureHelper.isFeatureFlagEnabled(FF_ORDERS) },
     dataTypes () { return EhrTypes.dataInputTypes },
     isPatientData () {
       const dataTypes = this.dataTypes

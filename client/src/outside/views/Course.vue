@@ -36,7 +36,7 @@
               class='zone-lms-button stop-assessment',
               v-on:buttonClicked="skillsClear"
               )
-              fas-icon(class="fa", icon="appIcons.stopCircle", :title="Stop")
+              fas-icon(class="fa", :icon="appIcons.stopCircle", title="Stop")
               span &nbsp; END Skills Assessment
         // END SKILLS ASSESSMENT
 

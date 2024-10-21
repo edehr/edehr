@@ -10,6 +10,7 @@
       div(class="flow_across menu_space_across flow_across_last_item side-menu")
         app-header-documentation-menu
         router-link(v-if="isDemo", :to="{ name: `demo` }", class="navLink") {{demoText}}
+        app-header-restore-instructor(v-if='isInstructorAsStudent')
         app-header-public-menu(v-if="!isStudent && !isInstructor && isPublic")
         app-header-student-menu(v-if="isStudent")
         app-header-instructor-menu(v-if="isInstructor")
@@ -27,8 +28,9 @@ import AppHeaderInstructorMenu from '@/app/components/AppHeaderInstructorMenu'
 import AppHeaderDocumentationMenu from '@/app/components/AppHeaderDocumentationMenu'
 import { smallScreenActive } from '@/helpers/responsive'
 import AppHeaderLanguageMenu from '@/app/components/AppHeaderLanguageMenu.vue'
+import AppHeaderRestoreInstructor from '@/app/components/AppHeaderRestoreInstructor.vue'
 export default {
-  components: { AppHeaderLanguageMenu, AppHeaderDocumentationMenu, AppHeaderInstructorMenu, AppHeaderStudentMenu, AppHeaderPublicMenu },
+  components: { AppHeaderRestoreInstructor, AppHeaderLanguageMenu, AppHeaderDocumentationMenu, AppHeaderInstructorMenu, AppHeaderStudentMenu, AppHeaderPublicMenu },
   computed: {
     consumer () {
       return this.$store.getters['consumerStore/consumer']
@@ -41,6 +43,7 @@ export default {
     isDemo () { return StoreHelper.isDemoMode() },
     isStudent () { return StoreHelper.isStudent()  },
     isInstructor () { return StoreHelper.isInstructor() },
+    isInstructorAsStudent () { return StoreHelper.isInstructorAsStudent() },
     demoText () {
       return smallScreenActive() ? 'Demo' : 'Demonstration'
     }

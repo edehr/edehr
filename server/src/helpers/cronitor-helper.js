@@ -2,7 +2,6 @@
 import { API_CALL_EVENT, API_EVENT_BUS } from '../server/trace-api'
 import { logError } from './log-error'
 import percentile from 'percentile'
-const schedule = require('node-schedule')
 
 let cronitorConfigured = false
 

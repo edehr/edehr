@@ -7602,6 +7602,31 @@ const DEFS = {
         "fqn": "musculoskeletal.temp"
       },
       {
+        "elementKey": "mAssistance",
+        "formIndex": "1",
+        "inputType": "select",
+        "options": [
+          {
+            "key": "pa1",
+            "text": "1PA"
+          },
+          {
+            "key": "pa2",
+            "text": "2PA"
+          },
+          {
+            "key": "lift",
+            "text": "Ceiling Lift"
+          },
+          {
+            "key": "ind",
+            "text": "Independent"
+          }
+        ],
+        "tableColumn": "9",
+        "fqn": "musculoskeletal.mAssistance"
+      },
+      {
         "elementKey": "useOfAmbulatoryAid",
         "assetBase": "?",
         "formIndex": "1",
@@ -7709,6 +7734,7 @@ const DEFS = {
               "fqn": "musculoskeletal.gAmbulation",
               "gIndex": "3",
               "gChildren": [
+                "mAssistance",
                 "useOfAmbulatoryAid",
                 "type"
               ]
@@ -7735,6 +7761,7 @@ const DEFS = {
             "sensation": "",
             "colour": "",
             "temp": "",
+            "mAssistance": "",
             "useOfAmbulatoryAid": "",
             "type": "",
             "comments": ""
@@ -7752,6 +7779,7 @@ const DEFS = {
           "sensation",
           "colour",
           "temp",
+          "mAssistance",
           "useOfAmbulatoryAid",
           "type",
           "comments",
@@ -8612,10 +8640,42 @@ const DEFS = {
         "fqn": "nonmedOrders.reason"
       },
       {
+        "elementKey": "orderStatus",
+        "formIndex": "1",
+        "inputType": "orderState",
+        "options": [
+          {
+            "key": "ordered",
+            "text": "Ordered"
+          },
+          {
+            "key": "ready",
+            "text": "In process"
+          },
+          {
+            "key": "cancel",
+            "text": "Cancelled"
+          },
+          {
+            "key": "done",
+            "text": "Completed"
+          },
+          {
+            "key": "stop",
+            "text": "Discontinued"
+          },
+          {
+            "key": "error",
+            "text": "Error"
+          }
+        ],
+        "tableColumn": "5",
+        "fqn": "nonmedOrders.orderStatus"
+      },
+      {
         "elementKey": "status",
         "formIndex": "1",
         "inputType": "select",
-        "mandatory": "TRUE",
         "options": [
           {
             "key": "Ordered",
@@ -8638,7 +8698,7 @@ const DEFS = {
             "text": "Discontinued"
           }
         ],
-        "tableColumn": "5",
+        "tableColumn": "6",
         "fqn": "nonmedOrders.status"
       },
       {
@@ -8646,7 +8706,7 @@ const DEFS = {
         "formIndex": "1",
         "formCss": "grid-span-3-columns",
         "inputType": "textarea",
-        "tableColumn": "6",
+        "tableColumn": "7",
         "fqn": "nonmedOrders.comment"
       },
       {
@@ -8795,6 +8855,7 @@ const DEFS = {
                 "order",
                 "orderedBy",
                 "reason",
+                "orderStatus",
                 "status",
                 "comment"
               ]
@@ -8808,6 +8869,7 @@ const DEFS = {
             "order": "",
             "orderedBy": "",
             "reason": "",
+            "orderStatus": "",
             "status": "",
             "comment": ""
           }
@@ -8820,6 +8882,7 @@ const DEFS = {
           "order",
           "orderedBy",
           "reason",
+          "orderStatus",
           "status",
           "comment",
           "table_name",
@@ -11420,142 +11483,6 @@ const DEFS = {
         "inputType": "textarea",
         "tableColumn": "11",
         "fqn": "medicationOrders.med_instructions"
-      },
-      {
-        "elementKey": "med_aux_data",
-        "formIndex": "2",
-        "formOption": "hideElement",
-        "inputType": "aux_data",
-        "fqn": "medicationOrders.med_aux_data"
-      },
-      {
-        "elementKey": "medicationOrderAux_name",
-        "formIndex": "3",
-        "inputType": "practitionerName",
-        "tableColumn": "1",
-        "recHeader": true,
-        "fqn": "medicationOrders.name"
-      },
-      {
-        "elementKey": "medicationOrderAux_id",
-        "inputType": "generatedId",
-        "tableColumn": 0,
-        "label": "Row id",
-        "tableCss": "row-id"
-      },
-      {
-        "elementKey": "medicationOrderAux_profession",
-        "formIndex": "3",
-        "inputType": "practitionerProfession",
-        "tableColumn": "1",
-        "recHeader": true,
-        "fqn": "medicationOrders.profession"
-      },
-      {
-        "elementKey": "medicationOrderAux_day",
-        "formIndex": "3",
-        "inputType": "visitDay",
-        "mandatory": true,
-        "tableColumn": "1",
-        "validation": "visitDay",
-        "recHeader": true,
-        "fqn": "medicationOrders.day"
-      },
-      {
-        "elementKey": "medicationOrderAux_time",
-        "formIndex": "3",
-        "inputType": "visitTime",
-        "mandatory": true,
-        "tableColumn": "1",
-        "validation": "time24",
-        "recHeader": true,
-        "fqn": "medicationOrders.time"
-      },
-      {
-        "elementKey": "aux_med_dose",
-        "formIndex": "3",
-        "inputType": "text",
-        "tableColumn": "1",
-        "mainKey": "med_dose",
-        "fqn": "medicationOrders.aux_med_dose"
-      },
-      {
-        "elementKey": "aux_med_status",
-        "formIndex": "3",
-        "inputType": "select",
-        "options": [
-          {
-            "key": "appr",
-            "text": "Approved"
-          },
-          {
-            "key": "disp",
-            "text": "Dispensed"
-          },
-          {
-            "key": "admi",
-            "text": "Administered"
-          },
-          {
-            "key": "sche",
-            "text": "Scheduled"
-          },
-          {
-            "key": "hold",
-            "text": "On Hold"
-          },
-          {
-            "key": "dose",
-            "text": "Dose Change"
-          },
-          {
-            "key": "disc",
-            "text": "Discontinued"
-          },
-          {
-            "key": "canc",
-            "text": "Cancelled"
-          },
-          {
-            "key": "expi",
-            "text": "Expired"
-          },
-          {
-            "key": "reac",
-            "text": "Reactivated"
-          },
-          {
-            "key": "erro",
-            "text": "Error"
-          }
-        ],
-        "tableColumn": "2",
-        "mainKey": "med_status",
-        "fqn": "medicationOrders.aux_med_status"
-      },
-      {
-        "elementKey": "aux_med_prnMaxDosage",
-        "formIndex": "3",
-        "inputType": "text",
-        "tableColumn": "2",
-        "mainKey": "med_prnMaxDosage",
-        "fqn": "medicationOrders.aux_med_prnMaxDosage"
-      },
-      {
-        "elementKey": "aux_med_reason",
-        "formIndex": "3",
-        "inputType": "text",
-        "tableColumn": "1",
-        "mainKey": "med_reason",
-        "fqn": "medicationOrders.aux_med_reason"
-      },
-      {
-        "elementKey": "aux_med_instructions",
-        "formIndex": "3",
-        "inputType": "textarea",
-        "tableColumn": "1",
-        "mainKey": "med_instructions",
-        "fqn": "medicationOrders.aux_med_instructions"
       }
     ],
     "pageElements": {
@@ -11722,7 +11649,6 @@ const DEFS = {
         "tableKey": "medicationOrdersTable",
         "isTable": true,
         "tableAction": "[\"hideButton\",  \"medAdminRec.marTable\"]",
-        "auxTableRef": "medicationOrderAux",
         "form": {
           "elementKey": "medicationOrdersTable",
           "label": "Medication orders",
@@ -11808,8 +11734,7 @@ const DEFS = {
               "fqn": "medicationOrders.med_group_notes",
               "gIndex": "7",
               "gChildren": [
-                "med_instructions",
-                "med_aux_data"
+                "med_instructions"
               ]
             }
           ],
@@ -11861,81 +11786,6 @@ const DEFS = {
           "med_instructions",
           "medicationOrdersTable_name",
           "medicationOrdersTable_profession"
-        ],
-        "hasRecHeader": true
-      },
-      "medicationOrderAux": {
-        "elementKey": "medicationOrderAux",
-        "pageElementIndex": "3",
-        "pageKey": "medicationOrders",
-        "tableKey": "medicationOrderAux",
-        "mainTableKey": "medicationOrdersTable",
-        "isTable": true,
-        "isAuxTable": true,
-        "form": {
-          "elementKey": "medicationOrderAux",
-          "label": "Change Med Order",
-          "addButtonText": "Update Medication Order",
-          "formKey": "medicationOrderAux",
-          "ehr_groups": [
-            {
-              "elementKey": "hdrGroup",
-              "formCss": "record-header",
-              "fqn": "medicationOrders.hdrGroup",
-              "gIndex": "1",
-              "gChildren": [
-                "medicationOrderAux_name",
-                "medicationOrderAux_profession",
-                "medicationOrderAux_day",
-                "medicationOrderAux_time"
-              ]
-            },
-            {
-              "elementKey": "aux_med_group_main",
-              "formCss": "grid-left-to-right-3",
-              "fqn": "medicationOrders.aux_med_group_main",
-              "gIndex": "2",
-              "gChildren": [
-                "aux_med_dose",
-                "aux_med_status",
-                "aux_med_prnMaxDosage"
-              ]
-            },
-            {
-              "elementKey": "aux_med_group_notes",
-              "formCss": "grid-left-to-right-1",
-              "fqn": "medicationOrders.aux_med_group_notes",
-              "gIndex": "3",
-              "gChildren": [
-                "aux_med_reason",
-                "aux_med_instructions"
-              ]
-            }
-          ],
-          "ehr_data": {
-            "medicationOrderAux_name": "",
-            "medicationOrderAux_profession": "",
-            "medicationOrderAux_day": "",
-            "medicationOrderAux_time": "",
-            "aux_med_dose": "",
-            "aux_med_status": "",
-            "aux_med_prnMaxDosage": "",
-            "aux_med_reason": "",
-            "aux_med_instructions": ""
-          }
-        },
-        "fqn": "medicationOrders.medicationOrdersTable.medicationOrderAux",
-        "tableChildren": [
-          "medicationOrderAux_id",
-          "medicationOrderAux_day",
-          "medicationOrderAux_time",
-          "aux_med_dose",
-          "aux_med_status",
-          "aux_med_prnMaxDosage",
-          "aux_med_reason",
-          "aux_med_instructions",
-          "medicationOrderAux_name",
-          "medicationOrderAux_profession"
         ],
         "hasRecHeader": true
       }
@@ -28633,63 +28483,6 @@ const DEFS = {
         "inputType": "textarea",
         "tableColumn": "36",
         "fqn": "leveyJennings.ljcomments"
-      },
-      {
-        "elementKey": "lj_aux_data",
-        "formIndex": "1",
-        "formOption": "hideElement",
-        "inputType": "aux_data",
-        "fqn": "leveyJennings.lj_aux_data"
-      },
-      {
-        "elementKey": "ljAuxEntryTable_name",
-        "formIndex": "2",
-        "inputType": "practitionerName",
-        "tableColumn": "1",
-        "recHeader": true,
-        "fqn": "leveyJennings.name"
-      },
-      {
-        "elementKey": "ljAuxEntryTable_id",
-        "inputType": "generatedId",
-        "tableColumn": 0,
-        "label": "Row id",
-        "tableCss": "row-id"
-      },
-      {
-        "elementKey": "ljAuxEntryTable_profession",
-        "formIndex": "2",
-        "inputType": "practitionerProfession",
-        "tableColumn": "1",
-        "recHeader": true,
-        "fqn": "leveyJennings.profession"
-      },
-      {
-        "elementKey": "ljAuxEntryTable_day",
-        "formIndex": "2",
-        "inputType": "visitDay",
-        "mandatory": true,
-        "tableColumn": "1",
-        "validation": "visitDay",
-        "recHeader": true,
-        "fqn": "leveyJennings.day"
-      },
-      {
-        "elementKey": "ljAuxEntryTable_time",
-        "formIndex": "2",
-        "inputType": "visitTime",
-        "mandatory": true,
-        "tableColumn": "1",
-        "validation": "time24",
-        "recHeader": true,
-        "fqn": "leveyJennings.time"
-      },
-      {
-        "elementKey": "ljAuxValue",
-        "formIndex": "2",
-        "inputType": "text",
-        "tableColumn": "1",
-        "fqn": "leveyJennings.ljAuxValue"
       }
     ],
     "pageElements": {
@@ -28699,7 +28492,6 @@ const DEFS = {
         "pageKey": "leveyJennings",
         "tableKey": "tableLJ",
         "isTable": true,
-        "auxTableRef": "ljAuxEntryTable",
         "form": {
           "elementKey": "tableLJ",
           "label": "Levey-Jennings",
@@ -28759,8 +28551,7 @@ const DEFS = {
                 "ljValue28",
                 "ljValue29",
                 "ljValue30",
-                "ljcomments",
-                "lj_aux_data"
+                "ljcomments"
               ]
             }
           ],
@@ -28848,61 +28639,6 @@ const DEFS = {
           "ljcomments",
           "tableLJ_name",
           "tableLJ_profession"
-        ],
-        "hasRecHeader": true
-      },
-      "ljAuxEntryTable": {
-        "elementKey": "ljAuxEntryTable",
-        "pageElementIndex": "2",
-        "pageKey": "leveyJennings",
-        "tableKey": "ljAuxEntryTable",
-        "mainTableKey": "tableLJ",
-        "isTable": true,
-        "isAuxTable": true,
-        "form": {
-          "elementKey": "ljAuxEntryTable",
-          "label": "LJvalue",
-          "addButtonText": "Add LJ value",
-          "formKey": "ljAuxEntryTable",
-          "ehr_groups": [
-            {
-              "elementKey": "hdrGroup",
-              "formCss": "record-header",
-              "fqn": "leveyJennings.hdrGroup",
-              "gIndex": "1",
-              "gChildren": [
-                "ljAuxEntryTable_name",
-                "ljAuxEntryTable_profession",
-                "ljAuxEntryTable_day",
-                "ljAuxEntryTable_time"
-              ]
-            },
-            {
-              "elementKey": "auxljgroup",
-              "formCss": "grid-left-to-right-1",
-              "fqn": "leveyJennings.auxljgroup",
-              "gIndex": "2",
-              "gChildren": [
-                "ljAuxValue"
-              ]
-            }
-          ],
-          "ehr_data": {
-            "ljAuxEntryTable_name": "",
-            "ljAuxEntryTable_profession": "",
-            "ljAuxEntryTable_day": "",
-            "ljAuxEntryTable_time": "",
-            "ljAuxValue": ""
-          }
-        },
-        "fqn": "leveyJennings.tableLJ.ljAuxEntryTable",
-        "tableChildren": [
-          "ljAuxEntryTable_id",
-          "ljAuxEntryTable_day",
-          "ljAuxEntryTable_time",
-          "ljAuxValue",
-          "ljAuxEntryTable_name",
-          "ljAuxEntryTable_profession"
         ],
         "hasRecHeader": true
       }

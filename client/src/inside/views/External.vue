@@ -5,7 +5,7 @@
     div(style="display:none")
       p This External page is generated.
       p Label: External resources
-      p Data Key: undefined
+      p Data Key: external
       p Component name: External
       p Redirect: assessment-tools
       p Route name: external
@@ -21,7 +21,7 @@ export default {
   components: { EhrPage },
   data: function () {
     return {
-      pageDataKey: 'undefined',
+      pageDataKey: 'external',
       ehrHelp: undefined
     }
   },

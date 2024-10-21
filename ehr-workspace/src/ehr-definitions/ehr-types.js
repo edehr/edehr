@@ -55,6 +55,7 @@ const EhrTypes = {
     calculatedText: 'calculatedText',
     calculatedValue: 'calculatedValue',
     ehr_embedded: 'ehr_embedded',
+    orderState: 'orderState'
   },
   dependentOn: {
     splitActionKeyOn: ':',

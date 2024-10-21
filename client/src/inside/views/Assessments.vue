@@ -5,7 +5,7 @@
     div(style="display:none")
       p This Assessments page is generated.
       p Label: Assessments
-      p Data Key: undefined
+      p Data Key: assessments
       p Component name: Assessments
       p Redirect: neurological
       p Route name: assessments
@@ -21,7 +21,7 @@ export default {
   components: { EhrPage },
   data: function () {
     return {
-      pageDataKey: 'undefined',
+      pageDataKey: 'assessments',
       ehrHelp: undefined
     }
   },

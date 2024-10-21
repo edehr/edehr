@@ -92,7 +92,6 @@ async  function onPageChange (toRoute) {
     visitId: optionalVisitId, // user is coming from an LmsStudentActivity page OR from this page-controller after processing the refresh token
   } = toRoute.query
 
-  let plng = performance.now()
   const lang = toRoute.query.lang
   switch (lang) {
   case 'es':
@@ -106,7 +105,6 @@ async  function onPageChange (toRoute) {
     break
     // no default. we do not want to override what the user may have selected before.
   }
-  // console.log('LANGUAGE setup', performance.now() - plng)
 
   // To force a sample exception that is not caught just
   // 1. Get into the EHR pages ...

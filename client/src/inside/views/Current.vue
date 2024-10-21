@@ -5,7 +5,7 @@
     div(style="display:none")
       p This Current page is generated.
       p Label: Current visit
-      p Data Key: undefined
+      p Data Key: current
       p Component name: Current
       p Redirect: visit-details
       p Route name: current
@@ -21,7 +21,7 @@ export default {
   components: { EhrPage },
   data: function () {
     return {
-      pageDataKey: 'undefined',
+      pageDataKey: 'current',
       ehrHelp: undefined
     }
   },

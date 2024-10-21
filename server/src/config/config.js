@@ -4,7 +4,9 @@ import moment from 'moment'
 import { logError} from '../helpers/log-error'
 const debug = require('debug')('server')
 // specify how long an authentication token should live.  For time examples see https://github.com/vercel/ms
-const DEFAULT_TOKEN_LIFE = process.env.NODE_ENV === 'production' ? '10d' : '1h'
+// https://github.com/vercel/ms
+const DEFAULT_TOKEN_LIFE = process.env.NODE_ENV === 'production' ? '10d' : '1d'
+// const DEFAULT_TOKEN_LIFE = '1m'
 console.log('config.js DEFAULT_TOKEN_LIFE', DEFAULT_TOKEN_LIFE)
 console.log('config.js process.env.NODE_ENV', process.env.NODE_ENV)
 
@@ -65,7 +67,8 @@ function defaultConfig (env) {
     sentryTraceRate: process.env.SENTRY_TRACES_SAMPLE_RATE || 0.05, // default to 5%
     sendGridApiKey: process.env.SENDGRID_API_KEY,
     cronitorApiKey: process.env.CRONITOR_API_KEY,
-    cronitorMonitorKey: process.env.CRONITOR_MONITOR_KEY
+    cronitorMonitorKey: process.env.CRONITOR_MONITOR_KEY,
+    sendErrorToEmail: process.env.SEND_ERROR_TO_EMAIL,
   }
 }
 

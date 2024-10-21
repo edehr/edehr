@@ -131,9 +131,11 @@ export default class ActivityController extends BaseController {
       userActivity.submitted = activityData.submitted
       userActivity.activityLastDate = activityData.lastDate
     } else {
-      // console.error('Coding error? should there always be an assignment if we are here?', activity)
+      // this situation happens if the token has expired. Ideally, this situation would be handled sooner.
+      // console.error('Coding error? should there always be a LOBJ if we are here? Activity record is:', activity)
     }
-    // console.log('user rec', userActivity)
+    // This debug stmt maybe useful to find the root cause of the "Request aborted" error
+    // console.log('getActivityRecord collected this result:', userActivity)
     return userActivity
   }
 

@@ -33,7 +33,6 @@
 import EhrTableCommon from './EhrTableCommon'
 import EhrTableElement from './EhrTableElement'
 import UiButton from '@/app/ui/UiButton'
-import EhrTableActions from '@/inside/components/page/ehr-table-actions'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 import StoreHelper from '@/helpers/store-helper'
 import { t18EhrText } from '@/helpers/ehr-t18'

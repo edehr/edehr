@@ -49,16 +49,10 @@ const LOCALHOST = window.location.origin.includes('localhost')
  * @param vm
  * @param info - where in the Vue world did the error happen. In a lifecylce event? during render?
  */
-if (!LOCALHOST) {
-  Vue.config.errorHandler = function (err, vm, info) {
-    StoreHelper.setApiError(err.message)
-    const msg = '[Global Error Handler]: Error in (' + info + '): (' + err.message + ')'
-    console.error(msg)
-    if (window.location.origin.includes('localhost')) {
-      console.error(err)
-    }
-    // Sentry.captureMessage(msg,data)
-  }
+Vue.config.errorHandler = function (err, vm, info) {
+  StoreHelper.setApiError(err.message)
+  const msg = '[Global Error Handler]: Error in (' + info + '): (' + err.message + ')'
+  console.error(msg)
 }
 router.afterEach(async (to, from) => {
   let startTime = performance.now()
@@ -107,16 +101,16 @@ Add a general catcher for unhandled rejections.
  */
 onunhandledrejection = async (event) => {
   if (!LOCALHOST) {
-    if (StoreHelper.hasConsumer()) {
-      // if logged in the clear everything. Some store modules make initialization calls via API, if they have saved ids (e.g. see Course store).  By clearing out all the storage we give the user a clean place to start again.
-      await StoreHelper.logUserOutOfEdEHR()
-    }
+    // if (StoreHelper.hasConsumer()) {
+    //   // if logged in the clear everything. Some store modules make initialization calls via API, if they have saved ids (e.g. see Course store).  By clearing out all the storage we give the user a clean place to start again.
+    //   await StoreHelper.logUserOutOfEdEHR()
+    // }
     // During development that involves error handling it is useful to stop the error here to explore the conditions.
     // alert('Error page')
     // GO TO the ERROR page. Add a timestamp in case there are two or more attempts to go to the same page.
     await router.push({ name: ERROR_ROUTE_NAME, query: { ts: Date.now() } })
   } else {
-    console.error('On production user will now be logged out and viewing the error page.')
+    console.error('On production user will now be viewing the error page.')
   }
 }
 /*

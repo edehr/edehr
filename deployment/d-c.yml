@@ -50,6 +50,7 @@ services:
       - SERVER_PORT
       - SENTRY_DSN
       - SENDGRID_API_KEY
+      - SEND_ERROR_TO_EMAIL
       - CRONITOR_API_KEY
       - CRONITOR_MONITOR_KEY
       - START_ARG
