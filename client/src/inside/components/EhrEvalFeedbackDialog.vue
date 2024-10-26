@@ -14,7 +14,7 @@
         div(v-if='feedbackViewable')
           div(v-if="hasEvaluationData")
             p From your instructor:
-            p {{ evaluationData }}
+            p(v-text-to-html="evaluationData")
           div(v-else)
             span(v-if="submitted") {{ ehrText.studentBannerAwaitEvalText }}
             span(v-else) {{ ehrText.studentBannerSubmitText }}
